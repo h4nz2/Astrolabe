@@ -5,19 +5,22 @@ import { OurDatabase } from "../db"
 export const getAllSolarDictionaryItems = (
 	{ suns, planets }: OurDatabase,
 	{ ids = [], names = [] }: { ids?: number[] | null; names?: string[] | null },
-	demoEntityKeys: unknown[]
+	demoEntityKeys: unknown[],
 ): NexusGenObjects["SolarDictionaryItem"][] => {
 	const getSolarDictItems = (
-		entities: typeof suns | typeof planets
+		entities: typeof suns | typeof planets,
 	): NexusGenObjects["SolarDictionaryItem"][] => {
 		const items = entities.map((entity) => {
 			const solarDictItem = getTypedKeys(entity).reduce<
 				NexusGenObjects["SolarDictionaryItem"]
-			>((item, key) => {
-				return demoEntityKeys.includes(key)
-					? { ...item, [key]: entity[key] }
-					: item
-			}, {} as NexusGenObjects["SolarDictionaryItem"])
+			>(
+				(item, key) => {
+					return demoEntityKeys.includes(key)
+						? { ...item, [key]: entity[key] }
+						: item
+				},
+				{} as NexusGenObjects["SolarDictionaryItem"],
+			)
 			return solarDictItem
 		})
 		return items
@@ -28,7 +31,7 @@ export const getAllSolarDictionaryItems = (
 			? ids.map((id) =>
 					id === 0
 						? getSolarDictItems(suns)
-						: getSolarDictItems(planets.filter((p) => p.id === id))
+						: getSolarDictItems(planets.filter((p) => p.id === id)),
 			  )
 			: []
 

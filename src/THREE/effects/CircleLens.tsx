@@ -41,9 +41,9 @@ export class CircleLensEffect extends Effect {
 	fragments: number
 	constructor(fragments = 5.0) {
 		super("CircleLensEffect", fragmentShader, {
-			uniforms: new Map([
+			uniforms: new Map<string, Uniform<boolean | number>>([
 				["active", new Uniform(false)],
-				["fragments", new Uniform(Number)],
+				["fragments", new Uniform(fragments)],
 			]),
 		})
 
@@ -75,10 +75,10 @@ const CircleLens = React.forwardRef<unknown, { fragments: number }>(
 	({ fragments = 5 }, ref) => {
 		const effect = React.useMemo(
 			() => new CircleLensEffect(fragments),
-			[fragments]
+			[fragments],
 		)
 		return <primitive ref={ref} object={effect} dispose={null} />
-	}
+	},
 )
 
 export default CircleLens

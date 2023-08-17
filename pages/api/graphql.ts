@@ -8,12 +8,12 @@ const allowCors = (fn: NextApiHandler) => async (req: any, res: any) => {
 	res.setHeader("Access-Control-Allow-Credentials", true)
 	res.setHeader(
 		"Access-Control-Allow-Origin",
-		"https://studio.apollographql.com"
+		"https://studio.apollographql.com",
 	)
 
 	res.setHeader(
 		"Access-Control-Allow-Methods",
-		"GET,OPTIONS,PATCH,DELETE,POST,PUT"
+		"GET,OPTIONS,PATCH,DELETE,POST,PUT",
 	)
 	res.setHeader("Access-Control-Allow-Headers", "*")
 	if (req.method === "OPTIONS") {

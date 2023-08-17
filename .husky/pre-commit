@@ -12,7 +12,7 @@ yarn format
 )
 
 # Check ESLint Standards
-yarn check:lint ||
+yarn lint ||
 (
         echo '❌😤👋❌ Lint Check Failed ❌👋😤❌ 
                 Lint Check Failed. Make the required changes listed, add and commit again.'

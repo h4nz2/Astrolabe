@@ -103,7 +103,7 @@ const HUD: React.FC<HUDProps> = ({
 
 	const labels = useGetHUDLabels(
 		solarDict[activeEntityIndex],
-		!activeEntityIndex ? requiredLabelsSun : requiredLabels
+		!activeEntityIndex ? requiredLabelsSun : requiredLabels,
 	)
 	const HUDLabels = labels.map((label) =>
 		Object.entries(label).map(
@@ -116,8 +116,8 @@ const HUD: React.FC<HUDProps> = ({
 						extra={activeEntityIndex === 3 ? null : value[1]}
 						small={!/name/i.test(key)}
 					/>
-				)
-		)
+				),
+		),
 	)
 
 	const handlePrevBtnClick = () => {

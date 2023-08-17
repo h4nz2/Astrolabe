@@ -27,7 +27,7 @@ const Sphere: React.FC<SphereProps> = ({ texturePath }) => {
 				mesh.current.position.y,
 				Math.sin(state.clock.elapsedTime / 0.5) / 2 +
 					(hovered ? state.mouse.y / 1 : 0),
-				0.005
+				0.005,
 			)
 		}
 	})

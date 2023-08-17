@@ -33,13 +33,13 @@ const Sphere = () => {
 			mesh.current.position.x = THREE.MathUtils.lerp(
 				mesh.current.position.x,
 				hovered ? state.mouse.x / 1 : 0,
-				0.2
+				0.2,
 			)
 			mesh.current.position.y = THREE.MathUtils.lerp(
 				mesh.current.position.y,
 				Math.sin(state.clock.elapsedTime / 0.5) / 2 +
 					(hovered ? state.mouse.y / 1 : 0),
-				0.005
+				0.005,
 			)
 		}
 	})

@@ -60,7 +60,7 @@ const AnimateInOut: React.FC<AnimateInOutProps> = ({
 						gsap.set("main", { overflow: "auto" })
 					},
 				}),
-				0.5
+				0.5,
 			)
 	}, [])
 

@@ -40,7 +40,7 @@ const ScaleInOut: React.FC<ScaleInOutProps> = ({
 	const from = React.useMemo(() => ({ opacity: 0, scale, x, y }), [scale, x, y])
 	const to = React.useMemo(
 		() => ({ opacity: 1, scale: scaleTo, ease, x: xTo, y: yTo }),
-		[scaleTo, ease, xTo, yTo]
+		[scaleTo, ease, xTo, yTo],
 	)
 
 	return (
