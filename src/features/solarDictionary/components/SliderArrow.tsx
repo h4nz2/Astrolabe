@@ -89,7 +89,7 @@ export const SliderArrow = React.forwardRef<SVGGElement, SliderArrowProps>(
 				<rect x="1" y="7" width="46.5" height="1" fill="white" />
 			</g>
 		</ArrowSvg>
-	)
+	),
 )
 
 SliderArrow.displayName = "Arrow"

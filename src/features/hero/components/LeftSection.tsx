@@ -18,8 +18,8 @@ const useStyles = createStyles((theme) => ({
 	},
 
 	content: {
-		paddingTop: theme.spacing.xl * 2,
-		paddingBottom: theme.spacing.xl * 2,
+		paddingTop: `calc(${theme.spacing.xl} * 2)`,
+		paddingBottom: `calc(${theme.spacing.xl} * 2)`,
 
 		display: "flex",
 		flexDirection: "column",

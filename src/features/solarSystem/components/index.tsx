@@ -11,11 +11,10 @@ import { useSolarDictionaryQuery } from "generated/graphql"
 import Loader from "@/primitives/Loader"
 import Scene from "../THREE/Scene"
 import { useState } from "react"
-// import ReactSlider from "react-slider"
 
-import { Slider, RangeSlider } from "@mantine/core"
+import { Slider } from "@mantine/core"
 
-import { IconPlanet, IconSun, IconCircleDashed } from "@tabler/icons"
+import { Planet, Sun, CircleDashed } from "tabler-icons-react"
 
 export type UniverseProps = {}
 
@@ -106,7 +105,7 @@ const Universe: React.FC<UniverseProps> = () => {
 					min={1}
 					max={50}
 					thumbSize={26}
-					thumbChildren={<IconSun size={16} />}
+					thumbChildren={<Sun size={16} />}
 				/>
 				<Slider
 					onChange={updatePlanetsScale}
@@ -115,7 +114,7 @@ const Universe: React.FC<UniverseProps> = () => {
 					marks={plantsScaleMarks}
 					step={5}
 					thumbSize={26}
-					thumbChildren={<IconPlanet size={16} />}
+					thumbChildren={<Planet size={16} />}
 				/>
 			</Container>
 
@@ -134,13 +133,13 @@ const Universe: React.FC<UniverseProps> = () => {
 export default Universe
 
 const CheckboxSun: CheckboxProps["icon"] = ({ className }) => (
-	<IconSun className={className} />
+	<Sun className={className} />
 )
 
 const CheckboxPlanet: CheckboxProps["icon"] = ({ className }) => (
-	<IconPlanet className={className} />
+	<Planet className={className} />
 )
 
 const CheckboxOrbit: CheckboxProps["icon"] = ({ className }) => (
-	<IconCircleDashed className={className} />
+	<CircleDashed className={className} />
 )

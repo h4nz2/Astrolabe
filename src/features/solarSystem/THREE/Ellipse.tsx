@@ -24,7 +24,7 @@ const Ellipse: React.FC<EllipseProps> = ({ entity, scaleBase }) => {
 		0,
 		2 * Math.PI, // aStartAngle, aEndAngle
 		false, // aClockwise
-		0 // aRotation
+		0, // aRotation
 	)
 
 	const points = curve.getPoints(100)

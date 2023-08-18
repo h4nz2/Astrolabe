@@ -25,7 +25,7 @@ const GSAPTransitionProvider: React.FC<GSAPTransitionProviderProps> = ({
 	const [background, setBackground] = React.useState(primaryColor)
 
 	const [timeline, setTimeline] = React.useState(() =>
-		gsap.timeline({ paused: true })
+		gsap.timeline({ paused: true }),
 	)
 
 	const context: TransitionContext = {

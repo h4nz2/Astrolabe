@@ -134,7 +134,7 @@ const earthValues = {
 
 export const useGetHUDLabels = (
 	entity: SolarDictionaryItem,
-	requiredLabels: string[]
+	requiredLabels: string[],
 ) => {
 	const labels = React.useMemo(
 		() =>
@@ -150,7 +150,7 @@ export const useGetHUDLabels = (
 						],
 					} as Label
 				}),
-		[entity, requiredLabels]
+		[entity, requiredLabels],
 	)
 
 	return labels
@@ -174,7 +174,7 @@ function getExtra(key: string, value: any): String | null {
 
 function earthSizeComparison(earthValue: number, value: number): String {
 	const earths = Number.parseFloat(
-		((value / 2) ** 3 / (earthValue / 2) ** 3).toFixed(1)
+		((value / 2) ** 3 / (earthValue / 2) ** 3).toFixed(1),
 	)
 	if (earths > 1.5) {
 		return `You could fit Earth ${Math.round(earths)} times in it!`

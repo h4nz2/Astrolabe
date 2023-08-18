@@ -84,7 +84,7 @@ export const Query = extendType({
 				return getAllSolarDictionaryItems(
 					ourDatabase,
 					{ ids, names },
-					demoEntityKeys
+					demoEntityKeys,
 				)
 			},
 		})

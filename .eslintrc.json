@@ -16,7 +16,7 @@
 		"ecmaFeatures": {
 			"jsx": true
 		},
-		"ecmaVersion": "es2017",
+		"ecmaVersion": 2023,
 		"sourceType": "module"
 	},
 	"ignorePatterns": ["plopTemplates"],
@@ -30,8 +30,8 @@
 		"react/react-in-jsx-scope": 0,
 		"react/no-unescaped-entities": 0,
 		"react/no-children-prop": 0,
-		"no-restricted-imports": ["error"],
-		"prettier/prettier": ["error", { "endOfLine": "auto" }]
+		"react/no-unknown-property": 0,
+		"no-restricted-imports": ["error"]
 	},
 	"settings": {
 		"react": {

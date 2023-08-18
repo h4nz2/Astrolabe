@@ -23,11 +23,11 @@ const FadeInOutUp: React.FC<FadeInOutUpProps> = ({
 			duration: 0.25,
 			ease: "power4.out",
 		}),
-		[y]
+		[y],
 	)
 	const to = React.useMemo(
 		() => ({ opacity: 1, y: 0, ease: "power4.out", delay: 0.5 }),
-		[]
+		[],
 	)
 
 	return (

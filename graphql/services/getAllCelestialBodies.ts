@@ -2,10 +2,10 @@ import { NexusGenObjects } from "generated/nexus-typegen-custom"
 import { OurDatabase } from "../db"
 
 export const getAllCelestialBodies = async (
-	ourDatabase: OurDatabase
+	ourDatabase: OurDatabase,
 ): Promise<NexusGenObjects["CelestialBody"][]> => {
 	const mapCelestialBodies = (
-		body: Required<NexusGenObjects["CelestialBody"]>[]
+		body: Required<NexusGenObjects["CelestialBody"]>[],
 	) =>
 		body.map((b): NexusGenObjects["CelestialBody"] => ({
 			id: b.id,

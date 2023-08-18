@@ -9,8 +9,8 @@ export type HeroProps = {}
 
 const useStyles = createStyles((theme) => ({
 	root: {
-		paddingTop: theme.spacing.xl * 15,
-		paddingBottom: theme.spacing.xl * 5,
+		paddingTop: `calc(${theme.spacing.xl} * 15)`,
+		paddingBottom: `calc(${theme.spacing.xl} * 5)`,
 		height: "100vh",
 	},
 }))
