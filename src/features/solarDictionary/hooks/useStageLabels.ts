@@ -1,6 +1,5 @@
 import { getTypedKeys } from "@/lib/getTypedKeys"
 import { SolarDictionaryItem } from "generated/graphql"
-import * as React from "react"
 
 type Label = { [key: string]: [string | number, string | null] }
 
@@ -12,6 +11,8 @@ const labelDetails = {
 	gravity: { unit: "m/s^2" },
 	avgTemp: { unit: "K" },
 }
+type LabelDetailKey = keyof typeof labelDetails
+
 // it would probably be better to fetch those from our DB instead
 // const { data, loading } = useSolarDictionaryQuery()
 // const solarDict = data?.solarDictionary
@@ -132,29 +133,21 @@ const earthValues = {
 	bodyType: "Planet",
 }
 
-export const useGetHUDLabels = (
+export const useStageLabels = (
 	entity: SolarDictionaryItem,
 	requiredLabels: string[],
-) => {
-	const labels = React.useMemo(
-		() =>
-			getTypedKeys(entity)
-				.filter((key) => requiredLabels.includes(key))
-				.map((key) => {
-					return {
-						[key]: [
-							`${entity[key]} ${
-								labelDetails[key as keyof typeof labelDetails].unit
-							}`,
-							getExtra(key, entity[key]),
-						],
-					} as Label
-				}),
-		[entity, requiredLabels],
-	)
-
-	return labels
-}
+) =>
+	getTypedKeys(entity)
+		.filter((key) => requiredLabels.includes(key))
+		.map(
+			(key) =>
+				({
+					[key]: [
+						`${entity[key]} ${labelDetails[key as LabelDetailKey].unit}`,
+						getExtra(key, entity[key]),
+					],
+				}) as Label,
+		)
 
 function getExtra(key: string, value: any): String | null {
 	const earthValue = earthValues[key as keyof typeof earthValues]

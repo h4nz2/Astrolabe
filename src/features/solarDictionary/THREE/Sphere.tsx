@@ -12,10 +12,10 @@ import { MathUtils } from "three"
 import { a } from "@react-spring/three"
 
 type SphereProps = {
-	texturePath: string
+	texture: string
 }
 
-const Sphere: React.FC<SphereProps> = ({ texturePath }) => {
+const Sphere: React.FC<SphereProps> = ({ texture }) => {
 	const mesh = React.useRef<Mesh>(null!)
 	const matRef = React.useRef<MeshBasicMaterial>(null!)
 
@@ -31,7 +31,6 @@ const Sphere: React.FC<SphereProps> = ({ texturePath }) => {
 			)
 		}
 	})
-
 	return (
 		<>
 			<PerspectiveCamera makeDefault position={[0, 0, 5]} fov={60} />
@@ -46,7 +45,7 @@ const Sphere: React.FC<SphereProps> = ({ texturePath }) => {
 					<meshBasicMaterial
 						ref={matRef}
 						attach="material"
-						map={useTexture(texturePath)}
+						map={useTexture(texture)}
 					/>
 				</a.mesh>
 				<ContactShadows

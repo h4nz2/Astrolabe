@@ -55,7 +55,7 @@
 			},
 
 			"textures": {
-				"base": "/assets/textures/sun_detailed.png"
+				"base": "/assets/textures/sun/sun_detailed.png"
 			}
 		}
 	],
@@ -72,8 +72,8 @@
 			"orbitPositionOffset": 48,
 			"rings": false,
 			"textures": {
-				"base": "/assets/textures/mercury.jpg",
-				"topo": "/assets/textures/mercury_topo.jpg"
+				"base": "/assets/textures/mercury/mercury.jpg",
+				"topo": "/assets/textures/mercury/mercury_topo.jpg"
 			},
 			"isPlanet": true,
 			"moons": [],
