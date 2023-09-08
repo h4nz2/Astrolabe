@@ -27,6 +27,7 @@ const Button = styled.button<SliderArrowProps>`
 				stroke: ${({ theme }) => theme.colors.dark[4]};
 			}
 		}
+		cursor: none;
 	}
 	border: none;
 	${({ prev }) =>
@@ -42,15 +43,11 @@ const Button = styled.button<SliderArrowProps>`
 const ButtonContainer = styled.div<SliderArrowProps>`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	width: 100%;
-	align-items: ${({ prev }) => (prev ? "flex-end" : "flex-start")};
 `
 const ButtonTitle = styled.span`
-	padding: 0 15px;
 	font-family: "ff-meta-serif-web-pro";
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 18px;
 `
 
 const ArrowSvg = styled.svg<SliderArrowProps>`
@@ -76,7 +73,7 @@ export const SliderArrow = React.forwardRef<SVGGElement, SliderArrowProps>(
 		<ArrowSvg
 			prev={prev}
 			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 71 15"
+			viewBox="0 0 60 15"
 		>
 			<g ref={ref}>
 				<polyline
@@ -94,7 +91,7 @@ export const SliderArrow = React.forwardRef<SVGGElement, SliderArrowProps>(
 
 SliderArrow.displayName = "Arrow"
 
-export const OurButton = React.forwardRef<
+export const PrevNextButton = React.forwardRef<
 	HTMLButtonElement,
 	SliderArrowContainerProps
 >(({ prev, onClick, disabled, onMouseEnter, onMouseLeave }, ref) => (

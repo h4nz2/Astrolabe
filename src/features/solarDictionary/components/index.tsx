@@ -3,14 +3,13 @@ import { Box } from "@mantine/core"
 import { useSolarDictionaryQuery } from "generated/graphql"
 
 import Loader from "@/primitives/Loader"
-import HUD from "./HUD"
+import Stage from "./Stage"
 
 export type solarDictionaryProps = {}
 
 const SolarDictionary: React.FC<solarDictionaryProps> = () => {
 	const [activeEntityIndex, setActiveEntityIndex] = React.useState(0)
-	const handleChangeActiveEntity = (newIndex: number) =>
-		setActiveEntityIndex(newIndex)
+	const onChange = (newIndex: number) => setActiveEntityIndex(newIndex)
 	const { data, loading } = useSolarDictionaryQuery()
 	const solarDict = data?.solarDictionary
 
@@ -18,10 +17,10 @@ const SolarDictionary: React.FC<solarDictionaryProps> = () => {
 
 	return (
 		<Box>
-			<HUD
+			<Stage
 				solarDict={solarDict}
 				activeEntityIndex={activeEntityIndex}
-				handleChangeActiveEntity={handleChangeActiveEntity}
+				onChange={onChange}
 			/>
 		</Box>
 	)

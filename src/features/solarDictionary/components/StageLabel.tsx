@@ -36,14 +36,19 @@ const useStyles = createStyles(() => ({
 	},
 }))
 
-export type HUDLabelProps = {
+export type StageLabelProps = {
 	label?: string | number | null
 	text?: string | number | null
 	extra?: string | null
 	small?: boolean
 }
 
-const HUDLabel: React.FC<HUDLabelProps> = ({ label, text, extra, small }) => {
+const StageLabel: React.FC<StageLabelProps> = ({
+	label,
+	text,
+	extra,
+	small,
+}) => {
 	const { classes, cx } = useStyles()
 	if (!label && !text) return null
 	return (
@@ -62,4 +67,4 @@ const HUDLabel: React.FC<HUDLabelProps> = ({ label, text, extra, small }) => {
 	)
 }
 
-export default HUDLabel
+export default StageLabel
