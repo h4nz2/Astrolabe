@@ -26,8 +26,9 @@ const useStyles = createStyles((theme) => ({
 		maxWidth: 500,
 		fontSize: 48,
 	},
-	klassenLager: { fontWeight: "bold", color: theme.white },
+	klassenLager: { fontSize: "12px", fontWeight: "bold", color: theme.white },
 	button: {
+		width: "100%",
 		padding: "0 50px",
 		fontFamily: `Greycliff CF, ${theme.fontFamily}`,
 		fontSize: 22,
@@ -42,21 +43,21 @@ const LeftSection: FC<LeftSectionProps> = () => {
 		<Container w={"100%"}>
 			<Text className={classes.klassenLager}>
 				<ScaleInOut delay={1} skipOutro={false}>
-					Klassenlager 2023
+					Made with love by odi and hrj
 				</ScaleInOut>
 			</Text>
 			<Box className={classes.content}>
-				<Title>
-					<Text
-						component="span"
-						variant="gradient"
-						gradient={{ from: "red", to: "yellow" }}
-					>
-						Solr
-					</Text>
-				</Title>
-				<Title className={classes.title}>To the stars!</Title>
-				<Flex gap="md">
+				<Text
+					component="span"
+					variant="gradient"
+					className={classes.title}
+					gradient={{ from: "red", to: "yellow" }}
+					style={{ fontWeight: 600 }}
+				>
+					Solr
+				</Text>
+				<Title className={classes.title}>To the stars! </Title>
+				<Flex direction="column" py="xl" gap={"xs"} maw={300}>
 					<Button href="/solar_dictionary" label="Dictionary" />
 					<Button href="/solar_system" label="Solar Model" />
 				</Flex>
@@ -76,7 +77,6 @@ const Button: FC<{ href: string; label: string }> = ({ href, label }) => {
 				gradient={{ from: "yellow", to: "red" }}
 				size="xl"
 				className={classes.button}
-				mt={40}
 			>
 				{label}
 			</MantineButton>
