@@ -85,16 +85,19 @@ const Universe: React.FC<UniverseProps> = () => {
 						icon={CheckboxSun}
 						checked={showSun}
 						onChange={handleShowSun}
+						size={"lg"}
 					/>
 					<Checkbox
 						icon={CheckboxPlanet}
 						checked={showPlanets}
 						onChange={handleShowPlanets}
+						size={"lg"}
 					/>
 					<Checkbox
 						icon={CheckboxOrbit}
 						checked={showOrbits}
 						onChange={handleShowOrbits}
+						size={"lg"}
 					/>
 				</Container>
 			</Center>
@@ -104,8 +107,9 @@ const Universe: React.FC<UniverseProps> = () => {
 					onChange={updateSunScale}
 					min={1}
 					max={50}
-					thumbSize={26}
-					thumbChildren={<Sun size={16} />}
+					thumbSize={36}
+					thumbChildren={<Sun size={22} />}
+					size={"lg"}
 				/>
 				<Slider
 					onChange={updatePlanetsScale}
@@ -113,8 +117,12 @@ const Universe: React.FC<UniverseProps> = () => {
 					max={500}
 					marks={plantsScaleMarks}
 					step={5}
-					thumbSize={26}
-					thumbChildren={<Planet size={16} />}
+					thumbSize={36}
+					thumbChildren={<Planet size={22} />}
+					size={"lg"}
+					styles={{
+						markLabel: { marginTop: "12px" },
+					}}
 				/>
 			</Container>
 
