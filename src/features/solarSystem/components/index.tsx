@@ -6,6 +6,7 @@ import {
 	CheckboxProps,
 	Container,
 	createStyles,
+	Anchor,
 } from "@mantine/core"
 import { useSolarDictionaryQuery } from "generated/graphql"
 import Loader from "@/primitives/Loader"
@@ -22,7 +23,6 @@ const useStyles = createStyles(() => ({
 	base: {
 		width: "100vw",
 		height: "100vh",
-
 		overflow: "hidden",
 	},
 
@@ -36,10 +36,33 @@ const useStyles = createStyles(() => ({
 	sliderContainer: {
 		display: "flex",
 		flexDirection: "column",
-		gap: "24px",
-		padding: "24px 12px",
+		padding: "24px 12px 0",
+		".solr-Slider-markLabel": {
+			paddingTop: "0.5rem",
+		},
 	},
 }))
+
+const sunScaleMarks = [
+	{
+		value: 20,
+		label: (
+			<Anchor
+				href="https://bigthink.com/starts-with-a-bang/big-sun-grow/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Red Giant
+			</Anchor>
+		),
+	},
+]
+const plantsScaleMarks = [
+	{ value: 1, label: 1 },
+	{ value: 25, label: 25 },
+	{ value: 100, label: 100 },
+	{ value: 500, label: 500 },
+]
 
 const Universe: React.FC<UniverseProps> = () => {
 	const { classes } = useStyles()
@@ -51,32 +74,7 @@ const Universe: React.FC<UniverseProps> = () => {
 	const [planetsScale, setPlanetScale] = useState(1)
 	const [sunScale, setSunScale] = useState(1)
 
-	const handleShowSun = () => {
-		setShowSun(!showSun)
-	}
-	const handleShowPlanets = () => {
-		setShowPlanets(!showPlanets)
-	}
-	const handleShowOrbits = () => {
-		setShowOrbits(!showOrbits)
-	}
-
-	const updatePlanetsScale = (value: number) => {
-		setPlanetScale(value)
-	}
-
-	const updateSunScale = (value: number) => {
-		setSunScale(value)
-	}
-
 	if (!solarDict || loading) return <Loader />
-
-	const plantsScaleMarks = [
-		{ value: 1, label: 1 },
-		{ value: 25, label: 25 },
-		{ value: 100, label: 100 },
-		{ value: 500, label: 500 },
-	]
 	return (
 		<Box className={classes.base}>
 			<Center>
@@ -84,19 +82,19 @@ const Universe: React.FC<UniverseProps> = () => {
 					<Checkbox
 						icon={CheckboxSun}
 						checked={showSun}
-						onChange={handleShowSun}
+						onChange={() => setShowSun(!showSun)}
 						size={"lg"}
 					/>
 					<Checkbox
 						icon={CheckboxPlanet}
 						checked={showPlanets}
-						onChange={handleShowPlanets}
+						onChange={() => setShowPlanets(!showPlanets)}
 						size={"lg"}
 					/>
 					<Checkbox
 						icon={CheckboxOrbit}
 						checked={showOrbits}
-						onChange={handleShowOrbits}
+						onChange={() => setShowOrbits(!showOrbits)}
 						size={"lg"}
 					/>
 				</Container>
@@ -104,15 +102,17 @@ const Universe: React.FC<UniverseProps> = () => {
 
 			<Container fluid className={classes.sliderContainer}>
 				<Slider
-					onChange={updateSunScale}
+					onChange={(value: number) => setSunScale(value)}
 					min={1}
 					max={50}
+					marks={sunScaleMarks}
 					thumbSize={36}
 					thumbChildren={<Sun size={22} />}
 					size={"lg"}
+					mb={"3rem"}
 				/>
 				<Slider
-					onChange={updatePlanetsScale}
+					onChange={(value: number) => setPlanetScale(value)}
 					min={1}
 					max={500}
 					marks={plantsScaleMarks}
@@ -120,9 +120,6 @@ const Universe: React.FC<UniverseProps> = () => {
 					thumbSize={36}
 					thumbChildren={<Planet size={22} />}
 					size={"lg"}
-					styles={{
-						markLabel: { marginTop: "12px" },
-					}}
 				/>
 			</Container>
 
