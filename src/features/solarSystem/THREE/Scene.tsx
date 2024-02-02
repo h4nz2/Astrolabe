@@ -47,6 +47,8 @@ export const Scene: React.FC<SceneProps> = ({
 				autoRotateSpeed={1}
 				enablePan={false}
 				enableZoom={true}
+				maxDistance={90000}
+				minDistance={250}
 			/>
 			{showSun ? (
 				<Sphere
