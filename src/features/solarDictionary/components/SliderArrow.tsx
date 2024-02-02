@@ -1,11 +1,11 @@
-import * as React from "react"
+import { ComponentPropsWithoutRef, forwardRef } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/react"
 
 const Button = styled.button<SliderArrowProps>`
 	position: absolute;
-	top: 2.5%;
-	padding: 0 10px;
+	top: 1%;
+	padding: 0 2rem;
 	z-index: 100;
 	display: flex;
 	align-items: center;
@@ -17,7 +17,7 @@ const Button = styled.button<SliderArrowProps>`
 	transition: all 0.2s linear;
 	cursor: pointer;
 	&:hover {
-		color: ${({ theme }) => theme.colors.red[4]};
+		color: ${({ theme }) => theme.colors.blue[4]};
 	}
 	&:disabled {
 		color: ${({ theme }) => theme.colors.dark[4]};
@@ -27,7 +27,8 @@ const Button = styled.button<SliderArrowProps>`
 				stroke: ${({ theme }) => theme.colors.dark[4]};
 			}
 		}
-		cursor: none;
+		pointer-events: none;
+		cursor: auto;
 	}
 	border: none;
 	${({ prev }) =>
@@ -51,30 +52,27 @@ const ButtonTitle = styled.span`
 `
 
 const ArrowSvg = styled.svg<SliderArrowProps>`
-	width: 71px;
+	width: 70px;
 	height: 15px;
 
 	${({ prev }) =>
-		prev &&
-		css`
-			transform: rotate(180deg);
-		`}
+		prev
+			? css`
+					transform: rotate(180deg);
+			  `
+			: null}
 `
 
 export type SliderArrowProps = { prev?: boolean }
 export type SliderArrowContainerProps = SliderArrowProps &
 	Pick<
-		React.ComponentPropsWithoutRef<"button">,
+		ComponentPropsWithoutRef<"button">,
 		"onClick" | "disabled" | "onMouseEnter" | "onMouseLeave"
 	>
 
-export const SliderArrow = React.forwardRef<SVGGElement, SliderArrowProps>(
+export const SliderArrow = forwardRef<SVGGElement, SliderArrowProps>(
 	({ prev }, ref) => (
-		<ArrowSvg
-			prev={prev}
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 60 15"
-		>
+		<ArrowSvg prev={prev} viewBox="0 0 60 15">
 			<g ref={ref}>
 				<polyline
 					id="large-arrow__head"
@@ -91,7 +89,7 @@ export const SliderArrow = React.forwardRef<SVGGElement, SliderArrowProps>(
 
 SliderArrow.displayName = "Arrow"
 
-export const PrevNextButton = React.forwardRef<
+export const PrevNextButton = forwardRef<
 	HTMLButtonElement,
 	SliderArrowContainerProps
 >(({ prev, onClick, disabled, onMouseEnter, onMouseLeave }, ref) => (

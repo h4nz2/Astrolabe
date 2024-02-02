@@ -11,30 +11,19 @@ import { useState } from "react"
 
 import Navi from "./Navi"
 
-const useStyles = createStyles((theme) => ({
-	base: {
-		width: "100%",
-		height: "100vh",
-	},
+const useStyles = createStyles({
+	base: { width: "100%", height: "100vh" },
 	container: {
-		position: "absolute",
-		top: "10vw",
-		left: "5vw",
+		position: "fixed",
+		top: "10rem",
+		left: "2rem",
 		fontFamily: "arial",
-		width: "20%",
+		width: "20ch",
 		display: "flex",
 		flexDirection: "column",
-		zIndex: 1,
-
-		[`@media (max-width: ${theme.breakpoints.xs}px)`]: {
-			top: "15vw",
-		},
-
-		[`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-			top: "20vw",
-		},
+		zIndex: 10,
 	},
-}))
+})
 
 export type StageProps = {
 	solarDict: SolarDictionaryQuery["solarDictionary"]
@@ -43,23 +32,23 @@ export type StageProps = {
 }
 const defaultTexture = "base"
 
+const requiredLabelsSun = ["name", "diameter", "gravity", "avgTemp"]
+
+const requiredLabels = [
+	"name",
+	"diameter",
+	"lengthOfDay",
+	"orbitalPeriod",
+	"gravity",
+	"avgTemp",
+]
+
 const Stage: React.FC<StageProps> = ({
 	activeEntityIndex,
 	onChange,
 	solarDict,
 }) => {
 	const { classes } = useStyles()
-
-	const requiredLabelsSun = ["name", "diameter", "gravity", "avgTemp"]
-
-	const requiredLabels = [
-		"name",
-		"diameter",
-		"lengthOfDay",
-		"orbitalPeriod",
-		"gravity",
-		"avgTemp",
-	]
 
 	const labels = useStageLabels(
 		solarDict[activeEntityIndex],

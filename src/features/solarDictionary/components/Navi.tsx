@@ -8,8 +8,9 @@ import { capitalize } from "lodash"
 
 const useStyles = createStyles((theme) => ({
 	base: {
-		padding: "40px 0",
+		padding: "4rem 0",
 		position: "absolute",
+		minWidth: "300px",
 		top: 40,
 		left: 0,
 		right: 0,
@@ -18,20 +19,25 @@ const useStyles = createStyles((theme) => ({
 	},
 	inner: {
 		display: "flex",
-		gap: "24px",
 		justifyContent: "center",
+		gap: "clamp(16px, 4vw, 24px)",
 	},
 	sliderItem: {
-		width: "24px",
-		height: "24px",
+		width: "clamp(16px, 4vw, 24px)",
+		minWidth: "16px",
+		height: "clamp(16px, 4vw, 24px)",
 		backgroundColor: "gray",
-		marginBottom: "25px",
+
 		borderRadius: "50%",
 		cursor: "pointer",
 		position: "relative",
 
 		"&:hover": {
-			"&:before": { borderColor: "rgba(255, 255, 255, 0.6)" },
+			"&:before": {
+				opacity: 1,
+				width: "155%",
+				height: "150%",
+			},
 		},
 		"&:before": {
 			content: "''",
@@ -44,10 +50,7 @@ const useStyles = createStyles((theme) => ({
 			border: "5px solid rgba(255, 255, 255, 0.2)",
 			opacity: 0,
 			transition:
-				"opacity 0.2s ease-in, border-color 0.2s ease-out, width 0.3s ease-in-out, height 0.4s ease-in-out",
-
-			width: "100%",
-			height: "100%",
+				"opacity 0.5s ease, border-color 0.2s ease-out, width 0.25s ease, height 0.4s ease",
 		},
 		"&.isActive": {
 			backgroundColor: "white",
