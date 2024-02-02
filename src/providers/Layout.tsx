@@ -8,17 +8,10 @@ export type LayoutProviderProps = {
 	backgroundColor?: DefaultMantineColor
 }
 
-const useStyles = createStyles(() => ({
-	main: {
-		minWidth: "768px",
-	},
-}))
-
 const LayoutProvider: React.FC<LayoutProviderProps> = ({
 	children,
 	backgroundColor,
 }) => {
-	const { classes } = useStyles()
 	const [didMount, setDidMount] = React.useState<boolean>(false)
 	React.useEffect(() => {
 		setDidMount(true)
@@ -32,9 +25,7 @@ const LayoutProvider: React.FC<LayoutProviderProps> = ({
 	const emptyBox = <Box component="main">{null}</Box>
 	const body = (
 		<FadeInOutUp>
-			<Box component="main" className={classes.main}>
-				{children}
-			</Box>
+			<Box component="main">{children}</Box>
 		</FadeInOutUp>
 	)
 	return didMount ? body : emptyBox
