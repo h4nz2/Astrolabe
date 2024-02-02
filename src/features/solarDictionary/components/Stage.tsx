@@ -72,7 +72,11 @@ const Stage: React.FC<StageProps> = ({
 			{solarDict.map(({ textures }, i) => {
 				const texture = textures?.[activeTexture] ?? textures?.[defaultTexture]
 				return (
-					<Box key={i} hidden={i !== activeEntityIndex} sx={{ height: "100%" }}>
+					<Box
+						key={i}
+						hidden={i !== activeEntityIndex}
+						sx={{ height: "100%", minWidth: "800px" }}
+					>
 						<Scene texture={texture} />
 						<Box className={classes.container}>
 							{labels.map((label) =>
