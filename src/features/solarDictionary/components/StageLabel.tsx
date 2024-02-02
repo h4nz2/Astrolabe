@@ -8,7 +8,7 @@ const useStyles = createStyles(() => ({
 		flexDirection: "row",
 		alignItems: "center",
 		letterSpacing: "4px",
-		fontSize: "0.75rem",
+		fontSize: "clamp(calc(0.75rem/2), 2.5vw, 0.75rem)",
 		color: "gray",
 		textTransform: "uppercase",
 	},
@@ -20,19 +20,18 @@ const useStyles = createStyles(() => ({
 	},
 
 	text: {
-		fontSize: "1.75rem",
+		fontSize: "clamp(1rem, 2.5vw, 2rem)",
 		color: "white",
 		fontWeight: "bold",
-		padding: "5px 0 5px",
-		letterSpacing: "1px",
+		letterSpacing: "clamp(0.125rem, 2.5vw, 0.25rem)",
 		opacity: "1",
 		animation: `${blurUpIn} 0.8s`,
 	},
 	extra: {
-		paddingBottom: "2rem",
+		paddingBottom: "clamp(0.125rem, 2.5vw, 0.25rem)",
 	},
 	smallText: {
-		fontSize: "1.25rem",
+		fontSize: "clamp(calc(1.25rem / 2), 2.5vw, 1.25rem)",
 	},
 }))
 

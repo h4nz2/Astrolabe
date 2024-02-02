@@ -75,7 +75,7 @@ const Stage: React.FC<StageProps> = ({
 					<Box
 						key={i}
 						hidden={i !== activeEntityIndex}
-						sx={{ height: "100%", minWidth: "800px" }}
+						sx={{ height: "100%", minWidth: "760px" }}
 					>
 						<Scene texture={texture} />
 						<Box className={classes.container}>
