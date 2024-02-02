@@ -17,7 +17,7 @@ import { Slider } from "@mantine/core"
 
 import { Planet, Sun, CircleDashed } from "tabler-icons-react"
 
-export type UniverseProps = {}
+export type SolarSystemProps = {}
 
 const useStyles = createStyles(() => ({
 	base: {
@@ -64,7 +64,7 @@ const plantsScaleMarks = [
 	{ value: 500, label: 500 },
 ]
 
-const Universe: React.FC<UniverseProps> = () => {
+const SolarSystem: React.FC<SolarSystemProps> = () => {
 	const { classes } = useStyles()
 	const { data, loading } = useSolarDictionaryQuery()
 	const solarDict = data?.solarDictionary
@@ -80,19 +80,19 @@ const Universe: React.FC<UniverseProps> = () => {
 			<Center>
 				<Container fluid className={classes.checkBoxContainer}>
 					<Checkbox
-						icon={CheckboxSun}
+						icon={({ className }) => <Sun className={className} />}
 						checked={showSun}
 						onChange={() => setShowSun(!showSun)}
 						size={"lg"}
 					/>
 					<Checkbox
-						icon={CheckboxPlanet}
+						icon={({ className }) => <Planet className={className} />}
 						checked={showPlanets}
 						onChange={() => setShowPlanets(!showPlanets)}
 						size={"lg"}
 					/>
 					<Checkbox
-						icon={CheckboxOrbit}
+						icon={({ className }) => <CircleDashed className={className} />}
 						checked={showOrbits}
 						onChange={() => setShowOrbits(!showOrbits)}
 						size={"lg"}
@@ -135,16 +135,4 @@ const Universe: React.FC<UniverseProps> = () => {
 	)
 }
 
-export default Universe
-
-const CheckboxSun: CheckboxProps["icon"] = ({ className }) => (
-	<Sun className={className} />
-)
-
-const CheckboxPlanet: CheckboxProps["icon"] = ({ className }) => (
-	<Planet className={className} />
-)
-
-const CheckboxOrbit: CheckboxProps["icon"] = ({ className }) => (
-	<CircleDashed className={className} />
-)
+export default SolarSystem
