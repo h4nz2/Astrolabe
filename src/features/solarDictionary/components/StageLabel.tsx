@@ -8,19 +8,19 @@ const useStyles = createStyles(() => ({
 		flexDirection: "row",
 		alignItems: "center",
 		letterSpacing: "4px",
-		fontSize: "12px",
+		fontSize: "0.75rem",
 		color: "gray",
 		textTransform: "uppercase",
 	},
 	littleBar: {
 		margin: "0 5px 0 1px",
-		width: "30px",
+		flex: 1,
 		height: "2.5px",
 		backgroundColor: "gray",
 	},
 
 	text: {
-		fontSize: "30px",
+		fontSize: "1.75rem",
 		color: "white",
 		fontWeight: "bold",
 		padding: "5px 0 5px",
@@ -29,10 +29,10 @@ const useStyles = createStyles(() => ({
 		animation: `${blurUpIn} 0.8s`,
 	},
 	extra: {
-		padding: "0 0 30px",
+		paddingBottom: "2rem",
 	},
 	smallText: {
-		fontSize: "20px",
+		fontSize: "1.25rem",
 	},
 }))
 
