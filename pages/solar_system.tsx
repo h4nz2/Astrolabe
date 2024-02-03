@@ -1,2 +1,2 @@
-import SolarSystem from "@/features/solarSystem/components"
+import SolarSystem from "@/features/solarSystem"
 export default SolarSystem

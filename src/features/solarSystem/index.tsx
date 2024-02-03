@@ -3,19 +3,19 @@ import {
 	Box,
 	Center,
 	Checkbox,
-	CheckboxProps,
 	Container,
 	createStyles,
 	Anchor,
+	Text,
 } from "@mantine/core"
 import { useSolarDictionaryQuery } from "generated/graphql"
 import Loader from "@/primitives/Loader"
-import Scene from "../THREE/Scene"
+import Scene from "./THREE/Scene"
 import { useState } from "react"
 
 import { Slider } from "@mantine/core"
 
-import { Planet, Sun, CircleDashed } from "tabler-icons-react"
+import { Planet, Sun, CircleDashed, InfoCircle } from "tabler-icons-react"
 
 export type SolarSystemProps = {}
 
@@ -29,34 +29,20 @@ const useStyles = createStyles(() => ({
 	checkBoxContainer: {
 		display: "flex",
 		flexDirection: "row",
-		gap: "24px",
-		padding: "24px 12px",
+		gap: "2rem",
+		padding: "2rem 0 0",
 	},
 
 	sliderContainer: {
 		display: "flex",
 		flexDirection: "column",
-		padding: "24px 12px 0",
+		padding: "2rem 1rem",
 		".solr-Slider-markLabel": {
 			paddingTop: "0.5rem",
 		},
 	},
 }))
 
-const sunScaleMarks = [
-	{
-		value: 20,
-		label: (
-			<Anchor
-				href="https://bigthink.com/starts-with-a-bang/big-sun-grow/"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Red Giant
-			</Anchor>
-		),
-	},
-]
 const plantsScaleMarks = [
 	{ value: 1, label: 1 },
 	{ value: 25, label: 25 },
@@ -105,7 +91,30 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 					onChange={(value: number) => setSunScale(value)}
 					min={1}
 					max={50}
-					marks={sunScaleMarks}
+					marks={[
+						{
+							value: 20,
+							label: (
+								<Text sx={{ textAlign: "center" }}>
+									Red Giant
+									<br />
+									{sunScale === 20 ? (
+										<Anchor
+											href="https://bigthink.com/starts-with-a-bang/big-sun-grow/"
+											target="_blank"
+											rel="noopener noreferrer"
+											sx={{
+												position: "relative",
+												top: "-5.5rem",
+											}}
+										>
+											<InfoCircle size={24} />
+										</Anchor>
+									) : null}
+								</Text>
+							),
+						},
+					]}
 					thumbSize={36}
 					thumbChildren={<Sun size={22} />}
 					size={"lg"}
