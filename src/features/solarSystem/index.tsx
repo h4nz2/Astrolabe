@@ -70,18 +70,21 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 						checked={showSun}
 						onChange={() => setShowSun(!showSun)}
 						size={"lg"}
+						color={"orange.7"}
 					/>
 					<Checkbox
 						icon={({ className }) => <Planet className={className} />}
 						checked={showPlanets}
 						onChange={() => setShowPlanets(!showPlanets)}
 						size={"lg"}
+						color={"orange.7"}
 					/>
 					<Checkbox
 						icon={({ className }) => <CircleDashed className={className} />}
 						checked={showOrbits}
 						onChange={() => setShowOrbits(!showOrbits)}
 						size={"lg"}
+						color={"orange.7"}
 					/>
 				</Container>
 			</Center>
@@ -119,6 +122,7 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 					thumbChildren={<Sun size={22} />}
 					size={"lg"}
 					mb={"3rem"}
+					color={"orange.7"}
 				/>
 				<Slider
 					onChange={(value: number) => setPlanetScale(value)}
@@ -129,6 +133,7 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 					thumbSize={36}
 					thumbChildren={<Planet size={22} />}
 					size={"lg"}
+					color={"orange.7"}
 				/>
 			</Container>
 

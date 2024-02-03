@@ -16,7 +16,7 @@ const Button = styled.button<ButtonProps>`
 
 	&:focus,
 	&:hover {
-		color: ${({ theme }) => theme.colors.blue[4]};
+		color: ${({ theme }) => theme.colors.orange[7]};
 	}
 	&:disabled {
 		color: ${({ theme }) => theme.colors.dark[4]};
