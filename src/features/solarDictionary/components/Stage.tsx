@@ -1,15 +1,13 @@
-import * as React from "react"
+import { FC, useCallback, useMemo } from "react"
 import { Box, createStyles } from "@mantine/core"
-
 import StageLabel from "./StageLabel"
 import type { SolarDictionaryQuery } from "generated/graphql"
-
 import { useStageLabels } from "../hooks/useStageLabels"
 import Scene from "../THREE/Scene"
-
-import { useState } from "react"
-
 import Navi from "./Navi"
+import { useRouter } from "next/router"
+import { ParsedUrlQuery } from "querystring"
+import { setQueryOnPage } from "@/utils/setQueryOnPage"
 
 const useStyles = createStyles({
 	base: { width: "100%", height: "100vh" },
@@ -24,12 +22,18 @@ const useStyles = createStyles({
 	},
 })
 
+type Query = ParsedUrlQuery & {
+	activeEntity?: string
+	texture?: Texture
+}
+export type Texture = keyof NonNullable<
+	SolarDictionaryQuery["solarDictionary"][number]["textures"]
+>
+
 export type StageProps = {
 	solarDict: SolarDictionaryQuery["solarDictionary"]
-	activeEntityIndex: number
-	onChange: (newIndex: number) => void
 }
-const defaultTexture = "base"
+const defaultTexture: Texture = "base"
 
 const requiredLabelsSun = ["name", "diameter", "gravity", "avgTemp"]
 
@@ -42,29 +46,51 @@ const requiredLabels = [
 	"avgTemp",
 ]
 
-const Stage: React.FC<StageProps> = ({
-	activeEntityIndex,
-	onChange,
-	solarDict,
-}) => {
+const Stage: FC<StageProps> = ({ solarDict }) => {
 	const { classes } = useStyles()
+	const router = useRouter()
+	const query = router.query as Query
 
-	const labels = useStageLabels(
-		solarDict[activeEntityIndex],
-		!activeEntityIndex ? requiredLabelsSun : requiredLabels,
+	const onEntityChange = useCallback(
+		(newIndex: number) =>
+			setQueryOnPage(router, { activeEntity: newIndex ? newIndex : [] }),
+		[router],
 	)
 
-	const [activeTexture, setActiveTexture] =
-		useState<keyof NonNullable<(typeof solarDict)[number]["textures"]>>(
-			defaultTexture,
-		)
+	const activeEntity = useMemo(() => {
+		const activeEntity = Number(query.activeEntity ?? 0)
+		if (
+			(!!activeEntity && !Number(activeEntity)) ||
+			activeEntity > solarDict.length - 1 ||
+			activeEntity < 0
+		) {
+			onEntityChange(0)
+			return 0
+		}
+
+		return activeEntity
+	}, [onEntityChange, query, solarDict.length])
+
+	const labels = useStageLabels(
+		solarDict[activeEntity],
+		!activeEntity ? requiredLabelsSun : requiredLabels,
+	)
+
+	const onTextureChange = useCallback(
+		(texture: Texture) =>
+			setQueryOnPage(router, {
+				texture: texture === defaultTexture ? [] : texture,
+			}),
+		[router],
+	)
+	const activeTexture: Texture = query.texture ?? defaultTexture
 	return (
 		<Box className={classes.base}>
 			<Navi
-				activeEntityIndex={activeEntityIndex}
+				activeEntityIndex={activeEntity}
 				activeTexture={activeTexture}
-				onChange={onChange}
-				setActiveTexture={setActiveTexture}
+				onChange={onEntityChange}
+				setActiveTexture={onTextureChange}
 				solarDict={solarDict}
 			/>
 
@@ -73,7 +99,7 @@ const Stage: React.FC<StageProps> = ({
 				return (
 					<Box
 						key={i}
-						hidden={i !== activeEntityIndex}
+						hidden={i !== activeEntity}
 						sx={{ height: "100%", minWidth: "760px" }}
 					>
 						<Scene texture={texture} />
@@ -85,7 +111,7 @@ const Stage: React.FC<StageProps> = ({
 											key={label}
 											label={label}
 											text={value[0]}
-											extra={activeEntityIndex === 3 ? null : value[1]}
+											extra={activeEntity === 3 ? null : value[1]}
 											small={!/name/i.test(label)}
 										/>
 									) : null,
