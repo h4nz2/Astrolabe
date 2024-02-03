@@ -21,7 +21,6 @@ const useStyles = createStyles({
 		width: "20ch",
 		display: "flex",
 		flexDirection: "column",
-		zIndex: 10,
 	},
 })
 
