@@ -22,6 +22,8 @@ export const Scene: FC<SceneProps> = ({ texture }) => {
 				autoRotateSpeed={2}
 				enablePan={false}
 				enableZoom={true}
+				minDistance={3}
+				maxDistance={8}
 			/>
 			{process.env.NODE_ENV === "development" ? <Stats /> : null}
 		</Canvas>

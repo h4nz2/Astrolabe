@@ -1,2 +1,2 @@
-import SolarDictionary from "@/features/solarDictionary/components"
+import SolarDictionary from "@/features/solarDictionary"
 export default SolarDictionary
