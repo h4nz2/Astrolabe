@@ -5,10 +5,6 @@ import {
 } from "generated/graphql"
 import Loader from "@/primitives/Loader"
 import { Box, createStyles } from "@mantine/core"
-
-import { useRouter } from "next/router"
-import type { ParsedUrlQuery } from "querystring"
-
 import Navbar from "./components/Navbar"
 import Scene from "./THREE/Scene"
 import Sidebar from "./components/Sidebar"
@@ -17,10 +13,6 @@ import { getSidebarLabels } from "./utils/getSidebarLabels"
 export type Texture = keyof NonNullable<
 	SolarDictionaryQuery["solarDictionary"][number]["textures"]
 >
-type Query = ParsedUrlQuery & {
-	activeEntity?: string
-	texture?: Texture
-}
 
 const defaultTexture: Texture = "base"
 
