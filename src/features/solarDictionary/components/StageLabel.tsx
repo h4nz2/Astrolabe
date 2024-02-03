@@ -42,6 +42,15 @@ export type StageLabelProps = {
 	small?: boolean
 }
 
+const formatTextNumbers = (value?: string | number | null) =>
+	value
+		?.toString()
+		.split(" ")
+		.map((str) =>
+			Number(str) ? new Intl.NumberFormat().format(Number(str)) : str,
+		)
+		.join(" ")
+
 const StageLabel: React.FC<StageLabelProps> = ({
 	label,
 	text,
@@ -59,7 +68,7 @@ const StageLabel: React.FC<StageLabelProps> = ({
 			</Box>
 
 			<Text className={cx(classes.text, { [classes.smallText]: !!small })}>
-				{text}
+				{formatTextNumbers(text)}
 			</Text>
 			{extra ? <Text className={classes.extra}>{extra}</Text> : null}
 		</Box>
