@@ -16,6 +16,8 @@ const Button = styled.button<SliderArrowProps>`
 	text-decoration: none;
 	transition: all 0.2s linear;
 	cursor: pointer;
+
+	&:focus,
 	&:hover {
 		color: ${({ theme }) => theme.colors.blue[4]};
 	}
