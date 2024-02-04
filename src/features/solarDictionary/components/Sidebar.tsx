@@ -1,6 +1,7 @@
-import * as React from "react"
+import { FC, useEffect, useRef } from "react"
 import { Box, createStyles, Text } from "@mantine/core"
 import { blurUpIn } from "../keyframes/blurUpIn"
+import gsap from "gsap"
 
 const useStyles = createStyles(() => ({
 	base: {
@@ -32,8 +33,6 @@ const useStyles = createStyles(() => ({
 		color: "white",
 		fontWeight: "bold",
 		letterSpacing: "clamp(0.125rem, 2.5vw, 0.25rem)",
-		opacity: "1",
-		animation: `${blurUpIn} 0.8s`,
 	},
 	smallText: {
 		fontSize: "clamp(0.5rem, 2.5vw, 1rem)",
@@ -58,8 +57,26 @@ const formatTextNumbers = (value?: string | number | null) =>
 		)
 		.join(" ")
 
-const Sidebar: React.FC<StageLabelProps> = ({ labels }) => {
+const Sidebar: FC<StageLabelProps> = ({ labels }) => {
 	const { classes, cx } = useStyles()
+	const textRefs = useRef<HTMLDivElement[]>([])
+	const textRef = (el: HTMLDivElement) => {
+		if (el && !textRefs.current.includes(el)) textRefs.current.push(el)
+	}
+
+	useEffect(() => {
+		gsap.fromTo(
+			textRefs.current,
+			{ alpha: 0 },
+			{
+				alpha: 1,
+				keyframes: blurUpIn,
+				duration: 0.5,
+				stagger: 0.025,
+			},
+		)
+	}, [labels])
+
 	return (
 		<Box className={classes.base}>
 			{labels.map((label) =>
@@ -73,13 +90,18 @@ const Sidebar: React.FC<StageLabelProps> = ({ labels }) => {
 							</Box>
 
 							<Text
+								ref={textRef}
 								className={cx(classes.text, {
 									[classes.smallText]: !/name/i.test(label),
 								})}
 							>
 								{formatTextNumbers(text)}
 							</Text>
-							{extra ? <Text className={classes.extra}>{extra}</Text> : null}
+							{extra ? (
+								<Text ref={textRef} className={classes.extra}>
+									{formatTextNumbers(extra)}
+								</Text>
+							) : null}
 						</Box>
 					) : null,
 				),
