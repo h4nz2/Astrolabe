@@ -29,16 +29,16 @@ const useStyles = createStyles(() => ({
 		textTransform: "uppercase",
 	},
 	text: {
-		fontSize: "clamp(1rem, 2.5vw, 2rem)",
+		fontSize: "clamp(0.5rem, 2.5vw, 1rem)",
 		color: "white",
 		fontWeight: "bold",
 		letterSpacing: "clamp(0.125rem, 2.5vw, 0.25rem)",
 	},
-	smallText: {
-		fontSize: "clamp(0.5rem, 2.5vw, 1rem)",
-	},
+	largeText: { fontSize: "clamp(1rem, 2.5vw, 2rem)" },
 	extra: {
 		paddingBottom: "clamp(0.125rem, 2.5vw, 0.25rem)",
+		fontWeight: 200,
+		letterSpacing: 1,
 	},
 }))
 
@@ -83,7 +83,7 @@ const Sidebar: FC<StageLabelProps> = ({ labels }) => {
 				Object.entries(label).map(([label, [text, extra]], i) =>
 					text ? (
 						<Box key={i}>
-							<Box className={classes.label}>
+							<Box ref={textRef} className={classes.label}>
 								<Box className={classes.littleBar} />
 								{label}
 								<Box className={classes.littleBar} />
@@ -92,16 +92,19 @@ const Sidebar: FC<StageLabelProps> = ({ labels }) => {
 							<Text
 								ref={textRef}
 								className={cx(classes.text, {
-									[classes.smallText]: !/name/i.test(label),
+									[classes.largeText]: /name/i.test(label),
 								})}
 							>
 								{formatTextNumbers(text)}
+								{extra ? (
+									<>
+										<br />
+										<span className={classes.extra}>
+											{formatTextNumbers(extra)}
+										</span>
+									</>
+								) : null}
 							</Text>
-							{extra ? (
-								<Text ref={textRef} className={classes.extra}>
-									{formatTextNumbers(extra)}
-								</Text>
-							) : null}
 						</Box>
 					) : null,
 				),
