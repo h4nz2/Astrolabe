@@ -36,7 +36,7 @@ const useStyles = createStyles(() => ({
 	sliderContainer: {
 		display: "flex",
 		flexDirection: "column",
-		padding: "2rem 1rem",
+		padding: "4rem 1rem 0",
 		".solr-Slider-markLabel": {
 			paddingTop: "0.5rem",
 		},
@@ -106,6 +106,7 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 											href="https://bigthink.com/starts-with-a-bang/big-sun-grow/"
 											target="_blank"
 											rel="noopener noreferrer"
+											color="orange"
 											sx={{
 												position: "relative",
 												top: "-5.5rem",
