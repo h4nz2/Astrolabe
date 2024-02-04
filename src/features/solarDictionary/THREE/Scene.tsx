@@ -9,7 +9,7 @@ import { useIsMobile } from "@/hooks/useIsMobile"
 const Sphere = dynamic(() => import("./Sphere"), { ssr: false })
 
 type SceneProps = {
-	texture?: string | null
+	texture?: string
 }
 
 export const Scene: FC<SceneProps> = ({ texture }) => {

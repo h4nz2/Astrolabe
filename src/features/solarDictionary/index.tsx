@@ -6,9 +6,8 @@ import {
 import Loader from "@/primitives/Loader"
 import { Box, createStyles } from "@mantine/core"
 import Navbar from "./components/Navbar"
-import Scene from "./THREE/Scene"
-import Sidebar from "./components/Sidebar"
 import { getSidebarLabels } from "./utils/getSidebarLabels"
+import Stage from "./components/Stage"
 
 export type Texture = keyof NonNullable<
 	SolarDictionaryQuery["solarDictionary"][number]["textures"]
@@ -26,10 +25,19 @@ const requiredLabels = [
 	"gravity",
 	"avgTemp",
 ]
+const sunIdx = 0
+const earthIdx = 3
+
+type State = { activeEntityIndex: number; activeTexture: Texture }
+const initialState: State = {
+	activeEntityIndex: 0,
+	activeTexture: defaultTexture,
+}
 
 const useStyles = createStyles({
 	base: { width: "100%", height: "100vh" },
 })
+
 export type SolarDictionaryProps = {
 	data?: SolarDictionaryQuery["solarDictionary"]
 }
@@ -38,20 +46,15 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	const { classes } = useStyles()
 	const { data, loading } = useSolarDictionaryQuery()
 
-	const [{ activeEntity, activeTexture }, setState] = useState<{
-		activeEntity: number
-		activeTexture: Texture
-	}>({
-		activeEntity: 0,
-		activeTexture: defaultTexture,
-	})
-
-	if (loading) return <Loader />
+	const [{ activeEntityIndex, activeTexture }, setState] =
+		useState<State>(initialState)
 
 	const solarDict = data?.solarDictionary ?? []
+	const currentEntity = solarDict[activeEntityIndex]
+
 	const onEntityChange = (activeEntityIndex: number) =>
 		setState({
-			activeEntity:
+			activeEntityIndex:
 				activeEntityIndex > solarDict.length - 1 || activeEntityIndex < 0
 					? 0
 					: activeEntityIndex,
@@ -61,34 +64,30 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	const onTextureChange = (texture: Texture) =>
 		setState((prev) => ({ ...prev, activeTexture: texture }))
 
-	const planetOfReference = solarDict.findIndex((e) => e.name === "Earth")
 	const labels = getSidebarLabels(
-		solarDict[activeEntity],
-		!activeEntity ? requiredLabelsSun : requiredLabels,
-		solarDict[planetOfReference],
+		currentEntity,
+		activeEntityIndex === sunIdx ? requiredLabelsSun : requiredLabels,
+		solarDict[earthIdx],
 	)
+
+	if (!currentEntity || loading) return <Loader />
+
 	return (
 		<Box className={classes.base}>
 			<Navbar
-				activeEntityIndex={activeEntity}
+				activeEntityIndex={activeEntityIndex}
 				activeTexture={activeTexture}
 				onChange={onEntityChange}
-				setActiveTexture={onTextureChange}
+				onTextureChange={onTextureChange}
 				solarDict={solarDict}
 			/>
-			{solarDict.map(({ id, textures }, i) => {
-				const texture = textures?.[activeTexture] ?? textures?.[defaultTexture]
-				return (
-					<Box
-						key={id}
-						hidden={i !== activeEntity}
-						sx={{ height: "100%", minWidth: "760px" }}
-					>
-						<Scene texture={texture} />
-						<Sidebar labels={labels} />
-					</Box>
-				)
-			})}
+			<Stage
+				texture={
+					currentEntity.textures?.[activeTexture] ??
+					currentEntity.textures?.[defaultTexture]
+				}
+				sidebarLabels={labels}
+			/>
 		</Box>
 	)
 }
