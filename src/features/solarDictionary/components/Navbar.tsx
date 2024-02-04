@@ -13,10 +13,10 @@ const useStyles = createStyles((theme) => ({
 		top: "4rem",
 		left: 0,
 		right: 0,
-
 		display: "flex",
 		justifyContent: "center",
 		gap: "clamp(16px, 4vw, 24px)",
+		zIndex: 2,
 	},
 	inner: {},
 }))
