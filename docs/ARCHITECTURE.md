@@ -234,8 +234,9 @@ WARP_PRESETS                                      1x, 1 min/s, 1 h/s, 1 day/s, 1
 Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
-URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&markers=false`. Defaults (overview, home shot
-`0_45_1`, `warp=1`, markers on) are left out; a link without `markers` shows them. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
+URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
+`labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off. Defaults (overview,
+home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
 once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
 clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
 |warp| <= 60.

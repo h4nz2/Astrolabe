@@ -92,21 +92,32 @@ test("a solar system deep link seeds the simulation and the HUD writes back to t
 	await expect(page).toHaveURL(/[?&]t=\d+(\.\d+)?(&|$)/)
 })
 
-test("the Markers switch travels with a shared link", async ({ page }) => {
-	await page.goto("/solar_system?focus=earth&markers=false")
-	const markers = page.getByRole("switch", { name: "Markers" })
-	await expect(markers).not.toBeChecked()
-	await expect(page).toHaveURL(/[?&]markers=false(&|$)/)
+test("the layer switches travel with a shared link", async ({ page }) => {
+	await page.goto(
+		"/solar_system?focus=earth&orbits=false&labels=false&moons=false&markers=false",
+	)
+	for (const name of ["Orbits", "Labels", "Moons", "Markers"]) {
+		await expect(page.getByRole("switch", { name })).not.toBeChecked()
+	}
+	await expect(page).toHaveURL(/[?&]moons=false(&|$)/)
 
-	// on is the default and leaves the URL
-	await markers.click({ force: true })
-	await expect(markers).toBeChecked()
-	await expect(page).not.toHaveURL(/[?&]markers=/)
+	// on is the default and leaves the URL; the other switches stay in it
+	const moons = page.getByRole("switch", { name: "Moons" })
+	await moons.click({ force: true })
+	await expect(moons).toBeChecked()
+	await expect(page).not.toHaveURL(/[?&]moons=/)
 	await expect(page).toHaveURL(/[?&]focus=earth(&|$)/)
-
-	await markers.click({ force: true })
-	await expect(markers).not.toBeChecked()
+	await expect(page).toHaveURL(/[?&]orbits=false(&|$)/)
+	await expect(page).toHaveURL(/[?&]labels=false(&|$)/)
 	await expect(page).toHaveURL(/[?&]markers=false(&|$)/)
+
+	const orbits = page.getByRole("switch", { name: "Orbits" })
+	await orbits.click({ force: true })
+	await expect(orbits).toBeChecked()
+	await expect(page).not.toHaveURL(/[?&]orbits=/)
+	await moons.click({ force: true })
+	await expect(moons).not.toBeChecked()
+	await expect(page).toHaveURL(/[?&]moons=false(&|$)/)
 })
 
 test("hiding the moons with the orbits on keeps the scene alive and the focused moon in place", async ({
