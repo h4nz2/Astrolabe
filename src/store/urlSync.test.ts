@@ -31,6 +31,7 @@ const state = (partial: Partial<Mirrored> = {}): Mirrored => ({
 	showLabels: true,
 	showMoons: true,
 	showMarkers: true,
+	showOrbitLabels: false,
 	...partial,
 })
 
@@ -209,6 +210,7 @@ describe("urlSync helpers", () => {
 			showLabels: true,
 			showMoons: true,
 			showMarkers: true,
+			showOrbitLabels: false,
 		}
 		const { orbits, labels, moons, markers } = searchFromState(state(), {})
 		expect([orbits, labels, moons, markers]).toEqual([
@@ -234,6 +236,17 @@ describe("urlSync helpers", () => {
 			// the round trip through the schema and back into the store
 			expect(layersFromSearch(simSearchSchema.parse(search))[field]).toBe(false)
 		}
+	})
+
+	it("writes the orbit names only when they are on (off by default)", () => {
+		expect(searchFromState(state(), {}).orbitNames).toBeUndefined()
+		const on = searchFromState(state({ showOrbitLabels: true }), {})
+		expect(on.orbitNames).toBe(true)
+		expect(layersFromSearch(simSearchSchema.parse(on)).showOrbitLabels).toBe(
+			true,
+		)
+		expect(layersFromSearch({}).showOrbitLabels).toBe(false)
+		expect(sameSearch({ orbitNames: true }, {})).toBe(false)
 	})
 
 	it("compares searches field by field", () => {

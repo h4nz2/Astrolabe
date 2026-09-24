@@ -3,17 +3,19 @@ import { Group, Switch } from "@mantine/core"
 import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
 
-/** Switches for the orbit lines, the labels, the moons and the markers. */
+/** Switches for the orbit lines, the labels, the moons, the markers and the orbit names. */
 const SceneToggles = () => {
 	const { t } = useI18n()
 	const showOrbits = useSimStore((state) => state.showOrbits)
 	const showLabels = useSimStore((state) => state.showLabels)
 	const showMoons = useSimStore((state) => state.showMoons)
 	const showMarkers = useSimStore((state) => state.showMarkers)
+	const showOrbitLabels = useSimStore((state) => state.showOrbitLabels)
 	const setShowOrbits = useSimStore((state) => state.setShowOrbits)
 	const setShowLabels = useSimStore((state) => state.setShowLabels)
 	const setShowMoons = useSimStore((state) => state.setShowMoons)
 	const setShowMarkers = useSimStore((state) => state.setShowMarkers)
+	const setShowOrbitLabels = useSimStore((state) => state.setShowOrbitLabels)
 
 	return (
 		<Group
@@ -49,6 +51,14 @@ const SceneToggles = () => {
 				label={t("solarSystem.layers.markers")}
 				checked={showMarkers}
 				onChange={(event) => setShowMarkers(event.currentTarget.checked)}
+			/>
+			<Switch
+				size="xs"
+				color="orange"
+				label={t("solarSystem.layers.orbitNames")}
+				checked={showOrbitLabels}
+				disabled={!showOrbits || !showLabels}
+				onChange={(event) => setShowOrbitLabels(event.currentTarget.checked)}
 			/>
 		</Group>
 	)

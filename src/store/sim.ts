@@ -58,6 +58,8 @@ export interface SimState extends NavigationSlice {
 	showMoons: boolean
 	/** Screen-sized dots for bodies too small to see (scene/Markers.tsx). */
 	showMarkers: boolean
+	/** Names written along the orbit lines (labels/, #20); off by default. */
+	showOrbitLabels: boolean
 
 	/**
 	 * Speed in simulated seconds per real second; negative reverses. Nothing
@@ -83,6 +85,7 @@ export interface SimState extends NavigationSlice {
 	setShowLabels: (show: boolean) => void
 	setShowMoons: (show: boolean) => void
 	setShowMarkers: (show: boolean) => void
+	setShowOrbitLabels: (show: boolean) => void
 	/** Travels (glides) to the wall clock, arriving on the present. */
 	setNow: () => void
 }
@@ -128,6 +131,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	showLabels: true,
 	showMoons: true,
 	showMarkers: true,
+	showOrbitLabels: false,
 
 	setTimeWarp: (warp) => {
 		if (!Number.isFinite(warp)) return
@@ -173,6 +177,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	setShowLabels: (show) => set({ showLabels: show }),
 	setShowMoons: (show) => set({ showMoons: show }),
 	setShowMarkers: (show) => set({ showMarkers: show }),
+	setShowOrbitLabels: (show) => set({ showOrbitLabels: show }),
 	setNow: () => {
 		const { clock, travelTo } = get()
 		const now = dateToJD(new Date())

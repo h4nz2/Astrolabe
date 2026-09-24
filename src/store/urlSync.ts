@@ -57,7 +57,7 @@ export const LAYER_PARAMS = [
 	["markers", "showMarkers"],
 ] as const
 
-type LayerField = (typeof LAYER_PARAMS)[number][1]
+type LayerField = (typeof LAYER_PARAMS)[number][1] | "showOrbitLabels"
 type Layers = Pick<SimState, LayerField>
 
 type Mirrored = Layers &
@@ -101,6 +101,7 @@ export function searchFromState(
 	for (const [param, field] of LAYER_PARAMS) {
 		search[param] = state[field] ? undefined : false
 	}
+	search.orbitNames = state.showOrbitLabels ? true : undefined
 	return search
 }
 
@@ -110,6 +111,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.cam === b.cam &&
 	a.t === b.t &&
 	a.warp === b.warp &&
+	a.orbitNames === b.orbitNames &&
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
 /** The view a search describes: `focus` (a known body) or the overview, its camera and selection. */
@@ -132,11 +134,16 @@ export function viewFromSearch(search: SimSearch): {
 	}
 }
 
-/** The layer switches a search sets: a switch the link leaves out is on. */
-export const layersFromSearch = (search: SimSearch): Layers =>
-	Object.fromEntries(
+/**
+ * The layer switches a search sets: a switch the link leaves out is on, except
+ * the orbit names, which are off unless the link turns them on.
+ */
+export const layersFromSearch = (search: SimSearch): Layers => ({
+	...(Object.fromEntries(
 		LAYER_PARAMS.map(([param, field]) => [field, search[param] ?? true]),
-	) as Layers
+	) as Omit<Layers, "showOrbitLabels">),
+	showOrbitLabels: search.orbitNames === true,
+})
 
 /** Clock fields a search sets; absent params are skipped. */
 export function stateFromSearch(search: SimSearch): Partial<MirroredClock> {
@@ -206,7 +213,8 @@ export function useSimUrlSync(): void {
 				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||
 				state.paused !== previous.paused ||
-				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field])
+				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field]) ||
+				state.showOrbitLabels !== previous.showOrbitLabels
 			) {
 				write()
 				return

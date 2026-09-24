@@ -48,6 +48,8 @@ export const simSearchSchema = z.object({
 	labels: layerSwitch,
 	moons: layerSwitch,
 	markers: layerSwitch,
+	// orbit names (#20) are off by default, so only `true` is ever written
+	orbitNames: layerSwitch,
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>

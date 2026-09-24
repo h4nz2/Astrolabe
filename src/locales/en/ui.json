@@ -131,7 +131,8 @@
 			"orbits": "Orbits",
 			"labels": "Labels",
 			"moons": "Moons",
-			"markers": "Markers"
+			"markers": "Markers",
+			"orbitNames": "Orbit names"
 		},
 		"time": {
 			"play": "Play",

@@ -14,6 +14,10 @@ import Bodies from "../bodies/Bodies"
 import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
+import { createLabelBoard } from "../labels/board"
+import LabelLayer from "../labels/LabelLayer"
+import Labels from "../labels/Labels"
+import { labelSlotCount } from "../labels/project"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
@@ -33,33 +37,41 @@ function Scene() {
 			),
 		[],
 	)
+	const labels = useMemo(
+		() => createLabelBoard(labelSlotCount(bodies.length)),
+		[],
+	)
 
 	return (
-		<Canvas
-			dpr={[1, 2]}
-			gl={{ logarithmicDepthBuffer: true, antialias: true }}
-			camera={{
-				near: CAMERA_NEAR,
-				far: CAMERA_FAR,
-				fov: CAMERA_FOV_DEG,
-				position: [0, 20000, 20000],
-			}}
-			style={{ position: "absolute", inset: 0 }}
-		>
-			<color attach="background" args={[SCENE_BACKGROUND]} />
-			<SimFrameContext.Provider value={frame}>
-				<ScaleSync />
-				<SimClock />
-				<HoverCursor />
-				<ambientLight intensity={AMBIENT_INTENSITY} />
-				<Suspense fallback={null}>
-					<Bodies />
-				</Suspense>
-				<OrbitLines />
-				<Markers />
-				<CameraRig />
-			</SimFrameContext.Provider>
-		</Canvas>
+		<>
+			<Canvas
+				dpr={[1, 2]}
+				gl={{ logarithmicDepthBuffer: true, antialias: true }}
+				camera={{
+					near: CAMERA_NEAR,
+					far: CAMERA_FAR,
+					fov: CAMERA_FOV_DEG,
+					position: [0, 20000, 20000],
+				}}
+				style={{ position: "absolute", inset: 0 }}
+			>
+				<color attach="background" args={[SCENE_BACKGROUND]} />
+				<SimFrameContext.Provider value={frame}>
+					<ScaleSync />
+					<SimClock />
+					<HoverCursor />
+					<ambientLight intensity={AMBIENT_INTENSITY} />
+					<Suspense fallback={null}>
+						<Bodies />
+					</Suspense>
+					<OrbitLines />
+					<Markers />
+					<Labels board={labels} />
+					<CameraRig />
+				</SimFrameContext.Provider>
+			</Canvas>
+			<LabelLayer board={labels} />
+		</>
 	)
 }
 
