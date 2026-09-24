@@ -1,0 +1,77 @@
+/*
+ * Body labels (labels/LabelLayer.tsx). Positions, opacity and visibility are
+ * written per frame by labels/board.ts; everything else is here.
+ *
+ * Legibility on a classroom projector: the size follows the viewport (about
+ * 1.6 % of its smaller side, 13..19 px), never the zoom, so a planet that is
+ * one pixel is readable and one that fills the screen is not shouted at. The
+ * text is light with a dark halo, which holds on the black of space and across
+ * the bright face of a planet or the Sun alike.
+ */
+.layer {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	/* above the canvas, below the HUD panels (later siblings) */
+	contain: strict;
+}
+
+.layer[hidden] {
+	display: none;
+}
+
+.label {
+	position: absolute;
+	left: 0;
+	top: 0;
+	visibility: hidden;
+	opacity: 0;
+	white-space: nowrap;
+	user-select: none;
+	font-size: clamp(13px, 0.9vmin + 7px, 19px);
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: 0.01em;
+	color: #f3f5f8;
+	text-shadow:
+		0 0 2px #000,
+		0 0 3px #000,
+		0 1px 4px rgba(0, 0, 0, 0.9),
+		0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+/* the Sun and the moons in the colours of their marker dots */
+.label[data-kind="star"] {
+	color: #ffe29a;
+}
+
+.label[data-kind="moon"] {
+	font-size: clamp(12px, 0.75vmin + 6px, 16px);
+	font-weight: 500;
+	color: #c4ccd8;
+}
+
+.label[data-selected] {
+	color: var(--mantine-color-orange-4);
+}
+
+.label[data-hovered] {
+	color: #fff;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
+/* orbit names: written across their line, quieter than the bodies' own names */
+.label.orbit {
+	font-size: clamp(11px, 0.7vmin + 5px, 15px);
+	font-weight: 500;
+	font-style: italic;
+	letter-spacing: 0.04em;
+	color: #aeb4bd;
+}
+
+.label.orbit[data-kind="moon"] {
+	color: #8c95a3;
+}

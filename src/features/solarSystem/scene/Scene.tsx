@@ -3,7 +3,9 @@
  * SimFrame once and shares it below; SimClock is the only writer, everything
  * else reads it in its own useFrame. Effects (Bloom) arrive in Phase 6.
  * No three.js lights: the Sun lights every body through the sunlight model
- * (../lighting, docs/ARCHITECTURE.md, "Lighting").
+ * (../lighting, docs/ARCHITECTURE.md, "Lighting"). The body labels are DOM
+ * beside the Canvas (labels/LabelLayer.tsx), laid out by labels/Labels.tsx
+ * inside it; both share one label board.
  */
 import { Suspense, useMemo } from "react"
 import { Canvas } from "@react-three/fiber"
@@ -16,7 +18,11 @@ import Bodies from "../bodies/Bodies"
 import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
-import BodyPicking from "./BodyPicking"
+import { createLabelBoard } from "../labels/board"
+import LabelLayer from "../labels/LabelLayer"
+import Labels from "../labels/Labels"
+import { labelSlotCount } from "../labels/project"
+import BodyPicking, { activateBody } from "./BodyPicking"
 import HighlightTracker from "./HighlightTracker"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
@@ -36,34 +42,42 @@ function Scene() {
 			),
 		[],
 	)
+	const labels = useMemo(
+		() => createLabelBoard(labelSlotCount(bodies.length)),
+		[],
+	)
 
 	return (
-		<Canvas
-			dpr={[1, 2]}
-			gl={{ logarithmicDepthBuffer: true, antialias: true }}
-			camera={{
-				near: CAMERA_NEAR,
-				far: CAMERA_FAR,
-				fov: CAMERA_FOV_DEG,
-				position: [0, 20000, 20000],
-			}}
-			style={{ position: "absolute", inset: 0 }}
-		>
-			<color attach="background" args={[SCENE_BACKGROUND]} />
-			<SimFrameContext.Provider value={frame}>
-				<ScaleSync />
-				<SimClock />
-				<HoverCursor />
-				<Suspense fallback={null}>
-					<Bodies />
-				</Suspense>
-				<OrbitLines />
-				<Markers />
-				<BodyPicking />
-				<CameraRig />
-				<HighlightTracker />
-			</SimFrameContext.Provider>
-		</Canvas>
+		<>
+			<Canvas
+				dpr={[1, 2]}
+				gl={{ logarithmicDepthBuffer: true, antialias: true }}
+				camera={{
+					near: CAMERA_NEAR,
+					far: CAMERA_FAR,
+					fov: CAMERA_FOV_DEG,
+					position: [0, 20000, 20000],
+				}}
+				style={{ position: "absolute", inset: 0 }}
+			>
+				<color attach="background" args={[SCENE_BACKGROUND]} />
+				<SimFrameContext.Provider value={frame}>
+					<ScaleSync />
+					<SimClock />
+					<HoverCursor />
+					<Suspense fallback={null}>
+						<Bodies />
+					</Suspense>
+					<OrbitLines />
+					<Markers />
+					<Labels board={labels} onActivate={activateBody} />
+					<BodyPicking />
+					<CameraRig />
+					<HighlightTracker />
+				</SimFrameContext.Provider>
+			</Canvas>
+			<LabelLayer board={labels} />
+		</>
 	)
 }
 

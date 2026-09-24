@@ -40,6 +40,24 @@ import {
 import { useSimFrame } from "./simFrame"
 import { currentPointerKind, isTapEvent } from "./tap"
 
+/**
+ * A click or tap on body `id`, on the body itself or on its label (#20):
+ * select it and fly there, or back to the close-up of a far-away focus.
+ */
+export function activateBody(id: string): void {
+	const store = useSimStore.getState()
+	switch (bodyClickAction(store, id)) {
+		case "focus":
+			store.setFocus(id)
+			return
+		case "reframe":
+			store.focus(id, { shot: { distance: 1 } })
+			return
+		case "none":
+			return
+	}
+}
+
 /** The index an intersection carries for empty space. */
 const EMPTY = -1
 
@@ -112,16 +130,8 @@ function BodyPicking() {
 		const store = useSimStore.getState()
 		const id = bodyIdOf(event)
 		if (id !== null) {
-			switch (bodyClickAction(store, id)) {
-				case "focus":
-					store.setFocus(id)
-					return
-				case "reframe":
-					store.focus(id, { shot: { distance: 1 } })
-					return
-				case "none":
-					return
-			}
+			activateBody(id)
+			return
 		}
 		switch (emptyClickAction(store, nearMiss.current)) {
 			case "deselect":
@@ -136,6 +146,8 @@ function BodyPicking() {
 	}
 
 	const onPointerMove = (event: ThreeEvent<PointerEvent>) => {
+		// something nearer (a label) is under the pointer and owns the hover
+		if (event.intersections[0]?.eventObject !== groupRef.current) return
 		const hovering =
 			currentPointerKind() !== "touch" && event.nativeEvent.buttons === 0
 		useSimStore.getState().setHover(hovering ? bodyIdOf(event) : null)
