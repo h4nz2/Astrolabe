@@ -1,11 +1,14 @@
 /**
  * Mirrors the simulation store into the `/solar_system` URL and back.
  *
- * On mount the validated search params (`focus`, `t`, `warp`) seed the store;
- * from then on focus and warp are written to the URL as they change and the
- * simulation time follows at most once per second, and only while it is slow
- * enough to be worth a link (paused or |warp| <= 1 min/s). Everything is
- * `replace: true`, so the history never fills up.
+ * On mount the validated search params (`focus`, `sel`, `cam`, `t`, `warp`)
+ * seed the store: the view (`focus`: a body, absent: the overview) and its
+ * camera shot are applied as a jump, so a shared link opens exactly on the
+ * view it was taken from. From then on view, selection, camera shot and warp
+ * are written to the URL as they change (the shot when the camera comes to
+ * rest) and the simulation time follows at most once per second, and only
+ * while it is slow enough to be worth a link (paused or |warp| <= 1 min/s).
+ * Everything is `replace: true`, so the history never fills up.
  *
  * The store is watched through `useSimStore.subscribe`, not selectors: the
  * component calling this hook must not re-render at the clock's rate.
@@ -16,7 +19,17 @@ import { useNavigate, useSearch } from "@tanstack/react-router"
 import { bodyById } from "@/data"
 import { dateToJD } from "@/sim"
 
-import { DEFAULT_FOCUS_ID, useSimStore, type SimState } from "./sim"
+import {
+	HOME_SHOT,
+	OVERVIEW,
+	formatShot,
+	parseShot,
+	sameShot,
+	viewBodyId,
+	type CameraShot,
+	type View,
+} from "./navigation"
+import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
 
 /** Minimum spacing between two writes of `t` into the URL. */
@@ -32,22 +45,37 @@ export const roundJD = (jd: number): number => Math.round(jd * 1e4) / 1e4
 export const shouldMirrorTime = (paused: boolean, timeWarp: number): boolean =>
 	paused || Math.abs(timeWarp) <= TIME_SYNC_MAX_WARP
 
-type Mirrored = Pick<SimState, "focusId" | "timeWarp" | "paused" | "simTimeJD">
+type Mirrored = Pick<
+	SimState,
+	"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
+>
+
+type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
 
 /**
  * The search params that mirror `state`, starting from `previous` so a `t` that
  * is not being mirrored right now (fast warp) keeps its last written value.
- * Defaults (Sun, 1x) are left out to keep the URL short. The warp is written
- * as it is (not rounded), so a link runs at exactly the speed it was taken at,
+ * Defaults (the overview, the home camera, a selection equal to the focus,
+ * 1x) are left out to keep the URL short. A point view (the pivot moved into
+ * empty space) is written as its anchor body until the pan issue (#15) gives
+ * it a parameter of its own. The warp is written as it is (not rounded), so a
+ * link runs at exactly the speed it was taken at,
  * backwards included; a zero warp (which the schema rejects) is left out.
  */
 export function searchFromState(
 	state: Mirrored,
 	previous: SimSearch,
 ): SimSearch {
-	const { timeWarp } = state
+	const { timeWarp, view, shot } = state
+	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
 	return {
-		focus: state.focusId === DEFAULT_FOCUS_ID ? undefined : state.focusId,
+		focus,
+		sel:
+			state.selectedId !== null && state.selectedId !== focus
+				? state.selectedId
+				: undefined,
+		cam:
+			shot === null || sameShot(shot, HOME_SHOT) ? undefined : formatShot(shot),
 		t: shouldMirrorTime(state.paused, timeWarp)
 			? roundJD(state.simTimeJD)
 			: previous.t,
@@ -57,14 +85,35 @@ export function searchFromState(
 }
 
 export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
-	a.focus === b.focus && a.t === b.t && a.warp === b.warp
+	a.focus === b.focus &&
+	a.sel === b.sel &&
+	a.cam === b.cam &&
+	a.t === b.t &&
+	a.warp === b.warp
 
-/** Store fields a search sets; unknown bodies and absent params are skipped. */
-export function stateFromSearch(search: SimSearch): Partial<Mirrored> {
-	const next: Partial<Mirrored> = {}
-	if (search.focus !== undefined && bodyById.has(search.focus)) {
-		next.focusId = search.focus
+/** The view a search describes: `focus` (a known body) or the overview, its camera and selection. */
+export function viewFromSearch(search: SimSearch): {
+	view: View
+	shot: CameraShot | null
+	selectedId: string | null
+} {
+	const focus =
+		search.focus !== undefined && bodyById.has(search.focus)
+			? search.focus
+			: null
+	const sel =
+		search.sel !== undefined && bodyById.has(search.sel) ? search.sel : null
+	return {
+		view: focus === null ? OVERVIEW : { kind: "body", id: focus },
+		shot: parseShot(search.cam),
+		// a focused body is selected unless the link selects something else
+		selectedId: sel ?? focus,
 	}
+}
+
+/** Clock fields a search sets; absent params are skipped. */
+export function stateFromSearch(search: SimSearch): Partial<MirroredClock> {
+	const next: Partial<MirroredClock> = {}
 	if (search.t !== undefined && Number.isFinite(search.t)) {
 		next.simTimeJD = search.t
 	}
@@ -84,7 +133,7 @@ export function stateFromSearch(search: SimSearch): Partial<Mirrored> {
 export function mountState(
 	search: SimSearch,
 	now: Date = new Date(),
-): Partial<Mirrored> {
+): Partial<MirroredClock> {
 	const next = stateFromSearch(search)
 	if (next.simTimeJD === undefined) next.simTimeJD = dateToJD(now)
 	return next
@@ -101,12 +150,15 @@ export function useSimUrlSync(): void {
 	}, [search])
 
 	useLayoutEffect(() => {
-		// URL -> store, once; a jump (no fly) since the page is just appearing.
+		// URL -> store, once; the view is a jump since the page is just appearing.
 		// Time goes through the clock actions (issue #9), never a bare setState.
-		const { simTimeJD, timeWarp, ...seed } = mountState(searchRef.current)
-		useSimStore.setState({ ...seed, fly: null })
-		if (timeWarp !== undefined) useSimStore.getState().setTimeWarp(timeWarp)
-		if (simTimeJD !== undefined) useSimStore.getState().setSimTime(simTimeJD)
+		const { simTimeJD, timeWarp } = mountState(searchRef.current)
+		const store = useSimStore.getState()
+		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
+		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
+		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
+		store.jumpTo(view, shot)
+		store.select(selectedId)
 
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const write = () => {
@@ -116,11 +168,13 @@ export function useSimUrlSync(): void {
 			void navigate({ to: "/solar_system", search: next, replace: true })
 		}
 
-		// store -> URL: focus, warp and pause changes right away (a pause also pins `t`);
-		// the running clock at most once per TIME_SYNC_INTERVAL_MS
+		// store -> URL: view, selection, camera, warp and pause changes right away (a
+		// pause also pins `t`); the running clock at most once per TIME_SYNC_INTERVAL_MS
 		const unsubscribe = useSimStore.subscribe((state, previous) => {
 			if (
-				state.focusId !== previous.focusId ||
+				state.view !== previous.view ||
+				state.selectedId !== previous.selectedId ||
+				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||
 				state.paused !== previous.paused
 			) {

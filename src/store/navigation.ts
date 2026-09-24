@@ -1,0 +1,523 @@
+/**
+ * Selection and the camera navigation model (docs/ARCHITECTURE.md, "Navigation").
+ *
+ * This slice of the simulation store is the only way feature code moves the
+ * camera: it asks for a *view* (the whole system, a body, a point in space)
+ * and the camera rig (`features/solarSystem/camera/director.ts`, the single
+ * owner of the camera) gets it there. Nothing here knows about three.js; the
+ * state is plain data, so every transition can be driven and tested without a
+ * canvas.
+ *
+ * View states: `overview` (the whole system, Sun-centred), `focused` (a body
+ * framed and tracked), `free` (the pivot is a point in space, anchored to a
+ * body so it keeps its place in that body's neighbourhood), and `transit`
+ * (a transition toward one of those is running). Every request starts from
+ * wherever the camera is at that moment, so a second request, a reset or a
+ * skip in the middle of a transition retargets instead of snapping back.
+ *
+ * Selection is separate app state: selecting a body never moves the camera by
+ * itself (`setFocus` is the click gesture that does both).
+ */
+import { bodyById, sun } from "@/data"
+
+/** A world-space offset in km, scene frame axes (see src/sim/kepler.ts). */
+export type Vec3Km = readonly [number, number, number]
+
+/** Where the camera looks: what its pivot (and the render origin) is attached to. */
+export type View =
+	| { readonly kind: "overview" }
+	| { readonly kind: "body"; readonly id: string }
+	| {
+			readonly kind: "point"
+			/** The body whose motion the point follows. */
+			readonly anchorId: string
+			readonly offsetKm: Vec3Km
+	  }
+
+export type ViewMode = "overview" | "focused" | "free" | "transit"
+
+/**
+ * The camera around a view's pivot. Angles are scale free; the distance is a
+ * multiple of the view's default framing distance (6 rendered radii for a
+ * body, the whole planetary system for the overview), so a shot survives scale
+ * presets and different screen shapes.
+ */
+export interface CameraShot {
+	/** Rotation about the ecliptic pole, degrees (camera-controls azimuth: 0 = scene +Z). */
+	azimuthDeg: number
+	/** Height above the ecliptic plane, degrees (-90..90). */
+	elevationDeg: number
+	/** Multiple of the view's default framing distance (> 0). */
+	distance: number
+}
+
+/** Options of a view request. */
+export interface ViewRequest {
+	/**
+	 * Camera on arrival. A missing direction keeps the current viewing
+	 * direction, a missing distance frames the destination at 1x.
+	 */
+	shot?: Partial<CameraShot>
+	/** 0 jumps; omitted, the camera rig derives it from the length of the move. */
+	durationMs?: number
+	/** A transit profile name (camera/profiles.ts); unknown names use the default. */
+	profile?: string
+}
+
+/** The transition the camera rig is executing (or about to start). */
+export interface Transition {
+	/** Unique per request; the rig starts a new move whenever it changes. */
+	readonly id: number
+	readonly view: View
+	readonly shot: Partial<CameraShot> | null
+	/** null: automatic (from the length of the move). 0: jump. */
+	readonly durationMs: number | null
+	readonly profile: string | null
+	/**
+	 * The user grabbed the camera mid-transition: the rig stops scripting the
+	 * distance and direction (the user owns them from the current pose) while
+	 * the pivot still glides to `view`, so nobody is stranded between bodies.
+	 */
+	readonly handedOver: boolean
+}
+
+/** One stop of a scripted camera sequence (tours, the opening sequence, fly-throughs). */
+export interface SequenceStep extends ViewRequest {
+	view: View
+	/**
+	 * Time to stay after arriving before moving on, ms. Omitted: wait for
+	 * `nextStep()` (manual advance, e.g. a teacher presenting).
+	 */
+	holdMs?: number
+}
+
+export type SequencePhase =
+	/** travelling to `steps[index]` */
+	| "moving"
+	/** arrived, auto-advancing at `holdUntil` */
+	| "holding"
+	/** arrived, waiting for `nextStep()` */
+	| "waiting"
+	/** the user took over or asked for another view; `resumeSequence()` flies back to the stop */
+	| "interrupted"
+
+export interface Sequence {
+	readonly steps: readonly SequenceStep[]
+	readonly index: number
+	readonly phase: SequencePhase
+	/** `performance.now()` time the hold of a "holding" step ends. */
+	readonly holdUntil: number | null
+	/** The transition that carries the current step. */
+	readonly transitionId: number
+}
+
+export interface NavigationSlice {
+	/** The selected body (drives info panels, labels, the URL); never moves the camera by itself. */
+	selectedId: string | null
+	/** The view the camera is in, or heading to while `transition` is set. */
+	view: View
+	/**
+	 * The body the view is centred on: the Sun in the overview, the body when
+	 * focused, the anchor of a point. The render origin, the moon family rule
+	 * and the "always show the focus" rule follow it.
+	 */
+	focusId: string
+	/** The camera around `view` as it last came to rest (published by the camera rig), or null while unknown. */
+	shot: CameraShot | null
+	transition: Transition | null
+	sequence: Sequence | null
+
+	/** Selects a body (unknown ids are ignored) or clears the selection. The camera stays where it is. */
+	select: (id: string | null) => void
+	/** The click gesture: select the body and focus it. A no-op for unknown ids or the current focus. */
+	setFocus: (id: string) => void
+	/** Frame and track a body; unknown ids are ignored. */
+	focus: (id: string, request?: ViewRequest) => void
+	/** The whole system from the home direction (unless the request says otherwise). */
+	overview: (request?: ViewRequest) => void
+	/** Any view; invalid views (unknown bodies, non-finite offsets) are ignored. */
+	goTo: (view: View, request?: ViewRequest) => void
+	/** `goTo` without animation. */
+	jumpTo: (view: View, shot?: Partial<CameraShot> | null) => void
+	/**
+	 * The way out, from any state: stops any sequence, clears the selection and
+	 * returns to the overview. The camera rig jumps instead of animating when
+	 * the camera state is broken.
+	 */
+	reset: () => void
+	/** Finishes the running transition (or the whole sequence) at once. */
+	skip: () => void
+
+	/** Camera rig: the transition `id` arrived. Stale ids are ignored. */
+	settle: (id: number, now?: number) => void
+	/** Camera rig: the user moved the camera (drag, wheel, pinch). */
+	userInput: () => void
+	/** Camera rig: the camera came to rest here (rounded to URL precision; equal shots are ignored). */
+	publishShot: (shot: CameraShot) => void
+	/** Camera rig: the user moved the pivot itself (pan); the camera is already there, so no transition. */
+	settleAt: (view: View) => void
+
+	/** Plays a scripted sequence from `startAt` (default 0); empty or invalid sequences are ignored. */
+	playSequence: (steps: readonly SequenceStep[], startAt?: number) => void
+	/** Jumps the sequence to step `index` (flying there); past the end finishes it. */
+	goToStep: (index: number) => void
+	nextStep: () => void
+	/** After an interruption: flies back to the current stop and carries on. */
+	resumeSequence: () => void
+	stopSequence: () => void
+	/** Camera rig, every frame while a step is holding: advances once the hold is over. */
+	tickSequence: (now: number) => void
+}
+
+export const OVERVIEW: View = { kind: "overview" }
+/** The body at the centre of the overview. */
+export const OVERVIEW_BODY_ID = sun.id
+/** The overview's camera, and the camera of a deep link without `cam`. */
+export const HOME_SHOT: CameraShot = {
+	azimuthDeg: 0,
+	elevationDeg: 45,
+	distance: 1,
+}
+export const MAX_ELEVATION_DEG = 89.9
+
+/** The view states of the issue: overview, focused, free (a point in space), or in transit. */
+export const viewMode = (
+	state: Pick<NavigationSlice, "view" | "transition">,
+): ViewMode => {
+	if (state.transition !== null) return "transit"
+	switch (state.view.kind) {
+		case "overview":
+			return "overview"
+		case "body":
+			return "focused"
+		case "point":
+			return "free"
+	}
+}
+
+/** The body a view is centred on (the Sun for the overview, the anchor of a point). */
+export const viewBodyId = (view: View): string => {
+	switch (view.kind) {
+		case "overview":
+			return OVERVIEW_BODY_ID
+		case "body":
+			return view.id
+		case "point":
+			return view.anchorId
+	}
+}
+
+export const isValidView = (view: View): boolean => {
+	switch (view.kind) {
+		case "overview":
+			return true
+		case "body":
+			return bodyById.has(view.id)
+		case "point":
+			return (
+				bodyById.has(view.anchorId) &&
+				view.offsetKm.length === 3 &&
+				view.offsetKm.every(Number.isFinite)
+			)
+		default:
+			return false
+	}
+}
+
+export const sameView = (a: View, b: View): boolean => {
+	if (a.kind === "overview" || b.kind === "overview") return a.kind === b.kind
+	if (a.kind === "body" || b.kind === "body") {
+		return a.kind === "body" && b.kind === "body" && a.id === b.id
+	}
+	return (
+		a.anchorId === b.anchorId &&
+		a.offsetKm[0] === b.offsetKm[0] &&
+		a.offsetKm[1] === b.offsetKm[1] &&
+		a.offsetKm[2] === b.offsetKm[2]
+	)
+}
+
+/** Keeps only the usable fields of a requested shot (finite angles, a positive finite distance). */
+export function sanitizeShot(
+	shot: Partial<CameraShot> | null | undefined,
+): Partial<CameraShot> | null {
+	if (shot === null || shot === undefined) return null
+	const out: Partial<CameraShot> = {}
+	if (Number.isFinite(shot.azimuthDeg)) out.azimuthDeg = shot.azimuthDeg
+	if (Number.isFinite(shot.elevationDeg)) {
+		out.elevationDeg = Math.max(
+			-MAX_ELEVATION_DEG,
+			Math.min(MAX_ELEVATION_DEG, shot.elevationDeg as number),
+		)
+	}
+	if (Number.isFinite(shot.distance) && (shot.distance as number) > 0) {
+		out.distance = shot.distance
+	}
+	return Object.keys(out).length === 0 ? null : out
+}
+
+export const isCompleteShot = (
+	shot: Partial<CameraShot> | null,
+): shot is CameraShot =>
+	shot !== null &&
+	shot.azimuthDeg !== undefined &&
+	shot.elevationDeg !== undefined &&
+	shot.distance !== undefined
+
+/** Azimuth in (-180, 180]. */
+const normalizeDeg = (deg: number): number => {
+	const wrapped = ((((deg + 180) % 360) + 360) % 360) - 180
+	return wrapped === -180 ? 180 : wrapped
+}
+
+/** Three significant digits, never in exponent notation for the distances a camera can have. */
+const roundDistance = (distance: number): number =>
+	Number(distance.toPrecision(3))
+
+/** A shot at the precision the URL carries: angles to 0.1 degree, the distance to 3 significant digits. */
+export const roundShot = (shot: CameraShot): CameraShot => ({
+	azimuthDeg: Math.round(normalizeDeg(shot.azimuthDeg) * 10) / 10 || 0,
+	elevationDeg: Math.round(shot.elevationDeg * 10) / 10 || 0,
+	distance: roundDistance(shot.distance),
+})
+
+export const sameShot = (a: CameraShot | null, b: CameraShot | null): boolean =>
+	a === b ||
+	(a !== null &&
+		b !== null &&
+		a.azimuthDeg === b.azimuthDeg &&
+		a.elevationDeg === b.elevationDeg &&
+		a.distance === b.distance)
+
+/** URL form of a shot, `az_el_distance` (e.g. `-30_20_2.5`): short, and nothing in it needs escaping. */
+export const formatShot = (shot: CameraShot): string => {
+	const { azimuthDeg, elevationDeg, distance } = roundShot(shot)
+	return `${azimuthDeg}_${elevationDeg}_${distance}`
+}
+
+/** Parses `formatShot` output; anything malformed is null (ignored, never an error). */
+export function parseShot(text: string | undefined): CameraShot | null {
+	if (text === undefined) return null
+	const parts = text.split("_")
+	if (parts.length !== 3 || parts.some((part) => part.trim() === "")) {
+		return null
+	}
+	const [azimuthDeg, elevationDeg, distance] = parts.map(Number)
+	const shot = sanitizeShot({ azimuthDeg, elevationDeg, distance })
+	return isCompleteShot(shot) ? roundShot(shot) : null
+}
+
+// Transition ids only need to be unique; a module counter survives store resets in tests.
+let transitionCounter = 0
+
+type SetNavigation = (partial: Partial<NavigationSlice>) => void
+type GetNavigation = () => NavigationSlice
+
+/**
+ * The navigation slice. `set` and `get` may belong to a bigger store (the
+ * simulation store composes it); the slice only touches its own fields.
+ */
+export function createNavigationSlice(
+	set: SetNavigation,
+	get: GetNavigation,
+): NavigationSlice {
+	/** Starts a transition; returns its id. The view must already be valid. */
+	const start = (
+		view: View,
+		request: ViewRequest | undefined,
+		extra: Partial<NavigationSlice> = {},
+	): number => {
+		const id = ++transitionCounter
+		const duration = request?.durationMs
+		const shot = sanitizeShot(request?.shot)
+		set({
+			...extra,
+			view,
+			focusId: viewBodyId(view),
+			// a complete shot is where the camera will be; otherwise unknown until it arrives
+			shot: isCompleteShot(shot) ? roundShot(shot) : null,
+			transition: {
+				id,
+				view,
+				shot,
+				durationMs:
+					duration !== undefined && Number.isFinite(duration)
+						? Math.max(0, duration)
+						: null,
+				profile: request?.profile ?? null,
+				handedOver: false,
+			},
+		})
+		return id
+	}
+
+	/** A request from outside the running sequence interrupts it (it can be resumed). */
+	const interruptSequence = (): Partial<NavigationSlice> => {
+		const { sequence } = get()
+		if (sequence === null || sequence.phase === "interrupted") return {}
+		return { sequence: { ...sequence, phase: "interrupted", holdUntil: null } }
+	}
+
+	const playStep = (steps: readonly SequenceStep[], index: number): void => {
+		const step = steps[index]
+		const id = start(step.view, step)
+		set({
+			sequence: {
+				steps,
+				index,
+				phase: "moving",
+				holdUntil: null,
+				transitionId: id,
+			},
+		})
+	}
+
+	return {
+		selectedId: null,
+		view: OVERVIEW,
+		focusId: OVERVIEW_BODY_ID,
+		shot: null,
+		transition: null,
+		sequence: null,
+
+		select: (id) => {
+			if (id !== null && !bodyById.has(id)) return
+			if (get().selectedId !== id) set({ selectedId: id })
+		},
+		setFocus: (id) => {
+			if (!bodyById.has(id)) return
+			const { view, select, focus } = get()
+			select(id)
+			if (view.kind === "body" && view.id === id) return
+			focus(id)
+		},
+		focus: (id, request) => get().goTo({ kind: "body", id }, request),
+		overview: (request) =>
+			get().goTo(OVERVIEW, {
+				...request,
+				shot: { ...HOME_SHOT, ...request?.shot },
+			}),
+		goTo: (view, request) => {
+			if (!isValidView(view)) return
+			start(view, request, interruptSequence())
+		},
+		jumpTo: (view, shot) => {
+			if (!isValidView(view)) return
+			start(
+				view,
+				{ shot: shot ?? undefined, durationMs: 0 },
+				interruptSequence(),
+			)
+		},
+		reset: () => {
+			start(OVERVIEW, { shot: HOME_SHOT }, { selectedId: null, sequence: null })
+		},
+		skip: () => {
+			const { sequence, transition } = get()
+			if (sequence !== null) {
+				const last = sequence.steps[sequence.steps.length - 1]
+				start(last.view, { ...last, durationMs: 0 }, { sequence: null })
+				return
+			}
+			if (transition === null) return
+			start(transition.view, {
+				shot: transition.shot ?? undefined,
+				durationMs: 0,
+			})
+		},
+
+		settle: (id, now = performance.now()) => {
+			const { transition, sequence } = get()
+			if (transition === null || transition.id !== id) return
+			if (
+				sequence === null ||
+				sequence.transitionId !== id ||
+				sequence.phase !== "moving"
+			) {
+				set({ transition: null })
+				return
+			}
+			const holdMs = sequence.steps[sequence.index].holdMs
+			const hold = holdMs !== undefined && Number.isFinite(holdMs)
+			set({
+				transition: null,
+				sequence: {
+					...sequence,
+					phase: hold ? "holding" : "waiting",
+					holdUntil: hold ? now + Math.max(0, holdMs) : null,
+				},
+			})
+		},
+		userInput: () => {
+			const { transition, sequence } = get()
+			const next: Partial<NavigationSlice> = {}
+			if (transition !== null && !transition.handedOver) {
+				next.transition = { ...transition, handedOver: true }
+			}
+			// looking around while a stop waits for the presenter is part of the lesson;
+			// only an automatic advance (moving, holding) is interrupted
+			if (
+				sequence !== null &&
+				(sequence.phase === "moving" || sequence.phase === "holding")
+			) {
+				next.sequence = { ...sequence, phase: "interrupted", holdUntil: null }
+			}
+			if (Object.keys(next).length > 0) set(next)
+		},
+		publishShot: (shot) => {
+			const sane = sanitizeShot(shot)
+			if (!isCompleteShot(sane)) return
+			const rounded = roundShot(sane)
+			if (!sameShot(rounded, get().shot)) set({ shot: rounded })
+		},
+		settleAt: (view) => {
+			if (!isValidView(view) || get().transition !== null) return
+			if (sameView(view, get().view)) return
+			set({ view, focusId: viewBodyId(view) })
+		},
+
+		playSequence: (steps, startAt = 0) => {
+			if (
+				steps.length === 0 ||
+				!steps.every((step) => isValidView(step.view))
+			) {
+				return
+			}
+			const index = Math.max(0, Math.min(steps.length - 1, Math.trunc(startAt)))
+			playStep(steps, Number.isFinite(index) ? index : 0)
+		},
+		goToStep: (index) => {
+			const { sequence } = get()
+			if (sequence === null || !Number.isFinite(index)) return
+			if (index >= sequence.steps.length) {
+				set({ sequence: null })
+				return
+			}
+			playStep(sequence.steps, Math.max(0, Math.trunc(index)))
+		},
+		nextStep: () => {
+			const { sequence, goToStep } = get()
+			if (sequence !== null) goToStep(sequence.index + 1)
+		},
+		resumeSequence: () => {
+			const { sequence } = get()
+			if (sequence === null || sequence.phase !== "interrupted") return
+			playStep(sequence.steps, sequence.index)
+		},
+		stopSequence: () => {
+			if (get().sequence !== null) set({ sequence: null })
+		},
+		tickSequence: (now) => {
+			const { sequence, goToStep } = get()
+			if (
+				sequence === null ||
+				sequence.phase !== "holding" ||
+				sequence.holdUntil === null ||
+				now < sequence.holdUntil
+			) {
+				return
+			}
+			goToStep(sequence.index + 1)
+		},
+	}
+}

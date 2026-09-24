@@ -4,9 +4,9 @@ import path from "node:path"
 import { expect, test, type Page } from "@playwright/test"
 
 // The scale engine (#8): the app opens in the "Everything visible" preset, not
-// at true scale. At true scale the default view (the Sun from 40 solar radii)
-// shows the Sun alone, every planet far outside the frame; in Everything
-// visible the inner planets' orbits ring the Sun inside the same frame.
+// at true scale. At true scale the default view (the overview of the planetary
+// system, #10) shows the inner planets packed into a few pixels round the Sun;
+// in Everything visible the inner planets' orbits ring the Sun inside the same frame.
 
 const screenshotDir = path.join("test-results", "scale")
 

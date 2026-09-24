@@ -11,10 +11,13 @@
  * `tick()` into `simTimeJD`, which every consumer reads. Nothing else may write
  * `simTimeJD`, `timeWarp`, `paused` or `clock` directly (a bare `setState`
  * would bypass the clock); use the actions.
+ *
+ * Selection and the camera's view (`selectedId`, `focusId`, `setFocus`,
+ * `goTo`, ...) are the navigation slice composed in from `./navigation`.
  */
 import { create } from "zustand"
 
-import { bodyById, type Body } from "@/data"
+import type { Body } from "@/data"
 import {
 	MS_PER_DAY,
 	createTimeline,
@@ -29,16 +32,9 @@ import {
 	type SimTimeline,
 } from "@/sim"
 
-/** A camera fly-to between two focus bodies; the camera phase blends the origin along it. */
-export interface FlyTo {
-	fromId: string
-	toId: string
-	/** `performance.now()` when the fly started. */
-	startedAt: number
-	durationMs: number
-}
+import { createNavigationSlice, type NavigationSlice } from "./navigation"
 
-export interface SimState {
+export interface SimState extends NavigationSlice {
 	/**
 	 * Simulation time (Julian Date) of the current frame: the clock sampled by
 	 * the last `tick()` or time action. React UI reads it via `useThrottledSimTime()`.
@@ -56,17 +52,11 @@ export interface SimState {
 	clock: SimTimeline
 	/** `performance.now()` of the last `tick()`; null before the first frame. */
 	lastTickMs: number | null
-	/** Id of the body at the render origin (always a known body). */
-	focusId: string
 	hoverId: string | null
-	fly: FlyTo | null
 	showOrbits: boolean
 	showLabels: boolean
 	showMoons: boolean
 
-	/** Focus a body by id; unknown ids are ignored, a changed focus starts a fly-to. */
-	setFocus: (id: string) => void
-	endFly: () => void
 	/**
 	 * Speed in simulated seconds per real second; negative reverses. Nothing
 	 * moves at the moment of the change. Non-finite values are ignored.
@@ -93,9 +83,6 @@ export interface SimState {
 	/** Travels (glides) to the wall clock, arriving on the present. */
 	setNow: () => void
 }
-
-export const DEFAULT_FOCUS_ID = "sun"
-export const FLY_DURATION_MS = 1500
 
 /**
  * Whether a body is rendered at all (meshes, orbit line, marker): moons only
@@ -127,35 +114,17 @@ const clockAt = (clock: SimTimeline, realMs: number) => ({
 const initialJD = dateToJD(new Date())
 
 export const useSimStore = create<SimState>()((set, get) => ({
+	...createNavigationSlice(set, get),
 	simTimeJD: initialJD,
 	timeWarp: 1,
 	paused: false,
 	clock: createTimeline(initialJD, performance.now(), 1),
 	lastTickMs: null,
-	focusId: DEFAULT_FOCUS_ID,
 	hoverId: null,
-	fly: null,
 	showOrbits: true,
 	showLabels: true,
 	showMoons: true,
 
-	setFocus: (id) => {
-		if (!bodyById.has(id)) return
-		const { focusId } = get()
-		if (id === focusId) return
-		set({
-			focusId: id,
-			fly: {
-				fromId: focusId,
-				toId: id,
-				startedAt: performance.now(),
-				durationMs: FLY_DURATION_MS,
-			},
-		})
-	},
-	endFly: () => {
-		if (get().fly !== null) set({ fly: null })
-	},
 	setTimeWarp: (warp) => {
 		if (!Number.isFinite(warp)) return
 		const { clock, paused } = get()
