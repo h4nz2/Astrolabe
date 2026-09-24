@@ -72,6 +72,9 @@ const litPixelsAroundCentre = async (page: Page): Promise<number> => {
 test("the solar system opens in Everything visible, with the inner planets' orbits around the Sun", async ({
 	page,
 }) => {
+	// the pixel analysis is CPU-bound; alone it takes 17-23 s of the default 30, so a
+	// parallel run under software GL tipped it over the edge
+	test.slow()
 	const errors = collectErrors(page)
 	await page.goto("/solar_system")
 	await page.waitForLoadState("networkidle")
