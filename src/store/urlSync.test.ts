@@ -6,6 +6,7 @@ import { HOME_SHOT, OVERVIEW } from "./navigation"
 import { simSearchSchema } from "./simSearch"
 import {
 	TIME_SYNC_MAX_WARP,
+	layersFromSearch,
 	mountState,
 	roundJD,
 	sameSearch,
@@ -17,7 +18,7 @@ import {
 
 type Mirrored = Parameters<typeof searchFromState>[0]
 
-/** The mirrored store fields: the overview, nothing selected, paused at J2000 at 1x unless overridden. */
+/** The mirrored store fields: the overview, nothing selected, paused at J2000 at 1x, markers on unless overridden. */
 const state = (partial: Partial<Mirrored> = {}): Mirrored => ({
 	view: OVERVIEW,
 	selectedId: null,
@@ -25,6 +26,7 @@ const state = (partial: Partial<Mirrored> = {}): Mirrored => ({
 	timeWarp: 1,
 	paused: true,
 	simTimeJD: J2000_JD,
+	showMarkers: true,
 	...partial,
 })
 
@@ -59,6 +61,14 @@ describe("simSearchSchema", () => {
 		expect(simSearchSchema.parse({ warp: -1 }).warp).toBe(-1)
 		expect(simSearchSchema.parse({ warp: "0" }).warp).toBeUndefined()
 		expect(simSearchSchema.parse({ warp: "-0" }).warp).toBeUndefined()
+	})
+
+	it("reads the markers switch as a boolean and drops anything else", () => {
+		expect(simSearchSchema.parse({ markers: false }).markers).toBe(false)
+		expect(simSearchSchema.parse({ markers: true }).markers).toBe(true)
+		for (const value of [0, "off", "", null]) {
+			expect(simSearchSchema.parse({ markers: value }).markers).toBeUndefined()
+		}
 	})
 
 	it("treats blank and non-numeric values as absent, never as 0", () => {
@@ -187,6 +197,23 @@ describe("urlSync helpers", () => {
 		expect(mirrored(0).warp).toBeUndefined()
 	})
 
+	it("writes the markers switch only when it is off", () => {
+		expect(searchFromState(state(), {}).markers).toBeUndefined()
+		expect(searchFromState(state({ showMarkers: false }), {}).markers).toBe(
+			false,
+		)
+		expect(layersFromSearch({})).toEqual({ showMarkers: true })
+		expect(layersFromSearch({ markers: false })).toEqual({ showMarkers: false })
+		expect(layersFromSearch({ markers: true })).toEqual({ showMarkers: true })
+		// the round trip through the schema and back into the store
+		for (const showMarkers of [true, false]) {
+			const parsed = simSearchSchema.parse(
+				searchFromState(state({ showMarkers }), {}),
+			)
+			expect(layersFromSearch(parsed).showMarkers).toBe(showMarkers)
+		}
+	})
+
 	it("compares searches field by field", () => {
 		expect(
 			sameSearch(
@@ -198,6 +225,7 @@ describe("urlSync helpers", () => {
 		expect(sameSearch({ t: 1 }, { t: 1.0001 })).toBe(false)
 		expect(sameSearch({ cam: "0_10_1" }, { cam: "0_10_2" })).toBe(false)
 		expect(sameSearch({ sel: "io" }, {})).toBe(false)
+		expect(sameSearch({ markers: false }, {})).toBe(false)
 	})
 
 	it("seeds the clock from the search, skipping absent params", () => {
