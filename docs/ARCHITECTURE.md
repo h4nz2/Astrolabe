@@ -23,7 +23,9 @@ Follow it; if it must change, change the document in the same change set.
   `astronomy-engine` is a devDependency used only by tests as the reference ephemeris.
 - Lint/format: ESLint 10 flat config (`eslint.config.js`) + typescript-eslint + react-hooks, Prettier (tabs, no semicolons, as today).
 - Hosting: static build (`dist/`). CI: GitHub Actions (typecheck, lint, test, build, e2e, deploy to GitHub Pages).
-  `VITE_BASE` env var sets Vite `base` (default `/`).
+  `VITE_BASE` env var sets Vite `base` (default `/`). Cloudflare Workers serves `dist/` as static assets
+  (`wrangler.jsonc`, SPA fallback; deploy command `npx wrangler deploy`). `wrangler` is a devDependency so the deploy
+  runs the locked version: without it `npx` fetches whatever was published last, minutes-old releases included.
 - Dependencies installed ahead of their phase: `tsx` (Phase 2, `scripts/build-bodies.ts`) and `zustand` (Phase 3, `src/store`).
 - Known upstream noise: fiber 9.8 still constructs `THREE.Clock`, which three >= 0.183 logs as deprecated once per
   `<Canvas>` mount (a `console.warn`). Stay on current `three`; do not pin it down for this.
@@ -421,7 +423,7 @@ never jitters.
 simTimeJD: number          the clock's sample for the current frame (written by tick() and the time actions only)
 timeWarp: number           simulated seconds per real second; negative = backwards; kept while paused
 paused: boolean            clock: SimTimeline (runs at paused ? 0 : timeWarp)   lastTickMs: number | null
-hoverId: string | null     showOrbits, showLabels, showMoons: boolean
+hoverId: string | null     showOrbits, showLabels, showMoons, showMarkers: boolean
 ...NavigationSlice         selectedId, view, focusId, shot, transition, sequence and their actions (see Navigation)
 setTimeWarp(n), togglePause(), setPaused(b)   re-anchor the clock at performance.now(): nothing moves at the change
 setSimTime(jd)             instant jump (deep links)
@@ -430,7 +432,7 @@ travelTo(jd, durationMs?)  time travel: glides there (clock.glide non-null until
 setNow()                   travelTo the wall clock as it will be on arrival
 tick(realMs)               SimClock only: samples the clock into simTimeJD, handles frame gaps, settles a landed glide
                            (every time action ignores non-finite numbers)
-setHover(id), setShowOrbits(b), setShowLabels(b), setShowMoons(b)
+setHover(id), setShowOrbits(b), setShowLabels(b), setShowMoons(b), setShowMarkers(b)
 WARP_PRESETS (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s)
 ```
 
@@ -484,7 +486,10 @@ pins `t` at once; at faster warps the last written `t` stays). `t` is rounded to
   (three.js reads the green channel of an `alphaMap`), so use them only as `alphaMap`, never as `map`. Generated ring
   colours follow the real albedo (very dark); brighten in the material, not in the data.
 - Markers: one `Points` layer (`sizeAttenuation: false`, 4 px, vertex colours: Sun yellow, planets white, moons grey,
-  no depth test, `renderOrder` 1) draws a dot for every body so nothing vanishes at true scale; a body's dot is skipped
+  no depth test, `renderOrder` 1) draws a dot for every body so nothing vanishes at true scale. GL points are squares;
+  an `onBeforeCompile` patch of the `PointsMaterial` fragment shader (`roundPoints`) cuts each into a disc with an
+  anti-aliased edge. With `showMarkers` off (the Markers toggle) the layer draws nothing and nothing is picked through
+  it, so small bodies shrink to their true size and vanish; the layer stays mounted. A body's dot is skipped
   once its own disc is wider than 6 px on screen (`MARKER_HIDE_DIAMETER_PX`, a diameter), moons are skipped while
   hidden (except the focus, see Toggles), and a moon's dot is drawn only while its parent, a sibling or the moon itself
   is the focus (`isMoonDotShown`, the same family rule as the labels): from anywhere else the moons of a planet sit
@@ -514,7 +519,7 @@ pins `t` at once; at faster warps the last written `t` stays). `t` is rounded to
   period, distance and rotation. `OverviewButton` (left of the picker, a home icon, "Back to overview") and Escape
   (listened to in the capture phase, so nothing can swallow it; ignored in text fields and open dropdowns) call
   `reset()`. The language menu sits in the toggles panel (top right).
-- Toggles: orbits, labels, moons. Hiding the moons never hides the focus: `isBodyShown(body, state)` (`src/store/sim.ts`)
+- Toggles: orbits, labels, moons, markers. Hiding the moons never hides the focus: `isBodyShown(body, state)` (`src/store/sim.ts`)
   is the one rule the meshes, the orbit lines and the markers apply, so a focused moon stays in place (the HUD keeps
   naming it and the arrows keep cycling its siblings, each of which becomes visible as it takes the focus).
   Keyboard (window-level, ignored while typing in a field or with ctrl/meta/alt):
@@ -593,7 +598,7 @@ export const useSimFrame = (): SimFrame   // throws outside the provider
   screenshots; real GPUs clip it normally and this is not an app bug.
 - HUD (`ui/`): plain React over the Canvas (absolute-positioned, pointer-events only on the panels):
   `TimeControls` (play/pause, warp presets, current UTC date via `useThrottledSimTime`, "Now" button),
-  `SceneToggles` (orbits, labels, moons), `FocusPicker` (Mantine Select grouped by planet, moons largest first,
+  `SceneToggles` (orbits, labels, moons, markers), `FocusPicker` (Mantine Select grouped by planet, moons largest first,
   searchable), `OverviewButton` (the way out), `BodyInfo` (facts about the selection, else the focus). All subscribe to the store with selectors; none of them read the SimFrame.
 - The page component `index.tsx` renders `<UrlSync />` (first, see Store), then `scene/Scene.tsx` inside a Suspense
   and the HUD; `Scene.tsx` renders the `<Canvas>` described under Rendering with the `SimFrameContext.Provider`

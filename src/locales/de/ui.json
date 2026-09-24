@@ -130,7 +130,8 @@
 			"label": "Szenenebenen",
 			"orbits": "Umlaufbahnen",
 			"labels": "Beschriftungen",
-			"moons": "Monde"
+			"moons": "Monde",
+			"markers": "Markierungen"
 		},
 		"time": {
 			"play": "Abspielen",

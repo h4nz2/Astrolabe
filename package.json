@@ -45,7 +45,8 @@
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.70.1",
 		"vite": "^8.3.0",
-		"vitest": "^5.0.1"
+		"vitest": "^5.0.1",
+		"wrangler": "^4.137.0"
 	},
 	"dependencies": {
 		"@mantine/core": "^9.6.2",

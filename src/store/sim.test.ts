@@ -22,6 +22,7 @@ describe("sim store", () => {
 		expect(useSimStore.getState().showOrbits).toBe(true)
 		expect(useSimStore.getState().showLabels).toBe(true)
 		expect(useSimStore.getState().showMoons).toBe(true)
+		expect(useSimStore.getState().showMarkers).toBe(true)
 	})
 
 	// focus, selection and transitions: navigation.test.ts
@@ -55,9 +56,11 @@ describe("sim store", () => {
 		state.setShowOrbits(false)
 		state.setShowLabels(false)
 		state.setShowMoons(false)
+		state.setShowMarkers(false)
 		expect(useSimStore.getState().showOrbits).toBe(false)
 		expect(useSimStore.getState().showLabels).toBe(false)
 		expect(useSimStore.getState().showMoons).toBe(false)
+		expect(useSimStore.getState().showMarkers).toBe(false)
 	})
 
 	it("keeps the focus visible while the moons are hidden", () => {

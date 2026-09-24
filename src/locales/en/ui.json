@@ -130,7 +130,8 @@
 			"label": "Scene layers",
 			"orbits": "Orbits",
 			"labels": "Labels",
-			"moons": "Moons"
+			"moons": "Moons",
+			"markers": "Markers"
 		},
 		"time": {
 			"play": "Play",
