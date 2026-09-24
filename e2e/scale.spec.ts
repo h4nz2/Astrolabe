@@ -94,6 +94,34 @@ test("the solar system opens in Everything visible, with the inner planets' orbi
 	expect(errors).toEqual([])
 })
 
+test("the Markers switch hides the planets' dots, so small bodies shrink to their true size", async ({
+	page,
+}) => {
+	// two full-page pixel counts under software WebGL
+	test.slow()
+	const errors = collectErrors(page)
+	// a fixed date keeps the planets where the pixel counts expect them
+	await page.goto("/solar_system?t=2461308")
+	await page.waitForLoadState("networkidle")
+	await page.waitForTimeout(1500)
+	// without the orbit lines the planets' dots are all that is lit round the Sun
+	const orbits = page.getByRole("switch", { name: "Orbits" })
+	await orbits.click({ force: true })
+	await expect(orbits).not.toBeChecked()
+	await page.waitForTimeout(500)
+	const withMarkers = await litPixelsAroundCentre(page)
+
+	const markers = page.getByRole("switch", { name: "Markers" })
+	await expect(markers).toBeChecked()
+	await markers.click({ force: true })
+	await expect(markers).not.toBeChecked()
+	await page.waitForTimeout(500)
+	const withoutMarkers = await litPixelsAroundCentre(page)
+
+	expect(withMarkers).toBeGreaterThan(withoutMarkers + 20)
+	expect(errors).toEqual([])
+})
+
 test("a focused planet is framed from its drawn size and its moons stay in place with the moons toggled", async ({
 	page,
 }) => {
