@@ -47,6 +47,9 @@ const screenshotName = (route: string) =>
 
 for (const [route, expectRouteUI] of Object.entries(routes)) {
 	test(`renders ${route}`, async ({ page }) => {
+		// a full-page screenshot of a WebGL canvas takes several seconds in software
+		// rendering, and over 30 s for the solar system under a parallel run
+		test.slow()
 		const errors: string[] = []
 		page.on("console", (message) => {
 			if (message.type() !== "error") return
