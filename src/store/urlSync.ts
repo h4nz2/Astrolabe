@@ -1,11 +1,11 @@
 /**
  * Mirrors the simulation store into the `/solar_system` URL and back.
  *
- * On mount the validated search params (`focus`, `sel`, `cam`, `t`, `warp`)
- * seed the store: the view (`focus`: a body, absent: the overview) and its
- * camera shot are applied as a jump, so a shared link opens exactly on the
- * view it was taken from. From then on view, selection, camera shot and warp
- * are written to the URL as they change (the shot when the camera comes to
+ * On mount the validated search params (`focus`, `sel`, `cam`, `t`, `warp`,
+ * `markers`) seed the store: the view (`focus`: a body, absent: the overview)
+ * and its camera shot are applied as a jump, so a shared link opens exactly on
+ * the view it was taken from. From then on view, selection, camera shot, warp
+ * and the Markers switch are written to the URL as they change (the shot when the camera comes to
  * rest) and the simulation time follows at most once per second, and only
  * while it is slow enough to be worth a link (paused or |warp| <= 1 min/s).
  * Everything is `replace: true`, so the history never fills up.
@@ -47,7 +47,13 @@ export const shouldMirrorTime = (paused: boolean, timeWarp: number): boolean =>
 
 type Mirrored = Pick<
 	SimState,
-	"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
+	| "view"
+	| "selectedId"
+	| "shot"
+	| "timeWarp"
+	| "paused"
+	| "simTimeJD"
+	| "showMarkers"
 >
 
 type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
@@ -56,7 +62,7 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * The search params that mirror `state`, starting from `previous` so a `t` that
  * is not being mirrored right now (fast warp) keeps its last written value.
  * Defaults (the overview, the home camera, a selection equal to the focus,
- * 1x) are left out to keep the URL short. A point view (the pivot moved into
+ * 1x, the markers on) are left out to keep the URL short. A point view (the pivot moved into
  * empty space) is written as its anchor body until the pan issue (#15) gives
  * it a parameter of its own. The warp is written as it is (not rounded), so a
  * link runs at exactly the speed it was taken at,
@@ -81,6 +87,7 @@ export function searchFromState(
 			: previous.t,
 		warp:
 			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
+		markers: state.showMarkers ? undefined : false,
 	}
 }
 
@@ -89,7 +96,8 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.sel === b.sel &&
 	a.cam === b.cam &&
 	a.t === b.t &&
-	a.warp === b.warp
+	a.warp === b.warp &&
+	a.markers === b.markers
 
 /** The view a search describes: `focus` (a known body) or the overview, its camera and selection. */
 export function viewFromSearch(search: SimSearch): {
@@ -110,6 +118,13 @@ export function viewFromSearch(search: SimSearch): {
 		selectedId: sel ?? focus,
 	}
 }
+
+/** The layer switches a search sets: a link without `markers` shows them. */
+export const layersFromSearch = (
+	search: SimSearch,
+): Pick<SimState, "showMarkers"> => ({
+	showMarkers: search.markers ?? true,
+})
 
 /** Clock fields a search sets; absent params are skipped. */
 export function stateFromSearch(search: SimSearch): Partial<MirroredClock> {
@@ -159,6 +174,7 @@ export function useSimUrlSync(): void {
 		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
 		store.jumpTo(view, shot)
 		store.select(selectedId)
+		store.setShowMarkers(layersFromSearch(searchRef.current).showMarkers)
 
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const write = () => {
@@ -168,15 +184,16 @@ export function useSimUrlSync(): void {
 			void navigate({ to: "/solar_system", search: next, replace: true })
 		}
 
-		// store -> URL: view, selection, camera, warp and pause changes right away (a
-		// pause also pins `t`); the running clock at most once per TIME_SYNC_INTERVAL_MS
+		// store -> URL: view, selection, camera, warp, pause and markers changes right
+		// away (a pause also pins `t`); the running clock at most once per TIME_SYNC_INTERVAL_MS
 		const unsubscribe = useSimStore.subscribe((state, previous) => {
 			if (
 				state.view !== previous.view ||
 				state.selectedId !== previous.selectedId ||
 				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||
-				state.paused !== previous.paused
+				state.paused !== previous.paused ||
+				state.showMarkers !== previous.showMarkers
 			) {
 				write()
 				return
