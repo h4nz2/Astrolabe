@@ -36,7 +36,12 @@ const collectErrors = (page: Page): string[] => {
  * no image library is needed.
  */
 const litPixelsAroundCentre = async (page: Page): Promise<number> => {
-	const png = await page.screenshot()
+	// the scale panel (#21) reaches into the counted region from the right: its
+	// text is not the scene, so it is hidden for the count (its dark backing is
+	// below the threshold)
+	const png = await page.screenshot({
+		style: "section[data-scale-target] { visibility: hidden }",
+	})
 	return page.evaluate(async (base64) => {
 		const image = new Image()
 		image.src = `data:image/png;base64,${base64}`
