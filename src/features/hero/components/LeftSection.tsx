@@ -31,7 +31,7 @@ const LeftSection: FC<LeftSectionProps> = () => {
 					gradient={{ from: "red", to: "yellow" }}
 					style={{ fontWeight: 600 }}
 				>
-					Solr
+					Astrolabe
 				</Text>
 				<Title className={classes.title}>To the stars! </Title>
 				<Flex direction="column" py="xl" gap="xs" maw={300}>
