@@ -294,7 +294,8 @@ setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing m
 setSimTime(jd)                                    instant jump
 travelTo(jd, durationMs?), setNow()               glide; arrival is clock.glide === null
 tick(realMs)                                      SimClock only
-WARP_PRESETS                                      1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s
+WARP_PRESETS                                      speeds (plain numbers): 1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s,
+                                                  1 month/s, 1 year/s, 10 years/s
 ```
 
 Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
@@ -362,9 +363,9 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls`, `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
-  `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`), not
-  `WARP_PRESETS[].label`.
-  Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.
+  `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
+  Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
+  ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `SimClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `BodyPicking`, `CameraRig`, `HighlightTracker`, later
   `Effects`), `ui/BodyHighlight`, and the HUD.
@@ -404,6 +405,26 @@ body, or "empty space" at `CAMERA_FAR`, so other clickable scene objects (nearer
 - Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`; a fly profile can be
   requested through `focus(id, request)`), #20 labels (a label click calls `setFocus`), #24 compare (the card's action
   row takes "Compare with…"), #28/#29/#34 (select or focus through the store).
+
+## Time controls (`features/solarSystem/ui`; #14)
+
+Everything goes through the clock actions of #9; nothing here touches the clock directly.
+
+- `TimeControls.tsx`: reverse / pause / play as one group with exactly one pressed (`aria-pressed`); reverse and
+  play un-pause and set the sign of `timeWarp` (`withDirection` in `ui/warp.ts`), pause keeps speed and direction.
+  The speed presets (a SegmentedControl, a Select below 720 px) set the magnitude and keep the direction: each
+  step multiplies the speed, so the row is the non-linear scale. A speed that is no preset (from a URL) is shown as
+  an extra item.
+- `TimeTravel.tsx`: the HUD date is a button opening "Travel in time": named moments (`ui/moments.ts`, ids and UTC
+  instants; the text is in the locales under `solarSystem.time.moments.<id>`) and a `@mantine/dates` calendar
+  (`DayPicker.tsx`, loaded lazily; 1000-01-01..2999-12-31, a picked day is reached at 12:00 UTC). Every label of the calendar comes from `Intl` in
+  the active format locale (`calendarLabels`, `firstDayOfWeek` in `ui/timeTravel.ts`), so a new locale needs no
+  date locale data. Both use `travelAndStop(jd)`: pause, then `travelTo` — the glide lands paused, so the moment
+  stays on screen and its `t` goes into the link. Tours (#28) and birthdays (#26) should reuse it.
+- `TooFastHint.tsx` / `ui/tooFast.ts`: the wagon-wheel warning. When the fastest body in view (planets, plus the
+  focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
+  frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
+  Nothing is capped or hidden in the scene; positions stay true.
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 

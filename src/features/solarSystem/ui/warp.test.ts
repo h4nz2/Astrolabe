@@ -3,9 +3,15 @@ import { describe, expect, it } from "vitest"
 import { createI18n } from "@/i18n"
 import { WARP_PRESETS } from "@/store/sim"
 
-import { stepWarp, warpLabel, warpParts } from "./warp"
+import {
+	directionOf,
+	stepWarp,
+	warpLabel,
+	warpParts,
+	withDirection,
+} from "./warp"
 
-const values = WARP_PRESETS.map((preset) => preset.value)
+const values = WARP_PRESETS
 
 describe("stepWarp", () => {
 	it("walks the presets and stops at the ends", () => {
@@ -21,6 +27,24 @@ describe("stepWarp", () => {
 		expect(stepWarp(100, 1)).toBe(3600)
 		expect(stepWarp(100, -1)).toBe(60)
 		expect(stepWarp(0.5, -1)).toBe(0.5)
+	})
+
+	it("keeps a reversed clock reversed and steps its speed", () => {
+		expect(stepWarp(-86400, 1)).toBe(-604800)
+		expect(stepWarp(-86400, -1)).toBe(-3600)
+		expect(stepWarp(-1, -1)).toBe(-1)
+		expect(stepWarp(-100, 1)).toBe(-3600)
+	})
+})
+
+describe("direction", () => {
+	it("reads and flips the direction without changing the speed", () => {
+		expect(directionOf(86400)).toBe(1)
+		expect(directionOf(-86400)).toBe(-1)
+		expect(directionOf(0)).toBe(1)
+		expect(withDirection(86400, -1)).toBe(-86400)
+		expect(withDirection(-86400, -1)).toBe(-86400)
+		expect(withDirection(-86400, 1)).toBe(86400)
 	})
 })
 
@@ -43,8 +67,8 @@ describe("warpLabel", () => {
 	const en = createI18n({ locale: "en" })
 	const de = createI18n({ locale: "de" })
 
-	it("labels every preset in English as before", () => {
-		expect(WARP_PRESETS.map((preset) => warpLabel(preset.value, en))).toEqual([
+	it("labels every preset in English", () => {
+		expect(WARP_PRESETS.map((value) => warpLabel(value, en))).toEqual([
 			"1x",
 			"1 min/s",
 			"1 h/s",
@@ -52,6 +76,7 @@ describe("warpLabel", () => {
 			"1 week/s",
 			"1 month/s",
 			"1 year/s",
+			"10 years/s",
 		])
 	})
 
