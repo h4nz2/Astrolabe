@@ -34,7 +34,7 @@ describe("sim store", () => {
 		setTimeWarp(Number.NaN)
 		setTimeWarp(Number.POSITIVE_INFINITY)
 		expect(useSimStore.getState().timeWarp).toBe(3600)
-		for (const { value } of WARP_PRESETS) {
+		for (const value of WARP_PRESETS) {
 			setTimeWarp(value)
 			expect(useSimStore.getState().timeWarp).toBe(value)
 		}
@@ -81,18 +81,9 @@ describe("sim store", () => {
 		expect(isBodyShown(europa, useSimStore.getState())).toBe(false)
 	})
 
-	it("offers the seven warp presets from the architecture", () => {
-		expect(WARP_PRESETS.map((preset) => preset.value)).toEqual([
-			1, 60, 3600, 86400, 604800, 2629800, 31557600,
-		])
-		expect(WARP_PRESETS.map((preset) => preset.label)).toEqual([
-			"1x",
-			"1 min/s",
-			"1 h/s",
-			"1 day/s",
-			"1 week/s",
-			"1 month/s",
-			"1 year/s",
+	it("offers the warp presets from the architecture", () => {
+		expect(WARP_PRESETS).toEqual([
+			1, 60, 3600, 86400, 604800, 2629800, 31557600, 315576000,
 		])
 	})
 })

@@ -121,7 +121,9 @@ test("a negative warp runs the clock backwards and survives in the link", async 
 test("pause freezes the clock where it is", async ({ page }) => {
 	const clock = await open(page, `t=${J2000}&warp=86400`)
 	await page.keyboard.press("Space")
-	await expect(page.getByRole("button", { name: "Play" })).toBeVisible()
+	await expect(
+		page.getByRole("button", { name: "Pause", pressed: true }),
+	).toBeVisible()
 	// the HUD refreshes the date at 10 Hz: let it show the pinned value first
 	await page.waitForFunction(() => window.__astrolabe !== undefined)
 	const pinned = await page.evaluate(() => {
@@ -144,7 +146,9 @@ test("Now travels to the present through the dates in between", async ({
 	const clock = await open(page, `t=${J2000}`)
 	// paused, so every change of the date comes from the time travel itself
 	await page.keyboard.press("Space")
-	await expect(page.getByRole("button", { name: "Play" })).toBeVisible()
+	await expect(
+		page.getByRole("button", { name: "Pause", pressed: true }),
+	).toBeVisible()
 	const start = await shownTime(clock)
 
 	await page.getByRole("button", { name: "Now" }).click()
@@ -169,5 +173,7 @@ test("Now travels to the present through the dates in between", async ({
 		expect(seen[i]).toBeGreaterThanOrEqual(seen[i - 1])
 	}
 	// and it has landed, still paused
-	await expect(page.getByRole("button", { name: "Play" })).toBeVisible()
+	await expect(
+		page.getByRole("button", { name: "Pause", pressed: true }),
+	).toBeVisible()
 })

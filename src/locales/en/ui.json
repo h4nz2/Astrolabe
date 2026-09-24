@@ -132,17 +132,18 @@
 			"labels": "Labels",
 			"moons": "Moons",
 			"markers": "Markers",
+			"orbitNames": "Orbit names",
 			"alwaysLit": "Always lit"
 		},
 		"time": {
 			"play": "Play",
 			"pause": "Pause",
-			"playHint": "Play (Space)",
+			"playHint": "Run time forwards (Space)",
 			"pauseHint": "Pause (Space)",
 			"now": "Now",
 			"nowHint": "Jump to the current time",
 			"warp": {
-				"label": "Time warp",
+				"label": "Speed",
 				"realTime": "1x",
 				"factor": "{factor}x",
 				"minute": "{count, plural, one {# min/s} other {# min/s}}",
@@ -151,6 +152,76 @@
 				"week": "{count, plural, one {# week/s} other {# weeks/s}}",
 				"month": "{count, plural, one {# month/s} other {# months/s}}",
 				"year": "{count, plural, one {# year/s} other {# years/s}}"
+			},
+			"reverse": "Reverse",
+			"reverseHint": "Run time backwards",
+			"controls": "Play, pause or reverse",
+			"tooFast": "{body} circles {parentId, select, sun {the Sun} other {{parent}}} {count, plural, one {# time} other {# times}} a second – too fast for your screen, so it may seem to jump or even run backwards.",
+			"tooFast@simple": "{body} goes around {parentId, select, sun {the Sun} other {{parent}}} {count, plural, one {# time} other {# times}} every second! That is too fast to see properly.",
+			"travel": {
+				"open": "Travel to a date",
+				"title": "Travel in time",
+				"moments": "Moments",
+				"pickDate": "Pick a date",
+				"arrival": "Time stops when you arrive. Press play to run on.",
+				"range": "Any day from the year {first} to {last}. You arrive at noon (UTC).",
+				"close": "Close",
+				"calendar": {
+					"nextMonth": "Next month",
+					"previousMonth": "Previous month",
+					"nextYear": "Next year",
+					"previousYear": "Previous year",
+					"nextDecade": "Next decade",
+					"previousDecade": "Previous decade",
+					"monthLevel": "Pick another month",
+					"yearLevel": "Pick another year"
+				}
+			},
+			"moments": {
+				"galileoMoons": {
+					"name": "Galileo sees Jupiter’s moons",
+					"description": "The first moons ever found around another planet."
+				},
+				"uranusFound": {
+					"name": "Uranus is discovered",
+					"description": "William Herschel finds the first planet unknown to the ancients."
+				},
+				"neptuneFound": {
+					"name": "Neptune is discovered",
+					"description": "Found right where mathematics predicted it would be."
+				},
+				"sputnik": {
+					"name": "Sputnik 1 launches",
+					"description": "The first artificial satellite starts the space age."
+				},
+				"moonLanding": {
+					"name": "First Moon landing",
+					"description": "Apollo 11 touches down on the Moon."
+				},
+				"voyagerLaunch": {
+					"name": "Voyager 2 sets off",
+					"description": "Jupiter, Saturn, Uranus and Neptune line up for a Grand Tour, as they do only every 175 years or so."
+				},
+				"voyagerNeptune": {
+					"name": "Voyager 2 reaches Neptune",
+					"description": "Twelve years after launch: the only visit Neptune has ever had."
+				},
+				"marsClosest": {
+					"name": "Mars at its closest",
+					"description": "Mars comes nearer to Earth than in almost 60,000 years. Earth sits between the Sun and Mars."
+				},
+				"venusTransit": {
+					"name": "Transit of Venus",
+					"description": "Venus passes right between the Sun and Earth."
+				},
+				"greatConjunction": {
+					"name": "The great conjunction",
+					"description": "Seen from Earth, Jupiter and Saturn nearly touch in the sky."
+				},
+				"nextVenusTransit": {
+					"name": "The next transit of Venus",
+					"description": "The next time Venus crosses in front of the Sun. Will anyone in this room see it?"
+				}
 			}
 		},
 		"info": {
