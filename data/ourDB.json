@@ -419,14 +419,7 @@
 			"orbitalVelocity": 13.1,
 			"orbitalInclination": 1.303,
 			"orbitPositionOffset": 2692,
-			"rings": {
-				"innerRadius": 110500,
-				"outerRadius": 129000,
-				"textures": {
-					"base": "/assets/textures/jupiter/rings/rings_map.png",
-					"colorMap": "/assets/textures/jupiter/rings/rings_color_map.png"
-				}
-			},
+			"rings": false,
 			"textures": {
 				"base": "/assets/textures/jupiter.jpg"
 			},

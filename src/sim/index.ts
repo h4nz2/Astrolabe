@@ -135,3 +135,9 @@ export {
 	sunVisibleFraction,
 } from "./lighting"
 export type { LitBody } from "./lighting"
+export {
+	RING_MIN_MU,
+	ringShadowTransmittance,
+	ringU,
+	slantOpacity,
+} from "./rings"

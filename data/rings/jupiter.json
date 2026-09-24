@@ -1,0 +1,45 @@
+{
+	"innerRadiusKm": 92000,
+	"outerRadiusKm": 181350,
+	"textures": {
+		"alpha": "/assets/textures/jupiter/rings/rings_alpha.png",
+		"color": "/assets/textures/jupiter/rings/rings_color.png"
+	},
+	"bands": [
+		{
+			"name": "halo",
+			"innerKm": 92000,
+			"outerKm": 122500,
+			"opacity": 0.06,
+			"color": "#6b5445"
+		},
+		{
+			"name": "main (inner)",
+			"innerKm": 122500,
+			"outerKm": 126000,
+			"opacity": 0.22,
+			"color": "#7d6250"
+		},
+		{
+			"name": "main (outer, to Metis)",
+			"innerKm": 126000,
+			"outerKm": 127950,
+			"opacity": 0.35,
+			"color": "#86694f"
+		},
+		{
+			"name": "main (Metis to Adrastea)",
+			"innerKm": 128050,
+			"outerKm": 129000,
+			"opacity": 0.3,
+			"color": "#86694f"
+		},
+		{
+			"name": "Amalthea gossamer",
+			"innerKm": 129000,
+			"outerKm": 181350,
+			"opacity": 0.035,
+			"color": "#6b5445"
+		}
+	]
+}
