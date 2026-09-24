@@ -216,7 +216,10 @@ describe("eclipses and phases from the real data", () => {
 	const at = (id: string) => index.get(id) ?? -1
 	const out = new Float64Array(MAX_OCCLUDERS * OCCLUDER_STRIDE)
 
-	/** Fraction of sunlight at the point of `receiver` straight under the Sun line of its first caster. */
+	/**
+	 * Fraction of sunlight where the Sun -> first caster axis meets `receiver`'s sunward
+	 * surface (or at its subsolar point when the axis misses it); null without casters.
+	 */
 	const shadowUnderFirstCaster = (
 		positions: Float64Array,
 		receiver: number,
@@ -246,12 +249,15 @@ describe("eclipses and phases from the real data", () => {
 		const py = vy - along * uy
 		const pz = vz - along * uz
 		const off = Math.hypot(px, py, pz)
-		if (off >= radius) return 1
-		const lift = Math.sqrt(radius * radius - off * off)
+		// the axis misses the body (a moon inside a wide shadow): judge its subsolar point
+		const [qx, qy, qz, lift] =
+			off >= radius
+				? [0, 0, 0, radius]
+				: [px, py, pz, Math.sqrt(radius * radius - off * off)]
 		return sunVisibleFraction(
-			px + lift * ux,
-			py + lift * uy,
-			pz + lift * uz,
+			qx + lift * ux,
+			qy + lift * uy,
+			qz + lift * uz,
 			sx,
 			sy,
 			sz,
@@ -272,6 +278,30 @@ describe("eclipses and phases from the real data", () => {
 			if (fraction !== null) darkest = Math.min(darkest, fraction)
 		}
 		expect(darkest).toBeLessThan(0.05)
+	})
+
+	/** The darkest shadow on `receiver` within `hours` of `jd`, sampled every 6 minutes. */
+	const darkestNear = (receiver: number, jd: number, hours: number) => {
+		const positions = new Float64Array(bodies.length * 3)
+		let darkest = 1
+		for (let h = -hours; h <= hours; h += 0.1) {
+			computePositions(bodies, jd + h / 24, positions, index)
+			const fraction = shadowUnderFirstCaster(positions, receiver)
+			if (fraction !== null) darkest = Math.min(darkest, fraction)
+		}
+		return darkest
+	}
+
+	it("darkens the Earth under the Moon's umbra at the total solar eclipse of 8 April 2024", () => {
+		// greatest eclipse 2024-04-08 18:17 UT; the model's Moon is within a few hours of it
+		expect(darkestNear(at("earth"), 2460409.262, 4)).toBeLessThan(0.05)
+		// and a fortnight later, at full moon, nothing touches the Earth
+		expect(darkestNear(at("earth"), 2460409.262 + 14.8, 12)).toBe(1)
+	})
+
+	it("puts the Moon in the Earth's umbra at the total lunar eclipse of 14 March 2025", () => {
+		// greatest eclipse 2025-03-14 06:59 UT
+		expect(darkestNear(at("moon"), 2460748.791, 4)).toBeLessThan(0.05)
 	})
 
 	it("lights the Moon's face toward the Earth in step with its phase", () => {

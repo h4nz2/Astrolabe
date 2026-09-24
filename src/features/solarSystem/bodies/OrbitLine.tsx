@@ -20,6 +20,10 @@
  * itself, whenever the frame's `scaleVersion` moves on; parent and anchor come
  * from the frame's display positions. The line therefore passes through its
  * body under every scale and never detaches when the scale changes.
+ *
+ * Precession (the Moon's orbit turns: its node once in 18.6 years, its perigee
+ * once in 8.85): the ellipse is resampled from `orbitAt(orbit, jd)` whenever
+ * the orbit has turned more than `ORBIT_RESAMPLE_DEG` since the last sampling.
  */
 import { useMemo, useRef } from "react"
 import { extend, useFrame } from "@react-three/fiber"
@@ -31,11 +35,13 @@ import {
 	displayDistanceKm,
 	displayOffset,
 	meanAnomalyAt,
+	orbitAt,
 	positionAtEccentricAnomaly,
 	solveEccentricAnomaly,
 	toUnits,
 	TWO_PI,
 	type DistanceCurve,
+	type MutableOrbitElements,
 	type OrbitElements,
 	type Vec3,
 } from "@/sim"
@@ -61,6 +67,8 @@ export const ORBIT_SAMPLES = ORBIT_SEGMENTS + 1
 export const ORBIT_POINTS = ORBIT_SAMPLES + 1
 /** Rebuild when the origin or the parent moved more than this fraction of the semi-major axis. */
 export const ORBIT_REBUILD_FRACTION = 1e-4
+/** Resample a precessing ellipse once its node and periapsis together have turned this far (degrees). */
+export const ORBIT_RESAMPLE_DEG = 0.05
 
 export const ORBIT_COLORS = {
 	planet: "#8a8f98",
@@ -127,10 +135,27 @@ export interface OrbitBuffers {
 	/** Sample the anchor vertex follows (see `anchorSlot`); -1 before the first build. */
 	slot: number
 	built: boolean
+	/** Julian Date whose elements (`orbitAt`) the samples show; only moves for a precessing orbit. */
+	sampledAtJD: number
 }
 
-export const createOrbitBuffers = (orbit: OrbitElements): OrbitBuffers => ({
-	samples: sampleOrbit(orbit),
+// the elements a precessing orbit is resampled from (not re-entrant)
+const orientedScratch: MutableOrbitElements = {
+	semiMajorAxisKm: 1,
+	eccentricity: 0,
+	inclinationDeg: 0,
+	longAscNodeDeg: 0,
+	argPeriapsisDeg: 0,
+	meanAnomalyDeg: 0,
+	periodDays: 1,
+	epochJD: 0,
+}
+
+export const createOrbitBuffers = (
+	orbit: OrbitElements,
+	jd: number = orbit.epochJD,
+): OrbitBuffers => ({
+	samples: sampleOrbit(orbitAt(orbit, jd, orientedScratch)),
 	displaySamples: new Float64Array(ORBIT_SAMPLES * 3),
 	displaySemiMajorAxisKm: orbit.semiMajorAxisKm,
 	scaleVersion: -1,
@@ -139,7 +164,32 @@ export const createOrbitBuffers = (orbit: OrbitElements): OrbitBuffers => ({
 	parentAtRebuild: new Float64Array(3),
 	slot: -1,
 	built: false,
+	sampledAtJD: jd,
 })
+
+/**
+ * Resamples a precessing orbit that has turned more than `ORBIT_RESAMPLE_DEG`
+ * since its samples were taken, and marks the display samples stale. Returns
+ * true when it did. Orbits without precession never resample.
+ */
+export function syncOrbitPrecession(
+	buffers: OrbitBuffers,
+	orbit: OrbitElements,
+	jd: number,
+): boolean {
+	const precession = orbit.precession
+	if (precession === undefined) return false
+	const rate =
+		Math.abs(precession.nodeDegPerDay) +
+		Math.abs(precession.argPeriapsisDegPerDay)
+	if (rate * Math.abs(jd - buffers.sampledAtJD) < ORBIT_RESAMPLE_DEG) {
+		return false
+	}
+	sampleOrbit(orbitAt(orbit, jd, orientedScratch), buffers.samples)
+	buffers.sampledAtJD = jd
+	buffers.scaleVersion = -1
+	return true
+}
 
 /**
  * Maps parent-centric true samples into display space (`out`, same layout)
@@ -226,6 +276,7 @@ export function updateOrbitBuffers(
 	parentIndex: number,
 	shift: Vec3,
 ): boolean {
+	syncOrbitPrecession(buffers, orbit, frame.jd)
 	const rescaled = syncOrbitScale(buffers, orbit, frame, parentIndex)
 	const { displayKm, originKm } = frame
 	const p = parentIndex * 3
@@ -314,8 +365,8 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 	const attributeRef = useRef<BufferAttribute>(null)
 	const orbit = body.orbit
 	const buffers = useMemo(
-		() => (orbit === null ? null : createOrbitBuffers(orbit)),
-		[orbit],
+		() => (orbit === null ? null : createOrbitBuffers(orbit, frame.jd)),
+		[orbit, frame],
 	)
 
 	useFrame(() => {

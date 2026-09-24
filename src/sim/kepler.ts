@@ -54,12 +54,72 @@ export function orbitalPeriodToMeanMotion(periodDays: number): number {
 
 /**
  * Mean anomaly in radians at `jd`, wrapped to [0, 2pi):
- * M = M0 + n (jd - epoch), n = 2pi / P.
+ * M = M0 + n (jd - epoch), n = 2pi / P. With `precession`, P is the sidereal
+ * period of the mean longitude (node + argument of periapsis + M), so the
+ * anomaly runs slower by the drift of the other two (the Moon's anomalistic
+ * month is 27.55 d, its sidereal month 27.32 d).
  */
 export function meanAnomalyAt(orbit: OrbitElements, jd: number): number {
 	const m0 = degToRad(orbit.meanAnomalyDeg)
 	const n = orbitalPeriodToMeanMotion(orbit.periodDays)
-	return wrapAngle(m0 + n * (jd - orbit.epochJD))
+	const days = jd - orbit.epochJD
+	const drift =
+		orbit.precession === undefined
+			? 0
+			: degToRad(
+					orbit.precession.nodeDegPerDay +
+						orbit.precession.argPeriapsisDegPerDay,
+				) * days
+	return wrapAngle(m0 + n * days - drift)
+}
+
+/** Mutable orbital elements, the `out` of `orbitAt`. */
+export type MutableOrbitElements = {
+	-readonly [K in keyof OrbitElements]: OrbitElements[K]
+}
+
+/**
+ * The elements as they stand at `jd`: the node and the argument of periapsis
+ * advanced by `precession`, and the epoch anomaly shifted so the result, which
+ * carries no precession of its own, gives the same mean anomaly at `jd` as
+ * `orbit` (the ellipse the body is on at that moment, e.g. for an orbit line).
+ * Elements without precession come back unchanged (copied into `out`).
+ */
+export function orbitAt(
+	orbit: OrbitElements,
+	jd: number,
+	out: MutableOrbitElements = { ...orbit },
+): MutableOrbitElements {
+	out.semiMajorAxisKm = orbit.semiMajorAxisKm
+	out.eccentricity = orbit.eccentricity
+	out.inclinationDeg = orbit.inclinationDeg
+	out.periodDays = orbit.periodDays
+	out.epochJD = orbit.epochJD
+	out.longAscNodeDeg = orbit.longAscNodeDeg
+	out.argPeriapsisDeg = orbit.argPeriapsisDeg
+	out.meanAnomalyDeg = orbit.meanAnomalyDeg
+	out.precession = undefined
+	const precession = orbit.precession
+	if (precession === undefined) return out
+	const days = jd - orbit.epochJD
+	const node = precession.nodeDegPerDay * days
+	const periapsis = precession.argPeriapsisDegPerDay * days
+	out.longAscNodeDeg = orbit.longAscNodeDeg + node
+	out.argPeriapsisDeg = orbit.argPeriapsisDeg + periapsis
+	out.meanAnomalyDeg = orbit.meanAnomalyDeg - node - periapsis
+	return out
+}
+
+// the precessed elements of the orbit being propagated (propagate is not re-entrant)
+const precessed: MutableOrbitElements = {
+	semiMajorAxisKm: 1,
+	eccentricity: 0,
+	inclinationDeg: 0,
+	longAscNodeDeg: 0,
+	argPeriapsisDeg: 0,
+	meanAnomalyDeg: 0,
+	periodDays: 1,
+	epochJD: 0,
 }
 
 /** Convergence threshold on the Newton step |dE| in radians. */
@@ -208,7 +268,9 @@ export function propagateEcliptic(
 ): Vec3 {
 	const M = meanAnomalyAt(orbit, jd)
 	const E = solveEccentricAnomaly(M, orbit.eccentricity)
-	return eclipticPositionAtEccentricAnomaly(orbit, E, out)
+	const oriented =
+		orbit.precession === undefined ? orbit : orbitAt(orbit, jd, precessed)
+	return eclipticPositionAtEccentricAnomaly(oriented, E, out)
 }
 
 /**
