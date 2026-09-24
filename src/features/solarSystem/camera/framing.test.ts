@@ -82,6 +82,15 @@ describe("defaultDistance", () => {
 					1.5,
 				),
 			).toBe(FRAMING_RADII * drawn(frame, "mars"))
+			// a point in interplanetary space (anchored to the Sun) is framed like the overview
+			expect(
+				defaultDistance(
+					{ kind: "point", anchorId: "sun", offsetKm: [2e8, 0, 0] },
+					frame,
+					45,
+					1.5,
+				),
+			).toBe(defaultDistance({ kind: "overview" }, frame, 45, 1.5))
 		}
 		// drawn, not true: Earth is enlarged in the default preset
 		expect(drawn(visibleFrame, "earth")).toBeGreaterThan(
@@ -141,12 +150,23 @@ describe("minViewDistance", () => {
 		expect(minViewDistance({ kind: "overview" }, trueFrame)).toBe(
 			minDollyDistance(drawn(trueFrame, "sun")),
 		)
-		// nothing to crash into at a point in space
+		// a point in space takes the limits of the body whose neighbourhood it is in
 		expect(
 			minViewDistance(
 				{ kind: "point", anchorId: "earth", offsetKm: [0, 1e5, 0] },
 				trueFrame,
 			),
-		).toBe(2 * CAMERA_NEAR)
+		).toBe(minDollyDistance(drawn(trueFrame, "earth")))
+		expect(
+			minViewDistance(
+				{ kind: "point", anchorId: "mercury", offsetKm: [0, 1e4, 0] },
+				trueFrame,
+			),
+		).toBeLessThan(
+			minViewDistance(
+				{ kind: "point", anchorId: "sun", offsetKm: [1e8, 0, 0] },
+				trueFrame,
+			) / 100,
+		)
 	})
 })

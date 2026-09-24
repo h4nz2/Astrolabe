@@ -28,6 +28,17 @@ export const Orbit = z.object({
 	epochJD: z.number(),
 	/** true when node, periapsis and anomaly were all 0 in the source and were spread from hash(id) */
 	phaseSynthetic: z.boolean().optional(),
+	/**
+	 * Secular drift of the orbit's orientation in degrees per day (the Moon: its node regresses
+	 * once in 18.6 years, its perigee advances once in 8.85). `periodDays` stays the sidereal
+	 * period of the mean longitude; see `orbitAt` in src/sim/kepler.ts.
+	 */
+	precession: z
+		.object({
+			nodeDegPerDay: z.number(),
+			argPeriapsisDegPerDay: z.number(),
+		})
+		.optional(),
 })
 
 export const BodyTextures = z.object({

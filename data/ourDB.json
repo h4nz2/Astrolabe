@@ -220,7 +220,7 @@
 					"polarRadius": 1736,
 					"flattening": 0.0012,
 					"dimension": "",
-					"sideralOrbit": 27.3217,
+					"sideralOrbit": 27.321661,
 					"sideralRotation": 655.728,
 					"aroundPlanet": {
 						"planet": "terre",
@@ -234,6 +234,8 @@
 					"mainAnomaly": 134.963,
 					"argPeriapsis": 318.309,
 					"longAscNode": 125.045,
+					"nodePrecessionDegPerDay": -0.052992,
+					"argPeriapsisPrecessionDegPerDay": 0.1643586,
 					"bodyType": "Moon",
 					"rel": "https://api.le-systeme-solaire.net/rest/bodies/lune"
 				},

@@ -548,8 +548,12 @@
 			"longAscNodeDeg": 125.045,
 			"argPeriapsisDeg": 318.309,
 			"meanAnomalyDeg": 134.963,
-			"periodDays": 27.3217,
-			"epochJD": 2451545
+			"periodDays": 27.321661,
+			"epochJD": 2451545,
+			"precession": {
+				"nodeDegPerDay": -0.052992,
+				"argPeriapsisDegPerDay": 0.1643586
+			}
 		},
 		"rotation": {
 			"periodHours": 655.728,
