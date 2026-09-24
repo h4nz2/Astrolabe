@@ -62,10 +62,24 @@
 	min-width: 0;
 }
 
+/* the layer switches and, below them, the scale panel (#21) */
 .toggles {
 	grid-area: toggles;
 	justify-self: end;
 	align-self: start;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.5rem;
+	width: 25rem;
+	min-width: 0;
+	max-width: 100%;
+}
+
+@media (max-width: 599px) {
+	.toggles {
+		width: auto;
+	}
 }
 
 .info {
