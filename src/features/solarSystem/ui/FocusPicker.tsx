@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import {
 	Select,
 	type ComboboxItem,
@@ -7,46 +8,37 @@ import {
 import { IconFocus2 } from "@tabler/icons-react"
 
 import { bodyById, moonsOf, planets, sun, type Body } from "@/data"
+import { useI18n, type I18n } from "@/i18n"
+import { bodyName } from "@/i18n/bodies"
 import { useSimStore } from "@/store/sim"
 
 import { freeCentreId } from "./centre"
 import { cycleFocus } from "./focusCycle"
-import { formatNumber } from "./format"
 import { hasModifier, isEditableTarget, useWindowKeydown } from "./keyboard"
 
 import classes from "./FocusPicker.module.css"
 
-const toItem = (body: Body): ComboboxItem => ({
-	value: body.id,
-	label: body.name,
-})
-
 const largestFirst = (a: Body, b: Body): number => b.radiusKm - a.radiusKm
 
-/** The Sun, then one group per planet holding the planet itself and all its moons, largest first. */
-export const focusOptions: ComboboxItemGroup<ComboboxItem>[] = [
-	{ group: sun.name, items: [toItem(sun)] },
-	...planets.map((planet) => ({
-		group: planet.name,
-		items: [planet, ...moonsOf(planet.id).sort(largestFirst)].map(toItem),
-	})),
-]
-
-const renderOption = ({
-	option,
-}: ComboboxLikeRenderOptionInput<ComboboxItem>) => {
-	const body = bodyById.get(option.value)
-	return (
-		<span className={classes.option}>
-			<span>{option.label}</span>
-			{body !== undefined && (
-				<span className={classes.meta}>
-					{body.radiusEstimated ? "≈ " : ""}
-					{formatNumber(body.radiusKm)} km
-				</span>
-			)}
-		</span>
-	)
+/**
+ * The Sun, then one group per planet holding the planet itself and all its
+ * moons, largest first; names in the active language, so the search matches
+ * "Erde" in German and "Earth" in English.
+ */
+export function focusOptions(
+	chain: I18n["chain"],
+): ComboboxItemGroup<ComboboxItem>[] {
+	const toItem = (body: Body): ComboboxItem => ({
+		value: body.id,
+		label: bodyName(body.id, chain),
+	})
+	return [
+		{ group: bodyName(sun.id, chain), items: [toItem(sun)] },
+		...planets.map((planet) => ({
+			group: bodyName(planet.id, chain),
+			items: [planet, ...moonsOf(planet.id).sort(largestFirst)].map(toItem),
+		})),
+	]
 }
 
 /** Left/Right cycle the focus among siblings; text fields and other widgets keep their arrows. */
@@ -67,22 +59,44 @@ const FocusPicker = () => {
 		freeCentreId(state) === null ? state.focusId : null,
 	)
 	const setFocus = useSimStore((state) => state.setFocus)
+	const i18n = useI18n()
+	const { t, chain } = i18n
+	const data = useMemo(() => focusOptions(chain), [chain])
 	useWindowKeydown(handleKeyDown)
+
+	const renderOption = ({
+		option,
+	}: ComboboxLikeRenderOptionInput<ComboboxItem>) => {
+		const body = bodyById.get(option.value)
+		const radius = body && i18n.quantity(body.radiusKm, "kilometer")
+		return (
+			<span className={classes.option}>
+				<span>{option.label}</span>
+				{body !== undefined && radius !== undefined && (
+					<span className={classes.meta}>
+						{body.radiusEstimated
+							? t("units.approx", { value: radius })
+							: radius}
+					</span>
+				)}
+			</span>
+		)
+	}
 
 	return (
 		<Select
 			className={classes.select}
-			aria-label="Focus body"
-			placeholder="Focus a body…"
+			aria-label={t("solarSystem.picker.label")}
+			placeholder={t("solarSystem.picker.placeholder")}
 			leftSection={<IconFocus2 size={16} />}
-			data={focusOptions}
+			data={data}
 			value={focusId}
 			onChange={(value) => {
 				if (value !== null) setFocus(value)
 			}}
 			renderOption={renderOption}
 			searchable
-			nothingFoundMessage="No such body"
+			nothingFoundMessage={t("solarSystem.picker.nothingFound")}
 			allowDeselect={false}
 			maxDropdownHeight={320}
 			comboboxProps={{ shadow: "md" }}

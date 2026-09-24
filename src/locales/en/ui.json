@@ -1,0 +1,178 @@
+{
+	"locale": {
+		"name": "English"
+	},
+	"app": {
+		"name": "Astrolabe",
+		"title": "Astrolabe – our solar system",
+		"installName": "Astrolabe - Our Solar System",
+		"shortName": "Astrolabe",
+		"description": "Visual dictionary and true-scale 3D model of our solar system"
+	},
+	"i18n": {
+		"menu": {
+			"button": "Language and reading level ({code})",
+			"language": "Language",
+			"readingLevel": "Reading level"
+		},
+		"readingLevel": {
+			"simple": {
+				"name": "Simple",
+				"description": "Ages 8–11: short sentences, everyday comparisons"
+			},
+			"standard": {
+				"name": "Standard",
+				"description": "Ages 12–15: clear explanations with the key numbers"
+			},
+			"advanced": {
+				"name": "Advanced",
+				"description": "Ages 16+: precise terms and more detail"
+			}
+		}
+	},
+	"notFound": {
+		"title": "Lost in space",
+		"text": "There is nothing at this address.",
+		"back": "Back to the stars"
+	},
+	"hero": {
+		"credits": "Made with love by odi and hrj",
+		"tagline": "To the stars!",
+		"dictionary": "Dictionary",
+		"solarSystem": "Solar Model"
+	},
+	"units": {
+		"approx": "≈ {value}",
+		"au": "{value} AU",
+		"gravity": "{value} m/s²",
+		"kelvin": "{value} K"
+	},
+	"bodies": {
+		"kind": {
+			"star": "Star",
+			"planet": "Planet",
+			"moon": "Moon",
+			"moonOf": "{parentId, select, other {Moon of {parent}}}"
+		},
+		"fallback": {
+			"moonDescription": "{name} is a moon of {parentId, select, other {{parent}}}. It is about {diameter} across and travels once around its planet every {period}.",
+			"moonDescription@simple": "{name} is one of the moons that circle {parentId, select, other {{parent}}}. It is about {diameter} wide.",
+			"moonDescription@advanced": "{name} orbits {parentId, select, other {{parent}}} at an average distance of {distance} with a period of {period}. Its mean diameter is about {diameter}."
+		}
+	},
+	"dictionary": {
+		"pick": "Show {name}",
+		"textures": {
+			"label": "Available textures",
+			"base": "Surface",
+			"topo": "Terrain",
+			"specular": "Oceans",
+			"clouds": "Clouds"
+		},
+		"fact": {
+			"name": "Name",
+			"diameter": "Diameter",
+			"lengthOfDay": "Length of day",
+			"orbitalPeriod": "Length of year",
+			"gravity": "Gravity",
+			"avgTemp": "Temperature"
+		},
+		"compare": {
+			"sizeBigger": "{count, plural, one {Earth would fit inside it # time.} other {Earth would fit inside it # times.}}",
+			"sizeBigger@simple": "{count, plural, one {# Earth would fit inside it!} other {# Earths would fit inside it!}}",
+			"sizeBigger@advanced": "{count, plural, one {Its volume equals Earth’s.} other {Its volume is about # times Earth’s.}}",
+			"sizeSmaller": "{count, plural, one {It would fit inside Earth # time.} other {It would fit inside Earth # times.}}",
+			"sizeSmaller@simple": "{count, plural, one {It is as big as Earth!} other {# of them would fit inside Earth!}}",
+			"sizeSmaller@advanced": "{count, plural, one {Earth has the same volume.} other {Earth has about # times its volume.}}",
+			"sizeSimilar": "It is about the same size as our planet.",
+			"sizeSimilar@simple": "It is about as big as Earth!",
+			"sizeSimilar@advanced": "Its volume is close to Earth’s.",
+			"dayLonger": "{days, plural, one {One day there lasts # Earth day.} other {One day there lasts # Earth days.}}",
+			"dayLonger@simple": "{days, plural, one {A day there is as long as # day on Earth!} other {A day there is as long as # days on Earth!}}",
+			"dayLonger@advanced": "{days, plural, one {From one sunrise to the next takes # Earth day.} other {From one sunrise to the next takes # Earth days.}}",
+			"dayShorter": "{hours, plural, one {One day there lasts only # hour.} other {One day there lasts only # hours.}}",
+			"dayShorter@simple": "{hours, plural, one {A day there is over after just # hour!} other {A day there is over after just # hours!}}",
+			"dayShorter@advanced": "{hours, plural, one {A solar day lasts only # hour, {fraction, number, ::percent} of an Earth day.} other {A solar day lasts only # hours, {fraction, number, ::percent} of an Earth day.}}",
+			"daySimilar": "One day there is about as long as on Earth.",
+			"daySimilar@simple": "A day there is almost as long as a day on Earth!",
+			"daySimilar@advanced": "{minutes, plural, one {Its solar day differs from Earth’s by only # minute.} other {Its solar day differs from Earth’s by only # minutes.}}",
+			"yearLonger": "{years, plural, one {One year there lasts # Earth year – a long wait for your next birthday!} other {One year there lasts # Earth years – a long wait for your next birthday!}}",
+			"yearLonger@simple": "{years, plural, one {You would have to wait # year for your next birthday!} other {You would have to wait # years for your next birthday!}}",
+			"yearLonger@advanced": "{years, plural, one {Its orbital period is about # Earth year.} other {Its orbital period is about # Earth years.}}",
+			"yearLongerDays": "{days, plural, one {You would wait # day longer for your birthday.} other {You would wait # days longer for your birthday.}}",
+			"yearLongerDays@simple": "{days, plural, one {You would have to wait # extra day for your birthday!} other {You would have to wait # extra days for your birthday!}}",
+			"yearLongerDays@advanced": "{days, plural, one {Its year is # day longer than Earth’s.} other {Its year is # days longer than Earth’s.}}",
+			"yearShorter": "{times, plural, one {A year there lasts only {period} – that is # birthday per Earth year.} other {A year there lasts only {period} – that is # birthdays per Earth year!}}",
+			"yearShorter@simple": "{times, plural, one {You would have a birthday # time every Earth year!} other {You would have a birthday about # times every Earth year!}}",
+			"yearShorter@advanced": "{times, plural, one {Its orbital period is {period}; it circles the Sun # time per Earth year.} other {Its orbital period is {period}; it circles the Sun # times per Earth year.}}",
+			"gravityMore": "You would weigh {ratio, number} times as much as on Earth!",
+			"gravityMore@simple": "If you weigh 30 kg on Earth, you would weigh {kg, number} kg there!",
+			"gravityMore@advanced": "Surface gravity is {ratio, number} times Earth’s: your weight would grow, but your mass would stay the same.",
+			"gravitySimilar": "You would weigh about the same as on Earth.",
+			"gravitySimilar@simple": "You would feel just as heavy as on Earth.",
+			"gravitySimilar@advanced": "Surface gravity is within 5 % of Earth’s.",
+			"gravityLess": "You would weigh only {percent, number, ::percent} of your weight on Earth.",
+			"gravityLess@simple": "If you weigh 30 kg on Earth, you would weigh only {kg, number} kg there!",
+			"gravityLess@advanced": "Surface gravity is {percent, number, ::percent} of Earth’s: your weight would drop, but your mass would stay the same.",
+			"temperature": "That is about {celsius, number} °C.",
+			"temperature@simple": "{range, select, hot {That is about {celsius, number} °C – hotter than an oven!} cold {That is about {celsius, number} °C – colder than any freezer!} other {That is about {celsius, number} °C.}}",
+			"temperature@advanced": "That is {celsius, number} °C; absolute zero, 0 K, is −273.15 °C."
+		}
+	},
+	"solarSystem": {
+		"overview": "Back to overview",
+		"picker": {
+			"label": "Focus body",
+			"placeholder": "Focus a body…",
+			"nothingFound": "No such body"
+		},
+		"layers": {
+			"label": "Scene layers",
+			"orbits": "Orbits",
+			"labels": "Labels",
+			"moons": "Moons",
+			"markers": "Markers"
+		},
+		"time": {
+			"play": "Play",
+			"pause": "Pause",
+			"playHint": "Play (Space)",
+			"pauseHint": "Pause (Space)",
+			"now": "Now",
+			"nowHint": "Jump to the current time",
+			"warp": {
+				"label": "Time warp",
+				"realTime": "1x",
+				"factor": "{factor}x",
+				"minute": "{count, plural, one {# min/s} other {# min/s}}",
+				"hour": "{count, plural, one {# h/s} other {# h/s}}",
+				"day": "{count, plural, one {# day/s} other {# days/s}}",
+				"week": "{count, plural, one {# week/s} other {# weeks/s}}",
+				"month": "{count, plural, one {# month/s} other {# months/s}}",
+				"year": "{count, plural, one {# year/s} other {# years/s}}"
+			}
+		},
+		"info": {
+			"label": "Focused body",
+			"radius": "Radius",
+			"orbitalPeriod": "Orbital period",
+			"orbitalPeriod@simple": "Time for one lap",
+			"distance": "{parentId, select, sun {Distance to the Sun} other {Distance to {parent}}}",
+			"rotation": "Rotation period",
+			"rotation@simple": "Time for one spin",
+			"rotationUnknown": "unknown",
+			"retrograde": "{period}, retrograde",
+			"retrograde@simple": "{period}, spinning backwards"
+		},
+		"centre": {
+			"label": "Centre of the view",
+			"freeView": "Free view",
+			"freeView@simple": "Floating in space",
+			"near": "near {body}",
+			"interplanetary": "in interplanetary space",
+			"interplanetary@simple": "out between the planets",
+			"centreOn": "Centre on {body}",
+			"centreOn@simple": "Back to {body}"
+		}
+	}
+}

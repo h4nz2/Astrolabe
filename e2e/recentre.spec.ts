@@ -107,7 +107,8 @@ test("pans away from a planet into its neighbourhood and back with one click", a
 	await expect(page.getByRole("combobox", { name: "Focus body" })).toHaveValue(
 		"",
 	)
-	await expect(page).toHaveURL(/[?&]focus=mars&at=[-\d._]+(&|$)/)
+	await expect(page).toHaveURL(/[?&]focus=mars(&|$)/)
+	await expect(page).toHaveURL(/[?&]at=[-\d._]+(&|$)/)
 	await expect(page.getByTestId("centre-marker")).toHaveAttribute(
 		"data-visible",
 		"true",

@@ -7,15 +7,14 @@
 import { expect, test, type Locator, type Page } from "@playwright/test"
 
 const J2000 = 2451545
-const DATE = /^-?\d{4,}-\d{2}-\d{2} \d{2}:\d{2} UTC$/
 const DAY_MS = 86_400_000
 
-const clockOf = (page: Page): Locator => page.getByText(DATE)
+/** The HUD clock: its text is localized (#11), its `dateTime` is the ISO instant. */
+const clockOf = (page: Page): Locator => page.locator("time")
 
-/** The HUD date ("2000-01-01 12:00 UTC") as epoch milliseconds. */
+/** The HUD date ("2000-01-01T12:00Z" in `dateTime`) as epoch milliseconds. */
 async function shownTime(clock: Locator): Promise<number> {
-	const text = await clock.innerText()
-	return Date.parse(`${text.replace(" UTC", "Z").replace(" ", "T")}`)
+	return Date.parse((await clock.getAttribute("datetime")) ?? "")
 }
 
 /** Opens the solar system at `search` and waits until the scene has settled. */
@@ -50,9 +49,7 @@ test("the clock runs at the chosen speed, whatever the frame rate", async ({
 	// the HUD date and the counted real time, read in the same instant
 	const sample = () =>
 		clock.evaluate((element) => ({
-			shown: Date.parse(
-				`${element.textContent!.replace(" UTC", "Z").replace(" ", "T")}`,
-			),
+			shown: Date.parse(element.getAttribute("datetime") ?? ""),
 			countedMs: (window as unknown as { countedMs: number }).countedMs,
 		}))
 	await page.waitForTimeout(500)

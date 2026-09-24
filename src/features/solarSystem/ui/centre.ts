@@ -1,21 +1,9 @@
 /**
  * What the view is centred on (#15), for the HUD: the centre badge and the
- * centre marker. The user-facing strings of re-centring live here, in one
- * place, until they move into the i18n catalogue (#11).
+ * centre marker. Its strings are `solarSystem.centre.*` in the locales.
  */
 import { bodyById, sun, type Body } from "@/data"
 import { viewMode, type NavigationSlice } from "@/store/navigation"
-
-export const CENTRE_TEXT = {
-	/** aria-label of the badge */
-	region: "Centre of the view",
-	freeView: "Free view",
-	near: (name: string) => `near ${name}`,
-	/** a free centre out between the planets (anchored to the Sun) */
-	interplanetary: "in interplanetary space",
-	centreOn: (name: string) => `Centre on ${name}`,
-	backToOverview: "Back to overview",
-} as const
 
 export interface FreeCentre {
 	/** The body whose neighbourhood the free centre is in. */
@@ -42,9 +30,3 @@ export function freeCentre(anchorId: string | null): FreeCentre | null {
 	if (anchor === undefined) return null
 	return { anchor, interplanetary: anchor.id === sun.id }
 }
-
-/** One line for the free centre: "near Mars", "in interplanetary space". */
-export const freeCentrePlace = (centre: FreeCentre): string =>
-	centre.interplanetary
-		? CENTRE_TEXT.interplanetary
-		: CENTRE_TEXT.near(centre.anchor.name)

@@ -1,5 +1,7 @@
 import { Suspense } from "react"
+import { Group } from "@mantine/core"
 
+import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
 import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
@@ -56,7 +58,10 @@ const SolarSystem = () => {
 				</div>
 				<CentreBadgePanel />
 				<div className={`${classes.panel} ${classes.toggles}`}>
-					<SceneToggles />
+					<Group gap="sm" justify="space-between" wrap="nowrap">
+						<SceneToggles />
+						<LanguageMenu />
+					</Group>
 				</div>
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />

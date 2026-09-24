@@ -1,14 +1,11 @@
 import { Button } from "@mantine/core"
 import { IconFocusCentered } from "@tabler/icons-react"
 
+import { useI18n } from "@/i18n"
+import { useBodyName } from "@/i18n/bodies"
 import { useSimStore } from "@/store/sim"
 
-import {
-	CENTRE_TEXT,
-	freeCentre,
-	freeCentreId,
-	freeCentrePlace,
-} from "./centre"
+import { freeCentre, freeCentreId } from "./centre"
 
 import classes from "./CentreBadge.module.css"
 
@@ -19,23 +16,32 @@ import classes from "./CentreBadge.module.css"
  * body or the overview is at the centre (the picker names it then).
  */
 const CentreBadge = () => {
+	const { t } = useI18n()
+	const name = useBodyName()
 	const centre = freeCentre(useSimStore(freeCentreId))
 	const setFocus = useSimStore((state) => state.setFocus)
 	const overview = useSimStore((state) => state.overview)
 	if (centre === null) return null
 	const { anchor, interplanetary } = centre
+	const body = name(anchor.id)
 
 	return (
 		<section
 			className={classes.root}
-			aria-label={CENTRE_TEXT.region}
+			aria-label={t("solarSystem.centre.label")}
 			role="status"
 			data-testid="centre-badge"
 		>
 			<IconFocusCentered className={classes.icon} size={20} aria-hidden />
 			<span className={classes.text}>
-				<span className={classes.title}>{CENTRE_TEXT.freeView}</span>
-				<span className={classes.place}>{freeCentrePlace(centre)}</span>
+				<span className={classes.title}>
+					{t("solarSystem.centre.freeView")}
+				</span>
+				<span className={classes.place}>
+					{interplanetary
+						? t("solarSystem.centre.interplanetary")
+						: t("solarSystem.centre.near", { body })}
+				</span>
 			</span>
 			<Button
 				className={classes.action}
@@ -45,8 +51,8 @@ const CentreBadge = () => {
 				onClick={() => (interplanetary ? overview() : setFocus(anchor.id))}
 			>
 				{interplanetary
-					? CENTRE_TEXT.backToOverview
-					: CENTRE_TEXT.centreOn(anchor.name)}
+					? t("solarSystem.overview")
+					: t("solarSystem.centre.centreOn", { body })}
 			</Button>
 		</section>
 	)

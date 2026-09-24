@@ -2,11 +2,10 @@ import { useEffect } from "react"
 import { ActionIcon, Tooltip } from "@mantine/core"
 import { IconHome2 } from "@tabler/icons-react"
 
+import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
 
 import { hasModifier, isEditableTarget } from "./keyboard"
-
-const LABEL = "Back to overview"
 
 /**
  * Escape is the way out from anywhere; an open dropdown or a text field keeps
@@ -31,14 +30,16 @@ const OverviewButton = () => {
 		return () => window.removeEventListener("keydown", handleKeyDown, true)
 	}, [])
 	const reset = useSimStore((state) => state.reset)
+	const { t } = useI18n()
+	const label = t("solarSystem.overview")
 
 	return (
-		<Tooltip label={LABEL}>
+		<Tooltip label={label}>
 			<ActionIcon
 				variant="subtle"
 				color="gray"
 				size="lg"
-				aria-label={LABEL}
+				aria-label={label}
 				aria-keyshortcuts="Escape"
 				onClick={reset}
 			>

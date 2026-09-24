@@ -1,8 +1,11 @@
 import { FC, useState } from "react"
 import { Box, Menu } from "@mantine/core"
 import type { SolarDictionaryItem } from "@/data/solarDictionary"
+import { useI18n } from "@/i18n"
+import { useBodyName } from "@/i18n/bodies"
 import { getTypedKeys } from "@/lib/getTypedKeys"
 import type { Texture } from ".."
+import { dictionaryBodyId } from "../utils/bodyId"
 import classes from "./Navbar.module.css"
 
 export type NavbarProps = {
@@ -21,6 +24,8 @@ const Navbar: FC<NavbarProps> = ({
 	solarDict,
 }) => {
 	const [openMenu, setOpenMenu] = useState(false)
+	const { t } = useI18n()
+	const bodyName = useBodyName()
 	return (
 		<Box className={classes.base}>
 			{solarDict.map((entity, i) => {
@@ -38,11 +43,18 @@ const Navbar: FC<NavbarProps> = ({
 						closeOnItemClick={false}
 					>
 						<Menu.Target>
-							<Box className={classes.menuTarget} mod={{ active: isActive }} />
+							<Box
+								className={classes.menuTarget}
+								mod={{ active: isActive }}
+								role="button"
+								aria-label={t("dictionary.pick", {
+									name: bodyName(dictionaryBodyId(entity)),
+								})}
+							/>
 						</Menu.Target>
 
 						<Menu.Dropdown>
-							<Menu.Label>Available Textures</Menu.Label>
+							<Menu.Label>{t("dictionary.textures.label")}</Menu.Label>
 							<Menu.Divider />
 
 							{(entity.textures ? getTypedKeys(entity.textures) : [])
@@ -57,7 +69,7 @@ const Navbar: FC<NavbarProps> = ({
 											mod={{ active }}
 											my={5}
 										>
-											{texture}
+											{t(`dictionary.textures.${texture}`)}
 										</Menu.Item>
 									)
 								})}

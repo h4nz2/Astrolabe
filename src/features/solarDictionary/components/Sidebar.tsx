@@ -2,24 +2,15 @@ import { FC, useEffect, useRef } from "react"
 import { Box, Text } from "@mantine/core"
 import gsap from "gsap"
 import { blurUpIn } from "../keyframes/blurUpIn"
+import type { SidebarFact } from "../utils/getSidebarLabels"
 import classes from "./Sidebar.module.css"
 
-export type SidebarLabel = { [key: string]: [string, string | null] }
-
 export type StageLabelProps = {
-	labels: SidebarLabel[]
+	/** Translated, locale-formatted facts (utils/getSidebarLabels.ts). */
+	facts: SidebarFact[]
 }
 
-const formatTextNumbers = (value?: string | number | null) =>
-	value
-		?.toString()
-		.split(" ")
-		.map((str) =>
-			Number(str) ? new Intl.NumberFormat().format(Number(str)) : str,
-		)
-		.join(" ")
-
-const Sidebar: FC<StageLabelProps> = ({ labels }) => {
+const Sidebar: FC<StageLabelProps> = ({ facts }) => {
 	const textRefs = useRef<HTMLElement[]>([])
 	const textRef = (el: HTMLElement | null) => {
 		if (el && !textRefs.current.includes(el)) textRefs.current.push(el)
@@ -36,42 +27,36 @@ const Sidebar: FC<StageLabelProps> = ({ labels }) => {
 				stagger: 0.025,
 			},
 		)
-	}, [labels])
+	}, [facts])
 
 	return (
 		<Box className={classes.base}>
-			{labels.map((label) =>
-				Object.entries(label).map(([label, [text, extra]], i) =>
-					text ? (
-						<Box key={i}>
-							<Box ref={textRef} className={classes.label}>
-								<Box className={classes.littleBar} />
-								{label}
-								<Box className={classes.littleBar} />
-							</Box>
+			{facts.map(({ key, label, value, extra }) => (
+				<Box key={key}>
+					<Box ref={textRef} className={classes.label}>
+						<Box className={classes.littleBar} />
+						{label}
+						<Box className={classes.littleBar} />
+					</Box>
 
-							<Text
-								ref={textRef}
-								className={
-									/name/i.test(label)
-										? `${classes.text} ${classes.largeText}`
-										: classes.text
-								}
-							>
-								{formatTextNumbers(text)}
-								{extra ? (
-									<>
-										<br />
-										<span className={classes.extra}>
-											{formatTextNumbers(extra)}
-										</span>
-									</>
-								) : null}
-							</Text>
-						</Box>
-					) : null,
-				),
-			)}
+					<Text
+						ref={textRef}
+						className={
+							key === "name"
+								? `${classes.text} ${classes.largeText}`
+								: classes.text
+						}
+					>
+						{value}
+						{extra ? (
+							<>
+								<br />
+								<span className={classes.extra}>{extra}</span>
+							</>
+						) : null}
+					</Text>
+				</Box>
+			))}
 		</Box>
 	)
 }
