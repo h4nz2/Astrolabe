@@ -287,8 +287,9 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - Markers: one `Points` layer (4 px round dots, no depth test) so nothing vanishes at true scale; a dot hides once its
   body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). Picking is angular
   (10 px), planets win over moons. `showMarkers` off hides and unpicks them.
-- Interaction: click calls `setFocus`, hover sets `hoverId`; a tap selects, a drag (`scene/tap.ts`) does not. Labels:
-  planets always, moons only within the focused family.
+- Interaction: click calls `setFocus`, hover sets `hoverId`; a tap selects, a drag (`scene/tap.ts`) does not.
+  `scene/HoverCursor.tsx` shows a pointer over click targets (`isClickTarget`: any body but the focus once it is also
+  selected, which fills the view up close). Labels: planets always, moons only within the focused family.
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button. Panning is behind
@@ -298,4 +299,4 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px). Escape and the overview button call `reset()`.
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `SimClock`, lights, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, later `Effects`) and the HUD.
+  `SimClock`, `HoverCursor`, lights, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, later `Effects`) and the HUD.

@@ -232,6 +232,23 @@ test("a click selects, a drag that ends on a body does not", async ({
 	await expectHealthy(page, "focused", "sun")
 })
 
+test("the cursor turns into a pointer over a body a click would focus", async ({
+	page,
+}) => {
+	await ready(page)
+	const canvas = page.locator("canvas").first()
+	await page.mouse.move(100, 360)
+	await expect(canvas).toHaveCSS("cursor", "auto")
+	// in the overview the Sun sits in the middle of the screen
+	await page.mouse.move(640, 360, { steps: 4 })
+	await expect(canvas).toHaveCSS("cursor", "pointer")
+
+	// focused and selected, the Sun is no click target any more
+	await page.mouse.click(640, 360)
+	await expect.poll(async () => (await state(page)).selectedId).toBe("sun")
+	await expect(canvas).toHaveCSS("cursor", "auto")
+})
+
 test.describe("touch and trackpad", () => {
 	test.use({ hasTouch: true })
 

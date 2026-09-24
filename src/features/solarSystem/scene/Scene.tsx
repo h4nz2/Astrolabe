@@ -14,6 +14,7 @@ import Bodies from "../bodies/Bodies"
 import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
+import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
 import SimClock from "./SimClock"
@@ -49,6 +50,7 @@ function Scene() {
 			<SimFrameContext.Provider value={frame}>
 				<ScaleSync />
 				<SimClock />
+				<HoverCursor />
 				<ambientLight intensity={AMBIENT_INTENSITY} />
 				<Suspense fallback={null}>
 					<Bodies />
