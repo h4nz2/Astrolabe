@@ -21,7 +21,7 @@
 	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
 	grid-template-rows: auto minmax(0, 1fr) auto auto;
 	grid-template-areas:
-		"picker . toggles"
+		"picker centre toggles"
 		". . ."
 		"info info info"
 		"time time time";
@@ -50,6 +50,15 @@
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
+	min-width: 0;
+}
+
+/* the free centre (#15): what the view orbits and the way back */
+.centre {
+	grid-area: centre;
+	justify-self: center;
+	align-self: start;
+	max-width: 100%;
 	min-width: 0;
 }
 
@@ -91,7 +100,7 @@
 	.hud {
 		grid-template-rows: auto minmax(0, 1fr) auto;
 		grid-template-areas:
-			"picker . toggles"
+			"picker centre toggles"
 			". . ."
 			"info time .";
 	}
@@ -101,10 +110,11 @@
 @media (max-width: 599px) {
 	.hud {
 		grid-template-columns: minmax(0, 1fr);
-		grid-template-rows: auto auto minmax(0, 1fr) auto;
+		grid-template-rows: auto auto auto minmax(0, 1fr) auto;
 		grid-template-areas:
 			"picker"
 			"toggles"
+			"centre"
 			"."
 			"time";
 		gap: 0.5rem;
@@ -113,6 +123,7 @@
 
 	.picker,
 	.toggles,
+	.centre,
 	.time {
 		justify-self: stretch;
 	}

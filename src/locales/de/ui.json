@@ -131,7 +131,8 @@
 			"orbits": "Umlaufbahnen",
 			"labels": "Beschriftungen",
 			"moons": "Monde",
-			"markers": "Markierungen"
+			"markers": "Markierungen",
+			"alwaysLit": "Immer beleuchtet"
 		},
 		"scale": {
 			"label": "Maßstab",
@@ -212,6 +213,16 @@
 			"rotationUnknown": "unbekannt",
 			"retrograde": "{period}, rückläufig",
 			"retrograde@simple": "{period}, dreht sich rückwärts"
+		},
+		"centre": {
+			"label": "Mitte der Ansicht",
+			"freeView": "Freie Ansicht",
+			"freeView@simple": "Frei im Weltraum",
+			"near": "in der Nähe von {body}",
+			"interplanetary": "im interplanetaren Raum",
+			"interplanetary@simple": "draußen zwischen den Planeten",
+			"centreOn": "{body} in die Mitte",
+			"centreOn@simple": "Zurück zu {body}"
 		}
 	}
 }

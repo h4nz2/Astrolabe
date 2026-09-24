@@ -2,6 +2,8 @@
  * The solar system Canvas (docs/ARCHITECTURE.md, "Rendering"). Creates the
  * SimFrame once and shares it below; SimClock is the only writer, everything
  * else reads it in its own useFrame. Effects (Bloom) arrive in Phase 6.
+ * No three.js lights: the Sun lights every body through the sunlight model
+ * (../lighting, docs/ARCHITECTURE.md, "Lighting").
  */
 import { Suspense, useMemo } from "react"
 import { Canvas } from "@react-three/fiber"
@@ -22,7 +24,6 @@ import SimClock from "./SimClock"
 import { SimFrameContext, createSimFrame } from "./simFrame"
 
 export const SCENE_BACKGROUND = "#0b0d12"
-export const AMBIENT_INTENSITY = 0.05
 
 function Scene() {
 	const frame = useMemo(
@@ -53,7 +54,6 @@ function Scene() {
 				<ScaleTransition />
 				<SimClock />
 				<HoverCursor />
-				<ambientLight intensity={AMBIENT_INTENSITY} />
 				<Suspense fallback={null}>
 					<Bodies />
 				</Suspense>

@@ -152,7 +152,7 @@ describe("urlSync helpers", () => {
 		).toEqual({ focus: "jupiter", sel: "io", cam: "-30_12.5_2.5" })
 		// the home camera is the default and stays out of the URL
 		expect(search({ shot: HOME_SHOT }).cam).toBeUndefined()
-		// a point in space is written as its anchor for now
+		// a point in space: its anchor in `focus`, its offset in `at` (pointView.test.ts)
 		expect(
 			search({
 				view: { kind: "point", anchorId: "mars", offsetKm: [1, 2, 3] },
