@@ -6,7 +6,11 @@ import {
 	Tooltip,
 } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
-import { IconPlayerPause, IconPlayerPlay } from "@tabler/icons-react"
+import {
+	IconPlayerPause,
+	IconPlayerPlay,
+	IconPlayerPlayFilled,
+} from "@tabler/icons-react"
 
 import { isoMinuteUTC, useI18n } from "@/i18n"
 import { jdToDate } from "@/sim"
@@ -19,16 +23,25 @@ import {
 	isEditableTarget,
 	useWindowKeydown,
 } from "./keyboard"
-import { stepWarp, warpLabel } from "./warp"
+import TimeTravel from "./TimeTravel"
+import TooFastHint from "./TooFastHint"
+import {
+	directionOf,
+	stepWarp,
+	warpLabel,
+	withDirection,
+	type Direction,
+} from "./warp"
 
 import classes from "./TimeControls.module.css"
 
-/** Below this width the seven presets no longer fit in a row and become a Select. */
-const COMPACT_QUERY = "(max-width: 599px)"
+/** Below this width the speed presets no longer fit in a row and become a Select. */
+const COMPACT_QUERY = "(max-width: 719px)"
 
 /**
- * Space toggles pause, "+" / "-" step through the warp presets. Text fields
- * keep every key; buttons keep Space (they toggle themselves when focused).
+ * Space toggles pause, "+" / "-" step to the next faster / slower preset in
+ * the current direction. Text fields keep every key; buttons keep Space (they
+ * toggle themselves when focused).
  */
 const handleKeyDown = (event: KeyboardEvent): void => {
 	if (hasModifier(event) || isEditableTarget(event.target)) return
@@ -54,6 +67,13 @@ const handleKeyDown = (event: KeyboardEvent): void => {
 	}
 }
 
+/** Runs the clock in `direction` at the current speed, un-pausing it. */
+const play = (direction: Direction): void => {
+	const { timeWarp, setTimeWarp, setPaused } = useSimStore.getState()
+	setTimeWarp(withDirection(timeWarp, direction))
+	setPaused(false)
+}
+
 /**
  * The simulation clock in the active locale's date format, with the ISO
  * instant in `dateTime`; its own component so the ~10 Hz updates re-render nothing else.
@@ -69,57 +89,139 @@ const SimDateTime = () => {
 	)
 }
 
-/** Play/pause, the warp presets, the current UTC date and a jump to the wall clock. */
-const TimeControls = () => {
+/**
+ * Reverse, pause and play as one group with exactly one of them pressed, so
+ * the state of the clock reads at a glance.
+ */
+const Transport = () => {
 	const paused = useSimStore((state) => state.paused)
-	const timeWarp = useSimStore((state) => state.timeWarp)
+	const direction = useSimStore((state) => directionOf(state.timeWarp))
 	const togglePause = useSimStore((state) => state.togglePause)
+	const { t } = useI18n()
+
+	const reversing = !paused && direction === -1
+	const playing = !paused && direction === 1
+	return (
+		<ActionIcon.Group aria-label={t("solarSystem.time.controls")}>
+			<Tooltip label={t("solarSystem.time.reverseHint")} openDelay={400}>
+				<ActionIcon
+					variant={reversing ? "filled" : "default"}
+					color="orange"
+					size="lg"
+					aria-label={t("solarSystem.time.reverse")}
+					aria-pressed={reversing}
+					onClick={() => play(-1)}
+				>
+					{reversing ? (
+						<IconPlayerPlayFilled size={18} className={classes.flipped} />
+					) : (
+						<IconPlayerPlay size={18} className={classes.flipped} />
+					)}
+				</ActionIcon>
+			</Tooltip>
+			<Tooltip label={t("solarSystem.time.pauseHint")} openDelay={400}>
+				<ActionIcon
+					variant={paused ? "filled" : "default"}
+					color="orange"
+					size="lg"
+					aria-label={t("solarSystem.time.pause")}
+					aria-pressed={paused}
+					onClick={togglePause}
+				>
+					<IconPlayerPause size={18} />
+				</ActionIcon>
+			</Tooltip>
+			<Tooltip label={t("solarSystem.time.playHint")} openDelay={400}>
+				<ActionIcon
+					variant={playing ? "filled" : "default"}
+					color="orange"
+					size="lg"
+					aria-label={t("solarSystem.time.play")}
+					aria-pressed={playing}
+					onClick={() => play(1)}
+				>
+					{playing ? (
+						<IconPlayerPlayFilled size={18} />
+					) : (
+						<IconPlayerPlay size={18} />
+					)}
+				</ActionIcon>
+			</Tooltip>
+		</ActionIcon.Group>
+	)
+}
+
+/**
+ * The speed presets, slowest first: each step multiplies the speed, so the
+ * row is a logarithmic scale. They set the speed only; the direction stays.
+ */
+const SpeedPresets = () => {
+	const timeWarp = useSimStore((state) => state.timeWarp)
 	const setTimeWarp = useSimStore((state) => state.setTimeWarp)
-	const setNow = useSimStore((state) => state.setNow)
 	const compact = useMediaQuery(COMPACT_QUERY, false, {
 		getInitialValueInEffect: false,
 	})
-	useWindowKeydown(handleKeyDown)
 	const i18n = useI18n()
 	const { t } = i18n
 
-	// a warp from the URL that is no preset still shows up as the selected item
-	const values = WARP_PRESETS.map((preset) => preset.value)
-	if (!values.includes(timeWarp)) values.push(timeWarp)
+	const speed = Math.abs(timeWarp)
+	const direction = directionOf(timeWarp)
+	// a speed from the URL that is no preset still shows up as the selected item
+	const values = [...WARP_PRESETS]
+	if (!values.includes(speed)) values.push(speed)
 	const items = values.map((value) => ({
 		label: warpLabel(value, i18n),
 		value,
 	}))
+	const choose = (value: number) => setTimeWarp(withDirection(value, direction))
+
+	return compact ? (
+		<Select
+			size="xs"
+			radius="md"
+			aria-label={t("solarSystem.time.warp.label")}
+			value={String(speed)}
+			onChange={(value) => {
+				if (value !== null) choose(Number(value))
+			}}
+			data={items.map((item) => ({
+				label: item.label,
+				value: String(item.value),
+			}))}
+			allowDeselect={false}
+			comboboxProps={{ shadow: "md" }}
+			className={classes.speedSelect}
+		/>
+	) : (
+		<SegmentedControl<number>
+			size="xs"
+			radius="md"
+			color="orange"
+			aria-label={t("solarSystem.time.warp.label")}
+			value={speed}
+			onChange={choose}
+			data={items}
+		/>
+	)
+}
+
+/**
+ * The time controls (issue #14): reverse / pause / play, the date (a button
+ * that opens the time travel panel), "Now", the speed presets and the
+ * too-fast-to-follow hint.
+ */
+const TimeControls = () => {
+	const setNow = useSimStore((state) => state.setNow)
+	useWindowKeydown(handleKeyDown)
+	const { t } = useI18n()
 
 	return (
 		<div className={classes.root}>
 			<div className={classes.row}>
-				<Tooltip
-					label={
-						paused
-							? t("solarSystem.time.playHint")
-							: t("solarSystem.time.pauseHint")
-					}
-					openDelay={400}
-				>
-					<ActionIcon
-						variant="filled"
-						color="orange"
-						size="lg"
-						radius="xl"
-						aria-label={
-							paused ? t("solarSystem.time.play") : t("solarSystem.time.pause")
-						}
-						onClick={togglePause}
-					>
-						{paused ? (
-							<IconPlayerPlay size={18} />
-						) : (
-							<IconPlayerPause size={18} />
-						)}
-					</ActionIcon>
-				</Tooltip>
-				<SimDateTime />
+				<Transport />
+				<TimeTravel>
+					<SimDateTime />
+				</TimeTravel>
 				<Tooltip label={t("solarSystem.time.nowHint")} openDelay={400}>
 					<Button
 						variant="subtle"
@@ -132,34 +234,9 @@ const TimeControls = () => {
 				</Tooltip>
 			</div>
 			<div className={classes.warp}>
-				{compact ? (
-					<Select
-						size="xs"
-						radius="md"
-						aria-label={t("solarSystem.time.warp.label")}
-						value={String(timeWarp)}
-						onChange={(value) => {
-							if (value !== null) setTimeWarp(Number(value))
-						}}
-						data={items.map((item) => ({
-							label: item.label,
-							value: String(item.value),
-						}))}
-						allowDeselect={false}
-						comboboxProps={{ shadow: "md" }}
-					/>
-				) : (
-					<SegmentedControl<number>
-						size="xs"
-						radius="md"
-						color="orange"
-						aria-label={t("solarSystem.time.warp.label")}
-						value={timeWarp}
-						onChange={setTimeWarp}
-						data={items}
-					/>
-				)}
+				<SpeedPresets />
 			</div>
+			<TooFastHint />
 		</div>
 	)
 }

@@ -137,12 +137,12 @@
 		"time": {
 			"play": "Abspielen",
 			"pause": "Pause",
-			"playHint": "Abspielen (Leertaste)",
+			"playHint": "Zeit vorwärts laufen lassen (Leertaste)",
 			"pauseHint": "Pause (Leertaste)",
 			"now": "Jetzt",
 			"nowHint": "Zur aktuellen Zeit springen",
 			"warp": {
-				"label": "Zeitraffer",
+				"label": "Geschwindigkeit",
 				"realTime": "1x",
 				"factor": "{factor}x",
 				"minute": "{count, plural, one {# Min./s} other {# Min./s}}",
@@ -151,6 +151,76 @@
 				"week": "{count, plural, one {# Woche/s} other {# Wochen/s}}",
 				"month": "{count, plural, one {# Monat/s} other {# Monate/s}}",
 				"year": "{count, plural, one {# Jahr/s} other {# Jahre/s}}"
+			},
+			"reverse": "Rückwärts",
+			"reverseHint": "Zeit rückwärts laufen lassen",
+			"controls": "Abspielen, anhalten oder rückwärts",
+			"tooFast": "{body} umrundet {parentId, select, sun {die Sonne} other {{parent}}} {count, plural, one {# Mal} other {# Mal}} pro Sekunde – zu schnell für den Bildschirm, darum kann die Bewegung springen oder sogar rückwärts wirken.",
+			"tooFast@simple": "{body} saust {count, plural, one {# Mal} other {# Mal}} pro Sekunde um {parentId, select, sun {die Sonne} other {{parent}}}! Das ist zu schnell, um es richtig zu sehen.",
+			"travel": {
+				"open": "Zu einem Datum reisen",
+				"title": "Zeitreise",
+				"moments": "Momente",
+				"pickDate": "Datum wählen",
+				"arrival": "Bei der Ankunft hält die Zeit an. Mit Abspielen geht es weiter.",
+				"range": "Jeder Tag vom Jahr {first} bis {last}. Ankunft ist um 12 Uhr (UTC).",
+				"close": "Schließen",
+				"calendar": {
+					"nextMonth": "Nächster Monat",
+					"previousMonth": "Vorheriger Monat",
+					"nextYear": "Nächstes Jahr",
+					"previousYear": "Vorheriges Jahr",
+					"nextDecade": "Nächstes Jahrzehnt",
+					"previousDecade": "Vorheriges Jahrzehnt",
+					"monthLevel": "Anderen Monat wählen",
+					"yearLevel": "Anderes Jahr wählen"
+				}
+			},
+			"moments": {
+				"galileoMoons": {
+					"name": "Galilei sieht die Jupitermonde",
+					"description": "Die ersten Monde, die je bei einem anderen Planeten entdeckt wurden."
+				},
+				"uranusFound": {
+					"name": "Uranus wird entdeckt",
+					"description": "Wilhelm Herschel findet den ersten Planeten, den man in der Antike nicht kannte."
+				},
+				"neptuneFound": {
+					"name": "Neptun wird entdeckt",
+					"description": "Gefunden genau dort, wo ihn die Mathematik vorhergesagt hatte."
+				},
+				"sputnik": {
+					"name": "Sputnik 1 startet",
+					"description": "Der erste künstliche Satellit beginnt das Raumfahrtzeitalter."
+				},
+				"moonLanding": {
+					"name": "Erste Mondlandung",
+					"description": "Apollo 11 setzt auf dem Mond auf."
+				},
+				"voyagerLaunch": {
+					"name": "Voyager 2 bricht auf",
+					"description": "Jupiter, Saturn, Uranus und Neptun stehen günstig für eine große Rundreise – das gibt es nur etwa alle 175 Jahre."
+				},
+				"voyagerNeptune": {
+					"name": "Voyager 2 erreicht Neptun",
+					"description": "Zwölf Jahre nach dem Start: der einzige Besuch, den Neptun je hatte."
+				},
+				"marsClosest": {
+					"name": "Mars so nah wie nie",
+					"description": "Mars kommt der Erde näher als seit fast 60.000 Jahren. Die Erde steht zwischen Sonne und Mars."
+				},
+				"venusTransit": {
+					"name": "Venustransit",
+					"description": "Venus zieht genau zwischen Sonne und Erde vorbei."
+				},
+				"greatConjunction": {
+					"name": "Die große Konjunktion",
+					"description": "Von der Erde aus berühren sich Jupiter und Saturn am Himmel fast."
+				},
+				"nextVenusTransit": {
+					"name": "Der nächste Venustransit",
+					"description": "Das nächste Mal, dass Venus vor der Sonne vorbeizieht. Wird es jemand in diesem Raum erleben?"
+				}
 			}
 		},
 		"info": {
