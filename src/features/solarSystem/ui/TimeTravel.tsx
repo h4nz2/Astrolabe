@@ -90,6 +90,8 @@ const DayPicker = ({ onTravel }: { onTravel: () => void }) => {
 				minDate={FIRST_DAY}
 				maxDate={LAST_DAY}
 				firstDayOfWeek={firstDayOfWeek(formatLocale)}
+				// which days count as the weekend differs by country; none are marked
+				weekendDays={[]}
 				{...labels}
 				ariaLabels={{
 					nextMonth: t("solarSystem.time.travel.calendar.nextMonth"),

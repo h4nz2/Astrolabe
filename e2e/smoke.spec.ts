@@ -93,7 +93,9 @@ test("a solar system deep link seeds the simulation and the HUD writes back to t
 
 	// Space pauses, which pins the simulation time into the URL
 	await page.keyboard.press("Space")
-	await expect(page.getByRole("button", { name: "Play" })).toBeVisible()
+	await expect(
+		page.getByRole("button", { name: "Pause", pressed: true }),
+	).toBeVisible()
 	await expect(page).toHaveURL(/[?&]t=\d+(\.\d+)?(&|$)/)
 })
 
