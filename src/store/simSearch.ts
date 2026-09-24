@@ -1,5 +1,5 @@
 /**
- * Search params of `/solar_system?focus=io&t=<jd>&warp=<n>`.
+ * Search params of `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>`.
  *
  * Kept free of app imports (only zod) because the route module that validates
  * the URL is loaded eagerly with the route tree; the store and the data stay in
@@ -20,8 +20,12 @@ const urlNumber = (value: unknown): unknown =>
 		: undefined
 
 export const simSearchSchema = z.object({
-	// body id; unknown ids are ignored when applied (see urlSync.ts)
+	// focused body id (absent: the overview); unknown ids are ignored when applied (see urlSync.ts)
 	focus: z.string().optional().catch(undefined),
+	// selected body id when it is not the focused body
+	sel: z.string().optional().catch(undefined),
+	// camera around the view, `azimuth_elevation_distance` (see formatShot in navigation.ts)
+	cam: z.string().optional().catch(undefined),
 	// simulation time as a Julian Date (zod 4 already rejects NaN and +-Infinity)
 	t: z.preprocess(urlNumber, z.coerce.number().optional()).catch(undefined),
 	// simulated seconds per real second; negative runs the clock backwards,

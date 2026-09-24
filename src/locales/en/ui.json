@@ -120,6 +120,7 @@
 		}
 	},
 	"solarSystem": {
+		"overview": "Back to overview",
 		"picker": {
 			"label": "Focus body",
 			"placeholder": "Focus a body…",

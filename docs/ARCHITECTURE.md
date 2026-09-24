@@ -53,14 +53,16 @@ src/data/                    bodies.json, schema.ts (zod), index.ts (typed looku
 src/sim/                     pure simulation code (no React, no three.js objects): units.ts, time.ts, clock.ts, kepler.ts, positions.ts,
                              rotation.ts, scale.ts (the scale engine, see Scale), index.ts (barrel, import from "@/sim");
                              testing/ephemeris.ts holds the astronomy-engine helpers that only the tests import
-src/store/                   sim.ts (the simulation store), scale.ts (the active scale, see Scale), simSearch.ts (zod schema of the
+src/store/                   sim.ts (the simulation store), navigation.ts (selection and the camera's view, a slice of
+                             the simulation store, see Navigation), scale.ts (the active scale, see Scale), simSearch.ts (zod schema of the
                              /solar_system search params; only zod, so the eagerly loaded route chunk stays lean), urlSync.ts
                              (store <-> URL hook, see Store)
 src/features/hero/           landing page (existing, ported)
 src/features/solarDictionary/ dictionary (existing, ported)
 src/features/solarSystem/    the 3D solar system: index.tsx (page), scene/ (Scene, SimClock, ScaleSync, simFrame, Markers, useThrottledSimTime),
-                             bodies/ (Bodies, BodyMesh, orientation, OrbitLine, OrbitLines), camera/ (CameraRig, framing),
-                             ui/ (TimeControls, SceneToggles, FocusPicker, BodyInfo + warp/focusCycle/keyboard helpers)
+                             bodies/ (Bodies, BodyMesh, orientation, OrbitLine, OrbitLines), camera/ (CameraRig, director,
+                             framing, pose, profiles, input, debugHandle), ui/ (TimeControls, SceneToggles, FocusPicker,
+                             OverviewButton, BodyInfo + warp/focusCycle/keyboard helpers); scene/tap.ts (tap vs drag)
 src/GSAPAnimation/ src/hooks/ src/primitives/ src/utils/   shared bits (existing)
 public/assets/textures/      textures (pruned: no PSD/JP2, no byte-identical duplicates, no *_previous/copy/_1/_2 leftovers,
                              no dwarf-planet/asteroid maps). Unreferenced tiered variants (moon_2k/4k, earth_*_10k,
@@ -323,20 +325,91 @@ the surface).
 - `scene/ScaleSync.tsx` (inside the Canvas, renders nothing, subscribes without re-rendering) pushes the store into the
   SimFrame (`setSimFrameScale`) and mirrors the preset onto the canvas as `data-scale-preset` (`custom` for any other
   mix) for tests and tooling.
-- Camera: when the scale changes, `followFocusRadius` (`camera/framing.ts`, run in CameraRig's `useFrame(cb, -1)`)
-  scales the camera distance with the focus's drawn radius (`rescaledDistance`), so the focus keeps its size on screen
-  while everything else moves to where the new scale puts it: from the Sun, switching to true scale sends the planets
-  out of the frame and leaves the Sun alone, which is the lesson.
+- Camera: when the scale changes, the camera director (`followScale`, see Navigation) scales the camera distance with
+  the view's default framing (the focus's drawn radius; for the overview the drawn planetary system), so what is framed
+  keeps its size on screen while everything else moves to where the new scale puts it: from the Sun, switching to true
+  scale sends the planets out of the frame and leaves the Sun alone, which is the lesson. A transit in flight re-reads
+  its arrival distance every frame, so a scale change mid-flight lands on the new framing.
 - #25 (the basketball walk) needs no engine: it is the true values times one uniform factor.
+
+## Navigation: selection and the camera (`src/store/navigation.ts`, `features/solarSystem/camera`; issue #10)
+
+One owner of the camera. Feature code asks the store for a view and never touches the camera, the controls or the render
+origin; the camera director is the only code that does (an ESLint `no-restricted-imports` rule keeps drei's camera
+controls out of `features/solarSystem` outside `camera/`). Read the camera, never write it: `window.__astrolabe.camera()`
+(below) for tooling and tests.
+
+State (the navigation slice, composed into `useSimStore`, so `useSimStore((s) => s.focusId)` keeps working):
+
+```
+selectedId: string | null  the selection: drives info panels, labels, the URL; never moves the camera by itself
+view: View                 where the camera is, or is heading while `transition` is set:
+                             { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
+                           (a point is a pivot in empty space, anchored to a body so it keeps its place in that body's
+                           neighbourhood; its offset is in display km)
+focusId: string            the body the view is centred on: the Sun for the overview, the anchor of a point. The moon
+                           family rule and "always show the focus" follow it
+shot: CameraShot | null    the camera around the view as it last came to rest (published by the director on rest and on
+                           arrival; a complete requested shot at once): { azimuthDeg, elevationDeg, distance } with the
+                           distance a multiple of the view's default framing, so a shot survives scale presets and screens
+transition: Transition | null   { id, view, shot (partial), durationMs (null = automatic, 0 = jump), profile, handedOver }
+sequence: Sequence | null  { steps, index, phase: moving | holding | waiting | interrupted, holdUntil, transitionId }
+viewMode(state)            "overview" | "focused" | "free" | "transit": the view states
+```
+
+Actions: `select(id | null)`; `setFocus(id)` (the click gesture: select + focus; a no-op for the current focus or
+destination); `focus(id, request?)`; `overview(request?)` (the home shot unless the request says otherwise);
+`goTo(view, request?)`; `jumpTo(view, shot?)`; `reset()` (the way out: stops any sequence, clears the selection, flies
+to the overview; the director jumps instead when the camera is broken); `skip()` (finishes the transition, or jumps to
+the last stop of a sequence); sequences: `playSequence(steps, startAt?)`, `goToStep(i)`, `nextStep()`,
+`resumeSequence()`, `stopSequence()`. A request (`ViewRequest`) carries `shot` (a partial `CameraShot`: a missing
+direction keeps the current one, a missing distance frames at 1x), `durationMs` and `profile`. A `SequenceStep` is a view
+plus a request plus `holdMs` (omitted: wait for `nextStep()`, the presenter's pace). Invalid views and unknown bodies are
+ignored everywhere. Camera-rig callbacks, not for features: `settle(id)`, `userInput()`, `publishShot(shot)`,
+`settleAt(view)`, `tickSequence(now)`.
+
+Transitions (`camera/director.ts`, plain TypeScript over camera-controls and the SimFrame, unit-tested frame by frame):
+
+- Every request gets a new transition id; the director starts a move whenever the id changes, always from the camera as
+  it is at that moment (the current pivot, re-anchored to the nearer end of an interrupted move, and the current pose),
+  so a second request, the overview, Escape or a skip mid-flight retargets and never snaps back.
+- Both pivots are re-read every frame (both keep orbiting), so a move ends exactly on the destination's position at
+  arrival. The arrival distance is re-read too (scale changes).
+- User input during a move (camera-controls' `controlstart` / `control`: drag, wheel, pinch) hands the distance and
+  direction over to the user at once while the pivot still glides to the destination on the same schedule: nobody is
+  stranded between two planets. On arrival a handed-over camera that ended inside the body is pushed out to the
+  minimum distance. User input also interrupts an automatic sequence step (moving or holding), not a stop that waits for
+  the presenter; `resumeSequence()` flies back to the stop.
+- Settled: the origin tracks the view's pivot every frame; a scale change rescales the distance (see Scale); a target
+  moved off the origin (a pan) is folded into a pending `point` view without anything moving on screen, and handed to
+  the store (`settleAt`) when the controls come to rest.
+- Broken state: a camera, target or origin that is not finite, or a view of a body that does not exist, is replaced by
+  the overview (`reset()`, applied as a jump). The first frame after mounting always jumps to the store's view.
+- Transit profiles (`camera/profiles.ts`): a profile maps normalized time to a pivot weight, a camera distance and a
+  direction weight; the director applies it. The default `smooth` is van Wijk and Nuij's smooth zoom-and-pan in log
+  space (`camera/pose.ts`, rho 1.6), eased in and out: from the overview it descends with the target already on screen;
+  between distant bodies it backs out until both are in view, crosses and descends. The automatic duration grows with
+  the length of the path (`transitDurationMs`: 0.8 to 3 s). #18's tuned three-phase flight is one more named profile.
+- `CameraSnapshot` (`director.snapshot()`, also `window.__astrolabe.camera()`): mode, running transition id, its
+  duration and progress (#18's readout), origin, target, camera position (display km), distance, azimuth, elevation,
+  finite. `window.__astrolabe` (`camera/debugHandle.ts`, while the solar system is mounted, every build) also holds the
+  store, so the model can be driven from the console and from e2e tests.
+
+Building on it: #15 turns on `PAN_ENABLED`, shows the current centre (`view`, `focusId`) and gives point views a URL
+parameter; #16 is `setFocus` on click plus hover feedback and an exit on empty space (`reset` / `overview`); #18 adds a
+profile and a readout from `snapshot()`; #28 tours and #30 the opening sequence are `playSequence` (cues such as time or
+scale react to `sequence.index`; leaving and coming back is `interrupted` + `resumeSequence`); #29 preset views are
+`goTo(view, { shot })` and saved views are the URL; #31 anchors the pivot with a body view; #33 links a postcard to the
+URL.
 
 ## Floating origin and precision
 
 GPU positions are float32. At Neptune's distance a Sun-centred coordinate is only good to a few hundred km, so the
-render origin is the focus body: `renderPos(b) = toUnits(display(b) - origin)` computed in doubles every frame and written
-to the object's `position`. The origin lives in display space (the focus's DISPLAY position, see Scale), never in true
-km. During a fly-to the origin is a blend between the old and the new focus display positions.
-The camera controls always target (0, 0, 0); only pointer actions that leave the target alone are enabled and every
-focus change re-pins it (see Camera). The canvas uses `gl={{ logarithmicDepthBuffer: true }}`.
+render origin is the camera's pivot: `renderPos(b) = toUnits(display(b) - origin)` computed in doubles every frame and
+written to the object's `position`. The origin lives in display space (the pivot's DISPLAY position, see Scale), never in
+true km. The camera director writes it (see Navigation): the focused body, the Sun in the overview, a point anchored to
+a body, and during a transit a blend of the start and destination pivots, both re-read every frame.
+The camera controls always target (0, 0, 0); a moved target (a pan, #15) is folded back into the pivot by the director. The canvas uses `gl={{ logarithmicDepthBuffer: true }}`.
 Orbit lines are sampled ellipses (256 segments plus one anchor vertex that sits exactly on the body, see Orbit lines
 under the runtime contract) in the parent's frame; the geometry is rebuilt in doubles relative to the current origin
 whenever the origin has moved more than a threshold since the last rebuild, so the part of any orbit near the camera
@@ -348,11 +421,8 @@ never jitters.
 simTimeJD: number          the clock's sample for the current frame (written by tick() and the time actions only)
 timeWarp: number           simulated seconds per real second; negative = backwards; kept while paused
 paused: boolean            clock: SimTimeline (runs at paused ? 0 : timeWarp)   lastTickMs: number | null
-focusId: string            hoverId: string | null
-fly: { fromId: string; toId: string; startedAt: number /* performance.now() */; durationMs: number } | null
-showOrbits, showLabels, showMoons: boolean
-setFocus(id)               unknown id or the current focus: no-op; otherwise sets focusId and a fly record (FLY_DURATION_MS = 1500)
-endFly()                   clears the fly record (the scene calls it once the blend is over)
+hoverId: string | null     showOrbits, showLabels, showMoons: boolean
+...NavigationSlice         selectedId, view, focusId, shot, transition, sequence and their actions (see Navigation)
 setTimeWarp(n), togglePause(), setPaused(b)   re-anchor the clock at performance.now(): nothing moves at the change
 setSimTime(jd)             instant jump (deep links)
 travelTo(jd, durationMs?)  time travel: glides there (clock.glide non-null until the first tick after landing,
@@ -361,7 +431,7 @@ setNow()                   travelTo the wall clock as it will be on arrival
 tick(realMs)               SimClock only: samples the clock into simTimeJD, handles frame gaps, settles a landed glide
                            (every time action ignores non-finite numbers)
 setHover(id), setShowOrbits(b), setShowLabels(b), setShowMoons(b)
-DEFAULT_FOCUS_ID = "sun", WARP_PRESETS (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s)
+WARP_PRESETS (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s)
 ```
 
 Time fields (`simTimeJD`, `timeWarp`, `paused`, `clock`) change only through the actions: a bare `setState` of them
@@ -376,20 +446,24 @@ the clock: `SimClock` writes `simTimeJD` every frame, so React reads it through 
 (`scene/useThrottledSimTime.ts`, `useSyncExternalStore` over a 10 Hz throttled subscription), never through a
 `simTimeJD` selector.
 
-URL: `/solar_system?focus=io&t=<jd>&warp=<n>` mirrors focus, time and warp. `src/store/simSearch.ts` is the zod schema
-the route validates with (`focus` string, `t` number, `warp` non-zero number, negative = backwards; every param `.optional().catch(undefined)`,
+URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>` mirrors the view, the selection, the camera,
+time and warp. `focus` is the focused body (absent: the overview; a point view is written as its anchor until #15 adds a
+parameter for it), `sel` the selection when it is not the focused body (a link with `focus` and no `sel` selects the
+focus), `cam` the camera around the view (`formatShot`: azimuth and elevation to 0.1 degree, the distance as a multiple
+of the view's default framing to 3 significant digits; left out when it is the home shot 0_45_1; malformed values are
+ignored). `src/store/simSearch.ts` is the zod schema the route validates with (`focus`, `sel`, `cam` strings, `t` number, `warp` non-zero number, negative = backwards; every param `.optional().catch(undefined)`,
 so an invalid value is dropped instead of erroring the page; blank and non-numeric values such as `?t=`, `?t=%20`,
 `?t=null` count as absent too, never as 0, which plain `z.coerce` would make of them). `useSimUrlSync()`
 (`src/store/urlSync.ts`) is called exactly once, in a null-rendering `<UrlSync />` that the page renders before
-`<Scene />`: its layout effect seeds the store from the URL (`mountState()`: a jump, `fly: null`; unknown bodies are
-ignored; time through `setTimeWarp`/`setSimTime`, never a bare `setState`; without a `t` the clock is seeded with the wall clock at mount, because the store module may have been
+`<Scene />`: its layout effect seeds the store from the URL (`mountState()` for time and warp, `viewFromSearch()` for the view,
+applied with `jumpTo` and `select`; unknown bodies are ignored; time through `setTimeWarp`/`setSimTime`, never a bare `setState`; without a `t` the clock is seeded with the wall clock at mount, because the store module may have been
 evaluated long before the page appears, by route preloading or an earlier visit, and the clock stands still while the
 scene is unmounted) before the Canvas mounts, so a deep link is framed on its body from the first frame. Afterwards it
 watches the store with `useSimStore.subscribe` (no re-renders at the clock rate) and navigates with `replace: true`:
-focus, warp and pause changes immediately, `t` at most once per second and only while paused or at |warp| <= 60 (a pause
+view, selection, camera shot (published when the camera comes to rest), warp and pause changes immediately, `t` at most once per second and only while paused or at |warp| <= 60 (a pause
 pins `t` at once; at faster warps the last written `t` stays). `t` is rounded to 4 decimals, warp is written as it is
 (so a shared link runs at exactly the speed it was taken at, backwards included; a zero warp is left out), and the defaults
-(`focus=sun`, `warp=1`) are left out of the URL.
+(the overview, the home camera, `warp=1`) are left out of the URL.
 
 ## Rendering (`src/features/solarSystem`)
 
@@ -418,24 +492,28 @@ pins `t` at once; at faster warps the last written `t` stays). `t` is rounded to
   the pointer ray, `pickMarker`); a planet or the Sun inside the radius wins over any moon, however much closer the
   moon's dot is, so clicks work at any distance and a planet's moons never steal its click.
   Labels (Phase 4): planets always; moons only when their parent or a sibling is the focus, capped to the largest N.
-  Clicking a marker, label or mesh sets the focus; hovering sets `hoverId`. A click that dragged more than 4 px is ignored.
-- Camera: drei `CameraControls` (`makeDefault`) with the target fixed at the origin. camera-controls defaults the right
-  button and the two/three-finger gestures to trucking, which would slide the focus body off the origin for good, so
-  `pinTarget()` makes the right button rotate, two fingers dolly/rotate and three fingers nothing, `dollyToCursor` is off,
-  and every focus change calls `setTarget(0, 0, 0)` before framing: no offset ever survives. R is always the focus's
-  drawn radius under the active scale (see Scale), and a scale change rescales the camera distance with it. `minDistance =
-max(1.2 * R, R + 2 * near)` (`minDollyDistance`, so the surface of a sub-kilometre moon stays in front of the near
-  plane at the closest dolly), `maxDistance = toUnits(1e10)`, `smoothTime` 0.4 s. The numbers and the framing rules live
-  in `camera/framing.ts` (pure, unit-tested). The first mount frames the focus from 45 deg above the ecliptic at 40 solar
-  radii (the Sun) or 6 radii (any other body); a later focus change keeps the viewing direction and dollies to 6 radii. Phase 5: the fly-to blends the origin from old to new focus (about 1.5 s, eased) while dollying; until then
-  `SimClock` snaps the origin to the focus and lets the fly record expire.
+  Clicking a marker, label or mesh calls `setFocus` (select and focus); hovering sets `hoverId`. A tap selects, a drag
+  does not (`scene/tap.ts`): the press may travel at most 4 px (mouse), 8 px (pen) or 12 px (touch), measured over its
+  whole path, so a drag that wanders back to where it started is still a drag.
+- Camera: see Navigation. R is always the drawn radius (see Scale). `minDistance = max(1.2 * R, R + 2 * near)`
+  (`minDollyDistance`, so the surface of a sub-kilometre moon stays in front of the near plane at the closest dolly) for
+  the body a view is centred on, `maxDistance = toUnits(1e11)`, `smoothTime` 0.4 s. The numbers and the framing rules
+  live in `camera/framing.ts` (pure, unit-tested): a body is framed from 6 drawn radii (`FRAMING_RADII`), the overview
+  fits the drawn planetary system (the farthest aphelion, times `OVERVIEW_MARGIN` 1.3 so the HUD never covers it) into
+  the narrower field of view, from the home direction (azimuth 0, 45 degrees above the ecliptic). Gestures
+  (`camera/input.ts`): left button / one finger orbit; wheel, two-finger trackpad scroll, touch pinch, trackpad pinch
+  (a ctrl+wheel, turned into a dolly by `pinchAsDolly` because camera-controls would change the field of view instead)
+  and the middle button dolly; `dollyToCursor` off. Panning (right button, two-finger drag, three fingers) is behind
+  `PAN_ENABLED` (off until #15 ships its centre indicator); the director already supports it.
 - Time UI: play/pause, warp presets (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s; a Select below
   600 px, a SegmentedControl above; labels are localized from the value by `ui/warp.ts` (`warpParts`: the largest
   whole unit per second, else "<n>x"; `WARP_PRESETS[].label` is not shown), a non-preset warp from the URL is
   appended), the UTC date in the locale's format inside `<time dateTime="2026-09-24T10:35Z">`, "Now" button
   (glides to the present, see Clock).
-  `BodyInfo` (bottom left, hidden below 600 px) shows the focused body's kind, tagline, radius, period, distance and
-  rotation. The language menu sits in the toggles panel (top right).
+  `BodyInfo` (bottom left, hidden below 600 px) shows the selected body (else the focus): kind, tagline, radius,
+  period, distance and rotation. `OverviewButton` (left of the picker, a home icon, "Back to overview") and Escape
+  (listened to in the capture phase, so nothing can swallow it; ignored in text fields and open dropdowns) call
+  `reset()`. The language menu sits in the toggles panel (top right).
 - Toggles: orbits, labels, moons. Hiding the moons never hides the focus: `isBodyShown(body, state)` (`src/store/sim.ts`)
   is the one rule the meshes, the orbit lines and the markers apply, so a focused moon stays in place (the HUD keeps
   naming it and the arrows keep cycling its siblings, each of which becomes visible as it takes the focus).
@@ -457,7 +535,7 @@ export interface SimFrame {
 	positionsKm: Float64Array        // 3 per body, TRUE world positions in km (scene frame axes), written every frame; physics only
 	displayKm: Float64Array          // 3 per body, DISPLAY positions under the active scale, written every frame; what is drawn
 	displayRadiiKm: Float64Array     // drawn radius per body (display km), rewritten on a scale change
-	originKm: Float64Array           // [x, y, z] render origin in display km (focus body, or fly-to blend)
+	originKm: Float64Array           // [x, y, z] render origin in display km: the camera pivot (camera director)
 	jd: number                       // sim time (Julian Date) at the last update
 	scale: ScaleSettings             // the active scale (change it with setSimFrameScale only)
 	scaleVersion: number             // +1 on every scale change; consumers cache scale-derived geometry on it
@@ -466,7 +544,7 @@ export interface SimFrame {
 	renderRadius(i: number): number  // toUnits(displayRadiiKm[i])
 }
 export function createSimFrame(bodies: readonly Body[], jd?: number, scale?: ScaleSettings): SimFrame   // positions precomputed at jd; scale defaults to TRUE_SCALE
-export function updateSimFrame(frame: SimFrame, jd: number, originIndex: number): void   // SimClock's tick: true, then display positions, then the origin
+export function updateSimFrame(frame: SimFrame, jd: number, originIndex?: number): void   // SimClock's tick: true, then display positions (the origin only when given: tests)
 export function setSimFrameScale(frame: SimFrame, scale: ScaleSettings): void   // ScaleSync's only job
 export const SimFrameContext: React.Context<SimFrame | null>
 export const useSimFrame = (): SimFrame   // throws outside the provider
@@ -475,10 +553,11 @@ export const useSimFrame = (): SimFrame   // throws outside the provider
 - `scene/SimClock.tsx` (rendered inside the Canvas) owns the frame update in `useFrame(cb, -1)` (negative priority runs
   before every other subscriber and keeps R3F automatic rendering on): `tick(performance.now())` through the store
   every frame (samples the clock, see Simulation; a zustand `set` is cheap and selectors whose value did not change do
-  not re-render; the UI reads the clock through `useThrottledSimTime()`, see Store), then `updateSimFrame` (`computePositions`, `originKm` from the
-  focus body; the fly-to blend is Phase 5) and `endFly()` once the fly record's `durationMs` has passed.
-- Every other per-frame consumer (bodies, orbit lines, markers, camera) uses `useFrame(cb)` at the default priority
-  and reads `useSimFrame()`; nobody else advances time or computes positions.
+  not re-render; the UI reads the clock through `useThrottledSimTime()`, see Store), then `updateSimFrame` (true and display positions).
+- The camera director (`camera/CameraRig.tsx` -> `director.ts`) runs at `useFrame(cb, CAMERA_FRAME_PRIORITY)` = -0.5:
+  after SimClock, before everything that draws. It writes `originKm` (the pivot) and updates camera-controls itself.
+- Every other per-frame consumer (bodies, orbit lines, markers) uses `useFrame(cb)` at the default priority
+  and reads `useSimFrame()`; nobody else advances time, computes positions or moves the origin or the camera.
 - Per-frame writes live in exported plain functions that take the objects they mutate as parameters
   (`updateSimFrame`, `updateOrbitBuffers`, `fillMarkers`): the React Compiler rule `react-hooks/immutability`
   (in `recommended-latest`) rejects assignments into hook-returned objects inside `useFrame` callbacks, and no
@@ -515,7 +594,7 @@ export const useSimFrame = (): SimFrame   // throws outside the provider
 - HUD (`ui/`): plain React over the Canvas (absolute-positioned, pointer-events only on the panels):
   `TimeControls` (play/pause, warp presets, current UTC date via `useThrottledSimTime`, "Now" button),
   `SceneToggles` (orbits, labels, moons), `FocusPicker` (Mantine Select grouped by planet, moons largest first,
-  searchable), `BodyInfo` (facts about the focus). All subscribe to the store with selectors; none of them read the SimFrame.
+  searchable), `OverviewButton` (the way out), `BodyInfo` (facts about the selection, else the focus). All subscribe to the store with selectors; none of them read the SimFrame.
 - The page component `index.tsx` renders `<UrlSync />` (first, see Store), then `scene/Scene.tsx` inside a Suspense
   and the HUD; `Scene.tsx` renders the `<Canvas>` described under Rendering with the `SimFrameContext.Provider`
   (one `createSimFrame(bodies, simTimeJD, activeScale)` per Canvas), `ScaleSync`, `SimClock`, lights, `Bodies` (in a Suspense), `OrbitLines`,

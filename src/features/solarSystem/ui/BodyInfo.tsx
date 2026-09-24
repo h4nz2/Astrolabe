@@ -14,12 +14,12 @@ const rotationLabel = (periodHours: number | null, i18n: I18n): string => {
 		: period
 }
 
-/** Compact facts about the focused body (the page layout hides it on phones). */
+/** Compact facts about the selected body, else the focus (the page layout hides it on phones). */
 const BodyInfo = () => {
-	const focusId = useSimStore((state) => state.focusId)
+	const bodyId = useSimStore((state) => state.selectedId ?? state.focusId)
 	const i18n = useI18n()
-	const text = useBodyText(focusId)
-	const body = bodyById.get(focusId)
+	const text = useBodyText(bodyId)
+	const body = bodyById.get(bodyId)
 	if (body === undefined) return null
 	const { t } = i18n
 	const { orbit, rotation } = body

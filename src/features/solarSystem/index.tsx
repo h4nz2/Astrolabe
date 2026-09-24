@@ -8,6 +8,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 import Scene from "./scene/Scene"
 import BodyInfo from "./ui/BodyInfo"
 import FocusPicker from "./ui/FocusPicker"
+import OverviewButton from "./ui/OverviewButton"
 import SceneToggles from "./ui/SceneToggles"
 import TimeControls from "./ui/TimeControls"
 
@@ -36,6 +37,7 @@ const SolarSystem = () => {
 			</Suspense>
 			<div className={classes.hud}>
 				<div className={`${classes.panel} ${classes.picker}`}>
+					<OverviewButton />
 					<FocusPicker />
 				</div>
 				<div className={`${classes.panel} ${classes.toggles}`}>

@@ -120,6 +120,7 @@
 		}
 	},
 	"solarSystem": {
+		"overview": "Zurück zur Übersicht",
 		"picker": {
 			"label": "Himmelskörper im Fokus",
 			"placeholder": "Himmelskörper suchen…",

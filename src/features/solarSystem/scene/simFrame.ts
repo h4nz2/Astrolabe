@@ -37,7 +37,7 @@ export interface SimFrame {
 	readonly displayKm: Float64Array
 	/** Drawn radius per body (display km); rewritten on every scale change. */
 	readonly displayRadiiKm: Float64Array
-	/** [x, y, z] render origin in DISPLAY km (the focus body, or the fly-to blend of display positions). */
+	/** [x, y, z] render origin in DISPLAY km: the camera's pivot, written by the camera director. */
 	readonly originKm: Float64Array
 	/** Simulation time (Julian Date) of the last update. */
 	jd: number
@@ -118,18 +118,20 @@ const refreshDisplay = (frame: SimFrame): void => {
 }
 
 /**
- * One clock tick: true world positions at `jd`, their display positions
- * under the active scale, then the render origin on body `originIndex` (the
- * focus). SimClock is the only caller.
+ * One clock tick: true world positions at `jd` and their display positions
+ * under the active scale (SimClock's call), and the render origin on body
+ * `originIndex` when one is given. In the app the origin is the camera's
+ * pivot, which the camera director writes right after this.
  */
 export function updateSimFrame(
 	frame: SimFrame,
 	jd: number,
-	originIndex: number,
+	originIndex?: number,
 ): void {
 	computePositions(frame.bodies, jd, frame.positionsKm, frame.index)
 	frame.jd = jd
 	refreshDisplay(frame)
+	if (originIndex === undefined) return
 	const o = originIndex * 3
 	frame.originKm[0] = frame.displayKm[o]
 	frame.originKm[1] = frame.displayKm[o + 1]
@@ -140,7 +142,7 @@ export function updateSimFrame(
  * Switches the frame to `scale`: display radii and positions are recomputed
  * at once and `scaleVersion` moves on, so every consumer re-derives its
  * geometry (orbit lines, rings, framing) from the same values. The render
- * origin follows at the next clock tick, which runs before anything draws.
+ * origin follows at the camera director's next tick, before anything draws.
  * A no-op when `scale` is already active. scene/ScaleSync.tsx is the only
  * caller in the app.
  */
