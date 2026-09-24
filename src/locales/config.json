@@ -1,0 +1,5 @@
+{
+	"defaultLocale": "en",
+	"readingLevels": ["simple", "standard", "advanced"],
+	"defaultReadingLevel": "standard"
+}

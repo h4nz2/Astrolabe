@@ -1,0 +1,168 @@
+{
+	"locale": {
+		"name": "Deutsch"
+	},
+	"app": {
+		"name": "Astrolabe",
+		"title": "Astrolabe – unser Sonnensystem",
+		"installName": "Astrolabe – Unser Sonnensystem",
+		"shortName": "Astrolabe",
+		"description": "Visuelles Lexikon und maßstabsgetreues 3D-Modell unseres Sonnensystems"
+	},
+	"i18n": {
+		"menu": {
+			"button": "Sprache und Lesestufe ({code})",
+			"language": "Sprache",
+			"readingLevel": "Lesestufe"
+		},
+		"readingLevel": {
+			"simple": {
+				"name": "Einfach",
+				"description": "8–11 Jahre: kurze Sätze, Vergleiche aus dem Alltag"
+			},
+			"standard": {
+				"name": "Standard",
+				"description": "12–15 Jahre: klare Erklärungen mit den wichtigsten Zahlen"
+			},
+			"advanced": {
+				"name": "Vertieft",
+				"description": "Ab 16 Jahren: Fachbegriffe und mehr Details"
+			}
+		}
+	},
+	"notFound": {
+		"title": "Verloren im All",
+		"text": "An dieser Adresse gibt es nichts.",
+		"back": "Zurück zu den Sternen"
+	},
+	"hero": {
+		"credits": "Mit Liebe gemacht von odi und hrj",
+		"tagline": "Zu den Sternen!",
+		"dictionary": "Lexikon",
+		"solarSystem": "Sonnensystem"
+	},
+	"units": {
+		"approx": "≈ {value}",
+		"au": "{value} AE",
+		"gravity": "{value} m/s²",
+		"kelvin": "{value} K"
+	},
+	"bodies": {
+		"kind": {
+			"star": "Stern",
+			"planet": "Planet",
+			"moon": "Mond",
+			"moonOf": "{parentId, select, earth {Mond der Erde} other {Mond des {parent}}}"
+		},
+		"fallback": {
+			"moonDescription": "{name} ist ein Mond {parentId, select, earth {der Erde} other {des {parent}}}. Er hat einen Durchmesser von etwa {diameter} und umrundet seinen Planeten einmal in {period}.",
+			"moonDescription@simple": "{name} ist einer der Monde, die {parentId, select, earth {die Erde} other {den {parent}}} umkreisen. Er ist etwa {diameter} breit.",
+			"moonDescription@advanced": "{name} umläuft {parentId, select, earth {die Erde} other {den {parent}}} in einem mittleren Abstand von {distance} mit einer Umlaufzeit von {period}. Sein mittlerer Durchmesser beträgt etwa {diameter}."
+		}
+	},
+	"dictionary": {
+		"pick": "{name} anzeigen",
+		"textures": {
+			"label": "Verfügbare Texturen",
+			"base": "Oberfläche",
+			"topo": "Gelände",
+			"specular": "Ozeane",
+			"clouds": "Wolken"
+		},
+		"fact": {
+			"name": "Name",
+			"diameter": "Durchmesser",
+			"lengthOfDay": "Tageslänge",
+			"orbitalPeriod": "Jahreslänge",
+			"gravity": "Schwerkraft",
+			"avgTemp": "Temperatur"
+		},
+		"compare": {
+			"sizeBigger": "{count, plural, one {Die Erde passt # Mal hinein.} other {Die Erde passt # Mal hinein.}}",
+			"sizeBigger@simple": "{count, plural, one {# Erde würde hineinpassen!} other {# Erden würden hineinpassen!}}",
+			"sizeBigger@advanced": "{count, plural, one {Das Volumen entspricht dem der Erde.} other {Das Volumen ist etwa #-mal so groß wie das der Erde.}}",
+			"sizeSmaller": "{count, plural, one {Die Erde ist etwa gleich groß.} other {Die Erde ist etwa #-mal so groß.}}",
+			"sizeSmaller@simple": "{count, plural, one {Genauso groß wie die Erde!} other {# davon würden in die Erde passen!}}",
+			"sizeSmaller@advanced": "{count, plural, one {Die Erde hat dasselbe Volumen.} other {Die Erde hat etwa das #-fache Volumen.}}",
+			"sizeSimilar": "Die Größe ist ähnlich wie die unseres Planeten.",
+			"sizeSimilar@simple": "Fast genauso groß wie die Erde!",
+			"sizeSimilar@advanced": "Das Volumen liegt nahe bei dem der Erde.",
+			"dayLonger": "{days, plural, one {Ein Tag dort dauert # Erdtag.} other {Ein Tag dort dauert # Erdtage.}}",
+			"dayLonger@simple": "{days, plural, one {Ein Tag dort ist so lang wie # Tag auf der Erde!} other {Ein Tag dort ist so lang wie # Tage auf der Erde!}}",
+			"dayLonger@advanced": "{days, plural, one {Von einem Sonnenaufgang zum nächsten vergeht # Erdtag.} other {Von einem Sonnenaufgang zum nächsten vergehen # Erdtage.}}",
+			"dayShorter": "{hours, plural, one {Ein Tag dort dauert nur # Stunde.} other {Ein Tag dort dauert nur # Stunden.}}",
+			"dayShorter@simple": "{hours, plural, one {Ein Tag dort ist schon nach # Stunde vorbei!} other {Ein Tag dort ist schon nach # Stunden vorbei!}}",
+			"dayShorter@advanced": "{hours, plural, one {Ein Sonnentag dauert nur # Stunde, {fraction, number, ::percent} eines Erdtages.} other {Ein Sonnentag dauert nur # Stunden, {fraction, number, ::percent} eines Erdtages.}}",
+			"daySimilar": "Ein Tag dort ist etwa so lang wie auf der Erde.",
+			"daySimilar@simple": "Ein Tag dort ist fast so lang wie ein Tag auf der Erde!",
+			"daySimilar@advanced": "{minutes, plural, one {Der Sonnentag weicht nur um # Minute von dem der Erde ab.} other {Der Sonnentag weicht nur um # Minuten von dem der Erde ab.}}",
+			"yearLonger": "{years, plural, one {Ein Jahr dort dauert # Erdjahr – eine lange Wartezeit auf den nächsten Geburtstag!} other {Ein Jahr dort dauert # Erdjahre – eine lange Wartezeit auf den nächsten Geburtstag!}}",
+			"yearLonger@simple": "{years, plural, one {Du müsstest # Jahr auf deinen nächsten Geburtstag warten!} other {Du müsstest # Jahre auf deinen nächsten Geburtstag warten!}}",
+			"yearLonger@advanced": "{years, plural, one {Die Umlaufzeit beträgt etwa # Erdjahr.} other {Die Umlaufzeit beträgt etwa # Erdjahre.}}",
+			"yearLongerDays": "{days, plural, one {Du würdest # Tag länger auf deinen Geburtstag warten.} other {Du würdest # Tage länger auf deinen Geburtstag warten.}}",
+			"yearLongerDays@simple": "{days, plural, one {Du müsstest # Tag länger auf deinen Geburtstag warten!} other {Du müsstest # Tage länger auf deinen Geburtstag warten!}}",
+			"yearLongerDays@advanced": "{days, plural, one {Das Jahr ist # Tag länger als ein Erdjahr.} other {Das Jahr ist # Tage länger als ein Erdjahr.}}",
+			"yearShorter": "{times, plural, one {Ein Jahr dort dauert nur {period} – das ist # Geburtstag pro Erdjahr.} other {Ein Jahr dort dauert nur {period} – das sind # Geburtstage pro Erdjahr!}}",
+			"yearShorter@simple": "{times, plural, one {Du hättest # Mal pro Erdjahr Geburtstag!} other {Du hättest etwa # Mal pro Erdjahr Geburtstag!}}",
+			"yearShorter@advanced": "{times, plural, one {Die Umlaufzeit beträgt {period}; das entspricht # Umlauf pro Erdjahr.} other {Die Umlaufzeit beträgt {period}; das entspricht # Umläufen pro Erdjahr.}}",
+			"gravityMore": "Du würdest {ratio, number}-mal so viel wiegen wie auf der Erde!",
+			"gravityMore@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort {kg, number} kg wiegen!",
+			"gravityMore@advanced": "Die Schwerkraft an der Oberfläche ist {ratio, number}-mal so stark wie auf der Erde: Dein Gewicht würde steigen, deine Masse bliebe gleich.",
+			"gravitySimilar": "Du würdest etwa gleich viel wiegen wie auf der Erde.",
+			"gravitySimilar@simple": "Du würdest dich genauso schwer fühlen wie auf der Erde.",
+			"gravitySimilar@advanced": "Die Schwerkraft an der Oberfläche weicht um weniger als 5 % von der irdischen ab.",
+			"gravityLess": "Du würdest nur {percent, number, ::percent} deines Gewichts auf der Erde wiegen.",
+			"gravityLess@simple": "Wenn du auf der Erde 30 kg wiegst, würdest du dort nur {kg, number} kg wiegen!",
+			"gravityLess@advanced": "Die Schwerkraft an der Oberfläche beträgt {percent, number, ::percent} der irdischen: Dein Gewicht würde sinken, deine Masse bliebe gleich.",
+			"temperature": "Das sind etwa {celsius, number} °C.",
+			"temperature@simple": "{range, select, hot {Das sind etwa {celsius, number} °C – heißer als ein Backofen!} cold {Das sind etwa {celsius, number} °C – kälter als jede Tiefkühltruhe!} other {Das sind etwa {celsius, number} °C.}}",
+			"temperature@advanced": "Das sind {celsius, number} °C; der absolute Nullpunkt, 0 K, liegt bei −273,15 °C."
+		}
+	},
+	"solarSystem": {
+		"overview": "Zurück zur Übersicht",
+		"picker": {
+			"label": "Himmelskörper im Fokus",
+			"placeholder": "Himmelskörper suchen…",
+			"nothingFound": "Nichts gefunden"
+		},
+		"layers": {
+			"label": "Szenenebenen",
+			"orbits": "Umlaufbahnen",
+			"labels": "Beschriftungen",
+			"moons": "Monde",
+			"markers": "Markierungen"
+		},
+		"time": {
+			"play": "Abspielen",
+			"pause": "Pause",
+			"playHint": "Abspielen (Leertaste)",
+			"pauseHint": "Pause (Leertaste)",
+			"now": "Jetzt",
+			"nowHint": "Zur aktuellen Zeit springen",
+			"warp": {
+				"label": "Zeitraffer",
+				"realTime": "1x",
+				"factor": "{factor}x",
+				"minute": "{count, plural, one {# Min./s} other {# Min./s}}",
+				"hour": "{count, plural, one {# Std./s} other {# Std./s}}",
+				"day": "{count, plural, one {# Tag/s} other {# Tage/s}}",
+				"week": "{count, plural, one {# Woche/s} other {# Wochen/s}}",
+				"month": "{count, plural, one {# Monat/s} other {# Monate/s}}",
+				"year": "{count, plural, one {# Jahr/s} other {# Jahre/s}}"
+			}
+		},
+		"info": {
+			"label": "Himmelskörper im Fokus",
+			"radius": "Radius",
+			"orbitalPeriod": "Umlaufzeit",
+			"orbitalPeriod@simple": "Zeit für eine Runde",
+			"distance": "{parentId, select, sun {Abstand zur Sonne} earth {Abstand zur Erde} other {Abstand zum {parent}}}",
+			"rotation": "Rotationsdauer",
+			"rotation@simple": "Zeit für eine Drehung",
+			"rotationUnknown": "unbekannt",
+			"retrograde": "{period}, rückläufig",
+			"retrograde@simple": "{period}, dreht sich rückwärts"
+		}
+	}
+}

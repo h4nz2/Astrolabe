@@ -16,7 +16,7 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 	"/solar_dictionary": async (page) => {
 		// sidebar of the default selection (the Sun)
 		await expect(page.getByText("Sun", { exact: true })).toBeVisible()
-		await expect(page.getByText("diameter", { exact: true })).toBeVisible()
+		await expect(page.getByText("Diameter", { exact: true })).toBeVisible()
 	},
 	"/solar_system": async (page) => {
 		// the HUD over the canvas: focus picker (on the Sun), play/pause, layer switches, the clock
@@ -25,9 +25,14 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 		await expect(focus).toHaveValue("Sun")
 		await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
 		await expect(page.getByRole("switch")).toHaveCount(4)
-		await expect(
-			page.getByText(/^-?\d{4,}-\d{2}-\d{2} \d{2}:\d{2} UTC$/),
-		).toBeVisible()
+		// the clock is formatted for the locale; <time dateTime> carries the instant
+		const clock = page.locator("time")
+		await expect(clock).toBeVisible()
+		await expect(clock).toContainText("UTC")
+		await expect(clock).toHaveAttribute(
+			"datetime",
+			/^-?\d{4,}-\d{2}-\d{2}T\d{2}:\d{2}Z$/,
+		)
 	},
 }
 
@@ -158,11 +163,9 @@ test("a link without a usable t starts at the wall clock, not at JD 0", async ({
 }) => {
 	// `?t=` reaches the schema as "" and must count as absent (coercion would make it 0)
 	await page.goto("/solar_system?t=&warp=")
-	const clock = page.getByText(/^-?\d{4,}-\d{2}-\d{2} \d{2}:\d{2} UTC$/)
+	const clock = page.locator("time")
 	await expect(clock).toBeVisible()
-	const shown = new Date(
-		(await clock.innerText()).replace(" UTC", "Z").replace(" ", "T"),
-	)
+	const shown = new Date((await clock.getAttribute("datetime")) ?? "")
 	expect(Math.abs(shown.getTime() - Date.now())).toBeLessThan(2 * 60_000)
 	await expect(page.getByRole("radio", { name: "1x" })).toBeChecked()
 	await expect(page).not.toHaveURL(/[?&]t=0(&|$)/)

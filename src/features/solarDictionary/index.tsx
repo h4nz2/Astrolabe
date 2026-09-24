@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useMemo } from "react"
 import { Box } from "@mantine/core"
 import { getRouteApi } from "@tanstack/react-router"
 import {
@@ -6,18 +6,22 @@ import {
 	type SolarDictionaryItem,
 	type Textures,
 } from "@/data/solarDictionary"
+import { bodyById } from "@/data"
+import { LanguageMenu, useI18n } from "@/i18n"
+import { bodyName } from "@/i18n/bodies"
 import Loader from "@/primitives/Loader"
 import Navbar from "./components/Navbar"
-import { getSidebarLabels } from "./utils/getSidebarLabels"
+import { dictionaryBodyId } from "./utils/bodyId"
+import { getSidebarFacts, type FactKey } from "./utils/getSidebarLabels"
 import Stage from "./components/Stage"
 
 export type Texture = keyof Textures
 
 const defaultTexture: Texture = "base"
 
-const requiredLabelsSun = ["name", "diameter", "gravity", "avgTemp"]
+const requiredLabelsSun: FactKey[] = ["name", "diameter", "gravity", "avgTemp"]
 
-const requiredLabels = [
+const requiredLabels: FactKey[] = [
 	"name",
 	"diameter",
 	"lengthOfDay",
@@ -25,6 +29,16 @@ const requiredLabels = [
 	"gravity",
 	"avgTemp",
 ]
+/** A body's volume in km³ from the body model, when it has one. */
+const volumeKm3 = (item: SolarDictionaryItem | undefined): number | null => {
+	const vol = item && bodyById.get(dictionaryBodyId(item))?.info.vol
+	if (typeof vol !== "object" || vol === null) return null
+	const { volValue, volExponent } = vol as Record<string, unknown>
+	return typeof volValue === "number" && typeof volExponent === "number"
+		? volValue * 10 ** volExponent
+		: null
+}
+
 const sunIdx = 0
 const earthIdx = 3
 
@@ -38,6 +52,7 @@ export type SolarDictionaryProps = {
 
 const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	const { data: solarDict, loading } = useSolarDictionary()
+	const i18n = useI18n()
 
 	const {
 		entity: activeEntityIndex = sunIdx,
@@ -72,16 +87,27 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 			replace: true,
 		})
 
-	const labels = getSidebarLabels(
-		currentEntity,
-		activeEntityIndex === sunIdx ? requiredLabelsSun : requiredLabels,
-		solarDict[earthIdx],
+	const earth = solarDict[earthIdx]
+	const facts = useMemo(
+		() =>
+			getSidebarFacts(
+				currentEntity,
+				activeEntityIndex === sunIdx ? requiredLabelsSun : requiredLabels,
+				earth,
+				i18n,
+				currentEntity
+					? bodyName(dictionaryBodyId(currentEntity), i18n.chain)
+					: "",
+				{ body: volumeKm3(currentEntity), earth: volumeKm3(earth) },
+			),
+		[currentEntity, activeEntityIndex, earth, i18n],
 	)
 
 	if (!currentEntity || loading) return <Loader />
 
 	return (
 		<Box w="100%" h="100vh">
+			<LanguageMenu placement="corner" />
 			<Navbar
 				activeEntityIndex={activeEntityIndex}
 				activeTexture={activeTexture}
@@ -91,7 +117,8 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 			/>
 			<Stage
 				texture={currentEntity.textures?.[activeTexture] ?? undefined}
-				sidebarLabels={labels}
+				facts={facts}
+				bodyId={dictionaryBodyId(currentEntity)}
 			/>
 		</Box>
 	)

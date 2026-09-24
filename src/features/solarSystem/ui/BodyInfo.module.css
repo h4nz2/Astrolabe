@@ -45,3 +45,9 @@
 	color: var(--mantine-color-dimmed);
 	font-size: var(--mantine-font-size-xs);
 }
+
+.tagline {
+	margin: 0 0 0.375rem;
+	color: var(--mantine-color-gray-4);
+	font-style: italic;
+}
