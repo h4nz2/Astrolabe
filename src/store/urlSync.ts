@@ -7,7 +7,7 @@
  * view it was taken from. From then on view, selection, camera shot and warp
  * are written to the URL as they change (the shot when the camera comes to
  * rest) and the simulation time follows at most once per second, and only
- * while it is slow enough to be worth a link (paused or warp <= 1 min/s).
+ * while it is slow enough to be worth a link (paused or |warp| <= 1 min/s).
  * Everything is `replace: true`, so the history never fills up.
  *
  * The store is watched through `useSimStore.subscribe`, not selectors: the
@@ -34,7 +34,7 @@ import type { SimSearch } from "./simSearch"
 
 /** Minimum spacing between two writes of `t` into the URL. */
 export const TIME_SYNC_INTERVAL_MS = 1000
-/** `t` is mirrored only while paused or at most at this warp (1 min/s). */
+/** `t` is mirrored only while paused or at most at this speed (1 min/s, either direction). */
 export const TIME_SYNC_MAX_WARP = 60
 /** Warp written to the URL at this value is omitted (the default). */
 export const DEFAULT_TIME_WARP = 1
@@ -43,7 +43,7 @@ export const DEFAULT_TIME_WARP = 1
 export const roundJD = (jd: number): number => Math.round(jd * 1e4) / 1e4
 
 export const shouldMirrorTime = (paused: boolean, timeWarp: number): boolean =>
-	paused || timeWarp <= TIME_SYNC_MAX_WARP
+	paused || Math.abs(timeWarp) <= TIME_SYNC_MAX_WARP
 
 type Mirrored = Pick<
 	SimState,
@@ -59,8 +59,8 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * 1x) are left out to keep the URL short. A point view (the pivot moved into
  * empty space) is written as its anchor body until the pan issue (#15) gives
  * it a parameter of its own. The warp is written as it is (not rounded), so a
- * link runs at exactly the speed it was taken at; a warp the schema would
- * reject (zero or negative) is left out.
+ * link runs at exactly the speed it was taken at,
+ * backwards included; a zero warp (which the schema rejects) is left out.
  */
 export function searchFromState(
 	state: Mirrored,
@@ -79,7 +79,8 @@ export function searchFromState(
 		t: shouldMirrorTime(state.paused, timeWarp)
 			? roundJD(state.simTimeJD)
 			: previous.t,
-		warp: timeWarp > 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
+		warp:
+			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
 	}
 }
 
@@ -149,10 +150,13 @@ export function useSimUrlSync(): void {
 	}, [search])
 
 	useLayoutEffect(() => {
-		// URL -> store, once; the view is a jump since the page is just appearing
-		useSimStore.setState(mountState(searchRef.current))
-		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
+		// URL -> store, once; the view is a jump since the page is just appearing.
+		// Time goes through the clock actions (issue #9), never a bare setState.
+		const { simTimeJD, timeWarp } = mountState(searchRef.current)
 		const store = useSimStore.getState()
+		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
+		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
+		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
 		store.jumpTo(view, shot)
 		store.select(selectedId)
 

@@ -42,7 +42,7 @@ describe("simSearchSchema", () => {
 	})
 
 	it("drops invalid values instead of failing the whole search", () => {
-		expect(simSearchSchema.parse({ focus: 42, t: "abc", warp: -1 })).toEqual({
+		expect(simSearchSchema.parse({ focus: 42, t: "abc", warp: "x" })).toEqual({
 			focus: undefined,
 			t: undefined,
 			warp: undefined,
@@ -52,6 +52,13 @@ describe("simSearchSchema", () => {
 			warp: undefined,
 		})
 		expect(simSearchSchema.parse({ focus: "planet-x" }).focus).toBe("planet-x")
+	})
+
+	it("accepts a negative warp (the clock running backwards) but not 0", () => {
+		expect(simSearchSchema.parse({ warp: "-86400" }).warp).toBe(-86400)
+		expect(simSearchSchema.parse({ warp: -1 }).warp).toBe(-1)
+		expect(simSearchSchema.parse({ warp: "0" }).warp).toBeUndefined()
+		expect(simSearchSchema.parse({ warp: "-0" }).warp).toBeUndefined()
 	})
 
 	it("treats blank and non-numeric values as absent, never as 0", () => {
@@ -76,6 +83,9 @@ describe("urlSync helpers", () => {
 		expect(shouldMirrorTime(false, TIME_SYNC_MAX_WARP)).toBe(true)
 		expect(shouldMirrorTime(false, 3600)).toBe(false)
 		expect(shouldMirrorTime(true, 31557600)).toBe(true)
+		// backwards counts by its speed
+		expect(shouldMirrorTime(false, -TIME_SYNC_MAX_WARP)).toBe(true)
+		expect(shouldMirrorTime(false, -3600)).toBe(false)
 	})
 
 	it("builds the search from the store, omitting the defaults", () => {
@@ -169,9 +179,12 @@ describe("urlSync helpers", () => {
 			const parsed = simSearchSchema.parse(mirrored(warp))
 			expect(stateFromSearch(parsed).timeWarp).toBe(warp)
 		}
-		// warps the schema would reject are left out
+		// a reversed clock is shared as it is; only 0 (rejected by the schema) is left out
+		expect(mirrored(-60).warp).toBe(-60)
+		expect(stateFromSearch(simSearchSchema.parse(mirrored(-60))).timeWarp).toBe(
+			-60,
+		)
 		expect(mirrored(0).warp).toBeUndefined()
-		expect(mirrored(-60).warp).toBeUndefined()
 	})
 
 	it("compares searches field by field", () => {
