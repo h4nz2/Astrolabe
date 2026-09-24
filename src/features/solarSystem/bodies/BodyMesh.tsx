@@ -16,7 +16,7 @@ import {
 } from "three"
 
 import type { Body } from "@/data"
-import { rotationAngle, toUnits } from "@/sim"
+import { rotationAngle } from "@/sim"
 import { useSimStore } from "@/store/sim"
 import { assetUrl } from "@/utils/assetUrl"
 
@@ -40,7 +40,7 @@ export const sphereSegments = (
 }
 
 // Unit spheres shared by every body of the same detail level; the mesh scales
-// one to toUnits(radiusKm), so 191 bodies use three geometries.
+// one to the body's drawn radius (frame.renderRadius), so 191 bodies use three geometries.
 const unitSpheres = new Map<number, SphereGeometry>()
 const unitSphere = (segments: number): SphereGeometry => {
 	let geometry = unitSpheres.get(segments)
@@ -76,13 +76,14 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 	const groupRef = useRef<Group>(null)
 	const meshRef = useRef<Mesh>(null)
 	const orientation = useMemo(() => bodyOrientation(body), [body])
-	const radius = toUnits(body.radiusKm)
 
 	useFrame(() => {
 		const group = groupRef.current
 		const mesh = meshRef.current
 		if (group === null || mesh === null) return
 		frame.renderPosition(index, group.position)
+		// the drawn radius under the active scale (docs/ARCHITECTURE.md, "Scale")
+		mesh.scale.setScalar(frame.renderRadius(index))
 		mesh.rotation.y = rotationAngle(body.rotation, frame.jd)
 	})
 
@@ -105,7 +106,7 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 			<mesh
 				ref={meshRef}
 				geometry={unitSphere(sphereSegments(body))}
-				scale={radius}
+				scale={frame.renderRadius(index)}
 				onClick={onClick}
 				onPointerOver={onPointerOver}
 				onPointerOut={onPointerOut}

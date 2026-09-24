@@ -14,6 +14,12 @@
  * update range). A rebuild happens when either delta exceeds 1e-4 of the
  * semi-major axis, so vertices near the camera never grow large enough in
  * float32 to jitter, or when the anchor crosses into the next sample interval.
+ *
+ * Scale (docs/ARCHITECTURE.md, "Scale"): the true samples are mapped into
+ * display space with `displayOffset`, the same function that places the body
+ * itself, whenever the frame's `scaleVersion` moves on; parent and anchor come
+ * from the frame's display positions. The line therefore passes through its
+ * body under every scale and never detaches when the scale changes.
  */
 import { useMemo, useRef } from "react"
 import { extend, useFrame } from "@react-three/fiber"
@@ -21,11 +27,15 @@ import { Line, Vector3, type BufferAttribute } from "three"
 
 import type { Body } from "@/data"
 import {
+	childDistanceCurve,
+	displayDistanceKm,
+	displayOffset,
 	meanAnomalyAt,
 	positionAtEccentricAnomaly,
 	solveEccentricAnomaly,
 	toUnits,
 	TWO_PI,
+	type DistanceCurve,
 	type OrbitElements,
 	type Vec3,
 } from "@/sim"
@@ -102,8 +112,14 @@ export const anchorSlot = (eccentricAnomaly: number): number =>
 export const anchorVertex = (slot: number): number => slot + 1
 
 export interface OrbitBuffers {
-	/** Parent-centric samples, km, doubles (ORBIT_SAMPLES points). */
+	/** Parent-centric samples, TRUE km, doubles (ORBIT_SAMPLES points). */
 	samples: Float64Array
+	/** The same samples mapped into display space (display km) for the scale of `scaleVersion`. */
+	displaySamples: Float64Array
+	/** Drawn semi-major axis (display km); sets the rebuild threshold. */
+	displaySemiMajorAxisKm: number
+	/** The frame's `scaleVersion` the display samples were mapped for; -1 before the first mapping. */
+	scaleVersion: number
 	/** The float32 vertices handed to the GPU (ORBIT_POINTS), scene units, relative to the origin at the last rebuild. */
 	positions: Float32Array
 	originAtRebuild: Float64Array
@@ -115,12 +131,84 @@ export interface OrbitBuffers {
 
 export const createOrbitBuffers = (orbit: OrbitElements): OrbitBuffers => ({
 	samples: sampleOrbit(orbit),
+	displaySamples: new Float64Array(ORBIT_SAMPLES * 3),
+	displaySemiMajorAxisKm: orbit.semiMajorAxisKm,
+	scaleVersion: -1,
 	positions: new Float32Array(ORBIT_POINTS * 3),
 	originAtRebuild: new Float64Array(3),
 	parentAtRebuild: new Float64Array(3),
 	slot: -1,
 	built: false,
 })
+
+/**
+ * Maps parent-centric true samples into display space (`out`, same layout)
+ * with `displayOffset`, the function that places every body.
+ */
+export function mapOrbitSamples(
+	samples: Float64Array,
+	out: Float64Array,
+	parentRadiusKm: number,
+	parentDisplayRadiusKm: number,
+	curve: DistanceCurve,
+): Float64Array {
+	for (let s = 0; s < samples.length; s += 3) {
+		displayOffset(
+			samples[s],
+			samples[s + 1],
+			samples[s + 2],
+			parentRadiusKm,
+			parentDisplayRadiusKm,
+			curve,
+			out,
+			s,
+		)
+	}
+	return out
+}
+
+/** What `updateOrbitBuffers` reads of the SimFrame. */
+export type OrbitFrame = Pick<
+	SimFrame,
+	| "bodies"
+	| "displayKm"
+	| "displayRadiiKm"
+	| "originKm"
+	| "jd"
+	| "scale"
+	| "scaleVersion"
+>
+
+/**
+ * Re-maps the display samples when the frame's scale changed since the last
+ * mapping. Returns true when it did (the vertices must then be rebuilt).
+ */
+function syncOrbitScale(
+	buffers: OrbitBuffers,
+	orbit: OrbitElements,
+	frame: OrbitFrame,
+	parentIndex: number,
+): boolean {
+	if (buffers.scaleVersion === frame.scaleVersion) return false
+	const parent = frame.bodies[parentIndex]
+	const parentDisplayRadius = frame.displayRadiiKm[parentIndex]
+	const curve = childDistanceCurve(frame.scale, parent.parentId === null)
+	mapOrbitSamples(
+		buffers.samples,
+		buffers.displaySamples,
+		parent.radiusKm,
+		parentDisplayRadius,
+		curve,
+	)
+	buffers.displaySemiMajorAxisKm = displayDistanceKm(
+		orbit.semiMajorAxisKm,
+		parent.radiusKm,
+		parentDisplayRadius,
+		curve,
+	)
+	buffers.scaleVersion = frame.scaleVersion
+	return true
+}
 
 /**
  * Brings the line up to date with the frame. Returns true when all vertices
@@ -133,21 +221,22 @@ export const createOrbitBuffers = (orbit: OrbitElements): OrbitBuffers => ({
 export function updateOrbitBuffers(
 	buffers: OrbitBuffers,
 	orbit: OrbitElements,
-	frame: Pick<SimFrame, "positionsKm" | "originKm" | "jd">,
+	frame: OrbitFrame,
 	index: number,
 	parentIndex: number,
 	shift: Vec3,
 ): boolean {
-	const { positionsKm, originKm } = frame
+	const rescaled = syncOrbitScale(buffers, orbit, frame, parentIndex)
+	const { displayKm, originKm } = frame
 	const p = parentIndex * 3
-	const px = positionsKm[p]
-	const py = positionsKm[p + 1]
-	const pz = positionsKm[p + 2]
+	const px = displayKm[p]
+	const py = displayKm[p + 1]
+	const pz = displayKm[p + 2]
 	const b = index * 3
-	// the body relative to its parent: the true ellipse point at the current anomaly
-	const rx = positionsKm[b] - px
-	const ry = positionsKm[b + 1] - py
-	const rz = positionsKm[b + 2] - pz
+	// the body relative to its parent: the drawn ellipse point at the current anomaly
+	const rx = displayKm[b] - px
+	const ry = displayKm[b + 1] - py
+	const rz = displayKm[b + 2] - pz
 	const ox = originKm[0]
 	const oy = originKm[1]
 	const oz = originKm[2]
@@ -160,12 +249,18 @@ export function updateOrbitBuffers(
 	const dpx = px - parentAtRebuild[0]
 	const dpy = py - parentAtRebuild[1]
 	const dpz = pz - parentAtRebuild[2]
-	const threshold = ORBIT_REBUILD_FRACTION * orbit.semiMajorAxisKm
+	const threshold = ORBIT_REBUILD_FRACTION * buffers.displaySemiMajorAxisKm
 	const thresholdSq = threshold * threshold
 	const originMoved = dox * dox + doy * doy + doz * doz > thresholdSq
 	const parentMoved = dpx * dpx + dpy * dpy + dpz * dpz > thresholdSq
 
-	if (buffers.built && !originMoved && !parentMoved && slot === buffers.slot) {
+	if (
+		buffers.built &&
+		!rescaled &&
+		!originMoved &&
+		!parentMoved &&
+		slot === buffers.slot
+	) {
 		// the ellipse moved with its parent, the origin moved on its own: shift by the difference
 		shift.x = toUnits(dpx - dox)
 		shift.y = toUnits(dpy - doy)
@@ -178,7 +273,7 @@ export function updateOrbitBuffers(
 		return false
 	}
 
-	const { samples } = buffers
+	const samples = buffers.displaySamples
 	// samples 0..slot, the anchor, then samples slot+1..256
 	for (let k = 0; k <= slot; k++) {
 		const s = k * 3
