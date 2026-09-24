@@ -319,6 +319,7 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   an extra item.
 - `TimeTravel.tsx`: the HUD date is a button opening "Travel in time": named moments (`ui/moments.ts`, ids and UTC
   instants; the text is in the locales under `solarSystem.time.moments.<id>`) and a `@mantine/dates` calendar
+  (`DayPicker.tsx`, loaded lazily)
   (1000-01-01..2999-12-31, a picked day is reached at 12:00 UTC). Every label of the calendar comes from `Intl` in
   the active format locale (`calendarLabels`, `firstDayOfWeek` in `ui/timeTravel.ts`), so a new locale needs no
   date locale data. Both use `travelAndStop(jd)`: pause, then `travelTo` — the glide lands paused, so the moment

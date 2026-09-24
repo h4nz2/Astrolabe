@@ -1,7 +1,9 @@
-import { useState, type ReactNode } from "react"
+import { Suspense, lazy, useState, type ReactNode } from "react"
 import {
+	Center,
 	CloseButton,
 	Group,
+	Loader,
 	Popover,
 	ScrollArea,
 	SegmentedControl,
@@ -9,26 +11,17 @@ import {
 	Text,
 	UnstyledButton,
 } from "@mantine/core"
-import { DatePicker } from "@mantine/dates"
 import { IconCalendarEvent } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
-import { useSimStore } from "@/store/sim"
 
 import { MOMENTS, momentJD } from "./moments"
-import {
-	FIRST_DAY,
-	LAST_DAY,
-	arrivalJD,
-	calendarLabels,
-	dayOf,
-	firstDayOfWeek,
-	formatDayUTC,
-	travelAndStop,
-} from "./timeTravel"
+import { formatDayUTC, travelAndStop } from "./timeTravel"
 
-import "@mantine/dates/styles.css"
 import classes from "./TimeTravel.module.css"
+
+// the calendar (@mantine/dates) loads only when someone picks a date
+const DayPicker = lazy(() => import("./DayPicker"))
 
 type Tab = "moments" | "date"
 
@@ -73,49 +66,6 @@ const MomentList = ({ onTravel }: { onTravel: () => void }) => {
 				))}
 			</Stack>
 		</ScrollArea.Autosize>
-	)
-}
-
-/** A calendar on the simulation's day; picking a day travels to its noon (UTC). */
-const DayPicker = ({ onTravel }: { onTravel: () => void }) => {
-	const { t, formatLocale } = useI18n()
-	// read once when the calendar opens: it must not page along with a running clock
-	const [today] = useState(() => dayOf(useSimStore.getState().simTimeJD))
-	const labels = calendarLabels(formatLocale)
-	return (
-		<Stack gap="xs" align="center">
-			<DatePicker
-				value={today}
-				defaultDate={today}
-				minDate={FIRST_DAY}
-				maxDate={LAST_DAY}
-				firstDayOfWeek={firstDayOfWeek(formatLocale)}
-				// which days count as the weekend differs by country; none are marked
-				weekendDays={[]}
-				{...labels}
-				ariaLabels={{
-					nextMonth: t("solarSystem.time.travel.calendar.nextMonth"),
-					previousMonth: t("solarSystem.time.travel.calendar.previousMonth"),
-					nextYear: t("solarSystem.time.travel.calendar.nextYear"),
-					previousYear: t("solarSystem.time.travel.calendar.previousYear"),
-					nextDecade: t("solarSystem.time.travel.calendar.nextDecade"),
-					previousDecade: t("solarSystem.time.travel.calendar.previousDecade"),
-					monthLevelControl: t("solarSystem.time.travel.calendar.monthLevel"),
-					yearLevelControl: t("solarSystem.time.travel.calendar.yearLevel"),
-				}}
-				onChange={(day) => {
-					if (day === null) return
-					travelAndStop(arrivalJD(day))
-					onTravel()
-				}}
-			/>
-			<Text size="xs" c="dimmed" ta="center">
-				{t("solarSystem.time.travel.range", {
-					first: labels.yearLabelFormat(FIRST_DAY),
-					last: labels.yearLabelFormat(LAST_DAY),
-				})}
-			</Text>
-		</Stack>
 	)
 }
 
@@ -183,7 +133,15 @@ const TimeTravel = ({ children }: TimeTravelProps) => {
 					{tab === "moments" ? (
 						<MomentList onTravel={close} />
 					) : (
-						<DayPicker onTravel={close} />
+						<Suspense
+							fallback={
+								<Center h={280}>
+									<Loader size="sm" color="orange" />
+								</Center>
+							}
+						>
+							<DayPicker onTravel={close} />
+						</Suspense>
 					)}
 					<Text size="xs" c="dimmed" ta="center">
 						{t("solarSystem.time.travel.arrival")}
