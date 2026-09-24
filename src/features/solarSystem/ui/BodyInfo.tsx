@@ -62,7 +62,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 	if (body === undefined) return null
 	const entry = dictionaryEntry(body.id)
 	const story = text.comparisons[0]
-	const back = t("solarSystem.overview")
+	const close = t("solarSystem.card.close")
 	const toggle = t(
 		open ? "solarSystem.card.hideFacts" : "solarSystem.card.showFacts",
 	)
@@ -72,7 +72,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 			className={classes.root}
 			aria-label={t("solarSystem.info.label")}
 			data-testid="body-card"
-			data-body={body.id}
+			data-card-body={body.id}
 		>
 			<header className={classes.header}>
 				<div className={classes.title}>
@@ -93,9 +93,9 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 				</ActionIcon>
 				<CloseButton
 					size="lg"
-					aria-label={back}
+					aria-label={close}
 					aria-keyshortcuts="Escape"
-					title={back}
+					title={close}
 					onClick={reset}
 				/>
 			</header>

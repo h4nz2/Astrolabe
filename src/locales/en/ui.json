@@ -258,7 +258,8 @@
 			"dictionary": "Read more in the dictionary",
 			"dictionary@simple": "Find out more",
 			"showFacts": "Show facts",
-			"hideFacts": "Hide facts"
+			"hideFacts": "Hide facts",
+			"close": "Close and return to the overview"
 		},
 		"facts": {
 			"label": {

@@ -116,13 +116,29 @@ test("hovering a planet rings and names it; a click flies there and opens its ca
 	await expect(page.locator("canvas")).toHaveCSS("cursor", "pointer")
 	await shot(page, "hover-saturn")
 
+	// its label (#20) is a click target too, with the same feedback
+	await page.mouse.move(100, 600, { steps: 2 })
+	await expect.poll(async () => (await state(page)).hoverId).toBeNull()
+	const label = await page
+		.locator('span[data-body="saturn"][data-visible="true"]')
+		.boundingBox()
+	expect(label).not.toBeNull()
+	await page.mouse.move(
+		label!.x + label!.width / 2,
+		label!.y + label!.height / 2,
+		{ steps: 3 },
+	)
+	await expect.poll(async () => (await state(page)).hoverId).toBe("saturn")
+	await expect(ring).toBeVisible()
+	await shot(page, "hover-saturn-label")
+
 	await page.mouse.click(saturn.x + 4, saturn.y + 3)
 	await expect.poll(async () => (await state(page)).selectedId).toBe("saturn")
 	await settled(page)
 	expect((await state(page)).view).toEqual({ kind: "body", id: "saturn" })
 	await expect(page).toHaveURL(/[?&]focus=saturn(&|$)/)
 	const card = page.getByTestId("body-card")
-	await expect(card).toHaveAttribute("data-body", "saturn")
+	await expect(card).toHaveAttribute("data-card-body", "saturn")
 	await expect(card.getByRole("heading", { name: "Saturn" })).toBeVisible()
 	await expect(card).toContainText(/\d Earths wide/)
 	await expect(card).toContainText("Sunlight takes")
@@ -183,7 +199,7 @@ test("the card's close button returns to the overview", async ({ page }) => {
 	await ready(page, "/solar_system?focus=jupiter")
 	const card = page.getByTestId("body-card")
 	await expect(card).toContainText("11 Earths wide")
-	await card.getByRole("button", { name: "Back to overview" }).click()
+	await card.getByRole("button", { name: "Close" }).click()
 	await expect.poll(async () => (await state(page)).view.kind).toBe("overview")
 	expect((await state(page)).selectedId).toBeNull()
 })

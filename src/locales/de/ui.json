@@ -258,7 +258,8 @@
 			"dictionary": "Mehr dazu im Lexikon",
 			"dictionary@simple": "Mehr erfahren",
 			"showFacts": "Fakten zeigen",
-			"hideFacts": "Fakten ausblenden"
+			"hideFacts": "Fakten ausblenden",
+			"close": "Schließen und zur Übersicht zurück"
 		},
 		"facts": {
 			"label": {
