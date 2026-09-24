@@ -171,7 +171,7 @@
 				"stopped": "No planet spins, so the seasons are easy to follow as the planets travel round the Sun. Moons still keep one face toward their planet.",
 				"stopped@simple": "The planets stop spinning. They still travel round the Sun."
 			},
-			"notice": "Spin not to the clock: day and night on the planets do not match the date.",
+			"notice": "Not true to the clock: day and night on the planets no longer match the date.",
 			"notice@simple": "The planets spin slower than in real life."
 		},
 		"info": {
@@ -185,9 +185,9 @@
 			"rotationUnknown": "unknown",
 			"retrograde": "{period}, retrograde",
 			"retrograde@simple": "{period}, spinning backwards",
-			"synchronous": "{period} – always shows {parentId, select, other {{parent}}} the same face",
-			"synchronous@simple": "{period} – always shows {parentId, select, other {{parent}}} the same side",
-			"synchronous@advanced": "{period}, tidally locked to {parentId, select, other {{parent}}}"
+			"synchronous": "always the same face toward {parentId, select, other {{parent}}}",
+			"synchronous@simple": "always shows {parentId, select, other {{parent}}} the same side",
+			"synchronous@advanced": "tidally locked to {parentId, select, other {{parent}}}"
 		}
 	}
 }

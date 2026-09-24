@@ -6,23 +6,33 @@ import { useSimStore } from "@/store/sim"
 
 import classes from "./BodyInfo.module.css"
 
-const rotationLabel = (
+/** Periods from this long on read better in days (Venus: 243 days, not 5,832 hours). */
+const ROTATION_DAYS_FROM_HOURS = 72
+
+/** The rotation period, with its direction, and for a tidally locked moon a note saying so. */
+const rotationFacts = (
 	body: Pick<Body, "rotation" | "parentId">,
 	i18n: I18n,
-): string => {
+): { value: string; note: string | null } => {
 	const { periodHours, synchronous } = body.rotation
-	if (periodHours === null) return i18n.t("solarSystem.info.rotationUnknown")
-	const period = i18n.quantity(Math.abs(periodHours), "hour", "long")
-	if (synchronous === true && body.parentId !== null) {
-		return i18n.t("solarSystem.info.synchronous", {
-			period,
-			parentId: body.parentId,
-			parent: bodyName(body.parentId, i18n.chain),
-		})
+	if (periodHours === null) {
+		return { value: i18n.t("solarSystem.info.rotationUnknown"), note: null }
 	}
-	return periodHours < 0
-		? i18n.t("solarSystem.info.retrograde", { period })
-		: period
+	const hours = Math.abs(periodHours)
+	const period =
+		hours >= ROTATION_DAYS_FROM_HOURS
+			? i18n.quantity(hours / 24, "day", "long")
+			: i18n.quantity(hours, "hour", "long")
+	const value =
+		periodHours < 0 ? i18n.t("solarSystem.info.retrograde", { period }) : period
+	const note =
+		synchronous === true && body.parentId !== null
+			? i18n.t("solarSystem.info.synchronous", {
+					parentId: body.parentId,
+					parent: bodyName(body.parentId, i18n.chain),
+				})
+			: null
+	return { value, note }
 }
 
 /** Compact facts about the selected body, else the focus (the page layout hides it on phones). */
@@ -36,6 +46,7 @@ const BodyInfo = () => {
 	const { orbit } = body
 	const kind = bodyKindLabel(body, i18n)
 	const radius = i18n.quantity(body.radiusKm, "kilometer")
+	const rotation = rotationFacts(body, i18n)
 
 	return (
 		<section className={classes.root} aria-label={t("solarSystem.info.label")}>
@@ -76,7 +87,12 @@ const BodyInfo = () => {
 					</>
 				)}
 				<dt className={classes.label}>{t("solarSystem.info.rotation")}</dt>
-				<dd className={classes.value}>{rotationLabel(body, i18n)}</dd>
+				<dd className={classes.value}>
+					{rotation.value}
+					{rotation.note !== null && (
+						<span className={classes.secondary}>{rotation.note}</span>
+					)}
+				</dd>
 			</dl>
 		</section>
 	)

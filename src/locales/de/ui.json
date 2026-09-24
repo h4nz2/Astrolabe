@@ -171,7 +171,7 @@
 				"stopped": "Kein Planet dreht sich, so lassen sich die Jahreszeiten auf dem Weg um die Sonne leicht verfolgen. Monde zeigen ihrem Planeten weiter immer dieselbe Seite.",
 				"stopped@simple": "Die Planeten hören auf, sich zu drehen. Sie wandern weiter um die Sonne."
 			},
-			"notice": "Drehung nicht nach der Uhr: Tag und Nacht auf den Planeten passen nicht zum Datum.",
+			"notice": "Nicht nach der Uhr: Tag und Nacht auf den Planeten passen nicht mehr zum Datum.",
 			"notice@simple": "Die Planeten drehen sich langsamer als in Wirklichkeit."
 		},
 		"info": {
@@ -185,9 +185,9 @@
 			"rotationUnknown": "unbekannt",
 			"retrograde": "{period}, rückläufig",
 			"retrograde@simple": "{period}, dreht sich rückwärts",
-			"synchronous": "{period} – zeigt {parentId, select, sun {der Sonne} earth {der Erde} other {dem {parent}}} immer dieselbe Seite",
-			"synchronous@simple": "{period} – zeigt {parentId, select, sun {der Sonne} earth {der Erde} other {dem {parent}}} immer dieselbe Seite",
-			"synchronous@advanced": "{period}, gebundene Rotation um {parentId, select, sun {die Sonne} earth {die Erde} other {den {parent}}}"
+			"synchronous": "zeigt {parentId, select, sun {der Sonne} earth {der Erde} other {dem {parent}}} immer dieselbe Seite",
+			"synchronous@simple": "zeigt {parentId, select, sun {der Sonne} earth {der Erde} other {dem {parent}}} immer dieselbe Seite",
+			"synchronous@advanced": "gebundene Rotation"
 		}
 	}
 }
