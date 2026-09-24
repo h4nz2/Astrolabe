@@ -24,7 +24,7 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 		await expect(focus).toBeVisible()
 		await expect(focus).toHaveValue("Sun")
 		await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
-		await expect(page.getByRole("switch")).toHaveCount(3)
+		await expect(page.getByRole("switch")).toHaveCount(4)
 		await expect(
 			page.getByText(/^-?\d{4,}-\d{2}-\d{2} \d{2}:\d{2} UTC$/),
 		).toBeVisible()
