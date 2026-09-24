@@ -10,6 +10,10 @@ export default defineConfig({
 	// more browsers than this at once only slow each other down past their timeouts,
 	// and agents and developers often share the machine. `--workers` overrides it.
 	workers: process.env.CI ? undefined : 4,
+	// Every test first loads a software-rendered scene, which alone can take 20-30 s
+	// on a busy machine (measured with the suite pinned to 3 cores); test.slow()
+	// triples this for the inherently heavy ones (pixel counts, long waits).
+	timeout: 60_000,
 	// software rendering on a busy machine can hold a frame for a second or more
 	expect: { timeout: 10_000 },
 	forbidOnly: !!process.env.CI,
