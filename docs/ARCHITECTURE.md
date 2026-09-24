@@ -33,7 +33,7 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, simSearch.ts (URL schema), urlSync.ts
+src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, simSearch.ts (URL schema), urlSync.ts
 src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
@@ -84,6 +84,7 @@ interface Body {
 		poleRaDeg?: number // IAU 2015 pole + W0 at J2000 (Sun, planets, Moon)
 		poleDecDeg?: number
 		primeMeridianDeg?: number
+		synchronous?: true // tidally locked: the prime meridian faces the parent
 	}
 	textures: {
 		base: string
@@ -116,7 +117,12 @@ Build rules (`scripts/lib/`):
 - Moon phases are all 0 in the source, so they are spread from `hash(id)` and flagged `phaseSynthetic`. Only the Moon and
   the Galileans have real (curated) phases.
 - Retrograde spin is normalized to one encoding: tilt to the IAU pole (`180 - obliquity`) plus a negative period.
-- IAU poles and prime meridians (WGCCRE 2015 at J2000) for the Sun, planets and Moon come from `scripts/lib/iau.ts`.
+- IAU poles and prime meridians (WGCCRE 2015 at J2000) for the Sun, planets and Moon come from `scripts/lib/iau.ts`,
+  with Mars's and Neptune's periodic terms evaluated at J2000 (the constant terms alone put Mars's pole 1.5 deg off).
+  Their periods come from the IAU rate W1, not the source's rounded ones (Earth 23.9345 h drifts 4 deg by 2026).
+- Tidal locking (`synchronousRotation`): a moon whose period matches its orbit is `synchronous`; a regular moon
+  (inside the Laplace radius) without a period is assumed locked with its orbital period (`info.rotationAssumed`).
+  Irregular moons without a period and Hyperion (`rotationChaotic` in the source: it tumbles) keep `null`: no spin.
 - Moon inclinations refer to the Laplace plane: inside the planet's Laplace radius they are rotated from the planet's
   equator into the ecliptic (`frames.ts`), so regular moons and rings are coplanar; outside it they are kept as ecliptic.
 - Rings: Jupiter and Saturn from the source, Uranus and Neptune from `data/rings/`. Strips run u = 0 (inner) to u = 1
@@ -142,8 +148,8 @@ Build rules (`scripts/lib/`):
   Moon has it (node 18.6 yr, perigee 8.85 yr): without it the Moon drifts 16 deg off by 2045 and eclipses land on the
   wrong dates; with it, real eclipses happen within about three hours of the real ones.
 - Rotation (`rotation.ts`): `spinAxis` (IAU pole, else the orbit normal tilted by `axialTiltDeg`), `equatorNode` (zero
-  of the prime meridian) and `rotationAngle(rotation, jd)` (unwrapped, sign from the period). A mesh is oriented with
-  X = equatorNode, Y = spinAxis, Z = X x Y, then rotated about Y.
+  of the prime meridian), `rotationAngle(rotation, jd)` (unwrapped, sign from the period) and `synchronousAngle` (the
+  angle that turns the prime meridian toward a direction). Spin speed is `spin.ts`; see Rotation below.
 - Per-frame callers build the index once (`buildIndex`) and pass reused `out` arrays: the frame loop allocates nothing.
 - Accuracy: planets within 0.2 deg / 0.15 % of astronomy-engine over J2000 +- 2000 d (`positions.test.ts`); the Moon
   within 2.5 deg over 2000-2045 (`precession.test.ts`; evection and variation are not modelled) and the Galileans within
@@ -277,6 +283,34 @@ and eclipses are the real ones in every scale preset (a moon drawn 10x too big n
   shadows on the planet: intersect the ray from `p` toward `uSunKm` with the equatorial plane and multiply by
   `1 - ringAlpha(r)` inside the ring radii, behind a define so ringless bodies pay nothing.
 
+## Rotation (`src/sim/rotation.ts`, `src/sim/spin.ts`, `bodies/orientation.ts`, `src/store/spin.ts`; #13)
+
+`bodies/orientation.ts` is the one authority on how a body is oriented; nothing else builds a body's frame.
+
+- Pole frame (`bodyOrientation(body)`, constant): +X = `equatorNode`, +Y = `spinAxis` (the IAU north pole, so north-up
+  maps stay upright and Uranus lies on its side with its north pole 82 deg from the ecliptic pole), +Z = X x Y. Its
+  XZ plane is the equator. BodyMesh's `<group>` carries it; the textured mesh inside is the only thing that spins.
+  Anything that follows the tilt but not the spin (#12 rings, an equator line) is a child of that group or applies the
+  same quaternion. In the pure/shader world the pole is `spinAxis()` in scene axes (e.g. for ring shadows).
+- Spin (`bodySpinAngle(body, createBodySpin(body, i, frame), frame)`): an angle about local +Y, positive = prograde.
+  Normally `rotationAngle(rotation, frame.spinJD)`. A `synchronous` body instead turns its prime meridian toward its
+  parent from the TRUE positions each frame (exact, eccentric orbits and the Moon's precession included), in every
+  spin mode. `bodySurfaceOrientation(pole, angle)` composes both for surface-fixed things (a city, a landing site).
+- Texture alignment: three's SphereGeometry puts u = 0.5 (longitude 0) on local +X, east on -Z, north on +Y; with the
+  IAU W0 and the W1-derived periods the noon Sun is over Greenwich at 12:00 UTC, and the tilt gives the subsolar
+  latitude of the seasons (+-23.44 deg at Earth's solstices; `orientation.test.ts`).
+- Spin speed: all non-synchronous spin reads one spin time, `frame.spinJD`, written by `scene/SpinClock.tsx`
+  (priority -0.9, after SimClock) from `advanceSpinClock`. It follows the simulation clock (pause stops it, reverse
+  reverses it). Named modes (`SPIN_MODES`, `useSpinStore`; `ui/SpinControl.tsx` under the time controls):
+  `realistic` (default: spinJD = simTimeJD, the true orientation for the date), `slowed` / `slow` (the spin rate is
+  capped so one Earth turn takes at least 4 s / 30 s of real time; below the cap it is the true rate; every body is
+  slowed by the same factor, so Jupiter stays 2.4x Earth and Venus stays backwards), `stopped`. The cap is applied to
+  the frame's step, so it is frame-rate independent and a date jump turns bodies by at most one frame's worth. In a
+  capped mode spinJD falls behind and day/night no longer match the date; the HUD says so, and `realistic` snaps back.
+  Time warp and spin are therefore independent: warp sets orbital speed, the spin mode only ever slows spin down.
+- The mode is not persisted or in the URL (like "Always lit"): every visit opens with the true spin. The canvas
+  carries `data-spin-mode`.
+
 ## Floating origin
 
 GPU positions are float32, so the render origin is the camera's pivot in display space:
@@ -326,6 +360,7 @@ export interface SimFrame {
 	displayRadiiKm: Float64Array // drawn radii, rewritten on a scale change
 	originKm: Float64Array // render origin in display km, written by the camera director
 	jd: number
+	spinJD: number // spin time (see Rotation); written by SpinClock only
 	scale: ScaleSettings // change with setSimFrameScale only
 	scaleVersion: number // bumps on scale change; cache scale-derived geometry on it
 	renderPosition(i: number, out: Vector3): Vector3
@@ -338,14 +373,15 @@ export function setSimFrameScale(frame: SimFrame, scale: ScaleSettings): void
 export const useSimFrame = (): SimFrame // throws outside the provider
 ```
 
-- Frame order: `SimClock` (`useFrame` priority -1) ticks the store and updates the SimFrame; the camera director
+- Frame order: `SimClock` (`useFrame` priority -1) ticks the store and updates the SimFrame, `SpinClock` (-0.9) writes
+  `spinJD`; the camera director
   (-0.5) writes the origin and the camera; everything else draws at the default priority and only reads.
 - Per-frame writes live in exported plain functions taking the objects they mutate (`updateSimFrame`,
   `updateOrbitBuffers`, `fillMarkers`) to satisfy `react-hooks/immutability` without `eslint-disable`. No allocations
   in the frame loop.
 - Canvas: `dpr={[1, 2]}`, logarithmic depth buffer, near 1e-5, far 1e9, fov 45 (`camera/framing.ts`), background
   `#0b0d12`. No three.js lights (see Lighting); the Sun is unlit (`toneMapped={false}`). Bloom arrives in Phase 6.
-- Bodies (`bodies/BodyMesh.tsx`): a group per body, scaling one of three shared unit spheres (64/32/16 segments for
+- Bodies (`bodies/BodyMesh.tsx`): a group per body (the pole frame, see Rotation), scaling one of three shared unit spheres (64/32/16 segments for
   Sun and planets / moons / estimated moons) by the drawn radius; lazy sRGB textures behind a per-body Suspense; every
   body but the Sun uses the sunlit material (see Lighting).
 - Rings: radial UVs, `alphaMap` = alpha strip (linear, gray level = opacity; never use it as `map`), `map` = color strip
@@ -366,14 +402,14 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
-- HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls`, `SceneToggles`,
+- HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `SimClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
+  `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
   the `LabelLayer` beside the Canvas) and the HUD.
 
 ## Labels (`features/solarSystem/labels`; #20)

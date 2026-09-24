@@ -224,6 +224,27 @@
 				}
 			}
 		},
+		"spin": {
+			"label": "Drehung",
+			"mode": {
+				"realistic": "Echt",
+				"slowed": "Gebremst",
+				"slow": "Zeitlupe",
+				"stopped": "Angehalten"
+			},
+			"hint": {
+				"realistic": "Jeder Planet dreht sich so schnell, wie es die Uhr verlangt: Tag und Nacht passen zum Datum.",
+				"realistic@simple": "Die Planeten drehen sich genau so schnell wie in Wirklichkeit.",
+				"slowed": "Die Drehung ist gebremst: Die Erde dreht sich höchstens einmal in {seconds, number} Sekunden. Die Umlaufbahnen behalten ihr Tempo; die anderen Planeten bleiben schneller oder langsamer als die Erde.",
+				"slowed@simple": "Die Planeten drehen sich langsamer, damit du sie auch bei schneller Zeit drehen siehst. Die Erde braucht mindestens {seconds, number} Sekunden für eine Drehung.",
+				"slow": "Die Drehung ist stark gebremst: Die Erde dreht sich höchstens einmal in {seconds, number} Sekunden – langsam genug, um einen einzelnen Tag zu verfolgen. Die Umlaufbahnen behalten ihr Tempo.",
+				"slow@simple": "Die Planeten drehen sich ganz langsam, damit du einen Tag vergehen siehst. Die Erde braucht mindestens {seconds, number} Sekunden für eine Drehung.",
+				"stopped": "Kein Planet dreht sich, so lassen sich die Jahreszeiten auf dem Weg um die Sonne leicht verfolgen. Monde zeigen ihrem Planeten weiter immer dieselbe Seite.",
+				"stopped@simple": "Die Planeten hören auf, sich zu drehen. Sie wandern weiter um die Sonne."
+			},
+			"notice": "Nicht nach der Uhr: Tag und Nacht auf den Planeten passen nicht mehr zum Datum.",
+			"notice@simple": "Die Planeten drehen sich langsamer als in Wirklichkeit."
+		},
 		"info": {
 			"label": "Himmelskörper im Fokus",
 			"radius": "Radius",
@@ -234,7 +255,10 @@
 			"rotation@simple": "Zeit für eine Drehung",
 			"rotationUnknown": "unbekannt",
 			"retrograde": "{period}, rückläufig",
-			"retrograde@simple": "{period}, dreht sich rückwärts"
+			"retrograde@simple": "{period}, dreht sich rückwärts",
+			"synchronous": "zeigt {parentId, select, sun {der Sonne} earth {der Erde} other {dem {parent}}} immer dieselbe Seite",
+			"synchronous@simple": "zeigt {parentId, select, sun {der Sonne} earth {der Erde} other {dem {parent}}} immer dieselbe Seite",
+			"synchronous@advanced": "gebundene Rotation"
 		},
 		"centre": {
 			"label": "Mitte der Ansicht",

@@ -67,7 +67,8 @@ export const Rings = z
  * Spin: `periodHours` alone carries the direction (negative = retrograde), `axialTiltDeg` is the
  * obliquity to the body's own orbit measured to the IAU north pole (0..90). The Sun, the planets
  * and the Moon also carry the IAU 2015 north pole (ICRF right ascension / declination) and the
- * prime meridian angle W0 at J2000; see src/sim/rotation.ts for how they are used.
+ * prime meridian angle W0 at J2000; see src/sim/rotation.ts for how they are used. `synchronous`
+ * marks a tidally locked moon (its period then equals its orbital period).
  */
 export const Rotation = z
 	.object({
@@ -76,6 +77,8 @@ export const Rotation = z
 		poleRaDeg: z.number().optional(),
 		poleDecDeg: z.number().min(-90).max(90).optional(),
 		primeMeridianDeg: z.number().optional(),
+		/** tidally locked: the prime meridian faces the parent (src/sim/rotation.ts synchronousAngle) */
+		synchronous: z.literal(true).optional(),
 	})
 	.refine(
 		(rotation) =>
