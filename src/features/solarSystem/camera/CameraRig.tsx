@@ -29,7 +29,7 @@ import { useSimStore } from "@/store/sim"
 import { useSimFrame } from "../scene/simFrame"
 import { exposeDebugHandle } from "./debugHandle"
 import { CAMERA_FRAME_PRIORITY, CameraDirector } from "./director"
-import { PAN_ENABLED, configureInput } from "./input"
+import { PAN_ENABLED, configureInput, pinchAsDolly } from "./input"
 
 // camera-controls needs the three.js classes it uses handed to it once
 // (what drei's <CameraControls> does on mount)
@@ -67,8 +67,12 @@ function CameraRig() {
 
 	useEffect(() => {
 		configureInput(controls, { pan: PAN_ENABLED })
+		const removePinch = pinchAsDolly(controls, domElement)
 		controls.connect(domElement)
-		return () => controls.disconnect()
+		return () => {
+			controls.disconnect()
+			removePinch()
+		}
 	}, [controls, domElement])
 	useEffect(() => () => controls.dispose(), [controls])
 
