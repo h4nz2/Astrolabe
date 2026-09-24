@@ -57,7 +57,7 @@ src/store/                   sim.ts (the simulation store), navigation.ts (selec
                              (store <-> URL hook, see Store)
 src/features/hero/           landing page (existing, ported)
 src/features/solarDictionary/ dictionary (existing, ported)
-src/features/solarSystem/    the 3D solar system: index.tsx (page), scene/ (Scene, SimClock, ScaleSync, simFrame, Markers, useThrottledSimTime),
+src/features/solarSystem/    the 3D solar system: index.tsx (page), scene/ (Scene, SimClock, ScaleSync, simFrame, Markers, HoverCursor, useThrottledSimTime),
                              bodies/ (Bodies, BodyMesh, orientation, OrbitLine, OrbitLines), camera/ (CameraRig, director,
                              framing, pose, profiles, input, debugHandle), ui/ (TimeControls, SceneToggles, FocusPicker,
                              OverviewButton, BodyInfo + format/warp/focusCycle/keyboard helpers); scene/tap.ts (tap vs drag)
@@ -491,7 +491,10 @@ pins `t` at once; at faster warps the last written `t` stays). `t` is rounded to
   the pointer ray, `pickMarker`); a planet or the Sun inside the radius wins over any moon, however much closer the
   moon's dot is, so clicks work at any distance and a planet's moons never steal its click.
   Labels (Phase 4): planets always; moons only when their parent or a sibling is the focus, capped to the largest N.
-  Clicking a marker, label or mesh calls `setFocus` (select and focus); hovering sets `hoverId`. A tap selects, a drag
+  Clicking a marker, label or mesh calls `setFocus` (select and focus); hovering sets `hoverId`, and
+  `scene/HoverCursor.tsx` turns the canvas cursor into a pointer while the hovered body is a click target
+  (`isClickTarget`: any body except the focus once it is also selected, which fills the view up close and would
+  otherwise show a hand on every orbit drag). A tap selects, a drag
   does not (`scene/tap.ts`): the press may travel at most 4 px (mouse), 8 px (pen) or 12 px (touch), measured over its
   whole path, so a drag that wanders back to where it started is still a drag.
 - Camera: see Navigation. R is always the drawn radius (see Scale). `minDistance = max(1.2 * R, R + 2 * near)`
