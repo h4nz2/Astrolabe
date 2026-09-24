@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest"
 
 import { getBody } from "@/data"
-import { AU_KM, degToRad, toUnits } from "@/sim"
+import { AU_KM, TRUE_SCALE, degToRad, toUnits } from "@/sim"
 import { HOME_SHOT } from "@/store/navigation"
 
-import { FRAMING_RADII, overviewDistance, renderedRadius } from "./framing"
+import { FRAMING_RADII, overviewDistance } from "./framing"
 import {
 	MAX_TRANSIT_MS,
 	MIN_TRANSIT_MS,
@@ -30,7 +30,7 @@ import {
 } from "./profiles"
 
 const K = 2 * Math.tan(degToRad(22.5))
-const framing = (id: string) => FRAMING_RADII * renderedRadius(getBody(id))
+const framing = (id: string) => FRAMING_RADII * toUnits(getBody(id).radiusKm)
 
 describe("angles and easing", () => {
 	it("wraps into [-pi, pi) and blends the short way round", () => {
@@ -168,9 +168,13 @@ describe("smooth transit profile", () => {
 
 	it("starts on the start pose and ends exactly on the destination", () => {
 		const cases = [
-			input(overviewDistance(45, 16 / 9), framing("jupiter"), 7.8e5),
+			input(
+				overviewDistance(TRUE_SCALE, 45, 16 / 9),
+				framing("jupiter"),
+				7.8e5,
+			),
 			input(framing("earth"), framing("neptune"), 4.5e6),
-			input(framing("sun"), overviewDistance(45, 1), 0),
+			input(framing("sun"), overviewDistance(TRUE_SCALE, 45, 1), 0),
 		]
 		const out: TransitSample = { pivot: 0, distance: 0, direction: 0 }
 		for (const case_ of cases) {
@@ -188,7 +192,7 @@ describe("smooth transit profile", () => {
 	})
 
 	it("keeps the destination on screen while descending from the overview", () => {
-		const from = overviewDistance(45, 16 / 9)
+		const from = overviewDistance(TRUE_SCALE, 45, 16 / 9)
 		const to = framing("jupiter")
 		const separation = toUnits(5.2 * AU_KM)
 		const out: TransitSample = { pivot: 0, distance: 0, direction: 0 }

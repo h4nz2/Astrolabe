@@ -133,6 +133,12 @@ export class CameraDirector {
 		direction: 0,
 	}
 
+	/** Requested arrival distance, in multiples of the destination's default (re-read each frame: the scale may change mid-flight). */
+	private toFactor = 1
+	/** The scale version and default distance the settled camera was framed under (scale changes rescale it). */
+	private followedVersion = -1
+	private followedDefault = 0
+
 	/** Body the current pivot is attached to (for the start of the next transition). */
 	private heldIndex = 0
 	/** A pivot the user moved (pan) that the store has not been told about yet. */
@@ -180,6 +186,7 @@ export class CameraDirector {
 			if (current === null || current.id !== this.runningId) {
 				// replaced from outside without passing through begin (store reset)
 				this.runningId = null
+				this.follow(this.store.getState().view)
 			} else {
 				this.advance(now)
 			}
@@ -256,6 +263,7 @@ export class CameraDirector {
 		this.applyPose(this.pose)
 		this.heldIndex = index
 		this.forceJump = false
+		this.follow(view)
 		if (pending !== null) state.settle(pending.id, now)
 		this.publishShot()
 	}
@@ -280,7 +288,7 @@ export class CameraDirector {
 		const from = this.from
 		from.index = this.heldIndex
 		const at = from.index * 3
-		const positions = this.frame.positionsKm
+		const positions = this.frame.displayKm
 		from.offsetKm[0] = origin[0] + target.x * KM_PER_UNIT - positions[at]
 		from.offsetKm[1] = origin[1] + target.y * KM_PER_UNIT - positions[at + 1]
 		from.offsetKm[2] = origin[2] + target.z * KM_PER_UNIT - positions[at + 2]
@@ -303,10 +311,11 @@ export class CameraDirector {
 			this.toPose,
 		)
 
+		this.toFactor = transition.shot?.distance ?? 1
 		this.profile = transitProfile(transition.profile)
-		this.fillInput()
 		this.runningId = transition.id
 		this.runningView = view
+		this.fillInput()
 		this.startedAt = now
 		this.durationMs = broken
 			? 0
@@ -339,11 +348,12 @@ export class CameraDirector {
 			} else {
 				// the user drove the distance; make sure it is not inside the destination
 				this.readPose(this.pose, true)
-				const min = minViewDistance(view)
+				const min = minViewDistance(view, this.frame)
 				if (this.pose.radius < min) void this.controls.dollyTo(min, true)
 			}
 			this.heldIndex = toIndex
 			this.runningId = null
+			this.follow(view)
 			state.settle(transition.id, now)
 			this.publishShot()
 			return
@@ -401,7 +411,7 @@ export class CameraDirector {
 			pivot[2] += target.z * KM_PER_UNIT
 			const pan = this.pendingPan ?? { index, offsetKm: new Float64Array(3) }
 			const at = index * 3
-			const positions = this.frame.positionsKm
+			const positions = this.frame.displayKm
 			pan.index = index
 			pan.offsetKm[0] = pivot[0] - positions[at]
 			pan.offsetKm[1] = pivot[1] - positions[at + 1]
@@ -410,8 +420,11 @@ export class CameraDirector {
 			this.shiftTarget(target)
 		}
 		this.setOrigin(pivot)
+		this.followScale(view)
 		this.controls.minDistance =
-			this.pendingPan === null ? minViewDistance(view) : minDollyDistance(0)
+			this.pendingPan === null
+				? minViewDistance(view, this.frame)
+				: minDollyDistance(0)
 		this.controls.maxDistance = CAMERA_MAX_DISTANCE
 	}
 
@@ -435,6 +448,33 @@ export class CameraDirector {
 	}
 
 	// --- helpers -------------------------------------------------------------
+
+	/** Remembers what the settled camera is framed against, for `followScale`. */
+	private follow(view: View): void {
+		this.followedVersion = this.frame.scaleVersion
+		this.followedDefault = this.defaultDistance(view)
+	}
+
+	/**
+	 * A scale change (#8, #21) moves every drawn size and distance: the camera
+	 * distance scales with the view's default framing (the focus's drawn radius,
+	 * or the drawn system for the overview), so what is framed keeps its size on
+	 * screen while everything else moves to where the new scale puts it.
+	 */
+	private followScale(view: View): void {
+		if (this.frame.scaleVersion === this.followedVersion) return
+		const from = this.followedDefault
+		this.follow(view)
+		if (!(from > 0) || this.pendingPan !== null) return
+		const radius = this.readPose(this.pose, true).radius
+		const min = minViewDistance(view, this.frame)
+		// the new limit first: dollyTo clamps to it
+		this.controls.minDistance = min
+		void this.controls.dollyTo(
+			Math.max(min, (radius * this.followedDefault) / from),
+			false,
+		)
+	}
 
 	private commitPan(): void {
 		const pan = this.pendingPan
@@ -537,7 +577,7 @@ export class CameraDirector {
 	private pivotOf(view: View, out: Float64Array): Float64Array {
 		const index = this.anchorIndex(view) ?? 0
 		const at = index * 3
-		const positions = this.frame.positionsKm
+		const positions = this.frame.displayKm
 		out[0] = positions[at]
 		out[1] = positions[at + 1]
 		out[2] = positions[at + 2]
@@ -551,7 +591,7 @@ export class CameraDirector {
 
 	private anchoredKm(anchored: Anchored, out: Float64Array): Float64Array {
 		const at = anchored.index * 3
-		const positions = this.frame.positionsKm
+		const positions = this.frame.displayKm
 		out[0] = positions[at] + anchored.offsetKm[0]
 		out[1] = positions[at + 1] + anchored.offsetKm[1]
 		out[2] = positions[at + 2] + anchored.offsetKm[2]
@@ -559,7 +599,12 @@ export class CameraDirector {
 	}
 
 	private defaultDistance(view: View): number {
-		return defaultDistance(view, this.camera.fov, this.camera.aspect)
+		return defaultDistance(
+			view,
+			this.frame,
+			this.camera.fov,
+			this.camera.aspect,
+		)
 	}
 
 	/** The profile's input from the current pivots (fills `fromKm` and `toKm`). */
@@ -569,6 +614,7 @@ export class CameraDirector {
 		const dx = to[0] - this.fromKm[0]
 		const dy = to[1] - this.fromKm[1]
 		const dz = to[2] - this.fromKm[2]
+		this.toPose.radius = this.toFactor * this.defaultDistance(this.runningView)
 		this.input.fromDistance = this.fromPose.radius
 		this.input.toDistance = this.toPose.radius
 		this.input.separation = Math.hypot(dx, dy, dz) / KM_PER_UNIT

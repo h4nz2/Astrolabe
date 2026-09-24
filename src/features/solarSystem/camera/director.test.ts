@@ -9,7 +9,7 @@ import * as THREE from "three"
 import { CameraControlsImpl } from "@react-three/drei"
 
 import { bodies } from "@/data"
-import { J2000_JD } from "@/sim"
+import { J2000_JD, SCALE_PRESETS } from "@/sim"
 import {
 	HOME_SHOT,
 	OVERVIEW,
@@ -19,7 +19,12 @@ import {
 } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 
-import { createSimFrame, updateSimFrame } from "../scene/simFrame"
+import {
+	createSimFrame,
+	setSimFrameScale,
+	updateSimFrame,
+	type SimFrame,
+} from "../scene/simFrame"
 import { CameraDirector } from "./director"
 import {
 	CAMERA_FAR,
@@ -118,7 +123,7 @@ class Harness {
 
 	bodyKm(id: string): Vec {
 		const i = this.frame.index.get(id)!
-		const p = this.frame.positionsKm
+		const p = this.frame.displayKm
 		return [p[i * 3], p[i * 3 + 1], p[i * 3 + 2]]
 	}
 
@@ -140,12 +145,15 @@ function expectSettled(h: Harness, mode: ViewMode, bodyId: string) {
 	expect(distance(snap.originKm, h.bodyKm(bodyId))).toBeLessThan(1e-6)
 	expect(length(snap.targetUnits)).toBeLessThan(1e-9 * snap.distance)
 	expect(snap.distance).toBeGreaterThanOrEqual(
-		minViewDistance(store().view) * (1 - 1e-9),
+		minViewDistance(store().view, h.frame) * (1 - 1e-9),
 	)
 	expect(snap.distance).toBeLessThanOrEqual(CAMERA_MAX_DISTANCE)
 }
 
-const framing = (view: View) => defaultDistance(view, CAMERA_FOV_DEG, ASPECT)
+/** Drawn sizes do not depend on time: one true-scale frame sizes every expectation. */
+const sizing = createSimFrame(bodies, J2000_JD)
+const framing = (view: View, frame: SimFrame = sizing) =>
+	defaultDistance(view, frame, CAMERA_FOV_DEG, ASPECT)
 
 describe("CameraDirector", () => {
 	it("mounts into the overview, from the home direction", () => {
@@ -356,7 +364,7 @@ describe("CameraDirector", () => {
 			h.step(60)
 			expectSettled(h, "focused", "jupiter")
 			expect(h.snapshot().distance).toBeGreaterThanOrEqual(
-				minViewDistance({ kind: "body", id: "jupiter" }) * (1 - 1e-6),
+				minViewDistance({ kind: "body", id: "jupiter" }, h.frame) * (1 - 1e-6),
 			)
 		})
 	})
@@ -476,6 +484,58 @@ describe("CameraDirector", () => {
 			const end = h.now + 10000
 			while (store().sequence !== null && h.now < end) h.step()
 			expectSettled(h, "focused", "phobos")
+		})
+	})
+
+	describe("scale presets (#8, #21)", () => {
+		const visible = SCALE_PRESETS.everythingVisible
+
+		it("frames and tracks the drawn body, not the true one", () => {
+			const h = new Harness()
+			setSimFrameScale(h.frame, visible)
+			store().jumpTo({ kind: "body", id: "earth" })
+			h.step()
+			expectSettled(h, "focused", "earth")
+			const view: View = { kind: "body", id: "earth" }
+			expect(h.snapshot().distance / framing(view, h.frame)).toBeCloseTo(1, 9)
+			// the origin sits on the drawn position, which differs from the true one
+			const i = h.frame.index.get("earth")!
+			expect(h.frame.displayKm[i * 3]).not.toBe(h.frame.positionsKm[i * 3])
+		})
+
+		it("keeps the focus the same size on screen when the scale changes", () => {
+			const h = new Harness()
+			store().jumpTo({ kind: "body", id: "jupiter" }, { distance: 3 })
+			h.step()
+			setSimFrameScale(h.frame, visible)
+			h.step()
+			expectSettled(h, "focused", "jupiter")
+			const view: View = { kind: "body", id: "jupiter" }
+			expect(h.snapshot().distance / framing(view, h.frame)).toBeCloseTo(3, 9)
+		})
+
+		it("keeps the whole system in the overview when the scale changes", () => {
+			const h = new Harness()
+			h.step()
+			setSimFrameScale(h.frame, visible)
+			h.step()
+			expectSettled(h, "overview", "sun")
+			expect(h.snapshot().distance / framing(OVERVIEW, h.frame)).toBeCloseTo(
+				1,
+				9,
+			)
+		})
+
+		it("lands on the new framing when the scale changes mid-flight", () => {
+			const h = new Harness()
+			h.step()
+			store().setFocus("saturn")
+			h.step(10)
+			setSimFrameScale(h.frame, visible)
+			h.settle()
+			expectSettled(h, "focused", "saturn")
+			const view: View = { kind: "body", id: "saturn" }
+			expect(h.snapshot().distance / framing(view, h.frame)).toBeCloseTo(1, 9)
 		})
 	})
 

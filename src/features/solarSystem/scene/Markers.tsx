@@ -19,7 +19,7 @@ import {
 } from "three"
 
 import type { Body, BodyKind } from "@/data"
-import { degToRad, toUnits } from "@/sim"
+import { degToRad } from "@/sim"
 import { isBodyShown, useSimStore, type SimState } from "@/store/sim"
 
 import { useSimFrame, type SimFrame } from "./simFrame"
@@ -109,7 +109,7 @@ export function fillMarkers(
 		const distance = scratch.distanceTo(camera.position)
 		if (
 			distance > 0 &&
-			(2 * toUnits(body.radiusKm) * pxPerUnit) / distance >
+			(2 * frame.renderRadius(i) * pxPerUnit) / distance >
 				MARKER_HIDE_DIAMETER_PX
 		) {
 			continue
