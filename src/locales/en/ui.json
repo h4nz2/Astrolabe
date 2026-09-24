@@ -132,6 +132,7 @@
 			"labels": "Labels",
 			"moons": "Moons",
 			"markers": "Markers",
+			"orbitNames": "Orbit names",
 			"alwaysLit": "Always lit"
 		},
 		"scale": {

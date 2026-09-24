@@ -67,10 +67,12 @@ export const LAYER_PARAMS = [
 	["markers", "showMarkers"],
 ] as const
 
-type LayerField = (typeof LAYER_PARAMS)[number][1]
+type LayerField = (typeof LAYER_PARAMS)[number][1] | "showOrbitLabels"
 type Layers = Pick<SimState, LayerField>
 
-type Mirrored = Layers &
+// the orbit names (off by default) may be left out
+type Mirrored = Omit<Layers, "showOrbitLabels"> &
+	Partial<Pick<Layers, "showOrbitLabels">> &
 	Pick<
 		SimState,
 		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
@@ -120,6 +122,7 @@ export function searchFromState(
 	for (const [param, field] of LAYER_PARAMS) {
 		search[param] = state[field] ? undefined : false
 	}
+	search.orbitNames = state.showOrbitLabels ? true : undefined
 	search.scale =
 		state.scalePreset != null && state.scalePreset !== DEFAULT_SCALE_PRESET
 			? state.scalePreset
@@ -134,6 +137,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.cam === b.cam &&
 	a.t === b.t &&
 	a.warp === b.warp &&
+	a.orbitNames === b.orbitNames &&
 	a.scale === b.scale &&
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
@@ -170,11 +174,16 @@ export function viewFromSearch(search: SimSearch): {
 	}
 }
 
-/** The layer switches a search sets: a switch the link leaves out is on. */
-export const layersFromSearch = (search: SimSearch): Layers =>
-	Object.fromEntries(
+/**
+ * The layer switches a search sets: a switch the link leaves out is on, except
+ * the orbit names, which are off unless the link turns them on.
+ */
+export const layersFromSearch = (search: SimSearch): Layers => ({
+	...(Object.fromEntries(
 		LAYER_PARAMS.map(([param, field]) => [field, search[param] ?? true]),
-	) as Layers
+	) as Omit<Layers, "showOrbitLabels">),
+	showOrbitLabels: search.orbitNames === true,
+})
 
 /** The scale preset a search opens in: `scale` when it names a preset, else the default. */
 export const scaleFromSearch = (search: SimSearch): ScalePresetId =>
@@ -256,7 +265,8 @@ export function useSimUrlSync(): void {
 				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||
 				state.paused !== previous.paused ||
-				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field])
+				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field]) ||
+				state.showOrbitLabels !== previous.showOrbitLabels
 			) {
 				write()
 				return

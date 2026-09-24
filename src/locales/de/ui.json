@@ -132,6 +132,7 @@
 			"labels": "Beschriftungen",
 			"moons": "Monde",
 			"markers": "Markierungen",
+			"orbitNames": "Bahnnamen",
 			"alwaysLit": "Immer beleuchtet"
 		},
 		"scale": {
