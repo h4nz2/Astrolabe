@@ -36,6 +36,12 @@ export interface RotationElements {
 	readonly poleDecDeg?: number
 	/** IAU W0: prime meridian angle at J2000 in degrees, from equatorNode(). */
 	readonly primeMeridianDeg?: number
+	/**
+	 * Tidally locked: the spin period equals the orbital period, and the prime meridian
+	 * faces the parent. Drawn with synchronousAngle() from the true positions, so the
+	 * same face stays toward the parent exactly, whatever the spin mode.
+	 */
+	readonly synchronous?: boolean
 }
 
 /**
@@ -170,4 +176,27 @@ export function rotationAngle(
 	if (period === null || period === 0 || !Number.isFinite(period)) return 0
 	const w0 = degToRad(rotation.primeMeridianDeg ?? 0)
 	return w0 + (TWO_PI * (jd - epochJD) * HOURS_PER_DAY) / period
+}
+
+/**
+ * Spin angle (radians, about `axis`, measured from `node` like rotationAngle()) that turns
+ * the prime meridian toward `toParent`, the direction from the body to its parent in the
+ * same (scene) frame; it needs no normalization. The mesh frame is X = node, Y = axis,
+ * Z = X x Y, and a turn by t about Y takes X to cos t X - sin t Z, so
+ * t = atan2(-toParent . Z, toParent . X). The component along the axis is ignored: the
+ * meridian faces the parent's projection onto the equator (for the Moon, whose axis is
+ * 6.7 deg off its orbit normal, that is the mean sub-Earth point).
+ */
+export function synchronousAngle(
+	axis: Vec3,
+	node: Vec3,
+	toParent: Vec3,
+): number {
+	// Z = node x axis
+	const zx = node.y * axis.z - node.z * axis.y
+	const zy = node.z * axis.x - node.x * axis.z
+	const zz = node.x * axis.y - node.y * axis.x
+	const alongX = toParent.x * node.x + toParent.y * node.y + toParent.z * node.z
+	const alongZ = toParent.x * zx + toParent.y * zy + toParent.z * zz
+	return Math.atan2(-alongZ, alongX)
 }

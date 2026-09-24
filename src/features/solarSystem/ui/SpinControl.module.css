@@ -1,0 +1,32 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+	max-width: 100%;
+	margin-top: 0.5rem;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	max-width: 100%;
+}
+
+.label {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: var(--mantine-font-size-xs);
+	color: var(--mantine-color-gray-4);
+	white-space: nowrap;
+}
+
+/* "day and night no longer match the date": visible, never alarming */
+.notice {
+	margin: 0;
+	font-size: var(--mantine-font-size-xs);
+	color: var(--mantine-color-orange-3);
+	text-align: center;
+}

@@ -11,7 +11,7 @@ import type { I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import { kmToAu } from "@/sim"
 
-export type FactKey = "size" | "distance" | "year" | "orbit" | "weight"
+export type FactKey = "size" | "distance" | "year" | "orbit" | "spin" | "weight"
 
 export interface HeadlineFact {
 	key: FactKey
@@ -176,6 +176,43 @@ function yearFact(body: Body, i18n: I18n): HeadlineFact | null {
 	}
 }
 
+/** Periods from this long on read better in days (Venus: 243 days, not 5,832 hours). */
+const ROTATION_DAYS_FROM_HOURS = 72
+
+/** The rotation period with its direction, and for a tidally locked moon a note saying so (#13). */
+function spinFact(body: Body, i18n: I18n): HeadlineFact {
+	const { periodHours, synchronous } = body.rotation
+	const label = i18n.t("solarSystem.info.rotation")
+	if (periodHours === null) {
+		return {
+			key: "spin",
+			label,
+			comparison: i18n.t("solarSystem.info.rotationUnknown"),
+			value: null,
+		}
+	}
+	const hours = Math.abs(periodHours)
+	const period =
+		hours >= ROTATION_DAYS_FROM_HOURS
+			? i18n.quantity(hours / 24, "day", "long")
+			: i18n.quantity(hours, "hour", "long")
+	return {
+		key: "spin",
+		label,
+		comparison:
+			periodHours < 0
+				? i18n.t("solarSystem.info.retrograde", { period })
+				: period,
+		value:
+			synchronous === true && body.parentId !== null
+				? i18n.t("solarSystem.info.synchronous", {
+						parentId: body.parentId,
+						parent: bodyName(body.parentId, i18n.chain),
+					})
+				: null,
+	}
+}
+
 function weightFact(body: Body, i18n: I18n): HeadlineFact | null {
 	const gravity = surfaceGravity(body)
 	const earthGravity = earth === undefined ? null : surfaceGravity(earth)
@@ -201,12 +238,13 @@ function weightFact(body: Body, i18n: I18n): HeadlineFact | null {
 	}
 }
 
-/** Size, distance, year (or orbit) and weight, the ones that apply to `body`. */
+/** Size, distance, year (or orbit), spin and weight, the ones that apply to `body`. */
 export function headlineFacts(body: Body, i18n: I18n): HeadlineFact[] {
 	return [
 		sizeFact(body, i18n),
 		distanceFact(body, i18n),
 		yearFact(body, i18n),
+		spinFact(body, i18n),
 		weightFact(body, i18n),
 	].filter((fact): fact is HeadlineFact => fact !== null)
 }

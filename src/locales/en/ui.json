@@ -225,6 +225,27 @@
 				}
 			}
 		},
+		"spin": {
+			"label": "Spin",
+			"mode": {
+				"realistic": "Realistic",
+				"slowed": "Slowed",
+				"slow": "Slow motion",
+				"stopped": "Stopped"
+			},
+			"hint": {
+				"realistic": "Every planet turns at its true speed for the clock, so day and night match the date.",
+				"realistic@simple": "The planets spin exactly as fast as in real life.",
+				"slowed": "Spinning slowed down so that Earth turns at most once every {seconds, number} seconds. Orbits keep their speed; the other planets stay faster or slower than Earth.",
+				"slowed@simple": "The planets spin slower, so you can still see them turn when time runs fast. Earth takes at least {seconds, number} seconds for one turn.",
+				"slow": "Spinning slowed down so that Earth turns at most once every {seconds, number} seconds: slow enough to watch a single day pass. Orbits keep their speed.",
+				"slow@simple": "The planets spin very slowly, so you can watch one day go by. Earth takes at least {seconds, number} seconds for one turn.",
+				"stopped": "No planet spins, so the seasons are easy to follow as the planets travel round the Sun. Moons still keep one face toward their planet.",
+				"stopped@simple": "The planets stop spinning. They still travel round the Sun."
+			},
+			"notice": "Not true to the clock: day and night on the planets no longer match the date.",
+			"notice@simple": "The planets spin slower than in real life."
+		},
 		"info": {
 			"label": "Focused body",
 			"radius": "Radius",
@@ -235,7 +256,10 @@
 			"rotation@simple": "Time for one spin",
 			"rotationUnknown": "unknown",
 			"retrograde": "{period}, retrograde",
-			"retrograde@simple": "{period}, spinning backwards"
+			"retrograde@simple": "{period}, spinning backwards",
+			"synchronous": "always the same face toward {parentId, select, other {{parent}}}",
+			"synchronous@simple": "always shows {parentId, select, other {{parent}}} the same side",
+			"synchronous@advanced": "tidally locked to {parentId, select, other {{parent}}}"
 		},
 		"centre": {
 			"label": "Centre of the view",

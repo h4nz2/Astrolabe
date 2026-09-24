@@ -115,6 +115,14 @@ describe("headlineFacts", () => {
 	})
 })
 
+describe("the spin fact", () => {
+	it("keeps the rotation period, its direction and the tidal lock", () => {
+		expect(factsOf("jupiter").spin.comparison).toMatch(/hours$/)
+		expect(factsOf("venus").spin.comparison).toMatch(/days, retrograde$/)
+		expect(factsOf("moon").spin.value).toBe("always the same face toward Earth")
+	})
+})
+
 describe("surfaceGravity", () => {
 	it("is Earth's 9.8 m/s² from the model", () => {
 		expect(surfaceGravity(getBody("earth"))).toBeCloseTo(9.8, 1)
