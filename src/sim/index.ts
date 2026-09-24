@@ -51,6 +51,38 @@ export {
 } from "./positions"
 export type { OrbitingBody, WritableVec3 } from "./positions"
 export {
+	DEFAULT_SCALE_PRESET,
+	SCALE_PRESETS,
+	SCALE_PRESET_IDS,
+	TRUE_SCALE,
+	childDistanceCurve,
+	computeDisplayPositions,
+	computeDisplayRadii,
+	displayBodyLengthKm,
+	displayDistanceKm,
+	displayOffset,
+	displayRadiusKm,
+	distanceFactor,
+	interpolateScale,
+	isIdentityCurve,
+	isScalePresetId,
+	isTrueScale,
+	isValidScale,
+	mapDistance,
+	presetOf,
+	rootIndexOf,
+	sameScale,
+	sizeExaggeration,
+} from "./scale"
+export type {
+	DistanceCurve,
+	ScalableBody,
+	ScaleFactor,
+	ScalePresetId,
+	ScaleSettings,
+	SizeCurve,
+} from "./scale"
+export {
 	OBLIQUITY_J2000_DEG,
 	eclipticDirection,
 	equatorNode,

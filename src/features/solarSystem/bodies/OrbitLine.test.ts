@@ -2,9 +2,22 @@ import { describe, expect, it } from "vitest"
 import { Vector3 } from "three"
 
 import { bodies, getBody, planets } from "@/data"
-import { J2000_JD, TWO_PI, propagate, toUnits, type OrbitElements } from "@/sim"
+import {
+	J2000_JD,
+	SCALE_PRESETS,
+	TRUE_SCALE,
+	TWO_PI,
+	mapDistance,
+	propagate,
+	toUnits,
+	type OrbitElements,
+} from "@/sim"
 
-import { createSimFrame, updateSimFrame } from "../scene/simFrame"
+import {
+	createSimFrame,
+	setSimFrameScale,
+	updateSimFrame,
+} from "../scene/simFrame"
 import {
 	ORBIT_POINTS,
 	ORBIT_REBUILD_FRACTION,
@@ -16,6 +29,7 @@ import {
 	eccentricAnomalyAt,
 	sampleOrbit,
 	updateOrbitBuffers,
+	type OrbitFrame,
 } from "./OrbitLine"
 
 const orbit: OrbitElements = {
@@ -31,16 +45,26 @@ const orbit: OrbitElements = {
 
 const STEP = TWO_PI / ORBIT_SEGMENTS
 
-/** A two-body frame: parent at index 0, child at 1. */
+/** Parent (a root, 1000 km radius) at index 0 and the child at 1, as the scale engine sees them. */
+const pair = [
+	{ id: "parent", parentId: null, radiusKm: 1000, orbit: null },
+	{ id: "child", parentId: "parent", radiusKm: 10, orbit },
+]
+
+/** A two-body frame at true scale (display positions = true positions): parent at index 0, child at 1. */
 const frameWith = (
 	parentKm: number[],
 	originKm: number[],
 	childKm: number[] = [0, 0, 0],
 	jd = J2000_JD,
-) => ({
-	positionsKm: new Float64Array([...parentKm, ...childKm]),
+): OrbitFrame => ({
+	bodies: pair as unknown as OrbitFrame["bodies"],
+	displayKm: new Float64Array([...parentKm, ...childKm]),
+	displayRadiiKm: new Float64Array([1000, 10]),
 	originKm: new Float64Array(originKm),
 	jd,
+	scale: TRUE_SCALE,
+	scaleVersion: 0,
 })
 
 const vertex = (positions: Float32Array, v: number): number[] =>
@@ -326,3 +350,145 @@ describe("updateOrbitBuffers", () => {
 		}
 	})
 })
+
+describe("orbit lines under the scale engine", () => {
+	// planets, the big moons and the most eccentric one (Nereid, e = 0.75)
+	const ids = [
+		"mercury",
+		"earth",
+		"neptune",
+		"moon",
+		"phobos",
+		"io",
+		"titan",
+		"triton",
+		"nereid",
+	]
+
+	/** Every vertex of the line (plus its shift) relative to the parent's render position, in scene units. */
+	const vertexDistancesFromParent = (
+		positions: Float32Array,
+		shift: { x: number; y: number; z: number },
+		parent: Vector3,
+	): number[] => {
+		const out: number[] = []
+		for (let v = 0; v < ORBIT_POINTS; v++) {
+			out.push(
+				Math.hypot(
+					positions[v * 3] + shift.x - parent.x,
+					positions[v * 3 + 1] + shift.y - parent.y,
+					positions[v * 3 + 2] + shift.z - parent.z,
+				),
+			)
+		}
+		return out
+	}
+
+	it("passes through its body in every preset and follows a runtime scale change without detaching", () => {
+		const frame = createSimFrame(
+			bodies,
+			J2000_JD + 123.4,
+			SCALE_PRESETS.everythingVisible,
+		)
+		const render = new Vector3()
+		const parentRender = new Vector3()
+		for (const id of ids) {
+			const body = getBody(id)
+			const index = frame.index.get(id)
+			const parentIndex =
+				body.parentId === null ? undefined : frame.index.get(body.parentId)
+			if (
+				body.orbit === null ||
+				index === undefined ||
+				parentIndex === undefined
+			) {
+				throw new Error(`no orbit for ${id}`)
+			}
+			const buffers = createOrbitBuffers(body.orbit)
+			const shift = { x: 0, y: 0, z: 0 }
+			let lastVersion = -1
+			for (const preset of [
+				"everythingVisible",
+				"trueScale",
+				"textbook",
+				"everythingVisible",
+			] as const) {
+				setSimFrameScale(frame, SCALE_PRESETS[preset])
+				// the focus is the parent (the camera looks at the system this orbit belongs to)
+				updateSimFrame(frame, frame.jd, parentIndex)
+				const rebuilt = updateOrbitBuffers(
+					buffers,
+					body.orbit,
+					frame,
+					index,
+					parentIndex,
+					shift,
+				)
+				// a scale change always rebuilds, whatever the origin and parent did
+				expect(rebuilt).toBe(frame.scaleVersion !== lastVersion)
+				lastVersion = frame.scaleVersion
+				frame.renderPosition(index, render)
+				frame.renderPosition(parentIndex, parentRender)
+				const a = anchorVertex(buffers.slot) * 3
+				const { positions } = buffers
+				const tolerance = 1e-6 * render.distanceTo(parentRender)
+				expect(Math.abs(positions[a] + shift.x - render.x)).toBeLessThanOrEqual(
+					tolerance,
+				)
+				expect(
+					Math.abs(positions[a + 1] + shift.y - render.y),
+				).toBeLessThanOrEqual(tolerance)
+				expect(
+					Math.abs(positions[a + 2] + shift.z - render.z),
+				).toBeLessThanOrEqual(tolerance)
+				// and never dips inside the parent's drawn sphere
+				const minDistance = Math.min(
+					...vertexDistancesFromParent(positions, shift, parentRender),
+				)
+				expect(minDistance).toBeGreaterThan(frame.renderRadius(parentIndex))
+			}
+		}
+	})
+
+	it("maps every sample with the parent's distance curve, eccentric orbits included", () => {
+		// sample 0 is periapsis: its drawn distance is the moon curve at a (1 - e)
+		const frame = createSimFrame(
+			bodies,
+			J2000_JD,
+			SCALE_PRESETS.everythingVisible,
+		)
+		const nereid = getBody("nereid")
+		const orbitOf = nereid.orbit
+		if (orbitOf === null) throw new Error("Nereid has no orbit")
+		const atPeriapsis = { ...orbitOf, meanAnomalyDeg: 0, epochJD: J2000_JD }
+		const neptune = frame.index.get("neptune") ?? -1
+		const buffers = createOrbitBuffers(atPeriapsis)
+		const shift = { x: 0, y: 0, z: 0 }
+		updateSimFrame(frame, J2000_JD, neptune)
+		updateOrbitBuffers(
+			buffers,
+			atPeriapsis,
+			frame,
+			frame.index.get("nereid") ?? -1,
+			neptune,
+			shift,
+		)
+		// the drawn periapsis distance, in Neptune's drawn radii
+		const periapsis = Math.hypot(
+			buffers.displaySamples[0],
+			buffers.displaySamples[1],
+			buffers.displaySamples[2],
+		)
+		const expected =
+			frame.displayRadiiKm[neptune] *
+			mapDistanceOf(
+				(atPeriapsis.semiMajorAxisKm * (1 - atPeriapsis.eccentricity)) /
+					getBody("neptune").radiusKm,
+			)
+		expect(periapsis / expected).toBeCloseTo(1, 9)
+	})
+})
+
+function mapDistanceOf(x: number): number {
+	return mapDistance(SCALE_PRESETS.everythingVisible.moonDistance, x)
+}
