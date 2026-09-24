@@ -11,7 +11,10 @@ import {
 describe("createThrottledSimTimeSource", () => {
 	beforeEach(() => {
 		vi.useFakeTimers()
-		useSimStore.setState({ simTimeJD: J2000_JD, paused: true })
+		// through the clock actions: a bare setState of simTimeJD would be
+		// overwritten by the clock's next sample
+		useSimStore.getState().setPaused(true)
+		useSimStore.getState().setSimTime(J2000_JD)
 	})
 	afterEach(() => {
 		vi.useRealTimers()

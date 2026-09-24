@@ -1,6 +1,6 @@
 /**
- * Pure simulation code: units, time, Kepler propagation, hierarchy positions,
- * axial rotation. No React, no three.js. See docs/ARCHITECTURE.md.
+ * Pure simulation code: units, time, the simulation clock, Kepler propagation,
+ * hierarchy positions, axial rotation. No React, no three.js. See docs/ARCHITECTURE.md.
  */
 export {
 	AU_KM,
@@ -58,3 +58,20 @@ export {
 	spinAxis,
 } from "./rotation"
 export type { RotationElements } from "./rotation"
+export {
+	GLIDE_MAX_MS,
+	GLIDE_MIN_MS,
+	INSTANT_JUMP_DAYS,
+	MAX_FRAME_GAP_MS,
+	createTimeline,
+	easeInOutSine,
+	glideDurationMs,
+	glideTimeline,
+	isGliding,
+	jumpTimeline,
+	retimeTimeline,
+	settleTimeline,
+	skipFrameGap,
+	timelineJD,
+} from "./clock"
+export type { SimTimeline, TimeGlide } from "./clock"
