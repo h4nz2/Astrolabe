@@ -201,26 +201,52 @@ view (an ESLint rule keeps drei camera controls inside `camera/`). The navigatio
 ```
 selectedId: string | null   drives info panels, labels, the URL; never moves the camera
 view: View                  { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
+                            (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15)
 focusId: string             body the view is centred on (the Sun for the overview, a point's anchor)
 shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
 transition, sequence        the running move and the running tour
+panning: boolean            a pan (or its damped glide) is moving the pivot right now
 viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
 Actions: `select`, `setFocus` (click: select + focus), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
 (the way out), `skip`, and sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
 request carries a partial `shot`, `durationMs` and a `profile`. Invalid views and unknown bodies are ignored.
+Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
 Director (`camera/director.ts`, unit-tested frame by frame):
 
 - Every request starts a new move from wherever the camera is, so retargeting mid-flight never snaps back. Both pivots
   and the arrival distance are re-read every frame.
 - User input during a move takes over distance and direction while the pivot still glides home; it also interrupts
-  automatic sequence steps. A pan while settled becomes a `point` view.
+  automatic sequence steps. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
+  when released (see Re-centring).
 - A non-finite camera or a view of a missing body resets to the overview.
 - Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s.
 - `window.__astrolabe` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
   console and e2e tests. Read the camera, never write it.
+
+### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
+
+- Gestures: orbit = left button / one finger; dolly = wheel, trackpad scroll, pinch, ctrl+wheel, middle button; pan =
+  right button (trackpad two-finger click-drag), Shift + left (`shiftDragPans`), two fingers together, three fingers.
+  Pans are camera-controls' `SCREEN_PAN`: the pivot slides parallel to the ecliptic, like dragging a map.
+- A pan is committed after the controls' update once released and the glide is within 1e-4 of the camera distance of
+  its end (not on camera-controls' `rest`, which fires mid-drag and uses an absolute 10 km threshold). The rest of the
+  glide is folded in, so the commit moves nothing on screen. Then:
+  - **Snap** (`snapTarget`): if the screen centre is on a drawn body's disc or within `SNAP_FOV_FRACTION` (1.2 % of the
+    vertical fov, about 11 px) of a drawn body, the pivot glides onto it (450 ms, distance kept). The view it came from
+    is kept when that is the body (a pan that never left the planet snaps back; a small pan in the overview stays the
+    overview); the Sun means the overview. Camera gestures never change the selection.
+  - **Point** otherwise: anchored to the innermost body whose drawn Hill sphere (at least 4 drawn radii; the Sun owns
+    everything) holds it (`neighbourhoodOf`), offset stored in TRUE km (`pointOffsetKm`, via `trueOffset` /
+    `unmapDistance` in `src/sim/scale.ts`) and drawn with `pointDisplayKm`, so it keeps its place under every preset.
+- Limits follow the centre: a point uses its anchor's `minViewDistance`; a point anchored to the Sun is framed
+  (`defaultDistance`) like the overview.
+- HUD: `ui/CentreMarker.tsx` (crosshair at the canvas centre while `panning` or free), `ui/CentreBadge.tsx` ("Free view
+  near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
+  `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
+- Building on it: #16 clicks call `setFocus`; #31 anchors the frame to `focusId` (a point's anchor).
 
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
@@ -277,9 +303,11 @@ React UI subscribes with selectors, and reads the clock only through `useThrottl
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off. Defaults (overview,
 home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
-once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
-clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
-|warp| <= 60.
+
+> > > > > > > main
+> > > > > > > once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
+> > > > > > > clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
+> > > > > > > |warp| <= 60.
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -333,12 +361,12 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   selected, which fills the view up close). Labels: planets always, moons only within the focused family.
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
-  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button. Panning is behind
-  `PAN_ENABLED` until #15.
+  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
+  button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls`, `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
-  toggles panel). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
+  toggles panel), `CentreBadge` and `CentreMarker` (#15). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`), not
   `WARP_PRESETS[].label`.
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.

@@ -1,14 +1,15 @@
 /**
  * Mirrors the simulation store into the `/solar_system` URL and back.
  *
- * On mount the validated search params (`focus`, `sel`, `cam`, `t`, `warp`
- * and the layer switches `orbits`, `labels`, `moons`, `markers`) seed the
- * store: the view (`focus`: a body, absent: the overview) and its camera shot
- * are applied as a jump, so a shared link opens exactly on the view it was
- * taken from. From then on view, selection, camera shot, warp and the layer
- * switches are written to the URL as they change (the shot when the camera
- * comes to rest) and the simulation time follows at most once per second, and
- * only while it is slow enough to be worth a link (paused or |warp| <= 1 min/s).
+ * On mount the validated search params (`focus`, `at`, `sel`, `cam`, `t`,
+ * `warp` and the layer switches `orbits`, `labels`, `moons`, `markers`) seed
+ * the store: the view (`focus`: a body, with `at` a point in space near it,
+ * absent: the overview) and its camera shot are applied as a jump, so a
+ * shared link opens exactly on the view it was taken from. From then on view,
+ * selection, camera shot, warp and the layer switches are written to the URL
+ * as they change (the shot when the camera comes to rest) and the simulation
+ * time follows at most once per second, and only while it is slow enough to
+ * be worth a link (paused or |warp| <= 1 min/s).
  * Everything is `replace: true`, so the history never fills up.
  *
  * The store is watched through `useSimStore.subscribe`, not selectors: the
@@ -23,7 +24,9 @@ import { dateToJD } from "@/sim"
 import {
 	HOME_SHOT,
 	OVERVIEW,
+	formatOffset,
 	formatShot,
+	parseOffset,
 	parseShot,
 	sameShot,
 	viewBodyId,
@@ -73,9 +76,10 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * is not being mirrored right now (fast warp) keeps its last written value.
  * Defaults (the overview, the home camera, a selection equal to the focus,
  * 1x, a layer switch that is on) are left out to keep the URL short. A point
- * view (the pivot moved into empty space) is written as its anchor body until
- * the pan issue (#15) gives it a parameter of its own. The warp is written as
- * it is (not rounded), so a link runs at exactly the speed it was taken at,
+ * view (the pivot moved into empty space, #15) is its anchor in `focus` and
+ * its offset in `at`, in true radii of the anchor (scale free). The warp is
+ * written as it is (not rounded), so a link runs at exactly the speed it was
+ * taken at,
  * backwards included; a zero warp (which the schema rejects) is left out.
  */
 export function searchFromState(
@@ -84,8 +88,13 @@ export function searchFromState(
 ): SimSearch {
 	const { timeWarp, view, shot } = state
 	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
+	const anchor = view.kind === "point" ? bodyById.get(view.anchorId) : undefined
 	const search: SimSearch = {
 		focus,
+		at:
+			view.kind === "point" && anchor !== undefined
+				? formatOffset(view.offsetKm, anchor.radiusKm)
+				: undefined,
 		sel:
 			state.selectedId !== null && state.selectedId !== focus
 				? state.selectedId
@@ -106,13 +115,17 @@ export function searchFromState(
 
 export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.focus === b.focus &&
+	a.at === b.at &&
 	a.sel === b.sel &&
 	a.cam === b.cam &&
 	a.t === b.t &&
 	a.warp === b.warp &&
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
-/** The view a search describes: `focus` (a known body) or the overview, its camera and selection. */
+/**
+ * The view a search describes: `focus` (a known body; with a valid `at`, a
+ * point near it) or the overview, its camera and selection.
+ */
 export function viewFromSearch(search: SimSearch): {
 	view: View
 	shot: CameraShot | null
@@ -124,11 +137,21 @@ export function viewFromSearch(search: SimSearch): {
 			: null
 	const sel =
 		search.sel !== undefined && bodyById.has(search.sel) ? search.sel : null
+	const anchor = focus === null ? undefined : bodyById.get(focus)
+	const offsetKm =
+		anchor === undefined ? null : parseOffset(search.at, anchor.radiusKm)
+	const view: View =
+		focus === null
+			? OVERVIEW
+			: offsetKm === null
+				? { kind: "body", id: focus }
+				: { kind: "point", anchorId: focus, offsetKm }
 	return {
-		view: focus === null ? OVERVIEW : { kind: "body", id: focus },
+		view,
 		shot: parseShot(search.cam),
-		// a focused body is selected unless the link selects something else
-		selectedId: sel ?? focus,
+		// a focused body is selected unless the link selects something else;
+		// a point in space selects nothing by itself
+		selectedId: sel ?? (view.kind === "body" ? focus : null),
 	}
 }
 
