@@ -1,19 +1,24 @@
 import { FC, memo } from "react"
 import { Box } from "@mantine/core"
 import Scene from "../THREE/Scene"
-import Sidebar, { SidebarLabel } from "../components/Sidebar"
+import Sidebar from "../components/Sidebar"
+import type { SidebarFact } from "../utils/getSidebarLabels"
+import BodyDescription from "./BodyDescription"
 import classes from "./Stage.module.css"
 
 export type StageProps = {
 	texture?: string
-	sidebarLabels: SidebarLabel[]
+	facts: SidebarFact[]
+	/** Body id (src/data/bodies.json) of the shown entry, for its written description. */
+	bodyId: string
 }
 
-const Stage: FC<StageProps> = ({ texture, sidebarLabels }) => {
+const Stage: FC<StageProps> = ({ texture, facts, bodyId }) => {
 	return (
 		<Box className={classes.base}>
 			<Scene texture={texture} />
-			<Sidebar labels={sidebarLabels} />
+			<Sidebar facts={facts} />
+			<BodyDescription bodyId={bodyId} />
 		</Box>
 	)
 }

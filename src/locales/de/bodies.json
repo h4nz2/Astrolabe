@@ -1,0 +1,383 @@
+{
+	"sun": {
+		"name": "Sonne",
+		"tagline": "Unser Stern",
+		"description": {
+			"simple": "Die Sonne ist ein Stern, genau wie die Sterne, die du nachts siehst. Sie wirkt nur so groß und hell, weil sie uns so nahe ist. Die Sonne ist eine riesige Kugel aus glühend heißem Gas. Sie schenkt uns Licht und Wärme – ohne sie gäbe es kein Leben auf der Erde.",
+			"standard": "Die Sonne ist der Stern im Zentrum unseres Sonnensystems. Sie ist eine riesige Kugel aus heißem Gas, vor allem Wasserstoff und Helium, und vereint mehr als 99,8 % der gesamten Masse des Sonnensystems. Tief in ihrem Kern verschmilzt Wasserstoff zu Helium; die dabei frei werdende Energie erreicht uns etwa 8 Minuten später als Licht und Wärme. Ihre Schwerkraft hält alle Planeten auf ihren Bahnen.",
+			"advanced": "Die Sonne ist ein Hauptreihenstern vom Spektraltyp G2V, etwa 4,6 Milliarden Jahre alt und ungefähr in der Mitte ihrer Wasserstoffbrennphase. In ihrem rund 15 Millionen °C heißen Kern verschmelzen jede Sekunde etwa 600 Millionen Tonnen Wasserstoff zu Helium; dabei werden rund 4 Millionen Tonnen Masse in Energie umgewandelt. Diese Energie braucht viele Jahrtausende, um sich durch die Strahlungs- und die Konvektionszone nach außen zu arbeiten, und legt dann die 150 Millionen km zur Erde in etwa 8 Minuten und 20 Sekunden zurück. Die Sonne rotiert differentiell: am Äquator in etwa 25 Tagen, nahe den Polen in rund 35 Tagen."
+		},
+		"facts": {
+			"simple": [
+				"Etwa 1,3 Millionen Erden würden in die Sonne passen.",
+				"Das Sonnenlicht braucht etwa 8 Minuten bis zu uns.",
+				"Schau nie direkt in die Sonne – das kann deinen Augen schaden."
+			],
+			"standard": [
+				"Die Sonne ist etwa 109-mal so breit wie die Erde.",
+				"Ihre sichtbare Oberfläche ist etwa 5500 °C heiß, ihr Kern etwa 15 Millionen °C.",
+				"Das Licht der Sonne erreicht die Erde in etwa 8 Minuten und 20 Sekunden.",
+				"Die Sonne vereint 99,86 % der Masse des ganzen Sonnensystems."
+			],
+			"advanced": [
+				"Masse: etwa 333 000 Erdmassen (1,989 × 10³⁰ kg).",
+				"Die Schwerkraft an der Oberfläche ist etwa 28-mal so stark wie auf der Erde (274 m/s²).",
+				"Zusammensetzung nach Masse: etwa 73 % Wasserstoff, 25 % Helium und 2 % schwerere Elemente.",
+				"Für einen Umlauf um das Zentrum der Milchstraße braucht die Sonne etwa 230 Millionen Jahre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre die Sonne so hoch wie ein achtstöckiges Haus."
+			],
+			"standard": [
+				"Wäre die Sonne ein Wasserball mit 1 m Durchmesser, wäre die Erde eine 9 mm große Erbse in etwa 107 m Entfernung."
+			],
+			"advanced": [
+				"Die Sonne verhält sich zur Erde wie ein Basketball (24 cm) zu einem 2,2 mm großen Korn in 26 m Entfernung."
+			]
+		}
+	},
+	"mercury": {
+		"name": "Merkur",
+		"tagline": "Der kleinste und schnellste Planet",
+		"description": {
+			"simple": "Merkur ist der kleinste Planet und der Sonne am nächsten. Er ist eine graue Felskugel voller Krater, ein bisschen wie unser Mond. Merkur saust schneller um die Sonne als jeder andere Planet. Am Tag ist es dort so heiß, dass Blei schmelzen würde, doch in der Nacht wird es eisig kalt.",
+			"standard": "Merkur ist der kleinste Planet und der sonnennächste; er umrundet die Sonne einmal in 88 Tagen. Er hat fast keine Atmosphäre, die Wärme festhalten könnte, darum schwankt die Temperatur an seiner Oberfläche zwischen etwa 430 °C am Tag und etwa −180 °C in der Nacht. Seine graue, von Kratern übersäte Oberfläche sieht unserem Mond sehr ähnlich. Merkur hat keine Monde.",
+			"advanced": "Merkur umkreist die Sonne in einem mittleren Abstand von 0,39 AE auf der exzentrischsten aller Planetenbahnen (e = 0,21). Er dreht sich genau dreimal um sich selbst, während er die Sonne zweimal umrundet – eine 3:2-Spin-Bahn-Resonanz. Ein Sonnentag dauert dort deshalb 176 Erdtage, also zwei volle Merkurjahre. Ein Eisenkern, der bis etwa 85 % des Radius reicht, verleiht Merkur die zweithöchste Dichte aller Planeten und ein schwaches globales Magnetfeld. Seine dünne Exosphäre kann keine Wärme halten, und in ständig beschatteten Polkratern verbirgt sich Wassereis."
+		},
+		"facts": {
+			"simple": [
+				"Ein Jahr auf Merkur dauert nur 88 Tage.",
+				"Merkur hat keine Monde.",
+				"Er ist nur wenig größer als unser Mond."
+			],
+			"standard": [
+				"Merkur ist der schnellste Planet: Er umkreist die Sonne mit etwa 47 km pro Sekunde.",
+				"Von einem Sonnenaufgang zum nächsten vergehen 176 Erdtage.",
+				"Er ist etwa 38 % so breit wie die Erde.",
+				"Obwohl er der Sonne am nächsten ist, ist Merkur nicht der heißeste Planet – das ist die Venus."
+			],
+			"advanced": [
+				"Sein Abstand zur Sonne schwankt zwischen 46 und 70 Millionen km (Exzentrizität 0,21).",
+				"Die langsame Drehung der Merkurbahn (Periheldrehung) war eine frühe Bestätigung von Einsteins allgemeiner Relativitätstheorie.",
+				"Mittlere Dichte 5,43 g/cm³ – nur die Erde ist dichter."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Merkur etwa so groß wie eine Orange."
+			],
+			"standard": ["Merkur würde etwa 18-mal in die Erde passen."],
+			"advanced": [
+				"Im Perihel erscheint die Sonne am Himmel des Merkur mehr als dreimal so breit wie von der Erde aus."
+			]
+		}
+	},
+	"venus": {
+		"name": "Venus",
+		"tagline": "Der heißeste Planet",
+		"description": {
+			"simple": "Die Venus ist fast so groß wie die Erde, aber ein schrecklicher Ort für einen Besuch. Dicke, giftige Wolken hüllen sie ein und halten die Wärme der Sonne fest. Deshalb ist die Venus der heißeste Planet von allen – sogar heißer als Merkur. Oft kannst du sie am Abend- oder Morgenhimmel hell leuchten sehen.",
+			"standard": "Die Venus ist in ihrer Größe beinahe ein Zwilling der Erde, doch ihre dichte Atmosphäre aus Kohlendioxid erzeugt einen außer Kontrolle geratenen Treibhauseffekt. An der Oberfläche herrschen etwa 465 °C – heißer als auf Merkur, obwohl die Venus fast doppelt so weit von der Sonne entfernt ist – und der Luftdruck ist rund 90-mal so hoch wie auf der Erde. Wolken aus Schwefelsäure verbergen die Oberfläche. Nach dem Mond ist die Venus das hellste natürliche Objekt am Nachthimmel.",
+			"advanced": "Die Venus hat 95 % des Erddurchmessers und 82 % der Erdmasse, hat sich aber ganz anders entwickelt. Eine dichte CO₂-Atmosphäre mit einem Bodendruck von etwa 92 bar treibt einen galoppierenden Treibhauseffekt an, der die Oberfläche Tag und Nacht, von den Polen bis zum Äquator, auf etwa 465 °C hält. Die Venus rotiert rückläufig und sehr langsam: Eine siderische Umdrehung dauert 243 Erdtage, länger als ihr 225-tägiges Jahr; ein Sonnentag dauert deshalb etwa 117 Erdtage. Radarkarten der Sonde Magellan zeigten eine vulkanische Oberfläche, die nur wenige hundert Millionen Jahre alt ist."
+		},
+		"facts": {
+			"simple": [
+				"Die Venus dreht sich andersherum als die meisten Planeten – dort geht die Sonne im Westen auf.",
+				"Ein Tag auf der Venus ist länger als ihr Jahr!",
+				"Die Venus hat keine Monde."
+			],
+			"standard": [
+				"An ihrer Oberfläche ist es etwa 465 °C heiß – heiß genug, um Blei zu schmelzen.",
+				"Der Luftdruck am Boden ist so hoch wie in 900 m Meerestiefe.",
+				"Die Venus kommt der Erde näher als jeder andere Planet – bis auf etwa 38 Millionen km."
+			],
+			"advanced": [
+				"Ihre Wolken werfen etwa drei Viertel des Sonnenlichts zurück (Bond-Albedo 0,76).",
+				"Die obere Atmosphäre umrundet den Planeten in etwa 4 Tagen, rund 60-mal schneller, als sich die Oberfläche dreht (Superrotation).",
+				"Eine siderische Umdrehung dauert 243 Erdtage, in rückläufiger Richtung."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre die Venus auch ein Fußball – nur ein winziges bisschen kleiner."
+			],
+			"standard": [
+				"Wäre die Erde ein Fußball mit 22 cm Durchmesser, hätte die Venus 21 cm."
+			],
+			"advanced": [
+				"Die Atmosphäre der Venus hat etwa 93-mal so viel Masse wie die der Erde."
+			]
+		}
+	},
+	"earth": {
+		"name": "Erde",
+		"tagline": "Unser Zuhause",
+		"description": {
+			"simple": "Die Erde ist unser Zuhause und der einzige Planet, von dem wir wissen, dass es dort Leben gibt. Der größte Teil ist von Ozeanen bedeckt, darum sieht sie aus dem All blau aus. Die Erde dreht sich einmal am Tag – so entstehen Tag und Nacht. Für eine ganze Runde um die Sonne braucht sie ein Jahr.",
+			"standard": "Die Erde ist der dritte Planet von der Sonne aus und die einzige Welt, auf der wir Leben kennen. Flüssiges Wasser bedeckt etwa 71 % ihrer Oberfläche, und eine Atmosphäre aus Stickstoff und Sauerstoff schützt uns und sorgt für milde Temperaturen. Die Erdachse ist um etwa 23,4° geneigt; das beschert uns die Jahreszeiten. Die Erde umkreist die Sonne in einem mittleren Abstand von rund 150 Millionen km, einmal in 365,25 Tagen.",
+			"advanced": "Die Erde ist der größte und dichteste der vier Gesteinsplaneten (5,51 g/cm³). Ihr flüssiger äußerer Eisenkern erzeugt ein Magnetfeld, das den Sonnenwind ablenkt, und die Plattentektonik erneuert ständig ihre Kruste. Die Neigung der Erdachse von 23,4°, stabilisiert durch unseren ungewöhnlich großen Mond, verursacht die Jahreszeiten. Die Erde umläuft die Sonne in 1 AE (149,6 Millionen km) mit einer Exzentrizität von 0,017; ihr Abstand zur Sonne schwankt deshalb nur um etwa 3 % – und am nächsten ist sie der Sonne Anfang Januar."
+		},
+		"facts": {
+			"simple": [
+				"Etwa 71 von 100 Teilen der Erdoberfläche sind Wasser.",
+				"Die Erde hat einen Mond – wir nennen ihn einfach den Mond.",
+				"Die Erde ist der einzige Planet, der nicht nach einem Gott benannt ist."
+			],
+			"standard": [
+				"Die Erde rast mit etwa 30 km pro Sekunde um die Sonne – mehr als 100 000 km/h.",
+				"Die Neigung der Erdachse (23,4°), nicht der Abstand zur Sonne, verursacht die Jahreszeiten.",
+				"Die Erde ist der dichteste Planet des Sonnensystems."
+			],
+			"advanced": [
+				"Gegenüber den Sternen dreht sich die Erde in 23 h 56 min einmal (Sterntag); der 24-stündige Sonnentag ist etwa 4 Minuten länger.",
+				"Die Atmosphäre besteht nach Volumen zu etwa 78 % aus Stickstoff und zu 21 % aus Sauerstoff.",
+				"Die Erde ist etwa 4,54 Milliarden Jahre alt."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Mit dem Auto bei 100 km/h ohne einen einzigen Halt um den Äquator zu fahren, würde etwa 17 Tage dauern."
+			],
+			"standard": [
+				"Ein Flugzeug mit 900 km/h bräuchte etwa 19 Jahre bis zur Sonne."
+			],
+			"advanced": [
+				"Die Erdbahn ist so nahezu kreisförmig, dass man sie maßstabsgetreu auf Papier gezeichnet nicht von einem Kreis unterscheiden könnte."
+			]
+		}
+	},
+	"mars": {
+		"name": "Mars",
+		"tagline": "Der rote Planet",
+		"description": {
+			"simple": "Mars heißt der rote Planet, weil sein Boden mit rostrotem Staub bedeckt ist. Er ist kleiner und viel kälter als die Erde. Auf dem Mars steht der höchste Vulkan, den wir kennen, und er hat zwei winzige Monde. Roboter, die man Rover nennt, fahren auf dem Mars herum und erforschen ihn für uns.",
+			"standard": "Mars ist der vierte Planet von der Sonne aus und etwa halb so breit wie die Erde. Eisenoxid – Rost – in seinem Staub gibt ihm seine rote Farbe. Mars hat Jahreszeiten und Polkappen aus Eis, aber seine Atmosphäre ist sehr dünn, und die Durchschnittstemperatur liegt bei etwa −60 °C. Auf ihm liegen der größte Vulkan des Sonnensystems, Olympus Mons, und ein Canyon, Valles Marineris, der etwa 4000 km lang ist – ungefähr so weit wie von Lissabon nach Moskau.",
+			"advanced": "Mars hat etwa 53 % des Erddurchmessers und 38 % der Schwerkraft an der Erdoberfläche. Seine dünne CO₂-Atmosphäre mit einem Bodendruck von weniger als 1 % des irdischen kann den Planeten nicht warm halten; die Durchschnittstemperatur liegt um −60 °C. Ausgetrocknete Flusstäler, alte Seebecken und Minerale, die nur in Wasser entstehen, zeigen, dass einst flüssiges Wasser auf seiner Oberfläche floss. Mit einer Achsneigung von 25,2° und einem Tag von 24 h 37 min ähneln Tage und Jahreszeiten denen der Erde, doch jede Jahreszeit dauert etwa doppelt so lang, denn ein Marsjahr hat 687 Erdtage."
+		},
+		"facts": {
+			"simple": [
+				"Ein Tag auf dem Mars ist nur etwa 40 Minuten länger als ein Tag auf der Erde.",
+				"Mars hat zwei kleine Monde: Phobos und Deimos.",
+				"Auf dem Mars würdest du weniger als halb so viel wiegen wie auf der Erde."
+			],
+			"standard": [
+				"Olympus Mons ist etwa 22 km hoch – zweieinhalbmal so hoch wie der Mount Everest.",
+				"Ein Jahr auf dem Mars dauert 687 Erdtage.",
+				"Staubstürme auf dem Mars können so groß werden, dass sie den ganzen Planeten einhüllen."
+			],
+			"advanced": [
+				"Der Bodendruck beträgt nur etwa 0,6 % des irdischen; flüssiges Wasser verdampft oder gefriert dort schnell.",
+				"Sein Abstand zur Sonne schwankt zwischen etwa 207 und 249 Millionen km (Exzentrizität 0,093).",
+				"Phobos nähert sich langsam dem Mars und wird in etwa 30 bis 50 Millionen Jahren zerbrechen oder auf ihn stürzen."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre der Mars etwa so groß wie eine Grapefruit."
+			],
+			"standard": ["Der Mars würde mehr als sechsmal in die Erde passen."],
+			"advanced": [
+				"Vom Mars aus gesehen wirkt die Sonne nur etwa zwei Drittel so breit wie von der Erde aus."
+			]
+		}
+	},
+	"jupiter": {
+		"name": "Jupiter",
+		"tagline": "Der Riese des Sonnensystems",
+		"description": {
+			"simple": "Jupiter ist der größte Planet – mehr als 1300 Erden würden in ihn hineinpassen. Er ist eine riesige Kugel aus Gas, auf der man nirgends stehen könnte. Seine Streifen sind Wolkenbänder, und sein Großer Roter Fleck ist ein Sturm, der größer ist als die ganze Erde. Jupiter hat sehr, sehr viele Monde.",
+			"standard": "Jupiter ist der größte Planet, elfmal so breit wie die Erde und schwerer als alle anderen Planeten zusammen. Dieser Gasriese besteht vor allem aus Wasserstoff und Helium; seine farbigen Wolkenbänder werden von schnellen Winden und seiner raschen Drehung in die Länge gezogen: Ein Tag auf Jupiter dauert weniger als 10 Stunden. Der Große Rote Fleck ist ein Sturm, breiter als die Erde, der seit mehr als 150 Jahren tobt. Seine vier größten Monde entdeckte Galileo Galilei im Jahr 1610.",
+			"advanced": "Jupiter hat 318 Erdmassen – etwa das 2,5-Fache der Masse aller anderen Planeten zusammen. Unter den Wolkenobergrenzen aus Ammoniakeis werden Wasserstoff und Helium so stark zusammengepresst, dass sich Wasserstoff tief im Inneren wie ein flüssiges Metall verhält; Ströme in dieser Schicht erzeugen das stärkste planetare Magnetfeld im Sonnensystem. Jupiter dreht sich in etwa 9 h 56 min einmal um sich selbst, schneller als jeder andere Planet, was ihn an den Polen sichtbar abplattet. Er strahlt mehr Wärme ab, als er von der Sonne empfängt – ein Überbleibsel seiner Entstehung und seiner langsamen Kontraktion."
+		},
+		"facts": {
+			"simple": [
+				"Ein Tag auf Jupiter dauert weniger als 10 Stunden – der kürzeste Tag aller Planeten.",
+				"Jupiter hat dünne, dunkle Ringe, die sehr schwer zu sehen sind.",
+				"Sein Mond Ganymed ist größer als der Planet Merkur."
+			],
+			"standard": [
+				"Ein Jahr auf Jupiter dauert fast 12 Erdjahre.",
+				"Jupiter ist im Mittel etwa 5,2-mal so weit von der Sonne entfernt wie die Erde.",
+				"Mehr als 90 Monde umkreisen Jupiter."
+			],
+			"advanced": [
+				"Sein Mond Io ist der vulkanisch aktivste Himmelskörper des Sonnensystems, aufgeheizt durch Gezeitenkräfte.",
+				"Unter der Eiskruste seines Mondes Europa wird ein globaler Ozean aus flüssigem Wasser vermutet.",
+				"Jupiters Schwerkraft formt den Asteroidengürtel und reißt Lücken hinein (die Kirkwoodlücken)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Jupiter ein Ball von etwa 2,5 m Höhe – größer als ein Erwachsener."
+			],
+			"standard": ["Etwa 1321 Erden würden in Jupiter passen."],
+			"advanced": [
+				"Jupiters Durchmesser beträgt etwa ein Zehntel des Sonnendurchmessers, seine Masse etwa ein Tausendstel der Sonnenmasse."
+			]
+		}
+	},
+	"saturn": {
+		"name": "Saturn",
+		"tagline": "Der Ringplanet",
+		"description": {
+			"simple": "Saturn ist berühmt für seine wunderschönen Ringe. Sie bestehen aus Milliarden Stücken aus Eis und Gestein – manche so klein wie Sandkörner, manche so groß wie ein Haus. Saturn ist eine riesige Gaskugel und für seine Größe so leicht, dass er im Wasser schwimmen würde – wenn man eine Badewanne fände, die groß genug ist!",
+			"standard": "Saturn, der sechste Planet, ist der zweitgrößte Planet und der mit der geringsten Dichte: Im Durchschnitt ist er leichter als Wasser. Seine hellen Ringe sind etwa 270 000 km breit, meist aber nur etwa 10 m dick, und bestehen aus unzähligen Brocken aus Eis und Gestein. Saturn hat mehr bekannte Monde als jeder andere Planet, darunter Titan, der größer ist als Merkur und eine dichte Atmosphäre besitzt.",
+			"advanced": "Saturn hat 95 Erdmassen, aber eine mittlere Dichte von nur 0,69 g/cm³, die geringste aller Planeten. Seine schnelle Rotation (etwa 10 h 33 min) macht ihn zum am stärksten abgeplatteten Planeten: Sein Äquatordurchmesser ist etwa 10 % größer als sein Poldurchmesser. Die Hauptringe, vor allem Wassereis mit etwas Gestein, erstrecken sich über etwa 270 000 km, sind meist aber nur etwa 10 m dick – und womöglich viel jünger als Saturn selbst. Die Sonde Cassini, die Saturn von 2004 bis 2017 umkreiste, fand unter dem Eis des Mondes Enceladus einen globalen Ozean, der am Südpol durch Geysire ausbricht."
+		},
+		"facts": {
+			"simple": [
+				"Saturn hat mehr Monde als jeder andere Planet, den wir kennen.",
+				"Ein Jahr auf Saturn dauert fast 30 Erdjahre.",
+				"Sein größter Mond, Titan, hat Seen – nicht aus Wasser, sondern aus flüssigem Methan."
+			],
+			"standard": [
+				"Saturn ist etwa 9,5-mal so weit von der Sonne entfernt wie die Erde.",
+				"Winde am Äquator des Saturn erreichen etwa 1800 km/h.",
+				"Ein sechseckiges Wolkenmuster, das Hexagon, umgibt den Nordpol des Saturn."
+			],
+			"advanced": [
+				"Saturn strahlt mehr als doppelt so viel Energie ab, wie er von der Sonne empfängt.",
+				"Titan ist der einzige Mond mit einer dichten Atmosphäre; der Druck an seiner Oberfläche ist etwa 1,5-mal so hoch wie auf der Erde.",
+				"Lücken in den Ringen wie die Cassinische Teilung werden von der Schwerkraft der Monde geformt (Bahnresonanzen)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Saturn ein Ball von über 2 m Höhe – und seine Ringe wären etwa 5 m breit."
+			],
+			"standard": ["Mehr als 750 Erden würden in Saturn passen."],
+			"advanced": [
+				"Die Hauptringe des Saturn würden etwa zwei Drittel des Weges von der Erde zum Mond überspannen."
+			]
+		}
+	},
+	"uranus": {
+		"name": "Uranus",
+		"tagline": "Der Planet, der auf der Seite liegt",
+		"description": {
+			"simple": "Uranus ist ein kalter, blaugrüner Planet weit weg von der Sonne. Das Besondere an ihm: Er liegt auf der Seite und rollt deshalb wie ein Ball um die Sonne. Für eine Runde um die Sonne braucht Uranus 84 Jahre. Er hat dünne, dunkle Ringe und viele Monde.",
+			"standard": "Uranus ist der siebte Planet und viermal so breit wie die Erde. Er ist ein Eisriese: Unter einer Atmosphäre aus Wasserstoff und Helium liegt eine dicke Schicht aus Wasser-, Ammoniak- und Methaneis. Methangas gibt ihm seine blaugrüne Farbe. Uranus ist um etwa 98° gekippt und rollt deshalb auf der Seite liegend um die Sonne; jeder Pol hat etwa 42 Jahre Tag und danach 42 Jahre Nacht. Er war der erste Planet, der mit einem Teleskop entdeckt wurde – 1781 von Wilhelm Herschel.",
+			"advanced": "Wegen seiner Achsneigung von etwa 98° umkreisen die Ringe und die regulären Monde den Uranus fast senkrecht zu seiner Bahnebene, und seine Jahreszeiten sind die extremsten im Sonnensystem. Er rotiert rückläufig in 17 h 14 min. Anders als die übrigen Riesenplaneten gibt Uranus kaum innere Wärme ab, und in seiner Atmosphäre wurde die tiefste Temperatur aller Planeten gemessen, etwa −224 °C. Sein Magnetfeld ist um etwa 59° gegen die Rotationsachse geneigt und aus dem Planetenmittelpunkt verschoben. Bisher ist nur eine einzige Sonde an ihm vorbeigeflogen: Voyager 2 im Jahr 1986."
+		},
+		"facts": {
+			"simple": [
+				"Uranus hat 13 Ringe, aber sie sind dünn und dunkel.",
+				"Seine Monde sind nach Figuren aus Theaterstücken von William Shakespeare und Gedichten von Alexander Pope benannt.",
+				"Uranus hat die kälteste Luft aller Planeten."
+			],
+			"standard": [
+				"Ein Jahr auf Uranus dauert 84 Erdjahre.",
+				"Uranus ist etwa 19-mal so weit von der Sonne entfernt wie die Erde.",
+				"Die tiefste in seiner Atmosphäre gemessene Temperatur beträgt etwa −224 °C."
+			],
+			"advanced": [
+				"Uranus ist der einzige Planet, der nach einem griechischen statt nach einem römischen Gott benannt ist.",
+				"Seine schmalen Ringe bestehen aus Material, das so dunkel ist wie Holzkohle.",
+				"Herschel hielt Uranus zunächst für einen Kometen."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Uranus so groß wie ein großer Gymnastikball."
+			],
+			"standard": ["Etwa 63 Erden würden in Uranus passen."],
+			"advanced": [
+				"Das Sonnenlicht braucht etwa 2 Stunden und 40 Minuten bis zum Uranus."
+			]
+		}
+	},
+	"neptune": {
+		"name": "Neptun",
+		"tagline": "Der windigste Planet",
+		"description": {
+			"simple": "Neptun ist der Planet, der am weitesten von der Sonne entfernt ist. Er ist ein tiefblauer Eisriese, sehr kalt und sehr stürmisch – seine Winde sind die schnellsten im Sonnensystem. Neptun ist so weit weg, dass man ihn ohne Teleskop nicht sehen kann. Für eine Runde um die Sonne braucht er 165 Jahre.",
+			"standard": "Neptun ist der achte und äußerste Planet, etwa 30-mal so weit von der Sonne entfernt wie die Erde. Wie Uranus ist er ein Eisriese, und Methan in seiner Atmosphäre färbt ihn blau. Neptun hat die schnellsten Winde des Sonnensystems, über 2000 km/h. Er war der erste Planet, der mit Mathematik gefunden wurde: Astronomen berechneten seine Position daraus, wie er an Uranus zerrte, und entdeckten ihn 1846.",
+			"advanced": "Neptun kreist in etwa 30 AE Abstand, wo das Sonnenlicht rund 900-mal schwächer ist als bei der Erde. Trotzdem hat er eine starke innere Wärmequelle – er strahlt etwa 2,6-mal so viel Energie ab, wie er von der Sonne erhält –, die die schnellsten auf einem Planeten gemessenen Winde von bis zu etwa 2100 km/h mit antreibt. Seine Position wurde 1846 von Urbain Le Verrier aus Störungen der Uranusbahn vorhergesagt, und Johann Galle fand ihn weniger als 1° von der berechneten Stelle entfernt. Sein größter Mond, Triton, umläuft ihn rückläufig und ist wahrscheinlich ein eingefangenes Objekt aus dem Kuipergürtel."
+		},
+		"facts": {
+			"simple": [
+				"Neptun ist der einzige Planet, den man ohne Teleskop nie sehen kann.",
+				"Ein Jahr auf Neptun dauert etwa 165 Erdjahre.",
+				"Sein größter Mond, Triton, umkreist ihn rückwärts."
+			],
+			"standard": [
+				"Erst 2011 hat Neptun seit seiner Entdeckung im Jahr 1846 einen vollen Umlauf vollendet.",
+				"Das Sonnenlicht braucht etwa 4 Stunden bis zum Neptun.",
+				"Voyager 2 ist die einzige Sonde, die Neptun besucht hat – im Jahr 1989."
+			],
+			"advanced": [
+				"Auf Triton gibt es Geysire, die Stickstoffgas mehrere Kilometer hoch schleudern.",
+				"Neptun ist etwas kleiner als Uranus, hat aber etwa 18 % mehr Masse und ist daher dichter.",
+				"Sein äußerster Ring, der Adams-Ring, enthält helle Bögen namens Liberté, Égalité und Fraternité."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Neptun so groß wie ein großer Gymnastikball – fast genauso groß wie Uranus."
+			],
+			"standard": ["Etwa 57 Erden würden in Neptun passen."],
+			"advanced": [
+				"Wäre die Sonne eine 2 m hohe Haustür, wäre Neptun ein Tennisball in etwa 6,5 km Entfernung."
+			]
+		}
+	},
+	"moon": {
+		"name": "Mond",
+		"tagline": "Der Begleiter der Erde",
+		"description": {
+			"simple": "Der Mond ist der nächste Nachbar der Erde im All. Er ist eine Kugel aus Gestein, bedeckt mit grauem Staub und Kratern. Der Mond leuchtet nicht selbst – er wirft das Licht der Sonne zurück. Zwölf Astronauten sind schon auf dem Mond herumgelaufen.",
+			"standard": "Der Mond ist der einzige natürliche Satellit der Erde, etwa ein Viertel so breit wie sie und im Mittel 384 400 km entfernt. Er braucht etwa 27,3 Tage für einen Umlauf um die Erde, und weil er sich in dieser Zeit genau einmal um sich selbst dreht, zeigt er uns immer dieselbe Seite. Seine Schwerkraft verursacht den größten Teil der Gezeiten in unseren Ozeanen. Zwischen 1969 und 1972 betraten zwölf Apollo-Astronauten seine Oberfläche.",
+			"advanced": "Der Mond entstand wahrscheinlich vor etwa 4,5 Milliarden Jahren aus Trümmern, die ein marsgroßer Körper beim Zusammenstoß mit der jungen Erde herausschleuderte. Er rotiert gebunden: Seine Drehung und sein siderischer Umlauf von 27,3 Tagen sind synchronisiert, sodass stets dieselbe Hälfte zur Erde zeigt, während der Zyklus der Mondphasen (der synodische Monat) etwa 29,5 Tage dauert. Dieselbe Gezeitenwechselwirkung überträgt langsam Drehimpuls von der Erdrotation auf die Mondbahn: Unser Tag wird länger, und der Mond entfernt sich jedes Jahr um etwa 3,8 cm."
+		},
+		"facts": {
+			"simple": [
+				"Auf dem Mond würdest du nur etwa ein Sechstel so viel wiegen wie auf der Erde.",
+				"Die Fußspuren der Astronauten sind immer noch da, weil es keinen Wind gibt, der sie verweht.",
+				"Der Mond braucht etwa einen Monat für eine Runde um die Erde."
+			],
+			"standard": [
+				"Das Mondlicht braucht nur etwa 1,3 Sekunden bis zur Erde.",
+				"Der Mond ist der fünftgrößte Mond im Sonnensystem.",
+				"Der Mond entfernt sich jedes Jahr um etwa 3,8 cm von der Erde."
+			],
+			"advanced": [
+				"Die Schwerkraft an der Oberfläche beträgt 1,62 m/s², etwa 16,5 % der irdischen.",
+				"Der Mond stabilisiert die Neigung der Erdachse und bewahrt unser Klima so vor starken Schwankungen.",
+				"Der Phasenzyklus (29,5 Tage) ist länger als der Umlauf (27,3 Tage), weil die Erde in der Zwischenzeit auf ihrer eigenen Bahn weiterwandert."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre der Mond ein Tennisball in etwa 6,5 m Entfernung."
+			],
+			"standard": ["Etwa 50 Monde würden in die Erde passen."],
+			"advanced": [
+				"Wenn der Mond am weitesten entfernt ist, würden alle anderen Planeten nebeneinander in die Lücke zwischen Erde und Mond passen."
+			]
+		}
+	},
+	"phobos": { "name": "Phobos" },
+	"deimos": { "name": "Deimos" },
+	"io": { "name": "Io" },
+	"europa": { "name": "Europa" },
+	"ganymede": { "name": "Ganymed" },
+	"callisto": { "name": "Kallisto" },
+	"mimas": { "name": "Mimas" },
+	"enceladus": { "name": "Enceladus" },
+	"tethys": { "name": "Tethys" },
+	"dione": { "name": "Dione" },
+	"rhea": { "name": "Rhea" },
+	"titan": { "name": "Titan" },
+	"hyperion": { "name": "Hyperion" },
+	"iapetus": { "name": "Iapetus" },
+	"miranda": { "name": "Miranda" },
+	"ariel": { "name": "Ariel" },
+	"umbriel": { "name": "Umbriel" },
+	"titania": { "name": "Titania" },
+	"oberon": { "name": "Oberon" },
+	"triton": { "name": "Triton" },
+	"nereid": { "name": "Nereid" },
+	"proteus": { "name": "Proteus" }
+}

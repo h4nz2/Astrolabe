@@ -1,0 +1,381 @@
+{
+	"sun": {
+		"name": "Sun",
+		"tagline": "Our star",
+		"description": {
+			"simple": "The Sun is a star, just like the stars you see at night. It only looks so big and bright because it is so close to us. The Sun is a giant ball of glowing hot gas. It gives us light and warmth, and without it there would be no life on Earth.",
+			"standard": "The Sun is the star at the centre of our solar system. It is a huge ball of hot gas, mostly hydrogen and helium, and it holds more than 99.8 % of all the mass in the solar system. Deep in its core, hydrogen is fused into helium, releasing the energy that reaches us as light and heat about 8 minutes later. Its gravity keeps all the planets in their orbits.",
+			"advanced": "The Sun is a G-type main-sequence star (G2V), about 4.6 billion years old and roughly halfway through its hydrogen-burning life. In its core, at about 15 million °C, nuclear fusion turns some 600 million tonnes of hydrogen into helium every second, converting about 4 million tonnes of mass into energy. That energy needs many thousands of years to work its way out through the radiative and convective zones, then crosses the 150 million km to Earth in about 8 minutes 20 seconds. The Sun rotates differentially: about 25 days at the equator but around 35 days near the poles."
+		},
+		"facts": {
+			"simple": [
+				"About 1.3 million Earths would fit inside the Sun.",
+				"Sunlight needs about 8 minutes to reach us.",
+				"Never look straight at the Sun – it can hurt your eyes."
+			],
+			"standard": [
+				"The Sun is about 109 times as wide as Earth.",
+				"Its visible surface is about 5,500 °C; its core reaches about 15 million °C.",
+				"Light from the Sun reaches Earth in about 8 minutes and 20 seconds.",
+				"The Sun holds 99.86 % of the mass of the whole solar system."
+			],
+			"advanced": [
+				"Mass: about 333,000 Earth masses (1.989 × 10³⁰ kg).",
+				"Surface gravity is about 28 times Earth’s (274 m/s²).",
+				"Composition by mass: about 73 % hydrogen, 25 % helium and 2 % heavier elements.",
+				"The Sun takes about 230 million years to orbit the centre of the Milky Way."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, the Sun would be as tall as an eight-storey building."
+			],
+			"standard": [
+				"If the Sun were a beach ball 1 m across, Earth would be a pea 9 mm across about 107 m away."
+			],
+			"advanced": [
+				"The Sun is to Earth as a basketball (24 cm) is to a 2.2 mm grain placed 26 m away."
+			]
+		}
+	},
+	"mercury": {
+		"name": "Mercury",
+		"tagline": "The smallest and fastest planet",
+		"description": {
+			"simple": "Mercury is the smallest planet and the closest one to the Sun. It is a grey, rocky ball full of craters, a bit like our Moon. It races around the Sun faster than any other planet. In the daytime it is hot enough to melt lead, but at night it gets freezing cold.",
+			"standard": "Mercury is the smallest planet and the one closest to the Sun, circling it once every 88 days. It has almost no atmosphere to trap heat, so its surface swings from about 430 °C in daylight to about −180 °C at night. Its grey, cratered surface looks a lot like our Moon. Mercury has no moons.",
+			"advanced": "Mercury orbits the Sun at an average distance of 0.39 AU on the most eccentric planetary orbit (e = 0.21). It spins exactly three times for every two orbits – a 3:2 spin–orbit resonance – so one solar day there lasts 176 Earth days, two full Mercury years. An iron core reaching out to about 85 % of its radius gives Mercury the second-highest density of any planet and a weak global magnetic field. Its thin exosphere cannot hold heat, and the permanently shadowed floors of polar craters hide water ice."
+		},
+		"facts": {
+			"simple": [
+				"A year on Mercury lasts only 88 days.",
+				"Mercury has no moons.",
+				"It is only a little bigger than our Moon."
+			],
+			"standard": [
+				"Mercury is the fastest planet, orbiting the Sun at about 47 km per second.",
+				"From one sunrise to the next takes 176 Earth days.",
+				"It is about 38 % as wide as Earth.",
+				"Although it is closest to the Sun, Mercury is not the hottest planet – Venus is."
+			],
+			"advanced": [
+				"Its distance from the Sun varies between 46 and 70 million km (eccentricity 0.21).",
+				"The slow turning of Mercury’s orbit (perihelion precession) was an early confirmation of Einstein’s general relativity.",
+				"Mean density 5.43 g/cm³ – second only to Earth."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Mercury would be about as big as an orange."
+			],
+			"standard": ["About 18 Mercurys would fit inside Earth."],
+			"advanced": [
+				"At perihelion the Sun in Mercury’s sky looks more than three times as wide as it does from Earth."
+			]
+		}
+	},
+	"venus": {
+		"name": "Venus",
+		"tagline": "The hottest planet",
+		"description": {
+			"simple": "Venus is almost the same size as Earth, but it is a terrible place to visit. Thick, poisonous clouds wrap around it and trap the Sun’s heat. That makes Venus the hottest planet of all – even hotter than Mercury. You can often see it shining brightly in the evening or morning sky.",
+			"standard": "Venus is nearly Earth’s twin in size, but its thick carbon dioxide atmosphere creates a runaway greenhouse effect. The surface is about 465 °C – hotter than Mercury, although Venus is almost twice as far from the Sun – and the air pressure is about 90 times that on Earth. Clouds of sulfuric acid hide the surface from view. After the Moon, Venus is the brightest natural object in the night sky.",
+			"advanced": "Venus has 95 % of Earth’s diameter and 82 % of its mass, yet it evolved very differently. A dense CO₂ atmosphere with a surface pressure of about 92 bar drives a runaway greenhouse effect that keeps the surface near 465 °C, day and night, from pole to equator. Venus rotates retrograde and very slowly: one sidereal rotation takes 243 Earth days, longer than its 225-day year, so a solar day lasts about 117 Earth days. Radar maps from the Magellan orbiter revealed a volcanic surface only a few hundred million years old."
+		},
+		"facts": {
+			"simple": [
+				"Venus spins the other way round than most planets, so there the Sun rises in the west.",
+				"A day on Venus is longer than its year!",
+				"Venus has no moons."
+			],
+			"standard": [
+				"Its surface is about 465 °C, hot enough to melt lead.",
+				"The air pressure on the ground is like being 900 m deep in the ocean.",
+				"Venus comes closer to Earth than any other planet – to about 38 million km."
+			],
+			"advanced": [
+				"Its clouds reflect about three quarters of the sunlight that reaches them (Bond albedo 0.76).",
+				"The upper atmosphere circles the planet in about 4 days, some 60 times faster than the surface turns (super-rotation).",
+				"One sidereal rotation takes 243 Earth days, in the retrograde direction."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Venus would be a football too – just a tiny bit smaller."
+			],
+			"standard": [
+				"If Earth were a 22 cm football, Venus would be 21 cm across."
+			],
+			"advanced": [
+				"The atmosphere of Venus has about 93 times the mass of Earth’s."
+			]
+		}
+	},
+	"earth": {
+		"name": "Earth",
+		"tagline": "Our home",
+		"description": {
+			"simple": "Earth is our home and the only planet where we know there is life. Most of it is covered by oceans, which is why it looks blue from space. Earth spins once a day, which gives us day and night. It takes one year to travel all the way around the Sun.",
+			"standard": "Earth is the third planet from the Sun and the only world known to have life. Liquid water covers about 71 % of its surface, and an atmosphere of nitrogen and oxygen protects us and keeps the temperature mild. Earth’s axis is tilted by about 23.4°, which gives us the seasons. It orbits the Sun at an average distance of about 150 million km, once every 365.25 days.",
+			"advanced": "Earth is the largest and densest of the four rocky planets (5.51 g/cm³). Its liquid iron outer core generates a magnetic field that deflects the solar wind, and plate tectonics keeps recycling its crust. The 23.4° tilt of its axis, stabilised by our unusually large Moon, produces the seasons. Earth orbits at 1 AU (149.6 million km) with an eccentricity of 0.017, so its distance from the Sun varies by only about 3 % – and Earth is closest to the Sun in early January."
+		},
+		"facts": {
+			"simple": [
+				"About 71 out of every 100 parts of Earth’s surface are water.",
+				"Earth has one moon – we simply call it the Moon.",
+				"Earth is the only planet not named after a god."
+			],
+			"standard": [
+				"Earth travels around the Sun at about 30 km per second – more than 100,000 km/h.",
+				"The tilt of Earth’s axis (23.4°), not its distance from the Sun, causes the seasons.",
+				"Earth is the densest planet in the solar system."
+			],
+			"advanced": [
+				"Earth turns once relative to the stars in 23 h 56 min (a sidereal day); the 24-hour solar day is about 4 minutes longer.",
+				"The atmosphere is about 78 % nitrogen and 21 % oxygen by volume.",
+				"Earth is about 4.54 billion years old."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Driving around the equator at 100 km/h without a single stop would take about 17 days."
+			],
+			"standard": [
+				"A plane flying at 900 km/h would need about 19 years to reach the Sun."
+			],
+			"advanced": [
+				"Earth’s orbit is so nearly circular that, drawn to scale on paper, you could not tell it from a circle."
+			]
+		}
+	},
+	"mars": {
+		"name": "Mars",
+		"tagline": "The red planet",
+		"description": {
+			"simple": "Mars is called the red planet because its ground is covered in rusty red dust. It is smaller and much colder than Earth. Mars has the tallest volcano we know of, and two tiny moons. Robots called rovers drive around on Mars and explore it for us.",
+			"standard": "Mars is the fourth planet from the Sun, about half as wide as Earth. Iron oxide – rust – in its dust gives it its red colour. Mars has seasons and polar ice caps, but its atmosphere is very thin and the average temperature is about −60 °C. It has the largest volcano in the solar system, Olympus Mons, and a canyon, Valles Marineris, about 4,000 km long – roughly the distance from Lisbon to Moscow.",
+			"advanced": "Mars has about 53 % of Earth’s diameter and 38 % of its surface gravity. Its thin CO₂ atmosphere, with a surface pressure below 1 % of Earth’s, cannot keep the planet warm, and the average temperature is around −60 °C. Dry river valleys, ancient lake beds and minerals that form only in water show that liquid water once flowed on its surface. With an axial tilt of 25.2° and a day of 24 h 37 min, Mars has days and seasons much like Earth’s, but each season lasts about twice as long because a Martian year is 687 Earth days."
+		},
+		"facts": {
+			"simple": [
+				"A day on Mars is only about 40 minutes longer than a day on Earth.",
+				"Mars has two small moons, Phobos and Deimos.",
+				"On Mars you would weigh less than half as much as on Earth."
+			],
+			"standard": [
+				"Olympus Mons is about 22 km high – two and a half times as tall as Mount Everest.",
+				"A year on Mars lasts 687 Earth days.",
+				"Dust storms on Mars can grow until they cover the whole planet."
+			],
+			"advanced": [
+				"The surface pressure is only about 0.6 % of Earth’s, so liquid water quickly boils away or freezes.",
+				"Its distance from the Sun varies between about 207 and 249 million km (eccentricity 0.093).",
+				"Phobos is slowly spiralling inwards and will break apart or crash into Mars in about 30 to 50 million years."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Mars would be about as big as a grapefruit."
+			],
+			"standard": ["More than six Mars would fit inside Earth."],
+			"advanced": [
+				"Seen from Mars, the Sun looks only about two thirds as wide as it does from Earth."
+			]
+		}
+	},
+	"jupiter": {
+		"name": "Jupiter",
+		"tagline": "The giant of the solar system",
+		"description": {
+			"simple": "Jupiter is the biggest planet – more than 1,300 Earths could fit inside it. It is a giant ball of gas with no solid ground to stand on. Its stripes are bands of clouds, and its Great Red Spot is a storm bigger than the whole Earth. Jupiter has lots and lots of moons.",
+			"standard": "Jupiter is the largest planet, 11 times as wide as Earth and more massive than all the other planets put together. This gas giant is made mostly of hydrogen and helium, and its colourful cloud bands are stretched out by fast winds and its rapid spin: a day on Jupiter lasts less than 10 hours. The Great Red Spot is a storm wider than Earth that has raged for more than 150 years. Its four largest moons were discovered by Galileo Galilei in 1610.",
+			"advanced": "Jupiter has 318 Earth masses – about 2.5 times the mass of all the other planets combined. Beneath its cloud tops of ammonia ice, hydrogen and helium are compressed until, deep inside, hydrogen behaves like a liquid metal; currents in this layer generate the strongest planetary magnetic field in the solar system. Jupiter rotates in about 9 h 56 min, the fastest of any planet, which visibly flattens it at the poles. It radiates more heat than it receives from the Sun, left over from its formation and slow contraction."
+		},
+		"facts": {
+			"simple": [
+				"A day on Jupiter lasts less than 10 hours – the shortest day of all the planets.",
+				"Jupiter has thin, dark rings that are very hard to see.",
+				"Its moon Ganymede is bigger than the planet Mercury."
+			],
+			"standard": [
+				"A year on Jupiter lasts almost 12 Earth years.",
+				"Jupiter is on average about 5.2 times as far from the Sun as Earth.",
+				"More than 90 moons are known to orbit Jupiter."
+			],
+			"advanced": [
+				"Its moon Io is the most volcanically active body in the solar system, heated by tidal flexing.",
+				"Its moon Europa is thought to hide a global ocean of liquid water under its icy crust.",
+				"Jupiter’s gravity shapes the asteroid belt, clearing gaps in it (the Kirkwood gaps)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Jupiter would be a ball about 2.5 m tall – taller than a grown-up."
+			],
+			"standard": ["About 1,321 Earths would fit inside Jupiter."],
+			"advanced": [
+				"Jupiter’s diameter is about a tenth of the Sun’s, and its mass about a thousandth."
+			]
+		}
+	},
+	"saturn": {
+		"name": "Saturn",
+		"tagline": "The ringed planet",
+		"description": {
+			"simple": "Saturn is famous for its beautiful rings. They are made of billions of pieces of ice and rock, some as small as grains of sand and some as big as a house. Saturn is a giant ball of gas, and it is so light for its size that it would float in water – if you could find a bathtub big enough!",
+			"standard": "Saturn, the sixth planet, is the second-largest planet and the least dense: on average it is lighter than water. Its bright rings are about 270,000 km wide but generally only about 10 m thick, and they are made of countless pieces of ice and rock. Saturn has more known moons than any other planet, among them Titan, which is bigger than Mercury and has a thick atmosphere.",
+			"advanced": "Saturn has 95 Earth masses but a mean density of only 0.69 g/cm³, the lowest of any planet. Its rapid rotation (about 10 h 33 min) makes it the most flattened planet: its equatorial diameter is about 10 % larger than its polar diameter. The main rings, mostly water ice with a little rock, span about 270,000 km yet are generally only about 10 m thick, and they may be much younger than Saturn itself. The Cassini spacecraft, which orbited Saturn from 2004 to 2017, found a global ocean beneath the ice of the moon Enceladus, venting through geysers at its south pole."
+		},
+		"facts": {
+			"simple": [
+				"Saturn has more moons than any other planet we know.",
+				"A year on Saturn lasts almost 30 Earth years.",
+				"Its biggest moon, Titan, has lakes – not of water, but of liquid methane."
+			],
+			"standard": [
+				"Saturn is about 9.5 times as far from the Sun as Earth.",
+				"Winds at Saturn’s equator reach about 1,800 km/h.",
+				"A six-sided cloud pattern, the hexagon, circles Saturn’s north pole."
+			],
+			"advanced": [
+				"Saturn radiates more than twice as much energy as it receives from the Sun.",
+				"Titan is the only moon with a dense atmosphere; the pressure on its surface is about 1.5 times Earth’s.",
+				"Gaps in the rings such as the Cassini Division are shaped by the gravity of moons (orbital resonances)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Saturn would be a ball over 2 m tall – and its rings would be about 5 m wide."
+			],
+			"standard": ["More than 750 Earths would fit inside Saturn."],
+			"advanced": [
+				"Saturn’s main rings would reach about two thirds of the way from Earth to the Moon."
+			]
+		}
+	},
+	"uranus": {
+		"name": "Uranus",
+		"tagline": "The planet that rolls on its side",
+		"description": {
+			"simple": "Uranus is a cold, blue-green planet far away from the Sun. It is special because it lies on its side, so it rolls around the Sun like a ball. It takes Uranus 84 years to go once around the Sun. Uranus has thin, dark rings and many moons.",
+			"standard": "Uranus is the seventh planet, four times as wide as Earth. It is an ice giant: beneath a hydrogen–helium atmosphere lies a thick layer of water, ammonia and methane ices. Methane gas gives it its blue-green colour. Uranus is tipped over by about 98°, so it rolls along its orbit on its side, and each pole has about 42 years of daylight followed by 42 years of darkness. It was the first planet discovered with a telescope, by William Herschel in 1781.",
+			"advanced": "Uranus’s axial tilt of about 98° means that its rings and regular moons orbit almost perpendicular to its orbital plane, and its seasons are the most extreme in the solar system. It rotates retrograde in 17 h 14 min. Unlike the other giant planets, Uranus gives off hardly any internal heat, and its atmosphere holds the coldest temperature measured on any planet, about −224 °C. Its magnetic field is tilted about 59° from the rotation axis and offset from the planet’s centre. So far only one spacecraft, Voyager 2 in 1986, has flown past it."
+		},
+		"facts": {
+			"simple": [
+				"Uranus has 13 rings, but they are thin and dark.",
+				"Its moons are named after characters from plays by William Shakespeare and poems by Alexander Pope.",
+				"Uranus has the coldest air of all the planets."
+			],
+			"standard": [
+				"A year on Uranus lasts 84 Earth years.",
+				"Uranus is about 19 times as far from the Sun as Earth.",
+				"The lowest temperature measured in its atmosphere is about −224 °C."
+			],
+			"advanced": [
+				"Uranus is the only planet named after a Greek god rather than a Roman one.",
+				"Its narrow rings are made of material as dark as charcoal.",
+				"William Herschel first thought Uranus was a comet."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Uranus would be as big as a large exercise ball."
+			],
+			"standard": ["About 63 Earths would fit inside Uranus."],
+			"advanced": ["Sunlight takes about 2 hours 40 minutes to reach Uranus."]
+		}
+	},
+	"neptune": {
+		"name": "Neptune",
+		"tagline": "The windiest planet",
+		"description": {
+			"simple": "Neptune is the planet farthest from the Sun. It is a deep blue ice giant, very cold and very windy – its winds are the fastest in the solar system. Neptune is so far away that you cannot see it without a telescope. It takes 165 years to go around the Sun once.",
+			"standard": "Neptune is the eighth and most distant planet, about 30 times as far from the Sun as Earth. Like Uranus it is an ice giant, and methane in its atmosphere makes it blue. Neptune has the fastest winds in the solar system, over 2,000 km/h. It was the first planet found by mathematics: astronomers predicted its position from the way it tugged on Uranus and spotted it in 1846.",
+			"advanced": "Neptune orbits at about 30 AU, where sunlight is roughly 900 times weaker than at Earth. Yet it has a strong internal heat source – it radiates about 2.6 times the energy it receives from the Sun – which helps power the fastest winds measured on any planet, up to about 2,100 km/h. Its position was predicted in 1846 by Urbain Le Verrier from disturbances in Uranus’s orbit, and Johann Galle found it within 1° of the prediction. Its largest moon, Triton, orbits backwards (retrograde) and is probably a captured object from the Kuiper Belt."
+		},
+		"facts": {
+			"simple": [
+				"Neptune is the only planet you can never see without a telescope.",
+				"A year on Neptune lasts about 165 Earth years.",
+				"Its biggest moon, Triton, goes around it backwards."
+			],
+			"standard": [
+				"Neptune completed its first full orbit since its discovery in 1846 only in 2011.",
+				"Sunlight takes about 4 hours to reach Neptune.",
+				"Voyager 2 is the only spacecraft to have visited Neptune, in 1989."
+			],
+			"advanced": [
+				"Triton has geysers that shoot nitrogen gas several kilometres high.",
+				"Neptune is slightly smaller than Uranus but about 18 % more massive, so it is denser.",
+				"Its outermost ring, the Adams ring, contains bright arcs named Liberté, Égalité and Fraternité."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Neptune would be as big as a large exercise ball – almost the same size as Uranus."
+			],
+			"standard": ["About 57 Earths would fit inside Neptune."],
+			"advanced": [
+				"If the Sun were a front door 2 m tall, Neptune would be a tennis ball about 6.5 km away."
+			]
+		}
+	},
+	"moon": {
+		"name": "Moon",
+		"tagline": "Earth’s companion",
+		"description": {
+			"simple": "The Moon is Earth’s closest neighbour in space. It is a ball of rock covered in grey dust and craters. The Moon does not shine by itself – it reflects light from the Sun. Twelve astronauts have walked on the Moon.",
+			"standard": "The Moon is Earth’s only natural satellite, about a quarter as wide as Earth and on average 384,400 km away. It takes about 27.3 days to orbit Earth, and because it spins exactly once in that time, it always shows us the same face. Its gravity causes most of the tides in our oceans. Between 1969 and 1972, twelve Apollo astronauts walked on its surface.",
+			"advanced": "The Moon probably formed about 4.5 billion years ago from debris thrown out when a Mars-sized body collided with the young Earth. It is tidally locked: its rotation and its 27.3-day sidereal orbit are synchronised, so one hemisphere always faces Earth, while the cycle of phases (the synodic month) lasts about 29.5 days. The same tidal interaction slowly transfers angular momentum from Earth’s spin to the Moon’s orbit, lengthening our day and pushing the Moon about 3.8 cm farther away each year."
+		},
+		"facts": {
+			"simple": [
+				"On the Moon you would weigh only about one sixth as much as on Earth.",
+				"The footprints of the astronauts are still there, because there is no wind to blow them away.",
+				"It takes about a month for the Moon to go once around Earth."
+			],
+			"standard": [
+				"Moonlight needs only about 1.3 seconds to reach Earth.",
+				"The Moon is the fifth-largest moon in the solar system.",
+				"The Moon moves about 3.8 cm farther away from Earth every year."
+			],
+			"advanced": [
+				"Surface gravity is 1.62 m/s², about 16.5 % of Earth’s.",
+				"The Moon stabilises the tilt of Earth’s axis, which keeps our climate from swinging wildly.",
+				"The cycle of phases (29.5 days) is longer than the orbit (27.3 days) because Earth moves along its own orbit meanwhile."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, the Moon would be a tennis ball about 6.5 m away."
+			],
+			"standard": ["About 50 Moons would fit inside Earth."],
+			"advanced": [
+				"When the Moon is at its farthest, all the other planets would fit side by side in the gap between Earth and the Moon."
+			]
+		}
+	},
+	"phobos": { "name": "Phobos" },
+	"deimos": { "name": "Deimos" },
+	"io": { "name": "Io" },
+	"europa": { "name": "Europa" },
+	"ganymede": { "name": "Ganymede" },
+	"callisto": { "name": "Callisto" },
+	"mimas": { "name": "Mimas" },
+	"enceladus": { "name": "Enceladus" },
+	"tethys": { "name": "Tethys" },
+	"dione": { "name": "Dione" },
+	"rhea": { "name": "Rhea" },
+	"titan": { "name": "Titan" },
+	"hyperion": { "name": "Hyperion" },
+	"iapetus": { "name": "Iapetus" },
+	"miranda": { "name": "Miranda" },
+	"ariel": { "name": "Ariel" },
+	"umbriel": { "name": "Umbriel" },
+	"titania": { "name": "Titania" },
+	"oberon": { "name": "Oberon" },
+	"triton": { "name": "Triton" },
+	"nereid": { "name": "Nereid" },
+	"proteus": { "name": "Proteus" }
+}

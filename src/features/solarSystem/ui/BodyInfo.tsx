@@ -1,66 +1,73 @@
-import { bodyById, type Body } from "@/data"
+import { bodyById } from "@/data"
+import { useI18n, type I18n } from "@/i18n"
+import { bodyKindLabel, bodyName, useBodyText } from "@/i18n/bodies"
 import { kmToAu } from "@/sim"
 import { useSimStore } from "@/store/sim"
 
-import { formatAu, formatNumber } from "./format"
-
 import classes from "./BodyInfo.module.css"
 
-const parentOf = (body: Body): Body | undefined =>
-	body.parentId === null ? undefined : bodyById.get(body.parentId)
-
-const kindLabel = (body: Body): string => {
-	if (body.kind === "star") return "Star"
-	if (body.kind === "planet") return "Planet"
-	const parent = parentOf(body)
-	return parent === undefined ? "Moon" : `Moon of ${parent.name}`
-}
-
-const rotationLabel = (periodHours: number | null): string => {
-	if (periodHours === null) return "unknown"
-	const hours = `${formatNumber(Math.abs(periodHours))} h`
-	return periodHours < 0 ? `${hours}, retrograde` : hours
+const rotationLabel = (periodHours: number | null, i18n: I18n): string => {
+	if (periodHours === null) return i18n.t("solarSystem.info.rotationUnknown")
+	const period = i18n.quantity(Math.abs(periodHours), "hour", "long")
+	return periodHours < 0
+		? i18n.t("solarSystem.info.retrograde", { period })
+		: period
 }
 
 /** Compact facts about the focused body (the page layout hides it on phones). */
 const BodyInfo = () => {
 	const focusId = useSimStore((state) => state.focusId)
+	const i18n = useI18n()
+	const text = useBodyText(focusId)
 	const body = bodyById.get(focusId)
 	if (body === undefined) return null
+	const { t } = i18n
 	const { orbit, rotation } = body
-	const parent = parentOf(body)
+	const kind = bodyKindLabel(body, i18n)
+	const radius = i18n.quantity(body.radiusKm, "kilometer")
 
 	return (
-		<section className={classes.root} aria-label="Focused body">
+		<section className={classes.root} aria-label={t("solarSystem.info.label")}>
 			<header className={classes.title}>
-				<span className={classes.name}>{body.name}</span>
-				<span className={classes.kind}>{kindLabel(body)}</span>
+				<span className={classes.name}>{text.name}</span>
+				<span className={classes.kind}>{kind}</span>
 			</header>
+			{text.tagline !== kind && (
+				<p className={classes.tagline}>{text.tagline}</p>
+			)}
 			<dl className={classes.facts}>
-				<dt className={classes.label}>Radius</dt>
+				<dt className={classes.label}>{t("solarSystem.info.radius")}</dt>
 				<dd className={classes.value}>
-					{body.radiusEstimated ? "≈ " : ""}
-					{formatNumber(body.radiusKm)} km
+					{body.radiusEstimated ? t("units.approx", { value: radius }) : radius}
 				</dd>
-				{orbit !== null && (
+				{orbit !== null && body.parentId !== null && (
 					<>
-						<dt className={classes.label}>Orbital period</dt>
-						<dd className={classes.value}>
-							{formatNumber(orbit.periodDays)} days
-						</dd>
 						<dt className={classes.label}>
-							Distance to {parent?.name ?? "parent"}
+							{t("solarSystem.info.orbitalPeriod")}
 						</dt>
 						<dd className={classes.value}>
-							{formatNumber(orbit.semiMajorAxisKm)} km
+							{i18n.quantity(orbit.periodDays, "day", "long")}
+						</dd>
+						<dt className={classes.label}>
+							{t("solarSystem.info.distance", {
+								parentId: body.parentId,
+								parent: bodyName(body.parentId, i18n.chain),
+							})}
+						</dt>
+						<dd className={classes.value}>
+							{i18n.quantity(orbit.semiMajorAxisKm, "kilometer")}
 							<span className={classes.secondary}>
-								{formatAu(kmToAu(orbit.semiMajorAxisKm))} AU
+								{t("units.au", {
+									value: i18n.significant(kmToAu(orbit.semiMajorAxisKm)),
+								})}
 							</span>
 						</dd>
 					</>
 				)}
-				<dt className={classes.label}>Rotation period</dt>
-				<dd className={classes.value}>{rotationLabel(rotation.periodHours)}</dd>
+				<dt className={classes.label}>{t("solarSystem.info.rotation")}</dt>
+				<dd className={classes.value}>
+					{rotationLabel(rotation.periodHours, i18n)}
+				</dd>
 			</dl>
 		</section>
 	)

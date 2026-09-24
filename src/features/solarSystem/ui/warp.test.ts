@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest"
 
+import { createI18n } from "@/i18n"
 import { WARP_PRESETS } from "@/store/sim"
 
-import { stepWarp, warpLabel } from "./warp"
+import { stepWarp, warpLabel, warpParts } from "./warp"
 
 const values = WARP_PRESETS.map((preset) => preset.value)
 
@@ -23,9 +24,47 @@ describe("stepWarp", () => {
 	})
 })
 
+describe("warpParts", () => {
+	it("names a warp in the largest whole unit per second", () => {
+		expect(warpParts(1)).toEqual({ kind: "realTime" })
+		expect(warpParts(86400)).toEqual({ kind: "unit", unit: "day", count: 1 })
+		expect(warpParts(120)).toEqual({ kind: "unit", unit: "minute", count: 2 })
+		expect(warpParts(-604800)).toEqual({
+			kind: "unit",
+			unit: "week",
+			count: -1,
+		})
+		expect(warpParts(100)).toEqual({ kind: "factor", factor: 100 })
+		expect(warpParts(0)).toEqual({ kind: "factor", factor: 0 })
+	})
+})
+
 describe("warpLabel", () => {
-	it("uses the preset label when there is one", () => {
-		expect(warpLabel(86400)).toBe("1 day/s")
-		expect(warpLabel(120)).toBe("120x")
+	const en = createI18n({ locale: "en" })
+	const de = createI18n({ locale: "de" })
+
+	it("labels every preset in English as before", () => {
+		expect(WARP_PRESETS.map((preset) => warpLabel(preset.value, en))).toEqual([
+			"1x",
+			"1 min/s",
+			"1 h/s",
+			"1 day/s",
+			"1 week/s",
+			"1 month/s",
+			"1 year/s",
+		])
+	})
+
+	it("translates and pluralises", () => {
+		expect(warpLabel(86400, de)).toBe("1 Tag/s")
+		expect(warpLabel(2 * 86400, de)).toBe("2 Tage/s")
+		expect(warpLabel(2 * 86400, en)).toBe("2 days/s")
+		expect(warpLabel(31557600, de)).toBe("1 Jahr/s")
+	})
+
+	it("formats a bare factor for the locale", () => {
+		expect(warpLabel(1234, en)).toBe("1,234x")
+		expect(warpLabel(1234, de)).toBe("1.234x")
+		expect(warpLabel(12345, de)).toBe("12.345x")
 	})
 })

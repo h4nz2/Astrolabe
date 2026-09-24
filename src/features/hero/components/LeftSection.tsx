@@ -11,16 +11,18 @@ import {
 } from "@mantine/core"
 
 import ScaleInOut from "@/GSAPAnimation/ScaleInOut"
+import { useI18n } from "@/i18n"
 import classes from "./LeftSection.module.css"
 
 export type LeftSectionProps = Record<string, never>
 
 const LeftSection: FC<LeftSectionProps> = () => {
+	const { t } = useI18n()
 	return (
 		<Container w="100%">
 			<Text component="div" className={classes.klassenLager}>
 				<ScaleInOut delay={1} skipOutro={false}>
-					Made with love by odi and hrj
+					{t("hero.credits")}
 				</ScaleInOut>
 			</Text>
 			<Box className={classes.content}>
@@ -31,12 +33,12 @@ const LeftSection: FC<LeftSectionProps> = () => {
 					gradient={{ from: "red", to: "yellow" }}
 					style={{ fontWeight: 600 }}
 				>
-					Solr
+					{t("app.name")}
 				</Text>
-				<Title className={classes.title}>To the stars! </Title>
+				<Title className={classes.title}>{t("hero.tagline")}</Title>
 				<Flex direction="column" py="xl" gap="xs" maw={300}>
-					<Button to="/solar_dictionary" label="Dictionary" />
-					<Button to="/solar_system" label="Solar Model" />
+					<Button to="/solar_dictionary" label={t("hero.dictionary")} />
+					<Button to="/solar_system" label={t("hero.solarSystem")} />
 				</Flex>
 			</Box>
 		</Container>

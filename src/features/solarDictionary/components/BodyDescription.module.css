@@ -1,0 +1,29 @@
+/* Right-hand counterpart of the fact sidebar; hidden where the sphere needs the room. */
+.root {
+	position: fixed;
+	top: 10rem;
+	right: 2rem;
+	width: min(34ch, 30vw);
+	font-family: arial;
+	color: white;
+}
+
+.tagline {
+	margin: 0 0 0.5rem;
+	font-size: 0.75rem;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+	color: gray;
+}
+
+.description {
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.5;
+}
+
+@media (max-width: 899px) {
+	.root {
+		display: none;
+	}
+}

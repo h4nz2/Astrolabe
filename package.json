@@ -55,6 +55,7 @@
 		"@tabler/icons-react": "^3.48.0",
 		"@tanstack/react-router": "^1.170.38",
 		"gsap": "^3.15.0",
+		"intl-messageformat": "^12.1.2",
 		"postprocessing": "^6.39.5",
 		"react": "^19.3.0",
 		"react-dom": "^19.3.0",
