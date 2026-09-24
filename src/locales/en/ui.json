@@ -245,6 +245,95 @@
 			"interplanetary@simple": "out between the planets",
 			"centreOn": "Centre on {body}",
 			"centreOn@simple": "Back to {body}"
+		},
+		"frame": {
+			"label": "Point of view",
+			"label@simple": "Where you watch from",
+			"menu": "Point of view: {current}",
+			"current": {
+				"sun": "Sun-centred",
+				"sun@simple": "Sun in the middle",
+				"held": "{bodyId, select, earth {Seen from Earth} other {{body} held still}}",
+				"held@simple": "{bodyId, select, earth {Earth stands still} other {{body} stands still}}"
+			},
+			"presets": {
+				"sun": {
+					"title": "Sun-centred",
+					"title@simple": "Sun in the middle",
+					"hint": "How the planets really move: around the Sun.",
+					"hint@simple": "The planets go round the Sun.",
+					"hint@advanced": "Heliocentric frame: every orbit is an ellipse around the Sun."
+				},
+				"planets": {
+					"title": "Seen from Earth: the planets",
+					"title@simple": "From Earth: the planets",
+					"hint": "Hold Earth still and watch Mars loop backwards.",
+					"hint@simple": "Earth stands still. Watch Mars go backwards!",
+					"hint@advanced": "Geocentric frame: the retrograde loops that epicycles were invented to explain."
+				},
+				"moon": {
+					"title": "Seen from Earth: the Moon",
+					"title@simple": "From Earth: the Moon",
+					"hint": "Hold Earth still and watch the Moon's phases.",
+					"hint@simple": "Watch the Moon grow and shrink.",
+					"hint@advanced": "Geocentric frame: the phases follow from the angle between the Sun, the Moon and Earth."
+				},
+				"hold": {
+					"title": "Hold {body} still",
+					"title@simple": "Make {body} stand still",
+					"hint": "Everything else moves around it.",
+					"hint@advanced": "A non-rotating frame centred on {body}, its axes fixed to the stars.",
+					"disabled": "Centre on a planet or a moon first.",
+					"disabled@simple": "Pick a planet or a moon first."
+				}
+			},
+			"badge": {
+				"label": "Reference frame",
+				"explain": "{bodyId, select, other {{body}}} stays still; everything else moves around it. The lines show each path {restarted, select, yes {since you restarted them} other {over the last two years}}.",
+				"explain@simple": "{bodyId, select, other {{body}}} stands still and everything else moves around it. The lines show where things went.",
+				"explain@advanced": "A non-rotating frame centred on {body}, its axes fixed to the stars. The trails are each body's path relative to {body} {restarted, select, yes {since the restart} other {over the last two years}}.",
+				"back": "Back to Sun-centred",
+				"back@simple": "Put the Sun back in the middle",
+				"restart": "Restart the trails",
+				"restart@simple": "Wipe the lines"
+			},
+			"motion": {
+				"prograde": "{body} is moving forwards against the stars.",
+				"prograde@simple": "{body} is moving forwards.",
+				"prograde@advanced": "{body} is in direct (prograde) motion: {rate} a day eastwards along the ecliptic.",
+				"stationary": "{body} seems to stand still: it is about to turn round.",
+				"stationary@simple": "{body} seems to stop!",
+				"stationary@advanced": "{body} is near a stationary point: its ecliptic longitude has almost stopped changing.",
+				"retrograde": "{body} seems to move backwards! It only looks that way: {observerId, select, other {{observer}}} and {body} are passing each other.",
+				"retrograde@simple": "{body} looks like it is going backwards! It isn't really: {observerId, select, other {{observer}}} and {body} are overtaking each other, like cars on a motorway.",
+				"retrograde@advanced": "{body} is in retrograde motion: seen from {observerId, select, other {{observer}}}, its ecliptic longitude decreases by {rate} a day. Ptolemy explained it with epicycles, Copernicus with a moving Earth."
+			},
+			"phase": {
+				"caption": "{body} as seen from {observerId, select, other {{observer}}}",
+				"status": "{phase} · {fraction, number, ::percent} lit",
+				"status@simple": "{phase}",
+				"name": {
+					"new": "{bodyId, select, moon {New moon} other {New}}",
+					"waxingCrescent": "Waxing crescent",
+					"waxingCrescent@simple": "Thin and growing",
+					"firstQuarter": "First quarter",
+					"firstQuarter@simple": "Half lit, growing",
+					"waxingGibbous": "Waxing gibbous",
+					"waxingGibbous@simple": "Nearly full, growing",
+					"full": "{bodyId, select, moon {Full moon} other {Full}}",
+					"waningGibbous": "Waning gibbous",
+					"waningGibbous@simple": "Nearly full, shrinking",
+					"lastQuarter": "Last quarter",
+					"lastQuarter@simple": "Half lit, shrinking",
+					"waningCrescent": "Waning crescent",
+					"waningCrescent@simple": "Thin and shrinking"
+				}
+			},
+			"inset": {
+				"title": "From above the Sun",
+				"title@simple": "Seen from high above",
+				"label": "{observer} and {body} on their orbits around the Sun, with the line of sight from {observer} to {body}"
+			}
 		}
 	}
 }

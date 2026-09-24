@@ -26,6 +26,8 @@ import {
 	OVERVIEW,
 	formatOffset,
 	formatShot,
+	isFrameAnchored,
+	OVERVIEW_BODY_ID,
 	parseOffset,
 	parseShot,
 	sameShot,
@@ -69,7 +71,8 @@ type Mirrored = Omit<Layers, "showOrbitLabels"> &
 	Pick<
 		SimState,
 		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
-	>
+	> &
+	Partial<Pick<SimState, "frameId">>
 
 type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
 
@@ -103,6 +106,10 @@ export function searchFromState(
 				: undefined,
 		cam:
 			shot === null || sameShot(shot, HOME_SHOT) ? undefined : formatShot(shot),
+		frame:
+			state.frameId !== undefined && isFrameAnchored({ frameId: state.frameId })
+				? state.frameId
+				: undefined,
 		t: shouldMirrorTime(state.paused, timeWarp)
 			? roundJD(state.simTimeJD)
 			: previous.t,
@@ -120,6 +127,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.focus === b.focus &&
 	a.at === b.at &&
 	a.sel === b.sel &&
+	a.frame === b.frame &&
 	a.cam === b.cam &&
 	a.t === b.t &&
 	a.warp === b.warp &&
@@ -134,6 +142,8 @@ export function viewFromSearch(search: SimSearch): {
 	view: View
 	shot: CameraShot | null
 	selectedId: string | null
+	/** The body held still (#31): the focus, or `frame` itself without one; null for Sun-centred. */
+	frameId: string | null
 } {
 	const focus =
 		search.focus !== undefined && bodyById.has(search.focus)
@@ -150,8 +160,13 @@ export function viewFromSearch(search: SimSearch): {
 			: offsetKm === null
 				? { kind: "body", id: focus }
 				: { kind: "point", anchorId: focus, offsetKm }
+	const framed =
+		search.frame !== undefined &&
+		search.frame !== OVERVIEW_BODY_ID &&
+		bodyById.has(search.frame)
 	return {
 		view,
+		frameId: framed ? (focus ?? search.frame ?? null) : null,
 		shot: parseShot(search.cam),
 		// a focused body is selected unless the link selects something else;
 		// a point in space selects nothing by itself
@@ -215,8 +230,13 @@ export function useSimUrlSync(): void {
 		const store = useSimStore.getState()
 		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
 		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
-		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
+		const { view, shot, selectedId, frameId } = viewFromSearch(
+			searchRef.current,
+		)
 		store.jumpTo(view, shot)
+		if (frameId !== null) {
+			store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
+		}
 		store.select(selectedId)
 		// the layer switches are plain fields
 		useSimStore.setState(layersFromSearch(searchRef.current))
@@ -234,6 +254,7 @@ export function useSimUrlSync(): void {
 		const unsubscribe = useSimStore.subscribe((state, previous) => {
 			if (
 				state.view !== previous.view ||
+				state.frameId !== previous.frameId ||
 				state.selectedId !== previous.selectedId ||
 				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||

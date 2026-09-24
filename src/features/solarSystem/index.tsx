@@ -3,9 +3,12 @@ import { Group } from "@mantine/core"
 
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
+import { isFrameAnchored } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
+import FrameBadge from "./frame/FrameBadge"
+import FrameMenu from "./frame/FrameMenu"
 import Scene from "./scene/Scene"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -36,8 +39,19 @@ const CentreBadgePanel = () => {
 	const free = useSimStore((state) => freeCentreId(state) !== null)
 	if (!free) return null
 	return (
-		<div className={`${classes.panel} ${classes.centre}`}>
+		<div className={classes.panel}>
 			<CentreBadge />
+		</div>
+	)
+}
+
+/** The anchored frame's badge (#31), present only while a body is held still. */
+const FrameBadgePanel = () => {
+	const anchored = useSimStore((state) => isFrameAnchored(state))
+	if (!anchored) return null
+	return (
+		<div className={classes.panel}>
+			<FrameBadge />
 		</div>
 	)
 }
@@ -55,8 +69,12 @@ const SolarSystem = () => {
 				<div className={`${classes.panel} ${classes.picker}`}>
 					<OverviewButton />
 					<FocusPicker />
+					<FrameMenu />
 				</div>
-				<CentreBadgePanel />
+				<div className={classes.centre}>
+					<FrameBadgePanel />
+					<CentreBadgePanel />
+				</div>
 				<div className={`${classes.panel} ${classes.toggles}`}>
 					<Group gap="sm" justify="space-between" wrap="nowrap">
 						<SceneToggles />

@@ -18,6 +18,8 @@ import Bodies from "../bodies/Bodies"
 import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
+import ReferenceFrameSync from "../frame/ReferenceFrameSync"
+import Trails from "../frame/Trails"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
@@ -61,12 +63,14 @@ function Scene() {
 				<color attach="background" args={[SCENE_BACKGROUND]} />
 				<SimFrameContext.Provider value={frame}>
 					<ScaleSync />
+					<ReferenceFrameSync />
 					<SimClock />
 					<HoverCursor />
 					<Suspense fallback={null}>
 						<Bodies />
 					</Suspense>
 					<OrbitLines />
+					<Trails />
 					<Markers />
 					<Labels board={labels} />
 					<CameraRig />

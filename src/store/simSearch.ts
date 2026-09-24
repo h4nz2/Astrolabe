@@ -1,5 +1,5 @@
 /**
- * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`
+ * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&frame=io&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`
  * (the layer switches `orbits`, `labels`, `moons`, `markers` alike).
  *
  * Kept free of app imports (only zod) because the route module that validates
@@ -29,6 +29,8 @@ export const simSearchSchema = z.object({
 	at: z.string().optional().catch(undefined),
 	// selected body id when it is not the focused body
 	sel: z.string().optional().catch(undefined),
+	// the body held still (#31): the frame is anchored to the focus (absent: Sun-centred)
+	frame: z.string().optional().catch(undefined),
 	// camera around the view, `azimuth_elevation_distance` (see formatShot in navigation.ts)
 	cam: z.string().optional().catch(undefined),
 	// simulation time as a Julian Date (zod 4 already rejects NaN and +-Infinity)
