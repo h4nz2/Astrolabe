@@ -86,6 +86,8 @@ const discPixels = async (page: Page, name: string): Promise<DiscPixels> => {
 test("a planet shows a day side and a night side that is dark but never lost, and Always lit lights it all", async ({
 	page,
 }) => {
+	// three full screenshots of a WebGL canvas: several seconds each in software rendering
+	test.slow()
 	const errors = collectErrors(page)
 	// 23 March 2026: the default framing sees the Earth from the side, half in sunlight
 	await page.goto("/solar_system?focus=earth&t=2461122.5")
