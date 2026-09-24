@@ -1,11 +1,13 @@
 /**
- * One Points layer with a screen-sized dot per body, so nothing vanishes at
- * true scale (docs/ARCHITECTURE.md, "Rendering"). Vertices are compacted every
- * frame from the SimFrame: hidden moons, moons outside the focus family (they
- * would collapse into a blob around their planet from afar) and bodies whose
- * disc is already bigger than the dot are skipped. Picking is angular (a pixel
- * radius around the pointer ray) instead of three's world-unit Points
- * threshold, which is meaningless across ten orders of magnitude of distance.
+ * One Points layer with a round, screen-sized dot per body, so nothing
+ * vanishes at true scale (docs/ARCHITECTURE.md, "Rendering"). Vertices are
+ * compacted every frame from the SimFrame: hidden moons, moons outside the
+ * focus family (they would collapse into a blob around their planet from afar)
+ * and bodies whose disc is already bigger than the dot are skipped. With
+ * `showMarkers` off nothing is drawn, so small bodies shrink to their true
+ * size and vanish. Picking is angular (a pixel radius around the pointer ray)
+ * instead of three's world-unit Points threshold, which is meaningless across
+ * ten orders of magnitude of distance.
  */
 import { useCallback, useMemo, useRef } from "react"
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber"
@@ -38,6 +40,20 @@ const MARKER_COLORS: Record<BodyKind, readonly [number, number, number]> = {
 }
 
 const scratch = new Vector3()
+
+/**
+ * GL points are squares: cuts each into a disc whose edge is anti-aliased by
+ * its pixel coverage (the distance to the centre over its screen derivative).
+ */
+const roundPoints = (shader: { fragmentShader: string }) => {
+	shader.fragmentShader = shader.fragmentShader.replace(
+		"#include <color_fragment>",
+		`#include <color_fragment>
+	float markerRadius = length( gl_PointCoord - 0.5 ) * 2.0;
+	diffuseColor.a *= clamp( 0.5 + ( 1.0 - markerRadius ) / fwidth( markerRadius ), 0.0, 1.0 );
+	if ( diffuseColor.a <= 0.0 ) discard;`,
+	)
+}
 
 /** Pixels per scene unit at unit distance from a perspective camera. */
 const pixelsPerUnitAtDistanceOne = (
@@ -182,13 +198,10 @@ function Markers() {
 	useFrame(({ camera }) => {
 		const points = pointsRef.current
 		if (points === null) return
-		const drawn = fillMarkers(
-			buffers,
-			frame,
-			camera,
-			heightPx,
-			useSimStore.getState(),
-		)
+		const state = useSimStore.getState()
+		const drawn = state.showMarkers
+			? fillMarkers(buffers, frame, camera, heightPx, state)
+			: 0
 		const geometry = points.geometry
 		geometry.setDrawRange(0, drawn)
 		geometry.attributes.position.needsUpdate = true
@@ -276,6 +289,7 @@ function Markers() {
 				transparent
 				depthTest={false}
 				depthWrite={false}
+				onBeforeCompile={roundPoints}
 			/>
 		</points>
 	)
