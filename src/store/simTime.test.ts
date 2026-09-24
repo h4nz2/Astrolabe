@@ -211,8 +211,7 @@ describe("time travel", () => {
 		const nowJD = dateToJD(new Date())
 		state().setNow()
 		const duration = glideDurationMs(nowJD - from)
-		// the wall clock may tick between the test's reading and the store's
-		expect(state().clock.glide?.durationMs).toBeCloseTo(duration, 3)
+		expect(state().clock.glide?.durationMs).toBe(duration)
 		run(duration / 2)
 		expect(state().simTimeJD).toBeGreaterThan(from)
 		expect(state().simTimeJD).toBeLessThan(nowJD)
