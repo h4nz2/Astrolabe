@@ -5361,6 +5361,7 @@
 				{
 					"id": "6h",
 					"name": "Hyperion",
+					"rotationChaotic": true,
 					"distanceFromParent": 1481010,
 					"orbitalPeriod": 21.276,
 					"orbitalInclination": 0.43,

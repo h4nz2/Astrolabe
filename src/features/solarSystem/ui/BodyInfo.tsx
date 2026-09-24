@@ -1,4 +1,4 @@
-import { bodyById } from "@/data"
+import { bodyById, type Body } from "@/data"
 import { useI18n, type I18n } from "@/i18n"
 import { bodyKindLabel, bodyName, useBodyText } from "@/i18n/bodies"
 import { kmToAu } from "@/sim"
@@ -6,9 +6,20 @@ import { useSimStore } from "@/store/sim"
 
 import classes from "./BodyInfo.module.css"
 
-const rotationLabel = (periodHours: number | null, i18n: I18n): string => {
+const rotationLabel = (
+	body: Pick<Body, "rotation" | "parentId">,
+	i18n: I18n,
+): string => {
+	const { periodHours, synchronous } = body.rotation
 	if (periodHours === null) return i18n.t("solarSystem.info.rotationUnknown")
 	const period = i18n.quantity(Math.abs(periodHours), "hour", "long")
+	if (synchronous === true && body.parentId !== null) {
+		return i18n.t("solarSystem.info.synchronous", {
+			period,
+			parentId: body.parentId,
+			parent: bodyName(body.parentId, i18n.chain),
+		})
+	}
 	return periodHours < 0
 		? i18n.t("solarSystem.info.retrograde", { period })
 		: period
@@ -22,7 +33,7 @@ const BodyInfo = () => {
 	const body = bodyById.get(bodyId)
 	if (body === undefined) return null
 	const { t } = i18n
-	const { orbit, rotation } = body
+	const { orbit } = body
 	const kind = bodyKindLabel(body, i18n)
 	const radius = i18n.quantity(body.radiusKm, "kilometer")
 
@@ -65,9 +76,7 @@ const BodyInfo = () => {
 					</>
 				)}
 				<dt className={classes.label}>{t("solarSystem.info.rotation")}</dt>
-				<dd className={classes.value}>
-					{rotationLabel(rotation.periodHours, i18n)}
-				</dd>
+				<dd className={classes.value}>{rotationLabel(body, i18n)}</dd>
 			</dl>
 		</section>
 	)
