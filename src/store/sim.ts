@@ -101,14 +101,14 @@ export const isBodyShown = (
 ): boolean =>
 	state.showMoons || body.kind !== "moon" || body.id === state.focusId
 
-export const WARP_PRESETS: readonly { label: string; value: number }[] = [
-	{ label: "1x", value: 1 },
-	{ label: "1 min/s", value: 60 },
-	{ label: "1 h/s", value: 3600 },
-	{ label: "1 day/s", value: 86400 },
-	{ label: "1 week/s", value: 604800 },
-	{ label: "1 month/s", value: 2629800 },
-	{ label: "1 year/s", value: 31557600 },
+/**
+ * The speed presets (simulated seconds per real second), slowest first: real
+ * time, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s, 10 years/s.
+ * Each step multiplies the speed, so the list is a logarithmic scale; the HUD
+ * names them from the value (`ui/warp.ts`) and applies the direction on top.
+ */
+export const WARP_PRESETS: readonly number[] = [
+	1, 60, 3600, 86400, 604800, 2629800, 31557600, 315576000,
 ]
 
 /** The store fields a changed clock sets: the clock and its sample at `realMs`. */

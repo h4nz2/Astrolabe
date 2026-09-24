@@ -5,23 +5,48 @@
 	gap: 0.5rem;
 }
 
+/* transport, date and "Now"; wraps onto two lines on narrow phones */
 .row {
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
 }
 
 .date {
-	min-width: 17ch;
 	font-family: var(--mantine-font-family-monospace);
 	font-size: var(--mantine-font-size-sm);
 	font-variant-numeric: tabular-nums;
 	text-align: center;
 	white-space: nowrap;
-	color: var(--mantine-color-gray-2);
+}
+
+/* the reverse button shows the play triangle pointing left */
+.flipped {
+	transform: scaleX(-1);
 }
 
 /* the presets (a Select on phones, see TimeControls.tsx) never widen the panel */
 .warp {
 	max-width: 100%;
+}
+
+.speedSelect {
+	width: 10rem;
+}
+
+/* the too-fast-to-follow hint (TooFastHint.tsx) */
+.hint {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.375rem;
+	max-width: 36rem;
+	color: var(--mantine-color-yellow-3);
+	line-height: 1.35;
+}
+
+.hintIcon {
+	flex: none;
+	margin-top: 0.1rem;
 }
