@@ -63,6 +63,10 @@ describe("a point view in the URL", () => {
 				timeWarp: 1,
 				paused: true,
 				simTimeJD: J2000_JD,
+				showOrbits: true,
+				showLabels: true,
+				showMoons: true,
+				showMarkers: true,
 			},
 			{},
 		)

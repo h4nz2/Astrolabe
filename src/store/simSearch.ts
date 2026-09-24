@@ -1,5 +1,6 @@
 /**
- * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>`.
+ * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`
+ * (the layer switches `orbits`, `labels`, `moons`, `markers` alike).
  *
  * Kept free of app imports (only zod) because the route module that validates
  * the URL is loaded eagerly with the route tree; the store and the data stay in
@@ -18,6 +19,8 @@ const urlNumber = (value: unknown): unknown =>
 	(typeof value === "string" && value.trim() !== "")
 		? value
 		: undefined
+
+const layerSwitch = z.boolean().optional().catch(undefined)
 
 export const simSearchSchema = z.object({
 	// focused body id (absent: the overview); unknown ids are ignored when applied (see urlSync.ts)
@@ -41,6 +44,12 @@ export const simSearchSchema = z.object({
 				.optional(),
 		)
 		.catch(undefined),
+	// the layer switches (LAYER_PARAMS in urlSync.ts); only `false` is ever
+	// written, on is the default
+	orbits: layerSwitch,
+	labels: layerSwitch,
+	moons: layerSwitch,
+	markers: layerSwitch,
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>

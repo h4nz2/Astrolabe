@@ -5,7 +5,9 @@ import { J2000_JD, dateToJD } from "@/sim"
 import { HOME_SHOT, OVERVIEW } from "./navigation"
 import { simSearchSchema } from "./simSearch"
 import {
+	LAYER_PARAMS,
 	TIME_SYNC_MAX_WARP,
+	layersFromSearch,
 	mountState,
 	roundJD,
 	sameSearch,
@@ -17,7 +19,7 @@ import {
 
 type Mirrored = Parameters<typeof searchFromState>[0]
 
-/** The mirrored store fields: the overview, nothing selected, paused at J2000 at 1x unless overridden. */
+/** The mirrored store fields: the overview, nothing selected, paused at J2000 at 1x, every layer on unless overridden. */
 const state = (partial: Partial<Mirrored> = {}): Mirrored => ({
 	view: OVERVIEW,
 	selectedId: null,
@@ -25,6 +27,10 @@ const state = (partial: Partial<Mirrored> = {}): Mirrored => ({
 	timeWarp: 1,
 	paused: true,
 	simTimeJD: J2000_JD,
+	showOrbits: true,
+	showLabels: true,
+	showMoons: true,
+	showMarkers: true,
 	...partial,
 })
 
@@ -59,6 +65,16 @@ describe("simSearchSchema", () => {
 		expect(simSearchSchema.parse({ warp: -1 }).warp).toBe(-1)
 		expect(simSearchSchema.parse({ warp: "0" }).warp).toBeUndefined()
 		expect(simSearchSchema.parse({ warp: "-0" }).warp).toBeUndefined()
+	})
+
+	it("reads the layer switches as booleans and drops anything else", () => {
+		for (const [param] of LAYER_PARAMS) {
+			expect(simSearchSchema.parse({ [param]: false })[param]).toBe(false)
+			expect(simSearchSchema.parse({ [param]: true })[param]).toBe(true)
+			for (const value of [0, "off", "", null]) {
+				expect(simSearchSchema.parse({ [param]: value })[param]).toBeUndefined()
+			}
+		}
 	})
 
 	it("treats blank and non-numeric values as absent, never as 0", () => {
@@ -187,6 +203,39 @@ describe("urlSync helpers", () => {
 		expect(mirrored(0).warp).toBeUndefined()
 	})
 
+	it("writes a layer switch only when it is off", () => {
+		const allOn = {
+			showOrbits: true,
+			showLabels: true,
+			showMoons: true,
+			showMarkers: true,
+		}
+		const { orbits, labels, moons, markers } = searchFromState(state(), {})
+		expect([orbits, labels, moons, markers]).toEqual([
+			undefined,
+			undefined,
+			undefined,
+			undefined,
+		])
+		expect(layersFromSearch({})).toEqual(allOn)
+		for (const [param, field] of LAYER_PARAMS) {
+			const off = state({ [field]: false })
+			const search = searchFromState(off, {})
+			expect(search[param]).toBe(false)
+			// only that one is written
+			expect(
+				LAYER_PARAMS.filter(([other]) => search[other] !== undefined),
+			).toHaveLength(1)
+			expect(layersFromSearch({ [param]: false })).toEqual({
+				...allOn,
+				[field]: false,
+			})
+			expect(layersFromSearch({ [param]: true })).toEqual(allOn)
+			// the round trip through the schema and back into the store
+			expect(layersFromSearch(simSearchSchema.parse(search))[field]).toBe(false)
+		}
+	})
+
 	it("compares searches field by field", () => {
 		expect(
 			sameSearch(
@@ -198,6 +247,9 @@ describe("urlSync helpers", () => {
 		expect(sameSearch({ t: 1 }, { t: 1.0001 })).toBe(false)
 		expect(sameSearch({ cam: "0_10_1" }, { cam: "0_10_2" })).toBe(false)
 		expect(sameSearch({ sel: "io" }, {})).toBe(false)
+		expect(sameSearch({ markers: false }, {})).toBe(false)
+		expect(sameSearch({ moons: false }, { moons: false })).toBe(true)
+		expect(sameSearch({ orbits: false }, { labels: false })).toBe(false)
 	})
 
 	it("seeds the clock from the search, skipping absent params", () => {

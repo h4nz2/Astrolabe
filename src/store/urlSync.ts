@@ -2,13 +2,14 @@
  * Mirrors the simulation store into the `/solar_system` URL and back.
  *
  * On mount the validated search params (`focus`, `at`, `sel`, `cam`, `t`,
- * `warp`) seed the store: the view (`focus`: a body, with `at` a point in
- * space near it, absent: the overview) and its
- * camera shot are applied as a jump, so a shared link opens exactly on the
- * view it was taken from. From then on view, selection, camera shot and warp
- * are written to the URL as they change (the shot when the camera comes to
- * rest) and the simulation time follows at most once per second, and only
- * while it is slow enough to be worth a link (paused or |warp| <= 1 min/s).
+ * `warp` and the layer switches `orbits`, `labels`, `moons`, `markers`) seed
+ * the store: the view (`focus`: a body, with `at` a point in space near it,
+ * absent: the overview) and its camera shot are applied as a jump, so a
+ * shared link opens exactly on the view it was taken from. From then on view,
+ * selection, camera shot, warp and the layer switches are written to the URL
+ * as they change (the shot when the camera comes to rest) and the simulation
+ * time follows at most once per second, and only while it is slow enough to
+ * be worth a link (paused or |warp| <= 1 min/s).
  * Everything is `replace: true`, so the history never fills up.
  *
  * The store is watched through `useSimStore.subscribe`, not selectors: the
@@ -48,10 +49,25 @@ export const roundJD = (jd: number): number => Math.round(jd * 1e4) / 1e4
 export const shouldMirrorTime = (paused: boolean, timeWarp: number): boolean =>
 	paused || Math.abs(timeWarp) <= TIME_SYNC_MAX_WARP
 
-type Mirrored = Pick<
-	SimState,
-	"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
->
+/**
+ * The layer switches a link carries: search param and store field. Every
+ * switch is on by default, so only `false` is ever written.
+ */
+export const LAYER_PARAMS = [
+	["orbits", "showOrbits"],
+	["labels", "showLabels"],
+	["moons", "showMoons"],
+	["markers", "showMarkers"],
+] as const
+
+type LayerField = (typeof LAYER_PARAMS)[number][1]
+type Layers = Pick<SimState, LayerField>
+
+type Mirrored = Layers &
+	Pick<
+		SimState,
+		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
+	>
 
 type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
 
@@ -59,10 +75,11 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * The search params that mirror `state`, starting from `previous` so a `t` that
  * is not being mirrored right now (fast warp) keeps its last written value.
  * Defaults (the overview, the home camera, a selection equal to the focus,
- * 1x) are left out to keep the URL short. A point view (the pivot moved into
- * empty space, #15) is its anchor in `focus` and its offset in `at`, in true
- * radii of the anchor (scale free). The warp is written as it is (not rounded), so a
- * link runs at exactly the speed it was taken at,
+ * 1x, a layer switch that is on) are left out to keep the URL short. A point
+ * view (the pivot moved into empty space, #15) is its anchor in `focus` and
+ * its offset in `at`, in true radii of the anchor (scale free). The warp is
+ * written as it is (not rounded), so a link runs at exactly the speed it was
+ * taken at,
  * backwards included; a zero warp (which the schema rejects) is left out.
  */
 export function searchFromState(
@@ -72,7 +89,7 @@ export function searchFromState(
 	const { timeWarp, view, shot } = state
 	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
 	const anchor = view.kind === "point" ? bodyById.get(view.anchorId) : undefined
-	return {
+	const search: SimSearch = {
 		focus,
 		at:
 			view.kind === "point" && anchor !== undefined
@@ -90,6 +107,10 @@ export function searchFromState(
 		warp:
 			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
 	}
+	for (const [param, field] of LAYER_PARAMS) {
+		search[param] = state[field] ? undefined : false
+	}
+	return search
 }
 
 export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
@@ -98,7 +119,8 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.sel === b.sel &&
 	a.cam === b.cam &&
 	a.t === b.t &&
-	a.warp === b.warp
+	a.warp === b.warp &&
+	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
 /**
  * The view a search describes: `focus` (a known body; with a valid `at`, a
@@ -132,6 +154,12 @@ export function viewFromSearch(search: SimSearch): {
 		selectedId: sel ?? (view.kind === "body" ? focus : null),
 	}
 }
+
+/** The layer switches a search sets: a switch the link leaves out is on. */
+export const layersFromSearch = (search: SimSearch): Layers =>
+	Object.fromEntries(
+		LAYER_PARAMS.map(([param, field]) => [field, search[param] ?? true]),
+	) as Layers
 
 /** Clock fields a search sets; absent params are skipped. */
 export function stateFromSearch(search: SimSearch): Partial<MirroredClock> {
@@ -181,6 +209,8 @@ export function useSimUrlSync(): void {
 		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
 		store.jumpTo(view, shot)
 		store.select(selectedId)
+		// the layer switches are plain fields
+		useSimStore.setState(layersFromSearch(searchRef.current))
 
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const write = () => {
@@ -190,15 +220,16 @@ export function useSimUrlSync(): void {
 			void navigate({ to: "/solar_system", search: next, replace: true })
 		}
 
-		// store -> URL: view, selection, camera, warp and pause changes right away (a
-		// pause also pins `t`); the running clock at most once per TIME_SYNC_INTERVAL_MS
+		// store -> URL: view, selection, camera, warp, pause and layer changes right
+		// away (a pause also pins `t`); the running clock at most once per TIME_SYNC_INTERVAL_MS
 		const unsubscribe = useSimStore.subscribe((state, previous) => {
 			if (
 				state.view !== previous.view ||
 				state.selectedId !== previous.selectedId ||
 				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||
-				state.paused !== previous.paused
+				state.paused !== previous.paused ||
+				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field])
 			) {
 				write()
 				return

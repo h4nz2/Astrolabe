@@ -260,13 +260,21 @@ WARP_PRESETS                                      1x, 1 min/s, 1 h/s, 1 day/s, 1
 Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
+<<<<<<< HEAD
 URL: `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>`. `at` (#15) makes the view a free
 point near `focus`: its offset in TRUE radii of `focus` (`formatOffset`, 4 significant digits), preset-independent; a
 malformed `at` falls back to the body. Defaults (overview, home shot `0_45_1`,
 `warp=1`) are left out. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
-once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
-clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
-|warp| <= 60.
+=======
+
+URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
+`labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off. Defaults (overview,
+home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
+
+> > > > > > > main
+> > > > > > > once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
+> > > > > > > clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
+> > > > > > > |warp| <= 60.
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -320,11 +328,11 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   selected, which fills the view up close). Labels: planets always, moons only within the focused family.
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
-  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button. Panning is behind
-  `PAN_ENABLED` until #15.
+  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
+  button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls`, `SceneToggles`,
-  `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px). Escape and the overview button call `reset()`.
+  `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px), `CentreBadge` and `CentreMarker` (#15). Escape and the overview button call `reset()`.
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `SimClock`, `HoverCursor`, lights, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, later `Effects`) and the HUD.
