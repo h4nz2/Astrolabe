@@ -7,6 +7,7 @@ import { Suspense, useMemo } from "react"
 import { Canvas } from "@react-three/fiber"
 
 import { bodies } from "@/data"
+import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
 import Bodies from "../bodies/Bodies"
@@ -14,6 +15,7 @@ import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
 import Markers from "./Markers"
+import ScaleSync from "./ScaleSync"
 import SimClock from "./SimClock"
 import { SimFrameContext, createSimFrame } from "./simFrame"
 
@@ -22,7 +24,12 @@ export const AMBIENT_INTENSITY = 0.05
 
 function Scene() {
 	const frame = useMemo(
-		() => createSimFrame(bodies, useSimStore.getState().simTimeJD),
+		() =>
+			createSimFrame(
+				bodies,
+				useSimStore.getState().simTimeJD,
+				useScaleStore.getState().scale,
+			),
 		[],
 	)
 
@@ -40,6 +47,7 @@ function Scene() {
 		>
 			<color attach="background" args={[SCENE_BACKGROUND]} />
 			<SimFrameContext.Provider value={frame}>
+				<ScaleSync />
 				<SimClock />
 				<ambientLight intensity={AMBIENT_INTENSITY} />
 				<Suspense fallback={null}>

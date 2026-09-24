@@ -6,21 +6,28 @@
  * before framing. The first mount frames the focus from 45 degrees above the
  * ecliptic (the Sun at 40 radii); a later focus change keeps the viewing
  * direction and dollies to the framing distance. The fly-to blend of the
- * origin is Phase 5.
+ * origin is Phase 5. Every radius here is the focus's drawn radius under the
+ * active scale; when the scale changes, the camera distance scales with it
+ * (`followFocusRadius`), so the focus keeps its size on screen.
  */
 import { useEffect, useRef } from "react"
 import { CameraControls, CameraControlsImpl } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 
 import { bodyById, sun } from "@/data"
-import { degToRad, toUnits } from "@/sim"
+import { degToRad, displayRadiusKm, toUnits } from "@/sim"
+import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
+import { useSimFrame } from "../scene/simFrame"
 import {
 	CAMERA_MAX_DISTANCE,
 	CAMERA_SMOOTH_TIME_S,
 	INITIAL_ELEVATION_DEG,
+	followFocusRadius,
 	framingDistance,
 	minDollyDistance,
+	type FollowedRadius,
 } from "./framing"
 
 export {
@@ -45,12 +52,30 @@ export function pinTarget(controls: CameraControlsImpl): void {
 }
 
 function CameraRig() {
+	const frame = useSimFrame()
 	const controlsRef = useRef<CameraControlsImpl>(null)
 	const focusId = useSimStore((state) => state.focusId)
+	const bodySize = useScaleStore((state) => state.scale.bodySize)
 	const focus = bodyById.get(focusId) ?? sun
-	const focusRadius = toUnits(focus.radiusKm)
+	// the same function the SimFrame's display radii come from
+	const focusRadius = toUnits(
+		displayRadiusKm(focus.radiusKm, sun.radiusKm, bodySize),
+	)
 	// the focus this rig last framed; null before the first framing
 	const framedFocusRef = useRef<string | null>(null)
+	const followedRef = useRef<FollowedRadius | null>(null)
+
+	// before CameraControls' own update, so a rescaled camera draws in the same frame
+	useFrame(() => {
+		const controls = controlsRef.current
+		if (controls === null) return
+		followedRef.current = followFocusRadius(
+			controls,
+			followedRef.current,
+			frame,
+			useSimStore.getState().focusId,
+		)
+	}, -1)
 
 	useEffect(() => {
 		const controls = controlsRef.current

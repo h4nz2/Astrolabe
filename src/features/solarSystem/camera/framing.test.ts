@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest"
+import type { Spherical } from "three"
 
 import { bodies, getBody } from "@/data"
 import { toUnits } from "@/sim"
@@ -8,8 +9,10 @@ import {
 	FRAMING_RADII,
 	INITIAL_SUN_RADII,
 	MIN_DISTANCE_RADII,
+	followFocusRadius,
 	framingDistance,
 	minDollyDistance,
+	rescaledDistance,
 } from "./framing"
 
 describe("minDollyDistance", () => {
@@ -46,6 +49,88 @@ describe("minDollyDistance", () => {
 			boundary / 2 + 2 * CAMERA_NEAR,
 			12,
 		)
+	})
+})
+
+describe("rescaledDistance", () => {
+	it("scales the distance with the focus's drawn radius, so the focus keeps its size on screen", () => {
+		expect(rescaledDistance(60, 10, 1)).toBeCloseTo(6, 12)
+		expect(rescaledDistance(6, 1, 10)).toBeCloseTo(60, 12)
+	})
+
+	it("never ends inside the body and survives a zero radius", () => {
+		expect(rescaledDistance(1, 1, 100)).toBeGreaterThanOrEqual(
+			minDollyDistance(100),
+		)
+		expect(rescaledDistance(5, 0, 1)).toBe(5)
+	})
+})
+
+describe("followFocusRadius", () => {
+	const makeControls = (distance: number) => {
+		const state = { distance, calls: 0 }
+		const controls = {
+			minDistance: 0,
+			dollyTo(d: number) {
+				state.distance = Math.max(d, controls.minDistance)
+				state.calls++
+			},
+			getSpherical(out: Spherical) {
+				out.radius = state.distance
+				return out
+			},
+		}
+		return { controls, state }
+	}
+	const frameWith = (radii: Record<string, number>) => ({
+		index: new Map(Object.keys(radii).map((id, i) => [id, i])),
+		renderRadius: (i: number) => Object.values(radii)[i],
+	})
+
+	it("remembers the first radius without moving the camera", () => {
+		const { controls, state } = makeControls(60)
+		const followed = followFocusRadius(
+			controls,
+			null,
+			frameWith({ earth: 10 }),
+			"earth",
+		)
+		expect(followed).toEqual({ id: "earth", radius: 10 })
+		expect(state.calls).toBe(0)
+	})
+
+	it("dollies in proportion when the same focus changes size (a scale change)", () => {
+		const { controls, state } = makeControls(60)
+		const followed = followFocusRadius(
+			controls,
+			{ id: "earth", radius: 10 },
+			frameWith({ earth: 1 }),
+			"earth",
+		)
+		expect(followed).toEqual({ id: "earth", radius: 1 })
+		expect(state.distance).toBeCloseTo(6, 12)
+		// the dolly limit follows the new size before the dolly (which clamps to it)
+		expect(controls.minDistance).toBe(minDollyDistance(1))
+	})
+
+	it("leaves a focus change and an unchanged radius alone", () => {
+		const { controls, state } = makeControls(60)
+		const previous = { id: "earth", radius: 10 }
+		expect(
+			followFocusRadius(
+				controls,
+				previous,
+				frameWith({ earth: 10, mars: 3 }),
+				"mars",
+			),
+		).toEqual({ id: "mars", radius: 3 })
+		expect(
+			followFocusRadius(controls, previous, frameWith({ earth: 10 }), "earth"),
+		).toBe(previous)
+		expect(
+			followFocusRadius(controls, previous, frameWith({ earth: 10 }), "vulcan"),
+		).toBe(previous)
+		expect(state.calls).toBe(0)
 	})
 })
 
