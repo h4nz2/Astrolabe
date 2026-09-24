@@ -150,6 +150,9 @@ export interface MoonsEntity {
 	mainAnomaly?: number | null
 	argPeriapsis?: number | null
 	longAscNode?: number | null
+	/** curated: secular drift of the node and of the argument of periapsis, degrees per day (the Moon) */
+	nodePrecessionDegPerDay?: number | null
+	argPeriapsisPrecessionDegPerDay?: number | null
 	bodyType?: string | null
 	rel?: string | null
 	ISS?: ISS | null

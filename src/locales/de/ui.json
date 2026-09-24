@@ -131,7 +131,8 @@
 			"orbits": "Umlaufbahnen",
 			"labels": "Beschriftungen",
 			"moons": "Monde",
-			"markers": "Markierungen"
+			"markers": "Markierungen",
+			"alwaysLit": "Immer beleuchtet"
 		},
 		"time": {
 			"play": "Abspielen",
