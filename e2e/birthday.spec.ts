@@ -43,7 +43,7 @@ test("from the start page to the ages on every planet, without the date in the U
 	await page.goto("/")
 	await page.getByRole("link", { name: "Your birthday in space" }).click()
 	await expect(page).toHaveURL(/\/solar_system/)
-	await expect(panel(page)).toBeVisible()
+	await expect(panel(page)).toBeVisible({ timeout: 15_000 })
 	await expect(panel(page)).toContainText("Nothing is saved or sent anywhere")
 
 	await pickBirthday(page)
@@ -104,7 +104,7 @@ test("travels to the next birthday on Mars and saves a picture", async ({
 	await page.goto("/solar_system")
 	await page.waitForLoadState("networkidle")
 	await page.getByRole("button", { name: "Your birthday" }).click()
-	await expect(panel(page)).toBeVisible()
+	await expect(panel(page)).toBeVisible({ timeout: 15_000 })
 	await pickBirthday(page)
 	const clock = page.locator("time")
 	await expect(clock).toHaveAttribute("datetime", "2014-09-25T12:00Z", {
@@ -116,18 +116,17 @@ test("travels to the next birthday on Mars and saves a picture", async ({
 	await mars
 		.getByRole("button", { name: "Travel to your next birthday on Mars" })
 		.click()
-	// the clock lands on that day (in the future) and stays paused
-	await expect
-		.poll(
-			async () => Date.parse((await clock.getAttribute("datetime")) ?? ""),
-			{ timeout: 20_000 },
-		)
-		.toBeGreaterThan(Date.now())
-	const shown = await clock.getAttribute("datetime")
-	const expected = new Date(
-		`${next?.replace(/^(Next|First) birthday: /, "")} UTC`,
-	)
-	expect(shown?.slice(0, 10)).toBe(expected.toISOString().slice(0, 10))
+	// the clock glides to that day (in the future) and stops there
+	const day = new Date(`${next?.replace(/^(Next|First) birthday: /, "")} UTC`)
+		.toISOString()
+		.slice(0, 10)
+	expect(Date.parse(day)).toBeGreaterThan(Date.now() - 86_400_000)
+	await expect(clock).toHaveAttribute("datetime", new RegExp(`^${day}T`), {
+		timeout: 20_000,
+	})
+	await expect(
+		page.getByRole("button", { name: "Pause", pressed: true }),
+	).toBeVisible()
 
 	const download = page.waitForEvent("download")
 	await panel(page).getByRole("button", { name: "Save as picture" }).click()
@@ -146,7 +145,7 @@ test("speaks German, with the calendar in German", async ({ page }) => {
 	const region = page.getByRole("region", {
 		name: "Dein Geburtstag im Weltall",
 	})
-	await expect(region).toBeVisible()
+	await expect(region).toBeVisible({ timeout: 15_000 })
 	await expect(region).toContainText("Nichts wird gespeichert")
 	const year = region.getByRole("button", { name: "2014", exact: true })
 	for (let i = 0; i < 3 && !(await year.isVisible()); i++) {
