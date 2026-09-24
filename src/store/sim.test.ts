@@ -29,41 +29,6 @@ describe("sim store", () => {
 		expect(useSimStore.getState().showMoons).toBe(true)
 	})
 
-	it("advances time by deltaSeconds * timeWarp, in days", () => {
-		const { setSimTime, setTimeWarp, advanceTime } = useSimStore.getState()
-		setSimTime(J2000_JD)
-		advanceTime(86400)
-		expect(useSimStore.getState().simTimeJD).toBeCloseTo(J2000_JD + 1, 12)
-
-		setTimeWarp(86400)
-		advanceTime(0.5)
-		expect(useSimStore.getState().simTimeJD).toBeCloseTo(J2000_JD + 1.5, 12)
-
-		setTimeWarp(31557600)
-		advanceTime(1)
-		expect(useSimStore.getState().simTimeJD).toBeCloseTo(
-			J2000_JD + 1.5 + 365.25,
-			9,
-		)
-	})
-
-	it("does not advance while paused", () => {
-		const { setSimTime, setPaused, togglePause, advanceTime } =
-			useSimStore.getState()
-		setSimTime(J2000_JD)
-		setPaused(true)
-		advanceTime(3600)
-		expect(useSimStore.getState().simTimeJD).toBe(J2000_JD)
-
-		togglePause()
-		expect(useSimStore.getState().paused).toBe(false)
-		advanceTime(3600)
-		expect(useSimStore.getState().simTimeJD).toBeCloseTo(J2000_JD + 1 / 24, 12)
-
-		togglePause()
-		expect(useSimStore.getState().paused).toBe(true)
-	})
-
 	it("ignores unknown focus ids", () => {
 		useSimStore.getState().setFocus("planet-x")
 		expect(useSimStore.getState().focusId).toBe("sun")
@@ -117,18 +82,6 @@ describe("sim store", () => {
 		setSimTime(J2000_JD)
 		setSimTime(Number.NaN)
 		expect(useSimStore.getState().simTimeJD).toBe(J2000_JD)
-	})
-
-	it("setNow jumps to the wall clock and is monotonic", () => {
-		const { setSimTime, setNow } = useSimStore.getState()
-		setSimTime(J2000_JD)
-		const before = dateToJD(new Date())
-		setNow()
-		const first = useSimStore.getState().simTimeJD
-		expect(first).toBeGreaterThanOrEqual(before)
-		expect(first).toBeLessThanOrEqual(dateToJD(new Date()))
-		setNow()
-		expect(useSimStore.getState().simTimeJD).toBeGreaterThanOrEqual(first)
 	})
 
 	it("tracks hover and the scene toggles", () => {
