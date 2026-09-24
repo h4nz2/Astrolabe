@@ -28,7 +28,9 @@ data/rings/<planet>.json     ring systems the source lacks (Uranus, Neptune)
 scripts/build-bodies.ts      data/ -> src/data/bodies.json (pnpm build:data); the pure, tested mapping lives in scripts/lib/
 scripts/gen-ring-textures.ts data/rings -> public/assets/textures/<planet>/rings/ (pnpm gen:rings)
 src/routes/                  file routes; src/routeTree.gen.ts is generated and committed
-src/providers/               Mantine theme, GSAP transition context, Layout
+src/providers/               Mantine theme, I18nProvider, GSAP transition context, Layout
+src/i18n/                    languages and reading levels (see i18n); body content in bodies.ts ("@/i18n/bodies")
+src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, simSearch.ts (URL schema), urlSync.ts
@@ -44,6 +46,8 @@ public/assets/textures/      pruned; unreferenced tiered variants are kept for l
 - Function components, `export default` at the bottom, props types exported next to the component.
 - CSS modules or Mantine style props; dark scheme, primary `orange.7`. No SSR leftovers (`next/*`, `ssr: false`, mount gates).
 - Per-frame motion never goes through React state: `useFrame` and mutate refs.
+- Every user-facing string goes through i18n (`useI18n().t`, see i18n) with an entry in every shipped locale; numbers,
+  units and dates through its formatters, body names through `bodyName`/`useBodyName`, never `body.name`.
 - Nobody commits; the orchestrator commits at the end of each phase.
 - Done means `pnpm typecheck && pnpm lint && pnpm test && pnpm build` pass (plus `pnpm test:e2e` when the UI changed).
 
@@ -239,7 +243,7 @@ and eclipses are the real ones in every scale preset (a moon drawn 10x too big n
 - Uniforms: one `SunlightUniforms` per body (`createSunlightUniforms`), rewritten in BodyMesh's `useFrame` by
   `updateSunlight`. Materials share the uniform OBJECTS (`createSunlitMaterial`, passed as a `<primitive>`): R3F's
   `<shaderMaterial uniforms>` copies each uniform and would freeze scalars at mount.
-- "Always lit" (`useLightingStore.alwaysLit`, a HUD switch; not persisted): lit from the viewer, no night, no shadows.
+- "Always lit" (`useLightingStore.alwaysLit`, a HUD switch labelled by `solarSystem.layers.alwaysLit`; not persisted): lit from the viewer, no night, no shadows.
 - Phases and seasons are consequences, not features (`phaseAngle`, `illuminatedFraction` give the numbers).
 - Building on it: anything lit by the Sun (#12 rings, #23, #35) includes `SUNLIGHT_PARS`, shares its body's uniforms and
   calls `sunVisibility(p)` with `p` in that body's true frame (centre at origin, true km). Ring points:
@@ -270,8 +274,9 @@ WARP_PRESETS                                      1x, 1 min/s, 1 h/s, 1 day/s, 1
 Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
-URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&markers=false`. Defaults (overview, home shot
-`0_45_1`, `warp=1`, markers on) are left out; a link without `markers` shows them. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
+URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
+`labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off. Defaults (overview,
+home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
 once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
 clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
 |warp| <= 60.
@@ -332,7 +337,85 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   `PAN_ENABLED` until #15.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls`, `SceneToggles`,
-  `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px). Escape and the overview button call `reset()`.
+  `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
+  toggles panel). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
+  `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`), not
+  `WARP_PRESETS[].label`.
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `SimClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, later `Effects`) and the HUD.
+
+## i18n: languages and reading levels (`src/i18n`, `src/locales`)
+
+Two axes: the **locale** (language) and the **reading level** (`simple` 8–11, `standard` 12–15 and the default,
+`advanced` 16+). Shipped locales: English (`en`, the reference and fallback) and German (`de`, standard German
+orthography). Body names: the Sun, the planets and the major moons are translated ("Erde", "Ganymed"); every other
+body keeps its catalogue name, and provisional designations (`S/2003 J 2`) are never translated.
+
+### Resources (`src/locales`, no code)
+
+```
+src/locales/config.json          { defaultLocale, readingLevels (menu order), defaultReadingLevel }
+src/locales/<locale>/ui.json     UI strings: a tree of ICU MessageFormat messages
+src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/data/bodies.json)
+```
+
+- Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences
+  by concatenation. A plural must list every category of the language (`one`/`other` in en/de; the tests check).
+- A reading-level variant is a sibling key with an `@level` suffix; the plain key serves the default level and every
+  level without its own text: `"orbitalPeriod": "Orbital period", "orbitalPeriod@simple": "Time for one lap"`.
+- Lookup falls back along the locale chain (`de-CH` -> `de` -> `en`) and, within a locale, from the level variant
+  to the plain text; the language wins over the level (German standard text before English simple text).
+- Grammar that differs per language gets its data as arguments: e.g. `{parentId, select, sun {…} other {…}}` in
+  English lets German pick "zur Sonne" / "zum Jupiter". A locale may use only arguments the English message uses
+  (in any of its level variants), so English declares such arguments with an `other`-only select.
+- `bodies.json`: per body `name`, `tagline`, `description`, `facts[]`, `comparisons[]`; each text field is either
+  one value for all levels or `{ "simple": …, "standard": …, "advanced": … }` (the default level required). Plain text,
+  not ICU. The Sun and the eight planets have every field at every level in every locale (tested); moons without
+  content get a generated description from their data (`bodies.fallback.moonDescription`).
+- `src/i18n/locales.test.ts` and `bodies.test.ts` are the contract: every locale has exactly English's keys and
+  variants, parses, uses only known arguments and complete plurals, and mirrors English's body content structure.
+
+### Using it (code)
+
+```ts
+const { t, number, quantity, dateTimeUTC, significant, locale, readingLevel } =
+	useI18n() // "@/i18n"
+t("solarSystem.time.now") // MessageKey is typed from src/locales/en/ui.json
+t("dictionary.compare.sizeBigger", { count: 1321 }) // plural + number formatted for the locale
+quantity(365.256, "day", "long") // "365.3 days" / "365,3 Tage" (Intl units, no strings needed)
+const name = useBodyName()
+name("earth") // "@/i18n/bodies": "Earth" / "Erde"
+const text = useBodyText("mars") // { name, tagline, description, facts, comparisons, authored }
+createI18n({ locale: "de", readingLevel: "simple" }) // the same object outside React (tests, pure helpers)
+```
+
+Pure helpers take the `I18n` object (or its `chain`) as a parameter rather than calling the hook. `@/i18n/bodies`
+is kept out of the `@/i18n` barrel so the eager root chunk does not pull in the body data. `useI18n()` works inside
+the R3F `<Canvas>` (fiber 9 bridges context); outside the provider it returns English/standard.
+
+### State, URL and page metadata
+
+- The URL always states both: `?lang=de&reading=simple` on every route (root `validateSearch`,
+  `src/i18n/search.ts`); the root route's `retainSearchParams` middleware keeps them on every `Link` and `navigate`,
+  so feature code never passes them. A missing or unknown value is replaced at once (`replace: true`): whatever a
+  teacher sees, the address bar reproduces for the class.
+- Resolution: URL > the viewer's saved choice (localStorage `astrolabe.locale` / `astrolabe.readingLevel`, written only by the
+  switcher) > `navigator.languages` (locale only) > config defaults. Numbers and dates use the browser's regional
+  variant of the same language (`de` text, `de-CH` formatting: 149’598’261), never another language's rules.
+- `LanguageMenu` (`placement="corner"` on pages without a HUD) switches both. `I18nProvider` sets `<html lang>`, the
+  title, the description and application-name metas, and swaps the manifest link for a localized copy of
+  `public/manifest.json` (data: URL, `start_url` with `?lang=`).
+
+### How to
+
+- **Add a string:** add the key to `src/locales/en/ui.json` (under the feature's namespace), the same key to every
+  other locale, then `t("feature.key")`. Run `pnpm test`: `locales.test.ts` lists anything missing.
+- **Add a reading-level variant:** add `"key@simple"` (etc.) in every locale.
+- **Add a locale** (e.g. French): copy `src/locales/en/` to `src/locales/fr/`, translate both files (`locale.name` is
+  the language's own name, "Français"), run `pnpm test`. No code changes; the switcher lists it automatically.
+  A regional variant (`de-CH`, e.g. for ss instead of ß) may be a folder with only the keys that differ once the tests
+  allow partial overlays (today every locale must be complete).
+- **Add a reading level:** add its id to `config.json` `readingLevels`, its name and description under
+  `i18n.readingLevel.<id>` in every `ui.json`, and its texts in the Sun/planet entries of every `bodies.json`.
+- **Add body content:** add fields under the body id in every locale's `bodies.json`.

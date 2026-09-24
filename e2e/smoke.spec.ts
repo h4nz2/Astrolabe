@@ -16,7 +16,7 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 	"/solar_dictionary": async (page) => {
 		// sidebar of the default selection (the Sun)
 		await expect(page.getByText("Sun", { exact: true })).toBeVisible()
-		await expect(page.getByText("diameter", { exact: true })).toBeVisible()
+		await expect(page.getByText("Diameter", { exact: true })).toBeVisible()
 	},
 	"/solar_system": async (page) => {
 		// the HUD over the canvas: focus picker (on the Sun), play/pause, layer switches, the clock
@@ -25,9 +25,14 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 		await expect(focus).toHaveValue("Sun")
 		await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
 		await expect(page.getByRole("switch")).toHaveCount(5)
-		await expect(
-			page.getByText(/^-?\d{4,}-\d{2}-\d{2} \d{2}:\d{2} UTC$/),
-		).toBeVisible()
+		// the clock is formatted for the locale; <time dateTime> carries the instant
+		const clock = page.locator("time")
+		await expect(clock).toBeVisible()
+		await expect(clock).toContainText("UTC")
+		await expect(clock).toHaveAttribute(
+			"datetime",
+			/^-?\d{4,}-\d{2}-\d{2}T\d{2}:\d{2}Z$/,
+		)
 	},
 }
 
@@ -47,9 +52,6 @@ const screenshotName = (route: string) =>
 
 for (const [route, expectRouteUI] of Object.entries(routes)) {
 	test(`renders ${route}`, async ({ page }) => {
-		// a full-page screenshot of a WebGL canvas takes several seconds in software
-		// rendering, and over 30 s for the solar system under a parallel run
-		test.slow()
 		const errors: string[] = []
 		page.on("console", (message) => {
 			if (message.type() !== "error") return
@@ -95,21 +97,32 @@ test("a solar system deep link seeds the simulation and the HUD writes back to t
 	await expect(page).toHaveURL(/[?&]t=\d+(\.\d+)?(&|$)/)
 })
 
-test("the Markers switch travels with a shared link", async ({ page }) => {
-	await page.goto("/solar_system?focus=earth&markers=false")
-	const markers = page.getByRole("switch", { name: "Markers" })
-	await expect(markers).not.toBeChecked()
-	await expect(page).toHaveURL(/[?&]markers=false(&|$)/)
+test("the layer switches travel with a shared link", async ({ page }) => {
+	await page.goto(
+		"/solar_system?focus=earth&orbits=false&labels=false&moons=false&markers=false",
+	)
+	for (const name of ["Orbits", "Labels", "Moons", "Markers"]) {
+		await expect(page.getByRole("switch", { name })).not.toBeChecked()
+	}
+	await expect(page).toHaveURL(/[?&]moons=false(&|$)/)
 
-	// on is the default and leaves the URL
-	await markers.click({ force: true })
-	await expect(markers).toBeChecked()
-	await expect(page).not.toHaveURL(/[?&]markers=/)
+	// on is the default and leaves the URL; the other switches stay in it
+	const moons = page.getByRole("switch", { name: "Moons" })
+	await moons.click({ force: true })
+	await expect(moons).toBeChecked()
+	await expect(page).not.toHaveURL(/[?&]moons=/)
 	await expect(page).toHaveURL(/[?&]focus=earth(&|$)/)
-
-	await markers.click({ force: true })
-	await expect(markers).not.toBeChecked()
+	await expect(page).toHaveURL(/[?&]orbits=false(&|$)/)
+	await expect(page).toHaveURL(/[?&]labels=false(&|$)/)
 	await expect(page).toHaveURL(/[?&]markers=false(&|$)/)
+
+	const orbits = page.getByRole("switch", { name: "Orbits" })
+	await orbits.click({ force: true })
+	await expect(orbits).toBeChecked()
+	await expect(page).not.toHaveURL(/[?&]orbits=/)
+	await moons.click({ force: true })
+	await expect(moons).not.toBeChecked()
+	await expect(page).toHaveURL(/[?&]moons=false(&|$)/)
 })
 
 test("hiding the moons with the orbits on keeps the scene alive and the focused moon in place", async ({
@@ -150,11 +163,9 @@ test("a link without a usable t starts at the wall clock, not at JD 0", async ({
 }) => {
 	// `?t=` reaches the schema as "" and must count as absent (coercion would make it 0)
 	await page.goto("/solar_system?t=&warp=")
-	const clock = page.getByText(/^-?\d{4,}-\d{2}-\d{2} \d{2}:\d{2} UTC$/)
+	const clock = page.locator("time")
 	await expect(clock).toBeVisible()
-	const shown = new Date(
-		(await clock.innerText()).replace(" UTC", "Z").replace(" ", "T"),
-	)
+	const shown = new Date((await clock.getAttribute("datetime")) ?? "")
 	expect(Math.abs(shown.getTime() - Date.now())).toBeLessThan(2 * 60_000)
 	await expect(page.getByRole("radio", { name: "1x" })).toBeChecked()
 	await expect(page).not.toHaveURL(/[?&]t=0(&|$)/)
