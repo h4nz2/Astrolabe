@@ -101,9 +101,10 @@ export const viewRadius = (view: View, frame: FramingFrame): number =>
 
 /**
  * The distance a shot's `distance: 1` stands for, scene units: the whole
- * system for the overview, `FRAMING_RADII` drawn radii of the body (or of the
- * anchor of a point) otherwise, so Jupiter and Mercury fill the same share of
- * the screen.
+ * system for the overview and for a point in interplanetary space (a point
+ * anchored to the Sun, #15), `FRAMING_RADII` drawn radii of the body (or of
+ * the anchor of a point in its neighbourhood) otherwise, so Jupiter and
+ * Mercury fill the same share of the screen.
  */
 export function defaultDistance(
 	view: View,
@@ -111,17 +112,21 @@ export function defaultDistance(
 	fovDeg: number,
 	aspect: number,
 ): number {
-	if (view.kind === "overview") {
+	if (
+		view.kind === "overview" ||
+		(view.kind === "point" && view.anchorId === sun.id)
+	) {
 		return overviewDistance(frame.scale, fovDeg, aspect)
 	}
 	return FRAMING_RADII * viewRadius(view, frame)
 }
 
 /**
- * Closest dolly for a view: the body's `minDollyDistance`; for a point in
- * empty space (nothing to crash into) only the near-plane clearance.
+ * Closest dolly for a view: the body's `minDollyDistance`, so the limits
+ * follow whatever is at the centre. A point in empty space takes its anchor's
+ * (the body whose neighbourhood it is in): around the Sun that stops a dolly
+ * into empty interplanetary space at a sensible distance instead of creeping
+ * towards the pivot forever, near Mercury it lets the camera come close.
  */
 export const minViewDistance = (view: View, frame: FramingFrame): number =>
-	view.kind === "point"
-		? minDollyDistance(0)
-		: minDollyDistance(viewRadius(view, frame))
+	minDollyDistance(viewRadius(view, frame))

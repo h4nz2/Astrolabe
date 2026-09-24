@@ -34,7 +34,7 @@ src/locales/                 translation resources: config.json, <locale>/ui.jso
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, lighting/, ui/)
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -207,26 +207,52 @@ view (an ESLint rule keeps drei camera controls inside `camera/`). The navigatio
 ```
 selectedId: string | null   drives info panels, labels, the URL; never moves the camera
 view: View                  { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
+                            (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15)
 focusId: string             body the view is centred on (the Sun for the overview, a point's anchor)
 shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
 transition, sequence        the running move and the running tour
+panning: boolean            a pan (or its damped glide) is moving the pivot right now
 viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
 Actions: `select`, `setFocus` (click: select + focus), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
 (the way out), `skip`, and sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
 request carries a partial `shot`, `durationMs` and a `profile`. Invalid views and unknown bodies are ignored.
+Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
 Director (`camera/director.ts`, unit-tested frame by frame):
 
 - Every request starts a new move from wherever the camera is, so retargeting mid-flight never snaps back. Both pivots
   and the arrival distance are re-read every frame.
 - User input during a move takes over distance and direction while the pivot still glides home; it also interrupts
-  automatic sequence steps. A pan while settled becomes a `point` view.
+  automatic sequence steps. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
+  when released (see Re-centring).
 - A non-finite camera or a view of a missing body resets to the overview.
 - Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s.
 - `window.__astrolabe` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
   console and e2e tests. Read the camera, never write it.
+
+### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
+
+- Gestures: orbit = left button / one finger; dolly = wheel, trackpad scroll, pinch, ctrl+wheel, middle button; pan =
+  right button (trackpad two-finger click-drag), Shift + left (`shiftDragPans`), two fingers together, three fingers.
+  Pans are camera-controls' `SCREEN_PAN`: the pivot slides parallel to the ecliptic, like dragging a map.
+- A pan is committed after the controls' update once released and the glide is within 1e-4 of the camera distance of
+  its end (not on camera-controls' `rest`, which fires mid-drag and uses an absolute 10 km threshold). The rest of the
+  glide is folded in, so the commit moves nothing on screen. Then:
+  - **Snap** (`snapTarget`): if the screen centre is on a drawn body's disc or within `SNAP_FOV_FRACTION` (1.2 % of the
+    vertical fov, about 11 px) of a drawn body, the pivot glides onto it (450 ms, distance kept). The view it came from
+    is kept when that is the body (a pan that never left the planet snaps back; a small pan in the overview stays the
+    overview); the Sun means the overview. Camera gestures never change the selection.
+  - **Point** otherwise: anchored to the innermost body whose drawn Hill sphere (at least 4 drawn radii; the Sun owns
+    everything) holds it (`neighbourhoodOf`), offset stored in TRUE km (`pointOffsetKm`, via `trueOffset` /
+    `unmapDistance` in `src/sim/scale.ts`) and drawn with `pointDisplayKm`, so it keeps its place under every preset.
+- Limits follow the centre: a point uses its anchor's `minViewDistance`; a point anchored to the Sun is framed
+  (`defaultDistance`) like the overview.
+- HUD: `ui/CentreMarker.tsx` (crosshair at the canvas centre while `panning` or free), `ui/CentreBadge.tsx` ("Free view
+  near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
+  `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
+- Building on it: #16 clicks call `setFocus`; #31 anchors the frame to `focusId` (a point's anchor).
 
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
@@ -296,24 +322,28 @@ near the camera jitters.
 
 ```
 simTimeJD, timeWarp, paused, clock, lastTickMs    time; change only through the actions below
-hoverId, showOrbits, showLabels, showMoons, showMarkers
+hoverId, showOrbits, showLabels, showMoons, showMarkers, showOrbitLabels
 ...NavigationSlice
 setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing moves at the change
 setSimTime(jd)                                    instant jump
 travelTo(jd, durationMs?), setNow()               glide; arrival is clock.glide === null
 tick(realMs)                                      SimClock only
-WARP_PRESETS                                      1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s
+WARP_PRESETS                                      speeds (plain numbers): 1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s,
+                                                  1 month/s, 1 year/s, 10 years/s
 ```
 
 Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
-`labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off. Defaults (overview,
+`labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
+off by default, as `orbitNames=true` while on. Defaults (overview,
 home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
-once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
-clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
-|warp| <= 60.
+
+> > > > > > > main
+> > > > > > > once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
+> > > > > > > clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
+> > > > > > > |warp| <= 60.
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -366,20 +396,85 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   (10 px), planets win over moons. `showMarkers` off hides and unpicks them.
 - Interaction: click calls `setFocus`, hover sets `hoverId`; a tap selects, a drag (`scene/tap.ts`) does not.
   `scene/HoverCursor.tsx` shows a pointer over click targets (`isClickTarget`: any body but the focus once it is also
-  selected, which fills the view up close). Labels: planets always, moons only within the focused family.
+  selected, which fills the view up close). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
-  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button. Panning is behind
-  `PAN_ENABLED` until #15.
+  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
+  button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
-  toggles panel). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
-  `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`), not
-  `WARP_PRESETS[].label`.
-  Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.
+  toggles panel), `CentreBadge` and `CentreMarker` (#15). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
+  `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
+  Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
+  ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, later `Effects`) and the HUD.
+  `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
+  the `LabelLayer` beside the Canvas) and the HUD.
+
+## Labels (`features/solarSystem/labels`; #20)
+
+Names are DOM text over the Canvas (crisp, translated through `@/i18n/bodies`, styled in `Labels.module.css`), laid
+out in screen space every frame. Three parts share one `LabelBoard` created in `Scene.tsx`:
+
+```
+layout.ts      pure: candidates, priority, placement, fading, picking (LabelLayout: typed arrays per slot)
+project.ts     per frame: projects SimFrame drawn positions/radii through the camera, eligibility, then placeLabels
+orbitAnchor.ts where an orbit's name goes (the orbit line's own samples, leftmost point on screen)
+Labels.tsx     in the Canvas: the useFrame loop (layout, fade, write DOM) and the scene-picking hook
+LabelLayer.tsx beside the Canvas: one <span data-body> per body (+ <span data-orbit> while orbit names are on)
+board.ts       the DOM side: attach, measure (offsetWidth), writeLabels (transform/opacity only when changed)
+activate.ts    what a tap on a label does (default: setFocus, the same as a tap on the body)
+```
+
+Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot`, `slotBody`).
+
+- **Anchor:** `frame.renderPosition(i)` projected, offset by the drawn disc (`frame.renderRadius(i)` as an angular
+  radius, at least the 2 px marker dot). Nothing has its own scale factor, so a label stays on its body in every
+  preset and through preset changes.
+- **Candidates** (`isLabelCandidate`): the Sun and planets always; moons only in the focus family (the marker rule),
+  or while hovered/selected; hidden moons never (except the focus).
+- **Eligible:** in front of the camera, not behind a nearer larger disc (`isOccluded`), not under a HUD panel
+  (`isKeptOut`), and a moon of a planet that is still a dot (<= 24 px radius) at least 10 px clear of it
+  (`isClearOfParent`): moons' names fade in as the camera approaches.
+- **Priority** (`labelRank`): hovered, selected, focus, then Sun, planets, moons, larger first within each tier.
+- **Placement** (`placeLabels`): greedy in priority order; 8 positions round the disc (right, left, below, above,
+  diagonals; last frame's side first), never on its own disc, inside the viewport, never over another label or a HUD
+  `.panel` (`setKeepOut`, re-read every 0.25 s), first try clear of every dot (<= 24 px), else only of labelled ones.
+  No free position: hidden. 2 px hysteresis against flicker; 0.2 s fades (`fadeLabels`).
+- **Density:** at most `MOON_LABEL_BUDGET` (8) moon names at once (largest first); the hovered, selected or focused
+  moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget.
+- **Size:** CSS, relative to the viewport (planets 13..19 px, moons 12..16 px, orbits 11..15 px), never the zoom.
+  Light text with a dark multi-layer halo for contrast on black space and bright planet faces alike; the Sun
+  and moons take their marker colours, the selection is orange, hover underlines.
+- **Picking:** the layer is `pointer-events: none` (drags and wheel zooms that start on a label still reach the
+  camera). `Labels.tsx` adds a `<group raycast>` that hit-tests the label boxes (`pickLabel`, 3 px slack) and reports
+  a hit at distance 0 with `index` = body index, so labels win over what they are drawn over and share the markers'
+  hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16.
+- **Switches:** `showLabels` (the Labels switch; `setShowLabels(false)` hides every name at once, e.g. for #30/#33),
+  `showOrbitLabels` (Orbit names; needs orbits and labels on).
+- **For later issues:** `[data-body=<id>][data-visible=true]` marks a shown name (tests, tours); a feature that
+  needs a body named can select or hover it (top priority).
+
+## Time controls (`features/solarSystem/ui`; #14)
+
+Everything goes through the clock actions of #9; nothing here touches the clock directly.
+
+- `TimeControls.tsx`: reverse / pause / play as one group with exactly one pressed (`aria-pressed`); reverse and
+  play un-pause and set the sign of `timeWarp` (`withDirection` in `ui/warp.ts`), pause keeps speed and direction.
+  The speed presets (a SegmentedControl, a Select below 720 px) set the magnitude and keep the direction: each
+  step multiplies the speed, so the row is the non-linear scale. A speed that is no preset (from a URL) is shown as
+  an extra item.
+- `TimeTravel.tsx`: the HUD date is a button opening "Travel in time": named moments (`ui/moments.ts`, ids and UTC
+  instants; the text is in the locales under `solarSystem.time.moments.<id>`) and a `@mantine/dates` calendar
+  (`DayPicker.tsx`, loaded lazily; 1000-01-01..2999-12-31, a picked day is reached at 12:00 UTC). Every label of the calendar comes from `Intl` in
+  the active format locale (`calendarLabels`, `firstDayOfWeek` in `ui/timeTravel.ts`), so a new locale needs no
+  date locale data. Both use `travelAndStop(jd)`: pause, then `travelTo` — the glide lands paused, so the moment
+  stays on screen and its `t` goes into the link. Tours (#28) and birthdays (#26) should reuse it.
+- `TooFastHint.tsx` / `ui/tooFast.ts`: the wagon-wheel warning. When the fastest body in view (planets, plus the
+  focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
+  frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
+  Nothing is capped or hidden in the scene; positions stay true.
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 

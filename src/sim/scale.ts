@@ -153,6 +153,16 @@ export function mapDistance(curve: DistanceCurve, x: number): number {
 	return knee * (1 + curve.gain * ((x / knee) ** curve.exponent - 1))
 }
 
+/**
+ * The inverse of `mapDistance`: the true distance (parent radii) that is drawn
+ * at `y` drawn parent radii. Exact, since the curve is monotone and invertible.
+ */
+export function unmapDistance(curve: DistanceCurve, y: number): number {
+	const { knee } = curve
+	if (!(y > knee) || isIdentityCurve(curve)) return y
+	return knee * ((y / knee - 1) / curve.gain + 1) ** (1 / curve.exponent)
+}
+
 /** `mapDistance(curve, x) / x`: how much longer (> 1) or shorter (< 1) a distance is drawn, relative to the parent's drawn size. */
 export const distanceFactor = (curve: DistanceCurve, x: number): number =>
 	x > 0 ? mapDistance(curve, x) / x : 1
@@ -228,6 +238,34 @@ export function displayOffset(
 	if (distance > 0) {
 		const n = distance / parentRadiusKm
 		factor *= mapDistance(curve, n) / n
+	}
+	out[at] = x * factor
+	out[at + 1] = y * factor
+	out[at + 2] = z * factor
+}
+
+/**
+ * The inverse of `displayOffset`: the parent-centric true offset (km) that is
+ * drawn at display offset (x, y, z). A point in empty space kept in true km
+ * relative to an anchor body (a free camera pivot, #15) goes back to exactly
+ * the same drawn place under the same scale, and follows its neighbourhood
+ * when the scale changes.
+ */
+export function trueOffset(
+	x: number,
+	y: number,
+	z: number,
+	parentRadiusKm: number,
+	parentDisplayRadiusKm: number,
+	curve: DistanceCurve,
+	out: WritableVec3,
+	at = 0,
+): void {
+	const drawn = Math.sqrt(x * x + y * y + z * z)
+	let factor = parentRadiusKm / parentDisplayRadiusKm
+	if (drawn > 0) {
+		const n = drawn / parentDisplayRadiusKm
+		factor = (unmapDistance(curve, n) * parentRadiusKm) / drawn
 	}
 	out[at] = x * factor
 	out[at + 1] = y * factor

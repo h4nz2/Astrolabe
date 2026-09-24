@@ -74,6 +74,8 @@ export {
 	rootIndexOf,
 	sameScale,
 	sizeExaggeration,
+	trueOffset,
+	unmapDistance,
 } from "./scale"
 export type {
 	DistanceCurve,

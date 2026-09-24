@@ -31,6 +31,7 @@ const state = (partial: Partial<Mirrored> = {}): Mirrored => ({
 	showLabels: true,
 	showMoons: true,
 	showMarkers: true,
+	showOrbitLabels: false,
 	...partial,
 })
 
@@ -152,7 +153,7 @@ describe("urlSync helpers", () => {
 		).toEqual({ focus: "jupiter", sel: "io", cam: "-30_12.5_2.5" })
 		// the home camera is the default and stays out of the URL
 		expect(search({ shot: HOME_SHOT }).cam).toBeUndefined()
-		// a point in space is written as its anchor for now
+		// a point in space: its anchor in `focus`, its offset in `at` (pointView.test.ts)
 		expect(
 			search({
 				view: { kind: "point", anchorId: "mars", offsetKm: [1, 2, 3] },
@@ -209,6 +210,7 @@ describe("urlSync helpers", () => {
 			showLabels: true,
 			showMoons: true,
 			showMarkers: true,
+			showOrbitLabels: false,
 		}
 		const { orbits, labels, moons, markers } = searchFromState(state(), {})
 		expect([orbits, labels, moons, markers]).toEqual([
@@ -234,6 +236,17 @@ describe("urlSync helpers", () => {
 			// the round trip through the schema and back into the store
 			expect(layersFromSearch(simSearchSchema.parse(search))[field]).toBe(false)
 		}
+	})
+
+	it("writes the orbit names only when they are on (off by default)", () => {
+		expect(searchFromState(state(), {}).orbitNames).toBeUndefined()
+		const on = searchFromState(state({ showOrbitLabels: true }), {})
+		expect(on.orbitNames).toBe(true)
+		expect(layersFromSearch(simSearchSchema.parse(on)).showOrbitLabels).toBe(
+			true,
+		)
+		expect(layersFromSearch({}).showOrbitLabels).toBe(false)
+		expect(sameSearch({ orbitNames: true }, {})).toBe(false)
 	})
 
 	it("compares searches field by field", () => {

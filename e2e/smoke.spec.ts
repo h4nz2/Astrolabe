@@ -24,7 +24,7 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 		await expect(focus).toBeVisible()
 		await expect(focus).toHaveValue("Sun")
 		await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
-		await expect(page.getByRole("switch")).toHaveCount(5)
+		await expect(page.getByRole("switch")).toHaveCount(6)
 		// the clock is formatted for the locale; <time dateTime> carries the instant
 		const clock = page.locator("time")
 		await expect(clock).toBeVisible()
@@ -93,7 +93,9 @@ test("a solar system deep link seeds the simulation and the HUD writes back to t
 
 	// Space pauses, which pins the simulation time into the URL
 	await page.keyboard.press("Space")
-	await expect(page.getByRole("button", { name: "Play" })).toBeVisible()
+	await expect(
+		page.getByRole("button", { name: "Pause", pressed: true }),
+	).toBeVisible()
 	await expect(page).toHaveURL(/[?&]t=\d+(\.\d+)?(&|$)/)
 })
 

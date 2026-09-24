@@ -58,6 +58,8 @@ export interface SimState extends NavigationSlice {
 	showMoons: boolean
 	/** Screen-sized dots for bodies too small to see (scene/Markers.tsx). */
 	showMarkers: boolean
+	/** Names written along the orbit lines (labels/, #20); off by default. */
+	showOrbitLabels: boolean
 
 	/**
 	 * Speed in simulated seconds per real second; negative reverses. Nothing
@@ -83,6 +85,7 @@ export interface SimState extends NavigationSlice {
 	setShowLabels: (show: boolean) => void
 	setShowMoons: (show: boolean) => void
 	setShowMarkers: (show: boolean) => void
+	setShowOrbitLabels: (show: boolean) => void
 	/** Travels (glides) to the wall clock, arriving on the present. */
 	setNow: () => void
 }
@@ -98,14 +101,14 @@ export const isBodyShown = (
 ): boolean =>
 	state.showMoons || body.kind !== "moon" || body.id === state.focusId
 
-export const WARP_PRESETS: readonly { label: string; value: number }[] = [
-	{ label: "1x", value: 1 },
-	{ label: "1 min/s", value: 60 },
-	{ label: "1 h/s", value: 3600 },
-	{ label: "1 day/s", value: 86400 },
-	{ label: "1 week/s", value: 604800 },
-	{ label: "1 month/s", value: 2629800 },
-	{ label: "1 year/s", value: 31557600 },
+/**
+ * The speed presets (simulated seconds per real second), slowest first: real
+ * time, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s, 10 years/s.
+ * Each step multiplies the speed, so the list is a logarithmic scale; the HUD
+ * names them from the value (`ui/warp.ts`) and applies the direction on top.
+ */
+export const WARP_PRESETS: readonly number[] = [
+	1, 60, 3600, 86400, 604800, 2629800, 31557600, 315576000,
 ]
 
 /** The store fields a changed clock sets: the clock and its sample at `realMs`. */
@@ -128,6 +131,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	showLabels: true,
 	showMoons: true,
 	showMarkers: true,
+	showOrbitLabels: false,
 
 	setTimeWarp: (warp) => {
 		if (!Number.isFinite(warp)) return
@@ -173,6 +177,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	setShowLabels: (show) => set({ showLabels: show }),
 	setShowMoons: (show) => set({ showMoons: show }),
 	setShowMarkers: (show) => set({ showMarkers: show }),
+	setShowOrbitLabels: (show) => set({ showOrbitLabels: show }),
 	setNow: () => {
 		const { clock, travelTo } = get()
 		const now = dateToJD(new Date())
