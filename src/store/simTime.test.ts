@@ -41,6 +41,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+	vi.useRealTimers()
 	vi.restoreAllMocks()
 	useSimStore.setState(useSimStore.getInitialState(), true)
 })
@@ -200,6 +201,12 @@ describe("time travel", () => {
 	})
 
 	it("Now glides to the present and stays live at 1x", () => {
+		// the wall clock is pinned: a real Date ticking between the test's reading
+		// and setNow's own would change the glide's length under a loaded machine
+		vi.useFakeTimers({
+			toFake: ["Date"],
+			now: new Date("2026-09-24T12:00:00Z"),
+		})
 		const from = J2000_JD
 		const nowJD = dateToJD(new Date())
 		state().setNow()
@@ -210,11 +217,10 @@ describe("time travel", () => {
 		expect(state().simTimeJD).toBeGreaterThan(from)
 		expect(state().simTimeJD).toBeLessThan(nowJD)
 		run(duration / 2 + 50)
-		// lands on the wall clock as it is on arrival (the fake real time does not move Date)
+		// lands on the wall clock as it will be on arrival, then runs on at 1x
+		// (the fake real time does not move Date)
 		const landed = state().simTimeJD
-		expect(Math.abs(landed - dateToJD(new Date()))).toBeLessThan(
-			(duration + 1000) / MS_PER_DAY,
-		)
+		expect(landed).toBeCloseTo(nowJD + (duration + 50) / MS_PER_DAY, 8)
 		run(60_000, 1000)
 		expect(state().simTimeJD).toBeCloseTo(landed + 60_000 / MS_PER_DAY, 9)
 	})

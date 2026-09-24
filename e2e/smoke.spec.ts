@@ -52,6 +52,9 @@ const screenshotName = (route: string) =>
 
 for (const [route, expectRouteUI] of Object.entries(routes)) {
 	test(`renders ${route}`, async ({ page }) => {
+		// a first load of the app's chunks and textures, a software-WebGL scene and a
+		// full-page screenshot of it: tens of seconds on a loaded machine
+		test.slow()
 		const errors: string[] = []
 		page.on("console", (message) => {
 			if (message.type() !== "error") return
