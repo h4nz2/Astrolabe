@@ -1,21 +1,38 @@
 import type { I18n } from "@/i18n"
 import { WARP_PRESETS } from "@/store/sim"
 
+/** Which way the clock runs: `1` forwards, `-1` backwards. */
+export type Direction = 1 | -1
+
+/** The direction a warp runs the clock in (0 counts as forwards). */
+export const directionOf = (warp: number): Direction => (warp < 0 ? -1 : 1)
+
+/** `warp` running in `direction`, at the same speed. */
+export const withDirection = (warp: number, direction: Direction): number =>
+	direction * Math.abs(warp)
+
 /**
- * The next preset above (`1`) or below (`-1`) `current`, so "+" and "-" walk the
- * presets even from a warp that is none of them (a hand-edited URL). Stays put
- * at either end.
+ * The next faster (`1`) or slower (`-1`) preset from `current`, keeping its
+ * direction, so "+" speeds up a reversed clock too (-1 day/s -> -1 week/s).
+ * Walks the presets even from a speed that is none of them (a hand-edited
+ * URL). Stays put at either end.
  */
-export function stepWarp(current: number, direction: 1 | -1): number {
-	if (direction === 1) {
-		return (
-			WARP_PRESETS.find((preset) => preset.value > current)?.value ?? current
-		)
+export function stepWarp(current: number, step: 1 | -1): number {
+	const speed = Math.abs(current)
+	let next: number | undefined
+	if (step === 1) {
+		next = WARP_PRESETS.find((preset) => preset > speed)
+	} else {
+		for (let i = WARP_PRESETS.length - 1; i >= 0; i -= 1) {
+			if (WARP_PRESETS[i] < speed) {
+				next = WARP_PRESETS[i]
+				break
+			}
+		}
 	}
-	for (let i = WARP_PRESETS.length - 1; i >= 0; i -= 1) {
-		if (WARP_PRESETS[i].value < current) return WARP_PRESETS[i].value
-	}
-	return current
+	return next === undefined
+		? current
+		: withDirection(next, directionOf(current))
 }
 
 /** Simulated time units a warp is named in, largest first (seconds each). */
