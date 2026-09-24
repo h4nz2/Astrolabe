@@ -52,26 +52,37 @@ test("the clock runs at the chosen speed, whatever the frame rate", async ({
 	await page.evaluate(() => {
 		const probe = window as unknown as { samples: ClockSample[] }
 		probe.samples = []
+		// every frame's start and the real time counted up to it
+		const frames: { at: number; countedMs: number }[] = []
 		let countedMs = 0
-		const startedAt = performance.now()
-		let last = startedAt
+		let last = performance.now()
+		frames.push({ at: last, countedMs })
 		const frame = () => {
 			const now = performance.now()
 			countedMs += Math.min(Math.max(now - last, 0), 250)
 			last = now
+			frames.push({ at: now, countedMs })
 			requestAnimationFrame(frame)
 		}
 		requestAnimationFrame(frame)
-		const countedAt = (at: number) =>
-			countedMs + Math.min(Math.max(at - last, 0), 250)
+		// the count at any instant: its frame's, plus the time since (capped the same way)
+		const countedAt = (at: number): number | null => {
+			for (let i = frames.length - 1; i >= 0; i--) {
+				if (frames[i].at <= at) {
+					return frames[i].countedMs + Math.min(at - frames[i].at, 250)
+				}
+			}
+			return null
+		}
 		const time = document.querySelector("time")!
 		new MutationObserver(() => {
 			const { lastTickMs } = window.__astrolabe!.store.getState()
 			// a date computed before the count began cannot be paired with it
-			if (lastTickMs === null || lastTickMs < startedAt) return
+			const countedMs = lastTickMs === null ? null : countedAt(lastTickMs)
+			if (countedMs === null) return
 			probe.samples.push({
 				shown: Date.parse(time.getAttribute("datetime") ?? ""),
-				countedMs: countedAt(lastTickMs),
+				countedMs,
 			})
 		}).observe(time, { attributes: true, attributeFilter: ["datetime"] })
 	})
