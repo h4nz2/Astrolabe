@@ -31,6 +31,7 @@ export {
 	eclipticPositionAtEccentricAnomaly,
 	eclipticToScene,
 	meanAnomalyAt,
+	orbitAt,
 	orbitalPeriodToMeanMotion,
 	positionAtEccentricAnomaly,
 	propagate,
@@ -42,7 +43,7 @@ export {
 	trueAnomaly,
 	wrapAngle,
 } from "./kepler"
-export type { OrbitElements, Vec3 } from "./kepler"
+export type { MutableOrbitElements, OrbitElements, Vec3 } from "./kepler"
 export {
 	buildIndex,
 	computePositions,
@@ -107,3 +108,15 @@ export {
 	timelineJD,
 } from "./clock"
 export type { SimTimeline, TimeGlide } from "./clock"
+export {
+	MAX_OCCLUDERS,
+	OCCLUDER_STRIDE,
+	angleBetween,
+	discOverlapArea,
+	illuminatedFraction,
+	occluderCandidates,
+	phaseAngle,
+	selectOccluders,
+	sunVisibleFraction,
+} from "./lighting"
+export type { LitBody } from "./lighting"
