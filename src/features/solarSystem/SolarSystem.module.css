@@ -1,0 +1,23 @@
+.base {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.checkBoxContainer {
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+	padding: 2rem 0 0;
+}
+
+.sliderContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 4rem 1rem 0;
+}
+
+/* Slider mark labels, applied through the Styles API (classNames.markLabel) */
+.markLabel {
+	padding-top: 0.5rem;
+}

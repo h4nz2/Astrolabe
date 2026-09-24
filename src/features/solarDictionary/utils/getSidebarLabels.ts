@@ -1,5 +1,5 @@
 import { getTypedKeys } from "@/lib/getTypedKeys"
-import { SolarDictionaryItem } from "generated/graphql"
+import type { SolarDictionaryItem } from "@/data/solarDictionary"
 import { SidebarLabel } from "../components/Sidebar"
 
 const labelDetails = {
@@ -19,16 +19,14 @@ export const getSidebarLabels = (
 ) =>
 	(entity ? getTypedKeys(entity) : [])
 		.filter((key) => requiredLabels.includes(key))
-		.map(
-			(key): SidebarLabel => ({
-				[key]: [
-					`${entity[key]} ${labelDetails[key as LabelDetailKey].unit}`,
-					!planetOfReference || entity.id === planetOfReference.id
-						? null
-						: getExtra(key, entity[key] as number, planetOfReference),
-				],
-			}),
-		)
+		.map((key): SidebarLabel => ({
+			[key]: [
+				`${entity[key]} ${labelDetails[key as LabelDetailKey].unit}`,
+				!planetOfReference || entity.id === planetOfReference.id
+					? null
+					: getExtra(key, entity[key] as number, planetOfReference),
+			],
+		}))
 
 function getExtra(
 	key: keyof SolarDictionaryItem,

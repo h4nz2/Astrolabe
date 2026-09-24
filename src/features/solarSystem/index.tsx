@@ -4,44 +4,23 @@ import {
 	Center,
 	Checkbox,
 	Container,
-	createStyles,
 	Anchor,
+	Slider,
 	Text,
 } from "@mantine/core"
-import { useSolarDictionaryQuery } from "generated/graphql"
+import { useSolarDictionary } from "@/data/solarDictionary"
 import Loader from "@/primitives/Loader"
 import Scene from "./THREE/Scene"
 import { useState } from "react"
 
-import { Slider } from "@mantine/core"
+import {
+	IconPlanet,
+	IconSun,
+	IconCircleDashed,
+	IconInfoCircle,
+} from "@tabler/icons-react"
 
-import { Planet, Sun, CircleDashed, InfoCircle } from "tabler-icons-react"
-
-export type SolarSystemProps = {}
-
-const useStyles = createStyles(() => ({
-	base: {
-		width: "100vw",
-		height: "100vh",
-		overflow: "hidden",
-	},
-
-	checkBoxContainer: {
-		display: "flex",
-		flexDirection: "row",
-		gap: "2rem",
-		padding: "2rem 0 0",
-	},
-
-	sliderContainer: {
-		display: "flex",
-		flexDirection: "column",
-		padding: "4rem 1rem 0",
-		".solr-Slider-markLabel": {
-			paddingTop: "0.5rem",
-		},
-	},
-}))
+import classes from "./SolarSystem.module.css"
 
 const plantsScaleMarks = [
 	{ value: 1, label: 1 },
@@ -50,10 +29,8 @@ const plantsScaleMarks = [
 	{ value: 500, label: 500 },
 ]
 
-const SolarSystem: React.FC<SolarSystemProps> = () => {
-	const { classes } = useStyles()
-	const { data, loading } = useSolarDictionaryQuery()
-	const solarDict = data?.solarDictionary
+const SolarSystem: React.FC = () => {
+	const { data: solarDict, loading } = useSolarDictionary()
 	const [showSun, setShowSun] = useState(true)
 	const [showPlanets, setShowPlanets] = useState(true)
 	const [showOrbits, setShowOrbits] = useState(true)
@@ -66,21 +43,21 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 			<Center>
 				<Container fluid className={classes.checkBoxContainer}>
 					<Checkbox
-						icon={({ className }) => <Sun className={className} />}
+						icon={({ className }) => <IconSun className={className} />}
 						checked={showSun}
 						onChange={() => setShowSun(!showSun)}
 						size={"lg"}
 						color={"orange.7"}
 					/>
 					<Checkbox
-						icon={({ className }) => <Planet className={className} />}
+						icon={({ className }) => <IconPlanet className={className} />}
 						checked={showPlanets}
 						onChange={() => setShowPlanets(!showPlanets)}
 						size={"lg"}
 						color={"orange.7"}
 					/>
 					<Checkbox
-						icon={({ className }) => <CircleDashed className={className} />}
+						icon={({ className }) => <IconCircleDashed className={className} />}
 						checked={showOrbits}
 						onChange={() => setShowOrbits(!showOrbits)}
 						size={"lg"}
@@ -98,7 +75,7 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 						{
 							value: 20,
 							label: (
-								<Text sx={{ textAlign: "center" }}>
+								<Text ta="center">
 									Red Giant
 									<br />
 									{sunScale === 20 ? (
@@ -106,13 +83,11 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 											href="https://bigthink.com/starts-with-a-bang/big-sun-grow/"
 											target="_blank"
 											rel="noopener noreferrer"
-											color="orange"
-											sx={{
-												position: "relative",
-												top: "-5.5rem",
-											}}
+											c="orange"
+											pos="relative"
+											top="-5.5rem"
 										>
-											<InfoCircle size={24} />
+											<IconInfoCircle size={24} />
 										</Anchor>
 									) : null}
 								</Text>
@@ -120,10 +95,11 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 						},
 					]}
 					thumbSize={36}
-					thumbChildren={<Sun size={22} />}
+					thumbChildren={<IconSun size={22} />}
 					size={"lg"}
 					mb={"3rem"}
 					color={"orange.7"}
+					classNames={{ markLabel: classes.markLabel }}
 				/>
 				<Slider
 					onChange={(value: number) => setPlanetScale(value)}
@@ -132,9 +108,10 @@ const SolarSystem: React.FC<SolarSystemProps> = () => {
 					marks={plantsScaleMarks}
 					step={5}
 					thumbSize={36}
-					thumbChildren={<Planet size={22} />}
+					thumbChildren={<IconPlanet size={22} />}
 					size={"lg"}
 					color={"orange.7"}
+					classNames={{ markLabel: classes.markLabel }}
 				/>
 			</Container>
 

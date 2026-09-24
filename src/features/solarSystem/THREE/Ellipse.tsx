@@ -1,5 +1,5 @@
 import { Line } from "@react-three/drei"
-import { SolarDictionaryItem } from "generated/graphql"
+import type { SolarDictionaryItem } from "@/data/solarDictionary"
 import * as React from "react"
 import { EllipseCurve } from "three"
 
@@ -34,11 +34,7 @@ const Ellipse: React.FC<EllipseProps> = ({ entity, scaleBase }) => {
 		point.y,
 	])
 
-	return (
-		<mesh>
-			<Line points={points3D} linewidth={0.5} color={0xffffff} />
-		</mesh>
-	)
+	return <Line points={points3D} lineWidth={0.5} color={0xffffff} />
 }
 
 export default Ellipse

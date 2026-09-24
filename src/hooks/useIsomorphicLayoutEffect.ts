@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const useIsomorphicLayoutEffect =
-	typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect
+// No SSR any more: this is plain useLayoutEffect, kept under its old name for the existing call sites.
+const useIsomorphicLayoutEffect = React.useLayoutEffect
 
 export default useIsomorphicLayoutEffect

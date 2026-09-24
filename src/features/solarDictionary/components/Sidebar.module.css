@@ -1,0 +1,43 @@
+.base {
+	position: fixed;
+	top: 10rem;
+	left: 2rem;
+	font-family: arial;
+	width: 20ch;
+	display: flex;
+	flex-direction: column;
+}
+
+.littleBar {
+	margin: 0 5px 0 1px;
+	flex: 1;
+	height: 2.5px;
+	background-color: gray;
+}
+
+.label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	letter-spacing: 4px;
+	font-size: clamp(calc(0.75rem / 2), 2.5vw, 0.75rem);
+	color: gray;
+	text-transform: uppercase;
+}
+
+.text {
+	font-size: clamp(0.5rem, 2.5vw, 1rem);
+	color: white;
+	font-weight: bold;
+	letter-spacing: clamp(0.125rem, 2.5vw, 0.25rem);
+}
+
+.largeText {
+	font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+.extra {
+	padding-bottom: clamp(0.125rem, 2.5vw, 0.25rem);
+	font-weight: 200;
+	letter-spacing: 1px;
+}

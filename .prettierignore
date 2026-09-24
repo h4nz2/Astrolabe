@@ -1,16 +1,7 @@
-# Ignore artifacts:
-build
-coverage
-.next
+dist
 node_modules
-
-# plop
-plopTemplates
-
-# auto generated files
-generated
-
-package-lock.json
-yarn.lock
-next-env.d.ts
-.yarn
+pnpm-lock.yaml
+src/routeTree.gen.ts
+public
+playwright-report
+test-results

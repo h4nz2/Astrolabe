@@ -1,7 +1,7 @@
 import * as React from "react"
 
 import gsap from "gsap"
-import { Box, DefaultMantineColor, useMantineTheme } from "@mantine/core"
+import { DefaultMantineColor, useMantineTheme } from "@mantine/core"
 
 type TransitionContext = {
 	timeline: gsap.core.Timeline
@@ -22,7 +22,8 @@ const GSAPTransitionProvider: React.FC<GSAPTransitionProviderProps> = ({
 }) => {
 	const { primaryColor } = useMantineTheme()
 
-	const [background, setBackground] = React.useState(primaryColor)
+	const [background, setBackground] =
+		React.useState<DefaultMantineColor>(primaryColor)
 
 	const [timeline, setTimeline] = React.useState(() =>
 		gsap.timeline({ paused: true }),

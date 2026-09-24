@@ -1,6 +1,6 @@
 import * as React from "react"
 import Sphere from "../THREE/Sphere"
-import { SolarDictionaryItem } from "generated/graphql"
+import type { SolarDictionaryItem } from "@/data/solarDictionary"
 import { useEffect, useState } from "react"
 
 export type PlanetProps = {
@@ -62,7 +62,7 @@ const Planet: React.FC<PlanetProps> = ({
 	return (
 		<Sphere
 			key={index}
-			texturePath={entity.textures?.base!}
+			texturePath={entity.textures!.base}
 			posX={posX}
 			posY={0}
 			posZ={poZ}

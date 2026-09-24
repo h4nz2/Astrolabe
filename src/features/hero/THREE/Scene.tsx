@@ -1,14 +1,15 @@
-import dynamic from "next/dynamic"
 import * as React from "react"
 
 import { Stats } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 
 import { useIsMobile } from "@/hooks/useIsMobile"
+import { assetUrl } from "@/utils/assetUrl"
+import Sun from "./Sphere"
+import Effects from "./Effects"
 
-const Sun = dynamic(() => import("./Sphere"), { ssr: false })
-const Effects = dynamic(() => import("../THREE/Effects"), { ssr: false })
-import sun from "../../../../public/assets/textures/sun/sun.jpg"
+// served from public/ (Vite copies it next to index.html; assetUrl honours VITE_BASE)
+const SUN_TEXTURE = assetUrl("assets/textures/sun/sun.jpg")
 
 export const Scene: React.FC = () => {
 	const isMobile = useIsMobile()
@@ -19,11 +20,10 @@ export const Scene: React.FC = () => {
 				antialias: true,
 				autoClear: true,
 			}}
-			// style={{ position: "absolute", top: 0, left: 0, right: 0 }}
 		>
-			<Sun texture={sun.src} />
+			<Sun texture={SUN_TEXTURE} />
 			<Effects />
-			{process.env.NODE_ENV === "development" ? <Stats /> : null}
+			{import.meta.env.DEV ? <Stats /> : null}
 		</Canvas>
 	)
 }

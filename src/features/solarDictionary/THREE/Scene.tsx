@@ -1,14 +1,12 @@
-import dynamic from "next/dynamic"
-import type { FC } from "react"
+import { Suspense, type FC } from "react"
 
-import { OrbitControls, Stats } from "@react-three/drei"
+import { OrbitControls, PerspectiveCamera, Stats } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 
 import { useIsMobile } from "@/hooks/useIsMobile"
+import Sphere from "./Sphere"
 
-const Sphere = dynamic(() => import("./Sphere"), { ssr: false })
-
-type SceneProps = {
+export type SceneProps = {
 	texture?: string
 }
 
@@ -16,7 +14,12 @@ export const Scene: FC<SceneProps> = ({ texture }) => {
 	const isMobile = useIsMobile()
 	return (
 		<Canvas dpr={isMobile ? 1 : 2} gl={{ antialias: false }}>
-			{texture ? <Sphere texture={texture} /> : null}
+			{/* camera and controls stay outside the Suspense so they are live from the first
+			    frame; only the textured sphere waits for its download */}
+			<PerspectiveCamera makeDefault position={[0, 0, 5]} fov={60} />
+			<Suspense fallback={null}>
+				{texture ? <Sphere texture={texture} /> : null}
+			</Suspense>
 			<OrbitControls
 				autoRotate
 				autoRotateSpeed={2}
@@ -25,7 +28,7 @@ export const Scene: FC<SceneProps> = ({ texture }) => {
 				minDistance={3}
 				maxDistance={8}
 			/>
-			{process.env.NODE_ENV === "development" ? <Stats /> : null}
+			{import.meta.env.DEV ? <Stats /> : null}
 		</Canvas>
 	)
 }

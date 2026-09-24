@@ -1,15 +1,11 @@
-import dynamic from "next/dynamic"
 import * as React from "react"
 import { Canvas } from "@react-three/fiber"
 
-import { SolarDictionaryItem } from "generated/graphql"
+import type { SolarDictionaryItem } from "@/data/solarDictionary"
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import Ellipse from "./Ellipse"
+import Sphere from "./Sphere"
 import Planet from "../components/Planet"
-
-const Sphere = dynamic(() => import("@/features/solarSystem/THREE/Sphere"), {
-	ssr: false,
-})
 
 type SceneProps = {
 	planets: Array<SolarDictionaryItem>
@@ -52,7 +48,7 @@ export const Scene: React.FC<SceneProps> = ({
 			/>
 			{showSun ? (
 				<Sphere
-					texturePath={sun?.textures?.base!}
+					texturePath={sun.textures!.base}
 					posX={0}
 					posY={0}
 					posZ={0}

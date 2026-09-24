@@ -3,8 +3,7 @@ import gsap from "gsap"
 import { Box } from "@mantine/core"
 import { useGSAPTransition } from "@/providers/GSAPTransition"
 import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect"
-import type { BoxProps, Sx } from "@mantine/core"
-import type { PolymorphicComponentProps } from "@mantine/utils"
+import type { BoxProps, PolymorphicComponentProps } from "@mantine/core"
 
 export type AnimateInOutProps<C = "div"> = PolymorphicComponentProps<
 	C,
@@ -33,15 +32,21 @@ const AnimateInOut: React.FC<AnimateInOutProps> = ({
 	skipOutro,
 	...boxProps
 }) => {
-	const boxRef = React.useRef<HTMLDivElement>(null!)
+	const boxRef = React.useRef<HTMLDivElement>(null)
 	const { timeline } = useGSAPTransition()
 
 	useIsomorphicLayoutEffect(() => {
+		const box = boxRef.current
+		if (!box) return
+
 		// intro animation
 		gsap.set("main", { overflow: "hidden" })
-		if (set) gsap.set(boxRef.current, { ...set })
+		// initial state (applied before the first paint): `from`, overridden by `set`.
+		// gsap owns it instead of an inline `style` so gsap-only vars (x, y, scale, ...)
+		// never leak into CSS.
+		gsap.set(box, { ...from, ...set })
 
-		gsap.to(boxRef.current, {
+		const intro = gsap.to(box, {
 			...to,
 			delay,
 			duration: durationIn,
@@ -49,23 +54,32 @@ const AnimateInOut: React.FC<AnimateInOutProps> = ({
 				gsap.set("main", { overflow: "auto" })
 			},
 		})
-		// outro animation
-		if (!skipOutro)
-			timeline.add(
-				gsap.to(boxRef.current, {
+		// outro animation, parked in the shared transition timeline
+		const outro = skipOutro
+			? null
+			: gsap.to(box, {
 					...from,
 					delay: delayOut,
 					duration: durationOut,
 					onComplete: () => {
 						gsap.set("main", { overflow: "auto" })
 					},
-				}),
-				0.5,
-			)
+				})
+		if (outro) timeline.add(outro, 0.5)
+
+		// StrictMode (dev) runs mount -> cleanup -> mount: without this every remount would
+		// leave a second intro tween on the element and a second outro in the timeline.
+		return () => {
+			intro.kill()
+			if (outro) {
+				timeline.remove(outro)
+				outro.kill()
+			}
+		}
 	}, [])
 
 	return (
-		<Box ref={boxRef} sx={from as Sx | (Sx | undefined)[]} {...boxProps}>
+		<Box ref={boxRef} {...boxProps}>
 			{children}
 		</Box>
 	)

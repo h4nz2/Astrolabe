@@ -2,8 +2,8 @@ import * as React from "react"
 import {
 	Container,
 	Center,
-	DefaultMantineColor,
 	Loader as MantineLoader,
+	type DefaultMantineColor,
 } from "@mantine/core"
 
 export type LoaderProps = {
@@ -13,8 +13,8 @@ export type LoaderProps = {
 const Loader: React.FC<LoaderProps> = ({ color }) => {
 	return (
 		<Container fluid>
-			<Center sx={{ height: "100vh" }}>
-				<MantineLoader color={color ?? "orange"} variant="bars" />
+			<Center h="100vh">
+				<MantineLoader color={color ?? "orange"} type="bars" />
 			</Center>
 		</Container>
 	)

@@ -1,0 +1,63 @@
+.base {
+	position: absolute;
+	min-width: 300px;
+	top: 4rem;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	gap: clamp(16px, 5vw, 24px);
+	z-index: 2;
+}
+
+.menuTarget {
+	width: clamp(16px, 5vw, 24px);
+	height: clamp(16px, 5vw, 24px);
+	background-color: gray;
+	border-radius: 50%;
+	cursor: pointer;
+	position: relative;
+}
+
+.menuTarget::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 100%;
+	border: 5px solid rgba(255, 255, 255, 0.2);
+	opacity: 0;
+	transition:
+		opacity 0.5s ease,
+		border-color 0.2s ease-out,
+		width 0.25s ease,
+		height 0.4s ease;
+}
+
+.menuTarget:hover::before {
+	opacity: 1;
+	width: 155%;
+	height: 150%;
+}
+
+.menuTarget[data-active] {
+	background-color: white;
+}
+
+.menuTarget[data-active]::before {
+	opacity: 1;
+	width: 250%;
+	height: 250%;
+}
+
+.item {
+	transition: color 0.3s ease-out;
+	text-transform: capitalize;
+}
+
+.item[data-active] {
+	color: var(--mantine-color-red-4);
+	background: var(--mantine-color-dark-4);
+}

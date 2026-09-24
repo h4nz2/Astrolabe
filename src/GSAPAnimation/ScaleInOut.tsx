@@ -1,9 +1,7 @@
 import * as React from "react"
 import gsap from "gsap"
 
-import { Box } from "@mantine/core"
-import type { BoxProps } from "@mantine/core"
-import { PolymorphicComponentProps } from "@mantine/utils"
+import type { BoxProps, PolymorphicComponentProps } from "@mantine/core"
 import AnimateInOut from "./AnimateInOut"
 
 export type ScaleInOutProps<C = "div"> = Pick<

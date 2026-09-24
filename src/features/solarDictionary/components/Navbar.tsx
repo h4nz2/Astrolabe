@@ -1,64 +1,12 @@
-import { FC } from "react"
-import { Box, createStyles, Menu } from "@mantine/core"
-import type { SolarDictionaryQuery } from "generated/graphql"
-import { useState } from "react"
+import { FC, useState } from "react"
+import { Box, Menu } from "@mantine/core"
+import type { SolarDictionaryItem } from "@/data/solarDictionary"
 import { getTypedKeys } from "@/lib/getTypedKeys"
-import { Texture } from ".."
-
-const useStyles = createStyles({
-	base: {
-		position: "absolute",
-		minWidth: "300px",
-		top: "4rem",
-		left: 0,
-		right: 0,
-		display: "flex",
-		justifyContent: "center",
-		gap: "clamp(16px, 5vw, 24px)",
-		zIndex: 2,
-	},
-	menuTarget: {
-		width: "clamp(16px, 5vw, 24px)",
-		height: "clamp(16px, 5vw, 24px)",
-		backgroundColor: "gray",
-
-		borderRadius: "50%",
-		cursor: "pointer",
-		position: "relative",
-
-		"&:hover": {
-			"&:before": {
-				opacity: 1,
-				width: "155%",
-				height: "150%",
-			},
-		},
-		"&:before": {
-			content: "''",
-			display: "block",
-			position: "absolute",
-			top: "50%",
-			left: "50%",
-			transform: "translate(-50%, -50%)",
-			borderRadius: "100%",
-			border: "5px solid rgba(255, 255, 255, 0.2)",
-			opacity: 0,
-			transition:
-				"opacity 0.5s ease, border-color 0.2s ease-out, width 0.25s ease, height 0.4s ease",
-		},
-		"&.isActive": {
-			backgroundColor: "white",
-			"&:before": {
-				opacity: 1,
-				width: "250%",
-				height: "250%",
-			},
-		},
-	},
-})
+import type { Texture } from ".."
+import classes from "./Navbar.module.css"
 
 export type NavbarProps = {
-	solarDict: SolarDictionaryQuery["solarDictionary"]
+	solarDict: SolarDictionaryItem[]
 	activeEntityIndex: number
 	onChange: (newIndex: number) => void
 	activeTexture: Texture
@@ -72,7 +20,6 @@ const Navbar: FC<NavbarProps> = ({
 	onTextureChange,
 	solarDict,
 }) => {
-	const { classes, cx } = useStyles()
 	const [openMenu, setOpenMenu] = useState(false)
 	return (
 		<Box className={classes.base}>
@@ -91,7 +38,7 @@ const Navbar: FC<NavbarProps> = ({
 						closeOnItemClick={false}
 					>
 						<Menu.Target>
-							<Box className={cx(classes.menuTarget, { isActive })} />
+							<Box className={classes.menuTarget} mod={{ active: isActive }} />
 						</Menu.Target>
 
 						<Menu.Dropdown>
@@ -99,19 +46,15 @@ const Navbar: FC<NavbarProps> = ({
 							<Menu.Divider />
 
 							{(entity.textures ? getTypedKeys(entity.textures) : [])
-								.filter((t) => t !== "__typename" && !!entity.textures?.[t])
+								.filter((t) => !!entity.textures?.[t])
 								.map((texture) => {
 									const active = texture === activeTexture
 									return (
 										<Menu.Item
 											key={texture}
 											onClick={() => onTextureChange(texture)}
-											sx={({ colors }) => ({
-												transition: "color 0.3s ease-out",
-												color: active ? colors.red[4] : undefined,
-												background: active ? colors.dark[4] : undefined,
-												textTransform: "capitalize",
-											})}
+											className={classes.item}
+											mod={{ active }}
 											my={5}
 										>
 											{texture}

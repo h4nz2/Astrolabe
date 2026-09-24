@@ -1,10 +1,5 @@
 import * as React from "react"
-import { Mesh, MeshBasicMaterial, Texture } from "three"
-
 import { useTexture } from "@react-three/drei"
-import { MathUtils } from "three"
-
-import { a } from "@react-spring/three"
 
 type SphereProps = {
 	texturePath: string
@@ -14,34 +9,30 @@ type SphereProps = {
 	scale: number
 }
 
-const Sphere: React.FC<SphereProps> = ({
+// Loading the texture suspends this component, so it lives below the
+// Suspense boundary that Sphere provides: each sphere pops in on its own
+// once its texture has loaded.
+const TexturedSphere: React.FC<SphereProps> = ({
 	texturePath,
 	posX,
 	posY,
 	posZ,
 	scale,
 }) => {
-	const mesh = React.useRef<Mesh>(null!)
-	const matRef = React.useRef<MeshBasicMaterial>(null!)
+	const map = useTexture(texturePath)
 
 	return (
-		<>
-			<React.Suspense fallback={null}>
-				<a.mesh
-					ref={mesh}
-					scale={[scale, scale, scale]}
-					position={[posX, posY, posZ]}
-				>
-					<sphereGeometry args={[5, 64, 64]} />
-					<meshBasicMaterial
-						ref={matRef}
-						attach="material"
-						map={useTexture(texturePath)}
-					/>
-				</a.mesh>
-			</React.Suspense>
-		</>
+		<mesh scale={[scale, scale, scale]} position={[posX, posY, posZ]}>
+			<sphereGeometry args={[5, 64, 64]} />
+			<meshBasicMaterial map={map} />
+		</mesh>
 	)
 }
+
+const Sphere: React.FC<SphereProps> = (props) => (
+	<React.Suspense fallback={null}>
+		<TexturedSphere {...props} />
+	</React.Suspense>
+)
 
 export default Sphere

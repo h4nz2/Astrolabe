@@ -8,9 +8,8 @@ import {
 	useTexture,
 } from "@react-three/drei"
 import { MathUtils } from "three"
-import { a } from "@react-spring/three"
 
-type SphereProps = {
+export type SphereProps = {
 	texture: string
 }
 
@@ -24,32 +23,32 @@ const Sphere: React.FC<SphereProps> = ({ texture }) => {
 		if (mesh.current) {
 			mesh.current.position.x = MathUtils.lerp(
 				mesh.current.position.x,
-				hovered ? state.mouse.x / 1 : 0,
+				hovered ? state.pointer.x : 0,
 				0.2,
 			)
 			mesh.current.position.y = MathUtils.lerp(
 				mesh.current.position.y,
 				Math.sin(state.clock.elapsedTime / 0.5) / 2 +
-					(hovered ? state.mouse.y / 1 : 0),
+					(hovered ? state.pointer.y : 0),
 				0.005,
 			)
 		}
 	})
-	const mashMap = useTexture(texture)
+	const map = useTexture(texture)
 
 	return (
 		<>
 			<PerspectiveCamera makeDefault position={[0, 0, 5]} fov={60} />
 			<React.Suspense fallback={null}>
-				<a.mesh
+				<mesh
 					ref={mesh}
 					onPointerOver={() => setHovered(true)}
 					onPointerOut={() => setHovered(false)}
 					scale={[0.2, 0.2, 0.2]}
 				>
 					<sphereGeometry args={[5, 64, 64]} />
-					<meshBasicMaterial ref={matRef} attach="material" map={mashMap} />
-				</a.mesh>
+					<meshBasicMaterial ref={matRef} map={map} />
+				</mesh>
 				<ContactShadows
 					rotation={[Math.PI / 2, 0, 0]}
 					position={[0, -1.03, 0]}

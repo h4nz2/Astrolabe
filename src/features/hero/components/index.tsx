@@ -1,27 +1,13 @@
-import dynamic from "next/dynamic"
-import { FC } from "react"
-import { createStyles, Box } from "@mantine/core"
+import type { FC } from "react"
+import { Box } from "@mantine/core"
 
 import LeftSection from "./LeftSection"
+import Scene from "../THREE/Scene"
+import classes from "./Hero.module.css"
 
-const Scene = dynamic(() => import("../THREE/Scene"), { ssr: false })
-
-export type HeroProps = {}
-
-const useStyles = createStyles((theme) => ({
-	root: {
-		paddingTop: theme.spacing.xl,
-		height: "100vh",
-		background: theme.colors.dark[7],
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "start",
-		alignItems: "start",
-	},
-}))
+export type HeroProps = Record<string, never>
 
 const Hero: FC<HeroProps> = () => {
-	const { classes } = useStyles()
 	return (
 		<Box className={classes.root}>
 			<LeftSection />

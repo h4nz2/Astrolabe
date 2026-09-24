@@ -2,8 +2,6 @@
 
 _Klassenlager 2022 project_
 
-- [Can be seen live here](solr.vercel.app)
-
 ## Preface
 
 We want to create both a visual dictionary as well as a 3D model of our solar system.
@@ -21,15 +19,15 @@ In the background of it thought, is the use of the Panter stack and implamantati
   - Project structure - file structure, naming conventions
 - Practical:
   - TypeScript
-  - React (Next.js)
+  - React (Vite)
   - State Management
-  - Consuming a (graphql) API
+  - Working with a static, validated data set
   - Building functional components
   - Routing
   - Responsivity
 - Tooling
   - GIT
-  - formatters (prettier), linters (eslint), scaffolding (plop)
+  - formatters (prettier), linters (eslint)
   - CI/CD basics (set up of the project pipelines)
 - Soft skills
   - Solve mid complex problems independently
@@ -40,30 +38,30 @@ In the background of it thought, is the use of the Panter stack and implamantati
 
 ## Setup
 
-This is a [nextjs](https://nextjs.org/) project with
+A client-only [Vite](https://vitejs.dev/) + React 19 + TypeScript app. See
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full contract.
 
-- graph api
+- routing: [TanStack Router](https://tanstack.com/router) (file routes in `src/routes`)
+- 3D: [Three.js](https://threejs.org) via [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber), drei and postprocessing
+- animation: [GSAP](https://greensock.com)
+- UI: [Mantine](https://mantine.dev/) 9 with CSS modules
+- data: static JSON in `data/` (no server, no GraphQL)
 
-  - [micro](https://github.com/vercel/micro)
-  - [apollo-server](https://www.apollographql.com/docs/apollo-server/)
-  - [nexus](https://nexusjs.org/) to define graphql resolvers and schema
+Requirements: Node 22 (`.nvmrc`) and [pnpm](https://pnpm.io).
 
-- animation
-  - [GSAP](https://greensock.com)
-  - [Three.js](https://threejs.org)
-  - [Theatre.js](https://www.theatrejs.com/)
-- styling
-  - [emotion](https://emotion.sh/docs/introduction)
-  - [mantine](https://mantine.dev/)
+### Scripts
 
-### getting started and important scripts
+- `pnpm install` installs dependencies (and the git hooks through husky)
+- `pnpm dev` starts the dev server on [localhost:5173](http://localhost:5173)
+- `pnpm build` builds the static site into `dist/`
+- `pnpm preview` serves `dist/` locally
+- `pnpm typecheck` runs the TypeScript compiler
+- `pnpm lint` runs ESLint
+- `pnpm format` / `pnpm format:check` runs Prettier
+- `pnpm test` runs the Vitest unit tests
+- `pnpm test:e2e` runs the Playwright smoke tests against `pnpm preview` (run `pnpm build` first; once: `pnpm exec playwright install chromium`, plus `sudo pnpm exec playwright install-deps chromium` on a bare Linux box for the system libraries such as `libasound2`)
 
-- run `yarn dev` to run it locally on [localhost:3000](http://localhost:3000)
-- run `plop` to use the project scaffolding
-- run `yarn check:types` to check types
-- run `yarn check:lint` to check linting
-- run `yarn check:all` to check both types, linting and formatting
-- run `generate:types` to transpile and generate hooks and types for queries
+Set `VITE_BASE=/sub/path/` when the site is served from a sub path.
 
 ## Contributing
 
@@ -73,4 +71,4 @@ This is a [nextjs](https://nextjs.org/) project with
 
 ## Licensing
 
-The code in this project is licensed under MIT [license](https://git.panter.ch/panter/klassenlager22/solr/-/blob/main/LICENSE).
+The code in this project is licensed under the MIT [license](LICENSE).

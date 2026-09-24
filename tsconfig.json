@@ -1,27 +1,21 @@
 {
 	"compilerOptions": {
-		"target": "es2017",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
+		"target": "ES2022",
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"jsx": "react-jsx",
 		"strict": true,
-		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
+		"skipLibCheck": true,
 		"isolatedModules": true,
-		"jsx": "preserve",
-		"jsxImportSource": "@emotion/react",
-		"incremental": true,
-		"baseUrl": "./",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"types": ["vite/client", "node"],
 		"paths": {
-			"@/*": ["src/*"],
-			"@/graphql/*": ["graphql/*"],
-			"@/lib/*": ["src/lib/*"]
+			"@/*": ["./src/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "plopfile.js"],
-	"exclude": ["next.config.js", ".next", "node_modules", "plopTemplates"]
+	"include": ["src", "e2e", "scripts", "vite.config.ts", "playwright.config.ts"]
 }

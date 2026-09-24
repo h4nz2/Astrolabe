@@ -1,17 +1,17 @@
-import { FC, useState } from "react"
+import { FC } from "react"
+import { Box } from "@mantine/core"
+import { getRouteApi } from "@tanstack/react-router"
 import {
-	SolarDictionaryQuery,
-	useSolarDictionaryQuery,
-} from "generated/graphql"
+	useSolarDictionary,
+	type SolarDictionaryItem,
+	type Textures,
+} from "@/data/solarDictionary"
 import Loader from "@/primitives/Loader"
-import { Box, createStyles } from "@mantine/core"
 import Navbar from "./components/Navbar"
 import { getSidebarLabels } from "./utils/getSidebarLabels"
 import Stage from "./components/Stage"
 
-export type Texture = keyof NonNullable<
-	SolarDictionaryQuery["solarDictionary"][number]["textures"]
->
+export type Texture = keyof Textures
 
 const defaultTexture: Texture = "base"
 
@@ -28,41 +28,49 @@ const requiredLabels = [
 const sunIdx = 0
 const earthIdx = 3
 
-type State = { activeEntityIndex: number; activeTexture: Texture }
-const initialState: State = {
-	activeEntityIndex: 0,
-	activeTexture: defaultTexture,
-}
-
-const useStyles = createStyles({
-	base: { width: "100%", height: "100vh" },
-})
+// The selection is URL state (`?entity=3&texture=topo`, validated in
+// src/routes/solar_dictionary.tsx) so every body can be deep-linked.
+const route = getRouteApi("/solar_dictionary")
 
 export type SolarDictionaryProps = {
-	data?: SolarDictionaryQuery["solarDictionary"]
+	data?: SolarDictionaryItem[]
 }
 
 const SolarDictionary: FC<SolarDictionaryProps> = () => {
-	const { classes } = useStyles()
-	const { data, loading } = useSolarDictionaryQuery()
+	const { data: solarDict, loading } = useSolarDictionary()
 
-	const [{ activeEntityIndex, activeTexture }, setState] =
-		useState<State>(initialState)
+	const {
+		entity: activeEntityIndex = sunIdx,
+		texture: requestedTexture = defaultTexture,
+	} = route.useSearch()
+	const navigate = route.useNavigate()
 
-	const solarDict = data?.solarDictionary ?? []
 	const currentEntity = solarDict[activeEntityIndex]
 
-	const onEntityChange = (activeEntityIndex: number) =>
-		setState({
-			activeEntityIndex:
-				activeEntityIndex > solarDict.length - 1 || activeEntityIndex < 0
-					? 0
-					: activeEntityIndex,
-			activeTexture: defaultTexture,
+	// a valid texture name the body does not have (`?entity=1&texture=topo`) falls back to
+	// base for the menu and the stage alike, so the highlighted item is always the shown one
+	const activeTexture: Texture = currentEntity?.textures?.[requestedTexture]
+		? requestedTexture
+		: defaultTexture
+
+	// a newly selected body always starts on its base texture; defaults stay out of the URL
+	const onEntityChange = (newIndex: number) => {
+		const entity =
+			newIndex > solarDict.length - 1 || newIndex < 0 ? sunIdx : newIndex
+		void navigate({
+			search: { entity: entity === sunIdx ? undefined : entity },
+			replace: true,
 		})
+	}
 
 	const onTextureChange = (texture: Texture) =>
-		setState((prev) => ({ ...prev, activeTexture: texture }))
+		void navigate({
+			search: (prev) => ({
+				...prev,
+				texture: texture === defaultTexture ? undefined : texture,
+			}),
+			replace: true,
+		})
 
 	const labels = getSidebarLabels(
 		currentEntity,
@@ -73,7 +81,7 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 	if (!currentEntity || loading) return <Loader />
 
 	return (
-		<Box className={classes.base}>
+		<Box w="100%" h="100vh">
 			<Navbar
 				activeEntityIndex={activeEntityIndex}
 				activeTexture={activeTexture}
@@ -82,10 +90,7 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 				solarDict={solarDict}
 			/>
 			<Stage
-				texture={
-					currentEntity.textures?.[activeTexture] ??
-					currentEntity.textures?.[defaultTexture]
-				}
+				texture={currentEntity.textures?.[activeTexture] ?? undefined}
 				sidebarLabels={labels}
 			/>
 		</Box>
