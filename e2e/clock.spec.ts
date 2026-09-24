@@ -6,8 +6,16 @@
  */
 import { expect, test, type Locator, type Page } from "@playwright/test"
 
+import { nextFrames } from "./support/scene"
+
 const J2000 = 2451545
 const DAY_MS = 86_400_000
+
+/** A HUD date and the real time counted up to the frame that computed it. */
+interface ClockSample {
+	shown: number
+	countedMs: number
+}
 
 /** The HUD clock: its text is localized (#11), its `dateTime` is the ISO instant. */
 const clockOf = (page: Page): Locator => page.locator("time")
@@ -32,35 +40,59 @@ test("the clock runs at the chosen speed, whatever the frame rate", async ({
 	// one simulated day per real second. Headless software rendering draws only
 	// a few frames per second (fewer still under a parallel test run); the clock
 	// must advance by the real time elapsed, not per frame. Only frame gaps over
-	// 250 ms (a stalled or hidden page) count partly, by design.
-	const clock = await open(page, `t=${J2000}&warp=86400`)
+	// 250 ms (a stalled or hidden page) count partly, by design, so on a loaded
+	// machine four counted seconds can take much longer than four.
+	test.slow()
+	await open(page, `t=${J2000}&warp=86400`)
+	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	// Every time the HUD date changes, note it with the real time counted up to
+	// the frame that computed it (the store's lastTickMs). The HUD shows the
+	// clock at 10 Hz and a loaded run draws a frame a second or less, so reading
+	// the HUD at an arbitrary instant would see a date up to a frame old.
 	await page.evaluate(() => {
-		const w = window as unknown as { countedMs: number }
-		w.countedMs = 0
-		let last = performance.now()
+		const probe = window as unknown as { samples: ClockSample[] }
+		probe.samples = []
+		let countedMs = 0
+		const startedAt = performance.now()
+		let last = startedAt
 		const frame = () => {
 			const now = performance.now()
-			w.countedMs += Math.min(now - last, 250)
+			countedMs += Math.min(Math.max(now - last, 0), 250)
 			last = now
 			requestAnimationFrame(frame)
 		}
 		requestAnimationFrame(frame)
+		const countedAt = (at: number) =>
+			countedMs + Math.min(Math.max(at - last, 0), 250)
+		const time = document.querySelector("time")!
+		new MutationObserver(() => {
+			const { lastTickMs } = window.__astrolabe!.store.getState()
+			// a date computed before the count began cannot be paired with it
+			if (lastTickMs === null || lastTickMs < startedAt) return
+			probe.samples.push({
+				shown: Date.parse(time.getAttribute("datetime") ?? ""),
+				countedMs: countedAt(lastTickMs),
+			})
+		}).observe(time, { attributes: true, attributeFilter: ["datetime"] })
 	})
-	// the HUD date and the counted real time, read in the same instant
-	const sample = () =>
-		clock.evaluate((element) => ({
-			shown: Date.parse(element.getAttribute("datetime") ?? ""),
-			countedMs: (window as unknown as { countedMs: number }).countedMs,
-		}))
-	await page.waitForTimeout(500)
-	const first = await sample()
-	await page.waitForTimeout(4000)
-	const second = await sample()
+	// wait for four seconds of counted real time, however long that takes
+	await page.waitForFunction(() => {
+		const { samples } = window as unknown as { samples: ClockSample[] }
+		return (
+			samples.length >= 2 &&
+			samples.at(-1)!.countedMs - samples[0].countedMs >= 4000
+		)
+	})
+	const samples = await page.evaluate(
+		() => (window as unknown as { samples: ClockSample[] }).samples,
+	)
+	const first = samples[0]
+	const second = samples.at(-1)!
 	const simulatedDays = (second.shown - first.shown) / DAY_MS
 	const countedSeconds = (second.countedMs - first.countedMs) / 1000
 	expect(countedSeconds).toBeGreaterThan(1)
-	// the HUD shows the clock at 10 Hz, so each reading may lag by a frame and a tenth of a second
-	expect(Math.abs(simulatedDays - countedSeconds)).toBeLessThan(0.5)
+	// each HUD date is exact to the minute it shows (1/1440 of a day here)
+	expect(Math.abs(simulatedDays - countedSeconds)).toBeLessThan(0.05)
 })
 
 test("a negative warp runs the clock backwards and survives in the link", async ({
@@ -80,9 +112,18 @@ test("pause freezes the clock where it is", async ({ page }) => {
 	await page.keyboard.press("Space")
 	await expect(page.getByRole("button", { name: "Play" })).toBeVisible()
 	// the HUD refreshes the date at 10 Hz: let it show the pinned value first
-	await page.waitForTimeout(500)
+	await page.waitForFunction(() => window.__astrolabe !== undefined)
+	const pinned = await page.evaluate(() => {
+		const { simTimeJD } = window.__astrolabe!.store.getState()
+		return Math.round((simTimeJD - 2440587.5) * 86_400_000)
+	})
+	await expect
+		.poll(() => shownTime(clock))
+		.toBe(Math.floor(pinned / 60_000) * 60_000)
 	const frozen = await clock.innerText()
+	// two seconds would be two simulated days, and the page keeps drawing frames
 	await page.waitForTimeout(2000)
+	await nextFrames(page)
 	await expect(clock).toHaveText(frozen)
 })
 
