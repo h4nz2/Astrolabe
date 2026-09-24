@@ -1,5 +1,5 @@
 /**
- * Search params of `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`
+ * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`
  * (the layer switches `orbits`, `labels`, `moons`, `markers` alike).
  *
  * Kept free of app imports (only zod) because the route module that validates
@@ -25,6 +25,8 @@ const layerSwitch = z.boolean().optional().catch(undefined)
 export const simSearchSchema = z.object({
 	// focused body id (absent: the overview); unknown ids are ignored when applied (see urlSync.ts)
 	focus: z.string().optional().catch(undefined),
+	// a free centre (#15): the offset from `focus` in its true radii, `x_y_z` (see formatOffset in navigation.ts)
+	at: z.string().optional().catch(undefined),
 	// selected body id when it is not the focused body
 	sel: z.string().optional().catch(undefined),
 	// camera around the view, `azimuth_elevation_distance` (see formatShot in navigation.ts)

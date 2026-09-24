@@ -2,7 +2,9 @@
  * One body: a group placed every frame from the SimFrame, oriented by the IAU
  * pole (local +Y) and spun about it by `rotationAngle`. The texture loads
  * lazily behind a Suspense boundary with a plain coloured fallback material.
- * The Sun is emissive (Bloom arrives in Phase 6) and carries the point light.
+ * The Sun is emissive (Bloom arrives in Phase 6); every other body is lit by
+ * it through the sunlight model (../lighting, docs/ARCHITECTURE.md, "Lighting"),
+ * whose uniforms this component rewrites every frame.
  */
 import { Suspense, useMemo, useRef } from "react"
 import { useTexture } from "@react-three/drei"
@@ -16,10 +18,17 @@ import {
 } from "three"
 
 import type { Body } from "@/data"
-import { rotationAngle } from "@/sim"
-import { useSimStore } from "@/store/sim"
+import { occluderCandidates, rootIndexOf, rotationAngle } from "@/sim"
+import { useLightingStore } from "@/store/lighting"
+import { isBodyShown, useSimStore } from "@/store/sim"
 import { assetUrl } from "@/utils/assetUrl"
 
+import {
+	createSunlightUniforms,
+	updateSunlight,
+	type SunlightUniforms,
+} from "../lighting/bodyLighting"
+import SunlitMaterial from "../lighting/SunlitMaterial"
 import { useSimFrame } from "../scene/simFrame"
 import { isTapEvent } from "../scene/tap"
 import { bodyOrientation } from "./orientation"
@@ -53,20 +62,31 @@ const unitSphere = (segments: number): SphereGeometry => {
 const markSRGB = (texture: Texture) => {
 	texture.colorSpace = SRGBColorSpace
 }
+const markSRGBAll = (textures: Texture[]) => textures.forEach(markSRGB)
 
-function TexturedMaterial({ body }: { body: Body }) {
-	const map = useTexture(assetUrl(body.textures.base), markSRGB)
-	if (body.kind === "star") {
-		return <meshBasicMaterial map={map} toneMapped={false} />
-	}
-	return <meshStandardMaterial map={map} roughness={1} metalness={0} />
+interface MaterialProps {
+	body: Body
+	uniforms: SunlightUniforms
 }
 
-function FallbackMaterial({ body }: { body: Body }) {
+function StarMaterial({ body }: { body: Body }) {
+	const map = useTexture(assetUrl(body.textures.base), markSRGB)
+	return <meshBasicMaterial map={map} toneMapped={false} />
+}
+
+function TexturedMaterial({ body, uniforms }: MaterialProps) {
+	const { base, night } = body.textures
+	const urls =
+		night === undefined ? [assetUrl(base)] : [assetUrl(base), assetUrl(night)]
+	const [map, nightMap] = useTexture(urls, markSRGBAll)
+	return <SunlitMaterial uniforms={uniforms} map={map} nightMap={nightMap} />
+}
+
+function FallbackMaterial({ body, uniforms }: MaterialProps) {
 	if (body.kind === "star") {
 		return <meshBasicMaterial color="#ffb347" toneMapped={false} />
 	}
-	return <meshStandardMaterial color="#5b6472" roughness={1} metalness={0} />
+	return <SunlitMaterial uniforms={uniforms} color="#5b6472" />
 }
 
 function BodyMesh({ body, index }: BodyMeshProps) {
@@ -74,6 +94,20 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 	const groupRef = useRef<Group>(null)
 	const meshRef = useRef<Mesh>(null)
 	const orientation = useMemo(() => bodyOrientation(body), [body])
+	const sunIndex = useMemo(() => rootIndexOf(frame.bodies), [frame])
+	const uniforms = useMemo(
+		() => createSunlightUniforms(body, frame.bodies[sunIndex].radiusKm),
+		[body, frame, sunIndex],
+	)
+	const casters = useMemo(
+		() => occluderCandidates(frame.bodies, index),
+		[frame, index],
+	)
+	// a hidden moon casts no shadow: a shadow without its caster reads as a bug
+	const isCasterShown = useMemo(
+		() => (j: number) => isBodyShown(frame.bodies[j], useSimStore.getState()),
+		[frame],
+	)
 
 	useFrame(() => {
 		const group = groupRef.current
@@ -83,6 +117,16 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 		// the drawn radius under the active scale (docs/ARCHITECTURE.md, "Scale")
 		mesh.scale.setScalar(frame.renderRadius(index))
 		mesh.rotation.y = rotationAngle(body.rotation, frame.jd)
+		if (body.kind === "star") return
+		updateSunlight(
+			uniforms,
+			frame,
+			index,
+			sunIndex,
+			casters,
+			isCasterShown,
+			useLightingStore.getState().alwaysLit,
+		)
 	})
 
 	const onClick = (event: ThreeEvent<MouseEvent>) => {
@@ -109,13 +153,16 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 				onPointerOver={onPointerOver}
 				onPointerOut={onPointerOut}
 			>
-				<Suspense fallback={<FallbackMaterial body={body} />}>
-					<TexturedMaterial body={body} />
+				<Suspense
+					fallback={<FallbackMaterial body={body} uniforms={uniforms} />}
+				>
+					{body.kind === "star" ? (
+						<StarMaterial body={body} />
+					) : (
+						<TexturedMaterial body={body} uniforms={uniforms} />
+					)}
 				</Suspense>
 			</mesh>
-			{body.kind === "star" ? (
-				<pointLight decay={0} intensity={2} color="white" />
-			) : null}
 		</group>
 	)
 }

@@ -9,9 +9,14 @@
  */
 import { PerspectiveCamera, Vector3 } from "three"
 
-import { childDistanceCurve, toUnits } from "@/sim"
+import type { Body } from "@/data"
+import { childDistanceCurve, orbitAt, toUnits } from "@/sim"
 
-import { mapOrbitSamples, sampleOrbit } from "../bodies/OrbitLine"
+import {
+	ORBIT_RESAMPLE_DEG,
+	mapOrbitSamples,
+	sampleOrbit,
+} from "../bodies/OrbitLine"
 import type { SimFrame } from "../scene/simFrame"
 
 /** Every how many orbit-line samples one is tried as the anchor (256 / 4 = 64 per orbit). */
@@ -22,12 +27,29 @@ export interface OrbitAnchorCache {
 	readonly samples: (Float64Array | null)[]
 	/** The frame's `scaleVersion` each body's samples were mapped for. */
 	readonly versions: Int32Array
+	/** Julian Date whose elements each body's samples show (precessing orbits turn). */
+	readonly sampledAtJD: Float64Array
 }
 
 export const createOrbitAnchorCache = (count: number): OrbitAnchorCache => ({
 	samples: new Array<Float64Array | null>(count).fill(null),
 	versions: new Int32Array(count).fill(-1),
+	sampledAtJD: new Float64Array(count),
 })
+
+/** Whether a precessing orbit has turned far enough since `sampledAtJD` to resample (as OrbitLine does). */
+const hasTurned = (
+	orbit: NonNullable<Body["orbit"]>,
+	sampledAtJD: number,
+	jd: number,
+): boolean => {
+	const precession = orbit.precession
+	if (precession === undefined) return false
+	const rate =
+		Math.abs(precession.nodeDegPerDay) +
+		Math.abs(precession.argPeriapsisDegPerDay)
+	return rate * Math.abs(jd - sampledAtJD) >= ORBIT_RESAMPLE_DEG
+}
 
 /** Body `i`'s display samples for the frame's current scale, or null without an orbit. */
 function displaySamples(
@@ -40,11 +62,17 @@ function displaySamples(
 	const p = frame.index.get(body.parentId)
 	if (p === undefined) return null
 	let samples = cache.samples[i]
-	if (samples !== null && cache.versions[i] === frame.scaleVersion) {
+	if (
+		samples !== null &&
+		cache.versions[i] === frame.scaleVersion &&
+		!hasTurned(body.orbit, cache.sampledAtJD[i], frame.jd)
+	) {
 		return samples
 	}
 	const parent = frame.bodies[p]
-	const truth = sampleOrbit(body.orbit)
+	// the ellipse as it is oriented now: the Moon's turns once in 18.6 years
+	const truth = sampleOrbit(orbitAt(body.orbit, frame.jd))
+	cache.sampledAtJD[i] = frame.jd
 	samples = mapOrbitSamples(
 		truth,
 		samples ?? new Float64Array(truth.length),

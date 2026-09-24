@@ -1,9 +1,10 @@
 import { Group, Switch } from "@mantine/core"
 
 import { useI18n } from "@/i18n"
+import { useLightingStore } from "@/store/lighting"
 import { useSimStore } from "@/store/sim"
 
-/** Switches for the orbit lines, the labels, the moons, the markers and the orbit names. */
+/** Switches for the orbit lines, the labels, the moons, the markers, the orbit names and the "always lit" teaching mode. */
 const SceneToggles = () => {
 	const { t } = useI18n()
 	const showOrbits = useSimStore((state) => state.showOrbits)
@@ -16,6 +17,8 @@ const SceneToggles = () => {
 	const setShowMoons = useSimStore((state) => state.setShowMoons)
 	const setShowMarkers = useSimStore((state) => state.setShowMarkers)
 	const setShowOrbitLabels = useSimStore((state) => state.setShowOrbitLabels)
+	const alwaysLit = useLightingStore((state) => state.alwaysLit)
+	const setAlwaysLit = useLightingStore((state) => state.setAlwaysLit)
 
 	return (
 		<Group
@@ -59,6 +62,13 @@ const SceneToggles = () => {
 				checked={showOrbitLabels}
 				disabled={!showOrbits || !showLabels}
 				onChange={(event) => setShowOrbitLabels(event.currentTarget.checked)}
+			/>
+			<Switch
+				size="xs"
+				color="orange"
+				label={t("solarSystem.layers.alwaysLit")}
+				checked={alwaysLit}
+				onChange={(event) => setAlwaysLit(event.currentTarget.checked)}
 			/>
 		</Group>
 	)

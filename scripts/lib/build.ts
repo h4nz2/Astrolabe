@@ -669,6 +669,7 @@ const buildMoon = (
 		periodDays,
 		epochJD: J2000,
 		...(phaseSynthetic ? { phaseSynthetic: true } : {}),
+		...precessionOf(sources),
 	}
 
 	const textureSource =
@@ -708,6 +709,21 @@ const buildMoon = (
 		rings: null,
 		info,
 	})
+}
+
+/**
+ * Curated secular drift of a moon's orbit (the Moon: node regression and apsidal
+ * precession, from the Meeus ch. 47 mean elements); both rates or nothing.
+ */
+const precessionOf = (sources: readonly Raw[]): Pick<Orbit, "precession"> => {
+	const nodeDegPerDay = first(sources, (raw) =>
+		num(raw.nodePrecessionDegPerDay),
+	)
+	const argPeriapsisDegPerDay = first(sources, (raw) =>
+		num(raw.argPeriapsisPrecessionDegPerDay),
+	)
+	if (nodeDegPerDay === null || argPeriapsisDegPerDay === null) return {}
+	return { precession: { nodeDegPerDay, argPeriapsisDegPerDay } }
 }
 
 const statsOf = (

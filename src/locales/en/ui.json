@@ -132,7 +132,8 @@
 			"labels": "Labels",
 			"moons": "Moons",
 			"markers": "Markers",
-			"orbitNames": "Orbit names"
+			"orbitNames": "Orbit names",
+			"alwaysLit": "Always lit"
 		},
 		"time": {
 			"play": "Play",
@@ -164,6 +165,16 @@
 			"rotationUnknown": "unknown",
 			"retrograde": "{period}, retrograde",
 			"retrograde@simple": "{period}, spinning backwards"
+		},
+		"centre": {
+			"label": "Centre of the view",
+			"freeView": "Free view",
+			"freeView@simple": "Floating in space",
+			"near": "near {body}",
+			"interplanetary": "in interplanetary space",
+			"interplanetary@simple": "out between the planets",
+			"centreOn": "Centre on {body}",
+			"centreOn@simple": "Back to {body}"
 		}
 	}
 }

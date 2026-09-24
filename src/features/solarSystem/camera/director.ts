@@ -32,8 +32,9 @@ import {
 	viewBodyId,
 	viewMode,
 } from "@/store/navigation"
-import type { SimState } from "@/store/sim"
+import { isBodyShown, type SimState } from "@/store/sim"
 
+import { isMoonDotShown } from "../scene/Markers"
 import type { SimFrame } from "../scene/simFrame"
 import {
 	CAMERA_MAX_DISTANCE,
@@ -53,6 +54,12 @@ import {
 	type SphericalPose,
 } from "./pose"
 import {
+	neighbourhoodOf,
+	pointDisplayKm,
+	pointOffsetKm,
+	snapTarget,
+} from "./recentre"
+import {
 	transitProfile,
 	type TransitInput,
 	type TransitProfile,
@@ -67,6 +74,12 @@ export const CAMERA_FRAME_PRIORITY = -0.5
 
 /** A target further than this (relative to the camera distance) from the origin is a moved pivot. */
 const PIVOT_DRIFT_EPSILON = 1e-9
+
+/** A pan's glide is over once the pivot is this close to where it is heading (relative to the camera distance). */
+const PAN_REST_EPSILON = 1e-4
+
+/** How long a released pan glides onto the body it landed on (#15), ms. */
+export const SNAP_DURATION_MS = 450
 
 export interface StoreLike {
 	getState(): SimState
@@ -194,6 +207,7 @@ export class CameraDirector {
 		if (this.runningId === null) this.hold()
 
 		this.controls.update(deltaS)
+		this.settlePan()
 
 		const { sequence, tickSequence } = this.store.getState()
 		if (
@@ -275,6 +289,7 @@ export class CameraDirector {
 		const view = transition.view
 		const toIndex = this.anchorIndex(view)
 		this.pendingPan = null
+		this.store.getState().setPanning(false)
 		if (toIndex === undefined) {
 			// cannot happen for store-validated views; never leave a stuck transition behind
 			this.runningId = null
@@ -402,10 +417,9 @@ export class CameraDirector {
 		// the moved target becomes the pivot and everything shifts back invisibly
 		const target = this.controls.getTarget(scratchTarget, false)
 		this.readPose(this.pose, false)
-		if (
-			target.length() > PIVOT_DRIFT_EPSILON * this.pose.radius &&
-			this.controls.currentAction === ACTION_NONE
-		) {
+		const drifted = target.length() > PIVOT_DRIFT_EPSILON * this.pose.radius
+		if (drifted && !state.panning) state.setPanning(true)
+		if (drifted && this.controls.currentAction === ACTION_NONE) {
 			pivot[0] += target.x * KM_PER_UNIT
 			pivot[1] += target.y * KM_PER_UNIT
 			pivot[2] += target.z * KM_PER_UNIT
@@ -428,6 +442,29 @@ export class CameraDirector {
 		this.controls.maxDistance = CAMERA_MAX_DISTANCE
 	}
 
+	/**
+	 * After the controls' update: a pan that is over (released, and its
+	 * damped glide finished) is committed. Not on camera-controls' `rest`,
+	 * which also fires while a finger holds still mid-drag, never fires after
+	 * an instant move, and uses an absolute threshold (10 km) that means
+	 * nothing next to a 0.3 km moon or across 30 AU.
+	 */
+	private settlePan(): void {
+		if (
+			this.runningId !== null ||
+			this.pendingPan === null ||
+			this.controls.currentAction !== ACTION_NONE
+		) {
+			return
+		}
+		const target = this.controls.getTarget(scratchTarget, false)
+		const end = this.controls.getTarget(scratchTargetEnd, true)
+		const radius = this.readPose(this.pose, false).radius
+		if (target.distanceTo(end) > PAN_REST_EPSILON * radius) return
+		this.commitPan()
+		this.publishShot()
+	}
+
 	// --- events --------------------------------------------------------------
 
 	private userInput(): void {
@@ -443,7 +480,6 @@ export class CameraDirector {
 
 	private rest(): void {
 		if (this.runningId !== null || !this.initialized) return
-		this.commitPan()
 		this.publishShot()
 	}
 
@@ -476,16 +512,86 @@ export class CameraDirector {
 		)
 	}
 
+	/**
+	 * A pan came to rest (#15). If the centre of the screen is on a body (or
+	 * right next to one), the pivot glides onto it: dragging a planet to the
+	 * middle re-centres on it, and a pan too small to leave the focused body
+	 * snaps back instead of silently dropping the focus. Otherwise the pivot
+	 * becomes a point in space, anchored to the body whose neighbourhood it is
+	 * in and kept in true km from it.
+	 */
 	private commitPan(): void {
+		const state = this.store.getState()
 		const pan = this.pendingPan
-		if (pan === null) return
-		const anchor = this.frame.bodies[pan.index]
 		this.pendingPan = null
-		this.store.getState().settleAt({
+		state.setPanning(false)
+		if (pan === null) return
+		const origin = this.frame.originKm
+		const position = this.camera.position
+		const cameraKm = scratchPivot
+		cameraKm[0] = origin[0] + position.x * KM_PER_UNIT
+		cameraKm[1] = origin[1] + position.y * KM_PER_UNIT
+		cameraKm[2] = origin[2] + position.z * KM_PER_UNIT
+		// what is left of the glide (invisible by now) goes into the pivot too
+		const target = this.controls.getTarget(scratchTarget, false)
+		const pivot = this.toKm
+		pivot[0] = origin[0] + target.x * KM_PER_UNIT
+		pivot[1] = origin[1] + target.y * KM_PER_UNIT
+		pivot[2] = origin[2] + target.z * KM_PER_UNIT
+		void this.controls.moveTo(0, 0, 0, false)
+		this.setOrigin(pivot)
+
+		const snapped = snapTarget(
+			this.frame,
+			cameraKm,
+			pivot,
+			this.camera.fov,
+			this.isOnScreen,
+		)
+		if (snapped >= 0) {
+			const view = this.snapView(state.view, snapped)
+			const radius = this.readPose(this.pose, true).radius
+			state.goTo(view, {
+				shot: { distance: radius / this.defaultDistance(view) },
+				durationMs: SNAP_DURATION_MS,
+			})
+			return
+		}
+
+		const anchor = neighbourhoodOf(this.frame, pivot)
+		const offset = pointOffsetKm(this.frame, anchor, pivot, new Float64Array(3))
+		const view: View = {
 			kind: "point",
-			anchorId: anchor.id,
-			offsetKm: [pan.offsetKm[0], pan.offsetKm[1], pan.offsetKm[2]],
-		})
+			anchorId: this.frame.bodies[anchor].id,
+			offsetKm: [offset[0], offset[1], offset[2]],
+		}
+		this.heldIndex = anchor
+		state.settleAt(view)
+		this.follow(view)
+	}
+
+	/**
+	 * The view a pan that landed on body `index` re-centres on: the current
+	 * view when that is where it came from (the overview keeps being the
+	 * overview), the overview for the Sun, the body otherwise.
+	 */
+	private snapView(current: View, index: number): View {
+		const id = this.frame.bodies[index].id
+		if (current.kind === "body" && current.id === id) return current
+		if (id === viewBodyId(OVERVIEW)) {
+			return current.kind === "body" ? { kind: "body", id } : OVERVIEW
+		}
+		return { kind: "body", id }
+	}
+
+	/** Bodies a pan can land on: the ones drawn right now (the moon rules of the markers). */
+	private readonly isOnScreen = (i: number): boolean => {
+		const state = this.store.getState()
+		const body = this.frame.bodies[i]
+		if (!isBodyShown(body, state)) return false
+		if (body.kind !== "moon") return true
+		const focus = this.frame.bodies[this.frame.index.get(state.focusId) ?? 0]
+		return isMoonDotShown(body, state.focusId, focus.parentId)
 	}
 
 	private publishShot(): void {
@@ -530,6 +636,7 @@ export class CameraDirector {
 		void this.controls.setLookAt(0, 0, 1, 0, 0, 0, false)
 		this.frame.originKm.fill(0)
 		this.pendingPan = null
+		this.store.getState().setPanning(false)
 		this.runningId = null
 		this.heldIndex = this.frame.index.get(viewBodyId(OVERVIEW)) ?? 0
 		this.forceJump = true
@@ -576,16 +683,14 @@ export class CameraDirector {
 	/** World km of a view's pivot at the current positions. */
 	private pivotOf(view: View, out: Float64Array): Float64Array {
 		const index = this.anchorIndex(view) ?? 0
+		if (view.kind === "point") {
+			return pointDisplayKm(this.frame, index, view.offsetKm, out)
+		}
 		const at = index * 3
 		const positions = this.frame.displayKm
 		out[0] = positions[at]
 		out[1] = positions[at + 1]
 		out[2] = positions[at + 2]
-		if (view.kind === "point") {
-			out[0] += view.offsetKm[0]
-			out[1] += view.offsetKm[1]
-			out[2] += view.offsetKm[2]
-		}
 		return out
 	}
 

@@ -33,8 +33,8 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, scale.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, ui/)
+src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -66,6 +66,7 @@ interface Orbit {
 	periodDays: number // sidereal
 	epochJD: number // 2451545.0 (J2000)
 	phaseSynthetic?: boolean // node/periapsis/anomaly spread deterministically from hash(id)
+	precession?: { nodeDegPerDay: number; argPeriapsisDegPerDay: number } // secular turning (the Moon only)
 }
 
 interface Body {
@@ -120,8 +121,8 @@ Build rules (`scripts/lib/`):
   equator into the ecliptic (`frames.ts`), so regular moons and rings are coplanar; outside it they are kept as ecliptic.
 - Rings: Jupiter and Saturn from the source, Uranus and Neptune from `data/rings/`. Strips run u = 0 (inner) to u = 1
   (outer). A missing ring texture fails the build.
-- Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements) are made
-  in `data/ourDB.json` itself. Sanity checks (Kepler period, density) warn on stderr.
+- Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements, the
+  Moon's precession rates from Meeus ch. 47 and its true sidereal month 27.321661 d) are made in `data/ourDB.json` itself. Sanity checks (Kepler period, density) warn on stderr.
 
 ## Simulation (`src/sim`, pure and unit-tested)
 
@@ -135,12 +136,18 @@ Build rules (`scripts/lib/`):
 - Frame: three.js is Y-up; ecliptic (xe, ye, ze) maps to scene (xe, ze, -ye), so the ecliptic is the XZ plane (`kepler.ts`).
 - `propagate(orbit, jd, out)` gives the parent-centric position in km (Newton iteration, e up to 0.99), including
   Kepler's second law. `computePositions(bodies, jd, out)` fills world positions in topological order, in doubles.
+- Precession (#22): an orbit with `precession` turns linearly (node and argument of periapsis), its mean anomaly slower
+  by their sum, so `periodDays` stays the sidereal period of the mean longitude. `orbitAt(orbit, jd)` is the fixed
+  ellipse the body is on at `jd`; `propagate` uses it and orbit lines resample from it every 0.05 deg of turn. Only the
+  Moon has it (node 18.6 yr, perigee 8.85 yr): without it the Moon drifts 16 deg off by 2045 and eclipses land on the
+  wrong dates; with it, real eclipses happen within about three hours of the real ones.
 - Rotation (`rotation.ts`): `spinAxis` (IAU pole, else the orbit normal tilted by `axialTiltDeg`), `equatorNode` (zero
   of the prime meridian) and `rotationAngle(rotation, jd)` (unwrapped, sign from the period). A mesh is oriented with
   X = equatorNode, Y = spinAxis, Z = X x Y, then rotated about Y.
 - Per-frame callers build the index once (`buildIndex`) and pass reused `out` arrays: the frame loop allocates nothing.
 - Accuracy: planets within 0.2 deg / 0.15 % of astronomy-engine over J2000 +- 2000 d (`positions.test.ts`); the Moon
-  and Galileans within a few degrees; everything else has fictitious phases.
+  within 2.5 deg over 2000-2045 (`precession.test.ts`; evection and variation are not modelled) and the Galileans within
+  a few degrees; everything else has fictitious phases.
 
 ## Scale (`src/sim/scale.ts`, `src/store/scale.ts`; #8)
 
@@ -194,26 +201,81 @@ view (an ESLint rule keeps drei camera controls inside `camera/`). The navigatio
 ```
 selectedId: string | null   drives info panels, labels, the URL; never moves the camera
 view: View                  { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
+                            (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15)
 focusId: string             body the view is centred on (the Sun for the overview, a point's anchor)
 shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
 transition, sequence        the running move and the running tour
+panning: boolean            a pan (or its damped glide) is moving the pivot right now
 viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
 Actions: `select`, `setFocus` (click: select + focus), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
 (the way out), `skip`, and sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
 request carries a partial `shot`, `durationMs` and a `profile`. Invalid views and unknown bodies are ignored.
+Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
 Director (`camera/director.ts`, unit-tested frame by frame):
 
 - Every request starts a new move from wherever the camera is, so retargeting mid-flight never snaps back. Both pivots
   and the arrival distance are re-read every frame.
 - User input during a move takes over distance and direction while the pivot still glides home; it also interrupts
-  automatic sequence steps. A pan while settled becomes a `point` view.
+  automatic sequence steps. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
+  when released (see Re-centring).
 - A non-finite camera or a view of a missing body resets to the overview.
 - Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s.
 - `window.__astrolabe` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
   console and e2e tests. Read the camera, never write it.
+
+### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
+
+- Gestures: orbit = left button / one finger; dolly = wheel, trackpad scroll, pinch, ctrl+wheel, middle button; pan =
+  right button (trackpad two-finger click-drag), Shift + left (`shiftDragPans`), two fingers together, three fingers.
+  Pans are camera-controls' `SCREEN_PAN`: the pivot slides parallel to the ecliptic, like dragging a map.
+- A pan is committed after the controls' update once released and the glide is within 1e-4 of the camera distance of
+  its end (not on camera-controls' `rest`, which fires mid-drag and uses an absolute 10 km threshold). The rest of the
+  glide is folded in, so the commit moves nothing on screen. Then:
+  - **Snap** (`snapTarget`): if the screen centre is on a drawn body's disc or within `SNAP_FOV_FRACTION` (1.2 % of the
+    vertical fov, about 11 px) of a drawn body, the pivot glides onto it (450 ms, distance kept). The view it came from
+    is kept when that is the body (a pan that never left the planet snaps back; a small pan in the overview stays the
+    overview); the Sun means the overview. Camera gestures never change the selection.
+  - **Point** otherwise: anchored to the innermost body whose drawn Hill sphere (at least 4 drawn radii; the Sun owns
+    everything) holds it (`neighbourhoodOf`), offset stored in TRUE km (`pointOffsetKm`, via `trueOffset` /
+    `unmapDistance` in `src/sim/scale.ts`) and drawn with `pointDisplayKm`, so it keeps its place under every preset.
+- Limits follow the centre: a point uses its anchor's `minViewDistance`; a point anchored to the Sun is framed
+  (`defaultDistance`) like the overview.
+- HUD: `ui/CentreMarker.tsx` (crosshair at the canvas centre while `panning` or free), `ui/CentreBadge.tsx` ("Free view
+  near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
+  `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
+- Building on it: #16 clicks call `setFocus`; #31 anchors the frame to `focusId` (a point's anchor).
+
+## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
+
+The single authority on how anything is lit. The Sun (the root body) is the only light source; there are no three.js
+lights. Everything is decided in TRUE km (`positionsKm`, `radiusKm`), never in display space, so the terminator, phases
+and eclipses are the real ones in every scale preset (a moon drawn 10x too big never casts a 10x bigger shadow).
+
+- Direction: each body is lit from the true Sun direction from its centre (`uSunKm`). A fragment of the drawn sphere
+  stands for the true surface point in the same direction (`normal * radiusKm`), so a true shadow lands on the same
+  spot of the enlarged globe.
+- Shading (`sunlightShader.ts`): Lambert x the Sun's visible fraction x `SUN_INTENSITY` 1.6, ACES tone mapping, no
+  distance falloff (a 900x dimmer Neptune would be a black disc). The night side keeps `NIGHT_LEVEL` (4.5 % "starlight")
+  and a faint cool rim, and shows `textures.night` (Earth's city lights): not physical, deliberately legible.
+- Eclipses are analytic: `sunVisibleFraction(point, sun, sunRadius, casters)` is the visible share of the Sun's disc
+  (exact lens area of the angular discs: umbra, penumbra, annular), casters multiply. The shader's `sunVisibility()` is a
+  line-by-line port; keep them in step (the TypeScript one is tested, including the 2024-04-08 solar and 2025-03-14
+  lunar eclipses). Casters (`occluderCandidates`): a moon's planet and siblings, a planet's moons; the Sun casts and
+  receives nothing. `selectOccluders` keeps up to `MAX_OCCLUDERS` (4) that can reach the body this frame; hidden bodies
+  cast no shadow.
+- Uniforms: one `SunlightUniforms` per body (`createSunlightUniforms`), rewritten in BodyMesh's `useFrame` by
+  `updateSunlight`. Materials share the uniform OBJECTS (`createSunlitMaterial`, passed as a `<primitive>`): R3F's
+  `<shaderMaterial uniforms>` copies each uniform and would freeze scalars at mount.
+- "Always lit" (`useLightingStore.alwaysLit`, a HUD switch labelled by `solarSystem.layers.alwaysLit`; not persisted): lit from the viewer, no night, no shadows.
+- Phases and seasons are consequences, not features (`phaseAngle`, `illuminatedFraction` give the numbers).
+- Building on it: anything lit by the Sun (#12 rings, #23, #35) includes `SUNLIGHT_PARS`, shares its body's uniforms and
+  calls `sunVisibility(p)` with `p` in that body's true frame (centre at origin, true km). Ring points:
+  `p = local * radiusKm / drawnRadiusKm`; the planet's shadow on its rings is the planet as a caster at the origin. Ring
+  shadows on the planet: intersect the ray from `p` toward `uSunKm` with the equatorial plane and multiply by
+  `1 - ringAlpha(r)` inside the ring radii, behind a define so ringless bodies pay nothing.
 
 ## Floating origin
 
@@ -242,9 +304,11 @@ URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=f
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
 off by default, as `orbitNames=true` while on. Defaults (overview,
 home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
-once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
-clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
-|warp| <= 60.
+
+> > > > > > > main
+> > > > > > > once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
+> > > > > > > clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
+> > > > > > > |warp| <= 60.
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -279,10 +343,10 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   `updateOrbitBuffers`, `fillMarkers`) to satisfy `react-hooks/immutability` without `eslint-disable`. No allocations
   in the frame loop.
 - Canvas: `dpr={[1, 2]}`, logarithmic depth buffer, near 1e-5, far 1e9, fov 45 (`camera/framing.ts`), background
-  `#0b0d12`. A decay-0 PointLight in the Sun plus 0.05 ambient; the Sun is unlit (`toneMapped={false}`). Bloom arrives
-  in Phase 6.
+  `#0b0d12`. No three.js lights (see Lighting); the Sun is unlit (`toneMapped={false}`). Bloom arrives in Phase 6.
 - Bodies (`bodies/BodyMesh.tsx`): a group per body, scaling one of three shared unit spheres (64/32/16 segments for
-  Sun and planets / moons / estimated moons) by the drawn radius; lazy sRGB textures behind a per-body Suspense.
+  Sun and planets / moons / estimated moons) by the drawn radius; lazy sRGB textures behind a per-body Suspense; every
+  body but the Sun uses the sunlit material (see Lighting).
 - Rings: radial UVs, `alphaMap` = alpha strip (linear, gray level = opacity; never use it as `map`), `map` = color strip
   (sRGB), clamped, double-sided. Brighten dark generated rings in the material, not the data.
 - Orbit lines (`bodies/OrbitLine.tsx`): 256 samples plus one anchor vertex written from the body's own position, so the
@@ -298,17 +362,17 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   selected, which fills the view up close). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
-  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button. Panning is behind
-  `PAN_ENABLED` until #15.
+  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
+  button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls`, `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
-  toggles panel). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
+  toggles panel), `CentreBadge` and `CentreMarker` (#15). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`), not
   `WARP_PRESETS[].label`.
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `SimClock`, `HoverCursor`, lights, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
+  `SimClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
   the `LabelLayer` beside the Canvas) and the HUD.
 
 ## Labels (`features/solarSystem/labels`; #20)
