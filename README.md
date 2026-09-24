@@ -1,4 +1,4 @@
-# Solr
+# Astrolabe
 
 _Klassenlager 2022 project_
 

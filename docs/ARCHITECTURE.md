@@ -1,4 +1,4 @@
-# Solr architecture (rebuild, September 2026)
+# Astrolabe architecture (rebuild, September 2026)
 
 Goal: a true-scale, interactive 3D model of the solar system (Sun, planets, moons) plus the
 existing visual dictionary and hero page, shipped as a client-only static site.
