@@ -175,7 +175,10 @@ test("interrupting a flight at any point never strands the camera", async ({
 	for (const [name, interrupt, mode, focusId] of interruptions) {
 		await test.step(name, async () => {
 			await page.evaluate(() =>
-				window.__astrolabe!.store.getState().setFocus("jupiter"),
+				// a long flight, so the slow headless page catches it mid-air
+				window
+					.__astrolabe!.store.getState()
+					.focus("jupiter", { durationMs: 6000 }),
 			)
 			await waitForProgress(page, 0.2)
 			await interrupt()
