@@ -50,6 +50,8 @@ export const simSearchSchema = z.object({
 	labels: layerSwitch,
 	moons: layerSwitch,
 	markers: layerSwitch,
+	// orbit names (#20) are off by default, so only `true` is ever written
+	orbitNames: layerSwitch,
 	// `?birthday=true` opens the birthday panel (#26) on arrival; it is only an
 	// instruction and never carries a date (a birth date never enters the URL)
 	birthday: z.boolean().optional().catch(undefined),
