@@ -1,87 +1,53 @@
 # Astrolabe architecture (rebuild, September 2026)
 
-Goal: a true-scale, interactive 3D model of the solar system (Sun, planets, moons) plus the
-existing visual dictionary and hero page, shipped as a client-only static site.
-
-This document is the shared contract for everyone (humans and agents) working on the rebuild.
-Follow it; if it must change, change the document in the same change set.
+A true-scale, interactive 3D model of the solar system (Sun, planets, moons) plus the visual dictionary and hero page,
+shipped as a client-only static site. This is the shared contract for humans and agents working on the rebuild: follow
+it, and if it must change, change it in the same change set.
 
 ## Stack
 
-- Vite + React 19 + TypeScript (strict). Package manager: pnpm. Node 22 (see `.nvmrc`).
-- Routing: TanStack Router, file-based routes in `src/routes`. URLs must stay
-  `/`, `/solar_dictionary`, `/solar_system`. Search params are validated with zod.
-  `/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>` mirrors the dictionary selection;
-  invalid values fall back to the defaults (Sun, base) instead of erroring.
-- 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3 + `postprocessing`.
-- UI: Mantine 9 (`@mantine/core`, `@mantine/hooks`) with CSS modules. No emotion, no `createStyles`, no `sx`.
-  Icons: `@tabler/icons-react`.
-- Animation: `gsap` (UI transitions, camera tweens). No react-spring.
-- State: `zustand`.
-- Data: static JSON validated with zod at build time (`pnpm build:data`). No GraphQL, no server.
-- Tests: Vitest (unit, `src/**/*.test.ts` and `scripts/**/*.test.ts`), Playwright (`e2e/`, smoke tests against `vite preview`).
-  `astronomy-engine` is a devDependency used only by tests as the reference ephemeris.
-- Lint/format: ESLint 10 flat config (`eslint.config.js`) + typescript-eslint + react-hooks, Prettier (tabs, no semicolons, as today).
-- Hosting: static build (`dist/`). CI: GitHub Actions (typecheck, lint, test, build, e2e, deploy to GitHub Pages).
-  `VITE_BASE` env var sets Vite `base` (default `/`). Cloudflare Workers serves `dist/` as static assets
-  (`wrangler.jsonc`, SPA fallback; deploy command `npx wrangler deploy`). `wrangler` is a devDependency so the deploy
-  runs the locked version: without it `npx` fetches whatever was published last, minutes-old releases included.
-- Dependencies installed ahead of their phase: `tsx` (Phase 2, `scripts/build-bodies.ts`) and `zustand` (Phase 3, `src/store`).
-- Known upstream noise: fiber 9.8 still constructs `THREE.Clock`, which three >= 0.183 logs as deprecated once per
-  `<Canvas>` mount (a `console.warn`). Stay on current `three`; do not pin it down for this.
+- Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
+- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`. Search params are
+  zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
+- 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
+- UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
+- Data: static JSON validated with zod at build time. No GraphQL, no server.
+- Tests: Vitest (`src/**/*.test.ts`, `scripts/**/*.test.ts`); Playwright smoke tests (`e2e/`, against `vite preview`).
+  `astronomy-engine` is a test-only reference ephemeris.
+- ESLint 10 flat config + typescript-eslint + react-hooks; Prettier (tabs, no semicolons).
+- Hosting: static `dist/`, `VITE_BASE` sets Vite `base`. CI (GitHub Actions): typecheck, lint, test, build, e2e, deploy
+  to GitHub Pages. Cloudflare Workers also serves `dist/` (`wrangler.jsonc`, SPA fallback, `npx wrangler deploy`;
+  `wrangler` is a pinned devDependency).
+- Known noise: fiber 9.8 logs a `THREE.Clock` deprecation once per `<Canvas>` mount. Do not pin `three` down for it.
 
 ## Directory layout
 
 ```
-index.html
-vite.config.ts
-eslint.config.js
-data/ourDB.json              raw source data (le-systeme-solaire.net export + hand-curated fields). Never imported by the app directly
-                             (exception: src/data/solarDictionary.ts still projects it until the dictionary switches to bodies.json).
-data/rings/<planet>.json     ring systems the source lacks (uranus, neptune): radii, texture paths and the bands that generate the strips
-scripts/build-bodies.ts      normalizes data/ourDB.json (+ data/rings) -> src/data/bodies.json   (pnpm build:data, runs with tsx)
-scripts/lib/                 the pure, fixture-tested mapping behind build-bodies.ts (build.ts, names.ts, numbers.ts, hash.ts, orbit.ts,
-                             frames.ts (equator -> ecliptic elements), iau.ts (IAU poles, J2), json.ts)
-scripts/gen-ring-textures.ts rasterizes data/rings/*.json into public/assets/textures/<planet>/rings/rings_{alpha,color}.png (pnpm gen:rings)
-src/main.tsx
-src/routes/                  __root.tsx, index.tsx, solar_dictionary.tsx, solar_system.tsx (TanStack file routes)
-src/routeTree.gen.ts         generated by the router plugin (committed)
-src/providers/               Mantine theme + provider, GSAP transition context, Layout
-src/data/                    bodies.json, schema.ts (zod), index.ts (typed lookups), solarDictionary.ts (adapter used by the dictionary + hero)
-src/sim/                     pure simulation code (no React, no three.js objects): units.ts, time.ts, clock.ts, kepler.ts, positions.ts,
-                             rotation.ts, scale.ts (the scale engine, see Scale), index.ts (barrel, import from "@/sim");
-                             testing/ephemeris.ts holds the astronomy-engine helpers that only the tests import
-src/store/                   sim.ts (the simulation store), navigation.ts (selection and the camera's view, a slice of
-                             the simulation store, see Navigation), scale.ts (the active scale, see Scale), simSearch.ts (zod schema of the
-                             /solar_system search params; only zod, so the eagerly loaded route chunk stays lean), urlSync.ts
-                             (store <-> URL hook, see Store)
-src/features/hero/           landing page (existing, ported)
-src/features/solarDictionary/ dictionary (existing, ported)
-src/features/solarSystem/    the 3D solar system: index.tsx (page), scene/ (Scene, SimClock, ScaleSync, simFrame, Markers, useThrottledSimTime),
-                             bodies/ (Bodies, BodyMesh, orientation, OrbitLine, OrbitLines), camera/ (CameraRig, director,
-                             framing, pose, profiles, input, debugHandle), ui/ (TimeControls, SceneToggles, FocusPicker,
-                             OverviewButton, BodyInfo + format/warp/focusCycle/keyboard helpers); scene/tap.ts (tap vs drag)
-src/GSAPAnimation/ src/hooks/ src/primitives/ src/utils/   shared bits (existing)
-public/assets/textures/      textures (pruned: no PSD/JP2, no byte-identical duplicates, no *_previous/copy/_1/_2 leftovers,
-                             no dwarf-planet/asteroid maps). Unreferenced tiered variants (moon_2k/4k, earth_*_10k,
-                             earth_night_*, earth_clouds_*, pluto_2k, jupiter_4k, ...) are kept for the solar system phases.
-e2e/                         Playwright smoke tests
-docs/                        this file
+data/ourDB.json              raw source (le-systeme-solaire.net export + curated fields); only solarDictionary.ts imports it
+data/rings/<planet>.json     ring systems the source lacks (Uranus, Neptune)
+scripts/build-bodies.ts      data/ -> src/data/bodies.json (pnpm build:data); the pure, tested mapping lives in scripts/lib/
+scripts/gen-ring-textures.ts data/rings -> public/assets/textures/<planet>/rings/ (pnpm gen:rings)
+src/routes/                  file routes; src/routeTree.gen.ts is generated and committed
+src/providers/               Mantine theme, GSAP transition context, Layout
+src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
+src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
+src/store/                   sim.ts, navigation.ts, scale.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, ui/)
+src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
+public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
 
 ## Conventions
 
-- Path alias `@/*` -> `src/*` (tsconfig `paths` + Vite `resolve.tsconfigPaths`).
-- Public assets (`public/`) are referenced as URL strings built with `assetUrl()` (`src/utils/assetUrl.ts`, prefixes
-  `import.meta.env.BASE_URL`), never imported as modules, so `VITE_BASE` sub paths keep working.
-- Function components, `export default` at the bottom as today. Props types exported next to the component.
-- Styling: CSS modules (`Component.module.css`) or Mantine style props. Dark color scheme, orange primary (`orange.7`) as today.
-- No SSR concerns exist any more: no `dynamic(..., { ssr: false })`, no `didMount` gates, no `next/*` imports.
-- Per-frame motion never goes through React state: use `useFrame` and mutate refs.
-- Nobody commits. The orchestrator commits at the end of each phase.
-- Quality gate before declaring any task done: `pnpm typecheck && pnpm lint && pnpm test && pnpm build` (and `pnpm test:e2e` when the UI changed).
+- Path alias `@/*` -> `src/*`. Public assets are URL strings built with `assetUrl()` (`src/utils/assetUrl.ts`), never
+  imported, so `VITE_BASE` sub paths work.
+- Function components, `export default` at the bottom, props types exported next to the component.
+- CSS modules or Mantine style props; dark scheme, primary `orange.7`. No SSR leftovers (`next/*`, `ssr: false`, mount gates).
+- Per-frame motion never goes through React state: `useFrame` and mutate refs.
+- Nobody commits; the orchestrator commits at the end of each phase.
+- Done means `pnpm typecheck && pnpm lint && pnpm test && pnpm build` pass (plus `pnpm test:e2e` when the UI changed).
 
-## Data model (`src/data/schema.ts`, zod; types inferred from the schema)
+## Data model (`src/data/schema.ts`)
 
 ```ts
 type BodyKind = "star" | "planet" | "moon"
@@ -89,30 +55,30 @@ type BodyKind = "star" | "planet" | "moon"
 interface Orbit {
 	semiMajorAxisKm: number
 	eccentricity: number
-	inclinationDeg: number // to the ecliptic (regular moons: the source's equator-relative value, rotated by the build; see below)
+	inclinationDeg: number // to the ecliptic
 	longAscNodeDeg: number
 	argPeriapsisDeg: number
 	meanAnomalyDeg: number // at epochJD
-	periodDays: number // sidereal orbital period
-	epochJD: number // 2451545.0 (J2000) for all source data
-	phaseSynthetic?: boolean // true when node/periapsis/anomaly were all 0 in the source and were spread deterministically from hash(id)
+	periodDays: number // sidereal
+	epochJD: number // 2451545.0 (J2000)
+	phaseSynthetic?: boolean // node/periapsis/anomaly spread deterministically from hash(id)
 }
 
 interface Body {
-	id: string // slug, unique: "sun", "earth", "moon", "io", "s2003j24"
-	name: string // English display name
+	id: string // unique slug: "sun", "earth", "io", "s2003j24"
+	name: string
 	kind: BodyKind
 	parentId: string | null // null only for the Sun
-	radiusKm: number // mean radius; when the source had none, derived from diameter or a default, and radiusEstimated = true
+	radiusKm: number
 	radiusEstimated?: boolean
 	massKg: number | null
 	orbit: Orbit | null // null only for the Sun
 	rotation: {
-		periodHours: number | null // sidereal; negative = retrograde. The sign alone carries the spin direction
-		axialTiltDeg: number // obliquity to the body's own orbit, measured to the IAU north pole: 0..90
-		poleRaDeg?: number // IAU 2015 north pole, ICRF right ascension (Sun, planets, Moon; always with poleDecDeg)
+		periodHours: number | null // sidereal; negative = retrograde (the only retrograde encoding)
+		axialTiltDeg: number // to the IAU north pole, 0..90
+		poleRaDeg?: number // IAU 2015 pole + W0 at J2000 (Sun, planets, Moon)
 		poleDecDeg?: number
-		primeMeridianDeg?: number // IAU W0 at J2000, from the ascending node of the body's equator on the ICRF equator
+		primeMeridianDeg?: number
 	}
 	textures: {
 		base: string
@@ -126,143 +92,66 @@ interface Body {
 		outerRadiusKm: number
 		textures: { alpha: string; color: string }
 	} | null
-	info: Record<string, unknown> // dictionary fields passed through (gravity, density, avgTemp, discoveredBy, discoveryDate, alternativeName, lengthOfDay, orbitalVelocity, composition, mass, vol, dimension, escape ...)
+	info: Record<string, unknown> // dictionary fields passed through; a source 0 ("unknown") is dropped
 }
 ```
 
-Editorial content (descriptions, comparisons, the facts #20 labels, #24, #28 and #34 show; translated and reading-level
-aware) does not belong in `bodies.json`, which holds physics and presentation hints only. It lives in the content
-resources of the i18n system (#11), keyed by the stable body `id`; a body without an entry falls back to its data. So a
-new body is added by data alone (it is sized, placed and drawn by the scale engine's general rules, see Scale), and its
-story is added as content, never as code.
+`bodies.json` holds physics and presentation hints only, as an array in topological order (parents first): the Sun, the
+8 planets and their moons (dwarf planets, asteroids and comets are in the source but not emitted yet). Editorial content
+lives in the i18n resources (#11), keyed by body `id`, so a new body is added by data alone and its story as content.
 
-`bodies.json` is an array in topological order (every parent precedes its children). Scope for now: Sun, the 8 planets,
-their moons. Dwarf planets, asteroids, comets and belts exist in `data/ourDB.json` but are not emitted yet.
+`src/data/bodies.json` is a committed, deterministic build artifact. CI runs `pnpm check:data` (rebuild +
+`git diff --exit-code`), so rebuild after changing `data/`, `scripts/` or the textures.
 
-Source quirks the build script must handle: planets carry full J2000 elements (`mainAnomaly`, `argPeriapsis`,
-`longAscNode`); moons have those three fields all 0 (spread phases deterministically and flag `phaseSynthetic`).
-Moons appear in two arrays per planet: `moons` (API export; French `name`, English `englishName`; many with
-`meanRadius` 0) and `satellites` (hand-curated: `diameter`, `distanceFromParent`, `orbitalPeriod`, `textures`,
-`mass` sometimes a string like `"4.799844 * 10^22"`). Merge them by normalized English name (strip accents,
-case-insensitive). Skip the `ISS` pseudo-entry under Earth. Small moons without a texture use the shared
-placeholder `/assets/textures/earth/satellites/moon_1k.jpg`.
+Build rules (`scripts/lib/`):
 
-`src/data/bodies.json` is a build artifact that is committed on purpose: the app imports it directly, the tests
-re-validate it against the schema, and CI runs `pnpm check:data` (`pnpm build:data && git diff --exit-code -- src/data/bodies.json`)
-so the committed file cannot drift from its inputs (`data/ourDB.json`, `data/rings/*.json`, the textures under `public/`
-and `scripts/`). Rebuild after changing any of them. The build is deterministic (fixed key order, tabs, prettier-clean).
+- Moons are merged from the source's `moons` (API export) and `satellites` (curated) arrays by normalized English name;
+  `ISS` is skipped; curated-only moons are built from their curated fields; a missing period is derived from Kepler's
+  third law (`info.periodDerived`). Untextured moons get the shared placeholder `earth/satellites/moon_1k.jpg`.
+- Moon phases are all 0 in the source, so they are spread from `hash(id)` and flagged `phaseSynthetic`. Only the Moon and
+  the Galileans have real (curated) phases.
+- Retrograde spin is normalized to one encoding: tilt to the IAU pole (`180 - obliquity`) plus a negative period.
+- IAU poles and prime meridians (WGCCRE 2015 at J2000) for the Sun, planets and Moon come from `scripts/lib/iau.ts`.
+- Moon inclinations refer to the Laplace plane: inside the planet's Laplace radius they are rotated from the planet's
+  equator into the ecliptic (`frames.ts`), so regular moons and rings are coplanar; outside it they are kept as ecliptic.
+- Rings: Jupiter and Saturn from the source, Uranus and Neptune from `data/rings/`. Strips run u = 0 (inner) to u = 1
+  (outer). A missing ring texture fails the build.
+- Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements) are made
+  in `data/ourDB.json` itself. Sanity checks (Kepler period, density) warn on stderr.
 
-Further build rules:
+## Simulation (`src/sim`, pure and unit-tested)
 
-- Rings: Jupiter and Saturn come from `rings` in the source (`textures.base` -> `alpha`, `colorMap` -> `color`); Uranus
-  and Neptune (`rings: false` in the source) come from `data/rings/<id>.json`, whose `bands` also drive `pnpm gen:rings`.
-  Every ring strip has u = 0 at `innerRadiusKm` (left column) and u = 1 at `outerRadiusKm` (right column); the legacy
-  Saturn strips were flipped to follow this. A ring texture missing under `public/` fails the build.
-- Moons with a semi-major axis but no period in either source get `periodDays` from Kepler's third law with the parent
-  mass and `info.periodDerived: true` (18 small outer moons of Jupiter and Saturn) instead of being dropped.
-- `satellites` entries without an API partner (46 moons, e.g. Ganymede, Rhea, Oberon, Proteus) are built from the
-  curated fields alone: eccentricity 0 unless curated, radius from `diameter` (`radiusEstimated`), no rotation.
-- Spin: the export encodes "retrograde" twice, as an obliquity above 90 (Venus 177.36, Uranus 97.77: the right-hand-rule
-  tilt) and as a negative `sideralRotation`. The build keeps one encoding: `axialTiltDeg` is the tilt to the IAU north
-  pole (180 - obliquity, so north-up maps stay upright) and only the period's sign says retrograde (an obliquity above
-  90 alone also yields a negative period). `info.axialTilt` still carries the source value for the dictionary.
-- IAU orientation (`scripts/lib/iau.ts`, WGCCRE 2015 evaluated at J2000): the Sun, the eight planets and the Moon get
-  `poleRaDeg`/`poleDecDeg`/`primeMeridianDeg`. The Moon's entry is the full series at J2000 (1.57 deg from the ecliptic
-  pole, 6.7 deg from its mean orbit normal); the constant terms alone would drop that tilt.
-- Moon orbit planes: the JPL satellite inclinations in the source refer to each moon's Laplace plane. Inside the planet's
-  Laplace radius (`laplaceRadiusKm` in `scripts/lib/orbit.ts`, from the J2 table in `iau.ts`: Mars 3.9e4, Jupiter 2.0e6,
-  Saturn 2.2e6, Uranus 1.2e6, Neptune 1.6e6 km) that plane is the planet's equator, so the build spreads the synthetic
-  node and periapsis in the equatorial frame and rotates all three angles into the ecliptic with the planet's IAU pole
-  (`scripts/lib/frames.ts`; 55 moons, `stats.equatorRotated`): regular moons and rings are coplanar, Uranus's moons orbit
-  pole-on, Triton runs retrograde about Neptune's pole. Outside the Laplace radius the Laplace plane is close to the
-  planet's orbit and the source value is kept as ecliptic-relative (Iapetus 14.72, Nereid 7.09). Moons with curated real
-  phases (the Moon, the Galileans) are ecliptic-relative already and are never rotated.
-- Placeholder moons get the placeholder alone: the curated entries pair it with the Moon's bump map, which is dropped
-  unless the placeholder is that moon's own texture (the Moon under Earth, `ownsPlaceholderTexture`).
-- Sanity warnings (stderr, non-fatal): a regular moon whose period is more than 10 % off Kepler's third law with the
-  parent mass, and any body whose mean density falls outside 100..10000 kg/m3. Both are silent on the current data.
-- Hand-curated corrections are made in `data/ourDB.json` itself (it is "export + curated"): the Sun's mass exponent (30)
-  and sidereal rotation (609.12 h), the `Ananke` spelling, Phobos' own texture, real J2000 elements for the Moon
-  (mean elements, Meeus ch. 47) and the four Galilean moons (osculating ecliptic elements at J2000 derived from
-  astronomy-engine, so their `inclination` is ecliptic-relative; Ganymede's period is the sidereal 7.15455 d), the
-  planets' J2000 elements (JPL/Standish Table 1 mean elements: `a` in km, `argPeriapsis = varpi - Omega`,
-  `mainAnomaly = L - varpi`; the API's own elements put Neptune 20 deg and Saturn 3.4 deg off the ephemeris) and export
-  typos: Phobos' rotation (7.6534 h, was 0.7653), Iapetus' rotation (1903.92 h, synchronous), Metis' period (0.29478 d),
-  Deimos' period (1.2624 d), Amalthea's mass (2.08e18 kg), Perdita's API mass exponent (16), Anthe's diameter (1.8 km),
-  Nereid's eccentricity (0.7507), inclination (7.09, to the ecliptic) and mass (3.1e19 kg), Neptune's rotation (IAU
-  System III, 15.9663 h). The Moon and the Galileans are the only moons without `phaseSynthetic`; every other moon has
-  deterministic but fictitious phases.
-- `info` passes through the dictionary fields (gravity, density, avgTemp, discoveredBy, discoveryDate, alternativeName,
-  lengthOfDay, orbitalVelocity, composition, mass, vol, dimension, escape, surfaceTemps, flattening, equaRadius,
-  polarRadius, bodyType, diameter, perihelion, aphelion, orbitalPeriod, orbitalInclination, axialTilt,
-  orbitPositionOffset); a numeric 0 means "unknown" in the source and is dropped. This is everything
-  `solarDictionary.ts` needs, so switching it to bodies.json needs no data change.
-- Known source quirks that are kept as they are: the second Jupiter "Megaclite" `satellites` entry (a mislabeled
-  different moon) is dropped with a warning; the Moon's curated `orbitalInclination` 21 is ignored in favour of the
-  API's 5.145; the Moon's `axialTilt` 6.68 is, like every obliquity in the file, measured to its own orbit (1.57 deg to
-  the ecliptic).
+- Time is a Julian Date (`simTimeJD`, `J2000 = 2451545.0`). The clock (`clock.ts`, #9) is an immutable `SimTimeline`
+  `{ anchorJD, anchorMs, rate, glide }` evaluated as `anchorJD + (realMs - anchorMs) * rate / MS_PER_DAY`: nothing
+  accumulates per frame, so time is frame-rate independent and does not drift. Rate is simulated seconds per real
+  second (negative runs backwards). `retimeTimeline` re-anchors on a rate change, `jumpTimeline` jumps,
+  `glideTimeline` eases to a target (up to 2.5 s, log of the distance). `skipFrameGap` counts at most 250 ms of a frame
+  gap (hidden tab, sleep) except at rate 1, so a clock showing the present keeps showing it.
+- Units: 1 scene unit = 1000 km (`toUnits`, `toKm` in `units.ts`); nothing else hard-codes the scale.
+- Frame: three.js is Y-up; ecliptic (xe, ye, ze) maps to scene (xe, ze, -ye), so the ecliptic is the XZ plane (`kepler.ts`).
+- `propagate(orbit, jd, out)` gives the parent-centric position in km (Newton iteration, e up to 0.99), including
+  Kepler's second law. `computePositions(bodies, jd, out)` fills world positions in topological order, in doubles.
+- Rotation (`rotation.ts`): `spinAxis` (IAU pole, else the orbit normal tilted by `axialTiltDeg`), `equatorNode` (zero
+  of the prime meridian) and `rotationAngle(rotation, jd)` (unwrapped, sign from the period). A mesh is oriented with
+  X = equatorNode, Y = spinAxis, Z = X x Y, then rotated about Y.
+- Per-frame callers build the index once (`buildIndex`) and pass reused `out` arrays: the frame loop allocates nothing.
+- Accuracy: planets within 0.2 deg / 0.15 % of astronomy-engine over J2000 +- 2000 d (`positions.test.ts`); the Moon
+  and Galileans within a few degrees; everything else has fictitious phases.
 
-## Simulation (`src/sim`, pure functions, unit-tested)
+## Scale (`src/sim/scale.ts`, `src/store/scale.ts`; #8)
 
-- Time: `simTimeJD` is a Julian Date (double). `J2000 = 2451545.0`. Helpers `dateToJD`, `jdToDate`.
-- Clock (`clock.ts`, issue #9): the one time source. A `SimTimeline` `{ anchorJD, anchorMs, rate, glide }` is an
-  immutable value; `timelineJD(t, realMs) = anchorJD + (realMs - anchorMs) * rate / MS_PER_DAY` (real ms from
-  `performance.now()`, rate in simulated seconds per real second: 0 stands still, negative runs backwards). Nothing is
-  accumulated per frame, so time is frame-rate independent (a 144 Hz and a 30 Hz machine agree bit for bit) and does
-  not drift over hours. `retimeTimeline` (pause, reverse, speed) re-anchors at the current value, so a rate change
-  never moves anything; `jumpTimeline` is an instant jump; `glideTimeline` is time travel: an eased (sine) glide from
-  the current value to the target over `glideDurationMs(delta)` (0 under a minute of simulated time, else 600 ms
-  growing with log10 of the days up to 2.5 s), after which the timeline runs on at its rate. A rate change during a
-  glide applies from its end; a new glide starts from wherever the old one is. `skipFrameGap(t, lastMs, nowMs)`:
-  a frame gap up to `MAX_FRAME_GAP_MS` (250 ms, i.e. down to 4 fps) counts in full, of a longer one (hidden tab,
-  sleep, stall) only 250 ms counts, so the scene resumes where it was; at rate 1 (real time) every gap counts, so a
-  clock showing the present keeps showing it. Never skips time from before the current segment began.
-- Kepler's second law is modelled (issue #9 decision): bodies move faster at perihelion by ((1+e)/(1-e))^2
-  (Mercury 2.3x, Mars 1.45x), pinned by `keplerSecondLaw.test.ts` on the real data.
-- Units: `KM_PER_UNIT = 1000` (1 scene unit = 1000 km). `toUnits(km)`, `toKm(units)` in `units.ts`. Nothing else hard-codes the scale.
-  The simulation is always true scale; what is drawn goes through the scale engine first (see Scale).
-- Frame: three.js is Y-up. Ecliptic coordinates (xe, ye, ze) with ze = north ecliptic pole map to scene (X, Y, Z) = (xe, ze, -ye).
-  The ecliptic plane is the scene XZ plane. `kepler.ts` documents and owns this mapping.
-- Kepler propagation: `propagate(orbit, jd)` -> parent-centric position in km (scene frame). Mean anomaly
-  `M = M0 + 360/P * (jd - epoch)`, solve Kepler's equation with Newton iteration (tolerance 1e-12, handle e up to 0.99),
-  true anomaly, radius, then rotate by argPeriapsis, inclination, longAscNode.
-- `computePositions(bodies, jd, out: Float64Array)` fills world positions (km) in topological order: parent position + propagate(child).
-  All arithmetic in doubles (plain JS numbers).
-- Rotation (`rotation.ts`): `spinAxis(rotation, orbit)` is the scene-frame unit vector of the IAU north pole: from
-  `poleRaDeg`/`poleDecDeg` when present (Sun, planets, Moon), else the orbit normal tilted by `axialTiltDeg` toward the
-  ecliptic pole (exact for tidally locked moons and for the Moon's Cassini state; a body without an orbit starts from the
-  ecliptic pole and leans toward ecliptic longitude 90, where the Earth's pole points). The mesh's local +Y is that axis,
-  so north-up maps stay upright. `equatorNode(rotation, orbit)` is the ascending node of the body's equator on the ICRF
-  equator (perpendicular to the axis): the zero of the prime meridian angle. `rotationAngle(rotation, jd)` =
-  W0 + 2 pi * (jd - epoch) * 24 / periodHours, right handed about the axis (a negative period spins the other way; 0 when
-  the period is unknown; not wrapped, so consecutive frames never jump). The renderer orients a body with the basis
-  X = equatorNode, Y = spinAxis, Z = X x Y and then rotates it about Y by `rotationAngle`.
-- Types: `OrbitElements` is the schema `Orbit` minus `phaseSynthetic` (type-only import) and `RotationElements` mirrors
-  the schema `rotation`, so `Body[]` from `@/data` goes straight into `computePositions` and `spinAxis`. Per-frame callers
-  build the id index once (`buildIndex(bodies)`, of the same array: a mismatched index throws) and pass it together with
-  a reused `out` array; `propagate(orbit, jd, out)`, `spinAxis` and `equatorNode` likewise take an `out` vector, so the
-  frame loop allocates nothing.
-- Accuracy: the eight planets agree with astronomy-engine to < 0.2 deg / 0.15 percent over J2000 +- 2000 days
-  (`positions.test.ts` checks the emitted bodies.json elements against the ephemeris at J2000, +1000 d and -2000 d with
-  a 0.3 deg / 0.3 percent gate; `kepler.test.ts` checks the propagator with its own element table); the Moon and the
-  Galilean moons to a few degrees. Everything else has fictitious phases (see Data model).
-
-## Scale (`src/sim/scale.ts`, `src/store/scale.ts`; issue #8)
-
-True scale is the baseline: the simulation (`positions.ts`, `SimFrame.positionsKm`) always works in real kilometres, and
-every fact shown as text (radii, distances, light travel times, flight readouts) is computed from true values. What is
-drawn goes through the scale engine: a `ScaleSettings` is a set of three named, independent lies applied on top of the
-truth, and only the renderer sees the result ("display space", measured in display km).
+The simulation and every fact shown as text use true kilometres. Only what is drawn goes through the scale engine,
+which applies three independent, named lies ("display space"):
 
 ```ts
 interface SizeCurve {
 	exponent: number
-} // radius -> drawn radius
+} // drawn radius = rootRadius * (radius / rootRadius) ** exponent
 interface DistanceCurve {
 	knee: number
 	exponent: number
 	gain: number
-} // distance in parent radii -> drawn parent radii
+} // parent radii -> drawn parent radii
 interface ScaleSettings {
 	bodySize: SizeCurve
 	orbitDistance: DistanceCurve
@@ -270,369 +159,172 @@ interface ScaleSettings {
 }
 ```
 
-- `bodySize`: drawn radius = `rootRadius * (radius / rootRadius) ** exponent`. The root (the Sun) always keeps its true
-  size; it is the ruler everything else is drawn against. Exponent 1 = true; 0.5 turns the Sun's 109 Earth-widths into 10.4.
-- `orbitDistance` places the children of the root (planets; later dwarf planets, comets, asteroids, heliocentric
-  spacecraft), `moonDistance` the children of anything else (moons, a moon of a dwarf planet, a probe orbiting Mars).
-  Depth decides (`childDistanceCurve`), never the body kind, so a new kind of body needs no special case.
-- A curve maps a distance `x` measured in the parent's TRUE radii to a distance in the parent's DRAWN radii: the
-  identity up to `knee` (>= 1), then `knee * (1 + gain * ((x / knee) ** exponent - 1))`. Identity when exponent and gain
-  are 1. Monotone, continuous, never below `min(x, knee)`: nothing is ever drawn inside its parent, whatever the settings.
-- The one rule, and the single source of truth: a body's display position is its parent's display position plus the
-  true parent -> child offset, kept in its true direction and rescaled to
+- The Sun always keeps its true size. `orbitDistance` places the root's children, `moonDistance` everything deeper
+  (`childDistanceCurve` decides by depth, never by kind).
+- A distance curve is the identity up to `knee`, then `knee * (1 + gain * ((x / knee) ** exponent - 1))`: monotone and
+  never below `min(x, knee)`, so nothing is drawn inside its parent.
+- The one rule: display position = parent's display position + the true parent -> child direction, rescaled to
   `parentDrawnRadius * curve(trueDistance / parentTrueRadius)` (`displayOffset`, `computeDisplayPositions`). Directions
-  from a parent to its children are therefore true in every preset (which side of the Sun a planet is on, conjunctions,
-  Kepler's second law as swept angle); only distances and sizes lie. Anything measured between two bodies that are not
-  parent and child (Mars as seen from Earth, #31 / #36) must use the true positions.
-- Derived visuals never have factors of their own: meshes scale by the drawn radius, orbit lines map their true samples
-  through `displayOffset` (the same function as the bodies), markers hide by the drawn radius, the camera frames the drawn
-  radius, and lengths that belong to a body (ring radii, an atmosphere, a label offset) scale with it through
-  `displayBodyLengthKm(length, radius, drawnRadius)`. Every ring in the data lies inside `moonDistance.knee` (3 parent
-  radii), the zone where moons keep their true proportions too, so ring moons stay in their gaps (Pan in the Encke gap).
-- Anything that is not a body but lives in the scene (a spacecraft #35, a light front #27, a belt particle #23) maps a
-  true point `p` near an anchor body `a` (the root for interplanetary space) the same way: `display(a) +
-displayOffset(p - true(a), radius(a), drawnRadius(a), childDistanceCurve(scale, a is root))`.
+  are true in every preset; anything measured between non-parent/child bodies must use true positions.
+- Derived visuals have no factors of their own: meshes, orbit lines, markers, camera framing and body-attached lengths
+  (`displayBodyLengthKm`) all derive from the drawn radius and `displayOffset`. Non-body objects near an anchor body map
+  through the same `displayOffset`.
 
-Presets (`SCALE_PRESETS`, frozen; `SCALE_PRESET_IDS` in UI order; the only way a scale should reach a user, #21):
+| preset              | bodySize | orbitDistance (knee, exp, gain) | moonDistance (knee, exp, gain) | reads as                                                 |
+| ------------------- | -------- | ------------------------------- | ------------------------------ | -------------------------------------------------------- |
+| `trueScale`         | 1        | 1, 1, 1                         | 3, 1, 1                        | real sizes and distances; planets are specks             |
+| `textbook`          | 1        | 1, 0.53, 0.12                   | 3, 0.2, 1                      | sizes true to each other, distances squeezed hard        |
+| `everythingVisible` | 0.5      | 1, 0.52, 1                      | 3, 0.2, 2                      | **the default**: small bodies enlarged, orbits pulled in |
 
-| id                  | bodySize | orbitDistance (knee, exponent, gain) | moonDistance (knee, exponent, gain) | reads as                                                                        |
-| ------------------- | -------- | ------------------------------------ | ----------------------------------- | ------------------------------------------------------------------------------- |
-| `trueScale`         | 1        | 1, 1, 1                              | 3, 1, 1                             | real sizes and distances; the planets are specks                                |
-| `textbook`          | 1        | 1, 0.53, 0.12                        | 3, 0.2, 1                           | sizes true to each other (the Sun is 109 Earths wide), distances squeezed hard  |
-| `everythingVisible` | 0.5      | 1, 0.52, 1                           | 3, 0.2, 2                           | the default: small bodies enlarged, far orbits pulled in, moon systems gathered |
+`scale.test.ts` guards the non-true presets (orbit order kept, moon systems separated, rings and ring moons true to
+proportion). `interpolateScale` blends presets for animated changes; also `presetOf`, `sameScale`, `isValidScale`,
+`sizeExaggeration`, `distanceFactor`. The store (`useScaleStore`: `scale`, `presetId`, `setPreset`, `setScale`,
+`setFactor`) is not persisted or in the URL. `scene/ScaleSync.tsx` pushes it into the SimFrame and sets
+`data-scale-preset` on the canvas. On a scale change the camera keeps the framed body's on-screen size.
 
-**Product decision (#8): the app opens in `everythingVisible` (`DEFAULT_SCALE_PRESET`); true scale is one preset away.**
-In it Earth is drawn 10.4x too large, Jupiter 3.2x; Neptune's orbit is drawn 67x closer than true (relative to the
-Sun's size) and Mercury's 8.4x; the Moon sits at 7.9 drawn Earth radii instead of 60. The values are guarded by
-`scale.test.ts` for `textbook` and `everythingVisible`: planet orbits keep their order and never touch or reach the Sun,
-every moon system stays within half the gap to the neighbouring planets' orbits, no two moons of radius >= 150 km come
-closer than 1.2x the sum of their drawn radii, rings and ring moons keep their true proportions. Moon systems are
-measured in parent radii (as the issue frames them: the Moon 30 Earth-diameters out, Phobos under 2 Mars radii above
-the surface).
+## Navigation (`src/store/navigation.ts`, `features/solarSystem/camera`; #10)
 
-- `interpolateScale(from, to, t)`: exponents and knees blend linearly, gains geometrically; the ends return the preset
-  objects themselves, so `presetOf` recognises a finished transition. #21 animates a preset change by calling
-  `setScale(interpolateScale(...))` once per frame. Also `presetOf`, `sameScale`, `isValidScale`, `isTrueScale`,
-  `sizeExaggeration` and `distanceFactor` (for the "how far from true" statement #21 must show).
-- Store (`useScaleStore`): `scale`, `presetId` (null for a custom mix or mid-transition), `setPreset(id)`,
-  `setScale(settings)` (invalid settings ignored; a value equal to a preset is stored as the frozen preset object),
-  `setFactor(name, value)`. Not persisted and not in the URL: every visit opens in the default preset (the URL and the
-  picker are #21's).
-- `scene/ScaleSync.tsx` (inside the Canvas, renders nothing, subscribes without re-rendering) pushes the store into the
-  SimFrame (`setSimFrameScale`) and mirrors the preset onto the canvas as `data-scale-preset` (`custom` for any other
-  mix) for tests and tooling.
-- Camera: when the scale changes, the camera director (`followScale`, see Navigation) scales the camera distance with
-  the view's default framing (the focus's drawn radius; for the overview the drawn planetary system), so what is framed
-  keeps its size on screen while everything else moves to where the new scale puts it: from the Sun, switching to true
-  scale sends the planets out of the frame and leaves the Sun alone, which is the lesson. A transit in flight re-reads
-  its arrival distance every frame, so a scale change mid-flight lands on the new framing.
-- #25 (the basketball walk) needs no engine: it is the true values times one uniform factor.
-
-## Navigation: selection and the camera (`src/store/navigation.ts`, `features/solarSystem/camera`; issue #10)
-
-One owner of the camera. Feature code asks the store for a view and never touches the camera, the controls or the render
-origin; the camera director is the only code that does (an ESLint `no-restricted-imports` rule keeps drei's camera
-controls out of `features/solarSystem` outside `camera/`). Read the camera, never write it: `window.__astrolabe.camera()`
-(below) for tooling and tests.
-
-State (the navigation slice, composed into `useSimStore`, so `useSimStore((s) => s.focusId)` keeps working):
+The camera director is the only code that touches the camera, controls or render origin; features ask the store for a
+view (an ESLint rule keeps drei camera controls inside `camera/`). The navigation slice lives in `useSimStore`:
 
 ```
-selectedId: string | null  the selection: drives info panels, labels, the URL; never moves the camera by itself
-view: View                 where the camera is, or is heading while `transition` is set:
-                             { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
-                           (a point is a pivot in empty space, anchored to the body whose neighbourhood it is in; its
-                           offset is in TRUE km from the anchor, drawn through the scale engine, see Re-centring)
-focusId: string            the body the view is centred on: the Sun for the overview, the anchor of a point. The moon
-                           family rule and "always show the focus" follow it
-shot: CameraShot | null    the camera around the view as it last came to rest (published by the director on rest and on
-                           arrival; a complete requested shot at once): { azimuthDeg, elevationDeg, distance } with the
-                           distance a multiple of the view's default framing, so a shot survives scale presets and screens
-transition: Transition | null   { id, view, shot (partial), durationMs (null = automatic, 0 = jump), profile, handedOver }
-sequence: Sequence | null  { steps, index, phase: moving | holding | waiting | interrupted, holdUntil, transitionId }
-panning: boolean           a pan gesture (or its damped glide) is moving the pivot right now (the centre marker shows)
-viewMode(state)            "overview" | "focused" | "free" | "transit": the view states
+selectedId: string | null   drives info panels, labels, the URL; never moves the camera
+view: View                  { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
+                            (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15)
+focusId: string             body the view is centred on (the Sun for the overview, a point's anchor)
+shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
+transition, sequence        the running move and the running tour
+panning: boolean            a pan (or its damped glide) is moving the pivot right now
+viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
-Actions: `select(id | null)`; `setFocus(id)` (the click gesture: select + focus; a no-op for the current focus or
-destination); `focus(id, request?)`; `overview(request?)` (the home shot unless the request says otherwise);
-`goTo(view, request?)`; `jumpTo(view, shot?)`; `reset()` (the way out: stops any sequence, clears the selection, flies
-to the overview; the director jumps instead when the camera is broken); `skip()` (finishes the transition, or jumps to
-the last stop of a sequence); sequences: `playSequence(steps, startAt?)`, `goToStep(i)`, `nextStep()`,
-`resumeSequence()`, `stopSequence()`. A request (`ViewRequest`) carries `shot` (a partial `CameraShot`: a missing
-direction keeps the current one, a missing distance frames at 1x), `durationMs` and `profile`. A `SequenceStep` is a view
-plus a request plus `holdMs` (omitted: wait for `nextStep()`, the presenter's pace). Invalid views and unknown bodies are
-ignored everywhere. Camera-rig callbacks, not for features: `settle(id)`, `userInput()`, `publishShot(shot)`,
-`settleAt(view)`, `setPanning(b)`, `tickSequence(now)`.
+Actions: `select`, `setFocus` (click: select + focus), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
+(the way out), `skip`, and sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
+request carries a partial `shot`, `durationMs` and a `profile`. Invalid views and unknown bodies are ignored.
+Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
-Transitions (`camera/director.ts`, plain TypeScript over camera-controls and the SimFrame, unit-tested frame by frame):
+Director (`camera/director.ts`, unit-tested frame by frame):
 
-- Every request gets a new transition id; the director starts a move whenever the id changes, always from the camera as
-  it is at that moment (the current pivot, re-anchored to the nearer end of an interrupted move, and the current pose),
-  so a second request, the overview, Escape or a skip mid-flight retargets and never snaps back.
-- Both pivots are re-read every frame (both keep orbiting), so a move ends exactly on the destination's position at
-  arrival. The arrival distance is re-read too (scale changes).
-- User input during a move (camera-controls' `controlstart` / `control`: drag, wheel, pinch) hands the distance and
-  direction over to the user at once while the pivot still glides to the destination on the same schedule: nobody is
-  stranded between two planets. On arrival a handed-over camera that ended inside the body is pushed out to the
-  minimum distance. User input also interrupts an automatic sequence step (moving or holding), not a stop that waits for
-  the presenter; `resumeSequence()` flies back to the stop.
-- Settled: the origin tracks the view's pivot every frame; a scale change rescales the distance (see Scale); a target
-  moved off the origin (a pan) is folded into a pending pan without anything moving on screen, and committed once the
-  gesture is released and its damped glide is over (see Re-centring).
-- Broken state: a camera, target or origin that is not finite, or a view of a body that does not exist, is replaced by
-  the overview (`reset()`, applied as a jump). The first frame after mounting always jumps to the store's view.
-- Transit profiles (`camera/profiles.ts`): a profile maps normalized time to a pivot weight, a camera distance and a
-  direction weight; the director applies it. The default `smooth` is van Wijk and Nuij's smooth zoom-and-pan in log
-  space (`camera/pose.ts`, rho 1.6), eased in and out: from the overview it descends with the target already on screen;
-  between distant bodies it backs out until both are in view, crosses and descends. The automatic duration grows with
-  the length of the path (`transitDurationMs`: 0.8 to 3 s). #18's tuned three-phase flight is one more named profile.
-- `CameraSnapshot` (`director.snapshot()`, also `window.__astrolabe.camera()`): mode, running transition id, its
-  duration and progress (#18's readout), origin, target, camera position (display km), distance, azimuth, elevation,
-  finite. `window.__astrolabe` (`camera/debugHandle.ts`, while the solar system is mounted, every build) also holds the
-  store, so the model can be driven from the console and from e2e tests.
+- Every request starts a new move from wherever the camera is, so retargeting mid-flight never snaps back. Both pivots
+  and the arrival distance are re-read every frame.
+- User input during a move takes over distance and direction while the pivot still glides home; it also interrupts
+  automatic sequence steps. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
+  when released (see Re-centring).
+- A non-finite camera or a view of a missing body resets to the overview.
+- Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s.
+- `window.__astrolabe` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
+  console and e2e tests. Read the camera, never write it.
 
-### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`, issue #15)
+### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
 
-- Gestures (`configureInput`, `PAN_ENABLED`): orbit = left button / one finger; dolly = wheel, trackpad scroll, touch
-  pinch, trackpad pinch (ctrl+wheel, `pinchAsDolly`), middle button; pan = right button (a two-finger click-drag on a
-  trackpad), Shift + left button (`shiftDragPans`, a one-button mouse or trackpad click), two fingers moving together
-  (with the pinch), three fingers. A pan is camera-controls' `SCREEN_PAN`: it slides the pivot parallel to the ecliptic,
-  like dragging a map, so the centre never drifts above or below the solar system. Damping is camera-controls'
-  `smoothTime` (0.4 s).
-- A pan is committed (`CameraDirector.commitPan`) after the controls' update once the gesture is released and the
-  pivot is within 1e-4 of the camera distance of where it is heading. Not on camera-controls' `rest` event, which also
-  fires while a finger holds still mid-drag, never fires after an instant move, and uses an absolute 10 km threshold.
-  What is left of the glide is folded into the pivot, so the commit moves nothing on screen. Then:
-  - **Snap** (`snapTarget`): if the centre of the screen is on a drawn body's disc, or within `SNAP_FOV_FRACTION`
-    (1.2 %) of the vertical field of view of its centre (about 11 px, the pick radius of a dot), and the body is drawn
-    (`isBodyShown` and the markers' moon family rule), the pivot glides onto it (`goTo`, 450 ms, the camera distance
-    kept). The current view is kept when that is where the pan came from, so a pan that never left the focused planet's
-    disc snaps back instead of dropping the focus, and a small pan in the overview stays the overview. The Sun becomes
-    the overview (from a body view: the focused Sun). Dragging a planet to the middle re-centres on it. The selection is
-    never changed by a camera gesture.
-  - **Point** otherwise: the pivot becomes `{ kind: "point", anchorId, offsetKm }` (`settleAt`). The anchor is the
-    innermost body whose neighbourhood holds the drawn point (`neighbourhoodOf`): the Hill sphere
-    (`a * cbrt(m / 3M)`) as drawn under the active scale, at least `NEIGHBOURHOOD_MIN_RADII` (4) drawn radii, the Sun
-    owning everything. So a pivot among Jupiter's moons follows Jupiter and one between the planets stays put relative
-    to the Sun. The offset is stored in TRUE km (`pointOffsetKm`, the inverse of the display mapping: `trueOffset`,
-    `unmapDistance` in `src/sim/scale.ts`) and drawn back with `pointDisplayKm` (the anchor's display position plus
-    `displayOffset` with the anchor as the parent: the architecture's rule for anything near a body that is not a
-    body). The point therefore keeps its place in the neighbourhood under every scale preset, and a link carries it
-    independently of the preset.
-- Limits follow the centre: `minViewDistance` is the view body's (for a point, its anchor's: near Mercury the camera may
-  come close, in interplanetary space a dolly stops at 1.2 solar radii instead of creeping towards an empty pivot
-  forever). `defaultDistance` of a point anchored to the Sun is the overview's (the drawn system), so interplanetary
-  points frame and follow scale changes like the overview; near a body it is the anchor's 6 radii.
-- HUD: `ui/CentreMarker.tsx` (a CSS crosshair at the middle of the canvas, where the pivot always is, shown while
-  `panning` or free), `ui/CentreBadge.tsx` (free only: "Free view, near Mars" with "Centre on Mars" = `setFocus`, or
-  "in interplanetary space" with "Back to overview" = `overview()`), and the focus picker shows no body while free.
-  `ui/centre.ts` holds `freeCentreId(state)` (a stable selector) and the strings. The home button and Escape
-  (`reset()`) stay the way out from anywhere.
+- Gestures: orbit = left button / one finger; dolly = wheel, trackpad scroll, pinch, ctrl+wheel, middle button; pan =
+  right button (trackpad two-finger click-drag), Shift + left (`shiftDragPans`), two fingers together, three fingers.
+  Pans are camera-controls' `SCREEN_PAN`: the pivot slides parallel to the ecliptic, like dragging a map.
+- A pan is committed after the controls' update once released and the glide is within 1e-4 of the camera distance of
+  its end (not on camera-controls' `rest`, which fires mid-drag and uses an absolute 10 km threshold). The rest of the
+  glide is folded in, so the commit moves nothing on screen. Then:
+  - **Snap** (`snapTarget`): if the screen centre is on a drawn body's disc or within `SNAP_FOV_FRACTION` (1.2 % of the
+    vertical fov, about 11 px) of a drawn body, the pivot glides onto it (450 ms, distance kept). The view it came from
+    is kept when that is the body (a pan that never left the planet snaps back; a small pan in the overview stays the
+    overview); the Sun means the overview. Camera gestures never change the selection.
+  - **Point** otherwise: anchored to the innermost body whose drawn Hill sphere (at least 4 drawn radii; the Sun owns
+    everything) holds it (`neighbourhoodOf`), offset stored in TRUE km (`pointOffsetKm`, via `trueOffset` /
+    `unmapDistance` in `src/sim/scale.ts`) and drawn with `pointDisplayKm`, so it keeps its place under every preset.
+- Limits follow the centre: a point uses its anchor's `minViewDistance`; a point anchored to the Sun is framed
+  (`defaultDistance`) like the overview.
+- HUD: `ui/CentreMarker.tsx` (crosshair at the canvas centre while `panning` or free), `ui/CentreBadge.tsx` ("Free view
+  near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
+  `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
+- Building on it: #16 clicks call `setFocus`; #31 anchors the frame to `focusId` (a point's anchor).
 
-Building on it: #16 is `setFocus` on click plus hover feedback and an exit on empty space (`reset` / `overview`); #18 adds a
-profile and a readout from `snapshot()`; #28 tours and #30 the opening sequence are `playSequence` (cues such as time or
-scale react to `sequence.index`; leaving and coming back is `interrupted` + `resumeSequence`); #29 preset views are
-`goTo(view, { shot })` and saved views are the URL; #31 anchors the reference frame to the body a view is centred on
-(`focusId`, the anchor for a free point) and should re-express a point's true offset in that frame; #33 links a postcard to the
-URL.
+## Floating origin
 
-## Floating origin and precision
+GPU positions are float32, so the render origin is the camera's pivot in display space:
+`renderPos(b) = toUnits(display(b) - origin)`, computed in doubles every frame. The controls always target (0, 0, 0).
+The canvas uses a logarithmic depth buffer. Orbit lines are rebuilt relative to the origin when it moves, so nothing
+near the camera jitters.
 
-GPU positions are float32. At Neptune's distance a Sun-centred coordinate is only good to a few hundred km, so the
-render origin is the camera's pivot: `renderPos(b) = toUnits(display(b) - origin)` computed in doubles every frame and
-written to the object's `position`. The origin lives in display space (the pivot's DISPLAY position, see Scale), never in
-true km. The camera director writes it (see Navigation): the focused body, the Sun in the overview, a point anchored to
-a body, and during a transit a blend of the start and destination pivots, both re-read every frame.
-The camera controls always target (0, 0, 0); a moved target (a pan, #15) is folded back into the pivot by the director. The canvas uses `gl={{ logarithmicDepthBuffer: true }}`.
-Orbit lines are sampled ellipses (256 segments plus one anchor vertex that sits exactly on the body, see Orbit lines
-under the runtime contract) in the parent's frame; the geometry is rebuilt in doubles relative to the current origin
-whenever the origin has moved more than a threshold since the last rebuild, so the part of any orbit near the camera
-never jitters.
-
-## Store (`src/store/sim.ts`, zustand)
+## Store (`src/store/sim.ts`)
 
 ```
-simTimeJD: number          the clock's sample for the current frame (written by tick() and the time actions only)
-timeWarp: number           simulated seconds per real second; negative = backwards; kept while paused
-paused: boolean            clock: SimTimeline (runs at paused ? 0 : timeWarp)   lastTickMs: number | null
-hoverId: string | null     showOrbits, showLabels, showMoons, showMarkers: boolean
-...NavigationSlice         selectedId, view, focusId, shot, transition, sequence and their actions (see Navigation)
-setTimeWarp(n), togglePause(), setPaused(b)   re-anchor the clock at performance.now(): nothing moves at the change
-setSimTime(jd)             instant jump (deep links)
-travelTo(jd, durationMs?)  time travel: glides there (clock.glide non-null until the first tick after landing,
-                           clock.anchorMs = arrival), then runs on at the current speed or stays paused
-setNow()                   travelTo the wall clock as it will be on arrival
-tick(realMs)               SimClock only: samples the clock into simTimeJD, handles frame gaps, settles a landed glide
-                           (every time action ignores non-finite numbers)
-setHover(id), setShowOrbits(b), setShowLabels(b), setShowMoons(b), setShowMarkers(b)
-WARP_PRESETS (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s)
+simTimeJD, timeWarp, paused, clock, lastTickMs    time; change only through the actions below
+hoverId, showOrbits, showLabels, showMoons, showMarkers
+...NavigationSlice
+setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing moves at the change
+setSimTime(jd)                                    instant jump
+travelTo(jd, durationMs?), setNow()               glide; arrival is clock.glide === null
+tick(realMs)                                      SimClock only
+WARP_PRESETS                                      1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s
 ```
 
-Time fields (`simTimeJD`, `timeWarp`, `paused`, `clock`) change only through the actions: a bare `setState` of them
-bypasses the clock and is overwritten by the next tick. Building on the clock (#14 time controls, #26 birthday, #28
-tours, #31 anchored frame, #35 spacecraft, #36 sky tonight): speed presets and reverse are `setTimeWarp` (signed),
-"jump to a date" is `travelTo` (or `setSimTime` for no animation), arrival is `clock.glide === null`, the wall clock is
-`dateToJD(new Date())`, and anything positioned in time is a pure function of `simTimeJD` (or of any other JD, e.g.
-trail samples in the past), never of frames.
+Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
+React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
-Inside `useFrame` read with `useSimStore.getState()` (no re-render). React UI subscribes through selectors, except for
-the clock: `SimClock` writes `simTimeJD` every frame, so React reads it through `useThrottledSimTime()`
-(`scene/useThrottledSimTime.ts`, `useSyncExternalStore` over a 10 Hz throttled subscription), never through a
-`simTimeJD` selector.
+URL: `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>`. `at` (#15) makes the view a free
+point near `focus`: its offset in TRUE radii of `focus` (`formatOffset`, 4 significant digits), preset-independent; a
+malformed `at` falls back to the body. Defaults (overview, home shot `0_45_1`,
+`warp=1`) are left out. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
+once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
+clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
+|warp| <= 60.
 
-URL: `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>` mirrors the view, the selection,
-the camera, time and warp. `focus` is the focused body (absent: the overview); with `at` the view is a free point near
-it (#15): `at` is the offset from `focus` in its TRUE radii (`formatOffset`: 4 significant digits of the largest
-component, the same step for all three; a malformed `at` falls back to the body, and a point selects nothing by
-itself), so a link is independent of the scale preset. `sel` the selection when it is not the focused body (a link with
-`focus` and no `sel` selects the focus), `cam` the camera around the view (`formatShot`: azimuth and elevation to 0.1 degree, the distance as a multiple
-of the view's default framing to 3 significant digits; left out when it is the home shot 0_45_1; malformed values are
-ignored). `src/store/simSearch.ts` is the zod schema the route validates with (`focus`, `at`, `sel`, `cam` strings, `t` number, `warp` non-zero number, negative = backwards; every param `.optional().catch(undefined)`,
-so an invalid value is dropped instead of erroring the page; blank and non-numeric values such as `?t=`, `?t=%20`,
-`?t=null` count as absent too, never as 0, which plain `z.coerce` would make of them). `useSimUrlSync()`
-(`src/store/urlSync.ts`) is called exactly once, in a null-rendering `<UrlSync />` that the page renders before
-`<Scene />`: its layout effect seeds the store from the URL (`mountState()` for time and warp, `viewFromSearch()` for the view,
-applied with `jumpTo` and `select`; unknown bodies are ignored; time through `setTimeWarp`/`setSimTime`, never a bare `setState`; without a `t` the clock is seeded with the wall clock at mount, because the store module may have been
-evaluated long before the page appears, by route preloading or an earlier visit, and the clock stands still while the
-scene is unmounted) before the Canvas mounts, so a deep link is framed on its body from the first frame. Afterwards it
-watches the store with `useSimStore.subscribe` (no re-renders at the clock rate) and navigates with `replace: true`:
-view, selection, camera shot (published when the camera comes to rest), warp and pause changes immediately, `t` at most once per second and only while paused or at |warp| <= 60 (a pause
-pins `t` at once; at faster warps the last written `t` stays). `t` is rounded to 4 decimals, warp is written as it is
-(so a shared link runs at exactly the speed it was taken at, backwards included; a zero warp is left out), and the defaults
-(the overview, the home camera, `warp=1`) are left out of the URL.
+## Rendering and runtime contract (`src/features/solarSystem`)
 
-## Rendering (`src/features/solarSystem`)
-
-- Scene: `<Canvas dpr={[1, 2]} gl={{ logarithmicDepthBuffer: true, antialias: true }} camera={{ near: 1e-5, far: 1e9, fov: 45 }}>`
-  (`CAMERA_NEAR`/`CAMERA_FAR`/`CAMERA_FOV_DEG` from `camera/framing.ts`; the 10 m near plane costs nothing with the
-  logarithmic depth buffer, whose resolution depends on the far plane alone, and keeps the closest dolly on a 0.3 km
-  moon from clipping it) on a `#0b0d12` background. Lighting: a PointLight (`decay={0}`, intensity 2) inside the Sun's group plus an ambient
-  light of 0.05. The Sun is a `meshBasicMaterial` with `toneMapped={false}`; Bloom (postprocessing) arrives with
-  `Effects` in Phase 6.
-- Body: one group per body positioned each frame from the sim; the drawn radius (`frame.renderRadius(i)`, see Scale) applied as the scale
-  of one of three shared unit `SphereGeometry`s (64/32/16 segments, see the contract below); textures loaded lazily with
-  drei `useTexture` (sRGB) behind a per-body Suspense with a flat-colour fallback material; small moons share one
-  placeholder texture.
-- Rings: custom ring geometry with radial UVs (`u = (r - inner) / (outer - inner)`), `alphaMap` = alpha strip,
-  `map` = color strip, transparent, `DoubleSide`, tilted with the planet. Strips run inner (u = 0) to outer (u = 1) along
-  their width; `wrapS = ClampToEdgeWrapping`; the color strip is sRGB (`colorSpace = SRGBColorSpace`), the alpha strip
-  is linear (`NoColorSpace`). The legacy Jupiter/Saturn alpha strips are RGBA whose gray level encodes the opacity
-  (three.js reads the green channel of an `alphaMap`), so use them only as `alphaMap`, never as `map`. Generated ring
-  colours follow the real albedo (very dark); brighten in the material, not in the data.
-- Markers: one `Points` layer (`sizeAttenuation: false`, 4 px, vertex colours: Sun yellow, planets white, moons grey,
-  no depth test, `renderOrder` 1) draws a dot for every body so nothing vanishes at true scale. GL points are squares;
-  an `onBeforeCompile` patch of the `PointsMaterial` fragment shader (`roundPoints`) cuts each into a disc with an
-  anti-aliased edge. With `showMarkers` off (the Markers toggle) the layer draws nothing and nothing is picked through
-  it, so small bodies shrink to their true size and vanish; the layer stays mounted. A body's dot is skipped
-  once its own disc is wider than 6 px on screen (`MARKER_HIDE_DIAMETER_PX`, a diameter), moons are skipped while
-  hidden (except the focus, see Toggles), and a moon's dot is drawn only while its parent, a sibling or the moon itself
-  is the focus (`isMoonDotShown`, the same family rule as the labels): from anywhere else the moons of a planet sit
-  within a few pixels of it and would only bury its dot under a blob of grey. Picking is angular (a 10 px radius around
-  the pointer ray, `pickMarker`); a planet or the Sun inside the radius wins over any moon, however much closer the
-  moon's dot is, so clicks work at any distance and a planet's moons never steal its click.
-  Labels (Phase 4): planets always; moons only when their parent or a sibling is the focus, capped to the largest N.
-  Clicking a marker, label or mesh calls `setFocus` (select and focus); hovering sets `hoverId`. A tap selects, a drag
-  does not (`scene/tap.ts`): the press may travel at most 4 px (mouse), 8 px (pen) or 12 px (touch), measured over its
-  whole path, so a drag that wanders back to where it started is still a drag.
-- Camera: see Navigation. R is always the drawn radius (see Scale). `minDistance = max(1.2 * R, R + 2 * near)`
-  (`minDollyDistance`, so the surface of a sub-kilometre moon stays in front of the near plane at the closest dolly) for
-  the body a view is centred on, `maxDistance = toUnits(1e11)`, `smoothTime` 0.4 s. The numbers and the framing rules
-  live in `camera/framing.ts` (pure, unit-tested): a body is framed from 6 drawn radii (`FRAMING_RADII`), the overview
-  fits the drawn planetary system (the farthest aphelion, times `OVERVIEW_MARGIN` 1.3 so the HUD never covers it) into
-  the narrower field of view, from the home direction (azimuth 0, 45 degrees above the ecliptic). Gestures
-  (`camera/input.ts`): left button / one finger orbit; wheel, two-finger trackpad scroll, touch pinch, trackpad pinch
-  (a ctrl+wheel, turned into a dolly by `pinchAsDolly` because camera-controls would change the field of view instead)
-  and the middle button dolly; `dollyToCursor` off. Panning (right button, two-finger drag, three fingers) is behind
-  `PAN_ENABLED` (off until #15 ships its centre indicator); the director already supports it.
-- Time UI: play/pause, warp presets (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s; a Select below
-  600 px, a SegmentedControl above; a non-preset warp from the URL is appended as "<n>x"), the UTC date, "Now" button
-  (glides to the present, see Clock).
-  `BodyInfo` (bottom left, hidden below 600 px) shows the selected body (else the focus): kind, radius, period,
-  distance and rotation. `OverviewButton` (left of the picker, a home icon, "Back to overview") and Escape (listened to
-  in the capture phase, so nothing can swallow it; ignored in text fields and open dropdowns) call `reset()`.
-- Toggles: orbits, labels, moons, markers. Hiding the moons never hides the focus: `isBodyShown(body, state)` (`src/store/sim.ts`)
-  is the one rule the meshes, the orbit lines and the markers apply, so a focused moon stays in place (the HUD keeps
-  naming it and the arrows keep cycling its siblings, each of which becomes visible as it takes the focus).
-  Keyboard (window-level, ignored while typing in a field or with ctrl/meta/alt):
-  Space pause (ignored while a button or switch has focus, they activate themselves), `+`/`=` and `-`/`_` step the
-  presets, ArrowLeft/ArrowRight cycle the focus among siblings: the moons of the same planet for a moon, the ring
-  [Sun, Mercury, ..., Neptune] for the Sun and the planets.
-
-## Runtime contract of the solar system feature (`src/features/solarSystem`)
-
-Everything below the Canvas shares one mutable `SimFrame` object through React context. It is created once per
-Canvas, mutated in place every frame, and never causes React re-renders.
+Everything under the Canvas shares one mutable `SimFrame` through context, created once per Canvas, mutated every frame,
+never causing re-renders:
 
 ```ts
-// src/features/solarSystem/scene/simFrame.ts
+// scene/simFrame.ts
 export interface SimFrame {
-	bodies: readonly Body[]          // from "@/data", topological order
+	bodies: readonly Body[]
 	index: ReadonlyMap<string, number>
-	positionsKm: Float64Array        // 3 per body, TRUE world positions in km (scene frame axes), written every frame; physics only
-	displayKm: Float64Array          // 3 per body, DISPLAY positions under the active scale, written every frame; what is drawn
-	displayRadiiKm: Float64Array     // drawn radius per body (display km), rewritten on a scale change
-	originKm: Float64Array           // [x, y, z] render origin in display km: the camera pivot (camera director)
-	jd: number                       // sim time (Julian Date) at the last update
-	scale: ScaleSettings             // the active scale (change it with setSimFrameScale only)
-	scaleVersion: number             // +1 on every scale change; consumers cache scale-derived geometry on it
-	renderPosition(i: number, out: Vector3): Vector3   // toUnits(displayKm[i] - originKm) into `out`
+	positionsKm: Float64Array // true positions (physics only)
+	displayKm: Float64Array // display positions (what is drawn)
+	displayRadiiKm: Float64Array // drawn radii, rewritten on a scale change
+	originKm: Float64Array // render origin in display km, written by the camera director
+	jd: number
+	scale: ScaleSettings // change with setSimFrameScale only
+	scaleVersion: number // bumps on scale change; cache scale-derived geometry on it
+	renderPosition(i: number, out: Vector3): Vector3
 	renderPositionOf(id: string, out: Vector3): Vector3
-	renderRadius(i: number): number  // toUnits(displayRadiiKm[i])
+	renderRadius(i: number): number
 }
-export function createSimFrame(bodies: readonly Body[], jd?: number, scale?: ScaleSettings): SimFrame   // positions precomputed at jd; scale defaults to TRUE_SCALE
-export function updateSimFrame(frame: SimFrame, jd: number, originIndex?: number): void   // SimClock's tick: true, then display positions (the origin only when given: tests)
-export function setSimFrameScale(frame: SimFrame, scale: ScaleSettings): void   // ScaleSync's only job
-export const SimFrameContext: React.Context<SimFrame | null>
-export const useSimFrame = (): SimFrame   // throws outside the provider
+export function createSimFrame(bodies: readonly Body[], jd?: number, scale?: ScaleSettings): SimFrame
+export function updateSimFrame(frame: SimFrame, jd: number, originIndex?: number): void
+export function setSimFrameScale(frame: SimFrame, scale: ScaleSettings): void
+export const useSimFrame = (): SimFrame // throws outside the provider
 ```
 
-- `scene/SimClock.tsx` (rendered inside the Canvas) owns the frame update in `useFrame(cb, -1)` (negative priority runs
-  before every other subscriber and keeps R3F automatic rendering on): `tick(performance.now())` through the store
-  every frame (samples the clock, see Simulation; a zustand `set` is cheap and selectors whose value did not change do
-  not re-render; the UI reads the clock through `useThrottledSimTime()`, see Store), then `updateSimFrame` (true and display positions).
-- The camera director (`camera/CameraRig.tsx` -> `director.ts`) runs at `useFrame(cb, CAMERA_FRAME_PRIORITY)` = -0.5:
-  after SimClock, before everything that draws. It writes `originKm` (the pivot) and updates camera-controls itself.
-- Every other per-frame consumer (bodies, orbit lines, markers) uses `useFrame(cb)` at the default priority
-  and reads `useSimFrame()`; nobody else advances time, computes positions or moves the origin or the camera.
-- Per-frame writes live in exported plain functions that take the objects they mutate as parameters
-  (`updateSimFrame`, `updateOrbitBuffers`, `fillMarkers`): the React Compiler rule `react-hooks/immutability`
-  (in `recommended-latest`) rejects assignments into hook-returned objects inside `useFrame` callbacks, and no
-  `eslint-disable` is used. The frame loop allocates nothing: scratch vectors are module-level and typed arrays are reused.
-- Body meshes: `bodies/BodyMesh.tsx` gets `{ body, index }`, a `<group>` positioned in `useFrame` via
-  `frame.renderPosition(index, group.position)`, oriented once with `bodies/orientation.ts` (`bodyOrientation`: local
-  +X = `equatorNode`, +Y = `spinAxis` = north pole, +Z = X x Y) and spun by `rotationAngle` about local Y. The mesh
-  scales a shared unit `SphereGeometry` by `frame.renderRadius(index)` every frame: 64 segments for planets and the Sun, 32 for
-  moons, 16 for estimated-radius moons (three geometries for all bodies).
-- Orbit lines: `bodies/OrbitLine.tsx` gets `{ body, index, parentIndex }` and owns a `BufferGeometry` with 258 points:
-  257 samples (closed; the ellipse sampled once in doubles in the parent's frame at 256 uniform eccentric anomalies,
-  `positionAtEccentricAnomaly`) plus one anchor vertex inserted between the two samples that bracket the body's current
-  eccentric anomaly (`anchorSlot(eccentricAnomalyAt(orbit, jd))`, vertex `slot + 1`) and written from the body's own
-  position, so the line passes exactly through its body: the chords alone miss it by up to 7.5e-5 a (1.8 Earth radii,
-  14 Neptune radii, 10 Himalia radii), plainly visible at the 6-radii framing. The true samples are mapped into display
-  space with `displayOffset` (the function that places the bodies) whenever `frame.scaleVersion` moves on, and parent and
-  anchor come from `frame.displayKm`, so the line passes through its body under every scale. A rebuild writes
-  `toUnits(displaySample + parentDisplay - originKm)` in doubles and happens after a scale change, when
-  `|originKm - originAtLastRebuild| > 1e-4 * drawnSemiMajorAxis`,
-  when the parent moved more than that since the last rebuild, or when the anchor crosses into the next sample interval;
-  between rebuilds the line's `position` is nudged by `toUnits((parent - parentAtRebuild) - (origin - originAtRebuild))`
-  and only the anchor's three floats are rewritten and uploaded (`addUpdateRange`). `OrbitLine.test.ts` pins the anchor
-  to every planet's render position to under a kilometre, at rest and between rebuilds, and to planets' and moons'
-  render positions across runtime switches between all presets (never dipping inside the drawn parent).
-  The line is a raw `<threeLine>` (three's `Line`; in R3F 9 the bare `line` intrinsic is the SVG element), registered
-  once with `extend({ ThreeLine: Line })`: R3F's `createInstance` strips the `three` prefix on mount, but `commitUpdate`
-  validates the raw type against the catalogue on every re-render, so without the registration the first re-render of a
-  mounted line (any layer toggle) throws `R3F: ThreeLine is not part of the THREE namespace` and takes the page down.
-  `LineBasicMaterial` (planets `#8a8f98`, moons `#4b5563`, opacity 0.6, `frustumCulled` off) respects the
-  logarithmic depth buffer. drei `<Line>` (three-stdlib `Line2`/`LineMaterial`) has no logdepth shader chunks and
-  would depth-fight the meshes; do not switch to it. Headless note: SwiftShader (the CI/headless GPU) drops any line
-  segment with one endpoint behind the eye, so the focused body's own orbit is missing from headless close-up
-  screenshots; real GPUs clip it normally and this is not an app bug.
-- HUD (`ui/`): plain React over the Canvas (absolute-positioned, pointer-events only on the panels):
-  `TimeControls` (play/pause, warp presets, current UTC date via `useThrottledSimTime`, "Now" button),
-  `SceneToggles` (orbits, labels, moons, markers), `FocusPicker` (Mantine Select grouped by planet, moons largest first,
-  searchable), `OverviewButton` (the way out), `BodyInfo` (facts about the selection, else the focus). All subscribe to the store with selectors; none of them read the SimFrame.
-- The page component `index.tsx` renders `<UrlSync />` (first, see Store), then `scene/Scene.tsx` inside a Suspense
-  and the HUD; `Scene.tsx` renders the `<Canvas>` described under Rendering with the `SimFrameContext.Provider`
-  (one `createSimFrame(bodies, simTimeJD, activeScale)` per Canvas), `ScaleSync`, `SimClock`, lights, `Bodies` (in a Suspense), `OrbitLines`,
-  `Markers`, `CameraRig` and, from Phase 6, `Effects`.
+- Frame order: `SimClock` (`useFrame` priority -1) ticks the store and updates the SimFrame; the camera director
+  (-0.5) writes the origin and the camera; everything else draws at the default priority and only reads.
+- Per-frame writes live in exported plain functions taking the objects they mutate (`updateSimFrame`,
+  `updateOrbitBuffers`, `fillMarkers`) to satisfy `react-hooks/immutability` without `eslint-disable`. No allocations
+  in the frame loop.
+- Canvas: `dpr={[1, 2]}`, logarithmic depth buffer, near 1e-5, far 1e9, fov 45 (`camera/framing.ts`), background
+  `#0b0d12`. A decay-0 PointLight in the Sun plus 0.05 ambient; the Sun is unlit (`toneMapped={false}`). Bloom arrives
+  in Phase 6.
+- Bodies (`bodies/BodyMesh.tsx`): a group per body, scaling one of three shared unit spheres (64/32/16 segments for
+  Sun and planets / moons / estimated moons) by the drawn radius; lazy sRGB textures behind a per-body Suspense.
+- Rings: radial UVs, `alphaMap` = alpha strip (linear, gray level = opacity; never use it as `map`), `map` = color strip
+  (sRGB), clamped, double-sided. Brighten dark generated rings in the material, not the data.
+- Orbit lines (`bodies/OrbitLine.tsx`): 256 samples plus one anchor vertex written from the body's own position, so the
+  line always passes through its body. Rebuilt on scale or large origin/parent moves; otherwise only the anchor updates.
+  Use `LineBasicMaterial` on a raw `<threeLine>` registered with `extend({ ThreeLine: Line })` (without it any re-render
+  throws). Not drei `<Line>`: it lacks logdepth and depth-fights. Headless SwiftShader drops the focused orbit in
+  close-ups; not an app bug.
+- Markers: one `Points` layer (4 px round dots, no depth test) so nothing vanishes at true scale; a dot hides once its
+  body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). Picking is angular
+  (10 px), planets win over moons. `showMarkers` off hides and unpicks them.
+- Interaction: click calls `setFocus`, hover sets `hoverId`; a tap selects, a drag (`scene/tap.ts`) does not.
+  `scene/HoverCursor.tsx` shows a pointer over click targets (`isClickTarget`: any body but the focus once it is also
+  selected, which fills the view up close). Labels: planets always, moons only within the focused family.
+- Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
+  framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
+  left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button. Panning is behind
+  `PAN_ENABLED` until #15.
+- Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
+- HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls`, `SceneToggles`,
+  `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px). Escape and the overview button call `reset()`.
+  Keys (ignored in fields and with modifiers): Space pause, `+`/`-` warp presets, ArrowLeft/Right cycle siblings.
+- Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
+  `SimClock`, `HoverCursor`, lights, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, later `Effects`) and the HUD.
