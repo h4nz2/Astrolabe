@@ -48,8 +48,7 @@ function LanguageMenu({ placement = "inline" }: LanguageMenuProps) {
 					<Menu.Item
 						key={id}
 						lang={id}
-						role="menuitemradio"
-						aria-checked={id === locale}
+						aria-current={id === locale || undefined}
 						rightSection={check(id === locale)}
 						onClick={() => setLocale(id)}
 					>
@@ -61,8 +60,7 @@ function LanguageMenu({ placement = "inline" }: LanguageMenuProps) {
 				{READING_LEVELS.map((level) => (
 					<Menu.Item
 						key={level}
-						role="menuitemradio"
-						aria-checked={level === readingLevel}
+						aria-current={level === readingLevel || undefined}
 						rightSection={check(level === readingLevel)}
 						onClick={() => setReadingLevel(level)}
 					>
