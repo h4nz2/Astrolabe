@@ -10,8 +10,6 @@ import {
 	Flex,
 } from "@mantine/core"
 
-import { IconCake } from "@tabler/icons-react"
-
 import ScaleInOut from "@/GSAPAnimation/ScaleInOut"
 import { useI18n } from "@/i18n"
 import classes from "./LeftSection.module.css"
@@ -82,7 +80,7 @@ const BirthdayButton: FC<{ label: string }> = ({ label }) => {
 			variant="outline"
 			color="orange"
 			size="xl"
-			leftSection={<IconCake size={24} />}
+			px="md"
 			className={classes.button}
 		>
 			{label}

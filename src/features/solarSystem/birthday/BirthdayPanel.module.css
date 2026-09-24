@@ -1,21 +1,20 @@
 /*
  * The birthday panel (issue #26): docked at the right beside the scene, not a
  * modal, so the planets stay in view while they glide to the birth date. It
- * covers the scene toggles while open and stops above the time controls.
+ * covers the scene toggles while open, grows with its content and stops above
+ * the time controls.
  */
 .panel {
 	position: absolute;
 	z-index: 2;
 	top: 0.75rem;
 	right: 0.75rem;
-	bottom: 8.5rem;
+	max-height: calc(100% - 0.75rem - 8.5rem);
 	width: min(24rem, calc(100vw - 1.5rem));
 	display: flex;
 	flex-direction: column;
 	pointer-events: auto;
-	background: rgba(20, 22, 28, 0.88);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
+	background: #16181e;
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: var(--mantine-radius-md);
 	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
@@ -25,7 +24,7 @@
 /* below 1000px the body info and the time controls stack at the bottom */
 @media (max-width: 999px) {
 	.panel {
-		bottom: 11rem;
+		max-height: calc(100% - 0.75rem - 11rem);
 	}
 }
 
@@ -37,7 +36,7 @@
 		right: 0.5rem;
 		bottom: 0.5rem;
 		width: auto;
-		max-height: 72dvh;
+		max-height: 72%;
 	}
 }
 

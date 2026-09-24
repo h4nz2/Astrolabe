@@ -40,7 +40,7 @@
 		"tagline": "Zu den Sternen!",
 		"dictionary": "Lexikon",
 		"solarSystem": "Sonnensystem",
-		"birthday": "Dein Geburtstag im Weltall"
+		"birthday": "Geburtstag im Weltall"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -269,9 +269,9 @@
 				"days": "Tage",
 				"weight": "Gewicht"
 			},
-			"distance": "Seit deiner Geburt hat dich die Erde {distance} Kilometer um die Sonne getragen, mit etwa {speed} km pro Sekunde. Das sind {trips, plural, one {# Reise} other {# Reisen}} zum Mond und zurück.",
+			"distance": "Seit deiner Geburt hat dich die Erde {distance} Kilometer um die Sonne getragen, mit etwa {speed, number} km pro Sekunde. Das sind {trips, plural, one {# Reise} other {# Reisen}} zum Mond und zurück.",
 			"distance@simple": "Seit deiner Geburt bist du {distance} Kilometer um die Sonne gereist – ohne je den Boden zu verlassen! So weit ist es {trips, plural, one {# Mal} other {# Mal}} zum Mond und zurück.",
-			"distance@advanced": "Seit deiner Geburt hat dich die Bahnbewegung der Erde {distance} km um die Sonne getragen, mit im Mittel {speed} km/s: {trips, plural, one {# Hin- und Rückflug} other {# Hin- und Rückflüge}} zum Mond.",
+			"distance@advanced": "Seit deiner Geburt hat dich die Bahnbewegung der Erde {distance} km um die Sonne getragen, mit im Mittel {speed, number} km/s: {trips, plural, one {# Hin- und Rückflug} other {# Hin- und Rückflüge}} zum Mond.",
 			"years": {
 				"intro": "Ein Jahr ist eine Runde um die Sonne. Dein Geburtstag auf einem anderen Planeten ist, wenn er wieder dort steht, wo er an deinem Geburtstag war.",
 				"intro@simple": "Ein Jahr ist eine Runde um die Sonne. Weit entfernte Planeten brauchen viel länger, darum bist du dort jünger!",

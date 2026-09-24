@@ -269,9 +269,9 @@
 				"days": "Days",
 				"weight": "Weight"
 			},
-			"distance": "Since you were born, Earth has carried you {distance} kilometres around the Sun, at about {speed} km every second. That is {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
+			"distance": "Since you were born, Earth has carried you {distance} kilometres around the Sun, at about {speed, number} km every second. That is {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
 			"distance@simple": "Since you were born, you have travelled {distance} kilometres around the Sun – without ever leaving the ground! That is as far as {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
-			"distance@advanced": "Since your birth, Earth’s orbital motion has carried you {distance} km around the Sun at a mean {speed} km/s: {trips, plural, one {# return trip} other {# return trips}} to the Moon.",
+			"distance@advanced": "Since your birth, Earth’s orbital motion has carried you {distance} km around the Sun at a mean {speed, number} km/s: {trips, plural, one {# return trip} other {# return trips}} to the Moon.",
 			"years": {
 				"intro": "A year is one trip around the Sun. Your birthday on another planet comes when it is back where it was on the day you were born.",
 				"intro@simple": "A year is one trip around the Sun. Planets far away take much longer, so you are younger there!",

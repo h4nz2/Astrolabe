@@ -152,7 +152,9 @@ describe("birthdayFacts", () => {
 	})
 
 	it("counts local days lived: few on Mercury, many on Jupiter", () => {
-		expect(world(facts, "earth").daysLived).toBe(4383)
+		// 4383 calendar days; one fewer where local noon comes before noon UTC
+		expect(world(facts, "earth").daysLived).toBeGreaterThanOrEqual(4382)
+		expect(world(facts, "earth").daysLived).toBeLessThanOrEqual(4383)
 		expect(world(facts, "mercury").daysLived).toBe(24)
 		expect(world(facts, "venus").daysLived).toBe(37)
 		expect(world(facts, "jupiter").daysLived).toBeGreaterThan(10_000)
