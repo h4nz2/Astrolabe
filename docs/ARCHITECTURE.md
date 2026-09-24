@@ -34,7 +34,7 @@ src/locales/                 translation resources: config.json, <locale>/ui.jso
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, lighting/, ui/)
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -288,7 +288,7 @@ near the camera jitters.
 
 ```
 simTimeJD, timeWarp, paused, clock, lastTickMs    time; change only through the actions below
-hoverId, showOrbits, showLabels, showMoons, showMarkers
+hoverId, showOrbits, showLabels, showMoons, showMarkers, showOrbitLabels
 ...NavigationSlice
 setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing moves at the change
 setSimTime(jd)                                    instant jump
@@ -302,7 +302,8 @@ Anything positioned in time is a pure function of a JD, never of frames. In `use
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
-`labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off. Defaults (overview,
+`labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
+off by default, as `orbitNames=true` while on. Defaults (overview,
 home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
 
 > > > > > > > main
@@ -359,7 +360,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   (10 px), planets win over moons. `showMarkers` off hides and unpicks them.
 - Interaction: click calls `setFocus`, hover sets `hoverId`; a tap selects, a drag (`scene/tap.ts`) does not.
   `scene/HoverCursor.tsx` shows a pointer over click targets (`isClickTarget`: any body but the focus once it is also
-  selected, which fills the view up close). Labels: planets always, moons only within the focused family.
+  selected, which fills the view up close). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
@@ -372,7 +373,52 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `SimClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, later `Effects`) and the HUD.
+  `SimClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
+  the `LabelLayer` beside the Canvas) and the HUD.
+
+## Labels (`features/solarSystem/labels`; #20)
+
+Names are DOM text over the Canvas (crisp, translated through `@/i18n/bodies`, styled in `Labels.module.css`), laid
+out in screen space every frame. Three parts share one `LabelBoard` created in `Scene.tsx`:
+
+```
+layout.ts      pure: candidates, priority, placement, fading, picking (LabelLayout: typed arrays per slot)
+project.ts     per frame: projects SimFrame drawn positions/radii through the camera, eligibility, then placeLabels
+orbitAnchor.ts where an orbit's name goes (the orbit line's own samples, leftmost point on screen)
+Labels.tsx     in the Canvas: the useFrame loop (layout, fade, write DOM) and the scene-picking hook
+LabelLayer.tsx beside the Canvas: one <span data-body> per body (+ <span data-orbit> while orbit names are on)
+board.ts       the DOM side: attach, measure (offsetWidth), writeLabels (transform/opacity only when changed)
+activate.ts    what a tap on a label does (default: setFocus, the same as a tap on the body)
+```
+
+Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot`, `slotBody`).
+
+- **Anchor:** `frame.renderPosition(i)` projected, offset by the drawn disc (`frame.renderRadius(i)` as an angular
+  radius, at least the 2 px marker dot). Nothing has its own scale factor, so a label stays on its body in every
+  preset and through preset changes.
+- **Candidates** (`isLabelCandidate`): the Sun and planets always; moons only in the focus family (the marker rule),
+  or while hovered/selected; hidden moons never (except the focus).
+- **Eligible:** in front of the camera, not behind a nearer larger disc (`isOccluded`), not under a HUD panel
+  (`isKeptOut`), and a moon of a planet that is still a dot (<= 24 px radius) at least 10 px clear of it
+  (`isClearOfParent`): moons' names fade in as the camera approaches.
+- **Priority** (`labelRank`): hovered, selected, focus, then Sun, planets, moons, larger first within each tier.
+- **Placement** (`placeLabels`): greedy in priority order; 8 positions round the disc (right, left, below, above,
+  diagonals; last frame's side first), never on its own disc, inside the viewport, never over another label or a HUD
+  `.panel` (`setKeepOut`, re-read every 0.25 s), first try clear of every dot (<= 24 px), else only of labelled ones.
+  No free position: hidden. 2 px hysteresis against flicker; 0.2 s fades (`fadeLabels`).
+- **Density:** at most `MOON_LABEL_BUDGET` (8) moon names at once (largest first); the hovered, selected or focused
+  moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget.
+- **Size:** CSS, relative to the viewport (planets 13..19 px, moons 12..16 px, orbits 11..15 px), never the zoom.
+  Light text with a dark multi-layer halo for contrast on black space and bright planet faces alike; the Sun
+  and moons take their marker colours, the selection is orange, hover underlines.
+- **Picking:** the layer is `pointer-events: none` (drags and wheel zooms that start on a label still reach the
+  camera). `Labels.tsx` adds a `<group raycast>` that hit-tests the label boxes (`pickLabel`, 3 px slack) and reports
+  a hit at distance 0 with `index` = body index, so labels win over what they are drawn over and share the markers'
+  hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16.
+- **Switches:** `showLabels` (the Labels switch; `setShowLabels(false)` hides every name at once, e.g. for #30/#33),
+  `showOrbitLabels` (Orbit names; needs orbits and labels on).
+- **For later issues:** `[data-body=<id>][data-visible=true]` marks a shown name (tests, tours); a feature that
+  needs a body named can select or hover it (top priority).
 
 ## Time controls (`features/solarSystem/ui`; #14)
 
