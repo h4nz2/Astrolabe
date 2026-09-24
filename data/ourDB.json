@@ -13,7 +13,7 @@
 			"inclination": 0,
 			"mass": {
 				"massValue": 1.989,
-				"massExponent": 27
+				"massExponent": 30
 			},
 			"vol": {
 				"volValue": 1.412,
@@ -26,7 +26,7 @@
 			"flattening": 0.00009,
 			"dimension": "",
 			"sideralOrbit": 0,
-			"sideralRotation": 0,
+			"sideralRotation": 609.12,
 			"aroundPlanet": null,
 			"discoveredBy": "",
 			"discoveryDate": "",
@@ -77,11 +77,11 @@
 			},
 			"isPlanet": true,
 			"moons": [],
-			"semimajorAxis": 57909050,
+			"semimajorAxis": 57909227,
 			"perihelion": 46001200,
 			"aphelion": 69816900,
-			"eccentricity": 0.2056,
-			"inclination": 7,
+			"eccentricity": 0.20563593,
+			"inclination": 7.00498,
 			"mass": {
 				"massValue": 3.30114,
 				"massExponent": 23
@@ -106,9 +106,9 @@
 			"alternativeName": "",
 			"axialTilt": 0.0352,
 			"avgTemp": 440,
-			"mainAnomaly": 174.796,
-			"argPeriapsis": 29.022,
-			"longAscNode": 48.378,
+			"mainAnomaly": 174.79253,
+			"argPeriapsis": 29.12703,
+			"longAscNode": 48.33077,
 			"bodyType": "Planet"
 		},
 		{
@@ -128,11 +128,11 @@
 			},
 			"isPlanet": true,
 			"moons": [],
-			"semimajorAxis": 108208475,
+			"semimajorAxis": 108209475,
 			"perihelion": 107477000,
 			"aphelion": 108939000,
-			"eccentricity": 0.0067,
-			"inclination": 3.39,
+			"eccentricity": 0.00677672,
+			"inclination": 3.39468,
 			"mass": {
 				"massValue": 4.86747,
 				"massExponent": 24
@@ -157,9 +157,9 @@
 			"alternativeName": "",
 			"axialTilt": 177.36,
 			"avgTemp": 737,
-			"mainAnomaly": 50.115,
-			"argPeriapsis": 54.78,
-			"longAscNode": 76.785,
+			"mainAnomaly": 50.37663,
+			"argPeriapsis": 54.92262,
+			"longAscNode": 76.67984,
 			"bodyType": "Planet"
 		},
 		{
@@ -231,9 +231,9 @@
 					"alternativeName": "",
 					"axialTilt": 6.68,
 					"avgTemp": 0,
-					"mainAnomaly": 0,
-					"argPeriapsis": 0,
-					"longAscNode": 0,
+					"mainAnomaly": 134.963,
+					"argPeriapsis": 318.309,
+					"longAscNode": 125.045,
 					"bodyType": "Moon",
 					"rel": "https://api.le-systeme-solaire.net/rest/bodies/lune"
 				},
@@ -244,10 +244,10 @@
 					}
 				}
 			],
-			"semimajorAxis": 149598023,
+			"semimajorAxis": 149598261,
 			"perihelion": 147095000,
 			"aphelion": 152100000,
-			"eccentricity": 0.0167,
+			"eccentricity": 0.01671123,
 			"inclination": 0,
 			"mass": {
 				"massValue": 5.97237,
@@ -273,9 +273,9 @@
 			"alternativeName": "",
 			"axialTilt": 23.4393,
 			"avgTemp": 288,
-			"mainAnomaly": 358.617,
-			"argPeriapsis": 85.901,
-			"longAscNode": 18.272,
+			"mainAnomaly": 357.52689,
+			"argPeriapsis": 102.93768,
+			"longAscNode": 0,
 			"bodyType": "Planet"
 		},
 		{
@@ -308,8 +308,7 @@
 						"mean": -40.15
 					},
 					"textures": {
-						"base": "/assets/textures/earth/satellites/moon_1k.jpg",
-						"topo": "/assets/textures/earth/satellites/moon_topo_1k.jpg"
+						"base": "/assets/textures/mars/satellites/phobos.jpg"
 					},
 					"isPlanet": false,
 					"moons": null,
@@ -335,7 +334,7 @@
 					"flattening": 0,
 					"dimension": "26.8 × 22.4 × 18.4",
 					"sideralOrbit": 0.31891,
-					"sideralRotation": 0.7653,
+					"sideralRotation": 7.6534,
 					"aroundPlanet": {
 						"planet": "mars",
 						"rel": "https://api.le-systeme-solaire.net/rest/bodies/mars"
@@ -360,7 +359,7 @@
 						"massExponent": 15
 					},
 					"distanceFromParent": 23455,
-					"orbitalPeriod": 1.25,
+					"orbitalPeriod": 1.2624,
 					"orbitalInclination": 0.93,
 					"gravity": 0.003,
 					"surfaceTemps": {
@@ -374,11 +373,11 @@
 					}
 				}
 			],
-			"semimajorAxis": 227939200,
+			"semimajorAxis": 227943822,
 			"perihelion": 206700000,
 			"aphelion": 249200000,
-			"eccentricity": 0.0935,
-			"inclination": 1.85,
+			"eccentricity": 0.0933941,
+			"inclination": 1.84969,
 			"mass": {
 				"massValue": 6.41712,
 				"massExponent": 23
@@ -403,9 +402,9 @@
 			"alternativeName": "",
 			"axialTilt": 25.19,
 			"avgTemp": 210,
-			"mainAnomaly": 19.412,
-			"argPeriapsis": 286.231,
-			"longAscNode": 49.667,
+			"mainAnomaly": 19.3902,
+			"argPeriapsis": 286.49683,
+			"longAscNode": 49.55954,
 			"bodyType": "Planet"
 		},
 		{
@@ -441,7 +440,7 @@
 					"perihelion": 420071,
 					"aphelion": 423529,
 					"eccentricity": 0.004,
-					"inclination": 0.036,
+					"inclination": 2.208,
 					"mass": {
 						"massValue": 8.932,
 						"massExponent": 22
@@ -466,9 +465,9 @@
 					"alternativeName": "",
 					"axialTilt": 0,
 					"avgTemp": 0,
-					"mainAnomaly": 0,
-					"argPeriapsis": 0,
-					"longAscNode": 0,
+					"mainAnomaly": 334.99,
+					"argPeriapsis": 66.429,
+					"longAscNode": 336.897,
 					"bodyType": "Moon",
 					"rel": "https://api.le-systeme-solaire.net/rest/bodies/io"
 				},
@@ -482,7 +481,7 @@
 					"perihelion": 0,
 					"aphelion": 0,
 					"eccentricity": 0.009,
-					"inclination": 0.466,
+					"inclination": 1.791,
 					"mass": {
 						"massValue": 4.8,
 						"massExponent": 22
@@ -507,9 +506,9 @@
 					"alternativeName": "",
 					"axialTilt": 0,
 					"avgTemp": 0,
-					"mainAnomaly": 0,
-					"argPeriapsis": 0,
-					"longAscNode": 0,
+					"mainAnomaly": 345.614,
+					"argPeriapsis": 254.508,
+					"longAscNode": 332.641,
 					"bodyType": "Moon",
 					"rel": "https://api.le-systeme-solaire.net/rest/bodies/europe"
 				},
@@ -523,7 +522,7 @@
 					"perihelion": 0,
 					"aphelion": 0,
 					"eccentricity": 0.007,
-					"inclination": 0.192,
+					"inclination": 2.019,
 					"mass": {
 						"massValue": 1.0759,
 						"massExponent": 23
@@ -548,9 +547,9 @@
 					"alternativeName": "",
 					"axialTilt": 0,
 					"avgTemp": 0,
-					"mainAnomaly": 0,
-					"argPeriapsis": 0,
-					"longAscNode": 0,
+					"mainAnomaly": 84.691,
+					"argPeriapsis": 16.377,
+					"longAscNode": 338.145,
 					"bodyType": "Moon",
 					"rel": "https://api.le-systeme-solaire.net/rest/bodies/callisto"
 				},
@@ -1862,8 +1861,13 @@
 					"id": "5c",
 					"name": "Ganymede",
 					"distanceFromParent": 1070400,
-					"orbitalPeriod": 7.155,
+					"orbitalPeriod": 7.15455,
 					"orbitalInclination": 0.204,
+					"eccentricity": 0.0013,
+					"inclination": 2.21,
+					"mainAnomaly": 279.238,
+					"argPeriapsis": 317.631,
+					"longAscNode": 343.208,
 					"diameter": 5268.2,
 					"mass": "1.4819 * 10^23",
 					"gravity": 1.428,
@@ -1903,7 +1907,7 @@
 					"orbitalPeriod": 0.498,
 					"orbitalInclination": 0.374,
 					"diameter": 187,
-					"mass": "2.08 * 10^15",
+					"mass": "2.08 * 10^18",
 					"gravity": 0.02,
 					"surfaceTemps": {
 						"min": -195,
@@ -1974,7 +1978,7 @@
 				},
 				{
 					"id": "5i",
-					"name": "Anake",
+					"name": "Ananke",
 					"distanceFromParent": 21454952,
 					"orbitalPeriod": "-640.38",
 					"orbitalInclination": 149.9,
@@ -2090,7 +2094,7 @@
 					"id": "5o",
 					"name": "Metis",
 					"distanceFromParent": 127690,
-					"orbitalPeriod": 0.24,
+					"orbitalPeriod": 0.29478,
 					"orbitalInclination": 0.06,
 					"diameter": 60,
 					"mass": "3.6 * 10^16",
@@ -2391,11 +2395,11 @@
 					}
 				}
 			],
-			"semimajorAxis": 778340821,
+			"semimajorAxis": 778340817,
 			"perihelion": 740379835,
 			"aphelion": 816620000,
-			"eccentricity": 0.0489,
-			"inclination": 1.304,
+			"eccentricity": 0.04838624,
+			"inclination": 1.3044,
 			"mass": {
 				"massValue": 1.89819,
 				"massExponent": 27
@@ -2420,9 +2424,9 @@
 			"alternativeName": "",
 			"axialTilt": 3.12,
 			"avgTemp": 165,
-			"mainAnomaly": 20.02,
-			"argPeriapsis": 273.442,
-			"longAscNode": 100.398,
+			"mainAnomaly": 19.66796,
+			"argPeriapsis": 274.25457,
+			"longAscNode": 100.47391,
 			"bodyType": "Planet"
 		},
 		{
@@ -2596,7 +2600,7 @@
 					"flattening": 0,
 					"dimension": "",
 					"sideralOrbit": 79.33,
-					"sideralRotation": 1735.92,
+					"sideralRotation": 1903.92,
 					"aroundPlanet": {
 						"planet": "saturne",
 						"rel": "https://api.le-systeme-solaire.net/rest/bodies/saturne"
@@ -5545,7 +5549,7 @@
 				{
 					"id": "6r",
 					"name": "Anthe",
-					"diameter": 1,
+					"diameter": 1.8,
 					"mass": "0.007 * 10^15",
 					"distanceFromParent": 197700,
 					"orbitalPeriod": 1.0365,
@@ -5733,11 +5737,11 @@
 					}
 				}
 			],
-			"semimajorAxis": 1426666422,
+			"semimajorAxis": 1426666414,
 			"perihelion": 1349823615,
 			"aphelion": 1503509229,
-			"eccentricity": 0.0565,
-			"inclination": 2.485,
+			"eccentricity": 0.05386179,
+			"inclination": 2.48599,
 			"mass": {
 				"massValue": 5.68336,
 				"massExponent": 26
@@ -5762,9 +5766,9 @@
 			"alternativeName": "",
 			"axialTilt": 26.73,
 			"avgTemp": 134,
-			"mainAnomaly": 317.02,
-			"argPeriapsis": 336.178,
-			"longAscNode": 113.759,
+			"mainAnomaly": 317.35537,
+			"argPeriapsis": 338.93645,
+			"longAscNode": 113.66242,
 			"bodyType": "Planet"
 		},
 		{
@@ -6616,7 +6620,7 @@
 					"inclination": 0.47,
 					"mass": {
 						"massValue": 1.8,
-						"massExponent": 19
+						"massExponent": 16
 					},
 					"vol": null,
 					"density": 1,
@@ -7204,11 +7208,11 @@
 					}
 				}
 			],
-			"semimajorAxis": 2870658186,
+			"semimajorAxis": 2870658171,
 			"perihelion": 2734998229,
 			"aphelion": 3006318143,
-			"eccentricity": 0.0457,
-			"inclination": 0.772,
+			"eccentricity": 0.04725744,
+			"inclination": 0.77264,
 			"mass": {
 				"massValue": 8.68127,
 				"massExponent": 25
@@ -7233,9 +7237,9 @@
 			"alternativeName": "",
 			"axialTilt": 97.77,
 			"avgTemp": 76,
-			"mainAnomaly": 142.2386,
-			"argPeriapsis": 98.862,
-			"longAscNode": 73.967,
+			"mainAnomaly": 142.28383,
+			"argPeriapsis": 96.93735,
+			"longAscNode": 74.01693,
 			"bodyType": "Planet"
 		},
 		{
@@ -7621,9 +7625,10 @@
 					"name": "Nereid",
 					"distanceFromParent": 5513787,
 					"orbitalPeriod": 360.14,
-					"orbitalInclination": 32.55,
+					"orbitalInclination": 7.09,
+					"eccentricity": 0.7507,
 					"diameter": 340,
-					"mass": "2.14 * 10^16",
+					"mass": "3.1 * 10^19",
 					"gravity": 0.002,
 					"surfaceTemps": {
 						"min": -223,
@@ -7750,11 +7755,11 @@
 					}
 				}
 			],
-			"semimajorAxis": 4498396441,
+			"semimajorAxis": 4498396417,
 			"perihelion": 4459753056,
 			"aphelion": 4537039826,
-			"eccentricity": 0.0113,
-			"inclination": 1.769,
+			"eccentricity": 0.00859048,
+			"inclination": 1.77004,
 			"mass": {
 				"massValue": 1.02413,
 				"massExponent": 26
@@ -7772,16 +7777,16 @@
 			"flattening": 0.01708,
 			"dimension": "",
 			"sideralOrbit": 60189,
-			"sideralRotation": 16.11,
+			"sideralRotation": 15.9663,
 			"aroundPlanet": null,
 			"discoveredBy": "Urbain Le Verrier, John Couch Adams, Johann Galle",
 			"discoveryDate": "23/09/1846",
 			"alternativeName": "",
 			"axialTilt": 28.3,
 			"avgTemp": 55,
-			"mainAnomaly": 256.228,
-			"argPeriapsis": 256.932,
-			"longAscNode": 131.823,
+			"mainAnomaly": 259.91521,
+			"argPeriapsis": 273.18054,
+			"longAscNode": 131.78423,
 			"bodyType": "Planet"
 		}
 	],

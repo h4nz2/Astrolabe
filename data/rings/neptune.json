@@ -1,0 +1,45 @@
+{
+	"innerRadiusKm": 40900,
+	"outerRadiusKm": 63200,
+	"textures": {
+		"alpha": "/assets/textures/neptune/rings/rings_alpha.png",
+		"color": "/assets/textures/neptune/rings/rings_color.png"
+	},
+	"bands": [
+		{
+			"name": "Galle",
+			"innerKm": 40900,
+			"outerKm": 42900,
+			"opacity": 0.1,
+			"color": "#4a3d38"
+		},
+		{
+			"name": "Le Verrier",
+			"innerKm": 53143.5,
+			"outerKm": 53256.5,
+			"opacity": 0.65,
+			"color": "#5c4a42"
+		},
+		{
+			"name": "Lassell",
+			"innerKm": 53200,
+			"outerKm": 57200,
+			"opacity": 0.08,
+			"color": "#4a3d38"
+		},
+		{
+			"name": "Arago",
+			"innerKm": 57150,
+			"outerKm": 57250,
+			"opacity": 0.3,
+			"color": "#54443c"
+		},
+		{
+			"name": "Adams",
+			"innerKm": 62914.5,
+			"outerKm": 62949.5,
+			"opacity": 0.85,
+			"color": "#604c44"
+		}
+	]
+}

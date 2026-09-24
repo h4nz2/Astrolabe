@@ -1,0 +1,80 @@
+{
+	"innerRadiusKm": 41500,
+	"outerRadiusKm": 51500,
+	"textures": {
+		"alpha": "/assets/textures/uranus/rings/rings_alpha.png",
+		"color": "/assets/textures/uranus/rings/rings_color.png"
+	},
+	"bands": [
+		{
+			"name": "6",
+			"innerKm": 41836,
+			"outerKm": 41838,
+			"opacity": 0.55,
+			"color": "#3c3c3e"
+		},
+		{
+			"name": "5",
+			"innerKm": 42232.5,
+			"outerKm": 42235.5,
+			"opacity": 0.7,
+			"color": "#3e3e40"
+		},
+		{
+			"name": "4",
+			"innerKm": 42569.5,
+			"outerKm": 42572.5,
+			"opacity": 0.6,
+			"color": "#3c3c3e"
+		},
+		{
+			"name": "alpha",
+			"innerKm": 44714.5,
+			"outerKm": 44721.5,
+			"opacity": 0.7,
+			"color": "#424244"
+		},
+		{
+			"name": "beta",
+			"innerKm": 45656.5,
+			"outerKm": 45665.5,
+			"opacity": 0.6,
+			"color": "#424244"
+		},
+		{
+			"name": "eta",
+			"innerKm": 47175,
+			"outerKm": 47177,
+			"opacity": 0.55,
+			"color": "#3e3e40"
+		},
+		{
+			"name": "gamma",
+			"innerKm": 47625,
+			"outerKm": 47629,
+			"opacity": 0.8,
+			"color": "#444446"
+		},
+		{
+			"name": "delta",
+			"innerKm": 48297.5,
+			"outerKm": 48302.5,
+			"opacity": 0.7,
+			"color": "#424244"
+		},
+		{
+			"name": "lambda",
+			"innerKm": 50023,
+			"outerKm": 50025,
+			"opacity": 0.4,
+			"color": "#38383a"
+		},
+		{
+			"name": "epsilon",
+			"innerKm": 51120,
+			"outerKm": 51178,
+			"opacity": 0.9,
+			"color": "#4a4a4c"
+		}
+	]
+}

@@ -1,0 +1,7447 @@
+[
+	{
+		"id": "sun",
+		"name": "Sun",
+		"kind": "star",
+		"parentId": null,
+		"radiusKm": 695508,
+		"massKg": 1.989e30,
+		"orbit": null,
+		"rotation": {
+			"periodHours": 609.12,
+			"axialTiltDeg": 7.25,
+			"poleRaDeg": 286.13,
+			"poleDecDeg": 63.87,
+			"primeMeridianDeg": 84.176
+		},
+		"textures": {
+			"base": "/assets/textures/sun/sun_detailed.png"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 274,
+			"density": 1408,
+			"avgTemp": 5778,
+			"composition": {
+				"majorElements": [
+					{
+						"abbr": "H",
+						"element": "Hydrogen",
+						"percentageOfComposition": 90.965
+					},
+					{
+						"abbr": "He",
+						"element": "Helium",
+						"percentageOfComposition": 8.889
+					}
+				]
+			},
+			"mass": {
+				"massValue": 1.989,
+				"massExponent": 30
+			},
+			"vol": {
+				"volValue": 1.412,
+				"volExponent": 18
+			},
+			"flattening": 0.00009,
+			"equaRadius": 696342,
+			"bodyType": "Star",
+			"diameter": 1392700,
+			"axialTilt": 7.25
+		}
+	},
+	{
+		"id": "mercury",
+		"name": "Mercury",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 2439.4,
+		"massKg": 3.30114e23,
+		"orbit": {
+			"semiMajorAxisKm": 57909227,
+			"eccentricity": 0.20563593,
+			"inclinationDeg": 7.00498,
+			"longAscNodeDeg": 48.33077,
+			"argPeriapsisDeg": 29.12703,
+			"meanAnomalyDeg": 174.79253,
+			"periodDays": 87.969,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 1407.6,
+			"axialTiltDeg": 0.0352,
+			"poleRaDeg": 281.0103,
+			"poleDecDeg": 61.4155,
+			"primeMeridianDeg": 329.5988
+		},
+		"textures": {
+			"base": "/assets/textures/mercury/mercury.jpg",
+			"topo": "/assets/textures/mercury/mercury_topo.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 3.7,
+			"density": 5.4291,
+			"avgTemp": 440,
+			"lengthOfDay": 4222.6,
+			"orbitalVelocity": 47.4,
+			"mass": {
+				"massValue": 3.30114,
+				"massExponent": 23
+			},
+			"vol": {
+				"volValue": 6.083,
+				"volExponent": 10
+			},
+			"escape": 4250,
+			"equaRadius": 2440.53,
+			"polarRadius": 2439.7,
+			"bodyType": "Planet",
+			"diameter": 4879,
+			"perihelion": 46001200,
+			"aphelion": 69816900,
+			"orbitalPeriod": 88,
+			"orbitalInclination": 7,
+			"axialTilt": 0.0352,
+			"orbitPositionOffset": 48
+		}
+	},
+	{
+		"id": "venus",
+		"name": "Venus",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 6051.8,
+		"massKg": 4.86747e24,
+		"orbit": {
+			"semiMajorAxisKm": 108209475,
+			"eccentricity": 0.00677672,
+			"inclinationDeg": 3.39468,
+			"longAscNodeDeg": 76.67984,
+			"argPeriapsisDeg": 54.92262,
+			"meanAnomalyDeg": 50.37663,
+			"periodDays": 224.701,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": -5832.5,
+			"axialTiltDeg": 2.64,
+			"poleRaDeg": 272.76,
+			"poleDecDeg": 67.16,
+			"primeMeridianDeg": 160.2
+		},
+		"textures": {
+			"base": "/assets/textures/venus.jpg",
+			"topo": "/assets/textures/venus_topo.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 8.87,
+			"density": 5.243,
+			"avgTemp": 737,
+			"lengthOfDay": 2802,
+			"orbitalVelocity": 35,
+			"mass": {
+				"massValue": 4.86747,
+				"massExponent": 24
+			},
+			"vol": {
+				"volValue": 9.2843,
+				"volExponent": 11
+			},
+			"escape": 10360,
+			"equaRadius": 6051.8,
+			"polarRadius": 6051.8,
+			"bodyType": "Planet",
+			"diameter": 12104,
+			"perihelion": 107477000,
+			"aphelion": 108939000,
+			"orbitalPeriod": 224.7,
+			"orbitalInclination": 3.4,
+			"axialTilt": 177.36,
+			"orbitPositionOffset": 155
+		}
+	},
+	{
+		"id": "earth",
+		"name": "Earth",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 6371.0084,
+		"massKg": 5.97237e24,
+		"orbit": {
+			"semiMajorAxisKm": 149598261,
+			"eccentricity": 0.01671123,
+			"inclinationDeg": 0,
+			"longAscNodeDeg": 0,
+			"argPeriapsisDeg": 102.93768,
+			"meanAnomalyDeg": 357.52689,
+			"periodDays": 365.256,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 23.9345,
+			"axialTiltDeg": 23.4393,
+			"poleRaDeg": 0,
+			"poleDecDeg": 90,
+			"primeMeridianDeg": 190.147
+		},
+		"textures": {
+			"base": "/assets/textures/earth_4k.jpg",
+			"topo": "/assets/textures/earth_topo_4k.jpg",
+			"specular": "/assets/textures/earth_ocean_reflectance_10k.jpg",
+			"clouds": "/assets/textures/earth_clouds_active2.png",
+			"night": "/assets/textures/earth_night_4k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 9.8,
+			"density": 5.5136,
+			"avgTemp": 288,
+			"lengthOfDay": 24,
+			"orbitalVelocity": 29.8,
+			"mass": {
+				"massValue": 5.97237,
+				"massExponent": 24
+			},
+			"vol": {
+				"volValue": 1.08321,
+				"volExponent": 12
+			},
+			"escape": 11190,
+			"flattening": 0.00335,
+			"equaRadius": 6378.1366,
+			"polarRadius": 6356.8,
+			"bodyType": "Planet",
+			"diameter": 12756,
+			"perihelion": 147095000,
+			"aphelion": 152100000,
+			"orbitalPeriod": 365.2,
+			"axialTilt": 23.4393
+		}
+	},
+	{
+		"id": "mars",
+		"name": "Mars",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 3389.5,
+		"massKg": 6.41712e23,
+		"orbit": {
+			"semiMajorAxisKm": 227943822,
+			"eccentricity": 0.0933941,
+			"inclinationDeg": 1.84969,
+			"longAscNodeDeg": 49.55954,
+			"argPeriapsisDeg": 286.49683,
+			"meanAnomalyDeg": 19.3902,
+			"periodDays": 686.98,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 24.6229,
+			"axialTiltDeg": 25.19,
+			"poleRaDeg": 317.269202,
+			"poleDecDeg": 54.432516,
+			"primeMeridianDeg": 176.049863
+		},
+		"textures": {
+			"base": "/assets/textures/mars.jpg",
+			"topo": "/assets/textures/mars_topo.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 3.71,
+			"density": 3.9341,
+			"avgTemp": 210,
+			"lengthOfDay": 24.7,
+			"orbitalVelocity": 24.1,
+			"mass": {
+				"massValue": 6.41712,
+				"massExponent": 23
+			},
+			"vol": {
+				"volValue": 1.6318,
+				"volExponent": 11
+			},
+			"escape": 5030,
+			"flattening": 0.00589,
+			"equaRadius": 3396.19,
+			"polarRadius": 3376.2,
+			"bodyType": "Planet",
+			"diameter": 6792,
+			"perihelion": 206700000,
+			"aphelion": 249200000,
+			"orbitalPeriod": 687,
+			"orbitalInclination": 1.85,
+			"axialTilt": 25.19,
+			"orbitPositionOffset": 85
+		}
+	},
+	{
+		"id": "jupiter",
+		"name": "Jupiter",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 69911,
+		"massKg": 1.89819e27,
+		"orbit": {
+			"semiMajorAxisKm": 778340817,
+			"eccentricity": 0.04838624,
+			"inclinationDeg": 1.3044,
+			"longAscNodeDeg": 100.47391,
+			"argPeriapsisDeg": 274.25457,
+			"meanAnomalyDeg": 19.66796,
+			"periodDays": 4332.589,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 9.925,
+			"axialTiltDeg": 3.12,
+			"poleRaDeg": 268.056595,
+			"poleDecDeg": 64.495303,
+			"primeMeridianDeg": 284.95
+		},
+		"textures": {
+			"base": "/assets/textures/jupiter.jpg"
+		},
+		"rings": {
+			"innerRadiusKm": 110500,
+			"outerRadiusKm": 129000,
+			"textures": {
+				"alpha": "/assets/textures/jupiter/rings/rings_map.png",
+				"color": "/assets/textures/jupiter/rings/rings_color_map.png"
+			}
+		},
+		"info": {
+			"gravity": 24.79,
+			"density": 1.3262,
+			"avgTemp": 165,
+			"lengthOfDay": 9.9,
+			"orbitalVelocity": 13.1,
+			"mass": {
+				"massValue": 1.89819,
+				"massExponent": 27
+			},
+			"vol": {
+				"volValue": 1.43128,
+				"volExponent": 15
+			},
+			"escape": 60200,
+			"flattening": 0.06487,
+			"equaRadius": 71492,
+			"polarRadius": 66854,
+			"bodyType": "Planet",
+			"diameter": 142984,
+			"perihelion": 740379835,
+			"aphelion": 816620000,
+			"orbitalPeriod": 4331,
+			"orbitalInclination": 1.303,
+			"axialTilt": 3.12,
+			"orbitPositionOffset": 2692
+		}
+	},
+	{
+		"id": "saturn",
+		"name": "Saturn",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 58232,
+		"massKg": 5.68336e26,
+		"orbit": {
+			"semiMajorAxisKm": 1426666414,
+			"eccentricity": 0.05386179,
+			"inclinationDeg": 2.48599,
+			"longAscNodeDeg": 113.66242,
+			"argPeriapsisDeg": 338.93645,
+			"meanAnomalyDeg": 317.35537,
+			"periodDays": 10759.22,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 10.656,
+			"axialTiltDeg": 26.73,
+			"poleRaDeg": 40.589,
+			"poleDecDeg": 83.537,
+			"primeMeridianDeg": 38.9
+		},
+		"textures": {
+			"base": "/assets/textures/saturn.jpg"
+		},
+		"rings": {
+			"innerRadiusKm": 74510,
+			"outerRadiusKm": 140220,
+			"textures": {
+				"alpha": "/assets/textures/saturn/rings/rings_map.png",
+				"color": "/assets/textures/saturn/rings/rings_color_map.png"
+			}
+		},
+		"info": {
+			"gravity": 10.44,
+			"density": 0.6871,
+			"avgTemp": 134,
+			"lengthOfDay": 10.7,
+			"orbitalVelocity": 9.7,
+			"mass": {
+				"massValue": 5.68336,
+				"massExponent": 26
+			},
+			"vol": {
+				"volValue": 8.2713,
+				"volExponent": 14
+			},
+			"escape": 36090,
+			"flattening": 0.09796,
+			"equaRadius": 60268,
+			"polarRadius": 54364,
+			"bodyType": "Planet",
+			"diameter": 120536,
+			"perihelion": 1349823615,
+			"aphelion": 1503509229,
+			"orbitalPeriod": 10747,
+			"orbitalInclination": 2.48524,
+			"axialTilt": 26.73,
+			"orbitPositionOffset": 13753
+		}
+	},
+	{
+		"id": "uranus",
+		"name": "Uranus",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 25362,
+		"massKg": 8.68127e25,
+		"orbit": {
+			"semiMajorAxisKm": 2870658171,
+			"eccentricity": 0.04725744,
+			"inclinationDeg": 0.77264,
+			"longAscNodeDeg": 74.01693,
+			"argPeriapsisDeg": 96.93735,
+			"meanAnomalyDeg": 142.28383,
+			"periodDays": 30685.4,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": -17.24,
+			"axialTiltDeg": 82.23,
+			"poleRaDeg": 257.311,
+			"poleDecDeg": -15.175,
+			"primeMeridianDeg": 203.81
+		},
+		"textures": {
+			"base": "/assets/textures/uranus.jpg"
+		},
+		"rings": {
+			"innerRadiusKm": 41500,
+			"outerRadiusKm": 51500,
+			"textures": {
+				"alpha": "/assets/textures/uranus/rings/rings_alpha.png",
+				"color": "/assets/textures/uranus/rings/rings_color.png"
+			}
+		},
+		"info": {
+			"gravity": 8.87,
+			"density": 1.27,
+			"avgTemp": 76,
+			"discoveredBy": "William Herschel",
+			"discoveryDate": "13/03/1781",
+			"lengthOfDay": 17.2,
+			"orbitalVelocity": 6.8,
+			"mass": {
+				"massValue": 8.68127,
+				"massExponent": 25
+			},
+			"vol": {
+				"volValue": 6.833,
+				"volExponent": 13
+			},
+			"escape": 21380,
+			"flattening": 0.02293,
+			"equaRadius": 25559,
+			"polarRadius": 24973,
+			"bodyType": "Planet",
+			"diameter": 51118,
+			"perihelion": 2734998229,
+			"aphelion": 3006318143,
+			"orbitalPeriod": 30589,
+			"orbitalInclination": 0.8,
+			"axialTilt": 97.77,
+			"orbitPositionOffset": 29654
+		}
+	},
+	{
+		"id": "neptune",
+		"name": "Neptune",
+		"kind": "planet",
+		"parentId": "sun",
+		"radiusKm": 24622,
+		"massKg": 1.02413e26,
+		"orbit": {
+			"semiMajorAxisKm": 4498396417,
+			"eccentricity": 0.00859048,
+			"inclinationDeg": 1.77004,
+			"longAscNodeDeg": 131.78423,
+			"argPeriapsisDeg": 273.18054,
+			"meanAnomalyDeg": 259.91521,
+			"periodDays": 60189,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 15.9663,
+			"axialTiltDeg": 28.3,
+			"poleRaDeg": 299.36,
+			"poleDecDeg": 43.46,
+			"primeMeridianDeg": 249.978
+		},
+		"textures": {
+			"base": "/assets/textures/neptune.jpg"
+		},
+		"rings": {
+			"innerRadiusKm": 40900,
+			"outerRadiusKm": 63200,
+			"textures": {
+				"alpha": "/assets/textures/neptune/rings/rings_alpha.png",
+				"color": "/assets/textures/neptune/rings/rings_color.png"
+			}
+		},
+		"info": {
+			"gravity": 11.15,
+			"density": 1.638,
+			"avgTemp": 55,
+			"discoveredBy": "Urbain Le Verrier, John Couch Adams, Johann Galle",
+			"discoveryDate": "23/09/1846",
+			"lengthOfDay": 16.1,
+			"orbitalVelocity": 5.4,
+			"mass": {
+				"massValue": 1.02413,
+				"massExponent": 26
+			},
+			"vol": {
+				"volValue": 6.254,
+				"volExponent": 13
+			},
+			"escape": 23560,
+			"flattening": 0.01708,
+			"equaRadius": 24764,
+			"polarRadius": 24341,
+			"bodyType": "Planet",
+			"diameter": 49528,
+			"perihelion": 4459753056,
+			"aphelion": 4537039826,
+			"orbitalPeriod": 59800,
+			"orbitalInclination": 1.8,
+			"axialTilt": 28.3,
+			"orbitPositionOffset": 62885
+		}
+	},
+	{
+		"id": "moon",
+		"name": "Moon",
+		"kind": "moon",
+		"parentId": "earth",
+		"radiusKm": 1737,
+		"massKg": 7.346e22,
+		"orbit": {
+			"semiMajorAxisKm": 384400,
+			"eccentricity": 0.0549,
+			"inclinationDeg": 5.145,
+			"longAscNodeDeg": 125.045,
+			"argPeriapsisDeg": 318.309,
+			"meanAnomalyDeg": 134.963,
+			"periodDays": 27.3217,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 655.728,
+			"axialTiltDeg": 6.68,
+			"poleRaDeg": 266.8577,
+			"poleDecDeg": 65.6411,
+			"primeMeridianDeg": 41.1953
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg",
+			"topo": "/assets/textures/earth/satellites/moon_topo_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 1.62,
+			"density": 3.344,
+			"mass": {
+				"massValue": 7.346,
+				"massExponent": 22
+			},
+			"vol": {
+				"volValue": 2.1968,
+				"volExponent": 10
+			},
+			"escape": 2380,
+			"surfaceTemps": {
+				"min": -110,
+				"max": 130
+			},
+			"flattening": 0.0012,
+			"equaRadius": 1738.1,
+			"polarRadius": 1736,
+			"bodyType": "Moon",
+			"diameter": 3476.2,
+			"perihelion": 363300,
+			"aphelion": 405500,
+			"orbitalPeriod": 27.3,
+			"orbitalInclination": 21,
+			"axialTilt": 6.68
+		}
+	},
+	{
+		"id": "phobos",
+		"name": "Phobos",
+		"kind": "moon",
+		"parentId": "mars",
+		"radiusKm": 11.1,
+		"massKg": 10600000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 9378,
+			"eccentricity": 0.0151,
+			"inclinationDeg": 26.465,
+			"longAscNodeDeg": 84.452,
+			"argPeriapsisDeg": 190.823,
+			"meanAnomalyDeg": 71.919,
+			"periodDays": 0.31891,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 7.6534,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/mars/satellites/phobos.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.0057,
+			"density": 1.9,
+			"discoveredBy": "Asaph Hall",
+			"discoveryDate": "12/08/1877",
+			"mass": {
+				"massValue": 1.06,
+				"massExponent": 16
+			},
+			"vol": {
+				"volValue": 5.78361,
+				"volExponent": 3
+			},
+			"dimension": "26.8 × 22.4 × 18.4",
+			"escape": 11.39,
+			"surfaceTemps": {
+				"min": -40.15,
+				"max": -40.15,
+				"mean": -40.15
+			},
+			"equaRadius": 13,
+			"polarRadius": 9.1,
+			"bodyType": "Moon",
+			"diameter": 22,
+			"perihelion": 9234,
+			"aphelion": 9518,
+			"orbitalPeriod": 0.31875,
+			"orbitalInclination": 1.093
+		}
+	},
+	{
+		"id": "deimos",
+		"name": "Deimos",
+		"kind": "moon",
+		"parentId": "mars",
+		"radiusKm": 6.2,
+		"radiusEstimated": true,
+		"massKg": 1476200000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23455,
+			"eccentricity": 0,
+			"inclinationDeg": 26.175,
+			"longAscNodeDeg": 83.649,
+			"argPeriapsisDeg": 350.246,
+			"meanAnomalyDeg": 64.615,
+			"periodDays": 1.2624,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.003,
+			"mass": {
+				"massValue": 1.4762,
+				"massExponent": 15
+			},
+			"surfaceTemps": {
+				"min": -40.15,
+				"max": -40.15,
+				"mean": -40.15
+			},
+			"diameter": 12.4,
+			"orbitalPeriod": 1.2624,
+			"orbitalInclination": 0.93
+		}
+	},
+	{
+		"id": "metis",
+		"name": "Metis",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 30,
+		"radiusEstimated": true,
+		"massKg": 36000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 127690,
+			"eccentricity": 0,
+			"inclinationDeg": 2.161,
+			"longAscNodeDeg": 337.236,
+			"argPeriapsisDeg": 299.96,
+			"meanAnomalyDeg": 356.772,
+			"periodDays": 0.29478,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "3.6 * 10^16",
+			"diameter": 60,
+			"orbitalPeriod": 0.29478,
+			"orbitalInclination": 0.06
+		}
+	},
+	{
+		"id": "adrastea",
+		"name": "Adrastea",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 10,
+		"radiusEstimated": true,
+		"massKg": 2000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 128690,
+			"eccentricity": 0,
+			"inclinationDeg": 2.187,
+			"longAscNodeDeg": 337.824,
+			"argPeriapsisDeg": 145.207,
+			"meanAnomalyDeg": 15.711,
+			"periodDays": 0.29826,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.2 * 10^16",
+			"diameter": 20,
+			"orbitalPeriod": 0.29826,
+			"orbitalInclination": 0.03
+		}
+	},
+	{
+		"id": "amalthea",
+		"name": "Amalthea",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 93.5,
+		"radiusEstimated": true,
+		"massKg": 2080000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 181366,
+			"eccentricity": 0,
+			"inclinationDeg": 2.046,
+			"longAscNodeDeg": 328.845,
+			"argPeriapsisDeg": 78.357,
+			"meanAnomalyDeg": 8.46,
+			"periodDays": 0.498,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.02,
+			"mass": "2.08 * 10^18",
+			"surfaceTemps": {
+				"min": -195,
+				"max": -108.15,
+				"mean": -153.15
+			},
+			"diameter": 187,
+			"orbitalPeriod": 0.498,
+			"orbitalInclination": 0.374
+		}
+	},
+	{
+		"id": "thebe",
+		"name": "Thebe",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 29,
+		"radiusEstimated": true,
+		"massKg": 430000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 221889,
+			"eccentricity": 0,
+			"inclinationDeg": 3.096,
+			"longAscNodeDeg": 324.217,
+			"argPeriapsisDeg": 1.764,
+			"meanAnomalyDeg": 160.628,
+			"periodDays": 0.6745,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "43 * 10^16",
+			"diameter": 58,
+			"orbitalPeriod": 0.6745,
+			"orbitalInclination": 1.076
+		}
+	},
+	{
+		"id": "io",
+		"name": "Io",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1821.5,
+		"massKg": 8.932e22,
+		"orbit": {
+			"semiMajorAxisKm": 421800,
+			"eccentricity": 0.004,
+			"inclinationDeg": 2.208,
+			"longAscNodeDeg": 336.897,
+			"argPeriapsisDeg": 66.429,
+			"meanAnomalyDeg": 334.99,
+			"periodDays": 1.76914,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 42.4593,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/jupiter/satellites/io.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 1.79,
+			"density": 3.53,
+			"discoveredBy": "Galileo Galilei",
+			"discoveryDate": "07/01/1610",
+			"mass": {
+				"massValue": 8.932,
+				"massExponent": 22
+			},
+			"surfaceTemps": {
+				"min": -183.15,
+				"max": -143.15,
+				"mean": -163.15
+			},
+			"bodyType": "Moon",
+			"diameter": 3643.2,
+			"perihelion": 420071,
+			"aphelion": 423529,
+			"orbitalPeriod": 1.769,
+			"orbitalInclination": 0.05
+		}
+	},
+	{
+		"id": "europa",
+		"name": "Europa",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1560.8,
+		"massKg": 4.8e22,
+		"orbit": {
+			"semiMajorAxisKm": 671100,
+			"eccentricity": 0.009,
+			"inclinationDeg": 1.791,
+			"longAscNodeDeg": 332.641,
+			"argPeriapsisDeg": 254.508,
+			"meanAnomalyDeg": 345.614,
+			"periodDays": 3.55118,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 85.2293,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/jupiter/satellites/europa.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 1.31,
+			"density": 3.01,
+			"discoveredBy": "Galileo Galilei",
+			"discoveryDate": "08/01/1610",
+			"mass": {
+				"massValue": 4.8,
+				"massExponent": 22
+			},
+			"surfaceTemps": {
+				"min": -214.15,
+				"max": -148.15,
+				"mean": -171.15
+			},
+			"bodyType": "Moon",
+			"diameter": 3121.6,
+			"orbitalPeriod": 3.55,
+			"orbitalInclination": 0.47
+		}
+	},
+	{
+		"id": "ganymede",
+		"name": "Ganymede",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2634.1,
+		"radiusEstimated": true,
+		"massKg": 1.4819e23,
+		"orbit": {
+			"semiMajorAxisKm": 1070400,
+			"eccentricity": 0.0013,
+			"inclinationDeg": 2.21,
+			"longAscNodeDeg": 343.208,
+			"argPeriapsisDeg": 317.631,
+			"meanAnomalyDeg": 279.238,
+			"periodDays": 7.15455,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/jupiter/satellites/ganymede.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 1.428,
+			"mass": "1.4819 * 10^23",
+			"surfaceTemps": {
+				"min": -203.15,
+				"max": -121.15,
+				"mean": -163.15
+			},
+			"diameter": 5268.2,
+			"orbitalPeriod": 7.15455,
+			"orbitalInclination": 0.204
+		}
+	},
+	{
+		"id": "callisto",
+		"name": "Callisto",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2410.3,
+		"massKg": 1.0759e23,
+		"orbit": {
+			"semiMajorAxisKm": 1882700,
+			"eccentricity": 0.007,
+			"inclinationDeg": 2.019,
+			"longAscNodeDeg": 338.145,
+			"argPeriapsisDeg": 16.377,
+			"meanAnomalyDeg": 84.691,
+			"periodDays": 16.68902,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 400.536,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 1.235,
+			"density": 1.83,
+			"discoveredBy": "Galileo Galilei",
+			"discoveryDate": "07/01/1610",
+			"mass": {
+				"massValue": 1.0759,
+				"massExponent": 23
+			},
+			"surfaceTemps": {
+				"min": 80,
+				"max": 134,
+				"mean": 165
+			},
+			"bodyType": "Moon",
+			"diameter": 4820.6,
+			"orbitalPeriod": 16.689,
+			"orbitalInclination": 0.205
+		}
+	},
+	{
+		"id": "themisto",
+		"name": "Themisto",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 4,
+		"radiusEstimated": true,
+		"massKg": 690000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 7393216,
+			"eccentricity": 0,
+			"inclinationDeg": 47.48,
+			"longAscNodeDeg": 18.202,
+			"argPeriapsisDeg": 242.734,
+			"meanAnomalyDeg": 256.44,
+			"periodDays": 129.87,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.069 * 10^16",
+			"diameter": 8,
+			"orbitalPeriod": 129.87,
+			"orbitalInclination": 47.48
+		}
+	},
+	{
+		"id": "leda",
+		"name": "Leda",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 8,
+		"radiusEstimated": true,
+		"massKg": 6000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 11187781,
+			"eccentricity": 0,
+			"inclinationDeg": 29.01,
+			"longAscNodeDeg": 14.948,
+			"argPeriapsisDeg": 249.927,
+			"meanAnomalyDeg": 34.014,
+			"periodDays": 240.82,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.6 * 10^16",
+			"diameter": 16,
+			"orbitalPeriod": 240.82,
+			"orbitalInclination": 29.01
+		}
+	},
+	{
+		"id": "ersa",
+		"name": "Ersa",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 11453000,
+			"eccentricity": 0.094,
+			"inclinationDeg": 30.6,
+			"longAscNodeDeg": 295.51,
+			"argPeriapsisDeg": 352.471,
+			"meanAnomalyDeg": 253.595,
+			"periodDays": 252,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2018 J 1",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "himalia",
+		"name": "Himalia",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 85,
+		"massKg": 9500000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 11461000,
+			"eccentricity": 0.162,
+			"inclinationDeg": 27.5,
+			"longAscNodeDeg": 71.017,
+			"argPeriapsisDeg": 0.816,
+			"meanAnomalyDeg": 302.65,
+			"periodDays": 250.5662,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 7.7808,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.062,
+			"density": 1,
+			"discoveredBy": "C. Perrine",
+			"discoveryDate": "03/12/1904",
+			"mass": {
+				"massValue": 9.5,
+				"massExponent": 18
+			},
+			"bodyType": "Moon",
+			"diameter": 170,
+			"perihelion": 9782900,
+			"aphelion": 13082000,
+			"orbitalPeriod": 250.23,
+			"orbitalInclination": 29.59
+		}
+	},
+	{
+		"id": "pandia",
+		"name": "Pandia",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 11495000,
+			"eccentricity": 0.18,
+			"inclinationDeg": 28.2,
+			"longAscNodeDeg": 257.687,
+			"argPeriapsisDeg": 249.197,
+			"meanAnomalyDeg": 315.225,
+			"periodDays": 252,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 4",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "lysithea",
+		"name": "Lysithea",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 18,
+		"radiusEstimated": true,
+		"massKg": 63000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 11740560,
+			"eccentricity": 0,
+			"inclinationDeg": 28.3,
+			"longAscNodeDeg": 99.34,
+			"argPeriapsisDeg": 213.329,
+			"meanAnomalyDeg": 38.338,
+			"periodDays": 259.89,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "6.3 * 10^16",
+			"diameter": 36,
+			"orbitalPeriod": 259.89,
+			"orbitalInclination": 28.3
+		}
+	},
+	{
+		"id": "elara",
+		"name": "Elara",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 43,
+		"radiusEstimated": true,
+		"massKg": 870000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 11778034,
+			"eccentricity": 0,
+			"inclinationDeg": 30.66,
+			"longAscNodeDeg": 109.771,
+			"argPeriapsisDeg": 223.921,
+			"meanAnomalyDeg": 115.891,
+			"periodDays": 257.62,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "87 * 10^16",
+			"diameter": 86,
+			"orbitalPeriod": 257.62,
+			"orbitalInclination": 30.66
+		}
+	},
+	{
+		"id": "dia",
+		"name": "Dia",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2,
+		"massKg": 90000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 12118000,
+			"eccentricity": 0.211,
+			"inclinationDeg": 28.23,
+			"longAscNodeDeg": 97.547,
+			"argPeriapsisDeg": 269.746,
+			"meanAnomalyDeg": 96.989,
+			"periodDays": 287,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "27/12/2000",
+			"alternativeName": "S/2000 J 11",
+			"mass": {
+				"massValue": 9,
+				"massExponent": 13
+			},
+			"bodyType": "Moon",
+			"diameter": 4,
+			"orbitalPeriod": 274,
+			"orbitalInclination": 28.2
+		}
+	},
+	{
+		"id": "carpo",
+		"name": "Carpo",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 3,
+		"massKg": 45000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 16989000,
+			"eccentricity": 0.43,
+			"inclinationDeg": 51.4,
+			"longAscNodeDeg": 99.082,
+			"argPeriapsisDeg": 197.639,
+			"meanAnomalyDeg": 223.517,
+			"periodDays": 456.1,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 20",
+			"mass": {
+				"massValue": 4.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon",
+			"diameter": 3,
+			"orbitalPeriod": 458.62,
+			"orbitalInclination": 55
+		}
+	},
+	{
+		"id": "euporie",
+		"name": "Euporie",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 19302000,
+			"eccentricity": 0.144,
+			"inclinationDeg": 145.8,
+			"longAscNodeDeg": 343.179,
+			"argPeriapsisDeg": 38.062,
+			"meanAnomalyDeg": 345.311,
+			"periodDays": 553.1,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "11/12/2001",
+			"alternativeName": "S/2001 J 10",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon",
+			"diameter": 2,
+			"orbitalPeriod": "−538.78",
+			"orbitalInclination": 144.694
+		}
+	},
+	{
+		"id": "s2011j1",
+		"name": "S/2011 J 1",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 0.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20155290,
+			"eccentricity": 0.296,
+			"inclinationDeg": 162.8,
+			"longAscNodeDeg": 13.746,
+			"argPeriapsisDeg": 252.496,
+			"meanAnomalyDeg": 165.714,
+			"periodDays": 580.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard",
+			"discoveryDate": "29/01/2012",
+			"alternativeName": "S/2011 J 1",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2003j18",
+		"name": "S/2003 J 18",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20274000,
+			"eccentricity": 0.105,
+			"inclinationDeg": 146.4,
+			"longAscNodeDeg": 276.673,
+			"argPeriapsisDeg": 106.133,
+			"meanAnomalyDeg": 317.119,
+			"periodDays": 606.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 18",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2010j2",
+		"name": "S/2010 J 2",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 0.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20307150,
+			"eccentricity": 0.307,
+			"inclinationDeg": 150.4,
+			"longAscNodeDeg": 193.842,
+			"argPeriapsisDeg": 344.186,
+			"meanAnomalyDeg": 212.908,
+			"periodDays": 588.1,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Christian Veillet",
+			"discoveryDate": "08/09/2010",
+			"alternativeName": "S/2010 J 2",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "thelxinoe",
+		"name": "Thelxinoe",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"radiusEstimated": true,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20453753,
+			"eccentricity": 0,
+			"inclinationDeg": 153,
+			"longAscNodeDeg": 219.984,
+			"argPeriapsisDeg": 112.426,
+			"meanAnomalyDeg": 293.171,
+			"periodDays": 597.607,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0015 * 10^16",
+			"diameter": 2,
+			"orbitalPeriod": "−597.607",
+			"orbitalInclination": 153
+		}
+	},
+	{
+		"id": "euanthe",
+		"name": "Euanthe",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1.5,
+		"radiusEstimated": true,
+		"massKg": 45000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20464854,
+			"eccentricity": 0,
+			"inclinationDeg": 142,
+			"longAscNodeDeg": 61.652,
+			"argPeriapsisDeg": 298.666,
+			"meanAnomalyDeg": 213.62,
+			"periodDays": 598.093,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0045 * 10^16",
+			"diameter": 3,
+			"orbitalPeriod": "−598.093",
+			"orbitalInclination": 142
+		}
+	},
+	{
+		"id": "helike",
+		"name": "Helike",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2,
+		"radiusEstimated": true,
+		"massKg": 90000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20540266,
+			"eccentricity": 0,
+			"inclinationDeg": 156,
+			"longAscNodeDeg": 234.419,
+			"argPeriapsisDeg": 349.062,
+			"meanAnomalyDeg": 233.86,
+			"periodDays": 601.402,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0090 * 10^16",
+			"diameter": 4,
+			"orbitalPeriod": "−601.402",
+			"orbitalInclination": 156
+		}
+	},
+	{
+		"id": "s2017j7",
+		"name": "S/2017 J 7",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20571000,
+			"eccentricity": 0.215,
+			"inclinationDeg": 143.4,
+			"longAscNodeDeg": 232.799,
+			"argPeriapsisDeg": 80.138,
+			"meanAnomalyDeg": 150.132,
+			"periodDays": 603,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 7",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2017j3",
+		"name": "S/2017 J 3",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20639000,
+			"eccentricity": 0.148,
+			"inclinationDeg": 147.9,
+			"longAscNodeDeg": 304.911,
+			"argPeriapsisDeg": 342.166,
+			"meanAnomalyDeg": 291.99,
+			"periodDays": 606,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 3",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2016j1",
+		"name": "S/2016 J 1",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 0.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20650845,
+			"eccentricity": 0.141,
+			"inclinationDeg": 139.8,
+			"longAscNodeDeg": 288.65,
+			"argPeriapsisDeg": 4.345,
+			"meanAnomalyDeg": 13.062,
+			"periodDays": 602.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "06/06/2017",
+			"alternativeName": "S/2016 J 1",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "orthosie",
+		"name": "Orthosie",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20721000,
+			"eccentricity": 0.281,
+			"inclinationDeg": 145.9,
+			"longAscNodeDeg": 101.132,
+			"argPeriapsisDeg": 245.196,
+			"meanAnomalyDeg": 231.027,
+			"periodDays": 622.6,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.00081,
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "11/12/2001",
+			"alternativeName": "S/2001 J 9",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "praxidike",
+		"name": "Praxidike",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 3.5,
+		"radiusEstimated": true,
+		"massKg": 430000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20823948,
+			"eccentricity": 0,
+			"inclinationDeg": 143,
+			"longAscNodeDeg": 341.278,
+			"argPeriapsisDeg": 288.884,
+			"meanAnomalyDeg": 21.424,
+			"periodDays": 613.904,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.043 * 10^16",
+			"diameter": 7,
+			"orbitalPeriod": "−613.904",
+			"orbitalInclination": 143
+		}
+	},
+	{
+		"id": "s2003j16",
+		"name": "S/2003 J 16",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 21000000,
+			"eccentricity": 0.23,
+			"inclinationDeg": 148.5,
+			"longAscNodeDeg": 88.19,
+			"argPeriapsisDeg": 328.847,
+			"meanAnomalyDeg": 93.524,
+			"periodDays": 595.4,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 16",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "thyone",
+		"name": "Thyone",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2,
+		"radiusEstimated": true,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 21406000,
+			"eccentricity": 0,
+			"inclinationDeg": 147,
+			"longAscNodeDeg": 289.903,
+			"argPeriapsisDeg": 281.551,
+			"meanAnomalyDeg": 206.282,
+			"periodDays": 639.803,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0015 * 10^16",
+			"diameter": 4,
+			"orbitalPeriod": "-639.803",
+			"orbitalInclination": 147
+		}
+	},
+	{
+		"id": "s2017j9",
+		"name": "S/2017 J 9",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 21430000,
+			"eccentricity": 0.229,
+			"inclinationDeg": 152.7,
+			"longAscNodeDeg": 65.137,
+			"argPeriapsisDeg": 15.926,
+			"meanAnomalyDeg": 305.937,
+			"periodDays": 639,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 9",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "ananke",
+		"name": "Ananke",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 14,
+		"radiusEstimated": true,
+		"massKg": 30000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 21454952,
+			"eccentricity": 0,
+			"inclinationDeg": 149.9,
+			"longAscNodeDeg": 24.675,
+			"argPeriapsisDeg": 17.871,
+			"meanAnomalyDeg": 225.143,
+			"periodDays": 640.38,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "3.0 * 10^16",
+			"diameter": 28,
+			"orbitalPeriod": "-640.38",
+			"orbitalInclination": 149.9
+		}
+	},
+	{
+		"id": "s2003j12",
+		"name": "S/2003 J 12",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 0.5,
+		"massKg": 1000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 21557740,
+			"eccentricity": 0.376,
+			"inclinationDeg": 145.8,
+			"longAscNodeDeg": 287.025,
+			"argPeriapsisDeg": 189.971,
+			"meanAnomalyDeg": 81.708,
+			"periodDays": 533.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 12",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 12
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "aitne",
+		"name": "Aitne",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1.5,
+		"radiusEstimated": true,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22285000,
+			"eccentricity": 0,
+			"inclinationDeg": 164,
+			"longAscNodeDeg": 358.179,
+			"argPeriapsisDeg": 313.416,
+			"meanAnomalyDeg": 215.085,
+			"periodDays": 679.641,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0015 * 10^16",
+			"diameter": 3,
+			"orbitalPeriod": "-679.641",
+			"orbitalInclination": 164
+		}
+	},
+	{
+		"id": "s2017j6",
+		"name": "S/2017 J 6",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 22395000,
+			"eccentricity": 0.557,
+			"inclinationDeg": 155.2,
+			"longAscNodeDeg": 102.557,
+			"argPeriapsisDeg": 344.14,
+			"meanAnomalyDeg": 42.042,
+			"periodDays": 683,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 6",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2003j9",
+		"name": "S/2003 J 9",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 0.5,
+		"massKg": 1500000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22441680,
+			"eccentricity": 0.269,
+			"inclinationDeg": 164.5,
+			"longAscNodeDeg": 202.556,
+			"argPeriapsisDeg": 228.081,
+			"meanAnomalyDeg": 359.176,
+			"periodDays": 683,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 9",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 12
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "chaldene",
+		"name": "Chaldene",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1.9,
+		"radiusEstimated": true,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22713000,
+			"eccentricity": 0,
+			"inclinationDeg": 169,
+			"longAscNodeDeg": 46.407,
+			"argPeriapsisDeg": 40.715,
+			"meanAnomalyDeg": 269.052,
+			"periodDays": 699.327,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0015 * 10^16",
+			"diameter": 3.8,
+			"orbitalPeriod": "-699.327",
+			"orbitalInclination": 169
+		}
+	},
+	{
+		"id": "s2003j19",
+		"name": "S/2003 J 19",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22800000,
+			"eccentricity": 0.334,
+			"inclinationDeg": 162.9,
+			"longAscNodeDeg": 76.176,
+			"argPeriapsisDeg": 142.014,
+			"meanAnomalyDeg": 63.255,
+			"periodDays": 701.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 19",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "philophrosyne",
+		"name": "Philophrosyne",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22819950,
+			"eccentricity": 0.194,
+			"inclinationDeg": 143.6,
+			"longAscNodeDeg": 9.005,
+			"argPeriapsisDeg": 111.904,
+			"meanAnomalyDeg": 180.397,
+			"periodDays": 668.4,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 15",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2003j10",
+		"name": "S/2003 J 10",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22896000,
+			"eccentricity": 0.214,
+			"inclinationDeg": 164.1,
+			"longAscNodeDeg": 74.491,
+			"argPeriapsisDeg": 353.918,
+			"meanAnomalyDeg": 169.847,
+			"periodDays": 767,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 10",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2003j24",
+		"name": "S/2003 J 24",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 5,
+		"radiusEstimated": true,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23088000,
+			"eccentricity": 0.25,
+			"inclinationDeg": 0,
+			"longAscNodeDeg": 301.49,
+			"argPeriapsisDeg": 244.287,
+			"meanAnomalyDeg": 81.895,
+			"periodDays": 716.7586,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "Scott S. Sheppard",
+			"discoveryDate": "05/02/2003",
+			"alternativeName": "S/2003 J 24",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2017j5",
+		"name": "S/2017 J 5",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23169000,
+			"eccentricity": 0.284,
+			"inclinationDeg": 164.3,
+			"longAscNodeDeg": 200.703,
+			"argPeriapsisDeg": 52.729,
+			"meanAnomalyDeg": 37.215,
+			"periodDays": 719,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 5",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2017j8",
+		"name": "S/2017 J 8",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 0.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23174000,
+			"eccentricity": 0.312,
+			"inclinationDeg": 164.7,
+			"longAscNodeDeg": 155.76,
+			"argPeriapsisDeg": 30.123,
+			"meanAnomalyDeg": 310.443,
+			"periodDays": 720,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 8",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "carme",
+		"name": "Carme",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 23,
+		"radiusEstimated": true,
+		"massKg": 130000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23197992,
+			"eccentricity": 0,
+			"inclinationDeg": 167.53,
+			"longAscNodeDeg": 159.157,
+			"argPeriapsisDeg": 130.908,
+			"meanAnomalyDeg": 161.009,
+			"periodDays": 763.95,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "13 * 10^16",
+			"diameter": 46,
+			"orbitalPeriod": "−763.95",
+			"orbitalInclination": 167.53
+		}
+	},
+	{
+		"id": "s2003j4",
+		"name": "S/2003 J 4",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23257920,
+			"eccentricity": 0.204,
+			"inclinationDeg": 144.9,
+			"longAscNodeDeg": 77.697,
+			"argPeriapsisDeg": 299.561,
+			"meanAnomalyDeg": 254.475,
+			"periodDays": 723.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 4",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2017j2",
+		"name": "S/2017 J 2",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23303000,
+			"eccentricity": 0.236,
+			"inclinationDeg": 166.4,
+			"longAscNodeDeg": 145.408,
+			"argPeriapsisDeg": 306.285,
+			"meanAnomalyDeg": 185.854,
+			"periodDays": 723,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "17/07/2018",
+			"alternativeName": "S/2017 J 2",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "pasithee",
+		"name": "Pasithee",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"radiusEstimated": true,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23307318,
+			"eccentricity": 0,
+			"inclinationDeg": 164,
+			"longAscNodeDeg": 96.419,
+			"argPeriapsisDeg": 11.089,
+			"meanAnomalyDeg": 191.775,
+			"periodDays": 726.93,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0015 * 10^16",
+			"diameter": 2,
+			"orbitalPeriod": "−726.93",
+			"orbitalInclination": 164
+		}
+	},
+	{
+		"id": "s2010j1",
+		"name": "S/2010 J 1",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23314335,
+			"eccentricity": 0.32,
+			"inclinationDeg": 163.2,
+			"longAscNodeDeg": 39.775,
+			"argPeriapsisDeg": 336.322,
+			"meanAnomalyDeg": 256.68,
+			"periodDays": 723.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Jacobson, Brozovic, Gladman, Alexandersen",
+			"discoveryDate": "07/09/2010",
+			"alternativeName": "S/2010 J 1",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2011j2",
+		"name": "S/2011 J 2",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 0.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23463885,
+			"eccentricity": 0.332,
+			"inclinationDeg": 148.8,
+			"longAscNodeDeg": 298.609,
+			"argPeriapsisDeg": 230.621,
+			"meanAnomalyDeg": 177.43,
+			"periodDays": 726.8,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard",
+			"discoveryDate": "29/01/2012",
+			"alternativeName": "S/2011 J 2",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2017j1",
+		"name": "S/2017 J 1",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23547105,
+			"eccentricity": 0.397,
+			"inclinationDeg": 149.2,
+			"longAscNodeDeg": 264.114,
+			"argPeriapsisDeg": 334.255,
+			"meanAnomalyDeg": 59.442,
+			"periodDays": 734.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott Sheppard",
+			"discoveryDate": "06/06/2017",
+			"alternativeName": "S/2017 J 1",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "pasiphae",
+		"name": "Pasiphae",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 30,
+		"radiusEstimated": true,
+		"massKg": 300000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23609042,
+			"eccentricity": 0,
+			"inclinationDeg": 143.04,
+			"longAscNodeDeg": 53.211,
+			"argPeriapsisDeg": 330.498,
+			"meanAnomalyDeg": 212.209,
+			"periodDays": 739.8,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "30 * 10^16",
+			"diameter": 60,
+			"orbitalPeriod": "−739.8",
+			"orbitalInclination": 143.04
+		}
+	},
+	{
+		"id": "kallichore",
+		"name": "Kallichore",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 24043000,
+			"eccentricity": 0.264,
+			"inclinationDeg": 165.5,
+			"longAscNodeDeg": 30.203,
+			"argPeriapsisDeg": 350.167,
+			"meanAnomalyDeg": 252.847,
+			"periodDays": 764.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 11",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2003j23",
+		"name": "S/2003 J 23",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 24055500,
+			"eccentricity": 0.309,
+			"inclinationDeg": 149.2,
+			"longAscNodeDeg": 164.531,
+			"argPeriapsisDeg": 253.279,
+			"meanAnomalyDeg": 245.798,
+			"periodDays": 759.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.00081,
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 23",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "sinope",
+		"name": "Sinope",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 19,
+		"radiusEstimated": true,
+		"massKg": 75000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 24057865,
+			"eccentricity": 0,
+			"inclinationDeg": 153.12,
+			"longAscNodeDeg": 50.394,
+			"argPeriapsisDeg": 324.344,
+			"meanAnomalyDeg": 299.437,
+			"periodDays": 724.1,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "7.5 * 10^16",
+			"diameter": 38,
+			"orbitalPeriod": "−724.1",
+			"orbitalInclination": 153.12
+		}
+	},
+	{
+		"id": "megaclite",
+		"name": "Megaclite",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 2.7,
+		"radiusEstimated": true,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 24687000,
+			"eccentricity": 0,
+			"inclinationDeg": 150,
+			"longAscNodeDeg": 140.916,
+			"argPeriapsisDeg": 326.147,
+			"meanAnomalyDeg": 195.145,
+			"periodDays": 792.437,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0015 * 10^16",
+			"diameter": 5.4,
+			"orbitalPeriod": "-792.437",
+			"orbitalInclination": 150
+		}
+	},
+	{
+		"id": "s2003j2",
+		"name": "S/2003 J 2",
+		"kind": "moon",
+		"parentId": "jupiter",
+		"radiusKm": 1,
+		"massKg": 15000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 28570410,
+			"eccentricity": 0.38,
+			"inclinationDeg": 151.8,
+			"longAscNodeDeg": 249.562,
+			"argPeriapsisDeg": 143.041,
+			"meanAnomalyDeg": 257.818,
+			"periodDays": 982.5,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "2003",
+			"alternativeName": "S/2003 J 2",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2009s1",
+		"name": "S/2009 S 1",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 0.3,
+		"massKg": 100000000000,
+		"orbit": {
+			"semiMajorAxisKm": 117000,
+			"eccentricity": 0,
+			"inclinationDeg": 28.052,
+			"longAscNodeDeg": 169.528,
+			"argPeriapsisDeg": 228.467,
+			"meanAnomalyDeg": 351.05,
+			"periodDays": 0.4715,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Carolyn C. Porco",
+			"discoveryDate": "26/07/2009",
+			"alternativeName": "S/2009 S 1",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 11
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "pan",
+		"name": "Pan",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 14.1,
+		"massKg": 4950000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 133600,
+			"eccentricity": 0,
+			"inclinationDeg": 28.052,
+			"longAscNodeDeg": 169.528,
+			"argPeriapsisDeg": 187.996,
+			"meanAnomalyDeg": 91.719,
+			"periodDays": 0.575,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 0.42,
+			"discoveredBy": "Mark R. Showalter",
+			"discoveryDate": "22/08/1981",
+			"alternativeName": "S/1981 S 13",
+			"mass": {
+				"massValue": 4.95,
+				"massExponent": 15
+			},
+			"dimension": "35×32×21",
+			"bodyType": "Moon",
+			"diameter": 86.2,
+			"orbitalPeriod": 0.575,
+			"orbitalInclination": 0.001
+		}
+	},
+	{
+		"id": "daphnis",
+		"name": "Daphnis",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3.8,
+		"massKg": 100000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 136500,
+			"eccentricity": 0,
+			"inclinationDeg": 28.052,
+			"longAscNodeDeg": 169.528,
+			"argPeriapsisDeg": 8.54,
+			"meanAnomalyDeg": 313.357,
+			"periodDays": 0.594,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 0.34,
+			"discoveredBy": "Carolyn C. Porco",
+			"discoveryDate": "01/05/2009",
+			"alternativeName": "S/2005 S 1",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 14
+			},
+			"dimension": "9×8×6",
+			"bodyType": "Moon",
+			"diameter": 7.6,
+			"orbitalPeriod": 0.59408,
+			"orbitalInclination": 0.0036
+		}
+	},
+	{
+		"id": "atlas",
+		"name": "Atlas",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 15.1,
+		"massKg": 7000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 137700,
+			"eccentricity": 0,
+			"inclinationDeg": 27.766,
+			"longAscNodeDeg": 169.718,
+			"argPeriapsisDeg": 48.208,
+			"meanAnomalyDeg": 202.729,
+			"periodDays": 0.602,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 0.5,
+			"discoveredBy": "Richard J. Terrile",
+			"discoveryDate": "12/11/1980",
+			"alternativeName": "S/1980 S 28",
+			"mass": {
+				"massValue": 7,
+				"massExponent": 15
+			},
+			"dimension": "42×36×18",
+			"bodyType": "Moon",
+			"diameter": 30.2,
+			"orbitalPeriod": 0.60169,
+			"orbitalInclination": 0.003
+		}
+	},
+	{
+		"id": "prometheus",
+		"name": "Prometheus",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 14.1,
+		"radiusEstimated": true,
+		"massKg": 4950000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 139380,
+			"eccentricity": 0,
+			"inclinationDeg": 28.046,
+			"longAscNodeDeg": 169.537,
+			"argPeriapsisDeg": 357.493,
+			"meanAnomalyDeg": 210.718,
+			"periodDays": 0.613,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "4.95 * 10^15",
+			"diameter": 28.2,
+			"orbitalPeriod": 0.613,
+			"orbitalInclination": 0.008
+		}
+	},
+	{
+		"id": "pandora",
+		"name": "Pandora",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 40.7,
+		"massKg": 140000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 141700,
+			"eccentricity": 0.0042,
+			"inclinationDeg": 28.052,
+			"longAscNodeDeg": 169.528,
+			"argPeriapsisDeg": 314.644,
+			"meanAnomalyDeg": 333.932,
+			"periodDays": 0.629,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 0.49,
+			"discoveredBy": "Stewart A. Collins",
+			"discoveryDate": "??/10/1980",
+			"alternativeName": "S/1980 S 26",
+			"mass": {
+				"massValue": 1.4,
+				"massExponent": 17
+			},
+			"dimension": "103×80×64",
+			"bodyType": "Moon",
+			"diameter": 81.4,
+			"orbitalPeriod": 0.6285,
+			"orbitalInclination": 0.05
+		}
+	},
+	{
+		"id": "epimetheus",
+		"name": "Epimetheus",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 58.1,
+		"radiusEstimated": true,
+		"massKg": 526600000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 151422,
+			"eccentricity": 0,
+			"inclinationDeg": 27.749,
+			"longAscNodeDeg": 169.906,
+			"argPeriapsisDeg": 206.104,
+			"meanAnomalyDeg": 308.899,
+			"periodDays": 0.694,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "526.6 * 10^15",
+			"diameter": 116.2,
+			"orbitalPeriod": 0.694,
+			"orbitalInclination": 0.351
+		}
+	},
+	{
+		"id": "janus",
+		"name": "Janus",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 89.5,
+		"massKg": 1900000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 151500,
+			"eccentricity": 0.007,
+			"inclinationDeg": 28.023,
+			"longAscNodeDeg": 169.236,
+			"argPeriapsisDeg": 253.172,
+			"meanAnomalyDeg": 327.797,
+			"periodDays": 0.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 0.63,
+			"discoveredBy": "Audouin Dollfus",
+			"discoveryDate": "15/12/1966",
+			"alternativeName": "S/1980 S 1",
+			"mass": {
+				"massValue": 1.9,
+				"massExponent": 18
+			},
+			"dimension": "195×194×152",
+			"bodyType": "Moon",
+			"diameter": 179,
+			"orbitalPeriod": 0.695,
+			"orbitalInclination": 0.165
+		}
+	},
+	{
+		"id": "aegaeon",
+		"name": "Aegaeon",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 0.5,
+		"radiusEstimated": true,
+		"massKg": 100000000000,
+		"orbit": {
+			"semiMajorAxisKm": 167500,
+			"eccentricity": 0,
+			"inclinationDeg": 28.052,
+			"longAscNodeDeg": 169.529,
+			"argPeriapsisDeg": 149.716,
+			"meanAnomalyDeg": 169.617,
+			"periodDays": 0.80812,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.0001 * 10^15",
+			"diameter": 1,
+			"orbitalPeriod": 0.80812,
+			"orbitalInclination": 0.001
+		}
+	},
+	{
+		"id": "mimas",
+		"name": "Mimas",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 396.4,
+		"massKg": 37900000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 185539,
+			"eccentricity": 0.0202,
+			"inclinationDeg": 26.653,
+			"longAscNodeDeg": 170.878,
+			"argPeriapsisDeg": 11.636,
+			"meanAnomalyDeg": 320.126,
+			"periodDays": 0.94,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 22.56,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.064,
+			"density": 1.15,
+			"discoveredBy": "William Herschel",
+			"discoveryDate": "17/09/1789",
+			"mass": {
+				"massValue": 3.79,
+				"massExponent": 19
+			},
+			"dimension": "415×394×381",
+			"surfaceTemps": {
+				"min": -209.15,
+				"max": -209.15,
+				"mean": -209.15
+			},
+			"bodyType": "Moon",
+			"diameter": 396.4,
+			"perihelion": 181770,
+			"aphelion": 189270,
+			"orbitalPeriod": 0.942,
+			"orbitalInclination": 1.574
+		}
+	},
+	{
+		"id": "methone",
+		"name": "Methone",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.6,
+		"radiusEstimated": true,
+		"massKg": 20000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 194440,
+			"eccentricity": 0,
+			"inclinationDeg": 28.046,
+			"longAscNodeDeg": 169.52,
+			"argPeriapsisDeg": 253.485,
+			"meanAnomalyDeg": 51.457,
+			"periodDays": 1.00957,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.02 * 10^15",
+			"diameter": 3.2,
+			"orbitalPeriod": 1.00957,
+			"orbitalInclination": 0.007
+		}
+	},
+	{
+		"id": "anthe",
+		"name": "Anthe",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 0.9,
+		"radiusEstimated": true,
+		"massKg": 7000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 197700,
+			"eccentricity": 0,
+			"inclinationDeg": 28.034,
+			"longAscNodeDeg": 169.737,
+			"argPeriapsisDeg": 29.719,
+			"meanAnomalyDeg": 91.485,
+			"periodDays": 1.0365,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.007 * 10^15",
+			"diameter": 1.8,
+			"orbitalPeriod": 1.0365,
+			"orbitalInclination": 0.1
+		}
+	},
+	{
+		"id": "pallene",
+		"name": "Pallene",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"radiusEstimated": true,
+		"massKg": 50000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 212280,
+			"eccentricity": 0,
+			"inclinationDeg": 28.003,
+			"longAscNodeDeg": 169.898,
+			"argPeriapsisDeg": 63.197,
+			"meanAnomalyDeg": 301.994,
+			"periodDays": 1.15375,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.05 * 10^15",
+			"diameter": 6,
+			"orbitalPeriod": 1.15375,
+			"orbitalInclination": 0.181
+		}
+	},
+	{
+		"id": "enceladus",
+		"name": "Enceladus",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 504.2,
+		"massKg": 108000000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 238042,
+			"eccentricity": 0.0045,
+			"inclinationDeg": 28.052,
+			"longAscNodeDeg": 169.528,
+			"argPeriapsisDeg": 48.877,
+			"meanAnomalyDeg": 329.495,
+			"periodDays": 1.37,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 32.88,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/saturn/satellites/enceladus.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.113,
+			"density": 1.61,
+			"discoveredBy": "William Herschel",
+			"discoveryDate": "28/08/1789",
+			"mass": {
+				"massValue": 1.08,
+				"massExponent": 20
+			},
+			"surfaceTemps": {
+				"min": -240,
+				"max": -128,
+				"mean": -198
+			},
+			"bodyType": "Moon",
+			"diameter": 504.2,
+			"perihelion": 236830,
+			"aphelion": 239066,
+			"orbitalPeriod": 1.37,
+			"orbitalInclination": 0.019
+		}
+	},
+	{
+		"id": "telesto",
+		"name": "Telesto",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 12.4,
+		"radiusEstimated": true,
+		"massKg": 9410000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 294619,
+			"eccentricity": 0,
+			"inclinationDeg": 27.345,
+			"longAscNodeDeg": 167.469,
+			"argPeriapsisDeg": 178.495,
+			"meanAnomalyDeg": 249.055,
+			"periodDays": 1.887802,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "9.41 * 10^15",
+			"diameter": 24.8,
+			"orbitalPeriod": 1.887802,
+			"orbitalInclination": 1.19
+		}
+	},
+	{
+		"id": "tethys",
+		"name": "Tethys",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 531,
+		"radiusEstimated": true,
+		"massKg": 617449000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 294619,
+			"eccentricity": 0,
+			"inclinationDeg": 29.081,
+			"longAscNodeDeg": 170.453,
+			"argPeriapsisDeg": 170.596,
+			"meanAnomalyDeg": 144.544,
+			"periodDays": 1.8878,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/saturn/satellites/tethys.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "617449 * 10^15",
+			"diameter": 1062,
+			"orbitalPeriod": 1.8878,
+			"orbitalInclination": 1.12
+		}
+	},
+	{
+		"id": "calypso",
+		"name": "Calypso",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 10.7,
+		"massKg": 6500000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 294720,
+			"eccentricity": 0.001,
+			"inclinationDeg": 27.537,
+			"longAscNodeDeg": 172.487,
+			"argPeriapsisDeg": 347.578,
+			"meanAnomalyDeg": 112.112,
+			"periodDays": 1.89,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Dan Pascu, P. Kenneth Seidelmann, William A. Baum, Douglas Currie",
+			"discoveryDate": "13/03/1980",
+			"alternativeName": "S/1980 S 25",
+			"mass": {
+				"massValue": 6.5,
+				"massExponent": 15
+			},
+			"dimension": "31×24×21",
+			"bodyType": "Moon",
+			"diameter": 21.4,
+			"orbitalPeriod": 1.887802,
+			"orbitalInclination": 1.56
+		}
+	},
+	{
+		"id": "polydeuces",
+		"name": "Polydeuces",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": 10000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 377390,
+			"eccentricity": 0.018,
+			"inclinationDeg": 27.895,
+			"longAscNodeDeg": 169.385,
+			"argPeriapsisDeg": 198.462,
+			"meanAnomalyDeg": 327.017,
+			"periodDays": 2.737,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Carolyn C. Porco",
+			"discoveryDate": "21/10/2004",
+			"alternativeName": "S/2004 S 5",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 13
+			},
+			"dimension": "3×2×2",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "dione",
+		"name": "Dione",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 561.4,
+		"radiusEstimated": true,
+		"massKg": 1.095452e21,
+		"orbit": {
+			"semiMajorAxisKm": 377396,
+			"eccentricity": 0,
+			"inclinationDeg": 28.068,
+			"longAscNodeDeg": 169.501,
+			"argPeriapsisDeg": 239.8,
+			"meanAnomalyDeg": 124.648,
+			"periodDays": 2.737,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/saturn/satellites/dione.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.232,
+			"mass": "1.095452 * 10^21",
+			"surfaceTemps": {
+				"min": -186,
+				"max": -186,
+				"mean": -186
+			},
+			"diameter": 1122.8,
+			"orbitalPeriod": 2.737,
+			"orbitalInclination": 0.02
+		}
+	},
+	{
+		"id": "helene",
+		"name": "Helene",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 17.6,
+		"radiusEstimated": true,
+		"massKg": 24460000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 377396,
+			"eccentricity": 0,
+			"inclinationDeg": 27.918,
+			"longAscNodeDeg": 169.214,
+			"argPeriapsisDeg": 28.868,
+			"meanAnomalyDeg": 346.773,
+			"periodDays": 2.736915,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "24.46 * 10^15",
+			"diameter": 35.2,
+			"orbitalPeriod": 2.736915,
+			"orbitalInclination": 0.199
+		}
+	},
+	{
+		"id": "rhea",
+		"name": "Rhea",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 763.8,
+		"radiusEstimated": true,
+		"massKg": 2.306518e21,
+		"orbit": {
+			"semiMajorAxisKm": 527108,
+			"eccentricity": 0,
+			"inclinationDeg": 27.765,
+			"longAscNodeDeg": 169.12,
+			"argPeriapsisDeg": 16.536,
+			"meanAnomalyDeg": 327.128,
+			"periodDays": 4.518,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/saturn/satellites/rhea.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.264,
+			"mass": "2.306518 * 10^21",
+			"surfaceTemps": {
+				"min": -220.15,
+				"max": -174.15,
+				"mean": -197.15
+			},
+			"diameter": 1527.6,
+			"orbitalPeriod": 4.518,
+			"orbitalInclination": 0.345
+		}
+	},
+	{
+		"id": "titan",
+		"name": "Titan",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2575,
+		"massKg": 1.3452e23,
+		"orbit": {
+			"semiMajorAxisKm": 1221865,
+			"eccentricity": 0.0292,
+			"inclinationDeg": 27.742,
+			"longAscNodeDeg": 169.769,
+			"argPeriapsisDeg": 36.019,
+			"meanAnomalyDeg": 226.408,
+			"periodDays": 15.95,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 382.8,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 1.352,
+			"density": 1.88,
+			"discoveredBy": "Christian Huygens",
+			"discoveryDate": "25/03/1655",
+			"mass": {
+				"massValue": 1.3452,
+				"massExponent": 23
+			},
+			"surfaceTemps": {
+				"min": -179.45,
+				"max": -179.45,
+				"mean": -179.45
+			},
+			"bodyType": "Moon",
+			"diameter": 5151,
+			"perihelion": 1186680,
+			"aphelion": 1257060,
+			"orbitalPeriod": 15.945,
+			"orbitalInclination": 0.34854
+		}
+	},
+	{
+		"id": "hyperion",
+		"name": "Hyperion",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 135,
+		"radiusEstimated": true,
+		"massKg": 5620000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 1481010,
+			"eccentricity": 0,
+			"inclinationDeg": 27.643,
+			"longAscNodeDeg": 169.81,
+			"argPeriapsisDeg": 237.576,
+			"meanAnomalyDeg": 337.27,
+			"periodDays": 21.276,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "5620 * 10^15",
+			"diameter": 270,
+			"orbitalPeriod": 21.276,
+			"orbitalInclination": 0.43
+		}
+	},
+	{
+		"id": "iapetus",
+		"name": "Iapetus",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1471.2,
+		"massKg": 1.805e21,
+		"orbit": {
+			"semiMajorAxisKm": 3560854,
+			"eccentricity": 0.0283,
+			"inclinationDeg": 14.72,
+			"longAscNodeDeg": 205.647,
+			"argPeriapsisDeg": 293.255,
+			"meanAnomalyDeg": 346.116,
+			"periodDays": 79.33,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 1903.92,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/saturn/satellites/iapetus.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.223,
+			"density": 1.09,
+			"discoveredBy": "Jean-Dominique Cassini",
+			"discoveryDate": "25/10/1671",
+			"mass": {
+				"massValue": 1.805,
+				"massExponent": 21
+			},
+			"surfaceTemps": {
+				"min": -183.15,
+				"max": -143.15,
+				"mean": -163.15
+			},
+			"bodyType": "Moon",
+			"diameter": 1469,
+			"perihelion": 3460068,
+			"aphelion": 3661612,
+			"orbitalPeriod": 79.32,
+			"orbitalInclination": 15.47
+		}
+	},
+	{
+		"id": "kiviuq",
+		"name": "Kiviuq",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 7,
+		"massKg": 2790000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 11111000,
+			"eccentricity": 0.334,
+			"inclinationDeg": 48.7,
+			"longAscNodeDeg": 2.215,
+			"argPeriapsisDeg": 242.708,
+			"meanAnomalyDeg": 130.97,
+			"periodDays": 449.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Brett J. Gladman",
+			"discoveryDate": "07/08/2000",
+			"alternativeName": "S/2000 S 5",
+			"mass": {
+				"massValue": 2.79,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"diameter": 16,
+			"orbitalPeriod": 448.16,
+			"orbitalInclination": 49.087
+		}
+	},
+	{
+		"id": "ijiraq",
+		"name": "Ijiraq",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 5,
+		"massKg": 1180000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 11124000,
+			"eccentricity": 0.316,
+			"inclinationDeg": 49.1,
+			"longAscNodeDeg": 297.055,
+			"argPeriapsisDeg": 75.081,
+			"meanAnomalyDeg": 107.53,
+			"periodDays": 451.4,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 6",
+			"mass": {
+				"massValue": 1.18,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"diameter": 12,
+			"orbitalPeriod": 451.77,
+			"orbitalInclination": 50.212
+		}
+	},
+	{
+		"id": "paaliaq",
+		"name": "Paaliaq",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 10,
+		"massKg": 7250000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 15200000,
+			"eccentricity": 0.364,
+			"inclinationDeg": 47.2,
+			"longAscNodeDeg": 73.943,
+			"argPeriapsisDeg": 238.273,
+			"meanAnomalyDeg": 12.941,
+			"periodDays": 686.9,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "07/08/2000",
+			"alternativeName": "S/2000 S 2",
+			"mass": {
+				"massValue": 7.25,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"perihelion": 6908035,
+			"aphelion": 23139965
+		}
+	},
+	{
+		"id": "skathi",
+		"name": "Skathi",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 350000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 15541000,
+			"eccentricity": 0.27,
+			"inclinationDeg": 148.5,
+			"longAscNodeDeg": 100.87,
+			"argPeriapsisDeg": 250.41,
+			"meanAnomalyDeg": 77.39,
+			"periodDays": 728.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 8",
+			"mass": {
+				"massValue": 3.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s37",
+		"name": "S/2004 S 37",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 16003300,
+			"eccentricity": 0.506,
+			"inclinationDeg": 164,
+			"longAscNodeDeg": 62.412,
+			"argPeriapsisDeg": 330.732,
+			"meanAnomalyDeg": 135.599,
+			"periodDays": 755.9185,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 37",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "albiorix",
+		"name": "Albiorix",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 13,
+		"massKg": 22300000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 16182000,
+			"eccentricity": 0.469,
+			"inclinationDeg": 34,
+			"longAscNodeDeg": 239.856,
+			"argPeriapsisDeg": 357.425,
+			"meanAnomalyDeg": 128.899,
+			"periodDays": 783.5,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 13.32,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "09/11/2000",
+			"alternativeName": "S/2000 S 11",
+			"mass": {
+				"massValue": 2.23,
+				"massExponent": 16
+			},
+			"bodyType": "Moon",
+			"diameter": 32,
+			"orbitalPeriod": 774.58,
+			"orbitalInclination": 38.042
+		}
+	},
+	{
+		"id": "s2007s2",
+		"name": "S/2007 S 2",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 16560000,
+			"eccentricity": 0.218,
+			"inclinationDeg": 176.7,
+			"longAscNodeDeg": 70.548,
+			"argPeriapsisDeg": 17.851,
+			"meanAnomalyDeg": 110.995,
+			"periodDays": 800,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "01/05/2007",
+			"alternativeName": "S/2007 S 2",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "bebhionn",
+		"name": "Bebhionn",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 17119000,
+			"eccentricity": 0.469,
+			"inclinationDeg": 35,
+			"longAscNodeDeg": 93.733,
+			"argPeriapsisDeg": 68.384,
+			"meanAnomalyDeg": 133.879,
+			"periodDays": 834.8,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 11",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "erriapus",
+		"name": "Erriapus",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 4,
+		"massKg": 680000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 17343000,
+			"eccentricity": 0.474,
+			"inclinationDeg": 34.6,
+			"longAscNodeDeg": 264.072,
+			"argPeriapsisDeg": 302.374,
+			"meanAnomalyDeg": 321.61,
+			"periodDays": 871.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 10",
+			"mass": {
+				"massValue": 6.8,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s31",
+		"name": "S/2004 S 31",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 17402800,
+			"eccentricity": 0.242,
+			"inclinationDeg": 48.11,
+			"longAscNodeDeg": 86.507,
+			"argPeriapsisDeg": 255.804,
+			"meanAnomalyDeg": 349.141,
+			"periodDays": 853.8,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 31",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s29",
+		"name": "S/2004 S 29",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 17470700,
+			"eccentricity": 0.472,
+			"inclinationDeg": 44.43,
+			"longAscNodeDeg": 84.056,
+			"argPeriapsisDeg": 268.035,
+			"meanAnomalyDeg": 23.541,
+			"periodDays": 858.77,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 29",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "siarnaq",
+		"name": "Siarnaq",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 16,
+		"massKg": 43500000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 17531000,
+			"eccentricity": 0.295,
+			"inclinationDeg": 45.6,
+			"longAscNodeDeg": 225.139,
+			"argPeriapsisDeg": 104.947,
+			"meanAnomalyDeg": 265.285,
+			"periodDays": 895.6,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 3",
+			"mass": {
+				"massValue": 4.35,
+				"massExponent": 16
+			},
+			"bodyType": "Moon",
+			"diameter": 40,
+			"orbitalPeriod": 884.88,
+			"orbitalInclination": 45.798
+		}
+	},
+	{
+		"id": "skoll",
+		"name": "Skoll",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 17665000,
+			"eccentricity": 0.464,
+			"inclinationDeg": 161.2,
+			"longAscNodeDeg": 264.653,
+			"argPeriapsisDeg": 142.775,
+			"meanAnomalyDeg": 29.088,
+			"periodDays": 878.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2006 S 8",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "tarvos",
+		"name": "Tarvos",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 7,
+		"massKg": 2300000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 17983000,
+			"eccentricity": 0.531,
+			"inclinationDeg": 33.8,
+			"longAscNodeDeg": 254.708,
+			"argPeriapsisDeg": 358.023,
+			"meanAnomalyDeg": 255.95,
+			"periodDays": 926.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 4",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"diameter": 15,
+			"orbitalPeriod": 944.23,
+			"orbitalInclination": 34.679
+		}
+	},
+	{
+		"id": "tarqeq",
+		"name": "Tarqeq",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 230000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18009000,
+			"eccentricity": 0.16,
+			"inclinationDeg": 46.1,
+			"longAscNodeDeg": 345.745,
+			"argPeriapsisDeg": 190.786,
+			"meanAnomalyDeg": 234.788,
+			"periodDays": 887.5,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "05/01/2006",
+			"alternativeName": "S/2007 S 1",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "greip",
+		"name": "Greip",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18206000,
+			"eccentricity": 0.326,
+			"inclinationDeg": 179.8,
+			"longAscNodeDeg": 49.578,
+			"argPeriapsisDeg": 162.26,
+			"meanAnomalyDeg": 222.261,
+			"periodDays": 921.2,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "05/01/2006",
+			"alternativeName": "S/2006 S 4",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "hyrrokkin",
+		"name": "Hyrrokkin",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 4,
+		"massKg": 350000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18437000,
+			"eccentricity": 0.333,
+			"inclinationDeg": 151.4,
+			"longAscNodeDeg": 68.506,
+			"argPeriapsisDeg": 316.004,
+			"meanAnomalyDeg": 73.84,
+			"periodDays": 931.8,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 19",
+			"mass": {
+				"massValue": 3.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s13",
+		"name": "S/2004 S 13",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18450000,
+			"eccentricity": 0.273,
+			"inclinationDeg": 167.4,
+			"longAscNodeDeg": 17.593,
+			"argPeriapsisDeg": 296.994,
+			"meanAnomalyDeg": 131.382,
+			"periodDays": 906,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 13",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s17",
+		"name": "S/2004 S 17",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": 50000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18600000,
+			"eccentricity": 0.259,
+			"inclinationDeg": 166.6,
+			"longAscNodeDeg": 283.815,
+			"argPeriapsisDeg": 50.495,
+			"meanAnomalyDeg": 350.116,
+			"periodDays": 986,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "13/12/2004",
+			"alternativeName": "S/2004 S 17",
+			"mass": {
+				"massValue": 5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "mundilfari",
+		"name": "Mundilfari",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 230000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18685000,
+			"eccentricity": 0.21,
+			"inclinationDeg": 169.4,
+			"longAscNodeDeg": 273.095,
+			"argPeriapsisDeg": 44.324,
+			"meanAnomalyDeg": 130.001,
+			"periodDays": 952.6,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 9",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "jarnsaxa",
+		"name": "Jarnsaxa",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 100000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18811000,
+			"eccentricity": 0.216,
+			"inclinationDeg": 163.3,
+			"longAscNodeDeg": 332.024,
+			"argPeriapsisDeg": 13.378,
+			"meanAnomalyDeg": 148.802,
+			"periodDays": 964.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "05/01/2006",
+			"alternativeName": "S/2006 S 6",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2006s1",
+		"name": "S/2006 S 1",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 100000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 18981135,
+			"eccentricity": 0.13,
+			"inclinationDeg": 154.2,
+			"longAscNodeDeg": 144.982,
+			"argPeriapsisDeg": 65.442,
+			"meanAnomalyDeg": 327.051,
+			"periodDays": 970,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "04/01/2006",
+			"alternativeName": "S/2006 S 1",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "narvi",
+		"name": "Narvi",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 230000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 19007000,
+			"eccentricity": 0.431,
+			"inclinationDeg": 145.8,
+			"longAscNodeDeg": 1.997,
+			"argPeriapsisDeg": 176.448,
+			"meanAnomalyDeg": 329.327,
+			"periodDays": 1003.9,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna",
+			"discoveryDate": "05/02/2003",
+			"alternativeName": "S/2003 S 1",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s20",
+		"name": "S/2004 S 20",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 19211000,
+			"eccentricity": 0.204,
+			"inclinationDeg": 163.1,
+			"longAscNodeDeg": 281.067,
+			"argPeriapsisDeg": 243.797,
+			"meanAnomalyDeg": 205.508,
+			"periodDays": 994.2272,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 20",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "bergelmir",
+		"name": "Bergelmir",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 19338000,
+			"eccentricity": 0.142,
+			"inclinationDeg": 158.5,
+			"longAscNodeDeg": 154.045,
+			"argPeriapsisDeg": 302.294,
+			"meanAnomalyDeg": 274.903,
+			"periodDays": 1005.9,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 15",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "suttungr",
+		"name": "Suttungr",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 230000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 19459000,
+			"eccentricity": 0.114,
+			"inclinationDeg": 175.8,
+			"longAscNodeDeg": 100.215,
+			"argPeriapsisDeg": 289.004,
+			"meanAnomalyDeg": 17.549,
+			"periodDays": 1016.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 12",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s12",
+		"name": "S/2004 S 12",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 90000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 19650000,
+			"eccentricity": 0.401,
+			"inclinationDeg": 164,
+			"longAscNodeDeg": 9.421,
+			"argPeriapsisDeg": 327.742,
+			"meanAnomalyDeg": 248.242,
+			"periodDays": 1048,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 12",
+			"mass": {
+				"massValue": 9,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s27",
+		"name": "S/2004 S 27",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 19776700,
+			"eccentricity": 0.12,
+			"inclinationDeg": 167.1,
+			"longAscNodeDeg": 137.259,
+			"argPeriapsisDeg": 314.017,
+			"meanAnomalyDeg": 291.941,
+			"periodDays": 1038.4639,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 27",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s7",
+		"name": "S/2004 S 7",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 19800000,
+			"eccentricity": 0.58,
+			"inclinationDeg": 165.1,
+			"longAscNodeDeg": 9.476,
+			"argPeriapsisDeg": 98.708,
+			"meanAnomalyDeg": 135.752,
+			"periodDays": 1103,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 7",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "hati",
+		"name": "Hati",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 19856000,
+			"eccentricity": 0.372,
+			"inclinationDeg": 165.8,
+			"longAscNodeDeg": 202.128,
+			"argPeriapsisDeg": 83.629,
+			"meanAnomalyDeg": 221.195,
+			"periodDays": 1038.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 14",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "bestla",
+		"name": "Bestla",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 230000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20129000,
+			"eccentricity": 0.521,
+			"inclinationDeg": 145.2,
+			"longAscNodeDeg": 137.732,
+			"argPeriapsisDeg": 203.8,
+			"meanAnomalyDeg": 294.352,
+			"periodDays": 1083.6,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "13/12/2004",
+			"alternativeName": "S/2004 S 18",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s22",
+		"name": "S/2004 S 22",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20379900,
+			"eccentricity": 0.257,
+			"inclinationDeg": 177.4,
+			"longAscNodeDeg": 72.23,
+			"argPeriapsisDeg": 28.946,
+			"meanAnomalyDeg": 275.413,
+			"periodDays": 1086.335,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 22",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "farbauti",
+		"name": "Farbauti",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 90000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20390000,
+			"eccentricity": 0.206,
+			"inclinationDeg": 156.4,
+			"longAscNodeDeg": 54.977,
+			"argPeriapsisDeg": 5.132,
+			"meanAnomalyDeg": 251.489,
+			"periodDays": 1086.1,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 9",
+			"mass": {
+				"massValue": 9,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s30",
+		"name": "S/2004 S 30",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20424000,
+			"eccentricity": 0.113,
+			"inclinationDeg": 156.3,
+			"longAscNodeDeg": 32.909,
+			"argPeriapsisDeg": 9.537,
+			"meanAnomalyDeg": 30.044,
+			"periodDays": 1089.8629,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 30",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "thrymr",
+		"name": "Thrymr",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 230000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20474000,
+			"eccentricity": 0.47,
+			"inclinationDeg": 175,
+			"longAscNodeDeg": 45.42,
+			"argPeriapsisDeg": 45.834,
+			"meanAnomalyDeg": 320.524,
+			"periodDays": 1094.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman",
+			"discoveryDate": "23/09/2000",
+			"alternativeName": "S/2000 S 7",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2007s3",
+		"name": "S/2007 S 3",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20518500,
+			"eccentricity": 0.13,
+			"inclinationDeg": 177.2,
+			"longAscNodeDeg": 230.051,
+			"argPeriapsisDeg": 53.732,
+			"meanAnomalyDeg": 217.13,
+			"periodDays": 1100,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "01/05/2007",
+			"alternativeName": "S/2007 S 3",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s25",
+		"name": "S/2004 S 25",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 20544500,
+			"eccentricity": 0.457,
+			"inclinationDeg": 173.3,
+			"longAscNodeDeg": 284.724,
+			"argPeriapsisDeg": 117.965,
+			"meanAnomalyDeg": 20.08,
+			"periodDays": 1099.5223,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 25",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "aegir",
+		"name": "Aegir",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20735000,
+			"eccentricity": 0.252,
+			"inclinationDeg": 166.7,
+			"longAscNodeDeg": 147.509,
+			"argPeriapsisDeg": 147.975,
+			"meanAnomalyDeg": 62.614,
+			"periodDays": 1116.5,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 10",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2006s3",
+		"name": "S/2006 S 3",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 21132000,
+			"eccentricity": 0.471,
+			"inclinationDeg": 150.8,
+			"longAscNodeDeg": 328.623,
+			"argPeriapsisDeg": 146.94,
+			"meanAnomalyDeg": 328.957,
+			"periodDays": 1142,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "05/01/2006",
+			"alternativeName": "S/2006 S 3",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s23",
+		"name": "S/2004 S 23",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 21427000,
+			"eccentricity": 0.399,
+			"inclinationDeg": 177.7,
+			"longAscNodeDeg": 298.424,
+			"argPeriapsisDeg": 92.894,
+			"meanAnomalyDeg": 303.758,
+			"periodDays": 1171.1236,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 23",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s32",
+		"name": "S/2004 S 32",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 21564200,
+			"eccentricity": 0.262,
+			"inclinationDeg": 158.5,
+			"longAscNodeDeg": 5.36,
+			"argPeriapsisDeg": 142.788,
+			"meanAnomalyDeg": 168.225,
+			"periodDays": 1182.3899,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 32",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s28",
+		"name": "S/2004 S 28",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 21791300,
+			"eccentricity": 0.133,
+			"inclinationDeg": 171,
+			"longAscNodeDeg": 214.297,
+			"argPeriapsisDeg": 4.032,
+			"meanAnomalyDeg": 131.631,
+			"periodDays": 1201.1172,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 28",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s35",
+		"name": "S/2004 S 35",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 21953200,
+			"eccentricity": 0.182,
+			"inclinationDeg": 176.4,
+			"longAscNodeDeg": 3.15,
+			"argPeriapsisDeg": 67.978,
+			"meanAnomalyDeg": 225.795,
+			"periodDays": 1214.5277,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 35",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "kari",
+		"name": "Kari",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 230000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22118000,
+			"eccentricity": 0.478,
+			"inclinationDeg": 156.3,
+			"longAscNodeDeg": 78.4,
+			"argPeriapsisDeg": 45.836,
+			"meanAnomalyDeg": 79.642,
+			"periodDays": 1233.6,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2006 S 2",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "fenrir",
+		"name": "Fenrir",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": 50000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22453000,
+			"eccentricity": 0.136,
+			"inclinationDeg": 164.9,
+			"longAscNodeDeg": 276.555,
+			"argPeriapsisDeg": 95.42,
+			"meanAnomalyDeg": 56.96,
+			"periodDays": 1260.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "13/12/2004",
+			"alternativeName": "S/2004 S 16",
+			"mass": {
+				"massValue": 5,
+				"massExponent": 13
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "surtur",
+		"name": "Surtur",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22707000,
+			"eccentricity": 0.451,
+			"inclinationDeg": 177.5,
+			"longAscNodeDeg": 96.133,
+			"argPeriapsisDeg": 172.121,
+			"meanAnomalyDeg": 97.375,
+			"periodDays": 1297.7,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2006 S 7",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s39",
+		"name": "S/2004 S 39",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 22790400,
+			"eccentricity": 0.081,
+			"inclinationDeg": 167.6,
+			"longAscNodeDeg": 284,
+			"argPeriapsisDeg": 186.51,
+			"meanAnomalyDeg": 99.034,
+			"periodDays": 1284.6612,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 39",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s38",
+		"name": "S/2004 S 38",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23006200,
+			"eccentricity": 0.381,
+			"inclinationDeg": 155,
+			"longAscNodeDeg": 67.767,
+			"argPeriapsisDeg": 305.66,
+			"meanAnomalyDeg": 26.279,
+			"periodDays": 1302.9508,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 38",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "ymir",
+		"name": "Ymir",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 9,
+		"massKg": 3970000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23040000,
+			"eccentricity": 0.187,
+			"inclinationDeg": 167.9,
+			"longAscNodeDeg": 82.954,
+			"argPeriapsisDeg": 182.476,
+			"meanAnomalyDeg": 210.862,
+			"periodDays": 1315.4,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Brett J. Gladman",
+			"discoveryDate": "07/08/2000",
+			"alternativeName": "S/2000 S 1",
+			"mass": {
+				"massValue": 3.97,
+				"massExponent": 15
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "loge",
+		"name": "Loge",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23065000,
+			"eccentricity": 0.335,
+			"inclinationDeg": 173.1,
+			"longAscNodeDeg": 237.11,
+			"argPeriapsisDeg": 208.979,
+			"meanAnomalyDeg": 176.595,
+			"periodDays": 1312,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "13/12/2004",
+			"alternativeName": "S/2006 S 5",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s24",
+		"name": "S/2004 S 24",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23231300,
+			"eccentricity": 0.049,
+			"inclinationDeg": 36.78,
+			"longAscNodeDeg": 278.529,
+			"argPeriapsisDeg": 156.115,
+			"meanAnomalyDeg": 165.19,
+			"periodDays": 1317.6,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 24",
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s36",
+		"name": "S/2004 S 36",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23698700,
+			"eccentricity": 0.667,
+			"inclinationDeg": 147.6,
+			"longAscNodeDeg": 116.287,
+			"argPeriapsisDeg": 146.565,
+			"meanAnomalyDeg": 202.897,
+			"periodDays": 1362.2207,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 36",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s33",
+		"name": "S/2004 S 33",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23764800,
+			"eccentricity": 0.417,
+			"inclinationDeg": 161.5,
+			"longAscNodeDeg": 69.429,
+			"argPeriapsisDeg": 203.805,
+			"meanAnomalyDeg": 14.984,
+			"periodDays": 1367.9239,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 33",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s21",
+		"name": "S/2004 S 21",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 23810400,
+			"eccentricity": 0.312,
+			"inclinationDeg": 154.6,
+			"longAscNodeDeg": 321.379,
+			"argPeriapsisDeg": 35.518,
+			"meanAnomalyDeg": 297.248,
+			"periodDays": 1371.8629,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 21",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "s2004s34",
+		"name": "S/2004 S 34",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 1.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 24358900,
+			"eccentricity": 0.267,
+			"inclinationDeg": 165.7,
+			"longAscNodeDeg": 37.543,
+			"argPeriapsisDeg": 162.314,
+			"meanAnomalyDeg": 306.882,
+			"periodDays": 1419.5385,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 34",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "fornjot",
+		"name": "Fornjot",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 3,
+		"massKg": 150000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 25108000,
+			"eccentricity": 0.206,
+			"inclinationDeg": 170.4,
+			"longAscNodeDeg": 130.134,
+			"argPeriapsisDeg": 155.715,
+			"meanAnomalyDeg": 97.464,
+			"periodDays": 1490.9,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt, Jan Kleyna, Brian G. Marsden",
+			"discoveryDate": "12/12/2004",
+			"alternativeName": "S/2004 S 8",
+			"mass": {
+				"massValue": 1.5,
+				"massExponent": 14
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "s2004s26",
+		"name": "S/2004 S 26",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 2,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 26737800,
+			"eccentricity": 0.148,
+			"inclinationDeg": 171.3,
+			"longAscNodeDeg": 46.636,
+			"argPeriapsisDeg": 299.821,
+			"meanAnomalyDeg": 287.435,
+			"periodDays": 1632.485,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"discoveredBy": "S. Sheppard, D. Jewitt, J. Kleyna",
+			"discoveryDate": "2004",
+			"alternativeName": "S/2004 S 26",
+			"bodyType": "Moon",
+			"periodDerived": true
+		}
+	},
+	{
+		"id": "cordelia",
+		"name": "Cordelia",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 20,
+		"radiusEstimated": true,
+		"massKg": 44000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 49770,
+			"eccentricity": 0,
+			"inclinationDeg": 82.211,
+			"longAscNodeDeg": 347.595,
+			"argPeriapsisDeg": 101.614,
+			"meanAnomalyDeg": 343.359,
+			"periodDays": 0.335,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.044 * 10^18",
+			"diameter": 40,
+			"orbitalPeriod": 0.335,
+			"orbitalInclination": 0.08479
+		}
+	},
+	{
+		"id": "ophelia",
+		"name": "Ophelia",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 21.5,
+		"radiusEstimated": true,
+		"massKg": 53000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 53790,
+			"eccentricity": 0,
+			"inclinationDeg": 82.38,
+			"longAscNodeDeg": 347.667,
+			"argPeriapsisDeg": 166.849,
+			"meanAnomalyDeg": 166.642,
+			"periodDays": 0.376,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.053 * 10^18",
+			"diameter": 43,
+			"orbitalPeriod": 0.376,
+			"orbitalInclination": 0.1036
+		}
+	},
+	{
+		"id": "bianca",
+		"name": "Bianca",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 27,
+		"massKg": 92000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 59200,
+			"eccentricity": 0.0009,
+			"inclinationDeg": 82.123,
+			"longAscNodeDeg": 347.757,
+			"argPeriapsisDeg": 141.525,
+			"meanAnomalyDeg": 315.474,
+			"periodDays": 0.43458,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Bradford A. Smith",
+			"discoveryDate": "23/01/1986",
+			"alternativeName": "S/1986 U 9",
+			"mass": {
+				"massValue": 9.2,
+				"massExponent": 16
+			},
+			"bodyType": "Moon",
+			"diameter": 51,
+			"orbitalPeriod": 0.434579,
+			"orbitalInclination": 0.193
+		}
+	},
+	{
+		"id": "cressida",
+		"name": "Cressida",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 41,
+		"massKg": 340000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 61800,
+			"eccentricity": 0.0004,
+			"inclinationDeg": 82.273,
+			"longAscNodeDeg": 347.655,
+			"argPeriapsisDeg": 252.499,
+			"meanAnomalyDeg": 316.957,
+			"periodDays": 0.46357,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Stephen P. Synnott",
+			"discoveryDate": "09/01/1986",
+			"alternativeName": "S/1986 U 3",
+			"mass": {
+				"massValue": 3.4,
+				"massExponent": 17
+			},
+			"bodyType": "Moon",
+			"diameter": 80,
+			"orbitalPeriod": 0.464,
+			"orbitalInclination": 0.006
+		}
+	},
+	{
+		"id": "desdemona",
+		"name": "Desdemona",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 32,
+		"radiusEstimated": true,
+		"massKg": 180000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 62680,
+			"eccentricity": 0,
+			"inclinationDeg": 82.176,
+			"longAscNodeDeg": 347.692,
+			"argPeriapsisDeg": 164.829,
+			"meanAnomalyDeg": 244.872,
+			"periodDays": 0.47365,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "0.18 * 10^18",
+			"diameter": 64,
+			"orbitalPeriod": 0.47365,
+			"orbitalInclination": 0.11125
+		}
+	},
+	{
+		"id": "juliet",
+		"name": "Juliet",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 53,
+		"massKg": 560000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 64400,
+			"eccentricity": 0.0007,
+			"inclinationDeg": 82.339,
+			"longAscNodeDeg": 347.681,
+			"argPeriapsisDeg": 296.361,
+			"meanAnomalyDeg": 69.608,
+			"periodDays": 0.49307,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Stephen P. Synnott",
+			"discoveryDate": "03/01/1986",
+			"alternativeName": "S/1986 U 2",
+			"mass": {
+				"massValue": 5.6,
+				"massExponent": 17
+			},
+			"bodyType": "Moon",
+			"diameter": 94,
+			"orbitalPeriod": 0.493,
+			"orbitalInclination": 0.06546
+		}
+	},
+	{
+		"id": "portia",
+		"name": "Portia",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 70,
+		"massKg": 1700000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 66100,
+			"eccentricity": 0.0001,
+			"inclinationDeg": 82.229,
+			"longAscNodeDeg": 347.681,
+			"argPeriapsisDeg": 104.585,
+			"meanAnomalyDeg": 121.079,
+			"periodDays": 0.5132,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Stephen P. Synnott",
+			"discoveryDate": "03/01/1986",
+			"alternativeName": "S/1986 U 1",
+			"mass": {
+				"massValue": 1.7,
+				"massExponent": 18
+			},
+			"bodyType": "Moon",
+			"diameter": 135,
+			"orbitalPeriod": 0.513,
+			"orbitalInclination": 0.059
+		}
+	},
+	{
+		"id": "rosalind",
+		"name": "Rosalind",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 36,
+		"massKg": 25000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 69900,
+			"eccentricity": 0.0001,
+			"inclinationDeg": 82.403,
+			"longAscNodeDeg": 347.394,
+			"argPeriapsisDeg": 168.115,
+			"meanAnomalyDeg": 315.105,
+			"periodDays": 0.55846,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Stephen P. Synnott",
+			"discoveryDate": "13/01/1986",
+			"alternativeName": "S/1986 U 4",
+			"mass": {
+				"massValue": 0.25,
+				"massExponent": 17
+			},
+			"bodyType": "Moon",
+			"diameter": 72,
+			"orbitalPeriod": 0.55846,
+			"orbitalInclination": 0.279
+		}
+	},
+	{
+		"id": "cupid",
+		"name": "Cupid",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 9,
+		"massKg": 3800000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 74390,
+			"eccentricity": 0.0013,
+			"inclinationDeg": 82.319,
+			"longAscNodeDeg": 347.555,
+			"argPeriapsisDeg": 312.836,
+			"meanAnomalyDeg": 313.393,
+			"periodDays": 0.613,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Mark R. Showalter, Jack J. Lissauer",
+			"discoveryDate": "25/08/2003",
+			"alternativeName": "S/2003 U 2",
+			"mass": {
+				"massValue": 3.8,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"diameter": 18,
+			"orbitalPeriod": 0.618,
+			"orbitalInclination": 0.1
+		}
+	},
+	{
+		"id": "belinda",
+		"name": "Belinda",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 45,
+		"massKg": 490000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 75300,
+			"eccentricity": 0.0001,
+			"inclinationDeg": 82.283,
+			"longAscNodeDeg": 347.677,
+			"argPeriapsisDeg": 287.95,
+			"meanAnomalyDeg": 205.228,
+			"periodDays": 0.62353,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Stephen P. Synnott",
+			"discoveryDate": "13/01/1986",
+			"alternativeName": "S/1986 U 5",
+			"mass": {
+				"massValue": 4.9,
+				"massExponent": 17
+			},
+			"bodyType": "Moon",
+			"diameter": 90,
+			"orbitalPeriod": 0.623,
+			"orbitalInclination": 0.031
+		}
+	},
+	{
+		"id": "perdita",
+		"name": "Perdita",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 13,
+		"massKg": 18000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 76420,
+			"eccentricity": 0.0116,
+			"inclinationDeg": 82.543,
+			"longAscNodeDeg": 348.038,
+			"argPeriapsisDeg": 313.129,
+			"meanAnomalyDeg": 342.728,
+			"periodDays": 0.638,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Erich Karkoschka",
+			"discoveryDate": "18/01/1986",
+			"alternativeName": "S/1986 U 10",
+			"mass": {
+				"massValue": 1.8,
+				"massExponent": 16
+			},
+			"bodyType": "Moon",
+			"diameter": 30,
+			"orbitalPeriod": 0.638
+		}
+	},
+	{
+		"id": "puck",
+		"name": "Puck",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 81,
+		"massKg": 2900000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 86000,
+			"eccentricity": 0.0001,
+			"inclinationDeg": 81.966,
+			"longAscNodeDeg": 347.575,
+			"argPeriapsisDeg": 294.787,
+			"meanAnomalyDeg": 29.002,
+			"periodDays": 0.76183,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Stephen P. Synnott",
+			"discoveryDate": "30/12/1985",
+			"alternativeName": "S/1985 U 1",
+			"mass": {
+				"massValue": 2.9,
+				"massExponent": 18
+			},
+			"bodyType": "Moon",
+			"diameter": 162,
+			"orbitalPeriod": 0.762,
+			"orbitalInclination": 0.3192
+		}
+	},
+	{
+		"id": "mab",
+		"name": "Mab",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 12,
+		"massKg": 10000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 97740,
+			"eccentricity": 0.0025,
+			"inclinationDeg": 82.354,
+			"longAscNodeDeg": 347.753,
+			"argPeriapsisDeg": 319.991,
+			"meanAnomalyDeg": 300.797,
+			"periodDays": 0.923,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Mark R. Showalter, Jack J. Lissauer",
+			"discoveryDate": "25/08/2003",
+			"alternativeName": "S/2003 U 1",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 16
+			},
+			"bodyType": "Moon",
+			"diameter": 25,
+			"orbitalPeriod": 0.923,
+			"orbitalInclination": 0.1335
+		}
+	},
+	{
+		"id": "miranda",
+		"name": "Miranda",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 240,
+		"massKg": 66000000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 129900,
+			"eccentricity": 0.0013,
+			"inclinationDeg": 79.038,
+			"longAscNodeDeg": 350.574,
+			"argPeriapsisDeg": 157.884,
+			"meanAnomalyDeg": 111.894,
+			"periodDays": 1.41348,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 33.9235,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.079,
+			"density": 1.2,
+			"discoveredBy": "Gerard Kuiper",
+			"discoveryDate": "16/02/1948",
+			"mass": {
+				"massValue": 6.6,
+				"massExponent": 19
+			},
+			"surfaceTemps": {
+				"min": -160.15,
+				"max": -189.15,
+				"mean": -213.15
+			},
+			"bodyType": "Moon",
+			"diameter": 471.6,
+			"perihelion": 129703,
+			"aphelion": 130041,
+			"orbitalPeriod": 1.413,
+			"orbitalInclination": 4.232
+		}
+	},
+	{
+		"id": "ariel",
+		"name": "Ariel",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 581.1,
+		"massKg": 1.29e21,
+		"orbit": {
+			"semiMajorAxisKm": 190900,
+			"eccentricity": 0.0012,
+			"inclinationDeg": 82.24,
+			"longAscNodeDeg": 347.635,
+			"argPeriapsisDeg": 99.157,
+			"meanAnomalyDeg": 316.65,
+			"periodDays": 2.52038,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 60.4891,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.269,
+			"density": 1.59,
+			"discoveredBy": "William Lassell",
+			"discoveryDate": "24/10/1851",
+			"mass": {
+				"massValue": 12.9,
+				"massExponent": 20
+			},
+			"surfaceTemps": {
+				"min": -160.15,
+				"max": -189.15,
+				"mean": -213.15
+			},
+			"bodyType": "Moon",
+			"diameter": 1157.8,
+			"perihelion": 190670,
+			"aphelion": 191130,
+			"orbitalPeriod": 2.52,
+			"orbitalInclination": 0.26
+		}
+	},
+	{
+		"id": "umbriel",
+		"name": "Umbriel",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 584.7,
+		"massKg": 1.22e21,
+		"orbit": {
+			"semiMajorAxisKm": 266000,
+			"eccentricity": 0.0039,
+			"inclinationDeg": 82.393,
+			"longAscNodeDeg": 347.708,
+			"argPeriapsisDeg": 181.169,
+			"meanAnomalyDeg": 198.394,
+			"periodDays": 4.14418,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 99.499,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.2,
+			"density": 1.46,
+			"discoveredBy": "William Lassell",
+			"discoveryDate": "24/10/1851",
+			"mass": {
+				"massValue": 12.2,
+				"massExponent": 20
+			},
+			"surfaceTemps": {
+				"min": -160.15,
+				"max": -188.15,
+				"mean": -198.15
+			},
+			"bodyType": "Moon",
+			"diameter": 1169.4,
+			"perihelion": 265100,
+			"aphelion": 267500,
+			"orbitalPeriod": 4.144,
+			"orbitalInclination": 0.205
+		}
+	},
+	{
+		"id": "titania",
+		"name": "Titania",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 788.9,
+		"massKg": 3.42e21,
+		"orbit": {
+			"semiMajorAxisKm": 436300,
+			"eccentricity": 0.0011,
+			"inclinationDeg": 82.28,
+			"longAscNodeDeg": 347.566,
+			"argPeriapsisDeg": 299.493,
+			"meanAnomalyDeg": 313.666,
+			"periodDays": 8.70587,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 208.9408,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.379,
+			"density": 1.66,
+			"discoveredBy": "William Herschel",
+			"discoveryDate": "11/01/1787",
+			"mass": {
+				"massValue": 34.2,
+				"massExponent": 20
+			},
+			"surfaceTemps": {
+				"min": -213.15,
+				"max": -184.15,
+				"mean": -203.15
+			},
+			"bodyType": "Moon",
+			"diameter": 1576.8,
+			"perihelion": 435800,
+			"aphelion": 436800,
+			"orbitalPeriod": 8.706,
+			"orbitalInclination": 0.34
+		}
+	},
+	{
+		"id": "oberon",
+		"name": "Oberon",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 761.4,
+		"radiusEstimated": true,
+		"massKg": 3.014e21,
+		"orbit": {
+			"semiMajorAxisKm": 583520,
+			"eccentricity": 0,
+			"inclinationDeg": 82.323,
+			"longAscNodeDeg": 347.61,
+			"argPeriapsisDeg": 231.265,
+			"meanAnomalyDeg": 0.833,
+			"periodDays": 13.463,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.346,
+			"mass": "3.014 * 10^21",
+			"surfaceTemps": {
+				"min": -203.15,
+				"max": -193.15,
+				"mean": -198.15
+			},
+			"diameter": 1522.8,
+			"orbitalPeriod": 13.463,
+			"orbitalInclination": 0.058
+		}
+	},
+	{
+		"id": "francisco",
+		"name": "Francisco",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 11,
+		"massKg": 7200000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 4276000,
+			"eccentricity": 0.1324,
+			"inclinationDeg": 147.25,
+			"longAscNodeDeg": 120.27,
+			"argPeriapsisDeg": 238.46,
+			"meanAnomalyDeg": 128.527,
+			"periodDays": 266.6,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Matthew J. Holman, John J. Kavelaars, Dan Milisavljevic, Brett J. Gladman",
+			"discoveryDate": "13/08/2001",
+			"alternativeName": "S/2001 U 3",
+			"mass": {
+				"massValue": 7.2,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"diameter": 22,
+			"orbitalPeriod": "−266.56",
+			"orbitalInclination": 147.459
+		}
+	},
+	{
+		"id": "caliban",
+		"name": "Caliban",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 36,
+		"massKg": 250000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 7231000,
+			"eccentricity": 0.1812,
+			"inclinationDeg": 141.53,
+			"longAscNodeDeg": 87.827,
+			"argPeriapsisDeg": 241.919,
+			"meanAnomalyDeg": 264.605,
+			"periodDays": 579.5,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Brett J. Gladman, Philip D. Nicholson, Joseph A. Burns, John J. Kavelaars",
+			"discoveryDate": "06/09/1997",
+			"alternativeName": "S/1997 U 1",
+			"mass": {
+				"massValue": 2.5,
+				"massExponent": 17
+			},
+			"bodyType": "Moon",
+			"diameter": 72,
+			"orbitalPeriod": "−579.5",
+			"orbitalInclination": 139.885
+		}
+	},
+	{
+		"id": "stephano",
+		"name": "Stephano",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 16,
+		"massKg": 22000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 8004000,
+			"eccentricity": 0.2248,
+			"inclinationDeg": 143.82,
+			"longAscNodeDeg": 97.071,
+			"argPeriapsisDeg": 280.066,
+			"meanAnomalyDeg": 137.729,
+			"periodDays": 676.5,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Brett J. Gladman, Matthew J. Holman, John J. Kavelaars, Jean-Marc Petit, Hans Scholl",
+			"discoveryDate": "18/07/1999",
+			"alternativeName": "S/1999 U 2",
+			"mass": {
+				"massValue": 2.2,
+				"massExponent": 16
+			},
+			"bodyType": "Moon",
+			"diameter": 32,
+			"orbitalPeriod": "−676.50",
+			"orbitalInclination": 141.873
+		}
+	},
+	{
+		"id": "trinculo",
+		"name": "Trinculo",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 9,
+		"massKg": 3900000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 8504000,
+			"eccentricity": 0.2194,
+			"inclinationDeg": 166.93,
+			"longAscNodeDeg": 355.022,
+			"argPeriapsisDeg": 200.949,
+			"meanAnomalyDeg": 108.811,
+			"periodDays": 758.1,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Matthew J. Holman, John J. Kavelaars, Dan Milisavljevic",
+			"discoveryDate": "13/08/2001",
+			"alternativeName": "S/2001 U 1",
+			"mass": {
+				"massValue": 3.9,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"diameter": 18,
+			"orbitalPeriod": "-758.10",
+			"orbitalInclination": 166.252
+		}
+	},
+	{
+		"id": "sycorax",
+		"name": "Sycorax",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 75,
+		"massKg": 2300000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 12179000,
+			"eccentricity": 0.5219,
+			"inclinationDeg": 159.42,
+			"longAscNodeDeg": 233.735,
+			"argPeriapsisDeg": 59.305,
+			"meanAnomalyDeg": 252.75,
+			"periodDays": 1283.4,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Philip D. Nicholson, Brett J. Gladman, Joseph A. Burns, John J. Kavelaars",
+			"discoveryDate": "06/09/1997",
+			"alternativeName": "S/1997 U 2",
+			"mass": {
+				"massValue": 2.3,
+				"massExponent": 18
+			},
+			"bodyType": "Moon",
+			"diameter": 165,
+			"orbitalPeriod": "-1283.4",
+			"orbitalInclination": 152.456
+		}
+	},
+	{
+		"id": "margaret",
+		"name": "Margaret",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 10,
+		"massKg": 5400000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 14345000,
+			"eccentricity": 0.6772,
+			"inclinationDeg": 57.37,
+			"longAscNodeDeg": 290.673,
+			"argPeriapsisDeg": 34.391,
+			"meanAnomalyDeg": 94.117,
+			"periodDays": 1694.8,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Scott S. Sheppard, David C. Jewitt",
+			"discoveryDate": "29/08/2003",
+			"alternativeName": "S/2003 U 3",
+			"mass": {
+				"massValue": 5.4,
+				"massExponent": 15
+			},
+			"bodyType": "Moon",
+			"diameter": 20,
+			"orbitalPeriod": 1694.8,
+			"orbitalInclination": 51.455
+		}
+	},
+	{
+		"id": "prospero",
+		"name": "Prospero",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 25,
+		"massKg": 85000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 16256000,
+			"eccentricity": 0.4445,
+			"inclinationDeg": 151.83,
+			"longAscNodeDeg": 358.121,
+			"argPeriapsisDeg": 43.25,
+			"meanAnomalyDeg": 201.304,
+			"periodDays": 1977.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Matthew J. Holman, John J. Kavelaars, Brett J. Gladman, Jean-Marc Petit, Hans Scholl",
+			"discoveryDate": "18/07/1999",
+			"alternativeName": "S/1999 U 3",
+			"mass": {
+				"massValue": 8.5,
+				"massExponent": 16
+			},
+			"bodyType": "Moon",
+			"diameter": 50,
+			"orbitalPeriod": "-1992.8",
+			"orbitalInclination": 146.017
+		}
+	},
+	{
+		"id": "setebos",
+		"name": "Setebos",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 24,
+		"massKg": 75000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 17418000,
+			"eccentricity": 0.5908,
+			"inclinationDeg": 158.24,
+			"longAscNodeDeg": 208.578,
+			"argPeriapsisDeg": 239.124,
+			"meanAnomalyDeg": 166.663,
+			"periodDays": 2234.8,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "John J. Kavelaars, Brett J. Gladman, Matthew J. Holman, Jean-Marc Petit, Hans Scholl",
+			"discoveryDate": "18/07/1999",
+			"alternativeName": "S/1999 U 1",
+			"mass": {
+				"massValue": 7.5,
+				"massExponent": 16
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "ferdinand",
+		"name": "Ferdinand",
+		"kind": "moon",
+		"parentId": "uranus",
+		"radiusKm": 10,
+		"massKg": 5400000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 20901000,
+			"eccentricity": 0.3993,
+			"inclinationDeg": 169.79,
+			"longAscNodeDeg": 225.197,
+			"argPeriapsisDeg": 35.284,
+			"meanAnomalyDeg": 96.83,
+			"periodDays": 2823.4,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Matthew J. Holman, John J. Kavelaars, Dan Milisavljevic, Brett J. Gladman",
+			"discoveryDate": "13/08/2001",
+			"alternativeName": "S/2001 U 2",
+			"mass": {
+				"massValue": 5.4,
+				"massExponent": 15
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "naiad",
+		"name": "Naiad",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 33,
+		"radiusEstimated": true,
+		"massKg": 190000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 48227,
+			"eccentricity": 0,
+			"inclinationDeg": 31.702,
+			"longAscNodeDeg": 55.29,
+			"argPeriapsisDeg": 27.859,
+			"meanAnomalyDeg": 44.152,
+			"periodDays": 0.294,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "19 * 10^16",
+			"diameter": 66,
+			"orbitalPeriod": 0.294,
+			"orbitalInclination": 4.75
+		}
+	},
+	{
+		"id": "thalassa",
+		"name": "Thalassa",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 41,
+		"massKg": 400000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 50075,
+			"eccentricity": 0.0002,
+			"inclinationDeg": 28.236,
+			"longAscNodeDeg": 49.273,
+			"argPeriapsisDeg": 105.353,
+			"meanAnomalyDeg": 295.412,
+			"periodDays": 0.31149,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.013,
+			"density": 1,
+			"discoveredBy": "Richard J. Terrile",
+			"discoveryDate": "18/09/1989",
+			"alternativeName": "S/1989 N 5",
+			"mass": {
+				"massValue": 4,
+				"massExponent": 17
+			},
+			"dimension": "54 x 50 x 26",
+			"bodyType": "Moon",
+			"diameter": 82,
+			"orbitalPeriod": 0.311,
+			"orbitalInclination": 0.135
+		}
+	},
+	{
+		"id": "despina",
+		"name": "Despina",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 75,
+		"massKg": 2000000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 52526,
+			"eccentricity": 0.0001,
+			"inclinationDeg": 27.965,
+			"longAscNodeDeg": 49.306,
+			"argPeriapsisDeg": 68.527,
+			"meanAnomalyDeg": 170.756,
+			"periodDays": 0.33466,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.023,
+			"density": 1,
+			"discoveredBy": "Stephen P. Synnott",
+			"discoveryDate": "28/07/1989",
+			"alternativeName": "S/1989 N 3",
+			"mass": {
+				"massValue": 2,
+				"massExponent": 18
+			},
+			"dimension": "90 x 74 x 64",
+			"bodyType": "Moon",
+			"diameter": 150,
+			"orbitalPeriod": 0.335,
+			"orbitalInclination": 0.216
+		}
+	},
+	{
+		"id": "galatea",
+		"name": "Galatea",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 88,
+		"radiusEstimated": true,
+		"massKg": 3750000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 61953,
+			"eccentricity": 0,
+			"inclinationDeg": 28.056,
+			"longAscNodeDeg": 49.144,
+			"argPeriapsisDeg": 7.695,
+			"meanAnomalyDeg": 304.63,
+			"periodDays": 0.429,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "375 * 10^16",
+			"diameter": 176,
+			"orbitalPeriod": 0.429,
+			"orbitalInclination": 0.052
+		}
+	},
+	{
+		"id": "larissa",
+		"name": "Larissa",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 97,
+		"massKg": 5000000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 73548,
+			"eccentricity": 0.0014,
+			"inclinationDeg": 27.83,
+			"longAscNodeDeg": 49.318,
+			"argPeriapsisDeg": 204.44,
+			"meanAnomalyDeg": 223.01,
+			"periodDays": 0.55465,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.034,
+			"density": 1,
+			"discoveredBy": "Harold J. Reitsema, William B. Hubbard, Larry A. Lebofsky, David J. Tholen",
+			"discoveryDate": "24/05/1981",
+			"alternativeName": "S/1989 N 2",
+			"mass": {
+				"massValue": 5,
+				"massExponent": 18
+			},
+			"dimension": "108 x 102 x 84",
+			"bodyType": "Moon",
+			"diameter": 194,
+			"orbitalPeriod": 0.555,
+			"orbitalInclination": 0.251
+		}
+	},
+	{
+		"id": "hippocamp",
+		"name": "Hippocamp",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 17,
+		"massKg": 30000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 105300,
+			"eccentricity": 0,
+			"inclinationDeg": 28.026,
+			"longAscNodeDeg": 49.235,
+			"argPeriapsisDeg": 356.604,
+			"meanAnomalyDeg": 31.74,
+			"periodDays": 0.95,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Mark Showalter",
+			"discoveryDate": "01/07/2013",
+			"alternativeName": "S/2004 N 1",
+			"mass": {
+				"massValue": 3,
+				"massExponent": 16
+			},
+			"bodyType": "Moon"
+		}
+	},
+	{
+		"id": "proteus",
+		"name": "Proteus",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 210,
+		"radiusEstimated": true,
+		"massKg": 44000000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 117647,
+			"eccentricity": 0,
+			"inclinationDeg": 28.049,
+			"longAscNodeDeg": 50.349,
+			"argPeriapsisDeg": 165.772,
+			"meanAnomalyDeg": 89.862,
+			"periodDays": 1.122,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.07,
+			"mass": "4.4 * 10^19",
+			"surfaceTemps": {
+				"min": -222,
+				"max": -222,
+				"mean": -222
+			},
+			"diameter": 420,
+			"orbitalPeriod": 1.122,
+			"orbitalInclination": 0.524
+		}
+	},
+	{
+		"id": "triton",
+		"name": "Triton",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 1353.4,
+		"massKg": 2.14e22,
+		"orbit": {
+			"semiMajorAxisKm": 354760,
+			"eccentricity": 0.00002,
+			"inclinationDeg": 154.389,
+			"longAscNodeDeg": 177.879,
+			"argPeriapsisDeg": 86.357,
+			"meanAnomalyDeg": 133.645,
+			"periodDays": 5.87685,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 141.0444,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.78,
+			"density": 2.05,
+			"discoveredBy": "William Lassell",
+			"discoveryDate": "10/10/1846",
+			"mass": {
+				"massValue": 2.14,
+				"massExponent": 22
+			},
+			"surfaceTemps": {
+				"min": -235,
+				"max": -235,
+				"mean": -235
+			},
+			"bodyType": "Moon",
+			"diameter": 2706.8,
+			"perihelion": 354753,
+			"aphelion": 354765,
+			"orbitalPeriod": -5.877,
+			"orbitalInclination": 156.885
+		}
+	},
+	{
+		"id": "nereid",
+		"name": "Nereid",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 170,
+		"radiusEstimated": true,
+		"massKg": 31000000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 5513787,
+			"eccentricity": 0.7507,
+			"inclinationDeg": 7.09,
+			"longAscNodeDeg": 37.558,
+			"argPeriapsisDeg": 322.687,
+			"meanAnomalyDeg": 196.556,
+			"periodDays": 360.14,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.002,
+			"mass": "3.1 * 10^19",
+			"surfaceTemps": {
+				"min": -223,
+				"max": -223,
+				"mean": -223
+			},
+			"diameter": 340,
+			"orbitalPeriod": 360.14,
+			"orbitalInclination": 7.09
+		}
+	},
+	{
+		"id": "halimede",
+		"name": "Halimede",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 31,
+		"radiusEstimated": true,
+		"massKg": 160000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 16611000,
+			"eccentricity": 0,
+			"inclinationDeg": 112.898,
+			"longAscNodeDeg": 299.681,
+			"argPeriapsisDeg": 134.149,
+			"meanAnomalyDeg": 102.546,
+			"periodDays": 1879.08,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "16 * 10^16",
+			"diameter": 62,
+			"orbitalPeriod": "−1879.08",
+			"orbitalInclination": 112.898
+		}
+	},
+	{
+		"id": "sao",
+		"name": "Sao",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 20,
+		"massKg": 100000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 22420000,
+			"eccentricity": 0.293,
+			"inclinationDeg": 48.5,
+			"longAscNodeDeg": 174.634,
+			"argPeriapsisDeg": 83.469,
+			"meanAnomalyDeg": 180.753,
+			"periodDays": 2914.1,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.01,
+			"density": 1,
+			"discoveredBy": "Matthew J. Holman, John J. Kavelaars, Tommy Grav, Wesley C. Fraser, Dan Milisavljevic",
+			"discoveryDate": "14/08/2002",
+			"alternativeName": "S/2002 N 2",
+			"mass": {
+				"massValue": 1,
+				"massExponent": 17
+			},
+			"bodyType": "Moon",
+			"diameter": 44,
+			"orbitalPeriod": 2912.72,
+			"orbitalInclination": 53.483
+		}
+	},
+	{
+		"id": "laomedeia",
+		"name": "Laomedeia",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 21,
+		"radiusEstimated": true,
+		"massKg": 50000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 23567000,
+			"eccentricity": 0,
+			"inclinationDeg": 34.049,
+			"longAscNodeDeg": 158.149,
+			"argPeriapsisDeg": 265.542,
+			"meanAnomalyDeg": 124.829,
+			"periodDays": 3171.33,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "5 * 10^16",
+			"diameter": 42,
+			"orbitalPeriod": 3171.33,
+			"orbitalInclination": 34.049
+		}
+	},
+	{
+		"id": "psamathe",
+		"name": "Psamathe",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 20,
+		"radiusEstimated": true,
+		"massKg": 40000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 48096000,
+			"eccentricity": 0,
+			"inclinationDeg": 137.679,
+			"longAscNodeDeg": 271.06,
+			"argPeriapsisDeg": 30.759,
+			"meanAnomalyDeg": 210.545,
+			"periodDays": 9074.3,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "4 * 10^16",
+			"diameter": 40,
+			"orbitalPeriod": "-9074.30",
+			"orbitalInclination": 137.679
+		}
+	},
+	{
+		"id": "neso",
+		"name": "Neso",
+		"kind": "moon",
+		"parentId": "neptune",
+		"radiusKm": 30,
+		"radiusEstimated": true,
+		"massKg": 150000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 49285000,
+			"eccentricity": 0,
+			"inclinationDeg": 131.265,
+			"longAscNodeDeg": 339.784,
+			"argPeriapsisDeg": 206.855,
+			"meanAnomalyDeg": 78.915,
+			"periodDays": 9740.73,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"rings": null,
+		"info": {
+			"mass": "15 * 10^16",
+			"diameter": 60,
+			"orbitalPeriod": "-9740.73",
+			"orbitalInclination": 131.265
+		}
+	}
+]

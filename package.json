@@ -9,6 +9,8 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
+		"build:data": "tsx scripts/build-bodies.ts",
+		"check:data": "pnpm build:data && git diff --exit-code -- src/data/bodies.json",
 		"preview": "vite preview",
 		"typecheck": "tsc --noEmit -p tsconfig.json",
 		"lint": "eslint . --max-warnings 0",
@@ -16,6 +18,7 @@
 		"format:check": "prettier --check .",
 		"test": "vitest run",
 		"test:e2e": "playwright test",
+		"gen:rings": "tsx scripts/gen-ring-textures.ts",
 		"prepare": "husky"
 	},
 	"devDependencies": {
@@ -27,6 +30,7 @@
 		"@types/react-dom": "^19.3.0",
 		"@types/three": "^0.186.0",
 		"@vitejs/plugin-react": "^6.1.1",
+		"astronomy-engine": "^2.1.19",
 		"eslint": "^10.11.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-react-hooks": "^7.1.1",

@@ -1,0 +1,86 @@
+/**
+ * pnpm build:data: normalizes data/ourDB.json into src/data/bodies.json.
+ *
+ * All mapping rules live in scripts/lib/build.ts (pure, unit-tested); this file only
+ * does the I/O: read the source and the optional data/rings/<planet>.json files, check
+ * texture paths against public/, validate with the zod schema, write, print stats.
+ * Warnings go to stderr, the summary to stdout. Exit code 1 on any data error.
+ */
+import { existsSync, readFileSync, writeFileSync } from "node:fs"
+import { dirname, join, resolve } from "node:path"
+import { fileURLToPath } from "node:url"
+
+import { BodiesFile } from "../src/data/schema"
+
+import { BuildError, buildBodies } from "./lib/build"
+import type { BuildStats } from "./lib/build"
+import { toJsonFile } from "./lib/json"
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
+const paths = {
+	source: join(root, "data", "ourDB.json"),
+	ringsDir: join(root, "data", "rings"),
+	publicDir: join(root, "public"),
+	out: join(root, "src", "data", "bodies.json"),
+}
+
+const out = (line: string): void => {
+	process.stdout.write(`${line}\n`)
+}
+const err = (line: string): void => {
+	process.stderr.write(`${line}\n`)
+}
+
+const readJson = (file: string): unknown =>
+	JSON.parse(readFileSync(file, "utf8")) as unknown
+
+const printStats = (stats: BuildStats): void => {
+	const { perKind } = stats
+	out(
+		`bodies.json: ${stats.total} bodies (${perKind.star} star, ${perKind.planet} planets, ${perKind.moon} moons)`,
+	)
+	const perPlanet = Object.entries(stats.moonsPerPlanet)
+		.map(([id, count]) => `${id} ${count}`)
+		.join(", ")
+	out(`moons per planet: ${perPlanet}`)
+	out(
+		`radiusEstimated ${stats.radiusEstimated}, phaseSynthetic ${stats.phaseSynthetic}, equatorRotated ${stats.equatorRotated}, periodDerived ${stats.periodDerived}, placeholder textures ${stats.placeholderTextures}, rings ${stats.rings}`,
+	)
+}
+
+const main = (): number => {
+	const result = buildBodies(readJson(paths.source), {
+		fileExists: (publicPath) =>
+			existsSync(join(paths.publicDir, publicPath.replace(/^\/+/, ""))),
+		ringsFor: (planetId) => {
+			const file = join(paths.ringsDir, `${planetId}.json`)
+			return existsSync(file) ? readJson(file) : null
+		},
+	})
+	for (const warning of result.warnings) err(`warning: ${warning}`)
+
+	const parsed = BodiesFile.safeParse(result.bodies)
+	if (!parsed.success) {
+		err("bodies.json failed schema validation:")
+		for (const issue of parsed.error.issues) {
+			err(`  ${issue.path.map(String).join(".")}: ${issue.message}`)
+		}
+		return 1
+	}
+
+	writeFileSync(paths.out, toJsonFile(result.bodies))
+	out(`wrote ${paths.out}`)
+	printStats(result.stats)
+	return 0
+}
+
+try {
+	process.exitCode = main()
+} catch (error) {
+	if (error instanceof BuildError) {
+		err(`error: ${error.message}`)
+		process.exitCode = 1
+	} else {
+		throw error
+	}
+}
