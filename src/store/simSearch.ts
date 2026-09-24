@@ -24,9 +24,16 @@ export const simSearchSchema = z.object({
 	focus: z.string().optional().catch(undefined),
 	// simulation time as a Julian Date (zod 4 already rejects NaN and +-Infinity)
 	t: z.preprocess(urlNumber, z.coerce.number().optional()).catch(undefined),
-	// simulated seconds per real second
+	// simulated seconds per real second; negative runs the clock backwards,
+	// 0 is dropped (pausing is its own state and never reaches the URL)
 	warp: z
-		.preprocess(urlNumber, z.coerce.number().positive().optional())
+		.preprocess(
+			urlNumber,
+			z.coerce
+				.number()
+				.refine((warp) => warp !== 0)
+				.optional(),
+		)
 		.catch(undefined),
 })
 
