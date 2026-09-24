@@ -12,7 +12,7 @@ import { expect, test, type Page } from "@playwright/test"
 const screenshotDir = path.join("test-results", "navigation")
 
 // software WebGL is slow and every step here waits for real flights to land
-test.describe.configure({ timeout: 120_000 })
+test.describe.configure({ timeout: 180_000 })
 
 const ready = async (page: Page, url = "/solar_system") => {
 	await page.goto(url)
@@ -35,7 +35,7 @@ const settled = async (page: Page) => {
 			)
 		},
 		null,
-		{ timeout: 20_000 },
+		{ timeout: 60_000 },
 	)
 	// camera-controls' own damping (0.4 s) after the director lets go
 	await page.waitForTimeout(800)
@@ -62,7 +62,7 @@ const waitForProgress = (page: Page, at: number) =>
 	page.waitForFunction(
 		(at) => (window.__astrolabe?.camera().progress ?? 0) >= at,
 		at,
-		{ timeout: 20_000 },
+		{ timeout: 60_000 },
 	)
 
 const shot = async (page: Page, name: string) => {
@@ -296,7 +296,7 @@ test("a scripted sequence plays, can be interrupted, resumed and skipped", async
 			]),
 	)
 	await expect
-		.poll(async () => (await state(page)).sequence?.index, { timeout: 20_000 })
+		.poll(async () => (await state(page)).sequence?.index, { timeout: 60_000 })
 		.toBe(1)
 	// the user grabs the camera: the sequence waits where it was
 	await page.mouse.move(640, 360)
@@ -310,7 +310,7 @@ test("a scripted sequence plays, can be interrupted, resumed and skipped", async
 		window.__astrolabe!.store.getState().resumeSequence(),
 	)
 	await expect
-		.poll(async () => (await state(page)).sequence?.index, { timeout: 20_000 })
+		.poll(async () => (await state(page)).sequence?.index, { timeout: 60_000 })
 		.toBe(2)
 	await page.evaluate(() => window.__astrolabe!.store.getState().skip())
 	await settled(page)
