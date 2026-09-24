@@ -2,28 +2,23 @@ import { afterEach, describe, expect, it } from "vitest"
 
 import { J2000_JD, dateToJD } from "@/sim"
 
-import {
-	DEFAULT_FOCUS_ID,
-	FLY_DURATION_MS,
-	WARP_PRESETS,
-	isBodyShown,
-	useSimStore,
-} from "./sim"
+import { WARP_PRESETS, isBodyShown, useSimStore } from "./sim"
 
 const reset = () => useSimStore.setState(useSimStore.getInitialState(), true)
 
 afterEach(reset)
 
 describe("sim store", () => {
-	it("starts at the wall clock, 1x, playing, focused on the Sun", () => {
-		const { simTimeJD, timeWarp, paused, focusId, hoverId, fly } =
+	it("starts at the wall clock, 1x, playing, in the Sun-centred overview", () => {
+		const { simTimeJD, timeWarp, paused, focusId, hoverId, view, transition } =
 			useSimStore.getInitialState()
 		expect(Math.abs(simTimeJD - dateToJD(new Date()))).toBeLessThan(1 / 24)
 		expect(timeWarp).toBe(1)
 		expect(paused).toBe(false)
-		expect(focusId).toBe(DEFAULT_FOCUS_ID)
+		expect(view).toEqual({ kind: "overview" })
+		expect(focusId).toBe("sun")
 		expect(hoverId).toBeNull()
-		expect(fly).toBeNull()
+		expect(transition).toBeNull()
 		expect(useSimStore.getState().showOrbits).toBe(true)
 		expect(useSimStore.getState().showLabels).toBe(true)
 		expect(useSimStore.getState().showMoons).toBe(true)
@@ -64,40 +59,7 @@ describe("sim store", () => {
 		expect(useSimStore.getState().paused).toBe(true)
 	})
 
-	it("ignores unknown focus ids", () => {
-		useSimStore.getState().setFocus("planet-x")
-		expect(useSimStore.getState().focusId).toBe("sun")
-		expect(useSimStore.getState().fly).toBeNull()
-	})
-
-	it("starts a fly-to when the focus changes and clears it with endFly", () => {
-		const before = performance.now()
-		useSimStore.getState().setFocus("io")
-		const { focusId, fly } = useSimStore.getState()
-		expect(focusId).toBe("io")
-		expect(fly).not.toBeNull()
-		expect(fly!.fromId).toBe("sun")
-		expect(fly!.toId).toBe("io")
-		expect(fly!.durationMs).toBe(FLY_DURATION_MS)
-		expect(fly!.startedAt).toBeGreaterThanOrEqual(before)
-		expect(fly!.startedAt).toBeLessThanOrEqual(performance.now())
-
-		// a second change flies from the interrupted target
-		useSimStore.getState().setFocus("earth")
-		expect(useSimStore.getState().fly!.fromId).toBe("io")
-		expect(useSimStore.getState().fly!.toId).toBe("earth")
-
-		useSimStore.getState().endFly()
-		expect(useSimStore.getState().fly).toBeNull()
-		expect(useSimStore.getState().focusId).toBe("earth")
-	})
-
-	it("does not restart a fly for the current focus", () => {
-		useSimStore.getState().setFocus("mars")
-		useSimStore.getState().endFly()
-		useSimStore.getState().setFocus("mars")
-		expect(useSimStore.getState().fly).toBeNull()
-	})
+	// focus, selection and transitions: navigation.test.ts
 
 	it("sets the warp and ignores non-finite values", () => {
 		const { setTimeWarp } = useSimStore.getState()

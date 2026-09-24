@@ -22,8 +22,8 @@ import type { Body, BodyKind } from "@/data"
 import { degToRad, toUnits } from "@/sim"
 import { isBodyShown, useSimStore, type SimState } from "@/store/sim"
 
-import { CLICK_MAX_DRAG_PX } from "../bodies/BodyMesh"
 import { useSimFrame, type SimFrame } from "./simFrame"
+import { isTapEvent } from "./tap"
 
 export const MARKER_SIZE_PX = 4
 /** Pointer radius (px) that still hits a dot. */
@@ -236,7 +236,7 @@ function Markers() {
 		return index === undefined ? null : (frame.bodies[index]?.id ?? null)
 	}
 	const onClick = (event: ThreeEvent<MouseEvent>) => {
-		if (event.delta > CLICK_MAX_DRAG_PX) return
+		if (!isTapEvent(event)) return
 		const id = bodyIdAt(event)
 		if (id === null) return
 		event.stopPropagation()

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest"
 
 import { J2000_JD, dateToJD } from "@/sim"
 
+import { HOME_SHOT, OVERVIEW } from "./navigation"
 import { simSearchSchema } from "./simSearch"
 import {
 	TIME_SYNC_MAX_WARP,
@@ -11,7 +12,21 @@ import {
 	searchFromState,
 	shouldMirrorTime,
 	stateFromSearch,
+	viewFromSearch,
 } from "./urlSync"
+
+type Mirrored = Parameters<typeof searchFromState>[0]
+
+/** The mirrored store fields: the overview, nothing selected, paused at J2000 at 1x unless overridden. */
+const state = (partial: Partial<Mirrored> = {}): Mirrored => ({
+	view: OVERVIEW,
+	selectedId: null,
+	shot: null,
+	timeWarp: 1,
+	paused: true,
+	simTimeJD: J2000_JD,
+	...partial,
+})
 
 describe("simSearchSchema", () => {
 	it("accepts the mirrored params and coerces numeric strings", () => {
@@ -66,35 +81,75 @@ describe("urlSync helpers", () => {
 	it("builds the search from the store, omitting the defaults", () => {
 		expect(
 			searchFromState(
-				{ focusId: "sun", timeWarp: 1, paused: false, simTimeJD: J2000_JD },
+				state({ timeWarp: 1, paused: false, simTimeJD: J2000_JD }),
 				{},
 			),
-		).toEqual({ focus: undefined, t: J2000_JD, warp: undefined })
+		).toEqual({
+			focus: undefined,
+			sel: undefined,
+			cam: undefined,
+			t: J2000_JD,
+			warp: undefined,
+		})
 		expect(
 			searchFromState(
-				{
-					focusId: "io",
+				state({
+					view: { kind: "body", id: "io" },
+					selectedId: "io",
 					timeWarp: 60,
 					paused: false,
 					simTimeJD: 2451545.123456,
-				},
+				}),
 				{},
 			),
 		).toEqual({ focus: "io", t: 2451545.1235, warp: 60 })
 	})
 
+	it("writes the view, a selection that differs from it and the camera shot", () => {
+		const search = (partial: Partial<Mirrored>) => {
+			const { focus, sel, cam } = searchFromState(state(partial), {})
+			return { focus, sel, cam }
+		}
+		// the focused Sun is not the overview
+		expect(search({ view: { kind: "body", id: "sun" } }).focus).toBe("sun")
+		expect(search({ selectedId: "saturn" })).toEqual({
+			focus: undefined,
+			sel: "saturn",
+			cam: undefined,
+		})
+		expect(
+			search({
+				view: { kind: "body", id: "jupiter" },
+				selectedId: "io",
+				shot: { azimuthDeg: -30, elevationDeg: 12.5, distance: 2.5 },
+			}),
+		).toEqual({ focus: "jupiter", sel: "io", cam: "-30_12.5_2.5" })
+		// the home camera is the default and stays out of the URL
+		expect(search({ shot: HOME_SHOT }).cam).toBeUndefined()
+		// a point in space is written as its anchor for now
+		expect(
+			search({
+				view: { kind: "point", anchorId: "mars", offsetKm: [1, 2, 3] },
+			}).focus,
+		).toBe("mars")
+	})
+
 	it("keeps the last written t while the clock runs too fast to mirror", () => {
 		const previous = { focus: "io", t: 2451545.5, warp: 60 }
+		const mars: Partial<Mirrored> = {
+			view: { kind: "body", id: "mars" },
+			selectedId: "mars",
+		}
 		expect(
 			searchFromState(
-				{ focusId: "mars", timeWarp: 86400, paused: false, simTimeJD: 2460000 },
+				state({ ...mars, timeWarp: 86400, paused: false, simTimeJD: 2460000 }),
 				previous,
 			),
 		).toEqual({ focus: "mars", t: 2451545.5, warp: 86400 })
 		// pausing pins the current time again
 		expect(
 			searchFromState(
-				{ focusId: "mars", timeWarp: 86400, paused: true, simTimeJD: 2460000 },
+				state({ ...mars, timeWarp: 86400, paused: true, simTimeJD: 2460000 }),
 				previous,
 			).t,
 		).toBe(2460000)
@@ -103,7 +158,7 @@ describe("urlSync helpers", () => {
 	it("writes a non-integer warp as it is, so a link runs at the speed it was taken at", () => {
 		const mirrored = (timeWarp: number) =>
 			searchFromState(
-				{ focusId: "sun", timeWarp, paused: true, simTimeJD: J2000_JD },
+				state({ timeWarp, paused: true, simTimeJD: J2000_JD }),
 				{},
 			)
 		expect(mirrored(59.6).warp).toBe(59.6)
@@ -128,15 +183,53 @@ describe("urlSync helpers", () => {
 		).toBe(true)
 		expect(sameSearch({}, { focus: undefined })).toBe(true)
 		expect(sameSearch({ t: 1 }, { t: 1.0001 })).toBe(false)
+		expect(sameSearch({ cam: "0_10_1" }, { cam: "0_10_2" })).toBe(false)
+		expect(sameSearch({ sel: "io" }, {})).toBe(false)
 	})
 
-	it("seeds the store from the search, skipping unknown bodies and absent params", () => {
+	it("seeds the clock from the search, skipping absent params", () => {
 		expect(stateFromSearch({})).toEqual({})
-		expect(stateFromSearch({ focus: "planet-x" })).toEqual({})
 		expect(stateFromSearch({ focus: "io", t: J2000_JD, warp: 3600 })).toEqual({
-			focusId: "io",
 			simTimeJD: J2000_JD,
 			timeWarp: 3600,
+		})
+	})
+
+	it("reads the view, its camera and the selection, skipping unknown bodies", () => {
+		expect(viewFromSearch({})).toEqual({
+			view: { kind: "overview" },
+			shot: null,
+			selectedId: null,
+		})
+		expect(viewFromSearch({ focus: "planet-x", sel: "vulcan" })).toEqual({
+			view: { kind: "overview" },
+			shot: null,
+			selectedId: null,
+		})
+		// a focused body is selected unless the link selects another one
+		expect(viewFromSearch({ focus: "io" }).selectedId).toBe("io")
+		expect(
+			viewFromSearch({ focus: "jupiter", sel: "europa", cam: "-30_12.5_2.5" }),
+		).toEqual({
+			view: { kind: "body", id: "jupiter" },
+			shot: { azimuthDeg: -30, elevationDeg: 12.5, distance: 2.5 },
+			selectedId: "europa",
+		})
+		// a malformed camera is ignored, never an error
+		expect(viewFromSearch({ focus: "io", cam: "up_high" }).shot).toBeNull()
+	})
+
+	it("round-trips a view through the URL", () => {
+		const taken = state({
+			view: { kind: "body", id: "saturn" },
+			selectedId: "titan",
+			shot: { azimuthDeg: 123.4, elevationDeg: -5, distance: 0.75 },
+		})
+		const parsed = simSearchSchema.parse(searchFromState(taken, {}))
+		expect(viewFromSearch(parsed)).toEqual({
+			view: taken.view,
+			shot: taken.shot,
+			selectedId: taken.selectedId,
 		})
 	})
 
@@ -144,7 +237,6 @@ describe("urlSync helpers", () => {
 		const now = new Date("2026-09-24T12:00:00Z")
 		expect(mountState({}, now)).toEqual({ simTimeJD: dateToJD(now) })
 		expect(mountState({ focus: "io", warp: 60 }, now)).toEqual({
-			focusId: "io",
 			timeWarp: 60,
 			simTimeJD: dateToJD(now),
 		})

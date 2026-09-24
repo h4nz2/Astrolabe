@@ -21,7 +21,7 @@ export interface SimFrame {
 	readonly index: ReadonlyMap<string, number>
 	/** 3 doubles per body: world positions in km, scene frame axes, written every frame. */
 	readonly positionsKm: Float64Array
-	/** [x, y, z] render origin in world km (the focus body, or the fly-to blend). */
+	/** [x, y, z] render origin in world km: the camera's pivot, written by the camera director. */
 	readonly originKm: Float64Array
 	/** Simulation time (Julian Date) of the last update. */
 	jd: number
@@ -66,16 +66,18 @@ export function createSimFrame(
 }
 
 /**
- * One clock tick: world positions at `jd`, then the render origin on body
- * `originIndex` (the focus). SimClock is the only caller.
+ * One clock tick: world positions at `jd` (SimClock's call), and the render
+ * origin on body `originIndex` when one is given. In the app the origin is
+ * the camera's pivot, which the camera director writes after this.
  */
 export function updateSimFrame(
 	frame: SimFrame,
 	jd: number,
-	originIndex: number,
+	originIndex?: number,
 ): void {
 	computePositions(frame.bodies, jd, frame.positionsKm, frame.index)
 	frame.jd = jd
+	if (originIndex === undefined) return
 	const o = originIndex * 3
 	frame.originKm[0] = frame.positionsKm[o]
 	frame.originKm[1] = frame.positionsKm[o + 1]

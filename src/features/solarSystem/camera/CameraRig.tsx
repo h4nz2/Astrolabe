@@ -1,94 +1,92 @@
 /**
- * drei CameraControls with the target pinned to the render origin (0, 0, 0),
- * where SimClock keeps the focus body. Only actions that leave the target
- * alone are enabled (rotate and dolly; no trucking, which would slide the
- * focus off the origin for good), and every focus change re-pins the target
- * before framing. The first mount frames the focus from 45 degrees above the
- * ecliptic (the Sun at 40 radii); a later focus change keeps the viewing
- * direction and dollies to the framing distance. The fly-to blend of the
- * origin is Phase 5.
+ * Mounts the camera's single owner (docs/ARCHITECTURE.md, "Navigation"): one
+ * camera-controls instance for the pointer, wheel and touch gestures, and the
+ * CameraDirector that drives it and the render origin from the navigation
+ * slice of the store. The controls are created here rather than through drei's
+ * <CameraControls>, whose own useFrame would update them before the director
+ * has placed the origin; the director calls `update` itself, once per frame at
+ * CAMERA_FRAME_PRIORITY.
  */
-import { useEffect, useRef } from "react"
-import { CameraControls, CameraControlsImpl } from "@react-three/drei"
+import { useEffect, useMemo } from "react"
+import { CameraControlsImpl } from "@react-three/drei"
+import { useFrame, useThree } from "@react-three/fiber"
+import {
+	Box3,
+	MathUtils,
+	Matrix4,
+	PerspectiveCamera,
+	Quaternion,
+	Raycaster,
+	Sphere,
+	Spherical,
+	Vector2,
+	Vector3,
+	Vector4,
+} from "three"
 
-import { bodyById, sun } from "@/data"
-import { degToRad, toUnits } from "@/sim"
 import { useSimStore } from "@/store/sim"
 
-import {
-	CAMERA_MAX_DISTANCE,
-	CAMERA_SMOOTH_TIME_S,
-	INITIAL_ELEVATION_DEG,
-	framingDistance,
-	minDollyDistance,
-} from "./framing"
+import { useSimFrame } from "../scene/simFrame"
+import { exposeDebugHandle } from "./debugHandle"
+import { CAMERA_FRAME_PRIORITY, CameraDirector } from "./director"
+import { PAN_ENABLED, configureInput } from "./input"
 
-export {
-	CAMERA_MAX_DISTANCE,
-	CAMERA_SMOOTH_TIME_S,
-	FRAMING_RADII,
-	INITIAL_ELEVATION_DEG,
-	INITIAL_SUN_RADII,
-	MIN_DISTANCE_RADII,
-} from "./framing"
-
-const { ACTION } = CameraControlsImpl
-
-/**
- * Pointer actions that keep the target where it is. camera-controls defaults
- * the right button and the two/three-finger gestures to trucking.
- */
-export function pinTarget(controls: CameraControlsImpl): void {
-	controls.mouseButtons.right = ACTION.ROTATE
-	controls.touches.two = ACTION.TOUCH_DOLLY_ROTATE
-	controls.touches.three = ACTION.NONE
-}
+// camera-controls needs the three.js classes it uses handed to it once
+// (what drei's <CameraControls> does on mount)
+CameraControlsImpl.install({
+	THREE: {
+		Box3,
+		MathUtils: { clamp: MathUtils.clamp },
+		Matrix4,
+		Quaternion,
+		Raycaster,
+		Sphere,
+		Spherical,
+		Vector2,
+		Vector3,
+		Vector4,
+	},
+})
 
 function CameraRig() {
-	const controlsRef = useRef<CameraControlsImpl>(null)
-	const focusId = useSimStore((state) => state.focusId)
-	const focus = bodyById.get(focusId) ?? sun
-	const focusRadius = toUnits(focus.radiusKm)
-	// the focus this rig last framed; null before the first framing
-	const framedFocusRef = useRef<string | null>(null)
+	const frame = useSimFrame()
+	const camera = useThree((state) => state.camera)
+	const gl = useThree((state) => state.gl)
+	const connected = useThree((state) => state.events.connected) as
+		HTMLElement | null | undefined
+	const domElement = connected ?? gl.domElement
+
+	const controls = useMemo(() => new CameraControlsImpl(camera), [camera])
+	const director = useMemo(
+		() =>
+			camera instanceof PerspectiveCamera
+				? new CameraDirector(controls, camera, frame, useSimStore)
+				: null,
+		[camera, controls, frame],
+	)
 
 	useEffect(() => {
-		const controls = controlsRef.current
-		if (controls === null) return
-		pinTarget(controls)
-		const previous = framedFocusRef.current
-		if (previous === focusId) return
-		framedFocusRef.current = focusId
+		configureInput(controls, { pan: PAN_ENABLED })
+		controls.connect(domElement)
+		return () => controls.disconnect()
+	}, [controls, domElement])
+	useEffect(() => () => controls.dispose(), [controls])
 
-		// a stray offset must never survive a focus change
-		void controls.setTarget(0, 0, 0, false)
-		const distance = framingDistance(focus.kind, focusRadius, previous === null)
-		if (previous === null) {
-			const elevation = degToRad(INITIAL_ELEVATION_DEG)
-			void controls.setLookAt(
-				0,
-				distance * Math.sin(elevation),
-				distance * Math.cos(elevation),
-				0,
-				0,
-				0,
-				false,
-			)
-			return
+	useEffect(() => {
+		if (director === null) return
+		director.attach()
+		const hide = exposeDebugHandle(director)
+		return () => {
+			hide()
+			director.detach()
 		}
-		void controls.dollyTo(distance, true)
-	}, [focus.kind, focusId, focusRadius])
+	}, [director])
 
-	return (
-		<CameraControls
-			ref={controlsRef}
-			makeDefault
-			minDistance={minDollyDistance(focusRadius)}
-			maxDistance={CAMERA_MAX_DISTANCE}
-			dollyToCursor={false}
-			smoothTime={CAMERA_SMOOTH_TIME_S}
-		/>
-	)
+	useFrame((_state, delta) => {
+		director?.tick(performance.now(), delta)
+	}, CAMERA_FRAME_PRIORITY)
+
+	return null
 }
 
 export default CameraRig

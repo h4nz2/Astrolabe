@@ -21,15 +21,13 @@ import { useSimStore } from "@/store/sim"
 import { assetUrl } from "@/utils/assetUrl"
 
 import { useSimFrame } from "../scene/simFrame"
+import { isTapEvent } from "../scene/tap"
 import { bodyOrientation } from "./orientation"
 
 export interface BodyMeshProps {
 	body: Body
 	index: number
 }
-
-/** A pointer that travelled further than this between down and up is a drag, not a click (px). */
-export const CLICK_MAX_DRAG_PX = 4
 
 /** Sphere detail per docs/ARCHITECTURE.md: 64 for the Sun and planets, 32 for moons, 16 for estimated radii. */
 export const sphereSegments = (
@@ -87,7 +85,7 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 	})
 
 	const onClick = (event: ThreeEvent<MouseEvent>) => {
-		if (event.delta > CLICK_MAX_DRAG_PX) return
+		if (!isTapEvent(event)) return
 		event.stopPropagation()
 		useSimStore.getState().setFocus(body.id)
 	}

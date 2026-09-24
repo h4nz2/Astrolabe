@@ -5,38 +5,28 @@
  * inside `useFrame` reads `useSimStore.getState()` so no frame ever causes a
  * re-render. Per-frame time advancing lives in `scene/SimClock.tsx`, which writes
  * back through `setState`/`advanceTime` at a throttled rate.
+ *
+ * Selection and the camera's view (`selectedId`, `focusId`, `setFocus`,
+ * `goTo`, ...) are the navigation slice composed in from `./navigation`.
  */
 import { create } from "zustand"
 
-import { bodyById, type Body } from "@/data"
+import type { Body } from "@/data"
 import { SECONDS_PER_DAY, dateToJD } from "@/sim"
 
-/** A camera fly-to between two focus bodies; the camera phase blends the origin along it. */
-export interface FlyTo {
-	fromId: string
-	toId: string
-	/** `performance.now()` when the fly started. */
-	startedAt: number
-	durationMs: number
-}
+import { createNavigationSlice, type NavigationSlice } from "./navigation"
 
-export interface SimState {
+export interface SimState extends NavigationSlice {
 	/** Simulation time as a Julian Date. */
 	simTimeJD: number
 	/** Simulated seconds per real second. */
 	timeWarp: number
 	paused: boolean
-	/** Id of the body at the render origin (always a known body). */
-	focusId: string
 	hoverId: string | null
-	fly: FlyTo | null
 	showOrbits: boolean
 	showLabels: boolean
 	showMoons: boolean
 
-	/** Focus a body by id; unknown ids are ignored, a changed focus starts a fly-to. */
-	setFocus: (id: string) => void
-	endFly: () => void
 	/** Non-finite values are ignored. */
 	setTimeWarp: (warp: number) => void
 	togglePause: () => void
@@ -52,9 +42,6 @@ export interface SimState {
 	/** Jumps the simulation to the wall clock. */
 	setNow: () => void
 }
-
-export const DEFAULT_FOCUS_ID = "sun"
-export const FLY_DURATION_MS = 1500
 
 /**
  * Whether a body is rendered at all (meshes, orbit line, marker): moons only
@@ -78,33 +65,15 @@ export const WARP_PRESETS: readonly { label: string; value: number }[] = [
 ]
 
 export const useSimStore = create<SimState>()((set, get) => ({
+	...createNavigationSlice(set, get),
 	simTimeJD: dateToJD(new Date()),
 	timeWarp: 1,
 	paused: false,
-	focusId: DEFAULT_FOCUS_ID,
 	hoverId: null,
-	fly: null,
 	showOrbits: true,
 	showLabels: true,
 	showMoons: true,
 
-	setFocus: (id) => {
-		if (!bodyById.has(id)) return
-		const { focusId } = get()
-		if (id === focusId) return
-		set({
-			focusId: id,
-			fly: {
-				fromId: focusId,
-				toId: id,
-				startedAt: performance.now(),
-				durationMs: FLY_DURATION_MS,
-			},
-		})
-	},
-	endFly: () => {
-		if (get().fly !== null) set({ fly: null })
-	},
 	setTimeWarp: (warp) => {
 		if (Number.isFinite(warp)) set({ timeWarp: warp })
 	},

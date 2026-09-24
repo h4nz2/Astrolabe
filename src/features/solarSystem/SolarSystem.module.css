@@ -46,6 +46,11 @@
 	justify-self: start;
 	align-self: start;
 	padding: 0.25rem;
+	/* the way-out button, then the focus picker */
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	min-width: 0;
 }
 
 .toggles {

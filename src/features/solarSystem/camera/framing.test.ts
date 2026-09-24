@@ -1,15 +1,22 @@
 import { describe, expect, it } from "vitest"
 
 import { bodies, getBody } from "@/data"
-import { toUnits } from "@/sim"
+import { AU_KM, degToRad, toUnits } from "@/sim"
 
 import {
+	CAMERA_FAR,
+	CAMERA_MAX_DISTANCE,
 	CAMERA_NEAR,
 	FRAMING_RADII,
-	INITIAL_SUN_RADII,
 	MIN_DISTANCE_RADII,
-	framingDistance,
+	OVERVIEW_MARGIN,
+	OVERVIEW_RADIUS,
+	defaultDistance,
+	fitDistance,
 	minDollyDistance,
+	minViewDistance,
+	overviewDistance,
+	renderedRadius,
 } from "./framing"
 
 describe("minDollyDistance", () => {
@@ -49,14 +56,72 @@ describe("minDollyDistance", () => {
 	})
 })
 
-describe("framingDistance", () => {
-	it("frames the Sun from 40 radii on the first mount and 6 radii afterwards", () => {
-		expect(framingDistance("star", 1, true)).toBe(INITIAL_SUN_RADII)
-		expect(framingDistance("star", 1, false)).toBe(FRAMING_RADII)
+describe("defaultDistance", () => {
+	it("frames every body from 6 of its rendered radii, so all fill the same share of the screen", () => {
+		for (const id of ["sun", "jupiter", "mercury", "io"]) {
+			const body = getBody(id)
+			expect(defaultDistance({ kind: "body", id }, 45, 1.5)).toBe(
+				FRAMING_RADII * renderedRadius(body),
+			)
+		}
+		// a point in space uses its anchor's framing
+		expect(
+			defaultDistance(
+				{ kind: "point", anchorId: "mars", offsetKm: [1e6, 0, 0] },
+				45,
+				1.5,
+			),
+		).toBe(FRAMING_RADII * renderedRadius(getBody("mars")))
 	})
 
-	it("frames planets and moons from 6 radii", () => {
-		expect(framingDistance("planet", 2, true)).toBe(2 * FRAMING_RADII)
-		expect(framingDistance("moon", 3, false)).toBe(3 * FRAMING_RADII)
+	it("fits the whole planetary system into the overview", () => {
+		// Neptune's aphelion, a little over 30 AU
+		expect(OVERVIEW_RADIUS * 1000).toBeGreaterThan(30 * AU_KM)
+		expect(OVERVIEW_RADIUS * 1000).toBeLessThan(31 * AU_KM)
+		const landscape = defaultDistance({ kind: "overview" }, 45, 16 / 9)
+		expect(landscape).toBe(overviewDistance(45, 16 / 9))
+		// the vertical field of view is the narrower one: the system (and a margin) fills it
+		expect(landscape * Math.sin(degToRad(22.5))).toBeCloseTo(
+			OVERVIEW_MARGIN * OVERVIEW_RADIUS,
+			6,
+		)
+		// a portrait screen backs further out to fit the width
+		const portrait = overviewDistance(45, 0.5)
+		expect(portrait).toBeGreaterThan(landscape)
+		const halfWidth = Math.atan(Math.tan(degToRad(22.5)) * 0.5)
+		expect(portrait * Math.sin(halfWidth)).toBeCloseTo(
+			OVERVIEW_MARGIN * OVERVIEW_RADIUS,
+			6,
+		)
+	})
+
+	it("keeps the widest overview well inside the dolly limit and the far plane", () => {
+		const narrowest = overviewDistance(45, 0.4)
+		expect(narrowest).toBeLessThan(CAMERA_MAX_DISTANCE / 2)
+		expect(CAMERA_MAX_DISTANCE + OVERVIEW_RADIUS).toBeLessThan(CAMERA_FAR)
+	})
+
+	it("fits a sphere exactly", () => {
+		expect(fitDistance(1, 90, 1)).toBeCloseTo(Math.SQRT2, 12)
+	})
+})
+
+describe("minViewDistance", () => {
+	it("keeps the camera outside the body a view is centred on", () => {
+		const earth = renderedRadius(getBody("earth"))
+		expect(minViewDistance({ kind: "body", id: "earth" })).toBe(
+			minDollyDistance(earth),
+		)
+		expect(minViewDistance({ kind: "overview" })).toBe(
+			minDollyDistance(renderedRadius(getBody("sun"))),
+		)
+		// nothing to crash into at a point in space
+		expect(
+			minViewDistance({
+				kind: "point",
+				anchorId: "earth",
+				offsetKm: [0, 1e5, 0],
+			}),
+		).toBe(2 * CAMERA_NEAR)
 	})
 })

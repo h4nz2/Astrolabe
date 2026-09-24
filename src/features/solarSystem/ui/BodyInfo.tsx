@@ -22,10 +22,10 @@ const rotationLabel = (periodHours: number | null): string => {
 	return periodHours < 0 ? `${hours}, retrograde` : hours
 }
 
-/** Compact facts about the focused body (the page layout hides it on phones). */
+/** Compact facts about the selected body, else the focus (the page layout hides it on phones). */
 const BodyInfo = () => {
-	const focusId = useSimStore((state) => state.focusId)
-	const body = bodyById.get(focusId)
+	const bodyId = useSimStore((state) => state.selectedId ?? state.focusId)
+	const body = bodyById.get(bodyId)
 	if (body === undefined) return null
 	const { orbit, rotation } = body
 	const parent = parentOf(body)

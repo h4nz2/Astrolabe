@@ -1,6 +1,7 @@
 /**
  * The single writer of simulation time and positions (docs/ARCHITECTURE.md,
- * "Runtime contract"). Runs at useFrame priority -1, before every other
+ * "Runtime contract"; the render origin belongs to the camera director).
+ * Runs at useFrame priority -1, before every other
  * subscriber, and keeps R3F's automatic rendering on.
  *
  * The store's `set` is cheap, so time advances through the store every frame;
@@ -22,15 +23,9 @@ function SimClock() {
 	useFrame((_state, delta) => {
 		const store = useSimStore.getState()
 		store.advanceTime(Math.min(delta, MAX_FRAME_DELTA_S))
-
-		// Phase 5 blends the origin from fly.fromId to fly.toId; until then the
-		// origin snaps to the focus and the fly record simply expires.
-		const { simTimeJD, focusId, fly } = useSimStore.getState()
-		updateSimFrame(frame, simTimeJD, frame.index.get(focusId) ?? 0)
-
-		if (fly !== null && performance.now() - fly.startedAt >= fly.durationMs) {
-			store.endFly()
-		}
+		// positions only: the render origin is the camera's pivot, placed right
+		// after this by the camera director (camera/director.ts, priority -0.5)
+		updateSimFrame(frame, useSimStore.getState().simTimeJD)
 	}, -1)
 
 	return null
