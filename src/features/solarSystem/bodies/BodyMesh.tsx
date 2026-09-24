@@ -8,7 +8,7 @@
  */
 import { Suspense, useMemo, useRef } from "react"
 import { useTexture } from "@react-three/drei"
-import { useFrame, type ThreeEvent } from "@react-three/fiber"
+import { useFrame } from "@react-three/fiber"
 import {
 	SphereGeometry,
 	SRGBColorSpace,
@@ -30,7 +30,6 @@ import {
 } from "../lighting/bodyLighting"
 import SunlitMaterial from "../lighting/SunlitMaterial"
 import { useSimFrame } from "../scene/simFrame"
-import { isTapEvent } from "../scene/tap"
 import { bodyOrientation } from "./orientation"
 
 export interface BodyMeshProps {
@@ -129,29 +128,12 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 		)
 	})
 
-	const onClick = (event: ThreeEvent<MouseEvent>) => {
-		if (!isTapEvent(event)) return
-		event.stopPropagation()
-		useSimStore.getState().setFocus(body.id)
-	}
-	const onPointerOver = (event: ThreeEvent<PointerEvent>) => {
-		event.stopPropagation()
-		useSimStore.getState().setHover(body.id)
-	}
-	const onPointerOut = () => {
-		const store = useSimStore.getState()
-		if (store.hoverId === body.id) store.setHover(null)
-	}
-
 	return (
 		<group ref={groupRef} quaternion={orientation}>
 			<mesh
 				ref={meshRef}
 				geometry={unitSphere(sphereSegments(body))}
 				scale={frame.renderRadius(index)}
-				onClick={onClick}
-				onPointerOver={onPointerOver}
-				onPointerOut={onPointerOut}
 			>
 				<Suspense
 					fallback={<FallbackMaterial body={body} uniforms={uniforms} />}

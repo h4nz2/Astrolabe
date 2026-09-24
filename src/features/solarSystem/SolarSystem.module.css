@@ -72,6 +72,8 @@
 	grid-area: info;
 	justify-self: start;
 	align-self: end;
+	min-width: 0;
+	max-width: 100%;
 }
 
 .time {
@@ -92,16 +94,17 @@
 	}
 }
 
-/* phones: the panels stack and the body info is dropped */
+/* phones: the panels stack; the body card sits above the time controls (its facts fold away) */
 @media (max-width: 599px) {
 	.hud {
 		grid-template-columns: minmax(0, 1fr);
-		grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+		grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
 		grid-template-areas:
 			"picker"
 			"toggles"
 			"centre"
 			"."
+			"info"
 			"time";
 		gap: 0.5rem;
 		padding: 0.5rem;
@@ -110,11 +113,13 @@
 	.picker,
 	.toggles,
 	.centre,
+	.info,
 	.time {
 		justify-self: stretch;
 	}
 
 	.info {
-		display: none;
+		max-height: 45dvh;
+		overflow-y: auto;
 	}
 }

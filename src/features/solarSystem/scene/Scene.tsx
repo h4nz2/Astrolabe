@@ -16,6 +16,8 @@ import Bodies from "../bodies/Bodies"
 import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
+import BodyPicking from "./BodyPicking"
+import HighlightTracker from "./HighlightTracker"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
@@ -57,7 +59,9 @@ function Scene() {
 				</Suspense>
 				<OrbitLines />
 				<Markers />
+				<BodyPicking />
 				<CameraRig />
+				<HighlightTracker />
 			</SimFrameContext.Provider>
 		</Canvas>
 	)
