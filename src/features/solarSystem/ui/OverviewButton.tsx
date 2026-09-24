@@ -1,13 +1,18 @@
+import { useEffect } from "react"
 import { ActionIcon, Tooltip } from "@mantine/core"
 import { IconHome2 } from "@tabler/icons-react"
 
 import { useSimStore } from "@/store/sim"
 
-import { hasModifier, isEditableTarget, useWindowKeydown } from "./keyboard"
+import { hasModifier, isEditableTarget } from "./keyboard"
 
 const LABEL = "Back to overview"
 
-/** Escape is the way out from anywhere; an open dropdown or a text field keeps its own Escape. */
+/**
+ * Escape is the way out from anywhere; an open dropdown or a text field keeps
+ * its own Escape. Listened to in the capture phase, so a widget that swallows
+ * Escape for itself (a tooltip or popover dismissing) cannot block it.
+ */
 const handleKeyDown = (event: KeyboardEvent): void => {
 	if (event.key !== "Escape") return
 	if (hasModifier(event) || isEditableTarget(event.target)) return
@@ -21,7 +26,10 @@ const handleKeyDown = (event: KeyboardEvent): void => {
  * cleared, so a lesson can always restart from a known view.
  */
 const OverviewButton = () => {
-	useWindowKeydown(handleKeyDown)
+	useEffect(() => {
+		window.addEventListener("keydown", handleKeyDown, true)
+		return () => window.removeEventListener("keydown", handleKeyDown, true)
+	}, [])
 	const reset = useSimStore((state) => state.reset)
 
 	return (
