@@ -72,6 +72,8 @@ const litPixelsAroundCentre = async (page: Page): Promise<number> => {
 test("the solar system opens in Everything visible, with the inner planets' orbits around the Sun", async ({
 	page,
 }) => {
+	// a full-page pixel count under software WebGL; times out at 30 s in a loaded full run
+	test.slow()
 	const errors = collectErrors(page)
 	await page.goto("/solar_system")
 	await page.waitForLoadState("networkidle")
