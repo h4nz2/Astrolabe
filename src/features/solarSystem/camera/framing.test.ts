@@ -1,18 +1,22 @@
 import { describe, expect, it } from "vitest"
-import type { Spherical } from "three"
 
 import { bodies, getBody } from "@/data"
-import { toUnits } from "@/sim"
+import { AU_KM, SCALE_PRESETS, TRUE_SCALE, degToRad, toUnits } from "@/sim"
 
+import { createSimFrame } from "../scene/simFrame"
 import {
+	CAMERA_FAR,
+	CAMERA_MAX_DISTANCE,
 	CAMERA_NEAR,
 	FRAMING_RADII,
-	INITIAL_SUN_RADII,
 	MIN_DISTANCE_RADII,
-	followFocusRadius,
-	framingDistance,
+	OVERVIEW_MARGIN,
+	defaultDistance,
+	fitDistance,
 	minDollyDistance,
-	rescaledDistance,
+	minViewDistance,
+	overviewDistance,
+	overviewRadius,
 } from "./framing"
 
 describe("minDollyDistance", () => {
@@ -52,96 +56,97 @@ describe("minDollyDistance", () => {
 	})
 })
 
-describe("rescaledDistance", () => {
-	it("scales the distance with the focus's drawn radius, so the focus keeps its size on screen", () => {
-		expect(rescaledDistance(60, 10, 1)).toBeCloseTo(6, 12)
-		expect(rescaledDistance(6, 1, 10)).toBeCloseTo(60, 12)
-	})
+const trueFrame = createSimFrame(bodies, undefined, TRUE_SCALE)
+const visibleFrame = createSimFrame(
+	bodies,
+	undefined,
+	SCALE_PRESETS.everythingVisible,
+)
+const drawn = (frame: typeof trueFrame, id: string) =>
+	frame.renderRadius(frame.index.get(id)!)
 
-	it("never ends inside the body and survives a zero radius", () => {
-		expect(rescaledDistance(1, 1, 100)).toBeGreaterThanOrEqual(
-			minDollyDistance(100),
-		)
-		expect(rescaledDistance(5, 0, 1)).toBe(5)
-	})
-})
-
-describe("followFocusRadius", () => {
-	const makeControls = (distance: number) => {
-		const state = { distance, calls: 0 }
-		const controls = {
-			minDistance: 0,
-			dollyTo(d: number) {
-				state.distance = Math.max(d, controls.minDistance)
-				state.calls++
-			},
-			getSpherical(out: Spherical) {
-				out.radius = state.distance
-				return out
-			},
+describe("defaultDistance", () => {
+	it("frames every body from 6 of its drawn radii, so all fill the same share of the screen", () => {
+		for (const frame of [trueFrame, visibleFrame]) {
+			for (const id of ["sun", "jupiter", "mercury", "io"]) {
+				expect(defaultDistance({ kind: "body", id }, frame, 45, 1.5)).toBe(
+					FRAMING_RADII * drawn(frame, id),
+				)
+			}
+			// a point in space uses its anchor's framing
+			expect(
+				defaultDistance(
+					{ kind: "point", anchorId: "mars", offsetKm: [1e6, 0, 0] },
+					frame,
+					45,
+					1.5,
+				),
+			).toBe(FRAMING_RADII * drawn(frame, "mars"))
 		}
-		return { controls, state }
-	}
-	const frameWith = (radii: Record<string, number>) => ({
-		index: new Map(Object.keys(radii).map((id, i) => [id, i])),
-		renderRadius: (i: number) => Object.values(radii)[i],
-	})
-
-	it("remembers the first radius without moving the camera", () => {
-		const { controls, state } = makeControls(60)
-		const followed = followFocusRadius(
-			controls,
-			null,
-			frameWith({ earth: 10 }),
-			"earth",
+		// drawn, not true: Earth is enlarged in the default preset
+		expect(drawn(visibleFrame, "earth")).toBeGreaterThan(
+			toUnits(getBody("earth").radiusKm) * 5,
 		)
-		expect(followed).toEqual({ id: "earth", radius: 10 })
-		expect(state.calls).toBe(0)
 	})
 
-	it("dollies in proportion when the same focus changes size (a scale change)", () => {
-		const { controls, state } = makeControls(60)
-		const followed = followFocusRadius(
-			controls,
-			{ id: "earth", radius: 10 },
-			frameWith({ earth: 1 }),
-			"earth",
+	it("fits the whole planetary system, as drawn, into the overview", () => {
+		// Neptune's aphelion, a little over 30 AU at true scale
+		const radius = overviewRadius(TRUE_SCALE)
+		expect(radius * 1000).toBeGreaterThan(30 * AU_KM)
+		expect(radius * 1000).toBeLessThan(31 * AU_KM)
+		// the default preset pulls the far orbits in
+		expect(overviewRadius(SCALE_PRESETS.everythingVisible)).toBeLessThan(
+			radius / 10,
 		)
-		expect(followed).toEqual({ id: "earth", radius: 1 })
-		expect(state.distance).toBeCloseTo(6, 12)
-		// the dolly limit follows the new size before the dolly (which clamps to it)
-		expect(controls.minDistance).toBe(minDollyDistance(1))
+		const landscape = defaultDistance(
+			{ kind: "overview" },
+			trueFrame,
+			45,
+			16 / 9,
+		)
+		expect(landscape).toBe(overviewDistance(TRUE_SCALE, 45, 16 / 9))
+		// the vertical field of view is the narrower one: the system (and a margin) fills it
+		expect(landscape * Math.sin(degToRad(22.5))).toBeCloseTo(
+			OVERVIEW_MARGIN * radius,
+			6,
+		)
+		// a portrait screen backs further out to fit the width
+		const portrait = overviewDistance(TRUE_SCALE, 45, 0.5)
+		expect(portrait).toBeGreaterThan(landscape)
+		const halfWidth = Math.atan(Math.tan(degToRad(22.5)) * 0.5)
+		expect(portrait * Math.sin(halfWidth)).toBeCloseTo(
+			OVERVIEW_MARGIN * radius,
+			6,
+		)
 	})
 
-	it("leaves a focus change and an unchanged radius alone", () => {
-		const { controls, state } = makeControls(60)
-		const previous = { id: "earth", radius: 10 }
-		expect(
-			followFocusRadius(
-				controls,
-				previous,
-				frameWith({ earth: 10, mars: 3 }),
-				"mars",
-			),
-		).toEqual({ id: "mars", radius: 3 })
-		expect(
-			followFocusRadius(controls, previous, frameWith({ earth: 10 }), "earth"),
-		).toBe(previous)
-		expect(
-			followFocusRadius(controls, previous, frameWith({ earth: 10 }), "vulcan"),
-		).toBe(previous)
-		expect(state.calls).toBe(0)
+	it("keeps the widest true-scale overview inside the dolly limit and the far plane", () => {
+		const narrowest = overviewDistance(TRUE_SCALE, 45, 0.4)
+		expect(narrowest).toBeLessThan(CAMERA_MAX_DISTANCE / 2)
+		expect(CAMERA_MAX_DISTANCE + overviewRadius(TRUE_SCALE)).toBeLessThan(
+			CAMERA_FAR,
+		)
+	})
+
+	it("fits a sphere exactly", () => {
+		expect(fitDistance(1, 90, 1)).toBeCloseTo(Math.SQRT2, 12)
 	})
 })
 
-describe("framingDistance", () => {
-	it("frames the Sun from 40 radii on the first mount and 6 radii afterwards", () => {
-		expect(framingDistance("star", 1, true)).toBe(INITIAL_SUN_RADII)
-		expect(framingDistance("star", 1, false)).toBe(FRAMING_RADII)
-	})
-
-	it("frames planets and moons from 6 radii", () => {
-		expect(framingDistance("planet", 2, true)).toBe(2 * FRAMING_RADII)
-		expect(framingDistance("moon", 3, false)).toBe(3 * FRAMING_RADII)
+describe("minViewDistance", () => {
+	it("keeps the camera outside the drawn body a view is centred on", () => {
+		expect(minViewDistance({ kind: "body", id: "earth" }, visibleFrame)).toBe(
+			minDollyDistance(drawn(visibleFrame, "earth")),
+		)
+		expect(minViewDistance({ kind: "overview" }, trueFrame)).toBe(
+			minDollyDistance(drawn(trueFrame, "sun")),
+		)
+		// nothing to crash into at a point in space
+		expect(
+			minViewDistance(
+				{ kind: "point", anchorId: "earth", offsetKm: [0, 1e5, 0] },
+				trueFrame,
+			),
+		).toBe(2 * CAMERA_NEAR)
 	})
 })
