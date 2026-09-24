@@ -9,7 +9,7 @@ import { J2000_JD } from "@/sim"
 import { OVERVIEW, frameForView, isFrameAnchored, viewMode } from "./navigation"
 import { useSimStore } from "./sim"
 import { simSearchSchema } from "./simSearch"
-import { searchFromState, viewFromSearch } from "./urlSync"
+import { frameFromSearch, searchFromState } from "./urlSync"
 
 const store = () => useSimStore.getState()
 afterEach(() => useSimStore.setState(useSimStore.getInitialState(), true))
@@ -152,7 +152,7 @@ describe("the reference frame in the URL", () => {
 
 	it("reads it back, following the focus, and ignores unknown or Sun frames", () => {
 		const read = (search: Record<string, unknown>) =>
-			viewFromSearch(simSearchSchema.parse(search)).frameId
+			frameFromSearch(simSearchSchema.parse(search))
 		expect(read({ focus: "earth", frame: "earth" })).toBe("earth")
 		// the frame follows the focus
 		expect(read({ focus: "mars", frame: "earth" })).toBe("mars")

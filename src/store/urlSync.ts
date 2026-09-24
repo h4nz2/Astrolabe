@@ -142,8 +142,6 @@ export function viewFromSearch(search: SimSearch): {
 	view: View
 	shot: CameraShot | null
 	selectedId: string | null
-	/** The body held still (#31): the focus, or `frame` itself without one; null for Sun-centred. */
-	frameId: string | null
 } {
 	const focus =
 		search.focus !== undefined && bodyById.has(search.focus)
@@ -160,18 +158,34 @@ export function viewFromSearch(search: SimSearch): {
 			: offsetKm === null
 				? { kind: "body", id: focus }
 				: { kind: "point", anchorId: focus, offsetKm }
-	const framed =
-		search.frame !== undefined &&
-		search.frame !== OVERVIEW_BODY_ID &&
-		bodyById.has(search.frame)
 	return {
 		view,
-		frameId: framed ? (focus ?? search.frame ?? null) : null,
 		shot: parseShot(search.cam),
 		// a focused body is selected unless the link selects something else;
 		// a point in space selects nothing by itself
 		selectedId: sel ?? (view.kind === "body" ? focus : null),
 	}
+}
+
+/**
+ * The body a search holds still (#31): with a known `frame` other than the
+ * Sun, the focus (an anchored frame follows it), or `frame` itself when the
+ * link has no focus; null for the Sun-centred frame.
+ */
+export function frameFromSearch(search: SimSearch): string | null {
+	const { frame } = search
+	if (
+		frame === undefined ||
+		frame === OVERVIEW_BODY_ID ||
+		!bodyById.has(frame)
+	) {
+		return null
+	}
+	const focus =
+		search.focus !== undefined && bodyById.has(search.focus)
+			? search.focus
+			: null
+	return focus ?? frame
 }
 
 /**
@@ -230,9 +244,8 @@ export function useSimUrlSync(): void {
 		const store = useSimStore.getState()
 		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
 		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
-		const { view, shot, selectedId, frameId } = viewFromSearch(
-			searchRef.current,
-		)
+		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
+		const frameId = frameFromSearch(searchRef.current)
 		store.jumpTo(view, shot)
 		if (frameId !== null) {
 			store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
