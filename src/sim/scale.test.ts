@@ -335,7 +335,7 @@ describe("Everything visible, the default (a product choice guarded here)", () =
 		expect(DEFAULT_SCALE_PRESET).toBe("everythingVisible")
 	})
 
-	for (const id of ["textbook", "everythingVisible"] as const) {
+	for (const id of ["textbook", "bigPlanets", "everythingVisible"] as const) {
 		const scale = SCALE_PRESETS[id]
 
 		it(`${id}: planet orbits keep their order, clear the Sun and never touch`, () => {
@@ -449,10 +449,11 @@ describe("Everything visible, the default (a product choice guarded here)", () =
 })
 
 describe("presets and settings", () => {
-	it("exposes true scale, textbook and everything visible, frozen", () => {
+	it("exposes true scale, textbook, big planets and everything visible, frozen", () => {
 		expect(SCALE_PRESET_IDS).toEqual([
 			"trueScale",
 			"textbook",
+			"bigPlanets",
 			"everythingVisible",
 		])
 		for (const [, scale] of presets) {

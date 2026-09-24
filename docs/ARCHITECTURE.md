@@ -191,13 +191,38 @@ interface ScaleSettings {
 | ------------------- | -------- | ------------------------------- | ------------------------------ | -------------------------------------------------------- |
 | `trueScale`         | 1        | 1, 1, 1                         | 3, 1, 1                        | real sizes and distances; planets are specks             |
 | `textbook`          | 1        | 1, 0.53, 0.12                   | 3, 0.2, 1                      | sizes true to each other, distances squeezed hard        |
+| `bigPlanets`        | 0.5      | 1, 1, 1                         | 3, 0.2, 2                      | enlarged bodies at real distances: still lost in space   |
 | `everythingVisible` | 0.5      | 1, 0.52, 1                      | 3, 0.2, 2                      | **the default**: small bodies enlarged, orbits pulled in |
 
 `scale.test.ts` guards the non-true presets (orbit order kept, moon systems separated, rings and ring moons true to
 proportion). `interpolateScale` blends presets for animated changes; also `presetOf`, `sameScale`, `isValidScale`,
-`sizeExaggeration`, `distanceFactor`. The store (`useScaleStore`: `scale`, `presetId`, `setPreset`, `setScale`,
-`setFactor`) is not persisted or in the URL. `scene/ScaleSync.tsx` pushes it into the SimFrame and sets
-`data-scale-preset` on the canvas. On a scale change the camera keeps the framed body's on-screen size.
+`sizeExaggeration`, `distanceFactor`. `scene/ScaleSync.tsx` pushes the store into the SimFrame and sets
+`data-scale-preset` on the canvas (`custom` mid-switch). On a scale change the camera keeps the framed body's
+on-screen size (in the overview: the whole drawn planetary system).
+
+### Scale presets, the experience (#21)
+
+- **The grid** (`src/sim/scaleLies.ts`): sizes and distances are separate lies. Every preset is one cell of
+  sizes `true | enlarged` x distances `true | squeezed` (`SCALE_LIES`, `presetForLies`): `trueScale` (true/true),
+  `textbook` (true/squeezed), `bigPlanets` (enlarged/true), `everythingVisible` (enlarged/squeezed). The squeeze is
+  tuned to the sizes, so the grid names presets rather than mixing factors. `bodyDistortion` gives drawn over
+  true size and distance from the parent, in kilometres: the numbers the honesty statement shows.
+- **The store** (`useScaleStore`): `scale`, `presetId` (null mid-switch or for a console mix), `targetId` (the
+  preset the user chose, from the click on), `transition`. `switchTo(id, nowMs, durationMs = SCALE_TRANSITION_MS)`
+  animates from whatever is on screen (a switch can turn around mid-way), `setPreset` jumps (links, reduced
+  motion), `stepTransition(nowMs)` eases (`easeInOutSine`, 2.5 s) and lands on the preset's frozen object.
+  `scene/ScaleTransition.tsx` steps it in `useFrame` at priority -2, before SimClock and the camera director.
+- **The panel** (`ui/ScalePanel.tsx`, top right under the layer switches): the three named presets, the Sizes and
+  Distances switches (the only way to `bigPlanets`), the preset's one-line summary ("Not to scale!") and the
+  honesty statement (`ui/scaleStatement.ts`): two sentences about the selected body, else the focus, else Earth
+  ("Earth is drawn 10x too big." / "... 13x too close to the Sun."), factors rounded to two significant digits,
+  within 5 % of 1 said as "real". Every string has simple/standard/advanced variants in every locale; German picks
+  articles and cases by `subjectId`/`parentId` selects. In `trueScale`/`bigPlanets` a line points at the markers.
+- **URL, not storage:** `?scale=<preset id>` (absent = the default, unknown ids ignored), written at the click;
+  a link opens in its preset without animating. Nothing is kept in localStorage: every fresh visit starts in
+  Everything visible, so the switch to true scale stays the lesson.
+- **True scale's navigation aid** is the marker layer (a dot for every body, on by default) plus labels, the focus
+  picker and the overview button; there is no extra "find Earth" widget.
 
 ## Navigation (`src/store/navigation.ts`, `features/solarSystem/camera`; #10)
 
@@ -335,7 +360,8 @@ WARP_PRESETS                                      speeds (plain numbers): 1x, 1 
 Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
-URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
+URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
+Scale presets). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
 off by default, as `orbitNames=true` while on. Defaults (overview,
 home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
@@ -402,12 +428,12 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
-  toggles panel), `CentreBadge` and `CentreMarker` (#15). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
+  toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
+  `ScaleTransition`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
   the `LabelLayer` beside the Canvas) and the HUD.
 
 ## Labels (`features/solarSystem/labels`; #20)
