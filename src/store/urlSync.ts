@@ -4,7 +4,7 @@
  * On mount the validated search params (`focus`, `t`, `warp`) seed the store;
  * from then on focus and warp are written to the URL as they change and the
  * simulation time follows at most once per second, and only while it is slow
- * enough to be worth a link (paused or warp <= 1 min/s). Everything is
+ * enough to be worth a link (paused or |warp| <= 1 min/s). Everything is
  * `replace: true`, so the history never fills up.
  *
  * The store is watched through `useSimStore.subscribe`, not selectors: the
@@ -21,7 +21,7 @@ import type { SimSearch } from "./simSearch"
 
 /** Minimum spacing between two writes of `t` into the URL. */
 export const TIME_SYNC_INTERVAL_MS = 1000
-/** `t` is mirrored only while paused or at most at this warp (1 min/s). */
+/** `t` is mirrored only while paused or at most at this speed (1 min/s, either direction). */
 export const TIME_SYNC_MAX_WARP = 60
 /** Warp written to the URL at this value is omitted (the default). */
 export const DEFAULT_TIME_WARP = 1
@@ -30,7 +30,7 @@ export const DEFAULT_TIME_WARP = 1
 export const roundJD = (jd: number): number => Math.round(jd * 1e4) / 1e4
 
 export const shouldMirrorTime = (paused: boolean, timeWarp: number): boolean =>
-	paused || timeWarp <= TIME_SYNC_MAX_WARP
+	paused || Math.abs(timeWarp) <= TIME_SYNC_MAX_WARP
 
 type Mirrored = Pick<SimState, "focusId" | "timeWarp" | "paused" | "simTimeJD">
 
@@ -38,8 +38,8 @@ type Mirrored = Pick<SimState, "focusId" | "timeWarp" | "paused" | "simTimeJD">
  * The search params that mirror `state`, starting from `previous` so a `t` that
  * is not being mirrored right now (fast warp) keeps its last written value.
  * Defaults (Sun, 1x) are left out to keep the URL short. The warp is written
- * as it is (not rounded), so a link runs at exactly the speed it was taken at;
- * a warp the schema would reject (zero or negative) is left out.
+ * as it is (not rounded), so a link runs at exactly the speed it was taken at,
+ * backwards included; a zero warp (which the schema rejects) is left out.
  */
 export function searchFromState(
 	state: Mirrored,
@@ -51,7 +51,8 @@ export function searchFromState(
 		t: shouldMirrorTime(state.paused, timeWarp)
 			? roundJD(state.simTimeJD)
 			: previous.t,
-		warp: timeWarp > 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
+		warp:
+			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
 	}
 }
 
@@ -100,8 +101,12 @@ export function useSimUrlSync(): void {
 	}, [search])
 
 	useLayoutEffect(() => {
-		// URL -> store, once; a jump (no fly) since the page is just appearing
-		useSimStore.setState({ ...mountState(searchRef.current), fly: null })
+		// URL -> store, once; a jump (no fly) since the page is just appearing.
+		// Time goes through the clock actions (issue #9), never a bare setState.
+		const { simTimeJD, timeWarp, ...seed } = mountState(searchRef.current)
+		useSimStore.setState({ ...seed, fly: null })
+		if (timeWarp !== undefined) useSimStore.getState().setTimeWarp(timeWarp)
+		if (simTimeJD !== undefined) useSimStore.getState().setSimTime(simTimeJD)
 
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const write = () => {
