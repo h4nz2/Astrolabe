@@ -53,22 +53,30 @@
 	min-width: 0;
 }
 
-/* the anchored frame (#31) and the free centre (#15): what the view holds and the ways back */
+/* the free centre (#15): what the view orbits and the way back */
 .centre {
 	grid-area: centre;
 	justify-self: center;
 	align-self: start;
 	max-width: 100%;
 	min-width: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.5rem;
 }
 
-.centre > .panel {
-	max-width: 100%;
+/* the picker and, below it while a body is held still, the frame's badge (#31) */
+.pickerStack {
+	grid-area: picker;
+	justify-self: start;
+	align-self: start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.5rem;
 	min-width: 0;
+	max-width: 100%;
+}
+
+.pickerStack > .panel {
+	max-width: 100%;
 }
 
 .toggles {
@@ -123,7 +131,8 @@
 		justify-self: stretch;
 	}
 
-	.centre {
+	.pickerStack {
+		justify-self: stretch;
 		align-items: stretch;
 	}
 

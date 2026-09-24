@@ -93,6 +93,7 @@ function skyText(sky: FrameSky, i18n: I18n, name: (id: string) => string) {
 		const bodyId = bodies[sky.target].id
 		return {
 			caption: t("solarSystem.frame.phase.caption", {
+				bodyId,
 				body,
 				observer,
 				observerId,

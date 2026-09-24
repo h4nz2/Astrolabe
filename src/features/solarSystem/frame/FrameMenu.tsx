@@ -90,25 +90,28 @@ const FrameMenu = () => {
 					</Menu.Item>
 				))}
 				<Menu.Divider />
-				<Menu.Item
-					leftSection={<IconPinned size={18} aria-hidden />}
-					disabled={!canHold}
-					onClick={() => anchorFrame(focusId)}
-					data-preset="hold"
-				>
-					<Text size="sm">
-						{t("solarSystem.frame.presets.hold.title", {
-							body: name(focusId),
-						})}
+				{canHold ? (
+					<Menu.Item
+						leftSection={<IconPinned size={18} aria-hidden />}
+						onClick={() => anchorFrame(focusId)}
+						data-preset="hold"
+					>
+						<Text size="sm">
+							{t("solarSystem.frame.presets.hold.title", {
+								body: name(focusId),
+							})}
+						</Text>
+						<Text size="xs" c="dimmed">
+							{t("solarSystem.frame.presets.hold.hint", {
+								body: name(focusId),
+							})}
+						</Text>
+					</Menu.Item>
+				) : focusId === OVERVIEW_BODY_ID ? (
+					<Text size="xs" c="dimmed" px="sm" py={6}>
+						{t("solarSystem.frame.presets.hold.disabled")}
 					</Text>
-					<Text size="xs" c="dimmed">
-						{canHold || focusId === frameId
-							? t("solarSystem.frame.presets.hold.hint", {
-									body: name(focusId),
-								})
-							: t("solarSystem.frame.presets.hold.disabled")}
-					</Text>
-				</Menu.Item>
+				) : null}
 			</Menu.Dropdown>
 		</Menu>
 	)

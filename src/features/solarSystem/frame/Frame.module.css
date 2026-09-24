@@ -15,7 +15,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.35rem;
-	width: 26rem;
+	width: 22rem;
 	max-width: 100%;
 	font-size: var(--mantine-font-size-sm);
 }
@@ -84,8 +84,8 @@
 }
 
 .inset svg {
-	width: 7rem;
-	height: 7rem;
+	width: 6rem;
+	height: 6rem;
 	display: block;
 }
 

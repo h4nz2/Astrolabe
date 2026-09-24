@@ -33,8 +33,8 @@ const moonOrbitKm = bodyById.get("moon")?.orbit?.semiMajorAxisKm ?? 384_400
 export const FRAME_PRESETS: Readonly<Record<FramePresetId, FramePreset>> = {
 	sun: { anchorId: OVERVIEW_BODY_ID, selectId: null, request: {}, warp: null },
 	/**
-	 * Earth held still, seen from high above the ecliptic, framing Mars's whole
-	 * path around Earth (2.7 AU), at a month a second: Mars's retrograde loop
+	 * Earth held still, seen from high above the ecliptic, framing Mars's path
+	 * around Earth out to 2.5 AU (all but its far side), at a month a second: Mars's retrograde loop
 	 * draws itself in a few seconds, the Sun circles Earth once in twelve.
 	 */
 	planets: {
@@ -42,7 +42,7 @@ export const FRAME_PRESETS: Readonly<Record<FramePresetId, FramePreset>> = {
 		selectId: "mars",
 		request: {
 			shot: { azimuthDeg: 0, elevationDeg: 89.9 },
-			fit: { km: 2.7 * AU_KM, around: OVERVIEW_BODY_ID },
+			fit: { km: 2.5 * AU_KM, around: OVERVIEW_BODY_ID },
 		},
 		warp: MONTH_PER_SECOND,
 	},

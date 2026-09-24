@@ -47,6 +47,11 @@ export interface SimFrame {
 	readonly originKm: Float64Array
 	/** Simulation time (Julian Date) of the last update. */
 	jd: number
+	/**
+	 * Spin time: the Julian Date every body's spin angle is evaluated at, written by
+	 * scene/SpinClock.tsx. Equals `jd` in the realistic spin mode (src/sim/spin.ts).
+	 */
+	spinJD: number
 	/** The active scale; change it with `setSimFrameScale`, never by assignment. */
 	scale: ScaleSettings
 	/** Incremented by every `setSimFrameScale`; per-frame consumers cache scale-derived geometry on it. */
@@ -101,6 +106,7 @@ export function createSimFrame(
 		displayRadiiKm,
 		originKm,
 		jd,
+		spinJD: jd,
 		scale,
 		scaleVersion: 0,
 		frameBlend: {

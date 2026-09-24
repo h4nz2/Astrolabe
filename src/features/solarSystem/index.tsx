@@ -17,6 +17,7 @@ import CentreMarker from "./ui/CentreMarker"
 import FocusPicker from "./ui/FocusPicker"
 import OverviewButton from "./ui/OverviewButton"
 import SceneToggles from "./ui/SceneToggles"
+import SpinControl from "./ui/SpinControl"
 import TimeControls from "./ui/TimeControls"
 
 import classes from "./SolarSystem.module.css"
@@ -39,7 +40,7 @@ const CentreBadgePanel = () => {
 	const free = useSimStore((state) => freeCentreId(state) !== null)
 	if (!free) return null
 	return (
-		<div className={classes.panel}>
+		<div className={`${classes.panel} ${classes.centre}`}>
 			<CentreBadge />
 		</div>
 	)
@@ -66,15 +67,15 @@ const SolarSystem = () => {
 			</Suspense>
 			<CentreMarker />
 			<div className={classes.hud}>
-				<div className={`${classes.panel} ${classes.picker}`}>
-					<OverviewButton />
-					<FocusPicker />
-					<FrameMenu />
-				</div>
-				<div className={classes.centre}>
+				<div className={classes.pickerStack}>
+					<div className={`${classes.panel} ${classes.picker}`}>
+						<OverviewButton />
+						<FocusPicker />
+						<FrameMenu />
+					</div>
 					<FrameBadgePanel />
-					<CentreBadgePanel />
 				</div>
+				<CentreBadgePanel />
 				<div className={`${classes.panel} ${classes.toggles}`}>
 					<Group gap="sm" justify="space-between" wrap="nowrap">
 						<SceneToggles />
@@ -86,6 +87,7 @@ const SolarSystem = () => {
 				</div>
 				<div className={`${classes.panel} ${classes.time}`}>
 					<TimeControls />
+					<SpinControl />
 				</div>
 			</div>
 		</div>

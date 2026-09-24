@@ -28,6 +28,7 @@ import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
 import SimClock from "./SimClock"
+import SpinClock from "./SpinClock"
 import { SimFrameContext, createSimFrame } from "./simFrame"
 
 export const SCENE_BACKGROUND = "#0b0d12"
@@ -65,6 +66,7 @@ function Scene() {
 					<ScaleSync />
 					<ReferenceFrameSync />
 					<SimClock />
+					<SpinClock />
 					<HoverCursor />
 					<Suspense fallback={null}>
 						<Bodies />
