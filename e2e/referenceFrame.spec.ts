@@ -8,6 +8,8 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { cameraAtRest, nextFrames } from "./support/scene"
+
 const screenshotDir = path.join("test-results", "referenceFrame")
 
 // software WebGL is slow and every step waits for the camera to come to rest
@@ -25,18 +27,10 @@ const ready = async (page: Page, url: string) => {
 }
 
 const settled = async (page: Page) => {
-	await page.waitForFunction(
-		() => {
-			const handle = window.__astrolabe
-			if (handle === undefined) return false
-			const state = handle.store.getState()
-			return handle.camera().transitionId === null && state.transition === null
-		},
-		null,
-		{ timeout: 60_000 },
-	)
-	// the frame blend (1.2 s) and the controls' damping
-	await page.waitForTimeout(1500)
+	await cameraAtRest(page)
+	// the frame blend (1.2 s of real time), then a few frames drawn after it
+	await page.waitForTimeout(1300)
+	await nextFrames(page, 3)
 }
 
 const state = (page: Page) =>
