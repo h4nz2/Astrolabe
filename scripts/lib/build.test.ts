@@ -12,6 +12,7 @@ import {
 	PLACEHOLDER_TEXTURE,
 	buildBodies,
 	ownsPlaceholderTexture,
+	synchronousRotation,
 	usesPlaceholderTexture,
 } from "./build"
 import type { BuildOptions } from "./build"
@@ -257,7 +258,8 @@ describe("buildBodies", () => {
 			rings: null,
 			radiusKm: 695508,
 			massKg: 1.989e30,
-			rotation: { periodHours: 609.12, axialTiltDeg: 7.25 },
+			// the period from the IAU rate (14.1844 deg/day), not the source's rounded 609.12 h
+			rotation: { periodHours: 609.119878176, axialTiltDeg: 7.25 },
 			textures: { base: "/tex/sun.png" },
 		})
 		expect(get("sun").info).toEqual({
@@ -296,12 +298,13 @@ describe("buildBodies", () => {
 			periodHours: -17.24,
 			axialTiltDeg: 82.23,
 		})
+		// the tilt is normalized; an IAU body's period (and its sign) comes from the IAU rate
 		expect(get("mercury").rotation).toMatchObject({
-			periodHours: -10,
+			periodHours: 1407.507501657,
 			axialTiltDeg: 60,
 		})
 		expect(get("saturn").rotation).toMatchObject({
-			periodHours: 10,
+			periodHours: 10.656222222,
 			axialTiltDeg: 20,
 		})
 		// the dictionary still sees the source value
@@ -310,7 +313,7 @@ describe("buildBodies", () => {
 
 	it("attaches the IAU pole and prime meridian by id, and nothing to other moons", () => {
 		expect(get("sun").rotation).toEqual({
-			periodHours: 609.12,
+			periodHours: 609.119878176,
 			axialTiltDeg: 7.25,
 			poleRaDeg: 286.13,
 			poleDecDeg: 63.87,
@@ -326,6 +329,7 @@ describe("buildBodies", () => {
 		expect(get("titan").rotation).toEqual({
 			periodHours: 382.8,
 			axialTiltDeg: 0,
+			synchronous: true,
 		})
 	})
 
@@ -370,6 +374,13 @@ describe("buildBodies", () => {
 			diameter: 1527.6,
 			orbitalPeriod: 4.5,
 			orbitalInclination: 0.35,
+			// a regular moon without a spin period is assumed tidally locked
+			rotationAssumed: true,
+		})
+		expect(rhea.rotation).toEqual({
+			periodHours: 108.432,
+			axialTiltDeg: 0,
+			synchronous: true,
 		})
 		expect(result.bodies.filter((body) => body.name === "Rhea")).toHaveLength(1)
 	})
@@ -384,7 +395,11 @@ describe("buildBodies", () => {
 		})
 		expect(titan.radiusKm).toBe(2574.7)
 		expect(titan.radiusEstimated).toBeUndefined()
-		expect(titan.rotation).toEqual({ periodHours: 382.8, axialTiltDeg: 0 })
+		expect(titan.rotation).toEqual({
+			periodHours: 382.8,
+			axialTiltDeg: 0,
+			synchronous: true,
+		})
 		expect(titan.textures).toEqual({ base: PLACEHOLDER_TEXTURE })
 		expect(titan.info).toEqual({
 			discoveredBy: "Christiaan Huygens",
@@ -597,5 +612,49 @@ describe("buildBodies", () => {
 				ringsFor: () => ({ innerRadiusKm: 1, outerRadiusKm: 2, textures: {} }),
 			}),
 		).toThrow(/invalid data\/rings\/uranus.json/)
+	})
+})
+
+describe("synchronousRotation", () => {
+	const spin = (periodHours: number | null) => ({
+		periodHours,
+		axialTiltDeg: 0,
+	})
+
+	it("marks a moon whose spin period matches its orbit as locked", () => {
+		// Io: 42.4593 h spin, 1.76914 d orbit
+		expect(synchronousRotation(spin(42.4593), 1.76914, true, false)).toEqual({
+			rotation: { periodHours: 42.4593, axialTiltDeg: 0, synchronous: true },
+			assumed: false,
+		})
+	})
+
+	it("keeps a measured spin that is not synchronous, regular or not", () => {
+		// Himalia: 7.78 h spin, 250 d orbit
+		expect(synchronousRotation(spin(7.7808), 250.56, false, false)).toEqual({
+			rotation: spin(7.7808),
+			assumed: false,
+		})
+		expect(synchronousRotation(spin(10), 1.5, true, false).rotation).toEqual(
+			spin(10),
+		)
+	})
+
+	it("assumes a regular moon without a period is locked, with its orbital period", () => {
+		expect(synchronousRotation(spin(null), 1.2624, true, false)).toEqual({
+			rotation: { periodHours: 30.2976, axialTiltDeg: 0, synchronous: true },
+			assumed: true,
+		})
+	})
+
+	it("leaves irregular and chaotic moons without a period still", () => {
+		expect(synchronousRotation(spin(null), 700, false, false)).toEqual({
+			rotation: spin(null),
+			assumed: false,
+		})
+		expect(synchronousRotation(spin(null), 21.276, true, true)).toEqual({
+			rotation: spin(null),
+			assumed: false,
+		})
 	})
 })

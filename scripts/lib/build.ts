@@ -16,6 +16,7 @@ import type {
 } from "../../src/data/schema"
 import type { Vec3 } from "../../src/sim/kepler"
 import { eclipticDirection } from "../../src/sim/rotation"
+import { HOURS_PER_DAY } from "../../src/sim/time"
 
 import { rotateElementsToEcliptic } from "./frames"
 import { spreadPhases } from "./hash"
@@ -57,6 +58,12 @@ export const EXTERNAL_RING_PLANETS: readonly string[] = ["uranus", "neptune"]
 export const KEPLER_PERIOD_TOLERANCE = 0.1
 
 /** Mean densities outside this range (kg/m^3) get a warning: a mass or size typo. */
+/**
+ * A moon whose spin period is within this fraction of its orbital period is synchronous
+ * (tidally locked); every such moon in the source agrees to better than 0.1 %.
+ */
+export const SYNCHRONOUS_TOLERANCE = 0.01
+
 export const DENSITY_RANGE_KG_PER_M3: readonly [number, number] = [100, 10000]
 
 /** Descriptive fields passed through into `info`, in output order. */
@@ -347,9 +354,48 @@ const rotationOf = (sources: readonly Raw[], id: string): Rotation => {
 		if (periodHours !== null) periodHours = -Math.abs(periodHours)
 	}
 	const iau = IAU_ORIENTATIONS[id]
-	return iau === undefined
-		? { periodHours, axialTiltDeg }
-		: { periodHours, axialTiltDeg, ...iau }
+	if (iau === undefined) return { periodHours, axialTiltDeg }
+	const { rotationRateDegPerDay, ...pole } = iau
+	return {
+		periodHours: round((360 * HOURS_PER_DAY) / rotationRateDegPerDay, 9),
+		axialTiltDeg,
+		...pole,
+	}
+}
+
+/**
+ * Marks tidally locked moons `synchronous`. A moon with a spin period is locked when the
+ * period matches its orbital period. A moon without one is ASSUMED locked when it is a
+ * regular moon (inside its planet's Laplace radius): every regular moon with a measured
+ * rotation is, tides lock such moons within the age of the solar system, and the IAU
+ * models them so. It then gets its orbital period as spin period (`rotationAssumed` in
+ * `info`). A curated `rotationChaotic` (Hyperion, which tumbles) or an irregular moon
+ * without a period keeps a null period: no spin rather than a made-up one.
+ */
+export const synchronousRotation = (
+	rotation: Rotation,
+	orbitPeriodDays: number,
+	isRegular: boolean,
+	chaotic: boolean,
+): { rotation: Rotation; assumed: boolean } => {
+	const period = rotation.periodHours
+	if (period !== null) {
+		const ratio = Math.abs(period) / HOURS_PER_DAY / orbitPeriodDays
+		const locked = Math.abs(ratio - 1) <= SYNCHRONOUS_TOLERANCE
+		return {
+			rotation: locked ? { ...rotation, synchronous: true } : rotation,
+			assumed: false,
+		}
+	}
+	if (!isRegular || chaotic) return { rotation, assumed: false }
+	return {
+		rotation: {
+			...rotation,
+			periodHours: round(orbitPeriodDays * HOURS_PER_DAY, 4),
+			synchronous: true,
+		},
+		assumed: true,
+	}
 }
 
 const ringsOf = (raw: Raw, planetId: string, ctx: Context): Rings | null => {
@@ -691,6 +737,13 @@ const buildMoon = (
 
 	const info = infoOf(sources)
 	if (periodDerived) info.periodDerived = true
+	const spin = synchronousRotation(
+		rotationOf(sources, id),
+		periodDays,
+		isRegular,
+		sources.some((raw) => raw.rotationChaotic === true),
+	)
+	if (spin.assumed) info.rotationAssumed = true
 
 	const radius = radiusOf(sources, DEFAULT_MOON_RADIUS_KM)
 	const massKg = first(sources, (raw) => parseMass(raw.mass))
@@ -704,7 +757,7 @@ const buildMoon = (
 		...radius,
 		massKg,
 		orbit,
-		rotation: rotationOf(sources, id),
+		rotation: spin.rotation,
 		textures,
 		rings: null,
 		info,

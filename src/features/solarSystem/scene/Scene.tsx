@@ -27,6 +27,7 @@ import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
 import ScaleTransition from "./ScaleTransition"
 import SimClock from "./SimClock"
+import SpinClock from "./SpinClock"
 import { SimFrameContext, createSimFrame } from "./simFrame"
 
 export const SCENE_BACKGROUND = "#0b0d12"
@@ -64,6 +65,7 @@ function Scene() {
 					<ScaleSync />
 					<ScaleTransition />
 					<SimClock />
+					<SpinClock />
 					<HoverCursor />
 					<Suspense fallback={null}>
 						<Bodies />
