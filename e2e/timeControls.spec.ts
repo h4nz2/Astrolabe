@@ -6,6 +6,9 @@
 import { expect, test, type Locator, type Page } from "@playwright/test"
 
 const J2000 = 2451545
+
+// every test clicks through several panels while swiftshader renders the scene at a few fps
+test.describe.configure({ timeout: 60_000 })
 const DAY_MS = 86_400_000
 
 /** The HUD date as epoch milliseconds (from `<time dateTime>`). */
