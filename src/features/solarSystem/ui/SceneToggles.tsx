@@ -1,8 +1,9 @@
 import { Group, Switch } from "@mantine/core"
 
+import { useLightingStore } from "@/store/lighting"
 import { useSimStore } from "@/store/sim"
 
-/** Switches for the orbit lines, the labels and the moons. */
+/** Switches for the orbit lines, the labels, the moons and the "always lit" teaching mode. */
 const SceneToggles = () => {
 	const showOrbits = useSimStore((state) => state.showOrbits)
 	const showLabels = useSimStore((state) => state.showLabels)
@@ -10,6 +11,8 @@ const SceneToggles = () => {
 	const setShowOrbits = useSimStore((state) => state.setShowOrbits)
 	const setShowLabels = useSimStore((state) => state.setShowLabels)
 	const setShowMoons = useSimStore((state) => state.setShowMoons)
+	const alwaysLit = useLightingStore((state) => state.alwaysLit)
+	const setAlwaysLit = useLightingStore((state) => state.setAlwaysLit)
 
 	return (
 		<Group gap="md" wrap="wrap" role="group" aria-label="Scene layers">
@@ -33,6 +36,13 @@ const SceneToggles = () => {
 				label="Moons"
 				checked={showMoons}
 				onChange={(event) => setShowMoons(event.currentTarget.checked)}
+			/>
+			<Switch
+				size="xs"
+				color="orange"
+				label="Always lit"
+				checked={alwaysLit}
+				onChange={(event) => setAlwaysLit(event.currentTarget.checked)}
 			/>
 		</Group>
 	)

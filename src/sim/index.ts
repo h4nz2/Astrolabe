@@ -107,3 +107,15 @@ export {
 	timelineJD,
 } from "./clock"
 export type { SimTimeline, TimeGlide } from "./clock"
+export {
+	MAX_OCCLUDERS,
+	OCCLUDER_STRIDE,
+	angleBetween,
+	discOverlapArea,
+	illuminatedFraction,
+	occluderCandidates,
+	phaseAngle,
+	selectOccluders,
+	sunVisibleFraction,
+} from "./lighting"
+export type { LitBody } from "./lighting"
