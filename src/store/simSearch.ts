@@ -1,5 +1,5 @@
 /**
- * Search params of `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>`.
+ * Search params of `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&markers=false`.
  *
  * Kept free of app imports (only zod) because the route module that validates
  * the URL is loaded eagerly with the route tree; the store and the data stay in
@@ -39,6 +39,8 @@ export const simSearchSchema = z.object({
 				.optional(),
 		)
 		.catch(undefined),
+	// the Markers layer switch; only `false` is ever written, on is the default
+	markers: z.boolean().optional().catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>
