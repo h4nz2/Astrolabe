@@ -1,5 +1,5 @@
 /**
- * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`
+ * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale`
  * (the layer switches `orbits`, `labels`, `moons`, `markers` alike).
  *
  * Kept free of app imports (only zod) because the route module that validates
@@ -52,6 +52,9 @@ export const simSearchSchema = z.object({
 	markers: layerSwitch,
 	// orbit names (#20) are off by default, so only `true` is ever written
 	orbitNames: layerSwitch,
+	// the scale preset (#21), a preset id of src/sim/scale.ts; absent is the
+	// default (Everything visible), unknown ids are ignored when applied
+	scale: z.string().optional().catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>
