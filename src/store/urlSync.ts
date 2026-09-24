@@ -2,11 +2,12 @@
  * Mirrors the simulation store into the `/solar_system` URL and back.
  *
  * On mount the validated search params (`focus`, `at`, `sel`, `cam`, `t`,
- * `warp` and the layer switches `orbits`, `labels`, `moons`, `markers`) seed
- * the store: the view (`focus`: a body, with `at` a point in space near it,
- * absent: the overview) and its camera shot are applied as a jump, so a
- * shared link opens exactly on the view it was taken from. From then on view,
- * selection, camera shot, warp and the layer switches are written to the URL
+ * `warp`, the layer switches `orbits`, `labels`, `moons`, `markers` and the
+ * scale preset `scale`) seed the store: the view (`focus`: a body, with `at`
+ * a point in space near it, absent: the overview) and its camera shot are
+ * applied as a jump, so a shared link opens exactly on the view it was taken
+ * from. From then on view, selection, camera shot, warp, the layer switches
+ * and the scale preset are written to the URL
  * as they change (the shot when the camera comes to rest) and the simulation
  * time follows at most once per second, and only while it is slow enough to
  * be worth a link (paused or |warp| <= 1 min/s).
@@ -19,7 +20,12 @@ import { useEffect, useLayoutEffect, useRef } from "react"
 import { useNavigate, useSearch } from "@tanstack/react-router"
 
 import { bodyById } from "@/data"
-import { dateToJD } from "@/sim"
+import {
+	DEFAULT_SCALE_PRESET,
+	dateToJD,
+	isScalePresetId,
+	type ScalePresetId,
+} from "@/sim"
 
 import {
 	HOME_SHOT,
@@ -35,6 +41,7 @@ import {
 	type CameraShot,
 	type View,
 } from "./navigation"
+import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
 
@@ -72,7 +79,10 @@ type Mirrored = Omit<Layers, "showOrbitLabels"> &
 		SimState,
 		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
 	> &
-	Partial<Pick<SimState, "frameId">>
+	Partial<Pick<SimState, "frameId">> & {
+		/** The chosen scale preset (#21, `useScaleStore`'s `targetId`); absent or null writes nothing. */
+		scalePreset?: ScalePresetId | null
+	}
 
 type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
 
@@ -120,6 +130,10 @@ export function searchFromState(
 		search[param] = state[field] ? undefined : false
 	}
 	search.orbitNames = state.showOrbitLabels ? true : undefined
+	search.scale =
+		state.scalePreset != null && state.scalePreset !== DEFAULT_SCALE_PRESET
+			? state.scalePreset
+			: undefined
 	return search
 }
 
@@ -132,6 +146,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.t === b.t &&
 	a.warp === b.warp &&
 	a.orbitNames === b.orbitNames &&
+	a.scale === b.scale &&
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
 /**
@@ -199,6 +214,10 @@ export const layersFromSearch = (search: SimSearch): Layers => ({
 	showOrbitLabels: search.orbitNames === true,
 })
 
+/** The scale preset a search opens in: `scale` when it names a preset, else the default. */
+export const scaleFromSearch = (search: SimSearch): ScalePresetId =>
+	isScalePresetId(search.scale) ? search.scale : DEFAULT_SCALE_PRESET
+
 /** Clock fields a search sets; absent params are skipped. */
 export function stateFromSearch(search: SimSearch): Partial<MirroredClock> {
 	const next: Partial<MirroredClock> = {}
@@ -253,10 +272,18 @@ export function useSimUrlSync(): void {
 		store.select(selectedId)
 		// the layer switches are plain fields
 		useSimStore.setState(layersFromSearch(searchRef.current))
+		// the scale: a jump as well, the switch animates only when the user makes it
+		useScaleStore.getState().setPreset(scaleFromSearch(searchRef.current))
 
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const write = () => {
-			const next = searchFromState(useSimStore.getState(), searchRef.current)
+			const next = searchFromState(
+				{
+					...useSimStore.getState(),
+					scalePreset: useScaleStore.getState().targetId,
+				},
+				searchRef.current,
+			)
 			if (sameSearch(next, searchRef.current)) return
 			searchRef.current = next
 			void navigate({ to: "/solar_system", search: next, replace: true })
@@ -289,10 +316,15 @@ export function useSimUrlSync(): void {
 				}, TIME_SYNC_INTERVAL_MS)
 			}
 		})
+		// the chosen preset goes into the URL at the click, not when the animation lands
+		const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
+			if (state.targetId !== previous.targetId) write()
+		})
 		write()
 
 		return () => {
 			unsubscribe()
+			unsubscribeScale()
 			if (timer !== undefined) clearTimeout(timer)
 		}
 	}, [navigate])

@@ -135,3 +135,10 @@ export {
 	sunVisibleFraction,
 } from "./lighting"
 export type { LitBody } from "./lighting"
+export { SCALE_LIES, bodyDistortion, presetForLies } from "./scaleLies"
+export type {
+	BodyDistortion,
+	DistanceLie,
+	ScaleLies,
+	SizeLie,
+} from "./scaleLies"

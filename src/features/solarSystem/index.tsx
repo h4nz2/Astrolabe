@@ -16,6 +16,7 @@ import CentreBadge from "./ui/CentreBadge"
 import CentreMarker from "./ui/CentreMarker"
 import FocusPicker from "./ui/FocusPicker"
 import OverviewButton from "./ui/OverviewButton"
+import ScalePanel from "./ui/ScalePanel"
 import SceneToggles from "./ui/SceneToggles"
 import SpinControl from "./ui/SpinControl"
 import TimeControls from "./ui/TimeControls"
@@ -76,11 +77,16 @@ const SolarSystem = () => {
 					<FrameBadgePanel />
 				</div>
 				<CentreBadgePanel />
-				<div className={`${classes.panel} ${classes.toggles}`}>
-					<Group gap="sm" justify="space-between" wrap="nowrap">
-						<SceneToggles />
-						<LanguageMenu />
-					</Group>
+				<div className={classes.toggles}>
+					<div className={classes.panel}>
+						<Group gap="sm" justify="space-between" wrap="nowrap">
+							<SceneToggles />
+							<LanguageMenu />
+						</Group>
+					</div>
+					<div className={classes.panel}>
+						<ScalePanel />
+					</div>
 				</div>
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />

@@ -27,6 +27,7 @@ import { labelSlotCount } from "../labels/project"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
+import ScaleTransition from "./ScaleTransition"
 import SimClock from "./SimClock"
 import SpinClock from "./SpinClock"
 import { SimFrameContext, createSimFrame } from "./simFrame"
@@ -64,6 +65,7 @@ function Scene() {
 				<color attach="background" args={[SCENE_BACKGROUND]} />
 				<SimFrameContext.Provider value={frame}>
 					<ScaleSync />
+					<ScaleTransition />
 					<ReferenceFrameSync />
 					<SimClock />
 					<SpinClock />
