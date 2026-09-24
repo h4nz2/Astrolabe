@@ -339,8 +339,8 @@ State (the navigation slice, composed into `useSimStore`, so `useSimStore((s) =>
 selectedId: string | null  the selection: drives info panels, labels, the URL; never moves the camera by itself
 view: View                 where the camera is, or is heading while `transition` is set:
                              { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
-                           (a point is a pivot in empty space, anchored to a body so it keeps its place in that body's
-                           neighbourhood; its offset is in display km)
+                           (a point is a pivot in empty space, anchored to the body whose neighbourhood it is in; its
+                           offset is in TRUE km from the anchor, drawn through the scale engine, see Re-centring)
 focusId: string            the body the view is centred on: the Sun for the overview, the anchor of a point. The moon
                            family rule and "always show the focus" follow it
 shot: CameraShot | null    the camera around the view as it last came to rest (published by the director on rest and on
@@ -348,6 +348,7 @@ shot: CameraShot | null    the camera around the view as it last came to rest (p
                            distance a multiple of the view's default framing, so a shot survives scale presets and screens
 transition: Transition | null   { id, view, shot (partial), durationMs (null = automatic, 0 = jump), profile, handedOver }
 sequence: Sequence | null  { steps, index, phase: moving | holding | waiting | interrupted, holdUntil, transitionId }
+panning: boolean           a pan gesture (or its damped glide) is moving the pivot right now (the centre marker shows)
 viewMode(state)            "overview" | "focused" | "free" | "transit": the view states
 ```
 
@@ -360,7 +361,7 @@ the last stop of a sequence); sequences: `playSequence(steps, startAt?)`, `goToS
 direction keeps the current one, a missing distance frames at 1x), `durationMs` and `profile`. A `SequenceStep` is a view
 plus a request plus `holdMs` (omitted: wait for `nextStep()`, the presenter's pace). Invalid views and unknown bodies are
 ignored everywhere. Camera-rig callbacks, not for features: `settle(id)`, `userInput()`, `publishShot(shot)`,
-`settleAt(view)`, `tickSequence(now)`.
+`settleAt(view)`, `setPanning(b)`, `tickSequence(now)`.
 
 Transitions (`camera/director.ts`, plain TypeScript over camera-controls and the SimFrame, unit-tested frame by frame):
 
@@ -375,8 +376,8 @@ Transitions (`camera/director.ts`, plain TypeScript over camera-controls and the
   minimum distance. User input also interrupts an automatic sequence step (moving or holding), not a stop that waits for
   the presenter; `resumeSequence()` flies back to the stop.
 - Settled: the origin tracks the view's pivot every frame; a scale change rescales the distance (see Scale); a target
-  moved off the origin (a pan) is folded into a pending `point` view without anything moving on screen, and handed to
-  the store (`settleAt`) when the controls come to rest.
+  moved off the origin (a pan) is folded into a pending pan without anything moving on screen, and committed once the
+  gesture is released and its damped glide is over (see Re-centring).
 - Broken state: a camera, target or origin that is not finite, or a view of a body that does not exist, is replaced by
   the overview (`reset()`, applied as a jump). The first frame after mounting always jumps to the store's view.
 - Transit profiles (`camera/profiles.ts`): a profile maps normalized time to a pivot weight, a camera distance and a
@@ -389,11 +390,49 @@ Transitions (`camera/director.ts`, plain TypeScript over camera-controls and the
   finite. `window.__astrolabe` (`camera/debugHandle.ts`, while the solar system is mounted, every build) also holds the
   store, so the model can be driven from the console and from e2e tests.
 
-Building on it: #15 turns on `PAN_ENABLED`, shows the current centre (`view`, `focusId`) and gives point views a URL
-parameter; #16 is `setFocus` on click plus hover feedback and an exit on empty space (`reset` / `overview`); #18 adds a
+### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`, issue #15)
+
+- Gestures (`configureInput`, `PAN_ENABLED`): orbit = left button / one finger; dolly = wheel, trackpad scroll, touch
+  pinch, trackpad pinch (ctrl+wheel, `pinchAsDolly`), middle button; pan = right button (a two-finger click-drag on a
+  trackpad), Shift + left button (`shiftDragPans`, a one-button mouse or trackpad click), two fingers moving together
+  (with the pinch), three fingers. A pan is camera-controls' `SCREEN_PAN`: it slides the pivot parallel to the ecliptic,
+  like dragging a map, so the centre never drifts above or below the solar system. Damping is camera-controls'
+  `smoothTime` (0.4 s).
+- A pan is committed (`CameraDirector.commitPan`) after the controls' update once the gesture is released and the
+  pivot is within 1e-4 of the camera distance of where it is heading. Not on camera-controls' `rest` event, which also
+  fires while a finger holds still mid-drag, never fires after an instant move, and uses an absolute 10 km threshold.
+  What is left of the glide is folded into the pivot, so the commit moves nothing on screen. Then:
+  - **Snap** (`snapTarget`): if the centre of the screen is on a drawn body's disc, or within `SNAP_FOV_FRACTION`
+    (1.2 %) of the vertical field of view of its centre (about 11 px, the pick radius of a dot), and the body is drawn
+    (`isBodyShown` and the markers' moon family rule), the pivot glides onto it (`goTo`, 450 ms, the camera distance
+    kept). The current view is kept when that is where the pan came from, so a pan that never left the focused planet's
+    disc snaps back instead of dropping the focus, and a small pan in the overview stays the overview. The Sun becomes
+    the overview (from a body view: the focused Sun). Dragging a planet to the middle re-centres on it. The selection is
+    never changed by a camera gesture.
+  - **Point** otherwise: the pivot becomes `{ kind: "point", anchorId, offsetKm }` (`settleAt`). The anchor is the
+    innermost body whose neighbourhood holds the drawn point (`neighbourhoodOf`): the Hill sphere
+    (`a * cbrt(m / 3M)`) as drawn under the active scale, at least `NEIGHBOURHOOD_MIN_RADII` (4) drawn radii, the Sun
+    owning everything. So a pivot among Jupiter's moons follows Jupiter and one between the planets stays put relative
+    to the Sun. The offset is stored in TRUE km (`pointOffsetKm`, the inverse of the display mapping: `trueOffset`,
+    `unmapDistance` in `src/sim/scale.ts`) and drawn back with `pointDisplayKm` (the anchor's display position plus
+    `displayOffset` with the anchor as the parent: the architecture's rule for anything near a body that is not a
+    body). The point therefore keeps its place in the neighbourhood under every scale preset, and a link carries it
+    independently of the preset.
+- Limits follow the centre: `minViewDistance` is the view body's (for a point, its anchor's: near Mercury the camera may
+  come close, in interplanetary space a dolly stops at 1.2 solar radii instead of creeping towards an empty pivot
+  forever). `defaultDistance` of a point anchored to the Sun is the overview's (the drawn system), so interplanetary
+  points frame and follow scale changes like the overview; near a body it is the anchor's 6 radii.
+- HUD: `ui/CentreMarker.tsx` (a CSS crosshair at the middle of the canvas, where the pivot always is, shown while
+  `panning` or free), `ui/CentreBadge.tsx` (free only: "Free view, near Mars" with "Centre on Mars" = `setFocus`, or
+  "in interplanetary space" with "Back to overview" = `overview()`), and the focus picker shows no body while free.
+  `ui/centre.ts` holds `freeCentreId(state)` (a stable selector) and the strings. The home button and Escape
+  (`reset()`) stay the way out from anywhere.
+
+Building on it: #16 is `setFocus` on click plus hover feedback and an exit on empty space (`reset` / `overview`); #18 adds a
 profile and a readout from `snapshot()`; #28 tours and #30 the opening sequence are `playSequence` (cues such as time or
 scale react to `sequence.index`; leaving and coming back is `interrupted` + `resumeSequence`); #29 preset views are
-`goTo(view, { shot })` and saved views are the URL; #31 anchors the pivot with a body view; #33 links a postcard to the
+`goTo(view, { shot })` and saved views are the URL; #31 anchors the reference frame to the body a view is centred on
+(`focusId`, the anchor for a free point) and should re-express a point's true offset in that frame; #33 links a postcard to the
 URL.
 
 ## Floating origin and precision
@@ -440,12 +479,14 @@ the clock: `SimClock` writes `simTimeJD` every frame, so React reads it through 
 (`scene/useThrottledSimTime.ts`, `useSyncExternalStore` over a 10 Hz throttled subscription), never through a
 `simTimeJD` selector.
 
-URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>` mirrors the view, the selection, the camera,
-time and warp. `focus` is the focused body (absent: the overview; a point view is written as its anchor until #15 adds a
-parameter for it), `sel` the selection when it is not the focused body (a link with `focus` and no `sel` selects the
-focus), `cam` the camera around the view (`formatShot`: azimuth and elevation to 0.1 degree, the distance as a multiple
+URL: `/solar_system?focus=io&at=<x_y_z>&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>` mirrors the view, the selection,
+the camera, time and warp. `focus` is the focused body (absent: the overview); with `at` the view is a free point near
+it (#15): `at` is the offset from `focus` in its TRUE radii (`formatOffset`: 4 significant digits of the largest
+component, the same step for all three; a malformed `at` falls back to the body, and a point selects nothing by
+itself), so a link is independent of the scale preset. `sel` the selection when it is not the focused body (a link with
+`focus` and no `sel` selects the focus), `cam` the camera around the view (`formatShot`: azimuth and elevation to 0.1 degree, the distance as a multiple
 of the view's default framing to 3 significant digits; left out when it is the home shot 0_45_1; malformed values are
-ignored). `src/store/simSearch.ts` is the zod schema the route validates with (`focus`, `sel`, `cam` strings, `t` number, `warp` non-zero number, negative = backwards; every param `.optional().catch(undefined)`,
+ignored). `src/store/simSearch.ts` is the zod schema the route validates with (`focus`, `at`, `sel`, `cam` strings, `t` number, `warp` non-zero number, negative = backwards; every param `.optional().catch(undefined)`,
 so an invalid value is dropped instead of erroring the page; blank and non-numeric values such as `?t=`, `?t=%20`,
 `?t=null` count as absent too, never as 0, which plain `z.coerce` would make of them). `useSimUrlSync()`
 (`src/store/urlSync.ts`) is called exactly once, in a null-rendering `<UrlSync />` that the page renders before

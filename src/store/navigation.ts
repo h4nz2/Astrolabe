@@ -10,7 +10,8 @@
  *
  * View states: `overview` (the whole system, Sun-centred), `focused` (a body
  * framed and tracked), `free` (the pivot is a point in space, anchored to a
- * body so it keeps its place in that body's neighbourhood), and `transit`
+ * body so it keeps its place in that body's neighbourhood; the user gets
+ * there by panning, #15), and `transit`
  * (a transition toward one of those is running). Every request starts from
  * wherever the camera is at that moment, so a second request, a reset or a
  * skip in the middle of a transition retargets instead of snapping back.
@@ -29,8 +30,17 @@ export type View =
 	| { readonly kind: "body"; readonly id: string }
 	| {
 			readonly kind: "point"
-			/** The body whose motion the point follows. */
+			/**
+			 * The body whose neighbourhood the point is in: the point moves
+			 * with it, and the zoom limits and the name shown for the centre
+			 * are its.
+			 */
 			readonly anchorId: string
+			/**
+			 * TRUE km from the anchor (scene axes). It is drawn through the
+			 * scale engine like any non-body object near the anchor, so it
+			 * keeps its place in the neighbourhood under every scale preset.
+			 */
 			readonly offsetKm: Vec3Km
 	  }
 
@@ -126,6 +136,11 @@ export interface NavigationSlice {
 	shot: CameraShot | null
 	transition: Transition | null
 	sequence: Sequence | null
+	/**
+	 * The user is moving the pivot itself right now (a pan gesture or its
+	 * damping, until it comes to rest). The centre marker shows meanwhile.
+	 */
+	panning: boolean
 
 	/** Selects a body (unknown ids are ignored) or clears the selection. The camera stays where it is. */
 	select: (id: string | null) => void
@@ -156,6 +171,8 @@ export interface NavigationSlice {
 	publishShot: (shot: CameraShot) => void
 	/** Camera rig: the user moved the pivot itself (pan); the camera is already there, so no transition. */
 	settleAt: (view: View) => void
+	/** Camera rig: a pan started (true) or came to rest (false). */
+	setPanning: (panning: boolean) => void
 
 	/** Plays a scripted sequence from `startAt` (default 0); empty or invalid sequences are ignored. */
 	playSequence: (steps: readonly SequenceStep[], startAt?: number) => void
@@ -307,6 +324,45 @@ export function parseShot(text: string | undefined): CameraShot | null {
 	return isCompleteShot(shot) ? roundShot(shot) : null
 }
 
+/** Significant digits of a point's offset in the URL: about 1/10000 of its distance from the anchor. */
+const OFFSET_DIGITS = 4
+
+/**
+ * URL form of a point's offset (#15), `x_y_z` in TRUE radii of its anchor
+ * (e.g. `-12.5_0.03_215` from the Sun): short, free of the scale preset, and
+ * nothing in it needs escaping. All three components are rounded to the
+ * same absolute step, 4 significant digits of the largest one.
+ */
+export function formatOffset(offsetKm: Vec3Km, anchorRadiusKm: number): string {
+	const radii = offsetKm.map((km) => km / anchorRadiusKm)
+	const largest = Math.max(...radii.map(Math.abs))
+	if (!(largest > 0) || !Number.isFinite(largest)) return "0_0_0"
+	const step = 10 ** (Math.floor(Math.log10(largest)) - (OFFSET_DIGITS - 1))
+	const decimals = Math.max(0, -Math.floor(Math.log10(step)))
+	return radii
+		.map((r) => Number((Math.round(r / step) * step).toFixed(decimals)) || 0)
+		.join("_")
+}
+
+/** Parses `formatOffset` output back into km; anything malformed is null (ignored, never an error). */
+export function parseOffset(
+	text: string | undefined,
+	anchorRadiusKm: number,
+): Vec3Km | null {
+	if (text === undefined) return null
+	const parts = text.split("_")
+	if (parts.length !== 3 || parts.some((part) => part.trim() === "")) {
+		return null
+	}
+	const radii = parts.map(Number)
+	if (!radii.every(Number.isFinite)) return null
+	return [
+		radii[0] * anchorRadiusKm,
+		radii[1] * anchorRadiusKm,
+		radii[2] * anchorRadiusKm,
+	]
+}
+
 // Transition ids only need to be unique; a module counter survives store resets in tests.
 let transitionCounter = 0
 
@@ -379,6 +435,7 @@ export function createNavigationSlice(
 		shot: null,
 		transition: null,
 		sequence: null,
+		panning: false,
 
 		select: (id) => {
 			if (id !== null && !bodyById.has(id)) return
@@ -474,6 +531,9 @@ export function createNavigationSlice(
 			if (!isValidView(view) || get().transition !== null) return
 			if (sameView(view, get().view)) return
 			set({ view, focusId: viewBodyId(view) })
+		},
+		setPanning: (panning) => {
+			if (get().panning !== panning) set({ panning })
 		},
 
 		playSequence: (steps, startAt = 0) => {

@@ -9,6 +9,7 @@ import { IconFocus2 } from "@tabler/icons-react"
 import { bodyById, moonsOf, planets, sun, type Body } from "@/data"
 import { useSimStore } from "@/store/sim"
 
+import { freeCentreId } from "./centre"
 import { cycleFocus } from "./focusCycle"
 import { formatNumber } from "./format"
 import { hasModifier, isEditableTarget, useWindowKeydown } from "./keyboard"
@@ -61,7 +62,10 @@ const handleKeyDown = (event: KeyboardEvent): void => {
 
 /** Searchable picker of the focused body, grouped by planet. */
 const FocusPicker = () => {
-	const focusId = useSimStore((state) => state.focusId)
+	// a free centre (#15) is not the anchor body: the badge names it instead
+	const focusId = useSimStore((state) =>
+		freeCentreId(state) === null ? state.focusId : null,
+	)
 	const setFocus = useSimStore((state) => state.setFocus)
 	useWindowKeydown(handleKeyDown)
 

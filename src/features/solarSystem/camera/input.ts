@@ -1,8 +1,15 @@
 /**
- * Which gesture does what (docs/ARCHITECTURE.md, "Camera"). Mouse, touch and
- * trackpad get the same vocabulary: one finger or the left button orbits; the
- * wheel, a two-finger trackpad scroll, a touch pinch, a trackpad pinch
- * (`pinchAsDolly`) and the middle button dolly.
+ * Which gesture does what (docs/ARCHITECTURE.md, "Navigation"). Mouse, touch
+ * and trackpad get the same vocabulary:
+ * - orbit: one finger, the left button;
+ * - dolly: the wheel, a two-finger trackpad scroll, a touch pinch, a trackpad
+ *   pinch (`pinchAsDolly`), the middle button;
+ * - pan (move the centre, #15): the right button (a two-finger click-drag on
+ *   a trackpad), Shift + the left button (a one-button mouse or trackpad
+ *   click), two fingers dragging (together with the pinch), three fingers.
+ * A pan slides the centre across the plane of the planets' orbits (the
+ * ecliptic), like dragging a map, so the pivot never wanders off above or
+ * below the solar system.
  */
 import { CameraControlsImpl } from "@react-three/drei"
 import { Spherical } from "three"
@@ -13,12 +20,11 @@ const { ACTION } = CameraControlsImpl
 const scratch = new Spherical()
 
 /**
- * Whether gestures may move the pivot itself (right button, two-finger drag,
- * three fingers). The director already turns a moved pivot into a `point`
- * view (free mode) and keeps the render origin on it; the switch stays off
- * until the re-centring issue (#15) ships its centre indicator.
+ * Whether gestures may move the pivot itself. The director turns a moved
+ * pivot into a `point` view (free mode) or, when it lands on a body, glides
+ * onto that body; the HUD shows the centre while it is not a body.
  */
-export const PAN_ENABLED = false
+export const PAN_ENABLED = true
 
 export interface InputOptions {
 	pan: boolean
@@ -30,17 +36,41 @@ export function configureInput(
 ): void {
 	controls.mouseButtons.left = ACTION.ROTATE
 	controls.mouseButtons.middle = ACTION.DOLLY
-	controls.mouseButtons.right = pan ? ACTION.TRUCK : ACTION.ROTATE
+	controls.mouseButtons.right = pan ? ACTION.SCREEN_PAN : ACTION.ROTATE
 	controls.mouseButtons.wheel = ACTION.DOLLY
 	controls.touches.one = ACTION.TOUCH_ROTATE
 	controls.touches.two = pan
-		? ACTION.TOUCH_DOLLY_TRUCK
+		? // supported at runtime, missing from camera-controls' multiTouchAction type
+			(ACTION.TOUCH_DOLLY_SCREEN_PAN as typeof ACTION.TOUCH_DOLLY_TRUCK)
 		: ACTION.TOUCH_DOLLY_ROTATE
-	controls.touches.three = pan ? ACTION.TOUCH_TRUCK : ACTION.NONE
+	controls.touches.three = pan ? ACTION.TOUCH_SCREEN_PAN : ACTION.NONE
 	// zooming toward the cursor would slide the pivot off the focus
 	controls.dollyToCursor = false
 	controls.infinityDolly = false
 	controls.smoothTime = CAMERA_SMOOTH_TIME_S
+}
+
+/**
+ * Shift + left button pans (for a one-button mouse and a trackpad click,
+ * which have no right-button drag). camera-controls picks the action when the
+ * button goes down, so this capture-phase listener sets the left button's
+ * action just before it looks. Returns the function that removes it.
+ */
+export function shiftDragPans(
+	controls: CameraControlsImpl,
+	element: HTMLElement,
+): () => void {
+	const onPointerDown = (event: PointerEvent) => {
+		if (event.pointerType !== "mouse" && event.pointerType !== "pen") return
+		controls.mouseButtons.left = event.shiftKey
+			? ACTION.SCREEN_PAN
+			: ACTION.ROTATE
+	}
+	element.addEventListener("pointerdown", onPointerDown, { capture: true })
+	return () =>
+		element.removeEventListener("pointerdown", onPointerDown, {
+			capture: true,
+		})
 }
 
 /** Dolly per unit of ctrl+wheel delta (a trackpad pinch sends many small deltas). */

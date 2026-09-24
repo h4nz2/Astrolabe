@@ -1,10 +1,14 @@
 import { Suspense } from "react"
 
 import Loader from "@/primitives/Loader"
+import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
 import Scene from "./scene/Scene"
 import BodyInfo from "./ui/BodyInfo"
+import { freeCentreId } from "./ui/centre"
+import CentreBadge from "./ui/CentreBadge"
+import CentreMarker from "./ui/CentreMarker"
 import FocusPicker from "./ui/FocusPicker"
 import OverviewButton from "./ui/OverviewButton"
 import SceneToggles from "./ui/SceneToggles"
@@ -25,6 +29,17 @@ const UrlSync = () => {
 	return null
 }
 
+/** The centre badge's HUD panel, present only while the view is a free point in space (#15). */
+const CentreBadgePanel = () => {
+	const free = useSimStore((state) => freeCentreId(state) !== null)
+	if (!free) return null
+	return (
+		<div className={`${classes.panel} ${classes.centre}`}>
+			<CentreBadge />
+		</div>
+	)
+}
+
 /** The solar system page: the 3D scene filling the viewport with the HUD floating above it. */
 const SolarSystem = () => {
 	return (
@@ -33,11 +48,13 @@ const SolarSystem = () => {
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
+			<CentreMarker />
 			<div className={classes.hud}>
 				<div className={`${classes.panel} ${classes.picker}`}>
 					<OverviewButton />
 					<FocusPicker />
 				</div>
+				<CentreBadgePanel />
 				<div className={`${classes.panel} ${classes.toggles}`}>
 					<SceneToggles />
 				</div>
