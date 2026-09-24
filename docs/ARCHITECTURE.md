@@ -23,7 +23,9 @@ Follow it; if it must change, change the document in the same change set.
   `astronomy-engine` is a devDependency used only by tests as the reference ephemeris.
 - Lint/format: ESLint 10 flat config (`eslint.config.js`) + typescript-eslint + react-hooks, Prettier (tabs, no semicolons, as today).
 - Hosting: static build (`dist/`). CI: GitHub Actions (typecheck, lint, test, build, e2e, deploy to GitHub Pages).
-  `VITE_BASE` env var sets Vite `base` (default `/`).
+  `VITE_BASE` env var sets Vite `base` (default `/`). Cloudflare Workers serves `dist/` as static assets
+  (`wrangler.jsonc`, SPA fallback; deploy command `npx wrangler deploy`). `wrangler` is a devDependency so the deploy
+  runs the locked version: without it `npx` fetches whatever was published last, minutes-old releases included.
 - Dependencies installed ahead of their phase: `tsx` (Phase 2, `scripts/build-bodies.ts`) and `zustand` (Phase 3, `src/store`).
 - Known upstream noise: fiber 9.8 still constructs `THREE.Clock`, which three >= 0.183 logs as deprecated once per
   `<Canvas>` mount (a `console.warn`). Stay on current `three`; do not pin it down for this.
