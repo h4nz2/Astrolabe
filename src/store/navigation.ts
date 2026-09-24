@@ -324,6 +324,13 @@ export function parseShot(text: string | undefined): CameraShot | null {
 	return isCompleteShot(shot) ? roundShot(shot) : null
 }
 
+/** `value` with at most `decimals` decimals, never in exponent notation and never "-0". */
+const plainNumber = (value: number, decimals: number): string => {
+	let text = value.toFixed(decimals)
+	if (text.includes(".")) text = text.replace(/0+$/, "").replace(/\.$/, "")
+	return text === "-0" ? "0" : text
+}
+
 /** Significant digits of a point's offset in the URL: about 1/10000 of its distance from the anchor. */
 const OFFSET_DIGITS = 4
 
@@ -340,7 +347,7 @@ export function formatOffset(offsetKm: Vec3Km, anchorRadiusKm: number): string {
 	const step = 10 ** (Math.floor(Math.log10(largest)) - (OFFSET_DIGITS - 1))
 	const decimals = Math.max(0, -Math.floor(Math.log10(step)))
 	return radii
-		.map((r) => Number((Math.round(r / step) * step).toFixed(decimals)) || 0)
+		.map((r) => plainNumber(Math.round(r / step) * step, decimals))
 		.join("_")
 }
 
