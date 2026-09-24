@@ -6,6 +6,7 @@ import Loader from "@/primitives/Loader"
 import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
+import { BirthdayPanelSlot } from "./birthday/Birthday"
 import Scene from "./scene/Scene"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -70,6 +71,7 @@ const SolarSystem = () => {
 					<TimeControls />
 				</div>
 			</div>
+			<BirthdayPanelSlot />
 		</div>
 	)
 }

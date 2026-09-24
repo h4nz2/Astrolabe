@@ -131,6 +131,14 @@ describe("urlSync helpers", () => {
 		).toEqual({ focus: "io", t: 2451545.1235, warp: 60 })
 	})
 
+	it("keeps the time out of the link while a birth date is entered (#26)", () => {
+		const paused = state({ paused: true, simTimeJD: 2456000.5 })
+		expect(searchFromState(paused, {}).t).toBe(2456000.5)
+		expect(searchFromState(paused, {}, true).t).toBeUndefined()
+		// not even the last written value survives
+		expect(searchFromState(paused, { t: 2456000.5 }, true).t).toBeUndefined()
+	})
+
 	it("writes the view, a selection that differs from it and the camera shot", () => {
 		const search = (partial: Partial<Mirrored>) => {
 			const { focus, sel, cam } = searchFromState(state(partial), {})
