@@ -65,7 +65,7 @@ test("the switcher changes the language everywhere and is remembered", async ({
 		page.getByRole("combobox", { name: "Himmelskörper im Fokus" }),
 	).toHaveValue("Erde")
 	await expect(page.locator("html")).toHaveAttribute("lang", "de")
-	await expect(page).toHaveTitle("Solr – unser Sonnensystem")
+	await expect(page).toHaveTitle("Astrolabe – unser Sonnensystem")
 
 	// the installed-app manifest follows too
 	const manifest = await page
@@ -76,7 +76,7 @@ test("the switcher changes the language everywhere and is remembered", async ({
 		decodeURIComponent(manifest!.replace(/^data:[^,]*,/, "")),
 	) as { name: string; lang: string; start_url: string }
 	expect(parsed.lang).toBe("de")
-	expect(parsed.name).toBe("Solr – Unser Sonnensystem")
+	expect(parsed.name).toBe("Astrolabe – Unser Sonnensystem")
 	expect(parsed.start_url).toMatch(/[?&]lang=de/)
 
 	// a fresh visit without ?lang= comes back in German

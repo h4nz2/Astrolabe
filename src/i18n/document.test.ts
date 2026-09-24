@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest"
 import { localizeManifest } from "./document"
 
 const template = {
-	name: "Solr - Our Solar System",
-	short_name: "Solr",
+	name: "Astrolabe - Our Solar System",
+	short_name: "Astrolabe",
 	icons: [{ src: "icons/icon-512x512.png", sizes: "512x512" }],
 	theme_color: "#1A1B1E",
 	start_url: ".",
@@ -14,8 +14,8 @@ const template = {
 describe("localizeManifest", () => {
 	const manifest = localizeManifest(template, {
 		lang: "de",
-		name: "Solr – Unser Sonnensystem",
-		shortName: "Solr",
+		name: "Astrolabe – Unser Sonnensystem",
+		shortName: "Astrolabe",
 		description: "Visuelles Lexikon",
 		manifestUrl: "https://example.org/solr/manifest.json",
 	})
@@ -23,8 +23,8 @@ describe("localizeManifest", () => {
 	it("carries the localized texts and the language", () => {
 		expect(manifest).toMatchObject({
 			lang: "de",
-			name: "Solr – Unser Sonnensystem",
-			short_name: "Solr",
+			name: "Astrolabe – Unser Sonnensystem",
+			short_name: "Astrolabe",
 			description: "Visuelles Lexikon",
 			theme_color: "#1A1B1E",
 			display: "standalone",

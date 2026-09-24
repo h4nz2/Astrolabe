@@ -5,8 +5,8 @@
  * missing or throw (private windows, blocked site data): every access is guarded
  * and the app works without it.
  */
-export const LOCALE_STORAGE_KEY = "solr.locale"
-export const READING_LEVEL_STORAGE_KEY = "solr.readingLevel"
+export const LOCALE_STORAGE_KEY = "astrolabe.locale"
+export const READING_LEVEL_STORAGE_KEY = "astrolabe.readingLevel"
 
 const storage = (): Storage | undefined => {
 	try {

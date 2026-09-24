@@ -3,10 +3,10 @@
 		"name": "Deutsch"
 	},
 	"app": {
-		"name": "Solr",
-		"title": "Solr – unser Sonnensystem",
-		"installName": "Solr – Unser Sonnensystem",
-		"shortName": "Solr",
+		"name": "Astrolabe",
+		"title": "Astrolabe – unser Sonnensystem",
+		"installName": "Astrolabe – Unser Sonnensystem",
+		"shortName": "Astrolabe",
 		"description": "Visuelles Lexikon und maßstabsgetreues 3D-Modell unseres Sonnensystems"
 	},
 	"i18n": {

@@ -1,4 +1,4 @@
-# Solr architecture (rebuild, September 2026)
+# Astrolabe architecture (rebuild, September 2026)
 
 Goal: a true-scale, interactive 3D model of the solar system (Sun, planets, moons) plus the
 existing visual dictionary and hero page, shipped as a client-only static site.
@@ -655,7 +655,7 @@ the R3F `<Canvas>` (fiber 9 bridges context); outside the provider it returns En
   `src/i18n/search.ts`); the root route's `retainSearchParams` middleware keeps them on every `Link` and `navigate`,
   so feature code never passes them. A missing or unknown value is replaced at once (`replace: true`): whatever a
   teacher sees, the address bar reproduces for the class.
-- Resolution: URL > the viewer's saved choice (localStorage `solr.locale` / `solr.readingLevel`, written only by the
+- Resolution: URL > the viewer's saved choice (localStorage `astrolabe.locale` / `astrolabe.readingLevel`, written only by the
   switcher) > `navigator.languages` (locale only) > config defaults. Numbers and dates use the browser's regional
   variant of the same language (`de` text, `de-CH` formatting: 149’598’261), never another language's rules.
 - `LanguageMenu` (`placement="corner"` on pages without a HUD) switches both. `I18nProvider` sets `<html lang>`, the
