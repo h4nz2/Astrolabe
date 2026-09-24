@@ -25,8 +25,25 @@ const numeric = (value: unknown): number | null => {
 	return typeof number === "number" && Number.isFinite(number) ? number : null
 }
 
-function sizeComparison(value: number, earth: number, i18n: I18n): string {
-	const earths = round1((value / earth) ** 3)
+/** Volumes in km³ (from the body model); they include the giants' flattening. */
+export interface Volumes {
+	body: number | null
+	earth: number | null
+}
+
+function sizeComparison(
+	value: number,
+	earth: number,
+	i18n: I18n,
+	volumes?: Volumes,
+): string {
+	// the diameters are equatorial, so their cube overstates oblate planets
+	// (Jupiter 1408 instead of 1321 Earths); the real volumes win when known
+	const earths = round1(
+		volumes?.body && volumes.earth
+			? volumes.body / volumes.earth
+			: (value / earth) ** 3,
+	)
 	if (earths > 1.5) {
 		return i18n.t("dictionary.compare.sizeBigger", {
 			count: Math.round(earths),
@@ -104,7 +121,8 @@ function temperatureComparison(kelvin: number, i18n: I18n): string {
 /**
  * The sidebar facts of a dictionary entry, translated, formatted for the
  * active locale and compared with `earth` (no comparisons for Earth itself,
- * except the Celsius reading of its temperature). Facts without a value are left out.
+ * except the Celsius reading of its temperature). Facts without a value are
+ * left out. `volumes` makes the size comparison exact for flattened planets.
  */
 export function getSidebarFacts(
 	entity: SolarDictionaryItem | undefined,
@@ -112,6 +130,7 @@ export function getSidebarFacts(
 	earth: SolarDictionaryItem | undefined,
 	i18n: I18n,
 	name: string,
+	volumes?: Volumes,
 ): SidebarFact[] {
 	if (entity === undefined) return []
 	const compare = earth !== undefined && entity.id !== earth.id
@@ -131,7 +150,9 @@ export function getSidebarFacts(
 					label,
 					value: i18n.quantity(value, "kilometer"),
 					extra:
-						reference === null ? null : sizeComparison(value, reference, i18n),
+						reference === null
+							? null
+							: sizeComparison(value, reference, i18n, volumes),
 				}
 			case "lengthOfDay":
 				return {

@@ -6,6 +6,7 @@ import {
 	type SolarDictionaryItem,
 	type Textures,
 } from "@/data/solarDictionary"
+import { bodyById } from "@/data"
 import { LanguageMenu, useI18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import Loader from "@/primitives/Loader"
@@ -28,6 +29,16 @@ const requiredLabels: FactKey[] = [
 	"gravity",
 	"avgTemp",
 ]
+/** A body's volume in km³ from the body model, when it has one. */
+const volumeKm3 = (item: SolarDictionaryItem | undefined): number | null => {
+	const vol = item && bodyById.get(dictionaryBodyId(item))?.info.vol
+	if (typeof vol !== "object" || vol === null) return null
+	const { volValue, volExponent } = vol as Record<string, unknown>
+	return typeof volValue === "number" && typeof volExponent === "number"
+		? volValue * 10 ** volExponent
+		: null
+}
+
 const sunIdx = 0
 const earthIdx = 3
 
@@ -87,6 +98,7 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 				currentEntity
 					? bodyName(dictionaryBodyId(currentEntity), i18n.chain)
 					: "",
+				{ body: volumeKm3(currentEntity), earth: volumeKm3(earth) },
 			),
 		[currentEntity, activeEntityIndex, earth, i18n],
 	)

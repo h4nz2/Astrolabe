@@ -6,6 +6,11 @@
 	width: 20ch;
 	display: flex;
 	flex-direction: column;
+	/* the comparison sentences are long in some languages: scroll rather than run off the screen */
+	max-height: calc(100vh - 11rem);
+	max-height: calc(100dvh - 11rem);
+	overflow-y: auto;
+	scrollbar-width: thin;
 }
 
 .littleBar {

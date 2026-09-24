@@ -34,6 +34,8 @@ function LanguageMenu({ placement = "inline" }: LanguageMenuProps) {
 					variant="subtle"
 					color="gray"
 					size="compact-sm"
+					// never squeezed by a crowded panel: the code must stay readable
+					style={{ flexShrink: 0 }}
 					leftSection={<IconLanguage size={16} aria-hidden />}
 					aria-label={t("i18n.menu.button", { code })}
 				>

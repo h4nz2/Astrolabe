@@ -155,7 +155,7 @@ export function bodyKindLabel(body: Body, i18n: I18n): string {
 }
 
 const orbitDuration = (periodDays: number, i18n: I18n): string =>
-	periodDays < 2
+	periodDays < 1
 		? i18n.quantity(periodDays * 24, "hour", "long")
 		: i18n.quantity(periodDays, "day", "long")
 
