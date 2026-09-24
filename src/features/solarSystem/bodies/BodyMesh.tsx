@@ -1,6 +1,7 @@
 /**
  * One body: a group placed every frame from the SimFrame, oriented by the IAU
- * pole (local +Y) and spun about it by `rotationAngle`. The texture loads
+ * pole (local +Y; the pole frame of ./orientation.ts) and a mesh inside it spun
+ * about that pole by `bodySpinAngle` (spin mode and tidal locking included). The texture loads
  * lazily behind a Suspense boundary with a plain coloured fallback material.
  * The Sun is emissive (Bloom arrives in Phase 6); every other body is lit by
  * it through the sunlight model (../lighting, docs/ARCHITECTURE.md, "Lighting"),
@@ -18,7 +19,7 @@ import {
 } from "three"
 
 import type { Body } from "@/data"
-import { occluderCandidates, rootIndexOf, rotationAngle } from "@/sim"
+import { occluderCandidates, rootIndexOf } from "@/sim"
 import { useLightingStore } from "@/store/lighting"
 import { isBodyShown, useSimStore } from "@/store/sim"
 import { assetUrl } from "@/utils/assetUrl"
@@ -31,7 +32,7 @@ import {
 import SunlitMaterial from "../lighting/SunlitMaterial"
 import { useSimFrame } from "../scene/simFrame"
 import { isTapEvent } from "../scene/tap"
-import { bodyOrientation } from "./orientation"
+import { bodyOrientation, bodySpinAngle, createBodySpin } from "./orientation"
 
 export interface BodyMeshProps {
 	body: Body
@@ -94,6 +95,10 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 	const groupRef = useRef<Group>(null)
 	const meshRef = useRef<Mesh>(null)
 	const orientation = useMemo(() => bodyOrientation(body), [body])
+	const spin = useMemo(
+		() => createBodySpin(body, index, frame),
+		[body, index, frame],
+	)
 	const sunIndex = useMemo(() => rootIndexOf(frame.bodies), [frame])
 	const uniforms = useMemo(
 		() => createSunlightUniforms(body, frame.bodies[sunIndex].radiusKm),
@@ -116,7 +121,7 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 		frame.renderPosition(index, group.position)
 		// the drawn radius under the active scale (docs/ARCHITECTURE.md, "Scale")
 		mesh.scale.setScalar(frame.renderRadius(index))
-		mesh.rotation.y = rotationAngle(body.rotation, frame.jd)
+		mesh.rotation.y = bodySpinAngle(body, spin, frame)
 		if (body.kind === "star") return
 		updateSunlight(
 			uniforms,

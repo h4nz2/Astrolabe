@@ -14,6 +14,7 @@ import CentreMarker from "./ui/CentreMarker"
 import FocusPicker from "./ui/FocusPicker"
 import OverviewButton from "./ui/OverviewButton"
 import SceneToggles from "./ui/SceneToggles"
+import SpinControl from "./ui/SpinControl"
 import TimeControls from "./ui/TimeControls"
 
 import classes from "./SolarSystem.module.css"
@@ -68,6 +69,7 @@ const SolarSystem = () => {
 				</div>
 				<div className={`${classes.panel} ${classes.time}`}>
 					<TimeControls />
+					<SpinControl />
 				</div>
 			</div>
 		</div>
