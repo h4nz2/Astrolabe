@@ -1,0 +1,47 @@
+.root {
+	min-width: 14rem;
+	font-size: var(--mantine-font-size-sm);
+}
+
+.title {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+	margin-bottom: 0.25rem;
+}
+
+.name {
+	font-size: var(--mantine-font-size-lg);
+	font-weight: 600;
+	color: var(--mantine-color-orange-4);
+}
+
+.kind {
+	color: var(--mantine-color-dimmed);
+}
+
+.facts {
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 1rem;
+	row-gap: 0.125rem;
+	margin: 0;
+}
+
+.label {
+	color: var(--mantine-color-dimmed);
+	white-space: nowrap;
+}
+
+.value {
+	margin: 0;
+	text-align: right;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+
+.secondary {
+	display: block;
+	color: var(--mantine-color-dimmed);
+	font-size: var(--mantine-font-size-xs);
+}

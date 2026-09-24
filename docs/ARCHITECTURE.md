@@ -48,10 +48,13 @@ src/providers/               Mantine theme + provider, GSAP transition context, 
 src/data/                    bodies.json, schema.ts (zod), index.ts (typed lookups), solarDictionary.ts (adapter used by the dictionary + hero)
 src/sim/                     pure simulation code (no React, no three.js objects): units.ts, time.ts, kepler.ts, positions.ts, rotation.ts, index.ts (barrel, import from "@/sim");
                              testing/ephemeris.ts holds the astronomy-engine helpers that only the tests import
-src/store/                   zustand stores: sim.ts
+src/store/                   sim.ts (the simulation store), simSearch.ts (zod schema of the /solar_system search params; only
+                             zod, so the eagerly loaded route chunk stays lean), urlSync.ts (store <-> URL hook, see Store)
 src/features/hero/           landing page (existing, ported)
 src/features/solarDictionary/ dictionary (existing, ported)
-src/features/solarSystem/    the 3D solar system: index.tsx (page), scene/, bodies/, camera/, ui/
+src/features/solarSystem/    the 3D solar system: index.tsx (page), scene/ (Scene, SimClock, simFrame, Markers, useThrottledSimTime),
+                             bodies/ (Bodies, BodyMesh, orientation, OrbitLine, OrbitLines), camera/ (CameraRig, framing),
+                             ui/ (TimeControls, SceneToggles, FocusPicker, BodyInfo + format/warp/focusCycle/keyboard helpers)
 src/GSAPAnimation/ src/hooks/ src/primitives/ src/utils/   shared bits (existing)
 public/assets/textures/      textures (pruned: no PSD/JP2, no byte-identical duplicates, no *_previous/copy/_1/_2 leftovers,
                              no dwarf-planet/asteroid maps). Unreferenced tiered variants (moon_2k/4k, earth_*_10k,
@@ -222,43 +225,95 @@ Further build rules:
 GPU positions are float32. At Neptune's distance a Sun-centred coordinate is only good to a few hundred km, so the
 render origin is the focus body: `renderPos(b) = toUnits(world(b) - origin)` computed in doubles every frame and written
 to the object's `position`. During a fly-to the origin is a blend between the old and the new focus position.
-The camera controls always target (0, 0, 0). The canvas uses `gl={{ logarithmicDepthBuffer: true }}`.
-Orbit lines are sampled ellipses (256 segments) in the parent's frame; the geometry is rebuilt in doubles relative
-to the current origin whenever the origin has moved more than a threshold since the last rebuild, so the part of any
-orbit near the camera never jitters.
+The camera controls always target (0, 0, 0); only pointer actions that leave the target alone are enabled and every
+focus change re-pins it (see Camera). The canvas uses `gl={{ logarithmicDepthBuffer: true }}`.
+Orbit lines are sampled ellipses (256 segments plus one anchor vertex that sits exactly on the body, see Orbit lines
+under the runtime contract) in the parent's frame; the geometry is rebuilt in doubles relative to the current origin
+whenever the origin has moved more than a threshold since the last rebuild, so the part of any orbit near the camera
+never jitters.
 
 ## Store (`src/store/sim.ts`, zustand)
 
 ```
 simTimeJD: number          timeWarp: number (simulated seconds per real second)   paused: boolean
 focusId: string            hoverId: string | null
-fly: { fromId: string; toId: string; startedAt: number; durationMs: number } | null
+fly: { fromId: string; toId: string; startedAt: number /* performance.now() */; durationMs: number } | null
 showOrbits, showLabels, showMoons: boolean
-setFocus(id), setTimeWarp(n), togglePause(), setSimTime(jd), setHover(id), setShowOrbits(b) ...
+setFocus(id)               unknown id or the current focus: no-op; otherwise sets focusId and a fly record (FLY_DURATION_MS = 1500)
+endFly()                   clears the fly record (the scene calls it once the blend is over)
+setTimeWarp(n), togglePause(), setPaused(b), setSimTime(jd)     non-finite numbers are ignored
+advanceTime(deltaSeconds)  simTimeJD += deltaSeconds * timeWarp / 86400, a no-op while paused
+setHover(id), setShowOrbits(b), setShowLabels(b), setShowMoons(b), setNow()
+DEFAULT_FOCUS_ID = "sun", WARP_PRESETS (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s)
 ```
 
-Inside `useFrame` read with `useSimStore.getState()` (no re-render). React UI subscribes through selectors.
-The URL `/solar_system?focus=io&t=<jd>&warp=<n>` mirrors focus, time and warp (debounced, zod-validated search params).
+Inside `useFrame` read with `useSimStore.getState()` (no re-render). React UI subscribes through selectors, except for
+the clock: `SimClock` writes `simTimeJD` every frame, so React reads it through `useThrottledSimTime()`
+(`scene/useThrottledSimTime.ts`, `useSyncExternalStore` over a 10 Hz throttled subscription), never through a
+`simTimeJD` selector.
+
+URL: `/solar_system?focus=io&t=<jd>&warp=<n>` mirrors focus, time and warp. `src/store/simSearch.ts` is the zod schema
+the route validates with (`focus` string, `t` number, `warp` positive number; every param `.optional().catch(undefined)`,
+so an invalid value is dropped instead of erroring the page; blank and non-numeric values such as `?t=`, `?t=%20`,
+`?t=null` count as absent too, never as 0, which plain `z.coerce` would make of them). `useSimUrlSync()`
+(`src/store/urlSync.ts`) is called exactly once, in a null-rendering `<UrlSync />` that the page renders before
+`<Scene />`: its layout effect seeds the store from the URL (`mountState()`: a jump, `fly: null`; unknown bodies are
+ignored; without a `t` the clock is seeded with the wall clock at mount, because the store module may have been
+evaluated long before the page appears, by route preloading or an earlier visit, and the clock stands still while the
+scene is unmounted) before the Canvas mounts, so a deep link is framed on its body from the first frame. Afterwards it
+watches the store with `useSimStore.subscribe` (no re-renders at the clock rate) and navigates with `replace: true`:
+focus, warp and pause changes immediately, `t` at most once per second and only while paused or at warp <= 60 (a pause
+pins `t` at once; at faster warps the last written `t` stays). `t` is rounded to 4 decimals, warp is written as it is
+(so a shared link runs at exactly the speed it was taken at; zero and negative warps are left out), and the defaults
+(`focus=sun`, `warp=1`) are left out of the URL.
 
 ## Rendering (`src/features/solarSystem`)
 
-- Scene: `<Canvas dpr={[1, 2]} gl={{ logarithmicDepthBuffer: true }}>`. Lighting: a PointLight at the Sun's render
-  position with `decay={0}` plus a faint ambient light. The Sun uses an emissive material and Bloom (postprocessing).
-- Body: one group per body positioned each frame from the sim; sphere radius `toUnits(radiusKm)`; textures loaded
-  lazily with Suspense and a low-res fallback; small moons share one placeholder texture (and geometry/material where possible).
+- Scene: `<Canvas dpr={[1, 2]} gl={{ logarithmicDepthBuffer: true, antialias: true }} camera={{ near: 1e-5, far: 1e9, fov: 45 }}>`
+  (`CAMERA_NEAR`/`CAMERA_FAR`/`CAMERA_FOV_DEG` from `camera/framing.ts`; the 10 m near plane costs nothing with the
+  logarithmic depth buffer, whose resolution depends on the far plane alone, and keeps the closest dolly on a 0.3 km
+  moon from clipping it) on a `#0b0d12` background. Lighting: a PointLight (`decay={0}`, intensity 2) inside the Sun's group plus an ambient
+  light of 0.05. The Sun is a `meshBasicMaterial` with `toneMapped={false}`; Bloom (postprocessing) arrives with
+  `Effects` in Phase 6.
+- Body: one group per body positioned each frame from the sim; sphere radius `toUnits(radiusKm)` applied as the scale
+  of one of three shared unit `SphereGeometry`s (64/32/16 segments, see the contract below); textures loaded lazily with
+  drei `useTexture` (sRGB) behind a per-body Suspense with a flat-colour fallback material; small moons share one
+  placeholder texture.
 - Rings: custom ring geometry with radial UVs (`u = (r - inner) / (outer - inner)`), `alphaMap` = alpha strip,
   `map` = color strip, transparent, `DoubleSide`, tilted with the planet. Strips run inner (u = 0) to outer (u = 1) along
   their width; `wrapS = ClampToEdgeWrapping`; the color strip is sRGB (`colorSpace = SRGBColorSpace`), the alpha strip
   is linear (`NoColorSpace`). The legacy Jupiter/Saturn alpha strips are RGBA whose gray level encodes the opacity
   (three.js reads the green channel of an `alphaMap`), so use them only as `alphaMap`, never as `map`. Generated ring
   colours follow the real albedo (very dark); brighten in the material, not in the data.
-- Markers: one `Points` layer (`sizeAttenuation: false`) draws a dot for every body so nothing vanishes at true scale.
-  Labels: planets always; moons only when their parent or a sibling is the focus, capped to the largest N.
-  Clicking a marker, label or mesh sets the focus.
-- Camera: drei `CameraControls` with the target fixed at the origin; `minDistance = 1.2 * toUnits(focus radius)`;
-  fly-to blends the origin from old to new focus (about 1.5 s, eased) while dollying to a framing distance.
-- Time UI: play/pause, warp presets (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s), date display, "now" button.
-- Toggles: orbits, labels, moons. Keyboard: space pause, +/- warp, arrows cycle focus among siblings.
+- Markers: one `Points` layer (`sizeAttenuation: false`, 4 px, vertex colours: Sun yellow, planets white, moons grey,
+  no depth test, `renderOrder` 1) draws a dot for every body so nothing vanishes at true scale; a body's dot is skipped
+  once its own disc is wider than 6 px on screen (`MARKER_HIDE_DIAMETER_PX`, a diameter), moons are skipped while
+  hidden (except the focus, see Toggles), and a moon's dot is drawn only while its parent, a sibling or the moon itself
+  is the focus (`isMoonDotShown`, the same family rule as the labels): from anywhere else the moons of a planet sit
+  within a few pixels of it and would only bury its dot under a blob of grey. Picking is angular (a 10 px radius around
+  the pointer ray, `pickMarker`); a planet or the Sun inside the radius wins over any moon, however much closer the
+  moon's dot is, so clicks work at any distance and a planet's moons never steal its click.
+  Labels (Phase 4): planets always; moons only when their parent or a sibling is the focus, capped to the largest N.
+  Clicking a marker, label or mesh sets the focus; hovering sets `hoverId`. A click that dragged more than 4 px is ignored.
+- Camera: drei `CameraControls` (`makeDefault`) with the target fixed at the origin. camera-controls defaults the right
+  button and the two/three-finger gestures to trucking, which would slide the focus body off the origin for good, so
+  `pinTarget()` makes the right button rotate, two fingers dolly/rotate and three fingers nothing, `dollyToCursor` is off,
+  and every focus change calls `setTarget(0, 0, 0)` before framing: no offset ever survives. `minDistance =
+max(1.2 * R, R + 2 * near)` (`minDollyDistance`, so the surface of a sub-kilometre moon stays in front of the near
+  plane at the closest dolly), `maxDistance = toUnits(1e10)`, `smoothTime` 0.4 s. The numbers and the framing rules live
+  in `camera/framing.ts` (pure, unit-tested). The first mount frames the focus from 45 deg above the ecliptic at 40 solar
+  radii (the Sun) or 6 radii (any other body); a later focus change keeps the viewing direction and dollies to 6 radii. Phase 5: the fly-to blends the origin from old to new focus (about 1.5 s, eased) while dollying; until then
+  `SimClock` snaps the origin to the focus and lets the fly record expire.
+- Time UI: play/pause, warp presets (1x, 1 min/s, 1 h/s, 1 day/s, 1 week/s, 1 month/s, 1 year/s; a Select below
+  600 px, a SegmentedControl above; a non-preset warp from the URL is appended as "<n>x"), the UTC date, "Now" button.
+  `BodyInfo` (bottom left, hidden below 600 px) shows the focused body's kind, radius, period, distance and rotation.
+- Toggles: orbits, labels, moons. Hiding the moons never hides the focus: `isBodyShown(body, state)` (`src/store/sim.ts`)
+  is the one rule the meshes, the orbit lines and the markers apply, so a focused moon stays in place (the HUD keeps
+  naming it and the arrows keep cycling its siblings, each of which becomes visible as it takes the focus).
+  Keyboard (window-level, ignored while typing in a field or with ctrl/meta/alt):
+  Space pause (ignored while a button or switch has focus, they activate themselves), `+`/`=` and `-`/`_` step the
+  presets, ArrowLeft/ArrowRight cycle the focus among siblings: the moons of the same planet for a moon, the ring
+  [Sun, Mercury, ..., Neptune] for the Sun and the planets.
 
 ## Runtime contract of the solar system feature (`src/features/solarSystem`)
 
@@ -276,32 +331,53 @@ export interface SimFrame {
 	renderPosition(i: number, out: Vector3): Vector3   // toUnits(positionsKm[i] - originKm) into `out`
 	renderPositionOf(id: string, out: Vector3): Vector3
 }
-export const SimFrameContext: React.Context<SimFrame>
-export const useSimFrame = (): SimFrame
+export function createSimFrame(bodies: readonly Body[], jd?: number): SimFrame   // positions precomputed at jd
+export function updateSimFrame(frame: SimFrame, jd: number, originIndex: number): void   // SimClock's tick
+export const SimFrameContext: React.Context<SimFrame | null>
+export const useSimFrame = (): SimFrame   // throws outside the provider
 ```
 
 - `scene/SimClock.tsx` (rendered inside the Canvas) owns the frame update in `useFrame(cb, -1)` (negative priority runs
-  before every other subscriber and keeps R3F automatic rendering on): advance `simTimeJD` by
-  `delta * timeWarp / 86400` unless paused, write it back to the store with `setState` (throttled to ~10 Hz for the UI,
-  the frame object itself is updated every frame), run `computePositions`, then set `originKm` from the focus body or
-  the fly-to blend (eased, see Camera).
+  before every other subscriber and keeps R3F automatic rendering on): `advanceTime(min(delta, 0.1))` through the store
+  every frame (a zustand `set` is cheap and selectors whose value did not change do not re-render; the UI reads the
+  clock through `useThrottledSimTime()`, see Store), then `updateSimFrame` (`computePositions`, `originKm` from the
+  focus body; the fly-to blend is Phase 5) and `endFly()` once the fly record's `durationMs` has passed.
 - Every other per-frame consumer (bodies, orbit lines, markers, camera) uses `useFrame(cb)` at the default priority
   and reads `useSimFrame()`; nobody else advances time or computes positions.
+- Per-frame writes live in exported plain functions that take the objects they mutate as parameters
+  (`updateSimFrame`, `updateOrbitBuffers`, `fillMarkers`): the React Compiler rule `react-hooks/immutability`
+  (in `recommended-latest`) rejects assignments into hook-returned objects inside `useFrame` callbacks, and no
+  `eslint-disable` is used. The frame loop allocates nothing: scratch vectors are module-level and typed arrays are reused.
 - Body meshes: `bodies/BodyMesh.tsx` gets `{ body, index }`, a `<group>` positioned in `useFrame` via
-  `frame.renderPosition(index, group.position)`, oriented with `spinAxis`/`equatorNode` (local +Y = north pole) and
-  spun by `rotationAngle` about that axis. Sphere radius is
-  `toUnits(body.radiusKm)`; use `sphereGeometry` segments 64 for planets and the Sun, 32 for large moons, 16 for
-  estimated-radius moons.
-- Orbit lines: `bodies/OrbitLine.tsx` gets `{ body, index, parentIndex }` and owns a `BufferGeometry` with 257 points
-  (closed). Points are computed in doubles as `toUnits(parentWorld + propagate(orbit, jdAtSample) - originKm)` where the
-  ellipse is sampled by true anomaly (or eccentric anomaly) at a fixed set of 256 angles, rebuilt when
-  `|originKm - originAtLastRebuild| > 1e-4 * semiMajorAxisKm` or when the parent moved more than that since the last
-  rebuild; between rebuilds the line's `position` is nudged by the origin delta. Uses drei `<Line>` or a raw
-  `<line>` with `LineBasicMaterial`; either must respect the logarithmic depth buffer.
-- HUD (`ui/`): plain React over the Canvas (absolute-positioned, pointer-events only on controls):
-  `TimeControls` (play/pause, warp presets, current UTC date from `simTimeJD`, "Now" button), `SceneToggles`
-  (orbits, labels, moons), `FocusPicker` (Mantine Select grouped by planet, searchable). All subscribe to the store
-  with selectors; none of them read the SimFrame.
-- The page component `index.tsx` renders the HUD and `scene/Scene.tsx`; `Scene.tsx` renders
-  `<Canvas dpr={[1, 2]} gl={{ logarithmicDepthBuffer: true }} camera={{ near: 1e-3, far: 1e9 }}>` with
-  `SimClock`, lights, `Bodies`, `OrbitLines`, `Markers`, `CameraRig`, `Effects`.
+  `frame.renderPosition(index, group.position)`, oriented once with `bodies/orientation.ts` (`bodyOrientation`: local
+  +X = `equatorNode`, +Y = `spinAxis` = north pole, +Z = X x Y) and spun by `rotationAngle` about local Y. The mesh
+  scales a shared unit `SphereGeometry` by `toUnits(body.radiusKm)`: 64 segments for planets and the Sun, 32 for
+  moons, 16 for estimated-radius moons (three geometries for all bodies).
+- Orbit lines: `bodies/OrbitLine.tsx` gets `{ body, index, parentIndex }` and owns a `BufferGeometry` with 258 points:
+  257 samples (closed; the ellipse sampled once in doubles in the parent's frame at 256 uniform eccentric anomalies,
+  `positionAtEccentricAnomaly`) plus one anchor vertex inserted between the two samples that bracket the body's current
+  eccentric anomaly (`anchorSlot(eccentricAnomalyAt(orbit, jd))`, vertex `slot + 1`) and written from the body's own
+  position, so the line passes exactly through its body: the chords alone miss it by up to 7.5e-5 a (1.8 Earth radii,
+  14 Neptune radii, 10 Himalia radii), plainly visible at the 6-radii framing. A rebuild writes
+  `toUnits(sample + parentWorld - originKm)` in doubles and happens when `|originKm - originAtLastRebuild| > 1e-4 * semiMajorAxisKm`,
+  when the parent moved more than that since the last rebuild, or when the anchor crosses into the next sample interval;
+  between rebuilds the line's `position` is nudged by `toUnits((parent - parentAtRebuild) - (origin - originAtRebuild))`
+  and only the anchor's three floats are rewritten and uploaded (`addUpdateRange`). `OrbitLine.test.ts` pins the anchor
+  to every planet's render position to under a kilometre, at rest and between rebuilds.
+  The line is a raw `<threeLine>` (three's `Line`; in R3F 9 the bare `line` intrinsic is the SVG element), registered
+  once with `extend({ ThreeLine: Line })`: R3F's `createInstance` strips the `three` prefix on mount, but `commitUpdate`
+  validates the raw type against the catalogue on every re-render, so without the registration the first re-render of a
+  mounted line (any layer toggle) throws `R3F: ThreeLine is not part of the THREE namespace` and takes the page down.
+  `LineBasicMaterial` (planets `#8a8f98`, moons `#4b5563`, opacity 0.6, `frustumCulled` off) respects the
+  logarithmic depth buffer. drei `<Line>` (three-stdlib `Line2`/`LineMaterial`) has no logdepth shader chunks and
+  would depth-fight the meshes; do not switch to it. Headless note: SwiftShader (the CI/headless GPU) drops any line
+  segment with one endpoint behind the eye, so the focused body's own orbit is missing from headless close-up
+  screenshots; real GPUs clip it normally and this is not an app bug.
+- HUD (`ui/`): plain React over the Canvas (absolute-positioned, pointer-events only on the panels):
+  `TimeControls` (play/pause, warp presets, current UTC date via `useThrottledSimTime`, "Now" button),
+  `SceneToggles` (orbits, labels, moons), `FocusPicker` (Mantine Select grouped by planet, moons largest first,
+  searchable), `BodyInfo` (facts about the focus). All subscribe to the store with selectors; none of them read the SimFrame.
+- The page component `index.tsx` renders `<UrlSync />` (first, see Store), then `scene/Scene.tsx` inside a Suspense
+  and the HUD; `Scene.tsx` renders the `<Canvas>` described under Rendering with the `SimFrameContext.Provider`
+  (one `createSimFrame(bodies, simTimeJD)` per Canvas), `SimClock`, lights, `Bodies` (in a Suspense), `OrbitLines`,
+  `Markers`, `CameraRig` and, from Phase 6, `Effects`.

@@ -1,0 +1,25 @@
+.select {
+	width: 16rem;
+	max-width: 100%;
+}
+
+.option {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1rem;
+	width: 100%;
+}
+
+.meta {
+	color: var(--mantine-color-dimmed);
+	font-size: var(--mantine-font-size-xs);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+@media (max-width: 599px) {
+	.select {
+		width: 100%;
+	}
+}

@@ -1,23 +1,104 @@
-.base {
-	width: 100vw;
+/* Full-viewport page: the Canvas (scene/Scene.tsx) fills it absolutely, the HUD floats above. */
+.page {
+	position: relative;
 	height: 100vh;
+	height: 100dvh;
 	overflow: hidden;
+	background: #050609;
+	color: var(--mantine-color-gray-1);
 }
 
-.checkBoxContainer {
-	display: flex;
-	flex-direction: row;
-	gap: 2rem;
-	padding: 2rem 0 0;
+/*
+ * HUD layer. The layer itself never catches pointer events, so the canvas keeps
+ * receiving drags and wheel zooms; only the panels do (`.panel`).
+ *
+ * Default (600..999px): pickers top left/right, body info above the centred time controls.
+ */
+.hud {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	grid-template-rows: auto minmax(0, 1fr) auto auto;
+	grid-template-areas:
+		"picker . toggles"
+		". . ."
+		"info info info"
+		"time time time";
+	gap: 0.75rem;
+	padding: 0.75rem;
+	pointer-events: none;
 }
 
-.sliderContainer {
-	display: flex;
-	flex-direction: column;
-	padding: 4rem 1rem 0;
+.panel {
+	pointer-events: auto;
+	background: rgba(20, 22, 28, 0.7);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--mantine-radius-md);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+	padding: 0.5rem 0.75rem;
 }
 
-/* Slider mark labels, applied through the Styles API (classNames.markLabel) */
-.markLabel {
-	padding-top: 0.5rem;
+.picker {
+	grid-area: picker;
+	justify-self: start;
+	align-self: start;
+	padding: 0.25rem;
+}
+
+.toggles {
+	grid-area: toggles;
+	justify-self: end;
+	align-self: start;
+}
+
+.info {
+	grid-area: info;
+	justify-self: start;
+	align-self: end;
+}
+
+.time {
+	grid-area: time;
+	justify-self: center;
+	align-self: end;
+	max-width: 100%;
+}
+
+/* wide screens: the body info sits beside the time controls on one bottom row */
+@media (min-width: 1000px) {
+	.hud {
+		grid-template-rows: auto minmax(0, 1fr) auto;
+		grid-template-areas:
+			"picker . toggles"
+			". . ."
+			"info time .";
+	}
+}
+
+/* phones: the panels stack and the body info is dropped */
+@media (max-width: 599px) {
+	.hud {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto auto minmax(0, 1fr) auto;
+		grid-template-areas:
+			"picker"
+			"toggles"
+			"."
+			"time";
+		gap: 0.5rem;
+		padding: 0.5rem;
+	}
+
+	.picker,
+	.toggles,
+	.time {
+		justify-self: stretch;
+	}
+
+	.info {
+		display: none;
+	}
 }
