@@ -1,7 +1,9 @@
 /**
  * The solar system Canvas (docs/ARCHITECTURE.md, "Rendering"). Creates the
  * SimFrame once and shares it below; SimClock is the only writer, everything
- * else reads it in its own useFrame. Effects (Bloom) arrive in Phase 6.
+ * else reads it in its own useFrame. Effects (Bloom) arrive in Phase 6. The
+ * body labels are DOM beside the Canvas (labels/LabelLayer.tsx), laid out by
+ * labels/Labels.tsx inside it; both share one label board.
  */
 import { Suspense, useMemo } from "react"
 import { Canvas } from "@react-three/fiber"

@@ -34,16 +34,20 @@ function LabelLayer({ board }: LabelLayerProps) {
 	)
 	const n = bodies.length
 
-	// sizes change with the language and once the web font has loaded
+	// sizes change with the language, once the web font has loaded, and with
+	// the viewport (the font size follows it)
 	useLayoutEffect(() => {
 		if (!showLabels) return
-		measureLabels(board)
+		const measure = () => measureLabels(board)
+		measure()
 		let live = true
 		void document.fonts?.ready.then(() => {
-			if (live) measureLabels(board)
+			if (live) measure()
 		})
+		window.addEventListener("resize", measure)
 		return () => {
 			live = false
+			window.removeEventListener("resize", measure)
 		}
 	}, [board, name, showLabels, orbitNames])
 
