@@ -110,6 +110,19 @@ export const SCALE_PRESETS = {
 		moonDistance: { knee: 3, exponent: 0.2, gain: 1 },
 	}),
 	/**
+	 * Only the sizes lie (#21, "sizes and distances are separate lies"): bodies
+	 * enlarged as in Everything visible, but the planets at their real distances
+	 * from the Sun. Even ten times too big, they are lost in empty space. Moon
+	 * systems keep Everything visible's gathering: with the planets enlarged, no
+	 * moon distance can be true (Phobos would sit inside Mars), and gathered
+	 * moons land near their true distance in kilometres (the Moon 1.4x too far).
+	 */
+	bigPlanets: deepFreeze({
+		bodySize: { exponent: 0.5 },
+		orbitDistance: { knee: 1, exponent: 1, gain: 1 },
+		moonDistance: { knee: 3, exponent: 0.2, gain: 2 },
+	}),
+	/**
 	 * The default the app opens in: small bodies enlarged, far orbits pulled
 	 * in, moon systems gathered around their planets. Readable, pretty and
 	 * dishonest, and to be labelled as such by #21.
@@ -127,6 +140,7 @@ export type ScalePresetId = keyof typeof SCALE_PRESETS
 export const SCALE_PRESET_IDS: readonly ScalePresetId[] = Object.freeze([
 	"trueScale",
 	"textbook",
+	"bigPlanets",
 	"everythingVisible",
 ])
 

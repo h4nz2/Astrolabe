@@ -107,3 +107,10 @@ export {
 	timelineJD,
 } from "./clock"
 export type { SimTimeline, TimeGlide } from "./clock"
+export { SCALE_LIES, bodyDistortion, presetForLies } from "./scaleLies"
+export type {
+	BodyDistortion,
+	DistanceLie,
+	ScaleLies,
+	SizeLie,
+} from "./scaleLies"

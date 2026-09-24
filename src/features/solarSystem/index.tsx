@@ -9,6 +9,7 @@ import Scene from "./scene/Scene"
 import BodyInfo from "./ui/BodyInfo"
 import FocusPicker from "./ui/FocusPicker"
 import OverviewButton from "./ui/OverviewButton"
+import ScalePanel from "./ui/ScalePanel"
 import SceneToggles from "./ui/SceneToggles"
 import TimeControls from "./ui/TimeControls"
 
@@ -40,11 +41,16 @@ const SolarSystem = () => {
 					<OverviewButton />
 					<FocusPicker />
 				</div>
-				<div className={`${classes.panel} ${classes.toggles}`}>
-					<Group gap="sm" justify="space-between" wrap="nowrap">
-						<SceneToggles />
-						<LanguageMenu />
-					</Group>
+				<div className={classes.toggles}>
+					<div className={classes.panel}>
+						<Group gap="sm" justify="space-between" wrap="nowrap">
+							<SceneToggles />
+							<LanguageMenu />
+						</Group>
+					</div>
+					<div className={classes.panel}>
+						<ScalePanel />
+					</div>
 				</div>
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />

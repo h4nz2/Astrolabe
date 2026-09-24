@@ -17,6 +17,7 @@ import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
+import ScaleTransition from "./ScaleTransition"
 import SimClock from "./SimClock"
 import { SimFrameContext, createSimFrame } from "./simFrame"
 
@@ -49,6 +50,7 @@ function Scene() {
 			<color attach="background" args={[SCENE_BACKGROUND]} />
 			<SimFrameContext.Provider value={frame}>
 				<ScaleSync />
+				<ScaleTransition />
 				<SimClock />
 				<HoverCursor />
 				<ambientLight intensity={AMBIENT_INTENSITY} />
