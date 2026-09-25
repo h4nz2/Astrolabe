@@ -1518,5 +1518,40 @@
 				"range@advanced": "Au fil de leurs orbites, la distance varie d’environ {minKm} à {maxKm} (de {min} à {max} en temps de lumière)."
 			}
 		}
+	},
+	"help": {
+		"button": "Aide",
+		"buttonHint": "Toutes les fonctions et comment les utiliser",
+		"more": "Plus d’aide : l’introduction, comment se déplacer",
+		"title": "Aide",
+		"heading": "Tout ce que sait faire Astrolabe",
+		"heading@simple": "Qu’est-ce que je peux faire ici ?",
+		"lead": "Toutes les fonctions au même endroit : ce que c’est, pourquoi ça vaut la peine de l’essayer et comment s’en servir. « Essayer » ouvre l’application avec la fonction déjà prête.",
+		"lead@simple": "Voici tout ce que tu peux faire. Appuie sur « Essayer » pour y aller et le faire !",
+		"back": "Retour",
+		"searchLabel": "Rechercher dans l’aide",
+		"searchPlaceholder": "Recherche, par exemple « éclipse » ou « Mars »",
+		"clearSearch": "Effacer la recherche",
+		"results": "{count, plural, =0 {Rien ne correspond à « {query} ». Essaie un autre mot, ou parcours les groupes ci-dessous.} one {# fonction correspond à « {query} ».} many {# de fonctions correspondent à « {query} ».} other {# fonctions correspondent à « {query} ».}}",
+		"contents": "Sur cette page",
+		"why": "Pourquoi",
+		"how": "Comment",
+		"try": "Essayer",
+		"tryLabel": "Essayer : {title}",
+		"controls": {
+			"title": "Commandes et raccourcis",
+			"intro": "Souris, écran tactile et clavier dans le système solaire en 3D. Les touches ne font rien pendant que tu écris dans un champ.",
+			"action": "Pour faire ceci",
+			"mouse": "Souris",
+			"touch": "Tactile",
+			"keys": "Clavier",
+			"none": "–"
+		},
+		"credits": {
+			"title": "Crédits et sources",
+			"licence": "Licence : {licence}"
+		},
+		"readingLevel": "Tu lis cette page au niveau {level}. Change la langue et le niveau de lecture dans le menu en haut à droite.",
+		"shortcutsLink": "Toutes les fonctions et comment les utiliser : ouvre la page d’aide"
 	}
 }

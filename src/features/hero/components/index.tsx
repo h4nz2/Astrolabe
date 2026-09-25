@@ -1,7 +1,6 @@
 import type { FC } from "react"
 import { Box } from "@mantine/core"
-
-import { LanguageMenu } from "@/i18n"
+import { CornerBar } from "@/features/help/HelpButton"
 
 import LeftSection from "./LeftSection"
 import Scene from "../THREE/Scene"
@@ -12,7 +11,7 @@ export type HeroProps = Record<string, never>
 const Hero: FC<HeroProps> = () => {
 	return (
 		<Box className={classes.root}>
-			<LanguageMenu placement="corner" />
+			<CornerBar />
 			<LeftSection />
 
 			<Scene />

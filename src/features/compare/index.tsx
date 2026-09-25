@@ -11,7 +11,8 @@ import { Box, Button } from "@mantine/core"
 import { IconArrowLeft } from "@tabler/icons-react"
 import { getRouteApi, useCanGoBack, useRouter } from "@tanstack/react-router"
 
-import { LanguageMenu, useI18n } from "@/i18n"
+import { useI18n } from "@/i18n"
+import { CornerBar } from "@/features/help/HelpButton"
 import { useBodyName } from "@/i18n/bodies"
 import { dateToJD } from "@/sim"
 
@@ -73,7 +74,7 @@ const Compare = () => {
 
 	return (
 		<main className={classes.page} data-testid="compare-page">
-			<LanguageMenu placement="corner" />
+			<CornerBar />
 			<header className={classes.header}>
 				<Button
 					className={classes.back}

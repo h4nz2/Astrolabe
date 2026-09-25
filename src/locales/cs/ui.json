@@ -1518,5 +1518,40 @@
 				"range@advanced": "Během oběhů se vzdálenost mění zhruba od {minKm} do {maxKm} (světlu to trvá {min} až {max})."
 			}
 		}
+	},
+	"help": {
+		"button": "Nápověda",
+		"buttonHint": "Všechny funkce a jak je používat",
+		"more": "Další nápověda: úvod, jak se pohybovat",
+		"title": "Nápověda",
+		"heading": "Všechno, co Astrolabe umí",
+		"heading@simple": "Co tu můžu dělat?",
+		"lead": "Všechny funkce na jednom místě: co to je, proč to stojí za vyzkoušení a jak se to používá. „Vyzkoušet“ otevře aplikaci s funkcí připravenou k použití.",
+		"lead@simple": "Tady je všechno, co tu můžeš dělat. Stiskni „Vyzkoušet“ a hurá do toho!",
+		"back": "Zpět",
+		"searchLabel": "Hledat v nápovědě",
+		"searchPlaceholder": "Hledej, třeba „zatmění“ nebo „Mars“",
+		"clearSearch": "Vymazat hledání",
+		"results": "{count, plural, =0 {Pro „{query}“ jsme nic nenašli. Zkus jiné slovo, nebo projdi skupiny níže.} one {Pro „{query}“ jsme našli # funkci.} few {Pro „{query}“ jsme našli # funkce.} many {Pro „{query}“ jsme našli # funkce.} other {Pro „{query}“ jsme našli # funkcí.}}",
+		"contents": "Na této stránce",
+		"why": "Proč",
+		"how": "Jak na to",
+		"try": "Vyzkoušet",
+		"tryLabel": "Vyzkoušet: {title}",
+		"controls": {
+			"title": "Ovládání a klávesové zkratky",
+			"intro": "Myš, dotyk a klávesnice ve 3D sluneční soustavě. Když píšeš do pole, klávesy nic nedělají.",
+			"action": "Co chceš udělat",
+			"mouse": "Myš",
+			"touch": "Dotyk",
+			"keys": "Klávesnice",
+			"none": "–"
+		},
+		"credits": {
+			"title": "Poděkování a zdroje",
+			"licence": "Licence: {licence}"
+		},
+		"readingLevel": "Právě čteš verzi s náročností textu „{level}“. Jazyk a náročnost textu změníš v nabídce vpravo nahoře.",
+		"shortcutsLink": "Všechny funkce a jak je používat: otevři stránku nápovědy"
 	}
 }
