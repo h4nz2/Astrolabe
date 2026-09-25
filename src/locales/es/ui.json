@@ -42,7 +42,8 @@
 		"solarSystem": "Modelo solar",
 		"birthday": "Tu cumpleaños en el espacio",
 		"hunt": "Búsqueda del tesoro",
-		"solarWalk": "Paseo por el sistema solar"
+		"solarWalk": "Paseo por el sistema solar",
+		"skyTonight": "¿Qué hay en el cielo esta noche?"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -483,7 +484,8 @@
 				"title": "¿Cuántos años tengo en los otros planetas?",
 				"date": "El {date}",
 				"distance": "He viajado {distance} km alrededor del Sol.",
-				"fileName": "mi-edad-en-los-planetas"
+				"fileName": "mi-edad-en-los-planetas",
+				"footer": "Astrolabe – nuestro sistema solar"
 			}
 		},
 		"hunt": {
@@ -906,6 +908,145 @@
 				"everythingVisible": "No está a escala: los cuerpos aparecen más grandes y más juntos de lo que son.",
 				"everythingVisible@simple": "No es como en la realidad: los planetas son mucho más pequeños y están mucho más lejos unos de otros.",
 				"everythingVisible@advanced": "No está a escala: tamaños exagerados y distancias comprimidas."
+			}
+		},
+		"sky": {
+			"open": "El cielo esta noche",
+			"openHint": "¿Qué planetas puedes ver esta noche, cuándo y dónde?",
+			"openHint@simple": "¿Qué puedes ver en el cielo esta noche?",
+			"title": "¿Qué hay en el cielo esta noche?",
+			"title@simple": "El cielo esta noche",
+			"close": "Cerrar",
+			"ask": {
+				"title": "¿Desde dónde vas a mirar?",
+				"title@simple": "¿Dónde estás?",
+				"why": "Qué planetas puedes ver, y dónde, depende de en qué lugar de la Tierra estés. Basta con una ciudad grande cerca de ti.",
+				"why@simple": "El cielo se ve un poco distinto en cada lugar. Elige una ciudad grande cerca de ti.",
+				"why@advanced": "Las horas de salida, las direcciones y las alturas dependen de la latitud y la longitud. La ciudad grande más cercana es precisa en unos pocos minutos.",
+				"suggestion": "¿Estás cerca de {city}?",
+				"suggestionHint": "Una suposición a partir de la zona horaria de tu dispositivo.",
+				"confirm": "Sí, enséñame el cielo de allí",
+				"confirm@simple": "¡Sí!",
+				"other": "O elige un lugar",
+				"country": "País",
+				"city": "Ciudad",
+				"show": "Ver el cielo de allí",
+				"show@simple": "Enséñamelo",
+				"device": "Usar la ubicación de mi dispositivo",
+				"deviceExplain": "Tu navegador te preguntará si esta página puede saber dónde estás. Tu ubicación se queda en este dispositivo: se redondea a unos 10 km, nunca se guarda y nunca se envía a ninguna parte.",
+				"deviceExplain@simple": "¡Pregunta primero a una persona adulta! Tu navegador preguntará si esta página puede saber dónde estás. Se queda en esta pantalla: no se guarda ni se envía a ninguna parte.",
+				"deviceExplain@advanced": "La API de geolocalización del navegador pide tu permiso. La posición se redondea a 0,1° (unos 10 km), solo se guarda en memoria y nunca se envía: toda la astronomía se calcula en este dispositivo.",
+				"deviceConfirm": "Vale, pregunta a mi navegador",
+				"deviceCancel": "No, gracias",
+				"locating": "Buscando dónde estás…",
+				"denied": "No se ha compartido la ubicación. No pasa nada: elige una ciudad.",
+				"failed": "No ha funcionado. No pasa nada: elige una ciudad.",
+				"privacy": "No se guarda ni se envía nada. El lugar se olvida al cerrar la página.",
+				"privacy@simple": "Tu lugar no se guarda ni se envía a ninguna parte."
+			},
+			"place": {
+				"city": "{city}, {country}",
+				"device": "Tu ubicación",
+				"deviceNear": "Tu ubicación, cerca de {city}",
+				"change": "Cambiar de lugar",
+				"zone": "Las horas son la hora local de allí."
+			},
+			"night": {
+				"tonight": "Esta noche en {place}",
+				"tonightNear": "Esta noche cerca de {city}",
+				"tonightHere": "Esta noche donde estás",
+				"date": "La noche del {date}",
+				"sun": "Puesta de sol {sunset} · de noche desde {dusk} · salida del sol {sunrise}",
+				"sun@simple": "El sol se pone a las {sunset}. Es de noche desde las {dusk}.",
+				"sunLight": "Puesta de sol {sunset} · salida del sol {sunrise} · esta noche no llega a oscurecer del todo",
+				"sunLight@simple": "El sol se pone a las {sunset}, pero esta noche no llega a estar oscuro del todo.",
+				"midnightSun": "Aquí el sol no se pone esta noche (el sol de medianoche), así que el cielo está demasiado claro para ver planetas.",
+				"midnightSun@simple": "¡Aquí el sol no se pone esta noche! El cielo está demasiado claro para ver planetas.",
+				"polarNight": "Aquí el sol no sale en todo el día siguiente (la noche polar): está oscuro todo el día.",
+				"polarNight@simple": "¡Aquí el sol no sale hoy: es de noche todo el día!"
+			},
+			"tip": "Los planetas parecen estrellas brillantes, pero su luz es fija: las estrellas titilan, los planetas no. Deja diez minutos a tus ojos para que se acostumbren a la oscuridad.",
+			"tip@simple": "Los planetas parecen estrellas brillantes que no titilan. Espera fuera diez minutos para que tus ojos se acostumbren a la oscuridad.",
+			"tip@advanced": "Los planetas se ven como puntos fijos (su disco es demasiado grande para titilar mucho). Cuenta con 10–20 minutos de adaptación a la oscuridad y evita mientras tanto las pantallas brillantes.",
+			"visible": "Puedes ver",
+			"visible@simple": "Busca esto",
+			"hidden": "Esta noche no",
+			"none": "Esta noche ningún planeta está bien situado, pero la Luna y las estrellas merecen una mirada.",
+			"when": {
+				"allNight": "Toda la noche",
+				"fromDusk": "Desde el anochecer hasta las {until} más o menos",
+				"fromDusk@simple": "Cuando oscurezca, hasta las {until}",
+				"untilDawn": "Desde las {from} más o menos hasta el amanecer",
+				"untilDawn@simple": "Desde las {from} hasta la mañana",
+				"between": "Desde las {from} hasta las {until} más o menos",
+				"between@simple": "De {from} a {until}"
+			},
+			"where": "{height, select, low {bajo sobre el horizonte, hacia el {dir, select, n {norte} ne {noreste} e {este} se {sureste} s {sur} sw {suroeste} w {oeste} other {noroeste}}} mid {a media altura, hacia el {dir, select, n {norte} ne {noreste} e {este} se {sureste} s {sur} sw {suroeste} w {oeste} other {noroeste}}} high {alto en el cielo, hacia el {dir, select, n {norte} ne {noreste} e {este} se {sureste} s {sur} sw {suroeste} w {oeste} other {noroeste}}} other {casi justo encima de tu cabeza}}",
+			"first": "{at, select, dusk {Cuando oscurezca} other {A las {time}}}: {where}.",
+			"best": "Lo más alto hacia las {time}: {where}.",
+			"fists": "Aproximadamente {fists, plural, one {un puño} many {# puños} other {# puños}} por encima del horizonte, con el puño cerrado y el brazo estirado.",
+			"fists@simple": "Son {fists, plural, one {un puño} many {# puños} other {# puños}} por encima del suelo: estira el brazo y cuenta puños.",
+			"fists@advanced": "Altura {altitude, number}°, acimut {azimuth, number}° (un puño con el brazo estirado mide unos 10°).",
+			"magnitude": "Magnitud {magnitude}",
+			"look": {
+				"moon": "No tiene pérdida.",
+				"venus": "El punto más brillante de todo el cielo después de la Luna. No titila.",
+				"venus@simple": "¡El punto más brillante del cielo después de la Luna!",
+				"jupiter": "Más brillante que cualquier estrella, con una luz fija de color blanco crema. Con prismáticos se ven hasta cuatro de sus lunas.",
+				"jupiter@simple": "Más brillante que todas las estrellas, y no titila.",
+				"mars": "{brightness, select, dazzling {Un punto naranja rojizo y brillante, más que cualquier estrella.} veryBright {Un punto naranja rojizo y brillante, más que cualquier estrella.} bright {Un punto naranja rojizo, tan brillante como las estrellas más brillantes.} other {Un punto naranja rojizo y débil, como una estrella corriente.}}",
+				"mars@simple": "Fíjate en su color naranja rojizo.",
+				"saturn": "Un punto fijo de color amarillo pálido, tan brillante como las estrellas más brillantes. Un telescopio pequeño muestra sus anillos.",
+				"saturn@simple": "Un punto amarillento que no titila. ¡Con un telescopio puedes ver sus anillos!",
+				"mercury": "Bajo, en el resplandor del crepúsculo, y difícil de encontrar: los prismáticos ayudan. ¡Nunca los apuntes al Sol!",
+				"mercury@simple": "Difícil de encontrar, bajo en el resplandor. ¡Nunca mires al Sol!",
+				"uranus": "Demasiado débil para tus ojos en una ciudad: con prismáticos es una estrellita azul verdosa. Necesitas un mapa del cielo para encontrarlo.",
+				"uranus@simple": "Demasiado débil para tus ojos. Con prismáticos y un mapa del cielo es un puntito azul verdoso.",
+				"neptune": "Demasiado débil para tus ojos o unos prismáticos: necesitas un telescopio y un mapa del cielo.",
+				"neptune@simple": "Demasiado débil para verlo sin telescopio."
+			},
+			"aid": {
+				"eyes": "A simple vista",
+				"eyes@simple": "Solo con los ojos",
+				"binoculars": "Prismáticos",
+				"telescope": "Telescopio"
+			},
+			"hiddenReason": {
+				"sunGlare": "{body} está demasiado cerca del Sol en el cielo: su luz se pierde en el resplandor.",
+				"sunGlare@simple": "{body} está demasiado cerca del Sol para verlo.",
+				"twilight": "{side, select, evening {{body} se pone poco después del Sol, cuando el cielo todavía está claro.} other {{body} sale justo antes que el Sol, cuando el cielo ya está claro.}}",
+				"twilight@simple": "{side, select, evening {{body} se esconde poco después del Sol.} other {{body} sale justo antes que el Sol.}}",
+				"brightSky": "{body} está sobre el horizonte, pero esta noche no oscurece lo suficiente.",
+				"daytime": "Ahora mismo {body} solo está sobre el horizonte durante el día.",
+				"daytime@simple": "Ahora mismo {body} solo está en el cielo de día."
+			},
+			"moon": {
+				"phase": "{phase}, iluminada al {fraction, number, ::percent}",
+				"phase@simple": "{phase}",
+				"next": "Próxima luna llena: {full} · próxima luna nueva: {new}",
+				"next@simple": "Próxima luna llena: {full}"
+			},
+			"why": {
+				"button": "¿Por qué se ve?",
+				"button@simple": "¿Por qué?",
+				"hide": "Ocultar",
+				"far": "Esta noche la Tierra está entre el Sol y {body}. Cuando tu lado de la Tierra deja de mirar al Sol por la tarde, se gira hacia {body}: por eso sale hacia la puesta de sol y se ve toda la noche.",
+				"far@simple": "La Tierra está ahora entre el Sol y {body}. Cuando es de noche para ti, miras hacia {body}, así que lo ves toda la noche.",
+				"far@advanced": "{body} está cerca de la oposición: a {angle, number}° del Sol. Opuesto al Sol, cruza el meridiano hacia la medianoche y está en su punto más cercano y brillante.",
+				"evening": "{body} está {angle, number}° al este del Sol en nuestro cielo. Como la Tierra gira, todo el cielo parece dar vueltas, y {body} sigue al Sol por el cielo: sigue arriba después de la puesta de sol y se pone más tarde por la noche.",
+				"evening@simple": "{body} va detrás del Sol en el cielo. Cuando el Sol se pone, {body} sigue ahí un rato.",
+				"evening@advanced": "{body} está {angle, number}° al este del Sol (visible al atardecer): cruza el meridiano después del Sol, por eso está en el cielo de la tarde.",
+				"morning": "{body} está {angle, number}° al oeste del Sol en nuestro cielo: va por delante del Sol en su camino por el cielo. Sale de noche, horas antes que el Sol, así que búscalo antes del amanecer.",
+				"morning@simple": "{body} va por delante del Sol en el cielo. Sale de noche, antes que el Sol.",
+				"morning@advanced": "{body} está {angle, number}° al oeste del Sol (visible al amanecer): sale antes que el Sol y se ve mejor antes del alba.",
+				"near": "{side, select, evening {{body} está a solo {angle, number}° del Sol en nuestro cielo, en el lado de la tarde: se pone poco después del Sol, así que mira justo después de la puesta de sol.} other {{body} está a solo {angle, number}° del Sol en nuestro cielo, en el lado de la mañana: sale justo antes que el Sol, así que mira justo antes del amanecer.}}",
+				"near@simple": "{side, select, evening {{body} se queda cerca del Sol, así que se esconde poco después que él.} other {{body} se queda cerca del Sol, así que sale justo antes que él.}}",
+				"moon": "La Luna da una vuelta a la Tierra cada mes. Esta noche está a {angle, number}° del Sol en nuestro cielo, así que vemos el {fraction, number, ::percent} de su mitad iluminada. La luna llena está opuesta al Sol: sale con la puesta de sol y se ve toda la noche.",
+				"moon@simple": "La Luna da una vuelta a la Tierra cada mes. El Sol siempre ilumina la mitad de la Luna, y esta noche vemos el {fraction, number, ::percent} de esa mitad.",
+				"moon@advanced": "Elongación {angle, number}°, fracción iluminada {fraction, number, ::percent}. La fase depende del ángulo Sol–Luna–Tierra; en luna llena la Luna está en oposición y cruza el meridiano hacia la medianoche.",
+				"show": "Enséñamelo en el espacio",
+				"show@simple": "Verlo en 3D",
+				"showHint": "Detiene la Tierra en ese momento, vista desde arriba, con el Sol y {body} en sus direcciones reales."
 			}
 		},
 		"smallBodies": {

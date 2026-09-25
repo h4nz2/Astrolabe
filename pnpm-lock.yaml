@@ -190,6 +190,9 @@ importers:
       '@tanstack/react-router':
         specifier: ^1.170.38
         version: 1.170.38(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      astronomy-engine:
+        specifier: ^2.1.19
+        version: 2.1.19
       dayjs:
         specifier: ^1.11.23
         version: 1.11.23
@@ -245,9 +248,6 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^6.1.1
         version: 6.1.1(vite@8.3.0(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(sugarss@5.0.1(postcss@8.5.28))(tsx@4.23.15))
-      astronomy-engine:
-        specifier: ^2.1.19
-        version: 2.1.19
       eslint:
         specifier: ^10.11.0
         version: 10.11.0(jiti@2.7.0)(supports-color@10.2.2)
