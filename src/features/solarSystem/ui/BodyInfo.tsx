@@ -104,6 +104,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 			{open && (
 				<>
 					{story !== undefined && <p className={classes.story}>{story}</p>}
+					<BodyRecording bodyId={body.id} />
 					<MoonSystem body={body} />
 					<dl className={classes.facts}>
 						{facts.map((fact) => (
@@ -118,7 +119,6 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							</div>
 						))}
 					</dl>
-					<BodyRecording bodyId={body.id} />
 					{entry !== null && (
 						<Anchor
 							className={classes.more}

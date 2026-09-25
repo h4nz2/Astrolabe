@@ -51,9 +51,7 @@ const Settings = () => {
 				}}
 			/>
 			<div>
-				<Text size="sm" id="sound-volume-label">
-					{t("solarSystem.sound.volume")}
-				</Text>
+				<Text size="sm">{t("solarSystem.sound.volume")}</Text>
 				<Group gap="xs" wrap="nowrap">
 					<IconVolumeOff size={14} aria-hidden className={classes.dim} />
 					<Slider
@@ -65,7 +63,7 @@ const Settings = () => {
 						label={null}
 						value={Math.round(volume * 100)}
 						onChange={(value) => setVolume(value / 100)}
-						thumbProps={{ "aria-labelledby": "sound-volume-label" }}
+						thumbLabel={t("solarSystem.sound.volume")}
 					/>
 					<IconVolume size={14} aria-hidden className={classes.dim} />
 				</Group>
@@ -141,6 +139,7 @@ function SoundControl() {
 				withArrow
 				shadow="md"
 				trapFocus={false}
+				transitionProps={{ duration: 0 }}
 			>
 				<Popover.Target>
 					<ActionIcon
