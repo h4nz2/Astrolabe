@@ -16,7 +16,13 @@ import classes from "./Presentation.module.css"
 function LayersMenu({ children }: { children: ReactNode }) {
 	const { t } = useI18n()
 	return (
-		<Popover position="bottom-end" shadow="md" trapFocus returnFocus>
+		<Popover
+			position="bottom-end"
+			width={280}
+			shadow="md"
+			trapFocus
+			returnFocus
+		>
 			<Popover.Target>
 				<Button
 					variant="subtle"
@@ -26,7 +32,7 @@ function LayersMenu({ children }: { children: ReactNode }) {
 					leftSection={<IconStack2 size={16} aria-hidden />}
 					aria-haspopup="dialog"
 				>
-					{t("solarSystem.layers.label")}
+					{t("solarSystem.present.layers")}
 				</Button>
 			</Popover.Target>
 			<Popover.Dropdown aria-label={t("solarSystem.layers.label")}>

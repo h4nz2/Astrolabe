@@ -181,6 +181,28 @@
 	width: 22rem;
 }
 
+/* the body card may be tall at projector size: it scrolls rather than pushing the time controls off screen */
+:global(html[data-presenting]) .info {
+	max-height: 55dvh;
+	overflow-y: auto;
+}
+
+/*
+ * Wide projections: the time controls get the whole bottom row, so the
+ * picker, the card and the right column keep their width (with the time
+ * controls in the middle column, the side columns shrink to a sliver).
+ */
+@media (min-width: 1000px) {
+	:global(html[data-presenting]) .hud {
+		grid-template-rows: auto minmax(0, 1fr) auto auto;
+		grid-template-areas:
+			"picker centre toggles"
+			". . ."
+			"info . ."
+			"time time time";
+	}
+}
+
 @media (max-width: 599px) {
 	:global(html[data-presenting]) .toggles {
 		width: auto;

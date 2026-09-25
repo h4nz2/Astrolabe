@@ -524,6 +524,7 @@
 		},
 		"present": {
 			"button": "Präsentieren",
+			"layers": "Ebenen",
 			"buttonHint": "Vor der Klasse zeigen: große Schrift, hoher Kontrast, Tastatur, teilen",
 			"title": "Vor der Klasse zeigen",
 			"projector": "Große Schrift für den Beamer",

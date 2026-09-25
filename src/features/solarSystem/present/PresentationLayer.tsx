@@ -189,7 +189,12 @@ function ChromeRestore() {
 function LiveRegion() {
 	const announcement = usePresentationStore((state) => state.announcement)
 	return (
-		<VisuallyHidden role="status" aria-live="polite" aria-atomic="true">
+		<VisuallyHidden
+			role="status"
+			aria-live="polite"
+			aria-atomic="true"
+			data-announcer
+		>
 			{announcement !== null && (
 				<span key={announcement.id}>{announcement.text}</span>
 			)}

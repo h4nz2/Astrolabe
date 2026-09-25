@@ -524,6 +524,7 @@
 		},
 		"present": {
 			"button": "Present",
+			"layers": "Layers",
 			"buttonHint": "Present to a class: large text, high contrast, keyboard, sharing",
 			"title": "Present to a class",
 			"projector": "Large text for a projector",

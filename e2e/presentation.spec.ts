@@ -42,7 +42,7 @@ const state = (page: Page) =>
 	})
 
 const html = (page: Page) => page.locator("html")
-const liveRegion = (page: Page) => page.getByRole("status").first()
+const liveRegion = (page: Page) => page.locator("[data-announcer]")
 const overviewButton = (page: Page) =>
 	page.getByRole("button", { name: "Back to overview", exact: true })
 
