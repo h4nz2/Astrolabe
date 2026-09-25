@@ -569,6 +569,8 @@
 			},
 			"night": {
 				"tonight": "Tonight in {place}",
+				"tonightNear": "Tonight near {city}",
+				"tonightHere": "Tonight where you are",
 				"date": "The night of {date}",
 				"sun": "Sunset {sunset} · dark from {dusk} · sunrise {sunrise}",
 				"sun@simple": "The Sun sets at {sunset}. It is dark from {dusk}.",

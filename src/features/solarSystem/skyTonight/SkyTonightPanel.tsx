@@ -58,6 +58,9 @@ import classes from "./SkyTonight.module.css"
 
 const DISC_RADIUS = 24
 
+/** Where the panel is a sheet over most of the scene (SkyTonight.module.css). */
+const PHONE_QUERY = "(max-width: 599px)"
+
 const AID_ICON: Record<Aid, typeof IconEye> = {
 	eyes: IconEye,
 	binoculars: IconBinoculars,
@@ -127,7 +130,13 @@ const Why = ({ sighting, sky }: { sighting: Sighting; sky: SkyTonight }) => {
 							title={i18n.t("solarSystem.sky.why.showHint", {
 								body: name(sighting.id),
 							})}
-							onClick={() => showWhy(sighting.id, sighting.first.ms)}
+							onClick={() => {
+								showWhy(sighting.id, sighting.first.ms)
+								// on a phone the panel covers the scene: step aside
+								if (window.matchMedia(PHONE_QUERY).matches) {
+									useSkyTonightStore.getState().setOpen(false)
+								}
+							}}
 							style={{ alignSelf: "flex-start" }}
 						>
 							{i18n.t("solarSystem.sky.why.show")}
@@ -258,21 +267,22 @@ const Tonight = ({
 	const [now] = useState(() => Date.now())
 	const sky = useMemo(() => skyTonight(place, now), [place, now])
 	const near = cityNear(choice)
-	const placeName =
-		choice.kind === "city" && near !== null
-			? cityName(near, formatLocale)
-			: near !== null
-				? t("solarSystem.sky.place.deviceNear", {
-						city: cityName(near, formatLocale),
-					})
-				: t("solarSystem.sky.place.device")
+	const nearName = near === null ? null : cityName(near, formatLocale)
 	const placeLine =
 		choice.kind === "city" && near !== null
 			? t("solarSystem.sky.place.city", {
-					city: cityName(near, formatLocale),
+					city: nearName,
 					country: countryName(near.country, formatLocale),
 				})
-			: placeName
+			: nearName !== null
+				? t("solarSystem.sky.place.deviceNear", { city: nearName })
+				: t("solarSystem.sky.place.device")
+	const title =
+		choice.kind === "city" && nearName !== null
+			? t("solarSystem.sky.night.tonight", { place: nearName })
+			: nearName !== null
+				? t("solarSystem.sky.night.tonightNear", { city: nearName })
+				: t("solarSystem.sky.night.tonightHere")
 	const planets = sky.sightings.filter((s) => s.id !== "moon")
 	const visible = planets.filter((s) => s.visible)
 	const hidden = planets.filter((s) => !s.visible)
@@ -298,7 +308,7 @@ const Tonight = ({
 			</Group>
 			<Stack gap={2}>
 				<Title order={3} size="h4">
-					{t("solarSystem.sky.night.tonight", { place: placeName })}
+					{title}
 				</Title>
 				<Text size="xs" c="gray.4">
 					{t("solarSystem.sky.night.date", {

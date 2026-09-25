@@ -569,6 +569,8 @@
 			},
 			"night": {
 				"tonight": "Heute Nacht in {place}",
+				"tonightNear": "Heute Nacht bei {city}",
+				"tonightHere": "Heute Nacht bei dir",
 				"date": "Die Nacht vom {date}",
 				"sun": "Sonnenuntergang {sunset} · dunkel ab {dusk} · Sonnenaufgang {sunrise}",
 				"sun@simple": "Die Sonne geht um {sunset} unter. Ab {dusk} ist es dunkel.",
