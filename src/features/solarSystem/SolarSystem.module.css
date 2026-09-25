@@ -155,9 +155,10 @@
 	grid-row: 2;
 	grid-column: 1 / -1;
 	align-self: end;
-	justify-self: center;
+	justify-self: stretch;
 	min-width: 0;
-	max-width: 100%;
+	/* spanning every column, it must not widen the auto centre column (and squeeze the corner panels) */
+	contain: inline-size;
 }
 
 :global(html[data-intro="playing"]) .panel {
@@ -220,7 +221,6 @@
 
 	.intro {
 		grid-row: 4;
-		justify-self: stretch;
 	}
 
 	/* the opening gets the whole screen but the picker row; everything else is back at the hand-over */
