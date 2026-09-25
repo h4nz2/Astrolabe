@@ -239,7 +239,9 @@ test("share: the link is the view, copied or scanned", async ({
 		name: "Scan to open this view on a phone or tablet",
 	})
 	await expect(large).toBeVisible()
-	const box = await large.getByRole("img").boundingBox()
+	const box = await large
+		.getByRole("img", { name: "QR code of the link to this view" })
+		.boundingBox()
 	expect(box!.width).toBeGreaterThan(400)
 	await page.keyboard.press("Escape")
 	await expect(large).toBeHidden()
