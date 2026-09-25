@@ -27,6 +27,8 @@ export type PresenterCommand =
 	| { readonly kind: "present" }
 	| { readonly kind: "contrast" }
 	| { readonly kind: "help" }
+	/** Stops the light flash (#38). */
+	| { readonly kind: "stopLight" }
 
 /** The key fields a command depends on (a KeyboardEvent has them all). */
 export interface KeyLike {
@@ -44,6 +46,7 @@ const LETTERS: Readonly<Record<string, PresenterCommand>> = {
 	f: { kind: "fullscreen" },
 	p: { kind: "present" },
 	c: { kind: "contrast" },
+	x: { kind: "stopLight" },
 }
 
 /**
