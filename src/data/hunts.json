@@ -1,0 +1,90 @@
+{
+	"questions": [
+		{ "id": "walkedOn", "answers": ["moon"] },
+		{ "id": "redPlanet", "answers": ["mars"] },
+		{ "id": "biggestPlanet", "answers": ["jupiter"] },
+		{ "id": "famousRings", "answers": ["saturn"] },
+		{ "id": "hottestPlanet", "answers": ["venus"] },
+		{ "id": "shortestYear", "answers": ["mercury"] },
+		{ "id": "spinsBackwards", "answers": ["venus", "uranus"] },
+		{ "id": "geysers", "answers": ["enceladus"] },
+		{ "id": "wrongWayMoon", "answers": ["triton"] },
+		{ "id": "dayLongerThanYear", "answers": ["venus"] },
+		{ "id": "coldestPlace", "answers": ["moon"] },
+		{ "id": "onItsSide", "answers": ["uranus"] },
+		{ "id": "floatingPlanet", "answers": ["saturn"] },
+		{ "id": "volcanoMoon", "answers": ["io"] },
+		{ "id": "thickAir", "answers": ["titan"] },
+		{ "id": "biggerThanMercury", "answers": ["ganymede", "titan"] },
+		{ "id": "oceanMoon", "answers": ["europa"] },
+		{ "id": "lightHours", "answers": ["neptune"] },
+		{
+			"id": "retrogradeLoop",
+			"answers": [
+				"mars",
+				"venus",
+				"mercury",
+				"jupiter",
+				"saturn",
+				"uranus",
+				"neptune"
+			],
+			"frame": "earth"
+		},
+		{ "id": "shortestDay", "answers": ["jupiter"] },
+		{ "id": "coldestPlanet", "answers": ["uranus"] },
+		{ "id": "hiddenRings", "answers": ["jupiter", "uranus", "neptune"] }
+	],
+	"hunts": [
+		{
+			"id": "firstSteps",
+			"difficulty": "easy",
+			"questions": [
+				"walkedOn",
+				"redPlanet",
+				"biggestPlanet",
+				"famousRings",
+				"hottestPlanet",
+				"shortestYear"
+			]
+		},
+		{
+			"id": "weirdWorlds",
+			"difficulty": "medium",
+			"questions": [
+				"spinsBackwards",
+				"geysers",
+				"wrongWayMoon",
+				"dayLongerThanYear",
+				"coldestPlace",
+				"onItsSide",
+				"floatingPlanet",
+				"volcanoMoon"
+			]
+		},
+		{
+			"id": "moonSafari",
+			"difficulty": "medium",
+			"questions": [
+				"walkedOn",
+				"thickAir",
+				"volcanoMoon",
+				"biggerThanMercury",
+				"geysers",
+				"oceanMoon",
+				"wrongWayMoon"
+			]
+		},
+		{
+			"id": "lightAndMotion",
+			"difficulty": "hard",
+			"questions": [
+				"lightHours",
+				"shortestDay",
+				"retrogradeLoop",
+				"coldestPlanet",
+				"hiddenRings"
+			]
+		}
+	]
+}
