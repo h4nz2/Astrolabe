@@ -277,6 +277,32 @@
 				]
 			}
 		},
+		"skyTonight": {
+			"title": {
+				"standard": "Qu’y a-t-il dans le ciel cette nuit ?",
+				"simple": "Le ciel cette nuit"
+			},
+			"what": {
+				"standard": "Quelles planètes et quelle Lune tu peux voir cette nuit depuis ta ville : quand, dans quelle direction, à quelle hauteur et s’il te faut des jumelles.",
+				"simple": "Découvre quelles planètes tu peux voir cette nuit depuis ta ville, et où regarder."
+			},
+			"why": {
+				"standard": "C’est le pont entre l’écran et le vrai ciel, et « Pourquoi est-ce visible ? » montre en 3D comment la Terre, le Soleil et la planète sont placés.",
+				"simple": "Sors et trouve Jupiter ou Vénus de tes propres yeux !"
+			},
+			"how": {
+				"standard": [
+					"Appuie sur « Le ciel cette nuit » sous la case du nom et choisis ta ville (l’application ne demande jamais ta position d’elle-même).",
+					"Lis la liste : ce que tu peux voir, quand, où et avec quoi.",
+					"Appuie sur « Pourquoi est-ce visible ? » à côté d’une planète pour voir la raison dans l’espace."
+				],
+				"simple": [
+					"Appuie sur « Le ciel cette nuit ».",
+					"Choisis ta ville. Demande à un adulte avant d’utiliser la position de l’appareil.",
+					"Lis où regarder, puis sors !"
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Le dictionnaire illustré",

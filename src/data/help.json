@@ -56,6 +56,11 @@
 			"try": "/solar_system?focus=earth&frame=earth&sel=mars&t=2460691.5&cam=0_89.9_120&warp=2629800"
 		},
 		{
+			"id": "skyTonight",
+			"group": "lookingAround",
+			"try": "/solar_system?sky=true"
+		},
+		{
 			"id": "dictionary",
 			"group": "lookingAround",
 			"try": "/solar_dictionary?entity=4"

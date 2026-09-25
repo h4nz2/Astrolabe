@@ -277,6 +277,32 @@
 				]
 			}
 		},
+		"skyTonight": {
+			"title": {
+				"standard": "Was ist heute Nacht am Himmel?",
+				"simple": "Der Himmel heute Nacht"
+			},
+			"what": {
+				"standard": "Welche Planeten und welchen Mond du heute Nacht von deinem Ort aus sehen kannst: wann, in welcher Richtung, wie hoch und ob du ein Fernglas brauchst.",
+				"simple": "Finde heraus, welche Planeten du heute Nacht von deinem Ort aus sehen kannst und wohin du schauen musst."
+			},
+			"why": {
+				"standard": "Es ist die Brücke vom Bildschirm zum echten Himmel, und „Warum kann ich das sehen?“ zeigt Erde, Sonne und Planet in 3D, wie sie zueinander stehen.",
+				"simple": "Geh nach draußen und finde Jupiter oder Venus mit deinen eigenen Augen!"
+			},
+			"how": {
+				"standard": [
+					"Drück unter dem Namensfeld auf „Himmel heute Nacht“ und wähl deinen Ort (die App fragt nie von sich aus nach deinem Standort).",
+					"Lies die Liste: was du sehen kannst, wann, wo und womit.",
+					"Drück neben einem Planeten auf „Warum kann ich das sehen?“, um den Grund im All zu sehen."
+				],
+				"simple": [
+					"Drück auf „Himmel heute Nacht“.",
+					"Wähl deinen Ort. Frag einen Erwachsenen, bevor du den Standort des Geräts benutzt.",
+					"Lies, wohin du schauen musst, und dann ab nach draußen!"
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Das Bildlexikon",

@@ -277,6 +277,32 @@
 				]
 			}
 		},
+		"skyTonight": {
+			"title": {
+				"standard": "¿Qué hay en el cielo esta noche?",
+				"simple": "El cielo esta noche"
+			},
+			"what": {
+				"standard": "Qué planetas y qué Luna puedes ver esta noche desde tu ciudad: cuándo, en qué dirección, a qué altura y si necesitas prismáticos.",
+				"simple": "Descubre qué planetas puedes ver esta noche desde tu ciudad y hacia dónde mirar."
+			},
+			"why": {
+				"standard": "Es el puente entre la pantalla y el cielo de verdad, y «¿Por qué se ve?» muestra en 3D cómo están colocados la Tierra, el Sol y el planeta.",
+				"simple": "¡Sal fuera y encuentra Júpiter o Venus con tus propios ojos!"
+			},
+			"how": {
+				"standard": [
+					"Pulsa «El cielo esta noche» debajo de la casilla del nombre y elige tu ciudad (la aplicación nunca pide tu ubicación por su cuenta).",
+					"Lee la lista: qué puedes ver, cuándo, dónde y con qué.",
+					"Pulsa «¿Por qué se ve?» junto a un planeta para ver el motivo en el espacio."
+				],
+				"simple": [
+					"Pulsa «El cielo esta noche».",
+					"Elige tu ciudad. Pregunta a una persona mayor antes de usar la ubicación del dispositivo.",
+					"Lee hacia dónde mirar, ¡y sal fuera!"
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "El diccionario visual",

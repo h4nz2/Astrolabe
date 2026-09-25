@@ -277,6 +277,32 @@
 				]
 			}
 		},
+		"skyTonight": {
+			"title": {
+				"standard": "What is in the sky tonight",
+				"simple": "The sky tonight"
+			},
+			"what": {
+				"standard": "Which planets and what Moon you can see tonight from your town: when, in which direction, how high, and whether you need binoculars.",
+				"simple": "Find out which planets you can see from your town tonight, and where to look."
+			},
+			"why": {
+				"standard": "It is the bridge from the screen to the real sky, and “Why can I see it?” shows the Earth, Sun and planet lined up in 3D.",
+				"simple": "Go outside and find Jupiter or Venus with your own eyes!"
+			},
+			"how": {
+				"standard": [
+					"Press “Tonight’s sky” under the name box and choose your town (the app never asks for your location on its own).",
+					"Read the list: what you can see, when, where and with what.",
+					"Press “Why can I see it?” next to a planet to see the reason in space."
+				],
+				"simple": [
+					"Press “Tonight’s sky”.",
+					"Pick your town. Ask a grown-up before using the device’s location.",
+					"Read where to look, then go outside!"
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "The picture dictionary",

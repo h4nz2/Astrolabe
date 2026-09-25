@@ -277,6 +277,32 @@
 				]
 			}
 		},
+		"skyTonight": {
+			"title": {
+				"standard": "Co je dnes v noci na obloze",
+				"simple": "Obloha dnes v noci"
+			},
+			"what": {
+				"standard": "Které planety a jaký Měsíc dnes v noci uvidíš ze svého města: kdy, kterým směrem, jak vysoko a jestli potřebuješ dalekohled.",
+				"simple": "Zjisti, které planety dnes v noci uvidíš ze svého města a kam se máš dívat."
+			},
+			"why": {
+				"standard": "Je to most od obrazovky ke skutečné obloze a „Proč je vidět?“ ukáže Zemi, Slunce a planetu, jak spolu stojí, ve 3D.",
+				"simple": "Jdi ven a najdi Jupiter nebo Venuši vlastníma očima!"
+			},
+			"how": {
+				"standard": [
+					"Pod polem se jménem stiskni „Obloha dnes v noci“ a vyber své město (aplikace se sama nikdy neptá na tvou polohu).",
+					"Přečti si seznam: co uvidíš, kdy, kde a čím.",
+					"U planety stiskni „Proč je vidět?“ a uvidíš důvod ve vesmíru."
+				],
+				"simple": [
+					"Stiskni „Obloha dnes v noci“.",
+					"Vyber své město. Než použiješ polohu zařízení, zeptej se dospělého.",
+					"Přečti si, kam se dívat, a jdi ven!"
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Obrazový slovník",
