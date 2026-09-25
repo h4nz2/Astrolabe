@@ -371,7 +371,7 @@ button.slot:focus-visible {
 	.header {
 		gap: 0.25rem;
 		/* help (an icon on phones) and the language switcher */
-		padding-right: 6.5rem;
+		padding-right: 8rem;
 	}
 
 	/* phones: the back arrow alone (its name stays its label) */
