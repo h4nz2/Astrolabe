@@ -10,6 +10,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { HuntPanelSlot } from "./hunt/Hunt"
 import IntroController from "./intro/IntroController"
 import IntroMenu from "./intro/IntroMenu"
 import IntroOverlay from "./intro/IntroOverlay"
@@ -104,6 +105,7 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<ScalePanel />
 					</div>
+					<HuntPanelSlot />
 				</div>
 				<IntroOverlay className={classes.intro} />
 				<div className={`${classes.panel} ${classes.info}`}>

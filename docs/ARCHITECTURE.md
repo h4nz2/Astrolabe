@@ -33,8 +33,8 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, intro/, labels/, lighting/, light/, rings/, ui/),
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, intro/, labels/, lighting/, light/, rings/, ui/),
                              solarWalk/ (the basketball solar system, #25)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
@@ -94,12 +94,14 @@ interface Body {
 		clouds?: string
 		night?: string
 	}
+	appearance?: { tint?: string; veiled?: true } // #17: "#rrggbb" times the map; veiled = the tint alone (Titan)
 	rings: {
 		innerRadiusKm: number
 		outerRadiusKm: number
 		textures: { alpha: string; color: string }
 	} | null
 	info: Record<string, unknown> // dictionary fields passed through; a source 0 ("unknown") is dropped
+	featured?: true // a moon with a story, shown by default (data/featured-moons.json; see Moons)
 }
 ```
 
@@ -115,8 +117,8 @@ Build rules (`scripts/lib/`):
 - Moons are merged from the source's `moons` (API export) and `satellites` (curated) arrays by normalized English name;
   `ISS` is skipped; curated-only moons are built from their curated fields; a missing period is derived from Kepler's
   third law (`info.periodDerived`). Untextured moons get the shared placeholder `earth/satellites/moon_1k.jpg`.
-- Moon phases are all 0 in the source, so they are spread from `hash(id)` and flagged `phaseSynthetic`. Only the Moon and
-  the Galileans have real (curated) phases.
+- Moon phases are all 0 in the source, so they are spread from `hash(id)` and flagged `phaseSynthetic`. Only the Moon,
+  the Galileans and Phoebe (JPL mean elements, #17) have real (curated) phases.
 - Retrograde spin is normalized to one encoding: tilt to the IAU pole (`180 - obliquity`) plus a negative period.
 - IAU poles and prime meridians (WGCCRE 2015 at J2000) for the Sun, planets and Moon come from `scripts/lib/iau.ts`,
   with Mars's and Neptune's periodic terms evaluated at J2000 (the constant terms alone put Mars's pole 1.5 deg off).
@@ -126,6 +128,9 @@ Build rules (`scripts/lib/`):
   Irregular moons without a period and Hyperion (`rotationChaotic` in the source: it tumbles) keep `null`: no spin.
 - Moon inclinations refer to the Laplace plane: inside the planet's Laplace radius they are rotated from the planet's
   equator into the ecliptic (`frames.ts`), so regular moons and rings are coplanar; outside it they are kept as ecliptic.
+- Featured moons (#17): `data/featured-moons.json` (planet id -> moon id -> the story in one line) flags moons
+  `featured`; an unknown id or a wrong planet stops the build. A curated `tint` / `veiled` on a moon's source record
+  becomes its `appearance`.
 - Rings: Saturn from the source; Jupiter, Uranus and Neptune from `data/rings/` (`EXTERNAL_RING_PLANETS`; the source's
   Jupiter ring was an opaque Saturn-like texture, replaced by the halo, main and Amalthea gossamer rings). Strips run
   u = 0 (inner) to u = 1 (outer), gray level = face-on opacity. Every ring lies within 3 planet radii (the moon curve's
@@ -467,6 +472,43 @@ and eclipses are the real ones in every scale preset (a moon drawn 10x too big n
 - The mode is not persisted or in the URL (like "Always lit"): every visit opens with the true spin. The canvas
   carries `data-spin-mode`.
 
+## Moons (#17)
+
+Moons are natural satellites only. The data holds 183 (Earth 1, Mars 2, Jupiter 57, Saturn 82, Uranus 27, Neptune
+14); most are rocks a few kilometres across with provisional names. Drawing them all as equals buries Titan among
+specks and ties an orbit tangle round Jupiter and Saturn, so the rule is **curated by story, not by size**:
+
+- **Featured moons** (`Body.featured`, listed with their one-line story in `data/featured-moons.json`): a moon is
+  featured when it has a story a student can repeat. 24 today: the Moon; Phobos, Deimos; Io, Europa, Ganymede,
+  Callisto; Mimas, Enceladus, Tethys, Dione, Rhea, Titan, Hyperion, Iapetus, Phoebe; Miranda, Ariel, Umbriel,
+  Titania, Oberon; Proteus, Triton, Nereid. Every featured moon must have authored content (name, tagline,
+  description, facts, comparisons) at every reading level in every locale (`src/i18n/bodies.test.ts`). To feature
+  a moon: add it to the JSON, write its content, `pnpm build:data`.
+- **The long tail** (every other moon) is drawn only while `showAllMoons` is on: the "All moons" switch
+  (`allMoons=true` in the URL, off by default, needs the Moons switch), or "Show 53 smaller moons" in a planet's
+  card. A focused moon is always drawn. `isBodyShown` (store/sim.ts) is the one rule, so meshes, orbit lines,
+  markers, picking, labels, shadows, the too-fast warning and the arrow keys (`focusRing`) all follow it.
+- **Appear when meaningful**: a moon's orbit line fades in with its drawn size on screen
+  (`bodies/moonOrbitFade.ts`: hidden below 14 px radius, full from 48 px), so from the overview (any preset) moon
+  systems are clean dots and approaching a planet draws its system in. Long-tail orbits are drawn at 40 % of a
+  featured orbit's opacity, so the swarm stays behind the story. Moon dots and names stay limited to the focus
+  family (Markers, Labels); names rank featured moons first (`MOON_LABEL_BUDGET` 10: all 9 of Saturn's).
+- **Moon distances** are the scale engine's `moonDistance` curve (see Scale), not a second model.
+- **Card** (`ui/MoonSystem.tsx`, `ui/moonSystem.ts`): a planet's card lists its featured moons (a click flies
+  there), "See the whole moon system" (`goTo` the planet with a shot fitting the outermost drawn orbit,
+  `moonSystemShotDistance`, from 35 deg elevation) and the long-tail switch; a moon's card has "Read its story"
+  (the authored description; moons have no dictionary entry) and a way back to its planet. The FocusPicker lists
+  featured moons first. The card scrolls on wide screens instead of running off a 720 px projector.
+- **Appearance**: only a handful of moons have texture maps; the rest share the Moon's map. `appearance.tint`
+  (curated in `data/ourDB.json`) gives featured moons their own hue; `veiled` draws Titan as its haze colour alone.
+- **Tidal locking** is #13's (Rotation). Hyperion tumbles.
+- **Performance budget** (a mid-range laptop, integrated GPU, 1080p): at most ~60 draw calls per frame by default and
+  ~250 with All moons on, and no per-frame allocation. Moons drawn under half a pixel (`isDiscVisible`) and moon orbit
+  lines faded out are neither drawn nor updated. Measured at 1280x720 in headless Chromium by counting WebGL draw
+  calls (September 2026): overview 26 (All moons: 26), Jupiter 26 (All moons: 159), Saturn 37 (All moons: 184). The
+  software-GL frame times there only compare views; the overview with All moons on is the slowest (about 4x the
+  default overview) and is the one to profile first if a real laptop struggles.
+
 ## Rings (`src/sim/rings.ts`, `features/solarSystem/rings/`, `lighting/ring*.ts`; #12)
 
 Driven by data alone: a body with `rings` gets them (Jupiter, Saturn, Uranus, Neptune), nobody else does.
@@ -512,7 +554,7 @@ near the camera jitters.
 
 ```
 simTimeJD, timeWarp, paused, clock, lastTickMs    time; change only through the actions below
-hoverId, showOrbits, showLabels, showMoons, showMarkers, showOrbitLabels
+hoverId, showOrbits, showLabels, showMoons, showAllMoons (#17), showMarkers, showOrbitLabels
 ...NavigationSlice
 setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing moves at the change
 setSimTime(jd)                                    instant jump
@@ -528,12 +570,12 @@ React UI subscribes with selectors, and reads the clock only through `useThrottl
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
 Scale presets). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
-off by default, as `orbitNames=true` while on; `frame=<id>` while a body is held still (#31). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
+off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, the long tail of moons); `frame=<id>` while a body is held still (#31). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
 only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
-`?birthday=true` opens the birthday panel.
+`?birthday=true` opens the birthday panel; `?hunt=` the scavenger hunt (see Scavenger hunt).
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -589,7 +631,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
-- Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
+- Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers (featured moons, the long tail
+  only with `showAllMoons`; see Moons); hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel), `FlightReadout`
@@ -670,8 +713,8 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
   diagonals; last frame's side first), never on its own disc, inside the viewport, never over another label or a HUD
   `.panel` (`setKeepOut`, re-read every 0.25 s), first try clear of every dot (<= 24 px), else only of labelled ones.
   No free position: hidden. 2 px hysteresis against flicker; 0.2 s fades (`fadeLabels`).
-- **Density:** at most `MOON_LABEL_BUDGET` (8) moon names at once (largest first); the hovered, selected or focused
-  moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget.
+- **Density:** at most `MOON_LABEL_BUDGET` (10) moon names at once (featured moons first, then largest; #17); the hovered, selected or focused
+  moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget; a faded-out moon orbit (see Moons) gets no name.
 - **Size:** CSS, relative to the viewport (planets 13..19 px, moons 12..16 px, orbits 11..15 px), never the zoom.
   Light text with a dark multi-layer halo for contrast on black space and bright planet faces alike; the Sun
   and moons take their marker colours, the selection is orange, hover underlines.
@@ -724,6 +767,35 @@ weight on the Sun, the planets and the seven large moons.
   carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
   picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
 
+## Scavenger hunt (`features/solarSystem/hunt`, `src/store/hunt.ts`; #34)
+
+Clues a class solves by finding a world in the scene and selecting it: the exploration is the point, the selection
+is the receipt. No score, no timer, no ranking, no failure state.
+
+- **Content is data.** `src/data/hunts.json` holds the question bank (`id`, `answers`: body ids, any of which
+  solves it; optional `frame`: the body that must be held still, #31) and the ready-made hunts (`id`,
+  `difficulty` easy/medium/hard, question ids in order). The words live in `src/locales/<locale>/hunts.json`
+  (`hunts.<id>.{title, description}`, `questions.<id>.{clue, hints[], found}`; plain text, one value or one per
+  reading level, like `bodies.json`; read by `hunt/text.ts`). `hunt/hunts.test.ts` is the contract: answers are
+  real bodies, every clue and discovery is written for every level in every locale, at least two hints, the last
+  naming the answer. A new clue or hunt is an edit of those three files.
+- **Answering** (`hunt/watch.ts`): the hunt watches `selectedId` (and `frameId`) in the sim store; it has no picking
+  of its own, so a click, a label (#20) or the picker (#16) all answer. A selection that already answers a new clue
+  is let go (`select(null)`), so every answer is a fresh choice. A miss only sets kind words (`guessOf`: "other",
+  "warm" on the planet of a moon that answers, "almost" for the right body outside the clue's frame). Hints
+  escalate; after the last one "Show me" (`showAnswer`) flies there (or applies the matching #31 preset), which
+  solves the clue.
+- **Store** (`useHuntStore`): the hunt `key`, `step`, `hints`, `phase` (asking/found), `found` bodies, plus panel
+  state. Progress is kept in sessionStorage (a reload mid-lesson keeps it; nothing leaves the device).
+- **UI**: `hunt/Hunt.tsx` has the HUD button (in the time controls, beside the birthday) and the panel slot;
+  `HuntPanel.tsx` (lazy) is docked at the right like the birthday panel and carries the HUD `.panel` class, so
+  labels avoid it: the chooser (hunt cards, "Make your own hunt" from the whole bank), then progress dots, the
+  clue in large type, hints, the discovery text and a finish with the worlds found. It folds to the clue alone.
+- **Links**: `?hunt=true` opens the chooser, `?hunt=<hunt id>` or `?hunt=<question ids joined by ".">` (a teacher's
+  own hunt, `resolveHunt`) opens that hunt. The route keeps `hunt` on every navigation (`retainSearchParams`), so
+  the store mirror in `urlSync.ts` leaves it alone; the panel sets and clears it. "Share" builds
+  `/solar_system?hunt=…&lang=…&reading=…` only, so every student starts the same hunt in the teacher's language.
+
 ## Light travel (`src/sim/light.ts`, `src/store/light.ts`, `features/solarSystem/light/`; #27)
 
 Every light time comes from TRUE positions; only the drawn front goes through the scale engine.
@@ -767,6 +839,7 @@ body keeps its catalogue name, and provisional designations (`S/2003 J 2`) are n
 src/locales/config.json          { defaultLocale, readingLevels (menu order), defaultReadingLevel }
 src/locales/<locale>/ui.json     UI strings: a tree of ICU MessageFormat messages
 src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/data/bodies.json)
+src/locales/<locale>/hunts.json  the scavenger hunt's clues, hints and discoveries (#34, see Scavenger hunt)
 ```
 
 - Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences
@@ -781,7 +854,8 @@ src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/d
 - `bodies.json`: per body `name`, `tagline`, `description`, `facts[]`, `comparisons[]`; each text field is either
   one value for all levels or `{ "simple": …, "standard": …, "advanced": … }` (the default level required). Plain text,
   not ICU. The Sun and the eight planets have every field at every level in every locale (tested); moons without
-  content get a generated description from their data (`bodies.fallback.moonDescription`).
+  content get a generated description from their data (`bodies.fallback.moonDescription`). Every featured moon (#17,
+  see Moons) has every field at every level in every locale (tested).
 - `src/i18n/locales.test.ts` and `bodies.test.ts` are the contract: every locale has exactly English's keys and
   variants, parses, uses only known arguments and complete plurals, and mirrors English's body content structure.
 

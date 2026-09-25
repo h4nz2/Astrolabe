@@ -54,12 +54,21 @@ export const simSearchSchema = z.object({
 	markers: layerSwitch,
 	// orbit names (#20) are off by default, so only `true` is ever written
 	orbitNames: layerSwitch,
+	// every moon, not only the featured ones (#17): off by default, so only `true` is ever written
+	allMoons: layerSwitch,
 	// the scale preset (#21), a preset id of src/sim/scale.ts; absent is the
 	// default (Everything visible), unknown ids are ignored when applied
 	scale: z.string().optional().catch(undefined),
 	// `?birthday=true` opens the birthday panel (#26) on arrival; it is only an
 	// instruction and never carries a date (a birth date never enters the URL)
 	birthday: z.boolean().optional().catch(undefined),
+	// the scavenger hunt (#34): `true` opens the chooser, a hunt id or question
+	// ids joined by "." play that hunt (resolveHunt in features/solarSystem/hunt);
+	// kept on every navigation of the page (the route's retainSearchParams)
+	hunt: z
+		.union([z.literal(true), z.string().trim().min(1)])
+		.optional()
+		.catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>

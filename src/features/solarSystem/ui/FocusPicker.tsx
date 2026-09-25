@@ -18,12 +18,17 @@ import { hasModifier, isEditableTarget, useWindowKeydown } from "./keyboard"
 
 import classes from "./FocusPicker.module.css"
 
-const largestFirst = (a: Body, b: Body): number => b.radiusKm - a.radiusKm
+/** The featured moons (#17) first, then the long tail; the larger first within each. */
+const featuredThenLargest = (a: Body, b: Body): number =>
+	Number(b.featured === true) - Number(a.featured === true) ||
+	b.radiusKm - a.radiusKm
 
 /**
  * The Sun, then one group per planet holding the planet itself and all its
- * moons, largest first; names in the active language, so the search matches
- * "Erde" in German and "Earth" in English.
+ * moons, the featured ones first, largest first; names in the active
+ * language, so the search matches "Erde" in German and "Earth" in English.
+ * The long tail is listed even while it is hidden: picking a moon focuses,
+ * and so draws, it.
  */
 export function focusOptions(
 	chain: I18n["chain"],
@@ -36,7 +41,9 @@ export function focusOptions(
 		{ group: bodyName(sun.id, chain), items: [toItem(sun)] },
 		...planets.map((planet) => ({
 			group: bodyName(planet.id, chain),
-			items: [planet, ...moonsOf(planet.id).sort(largestFirst)].map(toItem),
+			items: [planet, ...moonsOf(planet.id).sort(featuredThenLargest)].map(
+				toItem,
+			),
 		})),
 	]
 }
@@ -45,8 +52,12 @@ export function focusOptions(
 const handleKeyDown = (event: KeyboardEvent): void => {
 	if (hasModifier(event) || isEditableTarget(event.target)) return
 	if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return
-	const { focusId, setFocus } = useSimStore.getState()
-	const next = cycleFocus(focusId, event.key === "ArrowRight" ? 1 : -1)
+	const { focusId, setFocus, showAllMoons } = useSimStore.getState()
+	const next = cycleFocus(
+		focusId,
+		event.key === "ArrowRight" ? 1 : -1,
+		showAllMoons,
+	)
 	if (next === focusId) return
 	event.preventDefault()
 	setFocus(next)

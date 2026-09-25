@@ -25,10 +25,11 @@ const TooFastHint = () => {
 	const gliding = useSimStore((state) => state.clock.glide !== null)
 	const focusId = useSimStore((state) => state.focusId)
 	const showMoons = useSimStore((state) => state.showMoons)
+	const showAllMoons = useSimStore((state) => state.showAllMoons)
 	const fps = useFrameRate()
 	const inView = useMemo(
-		() => bodiesInView(bodies, focusId, showMoons),
-		[focusId, showMoons],
+		() => bodiesInView(bodies, focusId, showMoons, showAllMoons),
+		[focusId, showMoons, showAllMoons],
 	)
 
 	const fast = paused || gliding ? null : tooFastToFollow(inView, warp, fps)
