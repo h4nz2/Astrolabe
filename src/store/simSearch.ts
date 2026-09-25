@@ -60,6 +60,13 @@ export const simSearchSchema = z.object({
 	// `?birthday=true` opens the birthday panel (#26) on arrival; it is only an
 	// instruction and never carries a date (a birth date never enters the URL)
 	birthday: z.boolean().optional().catch(undefined),
+	// a guided tour (#28): the tour's id, the stop counted from 1, and autoplay;
+	// unknown tours are ignored when applied (features/solarSystem/tours)
+	tour: z.string().optional().catch(undefined),
+	stop: z
+		.preprocess(urlNumber, z.coerce.number().int().positive().optional())
+		.catch(undefined),
+	autoplay: z.boolean().optional().catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>

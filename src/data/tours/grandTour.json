@@ -1,0 +1,36 @@
+{
+	"id": "grandTour",
+	"order": 1,
+	"stops": [
+		{
+			"id": "system",
+			"view": "overview",
+			"scale": "everythingVisible",
+			"speed": "hour",
+			"time": "now",
+			"layers": { "orbits": true, "labels": true, "markers": true }
+		},
+		{ "id": "sun", "view": "sun", "camera": { "distance": 1.2 } },
+		{ "id": "mercury", "view": "mercury" },
+		{ "id": "venus", "view": "venus" },
+		{ "id": "earth", "view": "earth", "camera": { "distance": 1.6 } },
+		{ "id": "mars", "view": "mars" },
+		{ "id": "jupiter", "view": "jupiter", "camera": { "distance": 1.4 } },
+		{
+			"id": "saturn",
+			"view": "saturn",
+			"camera": { "distance": 1.4, "elevation": 22 }
+		},
+		{
+			"id": "uranus",
+			"view": "uranus",
+			"camera": { "distance": 1.6, "elevation": 10 }
+		},
+		{ "id": "neptune", "view": "neptune", "camera": { "distance": 1.4 } },
+		{
+			"id": "beyond",
+			"view": "overview",
+			"camera": { "distance": 2.5, "elevation": 30 }
+		}
+	]
+}

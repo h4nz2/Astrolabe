@@ -1,0 +1,53 @@
+{
+	"id": "howBig",
+	"order": 2,
+	"stops": [
+		{
+			"id": "usual",
+			"view": "overview",
+			"scale": "everythingVisible",
+			"speed": "realTime",
+			"layers": { "orbits": true, "labels": true, "markers": true }
+		},
+		{ "id": "earth", "view": "earth", "camera": { "distance": 1.3 } },
+		{
+			"id": "moon",
+			"view": "earth",
+			"scale": "trueScale",
+			"fit": { "km": 440000 },
+			"camera": { "elevation": 30 },
+			"select": "moon",
+			"autoSeconds": 20
+		},
+		{ "id": "sun", "view": "sun", "camera": { "distance": 1.2 } },
+		{
+			"id": "gap",
+			"view": "sun",
+			"fit": { "au": 1.15 },
+			"camera": { "elevation": 55 },
+			"select": "earth"
+		},
+		{
+			"id": "neptune",
+			"view": "overview",
+			"camera": { "elevation": 55 },
+			"select": "neptune"
+		},
+		{
+			"id": "empty",
+			"view": "overview",
+			"camera": { "elevation": 55 },
+			"select": null,
+			"layers": { "markers": false, "labels": false },
+			"autoSeconds": 14
+		},
+		{
+			"id": "basketball",
+			"view": "overview",
+			"camera": { "elevation": 55 },
+			"select": null,
+			"layers": { "markers": true, "labels": true },
+			"link": "solarWalk"
+		}
+	]
+}

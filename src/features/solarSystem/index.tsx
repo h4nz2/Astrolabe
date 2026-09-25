@@ -12,6 +12,9 @@ import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import { LightSlot } from "./light/LightPanel"
 import Scene from "./scene/Scene"
+import TourCard from "./tours/TourCard"
+import TourMenu from "./tours/TourMenu"
+import TourSync from "./tours/TourSync"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -67,6 +70,7 @@ const SolarSystem = () => {
 	return (
 		<div className={classes.page}>
 			<UrlSync />
+			<TourSync />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
@@ -78,6 +82,7 @@ const SolarSystem = () => {
 						<OverviewButton />
 						<FocusPicker />
 						<FrameMenu />
+						<TourMenu />
 					</div>
 					<FrameBadgePanel />
 					<LightSlot
@@ -101,6 +106,7 @@ const SolarSystem = () => {
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />
 				</div>
+				<TourCard className={`${classes.panel} ${classes.tour}`} />
 				<div className={`${classes.time} ${classes.bottom}`}>
 					<FlightReadout className={classes.panel} />
 					<div className={classes.panel}>

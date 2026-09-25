@@ -20,6 +20,7 @@ import { useEffect, useLayoutEffect, useRef } from "react"
 import { useNavigate, useSearch } from "@tanstack/react-router"
 
 import { bodyById } from "@/data"
+import { tourById } from "@/data/tours"
 import {
 	DEFAULT_SCALE_PRESET,
 	dateToJD,
@@ -42,9 +43,13 @@ import {
 	type View,
 } from "./navigation"
 import { hidesTimeInUrl, useBirthdayStore } from "./birthday"
+import { tourSearch, useTourStore, type TourSearch } from "./tour"
 import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
+
+/** Only the tours of the menu (src/data/tours) go into a link. */
+const isTourListed = (id: string): boolean => tourById.has(id)
 
 /** Minimum spacing between two writes of `t` into the URL. */
 export const TIME_SYNC_INTERVAL_MS = 1000
@@ -83,6 +88,8 @@ type Mirrored = Omit<Layers, "showOrbitLabels"> &
 	Partial<Pick<SimState, "frameId">> & {
 		/** The chosen scale preset (#21, `useScaleStore`'s `targetId`); absent or null writes nothing. */
 		scalePreset?: ScalePresetId | null
+		/** The guided tour in progress (#28), see `tourSearch` in ./tour.ts. */
+		tour?: TourSearch
 	}
 
 type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
@@ -140,6 +147,9 @@ export function searchFromState(
 		state.scalePreset != null && state.scalePreset !== DEFAULT_SCALE_PRESET
 			? state.scalePreset
 			: undefined
+	search.tour = state.tour?.tour
+	search.stop = state.tour?.stop
+	search.autoplay = state.tour?.autoplay
 	return search
 }
 
@@ -153,6 +163,9 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.warp === b.warp &&
 	a.orbitNames === b.orbitNames &&
 	a.scale === b.scale &&
+	a.tour === b.tour &&
+	a.stop === b.stop &&
+	a.autoplay === b.autoplay &&
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
 /**
@@ -287,6 +300,7 @@ export function useSimUrlSync(): void {
 				{
 					...useSimStore.getState(),
 					scalePreset: useScaleStore.getState().targetId,
+					tour: tourSearch(useTourStore.getState(), isTourListed),
 				},
 				searchRef.current,
 				hidesTimeInUrl(useBirthdayStore.getState()),
@@ -327,6 +341,16 @@ export function useSimUrlSync(): void {
 		const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
 			if (state.targetId !== previous.targetId) write()
 		})
+		// a tour starting, moving to another stop, or ending (#28)
+		const unsubscribeTour = useTourStore.subscribe((state, previous) => {
+			if (
+				state.tour !== previous.tour ||
+				state.index !== previous.index ||
+				state.auto !== previous.auto
+			) {
+				write()
+			}
+		})
 		// entering or forgetting a birth date takes `t` out of the URL or puts it back
 		const unsubscribeBirthday = useBirthdayStore.subscribe(
 			(state, previous) => {
@@ -338,6 +362,7 @@ export function useSimUrlSync(): void {
 		return () => {
 			unsubscribe()
 			unsubscribeScale()
+			unsubscribeTour()
 			unsubscribeBirthday()
 			if (timer !== undefined) clearTimeout(timer)
 		}

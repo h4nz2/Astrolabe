@@ -200,3 +200,38 @@
 		--light-panel-body-max: 30dvh;
 	}
 }
+
+/*
+ * The guided tour's card (#28): bottom right on wide screens (the empty cell
+ * beside the time controls); below 1000 px in the body card's row, which it
+ * takes over while unfolded (the narration is the lesson then).
+ */
+.tour {
+	grid-column: 3;
+	grid-row: 3;
+	justify-self: end;
+	align-self: end;
+	min-width: 0;
+	max-width: 100%;
+}
+
+@media (max-width: 999px) {
+	.tour {
+		grid-column: 1 / -1;
+	}
+
+	.hud:has([data-tour-card][data-collapsed="false"]) .info {
+		display: none;
+	}
+}
+
+@media (max-width: 599px) {
+	.tour {
+		grid-area: info;
+		justify-self: stretch;
+	}
+
+	.hud:has([data-tour-card]) .info {
+		display: none;
+	}
+}

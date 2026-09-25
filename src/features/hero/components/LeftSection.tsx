@@ -39,6 +39,7 @@ const LeftSection: FC<LeftSectionProps> = () => {
 				<Flex direction="column" py="xl" gap="xs" maw={300}>
 					<Button to="/solar_dictionary" label={t("hero.dictionary")} />
 					<Button to="/solar_system" label={t("hero.solarSystem")} />
+					<TourButton label={t("hero.tour")} />
 					<BirthdayButton label={t("hero.birthday")} />
 					<Button to="/solar_walk" label={t("hero.solarWalk")} />
 				</Flex>
@@ -59,6 +60,29 @@ const Button: FC<ButtonProps> = ({ to, label }) => {
 			variant="gradient"
 			gradient={{ from: "yellow", to: "red" }}
 			size="xl"
+			className={classes.button}
+		>
+			{label}
+		</MantineButton>
+	)
+}
+
+/** Straight into the first guided tour (#28), for a visitor with no question of their own yet. */
+const TourButton: FC<{ label: string }> = ({ label }) => {
+	return (
+		<MantineButton
+			renderRoot={(props) => (
+				<Link
+					{...props}
+					to="/solar_system"
+					search={{ tour: "grandTour" }}
+					preload="viewport"
+				/>
+			)}
+			variant="outline"
+			color="orange"
+			size="xl"
+			px="md"
 			className={classes.button}
 		>
 			{label}
