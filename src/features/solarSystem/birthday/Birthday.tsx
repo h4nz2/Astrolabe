@@ -1,9 +1,10 @@
 import { Suspense, lazy, useLayoutEffect } from "react"
-import { Button, Center, Loader, Tooltip } from "@mantine/core"
+import { Button, Center, Loader } from "@mantine/core"
 import { useSearch } from "@tanstack/react-router"
 import { IconCake } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { useBirthdayStore } from "@/store/birthday"
 
 import classes from "./BirthdayPanel.module.css"
@@ -17,7 +18,7 @@ export const BirthdayButton = () => {
 	const open = useBirthdayStore((state) => state.open)
 	const setOpen = useBirthdayStore((state) => state.setOpen)
 	return (
-		<Tooltip label={t("solarSystem.birthday.openHint")} openDelay={400}>
+		<Hint text={t("solarSystem.birthday.openHint")}>
 			<Button
 				variant={open ? "filled" : "light"}
 				color="orange"
@@ -29,7 +30,7 @@ export const BirthdayButton = () => {
 			>
 				{t("solarSystem.birthday.open")}
 			</Button>
-		</Tooltip>
+		</Hint>
 	)
 }
 

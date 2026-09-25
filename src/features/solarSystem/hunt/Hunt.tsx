@@ -1,9 +1,10 @@
 import { Suspense, lazy, useEffect, useLayoutEffect, useRef } from "react"
-import { Button, Center, Loader, Tooltip } from "@mantine/core"
+import { Button, Center, Loader } from "@mantine/core"
 import { useNavigate, useSearch } from "@tanstack/react-router"
 import { IconMapSearch } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { useHuntStore } from "@/store/hunt"
 
 import { resolveHunt } from "./hunts"
@@ -20,7 +21,7 @@ export const HuntButton = () => {
 	const open = useHuntStore((state) => state.open)
 	const setOpen = useHuntStore((state) => state.setOpen)
 	return (
-		<Tooltip label={t("solarSystem.hunt.openHint")} openDelay={400}>
+		<Hint text={t("solarSystem.hunt.openHint")}>
 			<Button
 				variant={open ? "filled" : "light"}
 				color="orange"
@@ -32,7 +33,7 @@ export const HuntButton = () => {
 			>
 				{t("solarSystem.hunt.open")}
 			</Button>
-		</Tooltip>
+		</Hint>
 	)
 }
 

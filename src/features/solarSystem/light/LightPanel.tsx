@@ -29,6 +29,7 @@ import { IconBolt, IconCheck } from "@tabler/icons-react"
 
 import { useI18n, type I18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { Hint } from "@/primitives/hint"
 import { kmToAu } from "@/sim"
 import {
 	SPEED_OF_LIGHT_KM_S,
@@ -418,20 +419,21 @@ const OpenButton = () => {
 	const jd = useThrottledSimTime()
 	const seconds = pulse === null ? null : secondsSince(pulse.emitJD, jd)
 	return (
-		<UnstyledButton
-			className={classes.open}
-			onClick={() => setOpen(true)}
-			title={i18n.t("solarSystem.light.openHint")}
-			aria-expanded={false}
-		>
-			<IconBolt size={16} className={classes.icon} />
-			<span>{i18n.t("solarSystem.light.open")}</span>
-			{seconds !== null && seconds >= 0 && (
-				<span className={classes.openClock}>
-					{formatDuration(seconds, i18n, true)}
-				</span>
-			)}
-		</UnstyledButton>
+		<Hint text={i18n.t("solarSystem.light.openHint")}>
+			<UnstyledButton
+				className={classes.open}
+				onClick={() => setOpen(true)}
+				aria-expanded={false}
+			>
+				<IconBolt size={16} className={classes.icon} />
+				<span>{i18n.t("solarSystem.light.open")}</span>
+				{seconds !== null && seconds >= 0 && (
+					<span className={classes.openClock}>
+						{formatDuration(seconds, i18n, true)}
+					</span>
+				)}
+			</UnstyledButton>
+		</Hint>
 	)
 }
 

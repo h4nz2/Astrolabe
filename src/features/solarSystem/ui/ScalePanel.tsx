@@ -4,6 +4,7 @@ import { Anchor, SegmentedControl, Text } from "@mantine/core"
 
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { Hint } from "@/primitives/hint"
 import {
 	SCALE_LIES,
 	SCALE_PRESETS,
@@ -91,21 +92,29 @@ const ScalePanel = () => {
 			<Text id={titleId} className={classes.title} component="h2">
 				{t("solarSystem.scale.label")}
 			</Text>
-			<SegmentedControl
-				size="xs"
-				fullWidth
-				color="orange"
-				aria-label={t("solarSystem.scale.presetsLabel")}
-				className={classes.presets}
-				value={
-					targetId !== null && NAMED_PRESETS.includes(targetId) ? targetId : ""
-				}
-				onChange={(value) => switchScale(value as ScalePresetId)}
-				data={NAMED_PRESETS.map((id) => ({
-					value: id,
-					label: t(`solarSystem.scale.preset.${id}`),
-				}))}
-			/>
+			<Hint
+				options={Object.fromEntries(
+					NAMED_PRESETS.map((id) => [id, t(`solarSystem.scale.summary.${id}`)]),
+				)}
+			>
+				<SegmentedControl
+					size="xs"
+					fullWidth
+					color="orange"
+					aria-label={t("solarSystem.scale.presetsLabel")}
+					className={classes.presets}
+					value={
+						targetId !== null && NAMED_PRESETS.includes(targetId)
+							? targetId
+							: ""
+					}
+					onChange={(value) => switchScale(value as ScalePresetId)}
+					data={NAMED_PRESETS.map((id) => ({
+						value: id,
+						label: t(`solarSystem.scale.preset.${id}`),
+					}))}
+				/>
+			</Hint>
 			{targetId !== null && (
 				<Text className={classes.summary} aria-live="polite">
 					<strong>{t(`solarSystem.scale.preset.${targetId}`)}:</strong>{" "}
@@ -116,19 +125,26 @@ const ScalePanel = () => {
 				<span className={classes.lieLabel} id={sizesId}>
 					{t("solarSystem.scale.sizes")}
 				</span>
-				<SegmentedControl
-					size="xs"
-					aria-labelledby={sizesId}
-					value={lies?.sizes ?? ""}
-					onChange={(value) => setSizes(value as SizeLie)}
-					data={[
-						{ value: "true", label: t("solarSystem.scale.sizesTrue") },
-						{
-							value: "enlarged",
-							label: t("solarSystem.scale.sizesEnlarged"),
-						},
-					]}
-				/>
+				<Hint
+					options={{
+						true: t("solarSystem.scale.hint.sizesTrue"),
+						enlarged: t("solarSystem.scale.hint.sizesEnlarged"),
+					}}
+				>
+					<SegmentedControl
+						size="xs"
+						aria-labelledby={sizesId}
+						value={lies?.sizes ?? ""}
+						onChange={(value) => setSizes(value as SizeLie)}
+						data={[
+							{ value: "true", label: t("solarSystem.scale.sizesTrue") },
+							{
+								value: "enlarged",
+								label: t("solarSystem.scale.sizesEnlarged"),
+							},
+						]}
+					/>
+				</Hint>
 				<Text className={classes.statement}>
 					{t(sentences.size.key, sentences.size.values)}
 				</Text>
@@ -137,19 +153,26 @@ const ScalePanel = () => {
 				<span className={classes.lieLabel} id={distancesId}>
 					{t("solarSystem.scale.distances")}
 				</span>
-				<SegmentedControl
-					size="xs"
-					aria-labelledby={distancesId}
-					value={lies?.distances ?? ""}
-					onChange={(value) => setDistances(value as DistanceLie)}
-					data={[
-						{ value: "true", label: t("solarSystem.scale.distancesTrue") },
-						{
-							value: "squeezed",
-							label: t("solarSystem.scale.distancesSqueezed"),
-						},
-					]}
-				/>
+				<Hint
+					options={{
+						true: t("solarSystem.scale.hint.distancesTrue"),
+						squeezed: t("solarSystem.scale.hint.distancesSqueezed"),
+					}}
+				>
+					<SegmentedControl
+						size="xs"
+						aria-labelledby={distancesId}
+						value={lies?.distances ?? ""}
+						onChange={(value) => setDistances(value as DistanceLie)}
+						data={[
+							{ value: "true", label: t("solarSystem.scale.distancesTrue") },
+							{
+								value: "squeezed",
+								label: t("solarSystem.scale.distancesSqueezed"),
+							},
+						]}
+					/>
+				</Hint>
 				{sentences.distance !== null && (
 					<Text className={classes.statement}>
 						{t(sentences.distance.key, sentences.distance.values)}

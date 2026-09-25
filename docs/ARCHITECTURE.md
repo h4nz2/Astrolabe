@@ -36,6 +36,7 @@ src/sim/                     pure simulation, no React or three objects (import 
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, presentation.ts, postcard.ts, simSearch.ts (URL schema), urlSync.ts
 src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, ui/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
+src/primitives/hint/         hover hints for every control (#39, see Hints)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -49,6 +50,8 @@ public/assets/textures/      pruned; unreferenced tiered variants are kept for l
 - Per-frame motion never goes through React state: `useFrame` and mutate refs.
 - Every user-facing string goes through i18n (`useI18n().t`, see i18n) with an entry in every shipped locale; numbers,
   units and dates through its formatters, body names through `bodyName`/`useBodyName`, never `body.name`.
+- Every toggle, and every choice that changes the scene and is not self-explanatory, has a hint: wrap it in
+  `<Hint text={t("…hint.x")}>` (see Hints). No `title=` attributes and no Mantine `Tooltip` for this.
 - Nobody commits; the orchestrator commits at the end of each phase.
 - Done means `pnpm typecheck && pnpm lint && pnpm test && pnpm build` pass (plus `pnpm test:e2e` when the UI changed).
 
@@ -909,6 +912,51 @@ Every light time comes from TRUE positions; only the drawn front goes through th
   scene selection; one way, round trip, live distance, range, what it means for a rover), Farther out (Proxima
   Centauri, the galactic centre, Andromeda). Durations: `formatDuration` in `light/lightTravel.ts` (ICU units under
   `solarSystem.light.duration.*`, abbreviated at standard/advanced, spelled out at simple).
+
+## Hints (`src/primitives/hint`; #39)
+
+What a control does and why you would want it, in one sentence, where the control is: one shared mechanism for every
+switch, option, and HUD button in the solar system page. Hints are also the seed text of each control's help entry
+(#43).
+
+```tsx
+import { Hint, hintKey } from "@/primitives/hint"
+
+<Hint text={t("solarSystem.layers.hint.orbits")}><Switch label={t("solarSystem.layers.orbits")} … /></Hint>
+<Hint text={t("…hint.allMoons")} reason={showMoons ? undefined : t("…reason.allMoons")}><Switch disabled={!showMoons} … /></Hint>
+<Hint options={{ trueScale: t(…), textbook: t(…) }}><SegmentedControl data={…} /></Hint>  // keyed by radio value
+<Hint options={{ pause: t(…), play: t(…) }}><ActionIcon.Group><ActionIcon {...hintKey("pause")} />…</ActionIcon.Group></Hint>
+```
+
+- **Adding a control:** wrap it in `<Hint text>`, add the text under the feature's `hint` namespace in every locale
+  (plain = standard level, plus `@simple`; `@advanced` where an older reader gains something), and, if it can be
+  disabled, a `reason` saying what to turn on first. That is all: no ids, no props on the control.
+- **Zone:** `<Hint>` wraps its children in a `display: contents` span, so it adds no box: flex gaps, grids and
+  `ActionIcon.Group`'s first/last-child borders stay as they were. It wraps a `Popover`/`Menu` from outside (the
+  target gets the hint; events from the portaled dropdown are ignored because they are not DOM descendants).
+- **Triggers** (`controller.ts`, pure and unit-tested with fake timers): mouse/pen hover after 500 ms (the next hint
+  opens at once within 400 ms of one closing, so moving along a row does not wait again); keyboard focus after 250 ms,
+  only when `:focus-visible` and not within 1 s of a pointer press (a tapped text field is always focus-visible);
+  touch: a **long press** (500 ms, 10 px slop) shows it, and the click that ends the long press is swallowed in the
+  capture phase before React sees it, so a plain tap still just toggles and a long press never does. The long-press
+  hint stays until the next touch anywhere. A mouse press hides the hint until the pointer leaves; Escape, scrolling
+  and resizing dismiss it; the pointer may move onto the hint without it closing (WCAG 1.4.13). One hint is open in the
+  whole page. The zone also blocks the browser's long-press callout and text selection.
+- **Placement** (`placement.ts`, pure and unit-tested): above the control when it fits, else below, else the roomier
+  side; centred and clamped into the viewport, 8 px from the control, never overlapping it. The anchor is the whole
+  control (the union of the zone's children: a Switch's track and label) or, for options, the option's label/button.
+- **Accessibility:** each hint is a `role="tooltip"` element portaled to `<body>` and kept in the DOM while hidden;
+  the control's `aria-describedby` points at it permanently (appended to any description the control already has),
+  so screen readers read it on focus whether or not it is showing, disabled switches included. A disabled switch's
+  `reason` is part of that description. Disabled controls stay out of the tab order (the platform convention), so
+  keyboard users meet their reason through the screen reader or by hovering; the enabling switch sits right before.
+- **Look:** dark box, `sm` text; `html[data-presenting]` makes it larger (`md`, on top of the projector's bigger root
+  font), `html[data-contrast="high"]` white on black with a white border, `html[data-chrome="hidden"]` hides it.
+- **Where it is used:** the scene layer switches, the scale presets and the Sizes/Distances lies (presets reuse
+  `solarSystem.scale.summary.*`), the spin modes (reusing `solarSystem.spin.hint.*`, one per mode), reverse / pause /
+  play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
+  high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons, and Overview.
+  Plain tabs (the light panel's, the birthday panel's) have none, by design.
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 
