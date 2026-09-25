@@ -39,7 +39,8 @@
 		"credits": "Mit Liebe gemacht von odi und hrj",
 		"tagline": "Zu den Sternen!",
 		"dictionary": "Lexikon",
-		"solarSystem": "Sonnensystem"
+		"solarSystem": "Sonnensystem",
+		"birthday": "Geburtstag im Weltall"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -326,7 +327,8 @@
 			"visit@simple": "Klick drauf und flieg hin",
 			"closer": "Klicken, um wieder nah heranzufliegen",
 			"hint": "Klicke oder tippe auf einen Planeten, um hinzufliegen.",
-			"hint@simple": "Klick oder tipp auf einen Planeten und besuch ihn!"
+			"hint@simple": "Klick oder tipp auf einen Planeten und besuch ihn!",
+			"follow": "Klicken, um den Weg zu verfolgen"
 		},
 		"card": {
 			"dictionary": "Mehr dazu im Lexikon",
@@ -389,6 +391,162 @@
 			"skip": "Überspringen",
 			"skip@simple": "Sofort hin",
 			"close": "Schließen"
+		},
+		"birthday": {
+			"open": "Dein Geburtstag",
+			"openHint": "Wie alt bist du auf anderen Planeten?",
+			"title": "Dein Geburtstag im Weltall",
+			"close": "Schließen",
+			"intro": "Wähle den Tag, an dem du geboren bist. Du siehst, wie alt du auf jedem Planeten bist, wo die Planeten an diesem Tag standen und wie weit du schon gereist bist.",
+			"intro@simple": "Wann bist du geboren? Wähle den Tag und finde heraus, wie alt du auf den anderen Planeten bist!",
+			"intro@advanced": "Wähle ein Geburtsdatum. Alter, Tage und Gewichte werden aus Umlaufzeit, Rotation und Oberflächenschwerkraft jeder Welt berechnet.",
+			"calendarHint": "Erst das Jahr, dann den Monat, dann den Tag.",
+			"privacy": "Nichts wird gespeichert oder irgendwohin gesendet. Dein Geburtstag bleibt auf diesem Bildschirm und ist vergessen, sobald du die Seite schließt.",
+			"privacy@simple": "Dein Geburtstag wird nicht gespeichert und nirgendwohin geschickt. Wenn du die Seite schließt, ist er weg.",
+			"privacyLink": "Solange ein Geburtstag eingegeben ist, enthalten Links auf diese Seite kein Datum.",
+			"born": "Geboren am {date}",
+			"change": "Datum ändern",
+			"forget": "Meinen Geburtstag vergessen",
+			"showBirthSky": "Zeig die Planeten an meinem Geburtstag",
+			"showBirthSky@simple": "Zeig den Himmel an meinem Geburtstag",
+			"tabs": {
+				"label": "Vergleichen",
+				"years": "Jahre",
+				"days": "Tage",
+				"weight": "Gewicht"
+			},
+			"distance": "Seit deiner Geburt hat dich die Erde {distance} Kilometer um die Sonne getragen, mit etwa {speed, number} km pro Sekunde. Das sind {trips, plural, one {# Reise} other {# Reisen}} zum Mond und zurück.",
+			"distance@simple": "Seit deiner Geburt bist du {distance} Kilometer um die Sonne gereist – ohne je den Boden zu verlassen! So weit ist es {trips, plural, one {# Mal} other {# Mal}} zum Mond und zurück.",
+			"distance@advanced": "Seit deiner Geburt hat dich die Bahnbewegung der Erde {distance} km um die Sonne getragen, mit im Mittel {speed, number} km/s: {trips, plural, one {# Hin- und Rückflug} other {# Hin- und Rückflüge}} zum Mond.",
+			"years": {
+				"intro": "Ein Jahr ist eine Runde um die Sonne. Dein Geburtstag auf einem anderen Planeten ist, wenn er wieder dort steht, wo er an deinem Geburtstag war.",
+				"intro@simple": "Ein Jahr ist eine Runde um die Sonne. Weit entfernte Planeten brauchen viel länger, darum bist du dort jünger!",
+				"intro@advanced": "Ein Jahr ist die siderische Umlaufzeit: Dein Geburtstag auf einem Planeten ist, wenn er den Punkt seiner Bahn wieder erreicht, an dem er bei deiner Geburt stand.",
+				"age": "{age, plural, =0 {noch nicht 1 Jahr alt} one {# Jahr alt} other {# Jahre alt}}",
+				"exact": "{orbits} Umläufe",
+				"next": "Nächster Geburtstag: {date}",
+				"first": "Erster Geburtstag: {date}",
+				"earthAgeThen": "{age, plural, one {Auf der Erde bist du dann #.} other {Auf der Erde bist du dann #.}}",
+				"go": "{planetId, select, venus {Reise zu deinem nächsten Geburtstag auf der {planet}} earth {Reise zu deinem nächsten Geburtstag auf der {planet}} other {Reise zu deinem nächsten Geburtstag auf dem {planet}}}",
+				"today": "{planetId, select, earth {Alles Gute zum Geburtstag!} venus {Alles Gute zum Geburtstag auf der {planet}!} other {Alles Gute zum Geburtstag auf dem {planet}!}}"
+			},
+			"days": {
+				"intro": "Ein Tag dauert von einem Sonnenaufgang bis zum nächsten. Auf dem Merkur ist ein Tag länger als ein Jahr – dort hattest du mehr Geburtstage als Sonnenaufgänge!",
+				"intro@simple": "Ein Tag dauert von einem Sonnenaufgang bis zum nächsten. Auf manchen Planeten geht die Sonne nach ein paar Stunden wieder auf, auf anderen erst nach Monaten!",
+				"intro@advanced": "Ein Sonnentag (Sonnenaufgang bis Sonnenaufgang) folgt aus siderischer Rotation und Umlauf: 1/Sonnentag = 1/Rotation − 1/Jahr. Die Venus dreht sich rückwärts, darum geht ihre Sonne alle 117 Erdtage auf.",
+				"lived": "{count, plural, one {# Tag erlebt} other {# Tage erlebt}}",
+				"length": "Ein Tag dort: {length}"
+			},
+			"weight": {
+				"intro": "Wähle ein Gewicht auf der Erde und sieh, was eine Waage auf anderen Welten anzeigen würde.",
+				"intro@simple": "Wie schwer wärst du auf anderen Welten? Schieb den Regler!",
+				"slider": "Gewicht auf der Erde",
+				"onEarth": "{kg} kg auf der Erde",
+				"kg": "{kg} kg",
+				"noSurface": "Kein Boden zum Stehen",
+				"noSurfaceNote": "* Kein Boden zum Stehen: Das ist die Anziehung an der Wolkenobergrenze (bei der Sonne an ihrer leuchtenden Oberfläche).",
+				"note": "Du bleibst überall gleich – nur die Anziehung der Welt ändert sich.",
+				"note@simple": "Du wirst nicht größer oder kleiner – die Welt zieht nur stärker oder sanfter an dir!",
+				"note@advanced": "Deine Masse bleibt überall gleich; nur die Schwerkraft ändert sich und damit, was eine Waage anzeigt."
+			},
+			"share": "Als Bild speichern",
+			"shareHint": "Erstellt ein Bild deiner Alter auf diesem Gerät. Nichts wird hochgeladen.",
+			"card": {
+				"title": "Wie alt bin ich auf den anderen Planeten?",
+				"date": "Am {date}",
+				"distance": "Ich bin {distance} km um die Sonne gereist.",
+				"footer": "Astrolabe – unser Sonnensystem",
+				"fileName": "mein-alter-auf-den-planeten"
+			}
+		},
+		"frame": {
+			"label": "Blickwinkel",
+			"label@simple": "Von wo du zuschaust",
+			"menu": "Blickwinkel: {current}",
+			"current": {
+				"sun": "Sonne im Zentrum",
+				"sun@simple": "Sonne in der Mitte",
+				"held": "{bodyId, select, earth {Von der Erde aus gesehen} other {{body} steht still}}",
+				"held@simple": "{bodyId, select, earth {Die Erde steht still} other {{body} steht still}}"
+			},
+			"presets": {
+				"sun": {
+					"title": "Sonne im Zentrum",
+					"title@simple": "Sonne in der Mitte",
+					"hint": "So bewegen sich die Planeten wirklich: um die Sonne.",
+					"hint@simple": "Die Planeten kreisen um die Sonne.",
+					"hint@advanced": "Heliozentrisches Bezugssystem: Jede Bahn ist eine Ellipse um die Sonne."
+				},
+				"planets": {
+					"title": "Von der Erde aus: die Planeten",
+					"title@simple": "Von der Erde aus: Planeten",
+					"hint": "Die Erde festhalten und zusehen, wie Mars eine Schleife rückwärts zieht.",
+					"hint@simple": "Die Erde steht still. Schau, wie Mars rückwärts läuft!",
+					"hint@advanced": "Geozentrisches Bezugssystem: die Oppositionsschleifen, für die einst die Epizykel erfunden wurden."
+				},
+				"moon": {
+					"title": "Von der Erde aus: der Mond",
+					"title@simple": "Von der Erde aus: Mond",
+					"hint": "Die Erde festhalten und die Mondphasen verfolgen.",
+					"hint@simple": "Schau, wie der Mond zu- und abnimmt.",
+					"hint@advanced": "Geozentrisches Bezugssystem: Die Phasen folgen aus dem Winkel zwischen Sonne, Mond und Erde."
+				},
+				"hold": {
+					"title": "{body} festhalten",
+					"title@simple": "{body} anhalten",
+					"hint": "Alles andere bewegt sich darum herum.",
+					"hint@advanced": "Ein nicht rotierendes Bezugssystem mit {body} im Zentrum, die Achsen fest zu den Sternen.",
+					"disabled": "Zuerst einen Planeten oder Mond in die Mitte holen.",
+					"disabled@simple": "Wähle zuerst einen Planeten oder Mond."
+				}
+			},
+			"badge": {
+				"label": "Bezugssystem",
+				"explain": "{bodyId, select, earth {Die Erde} other {{body}}} steht still, alles andere bewegt sich darum herum. Die Linien zeigen die Wege {restarted, select, yes {seit dem Neustart} other {der letzten zwei Jahre}}.",
+				"explain@simple": "{bodyId, select, earth {Die Erde} other {{body}}} steht still, und alles andere bewegt sich darum herum. Die Linien zeigen, wo alles war.",
+				"explain@advanced": "Ein nicht rotierendes Bezugssystem mit {body} im Zentrum, die Achsen fest zu den Sternen. Die Spuren sind die Wege aller Körper relativ zu {body} {restarted, select, yes {seit dem Neustart} other {in den letzten zwei Jahren}}.",
+				"back": "Zurück: Sonne im Zentrum",
+				"back@simple": "Sonne wieder in die Mitte",
+				"restart": "Spuren neu beginnen",
+				"restart@simple": "Linien wegwischen"
+			},
+			"motion": {
+				"prograde": "{body} bewegt sich vorwärts vor den Sternen.",
+				"prograde@simple": "{body} läuft vorwärts.",
+				"prograde@advanced": "{body} ist rechtläufig: {rate} pro Tag nach Osten entlang der Ekliptik.",
+				"stationary": "{body} scheint stillzustehen und gleich umzukehren.",
+				"stationary@simple": "{body} scheint anzuhalten!",
+				"stationary@advanced": "{body} steht nahe einem Stillstandspunkt: Die ekliptikale Länge ändert sich kaum noch.",
+				"retrograde": "{body} scheint rückwärts zu laufen! Das sieht nur so aus: {observerId, select, earth {Die Erde} other {{observer}}} und {body} ziehen gerade aneinander vorbei.",
+				"retrograde@simple": "{body} läuft scheinbar rückwärts! In Wirklichkeit überholen sich {observerId, select, earth {die Erde} other {{observer}}} und {body} gerade, wie Autos auf der Autobahn.",
+				"retrograde@advanced": "{body} ist rückläufig: Von {observerId, select, earth {der Erde} other {{observer}}} aus gesehen nimmt die ekliptikale Länge um {rate} pro Tag ab. Ptolemäus erklärte das mit Epizykeln, Kopernikus mit einer bewegten Erde."
+			},
+			"phase": {
+				"caption": "{bodyId, select, moon {Der Mond} other {{body}}}, {observerId, select, earth {von der Erde} moon {vom Mond} other {von {observer}}} aus gesehen",
+				"status": "{phase} · {fraction, number, ::percent} beleuchtet",
+				"status@simple": "{phase}",
+				"name": {
+					"new": "{bodyId, select, moon {Neumond} other {Neu}}",
+					"waxingCrescent": "Zunehmende Sichel",
+					"waxingCrescent@simple": "Dünn und wachsend",
+					"firstQuarter": "Erstes Viertel",
+					"firstQuarter@simple": "Halb hell, wachsend",
+					"waxingGibbous": "Zunehmend, fast voll",
+					"waxingGibbous@simple": "Fast voll, wachsend",
+					"full": "{bodyId, select, moon {Vollmond} other {Voll}}",
+					"waningGibbous": "Abnehmend, fast voll",
+					"waningGibbous@simple": "Fast voll, schrumpfend",
+					"lastQuarter": "Letztes Viertel",
+					"lastQuarter@simple": "Halb hell, schrumpfend",
+					"waningCrescent": "Abnehmende Sichel",
+					"waningCrescent@simple": "Dünn und schrumpfend"
+				}
+			},
+			"inset": {
+				"title": "Von oberhalb der Sonne",
+				"title@simple": "Von hoch oben gesehen",
+				"label": "{observer} und {body} auf ihren Bahnen um die Sonne, mit der Blicklinie von {observer} zu {body}"
+			}
 		}
 	}
 }

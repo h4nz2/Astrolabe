@@ -39,7 +39,8 @@
 		"credits": "Made with love by odi and hrj",
 		"tagline": "To the stars!",
 		"dictionary": "Dictionary",
-		"solarSystem": "Solar Model"
+		"solarSystem": "Solar Model",
+		"birthday": "Your birthday in space"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -326,7 +327,8 @@
 			"visit@simple": "Click to go there",
 			"closer": "Click to fly back in close",
 			"hint": "Click or tap any planet to fly there.",
-			"hint@simple": "Click or tap a planet to visit it!"
+			"hint@simple": "Click or tap a planet to visit it!",
+			"follow": "Click to follow its path"
 		},
 		"card": {
 			"dictionary": "Read more in the dictionary",
@@ -389,6 +391,162 @@
 			"skip": "Skip",
 			"skip@simple": "Be there now",
 			"close": "Close"
+		},
+		"birthday": {
+			"open": "Your birthday",
+			"openHint": "How old are you on other planets?",
+			"title": "Your birthday in space",
+			"close": "Close",
+			"intro": "Pick the day you were born. You will see how old you are on every planet, where the planets stood that day and how far you have travelled.",
+			"intro@simple": "When were you born? Pick the day and find out how old you are on the other planets!",
+			"intro@advanced": "Pick a date of birth. Ages, days and weights are computed from each world’s orbital period, rotation and surface gravity.",
+			"calendarHint": "First the year, then the month, then the day.",
+			"privacy": "Nothing is saved or sent anywhere. Your birthday stays on this screen and is forgotten when you close the page.",
+			"privacy@simple": "Your birthday is not saved and not sent anywhere. When you close the page, it is gone.",
+			"privacyLink": "While a birthday is entered, links to this page leave out the date.",
+			"born": "Born on {date}",
+			"change": "Change date",
+			"forget": "Forget my birthday",
+			"showBirthSky": "Show the planets on the day I was born",
+			"showBirthSky@simple": "Show the sky on my birthday",
+			"tabs": {
+				"label": "Compare",
+				"years": "Years",
+				"days": "Days",
+				"weight": "Weight"
+			},
+			"distance": "Since you were born, Earth has carried you {distance} kilometres around the Sun, at about {speed, number} km every second. That is {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
+			"distance@simple": "Since you were born, you have travelled {distance} kilometres around the Sun – without ever leaving the ground! That is as far as {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
+			"distance@advanced": "Since your birth, Earth’s orbital motion has carried you {distance} km around the Sun at a mean {speed, number} km/s: {trips, plural, one {# return trip} other {# return trips}} to the Moon.",
+			"years": {
+				"intro": "A year is one trip around the Sun. Your birthday on another planet comes when it is back where it was on the day you were born.",
+				"intro@simple": "A year is one trip around the Sun. Planets far away take much longer, so you are younger there!",
+				"intro@advanced": "A year is the sidereal orbital period: your birthday on a planet is when it returns to the point of its orbit where it was at your birth.",
+				"age": "{age, plural, =0 {not 1 year old yet} one {# year old} other {# years old}}",
+				"exact": "{orbits} orbits",
+				"next": "Next birthday: {date}",
+				"first": "First birthday: {date}",
+				"earthAgeThen": "{age, plural, one {You will be # on Earth.} other {You will be # on Earth.}}",
+				"go": "{planetId, select, other {Travel to your next birthday on {planet}}}",
+				"today": "{planetId, select, earth {Happy birthday!} other {Happy birthday on {planet}!}}"
+			},
+			"days": {
+				"intro": "A day lasts from one sunrise to the next. On Mercury a day is longer than a year, so you have had more birthdays there than sunrises!",
+				"intro@simple": "A day lasts from one sunrise to the next. On some planets the Sun rises again after a few hours, on others only after months!",
+				"intro@advanced": "A solar day (sunrise to sunrise) follows from the sidereal rotation and the orbit: 1/solar = 1/sidereal − 1/year. Venus spins backwards, so its Sun rises every 117 Earth days.",
+				"lived": "{count, plural, one {# day lived} other {# days lived}}",
+				"length": "One day there: {length}"
+			},
+			"weight": {
+				"intro": "Pick a weight on Earth and see what a scale would show on other worlds.",
+				"intro@simple": "How heavy would you be on other worlds? Move the slider!",
+				"slider": "Weight on Earth",
+				"onEarth": "{kg} kg on Earth",
+				"kg": "{kg} kg",
+				"noSurface": "No ground to stand on",
+				"noSurfaceNote": "* No ground to stand on: this is the pull at the top of the clouds (on the Sun, at its glowing surface).",
+				"note": "You stay the same everywhere – only the pull of the world changes.",
+				"note@simple": "You do not get bigger or smaller – the world just pulls on you harder or more gently!",
+				"note@advanced": "Your mass stays the same everywhere; only gravity’s pull changes, and with it what a scale shows."
+			},
+			"share": "Save as picture",
+			"shareHint": "Makes a picture of your ages on this device. Nothing is uploaded.",
+			"card": {
+				"title": "How old am I on the other planets?",
+				"date": "On {date}",
+				"distance": "I have travelled {distance} km around the Sun.",
+				"footer": "Astrolabe – our solar system",
+				"fileName": "my-age-on-the-planets"
+			}
+		},
+		"frame": {
+			"label": "Point of view",
+			"label@simple": "Where you watch from",
+			"menu": "Point of view: {current}",
+			"current": {
+				"sun": "Sun-centred",
+				"sun@simple": "Sun in the middle",
+				"held": "{bodyId, select, earth {Seen from Earth} other {{body} held still}}",
+				"held@simple": "{bodyId, select, earth {Earth stands still} other {{body} stands still}}"
+			},
+			"presets": {
+				"sun": {
+					"title": "Sun-centred",
+					"title@simple": "Sun in the middle",
+					"hint": "How the planets really move: around the Sun.",
+					"hint@simple": "The planets go round the Sun.",
+					"hint@advanced": "Heliocentric frame: every orbit is an ellipse around the Sun."
+				},
+				"planets": {
+					"title": "Seen from Earth: the planets",
+					"title@simple": "From Earth: the planets",
+					"hint": "Hold Earth still and watch Mars loop backwards.",
+					"hint@simple": "Earth stands still. Watch Mars go backwards!",
+					"hint@advanced": "Geocentric frame: the retrograde loops that epicycles were invented to explain."
+				},
+				"moon": {
+					"title": "Seen from Earth: the Moon",
+					"title@simple": "From Earth: the Moon",
+					"hint": "Hold Earth still and watch the Moon's phases.",
+					"hint@simple": "Watch the Moon grow and shrink.",
+					"hint@advanced": "Geocentric frame: the phases follow from the angle between the Sun, the Moon and Earth."
+				},
+				"hold": {
+					"title": "Hold {body} still",
+					"title@simple": "Make {body} stand still",
+					"hint": "Everything else moves around it.",
+					"hint@advanced": "A non-rotating frame centred on {body}, its axes fixed to the stars.",
+					"disabled": "Centre on a planet or a moon first.",
+					"disabled@simple": "Pick a planet or a moon first."
+				}
+			},
+			"badge": {
+				"label": "Reference frame",
+				"explain": "{bodyId, select, other {{body}}} stays still; everything else moves around it. The lines show each path {restarted, select, yes {since you restarted them} other {over the last two years}}.",
+				"explain@simple": "{bodyId, select, other {{body}}} stands still and everything else moves around it. The lines show where things went.",
+				"explain@advanced": "A non-rotating frame centred on {body}, its axes fixed to the stars. The trails are each body's path relative to {body} {restarted, select, yes {since the restart} other {over the last two years}}.",
+				"back": "Back to Sun-centred",
+				"back@simple": "Put the Sun back in the middle",
+				"restart": "Restart the trails",
+				"restart@simple": "Wipe the lines"
+			},
+			"motion": {
+				"prograde": "{body} is moving forwards against the stars.",
+				"prograde@simple": "{body} is moving forwards.",
+				"prograde@advanced": "{body} is in direct (prograde) motion: {rate} a day eastwards along the ecliptic.",
+				"stationary": "{body} seems to stand still: it is about to turn round.",
+				"stationary@simple": "{body} seems to stop!",
+				"stationary@advanced": "{body} is near a stationary point: its ecliptic longitude has almost stopped changing.",
+				"retrograde": "{body} seems to move backwards! It only looks that way: {observerId, select, other {{observer}}} and {body} are passing each other.",
+				"retrograde@simple": "{body} looks like it is going backwards! It isn't really: {observerId, select, other {{observer}}} and {body} are overtaking each other, like cars on a motorway.",
+				"retrograde@advanced": "{body} is in retrograde motion: seen from {observerId, select, other {{observer}}}, its ecliptic longitude decreases by {rate} a day. Ptolemy explained it with epicycles, Copernicus with a moving Earth."
+			},
+			"phase": {
+				"caption": "{bodyId, select, moon {The Moon} other {{body}}} as seen from {observerId, select, other {{observer}}}",
+				"status": "{phase} · {fraction, number, ::percent} lit",
+				"status@simple": "{phase}",
+				"name": {
+					"new": "{bodyId, select, moon {New moon} other {New}}",
+					"waxingCrescent": "Waxing crescent",
+					"waxingCrescent@simple": "Thin and growing",
+					"firstQuarter": "First quarter",
+					"firstQuarter@simple": "Half lit, growing",
+					"waxingGibbous": "Waxing gibbous",
+					"waxingGibbous@simple": "Nearly full, growing",
+					"full": "{bodyId, select, moon {Full moon} other {Full}}",
+					"waningGibbous": "Waning gibbous",
+					"waningGibbous@simple": "Nearly full, shrinking",
+					"lastQuarter": "Last quarter",
+					"lastQuarter@simple": "Half lit, shrinking",
+					"waningCrescent": "Waning crescent",
+					"waningCrescent@simple": "Thin and shrinking"
+				}
+			},
+			"inset": {
+				"title": "From above the Sun",
+				"title@simple": "Seen from high above",
+				"label": "{observer} and {body} on their orbits around the Sun, with the line of sight from {observer} to {body}"
+			}
 		}
 	}
 }

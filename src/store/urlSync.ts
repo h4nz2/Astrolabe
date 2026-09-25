@@ -32,6 +32,8 @@ import {
 	OVERVIEW,
 	formatOffset,
 	formatShot,
+	isFrameAnchored,
+	OVERVIEW_BODY_ID,
 	parseOffset,
 	parseShot,
 	sameShot,
@@ -39,6 +41,7 @@ import {
 	type CameraShot,
 	type View,
 } from "./navigation"
+import { hidesTimeInUrl, useBirthdayStore } from "./birthday"
 import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
@@ -76,7 +79,8 @@ type Mirrored = Omit<Layers, "showOrbitLabels"> &
 	Pick<
 		SimState,
 		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
-	> & {
+	> &
+	Partial<Pick<SimState, "frameId">> & {
 		/** The chosen scale preset (#21, `useScaleStore`'s `targetId`); absent or null writes nothing. */
 		scalePreset?: ScalePresetId | null
 	}
@@ -93,10 +97,13 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * written as it is (not rounded), so a link runs at exactly the speed it was
  * taken at,
  * backwards included; a zero warp (which the schema rejects) is left out.
+ * With `hideTime` (a birth date is entered, #26) no `t` is written at all, so
+ * a copied link opens on "now" and never carries someone's birthday.
  */
 export function searchFromState(
 	state: Mirrored,
 	previous: SimSearch,
+	hideTime = false,
 ): SimSearch {
 	const { timeWarp, view, shot } = state
 	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
@@ -113,9 +120,15 @@ export function searchFromState(
 				: undefined,
 		cam:
 			shot === null || sameShot(shot, HOME_SHOT) ? undefined : formatShot(shot),
-		t: shouldMirrorTime(state.paused, timeWarp)
-			? roundJD(state.simTimeJD)
-			: previous.t,
+		frame:
+			state.frameId !== undefined && isFrameAnchored({ frameId: state.frameId })
+				? state.frameId
+				: undefined,
+		t: hideTime
+			? undefined
+			: shouldMirrorTime(state.paused, timeWarp)
+				? roundJD(state.simTimeJD)
+				: previous.t,
 		warp:
 			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
 	}
@@ -134,6 +147,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.focus === b.focus &&
 	a.at === b.at &&
 	a.sel === b.sel &&
+	a.frame === b.frame &&
 	a.cam === b.cam &&
 	a.t === b.t &&
 	a.warp === b.warp &&
@@ -172,6 +186,27 @@ export function viewFromSearch(search: SimSearch): {
 		// a point in space selects nothing by itself
 		selectedId: sel ?? (view.kind === "body" ? focus : null),
 	}
+}
+
+/**
+ * The body a search holds still (#31): with a known `frame` other than the
+ * Sun, the focus (an anchored frame follows it), or `frame` itself when the
+ * link has no focus; null for the Sun-centred frame.
+ */
+export function frameFromSearch(search: SimSearch): string | null {
+	const { frame } = search
+	if (
+		frame === undefined ||
+		frame === OVERVIEW_BODY_ID ||
+		!bodyById.has(frame)
+	) {
+		return null
+	}
+	const focus =
+		search.focus !== undefined && bodyById.has(search.focus)
+			? search.focus
+			: null
+	return focus ?? frame
 }
 
 /**
@@ -235,7 +270,11 @@ export function useSimUrlSync(): void {
 		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
 		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
 		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
+		const frameId = frameFromSearch(searchRef.current)
 		store.jumpTo(view, shot)
+		if (frameId !== null) {
+			store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
+		}
 		store.select(selectedId)
 		// the layer switches are plain fields
 		useSimStore.setState(layersFromSearch(searchRef.current))
@@ -250,6 +289,7 @@ export function useSimUrlSync(): void {
 					scalePreset: useScaleStore.getState().targetId,
 				},
 				searchRef.current,
+				hidesTimeInUrl(useBirthdayStore.getState()),
 			)
 			if (sameSearch(next, searchRef.current)) return
 			searchRef.current = next
@@ -261,6 +301,7 @@ export function useSimUrlSync(): void {
 		const unsubscribe = useSimStore.subscribe((state, previous) => {
 			if (
 				state.view !== previous.view ||
+				state.frameId !== previous.frameId ||
 				state.selectedId !== previous.selectedId ||
 				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||
@@ -286,11 +327,18 @@ export function useSimUrlSync(): void {
 		const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
 			if (state.targetId !== previous.targetId) write()
 		})
+		// entering or forgetting a birth date takes `t` out of the URL or puts it back
+		const unsubscribeBirthday = useBirthdayStore.subscribe(
+			(state, previous) => {
+				if (hidesTimeInUrl(state) !== hidesTimeInUrl(previous)) write()
+			},
+		)
 		write()
 
 		return () => {
 			unsubscribe()
 			unsubscribeScale()
+			unsubscribeBirthday()
 			if (timer !== undefined) clearTimeout(timer)
 		}
 	}, [navigate])
