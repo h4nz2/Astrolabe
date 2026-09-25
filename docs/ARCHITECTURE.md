@@ -755,8 +755,8 @@ index)` with no holds (stops wait for the presenter; `finishMove()` when jumping
   its own card; only menu tours are written to the URL.
 - **Leaving and coming back.** `tourStatus(sequence, tour)`: `playing` while `sequence.steps` is the tour's;
   `exploring` when the sequence was interrupted (a click on a body); `left` when it was ended (Escape, the home
-  button, another sequence). The tour itself only ends with `exitTour` (the card's close button, Finish, leaving
-  the page). `resumeTour()` re-enters the stop and so restores its whole scene. A drag at a waiting stop does not
+  button, another sequence). The tour itself only ends with `exitTour` (the card's close button, Finish; a tour
+  still set when the page mounts again without `?tour=` is ended there, never on unmount, which would write the URL). `resumeTour()` re-enters the stop and so restores its whole scene. A drag at a waiting stop does not
   interrupt (#10). `followSequence()` gives the stop its scene when something else moved the sequence
   (`nextStep()`).
 - **UI.** `TourMenu` (the "Tours" button in the picker panel: title, summary, stops and minutes per tour).

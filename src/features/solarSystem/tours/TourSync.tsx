@@ -110,13 +110,12 @@ const TourSync = () => {
 				auto: autoplay === true,
 				jump: true,
 			})
-		}
-		const unfollow = followSequence()
-		return () => {
-			unfollow()
-			// leaving the page ends the tour
+		} else if (useTourStore.getState().tour !== null) {
+			// a tour left running when the page was last closed ends here, not on
+			// unmount, where writing the URL could pull the visitor back to this page
 			exitTour()
 		}
+		return followSequence()
 	}, [])
 
 	useEffect(() => {
