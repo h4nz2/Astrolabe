@@ -96,4 +96,26 @@
 		flex: 1 1 0;
 		min-width: 0;
 	}
+
+	/* the icon above a small name: four entry points fit a phone in every language */
+	.entries :global(.mantine-Button-root) {
+		height: auto;
+		padding: 0.25rem 0.125rem;
+	}
+
+	.entries :global(.mantine-Button-inner) {
+		flex-direction: column;
+		gap: 0.125rem;
+	}
+
+	.entries :global(.mantine-Button-section) {
+		margin: 0;
+	}
+
+	.entries :global(.mantine-Button-label) {
+		font-size: var(--mantine-font-size-xs);
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
 }
