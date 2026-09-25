@@ -594,7 +594,8 @@
 			"orbitalPeriod": 27.3,
 			"orbitalInclination": 21,
 			"axialTilt": 6.68
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "phobos",
@@ -627,7 +628,7 @@
 			"gravity": 0.0057,
 			"density": 1.9,
 			"discoveredBy": "Asaph Hall",
-			"discoveryDate": "12/08/1877",
+			"discoveryDate": "18/08/1877",
 			"mass": {
 				"massValue": 1.06,
 				"massExponent": 16
@@ -651,7 +652,8 @@
 			"aphelion": 9518,
 			"orbitalPeriod": 0.31875,
 			"orbitalInclination": 1.093
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "deimos",
@@ -680,6 +682,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#c2b3a3"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.003,
@@ -696,7 +701,8 @@
 			"orbitalPeriod": 1.2624,
 			"orbitalInclination": 0.93,
 			"rotationAssumed": true
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "metis",
@@ -894,7 +900,8 @@
 			"aphelion": 423529,
 			"orbitalPeriod": 1.769,
 			"orbitalInclination": 0.05
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "europa",
@@ -940,7 +947,8 @@
 			"diameter": 3121.6,
 			"orbitalPeriod": 3.55,
 			"orbitalInclination": 0.47
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "ganymede",
@@ -981,7 +989,8 @@
 			"orbitalPeriod": 7.15455,
 			"orbitalInclination": 0.204,
 			"rotationAssumed": true
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "callisto",
@@ -1008,6 +1017,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#a8977f"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 1.235,
@@ -1027,7 +1039,8 @@
 			"diameter": 4820.6,
 			"orbitalPeriod": 16.689,
 			"orbitalInclination": 0.205
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "themisto",
@@ -3149,7 +3162,7 @@
 		"name": "Mimas",
 		"kind": "moon",
 		"parentId": "saturn",
-		"radiusKm": 396.4,
+		"radiusKm": 198.2,
 		"massKg": 37900000000000000000,
 		"orbit": {
 			"semiMajorAxisKm": 185539,
@@ -3169,6 +3182,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#e4e4e8"
 		},
 		"rings": null,
 		"info": {
@@ -3192,7 +3208,8 @@
 			"aphelion": 189270,
 			"orbitalPeriod": 0.942,
 			"orbitalInclination": 1.574
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "methone",
@@ -3307,7 +3324,7 @@
 		"name": "Enceladus",
 		"kind": "moon",
 		"parentId": "saturn",
-		"radiusKm": 504.2,
+		"radiusKm": 252.1,
 		"massKg": 108000000000000000000,
 		"orbit": {
 			"semiMajorAxisKm": 238042,
@@ -3349,7 +3366,8 @@
 			"aphelion": 239066,
 			"orbitalPeriod": 1.37,
 			"orbitalInclination": 0.019
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "telesto",
@@ -3421,7 +3439,8 @@
 			"orbitalPeriod": 1.8878,
 			"orbitalInclination": 1.12,
 			"rotationAssumed": true
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "calypso",
@@ -3548,7 +3567,8 @@
 			"orbitalPeriod": 2.737,
 			"orbitalInclination": 0.02,
 			"rotationAssumed": true
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "helene",
@@ -3626,7 +3646,8 @@
 			"orbitalPeriod": 4.518,
 			"orbitalInclination": 0.345,
 			"rotationAssumed": true
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "titan",
@@ -3654,11 +3675,15 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#d9a04e",
+			"veiled": true
+		},
 		"rings": null,
 		"info": {
 			"gravity": 1.352,
 			"density": 1.88,
-			"discoveredBy": "Christian Huygens",
+			"discoveredBy": "Christiaan Huygens",
 			"discoveryDate": "25/03/1655",
 			"mass": {
 				"massValue": 1.3452,
@@ -3675,7 +3700,8 @@
 			"aphelion": 1257060,
 			"orbitalPeriod": 15.945,
 			"orbitalInclination": 0.34854
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "hyperion",
@@ -3703,13 +3729,17 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#c8b08c"
+		},
 		"rings": null,
 		"info": {
 			"mass": "5620 * 10^15",
 			"diameter": 270,
 			"orbitalPeriod": 21.276,
 			"orbitalInclination": 0.43
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "iapetus",
@@ -3741,7 +3771,7 @@
 		"info": {
 			"gravity": 0.223,
 			"density": 1.09,
-			"discoveredBy": "Jean-Dominique Cassini",
+			"discoveredBy": "Giovanni Domenico Cassini",
 			"discoveryDate": "25/10/1671",
 			"mass": {
 				"massValue": 1.805,
@@ -3758,7 +3788,8 @@
 			"aphelion": 3661612,
 			"orbitalPeriod": 79.32,
 			"orbitalInclination": 15.47
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "kiviuq",
@@ -3841,6 +3872,46 @@
 			"orbitalPeriod": 451.77,
 			"orbitalInclination": 50.212
 		}
+	},
+	{
+		"id": "phoebe",
+		"name": "Phoebe",
+		"kind": "moon",
+		"parentId": "saturn",
+		"radiusKm": 106.5,
+		"massKg": 8312300000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 12929400,
+			"eccentricity": 0.164,
+			"inclinationDeg": 175.2,
+			"longAscNodeDeg": 192.7,
+			"argPeriapsisDeg": 240.3,
+			"meanAnomalyDeg": 308,
+			"periodDays": 550.30391,
+			"epochJD": 2451545
+		},
+		"rotation": {
+			"periodHours": 9.2735,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#77706a"
+		},
+		"rings": null,
+		"info": {
+			"density": 1.638,
+			"discoveredBy": "William Henry Pickering",
+			"discoveryDate": "17/03/1899",
+			"mass": {
+				"massValue": 8.3123,
+				"massExponent": 18
+			},
+			"bodyType": "Moon"
+		},
+		"featured": true
 	},
 	{
 		"id": "paaliaq",
@@ -6423,6 +6494,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#d6d6d8"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.079,
@@ -6444,7 +6518,8 @@
 			"aphelion": 130041,
 			"orbitalPeriod": 1.413,
 			"orbitalInclination": 4.232
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "ariel",
@@ -6472,6 +6547,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#e8e8ea"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.269,
@@ -6493,7 +6571,8 @@
 			"aphelion": 191130,
 			"orbitalPeriod": 2.52,
 			"orbitalInclination": 0.26
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "umbriel",
@@ -6521,6 +6600,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#8a8a8e"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.2,
@@ -6542,7 +6624,8 @@
 			"aphelion": 267500,
 			"orbitalPeriod": 4.144,
 			"orbitalInclination": 0.205
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "titania",
@@ -6570,6 +6653,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#cfc6bd"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.379,
@@ -6591,7 +6677,8 @@
 			"aphelion": 436800,
 			"orbitalPeriod": 8.706,
 			"orbitalInclination": 0.34
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "oberon",
@@ -6620,6 +6707,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#b8a99c"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.346,
@@ -6633,7 +6723,8 @@
 			"orbitalPeriod": 13.463,
 			"orbitalInclination": 0.058,
 			"rotationAssumed": true
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "francisco",
@@ -7272,6 +7363,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#7a7a7a"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.07,
@@ -7285,7 +7379,8 @@
 			"orbitalPeriod": 1.122,
 			"orbitalInclination": 0.524,
 			"rotationAssumed": true
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "triton",
@@ -7313,6 +7408,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#f2dcd2"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.78,
@@ -7334,7 +7432,8 @@
 			"aphelion": 354765,
 			"orbitalPeriod": -5.877,
 			"orbitalInclination": 156.885
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "nereid",
@@ -7362,9 +7461,11 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#b0b0b0"
+		},
 		"rings": null,
 		"info": {
-			"gravity": 0.002,
 			"mass": "3.1 * 10^19",
 			"surfaceTemps": {
 				"min": -223,
@@ -7374,7 +7475,8 @@
 			"diameter": 340,
 			"orbitalPeriod": 360.14,
 			"orbitalInclination": 7.09
-		}
+		},
+		"featured": true
 	},
 	{
 		"id": "halimede",
