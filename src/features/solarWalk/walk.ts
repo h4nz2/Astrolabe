@@ -227,18 +227,30 @@ export function buildWalk(sunObject: SunObjectId): SolarWalk {
 	}
 }
 
-/**
- * Where the first whole landmark length is reached: the index of the stop it
- * comes before (a landmark between Mars and Jupiter comes before Jupiter), or
- * null if the walk ends before it.
- */
-export function landmarkBefore(
+/** Where on the walk the first whole landmark length is reached. */
+export interface LandmarkOnWalk {
+	/** The index of the stop it comes before (a pitch's end between Mars and Jupiter comes before Jupiter). */
+	readonly before: number
+	/** From the previous stop (or the Sun) to the landmark (m). */
+	readonly fromPreviousM: number
+	/** From the landmark on to the stop it comes before (m). */
+	readonly toNextM: number
+}
+
+/** Where the first whole landmark length is reached, or null if the walk ends before it. */
+export function landmarkOnWalk(
 	walk: SolarWalk,
 	landmark: LandmarkId,
-): number | null {
+): LandmarkOnWalk | null {
 	const lengthM = LANDMARKS[landmark].lengthM
-	const index = walk.stops.findIndex((stop) => stop.distanceM >= lengthM)
-	return index === -1 ? null : index
+	const before = walk.stops.findIndex((stop) => stop.distanceM >= lengthM)
+	if (before === -1) return null
+	const previousM = before === 0 ? 0 : walk.stops[before - 1].distanceM
+	return {
+		before,
+		fromPreviousM: lengthM - previousM,
+		toNextM: walk.stops[before].distanceM - lengthM,
+	}
 }
 
 /** A distance in landmark lengths ("1.3 football pitches"). */

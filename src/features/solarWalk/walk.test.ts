@@ -8,7 +8,7 @@ import {
 	SUN_OBJECT_IDS,
 	THINGS,
 	buildWalk,
-	landmarkBefore,
+	landmarkOnWalk,
 	landmarkCount,
 	nearestThing,
 } from "./walk"
@@ -165,11 +165,21 @@ describe("everyday comparisons", () => {
 describe("landmarks", () => {
 	it("says where the first landmark length is reached", () => {
 		// a pitch (105 m) ends between Mars (39 m) and Jupiter (134 m)
-		expect(landmarkBefore(basketball, "pitch")).toBe(4)
+		const pitch = landmarkOnWalk(basketball, "pitch")!
+		expect(pitch.before).toBe(4)
+		expect(pitch.fromPreviousM + stop("mars").distanceM).toBeCloseTo(105, 9)
+		expect(pitch.fromPreviousM + pitch.toNextM).toBeCloseTo(
+			stop("jupiter").legM,
+			9,
+		)
 		// a lap (400 m) between Saturn (247 m) and Uranus (495 m)
-		expect(landmarkBefore(basketball, "track")).toBe(6)
+		expect(landmarkOnWalk(basketball, "track")?.before).toBe(6)
+		// with a 1 m ball the pitch ends 2.5 m short of Earth (107.5 m)
+		const big = landmarkOnWalk(buildWalk("exerciseBall"), "pitch")!
+		expect(big.before).toBe(2)
+		expect(big.toNextM).toBeCloseTo(2.5, 1)
 		// an orange's walk ends at Neptune, 258 m: never a whole lap
-		expect(landmarkBefore(buildWalk("orange"), "track")).toBeNull()
+		expect(landmarkOnWalk(buildWalk("orange"), "track")).toBeNull()
 	})
 
 	it("counts distances in landmark lengths", () => {

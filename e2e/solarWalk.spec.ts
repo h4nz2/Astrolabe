@@ -197,6 +197,10 @@ test("German, simple reading level", async ({ page }) => {
 	await page.screenshot({
 		path: path.join(screenshotDir, "de-simple-phone.png"),
 	})
+	await page.locator('li[data-landmark="pitch"]').scrollIntoViewIfNeeded()
+	await page.screenshot({
+		path: path.join(screenshotDir, "de-simple-phone-pitch.png"),
+	})
 })
 
 test("true scale in 3D and the walk lead to each other", async ({ page }) => {

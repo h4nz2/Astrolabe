@@ -70,15 +70,20 @@ const sizeValues = (body: ModelBody, i18n: I18n) => ({
 	thing: i18n.t(`solarWalk.thing.${body.thing}`),
 })
 
-/** A distance in landmark lengths: "1.3 football pitches". */
-export const landmarkCountText = (
+/**
+ * A distance in landmark lengths: "1.3 football pitches"; null below a
+ * tenth of one (nobody says "0 football pitches").
+ */
+export function landmarkCountText(
 	distanceM: number,
 	landmark: LandmarkId,
 	i18n: I18n,
-): string =>
-	i18n.t(`solarWalk.landmarkCount.${landmark}`, {
-		count: roundCount(landmarkCount(distanceM, landmark)),
-	})
+): string | null {
+	const count = roundCount(landmarkCount(distanceM, landmark))
+	return count === 0
+		? null
+		: i18n.t(`solarWalk.landmarkCount.${landmark}`, { count })
+}
 
 /** The lines of one stop's card. */
 export interface StopText {
@@ -94,14 +99,23 @@ export interface StopText {
 	moons: string[]
 }
 
+/** "Walk 10 m". */
+export const legText = (metres: number, i18n: I18n): string =>
+	i18n.t("solarWalk.leg", { distance: length(i18n, metres) })
+
+/**
+ * @param legM the way there, when it does not start at the previous stop
+ *             (after a landmark marker)
+ */
 export function stopText(
 	stop: WalkStop,
 	landmark: LandmarkId | null,
 	i18n: I18n,
 	name: Name,
+	legM: number = stop.legM,
 ): StopText {
 	return {
-		leg: i18n.t("solarWalk.leg", { distance: length(i18n, stop.legM) }),
+		leg: legText(legM, i18n),
 		size: i18n.t("solarWalk.size", sizeValues(stop, i18n)),
 		distance: i18n.t("solarWalk.distance", {
 			distance: length(i18n, stop.distanceM),

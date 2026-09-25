@@ -20,10 +20,11 @@ import {
 	type SunObjectId,
 	type WalkView,
 } from "./search"
-import { LANDMARKS, SUN_OBJECTS, buildWalk, landmarkBefore } from "./walk"
+import { LANDMARKS, SUN_OBJECTS, buildWalk, landmarkOnWalk } from "./walk"
 import {
 	landmarkMarkerText,
 	leadText,
+	legText,
 	starText,
 	stopText,
 	summaryText,
@@ -55,7 +56,7 @@ const SolarWalk = () => {
 	const landmark = landmarkOption === "none" ? null : landmarkOption
 	const view = search.view ?? DEFAULT_WALK_VIEW
 	const walk = useMemo(() => buildWalk(sunObject), [sunObject])
-	const markerBefore = landmark === null ? null : landmarkBefore(walk, landmark)
+	const marker = landmark === null ? null : landmarkOnWalk(walk, landmark)
 
 	// defaults stay out of the URL, so a plain link means the same for everyone
 	const setSearch = (patch: SolarWalkSearch) =>
@@ -94,10 +95,7 @@ const SolarWalk = () => {
 					<Text className={classes.lead}>{leadText(walk, i18n)}</Text>
 				</header>
 
-				<section
-					className={classes.controls}
-					aria-label={t("solarWalk.sunLabel")}
-				>
+				<section className={classes.controls}>
 					<div className={classes.control}>
 						<span className={classes.controlLabel} id={`${id}-sun`}>
 							{t("solarWalk.sunLabel")}
@@ -113,7 +111,7 @@ const SolarWalk = () => {
 								value: objectId,
 								label: (
 									<span className={classes.option}>
-										{t(`solarWalk.sunObjectName.${objectId}`)}
+										<span>{t(`solarWalk.sunObjectName.${objectId}`)}</span>
 										<span className={classes.optionSize}>
 											{length(SUN_OBJECTS[objectId].diameterM)}
 										</span>
@@ -194,12 +192,24 @@ const SolarWalk = () => {
 						</article>
 					</li>
 					{walk.stops.map((stop, index) => {
-						const text = stopText(stop, landmark, i18n, name)
+						const atMarker = marker !== null && marker.before === index
+						const text = stopText(
+							stop,
+							landmark,
+							i18n,
+							name,
+							atMarker ? marker.toNextM : stop.legM,
+						)
 						return (
 							<Fragment key={stop.id}>
-								{landmark !== null && markerBefore === index && (
-									<li className={classes.marker} data-landmark={landmark}>
-										{landmarkMarkerText(landmark, i18n)}
+								{atMarker && landmark !== null && (
+									<li className={classes.markerStop} data-landmark={landmark}>
+										<p className={classes.leg}>
+											{legText(marker.fromPreviousM, i18n)}
+										</p>
+										<p className={classes.marker}>
+											{landmarkMarkerText(landmark, i18n)}
+										</p>
 									</li>
 								)}
 								<li className={classes.stop} data-stop={stop.id}>

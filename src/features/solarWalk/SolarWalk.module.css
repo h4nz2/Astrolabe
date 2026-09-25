@@ -122,12 +122,13 @@
 	margin-bottom: 0.75rem;
 }
 
-/* the stop's place on the path */
-.stop::before {
+/* a stop's place on the path, level with its name */
+.card::before,
+.marker::before {
 	content: "";
 	position: absolute;
-	left: calc(var(--path-x) - 0.4rem);
-	bottom: 1.4rem;
+	left: calc(var(--path-x) - 2.75rem - 0.45rem);
+	top: 0.95rem;
 	width: 0.9rem;
 	height: 0.9rem;
 	border-radius: 50%;
@@ -135,8 +136,15 @@
 	box-shadow: 0 0 0 3px #0b0d12;
 }
 
-.stop[data-stop="sun"]::before {
+.stop[data-stop="sun"] .card::before {
 	background: var(--mantine-color-orange-5);
+}
+
+.marker::before {
+	top: 0.55rem;
+	border-radius: 2px;
+	transform: rotate(45deg) scale(0.8);
+	background: var(--mantine-color-teal-5);
 }
 
 .leg {
@@ -147,6 +155,7 @@
 }
 
 .card {
+	position: relative;
 	background: rgba(20, 22, 28, 0.9);
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: var(--mantine-radius-md);
@@ -217,9 +226,14 @@
 }
 
 /* where a whole landmark length is reached, between two stops */
+.markerStop {
+	padding-left: 2.75rem;
+	margin-bottom: 0.75rem;
+}
+
 .marker {
 	position: relative;
-	margin: 0 0 0.75rem 2.75rem;
+	margin: 0;
 	padding: 0.35rem 0.75rem;
 	border: 1px dashed var(--mantine-color-teal-6);
 	border-radius: var(--mantine-radius-sm);
@@ -347,12 +361,8 @@
 .modelCircle {
 	display: none;
 	vertical-align: middle;
-	margin-right: 0.4rem;
-	border-radius: 50%;
-	background: #000;
-	/* a speck below 0.3 mm still prints as a dot */
-	min-width: 0.3mm;
-	min-height: 0.3mm;
+	margin-left: 0.5rem;
+	fill: #000;
 }
 
 .screenHidden {
@@ -436,7 +446,10 @@
 	}
 
 	.table th,
-	.table td {
+	.table td,
+	.table thead th,
+	.moonRow th,
+	.moonRow td {
 		border-bottom: 1px solid #999;
 		color: #000;
 	}

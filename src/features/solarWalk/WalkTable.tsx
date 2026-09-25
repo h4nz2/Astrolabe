@@ -14,6 +14,8 @@ import classes from "./SolarWalk.module.css"
 
 /** Model bodies up to this size get a circle printed at their model size (bigger ones would not fit a row). */
 const MAX_PRINTED_CIRCLE_MM = 30
+/** A speck below this still prints as a dot. */
+const MIN_PRINTED_CIRCLE_MM = 0.3
 
 export type WalkTableProps = {
 	walk: SolarWalk
@@ -30,23 +32,30 @@ const WalkTable = ({ walk, landmark }: WalkTableProps) => {
 	const { t, formatLocale, number } = i18n
 	const name = useBodyName()
 	const length = (metres: number) => formatLength(metres, formatLocale)
-	const count = (metres: number) =>
-		landmark === null
-			? null
-			: number(roundCount(landmarkCount(metres, landmark)))
+	// below a tenth of a landmark the cell stays empty, as in the walk
+	const count = (metres: number) => {
+		if (landmark === null) return null
+		const n = roundCount(landmarkCount(metres, landmark))
+		return n === 0 ? null : number(n)
+	}
 
 	const sizeCell = (body: ModelBody) => {
 		const mm = body.sizeM * 1000
 		return (
 			<td className={classes.sizeCell}>
-				{mm <= MAX_PRINTED_CIRCLE_MM && (
-					<span
-						className={classes.modelCircle}
-						style={{ width: `${mm}mm`, height: `${mm}mm` }}
-						aria-hidden
-					/>
-				)}
 				{length(body.sizeM)}
+				{mm <= MAX_PRINTED_CIRCLE_MM && (
+					// SVG, not a CSS background: browsers print fills but drop backgrounds by default
+					<svg
+						className={classes.modelCircle}
+						width={`${Math.max(mm, MIN_PRINTED_CIRCLE_MM)}mm`}
+						height={`${Math.max(mm, MIN_PRINTED_CIRCLE_MM)}mm`}
+						viewBox="0 0 2 2"
+						aria-hidden
+					>
+						<circle cx="1" cy="1" r="1" />
+					</svg>
+				)}
 			</td>
 		)
 	}
@@ -84,7 +93,7 @@ const WalkTable = ({ walk, landmark }: WalkTableProps) => {
 					<th scope="row">{name("sun")}</th>
 					<td>{length(walk.sun.sizeM)}</td>
 					<td>{t(`solarWalk.sunObject.${walk.sunObject}`)}</td>
-					<td>{length(0)}</td>
+					<td>{i18n.quantity(0, "meter")}</td>
 					<td />
 					{landmark !== null && <td />}
 					{tick}
