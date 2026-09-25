@@ -23,6 +23,7 @@ import {
 
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { Hint } from "@/primitives/hint"
 import { useSkyTonightStore, type SkyPlaceChoice } from "@/store/skyTonight"
 
 import { worldColor } from "../birthday/card"
@@ -119,24 +120,27 @@ const Why = ({ sighting, sky }: { sighting: Sighting; sky: SkyTonight }) => {
 						<Text size="xs" c="gray.3" lh={1.45}>
 							{whyText(sighting, sky.moon.phase.fraction, name, i18n)}
 						</Text>
-						<Button
-							variant="light"
-							color="orange"
-							size="compact-sm"
-							leftSection={<IconRocket size={14} />}
-							title={i18n.t("solarSystem.sky.why.showHint", {
+						<Hint
+							text={i18n.t("solarSystem.sky.why.showHint", {
 								body: name(sighting.id),
 							})}
-							onClick={() => {
-								showWhy(sighting.id, sighting.first.ms)
-								// the panel covers the side of the sky the planet is on: step aside
-								// (the place is kept, the button in the time controls brings it back)
-								useSkyTonightStore.getState().setOpen(false)
-							}}
-							style={{ alignSelf: "flex-start" }}
 						>
-							{i18n.t("solarSystem.sky.why.show")}
-						</Button>
+							<Button
+								variant="light"
+								color="orange"
+								size="compact-sm"
+								leftSection={<IconRocket size={14} />}
+								onClick={() => {
+									showWhy(sighting.id, sighting.first.ms)
+									// the panel covers the side of the sky the planet is on: step aside
+									// (the place is kept, the button in the time controls brings it back)
+									useSkyTonightStore.getState().setOpen(false)
+								}}
+								style={{ alignSelf: "flex-start" }}
+							>
+								{i18n.t("solarSystem.sky.why.show")}
+							</Button>
+						</Hint>
 					</Stack>
 				</div>
 			) : null}

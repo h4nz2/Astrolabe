@@ -145,10 +145,39 @@
 			"labels": "Noms",
 			"moons": "Lunes",
 			"allMoons": "Toutes les lunes",
-			"allMoonsHint": "Affiche aussi les nombreuses petites lunes, pas seulement celles qui ont une histoire",
 			"markers": "Repères",
 			"orbitNames": "Noms des orbites",
 			"alwaysLit": "Toujours éclairé",
+			"hint": {
+				"orbits": "Trace le chemin que suit chaque planète et chaque lune autour du Soleil ou de sa planète. Désactive-les pour ne voir que les astres.",
+				"orbits@simple": "Montre le chemin de chaque planète autour du Soleil.",
+				"orbits@advanced": "Trace toutes les orbites, pour comparer leur taille, leur forme et leur inclinaison. Désactive-les pour ne voir que les astres.",
+				"labels": "Écrit le nom à côté de chaque astre. Désactive-les pour faire deviner à la classe quelle planète est laquelle.",
+				"labels@simple": "Montre le nom des planètes. Désactive-les pour jouer aux devinettes !",
+				"labels@advanced": "Nomme chaque astre qui a de la place à l’écran. Désactive-les pour un quiz ou une image épurée.",
+				"moons": "Montre les lunes des planètes, d’abord celles qui ont une histoire. Désactive-les pour ne voir que le Soleil et les planètes.",
+				"moons@simple": "Montre les lunes qui tournent autour des planètes.",
+				"moons@advanced": "Montre les satellites naturels, les plus connus d’abord. Désactive-les pour réduire la scène au Soleil et aux planètes.",
+				"allMoons": "Montre aussi les nombreuses petites lunes, pas seulement celles qui ont une histoire : la plupart sont des rochers de quelques kilomètres.",
+				"allMoons@simple": "Montre aussi toutes les petites lunes. Il y en a plein !",
+				"allMoons@advanced": "Ajoute la longue liste des petites lunes, pour la plupart des rochers capturés de quelques kilomètres aux désignations provisoires.",
+				"markers": "Place un point de couleur sur chaque planète, pour la trouver même quand elle est bien trop petite pour être vue.",
+				"markers@simple": "Met un point de couleur sur chaque planète, pour la trouver même quand elle est toute petite.",
+				"markers@advanced": "Marque chaque astre d’un point de taille fixe à l’écran : à l’échelle réelle, les planètes elles-mêmes sont plus petites qu’un pixel.",
+				"orbitNames": "Écrit le nom de chaque planète sur son orbite, pour savoir quel chemin appartient à qui.",
+				"orbitNames@simple": "Écrit le nom de la planète sur son chemin.",
+				"orbitNames@advanced": "Nomme chaque orbite d’après son astre : utile quand les astres sont trop loin pour être nommés eux-mêmes.",
+				"smallBodies": "Montre Pluton et les autres planètes naines, les astéroïdes, les comètes et les deux ceintures. Désactivé par défaut pour que les planètes restent lisibles.",
+				"smallBodies@simple": "Montre Pluton, les comètes et la ceinture d’astéroïdes.",
+				"smallBodies@advanced": "Ajoute les planètes naines, des astéroïdes nommés, les comètes avec leurs queues, et les ceintures d’astéroïdes et de Kuiper sous forme de nuages de points (chaque point représente de nombreux corps réels).",
+				"alwaysLit": "Éclaire chaque astre depuis l’endroit d’où tu regardes, pour que la face de nuit ne soit pas noire. Bien pour voir les surfaces ; cache la leçon du jour et de la nuit.",
+				"alwaysLit@simple": "Éclaire chaque planète de ton côté, pour que rien ne soit sombre. Mais alors tu ne vois plus le jour et la nuit !",
+				"alwaysLit@advanced": "Éclaire chaque astre depuis le point de vue plutôt que depuis le Soleil : ni face de nuit, ni phases, ni ombres d’éclipse. Bien pour le détail des surfaces, faux pour la géométrie de la lumière solaire."
+			},
+			"reason": {
+				"allMoons": "Active d’abord Lunes.",
+				"orbitNames": "{missing, select, orbits {Active d’abord Orbites.} labels {Active d’abord Noms.} other {Active d’abord Orbites et Noms.}}"
+			},
 			"smallBodies": "Petits corps"
 		},
 		"scale": {
@@ -200,7 +229,21 @@
 			"markersOff": "Les repères sont désactivés : active-les pour trouver les planètes.",
 			"markersOff@simple": "Active les Repères pour trouver les planètes !",
 			"walk": "Trop petit pour l’imaginer ? Parcours-le à pied : le système solaire avec un Soleil gros comme un ballon de basket.",
-			"walk@simple": "Trop petit pour être vu ? Parcours le système solaire à pied dans la cour de l’école !"
+			"walk@simple": "Trop petit pour être vu ? Parcours le système solaire à pied dans la cour de l’école !",
+			"hint": {
+				"sizesTrue": "Dessine chaque astre à sa taille réelle. De loin, les planètes deviennent trop petites pour être vues.",
+				"sizesTrue@simple": "Les planètes aussi grandes qu’en vrai. De loin, elles sont trop petites pour être vues !",
+				"sizesTrue@advanced": "Rayons à l’échelle : depuis la vue d’ensemble, chaque planète fait moins d’un pixel et seuls les repères la trouvent.",
+				"sizesEnlarged": "Dessine les planètes et les lunes bien plus grandes qu’elles ne sont, pour les voir de loin. Pas à l’échelle.",
+				"sizesEnlarged@simple": "Rend les planètes bien plus grandes pour que tu les voies. Ce n’est pas comme en vrai !",
+				"sizesEnlarged@advanced": "Exagère les rayons pour que les disques restent visibles de loin ; la phrase en dessous dit de combien.",
+				"distancesTrue": "Laisse chaque astre à sa vraie distance : les planètes sont très éloignées, avec un immense espace vide entre elles.",
+				"distancesTrue@simple": "Les planètes aussi éloignées qu’en vrai. Il y a plein d’espace vide !",
+				"distancesTrue@advanced": "Distances à l’échelle : Neptune tourne trente fois plus loin du Soleil que la Terre.",
+				"distancesSqueezed": "Rapproche les planètes, pour que tout le système solaire tienne sur l’écran. Pas à l’échelle.",
+				"distancesSqueezed@simple": "Rapproche les planètes pour qu’elles tiennent toutes sur l’écran. Ce n’est pas comme en vrai !",
+				"distancesSqueezed@advanced": "Comprime les distances pour que tout le système tienne sur l’écran ; la phrase en dessous dit de combien."
+			}
 		},
 		"time": {
 			"play": "Lecture",
@@ -218,7 +261,10 @@
 				"day": "{count, plural, one {# jour/s} many {# de jours/s} other {# jours/s}}",
 				"week": "{count, plural, one {# semaine/s} many {# de semaines/s} other {# semaines/s}}",
 				"month": "{count, plural, one {# mois/s} many {# de mois/s} other {# mois/s}}",
-				"year": "{count, plural, one {# an/s} many {# d’années/s} other {# ans/s}}"
+				"year": "{count, plural, one {# an/s} many {# d’années/s} other {# ans/s}}",
+				"hint": "Combien de temps passe dans le modèle pour chaque seconde réelle. Les vitesses rapides montrent les planètes qui tournent autour du Soleil ; + et − les font défiler.",
+				"hint@simple": "La vitesse du temps. Choisis une vitesse plus rapide et regarde les planètes tourner autour du Soleil !",
+				"hint@advanced": "L’accélération du temps : temps simulé par seconde réelle, sur une rangée de niveaux qui multiplient chacun la vitesse (+ et − les font défiler)."
 			},
 			"reverse": "Marche arrière",
 			"reverseHint": "Faire reculer le temps",
@@ -397,6 +443,15 @@
 				"pluto": "Pluton",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 Soleil–Terre"
+			},
+			"hint": {
+				"layer": "Montre les vraies sondes spatiales envoyées par l’humanité, là où elles sont à la date affichée.",
+				"layer@simple": "Montre les sondes que les gens ont envoyées dans l’espace.",
+				"allPaths": "Trace le voyage complet de chaque sonde, pas seulement celle que tu as choisie.",
+				"allPaths@simple": "Montre le chemin de chaque sonde."
+			},
+			"reason": {
+				"allPaths": "Active d’abord Sondes spatiales."
 			}
 		},
 		"pick": {
@@ -671,7 +726,9 @@
 					"what@simple": "Saturne a des aurores, et elles envoient des ondes radio. La sonde Cassini les a captées. Des scientifiques les ont rendues plus graves et plus rapides pour qu’on puisse les entendre. Elles font un peu peur !",
 					"what@advanced": "Rayonnement kilométrique de Saturne, l’émission radio de ses aurores, enregistré par le RPWS de Cassini lors de son approche en 2003. Fréquences divisées par 44, temps compressé 22 fois (30 s ici ≈ 11 min). Les tons montants et descendants suivent de petites sources radio qui se déplacent le long des lignes de champ aurorales."
 				}
-			}
+			},
+			"settingsHint": "Volume, ambiance sonore, sons de mouvement et vrais enregistrements de l’espace.",
+			"settingsHint@simple": "Règle le volume et écoute de vrais sons de l’espace."
 		},
 		"frame": {
 			"label": "Point de vue",
@@ -760,7 +817,10 @@
 				"title": "Vu d’au-dessus du Soleil",
 				"title@simple": "Vu de très haut",
 				"label": "{observer} et {body} sur leurs orbites autour du Soleil, avec la ligne de visée ({observer} → {body})"
-			}
+			},
+			"hint": "Choisis ce qui reste immobile dans l’image : le Soleil, ou une planète au centre, pour voir comment tout bouge vu de là-bas.",
+			"hint@simple": "Choisis ce qui reste immobile : le Soleil ou une planète.",
+			"hint@advanced": "Le référentiel : centré sur le Soleil, ou attaché à un astre pour que tout autre mouvement se voie par rapport à lui."
 		},
 		"present": {
 			"button": "Présenter",
@@ -788,7 +848,9 @@
 				"copyFailed": "Copie impossible : sélectionne le lien et copie-le à la main",
 				"qr": "Scanne pour ouvrir cette vue sur un téléphone ou une tablette",
 				"qrLabel": "QR code du lien vers cette vue",
-				"qrShow": "Montrer le QR code à la classe"
+				"qrShow": "Montrer le QR code à la classe",
+				"hint": "Un lien et un code QR qui ouvrent exactement cette vue, pour préparer un cours ou l’envoyer en devoir.",
+				"hint@simple": "Obtiens un lien qui montre à quelqu’un d’autre exactement ce que tu vois."
 			},
 			"chrome": {
 				"show": "Afficher les commandes",
@@ -844,7 +906,20 @@
 				"contrastOn": "Contraste élevé activé",
 				"contrastOff": "Contraste élevé désactivé",
 				"step": "Étape {n} sur {total}"
-			}
+			},
+			"hint": {
+				"projector": "Range aussi les interrupteurs des calques dans un menu et masque des détails comme la rotation, pour que la classe voie le système solaire et pas les commandes.",
+				"projector@simple": "Agrandit le texte et les boutons pour un grand écran.",
+				"projector@advanced": "Agrandit toute l’interface pour une projection et range les interrupteurs dont la classe n’a pas besoin.",
+				"highContrast": "Texte blanc sur noir avec des contours marqués, pour que noms et boutons restent lisibles quand un vidéoprojecteur délave les couleurs.",
+				"highContrast@simple": "Noir et blanc, pour mieux lire sur un écran pâle.",
+				"highContrast@advanced": "Blanc sur noir avec des contours marqués et un épais anneau de focus : chaque paire de couleurs atteint le niveau de contraste le plus strict (WCAG AAA)."
+			},
+			"reason": {
+				"highContrast": "Ton appareil demande déjà plus de contraste, il reste donc activé."
+			},
+			"layersHint": "Ce que montre la scène : orbites, noms, lunes, repères et éclairage.",
+			"layersHint@simple": "Choisis ce que tu vois dans l’image."
 		},
 		"light": {
 			"open": "Vitesse de la lumière",
@@ -938,7 +1013,9 @@
 				"join2@simple": "{a} et {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} et {c}"
-			}
+			},
+			"stopHint": "Retire l’éclair de lumière de la scène. Tu peux en envoyer un autre quand tu veux.",
+			"stopHint@simple": "Éteint la lumière. Tu peux envoyer un nouvel éclair quand tu veux."
 		},
 		"postcard": {
 			"take": "Prendre une photo",
@@ -982,8 +1059,20 @@
 				"everythingVisible": "Pas à l’échelle : les corps sont dessinés plus grands et plus proches qu’en réalité.",
 				"everythingVisible@simple": "Pas comme en vrai : en réalité, les planètes sont bien plus petites et bien plus éloignées.",
 				"everythingVisible@advanced": "Pas à l’échelle : tailles exagérées et distances comprimées."
+			},
+			"hint": {
+				"names": "Garde le nom des astres sur l’image. Désactive-les pour une image épurée ou un quiz.",
+				"names@simple": "Montre les noms sur l’image.",
+				"link": "Ajoute à l’image un code QR qui ouvre exactement cette vue sur un téléphone ou une tablette.",
+				"link@simple": "Met un code sur l’image. Scanne-le avec un téléphone pour ouvrir cette vue."
+			},
+			"reason": {
+				"names": "Aucun nom n’était affiché au moment de la photo : active Noms et reprends-la.",
+				"link": "Le lien vers cette vue est trop long pour tenir dans un code QR."
 			}
 		},
+		"overviewHint": "Retour à tout le système solaire, de n’importe où (Échap).",
+		"overviewHint@simple": "Reviens voir tout le système solaire (Échap).",
 		"sky": {
 			"open": "Le ciel cette nuit",
 			"openHint": "Quelles planètes peux-tu voir cette nuit, quand et où ?",
@@ -1176,7 +1265,9 @@
 			"menu": "Aide",
 			"replay": "Revoir l’introduction",
 			"replay@simple": "Revoir le début",
-			"hints": "Montrer comment se déplacer"
+			"hints": "Montrer comment se déplacer",
+			"menuHint": "Ouvre la page d’aide, revois la courte introduction ou revois comment te déplacer dans le système solaire.",
+			"menuHint@simple": "Ouvre l’aide, regarde encore le début ou apprends à te déplacer."
 		},
 		"tours": {
 			"menu": "Visites guidées",
@@ -1199,7 +1290,9 @@
 			"away": "Tu explores tout seul. La visite t’attend à l’étape {n}.",
 			"away@simple": "Tu regardes autour de toi. La visite t’attend.",
 			"resume": "Retour à la visite",
-			"goTo": "Étape {n} : {title}"
+			"goTo": "Étape {n} : {title}",
+			"menuHint": "Des voyages tout prêts à travers le système solaire, avec une courte histoire à chaque étape : parfaits pour commencer un cours.",
+			"menuHint@simple": "De courts voyages dans le système solaire qui te racontent une histoire à chaque étape."
 		},
 		"smallBodies": {
 			"beltName": "{belt, select, asteroidbelt {Ceinture d’astéroïdes} kuiperbelt {Ceinture de Kuiper} other {{belt}}}",

@@ -1,8 +1,9 @@
-import { Button, Tooltip } from "@mantine/core"
+import { Button } from "@mantine/core"
 import { Link } from "@tanstack/react-router"
 import { IconHelp } from "@tabler/icons-react"
 
 import { LanguageMenu, useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 
 import classes from "./HelpButton.module.css"
 
@@ -14,7 +15,7 @@ import classes from "./HelpButton.module.css"
 export function HelpButton() {
 	const { t } = useI18n()
 	return (
-		<Tooltip label={t("help.buttonHint")} openDelay={400}>
+		<Hint text={t("help.buttonHint")}>
 			<Button
 				component={Link}
 				to="/help"
@@ -29,7 +30,7 @@ export function HelpButton() {
 			>
 				<span className={classes.label}>{t("help.button")}</span>
 			</Button>
-		</Tooltip>
+		</Hint>
 	)
 }
 

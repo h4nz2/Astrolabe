@@ -145,10 +145,39 @@
 			"labels": "Beschriftungen",
 			"moons": "Monde",
 			"allMoons": "Alle Monde",
-			"allMoonsHint": "Auch die vielen kleinen Monde zeigen, nicht nur die mit einer Geschichte",
 			"markers": "Markierungen",
 			"orbitNames": "Bahnnamen",
 			"alwaysLit": "Immer beleuchtet",
+			"hint": {
+				"orbits": "Zeichnet die Bahn, auf der jeder Planet und Mond um die Sonne oder seinen Planeten läuft. Schalte sie aus, um nur die Himmelskörper zu sehen.",
+				"orbits@simple": "Zeigt den Weg, den jeder Planet um die Sonne nimmt.",
+				"orbits@advanced": "Zeichnet jede Umlaufbahn, damit du ihre Größe, Form und Neigung vergleichen kannst. Schalte sie aus, um nur die Himmelskörper zu sehen.",
+				"labels": "Schreibt den Namen neben jeden Himmelskörper. Schalte sie aus, um die Klasse raten zu lassen, welcher Planet welcher ist.",
+				"labels@simple": "Zeigt die Namen der Planeten. Schalte sie aus für ein Ratespiel!",
+				"labels@advanced": "Benennt jeden Himmelskörper, für den auf dem Bildschirm Platz ist. Schalte sie aus für ein Quiz oder ein aufgeräumtes Bild.",
+				"moons": "Zeigt die Monde der Planeten, zuerst die mit einer Geschichte. Schalte sie aus, um nur die Sonne und die Planeten zu sehen.",
+				"moons@simple": "Zeigt die Monde, die um die Planeten kreisen.",
+				"moons@advanced": "Zeigt die natürlichen Satelliten, die bekanntesten zuerst. Schalte sie aus, um die Szene auf die Sonne und die Planeten zu beschränken.",
+				"allMoons": "Zeigt auch die vielen kleinen Monde, nicht nur die mit einer Geschichte: Die meisten sind Felsbrocken von wenigen Kilometern.",
+				"allMoons@simple": "Zeigt auch alle kleinen Monde. Das sind ganz schön viele!",
+				"allMoons@advanced": "Fügt die lange Reihe kleiner Monde hinzu, meist eingefangene Felsbrocken von wenigen Kilometern mit vorläufigen Bezeichnungen.",
+				"markers": "Setzt einen farbigen Punkt auf jeden Planeten, damit du ihn findest, auch wenn er viel zu klein zum Sehen ist.",
+				"markers@simple": "Setzt einen bunten Punkt auf jeden Planeten, damit du ihn findest, auch wenn er winzig ist.",
+				"markers@advanced": "Markiert jeden Himmelskörper mit einem Punkt fester Bildschirmgröße: Im echten Maßstab sind die Planeten selbst kleiner als ein Pixel.",
+				"orbitNames": "Schreibt den Namen jedes Planeten an seine Bahnlinie, damit du erkennst, welche Bahn zu wem gehört.",
+				"orbitNames@simple": "Schreibt den Namen des Planeten an seinen Weg.",
+				"orbitNames@advanced": "Beschriftet jede Bahnlinie mit ihrem Himmelskörper: nützlich, wenn die Körper selbst zu weit weg für einen Namen sind.",
+				"smallBodies": "Zeigt Pluto und die anderen Zwergplaneten, Asteroiden, Kometen und die beiden Gürtel. Standardmäßig aus, damit die Planeten gut lesbar bleiben.",
+				"smallBodies@simple": "Zeigt Pluto, Kometen und den Asteroidengürtel.",
+				"smallBodies@advanced": "Fügt die Zwergplaneten, benannte Asteroiden, Kometen mit ihren Schweifen sowie Asteroiden- und Kuipergürtel als Punktwolken hinzu (jeder Punkt steht für viele echte Körper).",
+				"alwaysLit": "Beleuchtet jeden Himmelskörper von deinem Blickpunkt aus, sodass die Nachtseite nicht schwarz ist. Gut, um Oberflächen zu sehen; versteckt aber Tag und Nacht.",
+				"alwaysLit@simple": "Beleuchtet jeden Planeten von deiner Seite, sodass nichts dunkel ist. Dann siehst du aber Tag und Nacht nicht mehr!",
+				"alwaysLit@advanced": "Beleuchtet jeden Körper vom Blickpunkt statt von der Sonne: keine Nachtseiten, Phasen oder Finsternisschatten. Gut für Oberflächendetails, falsch für die Geometrie des Sonnenlichts."
+			},
+			"reason": {
+				"allMoons": "Schalte zuerst Monde ein.",
+				"orbitNames": "{missing, select, orbits {Schalte zuerst Umlaufbahnen ein.} labels {Schalte zuerst Beschriftungen ein.} other {Schalte zuerst Umlaufbahnen und Beschriftungen ein.}}"
+			},
 			"smallBodies": "Kleinkörper"
 		},
 		"scale": {
@@ -200,7 +229,21 @@
 			"markersOff": "Die Markierungen sind aus: Schalte sie ein, um die Planeten zu finden.",
 			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!",
 			"walk": "Zu klein, um es sich vorzustellen? Lauf es ab: das Sonnensystem mit der Sonne als Basketball.",
-			"walk@simple": "Zu klein zum Sehen? Lauf das Sonnensystem auf dem Sportplatz ab!"
+			"walk@simple": "Zu klein zum Sehen? Lauf das Sonnensystem auf dem Sportplatz ab!",
+			"hint": {
+				"sizesTrue": "Zeichnet jeden Himmelskörper in seiner echten Größe. Aus der Ferne werden die Planeten zu klein zum Sehen.",
+				"sizesTrue@simple": "Planeten so groß, wie sie wirklich sind. Von weit weg sind sie zu klein zum Sehen!",
+				"sizesTrue@advanced": "Radien maßstabsgetreu: In der Übersicht schrumpft jeder Planet unter ein Pixel, nur die Markierungen finden ihn.",
+				"sizesEnlarged": "Zeichnet Planeten und Monde viel größer, als sie sind, damit du sie von weit weg siehst. Nicht maßstabsgetreu.",
+				"sizesEnlarged@simple": "Macht die Planeten viel größer, damit du sie siehst. In echt ist das nicht so!",
+				"sizesEnlarged@advanced": "Übertreibt die Radien, damit die Scheiben aus der Ferne sichtbar bleiben; der Satz darunter sagt, um wie viel.",
+				"distancesTrue": "Lässt jeden Himmelskörper in seiner echten Entfernung: Die Planeten liegen weit auseinander, mit riesigem leerem Raum dazwischen.",
+				"distancesTrue@simple": "Planeten so weit auseinander, wie sie wirklich sind. Dazwischen ist ganz viel leerer Raum!",
+				"distancesTrue@advanced": "Entfernungen maßstabsgetreu: Neptun kreist dreißigmal weiter von der Sonne entfernt als die Erde.",
+				"distancesSqueezed": "Rückt die Planeten näher zusammen, damit das ganze Sonnensystem auf den Bildschirm passt. Nicht maßstabsgetreu.",
+				"distancesSqueezed@simple": "Rückt die Planeten näher zusammen, damit alle auf den Bildschirm passen. In echt ist das nicht so!",
+				"distancesSqueezed@advanced": "Staucht die Entfernungen, damit das ganze System auf den Bildschirm passt; der Satz darunter sagt, um wie viel."
+			}
 		},
 		"time": {
 			"play": "Abspielen",
@@ -218,7 +261,10 @@
 				"day": "{count, plural, one {# Tag/s} other {# Tage/s}}",
 				"week": "{count, plural, one {# Woche/s} other {# Wochen/s}}",
 				"month": "{count, plural, one {# Monat/s} other {# Monate/s}}",
-				"year": "{count, plural, one {# Jahr/s} other {# Jahre/s}}"
+				"year": "{count, plural, one {# Jahr/s} other {# Jahre/s}}",
+				"hint": "Wie viel Zeit im Modell in jeder echten Sekunde vergeht. Schnellere Stufen zeigen, wie die Planeten um die Sonne ziehen; + und − schalten durch.",
+				"hint@simple": "Wie schnell die Zeit läuft. Wähle eine schnellere Stufe und sieh zu, wie die Planeten um die Sonne ziehen!",
+				"hint@advanced": "Der Zeitraffer: simulierte Zeit pro echter Sekunde, in Stufen, die die Geschwindigkeit jeweils vervielfachen (+ und − schalten durch)."
 			},
 			"reverse": "Rückwärts",
 			"reverseHint": "Zeit rückwärts laufen lassen",
@@ -397,6 +443,15 @@
 				"pluto": "Pluto",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 von Sonne und Erde"
+			},
+			"hint": {
+				"layer": "Zeigt die echten Raumsonden, die Menschen ausgesandt haben, dort, wo sie am angezeigten Datum sind.",
+				"layer@simple": "Zeigt die Raumsonden, die Menschen ins All geschickt haben.",
+				"allPaths": "Zeichnet die ganze Reise jeder Raumsonde, nicht nur die der ausgewählten.",
+				"allPaths@simple": "Zeigt den Weg jeder Raumsonde."
+			},
+			"reason": {
+				"allPaths": "Schalte zuerst Raumsonden ein."
 			}
 		},
 		"pick": {
@@ -671,7 +726,9 @@
 					"what@simple": "Der Saturn hat Polarlichter, und die senden Radiowellen aus. Die Sonde Cassini hat sie aufgefangen. Forschende haben sie tiefer und schneller gemacht, damit wir sie hören können. Sie klingen unheimlich!",
 					"what@advanced": "Saturnische Kilometerstrahlung, die Radioemission der Polarlichter, 2003 beim Anflug vom RPWS-Instrument der Sonde Cassini aufgezeichnet. Frequenzen durch 44 geteilt, Zeit 22-fach gerafft (30 s hier ≈ 11 min). Die steigenden und fallenden Töne zeichnen kleine Radioquellen nach, die entlang der Polarlicht-Feldlinien wandern."
 				}
-			}
+			},
+			"settingsHint": "Lautstärke, Hintergrundklang, Bewegungsklänge und echte Aufnahmen aus dem All.",
+			"settingsHint@simple": "Stell die Lautstärke ein und hör echte Klänge aus dem All."
 		},
 		"frame": {
 			"label": "Blickwinkel",
@@ -760,7 +817,10 @@
 				"title": "Von oberhalb der Sonne",
 				"title@simple": "Von hoch oben gesehen",
 				"label": "{observer} und {body} auf ihren Bahnen um die Sonne, mit der Blicklinie von {observer} zu {body}"
-			}
+			},
+			"hint": "Wähle, was im Bild stillsteht: die Sonne oder ein Planet in der Mitte, um zu sehen, wie sich von dort aus gesehen alles bewegt.",
+			"hint@simple": "Wähle, was stillsteht: die Sonne oder ein Planet.",
+			"hint@advanced": "Das Bezugssystem: sonnenzentriert oder an einen Himmelskörper gebunden, sodass jede andere Bewegung relativ zu ihm erscheint."
 		},
 		"present": {
 			"button": "Präsentieren",
@@ -788,7 +848,9 @@
 				"copyFailed": "Kopieren ging nicht: Markiere den Link und kopiere ihn selbst",
 				"qr": "Scannen, um diese Ansicht auf einem Handy oder Tablet zu öffnen",
 				"qrLabel": "QR-Code des Links zu dieser Ansicht",
-				"qrShow": "QR-Code der Klasse zeigen"
+				"qrShow": "QR-Code der Klasse zeigen",
+				"hint": "Ein Link und ein QR-Code, die genau diese Ansicht öffnen – zum Vorbereiten einer Stunde oder als Hausaufgabe.",
+				"hint@simple": "Hol dir einen Link, der jemand anderem genau das zeigt, was du siehst."
 			},
 			"chrome": {
 				"show": "Bedienelemente zeigen",
@@ -844,7 +906,20 @@
 				"contrastOn": "Hoher Kontrast an",
 				"contrastOff": "Hoher Kontrast aus",
 				"step": "Schritt {n} von {total}"
-			}
+			},
+			"hint": {
+				"projector": "Klappt außerdem die Ebenen-Schalter in ein Menü und blendet Details wie die Drehung aus, damit die Klasse das Sonnensystem sieht und nicht die Bedienelemente.",
+				"projector@simple": "Macht Schrift und Knöpfe größer für eine große Leinwand.",
+				"projector@advanced": "Vergrößert die ganze Oberfläche für eine Projektion und klappt die Schalter weg, die eine Klasse nicht sehen muss.",
+				"highContrast": "Weiße Schrift auf Schwarz mit kräftigen Umrissen, damit Namen und Knöpfe lesbar bleiben, wenn ein Beamer die Farben verblassen lässt.",
+				"highContrast@simple": "Schwarz und Weiß, damit es auf einer blassen Leinwand leichter zu lesen ist.",
+				"highContrast@advanced": "Weiß auf Schwarz mit kräftigen Umrissen und dickem Fokusrahmen: Jedes Farbpaar erfüllt die strengste Kontraststufe (WCAG AAA)."
+			},
+			"reason": {
+				"highContrast": "Dein Gerät verlangt schon mehr Kontrast, darum bleibt er an."
+			},
+			"layersHint": "Was die Szene zeigt: Umlaufbahnen, Namen, Monde, Markierungen und Beleuchtung.",
+			"layersHint@simple": "Wähle, was du im Bild siehst."
 		},
 		"light": {
 			"open": "Lichtgeschwindigkeit",
@@ -938,7 +1013,9 @@
 				"join2@simple": "{a} und {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} und {c}"
-			}
+			},
+			"stopHint": "Nimmt den Lichtblitz aus der Szene. Du kannst jederzeit einen neuen senden.",
+			"stopHint@simple": "Macht das Licht aus. Du kannst jederzeit einen neuen Blitz senden."
 		},
 		"postcard": {
 			"take": "Foto machen",
@@ -982,8 +1059,20 @@
 				"everythingVisible@advanced": "Nicht maßstabsgetreu: Größen übertrieben, Abstände gestaucht."
 			},
 			"compareTitle": "{a} und {b} im Vergleich",
-			"compareScale": "Echte Größenverhältnisse: Alle Himmelskörper sind im gleichen Maßstab gezeichnet."
+			"compareScale": "Echte Größenverhältnisse: Alle Himmelskörper sind im gleichen Maßstab gezeichnet.",
+			"hint": {
+				"names": "Lässt die Namen der Himmelskörper im Bild. Schalte sie aus für ein aufgeräumtes Bild oder ein Quiz.",
+				"names@simple": "Zeigt die Namen im Bild.",
+				"link": "Fügt dem Bild einen QR-Code hinzu, der genau diese Ansicht auf einem Handy oder Tablet öffnet.",
+				"link@simple": "Setzt einen Code aufs Bild. Scanne ihn mit einem Handy, um diese Ansicht zu öffnen."
+			},
+			"reason": {
+				"names": "Beim Aufnehmen waren keine Namen zu sehen: Schalte Beschriftungen ein und mach das Bild noch einmal.",
+				"link": "Der Link zu dieser Ansicht ist zu lang für einen QR-Code."
+			}
 		},
+		"overviewHint": "Zurück zum ganzen Sonnensystem, von überall (Esc).",
+		"overviewHint@simple": "Geh zurück und sieh dir das ganze Sonnensystem an (Esc).",
 		"sky": {
 			"open": "Himmel heute Nacht",
 			"openHint": "Welche Planeten kannst du heute Nacht sehen, wann und wo?",
@@ -1176,7 +1265,9 @@
 			"menu": "Hilfe",
 			"replay": "Intro noch einmal abspielen",
 			"replay@simple": "Den Anfang noch mal ansehen",
-			"hints": "Zeigen, wie man sich bewegt"
+			"hints": "Zeigen, wie man sich bewegt",
+			"menuHint": "Öffne die Hilfeseite, spiel das kurze Intro noch einmal ab oder lass dir noch einmal zeigen, wie du dich im Sonnensystem bewegst.",
+			"menuHint@simple": "Öffne die Hilfe, sieh dir den Anfang noch einmal an oder lerne, wie du dich bewegst."
 		},
 		"tours": {
 			"menu": "Geführte Touren",
@@ -1199,7 +1290,9 @@
 			"away": "Du siehst dich gerade selbst um. Die Tour wartet bei Station {n}.",
 			"away@simple": "Du schaust dich gerade selbst um. Die Tour wartet auf dich.",
 			"resume": "Zurück zur Tour",
-			"goTo": "Station {n}: {title}"
+			"goTo": "Station {n}: {title}",
+			"menuHint": "Fertige Reisen durch das Sonnensystem, jede Station mit einer kurzen Geschichte: gut für den Einstieg in eine Stunde.",
+			"menuHint@simple": "Kurze Reisen durch das Sonnensystem, die dir an jeder Station eine Geschichte erzählen."
 		},
 		"smallBodies": {
 			"beltName": "{belt, select, asteroidbelt {Asteroidengürtel} kuiperbelt {Kuipergürtel} other {{belt}}}",

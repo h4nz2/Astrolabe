@@ -1,10 +1,11 @@
 import { Suspense, lazy, useEffect, useLayoutEffect } from "react"
-import { ActionIcon, Button, Center, Loader, Tooltip } from "@mantine/core"
+import { ActionIcon, Button, Center, Loader } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import { useSearch } from "@tanstack/react-router"
 import { IconMoonStars } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { useBirthdayStore } from "@/store/birthday"
 import { useHuntStore } from "@/store/hunt"
 import { useSkyTonightStore } from "@/store/skyTonight"
@@ -34,7 +35,7 @@ export const SkyTonightButton = () => {
 	const { t } = useI18n()
 	const open = useSkyTonightStore((state) => state.open)
 	return (
-		<Tooltip label={t("solarSystem.sky.openHint")} openDelay={400}>
+		<Hint text={t("solarSystem.sky.openHint")}>
 			<Button
 				variant={open ? "filled" : "light"}
 				color="orange"
@@ -48,7 +49,7 @@ export const SkyTonightButton = () => {
 			>
 				{t("solarSystem.sky.open")}
 			</Button>
-		</Tooltip>
+		</Hint>
 	)
 }
 
@@ -83,7 +84,7 @@ export const SkyTonightPickerIcon = () => {
 	const open = useSkyTonightStore((state) => state.open)
 	if (!phone) return null
 	return (
-		<Tooltip label={t("solarSystem.sky.openHint")} openDelay={400}>
+		<Hint text={t("solarSystem.sky.openHint")}>
 			<ActionIcon
 				variant={open ? "filled" : "light"}
 				color="orange"
@@ -97,7 +98,7 @@ export const SkyTonightPickerIcon = () => {
 			>
 				<IconMoonStars size={18} />
 			</ActionIcon>
-		</Tooltip>
+		</Hint>
 	)
 }
 
