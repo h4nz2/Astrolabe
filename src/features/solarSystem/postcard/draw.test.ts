@@ -9,7 +9,7 @@ describe("postcard layout", () => {
 	it("sizes everything from the picture's size", () => {
 		expect(postcardUnit(1920, 1080)).toBeCloseTo(1080 / 34)
 		// a tall phone picture: the long side keeps the text legible
-		expect(postcardUnit(780, 1688)).toBeCloseTo(1688 / 60)
+		expect(postcardUnit(780, 1688)).toBeCloseTo(1688 / 62)
 		expect(postcardUnit(10, 10)).toBe(8)
 	})
 

@@ -26,10 +26,10 @@ export interface PostcardOptions {
 
 /**
  * The size unit of a picture `width` x `height` px: a 34th of its short side,
- * or a 60th of its long side if more (a tall phone picture keeps legible text).
+ * or a 62nd of its long side if more (a tall phone picture keeps legible text).
  */
 export const postcardUnit = (width: number, height: number): number =>
-	Math.max(8, Math.min(width, height) / 34, Math.max(width, height) / 60)
+	Math.max(8, Math.min(width, height) / 34, Math.max(width, height) / 62)
 
 /** Columns of the extra facts: 4 beside a landscape picture, 2 below a portrait one. */
 export const rowColumns = (width: number, height: number, count: number) =>
