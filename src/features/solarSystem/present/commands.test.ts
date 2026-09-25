@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it } from "vitest"
 
 import { createI18n, type I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
+import { useLightStore } from "@/store/light"
 import { usePresentationStore } from "@/store/presentation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
@@ -27,6 +28,7 @@ afterEach(() => {
 	useSimStore.setState(useSimStore.getInitialState(), true)
 	usePresentationStore.setState(usePresentationStore.getInitialState(), true)
 	useScaleStore.setState(useScaleStore.getInitialState(), true)
+	useLightStore.setState(useLightStore.getInitialState(), true)
 })
 
 describe("runCommand", () => {
@@ -90,6 +92,16 @@ describe("runCommand", () => {
 		expect(runCommand({ kind: "contrast" }, en)).toBe("High contrast on")
 		expect(presentation().highContrast).toBe(true)
 		expect(runCommand({ kind: "contrast" }, en)).toBe("High contrast off")
+	})
+
+	it("X stops the light flash, and says nothing when there is none", () => {
+		expect(runCommand({ kind: "stopLight" }, context())).toBeNull()
+		useLightStore.getState().send("sun")
+		expect(useLightStore.getState().pulse).not.toBeNull()
+		expect(runCommand({ kind: "stopLight" }, context())).toBe(
+			"Light flash stopped",
+		)
+		expect(useLightStore.getState().pulse).toBeNull()
 	})
 
 	it("? opens and closes the shortcut list without an announcement", () => {

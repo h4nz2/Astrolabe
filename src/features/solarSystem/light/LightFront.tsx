@@ -9,6 +9,7 @@
 import { useEffect, useMemo, useRef, type RefObject } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Html } from "@react-three/drei"
+import { IconX } from "@tabler/icons-react"
 import {
 	BufferAttribute,
 	BufferGeometry,
@@ -37,7 +38,12 @@ import {
 	type FrontSource,
 	type FrontState,
 } from "./lightFront"
-import { formatDuration, pulseTargetIds } from "./lightTravel"
+import {
+	flashState,
+	formatDuration,
+	pastPlanetsSeconds,
+	pulseTargetIds,
+} from "./lightTravel"
 
 import classes from "./LightFront.module.css"
 
@@ -126,7 +132,8 @@ const labelPoint = new Float64Array(3)
 
 /**
  * Per frame: the front's vertices, the glow fan and the label's position.
- * Returns whether anything is drawn.
+ * `fade` (0..1) fades the whole front out once it has left the planets
+ * behind (#38). Returns whether anything is drawn.
  */
 export function updateFront(
 	frame: SimFrame,
@@ -136,9 +143,12 @@ export function updateFront(
 	objects: FrontObjects,
 	state: FrontState,
 	label: Group,
+	fade = 1,
 ): boolean {
 	const radiusKm = frontRadiusKm(pulse.emitJD, frame.jd)
 	writeFront(frame, source, radiusKm, objects.positions, state)
+	state.opacity *= fade
+	state.visible &&= state.opacity > 0
 	objects.line.visible = state.visible
 	objects.glow.visible = state.visible
 	if (!state.visible) return false
@@ -233,7 +243,20 @@ function drawFront(
 			targets,
 			frontRadiusKm(pulse.emitJD, frame.jd),
 		)
-		shown = updateFront(frame, source, pulse, toward, objects, state, label)
+		const { opacity } = flashState(
+			secondsSince(pulse.emitJD, frame.jd),
+			pastPlanetsSeconds(pulse),
+		)
+		shown = updateFront(
+			frame,
+			source,
+			pulse,
+			toward,
+			objects,
+			state,
+			label,
+			opacity,
+		)
 	} else {
 		objects.line.visible = false
 		objects.glow.visible = false
@@ -244,7 +267,16 @@ function drawFront(
 	}
 }
 
-/** The text on the front: "Light · 4 min 12 s", refreshed 10 times a second. Outside every React context (see LightFront). */
+/** Stops a click on the label's button from reaching the scene underneath (a click on empty space is the way out). */
+const keepFromScene = (event: { stopPropagation: () => void }) =>
+	event.stopPropagation()
+
+/**
+ * The label on the front: "Light · 4 min 12 s" ("Beyond the planets · …" once
+ * it has passed them), refreshed 10 times a second, with a button that stops
+ * the flash right where it is (#38). Outside every React context (see
+ * LightFront); `ref` is the whole label, which drawFront shows and fades.
+ */
 const FrontLabel = ({
 	pulse,
 	frame,
@@ -256,19 +288,44 @@ const FrontLabel = ({
 	i18n: I18n
 	ref: RefObject<HTMLSpanElement | null>
 }) => {
+	const textRef = useRef<HTMLSpanElement>(null)
 	useEffect(() => {
 		const write = () => {
-			if (ref.current === null) return
+			if (textRef.current === null) return
 			const seconds = secondsSince(pulse.emitJD, frame.jd)
-			ref.current.textContent = i18n.t("solarSystem.light.frontLabel", {
-				duration: formatDuration(seconds, i18n, true),
-			})
+			const { phase } = flashState(seconds, pastPlanetsSeconds(pulse))
+			textRef.current.textContent = i18n.t(
+				phase === "leaving"
+					? "solarSystem.light.frontLabelLeaving"
+					: "solarSystem.light.frontLabel",
+				{ duration: formatDuration(seconds, i18n, true) },
+			)
 		}
 		write()
 		const timer = setInterval(write, 100)
 		return () => clearInterval(timer)
-	}, [pulse, frame, i18n, ref])
-	return <span ref={ref} className={classes.label} data-light-front-label />
+	}, [pulse, frame, i18n])
+	const stop = i18n.t("solarSystem.light.stop")
+	return (
+		<span ref={ref} className={classes.label} data-light-front-label>
+			<span ref={textRef} />
+			<button
+				type="button"
+				className={classes.stop}
+				aria-label={stop}
+				title={stop}
+				data-light-front-stop
+				onPointerDown={keepFromScene}
+				onPointerUp={keepFromScene}
+				onClick={(event) => {
+					event.stopPropagation()
+					useLightStore.getState().clear()
+				}}
+			>
+				<IconX size={12} stroke={2.5} />
+			</button>
+		</span>
+	)
 }
 
 function LightFront() {

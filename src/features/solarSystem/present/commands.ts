@@ -7,6 +7,7 @@
  * while the controls are hidden.
  */
 import type { I18n } from "@/i18n"
+import { useLightStore } from "@/store/light"
 import { usePresentationStore } from "@/store/presentation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
@@ -135,5 +136,11 @@ export function runCommand(
 		case "help":
 			presentation.setHelpOpen(!presentation.helpOpen)
 			return null
+		case "stopLight": {
+			const light = useLightStore.getState()
+			if (light.pulse === null) return null
+			light.clear()
+			return t("solarSystem.present.announce.lightStopped")
+		}
 	}
 }

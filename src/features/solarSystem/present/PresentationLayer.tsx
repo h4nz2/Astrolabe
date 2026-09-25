@@ -64,6 +64,7 @@ const SHORTCUTS: readonly {
 		rows: [
 			{ keys: ["S"], text: "solarSystem.present.help.scale" },
 			{ keys: ["L"], text: "solarSystem.present.help.labels" },
+			{ keys: ["X"], text: "solarSystem.present.help.stopLight" },
 		],
 	},
 	{
