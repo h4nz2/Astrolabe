@@ -1,0 +1,99 @@
+/*
+ * The dock's panels and the entry points (#42). A dock panel carries the
+ * HUD's `.panel` look (SolarSystem.module.css); the dock places it above the
+ * entry points, or as a sheet from the bottom on phones.
+ */
+.panel {
+	display: flex;
+	flex-direction: column;
+	width: 24rem;
+	max-width: 100%;
+	max-height: 100%;
+	padding: 0;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.5rem 0.375rem 0.875rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.icon {
+	flex: none;
+	color: var(--mantine-color-orange-4);
+}
+
+.title {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	font-size: var(--mantine-font-size-sm);
+	font-weight: 700;
+	outline: none;
+}
+
+.body {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	padding: 0.625rem 0.875rem 0.75rem;
+}
+
+/* the layer switches: one per line, easy to scan and to hit */
+.layers > [role="group"] {
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625rem;
+}
+
+/* the light panel in the dock (its own module sets its width) */
+.lightPanel {
+	max-height: 100%;
+	overflow-y: auto;
+}
+
+/* the entry points: named buttons in one row */
+.entries {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.25rem;
+}
+
+.entry {
+	flex: none;
+}
+
+/* the preset on screen, beside "Scale": the honest word in view while the panel is closed */
+.preset {
+	margin-inline-start: 0.375rem;
+	color: var(--mantine-color-orange-3);
+	font-weight: 500;
+}
+
+@media (max-width: 719px) {
+	.preset {
+		display: none;
+	}
+}
+
+/* phones: the dock is a sheet from the bottom, and the entry points share the row evenly */
+@media (max-width: 599px) {
+	.panel {
+		width: 100%;
+	}
+
+	.entries {
+		justify-content: space-between;
+		gap: 0;
+		min-width: 0;
+	}
+
+	.entry {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+}

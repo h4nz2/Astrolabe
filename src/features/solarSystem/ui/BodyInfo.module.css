@@ -27,15 +27,9 @@
 	color: var(--mantine-color-gray-4);
 }
 
-/* only phones fold the facts away */
-.toggle {
-	display: none;
-}
-
-@media (max-width: 599px) {
-	.toggle {
-		display: inline-flex;
-	}
+/* the facts, moons and stories, unfolded on demand (#42) */
+.details {
+	transition: opacity 250ms ease;
 }
 
 /* the authored human-scale comparison ("If Earth were a football…") */

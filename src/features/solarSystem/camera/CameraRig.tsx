@@ -24,9 +24,11 @@ import {
 	Vector4,
 } from "three"
 
+import { useHudStore } from "@/store/hud"
 import { useSimStore } from "@/store/sim"
 
 import { useSimFrame } from "../scene/simFrame"
+import { MotionWatch } from "./motion"
 import { exposeDebugHandle } from "./debugHandle"
 import { CAMERA_FRAME_PRIORITY, CameraDirector } from "./director"
 import {
@@ -95,8 +97,33 @@ function CameraRig() {
 		}
 	}, [director, gl])
 
+	// the quiet interface (#42) dims its secondary controls while the camera moves
+	const motion = useMemo(() => new MotionWatch(), [])
+	// camera-controls' distance and angles, read through getters (nothing allocated per frame)
+	const pose = useMemo(
+		() => ({
+			get distance() {
+				return controls.distance
+			},
+			get azimuth() {
+				return controls.azimuthAngle
+			},
+			get polar() {
+				return controls.polarAngle
+			},
+		}),
+		[controls],
+	)
+	useEffect(() => () => useHudStore.getState().setCameraMoving(false), [])
+
 	useFrame((_state, delta) => {
-		director?.tick(performance.now(), delta)
+		const now = performance.now()
+		director?.tick(now, delta)
+		useHudStore
+			.getState()
+			.setCameraMoving(
+				motion.update(now, pose, useSimStore.getState().transition !== null),
+			)
 	}, CAMERA_FRAME_PRIORITY)
 
 	return null

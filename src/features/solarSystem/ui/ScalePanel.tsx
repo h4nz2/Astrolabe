@@ -55,7 +55,12 @@ export function switchScale(id: ScalePresetId): void {
  * distances) each switchable on its own, and the honesty statement saying how
  * far from true the body in view is drawn. A teacher never types a number.
  */
-const ScalePanel = () => {
+export interface ScalePanelProps {
+	/** Show the panel's own "Scale" heading (false inside the dock, #42, whose panel is titled already; it stays the region's name). */
+	heading?: boolean
+}
+
+const ScalePanel = ({ heading = true }: ScalePanelProps) => {
 	const { t } = useI18n()
 	const name = useBodyName()
 	const id = useId()
@@ -89,7 +94,11 @@ const ScalePanel = () => {
 			aria-labelledby={titleId}
 			data-scale-target={targetId ?? "custom"}
 		>
-			<Text id={titleId} className={classes.title} component="h2">
+			<Text
+				id={titleId}
+				className={heading ? classes.title : classes.hiddenTitle}
+				component="h2"
+			>
 				{t("solarSystem.scale.label")}
 			</Text>
 			<Hint

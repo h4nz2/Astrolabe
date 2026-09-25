@@ -39,9 +39,9 @@ src/data/                    bodies.json, credits.json (image sources + licences
                              tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
-                             presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
+                             hud.ts (the quiet HUD, #42), presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, tours/, ui/,
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, dock/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, tours/, ui/,
                              birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43)
 src/primitives/hint/         hover hints for every control (#39, see Hints)
@@ -59,6 +59,10 @@ public/assets/sounds/        the real space recordings (#32) and their CREDITS.m
 - Per-frame motion never goes through React state: `useFrame` and mutate refs.
 - Every user-facing string goes through i18n (`useI18n().t`, see i18n) with an entry in every shipped locale; numbers,
   units and dates through its formatters, body names through `bodyName`/`useBodyName`, never `body.name`.
+- **The HUD stays quiet (#42, see "HUD layout").** A new feature puts its control behind an existing entry point
+  (Tours, Layers, Scale, Tools, the time popover, the Present menu, a body's card), never as a new permanent panel on
+  the scene. A tool that needs a panel registers in the Tools menu (`dock/ToolsMenu.tsx`) and renders into the dock,
+  one panel at a time (`dock/exclusive.ts`). Its help entry says where it lives.
 - Every toggle, and every choice that changes the scene and is not self-explanatory, has a hint: wrap it in
   `<Hint text={t("…hint.x")}>` (see Hints). No `title=` attributes and no Mantine `Tooltip` for this.
 - Nobody commits; the orchestrator commits at the end of each phase.
@@ -235,7 +239,7 @@ on-screen size (in the overview: the whole drawn planetary system).
   animates from whatever is on screen (a switch can turn around mid-way), `setPreset` jumps (links, reduced
   motion), `stepTransition(nowMs)` eases (`easeInOutSine`, 2.5 s) and lands on the preset's frozen object.
   `scene/ScaleTransition.tsx` steps it in `useFrame` at priority -2, before SimClock and the camera director.
-- **The panel** (`ui/ScalePanel.tsx`, top right under the layer switches): the three named presets, the Sizes and
+- **The panel** (`ui/ScalePanel.tsx`, in the dock behind the Scale entry point since #42, which names the preset on screen): the three named presets, the Sizes and
   Distances switches (the only way to `bigPlanets`), the preset's one-line summary ("Not to scale!") and the
   honesty statement (`ui/scaleStatement.ts`): two sentences about the selected body, else the focus, else Earth
   ("Earth is drawn 10x too big." / "... 13x too close to the Sun."), factors rounded to two significant digits,
@@ -684,10 +688,12 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers (featured moons, the long tail
   only with `showAllMoons`; see Moons); hiding moons never hides the focus.
-- HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
-  `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` and `SoundControl` (#32) (in the
-  toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel), `FlightReadout`
-  (#18, above the time controls), `TeacherBar` (#29: Present, Share, the postcard's camera (#33) and the language menu heading the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
+- HUD (`ui/`, `dock/`, plain React over the Canvas, selectors only, never the SimFrame; where each piece sits is "HUD
+  layout" below): `OverviewButton`, `FocusPicker`, `FrameMenu` (#31), `BodyInfo` (the focused view's card, see Picking),
+  `TimeControls` (the time bar; `SpinControl`, the speed presets and Now in its popover), `CentreBadge` and
+  `CentreMarker` (#15), `FlightReadout` (#18, above the time bar), `TeacherBar` (#29, the top-right corner: Present,
+  Share, hide, then `SoundControl` (#32), Help (#43) and `LanguageMenu`), `EntryBar` (Tours, Layers → `SceneToggles`,
+  Scale → `ScalePanel` (#21), Tools). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings, M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
@@ -861,7 +867,7 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
 `hoverCraftId`, `trajectoriesReady`. Selecting a craft clears the body selection; choosing a body or any request for
 the overview (home, Escape) clears the craft. Not mirrored in the URL; `?craft=<id>` selects and shows one on arrival (#43, `CraftLink.tsx`).
 
-**HUD.** `SpacecraftMenu` (satellite button in the top-right bar, beside the language button): layer switch, "Show every path", every craft
+**HUD.** `SpacecraftList` (`spacecraft/SpacecraftMenu.tsx`; Tools → Real spacecraft, a panel of the dock since #42): layer switch, "Show every path", every craft
 with its tagline and status at the simulation date; picking one selects it and flies there (`showCraft`: a point
 view at the craft, anchored to its neighbourhood, framed so the Sun or the planet stays in view).
 `SpacecraftInfo` replaces `BodyInfo` while a craft is selected: status lamp, launch, distance from the Sun and
@@ -892,11 +898,12 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   grows the root font size (112.5 %, 125 % from 1600x900 up: everything in rem grows), overrides Mantine's colour
   variables for high contrast (tokens tested for WCAG AAA in `present/contrast.test.ts`) and hides open menus with the
   controls. Feature CSS modules key on the same attributes with `:global(html[data-...])` (panels, labels, scale
-  panel, spin control, centre marker, birthday panel). Projector mode (and any screen below 1000 px, where the HUD crowds the scene) folds the layer switches into a menu
-  (`present/TeacherBar.tsx`), hides the spin control and the scale panel's description and lie switches (the
-  statements stay, larger), and makes the labels about a third larger. Presenting also preloads the lazy panels.
+  panel, centre marker, birthday panel). Projector mode keeps the quiet layout of #42 (see "HUD layout"), hides the
+  scale panel's description and lie switches (the statements stay, larger), and makes the labels about a third
+  larger. Presenting also preloads the lazy panels.
 - **Hiding never unmounts** the HUD (`:global(html[data-chrome="hidden"]) .hud { display: none }`): the HUD's own keys
-  (Space, +/-, Left/Right, Escape) keep working. `PresentationLayer` (outside the HUD) keeps a "Show the controls"
+  (Space, +/-, Left/Right, Escape) keep working. Since #42 hiding is for everyone: H, or the crossed-out eye in the
+  top-right corner (`present/TeacherBar.tsx` `HideButton`), with or without presenting. `PresentationLayer` (outside the HUD) keeps a "Show the controls"
   button that appears on pointer movement or focus, and hides an idle pointer.
 - **Keys** (`present/keys.ts` pure mapping, `present/commands.ts` actions, `present/usePresenterKeys.ts` listener):
   PageDown/PageUp next/previous (presenter remotes), 0 the whole system, 1-8 the planets from the Sun, R/Home back to
@@ -918,6 +925,40 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   interruption, previous); a tour played through the navigation model is presentable from a remote with no extra
   code. Number keys stay the planets unless a tour decides otherwise. **For #32 (sound):** it must start muted.
 
+## HUD layout: the quiet interface (`features/solarSystem/dock`, `src/store/hud.ts`; #42)
+
+While someone looks around, space owns the screen. At 1366x768 with a planet focused at least 80 % of the scene is
+unobstructed (`e2e/quietHud.spec.ts` measures it). Every control is at most two actions away.
+
+- **Always on screen** (`SolarSystem.module.css`, a grid over the canvas):
+  - top left, "where": the overview button (the way out), the focus picker (the name) and the point of view (#31);
+    under them the frame badge (#31), the light's running clock while a flash is out (#27/#38) and the body card;
+  - top centre: the free-view badge (#15), only in a free view;
+  - top right, the corner: Present (tinted, easy to find), Share, hide the controls, sound, Help, language;
+  - bottom: the time bar (reverse/pause/play, the date → time travel, the speed button → a popover with Now, the
+    speed presets and the spin), with the flight readout above it and the too-fast / not-to-the-clock notes under it;
+  - bottom right, the entry points (`dock/Dock.tsx` `EntryBar`): Tours (#28), Layers, Scale (named after the
+    preset on screen, so the honest word stays visible), Tools (`dock/ToolsMenu.tsx`: light, tonight's sky, spacecraft,
+    birthday, hunt, side by side, picture).
+- **The dock** (right column, above the entry points; on phones a sheet from the bottom above the time bar) holds
+  one panel at a time: Layers, Scale and the spacecraft list (`useHudStore.panel`) or a tool with its own store
+  (light, birthday, sky tonight, hunt). `dock/exclusive.ts` `keepOneOpen` closes the previous one whichever way the
+  next one opened (button, Tools menu, link, key); a new tool adds one `DockEntry` there. `DockPanel` is the shell
+  (title, close, focus moves in on open and back to the opener on close). The tour card (#28) sits in the dock too,
+  under the panel. On phones a dock panel or a tour takes the body card's place.
+- **The body card starts small**: name, one sentence, Compare, the unfold arrow and close. The facts, moons, stories
+  and recordings unfold on demand; the choice (`useHudStore.cardExpanded`) holds from body to body while the page
+  is open.
+- **Stepping back while the camera moves**: `camera/motion.ts` `MotionWatch` (fed by `CameraRig` every frame:
+  the pose round the pivot changing, or a transition running; a camera following its body while time runs counts
+  as still) sets `useHudStore.cameraMoving`; `dock/Dock.tsx` mirrors it to `data-camera="moving"` on `<html>`.
+  The CSS dims every panel to 35 % except `data-steady` ones (the where panel, the time bar, the card's header), the
+  flight readout and the tour card; inside steady panels only `data-dim` parts dim (point of view, speed). Hover or
+  focus brings a panel back at once; nothing hides, there is no idle timer, and reduced motion drops the fade.
+- **The rule for new features** (also in Conventions and `CLAUDE.md`): put the control behind an existing entry
+  point; a panel goes into the dock through Tools; never a new permanent panel. Update the help entry's "how" with
+  where it lives.
+
 ## Birthday (`features/solarSystem/birthday`, `src/store/birthday.ts`; #26)
 
 "Your birthday in space": a birth date picked in a calendar (never typed) gives the age on every planet, the next
@@ -930,8 +971,8 @@ weight on the Sun, the planets and the seven large moons.
   Solar day: `1 / solar = 24 / rotation.periodHours - 1 / year` (sign = retrograde). Gravity: the curated
   `info.gravity` (the dictionary's number), else `G M / R^2`; weight = kg x g / g(Earth). Distance: Earth's orbit
   length (Ramanujan) x orbits since birth.
-- UI: `Birthday.tsx` has the HUD button (in the time controls) and the panel slot; `BirthdayPanel.tsx` (lazy, with
-  `@mantine/dates`) is a non-modal panel docked at the right (a sheet on phones) so the scene stays visible. Picking
+- UI: Tools → Your birthday opens it (#42); `Birthday.tsx` has the panel slot, rendered in the HUD's dock; `BirthdayPanel.tsx` (lazy, with
+  `@mantine/dates`) is a non-modal panel of the dock (a sheet on phones) so the scene stays visible. Picking
   a date `travelAndStop`s there; each planet's next birthday is a button that does the same. The hero page links to
   `/solar_system?birthday=true`.
 - Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
@@ -1034,8 +1075,8 @@ is the receipt. No score, no timer, no ranking, no failure state.
   solves the clue.
 - **Store** (`useHuntStore`): the hunt `key`, `step`, `hints`, `phase` (asking/found), `found` bodies, plus panel
   state. Progress is kept in sessionStorage (a reload mid-lesson keeps it; nothing leaves the device).
-- **UI**: `hunt/Hunt.tsx` has the HUD button (in the time controls, beside the birthday) and the panel slot;
-  `HuntPanel.tsx` (lazy) is docked at the right like the birthday panel and carries the HUD `.panel` class, so
+- **UI**: Tools → Scavenger hunt opens it (#42); `hunt/Hunt.tsx` has the panel slot, in the dock;
+  `HuntPanel.tsx` (lazy) is a panel of the dock like the birthday panel and carries the HUD `.panel` class, so
   labels avoid it: the chooser (hunt cards, "Make your own hunt" from the whole bank), then progress dots, the
   clue in large type, hints, the discovery text and a finish with the worlds found. It folds to the clue alone.
 - **Links**: `?hunt=true` opens the chooser, `?hunt=<hunt id>` or `?hunt=<question ids joined by ".">` (a teacher's
@@ -1066,8 +1107,8 @@ Every light time comes from TRUE positions; only the drawn front goes through th
   That early front fades out over the outer 40 % of the neighbourhood, where the two rules disagree (in every preset
   but true scale, where both are the identity). In an anchored frame (#31) a Sun-anchored point moves like a planet
   at that place would (`framedOffset` from each anchor, weighted; `mapTruePointKm`), so arrivals stay on time.
-- Panel (`light/LightPanel.tsx`, a `.panel` in the picker stack under the picker; a button with the running clock
-  while closed): Flash (source picker, running clock, distance covered, clock note with "Back to real time",
+- Panel (`light/LightPanel.tsx`; Tools → Speed of light opens it in the dock since #42, `LightSlot mode="panel"`;
+  while it is closed and a flash is out, `LightSlot mode="chip"` shows the running clock and its stop button under the picker): Flash (source picker, running clock, distance covered, clock note with "Back to real time",
   arrivals `pulseArrivals` announced in an `aria-live` line), Signal delay (from Earth to any body: picked, or the
   scene selection; one way, round trip, live distance, range, what it means for a rover), Farther out (Proxima
   Centauri, the galactic centre, Andromeda). Durations: `formatDuration` in `light/lightTravel.ts` (ICU units under
@@ -1251,8 +1292,7 @@ index)` with no holds (stops wait for the presenter; `finishMove()` when jumping
   interrupt (#10). `followSequence()` gives the stop its scene when something else moved the sequence
   (`nextStep()`).
 - **UI.** `TourMenu` (the "Tours" button in the picker panel: title, summary, stops and minutes per tour).
-  `TourCard` (a `.panel`: bottom right on wide screens, in the body card's row below 1000 px, where it hides the
-  body card while unfolded; phones always): tour and stop counter, heading and narration (`aria-live`), the
+  `TourCard` (a `.panel` in the HUD's dock, above the entry points, #42; on phones it takes the body card's place): tour and stop counter, heading and narration (`aria-live`), the
   "exploring" note with "Back to the tour", a dot per stop, Back / Next (Finish), autoplay, copy a link to the stop
   (`?tour=&stop=` with the language only), fold, close. Type grows with the viewport for projectors.
   `TourSync` (after `UrlSync`): opens `?tour=<id>&stop=<n>&autoplay=true` as a jump, follows the sequence, runs
@@ -1302,11 +1342,9 @@ telescope), why the hidden ones are hidden, and the geometry behind each sightin
 - **Why, in 3D** (`explain.ts`): `showWhy(id, ms)` holds Earth still (#31's `anchorFrame`, so the Sun and the planet
   are drawn at their true directions from Earth in every preset), from straight above, fitting the Sun and the planet
   (the Moon's orbit for the Moon), selects the body and `travelAndStop`s to the moment the list says to look.
-- **UI**: `SkyTonight.tsx` (the launcher, a small panel under the focus picker and the light launcher from 600 px
-  up, an icon in the picker's row on phones, where another row would push the top panels over the planets; and
-  the slot; eager and small) and the lazy `SkyTonightPanel.tsx`, docked at the right like the birthday and hunt panels;
-  opening one closes the others. The launcher is not in the time controls: with the birthday and hunt buttons there
-  they are already as wide as a 1280 px screen allows beside the body card. The Moon's disc is turned round south of
+- **UI**: Tools → Tonight's sky opens it (#42); `SkyTonight.tsx` (`openSky` and the slot, in the dock; eager and small)
+  and the lazy `SkyTonightPanel.tsx`, a panel of the dock like the birthday and hunt panels; opening one closes the
+  others (`dock/exclusive.ts`). The Moon's disc is turned round south of
   the equator. "Now" is the wall clock at opening, not the simulation clock.
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)

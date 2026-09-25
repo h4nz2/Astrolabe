@@ -1279,6 +1279,26 @@
 			"goTo": "Parada {n}: {title}",
 			"menuHint": "Viajes ya preparados por el sistema solar, con una breve historia en cada parada: buenos para empezar una clase.",
 			"menuHint@simple": "Viajes cortos por el sistema solar que te cuentan una historia en cada parada."
+		},
+		"hud": {
+			"tools": "Herramientas",
+			"toolsHint": "La velocidad de la luz, el cielo de esta noche, naves espaciales reales, tu cumpleaños, la búsqueda del tesoro, comparar mundos y hacer una foto: todo se abre aquí.",
+			"toolsHint@simple": "Más cosas para probar: la luz, el cielo de esta noche, naves, tu cumpleaños, una búsqueda del tesoro, comparar mundos y hacer una foto.",
+			"entries": "Visitas, capas, escala y herramientas",
+			"close": "Cerrar {panel}",
+			"compare": "Lado a lado",
+			"compareHint": "El mundo que estás mirando junto a otro, a sus tamaños reales",
+			"compareHint@simple": "Pon dos mundos uno al lado del otro, encogidos igual, para ver cuál es más grande",
+			"customScale": "Propia",
+			"scaleButton": "Escala: {preset}",
+			"scaleHint": "Lo grandes y lo separados que se dibujan los mundos, y lo lejos que está eso de la realidad. La escala real está a un clic.",
+			"scaleHint@simple": "Muestra los planetas a su tamaño real, o lo bastante grandes para verlos. El panel te dice cuánto más grandes se dibujan.",
+			"hideHint": "Solo el sistema solar queda en la pantalla: para mirar, para una foto o para un proyector. La tecla H o «Mostrar los controles» los devuelve.",
+			"hideHint@simple": "Esconde todos los botones para ver solo el espacio. La tecla H o «Mostrar los controles» los devuelve.",
+			"time": "Tiempo",
+			"timeButton": "Tiempo y velocidad: {speed}",
+			"timeHint": "Lo rápido que pasa el tiempo, volver a ahora y lo rápido que giran los planetas. + y − cambian la velocidad desde el teclado.",
+			"timeHint@simple": "Haz que el tiempo vaya más rápido o más lento, o vuelve a ahora."
 		}
 	},
 	"solarWalk": {

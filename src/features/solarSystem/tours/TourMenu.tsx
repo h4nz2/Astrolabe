@@ -1,6 +1,6 @@
 /**
- * The way into the guided tours (#28): a "Tours" button beside the focus
- * picker opening the list of tours, each with the question it answers, its
+ * The way into the guided tours (#28): a "Tours" button, the first of the
+ * entry points at the bottom right since #42, opening the list of tours, each with the question it answers, its
  * number of stops and roughly how long it takes. Picking one starts it at
  * its first stop, advanced by hand (autoplay is a switch on the tour's card).
  */
@@ -42,7 +42,7 @@ const TourMenu = () => {
 
 	return (
 		<Hint text={t("solarSystem.tours.menuHint")}>
-			<Menu shadow="md" position="bottom-start" width={320}>
+			<Menu shadow="md" position="top-end" width={320}>
 				<Menu.Target>
 					<Button
 						className={classes.menuButton}

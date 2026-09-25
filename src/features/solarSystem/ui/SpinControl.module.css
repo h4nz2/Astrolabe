@@ -4,7 +4,6 @@
 	align-items: center;
 	gap: 0.25rem;
 	max-width: 100%;
-	margin-top: 0.5rem;
 }
 
 .row {
@@ -29,9 +28,4 @@
 	font-size: var(--mantine-font-size-xs);
 	color: var(--mantine-color-orange-3);
 	text-align: center;
-}
-
-/* projector mode (#29): the spin speed is a detail the class does not need to see */
-:global(html[data-presenting]) .root {
-	display: none;
 }

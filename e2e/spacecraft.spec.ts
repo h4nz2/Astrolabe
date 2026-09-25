@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test"
+import { openTool } from "./support/hud"
 
 // Real spacecraft (#35) in the real browser: the menu, the info panel with its
 // launch date, targets and signal time, a milestone that travels in time,
@@ -38,13 +39,14 @@ const settled = (page: Page) =>
 		{ timeout: 60_000 },
 	)
 
-const openMenu = async (page: Page, name = "Spacecraft") => {
-	await page.getByRole("button", { name, exact: true }).click()
-	await expect(page.getByRole("dialog")).toBeVisible()
+/** Tools → Real spacecraft (#42): the list opens in the dock. */
+const openMenu = async (page: Page) => {
+	await openTool(page, "spacecraft")
+	await expect(page.locator("[data-dock-panel=spacecraft]")).toBeVisible()
 }
 
-const pick = async (page: Page, id: string, menu = "Spacecraft") => {
-	await openMenu(page, menu)
+const pick = async (page: Page, id: string) => {
+	await openMenu(page)
 	await page.locator(`button[data-craft=${id}]`).click()
 	await settled(page)
 	await page.waitForTimeout(600) // labels fade in over 0.2 s
@@ -164,7 +166,7 @@ test("the layer switch hides every craft; names are translated", async ({
 	page,
 }) => {
 	await ready(page, `/solar_system?t=${T_2026}&lang=de`)
-	await pick(page, "jwst", "Raumsonden")
+	await pick(page, "jwst")
 	await expect(panel(page)).toHaveCount(0) // the panel's name is German
 	const info = page.getByRole("region", { name: "Ausgewählte Raumsonde" })
 	await expect(info).toContainText("James-Webb-Weltraumteleskop")
@@ -174,7 +176,7 @@ test("the layer switch hides every craft; names are translated", async ({
 		"James-Webb-Weltraumteleskop",
 	)
 
-	await openMenu(page, "Raumsonden")
+	await openMenu(page)
 	await page.getByRole("switch", { name: "Raumsonden" }).click()
 	await page.keyboard.press("Escape")
 	await page.waitForTimeout(600)

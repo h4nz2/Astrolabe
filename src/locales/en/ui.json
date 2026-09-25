@@ -1279,6 +1279,26 @@
 			"goTo": "Stop {n}: {title}",
 			"menuHint": "Ready-made journeys through the solar system, each stop with a short story: good for starting a lesson.",
 			"menuHint@simple": "Short trips through the solar system that tell you a story at every stop."
+		},
+		"hud": {
+			"tools": "Tools",
+			"toolsHint": "Speed of light, tonight's sky, real spacecraft, your birthday, the scavenger hunt, comparing worlds and taking a picture: each opens here.",
+			"toolsHint@simple": "More things to try: light, tonight's sky, spacecraft, your birthday, a treasure hunt, comparing worlds and taking a picture.",
+			"entries": "Tours, layers, scale and tools",
+			"close": "Close {panel}",
+			"compare": "Side by side",
+			"compareHint": "The world you are looking at beside another, at their true sizes",
+			"compareHint@simple": "Put two worlds next to each other, shrunk the same, to see which is bigger",
+			"customScale": "Custom",
+			"scaleButton": "Scale: {preset}",
+			"scaleHint": "How big and how far apart the worlds are drawn, and how far that is from the truth. True scale is one click away.",
+			"scaleHint@simple": "Make the planets their real size, or big enough to see. The panel tells you how much bigger they are drawn.",
+			"hideHint": "Only the solar system stays on screen: for looking, for a picture or for a projector. Press H or “Show the controls” to bring them back.",
+			"hideHint@simple": "Hide all the buttons so you see only space. Press H or “Show the controls” to get them back.",
+			"time": "Time",
+			"timeButton": "Time and speed: {speed}",
+			"timeHint": "How fast time runs, back to now, and how fast the planets spin. + and − change the speed from the keyboard.",
+			"timeHint@simple": "Make time go faster or slower, or jump back to now."
 		}
 	},
 	"solarWalk": {

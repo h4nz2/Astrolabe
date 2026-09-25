@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest, nextFrames } from "./support/scene"
+import { expandCard } from "./support/hud"
 
 // Moon surfaces (#37) in the real browser: every moon has its own map, fetched
 // only once it is near enough to show, and its card says where the surface
@@ -30,6 +31,8 @@ const ready = async (page: Page, url: string) => {
 	await page.evaluate(() =>
 		window.__astrolabe!.store.getState().setPaused(true),
 	)
+	// the card starts small (#42): the surface note is in the unfolded part
+	if (url.includes("focus=")) await expandCard(page)
 }
 
 const note = (page: Page) => page.getByTestId("surface-note")
@@ -46,6 +49,7 @@ test("the overview fetches no moon maps; a focused moon fetches its own", async 
 		window.__astrolabe!.store.getState().setFocus("callisto"),
 	)
 	await cameraAtRest(page)
+	await expandCard(page)
 	await expect.poll(() => requested).toContain("callisto")
 	// its own map, not the Moon's
 	expect(requested).not.toContain("moon")

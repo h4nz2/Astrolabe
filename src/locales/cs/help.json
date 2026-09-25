@@ -152,6 +152,33 @@
 				]
 			}
 		},
+		"quietScreen": {
+			"title": {
+				"standard": "Kde je ovládání",
+				"simple": "Kde jsou tlačítka?"
+			},
+			"what": {
+				"standard": "Obrazovka patří vesmíru. Zůstává na ní jen to, na co se díváš, cesta zpátky a čas; všechno ostatní čeká za čtyřmi tlačítky vpravo dole: Prohlídky, Vrstvy, Měřítko a Nástroje. Když otáčíš, přibližuješ nebo letíš, ovládání trochu ustoupí.",
+				"simple": "Většina tlačítek se drží stranou, abys viděl vesmír. Čtyři tlačítka vpravo dole otevřou zbytek."
+			},
+			"why": {
+				"standard": "Výukou jsou planety, ne tlačítka: třída vidí sluneční soustavu a každé ovládání je přesto nejvýš dvě kliknutí daleko.",
+				"simple": "Uvidíš víc vesmíru a každé tlačítko je pořád blízko."
+			},
+			"how": {
+				"standard": [
+					"Vlevo nahoře: tlačítko s domečkem (zpátky na celou soustavu), jméno světa, na který se díváš, a jeho karta; šipka na kartě rozbalí údaje, měsíce a příběhy.",
+					"Dole: spustit, pozastavit a datum; tlačítko s rychlostí (třeba 1x) otevře „Teď“, rychlosti a rotaci.",
+					"Vpravo dole: Prohlídky, Vrstvy (co se kreslí), Měřítko (jak velké a jak daleko) a Nástroje (rychlost světla, dnešní obloha, sondy, tvoje narozeniny, pátrací hra, vedle sebe a fotka). Otevřený je vždy jen jeden panel; × ho zavře.",
+					"Vpravo nahoře: Prezentovat, Sdílet, přeškrtnuté oko, které všechno skryje (H to vrátí), zvuk, Nápověda a jazyk."
+				],
+				"simple": [
+					"Tlačítko s domečkem vlevo nahoře tě vrátí ke všem planetám.",
+					"Stiskni vpravo dole Vrstvy, Měřítko nebo Nástroje a najdeš víc.",
+					"Stiskni vpravo nahoře přeškrtnuté oko a všechna tlačítka zmizí. Klávesou H se vrátí."
+				]
+			}
+		},
 		"worldCard": {
 			"title": {
 				"standard": "Karta světa",
@@ -167,14 +194,14 @@
 			},
 			"how": {
 				"standard": [
-					"Leť k nějakému světu: objeví se jeho karta.",
-					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa.",
-					"Na telefonu ťukni na šipku na kartě a údaje se rozbalí."
+					"Leť k nějakému světu: objeví se jeho karta se jménem a jednou větou.",
+					"Šipka na kartě rozbalí údaje, měsíce a příběhy; karta pak zůstane rozbalená i u dalšího světa.",
+					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa."
 				],
 				"simple": [
 					"Leť k planetě.",
 					"Přečti si její kartu.",
-					"Na telefonu ťukni na malou šipku a uvidíš víc."
+					"Ťukni na malou šipku a uvidíš víc."
 				]
 			}
 		},
@@ -190,14 +217,14 @@
 			},
 			"how": {
 				"standard": [
-					"Leť k planetě: její karta vypíše nejznámější měsíce. Kliknutím na některý z nich k němu poletíš.",
+					"Leť k planetě a rozbal její kartu šipkou: ukáže její nejznámější měsíce. Kliknutím na jeden k němu poletíš.",
 					"„Zobrazit celou soustavu měsíců“ poodstoupí, až se vejdou všechny dráhy.",
-					"„Zobrazit … menších měsíců“ nebo přepínač Všechny měsíce přidá spoustu malých měsíců; karta měsíce nabízí „Přečíst příběh“.",
+					"„Zobrazit … menších měsíců“ nebo přepínač Všechny měsíce (ve Vrstvách) přidá spoustu malých měsíců; karta měsíce nabízí „Přečíst příběh“.",
 					"Kartička měsíce řekne, odkud je jeho povrch: mapa z kosmické sondy, doplněná tam, kam se ještě nikdo nepodíval, nebo namalovaná podle toho, co víme."
 				],
 				"simple": [
 					"Leť k Jupiteru.",
-					"Klikni na kartě na měsíc a poletíš k němu.",
+					"Rozbal kartu malou šipkou a klikni na měsíc, poletíš k němu.",
 					"Stiskni „Ukázat všechny měsíce“."
 				]
 			}
@@ -217,14 +244,14 @@
 			},
 			"how": {
 				"standard": [
-					"Přepínače jsou v panelu vpravo nahoře; na malých obrazovkách a při prezentaci jsou schované pod „Vrstvy“.",
+					"Stiskni vpravo dole Vrstvy: přepínače se otevřou nad nimi.",
 					"Klávesou L skryješ nebo zobrazíš všechny názvy naráz.",
 					"Přepínač Všechny měsíce funguje, jen když jsou zapnuté Měsíce.",
 					"Nech ukazatel na přepínači nebo na něm podrž prst a přečteš si, co dělá; zašedlý přepínač řekne, co zapnout nejdřív."
 				],
 				"simple": [
-					"Přepínače najdeš vpravo nahoře.",
-					"Kliknutím jeden vypneš, dalším kliknutím ho zase zapneš.",
+					"Stiskni vpravo dole Vrstvy.",
+					"Kliknutím přepínač vypneš, dalším kliknutím ho zase zapneš.",
 					"Stiskni L a všechny názvy zmizí.",
 					"Podrž myš nad přepínačem a zjistíš, co dělá."
 				]
@@ -295,13 +322,13 @@
 			"how": {
 				"standard": [
 					"Leť k Zemi a zrychli čas.",
-					"Pod ovládáním času vyber u Rotace „Zpomalená“ nebo „Zpomalený záběr“ a sleduj dny, nebo „Zastavená“, aby se nic neotáčelo.",
+					"Stiskni v časové liště tlačítko s rychlostí a u Rotace vyber „Zpomalená“ nebo „Zpomalený záběr“ a sleduj dny, nebo „Zastavená“, aby se nic neotáčelo.",
 					"„Skutečná“ vrátí každému světu jeho skutečné natočení pro dané datum."
 				],
 				"simple": [
 					"Leť k Zemi.",
 					"Zrychli čas.",
-					"Pod tlačítky času vyber „Zpomalený záběr“ a sleduj, jak se Země točí."
+					"Stiskni dole tlačítko s rychlostí, vyber „Zpomalený záběr“ a sleduj, jak se Země točí."
 				]
 			}
 		},
@@ -346,12 +373,12 @@
 			},
 			"how": {
 				"standard": [
-					"Pod polem se jménem stiskni „Obloha dnes v noci“ a vyber své město (aplikace se sama nikdy neptá na tvou polohu).",
+					"Otevři vpravo dole Nástroje, vyber „Obloha dnes v noci“ a pak své město (aplikace se sama nikdy neptá na tvou polohu).",
 					"Přečti si seznam: co uvidíš, kdy, kde a čím.",
 					"U planety stiskni „Proč je vidět?“ a uvidíš důvod ve vesmíru."
 				],
 				"simple": [
-					"Stiskni „Obloha dnes v noci“.",
+					"Stiskni Nástroje a pak „Obloha dnes v noci“.",
 					"Vyber své město. Než použiješ polohu zařízení, zeptej se dospělého.",
 					"Přečti si, kam se dívat, a jdi ven!"
 				]
@@ -372,13 +399,13 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři „Kosmické sondy“ (tlačítko se satelitem vpravo nahoře) a vyber sondu: pohled k ní přeletí.",
+					"Otevři vpravo dole Nástroje, vyber „Skutečné kosmické sondy“ a pak sondu: pohled k ní poletí.",
 					"Kartička ukáže start, vzdálenost, dobu letu signálu a „Milníky“; milník přesune čas do toho okamžiku.",
 					"„Zobrazit všechny dráhy“ nakreslí všechny cesty najednou; přepínač „Kosmické sondy“ je skryje."
 				],
 				"simple": [
-					"Stiskni tlačítko se satelitem vpravo nahoře.",
-					"Vyber Voyager 1.",
+					"Stiskni vpravo dole Nástroje.",
+					"Vyber „Skutečné kosmické sondy“ a pak Voyager 1.",
 					"Přečti si, jak je daleko."
 				]
 			}
@@ -473,12 +500,12 @@
 			"how": {
 				"standard": [
 					"▶ čas spustí, ⏸ ho pozastaví, ◀ ho pustí pozpátku (pozastavit ho můžeš i mezerníkem).",
-					"Rychlost vyber v řadě vedle nich, nebo stiskni + a −.",
-					"„Teď“ tě vrátí do přítomnosti."
+					"Tlačítko vedle data ukazuje rychlost (třeba 1x): stiskni ho a vyber jinou, nebo stiskni + a −.",
+					"„Teď“ na stejném místě tě vrátí do přítomnosti."
 				],
 				"simple": [
 					"Stiskni dole tlačítko Spustit.",
-					"Vyber vyšší rychlost, třeba 1 měsíc/s.",
+					"Stiskni tlačítko s rychlostí vedle data a vyber 1 měsíc/s.",
 					"Mezerníkem čas zastavíš."
 				]
 			}
@@ -524,12 +551,12 @@
 			},
 			"how": {
 				"standard": [
-					"Vyber nejvyšší rychlost, 10 let/s.",
-					"Přečti si řádek pod rychlostmi; zmizí, když vybereš nižší rychlost nebo čas pozastavíš."
+					"Stiskni tlačítko s rychlostí vedle data a vyber nejvyšší rychlost, 10 let/s.",
+					"Přečti si řádek pod časovou lištou; vyber pomalejší rychlost nebo čas pozastav a zmizí."
 				],
 				"simple": [
-					"Vyber nejvyšší rychlost.",
-					"Přečti si poznámku a pak vyber nižší rychlost."
+					"Stiskni tlačítko s rychlostí a vyber tu nejrychlejší.",
+					"Přečti si poznámku a pak vyber pomalejší rychlost."
 				]
 			}
 		},
@@ -548,12 +575,12 @@
 			},
 			"how": {
 				"standard": [
-					"V panelu Měřítko vpravo nahoře klikni na „Skutečné měřítko“, „Jako v učebnici“ nebo „Vše viditelné“ (nebo stiskni S).",
+					"Stiskni vpravo dole Měřítko (tlačítko říká, jaké měřítko právě vidíš) a klikni na „Skutečné měřítko“, „Jako v učebnici“ nebo „Vše viditelné“, nebo stiskni S.",
 					"Přepínače Velikosti a Vzdálenosti opraví vždy jen jedno zkreslení.",
-					"Ve skutečném měřítku ukazují tečky, kde planety jsou; vypni Značky a uvidíš, jak málo zbude."
+					"Ve skutečném měřítku ukazují tečky, kde planety jsou; vypni Značky (ve Vrstvách) a uvidíš, jak málo zbude."
 				],
 				"simple": [
-					"Najdi vpravo nahoře Měřítko.",
+					"Stiskni vpravo dole Měřítko.",
 					"Klikni na „Skutečné měřítko“.",
 					"Kam se planety poděly? Tečky ukazují, kde jsou."
 				]
@@ -626,13 +653,13 @@
 			"how": {
 				"standard": [
 					"Leť k Zemi a natoč kameru k hranici mezi dnem a nocí.",
-					"Vydej se na 21. června a na 21. prosince a porovnej póly.",
-					"Přepínač Vždy osvětlené rozsvítí všechno z místa, odkud se díváš, takže se dají zkoumat povrchy."
+					"Cestuj na 21. června a 21. prosince a porovnej póly.",
+					"Přepínač Vždy osvětlené (ve Vrstvách) osvětlí všechno ze směru, odkud se díváš, abys mohl zkoumat povrchy."
 				],
 				"simple": [
 					"Leť k Zemi.",
-					"Otoč pohled na noční stranu se světly měst.",
-					"Zapni „Vždy osvětlené“ a uvidíš každou stranu."
+					"Natoč pohled na noční stranu se světly měst.",
+					"Zapni ve Vrstvách Vždy osvětlené a uvidíš každou stranu."
 				]
 			}
 		},
@@ -673,13 +700,13 @@
 			},
 			"how": {
 				"standard": [
-					"Stiskni vlevo nahoře „Rychlost světla“ a pak „Vyslat záblesk“.",
+					"Otevři vpravo dole Nástroje, vyber „Rychlost světla“ a pak „Vyslat záblesk“.",
 					"Vyber, odkud vyletí; seznam ukazuje, kdy dorazí ke kterému světu.",
 					"Čas se přepne na reálný; vyšší rychlost je povolená a panel přesto počítá skutečnou dobu letu.",
-					"Zastavíš ho tlačítkem „Zastavit záblesk“, křížkem × u jeho popisku nebo vedle hodin na tlačítku, případně klávesou X. Až mine Neptun, sám zmizí."
+					"Zastavíš ho tlačítkem „Zastavit záblesk“, křížkem × u jeho popisku nebo × vedle jeho hodin pod polem se jménem, případně klávesou X. Až mine Neptun, sám zmizí."
 				],
 				"simple": [
-					"Stiskni „Jak rychlé je světlo?“.",
+					"Stiskni Nástroje a pak „Jak rychlé je světlo?“.",
 					"Stiskni „Vyslat záblesk“.",
 					"Sleduj, jak se kruh zvětšuje a doletí až k planetám.",
 					"Zastavíš ho tlačítkem „Vypnout světlo“."
@@ -701,12 +728,12 @@
 			},
 			"how": {
 				"standard": [
-					"Otevři „Rychlost světla“ a vyber kartu „Zpoždění signálu“.",
-					"Vyber svět, nebo na něj klikni ve scéně."
+					"Otevři Nástroje → „Rychlost světla“ a vyber kartu „Zpoždění signálu“.",
+					"Vyber svět, nebo na nějaký klikni ve scéně."
 				],
 				"simple": [
-					"Otevři „Jak rychlé je světlo?“.",
-					"Klikni na „Zpoždění signálu“ a vyber Mars."
+					"Stiskni Nástroje, pak „Jak rychlé je světlo?“ a „Zpoždění signálu“.",
+					"Vyber Mars."
 				]
 			}
 		},
@@ -724,8 +751,13 @@
 				"simple": "Dívat se na hvězdy je jako dívat se do minulosti!"
 			},
 			"how": {
-				"standard": ["Otevři „Rychlost světla“ a vyber kartu „Ještě dál“."],
-				"simple": ["Otevři „Jak rychlé je světlo?“.", "Klikni na „Ještě dál“."]
+				"standard": [
+					"Otevři Nástroje → „Rychlost světla“ a vyber kartu „Ještě dál“."
+				],
+				"simple": [
+					"Stiskni Nástroje a pak „Jak rychlé je světlo?“.",
+					"Klikni na „Ještě dál“."
+				]
 			}
 		},
 		"compare": {
@@ -743,13 +775,13 @@
 			},
 			"how": {
 				"standard": [
-					"Na kartě světa stiskni „Porovnat s…“.",
+					"Na kartě světa stiskni „Porovnat s…“, nebo otevři Nástroje → „Vedle sebe“.",
 					"Kterýkoli svět změníš výběrem, další přidáš přes „Přidat…“, nebo klikni na některý v řadě a porovnej místo toho s ním.",
 					"Tlačítko s fotoaparátem udělá z porovnání obrázek."
 				],
 				"simple": [
 					"Na kartě planety stiskni „Porovnat s…“.",
-					"Vyber jiný svět a porovnej je."
+					"Vyber jiný svět k porovnání."
 				]
 			}
 		},
@@ -789,12 +821,12 @@
 			},
 			"how": {
 				"standard": [
-					"Vedle pole se jménem stiskni „Prohlídky“ a vyber prohlídku.",
+					"Stiskni vpravo dole „Prohlídky“ a vyber prohlídku.",
 					"Pokračuj tlačítky „Dál“ a „Zpět“ na kartičce, šipkami nebo prezentačním ovladačem (Page Down / Page Up).",
 					"Rozhlížej se kdykoli; „Zpátky k prohlídce“ zastávku obnoví. „Automaticky dál“ pokračuje samo a tlačítko s odkazem zkopíruje odkaz na aktuální zastávku. Učitelé mohou psát vlastní prohlídky jako data (src/data/tours/README.md)."
 				],
 				"simple": [
-					"Stiskni vlevo nahoře „Prohlídky“ a jednu vyber.",
+					"Stiskni vpravo dole „Prohlídky“ a jednu vyber.",
 					"Přečti si kartičku a stiskni „Dál“ nebo šipku.",
 					"Rozhlédni se, kdy chceš, a pak stiskni „Zpátky k prohlídce“."
 				]
@@ -802,7 +834,7 @@
 		},
 		"present": {
 			"title": "Režim pro projektor",
-			"what": "Větší písmo, názvy i tlačítka, čitelné i ze zadních lavic, a přepínače složené stranou.",
+			"what": "Větší písmo, jména a tlačítka, čitelné i z poslední lavice.",
 			"why": "Obrazovka notebooku je na projektoru příliš malá na čtení; režim pro projektor to spraví jedinou klávesou.",
 			"how": [
 				"Vpravo nahoře otevři „Prezentovat“ a vyber „Velké písmo pro projektor“, nebo stiskni P.",
@@ -834,8 +866,8 @@
 			"what": "Z obrazovky zmizí všechna tlačítka a panely a zůstane jen vesmír.",
 			"why": "Na prohlížení, na snímky obrazovky i na projektor: třída vidí sluneční soustavu, ne rozhraní.",
 			"how": [
-				"Stiskni H, nebo otevři „Prezentovat“ a vyber „Skrýt ovládání“.",
-				"Zpátky ho vrátíš dalším stiskem H, nebo pohni myší a klikni na „Zobrazit ovládání“. Klávesy fungují i se skrytým ovládáním."
+				"Stiskni H nebo přeškrtnuté oko vpravo nahoře (je i v nabídce Prezentovat). Funguje to s prezentací i bez ní.",
+				"Dalším H, nebo pohybem myši a kliknutím na „Zobrazit ovládání“, ho vrátíš. Klávesy fungují, i když je ovládání skryté."
 			]
 		},
 		"prepareLesson": {
@@ -862,7 +894,7 @@
 			"what": "Vyber hádanky z celé zásoby otázek a udělej z nich pátrací hru pro svou hodinu.",
 			"why": "Hra sedí k tématu hodiny a odkaz ji spustí každému žákovi ve tvém jazyce.",
 			"how": [
-				"Otevři „Pátrací hra“ a vyber „Vytvoř si vlastní hru“.",
+				"Otevři Nástroje → „Pátrací hra“ a vyber „Vytvoř si vlastní hru“.",
 				"Zaškrtni hádanky a pak stiskni „Začít“, nebo „Sdílet“ a získáš odkaz pro třídu."
 			]
 		},
@@ -878,12 +910,12 @@
 			},
 			"how": {
 				"standard": [
-					"Stiskni „Pátrací hra“ a vyber hru: Lehká, Střední nebo Záludná.",
+					"Otevři vpravo dole Nástroje, vyber „Pátrací hra“ a pak hru: Lehká, Střední nebo Záludná.",
 					"Přečti si hádanku, najdi svět a klikni na něj.",
 					"Nevíš si rady? „Potřebuješ nápovědu?“, a po poslední nápovědě „Ukaž mi to“."
 				],
 				"simple": [
-					"Stiskni „Pátrací hra“.",
+					"Stiskni Nástroje a pak „Pátrací hra“.",
 					"Vyber lehkou hru.",
 					"Přečti si hádanku a klikni na správný svět."
 				]
@@ -904,12 +936,12 @@
 			},
 			"how": {
 				"standard": [
-					"Stiskni „Tvoje narozeniny“ a vyber rok, měsíc a den.",
+					"Otevři vpravo dole Nástroje, vyber „Tvoje narozeniny“ a pak rok, měsíc a den.",
 					"Planety se přesunou do dne tvého narození; ⏭ vedle planety tě přenese k tvým příštím narozeninám na ní.",
 					"Tvoje datum se nikam neukládá ani neposílá: zapomene se, jakmile stránku zavřeš, nebo hned po stisknutí „Zapomenout moje narozeniny“."
 				],
 				"simple": [
-					"Stiskni „Tvoje narozeniny“.",
+					"Stiskni Nástroje a pak „Tvoje narozeniny“.",
 					"Vyber svůj rok, měsíc a den.",
 					"Přečti si, kolik ti je na každé planetě."
 				]
@@ -930,12 +962,12 @@
 			},
 			"how": {
 				"standard": [
-					"Stiskni vpravo nahoře tlačítko s fotoaparátem.",
+					"Otevři vpravo dole Nástroje a vyber „Vyfotit“.",
 					"Napiš popisek, případně vypni „Jména v obrázku“ nebo QR kód.",
 					"Obrázek ulož, zkopíruj nebo sdílej. Vzniká ve tvém zařízení, nic se nenahrává."
 				],
 				"simple": [
-					"Stiskni vpravo nahoře tlačítko s fotoaparátem.",
+					"Stiskni vpravo dole Nástroje a pak „Vyfotit“.",
 					"Napiš něco ke svému obrázku.",
 					"Stiskni „Uložit obrázek“."
 				]
@@ -995,8 +1027,8 @@
 		},
 		"speed": {
 			"action": "Rychleji nebo pomaleji",
-			"mouse": "Tlačítka rychlosti",
-			"touch": "Tlačítka rychlosti",
+			"mouse": "Tlačítko s rychlostí vedle data",
+			"touch": "Tlačítko s rychlostí vedle data",
 			"keys": "+ / −"
 		},
 		"step": {
@@ -1009,8 +1041,8 @@
 		},
 		"scale": {
 			"action": "Další měřítko: Vše viditelné, Jako v učebnici, Skutečné měřítko",
-			"mouse": "Panel Měřítko",
-			"touch": "Panel Měřítko",
+			"mouse": "Měřítko vpravo dole",
+			"touch": "Měřítko vpravo dole",
 			"keys": "S"
 		},
 		"stopLight": {
@@ -1021,14 +1053,14 @@
 		},
 		"names": {
 			"action": "Zapnout nebo vypnout názvy",
-			"mouse": "Přepínač Názvy",
-			"touch": "Přepínač Názvy",
+			"mouse": "Vrstvy → Názvy",
+			"touch": "Vrstvy → Názvy",
 			"keys": "L"
 		},
 		"hide": {
 			"action": "Skrýt nebo zobrazit ovládání",
-			"mouse": "Prezentovat → Skrýt ovládání",
-			"touch": "Prezentovat → Skrýt ovládání",
+			"mouse": "Přeškrtnuté oko vpravo nahoře",
+			"touch": "Přeškrtnuté oko vpravo nahoře",
 			"keys": "H"
 		},
 		"fullscreen": {

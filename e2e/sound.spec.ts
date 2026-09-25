@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
+import { expandCard } from "./support/hud"
 
 // Sound (#32), in the real browser: silent until asked, one click or M to turn
 // it on and off, 'on' remembered for the tab only, the settings remembered,
@@ -114,6 +115,7 @@ test("Jupiter's card carries a real recording with its honest explanation", asyn
 	page,
 }) => {
 	await ready(page, "/solar_system?focus=jupiter")
+	await expandCard(page)
 	const card = page.getByTestId("body-card")
 	const recording = card.getByTestId("body-recording")
 	// the words are there with sound off: nothing depends on hearing it
@@ -156,6 +158,7 @@ test("Jupiter's card carries a real recording with its honest explanation", asyn
 
 test("the Sun's recording in German at the simple level", async ({ page }) => {
 	await ready(page, "/solar_system?focus=sun&lang=de&reading=simple")
+	await expandCard(page)
 	const recording = page.getByTestId("body-recording")
 	await expect(
 		recording.getByRole("button", { name: "Anhören: Radioblitze der Sonne" }),

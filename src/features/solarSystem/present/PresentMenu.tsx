@@ -114,16 +114,22 @@ export function PresentMenu() {
 			>
 				<Popover.Target>
 					<Button
-						variant={presenting ? "filled" : "subtle"}
-						color={presenting ? "orange" : "gray"}
+						// easy to find on purpose (#42): the one tinted button in the corner
+						variant={presenting ? "filled" : "light"}
+						color="orange"
 						size="compact-sm"
 						style={{ flexShrink: 0 }}
 						leftSection={<IconPresentation size={16} aria-hidden />}
+						data-testid="present-menu"
+						aria-label={t("solarSystem.present.button")}
 						aria-haspopup="dialog"
 						aria-expanded={opened}
 						onClick={() => setOpened((open) => !open)}
+						classNames={{ section: classes.cornerSection }}
 					>
-						{t("solarSystem.present.button")}
+						<span className={classes.cornerLabel}>
+							{t("solarSystem.present.button")}
+						</span>
 					</Button>
 				</Popover.Target>
 				<Popover.Dropdown>
@@ -236,9 +242,14 @@ export function ShareMenu() {
 						size="compact-sm"
 						style={{ flexShrink: 0 }}
 						leftSection={<IconShare size={16} aria-hidden />}
+						aria-label={t("solarSystem.present.share.button")}
 						aria-haspopup="dialog"
+						data-testid="share-menu"
+						classNames={{ section: classes.shareSection }}
 					>
-						{t("solarSystem.present.share.button")}
+						<span className={classes.shareLabel}>
+							{t("solarSystem.present.share.button")}
+						</span>
 					</Button>
 				</Popover.Target>
 				<Popover.Dropdown>
