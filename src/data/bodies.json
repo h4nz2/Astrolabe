@@ -3716,7 +3716,7 @@
 		"name": "Iapetus",
 		"kind": "moon",
 		"parentId": "saturn",
-		"radiusKm": 1471.2,
+		"radiusKm": 734.5,
 		"massKg": 1.805e21,
 		"orbit": {
 			"semiMajorAxisKm": 3560854,
