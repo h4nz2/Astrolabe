@@ -1039,6 +1039,61 @@
 				"show@simple": "Verlo en 3D",
 				"showHint": "Detiene la Tierra en ese momento, vista desde arriba, con el Sol y {body} en sus direcciones reales."
 			}
+		},
+		"intro": {
+			"label": "Introducción",
+			"skip": "Saltar la intro",
+			"skip@simple": "Saltar",
+			"progress": "Parte {beat, number} de {count, number}",
+			"earth": {
+				"title": "Esta es la Tierra.",
+				"detail": "Todas las personas que conoces viven aquí.",
+				"detail@simple": "¡Todos los que conoces viven aquí!",
+				"detail@advanced": "Cada persona que has conocido vive en este pequeño mundo."
+			},
+			"moon": {
+				"title": "La Luna",
+				"detail": "En el hueco cabrían {earths, number} Tierras.",
+				"detail@simple": "¡Entre nosotros y la Luna cabrían {earths, number} Tierras!",
+				"detail@advanced": "A {km}: {earths, number} diámetros terrestres."
+			},
+			"inner": {
+				"title": "Los planetas interiores",
+				"title@simple": "Nuestros planetas más cercanos",
+				"detail": "{planets}: los cuatro mundos rocosos más cercanos al Sol.",
+				"detail@simple": "{planets}.",
+				"detail@advanced": "{planets}: los planetas rocosos, todos a menos de 250 millones de km del Sol."
+			},
+			"system": {
+				"title": "Todo el sistema solar, a su tamaño real",
+				"title@simple": "Todo, a su tamaño real",
+				"detail": "Los planetas son demasiado pequeños para verlos. Los puntos solo indican dónde están.",
+				"detail@simple": "¡Los planetas son tan diminutos que no se ven! Los puntos muestran dónde están.",
+				"detail@advanced": "La Tierra es ahora mucho más pequeña que un píxel, y el espacio está casi totalmente vacío. Los puntos solo marcan los planetas."
+			},
+			"scale": {
+				"title": "Por eso los dibujamos más grandes y más cerca",
+				"title@simple": "¡Por eso los dibujamos más grandes!",
+				"detail": "Ahora ves todos los planetas, pero no a escala. El panel «Escala» vuelve a los tamaños reales.",
+				"detail@simple": "Ahora ves todos los planetas. En el panel «Escala» vuelves a ver su tamaño real.",
+				"detail@advanced": "«Todo visible»: tamaños aumentados, distancias comprimidas. «Escala real», en el panel «Escala», muestra la realidad."
+			},
+			"hint": {
+				"label": "Cómo moverte",
+				"drag": "Arrastra para mirar alrededor",
+				"drag@simple": "Arrastra para girar",
+				"zoom": "Usa la rueda para acercarte",
+				"zoom@simple": "Gira la rueda para acercarte",
+				"pinch": "Pellizca para acercarte",
+				"click": "Haz clic en un planeta para volar hasta él",
+				"click@simple": "Haz clic en un planeta para visitarlo",
+				"tap": "Toca un planeta para volar hasta él",
+				"tap@simple": "Toca un planeta para visitarlo"
+			},
+			"menu": "Ayuda",
+			"replay": "Ver la introducción otra vez",
+			"replay@simple": "Ver el principio otra vez",
+			"hints": "Mostrar cómo moverse"
 		}
 	},
 	"solarWalk": {
@@ -1331,6 +1386,7 @@
 	"help": {
 		"button": "Ayuda",
 		"buttonHint": "Todas las funciones y cómo usarlas",
+		"more": "Más ayuda: la introducción, cómo moverse",
 		"title": "Ayuda",
 		"heading": "Todo lo que puede hacer Astrolabe",
 		"heading@simple": "¿Qué puedo hacer aquí?",

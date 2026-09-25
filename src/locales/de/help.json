@@ -48,6 +48,31 @@
 		}
 	},
 	"entries": {
+		"opening": {
+			"title": {
+				"standard": "Das Intro",
+				"simple": "Der Startfilm"
+			},
+			"what": {
+				"standard": "Vierzehn Sekunden, die ganz nah an der Erde in ihrer echten Größe beginnen und zurückfahren, bis die Erde kleiner als ein Pixel ist; dann wird alles größer gezeichnet, damit du es sehen kannst.",
+				"simple": "Ein kurzer Film, der von der Erde hinaus zum ganzen Sonnensystem fliegt."
+			},
+			"why": {
+				"standard": "Es zeigt, worum es in der App geht, bevor jemand ein Wort liest: Das All ist riesig und fast leer. Es funktioniert ohne Ton.",
+				"simple": "Es zeigt, wie groß und wie leer das All ist."
+			},
+			"how": {
+				"standard": [
+					"Es läuft einmal, beim ersten Besuch; „Intro überspringen“, Ziehen oder Esc beenden es jederzeit.",
+					"Um es noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ und wähle „Intro noch einmal abspielen“.",
+					"„Zeigen, wie man sich bewegt“ im selben Menü holt die Hinweise zum Ziehen, Zoomen und Klicken zurück."
+				],
+				"simple": [
+					"Es läuft, wenn du zum ersten Mal kommst.",
+					"Willst du es noch mal sehen? Drück auf den Pfeil neben „Hilfe“ und dann auf „Intro noch einmal abspielen“."
+				]
+			}
+		},
 		"flyToWorld": {
 			"title": {
 				"standard": "Zu jeder Welt fliegen",

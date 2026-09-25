@@ -1039,6 +1039,61 @@
 				"show@simple": "Ukaž to ve 3D",
 				"showHint": "Zastaví Zemi v tomto okamžiku a ukáže ji shora: Slunce i {body} jsou ve svých skutečných směrech."
 			}
+		},
+		"intro": {
+			"label": "Úvod",
+			"skip": "Přeskočit úvod",
+			"skip@simple": "Přeskočit",
+			"progress": "Část {beat, number} z {count, number}",
+			"earth": {
+				"title": "Tohle je Země.",
+				"detail": "Žijí tu všichni, které znáš.",
+				"detail@simple": "Bydlí tu všichni, které znáš!",
+				"detail@advanced": "Všech osm miliard lidí žije na tomhle jediném malém světě."
+			},
+			"moon": {
+				"title": "Měsíc",
+				"detail": "{earths, plural, one {Do mezery by se vešla # Země.} few {Do mezery by se vešly # Země.} many {Do mezery by se vešlo # Země.} other {Do mezery by se vešlo # Zemí.}}",
+				"detail@simple": "{earths, plural, one {Mezi nás a Měsíc by se vešla # Země!} few {Mezi nás a Měsíc by se vešly # Země!} many {Mezi nás a Měsíc by se vešlo # Země!} other {Mezi nás a Měsíc by se vešlo # Zemí!}}",
+				"detail@advanced": "Vzdálenost {km}: {earths, plural, one {# průměr Země} few {# průměry Země} many {# průměru Země} other {# průměrů Země}}."
+			},
+			"inner": {
+				"title": "Vnitřní planety",
+				"title@simple": "Naše nejbližší planety",
+				"detail": "{planets}: čtyři kamenné světy nejblíž Slunci.",
+				"detail@simple": "{planets}.",
+				"detail@advanced": "{planets}: kamenné planety, všechny méně než 250 milionů km od Slunce."
+			},
+			"system": {
+				"title": "Celá sluneční soustava ve skutečné velikosti",
+				"title@simple": "Všechno ve skutečné velikosti",
+				"detail": "Planety jsou příliš malé, aby byly vidět. Tečky jen ukazují, kde jsou.",
+				"detail@simple": "Planety jsou tak malinké, že je nevidíš! Tečky ukazují, kde jsou.",
+				"detail@advanced": "Země je teď mnohem menší než jeden pixel a prostor je skoro úplně prázdný. Tečky jen označují planety."
+			},
+			"scale": {
+				"title": "Proto je kreslíme větší a blíž",
+				"title@simple": "Proto je kreslíme větší!",
+				"detail": "Teď vidíš každou planetu, ale ne ve správném měřítku. Panel „Měřítko“ tě vrátí ke skutečným velikostem.",
+				"detail@simple": "Teď vidíš každou planetu. V panelu „Měřítko“ uvidíš zase jejich skutečnou velikost.",
+				"detail@advanced": "„Vše viditelné“: velikosti zvětšené, vzdálenosti stlačené. „Skutečné měřítko“ v panelu „Měřítko“ ukáže skutečnost."
+			},
+			"hint": {
+				"label": "Jak se pohybovat",
+				"drag": "Tažením se rozhlédneš",
+				"drag@simple": "Tažením otáčíš",
+				"zoom": "Kolečkem myši přibližuješ",
+				"zoom@simple": "Kolečkem myši se dostaneš blíž",
+				"pinch": "Dvěma prsty přibližuješ",
+				"click": "Klikni na planetu a poletíš k ní",
+				"click@simple": "Klikni na planetu a navštiv ji",
+				"tap": "Ťukni na planetu a poletíš k ní",
+				"tap@simple": "Ťukni na planetu a navštiv ji"
+			},
+			"menu": "Nápověda",
+			"replay": "Přehrát úvod znovu",
+			"replay@simple": "Pustit začátek ještě jednou",
+			"hints": "Ukázat, jak se pohybovat"
 		}
 	},
 	"solarWalk": {
@@ -1331,6 +1386,7 @@
 	"help": {
 		"button": "Nápověda",
 		"buttonHint": "Všechny funkce a jak je používat",
+		"more": "Další nápověda: úvod, jak se pohybovat",
 		"title": "Nápověda",
 		"heading": "Všechno, co Astrolabe umí",
 		"heading@simple": "Co tu můžu dělat?",

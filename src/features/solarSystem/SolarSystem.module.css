@@ -153,6 +153,52 @@
 }
 
 /*
+ * The opening (#30): its captions and hints sit in the open middle row, right
+ * above the bottom panels. While it plays the body card gives way to the
+ * caption and the rest of the HUD steps back (still usable: hover or focus
+ * brings a panel back); `data-intro` on <html> is set by intro/IntroOverlay.tsx.
+ */
+.intro {
+	grid-row: 2;
+	grid-column: 1 / -1;
+	align-self: end;
+	justify-self: stretch;
+	min-width: 0;
+	/* spanning every column, it must not widen the auto centre column (and squeeze the corner panels) */
+	contain: inline-size;
+}
+
+:global(html[data-intro="playing"]) .panel {
+	opacity: 0.3;
+	transition: opacity 400ms ease;
+}
+
+:global(html[data-intro="playing"]) .panel:hover,
+:global(html[data-intro="playing"]) .panel:focus-within {
+	opacity: 1;
+}
+
+:global(html[data-intro="playing"]) .info {
+	display: none;
+}
+
+/* with the right column reaching into the middle row (#29), the hints keep to the centre column */
+@media (min-width: 1000px) {
+	.intro {
+		grid-column: 2;
+	}
+}
+
+/* wide screens: the caption takes the body card's corner, clear of the body in the centre */
+@media (min-width: 1200px) {
+	/* spanning the flexible row, it never makes the HUD taller than the screen: a tall caption grows upwards */
+	:global(html[data-intro="playing"]) .intro {
+		grid-row: 2 / 4;
+		grid-column: 1;
+	}
+}
+
+/*
  * Short screens (#29): a tall body card scrolls in its own box instead of
  * pushing the time controls (and #18's flight readout) off the bottom.
  */
@@ -218,6 +264,26 @@
 	.info,
 	.time {
 		justify-self: stretch;
+	}
+
+	.intro {
+		grid-row: 4;
+	}
+
+	/* the opening gets the whole screen but the picker row; everything else is back at the hand-over */
+	:global(html[data-intro="playing"]) .toggles,
+	:global(html[data-intro="playing"]) .light,
+	:global(html[data-intro="playing"]) .time {
+		display: none;
+	}
+
+	/* the hints take the place of the card's own click hint */
+	:global(html[data-intro="hints"]) .info {
+		display: none;
+	}
+
+	:global(html[data-intro="hints"]) .intro {
+		grid-row: 5;
 	}
 
 	.pickerStack {

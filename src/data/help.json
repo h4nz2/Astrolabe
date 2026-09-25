@@ -11,6 +11,11 @@
 	],
 	"entries": [
 		{
+			"id": "opening",
+			"group": "lookingAround",
+			"try": "/solar_system?intro=play"
+		},
+		{
 			"id": "flyToWorld",
 			"group": "lookingAround",
 			"try": "/solar_system?focus=earth"

@@ -20,6 +20,7 @@ import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
 import ReferenceFrameSync from "../frame/ReferenceFrameSync"
 import Trails from "../frame/Trails"
+import IntroPulseTracker from "../intro/IntroPulseTracker"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
@@ -88,6 +89,7 @@ function Scene() {
 					<BodyPicking />
 					<CameraRig />
 					<HighlightTracker />
+					<IntroPulseTracker />
 					<SceneCapture />
 					<SoundProbe />
 				</SimFrameContext.Provider>

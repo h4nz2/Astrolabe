@@ -48,6 +48,31 @@
 		}
 	},
 	"entries": {
+		"opening": {
+			"title": {
+				"standard": "Úvod",
+				"simple": "Úvodní film"
+			},
+			"what": {
+				"standard": "Čtrnáct sekund, které začnou těsně u Země v její skutečné velikosti a vzdalují se, dokud Země není menší než pixel; pak se vše nakreslí větší, abys to viděl.",
+				"simple": "Krátký film, který letí od Země až k celé sluneční soustavě."
+			},
+			"why": {
+				"standard": "Ukáže smysl aplikace dřív, než kdokoli přečte slovo: vesmír je obrovský a skoro prázdný. Funguje i bez zvuku.",
+				"simple": "Ukáže, jak je vesmír velký a prázdný."
+			},
+			"how": {
+				"standard": [
+					"Přehraje se jednou, při první návštěvě; „Přeskočit úvod“, tažení nebo Esc ho kdykoli ukončí.",
+					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ a vyber „Přehrát úvod znovu“.",
+					"„Ukázat, jak se pohybovat“ ve stejné nabídce vrátí nápovědu k tažení, přibližování a klikání."
+				],
+				"simple": [
+					"Přehraje se, když přijdeš poprvé.",
+					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ a pak „Přehrát úvod znovu“."
+				]
+			}
+		},
 		"flyToWorld": {
 			"title": {
 				"standard": "Let k libovolnému světu",

@@ -76,6 +76,9 @@ export const simSearchSchema = z.object({
 	// `beyond` open the light panel on that tab (#27, the help page's links, #43);
 	// only an instruction, never written back
 	light: z.enum(["flash", "delay", "beyond"]).optional().catch(undefined),
+	// `?intro=play` plays the opening (#30) again on arrival (the help page's
+	// link, #43); only an instruction, never written back
+	intro: z.literal("play").optional().catch(undefined),
 	// the scavenger hunt (#34): `true` opens the chooser, a hunt id or question
 	// ids joined by "." play that hunt (resolveHunt in features/solarSystem/hunt);
 	// kept on every navigation of the page (the route's retainSearchParams)

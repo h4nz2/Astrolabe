@@ -48,6 +48,31 @@
 		}
 	},
 	"entries": {
+		"opening": {
+			"title": {
+				"standard": "La introducción",
+				"simple": "La película de inicio"
+			},
+			"what": {
+				"standard": "Catorce segundos que empiezan muy cerca de la Tierra, a su tamaño real, y se alejan hasta que la Tierra es más pequeña que un píxel; después todo se dibuja más grande para que puedas verlo.",
+				"simple": "Una película corta que vuela desde la Tierra hasta todo el sistema solar."
+			},
+			"why": {
+				"standard": "Cuenta de qué va la aplicación antes de leer una sola palabra: el espacio es enorme y está casi vacío. Funciona sin sonido.",
+				"simple": "Muestra lo grande y lo vacío que es el espacio."
+			},
+			"how": {
+				"standard": [
+					"Se reproduce una vez, en la primera visita; «Saltar la intro», arrastrar o Esc la terminan en cualquier momento.",
+					"Para verla otra vez, abre la flecha junto a «Ayuda» y elige «Ver la introducción otra vez».",
+					"«Mostrar cómo moverse», en el mismo menú, vuelve a mostrar las pistas para arrastrar, acercar y hacer clic."
+				],
+				"simple": [
+					"Se ve la primera vez que entras.",
+					"Para verla otra vez, pulsa la flecha junto a «Ayuda» y luego «Ver la introducción otra vez»."
+				]
+			}
+		},
 		"flyToWorld": {
 			"title": {
 				"standard": "Vuela a cualquier mundo",
