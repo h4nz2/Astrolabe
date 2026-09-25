@@ -111,6 +111,52 @@ export const PLANETS_EDGE_KM = Math.max(
 	),
 )
 
+/**
+ * A flash that has passed every planet lingers a while ("beyond the planets"),
+ * then fades out (#38), so it never stays on screen forever. Both spans are
+ * fractions of the time it took to pass the planets, so they are simulation
+ * time: running time backwards brings the flash back.
+ */
+export const FLASH_LINGER = 0.25
+export const FLASH_FADE = 0.25
+
+/** "notYet": time is before the flash was sent; "leaving": past every planet, lingering and fading; "ended": faded out. */
+export type FlashPhase = "notYet" | "travelling" | "leaving" | "ended"
+
+export interface FlashState {
+	readonly phase: FlashPhase
+	/** 0..1: how strongly the flash is drawn (it fades at the end of "leaving"). */
+	readonly opacity: number
+}
+
+const pastPlanetsCache = new WeakMap<LightPulse, number>()
+
+/**
+ * Seconds after sending at which the flash has passed every planet: its last
+ * arrival, or the farthest planet's aphelion, whichever is later.
+ */
+export function pastPlanetsSeconds(pulse: LightPulse): number {
+	let seconds = pastPlanetsCache.get(pulse)
+	if (seconds === undefined) {
+		seconds = Math.max(
+			lightSeconds(PLANETS_EDGE_KM),
+			pulseArrivals(pulse).at(-1)?.seconds ?? 0,
+		)
+		pastPlanetsCache.set(pulse, seconds)
+	}
+	return seconds
+}
+
+/** Where a flash is in its life `seconds` after it was sent, given when it passes the planets. */
+export function flashState(seconds: number, pastSeconds: number): FlashState {
+	if (seconds < 0) return { phase: "notYet", opacity: 0 }
+	if (seconds < pastSeconds) return { phase: "travelling", opacity: 1 }
+	const t = (seconds / pastSeconds - 1 - FLASH_LINGER) / FLASH_FADE
+	if (t >= 1) return { phase: "ended", opacity: 0 }
+	if (t <= 0) return { phase: "leaving", opacity: 1 }
+	return { phase: "leaving", opacity: 1 - t * t * (3 - 2 * t) }
+}
+
 /** Years light needs for the nearest star (to a tenth), for the "left the planets behind" line. */
 export const NEAREST_STAR_YEARS: number =
 	Math.round(BEYOND[0].lightYears * 10) / 10
