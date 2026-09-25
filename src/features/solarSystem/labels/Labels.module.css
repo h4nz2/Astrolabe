@@ -75,3 +75,33 @@
 .label.orbit[data-kind="moon"] {
 	color: #8c95a3;
 }
+
+/* projector mode (#29): names about a third larger, readable from the back of the room */
+:global(html[data-presenting]) .label {
+	font-size: clamp(17px, 1.2vmin + 9px, 26px);
+}
+
+:global(html[data-presenting]) .label[data-kind="moon"] {
+	font-size: clamp(16px, 1vmin + 8px, 22px);
+}
+
+:global(html[data-presenting]) .label.orbit {
+	font-size: clamp(15px, 0.9vmin + 7px, 20px);
+}
+
+/* high contrast (#29): bold white names on a dark plate, legible on a washed-out projector */
+:global(html[data-contrast="high"]) .label {
+	font-weight: 700;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.85);
+	padding: 0 0.25em;
+	border-radius: 3px;
+}
+
+:global(html[data-contrast="high"]) .label[data-kind="star"] {
+	color: #ffe29a;
+}
+
+:global(html[data-contrast="high"]) .label[data-selected] {
+	color: #ffc078;
+}

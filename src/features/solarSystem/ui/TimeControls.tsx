@@ -235,6 +235,10 @@ const TimeControls = () => {
 						{t("solarSystem.time.now")}
 					</Button>
 				</Tooltip>
+			</div>
+			{/* the panels to explore, on their own row: three more buttons beside the clock made the
+			    time controls so wide on a 1280 px screen that the body card beside them was squeezed */}
+			<div className={classes.row}>
 				<BirthdayButton />
 				<SkyTonightButton />
 				<HuntButton />

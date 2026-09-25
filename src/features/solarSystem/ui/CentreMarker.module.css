@@ -26,3 +26,8 @@
 		transition: none;
 	}
 }
+
+/* hidden with the rest of the controls (#29, H) */
+:global(html[data-chrome="hidden"]) .marker {
+	display: none;
+}
