@@ -1,0 +1,747 @@
+{
+	"$comment": "Every moon's surface (#37, docs/ARCHITECTURE.md \"Moon surfaces\"). `sources` are the image sources with their credit and licence (src/data/credits.json is built from them for the help page). `maps` are real spacecraft maps, processed by `pnpm gen:surfaces` (download, align the prime meridian to the map centre, colour a grey mosaic along `hue`/`darkHue`, fill a partial map, set the brightness from `albedo`). `painted` and `families` are painted surfaces for moons no spacecraft has mapped: the recipe gives colour, brightness and the kind of pattern, `basis` says what that rests on. Every moon of the data must appear exactly once.",
+	"sources": {
+		"svs-moon": {
+			"title": "CGI Moon Kit, LRO colour map",
+			"credit": "NASA's Scientific Visualization Studio (LRO / LROC)",
+			"short": "LRO · NASA",
+			"url": "https://svs.gsfc.nasa.gov/4720",
+			"file": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_1k.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://svs.gsfc.nasa.gov/help/#usage",
+			"note": "NASA imagery is not copyrighted; SVS asks for a credit."
+		},
+		"usgs-phobos": {
+			"title": "Phobos Viking global mosaic, 40 pixels per degree (DLR control)",
+			"credit": "NASA Viking Orbiter images; mosaic by P. Stooke (University of Western Ontario), control by DLR; distributed by USGS Astrogeology",
+			"short": "Viking · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/Phobos/Viking/Phobos_Viking_Mosaic_40ppd_DLRcontrol",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Phobos_Viking_Mosaic_40ppd_DLRcontrol.tif",
+			"licence": "No known restrictions",
+			"licenceUrl": "https://pds.nasa.gov/",
+			"note": "Viking images are NASA works (public domain). The mosaic is from the Stooke Small Bodies Maps archived in NASA's Planetary Data System, which states no conditions; please review before any commercial reuse."
+		},
+		"usgs-deimos": {
+			"title": "Deimos simple cylindrical map",
+			"credit": "NASA Viking Orbiter images; map by P. Stooke (University of Western Ontario); distributed by USGS Astrogeology",
+			"short": "Viking · NASA/USGS",
+			"url": "https://sbn.psi.edu/pds/resource/stooke.html",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Deimos/deimoscyl4.jpg",
+			"licence": "No known restrictions",
+			"licenceUrl": "https://pds.nasa.gov/",
+			"note": "From the Stooke Small Bodies Maps archived in NASA's Planetary Data System, which states no conditions; please review before any commercial reuse."
+		},
+		"usgs-io": {
+			"title": "Io Galileo SSI / Voyager global colour mosaic (1 km)",
+			"credit": "NASA/JPL (Galileo, Voyager); mosaic by USGS Astrogeology Science Center",
+			"short": "Galileo, Voyager · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/Io/Voyager-Galileo/Io_GalileoSSI-Voyager_Global_Mosaic_ClrMerge_1km",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Io_GalileoSSI-Voyager_Global_Mosaic_ClrMerge_1km.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+		},
+		"usgs-europa": {
+			"title": "Europa Voyager / Galileo SSI global mosaic (500 m)",
+			"credit": "NASA/JPL (Galileo, Voyager); mosaic by USGS Astrogeology Science Center",
+			"short": "Galileo, Voyager · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/Europa/Voyager-Galileo/Europa_Voyager_GalileoSSI_global_mosaic_500m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Europa_Voyager_GalileoSSI_global_mosaic_500m.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "A grey mosaic; Astrolabe colours it cream with reddish-brown dark bands."
+		},
+		"usgs-ganymede": {
+			"title": "Ganymede Voyager / Galileo SSI global colour mosaic (1.4 km)",
+			"credit": "NASA/JPL (Galileo, Voyager); mosaic by USGS Astrogeology Science Center",
+			"short": "Galileo, Voyager · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/Ganymede/Voyager-Galileo/Ganymede_Voyager_GalileoSSI_Global_ClrMosaic_1435m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Ganymede_Voyager_GalileoSSI_Global_ClrMosaic_1435m.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+		},
+		"usgs-callisto": {
+			"title": "Callisto Voyager / Galileo SSI global mosaic (1 km)",
+			"credit": "NASA/JPL (Galileo, Voyager); mosaic by USGS Astrogeology Science Center",
+			"short": "Galileo, Voyager · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/Callisto/Voyager-Galileo/Callisto_Voyager_GalileoSSI_global_mosaic_1km",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Jupiter/Callisto/callisto00n180.png",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "A grey mosaic; Astrolabe colours it dark brown with bright icy craters."
+		},
+		"pia18437": {
+			"title": "Color Maps of Mimas - 2014 (PIA18437)",
+			"credit": "NASA/JPL-Caltech/Space Science Institute/Lunar and Planetary Institute (Cassini)",
+			"short": "Cassini · NASA/JPL/SSI/LPI",
+			"url": "https://science.nasa.gov/photojournal/color-maps-of-mimas-2014/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18437/PIA18437.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "The published colours are enhanced (ultraviolet to infrared); Astrolabe keeps a fifth of the colour to stay close to what an eye would see."
+		},
+		"pia18435": {
+			"title": "Color Maps of Enceladus - 2014 (PIA18435)",
+			"credit": "NASA/JPL-Caltech/Space Science Institute/Lunar and Planetary Institute (Cassini)",
+			"short": "Cassini · NASA/JPL/SSI/LPI",
+			"url": "https://science.nasa.gov/photojournal/color-maps-of-enceladus-2014/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18435/PIA18435.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour."
+		},
+		"pia18439": {
+			"title": "Color Maps of Tethys - 2014 (PIA18439)",
+			"credit": "NASA/JPL-Caltech/Space Science Institute/Lunar and Planetary Institute (Cassini)",
+			"short": "Cassini · NASA/JPL/SSI/LPI",
+			"url": "https://science.nasa.gov/photojournal/color-maps-of-tethys-2014/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18439/PIA18439.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour."
+		},
+		"pia18434": {
+			"title": "Color Maps of Dione - 2014 (PIA18434)",
+			"credit": "NASA/JPL-Caltech/Space Science Institute/Lunar and Planetary Institute (Cassini)",
+			"short": "Cassini · NASA/JPL/SSI/LPI",
+			"url": "https://science.nasa.gov/photojournal/color-maps-of-dione-2014/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18434/PIA18434.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour."
+		},
+		"pia18438": {
+			"title": "Color Maps of Rhea - 2014 (PIA18438)",
+			"credit": "NASA/JPL-Caltech/Space Science Institute/Lunar and Planetary Institute (Cassini)",
+			"short": "Cassini · NASA/JPL/SSI/LPI",
+			"url": "https://science.nasa.gov/photojournal/color-maps-of-rhea-2014/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18438/PIA18438.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "The published colours are enhanced; Astrolabe keeps a fifth of the colour."
+		},
+		"pia18436": {
+			"title": "Color Maps of Iapetus - 2014 (PIA18436)",
+			"credit": "NASA/JPL-Caltech/Space Science Institute/Lunar and Planetary Institute (Cassini)",
+			"short": "Cassini · NASA/JPL/SSI/LPI",
+			"url": "https://science.nasa.gov/photojournal/color-maps-of-iapetus-2014/",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia18/pia18436/PIA18436.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "The published colours are enhanced; Astrolabe keeps a third of the colour."
+		},
+		"usgs-hyperion": {
+			"title": "Hyperion shaded relief map",
+			"credit": "NASA Voyager 2 images; map by P. Stooke (University of Western Ontario); distributed by USGS Astrogeology",
+			"short": "Voyager 2 · NASA/USGS",
+			"url": "https://sbn.psi.edu/pds/resource/stooke.html",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Saturn/Hyperion/Voyager2/hyrelcyl.png",
+			"licence": "No known restrictions",
+			"licenceUrl": "https://pds.nasa.gov/",
+			"note": "A drawn shaded-relief map (not a photo mosaic) from the Stooke Small Bodies Maps archived in NASA's Planetary Data System, which states no conditions; please review before any commercial reuse."
+		},
+		"usgs-phoebe": {
+			"title": "Phoebe Cassini ISS global map, 8 pixels per degree",
+			"credit": "NASA/JPL/Space Science Institute (Cassini); distributed by USGS Astrogeology",
+			"short": "Cassini · NASA/JPL/SSI/USGS",
+			"url": "https://photojournal.jpl.nasa.gov/catalog/PIA07775",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Saturn/Phoebe/Cassini/Phoebe_PDS_8ppd_dd360.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "Cassini saw one side of Phoebe closely; small gaps are filled in to match."
+		},
+		"jpl-miranda": {
+			"title": "Miranda map",
+			"credit": "NASA/JPL-Caltech/USGS (Voyager 2)",
+			"short": "Voyager 2 · NASA/JPL/USGS",
+			"url": "https://commons.wikimedia.org/wiki/File:Miranda_map_JPL_USGS.jpg",
+			"file": "https://upload.wikimedia.org/wikipedia/commons/8/81/Miranda_map_JPL_USGS.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://commons.wikimedia.org/wiki/File:Miranda_map_JPL_USGS.jpg",
+			"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app)."
+		},
+		"jpl-ariel": {
+			"title": "Ariel map",
+			"credit": "NASA/JPL-Caltech/USGS (Voyager 2)",
+			"short": "Voyager 2 · NASA/JPL/USGS",
+			"url": "https://commons.wikimedia.org/wiki/File:Ariel_map_JPL_USGS.jpg",
+			"file": "https://upload.wikimedia.org/wikipedia/commons/7/74/Ariel_map_JPL_USGS.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://commons.wikimedia.org/wiki/File:Ariel_map_JPL_USGS.jpg",
+			"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app)."
+		},
+		"jpl-umbriel": {
+			"title": "Umbriel map",
+			"credit": "NASA/JPL-Caltech/USGS (Voyager 2)",
+			"short": "Voyager 2 · NASA/JPL/USGS",
+			"url": "https://commons.wikimedia.org/wiki/File:Umbriel_map_JPL_USGS.jpg",
+			"file": "https://upload.wikimedia.org/wikipedia/commons/4/42/Umbriel_map_JPL_USGS.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://commons.wikimedia.org/wiki/File:Umbriel_map_JPL_USGS.jpg",
+			"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app)."
+		},
+		"jpl-titania": {
+			"title": "Titania map",
+			"credit": "NASA/JPL-Caltech/USGS (Voyager 2)",
+			"short": "Voyager 2 · NASA/JPL/USGS",
+			"url": "https://commons.wikimedia.org/wiki/File:Titania_map_JPL_USGS.jpg",
+			"file": "https://upload.wikimedia.org/wikipedia/commons/8/85/Titania_map_JPL_USGS.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://commons.wikimedia.org/wiki/File:Titania_map_JPL_USGS.jpg",
+			"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app)."
+		},
+		"jpl-oberon": {
+			"title": "Oberon map",
+			"credit": "NASA/JPL-Caltech/USGS (Voyager 2)",
+			"short": "Voyager 2 · NASA/JPL/USGS",
+			"url": "https://commons.wikimedia.org/wiki/File:Oberon_map_JPL_USGS.jpg",
+			"file": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Oberon_map_JPL_USGS.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://commons.wikimedia.org/wiki/File:Oberon_map_JPL_USGS.jpg",
+			"note": "Voyager 2 saw only the southern half; Astrolabe fills in the north to match (marked in the app)."
+		},
+		"usgs-triton": {
+			"title": "Triton Voyager 2 global colour mosaic (600 m), gaps filled",
+			"credit": "NASA/JPL (Voyager 2); colour mosaic by P. Schenk (Lunar and Planetary Institute); distributed by USGS Astrogeology",
+			"short": "Voyager 2 · NASA/JPL/LPI/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/triton_voyager_2_global_color_mosaic_600m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps3/Neptune/Triton/Voyager2/Triton_Voyager2_ClrMosaic_GlobalFill_600m_cog.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "Voyager 2 saw about 40 % of Triton; the unseen part of this mosaic is filled in by its authors."
+		},
+		"astrolabe-painted": {
+			"title": "Painted surfaces",
+			"credit": "Astrolabe contributors (scripts/lib/paint.ts), from published colours and brightness (albedo) measurements",
+			"short": "Painted by Astrolabe",
+			"url": "https://github.com/h4nz2/Astrolabe/blob/main/data/moon-surfaces.json",
+			"licence": "MIT",
+			"licenceUrl": "https://github.com/h4nz2/Astrolabe/blob/main/LICENSE",
+			"note": "Not a photograph: no spacecraft has mapped these moons, so their colour, brightness and the kind of surface are painted from what is known."
+		}
+	},
+	"maps": {
+		"moon": {
+			"planet": "earth",
+			"source": "svs-moon",
+			"width": 1024,
+			"centreLonEast": 0,
+			"keep": true
+		},
+		"phobos": {
+			"planet": "mars",
+			"source": "usgs-phobos",
+			"width": 1024,
+			"centreLonEast": 0,
+			"albedo": 0.071,
+			"hue": "#8c7d70"
+		},
+		"deimos": {
+			"planet": "mars",
+			"source": "usgs-deimos",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 0.068,
+			"hue": "#978676"
+		},
+		"io": {
+			"planet": "jupiter",
+			"source": "usgs-io",
+			"width": 2048,
+			"centreLonEast": 0,
+			"albedo": 0.63,
+			"colour": 0.9
+		},
+		"europa": {
+			"planet": "jupiter",
+			"source": "usgs-europa",
+			"width": 2048,
+			"centreLonEast": 180,
+			"albedo": 0.67,
+			"hue": "#f1e8d8",
+			"darkHue": "#9a7658",
+			"fill": true
+		},
+		"ganymede": {
+			"planet": "jupiter",
+			"source": "usgs-ganymede",
+			"width": 2048,
+			"centreLonEast": 180,
+			"albedo": 0.43,
+			"colour": 0.8,
+			"fill": true
+		},
+		"callisto": {
+			"planet": "jupiter",
+			"source": "usgs-callisto",
+			"width": 2048,
+			"centreLonEast": 180,
+			"albedo": 0.22,
+			"hue": "#d9d2c6",
+			"darkHue": "#75665a",
+			"fill": true
+		},
+		"mimas": {
+			"planet": "saturn",
+			"source": "pia18437",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 0.96,
+			"colour": 0.2
+		},
+		"enceladus": {
+			"planet": "saturn",
+			"source": "pia18435",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 1,
+			"colour": 0.2
+		},
+		"tethys": {
+			"planet": "saturn",
+			"source": "pia18439",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 1,
+			"colour": 0.2
+		},
+		"dione": {
+			"planet": "saturn",
+			"source": "pia18434",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 0.99,
+			"colour": 0.2
+		},
+		"rhea": {
+			"planet": "saturn",
+			"source": "pia18438",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 0.95,
+			"colour": 0.2
+		},
+		"hyperion": {
+			"planet": "saturn",
+			"source": "usgs-hyperion",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 0.3,
+			"hue": "#cbb59a",
+			"darkHue": "#7c6549"
+		},
+		"iapetus": {
+			"planet": "saturn",
+			"source": "pia18436",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 0.3,
+			"colour": 0.35
+		},
+		"phoebe": {
+			"planet": "saturn",
+			"source": "usgs-phoebe",
+			"width": 1024,
+			"centreLonEast": 180,
+			"albedo": 0.08,
+			"hue": "#8f8a84",
+			"fill": true
+		},
+		"miranda": {
+			"planet": "uranus",
+			"source": "jpl-miranda",
+			"width": 1024,
+			"centreLonEast": 0,
+			"albedo": 0.32,
+			"hue": "#d6d5d3",
+			"fill": true,
+			"unseen": true
+		},
+		"ariel": {
+			"planet": "uranus",
+			"source": "jpl-ariel",
+			"width": 1024,
+			"centreLonEast": 0,
+			"albedo": 0.53,
+			"hue": "#dddad5",
+			"fill": true,
+			"unseen": true
+		},
+		"umbriel": {
+			"planet": "uranus",
+			"source": "jpl-umbriel",
+			"width": 1024,
+			"centreLonEast": 0,
+			"albedo": 0.26,
+			"hue": "#8f8c89",
+			"fill": true,
+			"unseen": true
+		},
+		"titania": {
+			"planet": "uranus",
+			"source": "jpl-titania",
+			"width": 1024,
+			"centreLonEast": 0,
+			"albedo": 0.35,
+			"hue": "#d2c9c0",
+			"fill": true,
+			"unseen": true
+		},
+		"oberon": {
+			"planet": "uranus",
+			"source": "jpl-oberon",
+			"width": 1024,
+			"centreLonEast": 0,
+			"albedo": 0.31,
+			"hue": "#bdae9f",
+			"darkHue": "#76685b",
+			"fill": true,
+			"unseen": true
+		},
+		"triton": {
+			"planet": "neptune",
+			"source": "usgs-triton",
+			"width": 2048,
+			"centreLonEast": 0,
+			"albedo": 0.76,
+			"colour": 0.6,
+			"fill": true,
+			"unseen": true
+		}
+	},
+	"painted": {
+		"titan": {
+			"planet": "saturn",
+			"recipe": {
+				"pattern": "haze",
+				"albedo": 0.22,
+				"hue": "#d9a353",
+				"darkHue": "#b7813f"
+			},
+			"basis": "In visible light Titan's thick orange haze hides the ground completely (Voyager, Cassini, Huygens). Drawn as the haze: a slightly darker northern hemisphere and faint bands, no surface features."
+		},
+		"proteus": {
+			"planet": "neptune",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.096,
+				"hue": "#8d8a87",
+				"craters": 1.2
+			},
+			"basis": "Voyager 2 (1989): dark, neutral grey (albedo about 0.1), heavily cratered, with the large crater Pharos. No global map exists."
+		},
+		"nereid": {
+			"planet": "neptune",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.155,
+				"hue": "#a2a09d"
+			},
+			"basis": "Voyager 2 saw Nereid only as a few pixels: neutral grey, albedo about 0.16. The pattern is a generic cratered surface."
+		}
+	},
+	"families": {
+		"jupiter-inner": {
+			"planet": "jupiter",
+			"members": ["metis", "adrastea", "amalthea", "thebe"],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.07,
+				"hue": "#a0715a"
+			},
+			"basis": "Galileo and Voyager: dark and red (Amalthea is one of the reddest bodies known), dusted with sulphur from Io."
+		},
+		"jupiter-prograde": {
+			"planet": "jupiter",
+			"members": [
+				"themisto",
+				"leda",
+				"ersa",
+				"himalia",
+				"pandia",
+				"lysithea",
+				"elara",
+				"dia",
+				"carpo",
+				"s2003j24"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.05,
+				"hue": "#8e8b88"
+			},
+			"basis": "The Himalia group: dark, neutral grey, like carbon-rich (C-type) asteroids; Himalia was imaged by Cassini and New Horizons as a grey speck."
+		},
+		"jupiter-retrograde": {
+			"planet": "jupiter",
+			"members": [
+				"euporie",
+				"s2003j18",
+				"s2010j2",
+				"thelxinoe",
+				"euanthe",
+				"helike",
+				"s2017j7",
+				"s2017j3",
+				"s2016j1",
+				"orthosie",
+				"praxidike",
+				"s2003j16",
+				"thyone",
+				"s2017j9",
+				"ananke",
+				"s2003j12",
+				"s2017j6",
+				"philophrosyne",
+				"s2003j4",
+				"s2011j2",
+				"s2017j1",
+				"pasiphae",
+				"s2003j23",
+				"sinope",
+				"megaclite",
+				"s2003j2"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.05,
+				"hue": "#908a85"
+			},
+			"basis": "The Ananke and Pasiphae groups: captured, dark (albedo about 0.05), grey to slightly red in ground-based colour measurements."
+		},
+		"jupiter-carme": {
+			"planet": "jupiter",
+			"members": [
+				"s2011j1",
+				"aitne",
+				"s2003j9",
+				"chaldene",
+				"s2003j19",
+				"s2003j10",
+				"s2017j5",
+				"s2017j8",
+				"carme",
+				"s2017j2",
+				"pasithee",
+				"s2010j1",
+				"kallichore"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.05,
+				"hue": "#9b8576"
+			},
+			"basis": "The Carme group: dark and light red, and uniform in colour, pointing to one shattered parent body."
+		},
+		"saturn-ringmoons": {
+			"planet": "saturn",
+			"members": [
+				"s2009s1",
+				"pan",
+				"daphnis",
+				"atlas",
+				"prometheus",
+				"pandora",
+				"aegaeon"
+			],
+			"recipe": {
+				"pattern": "smooth",
+				"albedo": 0.5,
+				"hue": "#e0d8c9"
+			},
+			"basis": "Cassini: icy, cream-coloured and coated with ring particles; Pan and Atlas are smooth, with few craters."
+		},
+		"saturn-coorbital": {
+			"planet": "saturn",
+			"members": ["epimetheus", "janus"],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.72,
+				"hue": "#e2dccf"
+			},
+			"basis": "Cassini: bright, icy and heavily cratered, with a slight cream tint."
+		},
+		"saturn-alkyonides": {
+			"planet": "saturn",
+			"members": ["methone", "anthe", "pallene"],
+			"recipe": {
+				"pattern": "smooth",
+				"albedo": 0.6,
+				"hue": "#e5e2db"
+			},
+			"basis": "Cassini: Methone is as smooth as an egg, with no craters seen; these tiny moons sit in faint rings of dust."
+		},
+		"saturn-trojans": {
+			"planet": "saturn",
+			"members": ["telesto", "calypso", "polydeuces", "helene"],
+			"recipe": {
+				"pattern": "smooth",
+				"albedo": 1,
+				"hue": "#f2f0ec"
+			},
+			"basis": "Cassini: among the brightest moons, coated with fine ice from Enceladus's plume, with soft, buried craters."
+		},
+		"saturn-inuit": {
+			"planet": "saturn",
+			"members": [
+				"kiviuq",
+				"ijiraq",
+				"paaliaq",
+				"s2004s31",
+				"s2004s29",
+				"siarnaq",
+				"tarqeq"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.06,
+				"hue": "#a08674"
+			},
+			"basis": "The Inuit group: dark and light red in colour measurements; Cassini saw them only as points of light."
+		},
+		"saturn-gallic": {
+			"planet": "saturn",
+			"members": ["albiorix", "bebhionn", "erriapus", "tarvos", "s2004s24"],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.06,
+				"hue": "#9a8475"
+			},
+			"basis": "The Gallic group: dark and light red, like the Inuit group."
+		},
+		"saturn-norse": {
+			"planet": "saturn",
+			"members": [
+				"skathi",
+				"s2004s37",
+				"s2007s2",
+				"skoll",
+				"greip",
+				"hyrrokkin",
+				"s2004s13",
+				"s2004s17",
+				"mundilfari",
+				"jarnsaxa",
+				"s2006s1",
+				"narvi",
+				"s2004s20",
+				"bergelmir",
+				"suttungr",
+				"s2004s12",
+				"s2004s27",
+				"s2004s7",
+				"hati",
+				"bestla",
+				"s2004s22",
+				"farbauti",
+				"s2004s30",
+				"thrymr",
+				"s2007s3",
+				"s2004s25",
+				"aegir",
+				"s2006s3",
+				"s2004s23",
+				"s2004s32",
+				"s2004s28",
+				"s2004s35",
+				"kari",
+				"fenrir",
+				"surtur",
+				"s2004s39",
+				"s2004s38",
+				"ymir",
+				"loge",
+				"s2004s36",
+				"s2004s33",
+				"s2004s21",
+				"s2004s34",
+				"fornjot",
+				"s2004s26"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.05,
+				"hue": "#8b8986"
+			},
+			"basis": "The Norse group orbits backwards like Phoebe and is thought to share its dark, neutral grey material."
+		},
+		"uranus-inner": {
+			"planet": "uranus",
+			"members": [
+				"cordelia",
+				"ophelia",
+				"bianca",
+				"cressida",
+				"desdemona",
+				"juliet",
+				"portia",
+				"rosalind",
+				"cupid",
+				"belinda",
+				"perdita",
+				"puck",
+				"mab"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.08,
+				"hue": "#8d8b89"
+			},
+			"basis": "Voyager 2 and Hubble: dark (albedo below 0.1) and neutral grey, like Uranus's dark rings; Puck is cratered."
+		},
+		"uranus-red": {
+			"planet": "uranus",
+			"members": ["caliban", "sycorax"],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.05,
+				"hue": "#a0816e"
+			},
+			"basis": "Ground-based colour measurements: dark and clearly red."
+		},
+		"uranus-irregular": {
+			"planet": "uranus",
+			"members": [
+				"francisco",
+				"stephano",
+				"trinculo",
+				"margaret",
+				"prospero",
+				"setebos",
+				"ferdinand"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.05,
+				"hue": "#948c85"
+			},
+			"basis": "Captured moons seen only as points of light: assumed dark, grey to slightly red like the other irregular moons."
+		},
+		"neptune-inner": {
+			"planet": "neptune",
+			"members": [
+				"naiad",
+				"thalassa",
+				"despina",
+				"galatea",
+				"larissa",
+				"hippocamp"
+			],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.09,
+				"hue": "#8f8a86"
+			},
+			"basis": "Voyager 2: dark (albedo about 0.09) and neutral to slightly red; Larissa is cratered."
+		},
+		"neptune-irregular": {
+			"planet": "neptune",
+			"members": ["halimede", "sao", "laomedeia", "psamathe", "neso"],
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.06,
+				"hue": "#928d89"
+			},
+			"basis": "Captured moons seen only as points of light; Halimede is neutral grey. Assumed dark and grey."
+		}
+	}
+}

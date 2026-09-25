@@ -419,6 +419,15 @@
 			"readMore": "Read its story",
 			"readLess": "Show less"
 		},
+		"surface": {
+			"map": "Surface map: {source}.",
+			"unseen": "Part of {moon} has never been photographed, so that part of the map is filled in to look like the rest.",
+			"unseen@simple": "Nobody has ever seen all of {moon}. The missing part of the map is filled in.",
+			"painted": "No spacecraft has mapped {moon} up close, so this surface is painted to match what is known: its colour and how much sunlight it reflects.",
+			"painted@simple": "No spacecraft has taken close-up pictures of {moon}. This surface is painted to match its real colour.",
+			"haze": "The ground of {moon} is hidden under a thick orange haze. This is how {moon} looks to our eyes.",
+			"haze@simple": "Thick orange haze hides the ground of {moon}. This is how {moon} looks to our eyes."
+		},
 		"facts": {
 			"label": {
 				"size": "Size",
