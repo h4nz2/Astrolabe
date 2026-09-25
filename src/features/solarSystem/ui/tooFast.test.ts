@@ -49,6 +49,12 @@ describe("bodiesInView", () => {
 		expect(hidden).toContain("europa")
 		expect(hidden).not.toContain("io")
 	})
+
+	it("counts the long tail only while all moons are shown (#17)", () => {
+		// Metis laps Jupiter in 7 hours: it must not trip the warning while it is not drawn
+		expect(ids(bodiesInView(bodies, "jupiter", true))).not.toContain("metis")
+		expect(ids(bodiesInView(bodies, "jupiter", true, true))).toContain("metis")
+	})
 })
 
 describe("tooFastToFollow", () => {

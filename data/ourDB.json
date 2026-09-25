@@ -342,7 +342,7 @@
 						"rel": "https://api.le-systeme-solaire.net/rest/bodies/mars"
 					},
 					"discoveredBy": "Asaph Hall",
-					"discoveryDate": "12/08/1877",
+					"discoveryDate": "18/08/1877",
 					"alternativeName": "",
 					"axialTilt": 0,
 					"avgTemp": 0,
@@ -5738,6 +5738,32 @@
 						"base": "/assets/textures/earth/satellites/moon_1k.jpg",
 						"topo": "/assets/textures/earth/satellites/moon_topo_1k.jpg"
 					}
+				},
+				{
+					"id": "6ab",
+					"name": "Phoebe",
+					"englishName": "Phoebe",
+					"semimajorAxis": 12929400,
+					"eccentricity": 0.164,
+					"inclination": 175.2,
+					"longAscNode": 192.7,
+					"argPeriapsis": 240.3,
+					"mainAnomaly": 308.0,
+					"sideralOrbit": 550.30391,
+					"meanRadius": 106.5,
+					"sideralRotation": 9.2735,
+					"mass": {
+						"massValue": 8.3123,
+						"massExponent": 18
+					},
+					"density": 1.638,
+					"discoveredBy": "William Henry Pickering",
+					"discoveryDate": "17/03/1899",
+					"bodyType": "Moon",
+					"textures": {
+						"base": "/assets/textures/earth/satellites/moon_1k.jpg",
+						"topo": null
+					}
 				}
 			],
 			"semimajorAxis": 1426666414,
@@ -7632,7 +7658,6 @@
 					"eccentricity": 0.7507,
 					"diameter": 340,
 					"mass": "3.1 * 10^19",
-					"gravity": 0.002,
 					"surfaceTemps": {
 						"min": -223,
 						"max": -223,

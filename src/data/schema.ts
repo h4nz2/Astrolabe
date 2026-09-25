@@ -110,6 +110,11 @@ export const Body = z
 		rings: Rings.nullable(),
 		/** dictionary fields passed through from the source */
 		info: z.record(z.string(), z.unknown()),
+		/**
+		 * A moon with a story (data/featured-moons.json, #17): shown by default. Every other moon is
+		 * the long tail, drawn only while the viewer asks for all moons (docs/ARCHITECTURE.md, "Moons").
+		 */
+		featured: z.literal(true).optional(),
 	})
 	.superRefine((body, ctx) => {
 		if ((body.kind === "star") !== (body.parentId === null)) {
@@ -124,6 +129,13 @@ export const Body = z
 				code: "custom",
 				message: "orbit must be null exactly for the star",
 				path: ["orbit"],
+			})
+		}
+		if (body.featured && body.kind !== "moon") {
+			ctx.addIssue({
+				code: "custom",
+				message: "only moons are featured; every other body is always shown",
+				path: ["featured"],
 			})
 		}
 		if (body.kind === "planet" && body.orbit?.phaseSynthetic) {

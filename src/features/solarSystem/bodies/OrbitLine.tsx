@@ -24,10 +24,19 @@
  * Precession (the Moon's orbit turns: its node once in 18.6 years, its perigee
  * once in 8.85): the ellipse is resampled from `orbitAt(orbit, jd)` whenever
  * the orbit has turned more than `ORBIT_RESAMPLE_DEG` since the last sampling.
+ *
+ * Moons (#17): a moon's line fades in with its drawn size on screen and the
+ * long tail is fainter (./moonOrbitFade.ts); a line faded out is not drawn.
  */
 import { useMemo, useRef } from "react"
 import { extend, useFrame } from "@react-three/fiber"
-import { Line, Vector3, type BufferAttribute } from "three"
+import {
+	Line,
+	LineBasicMaterial,
+	PerspectiveCamera,
+	Vector3,
+	type BufferAttribute,
+} from "three"
 
 import type { Body } from "@/data"
 import {
@@ -46,7 +55,9 @@ import {
 	type Vec3,
 } from "@/sim"
 
+import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame, type SimFrame } from "../scene/simFrame"
+import { moonOrbitFade, orbitScreenRadiusPx } from "./moonOrbitFade"
 
 // R3F's createInstance strips the `three` prefix when it mounts <threeLine>,
 // but commitUpdate validates the raw type against the catalogue on every
@@ -358,6 +369,7 @@ export function updateOrbitBuffers(
 }
 
 const shift = new Vector3()
+const parentScratch = new Vector3()
 
 function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 	const frame = useSimFrame()
@@ -369,7 +381,7 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		[orbit, frame],
 	)
 
-	useFrame(() => {
+	useFrame(({ camera, size }) => {
 		const line = lineRef.current
 		const attribute = attributeRef.current
 		if (
@@ -393,6 +405,21 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		else attribute.addUpdateRange(anchorVertex(buffers.slot) * 3, 3)
 		attribute.needsUpdate = true
 		line.position.copy(shift)
+		if (body.kind === "moon" && camera instanceof PerspectiveCamera) {
+			frame.renderPosition(parentIndex, parentScratch)
+			const fade = moonOrbitFade(
+				orbitScreenRadiusPx(
+					toUnits(buffers.displaySemiMajorAxisKm),
+					parentScratch.distanceTo(camera.position),
+					pixelsPerUnitAtDistanceOne(camera, size.height),
+				),
+				body,
+			)
+			line.visible = fade > 0
+			if (line.material instanceof LineBasicMaterial) {
+				line.material.opacity = ORBIT_OPACITY * fade
+			}
+		}
 	})
 
 	if (buffers === null) return null

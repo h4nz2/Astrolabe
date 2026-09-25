@@ -24,6 +24,7 @@ import { useSimStore, type SimState } from "@/store/sim"
 
 import { headlineFacts } from "./bodyFacts"
 import { dictionaryEntry } from "./dictionaryEntry"
+import MoonSystem from "./MoonSystem"
 
 import classes from "./BodyInfo.module.css"
 
@@ -115,6 +116,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							</div>
 						))}
 					</dl>
+					<MoonSystem body={body} />
 					{entry !== null && (
 						<Anchor
 							className={classes.more}

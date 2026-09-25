@@ -211,6 +211,7 @@ describe("urlSync helpers", () => {
 			showMoons: true,
 			showMarkers: true,
 			showOrbitLabels: false,
+			showAllMoons: false,
 		}
 		const { orbits, labels, moons, markers } = searchFromState(state(), {})
 		expect([orbits, labels, moons, markers]).toEqual([
@@ -247,6 +248,15 @@ describe("urlSync helpers", () => {
 		)
 		expect(layersFromSearch({}).showOrbitLabels).toBe(false)
 		expect(sameSearch({ orbitNames: true }, {})).toBe(false)
+	})
+
+	it("writes all moons only when they are on (off by default, #17)", () => {
+		expect(searchFromState(state(), {}).allMoons).toBeUndefined()
+		const on = searchFromState(state({ showAllMoons: true }), {})
+		expect(on.allMoons).toBe(true)
+		expect(layersFromSearch(simSearchSchema.parse(on)).showAllMoons).toBe(true)
+		expect(layersFromSearch({}).showAllMoons).toBe(false)
+		expect(sameSearch({ allMoons: true }, {})).toBe(false)
 	})
 
 	it("compares searches field by field", () => {

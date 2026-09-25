@@ -21,9 +21,22 @@ describe("focusRing", () => {
 		expect(focusRing("mars")).toEqual(top)
 	})
 
-	it("is the moons of the same planet for a moon", () => {
-		expect(focusRing("io")).toEqual(childrenOf("jupiter").map((m) => m.id))
-		expect(focusRing("io")).toContain("europa")
+	it("is the featured moons of the same planet for a moon (#17)", () => {
+		expect(focusRing("io")).toEqual(["io", "europa", "ganymede", "callisto"])
+		// a long-tail moon in focus stays in its own ring
+		expect(focusRing("metis")).toEqual([
+			"metis",
+			"io",
+			"europa",
+			"ganymede",
+			"callisto",
+		])
+	})
+
+	it("is every moon of the same planet while all moons are shown", () => {
+		expect(focusRing("io", true)).toEqual(
+			childrenOf("jupiter").map((m) => m.id),
+		)
 	})
 
 	it("is empty for an unknown id", () => {
@@ -40,10 +53,12 @@ describe("cycleFocus", () => {
 	})
 
 	it("steps between neighbouring moons in orbital order", () => {
+		expect(cycleFocus("io", 1)).toBe("europa")
+		expect(cycleFocus("io", -1)).toBe("callisto")
 		const jovian = childrenOf("jupiter").map((m) => m.id)
 		const io = jovian.indexOf("io")
-		expect(cycleFocus("io", 1)).toBe(jovian[io + 1])
-		expect(cycleFocus("io", -1)).toBe(jovian[io - 1])
+		expect(cycleFocus("io", 1, true)).toBe(jovian[io + 1])
+		expect(cycleFocus("io", -1, true)).toBe(jovian[io - 1])
 	})
 
 	it("stays put for an only child and for an unknown id", () => {

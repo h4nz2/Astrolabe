@@ -132,6 +132,8 @@
 			"orbits": "Umlaufbahnen",
 			"labels": "Beschriftungen",
 			"moons": "Monde",
+			"allMoons": "Alle Monde",
+			"allMoonsHint": "Auch die vielen kleinen Monde zeigen, nicht nur die mit einer Geschichte",
 			"markers": "Markierungen",
 			"orbitNames": "Bahnnamen",
 			"alwaysLit": "Immer beleuchtet"
@@ -333,6 +335,18 @@
 			"showFacts": "Fakten zeigen",
 			"hideFacts": "Fakten ausblenden",
 			"close": "Schließen und zur Übersicht zurück"
+		},
+		"moons": {
+			"label": "Monde",
+			"none": "{planet} hat keine Monde.",
+			"viewSystem": "Das ganze Mondsystem ansehen",
+			"viewSystem@simple": "Alle seine Monde ansehen",
+			"showOthers": "{count, plural, one {# kleineren Mond zeigen} other {# kleinere Monde zeigen}}",
+			"hideOthers": "Kleinere Monde ausblenden",
+			"othersNote": "Meist Gesteinsbrocken von wenigen Kilometern, viele davon eingefangen. Astronomen entdecken immer weitere.",
+			"othersNote@simple": "Meist kleine Felsbrocken. Forscher entdecken immer noch neue.",
+			"readMore": "Seine Geschichte lesen",
+			"readLess": "Weniger zeigen"
 		},
 		"facts": {
 			"label": {
