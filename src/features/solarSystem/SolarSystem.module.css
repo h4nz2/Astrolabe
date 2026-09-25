@@ -159,3 +159,39 @@
 		overflow-y: auto;
 	}
 }
+
+/*
+ * Teacher and presentation mode (#29; attributes on <html>, see
+ * present/usePresentationDocument.ts). Hiding never unmounts the HUD: its
+ * keys (Space, +/-, arrows, Escape) keep working with nothing on screen.
+ */
+:global(html[data-chrome="hidden"]) .hud {
+	display: none;
+}
+
+/*
+ * Projector: calmer, more opaque panels, so text reads over any part of the
+ * scene, and a narrower right column (the layer switches fold into a menu).
+ */
+:global(html[data-presenting]) .panel {
+	background: rgba(12, 13, 17, 0.88);
+}
+
+:global(html[data-presenting]) .toggles {
+	width: 22rem;
+}
+
+@media (max-width: 599px) {
+	:global(html[data-presenting]) .toggles {
+		width: auto;
+	}
+}
+
+/* high contrast: solid black panels with a white edge, nothing see-through */
+:global(html[data-contrast="high"]) .panel {
+	background: #000;
+	border: 2px solid #fff;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	box-shadow: none;
+}

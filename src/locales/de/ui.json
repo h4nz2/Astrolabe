@@ -521,6 +521,87 @@
 				"title@simple": "Von hoch oben gesehen",
 				"label": "{observer} und {body} auf ihren Bahnen um die Sonne, mit der Blicklinie von {observer} zu {body}"
 			}
+		},
+		"present": {
+			"button": "Präsentieren",
+			"buttonHint": "Vor der Klasse zeigen: große Schrift, hoher Kontrast, Tastatur, teilen",
+			"title": "Vor der Klasse zeigen",
+			"projector": "Große Schrift für den Beamer",
+			"projectorHint": "Größere Schrift und Knöpfe, lesbar bis in die letzte Reihe",
+			"highContrast": "Hoher Kontrast",
+			"highContrastHint": "Für blasse Beamer und Räume, die sich nicht abdunkeln lassen",
+			"hideControls": "Bedienelemente ausblenden",
+			"fullscreen": "Vollbild",
+			"exitFullscreen": "Vollbild beenden",
+			"restart": "Zurück zum Anfang",
+			"restartHint": "Die Ansicht, mit der diese Seite geöffnet wurde",
+			"shortcuts": "Tastenkürzel",
+			"share": {
+				"button": "Teilen",
+				"title": "Diese Ansicht teilen",
+				"explain": "Der Link öffnet genau diese Ansicht: derselbe Himmelskörper, dieselbe Kamera, dasselbe Datum, Tempo, derselbe Maßstab und dieselbe Sprache. Setze ein Lesezeichen, um eine Lektion vorzubereiten, oder verschicke ihn als Hausaufgabe.",
+				"explain@simple": "Der Link öffnet genau das, was du jetzt siehst. Speichere ihn oder schick ihn jemandem.",
+				"link": "Link zu dieser Ansicht",
+				"copy": "Link kopieren",
+				"copied": "Link kopiert",
+				"copyFailed": "Kopieren ging nicht: Markiere den Link und kopiere ihn selbst",
+				"qr": "Scannen, um diese Ansicht auf einem Handy oder Tablet zu öffnen",
+				"qrLabel": "QR-Code des Links zu dieser Ansicht",
+				"qrShow": "QR-Code der Klasse zeigen"
+			},
+			"chrome": {
+				"show": "Bedienelemente zeigen",
+				"hint": "Bedienelemente ausgeblendet: Drücke H oder den Knopf, um sie zurückzuholen",
+				"hint@simple": "Die Knöpfe sind versteckt. Drücke H, um sie zurückzuholen."
+			},
+			"help": {
+				"title": "Tastenkürzel",
+				"intro": "Alle Tasten funktionieren auch, wenn die Bedienelemente ausgeblendet sind. Die Knöpfe eines Presenters blättern durch die Planeten.",
+				"groups": {
+					"move": "Bewegen",
+					"time": "Zeit",
+					"show": "Was zu sehen ist",
+					"present": "Präsentieren"
+				},
+				"keys": {
+					"space": "Leertaste",
+					"pageUpDown": "Bild ↑ / Bild ↓",
+					"arrows": "← / →",
+					"digits": "1 – 8",
+					"home": "Pos1",
+					"esc": "Esc"
+				},
+				"pause": "Anhalten oder weiterlaufen lassen",
+				"speed": "Schneller oder langsamer",
+				"step": "Vorheriger oder nächster Himmelskörper (die Knöpfe eines Presenters)",
+				"planets": "Die Planeten, von Merkur (1) bis Neptun (8)",
+				"overview": "Das ganze Sonnensystem",
+				"reset": "Zurück zur Übersicht, von überall",
+				"start": "Zurück zum Anfang: die Ansicht, mit der der Link geöffnet wurde",
+				"scale": "Nächster Maßstab: Alles sichtbar, Schulbuch, Echter Maßstab",
+				"scale@simple": "Zwischen erfundenen und echten Größen wechseln",
+				"labels": "Namen ein oder aus (für ein Quiz ausblenden)",
+				"chrome": "Alle Bedienelemente aus- oder einblenden",
+				"fullscreen": "Vollbild ein oder aus",
+				"projector": "Große Schrift ein oder aus",
+				"contrast": "Hoher Kontrast ein oder aus",
+				"help": "Diese Liste"
+			},
+			"announce": {
+				"focus": "Jetzt zu sehen: {body}",
+				"overview": "Das ganze Sonnensystem",
+				"start": "Zurück zum Anfang",
+				"scale": "Maßstab: {preset}",
+				"labelsOn": "Namen eingeblendet",
+				"labelsOff": "Namen ausgeblendet",
+				"chromeHidden": "Bedienelemente ausgeblendet. Drücke H, um sie wieder zu zeigen.",
+				"chromeShown": "Bedienelemente eingeblendet",
+				"projectorOn": "Große Schrift an",
+				"projectorOff": "Große Schrift aus",
+				"contrastOn": "Hoher Kontrast an",
+				"contrastOff": "Hoher Kontrast aus",
+				"step": "Schritt {n} von {total}"
+			}
 		}
 	}
 }

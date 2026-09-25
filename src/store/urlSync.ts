@@ -3,7 +3,7 @@
  *
  * On mount the validated search params (`focus`, `at`, `sel`, `cam`, `t`,
  * `warp`, the layer switches `orbits`, `labels`, `moons`, `markers` and the
- * scale preset `scale`) seed the store: the view (`focus`: a body, with `at`
+ * scale preset `scale`; #29's `paused`, `present` and `contrast`) seed the store: the view (`focus`: a body, with `at`
  * a point in space near it, absent: the overview) and its camera shot are
  * applied as a jump, so a shared link opens exactly on the view it was taken
  * from. From then on view, selection, camera shot, warp, the layer switches
@@ -42,6 +42,12 @@ import {
 	type View,
 } from "./navigation"
 import { hidesTimeInUrl, useBirthdayStore } from "./birthday"
+import {
+	presentationFromSearch,
+	presentationSearch,
+	samePresentationSearch,
+	usePresentationStore,
+} from "./presentation"
 import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
@@ -280,18 +286,32 @@ export function useSimUrlSync(): void {
 		useSimStore.setState(layersFromSearch(searchRef.current))
 		// the scale: a jump as well, the switch animates only when the user makes it
 		useScaleStore.getState().setPreset(scaleFromSearch(searchRef.current))
+		// #29: a prepared lesson opens paused where it was paused, in its
+		// presentation settings, and remembers itself as the start of the lesson
+		if (searchRef.current.paused === true) store.setPaused(true)
+		usePresentationStore.setState(presentationFromSearch(searchRef.current))
+		usePresentationStore.getState().setStartSearch(searchRef.current)
 
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const write = () => {
-			const next = searchFromState(
-				{
-					...useSimStore.getState(),
-					scalePreset: useScaleStore.getState().targetId,
-				},
-				searchRef.current,
-				hidesTimeInUrl(useBirthdayStore.getState()),
-			)
-			if (sameSearch(next, searchRef.current)) return
+			const sim = useSimStore.getState()
+			const next = {
+				...searchFromState(
+					{ ...sim, scalePreset: useScaleStore.getState().targetId },
+					searchRef.current,
+					hidesTimeInUrl(useBirthdayStore.getState()),
+				),
+				...presentationSearch({
+					...usePresentationStore.getState(),
+					paused: sim.paused,
+				}),
+			}
+			if (
+				sameSearch(next, searchRef.current) &&
+				samePresentationSearch(next, searchRef.current)
+			) {
+				return
+			}
 			searchRef.current = next
 			void navigate({ to: "/solar_system", search: next, replace: true })
 		}
@@ -333,12 +353,24 @@ export function useSimUrlSync(): void {
 				if (hidesTimeInUrl(state) !== hidesTimeInUrl(previous)) write()
 			},
 		)
+		// the presentation settings (#29)
+		const unsubscribePresentation = usePresentationStore.subscribe(
+			(state, previous) => {
+				if (
+					state.presenting !== previous.presenting ||
+					state.highContrast !== previous.highContrast
+				) {
+					write()
+				}
+			},
+		)
 		write()
 
 		return () => {
 			unsubscribe()
 			unsubscribeScale()
 			unsubscribeBirthday()
+			unsubscribePresentation()
 			if (timer !== undefined) clearTimeout(timer)
 		}
 	}, [navigate])

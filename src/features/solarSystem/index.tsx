@@ -1,5 +1,4 @@
 import { Suspense } from "react"
-import { Group } from "@mantine/core"
 
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
@@ -10,6 +9,8 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { InlineLayers, TeacherBar } from "./present/TeacherBar"
+import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
@@ -82,10 +83,12 @@ const SolarSystem = () => {
 				<CentreBadgePanel />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
-						<Group gap="sm" justify="space-between" wrap="nowrap">
-							<SceneToggles />
+						<TeacherBar layers={<SceneToggles />}>
 							<LanguageMenu />
-						</Group>
+						</TeacherBar>
+						<InlineLayers>
+							<SceneToggles />
+						</InlineLayers>
 					</div>
 					<div className={classes.panel}>
 						<ScalePanel />
@@ -100,6 +103,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<PresentationLayer />
 		</div>
 	)
 }
