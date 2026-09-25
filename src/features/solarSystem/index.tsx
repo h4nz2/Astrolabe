@@ -1,5 +1,4 @@
 import { Suspense } from "react"
-import { Group, Stack } from "@mantine/core"
 
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
@@ -11,7 +10,10 @@ import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import { HuntPanelSlot } from "./hunt/Hunt"
+import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
 import { LightSlot } from "./light/LightPanel"
+import { InlineLayers, TeacherBar } from "./present/TeacherBar"
+import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
 import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
@@ -93,13 +95,14 @@ const SolarSystem = () => {
 				<LightSlot phone className={`${classes.panel} ${classes.light}`} />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
-						<Group gap="sm" justify="space-between" wrap="nowrap">
+						<TeacherBar layers={<SceneToggles />}>
+							<PostcardButton />
+							<SoundControl />
+							<LanguageMenu />
+						</TeacherBar>
+						<InlineLayers>
 							<SceneToggles />
-							<Stack gap={4} align="flex-end">
-								<LanguageMenu />
-								<SoundControl />
-							</Stack>
-						</Group>
+						</InlineLayers>
 					</div>
 					<div className={classes.panel}>
 						<ScalePanel />
@@ -118,6 +121,8 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<PostcardSlot />
+			<PresentationLayer />
 		</div>
 	)
 }

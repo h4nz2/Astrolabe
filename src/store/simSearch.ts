@@ -1,6 +1,7 @@
 /**
  * Search params of `/solar_system?focus=io&at=<x_y_z>&sel=europa&frame=io&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale`
- * (the layer switches `orbits`, `labels`, `moons`, `markers` alike).
+ * (the layer switches `orbits`, `labels`, `moons`, `markers` alike; `paused`,
+ * `present`, `contrast` for #29).
  *
  * Kept free of app imports (only zod) because the route module that validates
  * the URL is loaded eagerly with the route tree; the store and the data stay in
@@ -62,6 +63,12 @@ export const simSearchSchema = z.object({
 	// `?birthday=true` opens the birthday panel (#26) on arrival; it is only an
 	// instruction and never carries a date (a birth date never enters the URL)
 	birthday: z.boolean().optional().catch(undefined),
+	// presentation mode (#29): `present=true` opens in projector mode,
+	// `contrast=high` with high contrast, `paused=true` with the clock stopped
+	// (see src/store/presentation.ts); only the non-default value is written
+	present: layerSwitch,
+	contrast: z.enum(["high"]).optional().catch(undefined),
+	paused: layerSwitch,
 	// the scavenger hunt (#34): `true` opens the chooser, a hunt id or question
 	// ids joined by "." play that hunt (resolveHunt in features/solarSystem/hunt);
 	// kept on every navigation of the page (the route's retainSearchParams)

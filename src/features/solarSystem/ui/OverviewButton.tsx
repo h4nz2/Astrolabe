@@ -15,6 +15,13 @@ import { hasModifier, isEditableTarget } from "./keyboard"
 const handleKeyDown = (event: KeyboardEvent): void => {
 	if (event.key !== "Escape") return
 	if (hasModifier(event) || isEditableTarget(event.target)) return
+	// a modal dialog (#29's shortcut list, the class QR code) closes on Escape and nothing else
+	if (
+		event.target instanceof Element &&
+		event.target.closest("[aria-modal='true']") !== null
+	) {
+		return
+	}
 	event.preventDefault()
 	useSimStore.getState().reset()
 }

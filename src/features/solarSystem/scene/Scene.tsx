@@ -24,6 +24,8 @@ import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
 import LightFront from "../light/LightFront"
+import SceneCapture from "../postcard/SceneCapture"
+import DprSync from "../present/DprSync"
 import SoundProbe from "../sound/SoundProbe"
 import { labelSlotCount } from "../labels/project"
 import BodyPicking, { activateBody } from "./BodyPicking"
@@ -67,6 +69,7 @@ function Scene() {
 				style={{ position: "absolute", inset: 0 }}
 			>
 				<color attach="background" args={[SCENE_BACKGROUND]} />
+				<DprSync />
 				<SimFrameContext.Provider value={frame}>
 					<ScaleSync />
 					<ScaleTransition />
@@ -85,6 +88,7 @@ function Scene() {
 					<BodyPicking />
 					<CameraRig />
 					<HighlightTracker />
+					<SceneCapture />
 					<SoundProbe />
 				</SimFrameContext.Provider>
 			</Canvas>

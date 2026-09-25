@@ -7,7 +7,7 @@ it, and if it must change, change it in the same change set.
 ## Stack
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
-- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25). Search params are
+- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25) and `/compare` (#24). Search params are
   zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
@@ -33,9 +33,9 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, sound.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, rings/, sound/, ui/),
-                             solarWalk/ (the basketball solar system, #25)
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, presentation.ts, postcard.ts, sound.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, ui/),
+                             solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 public/assets/sounds/        the real space recordings (#32) and their CREDITS.md (sources, licences)
@@ -547,7 +547,9 @@ are left out; a link without a switch turns it on. `simSearch.ts` drops invalid 
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
 only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
-`?birthday=true` opens the birthday panel; `?hunt=` the scavenger hunt (see Scavenger hunt).
+`?birthday=true` opens the birthday panel; `?hunt=` the scavenger hunt (see Scavenger hunt). `paused=true` (written
+while paused, so a prepared moment opens standing still), `present=true` and `contrast=high` belong to #29 (see
+Presentation; `presentationSearch` in `src/store/presentation.ts`, merged into the same write).
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -608,13 +610,13 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` and `SoundControl` (#32) (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel), `FlightReadout`
-  (#18, above the time controls). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
+  (#18, above the time controls), `TeacherBar` (#29: Present, Share, the postcard's camera (#33) and the language menu heading the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
-  ArrowLeft/Right cycle siblings, M sound on/mute (#32).
+  ArrowLeft/Right cycle siblings, M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
-  `HighlightTracker`, `SoundProbe` (#32), later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
+  `HighlightTracker`, `SceneCapture` (#33), `SoundProbe` (#32), later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
 
 ## Picking: click a body to focus on it (`scene/picking.ts`, `scene/BodyPicking.tsx`; #16)
 
@@ -644,7 +646,7 @@ hover ring, name and cursor apply to labels too.
   every frame straight on the DOM (`scene/highlight.ts` `placeRing`, `applyRing`), never through React state.
 - **The focused view's card** (`ui/BodyInfo.tsx`): the selection, else the focused body; name, tagline, the first
   authored comparison, headline facts and a link to the dictionary entry (`ui/dictionaryEntry.ts`: Sun 0, planets
-  1..8), plus a close button (`reset`). Facts are comparative first (`ui/bodyFacts.ts`, `solarSystem.facts.*`): size in
+  1..8), "Compare with…" (#24), plus a close button (`reset`). Facts are comparative first (`ui/bodyFacts.ts`, `solarSystem.facts.*`): size in
   Earths (Earth and moons in our Moon), a planet's distance as sunlight travel time, a moon's as how many of its
   planet fit into the gap, the year in Earth years or laps per Earth year, the spin (#13's rotation period and tidal-lock note), weight relative to Earth; the exact
   number sits under each. In the overview or a free view the card is a hint that planets can be clicked. On phones
@@ -652,8 +654,8 @@ hover ring, name and cursor apply to labels too.
 - `window.__astrolabe.screenOf(id)` gives a body's screen position and drawn radius, and `.scale` the scale store, for
   the console and e2e tests.
 - Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`, which flies from a
-  focused body; see Flights), #24 compare (the card's action
-  row takes "Compare with…"), #28/#29/#34 (select or focus through the store).
+  focused body; see Flights), #24 compare ("Compare with…" in the card's header, see Comparison),
+  #28/#29/#34 (select or focus through the store).
 
 ## Labels (`features/solarSystem/labels`; #20)
 
@@ -719,6 +721,47 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
   Nothing is capped or hidden in the scene; positions stay true.
 
+## Presentation: teacher mode (`features/solarSystem/present`, `src/store/presentation.ts`; #29)
+
+A teacher at a projector with a class: legible from the back, controllable from the keyboard or a presenter remote,
+no chrome if wanted, and a prepared view that opens exactly as it was left. Everything a lesson needs is already in
+the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `contrast`); there is no second mechanism.
+
+- **State** (`usePresentationStore`): `presenting` (projector mode, `?present=true`), `highContrast`
+  (`?contrast=high`; `prefers-contrast: more` also turns the styles on), `chromeHidden` (never in the URL: a link
+  must never open without its way back; reset when the page unmounts), `helpOpen`, `qrOpen`, `startSearch` (the
+  search the page was opened with, seeded by `urlSync.ts`), `announcement` (for the live region).
+- **Document attributes** (`present/usePresentationDocument.ts`): `data-presenting`, `data-contrast="high"`,
+  `data-chrome="hidden"` and `data-idle` on `<html>`, so styles reach Mantine's portals. `present/presentation.css`
+  grows the root font size (112.5 %, 125 % from 1600x900 up: everything in rem grows), overrides Mantine's colour
+  variables for high contrast (tokens tested for WCAG AAA in `present/contrast.test.ts`) and hides open menus with the
+  controls. Feature CSS modules key on the same attributes with `:global(html[data-...])` (panels, labels, scale
+  panel, spin control, centre marker, birthday panel). Projector mode (and any screen below 1000 px, where the HUD crowds the scene) folds the layer switches into a menu
+  (`present/TeacherBar.tsx`), hides the spin control and the scale panel's description and lie switches (the
+  statements stay, larger), and makes the labels about a third larger. Presenting also preloads the lazy panels.
+- **Hiding never unmounts** the HUD (`:global(html[data-chrome="hidden"]) .hud { display: none }`): the HUD's own keys
+  (Space, +/-, Left/Right, Escape) keep working. `PresentationLayer` (outside the HUD) keeps a "Show the controls"
+  button that appears on pointer movement or focus, and hides an idle pointer.
+- **Keys** (`present/keys.ts` pure mapping, `present/commands.ts` actions, `present/usePresenterKeys.ts` listener):
+  PageDown/PageUp next/previous (presenter remotes), 0 the whole system, 1-8 the planets from the Sun, R/Home back to
+  the start, S next named scale preset, L names, H controls, F full screen, P projector, C contrast, ? the shortcut
+  list. Ctrl/Cmd/Alt combinations are never taken; text fields and open lists keep their keys, radio buttons and
+  switches do not (a clicked speed preset never leaves the keys dead); inside a modal dialog only "?" counts, and
+  Escape in a modal closes only the modal (`ui/OverviewButton.tsx`). Each command returns a sentence for the polite
+  live region, so screen-reader users hear what a key did with the controls hidden. With `prefers-reduced-motion`
+  key-driven moves jump (`durationMs: 0`) and the scale switches without animating.
+- **Back to the start** (`present/restoreStart.ts`): re-applies `startSearch` through the store actions (view,
+  frame, camera, selection, speed, pause, time glide, layers, animated scale); without a link that is the opening
+  state (overview, now, 1x). Presentation settings are left alone: they belong to the room, not the lesson.
+- **Sharing** (`present/SharePanel.tsx`, lazy): the current address with a copy button (`useClipboard`) and a QR
+  code (`uqr` encodes, `present/qr.ts` draws one SVG path), small in the popover and large for the class
+  (`ClassQr`, a modal outside the popover).
+- **Second screen**: the layout is viewport-relative; `present/DprSync.tsx` in the Canvas re-applies the `dpr` range
+  when the device pixel ratio changes (dragging the window to a projector), which the Canvas otherwise reads once.
+- **For #28 (tours):** PageDown/PageUp already step a running `playSequence` (`presenterStep`: next, resume after an
+  interruption, previous); a tour played through the navigation model is presentable from a remote with no extra
+  code. Number keys stay the planets unless a tour decides otherwise. **For #32 (sound):** it must start muted.
+
 ## Birthday (`features/solarSystem/birthday`, `src/store/birthday.ts`; #26)
 
 "Your birthday in space": a birth date picked in a calendar (never typed) gives the age on every planet, the next
@@ -737,7 +780,77 @@ weight on the Sun, the planets and the seven large moons.
   `/solar_system?birthday=true`.
 - Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
   carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
-  picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
+  picture" is the postcard of the view (#33, see Postcard) with the ages and distance from `card.ts` (`cardText`)
+  as its extra facts, and today's date, never the birth date.
+
+## Postcard (`features/solarSystem/postcard`, `src/store/postcard.ts`; #33)
+
+"Take a picture" (the camera button in the teacher bar, beside the language menu): the view as it is on screen, with no HUD, stamped and
+handed to the visitor. Everything happens on the device: no upload, no server, no storage.
+
+- **Capture** (`capture.ts`, `SceneCapture.tsx` in the Canvas): no `preserveDrawingBuffer` and nothing per frame.
+  At the click `snapshotScene` renders the scene once more, synchronously, and copies the drawing buffer before
+  the browser clears it; that render uses a pixel ratio raised until the long side is at least
+  `CAPTURE_LONG_SIDE` (1920 px, at most `CAPTURE_MAX_SIDE` 4096; `captureRatio`) and put back at once (the next
+  animation frame redraws, nothing flickers). Labels are DOM: `readLabels` reads the label layer
+  (`[data-label-layer]`) as painted (text, box, computed font, colour, opacity) and `draw.ts` paints them back with a
+  halo. Only the canvas and the names are taken; HUD panels, hover rings and badges never are.
+- **Snapshot** (`takePostcard(extra?)` in `take.ts`, call it from the click): the shot, the simulation JD, the subject
+  (`postcardSubject`: the selection, else the focused body), the drawn scale preset, `hideDate`
+  (`hidesTimeInUrl`: a birth date is entered) and `postcardLink` (the page URL with `t` pinned to the moment on
+  screen, or without `t` while hidden) go into `usePostcardStore`; `PostcardSlot` then opens the lazy dialog.
+- **Text** (`postcard.ts`, pure): title (body name, else "Our solar system"), the UTC date (none while hidden),
+  the caption (the body's tagline; the visitor may edit it), the preset's scale statement
+  (`solarSystem.postcard.scaleNote.*`: a copy passed around never pretends to be to scale), the app's name and the
+  file name `astrolabe-<subject>-<YYYY-MM-DD>.png`. Strings: `solarSystem.postcard.*`.
+- **Drawing** (`draw.ts`, Canvas 2D): the picture in a dark mount with a hairline, the stamp below (accent line,
+  title, date, caption, extra rows in 4 columns beside a landscape picture or 2 below a portrait one, note, scale
+  statement, app name) and a QR code of the link (`qr.ts`, `uqr`, error correction M, loaded with the dialog).
+  All sizes derive from `postcardUnit` (a 34th of the picture's short side, at least a 62nd of its long side).
+- **Dialog** (`PostcardDialog.tsx`, a Mantine modal; full screen on phones): preview, caption, switches for the
+  names and the QR code, then Save picture (download), Copy picture (`ClipboardItem`, where supported), Share (the Web
+  Share API with a file, where `canShare` allows: phones) and Copy link. Escape closes the dialog only: the
+  overview button's Escape ignores keys inside a modal dialog (`aria-modal`).
+- **For other features:** `takePostcard(extra)` with a `PostcardExtra` (`title`, `caption`, `date` (null: none),
+  `rows` of `{ id, label, value, color? }`, `note`, `fileName`) stamps a feature's own facts under the view; the
+  birthday panel is the worked example; `facts` (sentences) and `scaleNote` (a page with a scale of its own) too. A page
+  without the 3D scene draws its own `SceneShot` (`image` canvas, `ratio`, `labels`), calls
+  `usePostcardStore.getState().show(...)` and renders `<PostcardButton onTake>` and `<PostcardSlot />`: the
+  comparison is the worked example (`features/compare/picture.ts`).
+
+## Comparison (`features/compare`, route `/compare`; #24)
+
+Two or more bodies side by side at true relative size, independent of where they are, with comparisons a class can
+discuss. A page of its own (plain DOM, no WebGL: light on phones, crisp on a projector, easy to screenshot), so the
+whole comparison is its link: `/compare?bodies=earth,jupiter,saturn&t=<jd>` (`search.ts`; `t` absent = now).
+
+- **The list** (`selection.ts`, pure): `bodies[0]` and `[1]` are the pair the facts talk about, further ids are drawn
+  alongside (at most `MAX_COMPARE` = 10). A missing or short list is completed (`completeBodies`, `defaultPartner`:
+  Earth for the Sun and planets, the Sun for Earth, our Moon for moons, Earth for the Moon) and written back to the
+  URL. Pickers reuse the focus picker's `focusOptions`; ideas are `COMPARE_PRESETS` (`compare.presets.<id>`). A click
+  on a drawn body outside the pair `promote`s it into the pair.
+- **The drawing** (`layout.ts` pure, `Stage.tsx`): one scale (px per km) for every body, the largest at which the
+  tallest body fits the height and every slot (at least the label's width) fits the width; if even the narrowest slots
+  do not fit, the row scrolls sideways. Order of the system (`drawOrder`: the Sun, each planet with its moons). Each
+  globe is a disc painted with `textures.base` (half the map across it) and a CSS shade, turned by `axialTiltDeg`;
+  rings are a radial gradient seen from `RING_OPENING` (Saturn's A/B/C rings and Cassini Division by radius, the others
+  a faint band). A body under `MIN_VISIBLE_PX` across is circled and named in the caption, never enlarged. Slots carry
+  `data-body`, `data-role` (`first`/`second`/`extra`) and `data-radius-px` for tests.
+- **The facts** (`compareFacts.ts`, pure, `FactsPanel.tsx`): `pairFacts(a, b, i18n, { jd, live })` gives size,
+  volume, mass, weight (on Earth when it is one of the two, else on the first), year (both round the Sun) or orbit
+  (both round one planet), solar day (a moon's under its planet's year: our Moon 29.5 days), the strange calendars
+  (Mercury's day longer than its year, Venus turning slower than it orbits), and the true distance at `jd` in light
+  time (with the closest/farthest range for siblings and parent/child). Physics reuses #26's `surfaceGravity`,
+  `solarDayDays`, `hasNoSurface`, `formatBigNumber` and #16's `roughly`. Sentences are `compare.facts.*` with simple
+  and advanced variants; German picks articles and prepositions by `<role>Id` selects. Under the facts, each body's
+  first authored comparison (#11).
+- **Postcard** (#33, `picture.ts`): the camera button in the header redraws the stage with Canvas 2D from the same
+  `layoutStage` at 1920 x 1080 (textures, shade, tilt, `ringStops` from `Stage.tsx`, circled tiny bodies; names and
+  sizes as the postcard's labels) and stamps the pair's comparisons under it (see Postcard).
+- **Entry:** the focused body's card (`ui/BodyInfo.tsx`) has "Compare with…" in its header (always in view, also while a
+  phone folds the facts); it opens the body with its default partner at the moment on screen (`links.ts`
+  `compareSearchFor`: `t` unless the clock shows the present at 1x). "Back" returns through the history, else to
+  `/solar_system?focus=<first>`.
 
 ## Scavenger hunt (`features/solarSystem/hunt`, `src/store/hunt.ts`; #34)
 
@@ -849,8 +962,9 @@ rule decides the defaults: **off until asked, never a surprise**.
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 
 Two axes: the **locale** (language) and the **reading level** (`simple` 8–11, `standard` 12–15 and the default,
-`advanced` 16+). Shipped locales: English (`en`, the reference and fallback) and German (`de`, standard German
-orthography). Body names: the Sun, the planets and the major moons are translated ("Erde", "Ganymed"); every other
+`advanced` 16+). Shipped locales: English (`en`, the reference and fallback), German (`de`, standard German
+orthography), Czech (`cs`), Spanish (`es`, neutral international Spanish, "tú") and French (`fr`, "tu").
+Body names: the Sun, the planets and the major moons are translated ("Erde", "Země", "Tierra", "Terre"); every other
 body keeps its catalogue name, and provisional designations (`S/2003 J 2`) are never translated.
 
 ### Resources (`src/locales`, no code)
@@ -863,7 +977,8 @@ src/locales/<locale>/hunts.json  the scavenger hunt's clues, hints and discoveri
 ```
 
 - Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences
-  by concatenation. A plural must list every category of the language (`one`/`other` in en/de; the tests check).
+  by concatenation. A plural must list every category of the language (`one`/`other` in en/de,
+  `one`/`many`/`other` in es/fr, `one`/`few`/`many`/`other` in cs; the tests check).
 - A reading-level variant is a sibling key with an `@level` suffix; the plain key serves the default level and every
   level without its own text: `"orbitalPeriod": "Orbital period", "orbitalPeriod@simple": "Time for one lap"`.
 - Lookup falls back along the locale chain (`de-CH` -> `de` -> `en`) and, within a locale, from the level variant
