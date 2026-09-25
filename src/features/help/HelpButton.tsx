@@ -23,9 +23,11 @@ export function HelpButton() {
 				size="compact-sm"
 				style={{ flexShrink: 0 }}
 				leftSection={<IconHelp size={16} aria-hidden />}
+				aria-label={t("help.button")}
 				data-testid="help-button"
+				classNames={{ section: classes.section }}
 			>
-				{t("help.button")}
+				<span className={classes.label}>{t("help.button")}</span>
 			</Button>
 		</Tooltip>
 	)

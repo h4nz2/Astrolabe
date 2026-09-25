@@ -186,8 +186,8 @@ for (let chunk = 0; chunk < CHUNKS; chunk += 1) {
 		test.setTimeout(60_000 + entries.length * 30_000)
 		const errors = collectErrors(page)
 		await page.goto("/help?lang=en&reading=standard")
+		await expect(helpHeading(page)).toBeVisible()
 		for (const entry of entries) {
-			await expect(helpHeading(page)).toBeVisible()
 			await page.locator(`[data-try=${entry.id}]`).click()
 			const expected = new URL(entry.try, "http://x")
 			await expect(page, entry.id).toHaveURL(
@@ -202,7 +202,10 @@ for (let chunk = 0; chunk < CHUNKS; chunk += 1) {
 			// the viewer's language came along
 			expect(new URL(page.url()).searchParams.get("lang"), entry.id).toBe("en")
 			expect(errors, entry.id).toEqual([])
+			// and leaving it again is clean too
 			await page.goBack()
+			await expect(helpHeading(page)).toBeVisible()
+			expect(errors, `leaving ${entry.id}`).toEqual([])
 		}
 	})
 }

@@ -19,3 +19,14 @@
 		display: none;
 	}
 }
+
+/* phones: the icon alone (its name stays its label), like the comparison's back arrow */
+@media (max-width: 599px) {
+	.label {
+		display: none;
+	}
+
+	.section {
+		margin: 0;
+	}
+}
