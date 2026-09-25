@@ -25,7 +25,7 @@ import {
 	UnstyledButton,
 } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
-import { IconBolt, IconCheck } from "@tabler/icons-react"
+import { IconBolt, IconBoltOff, IconCheck, IconX } from "@tabler/icons-react"
 
 import { useI18n, type I18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
@@ -52,7 +52,9 @@ import {
 	LIGHT_BODY_IDS,
 	NEAREST_STAR_YEARS,
 	PLANETS_EDGE_KM,
+	flashState,
 	formatDuration,
+	pastPlanetsSeconds,
 	pulseArrivals,
 	roughSeconds,
 	signalDelay,
@@ -110,6 +112,21 @@ const BodySelect = ({
 			onChange={(id) => id !== null && onChange(id)}
 		/>
 	)
+}
+
+/**
+ * Whether the flash is on screen right now (#38): sent, and not yet faded out
+ * beyond the planets. Where it is, it can be stopped.
+ */
+function useFlashOnScreen(): boolean {
+	const pulse = useLightStore((state) => state.pulse)
+	const jd = useThrottledSimTime()
+	if (pulse === null) return false
+	const { phase } = flashState(
+		secondsSince(pulse.emitJD, jd),
+		pastPlanetsSeconds(pulse),
+	)
+	return phase === "travelling" || phase === "leaving"
 }
 
 /** How the clock runs right now, relative to the lesson's real time. */
@@ -211,6 +228,11 @@ const PulseStatus = ({ pulse }: { pulse: LightPulse }) => {
 						})}
 					</Text>
 				)}
+			{flashState(seconds, pastPlanetsSeconds(pulse)).phase === "ended" && (
+				<Text size="xs" c="gray.4" lh={1.35} data-light-status="faded">
+					{t("solarSystem.light.faded")}
+				</Text>
+			)}
 			<ol
 				className={classes.arrivals}
 				aria-label={t("solarSystem.light.arrivals")}
@@ -258,7 +280,6 @@ const PulseTab = () => {
 	const emitterId = useLightStore((state) => state.emitterId)
 	const setEmitter = useLightStore((state) => state.setEmitter)
 	const send = useLightStore((state) => state.send)
-	const clear = useLightStore((state) => state.clear)
 	const selectedId = useSimStore((state) => state.selectedId)
 
 	return (
@@ -287,19 +308,7 @@ const PulseTab = () => {
 						: t("solarSystem.light.sendAgain")}
 				</Button>
 			</Group>
-			{pulse !== null && (
-				<>
-					<PulseStatus pulse={pulse} />
-					<Button
-						size="compact-xs"
-						variant="subtle"
-						color="gray"
-						onClick={clear}
-					>
-						{t("solarSystem.light.clear")}
-					</Button>
-				</>
-			)}
+			{pulse !== null && <PulseStatus pulse={pulse} />}
 		</Stack>
 	)
 }
@@ -411,14 +420,19 @@ const BeyondTab = () => {
 	)
 }
 
-/** The closed state: one button, with the running clock while a pulse is out. */
+/**
+ * The closed state: one button, with the running clock and a button that
+ * stops the flash while one is on screen (#38).
+ */
 const OpenButton = () => {
 	const i18n = useI18n()
 	const setOpen = useLightStore((state) => state.setOpen)
 	const pulse = useLightStore((state) => state.pulse)
+	const clear = useLightStore((state) => state.clear)
+	const onScreen = useFlashOnScreen()
 	const jd = useThrottledSimTime()
 	const seconds = pulse === null ? null : secondsSince(pulse.emitJD, jd)
-	return (
+	const open = (
 		<Hint text={i18n.t("solarSystem.light.openHint")}>
 			<UnstyledButton
 				className={classes.open}
@@ -427,13 +441,51 @@ const OpenButton = () => {
 			>
 				<IconBolt size={16} className={classes.icon} />
 				<span>{i18n.t("solarSystem.light.open")}</span>
-				{seconds !== null && seconds >= 0 && (
+				{onScreen && seconds !== null && (
 					<span className={classes.openClock}>
 						{formatDuration(seconds, i18n, true)}
 					</span>
 				)}
 			</UnstyledButton>
 		</Hint>
+	)
+	if (!onScreen) return open
+	const stop = i18n.t("solarSystem.light.stop")
+	return (
+		<Group gap={4} wrap="nowrap">
+			{open}
+			<Hint text={i18n.t("solarSystem.light.stopHint")}>
+				<UnstyledButton
+					className={classes.stopChip}
+					onClick={clear}
+					aria-label={stop}
+					data-light-stop="hud"
+				>
+					<IconX size={14} stroke={2.5} />
+				</UnstyledButton>
+			</Hint>
+		</Group>
+	)
+}
+
+/** Stops the flash: in the open panel on every tab while the flash is on screen (#38). */
+const StopButton = () => {
+	const { t } = useI18n()
+	const clear = useLightStore((state) => state.clear)
+	if (!useFlashOnScreen()) return null
+	return (
+		<Button
+			fullWidth
+			size="xs"
+			mt="sm"
+			variant="light"
+			color="orange"
+			leftSection={<IconBoltOff size={14} />}
+			onClick={clear}
+			data-light-stop="panel"
+		>
+			{t("solarSystem.light.stop")}
+		</Button>
 	)
 }
 
@@ -487,6 +539,7 @@ const LightPanel = () => {
 				{tab === "delay" && <DelayTab />}
 				{tab === "beyond" && <BeyondTab />}
 			</ScrollArea.Autosize>
+			<StopButton />
 		</section>
 	)
 }

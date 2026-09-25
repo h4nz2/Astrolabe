@@ -26,6 +26,7 @@ import Labels from "../labels/Labels"
 import LightFront from "../light/LightFront"
 import SceneCapture from "../postcard/SceneCapture"
 import DprSync from "../present/DprSync"
+import SoundProbe from "../sound/SoundProbe"
 import { labelSlotCount } from "../labels/project"
 import BodyPicking, { activateBody } from "./BodyPicking"
 import HighlightTracker from "./HighlightTracker"
@@ -88,6 +89,7 @@ function Scene() {
 					<CameraRig />
 					<HighlightTracker />
 					<SceneCapture />
+					<SoundProbe />
 				</SimFrameContext.Provider>
 			</Canvas>
 			<LabelLayer board={labels} />
