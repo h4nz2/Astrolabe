@@ -397,6 +397,31 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		) {
 			return
 		}
+		const material = materialRef.current
+		// a moon's orbit fades in with its size on screen (#17); a faded-out
+		// line is neither updated nor drawn (it catches up when it reappears)
+		let moonFade = 1
+		if (body.kind === "moon" && camera instanceof PerspectiveCamera) {
+			const parent = frame.bodies[parentIndex]
+			frame.renderPosition(parentIndex, parentScratch)
+			moonFade = moonOrbitFade(
+				orbitScreenRadiusPx(
+					toUnits(
+						displayDistanceKm(
+							orbit.semiMajorAxisKm,
+							parent.radiusKm,
+							frame.displayRadiiKm[parentIndex],
+							childDistanceCurve(frame.scale, parent.parentId === null),
+						),
+					),
+					parentScratch.distanceTo(camera.position),
+					pixelsPerUnitAtDistanceOne(camera, size.height),
+				),
+				body,
+			)
+			line.visible = moonFade > 0
+			if (!line.visible) return
+		}
 		const rebuilt = updateOrbitBuffers(
 			buffers,
 			orbit,
@@ -410,28 +435,12 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		else attribute.addUpdateRange(anchorVertex(buffers.slot) * 3, 3)
 		attribute.needsUpdate = true
 		line.position.copy(shift)
-		const material = materialRef.current
 		if (aroundRoot && material !== null) {
 			const fade = 1 - anchoredWeight(frame.frameBlend, parentIndex)
 			material.opacity = ORBIT_OPACITY * fade
 			line.visible = fade > 0.001
-		} else if (
-			body.kind === "moon" &&
-			material !== null &&
-			camera instanceof PerspectiveCamera
-		) {
-			// a moon's orbit fades in with its size on screen (#17)
-			frame.renderPosition(parentIndex, parentScratch)
-			const fade = moonOrbitFade(
-				orbitScreenRadiusPx(
-					toUnits(buffers.displaySemiMajorAxisKm),
-					parentScratch.distanceTo(camera.position),
-					pixelsPerUnitAtDistanceOne(camera, size.height),
-				),
-				body,
-			)
-			material.opacity = ORBIT_OPACITY * fade
-			line.visible = fade > 0
+		} else if (body.kind === "moon" && material !== null) {
+			material.opacity = ORBIT_OPACITY * moonFade
 		}
 	})
 
