@@ -83,6 +83,8 @@ const TourLayers = z
 		moons: z.boolean().optional(),
 		markers: z.boolean().optional(),
 		orbitNames: z.boolean().optional(),
+		/** The long tail of small moons (#17); off shows only the featured ones. */
+		allMoons: z.boolean().optional(),
 	})
 	.strict()
 

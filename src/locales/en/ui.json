@@ -136,6 +136,8 @@
 			"orbits": "Orbits",
 			"labels": "Labels",
 			"moons": "Moons",
+			"allMoons": "All moons",
+			"allMoonsHint": "Also show the many small moons, not only the ones with a story",
 			"markers": "Markers",
 			"orbitNames": "Orbit names",
 			"alwaysLit": "Always lit"
@@ -340,6 +342,18 @@
 			"showFacts": "Show facts",
 			"hideFacts": "Hide facts",
 			"close": "Close and return to the overview"
+		},
+		"moons": {
+			"label": "Moons",
+			"none": "{planet} has no moons.",
+			"viewSystem": "See the whole moon system",
+			"viewSystem@simple": "See all its moons",
+			"showOthers": "{count, plural, one {Show # smaller moon} other {Show # smaller moons}}",
+			"hideOthers": "Hide the smaller moons",
+			"othersNote": "Mostly rocks a few kilometres across, many of them captured. Astronomers keep finding more.",
+			"othersNote@simple": "Mostly small rocks. Scientists keep finding more of them.",
+			"readMore": "Read its story",
+			"readLess": "Show less"
 		},
 		"facts": {
 			"label": {

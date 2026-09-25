@@ -1,7 +1,7 @@
 /**
  * An OrbitLine for every orbiting body while `showOrbits` is on; moon orbits
- * only while `showMoons` is on as well, except the focus, whose orbit is always
- * drawn (`isBodyShown`).
+ * by the same rule as the moons themselves (`isBodyShown`); the focus's orbit
+ * is always drawn.
  */
 import { isBodyShown, useSimStore } from "@/store/sim"
 
@@ -12,6 +12,7 @@ function OrbitLines() {
 	const frame = useSimFrame()
 	const showOrbits = useSimStore((state) => state.showOrbits)
 	const showMoons = useSimStore((state) => state.showMoons)
+	const showAllMoons = useSimStore((state) => state.showAllMoons)
 	const focusId = useSimStore((state) => state.focusId)
 
 	if (!showOrbits) return null
@@ -20,7 +21,8 @@ function OrbitLines() {
 		<>
 			{frame.bodies.map((body, index) => {
 				if (body.orbit === null || body.parentId === null) return null
-				if (!isBodyShown(body, { showMoons, focusId })) return null
+				if (!isBodyShown(body, { showMoons, showAllMoons, focusId }))
+					return null
 				const parentIndex = frame.index.get(body.parentId)
 				if (parentIndex === undefined) return null
 				return (

@@ -56,6 +56,7 @@ export function currentBaseline(
 		| "showMoons"
 		| "showMarkers"
 		| "showOrbitLabels"
+		| "showAllMoons"
 	> = useSimStore.getState(),
 	scale = useScaleStore.getState().targetId,
 ): TourBaseline {
@@ -72,6 +73,7 @@ const LAYER_SETTERS = {
 	showMoons: "setShowMoons",
 	showMarkers: "setShowMarkers",
 	showOrbitLabels: "setShowOrbitLabels",
+	showAllMoons: "setShowAllMoons",
 } as const
 
 /** Shows stop `index` of the running tour: the scene first, then the camera. */

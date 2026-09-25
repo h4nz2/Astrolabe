@@ -26,6 +26,7 @@ export const TOUR_LAYER_FIELDS = {
 	moons: "showMoons",
 	markers: "showMarkers",
 	orbitNames: "showOrbitLabels",
+	allMoons: "showAllMoons",
 } as const
 
 export type TourLayerKey = keyof typeof TOUR_LAYER_FIELDS

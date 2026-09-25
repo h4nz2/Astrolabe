@@ -24,6 +24,7 @@ import { useSimStore, type SimState } from "@/store/sim"
 
 import { headlineFacts } from "./bodyFacts"
 import { dictionaryEntry } from "./dictionaryEntry"
+import MoonSystem from "./MoonSystem"
 
 import classes from "./BodyInfo.module.css"
 
@@ -102,6 +103,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 			{open && (
 				<>
 					{story !== undefined && <p className={classes.story}>{story}</p>}
+					<MoonSystem body={body} />
 					<dl className={classes.facts}>
 						{facts.map((fact) => (
 							<div key={fact.key} className={classes.fact} data-fact={fact.key}>

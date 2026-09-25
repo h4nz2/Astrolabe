@@ -58,6 +58,7 @@ const baseline: TourBaseline = {
 		moons: true,
 		markers: true,
 		orbitNames: false,
+		allMoons: false,
 	},
 }
 
