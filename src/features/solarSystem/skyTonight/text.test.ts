@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import {
+	LOCALES,
 	READING_LEVELS,
 	createI18n,
 	type Locale,
@@ -185,9 +186,31 @@ describe("sentences in German", () => {
 	})
 })
 
+describe("sentences in Czech, Spanish and French", () => {
+	it("count fists with each language's plurals and name the directions", () => {
+		const cs = setup("cs").i18n
+		const high = { ...jupiter, first: { ...jupiter.first, altitude: 24 } }
+		expect(whereLines(high, ZONE, cs)[1]).toMatch(/^Asi 2 pěsti nad obzorem/)
+		const higher = { ...jupiter, first: { ...jupiter.first, altitude: 46 } }
+		expect(whereLines(higher, ZONE, cs)[1]).toMatch(/^Asi 5 pěstí nad obzorem/)
+		expect(whereText(jupiter.first, cs)).toBe(
+			"nízko nad obzorem na jihovýchodě",
+		)
+		expect(whereText(jupiter.first, setup("es").i18n)).toBe(
+			"bajo sobre el horizonte, hacia el sureste",
+		)
+		expect(whereText({ ...jupiter.first, azimuth: 90 }, setup("fr").i18n)).toBe(
+			"bas sur l’horizon, à l’est",
+		)
+		expect(whenText(jupiter, ZONE, setup("fr").i18n)).toBe(
+			"À partir de 21:10 environ jusqu’à l’aube",
+		)
+	})
+})
+
 describe("every locale and reading level", () => {
 	it("has every sentence, with no raw keys or placeholders left", () => {
-		for (const locale of ["en", "de"] as const) {
+		for (const locale of LOCALES) {
 			for (const level of READING_LEVELS) {
 				const { i18n, name } = setup(locale, level)
 				const texts = [

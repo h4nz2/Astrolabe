@@ -899,9 +899,10 @@ telescope), why the hidden ones are hidden, and the geometry behind each sightin
   clock; `where` is one ICU select over height and compass point; the youngest readers get one position, the others
   the highest point too, advanced readers altitude, azimuth and magnitude. `whyCase` picks the explanation: `far`
   (135 deg and more: opposite the Sun), `evening`/`morning`, `near` (under 45), `moon`.
-- **Places** (`places.ts`): about 270 cities (the DACH region densely, every continent), picked as country, then city;
-  country names from `Intl.DisplayNames`, German exonyms in the data. `suggestedCity` guesses from the device's time
-  zone (legacy zone names mapped), else the language's region, else London.
+- **Places** (`places.ts`): about 310 cities (densely in the shipped languages' countries: CH, DE, AT, CZ, ES, FR;
+  every continent), picked as country, then city; country names from `Intl.DisplayNames`, city names per language
+  in the data (German in the rows, Czech, Spanish and French in `EXONYMS`: Curych, Ginebra, Vienne). `suggestedCity`
+  guesses from the device's time zone (legacy zone names mapped), else the language's region, else London.
 - **Location and privacy.** Children use the app, so: the panel never opens by itself (button, or `?sky=true` from the
   hero); it asks before it shows anything, offering the time-zone guess as a question to confirm with one tap
   ("Are you near Zurich?"), the country and city lists, and "Use my device's location", which first explains (the

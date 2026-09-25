@@ -5,16 +5,18 @@
  * kilometres: the sky there differs by minutes, not by what is up.
  *
  * Country names come from `Intl.DisplayNames` (no strings to translate); city
- * names are the English ones, with the German exonym where German has its own
- * (München, Genf, Mailand). Coordinates to 0.01 deg, IANA time zones.
+ * names are the English ones, with the name a shipped language uses where it
+ * has its own (München, Curych, Ginebra, Vienne): the third column for German,
+ * `EXONYMS` for Czech, Spanish and French. Coordinates to 0.01 deg, IANA time
+ * zones.
  */
 
 export interface City {
 	/** Stable id ("zurich"). */
 	readonly id: string
 	readonly name: string
-	/** The German name, where it differs from `name`. */
-	readonly nameDe?: string
+	/** The name in a language (by its code: "de", "cs", "es", "fr"), where it differs from `name`. */
+	readonly names: Readonly<Partial<Record<string, string>>>
 	/** ISO 3166-1 alpha-2 country code. */
 	readonly country: string
 	readonly latitude: number
@@ -98,8 +100,18 @@ const ROWS: readonly Row[] = [
 	["bordeaux", "Bordeaux", "", "FR", 44.84, -0.58, "Europe/Paris"],
 	["nice", "Nice", "Nizza", "FR", 43.7, 7.27, "Europe/Paris"],
 	["lille", "Lille", "", "FR", 50.63, 3.06, "Europe/Paris"],
+	["nantes", "Nantes", "", "FR", 47.22, -1.55, "Europe/Paris"],
+	["montpellier", "Montpellier", "", "FR", 43.61, 3.88, "Europe/Paris"],
+	["rennes", "Rennes", "", "FR", 48.11, -1.68, "Europe/Paris"],
+	["grenoble", "Grenoble", "", "FR", 45.19, 5.72, "Europe/Paris"],
+	["dijon", "Dijon", "", "FR", 47.32, 5.04, "Europe/Paris"],
+	["clermont-ferrand", "Clermont-Ferrand", "", "FR", 45.78, 3.08, "Europe/Paris"],
+	["brest", "Brest", "", "FR", 48.39, -4.49, "Europe/Paris"],
+	["ajaccio", "Ajaccio", "", "FR", 41.93, 8.74, "Europe/Paris"],
 	["monaco", "Monaco", "", "MC", 43.74, 7.42, "Europe/Monaco"],
 	["brussels", "Brussels", "Brüssel", "BE", 50.85, 4.35, "Europe/Brussels"],
+	["antwerp", "Antwerp", "Antwerpen", "BE", 51.22, 4.4, "Europe/Brussels"],
+	["liege", "Liège", "Lüttich", "BE", 50.63, 5.57, "Europe/Brussels"],
 	["amsterdam", "Amsterdam", "", "NL", 52.37, 4.9, "Europe/Amsterdam"],
 	["rotterdam", "Rotterdam", "", "NL", 51.92, 4.48, "Europe/Amsterdam"],
 	["luxembourg", "Luxembourg", "Luxemburg", "LU", 49.61, 6.13, "Europe/Luxembourg"],
@@ -116,7 +128,15 @@ const ROWS: readonly Row[] = [
 	["seville", "Seville", "Sevilla", "ES", 37.39, -5.98, "Europe/Madrid"],
 	["valencia", "Valencia", "", "ES", 39.47, -0.38, "Europe/Madrid"],
 	["palma", "Palma", "Palma de Mallorca", "ES", 39.57, 2.65, "Europe/Madrid"],
+	["bilbao", "Bilbao", "", "ES", 43.26, -2.93, "Europe/Madrid"],
+	["zaragoza", "Zaragoza", "Saragossa", "ES", 41.65, -0.89, "Europe/Madrid"],
+	["malaga", "Málaga", "", "ES", 36.72, -4.42, "Europe/Madrid"],
+	["granada", "Granada", "", "ES", 37.18, -3.6, "Europe/Madrid"],
+	["valladolid", "Valladolid", "", "ES", 41.65, -4.72, "Europe/Madrid"],
+	["murcia", "Murcia", "", "ES", 37.99, -1.13, "Europe/Madrid"],
+	["a-coruna", "A Coruña", "", "ES", 43.36, -8.41, "Europe/Madrid"],
 	["las-palmas", "Las Palmas de Gran Canaria", "", "ES", 28.12, -15.44, "Atlantic/Canary"],
+	["santa-cruz-tenerife", "Santa Cruz de Tenerife", "", "ES", 28.46, -16.25, "Atlantic/Canary"],
 	["lisbon", "Lisbon", "Lissabon", "PT", 38.72, -9.14, "Europe/Lisbon"],
 	["porto", "Porto", "", "PT", 41.15, -8.61, "Europe/Lisbon"],
 	["copenhagen", "Copenhagen", "Kopenhagen", "DK", 55.68, 12.57, "Europe/Copenhagen"],
@@ -137,7 +157,14 @@ const ROWS: readonly Row[] = [
 	["gdansk", "Gdańsk", "Danzig", "PL", 54.35, 18.65, "Europe/Warsaw"],
 	["prague", "Prague", "Prag", "CZ", 50.08, 14.44, "Europe/Prague"],
 	["brno", "Brno", "Brünn", "CZ", 49.2, 16.61, "Europe/Prague"],
+	["ostrava", "Ostrava", "Ostrau", "CZ", 49.82, 18.26, "Europe/Prague"],
+	["plzen", "Plzeň", "Pilsen", "CZ", 49.75, 13.38, "Europe/Prague"],
+	["olomouc", "Olomouc", "Olmütz", "CZ", 49.59, 17.25, "Europe/Prague"],
+	["ceske-budejovice", "České Budějovice", "Budweis", "CZ", 48.97, 14.47, "Europe/Prague"],
+	["liberec", "Liberec", "Reichenberg", "CZ", 50.77, 15.06, "Europe/Prague"],
+	["hradec-kralove", "Hradec Králové", "Königgrätz", "CZ", 50.21, 15.83, "Europe/Prague"],
 	["bratislava", "Bratislava", "Pressburg", "SK", 48.15, 17.11, "Europe/Bratislava"],
+	["kosice", "Košice", "Kaschau", "SK", 48.72, 21.26, "Europe/Bratislava"],
 	["budapest", "Budapest", "", "HU", 47.5, 19.04, "Europe/Budapest"],
 	["ljubljana", "Ljubljana", "Laibach", "SI", 46.06, 14.51, "Europe/Ljubljana"],
 	["zagreb", "Zagreb", "", "HR", 45.81, 15.98, "Europe/Zagreb"],
@@ -190,6 +217,12 @@ const ROWS: readonly Row[] = [
 	["tripoli", "Tripoli", "Tripolis", "LY", 32.89, 13.19, "Africa/Tripoli"],
 	["dakar", "Dakar", "", "SN", 14.72, -17.47, "Africa/Dakar"],
 	["accra", "Accra", "", "GH", 5.6, -0.19, "Africa/Accra"],
+	["abidjan", "Abidjan", "", "CI", 5.36, -4.01, "Africa/Abidjan"],
+	["bamako", "Bamako", "", "ML", 12.64, -8.0, "Africa/Bamako"],
+	["ouagadougou", "Ouagadougou", "", "BF", 12.37, -1.52, "Africa/Ouagadougou"],
+	["conakry", "Conakry", "", "GN", 9.64, -13.58, "Africa/Conakry"],
+	["yaounde", "Yaoundé", "Jaunde", "CM", 3.85, 11.5, "Africa/Douala"],
+	["malabo", "Malabo", "", "GQ", 3.75, 8.78, "Africa/Malabo"],
 	["lagos", "Lagos", "", "NG", 6.52, 3.38, "Africa/Lagos"],
 	["abuja", "Abuja", "", "NG", 9.08, 7.4, "Africa/Lagos"],
 	["kinshasa", "Kinshasa", "", "CD", -4.44, 15.27, "Africa/Kinshasa"],
@@ -206,6 +239,7 @@ const ROWS: readonly Row[] = [
 	["cape-town", "Cape Town", "Kapstadt", "ZA", -33.92, 18.42, "Africa/Johannesburg"],
 	["antananarivo", "Antananarivo", "", "MG", -18.88, 47.51, "Indian/Antananarivo"],
 	["port-louis", "Port Louis", "", "MU", -20.16, 57.5, "Indian/Mauritius"],
+	["saint-denis-reunion", "Saint-Denis", "", "RE", -20.88, 55.45, "Indian/Reunion"],
 	// Asia
 	["kabul", "Kabul", "", "AF", 34.53, 69.17, "Asia/Kabul"],
 	["tashkent", "Tashkent", "Taschkent", "UZ", 41.3, 69.24, "Asia/Tashkent"],
@@ -257,6 +291,8 @@ const ROWS: readonly Row[] = [
 	["wellington", "Wellington", "", "NZ", -41.29, 174.78, "Pacific/Auckland"],
 	["christchurch", "Christchurch", "", "NZ", -43.53, 172.64, "Pacific/Auckland"],
 	["suva", "Suva", "", "FJ", -18.14, 178.44, "Pacific/Fiji"],
+	["noumea", "Nouméa", "", "NC", -22.27, 166.44, "Pacific/Noumea"],
+	["papeete", "Papeete", "", "PF", -17.53, -149.57, "Pacific/Tahiti"],
 	["honolulu", "Honolulu", "", "US", 21.31, -157.86, "Pacific/Honolulu"],
 	// The Americas
 	["new-york", "New York", "", "US", 40.71, -74.01, "America/New_York"],
@@ -280,6 +316,7 @@ const ROWS: readonly Row[] = [
 	["toronto", "Toronto", "", "CA", 43.65, -79.38, "America/Toronto"],
 	["montreal", "Montreal", "", "CA", 45.5, -73.57, "America/Toronto"],
 	["ottawa", "Ottawa", "", "CA", 45.42, -75.7, "America/Toronto"],
+	["quebec-city", "Quebec City", "Québec", "CA", 46.81, -71.21, "America/Toronto"],
 	["halifax", "Halifax", "", "CA", 44.65, -63.57, "America/Halifax"],
 	["winnipeg", "Winnipeg", "", "CA", 49.9, -97.14, "America/Winnipeg"],
 	["edmonton", "Edmonton", "", "CA", 53.55, -113.49, "America/Edmonton"],
@@ -288,33 +325,215 @@ const ROWS: readonly Row[] = [
 	["mexico-city", "Mexico City", "Mexiko-Stadt", "MX", 19.43, -99.13, "America/Mexico_City"],
 	["guadalajara", "Guadalajara", "", "MX", 20.66, -103.35, "America/Mexico_City"],
 	["cancun", "Cancún", "", "MX", 21.16, -86.85, "America/Cancun"],
+	["monterrey", "Monterrey", "", "MX", 25.69, -100.32, "America/Monterrey"],
 	["guatemala-city", "Guatemala City", "Guatemala-Stadt", "GT", 14.63, -90.51, "America/Guatemala"],
 	["san-jose-cr", "San José", "", "CR", 9.93, -84.08, "America/Costa_Rica"],
+	["san-salvador", "San Salvador", "", "SV", 13.69, -89.19, "America/El_Salvador"],
+	["tegucigalpa", "Tegucigalpa", "", "HN", 14.07, -87.19, "America/Tegucigalpa"],
+	["managua", "Managua", "", "NI", 12.11, -86.24, "America/Managua"],
 	["panama-city", "Panama City", "Panama-Stadt", "PA", 8.98, -79.52, "America/Panama"],
 	["havana", "Havana", "Havanna", "CU", 23.11, -82.37, "America/Havana"],
 	["kingston", "Kingston", "", "JM", 18.0, -76.79, "America/Jamaica"],
 	["santo-domingo", "Santo Domingo", "", "DO", 18.49, -69.93, "America/Santo_Domingo"],
 	["san-juan", "San Juan", "", "PR", 18.47, -66.11, "America/Puerto_Rico"],
+	["fort-de-france", "Fort-de-France", "", "MQ", 14.6, -61.07, "America/Martinique"],
 	["bogota", "Bogotá", "", "CO", 4.71, -74.07, "America/Bogota"],
+	["medellin", "Medellín", "", "CO", 6.24, -75.58, "America/Bogota"],
 	["caracas", "Caracas", "", "VE", 10.48, -66.9, "America/Caracas"],
 	["quito", "Quito", "", "EC", -0.18, -78.47, "America/Guayaquil"],
+	["guayaquil", "Guayaquil", "", "EC", -2.19, -79.89, "America/Guayaquil"],
 	["lima", "Lima", "", "PE", -12.05, -77.04, "America/Lima"],
+	["cusco", "Cusco", "", "PE", -13.53, -71.97, "America/Lima"],
 	["la-paz", "La Paz", "", "BO", -16.5, -68.15, "America/La_Paz"],
+	["santa-cruz-bolivia", "Santa Cruz de la Sierra", "", "BO", -17.78, -63.18, "America/La_Paz"],
 	["santiago", "Santiago de Chile", "", "CL", -33.45, -70.67, "America/Santiago"],
 	["buenos-aires", "Buenos Aires", "", "AR", -34.6, -58.38, "America/Argentina/Buenos_Aires"],
+	["cordoba-ar", "Córdoba", "", "AR", -31.42, -64.18, "America/Argentina/Cordoba"],
 	["montevideo", "Montevideo", "", "UY", -34.9, -56.16, "America/Montevideo"],
 	["asuncion", "Asunción", "", "PY", -25.26, -57.58, "America/Asuncion"],
 	["sao-paulo", "São Paulo", "", "BR", -23.55, -46.63, "America/Sao_Paulo"],
 	["rio-de-janeiro", "Rio de Janeiro", "", "BR", -22.91, -43.17, "America/Sao_Paulo"],
 	["brasilia", "Brasília", "", "BR", -15.79, -47.88, "America/Sao_Paulo"],
 	["manaus", "Manaus", "", "BR", -3.12, -60.02, "America/Manaus"],
+	["cayenne", "Cayenne", "", "GF", 4.92, -52.31, "America/Cayenne"],
 ]
+
+type Language = "cs" | "es" | "fr"
+
+/** Czech, Spanish and French names of cities, where they differ from the English one. */
+// prettier-ignore
+const EXONYMS: Readonly<Record<string, Partial<Record<Language, string>>>> = {
+	zurich: { cs: "Curych", es: "Zúrich" },
+	geneva: { cs: "Ženeva", es: "Ginebra", fr: "Genève" },
+	basel: { cs: "Basilej", es: "Basilea", fr: "Bâle" },
+	bern: { es: "Berna", fr: "Berne" },
+	lausanne: { es: "Lausana" },
+	lucerne: { cs: "Lucern", es: "Lucerna" },
+	"st-gallen": { cs: "Svatý Havel", es: "San Galo", fr: "Saint-Gall" },
+	chur: { fr: "Coire" },
+	sion: { fr: "Sion" },
+	fribourg: { es: "Friburgo" },
+	schaffhausen: { cs: "Šafhúzy", es: "Schaffhausen", fr: "Schaffhouse" },
+	thun: { fr: "Thoune" },
+	zug: { fr: "Zoug" },
+	berlin: { cs: "Berlín", es: "Berlín" },
+	hamburg: { cs: "Hamburk", es: "Hamburgo", fr: "Hambourg" },
+	munich: { cs: "Mnichov", es: "Múnich" },
+	cologne: { cs: "Kolín nad Rýnem", es: "Colonia" },
+	frankfurt: { cs: "Frankfurt nad Mohanem", es: "Fráncfort", fr: "Francfort" },
+	dusseldorf: { es: "Düsseldorf", fr: "Düsseldorf" },
+	leipzig: { cs: "Lipsko" },
+	dresden: { cs: "Drážďany", es: "Dresde", fr: "Dresde" },
+	hanover: { cs: "Hannover", es: "Hannover", fr: "Hanovre" },
+	nuremberg: { cs: "Norimberk", es: "Núremberg" },
+	bremen: { cs: "Brémy", fr: "Brême" },
+	freiburg: { cs: "Freiburg", es: "Friburgo de Brisgovia", fr: "Fribourg-en-Brisgau" },
+	mainz: { cs: "Mohuč", es: "Maguncia", fr: "Mayence" },
+	saarbrucken: { fr: "Sarrebruck" },
+	konstanz: { cs: "Kostnice", es: "Constanza", fr: "Constance" },
+	regensburg: { cs: "Řezno", es: "Ratisbona", fr: "Ratisbonne" },
+	magdeburg: { cs: "Magdeburk", es: "Magdeburgo", fr: "Magdebourg" },
+	vienna: { cs: "Vídeň", es: "Viena", fr: "Vienne" },
+	graz: { cs: "Štýrský Hradec" },
+	linz: { cs: "Linec" },
+	salzburg: { cs: "Salcburk", es: "Salzburgo", fr: "Salzbourg" },
+	klagenfurt: { cs: "Celovec" },
+	london: { cs: "Londýn", es: "Londres", fr: "Londres" },
+	edinburgh: { es: "Edimburgo", fr: "Édimbourg" },
+	dublin: { es: "Dublín" },
+	paris: { cs: "Paříž", es: "París" },
+	marseille: { es: "Marsella" },
+	strasbourg: { cs: "Štrasburk", es: "Estrasburgo" },
+	toulouse: { es: "Toulouse" },
+	bordeaux: { es: "Burdeos" },
+	nice: { es: "Niza" },
+	monaco: { cs: "Monako", es: "Mónaco" },
+	brussels: { cs: "Brusel", es: "Bruselas", fr: "Bruxelles" },
+	antwerp: { es: "Amberes", fr: "Anvers" },
+	liege: { cs: "Lutych", es: "Lieja" },
+	amsterdam: { es: "Ámsterdam" },
+	rotterdam: { es: "Róterdam" },
+	luxembourg: { cs: "Lucemburk", es: "Luxemburgo" },
+	rome: { cs: "Řím", es: "Roma" },
+	milan: { cs: "Milán", es: "Milán" },
+	turin: { cs: "Turín", es: "Turín" },
+	venice: { cs: "Benátky", es: "Venecia", fr: "Venise" },
+	florence: { cs: "Florencie", es: "Florencia" },
+	naples: { cs: "Neapol", es: "Nápoles" },
+	palermo: { fr: "Palerme" },
+	barcelona: { fr: "Barcelone" },
+	seville: { es: "Sevilla", fr: "Séville", cs: "Sevilla" },
+	valencia: { cs: "Valencie", fr: "Valence" },
+	zaragoza: { fr: "Saragosse" },
+	malaga: { cs: "Málaga" },
+	"a-coruna": { fr: "La Corogne" },
+	lisbon: { cs: "Lisabon", es: "Lisboa", fr: "Lisbonne" },
+	porto: { es: "Oporto" },
+	copenhagen: { cs: "Kodaň", es: "Copenhague", fr: "Copenhague" },
+	stockholm: { es: "Estocolmo" },
+	gothenburg: { cs: "Göteborg", es: "Gotemburgo", fr: "Göteborg" },
+	helsinki: { cs: "Helsinky" },
+	reykjavik: { es: "Reikiavik", fr: "Reykjavik" },
+	tallinn: { es: "Tallin" },
+	vilnius: { es: "Vilna" },
+	warsaw: { cs: "Varšava", es: "Varsovia", fr: "Varsovie" },
+	krakow: { cs: "Krakov", es: "Cracovia", fr: "Cracovie" },
+	gdansk: { cs: "Gdaňsk", es: "Gdansk" },
+	prague: { cs: "Praha", es: "Praga" },
+	budapest: { cs: "Budapešť" },
+	ljubljana: { cs: "Lublaň", es: "Liubliana" },
+	zagreb: { cs: "Záhřeb" },
+	belgrade: { cs: "Bělehrad", es: "Belgrado" },
+	pristina: { cs: "Priština", es: "Pristina" },
+	skopje: { es: "Skopie" },
+	athens: { cs: "Atény", es: "Atenas", fr: "Athènes" },
+	thessaloniki: { cs: "Soluň", es: "Salónica", fr: "Thessalonique" },
+	sofia: { cs: "Sofie", es: "Sofía" },
+	bucharest: { cs: "Bukurešť", es: "Bucarest", fr: "Bucarest" },
+	chisinau: { cs: "Kišiněv", es: "Chisináu" },
+	kyiv: { cs: "Kyjev", es: "Kiev" },
+	lviv: { cs: "Lvov", es: "Leópolis" },
+	odesa: { cs: "Oděsa", es: "Odesa", fr: "Odessa" },
+	istanbul: { es: "Estambul" },
+	valletta: { es: "La Valeta", fr: "La Valette" },
+	nicosia: { cs: "Nikósie", fr: "Nicosie" },
+	moscow: { cs: "Moskva", es: "Moscú", fr: "Moscou" },
+	"st-petersburg": { cs: "Petrohrad", es: "San Petersburgo", fr: "Saint-Pétersbourg" },
+	novosibirsk: { cs: "Novosibirsk" },
+	vladivostok: { cs: "Vladivostok" },
+	tbilisi: { es: "Tiflis", fr: "Tbilissi" },
+	yerevan: { cs: "Jerevan", es: "Ereván", fr: "Erevan" },
+	baku: { es: "Bakú", fr: "Bakou" },
+	jerusalem: { cs: "Jeruzalém", es: "Jerusalén", fr: "Jérusalem" },
+	"tel-aviv": { cs: "Tel Aviv" },
+	beirut: { cs: "Bejrút", fr: "Beyrouth" },
+	amman: { cs: "Ammán", es: "Amán" },
+	damascus: { cs: "Damašek", es: "Damasco", fr: "Damas" },
+	baghdad: { cs: "Bagdád", es: "Bagdad", fr: "Bagdad" },
+	tehran: { cs: "Teherán", es: "Teherán", fr: "Téhéran" },
+	riyadh: { cs: "Rijád", es: "Riad", fr: "Riyad" },
+	dubai: { cs: "Dubaj", es: "Dubái", fr: "Dubaï" },
+	kuwait: { cs: "Kuvajt", es: "Kuwait", fr: "Koweït" },
+	muscat: { cs: "Maskat", es: "Mascate", fr: "Mascate" },
+	cairo: { cs: "Káhira", es: "El Cairo", fr: "Le Caire" },
+	algiers: { cs: "Alžír", es: "Argel", fr: "Alger" },
+	tunis: { es: "Túnez" },
+	tripoli: { cs: "Tripolis", es: "Trípoli" },
+	accra: { es: "Acra" },
+	abuja: { es: "Abuya" },
+	kinshasa: { es: "Kinsasa" },
+	"addis-ababa": { cs: "Addis Abeba", es: "Adís Abeba", fr: "Addis-Abeba" },
+	"dar-es-salaam": { cs: "Dar es Salaam", es: "Dar es-Salam" },
+	"cape-town": { cs: "Kapské Město", es: "Ciudad del Cabo", fr: "Le Cap" },
+	johannesburg: { es: "Johannesburgo" },
+	yaounde: { cs: "Yaoundé" },
+	kabul: { cs: "Kábul", fr: "Kaboul" },
+	tashkent: { cs: "Taškent", es: "Taskent", fr: "Tachkent" },
+	karachi: { cs: "Karáčí", fr: "Karachi" },
+	"new-delhi": { cs: "Nové Dillí", es: "Nueva Delhi", fr: "New Delhi" },
+	mumbai: { es: "Bombay", fr: "Bombay" },
+	kolkata: { cs: "Kalkata", es: "Calcuta", fr: "Calcutta" },
+	kathmandu: { cs: "Káthmándú", es: "Katmandú", fr: "Katmandou" },
+	dhaka: { cs: "Dháka", es: "Daca" },
+	yangon: { cs: "Rangún", es: "Rangún" },
+	hanoi: { cs: "Hanoj", es: "Hanói", fr: "Hanoï" },
+	"ho-chi-minh-city": { cs: "Ho Či Minovo Město", es: "Ciudad Ho Chi Minh", fr: "Hô Chi Minh-Ville" },
+	"phnom-penh": { cs: "Phnompenh", es: "Nom Pen" },
+	singapore: { cs: "Singapur", es: "Singapur", fr: "Singapour" },
+	jakarta: { cs: "Jakarta", es: "Yakarta" },
+	manila: { fr: "Manille" },
+	"hong-kong": { cs: "Hongkong" },
+	taipei: { cs: "Tchaj-pej", es: "Taipéi" },
+	beijing: { cs: "Peking", es: "Pekín", fr: "Pékin" },
+	shanghai: { cs: "Šanghaj", es: "Shanghái" },
+	guangzhou: { cs: "Kanton", es: "Cantón", fr: "Canton" },
+	seoul: { cs: "Soul", es: "Seúl", fr: "Séoul" },
+	tokyo: { cs: "Tokio", es: "Tokio" },
+	sydney: { es: "Sídney" },
+	honolulu: { es: "Honolulú" },
+	"new-york": { es: "Nueva York" },
+	washington: { es: "Washington D. C.", fr: "Washington" },
+	"new-orleans": { es: "Nueva Orleans", fr: "La Nouvelle-Orléans" },
+	"los-angeles": { es: "Los Ángeles" },
+	montreal: { fr: "Montréal" },
+	"quebec-city": { cs: "Québec", es: "Quebec", fr: "Québec" },
+	"mexico-city": { cs: "Ciudad de México", es: "Ciudad de México", fr: "Mexico" },
+	"guatemala-city": { cs: "Guatemala", es: "Ciudad de Guatemala", fr: "Guatemala" },
+	"panama-city": { cs: "Panamá", es: "Ciudad de Panamá", fr: "Panama" },
+	havana: { cs: "Havana", es: "La Habana", fr: "La Havane" },
+	bogota: { cs: "Bogota", fr: "Bogota" },
+	"sao-paulo": { cs: "São Paulo" },
+}
 
 export const CITIES: readonly City[] = ROWS.map(
 	([id, name, nameDe, country, latitude, longitude, timeZone]) => ({
 		id,
 		name,
-		...(nameDe !== "" && nameDe !== name ? { nameDe } : {}),
+		names: Object.fromEntries(
+			Object.entries({ de: nameDe, ...EXONYMS[id] }).filter(
+				([, exonym]) => exonym !== "" && exonym !== name,
+			),
+		),
 		country,
 		latitude,
 		longitude,
@@ -322,13 +541,16 @@ export const CITIES: readonly City[] = ROWS.map(
 	}),
 )
 
+/** Every city that has Czech, Spanish or French names (for the tests: no stray ids). */
+export const EXONYM_IDS: readonly string[] = Object.keys(EXONYMS)
+
 export const cityById: ReadonlyMap<string, City> = new Map(
 	CITIES.map((city) => [city.id, city]),
 )
 
-/** The city's name in `locale` ("de": München). */
+/** The city's name in `locale` ("de-CH": München, "cs": Mnichov). */
 export const cityName = (city: City, locale: string): string =>
-	locale.startsWith("de") && city.nameDe !== undefined ? city.nameDe : city.name
+	city.names[locale.split("-")[0].toLowerCase()] ?? city.name
 
 const regionNames = new Map<string, Intl.DisplayNames | null>()
 
@@ -404,7 +626,9 @@ export function suggestedCity(
 	if (zone !== undefined) {
 		const inZone = CITIES.filter((city) => city.timeZone === zone)
 		const own = inZone.find(
-			(city) => city.name === zoneCity(zone) || city.nameDe === zoneCity(zone),
+			(city) =>
+				city.name === zoneCity(zone) ||
+				Object.values(city.names).includes(zoneCity(zone)),
 		)
 		if (own !== undefined) return own
 		if (inZone.length > 0) return inZone[0]

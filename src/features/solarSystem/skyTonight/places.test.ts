@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest"
 
 import {
 	CITIES,
+	EXONYM_IDS,
 	cityById,
 	cityName,
 	citiesOf,
@@ -32,6 +33,26 @@ describe("the city list", () => {
 		const south = CITIES.filter((c) => c.latitude < 0)
 		expect(south.length).toBeGreaterThan(20)
 		expect(countries("en").length).toBeGreaterThan(100)
+	})
+
+	it("covers Czech, Spanish and French cities, and names cities in each shipped language", () => {
+		for (const country of ["CZ", "ES", "FR"]) {
+			expect(citiesOf(country, "en").length).toBeGreaterThanOrEqual(6)
+		}
+		for (const id of EXONYM_IDS) expect(cityById.has(id), id).toBe(true)
+		const name = (id: string, locale: string) => {
+			const city = cityById.get(id)
+			if (city === undefined) throw new Error(id)
+			return cityName(city, locale)
+		}
+		expect(name("zurich", "cs")).toBe("Curych")
+		expect(name("prague", "cs-CZ")).toBe("Praha")
+		expect(name("geneva", "es")).toBe("Ginebra")
+		expect(name("vienna", "fr")).toBe("Vienne")
+		expect(name("munich", "fr")).toBe("Munich")
+		expect(countryName("CH", "cs")).toBe("Švýcarsko")
+		expect(suggestedCity("Europe/Prague").id).toBe("prague")
+		expect(suggestedCity("Pacific/Tahiti").id).toBe("papeete")
 	})
 
 	it("names countries through Intl and cities in German where German has its own name", () => {
