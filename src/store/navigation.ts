@@ -21,6 +21,8 @@
  */
 import { bodyById, sun } from "@/data"
 
+import { FLIGHT_PROFILE } from "./flight"
+
 /** A world-space offset in km, scene frame axes (see src/sim/kepler.ts). */
 export type Vec3Km = readonly [number, number, number]
 
@@ -144,7 +146,11 @@ export interface NavigationSlice {
 
 	/** Selects a body (unknown ids are ignored) or clears the selection. The camera stays where it is. */
 	select: (id: string | null) => void
-	/** The click gesture: select the body and focus it. A no-op for unknown ids or the current focus. */
+	/**
+	 * The click gesture: select the body and focus it; from another body (or a
+	 * point near one) the move is the flight of #18 (`FLIGHT_PROFILE`). A no-op
+	 * for unknown ids or the current focus.
+	 */
 	setFocus: (id: string) => void
 	/** Frame and track a body; unknown ids are ignored. */
 	focus: (id: string, request?: ViewRequest) => void
@@ -162,6 +168,11 @@ export interface NavigationSlice {
 	reset: () => void
 	/** Finishes the running transition (or the whole sequence) at once. */
 	skip: () => void
+	/**
+	 * Finishes the running transition at once but stays in a running sequence,
+	 * whose stop then holds or waits as usual (the flight readout's Skip, #18).
+	 */
+	finishMove: () => void
 
 	/** Camera rig: the transition `id` arrived. Stale ids are ignored. */
 	settle: (id: number, now?: number) => void
@@ -453,7 +464,9 @@ export function createNavigationSlice(
 			const { view, select, focus } = get()
 			select(id)
 			if (view.kind === "body" && view.id === id) return
-			focus(id)
+			// from one body (or its neighbourhood) to another: the flight of #18
+			const trip = view.kind !== "overview" && viewBodyId(view) !== id
+			focus(id, trip ? { profile: FLIGHT_PROFILE } : undefined)
 		},
 		focus: (id, request) => get().goTo({ kind: "body", id }, request),
 		overview: (request) =>
@@ -488,6 +501,18 @@ export function createNavigationSlice(
 				shot: transition.shot ?? undefined,
 				durationMs: 0,
 			})
+		},
+
+		finishMove: () => {
+			const { transition, sequence } = get()
+			if (transition === null) return
+			const id = start(transition.view, {
+				shot: transition.shot ?? undefined,
+				durationMs: 0,
+			})
+			if (sequence?.transitionId === transition.id) {
+				set({ sequence: { ...sequence, transitionId: id } })
+			}
 		},
 
 		settle: (id, now = performance.now()) => {

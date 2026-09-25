@@ -46,7 +46,8 @@
 		"au": "{value} AU",
 		"gravity": "{value} m/s²",
 		"kelvin": "{value} K",
-		"millionKm": "{value} million km"
+		"millionKm": "{value} million km",
+		"billionKm": "{value} billion km"
 	},
 	"bodies": {
 		"kind": {
@@ -363,6 +364,31 @@
 			"weightSimilar": "You would weigh about as much as on Earth",
 			"weightLess": "You would weigh {percent}% of your weight on Earth",
 			"weightLess@simple": "30 kg on Earth would be only {kg} kg here"
+		},
+		"flight": {
+			"label": "Flight",
+			"route": "{from} → {to}",
+			"route@simple": "From {from} to {to}",
+			"distance": "{distance} apart on this date",
+			"distance@simple": "{distance} away",
+			"distance@advanced": "{distance} ({au}) in a straight line on this date",
+			"crossed": "{distance} crossed",
+			"crossed@simple": "{distance} so far",
+			"question": "How long would the trip take?",
+			"question@simple": "How long would it take to get there?",
+			"question@advanced": "Travel time at a constant speed",
+			"light": "Light",
+			"light@simple": "Light, the fastest thing there is",
+			"light@advanced": "Light ({speed})",
+			"probe": "New Horizons, the fastest launch ever",
+			"probe@simple": "The fastest rocket launch ever",
+			"probe@advanced": "New Horizons' launch speed ({speed})",
+			"car": "A car at {speed}",
+			"car@simple": "A car that never stops",
+			"car@advanced": "A car at {speed}, non-stop",
+			"skip": "Skip",
+			"skip@simple": "Be there now",
+			"close": "Close"
 		}
 	}
 }

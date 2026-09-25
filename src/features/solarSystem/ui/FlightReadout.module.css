@@ -1,0 +1,129 @@
+/*
+ * The flight readout (#18) is a caption over the lower middle of the scene:
+ * the flexible middle row of the HUD grid (SolarSystem.module.css), across all
+ * columns, at its bottom, so it never squeezes the top row and never covers
+ * the destination at the centre of the screen.
+ */
+.root {
+	grid-column: 1 / -1;
+	grid-row: 2;
+	justify-self: center;
+	align-self: end;
+	width: min(30rem, 100%);
+	min-width: 0;
+	font-size: var(--mantine-font-size-sm);
+}
+
+@media (max-width: 599px) {
+	.root {
+		grid-row: 4;
+		justify-self: stretch;
+		width: auto;
+		font-size: var(--mantine-font-size-xs);
+	}
+}
+
+.header {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+}
+
+.headline {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	line-height: 1.25;
+}
+
+.route {
+	font-size: var(--mantine-font-size-lg);
+	font-weight: 700;
+	color: var(--mantine-color-orange-4);
+}
+
+.distance {
+	font-size: var(--mantine-font-size-md);
+	font-weight: 600;
+	color: var(--mantine-color-gray-1);
+}
+
+@media (max-width: 599px) {
+	.route {
+		font-size: var(--mantine-font-size-md);
+	}
+
+	.distance {
+		font-size: var(--mantine-font-size-sm);
+	}
+}
+
+.skip {
+	flex: none;
+}
+
+.progress {
+	margin-top: 0.375rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.track {
+	flex: 1;
+	height: 4px;
+	border-radius: 2px;
+	background: rgba(255, 255, 255, 0.12);
+	overflow: hidden;
+}
+
+.bar {
+	height: 100%;
+	background: var(--mantine-color-orange-6);
+	transform: scaleX(0);
+	transform-origin: left center;
+}
+
+.counter {
+	flex: none;
+	min-width: 9rem;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	color: var(--mantine-color-gray-4);
+}
+
+.question {
+	margin: 0.5rem 0 0.25rem;
+	color: var(--mantine-color-gray-4);
+}
+
+.times {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 0.25rem;
+}
+
+.time {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	align-items: baseline;
+	column-gap: 0.5rem;
+}
+
+.icon {
+	align-self: center;
+	color: var(--mantine-color-orange-4);
+}
+
+.label {
+	color: var(--mantine-color-gray-3);
+}
+
+.value {
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
