@@ -311,3 +311,25 @@ test("second screen: the projector layout fits laptop and projector sizes, and f
 		)
 		.toBeCloseTo(2, 1)
 })
+
+test("short screens: a tall body card never pushes the time controls off screen", async ({
+	page,
+}) => {
+	for (const search of [
+		"focus=saturn&lang=de",
+		"focus=saturn&lang=de&present=true",
+	]) {
+		await page.setViewportSize({ width: 800, height: 600 })
+		await open(page, search)
+		await expect(page.getByRole("heading", { name: "Saturn" })).toBeVisible()
+		for (const locator of [
+			page.getByRole("button", { name: "Abspielen", exact: true }),
+			page.getByRole("heading", { name: "Saturn" }),
+		]) {
+			const box = await locator.boundingBox()
+			expect(box, search).not.toBeNull()
+			expect(box!.y).toBeGreaterThanOrEqual(0)
+			expect(box!.y + box!.height).toBeLessThanOrEqual(600.5)
+		}
+	}
+})
