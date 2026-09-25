@@ -60,6 +60,9 @@ export const simSearchSchema = z.object({
 	// `?birthday=true` opens the birthday panel (#26) on arrival; it is only an
 	// instruction and never carries a date (a birth date never enters the URL)
 	birthday: z.boolean().optional().catch(undefined),
+	// `?sky=true` opens "What is in the sky tonight" (#36) on arrival; only an
+	// instruction: the place is never in the URL
+	sky: z.boolean().optional().catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>

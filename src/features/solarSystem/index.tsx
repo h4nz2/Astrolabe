@@ -11,6 +11,7 @@ import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import Scene from "./scene/Scene"
+import { SkyTonightSlot } from "./skyTonight/SkyTonight"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -100,6 +101,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<SkyTonightSlot />
 		</div>
 	)
 }

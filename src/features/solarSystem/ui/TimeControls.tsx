@@ -24,6 +24,7 @@ import {
 	useWindowKeydown,
 } from "./keyboard"
 import { BirthdayButton } from "../birthday/Birthday"
+import { SkyTonightButton } from "../skyTonight/SkyTonight"
 import TimeTravel from "./TimeTravel"
 import TooFastHint from "./TooFastHint"
 import {
@@ -234,6 +235,7 @@ const TimeControls = () => {
 					</Button>
 				</Tooltip>
 				<BirthdayButton />
+				<SkyTonightButton />
 			</div>
 			<div className={classes.warp}>
 				<SpeedPresets />
