@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSearch } from "@tanstack/react-router"
 
 import { spacecraftById } from "@/data/spacecraft"
@@ -14,10 +14,13 @@ import { loadTrajectories } from "./trajectories"
  * or a shared view does not fly anywhere by itself.
  */
 const CraftLink = () => {
-	const requested = useSearch({
+	const craft = useSearch({
 		from: "/solar_system",
 		select: (search) => search.craft,
 	})
+	// read once, on arrival: the URL mirror drops `craft` at once, long before
+	// the trajectories have loaded
+	const [requested] = useState(craft)
 	useEffect(() => {
 		if (requested === undefined || !spacecraftById.has(requested)) return
 		let live = true
