@@ -751,6 +751,32 @@
 				"simple": ["Pulsa Ideas.", "Elige «Los ocho planetas»."]
 			}
 		},
+		"tours": {
+			"title": {
+				"standard": "Visitas guiadas",
+				"simple": "Visitas"
+			},
+			"what": {
+				"standard": "Visitas narradas paso a paso: la aplicación mueve la cámara y pone la fecha, la velocidad y la escala, mientras una tarjeta explica lo que ves. Hay cuatro listas: el gran viaje, lo grande que es de verdad el espacio, cómo sabemos que la Tierra se mueve y dónde podría haber vida.",
+				"simple": "Deja que la aplicación te enseñe el camino, parada a parada, mientras una tarjeta te explica lo que ves."
+			},
+			"why": {
+				"standard": "Una visita convierte el juego libre en una clase ya preparada, y la clase puede mirar a su alrededor en cada parada: la visita espera.",
+				"simple": "No hace falta saber adónde ir. ¡Y en cada parada puedes mirar a tu alrededor!"
+			},
+			"how": {
+				"standard": [
+					"Pulsa «Visitas» junto a la casilla del nombre y elige una visita.",
+					"Avanza con «Siguiente» y «Atrás» en la tarjeta, con las flechas o con un mando de presentaciones (Av Pág / Re Pág).",
+					"Mira a tu alrededor cuando quieras; «Volver a la visita» recupera la parada. «Reproducción automática» avanza sola, y el botón del enlace copia un enlace a la parada actual. Los docentes pueden escribir sus propias visitas como datos (src/data/tours/README.md)."
+				],
+				"simple": [
+					"Pulsa «Visitas» arriba a la izquierda y elige una.",
+					"Lee la tarjeta y pulsa «Siguiente» o una flecha.",
+					"Mira a tu alrededor cuando quieras y luego pulsa «Volver a la visita»."
+				]
+			}
+		},
 		"present": {
 			"title": "Modo proyector",
 			"what": "Texto, nombres y botones más grandes, legibles desde el fondo del aula, con los interruptores recogidos.",

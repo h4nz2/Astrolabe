@@ -751,6 +751,32 @@
 				"simple": ["Appuie sur Idées.", "Choisis « Les huit planètes »."]
 			}
 		},
+		"tours": {
+			"title": {
+				"standard": "Visites guidées",
+				"simple": "Les visites"
+			},
+			"what": {
+				"standard": "Des visites commentées pas à pas : l’application bouge la caméra et règle la date, la vitesse et l’échelle, pendant qu’une carte explique ce que tu regardes. Quatre sont prêtes : le grand tour, la vraie taille de l’espace, comment on sait que la Terre bouge, et où la vie pourrait exister.",
+				"simple": "Laisse l’application te guider, étape par étape, pendant qu’une carte t’explique ce que tu vois."
+			},
+			"why": {
+				"standard": "Une visite transforme le bac à sable en leçon toute prête, et la classe peut quand même regarder autour d’elle à chaque étape : la visite attend.",
+				"simple": "Pas besoin de savoir où aller. Et à chaque étape, tu peux regarder autour de toi !"
+			},
+			"how": {
+				"standard": [
+					"Appuie sur « Visites » à côté de la case du nom et choisis une visite.",
+					"Avance avec « Suivant » et « Retour » sur la carte, les flèches ou une télécommande de présentation (Page suiv. / Page préc.).",
+					"Regarde autour de toi quand tu veux ; « Retour à la visite » rétablit l’étape. « Lecture automatique » avance toute seule, et le bouton lien copie un lien vers l’étape en cours. Les enseignants peuvent écrire leurs propres visites sous forme de données (src/data/tours/README.md)."
+				],
+				"simple": [
+					"Appuie sur « Visites » en haut à gauche et choisis-en une.",
+					"Lis la carte, puis appuie sur « Suivant » ou sur une flèche.",
+					"Regarde autour de toi quand tu veux, puis appuie sur « Retour à la visite »."
+				]
+			}
+		},
 		"present": {
 			"title": "Mode vidéoprojecteur",
 			"what": "Texte, noms et boutons plus grands, lisibles depuis le fond de la salle, avec les interrupteurs repliés.",

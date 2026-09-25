@@ -151,6 +151,11 @@
 			"try": "/compare?bodies=ganymede,mercury,titan"
 		},
 		{
+			"id": "tours",
+			"group": "teachers",
+			"try": "/solar_system?tour=grandTour"
+		},
+		{
 			"id": "present",
 			"group": "teachers",
 			"try": "/solar_system?focus=earth&present=true"

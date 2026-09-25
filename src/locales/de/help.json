@@ -751,6 +751,32 @@
 				"simple": ["Drück auf „Ideen“.", "Wähl „Alle acht Planeten“."]
 			}
 		},
+		"tours": {
+			"title": {
+				"standard": "Geführte Touren",
+				"simple": "Touren"
+			},
+			"what": {
+				"standard": "Erzählte Touren Schritt für Schritt: Die App bewegt die Kamera und stellt Datum, Tempo und Maßstab ein, während eine Karte erklärt, was du siehst. Vier sind fertig: die große Tour, wie groß das All wirklich ist, woher wir wissen, dass sich die Erde bewegt, und wo es Leben geben könnte.",
+				"simple": "Lass dich von der App herumführen, Station für Station, während eine Karte erklärt, was du siehst."
+			},
+			"why": {
+				"standard": "Eine Tour macht aus dem Sandkasten eine fertige Unterrichtsstunde, und die Klasse kann sich an jeder Station trotzdem umsehen: Die Tour wartet.",
+				"simple": "Du musst nicht wissen, wohin. Und an jeder Station kannst du dich umsehen!"
+			},
+			"how": {
+				"standard": [
+					"Drück neben dem Namensfeld auf „Touren“ und wähle eine Tour.",
+					"Mit „Weiter“ und „Zurück“ auf der Karte, den Pfeiltasten oder einem Presenter (Bild ↓ / Bild ↑) gehst du weiter.",
+					"Sieh dich jederzeit um; „Zurück zur Tour“ stellt die Station wieder her. „Automatisch weiter“ geht von selbst weiter, und der Link-Knopf kopiert einen Link zur aktuellen Station. Lehrkräfte können eigene Touren als Daten schreiben (src/data/tours/README.md)."
+				],
+				"simple": [
+					"Drück oben links auf „Touren“ und wähl eine aus.",
+					"Lies die Karte und drück dann „Weiter“ oder eine Pfeiltaste.",
+					"Sieh dich um, wann du willst, und drück dann „Zurück zur Tour“."
+				]
+			}
+		},
 		"present": {
 			"title": "Beamer-Modus",
 			"what": "Größere Schrift, Namen und Knöpfe, lesbar bis in die letzte Reihe, und die Schalter sind weggeklappt.",

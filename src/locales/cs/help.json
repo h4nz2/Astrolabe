@@ -746,6 +746,32 @@
 				"simple": ["Stiskni „Nápady“.", "Vyber „Všech osm planet“."]
 			}
 		},
+		"tours": {
+			"title": {
+				"standard": "Prohlídky s průvodcem",
+				"simple": "Prohlídky"
+			},
+			"what": {
+				"standard": "Prohlídky krok za krokem s výkladem: aplikace pohybuje kamerou a nastaví datum, rychlost a měřítko, zatímco kartička vysvětluje, na co se díváš. Čtyři jsou hotové: velká prohlídka, jak velký vesmír doopravdy je, jak víme, že se Země pohybuje, a kde by mohl být život.",
+				"simple": "Nech se aplikací provést, zastávku po zastávce, a kartička ti řekne, co vidíš."
+			},
+			"why": {
+				"standard": "Prohlídka udělá z pískoviště hotovou hodinu a třída se přesto může na každé zastávce rozhlédnout: prohlídka počká.",
+				"simple": "Nemusíš vědět, kam jít. A na každé zastávce se můžeš rozhlédnout!"
+			},
+			"how": {
+				"standard": [
+					"Vedle pole se jménem stiskni „Prohlídky“ a vyber prohlídku.",
+					"Pokračuj tlačítky „Dál“ a „Zpět“ na kartičce, šipkami nebo prezentačním ovladačem (Page Down / Page Up).",
+					"Rozhlížej se kdykoli; „Zpátky k prohlídce“ zastávku obnoví. „Automaticky dál“ pokračuje samo a tlačítko s odkazem zkopíruje odkaz na aktuální zastávku. Učitelé mohou psát vlastní prohlídky jako data (src/data/tours/README.md)."
+				],
+				"simple": [
+					"Stiskni vlevo nahoře „Prohlídky“ a jednu vyber.",
+					"Přečti si kartičku a stiskni „Dál“ nebo šipku.",
+					"Rozhlédni se, kdy chceš, a pak stiskni „Zpátky k prohlídce“."
+				]
+			}
+		},
 		"present": {
 			"title": "Režim pro projektor",
 			"what": "Větší písmo, názvy i tlačítka, čitelné i ze zadních lavic, a přepínače složené stranou.",

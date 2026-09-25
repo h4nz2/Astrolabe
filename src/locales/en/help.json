@@ -746,6 +746,32 @@
 				"simple": ["Press Ideas.", "Pick “All eight planets”."]
 			}
 		},
+		"tours": {
+			"title": {
+				"standard": "Guided tours",
+				"simple": "Tours"
+			},
+			"what": {
+				"standard": "Narrated step-by-step tours: the app moves the camera and sets the date, speed and scale, while a card says what you are looking at. Four are ready: the Grand Tour, how big space really is, how we know the Earth moves, and where there could be life.",
+				"simple": "Let the app show you around, stop by stop, while a card tells you what you see."
+			},
+			"why": {
+				"standard": "A tour turns the sandbox into a ready-made lesson, and the class can still look around at any stop: the tour waits.",
+				"simple": "You do not have to know where to go. And you can look around at every stop!"
+			},
+			"how": {
+				"standard": [
+					"Press “Tours” next to the name box and pick a tour.",
+					"Step with “Next” and “Back” on the card, the arrow keys, or a presenter remote (Page Down / Page Up).",
+					"Look around at any time; “Back to the tour” restores the stop. “Autoplay” moves on by itself, and the link button copies a link to the current stop. Teachers can write their own tours as data (src/data/tours/README.md)."
+				],
+				"simple": [
+					"Press “Tours” at the top left and pick one.",
+					"Read the card, then press “Next” or an arrow key.",
+					"Look around whenever you like, then press “Back to the tour”."
+				]
+			}
+		},
 		"present": {
 			"title": "Projector mode",
 			"what": "Larger text, names and buttons, readable from the back of the room, with the switches folded away.",

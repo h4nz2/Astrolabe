@@ -173,6 +173,17 @@ test("a light link opens the panel with a flash on its way", async ({
 	await expect(page.getByText("Message from Earth to")).toBeVisible()
 })
 
+test("a spacecraft link selects the craft and shows its panel", async ({
+	page,
+}) => {
+	test.slow()
+	await page.goto("/solar_system?craft=voyager1&lang=en")
+	await expect(
+		page.getByRole("region", { name: "Selected spacecraft" }),
+	).toContainText("Voyager 1", { timeout: 30_000 })
+	await expect(page).not.toHaveURL(/craft=/)
+})
+
 // every "try it" link, clicked on the page, opens its page without errors;
 // four tests so four browsers share the scenes
 const CHUNKS = 4
