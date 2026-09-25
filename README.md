@@ -75,3 +75,5 @@ The code in this project is licensed under the MIT [license](LICENSE).
 
 The moon surface maps come from NASA, USGS and other open sources; each one's source, credit and licence is
 recorded in `data/moon-surfaces.json` (and listed in `src/data/credits.json`).
+
+The space recordings in `public/assets/sounds/` are © The University of Iowa, from NASA missions, used under Creative Commons Attribution licences; see [`public/assets/sounds/CREDITS.md`](public/assets/sounds/CREDITS.md).

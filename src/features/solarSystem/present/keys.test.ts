@@ -45,6 +45,8 @@ describe("keyCommand", () => {
 		expect(press("f")).toEqual({ kind: "fullscreen" })
 		expect(press("p")).toEqual({ kind: "present" })
 		expect(press("c")).toEqual({ kind: "contrast" })
+		expect(press("x")).toEqual({ kind: "stopLight" })
+		expect(press("X")).toEqual({ kind: "stopLight" })
 		expect(press("s")).toEqual({ kind: "scale" })
 		expect(press("l")).toEqual({ kind: "labels" })
 		expect(press("r")).toEqual({ kind: "start" })
@@ -63,7 +65,7 @@ describe("keyCommand", () => {
 			"ArrowLeft",
 			"ArrowRight",
 			"Escape",
-			"x",
+			"q",
 			"F5",
 		]) {
 			expect(press(key)).toBeNull()

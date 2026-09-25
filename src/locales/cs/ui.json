@@ -546,6 +546,57 @@
 			},
 			"otherHunts": "Další hry"
 		},
+		"sound": {
+			"toggle": "Zvuk",
+			"hintOff": "Zvuk je vypnutý. Klikni nebo stiskni M a zapni ho.",
+			"hintOn": "Zvuk je zapnutý. Klikni nebo stiskni M a ztlum ho.",
+			"settings": "Nastavení zvuku",
+			"on": "Zvuk zapnutý",
+			"offNote": "Vypnutý, dokud ho nezapneš. Všechno v aplikaci funguje i bez zvuku.",
+			"offNote@simple": "Zvuk zůstane vypnutý, dokud ho nezapneš. Všechno můžeš používat i bez zvuku.",
+			"volume": "Hlasitost",
+			"ambient": "Zvuk v pozadí",
+			"ambientHint": "Mění se podle toho, kde jsi: teplý blízko Slunce, řídký a studený za Neptunem.",
+			"ambientHint@simple": "Teplý blízko Slunce, studený a slabý daleko od něj.",
+			"cues": "Zvuky pohybu",
+			"cuesHint": "Svištění při letu, tichý tón, když někam doletíš nebo něco najdeš.",
+			"recordings": "Poslechni si vesmír",
+			"honest": "Ve vesmíru je ticho: zvuk se prázdným prostorem nešíří. Tyto nahrávky jsou skutečná měření rádiových a plazmových vln, převedená na zvuk.",
+			"honest@simple": "Ve vesmíru není vzduch, a proto tam není ani zvuk. Vesmírné sondy změřily neviditelné vlny a vědci z nich udělali zvuky, které můžeme slyšet.",
+			"honest@advanced": "Zvuk potřebuje prostředí a téměř dokonalé vakuum vesmíru nepřenáší žádné slyšitelné tlakové vlny. Jde o měření rádiových a plazmových vln (elektrických polí) anténou, přehraná reproduktorem, některá posunutá na nižší frekvence.",
+			"listenLabel": "Poslechnout: {title}",
+			"stopLabel": "Zastavit: {title}",
+			"credit": "{mission}, {year} · {credit}",
+			"shortcut": "Zapnout nebo vypnout zvuk (po otevření aplikace je vždy vypnutý)",
+			"recording": {
+				"sunRadioBursts": {
+					"title": "Rádiové záblesky ze Slunce",
+					"title@simple": "Rádiové záblesky Slunce",
+					"what": "Není to zvuk: rádiové vlny z obří sluneční erupce z 28. října 2003, zachycené sondou Cassini a posunuté níž, abychom je slyšeli. Klesající hvizd je proud elektronů, který se řítí pryč od Slunce.",
+					"what@simple": "V roce 2003 došlo na Slunci k obrovskému výbuchu. Sonda Cassini zachytila jeho rádiové vlny a vědci z nich udělali zvuk. Klesající hvizd je výbuch, který uhání pryč od Slunce.",
+					"what@advanced": "Rádiové záblesky typu III z erupce třídy X17 z 28. října 2003, zaznamenané přístrojem Radio and Plasma Wave Science sondy Cassini ve vzdálenosti 8,7 AU od Slunce. Elektrony z erupce budí oscilace plazmatu, jejichž frekvence klesá, jak pronikají do řidšího plazmatu dál od Slunce; záznam je posunut do slyšitelného pásma."
+				},
+				"earthChorus": {
+					"title": "Ranní sbor Země",
+					"title@simple": "Ptačí zpěv Země",
+					"what": "Není to zvuk: rádiové vlny v radiačních pásech kolem Země, změřené anténou družice Injun 3. Kmitají shodou okolností na frekvencích, které slyšíme, a švitoří jako ptáci za svítání – odtud jejich jméno.",
+					"what@simple": "Kolem Země jsou neviditelné vlny, které vytvářejí drobné rychlé částice. Družice je změřila anténou a my si je můžeme pustit jako zvuk. Švitoří jako ptáci ráno!",
+					"what@advanced": "Chorus (vlny v hvizdovém módu) ve Van Allenových pásech: stoupající tóny, které vytvářejí elektrony obíhající po spirálách podél magnetického pole Země, zaznamenané družicí Injun 3. Vlny leží ve slyšitelném pásmu, takže se signál elektrického pole z antény přehrává beze změny: je to elektromagnetická vlna, ne tlaková."
+				},
+				"jupiterWhistlers": {
+					"title": "Blesky na Jupiteru",
+					"what": "Není to zvuk: rádiové vlny z blesků, které v roce 1979 zachytila anténa sondy Voyager 1, přehrané reproduktorem. Hvízdají směrem dolů, protože se cestou podél magnetického pole Jupiteru roztáhly. Byly prvním náznakem, že na Jupiteru jsou bouřky.",
+					"what@simple": "Když Voyager 1 letěl kolem Jupiteru, jeho anténa zachytila rádiové vlny z blesků. Když je pustíme jako zvuk, hvízdají. Tak jsme poprvé zjistili, že na Jupiteru jsou bouřky!",
+					"what@advanced": "Jupiterovy hvizdy (whistlery) zaznamenané přístrojem pro plazmové vlny sondy Voyager 1 v roce 1979: impulzy z blesků se rozbíhají podél uzavřených siločar magnetického pole a vyšší frekvence dorazí dřív, proto tón klesá. První (nepřímý) důkaz blesků na Jupiteru."
+				},
+				"saturnRadio": {
+					"title": "Rádiový hlas Saturnu",
+					"what": "Není to zvuk: rádiové vlny z polárních září Saturnu, zaznamenané sondou Cassini v roce 2003. Jsou příliš vysoké, než abychom je slyšeli, proto byly posunuty 44krát níž a zrychleny: těchto 30 sekund odpovídá asi 11 minutám u Saturnu.",
+					"what@simple": "Saturn má polární záře a ty vysílají rádiové vlny. Sonda Cassini je zachytila. Vědci je udělali hlubší a rychlejší, abychom je slyšeli. Znějí strašidelně!",
+					"what@advanced": "Saturnovo kilometrové záření, rádiová emise polárních září, zaznamenané přístrojem RPWS sondy Cassini při přiblížení v roce 2003. Frekvence vyděleny 44, čas zrychlen 22krát (30 s zde ≈ 11 min). Stoupající a klesající tóny sledují malé rádiové zdroje, které se pohybují podél siločar polárních září."
+				}
+			}
+		},
 		"frame": {
 			"label": "Úhel pohledu",
 			"label@simple": "Odkud se díváš",
@@ -695,6 +746,7 @@
 				"scale": "Další měřítko: Vše viditelné, Jako v učebnici, Skutečné měřítko",
 				"scale@simple": "Přepínání mezi zvětšenými a skutečnými velikostmi",
 				"labels": "Zapnout nebo vypnout názvy (při kvízu je skryj)",
+				"stopLight": "Zastavit světelný záblesk",
 				"chrome": "Skrýt nebo zobrazit všechno ovládání",
 				"fullscreen": "Zapnout nebo vypnout celou obrazovku",
 				"projector": "Zapnout nebo vypnout velké písmo",
@@ -708,6 +760,7 @@
 				"scale": "Měřítko: {preset}",
 				"labelsOn": "Názvy zobrazeny",
 				"labelsOff": "Názvy skryty",
+				"lightStopped": "Světelný záblesk zastaven",
 				"chromeHidden": "Ovládání skryto. Stiskni H a znovu se zobrazí.",
 				"chromeShown": "Ovládání zobrazeno",
 				"projectorOn": "Velké písmo zapnuto",
@@ -734,7 +787,8 @@
 			"from": "Odkud vyslat světlo",
 			"send": "Vyslat záblesk",
 			"sendAgain": "Vyslat znovu",
-			"clear": "Odstranit záblesk",
+			"stop": "Zastavit záblesk",
+			"stop@simple": "Vypnout světlo",
 			"travelling": "Světlo letí už",
 			"travelling@simple": "Světlo je na cestě už",
 			"covered": "Uletěno {distance}",
@@ -757,7 +811,10 @@
 			"announce@simple": "Světlo už je {id, select, sun {u Slunce} mercury {u Merkuru} venus {u Venuše} earth {u Země} mars {u Marsu} jupiter {u Jupiteru} saturn {u Saturnu} uranus {u Uranu} neptune {u Neptunu} moon {u Měsíce} other {u měsíce {body}}}! Trvalo mu to {duration}.",
 			"leftPlanets": "Světlo minulo všechny planety. Touto rychlostí dorazí k nejbližší hvězdě za {years, plural, one {# rok} few {# roky} many {# roku} other {# let}}.",
 			"leftPlanets@simple": "Světlo už minulo všechny planety. K nejbližší hvězdě potřebuje ještě {years, plural, one {# rok} few {# roky} many {# roku} other {# let}}!",
+			"faded": "Záblesk za planetami vybledl. Pusť čas pozpátku a vrátí se, nebo vyšli nový.",
+			"faded@simple": "Světlo doletělo daleko za planety a vybledlo. Vyšli nový záblesk a podívej se znovu.",
 			"frontLabel": "Světlo · {duration}",
+			"frontLabelLeaving": "Za planetami · {duration}",
 			"km": "{value} km",
 			"delay": {
 				"intro": "Rádiové signály se také šíří rychlostí světla. Tak dlouho teď letí zpráva ze Země.",
