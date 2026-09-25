@@ -21,6 +21,10 @@ export const isEditableTarget = (target: EventTarget | null): boolean =>
 export const isActivatableTarget = (target: EventTarget | null): boolean =>
 	matches(target, ACTIVATABLE)
 
+/** True inside an open modal dialog, which owns its keys (Escape closes it, not the view). */
+export const isInModalDialog = (target: EventTarget | null): boolean =>
+	matches(target, "[role='dialog'][aria-modal='true']")
+
 /** A key press with a browser modifier (zoom, tabs, ...) is never a HUD hotkey. */
 export const hasModifier = (event: KeyboardEvent): boolean =>
 	event.ctrlKey || event.metaKey || event.altKey

@@ -10,6 +10,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
 import { LightSlot } from "./light/LightPanel"
 import Scene from "./scene/Scene"
 import BodyHighlight from "./ui/BodyHighlight"
@@ -91,7 +92,10 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">
 							<SceneToggles />
-							<LanguageMenu />
+							<Group gap={4} wrap="nowrap">
+								<PostcardButton />
+								<LanguageMenu />
+							</Group>
 						</Group>
 					</div>
 					<div className={classes.panel}>
@@ -110,6 +114,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<PostcardSlot />
 		</div>
 	)
 }
