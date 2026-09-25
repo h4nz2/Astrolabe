@@ -32,10 +32,16 @@ import {
 	toUnits,
 } from "@/sim"
 import {
+	FLIGHT_PROFILE,
+	useFlightStore,
+	type FlightState,
+} from "@/store/flight"
+import {
 	HOME_SHOT,
 	OVERVIEW,
 	isFrameAnchored,
 	type FitRegion,
+	type Transition,
 	type View,
 	type ViewMode,
 	viewBodyId,
@@ -70,6 +76,8 @@ import {
 	snapTarget,
 } from "./recentre"
 import {
+	LIFT_ELEVATION_DEG,
+	flightPlan,
 	transitProfile,
 	type TransitInput,
 	type TransitProfile,
@@ -94,6 +102,20 @@ export const SNAP_DURATION_MS = 450
 export interface StoreLike {
 	getState(): SimState
 }
+
+/** Where the director records flights for the readout (#18). */
+export interface FlightLogLike {
+	getState(): Pick<FlightState, "depart" | "transitionStarted" | "arrive">
+}
+
+/** Polar angle (from +Y) the camera rises to during a flight's lift. */
+const LIFT_PHI = degToRad(90 - LIFT_ELEVATION_DEG)
+
+/** With reduced motion asked for, flights jump (the readout still tells the story). */
+const prefersReducedMotion = (): boolean =>
+	typeof window !== "undefined" &&
+	typeof window.matchMedia === "function" &&
+	window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
 /** What the director is doing, for tests and the debug handle. */
 export interface CameraSnapshot {
@@ -149,6 +171,7 @@ export class CameraDirector {
 		toDistance: 1,
 		separation: 0,
 		widthPerDistance: 1,
+		aspect: 1,
 	}
 	private readonly sample: TransitSample = {
 		pivot: 0,
@@ -178,6 +201,7 @@ export class CameraDirector {
 		readonly camera: PerspectiveCamera,
 		readonly frame: SimFrame,
 		readonly store: StoreLike,
+		readonly flights: FlightLogLike = useFlightStore,
 	) {}
 
 	/** Starts listening to the controls (user input hands transitions over; rest publishes the shot). */
@@ -351,11 +375,57 @@ export class CameraDirector {
 		this.runningView = view
 		this.fillInput()
 		this.startedAt = now
-		this.durationMs = broken
-			? 0
-			: (transition.durationMs ??
-				transitDurationMs(this.profile.length(this.input)))
+		const flight = transition.profile === FLIGHT_PROFILE
+		this.durationMs =
+			broken || (flight && prefersReducedMotion())
+				? 0
+				: (transition.durationMs ??
+					this.profile.durationMs?.(this.input) ??
+					transitDurationMs(this.profile.length(this.input)))
 		this.forceJump = false
+		this.logFlight(transition, toIndex, now)
+	}
+
+	/**
+	 * Records a flight between two bodies for the readout (#18): where from
+	 * (the body the pivot was attached to), where to, and the TRUE distance
+	 * between their centres right now. Any other move tells the log, which
+	 * keeps the record only when the move lands on the flight's destination.
+	 */
+	private logFlight(
+		transition: Transition,
+		toIndex: number,
+		now: number,
+	): void {
+		const log = this.flights.getState()
+		const fromIndex = this.from.index
+		if (
+			transition.profile !== FLIGHT_PROFILE ||
+			transition.view.kind !== "body" ||
+			fromIndex === toIndex
+		) {
+			log.transitionStarted(transition.id, transition.view)
+			return
+		}
+		const p = this.frame.positionsKm
+		const a = fromIndex * 3
+		const b = toIndex * 3
+		const plan = flightPlan(this.input)
+		log.depart({
+			id: transition.id,
+			fromId: this.frame.bodies[fromIndex].id,
+			toId: this.frame.bodies[toIndex].id,
+			distanceKm: Math.hypot(
+				p[b] - p[a],
+				p[b + 1] - p[a + 1],
+				p[b + 2] - p[a + 2],
+			),
+			startedAt: now,
+			durationMs: this.durationMs,
+			travelStart: plan.travelStart,
+			travelEnd: plan.travelEnd,
+		})
+		if (this.durationMs === 0) log.arrive(transition.id)
 	}
 
 	/** One frame of the running transition. */
@@ -388,12 +458,14 @@ export class CameraDirector {
 			this.heldIndex = toIndex
 			this.runningId = null
 			this.follow(view)
+			this.flights.getState().arrive(transition.id)
 			state.settle(transition.id, now)
 			this.publishShot()
 			return
 		}
 
 		this.fillInput()
+		this.sample.lift = 0
 		const sample = this.profile.sample(t, this.input, this.sample)
 		const w = sample.pivot
 		const blended = scratchPivot
@@ -414,6 +486,15 @@ export class CameraDirector {
 			pose.phi =
 				this.fromPose.phi +
 				(this.toPose.phi - this.fromPose.phi) * sample.direction
+			const lift = sample.lift ?? 0
+			if (lift > 0) {
+				// rise above the plane of the orbits (below it, seen from below)
+				const top =
+					pose.phi <= Math.PI / 2
+						? Math.min(pose.phi, LIFT_PHI)
+						: Math.max(pose.phi, Math.PI - LIFT_PHI)
+				pose.phi += (top - pose.phi) * lift
+			}
 			this.applyPose(pose)
 		}
 	}
@@ -770,6 +851,7 @@ export class CameraDirector {
 		this.input.toDistance = this.toPose.radius
 		this.input.separation = Math.hypot(dx, dy, dz) / KM_PER_UNIT
 		this.input.widthPerDistance = 2 * Math.tan(degToRad(this.camera.fov) / 2)
+		this.input.aspect = this.camera.aspect > 0 ? this.camera.aspect : 1
 	}
 }
 

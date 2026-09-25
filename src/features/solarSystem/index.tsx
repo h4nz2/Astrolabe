@@ -17,6 +17,7 @@ import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
 import CentreBadge from "./ui/CentreBadge"
 import CentreMarker from "./ui/CentreMarker"
+import FlightReadout from "./ui/FlightReadout"
 import FocusPicker from "./ui/FocusPicker"
 import OverviewButton from "./ui/OverviewButton"
 import ScalePanel from "./ui/ScalePanel"
@@ -100,9 +101,12 @@ const SolarSystem = () => {
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />
 				</div>
-				<div className={`${classes.panel} ${classes.time}`}>
-					<TimeControls />
-					<SpinControl />
+				<div className={`${classes.time} ${classes.bottom}`}>
+					<FlightReadout className={classes.panel} />
+					<div className={classes.panel}>
+						<TimeControls />
+						<SpinControl />
+					</div>
 				</div>
 			</div>
 			<BirthdayPanelSlot />
