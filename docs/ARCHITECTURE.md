@@ -473,10 +473,12 @@ specks and ties an orbit tangle round Jupiter and Saturn, so the rule is **curat
 - **Appearance**: only a handful of moons have texture maps; the rest share the Moon's map. `appearance.tint`
   (curated in `data/ourDB.json`) gives featured moons their own hue; `veiled` draws Titan as its haze colour alone.
 - **Tidal locking** is #13's (Rotation). Hyperion tumbles.
-- **Performance budget** (a mid-range laptop, integrated GPU, 1080p): default view 9 planets + 24 featured moons,
-  at most ~70 draw calls for bodies and orbits; with All moons on, 192 bodies + 191 orbit lines, at most ~400 draw
-  calls, and no per-frame allocation. Orbit lines that are faded out are not drawn at all, so the overview costs
-  the same with All moons on. Measured in headless Chromium (software GL) with `renderer.info`.
+- **Performance budget** (a mid-range laptop, integrated GPU, 1080p): at most ~60 draw calls per frame by default and
+  ~250 with All moons on, and no per-frame allocation. Moons drawn under half a pixel (`isDiscVisible`) and moon orbit
+  lines faded out are neither drawn nor updated. Measured at 1280x720 in headless Chromium by counting WebGL draw
+  calls (September 2026): overview 26 (All moons: 26), Jupiter 26 (All moons: 159), Saturn 37 (All moons: 184). The
+  software-GL frame times there only compare views; the overview with All moons on is the slowest (about 4x the
+  default overview) and is the one to profile first if a real laptop struggles.
 
 ## Rings (`src/sim/rings.ts`, `features/solarSystem/rings/`, `lighting/ring*.ts`; #12)
 
