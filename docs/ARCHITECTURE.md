@@ -762,7 +762,7 @@ handed to the visitor. Everything happens on the device: no upload, no server, n
 - **Drawing** (`draw.ts`, Canvas 2D): the picture in a dark mount with a hairline, the stamp below (accent line,
   title, date, caption, extra rows in 4 columns beside a landscape picture or 2 below a portrait one, note, scale
   statement, app name) and a QR code of the link (`qr.ts`, `uqr`, error correction M, loaded with the dialog).
-  All sizes derive from `postcardUnit` (a 34th of the picture's short side).
+  All sizes derive from `postcardUnit` (a 34th of the picture's short side, at least a 60th of its long side).
 - **Dialog** (`PostcardDialog.tsx`, a Mantine modal; full screen on phones): preview, caption, switches for the
   names and the QR code, then Save picture (download), Copy picture (`ClipboardItem`, where supported), Share (the Web
   Share API with a file, where `canShare` allows: phones) and Copy link. Escape closes the dialog only: the

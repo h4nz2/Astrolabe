@@ -5,7 +5,7 @@
  * extra facts (the birthday ages), the scale statement, the app's name and an
  * optional QR code that opens the view.
  *
- * Every size derives from one unit `u` (a 34th of the picture's short side),
+ * Every size derives from one unit `u` (`postcardUnit`, from the picture's size),
  * so a phone's portrait picture and a projector's landscape one look alike.
  */
 import type { SceneShot, ShotLabel } from "@/store/postcard"
@@ -24,9 +24,12 @@ export interface PostcardOptions {
 	qr: readonly (readonly boolean[])[] | null
 }
 
-/** The size unit of a picture `width` x `height` px. */
+/**
+ * The size unit of a picture `width` x `height` px: a 34th of its short side,
+ * or a 60th of its long side if more (a tall phone picture keeps legible text).
+ */
 export const postcardUnit = (width: number, height: number): number =>
-	Math.max(8, Math.min(width, height) / 34)
+	Math.max(8, Math.min(width, height) / 34, Math.max(width, height) / 60)
 
 /** Columns of the extra facts: 4 beside a landscape picture, 2 below a portrait one. */
 export const rowColumns = (width: number, height: number, count: number) =>
@@ -101,9 +104,13 @@ function drawLabels(
 		const x = x0 + label.x * ratio
 		const y = y0 + label.y * ratio
 		ctx.globalAlpha = label.opacity
-		ctx.strokeStyle = "rgba(0, 0, 0, 0.85)"
-		ctx.lineWidth = size * 0.28
+		// the screen's halo: a soft dark glow plus a thin dark outline
+		ctx.shadowColor = "rgba(0, 0, 0, 0.9)"
+		ctx.shadowBlur = size * 0.35
+		ctx.strokeStyle = "rgba(0, 0, 0, 0.8)"
+		ctx.lineWidth = size * 0.14
 		ctx.strokeText(label.text, x, y)
+		ctx.shadowBlur = 0
 		ctx.fillStyle = label.color
 		ctx.fillText(label.text, x, y)
 	}
@@ -159,7 +166,7 @@ function drawStamp(
 	paint: boolean,
 ): number {
 	const measure = (value: string) => ctx.measureText(value).width
-	const qrSize = options.qr === null ? 0 : Math.round(4.6 * u)
+	const qrSize = options.qr === null ? 0 : Math.round(5.4 * u)
 	const textWidth = options.qr === null ? width : width - qrSize - 1.2 * u
 	let y = top
 	ctx.textBaseline = "alphabetic"
@@ -210,7 +217,7 @@ function drawStamp(
 	if (text.rows.length > 0) {
 		y += 0.7 * u
 		const cellWidth = textWidth / columns
-		const cellHeight = 1.95 * u
+		const cellHeight = 2.3 * u
 		text.rows.forEach((row, i) => {
 			const cx = x + (i % columns) * cellWidth
 			const cy = y + Math.floor(i / columns) * cellHeight
