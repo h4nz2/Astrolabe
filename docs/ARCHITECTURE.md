@@ -33,8 +33,8 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, rings/, ui/)
+src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, trails.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, rings/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -194,13 +194,38 @@ interface ScaleSettings {
 | ------------------- | -------- | ------------------------------- | ------------------------------ | -------------------------------------------------------- |
 | `trueScale`         | 1        | 1, 1, 1                         | 3, 1, 1                        | real sizes and distances; planets are specks             |
 | `textbook`          | 1        | 1, 0.53, 0.12                   | 3, 0.2, 1                      | sizes true to each other, distances squeezed hard        |
+| `bigPlanets`        | 0.5      | 1, 1, 1                         | 3, 0.2, 2                      | enlarged bodies at real distances: still lost in space   |
 | `everythingVisible` | 0.5      | 1, 0.52, 1                      | 3, 0.2, 2                      | **the default**: small bodies enlarged, orbits pulled in |
 
 `scale.test.ts` guards the non-true presets (orbit order kept, moon systems separated, rings and ring moons true to
 proportion). `interpolateScale` blends presets for animated changes; also `presetOf`, `sameScale`, `isValidScale`,
-`sizeExaggeration`, `distanceFactor`. The store (`useScaleStore`: `scale`, `presetId`, `setPreset`, `setScale`,
-`setFactor`) is not persisted or in the URL. `scene/ScaleSync.tsx` pushes it into the SimFrame and sets
-`data-scale-preset` on the canvas. On a scale change the camera keeps the framed body's on-screen size.
+`sizeExaggeration`, `distanceFactor`. `scene/ScaleSync.tsx` pushes the store into the SimFrame and sets
+`data-scale-preset` on the canvas (`custom` mid-switch). On a scale change the camera keeps the framed body's
+on-screen size (in the overview: the whole drawn planetary system).
+
+### Scale presets, the experience (#21)
+
+- **The grid** (`src/sim/scaleLies.ts`): sizes and distances are separate lies. Every preset is one cell of
+  sizes `true | enlarged` x distances `true | squeezed` (`SCALE_LIES`, `presetForLies`): `trueScale` (true/true),
+  `textbook` (true/squeezed), `bigPlanets` (enlarged/true), `everythingVisible` (enlarged/squeezed). The squeeze is
+  tuned to the sizes, so the grid names presets rather than mixing factors. `bodyDistortion` gives drawn over
+  true size and distance from the parent, in kilometres: the numbers the honesty statement shows.
+- **The store** (`useScaleStore`): `scale`, `presetId` (null mid-switch or for a console mix), `targetId` (the
+  preset the user chose, from the click on), `transition`. `switchTo(id, nowMs, durationMs = SCALE_TRANSITION_MS)`
+  animates from whatever is on screen (a switch can turn around mid-way), `setPreset` jumps (links, reduced
+  motion), `stepTransition(nowMs)` eases (`easeInOutSine`, 2.5 s) and lands on the preset's frozen object.
+  `scene/ScaleTransition.tsx` steps it in `useFrame` at priority -2, before SimClock and the camera director.
+- **The panel** (`ui/ScalePanel.tsx`, top right under the layer switches): the three named presets, the Sizes and
+  Distances switches (the only way to `bigPlanets`), the preset's one-line summary ("Not to scale!") and the
+  honesty statement (`ui/scaleStatement.ts`): two sentences about the selected body, else the focus, else Earth
+  ("Earth is drawn 10x too big." / "... 13x too close to the Sun."), factors rounded to two significant digits,
+  within 5 % of 1 said as "real". Every string has simple/standard/advanced variants in every locale; German picks
+  articles and cases by `subjectId`/`parentId` selects. In `trueScale`/`bigPlanets` a line points at the markers.
+- **URL, not storage:** `?scale=<preset id>` (absent = the default, unknown ids ignored), written at the click;
+  a link opens in its preset without animating. Nothing is kept in localStorage: every fresh visit starts in
+  Everything visible, so the switch to true scale stays the lesson.
+- **True scale's navigation aid** is the marker layer (a dot for every body, on by default) plus labels, the focus
+  picker and the overview button; there is no extra "find Earth" widget.
 
 ## Navigation (`src/store/navigation.ts`, `features/solarSystem/camera`; #10)
 
@@ -212,6 +237,7 @@ selectedId: string | null   drives info panels, labels, the URL; never moves the
 view: View                  { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
                             (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15)
 focusId: string             body the view is centred on (the Sun for the overview, a point's anchor)
+frameId: string             body the reference frame holds still (#31): the Sun (Sun-centred) or focusId
 shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
 transition, sequence        the running move and the running tour
 panning: boolean            a pan (or its damped glide) is moving the pivot right now
@@ -219,8 +245,10 @@ viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
 Actions: `select`, `setFocus` (click: select + focus), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
-(the way out), `skip`, and sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
-request carries a partial `shot`, `durationMs` and a `profile`. Invalid views and unknown bodies are ignored.
+(the way out), `skip`, `anchorFrame(id, request?)` / `releaseFrame()` (#31), and sequences (`playSequence`, `goToStep`,
+`nextStep`, `resumeSequence`, `stopSequence`). A request carries a partial `shot`, `durationMs`, a `profile` and a
+`fit` region (`{ km, around }`: frame a sphere of `km` TRUE km around the centre, drawn as a distance from body
+`around` is; overrides the shot's distance). Invalid views and unknown bodies are ignored.
 Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
 Director (`camera/director.ts`, unit-tested frame by frame):
@@ -255,7 +283,46 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - HUD: `ui/CentreMarker.tsx` (crosshair at the canvas centre while `panning` or free), `ui/CentreBadge.tsx` ("Free view
   near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
   `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
-- Building on it: #16 clicks call `setFocus`; #31 anchors the frame to `focusId` (a point's anchor).
+- Building on it: #16 clicks call `setFocus` (see Picking); #31 anchors the frame to `focusId` (a point's anchor).
+
+### Anchored reference frame (`src/sim/referenceFrame.ts`, `features/solarSystem/frame/`; #31)
+
+"Hold Earth still": everything is drawn relative to a body, which stays fixed on screen, and the planets' paths
+become the sky's motions (the Sun's yearly circle, Mercury's and Venus's flowers, Mars's retrograde loop).
+
+- **Model.** `frameId` in the navigation slice: the Sun (Sun-centred, the default) or the focus. An anchored frame
+  follows the focus (centring Mars holds Mars still); the overview, `reset()` (home button, Escape) and
+  `releaseFrame()` return to the Sun. `anchorFrame(id, request)` anchors and centres on `id` (a point already near it
+  stays). The frame is non-rotating: its axes stay fixed to the stars, like the sky.
+- **Drawing (re-rooting).** The scale engine keeps directions true only from parent to child, so an anchored frame
+  re-roots the one rule at the anchor's top-level body P (the root's child it belongs to; a moon's planet): P stays
+  where it is drawn, every other top-level body goes to `P + framedOffset(true(body) - true(P))` (`orbitDistance`
+  in root radii), moons ride along. Every direction seen from P is its true sky direction in every preset; the Sun
+  lands exactly where it was; at true scale nothing changes. `applyReferenceFrame` runs inside `updateSimFrame` /
+  `setSimFrameScale` from `SimFrame.frameBlend` (anchors + weights), so everything drawn (meshes, markers, labels,
+  framing) follows without knowing about frames. Lighting stays in true km, unaffected.
+- **Blend.** `frame/ReferenceFrameSync.tsx` (useFrame -1.5, before SimClock) eases `frameBlend` to the store's frame
+  over `FRAME_BLEND_MS` (1.2 s, cross-fading two anchors); the first frame lands at once (deep links).
+  `anchoredWeight` / `anchorWeight` read it: orbit lines around the Sun (and their names) fade out as it rises.
+- **Camera.** Through the director only: a `fit` request frames the preset's region; a pan while anchored lands back
+  on the body held still or becomes a point anchored to it (never a new frame, never the Sun's neighbourhood).
+- **Clicks** (#16's `scene/picking.ts`): while a body is held still, a click on another body selects it
+  (`bodyClickAction` "select": its trail brightens, the badge reads its motion) instead of flying there, and a click
+  on empty space only deselects; the picker and "Hold ... still" move the frame on purpose, the badge, the home button
+  and Escape leave it.
+- **Trails** (`frame/trails.ts`, `frame/Trails.tsx`): one line per top-level body (the Sun and the planets) but P,
+  relative to P, as a pure function of time: the window `trailWindow(jd, sinceJD)` (the last `TRAIL_LENGTH_DAYS`,
+  two years; from `sinceJD` after "Restart the trails", `src/store/trails.ts`) sampled on whole Julian days plus the
+  exact current position as the head. Slid incrementally, recomputed after a jump; runs backwards; the tail fades,
+  the selected or hovered body's trail is brighter. Samples are TRUE offsets drawn with `framedOffset`.
+- **HUD.** `frame/FrameMenu.tsx` in the picker panel always names the frame ("Sun-centred", "Seen from Earth") and
+  offers the presets (`frame/presets.ts`: Sun-centred; Seen from Earth: the planets = Earth, Mars selected, top-down
+  fit of 2.7 AU, 1 month/s; Seen from Earth: the Moon = Earth, Moon selected, Moon's orbit, 1 day/s) and "Hold
+  <focus> still". `frame/FrameBadge.tsx` (top centre while anchored) names the frame, explains it, reads the sky
+  from the anchor (`frame/sky.ts`: forwards / stationary / retrograde from the ecliptic longitude rate, or the phase
+  of a body of the same family) beside a map of the same moment from above the Sun (`frame/inset.ts`, true
+  proportions, line of sight) or the phase disc, and holds "Back to Sun-centred" and "Restart the trails".
+  Strings: `solarSystem.frame.*`.
 
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
@@ -343,7 +410,8 @@ Driven by data alone: a body with `rings` gets them (Jupiter, Saturn, Uranus, Ne
   intersects the ray from the surface point toward the Sun with the ring plane (the pole is the sphere's local +Y,
   which the spin leaves alone) and multiplies the sunlight by the slant transmittance of the mean opacity there
   (`ringShadowTransmittance`). Ringless bodies compile none of it.
-- Picking: a click or hover on the rings is one on their planet.
+- Picking: the ring sheet is a real scene target, nearer than `BodyPicking`'s "empty space": a click on the rings is
+  `activateBody(planet)` and hovering them hovers the planet, so a click on Saturn's rings never resets the view.
 
 ## Floating origin
 
@@ -369,13 +437,15 @@ WARP_PRESETS                                      speeds (plain numbers): 1x, 1 
 Anything positioned in time is a pure function of a JD, never of frames. In `useFrame` read `useSimStore.getState()`;
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
-URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false`. The layer switches `orbits`,
+URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
+Scale presets). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
-off by default, as `orbitNames=true` while on. Defaults (overview,
-home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
-once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
-clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
-|warp| <= 60.
+off by default, as `orbitNames=true` while on; `frame=<id>` while a body is held still (#31). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
+are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
+0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
+mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
+only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
+`?birthday=true` opens the birthday panel.
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -395,6 +465,8 @@ export interface SimFrame {
 	spinJD: number // spin time (see Rotation); written by SpinClock only
 	scale: ScaleSettings // change with setSimFrameScale only
 	scaleVersion: number // bumps on scale change; cache scale-derived geometry on it
+	frameBlend: FrameBlend // anchored reference frames and their weights (#31), written by ReferenceFrameSync
+	topIndex: Int32Array // top-level body (the root's child) of every body
 	renderPosition(i: number, out: Vector3): Vector3
 	renderPositionOf(id: string, out: Vector3): Vector3
 	renderRadius(i: number): number
@@ -423,25 +495,61 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   throws). Not drei `<Line>`: it lacks logdepth and depth-fights. Headless SwiftShader drops the focused orbit in
   close-ups; not an app bug.
 - Markers: one `Points` layer (4 px round dots, no depth test) so nothing vanishes at true scale; a dot hides once its
-  body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). Picking is angular
-  (10 px), planets win over moons. `showMarkers` off hides and unpicks them.
-- Interaction: click calls `setFocus`, hover sets `hoverId`; a tap selects, a drag (`scene/tap.ts`) does not.
-  `scene/HoverCursor.tsx` shows a pointer over click targets (`isClickTarget`: any body but the focus once it is also
-  selected, which fills the view up close). Labels join the same picking (see Labels).
+  body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). The dots are drawn
+  only; picking is `BodyPicking`'s (see Picking). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
-  `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
-  toggles panel), `CentreBadge` and `CentreMarker` (#15). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
+  `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
+  toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
-  the `LabelLayer` beside the Canvas) and the HUD.
+  `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
+  `HighlightTracker`, later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
+
+## Picking: click a body to focus on it (`scene/picking.ts`, `scene/BodyPicking.tsx`; #16)
+
+One invisible object (`BodyPicking`, a `<group>` with its own `raycast`) is the scene's only click and hover target;
+meshes and marker dots have no handlers. Its raycast asks `pickBody` (pure, unit-tested) and always reports a hit: a
+body, or "empty space" at `CAMERA_FAR`, so other clickable scene objects (nearer) still win and stop propagation. The
+labels' own picking (#20) reports its hits at distance 0, so a label beats the body picker; a label tap goes through
+`<Labels onActivate={activateBody}>`, the same action as a tap on the body, and a hovered label sets `hoverId`, so the
+hover ring, name and cursor apply to labels too.
+
+- **Disc**: the ray passes through the drawn sphere of a body drawn at least as big as the target; the nearest wins.
+- **Generous target**: a body drawn smaller than `TARGET_RADIUS_PX` (mouse 12, pen 16, touch 24; by
+  `currentPointerKind()` in `scene/tap.ts`) is hit anywhere within that radius of its centre, whatever its drawn size.
+  A visible disc (radius >= 2 px) right under the pointer wins, then the Sun and planets beat moons, then the nearest
+  edge; a small body in front of a big disc beats the disc, one behind it is hidden. Moons get a
+  target only while their marker dot is drawn or their disc is at least 1 px (`hasGenerousTarget`), so a click into
+  apparently empty space never flies to an invisible moon.
+- **Click on a body** (`bodyClickAction`): `setFocus` (select + fly, framing 6 drawn radii, tracked); the focus after
+  the camera was dollied beyond `REFRAME_DISTANCE` x its framing flies back to the close-up; the framed, selected
+  focus does nothing. **Click on empty space** (`emptyClickAction`): `reset()` from a focused or free view,
+  `select(null)` in the overview; nothing on a near miss (within `NEAR_MISS_FACTOR` x the target radius of a drawn
+  edge) or while a sequence (tour) runs. Only taps count (`isTapEvent`).
+- **Hover**: `hoverId` follows the pointer, but never for a finger or while a button is held (an orbit drag).
+  `HoverCursor` shows `cursor: pointer` for click targets (`isClickTarget` = `bodyClickAction` is not `none`).
+  `ui/BodyHighlight.tsx` renders a white ring with the body's name and "Click to fly there" around the hovered target,
+  and an orange ring around the selected body while its disc is under 40 px; `scene/HighlightTracker.tsx` places both
+  every frame straight on the DOM (`scene/highlight.ts` `placeRing`, `applyRing`), never through React state.
+- **The focused view's card** (`ui/BodyInfo.tsx`): the selection, else the focused body; name, tagline, the first
+  authored comparison, headline facts and a link to the dictionary entry (`ui/dictionaryEntry.ts`: Sun 0, planets
+  1..8), plus a close button (`reset`). Facts are comparative first (`ui/bodyFacts.ts`, `solarSystem.facts.*`): size in
+  Earths (Earth and moons in our Moon), a planet's distance as sunlight travel time, a moon's as how many of its
+  planet fit into the gap, the year in Earth years or laps per Earth year, the spin (#13's rotation period and tidal-lock note), weight relative to Earth; the exact
+  number sits under each. In the overview or a free view the card is a hint that planets can be clicked. On phones
+  (< 600 px) the card sits above the time controls with its facts folded behind a toggle.
+- `window.__astrolabe.screenOf(id)` gives a body's screen position and drawn radius, and `.scale` the scale store, for
+  the console and e2e tests.
+- Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`; a fly profile can be
+  requested through `focus(id, request)`), #24 compare (the card's action
+  row takes "Compare with…"), #28/#29/#34 (select or focus through the store).
 
 ## Labels (`features/solarSystem/labels`; #20)
 
@@ -481,7 +589,7 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
 - **Picking:** the layer is `pointer-events: none` (drags and wheel zooms that start on a label still reach the
   camera). `Labels.tsx` adds a `<group raycast>` that hit-tests the label boxes (`pickLabel`, 3 px slack) and reports
   a hit at distance 0 with `index` = body index, so labels win over what they are drawn over and share the markers'
-  hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16.
+  hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16 (`activateBody`).
 - **Switches:** `showLabels` (the Labels switch; `setShowLabels(false)` hides every name at once, e.g. for #30/#33),
   `showOrbitLabels` (Orbit names; needs orbits and labels on).
 - **For later issues:** `[data-body=<id>][data-visible=true]` marks a shown name (tests, tours); a feature that
@@ -506,6 +614,26 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
   frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
   Nothing is capped or hidden in the scene; positions stay true.
+
+## Birthday (`features/solarSystem/birthday`, `src/store/birthday.ts`; #26)
+
+"Your birthday in space": a birth date picked in a calendar (never typed) gives the age on every planet, the next
+birthday there as a date (and a trip to it), local days lived, the distance Earth carried you around the Sun, and the
+weight on the Sun, the planets and the seven large moons.
+
+- Maths (`birthday.ts`, pure): a year is the sidereal `orbit.periodDays`; a birthday on a planet is
+  `birthJD + n * year`, the instant it is back where it was at the birth. On Earth ages count calendar birthdays (29 Feb falls on
+  28 Feb). A birth date is a calendar day that stands for its noon UTC (`arrivalJD`, the instant the planets fly to).
+  Solar day: `1 / solar = 24 / rotation.periodHours - 1 / year` (sign = retrograde). Gravity: the curated
+  `info.gravity` (the dictionary's number), else `G M / R^2`; weight = kg x g / g(Earth). Distance: Earth's orbit
+  length (Ramanujan) x orbits since birth.
+- UI: `Birthday.tsx` has the HUD button (in the time controls) and the panel slot; `BirthdayPanel.tsx` (lazy, with
+  `@mantine/dates`) is a non-modal panel docked at the right (a sheet on phones) so the scene stays visible. Picking
+  a date `travelAndStop`s there; each planet's next birthday is a button that does the same. The hero page links to
+  `/solar_system?birthday=true`.
+- Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
+  carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
+  picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 

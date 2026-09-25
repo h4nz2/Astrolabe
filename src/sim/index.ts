@@ -141,3 +141,10 @@ export {
 	ringU,
 	slantOpacity,
 } from "./rings"
+export { SCALE_LIES, bodyDistortion, presetForLies } from "./scaleLies"
+export type {
+	BodyDistortion,
+	DistanceLie,
+	ScaleLies,
+	SizeLie,
+} from "./scaleLies"

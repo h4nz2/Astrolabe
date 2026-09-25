@@ -113,7 +113,9 @@ test("drives select -> focus -> overview through the store, the camera only foll
 	await expect(page).toHaveURL(/[?&]sel=mars(&|$)/)
 	// the info panel follows the selection; the camera does not move
 	await expect(
-		page.getByRole("region", { name: "Focused body" }).getByText("Mars"),
+		page
+			.getByRole("region", { name: "Focused body" })
+			.getByRole("heading", { name: "Mars" }),
 	).toBeVisible()
 	const still = await camera(page)
 	expect(still.mode).toBe("overview")

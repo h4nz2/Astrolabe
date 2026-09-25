@@ -100,14 +100,18 @@ test("ringed planets show their rings and a planet without rings shows none", as
 	await nextFrames(page)
 	expect(await ringZoneLit(page, "mars")).toBeLessThan(0.002)
 
-	for (const [id, name] of [
-		["saturn", "Saturn"],
-		["uranus", "Uranus"],
+	for (const [query, name] of [
+		["focus=saturn", "Saturn"],
+		["focus=uranus", "Uranus"],
+		// true scale: the rings keep their true size next to the planet
+		["focus=saturn&scale=trueScale", "Saturn"],
 	]) {
-		await focusOn(page, `focus=${id}`, name)
+		await focusOn(page, query, name)
 		// the ring textures load after the planet: wait for them to be drawn
 		await expect
-			.poll(() => ringZoneLit(page, id), { timeout: 20_000 })
+			.poll(() => ringZoneLit(page, query.replace(/[=&]/g, "-")), {
+				timeout: 20_000,
+			})
 			.toBeGreaterThan(0.05)
 	}
 	expect(errors).toEqual([])
@@ -122,6 +126,16 @@ test("rings stay drawn in Always lit and survive an edge-on view", async ({
 	await expect
 		.poll(() => ringZoneLit(page, "saturn-honest"), { timeout: 20_000 })
 		.toBeGreaterThan(0.05)
+
+	// a click on the rings is a click on Saturn (already framed: nothing happens), never
+	// a click on empty space, which would send the camera back to the overview
+	const size = page.viewportSize()
+	if (size === null) throw new Error("no viewport")
+	await page.mouse.click(size.width / 2 - 0.37 * size.height, size.height / 2)
+	await nextFrames(page)
+	expect(
+		await page.evaluate(() => window.__astrolabe?.store.getState().view),
+	).toEqual({ kind: "body", id: "saturn" })
 
 	const alwaysLit = page.getByRole("switch", { name: "Always lit" })
 	await alwaysLit.click({ force: true })

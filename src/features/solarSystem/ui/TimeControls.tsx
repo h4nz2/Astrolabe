@@ -23,6 +23,7 @@ import {
 	isEditableTarget,
 	useWindowKeydown,
 } from "./keyboard"
+import { BirthdayButton } from "../birthday/Birthday"
 import TimeTravel from "./TimeTravel"
 import TooFastHint from "./TooFastHint"
 import {
@@ -232,6 +233,7 @@ const TimeControls = () => {
 						{t("solarSystem.time.now")}
 					</Button>
 				</Tooltip>
+				<BirthdayButton />
 			</div>
 			<div className={classes.warp}>
 				<SpeedPresets />

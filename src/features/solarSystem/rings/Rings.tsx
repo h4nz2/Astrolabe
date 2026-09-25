@@ -17,9 +17,13 @@ import {
 	type ShaderMaterial,
 } from "three"
 
+import { useSimStore } from "@/store/sim"
+
 import type { SunlightUniforms } from "../lighting/bodyLighting"
 import { createRingMaterial } from "../lighting/ringMaterial"
+import { activateBody } from "../scene/BodyPicking"
 import { useSimFrame } from "../scene/simFrame"
+import { currentPointerKind, isTapEvent } from "../scene/tap"
 import { loadRingTextures, type RingData } from "./ringTextures"
 
 /** Segments around the ring: smooth edges on a ring filling the screen. */
@@ -87,14 +91,13 @@ export interface RingsProps {
 	radiusKm: number
 	/** the planet's index in the SimFrame */
 	index: number
+	/** the planet's id: a click on the rings is a click on it */
+	bodyId: string
 	/** the planet's sunlight uniforms (shared, never copied) */
 	uniforms: SunlightUniforms
-	onClick?: (event: ThreeEvent<MouseEvent>) => void
-	onPointerOver?: (event: ThreeEvent<PointerEvent>) => void
-	onPointerOut?: (event: ThreeEvent<PointerEvent>) => void
 }
 
-function Rings({ rings, radiusKm, index, uniforms, ...handlers }: RingsProps) {
+function Rings({ rings, radiusKm, index, bodyId, uniforms }: RingsProps) {
 	const frame = useSimFrame()
 	const meshRef = useRef<Mesh>(null)
 	const edgeRef = useRef<Mesh>(null)
@@ -145,6 +148,24 @@ function Rings({ rings, radiusKm, index, uniforms, ...handlers }: RingsProps) {
 		),
 	)
 
+	// the rings are nearer than BodyPicking's "empty space": a click on them is
+	// a click on their planet (never a reset to the overview), and so is hovering
+	const onClick = (event: ThreeEvent<MouseEvent>) => {
+		if (!isTapEvent(event)) return
+		event.stopPropagation()
+		activateBody(bodyId)
+	}
+	const onPointerMove = (event: ThreeEvent<PointerEvent>) => {
+		if (event.intersections[0]?.eventObject !== event.eventObject) return
+		const hovering =
+			currentPointerKind() !== "touch" && event.nativeEvent.buttons === 0
+		useSimStore.getState().setHover(hovering ? bodyId : null)
+	}
+	const onPointerOut = () => {
+		const store = useSimStore.getState()
+		if (store.hoverId === bodyId) store.setHover(null)
+	}
+
 	return (
 		<>
 			<mesh
@@ -152,7 +173,9 @@ function Rings({ rings, radiusKm, index, uniforms, ...handlers }: RingsProps) {
 				geometry={geometry}
 				material={material}
 				scale={frame.renderRadius(index)}
-				{...handlers}
+				onClick={onClick}
+				onPointerMove={onPointerMove}
+				onPointerOut={onPointerOut}
 			/>
 			<mesh
 				ref={edgeRef}
