@@ -1,0 +1,88 @@
+/*
+ * Teacher and presentation mode (#29), document-wide: the attributes are set
+ * on <html> by present/usePresentationDocument.ts while the solar system page
+ * is open, so they reach Mantine's portals (menus, popovers, tooltips) too.
+ * The colours are the tokens tested in present/contrast.test.ts.
+ */
+
+/*
+ * Projector mode: everything sized in rem (Mantine, the HUD) grows, by an
+ * eighth on small projections (1024x768, 1280x720, where the HUD already
+ * fills the screen) and by a quarter on full-HD ones.
+ */
+html[data-presenting] {
+	font-size: 112.5%;
+}
+
+@media (min-width: 1600px) and (min-height: 900px) {
+	html[data-presenting] {
+		font-size: 125%;
+	}
+}
+
+/*
+ * High contrast, for washed-out projectors and bright rooms: pure white text
+ * on black, white borders, a dark orange that keeps white text readable, and
+ * a thick yellow focus ring. The attribute selector beats Mantine's own
+ * `:root[data-mantine-color-scheme]` variables.
+ */
+html[data-contrast="high"][data-mantine-color-scheme] {
+	--mantine-color-text: #ffffff;
+	--mantine-color-dimmed: #e6e8eb;
+	--mantine-color-body: #000000;
+	--mantine-color-placeholder: #d0d4da;
+	--mantine-color-default: #000000;
+	--mantine-color-default-hover: #262626;
+	--mantine-color-default-color: #ffffff;
+	--mantine-color-default-border: #ffffff;
+	--mantine-color-gray-text: #ffffff;
+	--mantine-color-gray-light-color: #ffffff;
+	--mantine-color-gray-outline: #ffffff;
+	--mantine-color-orange-filled: #8f3700;
+	--mantine-color-orange-filled-hover: #7a2f00;
+	--mantine-color-orange-light: rgba(255, 169, 77, 0.22);
+	--mantine-color-orange-light-hover: rgba(255, 169, 77, 0.32);
+	--mantine-color-orange-light-color: #ffc078;
+	--mantine-color-orange-text: #ffc078;
+	--mantine-color-orange-outline: #ffc078;
+	--mantine-primary-color-filled: #8f3700;
+	--mantine-primary-color-filled-hover: #7a2f00;
+	--mantine-primary-color-light-color: #ffc078;
+}
+
+html[data-contrast="high"] .mantine-Popover-dropdown,
+html[data-contrast="high"] .mantine-Menu-dropdown,
+html[data-contrast="high"] .mantine-Combobox-dropdown,
+html[data-contrast="high"] .mantine-Tooltip-tooltip,
+html[data-contrast="high"] .mantine-Modal-content,
+html[data-contrast="high"] .mantine-Modal-header {
+	background: #000000;
+	color: #ffffff;
+}
+
+html[data-contrast="high"] .mantine-Popover-dropdown,
+html[data-contrast="high"] .mantine-Menu-dropdown,
+html[data-contrast="high"] .mantine-Combobox-dropdown,
+html[data-contrast="high"] .mantine-Tooltip-tooltip,
+html[data-contrast="high"] .mantine-Modal-content {
+	border: 2px solid #ffffff;
+}
+
+html[data-contrast="high"] :focus-visible {
+	outline: 3px solid #ffd43b !important;
+	outline-offset: 2px;
+}
+
+/* hidden controls: their open menus and tooltips go too (dialogs stay) */
+html[data-chrome="hidden"] .mantine-Popover-dropdown,
+html[data-chrome="hidden"] .mantine-Menu-dropdown,
+html[data-chrome="hidden"] .mantine-Combobox-dropdown,
+html[data-chrome="hidden"] .mantine-Tooltip-tooltip {
+	display: none !important;
+}
+
+/* no pointer parked in the middle of the projection while nobody moves it */
+html[data-idle],
+html[data-idle] * {
+	cursor: none !important;
+}
