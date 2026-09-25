@@ -40,6 +40,7 @@ const LeftSection: FC<LeftSectionProps> = () => {
 					<Button to="/solar_dictionary" label={t("hero.dictionary")} />
 					<Button to="/solar_system" label={t("hero.solarSystem")} />
 					<BirthdayButton label={t("hero.birthday")} />
+					<SkyTonightButton label={t("hero.skyTonight")} />
 					<HuntButton label={t("hero.hunt")} />
 					<Button to="/solar_walk" label={t("hero.solarWalk")} />
 				</Flex>
@@ -99,6 +100,29 @@ const HuntButton: FC<{ label: string }> = ({ label }) => {
 					{...props}
 					to="/solar_system"
 					search={{ hunt: true }}
+					preload="viewport"
+				/>
+			)}
+			variant="outline"
+			color="orange"
+			size="xl"
+			px="md"
+			className={classes.button}
+		>
+			{label}
+		</MantineButton>
+	)
+}
+
+/** Straight to "What is in the sky tonight" (#36): the solar model with the sky panel open. */
+const SkyTonightButton: FC<{ label: string }> = ({ label }) => {
+	return (
+		<MantineButton
+			renderRoot={(props) => (
+				<Link
+					{...props}
+					to="/solar_system"
+					search={{ sky: true }}
 					preload="viewport"
 				/>
 			)}
