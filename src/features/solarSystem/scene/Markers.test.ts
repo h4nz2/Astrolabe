@@ -43,6 +43,30 @@ describe("isMoonDotShown", () => {
 })
 
 describe("fillMarkers", () => {
+	it("dots only the featured moons until all moons are asked for (#17)", () => {
+		const frame = createSimFrame(bodies, J2000_JD)
+		const buffers = createMarkerBuffers(bodies.length)
+		const far = cameraAt(0, toUnits(1e10), 0)
+		const dotted = (showAllMoons: boolean) =>
+			drawnBodies(
+				buffers,
+				fillMarkers(buffers, frame, far, HEIGHT_PX, {
+					showMoons: true,
+					showAllMoons,
+					focusId: "jupiter",
+				}),
+			).map((i) => bodies[i].id)
+		const story = dotted(false)
+		expect(story).toEqual(
+			expect.arrayContaining(["io", "europa", "ganymede", "callisto"]),
+		)
+		expect(story).not.toContain("metis")
+		expect(
+			story.filter((id) => moonsOf("jupiter").some((m) => m.id === id)),
+		).toHaveLength(4)
+		expect(dotted(true)).toContain("metis")
+	})
+
 	it("draws the Sun and the planets from afar, moons only around the focus family", () => {
 		const frame = createSimFrame(bodies, J2000_JD)
 		const buffers = createMarkerBuffers(bodies.length)

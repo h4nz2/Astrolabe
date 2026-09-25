@@ -3156,7 +3156,7 @@
 		"name": "Mimas",
 		"kind": "moon",
 		"parentId": "saturn",
-		"radiusKm": 396.4,
+		"radiusKm": 198.2,
 		"massKg": 37900000000000000000,
 		"orbit": {
 			"semiMajorAxisKm": 185539,
@@ -3315,7 +3315,7 @@
 		"name": "Enceladus",
 		"kind": "moon",
 		"parentId": "saturn",
-		"radiusKm": 504.2,
+		"radiusKm": 252.1,
 		"massKg": 108000000000000000000,
 		"orbit": {
 			"semiMajorAxisKm": 238042,
@@ -3670,7 +3670,7 @@
 		"info": {
 			"gravity": 1.352,
 			"density": 1.88,
-			"discoveredBy": "Christian Huygens",
+			"discoveredBy": "Christiaan Huygens",
 			"discoveryDate": "25/03/1655",
 			"mass": {
 				"massValue": 1.3452,
@@ -3730,7 +3730,7 @@
 		"name": "Iapetus",
 		"kind": "moon",
 		"parentId": "saturn",
-		"radiusKm": 1471.2,
+		"radiusKm": 734.3,
 		"massKg": 1.805e21,
 		"orbit": {
 			"semiMajorAxisKm": 3560854,
@@ -3755,7 +3755,7 @@
 		"info": {
 			"gravity": 0.223,
 			"density": 1.09,
-			"discoveredBy": "Jean-Dominique Cassini",
+			"discoveredBy": "Giovanni Domenico Cassini",
 			"discoveryDate": "25/10/1671",
 			"mass": {
 				"massValue": 1.805,

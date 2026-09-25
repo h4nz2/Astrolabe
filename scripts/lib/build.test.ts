@@ -561,6 +561,45 @@ describe("buildBodies", () => {
 			periodDerived: 1,
 			placeholderTextures: 4,
 			rings: 2,
+			featured: 0,
+		})
+	})
+
+	describe("featured moons (#17)", () => {
+		it("flags the listed moons and nothing else", () => {
+			const built = buildBodies(fixture, {
+				...options,
+				featuredMoons: {
+					$comment: "ignored",
+					saturn: { rhea: "an icy world" },
+				},
+			})
+			const featured = built.bodies.filter((body) => body.featured)
+			expect(featured.map((body) => body.id)).toEqual(["rhea"])
+			expect(built.stats.featured).toBe(1)
+			// no list, no featured moons
+			expect(result.bodies.some((body) => body.featured)).toBe(false)
+		})
+
+		it("stops the build on an unknown moon or the wrong planet", () => {
+			expect(() =>
+				buildBodies(fixture, {
+					...options,
+					featuredMoons: { saturn: { ymir: "not in the fixture" } },
+				}),
+			).toThrow(/featured moon "ymir" is not a moon/)
+			expect(() =>
+				buildBodies(fixture, {
+					...options,
+					featuredMoons: { uranus: { rhea: "wrong planet" } },
+				}),
+			).toThrow(/orbits "saturn", not "uranus"/)
+			expect(() =>
+				buildBodies(fixture, {
+					...options,
+					featuredMoons: { saturn: { rhea: "" } },
+				}),
+			).toThrow(BuildError)
 		})
 	})
 
