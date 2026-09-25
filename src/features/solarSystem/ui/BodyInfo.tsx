@@ -8,14 +8,17 @@
  * toggle so the card never buries the scene.
  */
 import { useMemo, useState } from "react"
-import { ActionIcon, Anchor, CloseButton } from "@mantine/core"
+import { ActionIcon, Anchor, Button, CloseButton } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import {
 	IconChevronDown,
 	IconChevronUp,
 	IconHandClick,
+	IconScale,
 } from "@tabler/icons-react"
-import { Link } from "@tanstack/react-router"
+import { Link, useNavigate } from "@tanstack/react-router"
+
+import { compareSearchFor } from "@/features/compare/links"
 
 import { bodyById } from "@/data"
 import { useI18n } from "@/i18n"
@@ -35,6 +38,32 @@ export const cardBodyId = (
 
 /** Matches the phone layout of SolarSystem.module.css. */
 const PHONE_QUERY = "(max-width: 599px)"
+
+/**
+ * "Compare with…" (#24): the body beside its first partner at true relative
+ * size, measured at the moment on screen. Always shown, also while a phone
+ * folds the facts away, so the comparison is one tap from any focused body.
+ */
+const CompareButton = ({ bodyId }: { bodyId: string }) => {
+	const { t } = useI18n()
+	const navigate = useNavigate()
+	return (
+		<Button
+			variant="light"
+			color="orange"
+			size="compact-sm"
+			leftSection={<IconScale size={16} />}
+			onClick={() =>
+				void navigate({
+					to: "/compare",
+					search: compareSearchFor(bodyId, useSimStore.getState()),
+				})
+			}
+		>
+			{t("solarSystem.card.compare")}
+		</Button>
+	)
+}
 
 const ClickHint = () => {
 	const { t } = useI18n()
@@ -115,23 +144,26 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							</div>
 						))}
 					</dl>
-					{entry !== null && (
-						<Anchor
-							className={classes.more}
-							size="sm"
-							renderRoot={(props) => (
-								<Link
-									{...props}
-									to="/solar_dictionary"
-									search={{ entity: entry === 0 ? undefined : entry }}
-								/>
-							)}
-						>
-							{t("solarSystem.card.dictionary")} →
-						</Anchor>
-					)}
 				</>
 			)}
+			<div className={classes.actions}>
+				<CompareButton bodyId={body.id} />
+				{open && entry !== null && (
+					<Anchor
+						className={classes.more}
+						size="sm"
+						renderRoot={(props) => (
+							<Link
+								{...props}
+								to="/solar_dictionary"
+								search={{ entity: entry === 0 ? undefined : entry }}
+							/>
+						)}
+					>
+						{t("solarSystem.card.dictionary")} →
+					</Anchor>
+				)}
+			</div>
 		</section>
 	)
 }

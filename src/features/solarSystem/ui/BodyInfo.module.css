@@ -81,9 +81,17 @@
 	font-variant-numeric: tabular-nums;
 }
 
+/* the card's actions: "Compare with…" (#24), the dictionary link */
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.25rem 1rem;
+	margin-top: 0.5rem;
+}
+
 .more {
 	display: inline-block;
-	margin-top: 0.5rem;
 }
 
 .hint {
