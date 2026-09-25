@@ -41,6 +41,7 @@ const LeftSection: FC<LeftSectionProps> = () => {
 					<Button to="/solar_system" label={t("hero.solarSystem")} />
 					<TourButton label={t("hero.tour")} />
 					<BirthdayButton label={t("hero.birthday")} />
+					<HuntButton label={t("hero.hunt")} />
 					<Button to="/solar_walk" label={t("hero.solarWalk")} />
 				</Flex>
 			</Box>
@@ -99,6 +100,29 @@ const BirthdayButton: FC<{ label: string }> = ({ label }) => {
 					{...props}
 					to="/solar_system"
 					search={{ birthday: true }}
+					preload="viewport"
+				/>
+			)}
+			variant="outline"
+			color="orange"
+			size="xl"
+			px="md"
+			className={classes.button}
+		>
+			{label}
+		</MantineButton>
+	)
+}
+
+/** Straight to the scavenger hunt's chooser (#34): a teacher picks a hunt for the class. */
+const HuntButton: FC<{ label: string }> = ({ label }) => {
+	return (
+		<MantineButton
+			renderRoot={(props) => (
+				<Link
+					{...props}
+					to="/solar_system"
+					search={{ hunt: true }}
 					preload="viewport"
 				/>
 			)}
