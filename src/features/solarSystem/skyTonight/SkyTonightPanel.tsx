@@ -58,9 +58,6 @@ import classes from "./SkyTonight.module.css"
 
 const DISC_RADIUS = 24
 
-/** Where the panel is a sheet over most of the scene (SkyTonight.module.css). */
-const PHONE_QUERY = "(max-width: 599px)"
-
 const AID_ICON: Record<Aid, typeof IconEye> = {
 	eyes: IconEye,
 	binoculars: IconBinoculars,
@@ -132,10 +129,9 @@ const Why = ({ sighting, sky }: { sighting: Sighting; sky: SkyTonight }) => {
 							})}
 							onClick={() => {
 								showWhy(sighting.id, sighting.first.ms)
-								// on a phone the panel covers the scene: step aside
-								if (window.matchMedia(PHONE_QUERY).matches) {
-									useSkyTonightStore.getState().setOpen(false)
-								}
+								// the panel covers the side of the sky the planet is on: step aside
+								// (the place is kept, the button in the time controls brings it back)
+								useSkyTonightStore.getState().setOpen(false)
 							}}
 							style={{ alignSelf: "flex-start" }}
 						>
@@ -284,7 +280,10 @@ const Tonight = ({
 				? t("solarSystem.sky.night.tonightNear", { city: nearName })
 				: t("solarSystem.sky.night.tonightHere")
 	const planets = sky.sightings.filter((s) => s.id !== "moon")
-	const visible = planets.filter((s) => s.visible)
+	// in the order they can be seen: the evening's first
+	const visible = planets
+		.filter((s) => s.visible)
+		.sort((a, b) => a.from - b.from)
 	const hidden = planets.filter((s) => !s.visible)
 	const otherZone = place.timeZone !== deviceTimeZone()
 

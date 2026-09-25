@@ -601,7 +601,7 @@
 			"first": "{at, select, dusk {Wenn es dunkel wird} other {Um {time}}}: {where}.",
 			"best": "Am höchsten um etwa {time}: {where}.",
 			"fists": "Etwa {fists, plural, one {eine Faust} other {# Fäuste}} über dem Horizont, wenn du die Faust mit ausgestrecktem Arm hältst.",
-			"fists@simple": "Das sind {fists, plural, one {eine Faust} other {# Fäuste}} über dem Boden: Streck den Arm aus und zähle Fäuste.",
+			"fists@simple": "Das {fists, plural, one {ist eine Faust} other {sind # Fäuste}} über dem Boden: Streck den Arm aus und zähle Fäuste.",
 			"fists@advanced": "Höhe {altitude, number}°, Azimut {azimuth, number}° (eine Faust mit ausgestrecktem Arm ist etwa 10°).",
 			"magnitude": "Helligkeit {magnitude} mag",
 			"look": {
