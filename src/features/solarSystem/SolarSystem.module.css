@@ -347,7 +347,7 @@
 		grid-template-areas:
 			"picker centre toggles"
 			". . toggles"
-			"info . ."
+			"info . toggles"
 			"time time time";
 	}
 }
