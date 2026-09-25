@@ -217,8 +217,8 @@
 			],
 			"found": {
 				"simple": "Our Moon! Deep craters near its poles are always in shadow, so they are even colder than Pluto. There may be ice hidden inside them.",
-				"standard": "Our Moon. Near its poles, deep craters are always in shadow. NASA's Lunar Reconnaissance Orbiter measured below −240 °C there – colder than Pluto's surface. Water ice hides in them.",
-				"advanced": "The Moon. Its axis is tilted only 1.5°, so some crater floors near the poles never see the Sun. NASA's Lunar Reconnaissance Orbiter measured about 26 K there, and the craters trap water ice – a resource for future bases."
+				"standard": "Our Moon. Near its poles, deep craters are always in shadow. NASA's Lunar Reconnaissance Orbiter measured below −240 °C there – colder than Pluto's surface. Water ice hides in them. Neptune's moon Triton comes close, at about −235 °C.",
+				"advanced": "The Moon. Its axis is tilted only 1.5°, so some crater floors near the poles never see the Sun. NASA's Lunar Reconnaissance Orbiter measured about 26 K there, and the craters trap water ice – a resource for future bases. The coldest surface Voyager 2 measured, on Neptune's moon Triton, was about 38 K."
 			}
 		},
 		"onItsSide": {

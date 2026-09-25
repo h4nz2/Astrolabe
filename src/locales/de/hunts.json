@@ -217,8 +217,8 @@
 			],
 			"found": {
 				"simple": "Unser Mond! Tiefe Krater an seinen Polen liegen immer im Schatten, darum sind sie sogar kälter als Pluto. Vielleicht ist darin Eis versteckt.",
-				"standard": "Unser Mond. Nahe seinen Polen liegen tiefe Krater immer im Schatten. Der Lunar Reconnaissance Orbiter der NASA hat dort unter −240 °C gemessen – kälter als die Oberfläche des Pluto. In ihnen steckt Wassereis.",
-				"advanced": "Der Mond. Seine Achse ist nur um 1,5° geneigt, darum sehen manche Kraterböden nahe den Polen nie die Sonne. Der Lunar Reconnaissance Orbiter der NASA hat dort etwa 26 K gemessen, und die Krater speichern Wassereis – ein Vorrat für künftige Stationen."
+				"standard": "Unser Mond. Nahe seinen Polen liegen tiefe Krater immer im Schatten. Der Lunar Reconnaissance Orbiter der NASA hat dort unter −240 °C gemessen – kälter als die Oberfläche des Pluto. In ihnen steckt Wassereis. Nur wenig wärmer ist Triton, der Mond des Neptun, mit etwa −235 °C.",
+				"advanced": "Der Mond. Seine Achse ist nur um 1,5° geneigt, darum sehen manche Kraterböden nahe den Polen nie die Sonne. Der Lunar Reconnaissance Orbiter der NASA hat dort etwa 26 K gemessen, und die Krater speichern Wassereis – ein Vorrat für künftige Stationen. Die kälteste Oberfläche, die Voyager 2 gemessen hat, auf dem Neptunmond Triton, hatte etwa 38 K."
 			}
 		},
 		"onItsSide": {
