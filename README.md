@@ -72,3 +72,5 @@ Set `VITE_BASE=/sub/path/` when the site is served from a sub path.
 ## Licensing
 
 The code in this project is licensed under the MIT [license](LICENSE).
+
+The space recordings in `public/assets/sounds/` are © The University of Iowa, from NASA missions, used under Creative Commons Attribution licences; see [`public/assets/sounds/CREDITS.md`](public/assets/sounds/CREDITS.md).

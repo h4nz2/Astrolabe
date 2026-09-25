@@ -64,6 +64,7 @@ const SHORTCUTS: readonly {
 		rows: [
 			{ keys: ["S"], text: "solarSystem.present.help.scale" },
 			{ keys: ["L"], text: "solarSystem.present.help.labels" },
+			{ keys: ["X"], text: "solarSystem.present.help.stopLight" },
 		],
 	},
 	{
@@ -73,6 +74,7 @@ const SHORTCUTS: readonly {
 			{ keys: ["F"], text: "solarSystem.present.help.fullscreen" },
 			{ keys: ["P"], text: "solarSystem.present.help.projector" },
 			{ keys: ["C"], text: "solarSystem.present.help.contrast" },
+			{ keys: ["M"], text: "solarSystem.sound.shortcut" },
 			{ keys: ["?"], text: "solarSystem.present.help.help" },
 		],
 	},

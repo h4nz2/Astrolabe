@@ -34,11 +34,12 @@ src/locales/                 translation resources: config.json, <locale>/ui.jso
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter),
                              tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, presentation.ts, postcard.ts, tour.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, tours/, ui/),
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, presentation.ts, postcard.ts, sound.ts, tour.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, tours/, ui/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
+public/assets/sounds/        the real space recordings (#32) and their CREDITS.md (sources, licences)
 ```
 
 ## Conventions
@@ -608,15 +609,15 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers (featured moons, the long tail
   only with `showAllMoons`; see Moons); hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
-  `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
+  `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` and `SoundControl` (#32) (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel), `FlightReadout`
   (#18, above the time controls), `TeacherBar` (#29: Present, Share, the postcard's camera (#33) and the language menu heading the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
-  ArrowLeft/Right cycle siblings; the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
+  ArrowLeft/Right cycle siblings, M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
-  `HighlightTracker`, `SceneCapture` (#33), later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
+  `HighlightTracker`, `SceneCapture` (#33), `SoundProbe` (#32), later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
 
 ## Picking: click a body to focus on it (`scene/picking.ts`, `scene/BodyPicking.tsx`; #16)
 
@@ -910,6 +911,60 @@ Every light time comes from TRUE positions; only the drawn front goes through th
   scene selection; one way, round trip, live distance, range, what it means for a rover), Farther out (Proxima
   Centauri, the galactic centre, Andromeda). Durations: `formatDuration` in `light/lightTravel.ts` (ICU units under
   `solarSystem.light.duration.*`, abbreviated at standard/advanced, spelled out at simple).
+- Turning it off (#38): `flashState(seconds, pastPlanetsSeconds(pulse))` (`lightTravel.ts`) gives the flash's phase
+  from the clock alone: travelling, then "leaving" once it has passed every planet (label "Beyond the planets · …"),
+  lingering for `FLASH_LINGER` and fading over `FLASH_FADE` (fractions of the time to pass the planets), then
+  ended. The pulse stays in the store, so running time backwards brings it back. While the flash is on screen it can
+  be stopped (`clear()`) from the closed light button (an x beside the clock), from the x on the front's label, from
+  a button under every tab of the open panel, and with the presenter key X (#29).
+
+## Sound (`features/solarSystem/sound`, `src/store/sound.ts`; #32)
+
+Sound is optional decoration and never carries information: everything it marks is also on screen. The classroom
+rule decides the defaults: **off until asked, never a surprise**.
+
+- **Store** (`useSoundStore`): `enabled` (the one master switch; false is total silence), `volume` (0..1, default
+  0.5), `ambient`, `cues` (layer switches, default on), `playing` (a recording id). `enabled` starts false on every
+  fresh visit and is kept in **sessionStorage** only: a reload mid-lesson keeps it, a new tab or tomorrow's lesson
+  starts silent. Volume and layers are preferences in localStorage (`astrolabe.sound`) and never switch sound on.
+  `mute()` silences everything at once, recordings included (the speaker button, the M key; #29 can call it).
+  `setPlaying(id)` turns sound on in the same update: pressing Listen is asking for sound.
+- **Engine** (`sound/engine.ts`): one AudioContext, created and resumed only by `unlockAudio()`, which the UI calls
+  inside its own click/key handlers (browser autoplay rules). Buses `ambient`, `cues`, `recordings` → `master`
+  (volume, `volumeGain` = 0.6 v², faded with `setTargetAtTime`, never stepped) → a limiter → speakers. While sound
+  is off or the tab is hidden the context is suspended (no audio thread work). `getEngine()` is null until unlocked,
+  so every cue before that is a silent no-op. `window.__astrolabeSound.contextState()` is for e2e tests.
+- **Director** (`sound/SoundDirector.tsx`, rendered once on the page, renders nothing): applies the store to the
+  engine (fades, ambient on/off with a 3 s linger, ducking the bed under a recording), binds M (sound on/mute,
+  ignored in fields and with modifiers), and, after a reload with sound on, waits for the first pointerdown/keydown
+  before resuming. `toggleSound()` is the one on/off action for buttons and keys.
+- **Ambient bed** (`sound/synth.ts` `AmbientBed`, `mix.ts` `ambientMix(au)`): a low A-major drone under a low-pass
+  plus a deep rumble (warm) crossfaded with a band of drifting air and two faint beating tones (cold), by the
+  camera's distance from the Sun on a log scale: all warm inside Mercury's orbit (0.39 AU), all cold at Neptune
+  (30 AU), then thinning to half level by 1000 AU. `sound/SoundProbe.tsx` (in the Canvas, every 250 ms and only
+  while the bed plays) turns the camera's drawn distance from the drawn Sun into the true distance it stands for
+  (`equivalentTrueKm`, log-interpolated between the planets' drawn and true distances), so the bed means the same
+  place in every scale preset.
+- **Cues** (`sound/events.ts` decides when, `synth.ts` how; all synthesized, no files): `watchSoundEvents(cues)`
+  subscribes to the existing stores, so no feature calls audio code. A flight (#18, `useFlightStore`) whooshes
+  (band-passed noise shaped by the flight's own `travelStart`/`travelEnd`, `whooshShape`, panned across the
+  crossing) and stops on a skip, retarget or Escape; flights under 0.8 s (reduced motion) are silent. A settled
+  move onto a body (`transition` → null, `view.kind === "body"`) rings the body's note (`bodyNoteHz`: a pentatonic
+  scale falling from Mercury to Neptune, the Sun lowest, moons an octave above their planet). Pause/play (#14)
+  tick; a time glide (#14, #26) sweeps up into the future or down into the past; a hunt clue solved and a hunt
+  finished (#34) ring; light from a flash reaching a body (#27, `pulseArrivals`) rings that body, at most 2 per
+  frame. Deliberately silent: hover, a wrong guess in the hunt, a selection that does not move the camera.
+- **Recordings** (`sound/recordings.ts`, files in `public/assets/sounds/`, credits and licences in
+  `public/assets/sounds/CREDITS.md`): real spacecraft measurements from the University of Iowa (space-audio.org,
+  CC BY 4.0; Saturn's page CC BY 3.0) for the Sun (Cassini, type III radio bursts), Earth (Injun 3, chorus),
+  Jupiter (Voyager 1, lightning whistlers) and Saturn (Cassini, kilometric radiation). 60–120 kB mono MP3s,
+  loudness-matched, fetched only on Listen (`player.ts` `playRecording`, an `<audio>` element routed into the
+  recordings bus). Words in `solarSystem.sound.recording.<id>.{title, what}` at every level; each `what` starts
+  by saying it is not sound, and the settings popover adds why space is silent (`solarSystem.sound.honest`).
+- **UI**: `SoundControl` (beside the language button: a speaker that toggles, `aria-pressed`, crossed out and grey
+  while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings);
+  `BodyRecording` in the body card under the facts (Listen/Stop, the explanation and the credit with the licence
+  linked to its source, always visible so nothing depends on hearing it).
 
 ## Guided tours (`src/data/tours`, `src/store/tour.ts`, `features/solarSystem/tours/`; #28)
 
