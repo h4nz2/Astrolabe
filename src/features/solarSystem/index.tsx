@@ -14,6 +14,7 @@ import IntroController from "./intro/IntroController"
 import IntroMenu from "./intro/IntroMenu"
 import IntroOverlay from "./intro/IntroOverlay"
 import IntroPulse from "./intro/IntroPulse"
+import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
 import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
@@ -99,6 +100,7 @@ const SolarSystem = () => {
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
 						<TeacherBar layers={<SceneToggles />}>
+							<PostcardButton />
 							<LanguageMenu />
 						</TeacherBar>
 						<InlineLayers>
@@ -123,6 +125,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<PostcardSlot />
 			<PresentationLayer />
 		</div>
 	)
