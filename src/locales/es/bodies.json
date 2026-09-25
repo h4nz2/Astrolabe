@@ -1,0 +1,1212 @@
+{
+	"sun": {
+		"name": "Sol",
+		"tagline": "Nuestra estrella",
+		"description": {
+			"simple": "El Sol es una estrella, igual que las estrellas que ves por la noche. Solo parece tan grande y brillante porque está muy cerca de nosotros. El Sol es una bola gigante de gas caliente que brilla. Nos da luz y calor, y sin él no habría vida en la Tierra.",
+			"standard": "El Sol es la estrella que está en el centro de nuestro sistema solar. Es una enorme bola de gas caliente, sobre todo hidrógeno y helio, y reúne más del 99,8 % de toda la masa del sistema solar. En lo más profundo de su núcleo, el hidrógeno se fusiona para formar helio y libera la energía que nos llega como luz y calor unos 8 minutos después. Su gravedad mantiene a todos los planetas en sus órbitas.",
+			"advanced": "El Sol es una estrella de la secuencia principal de tipo G (G2V), de unos 4600 millones de años de edad y aproximadamente a mitad de su vida de combustión de hidrógeno. En su núcleo, a unos 15 millones de °C, la fusión nuclear convierte cada segundo unos 600 millones de toneladas de hidrógeno en helio, transformando unos 4 millones de toneladas de masa en energía. Esa energía tarda muchos miles de años en abrirse paso hacia fuera a través de las zonas radiativa y convectiva, y luego recorre los 150 millones de km hasta la Tierra en unos 8 minutos y 20 segundos. El Sol gira de forma diferencial: unos 25 días en el ecuador, pero alrededor de 35 días cerca de los polos."
+		},
+		"facts": {
+			"simple": [
+				"Dentro del Sol cabrían aproximadamente 1,3 millones de Tierras.",
+				"La luz del Sol tarda unos 8 minutos en llegar hasta nosotros.",
+				"Nunca mires directamente al Sol: puede dañarte los ojos."
+			],
+			"standard": [
+				"El Sol es unas 109 veces más ancho que la Tierra.",
+				"Su superficie visible está a unos 5500 °C; su núcleo alcanza unos 15 millones de °C.",
+				"La luz del Sol llega a la Tierra en unos 8 minutos y 20 segundos.",
+				"El Sol reúne el 99,86 % de la masa de todo el sistema solar."
+			],
+			"advanced": [
+				"Masa: unas 333 000 masas terrestres (1,989 × 10³⁰ kg).",
+				"La gravedad en su superficie es unas 28 veces la de la Tierra (274 m/s²).",
+				"Composición en masa: aproximadamente 73 % de hidrógeno, 25 % de helio y 2 % de elementos más pesados.",
+				"El Sol tarda unos 230 millones de años en dar una vuelta alrededor del centro de la Vía Láctea."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, el Sol sería tan alto como un edificio de ocho pisos."
+			],
+			"standard": [
+				"Si el Sol fuera una pelota de playa de 1 m de diámetro, la Tierra sería un guisante de 9 mm a unos 107 m de distancia."
+			],
+			"advanced": [
+				"El Sol es a la Tierra lo que un balón de baloncesto (24 cm) a un granito de 2,2 mm situado a 26 m de distancia."
+			]
+		}
+	},
+	"mercury": {
+		"name": "Mercurio",
+		"tagline": "El planeta más pequeño y más rápido",
+		"description": {
+			"simple": "Mercurio es el planeta más pequeño y el más cercano al Sol. Es una bola de roca gris llena de cráteres, un poco como nuestra Luna. Da vueltas alrededor del Sol más rápido que ningún otro planeta. De día hace tanto calor que se derretiría el plomo, pero de noche hace un frío helador.",
+			"standard": "Mercurio es el planeta más pequeño y el más cercano al Sol, al que rodea una vez cada 88 días. Casi no tiene atmósfera que retenga el calor, así que su superficie pasa de unos 430 °C a la luz del día a unos −180 °C por la noche. Su superficie gris y llena de cráteres se parece mucho a la de nuestra Luna. Mercurio no tiene lunas.",
+			"advanced": "Mercurio orbita el Sol a una distancia media de 0,39 UA, en la órbita planetaria más excéntrica (e = 0,21). Gira exactamente tres veces sobre sí mismo por cada dos órbitas —una resonancia espín-órbita 3:2—, de modo que allí un día solar dura 176 días terrestres, dos años completos de Mercurio. Un núcleo de hierro que se extiende hasta cerca del 85 % de su radio le da a Mercurio la segunda densidad más alta de todos los planetas y un débil campo magnético global. Su tenue exosfera no puede retener el calor, y el fondo de los cráteres polares, en sombra permanente, esconde hielo de agua."
+		},
+		"facts": {
+			"simple": [
+				"Un año en Mercurio dura solo 88 días.",
+				"Mercurio no tiene lunas.",
+				"Es solo un poco más grande que nuestra Luna."
+			],
+			"standard": [
+				"Mercurio es el planeta más rápido: orbita el Sol a unos 47 km por segundo.",
+				"De un amanecer al siguiente pasan 176 días terrestres.",
+				"Mide aproximadamente el 38 % del ancho de la Tierra.",
+				"Aunque es el más cercano al Sol, Mercurio no es el planeta más caliente: lo es Venus."
+			],
+			"advanced": [
+				"Su distancia al Sol varía entre 46 y 70 millones de km (excentricidad 0,21).",
+				"El lento giro de la órbita de Mercurio (la precesión del perihelio) fue una de las primeras confirmaciones de la relatividad general de Einstein.",
+				"Densidad media de 5,43 g/cm³, solo superada por la de la Tierra."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Mercurio sería más o menos del tamaño de una naranja."
+			],
+			"standard": ["Dentro de la Tierra cabrían unos 18 Mercurios."],
+			"advanced": [
+				"En el perihelio, el Sol en el cielo de Mercurio parece más de tres veces más ancho que visto desde la Tierra."
+			]
+		}
+	},
+	"venus": {
+		"name": "Venus",
+		"tagline": "El planeta más caliente",
+		"description": {
+			"simple": "Venus tiene casi el mismo tamaño que la Tierra, pero es un lugar horrible para visitar. Unas nubes espesas y venenosas lo envuelven y atrapan el calor del Sol. Por eso Venus es el planeta más caliente de todos, incluso más que Mercurio. A menudo puedes verlo brillar mucho en el cielo al anochecer o al amanecer.",
+			"standard": "Venus es casi gemelo de la Tierra en tamaño, pero su espesa atmósfera de dióxido de carbono provoca un efecto invernadero desbocado. La superficie está a unos 465 °C —más caliente que Mercurio, aunque Venus está casi al doble de distancia del Sol— y la presión del aire es unas 90 veces la de la Tierra. Nubes de ácido sulfúrico ocultan la superficie. Después de la Luna, Venus es el objeto natural más brillante del cielo nocturno.",
+			"advanced": "Venus tiene el 95 % del diámetro de la Tierra y el 82 % de su masa, pero evolucionó de forma muy distinta. Una densa atmósfera de CO₂, con una presión en superficie de unos 92 bar, provoca un efecto invernadero desbocado que mantiene la superficie cerca de 465 °C, de día y de noche, desde los polos hasta el ecuador. Venus gira en sentido retrógrado y muy despacio: una rotación sideral dura 243 días terrestres, más que su año de 225 días, así que un día solar dura unos 117 días terrestres. Los mapas de radar de la sonda Magellan revelaron una superficie volcánica de solo unos pocos cientos de millones de años."
+		},
+		"facts": {
+			"simple": [
+				"Venus gira al revés que la mayoría de los planetas, así que allí el Sol sale por el oeste.",
+				"¡Un día en Venus dura más que su año!",
+				"Venus no tiene lunas."
+			],
+			"standard": [
+				"Su superficie está a unos 465 °C, lo bastante caliente para derretir el plomo.",
+				"La presión del aire en el suelo es como estar a 900 m de profundidad en el océano.",
+				"Venus es el planeta que más se acerca a la Tierra: hasta unos 38 millones de km."
+			],
+			"advanced": [
+				"Sus nubes reflejan cerca de tres cuartas partes de la luz solar que les llega (albedo de Bond 0,76).",
+				"La atmósfera superior da la vuelta al planeta en unos 4 días, unas 60 veces más rápido de lo que gira la superficie (superrotación).",
+				"Una rotación sideral dura 243 días terrestres, en sentido retrógrado."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Venus también sería un balón de fútbol, solo un poquito más pequeño."
+			],
+			"standard": [
+				"Si la Tierra fuera un balón de fútbol de 22 cm, Venus mediría 21 cm de diámetro."
+			],
+			"advanced": [
+				"La atmósfera de Venus tiene unas 93 veces la masa de la atmósfera terrestre."
+			]
+		}
+	},
+	"earth": {
+		"name": "Tierra",
+		"tagline": "Nuestro hogar",
+		"description": {
+			"simple": "La Tierra es nuestro hogar y el único planeta donde sabemos que hay vida. Casi toda está cubierta de océanos, y por eso se ve azul desde el espacio. La Tierra gira sobre sí misma una vez al día, y así tenemos el día y la noche. Tarda un año en dar una vuelta completa alrededor del Sol.",
+			"standard": "La Tierra es el tercer planeta desde el Sol y el único mundo donde se conoce la vida. El agua líquida cubre cerca del 71 % de su superficie, y una atmósfera de nitrógeno y oxígeno nos protege y mantiene una temperatura suave. El eje de la Tierra está inclinado unos 23,4°, y eso nos da las estaciones. Orbita el Sol a una distancia media de unos 150 millones de km, una vez cada 365,25 días.",
+			"advanced": "La Tierra es el mayor y el más denso de los cuatro planetas rocosos (5,51 g/cm³). Su núcleo externo de hierro líquido genera un campo magnético que desvía el viento solar, y la tectónica de placas recicla continuamente su corteza. La inclinación de 23,4° de su eje, estabilizada por nuestra Luna, inusualmente grande, produce las estaciones. La Tierra orbita a 1 UA (149,6 millones de km) con una excentricidad de 0,017, así que su distancia al Sol varía solo en torno a un 3 %, y la Tierra está más cerca del Sol a principios de enero."
+		},
+		"facts": {
+			"simple": [
+				"De cada 100 partes de la superficie de la Tierra, unas 71 son agua.",
+				"La Tierra tiene una luna, y la llamamos simplemente la Luna.",
+				"La Tierra es el único planeta que no lleva el nombre de un dios."
+			],
+			"standard": [
+				"La Tierra viaja alrededor del Sol a unos 30 km por segundo, más de 100 000 km/h.",
+				"La inclinación del eje terrestre (23,4°), y no la distancia al Sol, es la causa de las estaciones.",
+				"La Tierra es el planeta más denso del sistema solar."
+			],
+			"advanced": [
+				"La Tierra da una vuelta respecto a las estrellas en 23 h 56 min (un día sideral); el día solar de 24 horas es unos 4 minutos más largo.",
+				"La atmósfera está compuesta en volumen por un 78 % de nitrógeno y un 21 % de oxígeno, aproximadamente.",
+				"La Tierra tiene unos 4540 millones de años."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Dar la vuelta al ecuador en coche a 100 km/h sin parar ni una vez llevaría unos 17 días."
+			],
+			"standard": [
+				"Un avión que volara a 900 km/h tardaría unos 19 años en llegar al Sol."
+			],
+			"advanced": [
+				"La órbita de la Tierra es tan casi circular que, dibujada a escala en un papel, no podrías distinguirla de un círculo."
+			]
+		}
+	},
+	"mars": {
+		"name": "Marte",
+		"tagline": "El planeta rojo",
+		"description": {
+			"simple": "A Marte lo llaman el planeta rojo porque su suelo está cubierto de un polvo rojo como el óxido. Es más pequeño y mucho más frío que la Tierra. Marte tiene el volcán más alto que conocemos y dos lunas diminutas. Unos robots llamados róveres recorren Marte y lo exploran por nosotros.",
+			"standard": "Marte es el cuarto planeta desde el Sol y mide aproximadamente la mitad de ancho que la Tierra. El óxido de hierro —la herrumbre— de su polvo le da su color rojo. Marte tiene estaciones y casquetes polares de hielo, pero su atmósfera es muy fina y la temperatura media ronda los −60 °C. Tiene el volcán más grande del sistema solar, el Olympus Mons, y un cañón, Valles Marineris, de unos 4000 km de largo, más o menos la distancia de Lisboa a Moscú.",
+			"advanced": "Marte tiene cerca del 53 % del diámetro de la Tierra y el 38 % de su gravedad superficial. Su tenue atmósfera de CO₂, con una presión en superficie inferior al 1 % de la terrestre, no puede mantener caliente el planeta, y la temperatura media ronda los −60 °C. Valles fluviales secos, antiguos lechos de lagos y minerales que solo se forman en el agua demuestran que en el pasado corrió agua líquida por su superficie. Con una inclinación axial de 25,2° y un día de 24 h 37 min, Marte tiene días y estaciones muy parecidos a los de la Tierra, pero cada estación dura aproximadamente el doble, porque un año marciano dura 687 días terrestres."
+		},
+		"facts": {
+			"simple": [
+				"Un día en Marte dura solo unos 40 minutos más que un día en la Tierra.",
+				"Marte tiene dos lunas pequeñas, Fobos y Deimos.",
+				"En Marte pesarías menos de la mitad que en la Tierra."
+			],
+			"standard": [
+				"El Olympus Mons mide unos 22 km de altura: dos veces y media la altura del monte Everest.",
+				"Un año en Marte dura 687 días terrestres.",
+				"Las tormentas de polvo de Marte pueden crecer hasta cubrir todo el planeta."
+			],
+			"advanced": [
+				"La presión en superficie es solo un 0,6 % de la terrestre, así que el agua líquida hierve o se congela enseguida.",
+				"Su distancia al Sol varía entre unos 207 y 249 millones de km (excentricidad 0,093).",
+				"Fobos se acerca lentamente en espiral y se desintegrará o chocará contra Marte dentro de unos 30 a 50 millones de años."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Marte sería más o menos del tamaño de un pomelo."
+			],
+			"standard": ["Dentro de la Tierra cabrían más de seis Martes."],
+			"advanced": [
+				"Visto desde Marte, el Sol parece solo unos dos tercios de ancho de lo que parece desde la Tierra."
+			]
+		}
+	},
+	"jupiter": {
+		"name": "Júpiter",
+		"tagline": "El gigante del sistema solar",
+		"description": {
+			"simple": "Júpiter es el planeta más grande: dentro de él cabrían más de 1300 Tierras. Es una bola gigante de gas sin suelo firme donde ponerse de pie. Sus rayas son bandas de nubes, y su Gran Mancha Roja es una tormenta más grande que toda la Tierra. Júpiter tiene muchísimas lunas.",
+			"standard": "Júpiter es el planeta más grande: es 11 veces más ancho que la Tierra y tiene más masa que todos los demás planetas juntos. Este gigante gaseoso está formado sobre todo por hidrógeno y helio, y sus coloridas bandas de nubes se estiran por los fuertes vientos y por su rápido giro: un día en Júpiter dura menos de 10 horas. La Gran Mancha Roja es una tormenta más ancha que la Tierra que lleva más de 150 años activa. Sus cuatro lunas más grandes las descubrió Galileo Galilei en 1610.",
+			"advanced": "Júpiter tiene 318 masas terrestres, unas 2,5 veces la masa de todos los demás planetas juntos. Bajo sus nubes altas de hielo de amoníaco, el hidrógeno y el helio se comprimen hasta que, en las profundidades, el hidrógeno se comporta como un metal líquido; las corrientes en esta capa generan el campo magnético planetario más intenso del sistema solar. Júpiter gira en unas 9 h 56 min, más rápido que cualquier otro planeta, lo que lo achata visiblemente por los polos. Emite más calor del que recibe del Sol, un calor residual de su formación y de su lenta contracción."
+		},
+		"facts": {
+			"simple": [
+				"Un día en Júpiter dura menos de 10 horas: es el día más corto de todos los planetas.",
+				"Júpiter tiene anillos finos y oscuros que cuesta mucho ver.",
+				"Su luna Ganímedes es más grande que el planeta Mercurio."
+			],
+			"standard": [
+				"Un año en Júpiter dura casi 12 años terrestres.",
+				"Júpiter está, de media, unas 5,2 veces más lejos del Sol que la Tierra.",
+				"Se conocen más de 90 lunas que orbitan Júpiter."
+			],
+			"advanced": [
+				"Su luna Ío es el cuerpo con más actividad volcánica del sistema solar, calentado por la deformación de marea.",
+				"Se cree que su luna Europa esconde un océano global de agua líquida bajo su corteza de hielo.",
+				"La gravedad de Júpiter moldea el cinturón de asteroides y abre huecos en él (los huecos de Kirkwood)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Júpiter sería una pelota de unos 2,5 m de alto, más alta que una persona adulta."
+			],
+			"standard": ["Dentro de Júpiter cabrían unas 1321 Tierras."],
+			"advanced": [
+				"El diámetro de Júpiter es aproximadamente una décima parte del del Sol, y su masa, una milésima parte."
+			]
+		}
+	},
+	"saturn": {
+		"name": "Saturno",
+		"tagline": "El planeta de los anillos",
+		"description": {
+			"simple": "Saturno es famoso por sus preciosos anillos. Están hechos de miles de millones de trozos de hielo y roca: algunos son tan pequeños como granos de arena y otros tan grandes como una casa. Saturno es una bola gigante de gas, y es tan ligero para su tamaño que flotaría en el agua… ¡si encontraras una bañera lo bastante grande!",
+			"standard": "Saturno, el sexto planeta, es el segundo más grande y el menos denso: de media es más ligero que el agua. Sus brillantes anillos miden unos 270 000 km de ancho, pero en general solo unos 10 m de grosor, y están formados por incontables trozos de hielo y roca. Saturno tiene más lunas conocidas que ningún otro planeta; entre ellas está Titán, que es más grande que Mercurio y tiene una atmósfera espesa.",
+			"advanced": "Saturno tiene 95 masas terrestres, pero una densidad media de solo 0,69 g/cm³, la más baja de todos los planetas. Su rápida rotación (unas 10 h 33 min) lo convierte en el planeta más achatado: su diámetro ecuatorial es aproximadamente un 10 % mayor que el polar. Los anillos principales, sobre todo de hielo de agua con un poco de roca, abarcan unos 270 000 km, pero en general tienen solo unos 10 m de grosor, y podrían ser mucho más jóvenes que el propio Saturno. La sonda Cassini, que orbitó Saturno de 2004 a 2017, descubrió un océano global bajo el hielo de la luna Encélado, que escapa por géiseres en su polo sur."
+		},
+		"facts": {
+			"simple": [
+				"Saturno tiene más lunas que ningún otro planeta que conozcamos.",
+				"Un año en Saturno dura casi 30 años terrestres.",
+				"Su luna más grande, Titán, tiene lagos, pero no de agua, sino de metano líquido."
+			],
+			"standard": [
+				"Saturno está unas 9,5 veces más lejos del Sol que la Tierra.",
+				"Los vientos en el ecuador de Saturno alcanzan unos 1800 km/h.",
+				"Un dibujo de nubes de seis lados, el hexágono, rodea el polo norte de Saturno."
+			],
+			"advanced": [
+				"Saturno emite más del doble de la energía que recibe del Sol.",
+				"Titán es la única luna con una atmósfera densa; la presión en su superficie es aproximadamente 1,5 veces la de la Tierra.",
+				"Los huecos de los anillos, como la división de Cassini, los moldea la gravedad de las lunas (resonancias orbitales)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Saturno sería una pelota de más de 2 m de alto, y sus anillos medirían unos 5 m de ancho."
+			],
+			"standard": ["Dentro de Saturno cabrían más de 750 Tierras."],
+			"advanced": [
+				"Los anillos principales de Saturno cubrirían unos dos tercios de la distancia entre la Tierra y la Luna."
+			]
+		}
+	},
+	"uranus": {
+		"name": "Urano",
+		"tagline": "El planeta que rueda de lado",
+		"description": {
+			"simple": "Urano es un planeta frío y de color azul verdoso, muy lejos del Sol. Es especial porque está tumbado de lado, así que rueda alrededor del Sol como una pelota. Urano tarda 84 años en dar una vuelta al Sol. Tiene anillos finos y oscuros y muchas lunas.",
+			"standard": "Urano es el séptimo planeta y es cuatro veces más ancho que la Tierra. Es un gigante helado: bajo una atmósfera de hidrógeno y helio hay una gruesa capa de hielos de agua, amoníaco y metano. El gas metano le da su color azul verdoso. Urano está inclinado unos 98°, así que avanza por su órbita rodando de lado, y cada polo tiene unos 42 años de luz seguidos de 42 años de oscuridad. Fue el primer planeta descubierto con un telescopio, por William Herschel en 1781.",
+			"advanced": "La inclinación axial de Urano, de unos 98°, hace que sus anillos y sus lunas regulares orbiten casi perpendiculares a su plano orbital, y que sus estaciones sean las más extremas del sistema solar. Gira en sentido retrógrado en 17 h 14 min. A diferencia de los otros planetas gigantes, Urano apenas desprende calor interno, y en su atmósfera se ha medido la temperatura más baja de todos los planetas, unos −224 °C. Su campo magnético está inclinado unos 59° respecto al eje de rotación y desplazado del centro del planeta. Hasta ahora solo una sonda, la Voyager 2 en 1986, ha pasado cerca de él."
+		},
+		"facts": {
+			"simple": [
+				"Urano tiene 13 anillos, pero son finos y oscuros.",
+				"Sus lunas llevan nombres de personajes de obras de teatro de William Shakespeare y de poemas de Alexander Pope.",
+				"Urano tiene el aire más frío de todos los planetas."
+			],
+			"standard": [
+				"Un año en Urano dura 84 años terrestres.",
+				"Urano está unas 19 veces más lejos del Sol que la Tierra.",
+				"La temperatura más baja medida en su atmósfera es de unos −224 °C."
+			],
+			"advanced": [
+				"Urano es el único planeta que lleva el nombre de un dios griego y no de uno romano.",
+				"Sus estrechos anillos están hechos de un material tan oscuro como el carbón vegetal.",
+				"Al principio, William Herschel creyó que Urano era un cometa."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Urano sería tan grande como una pelota de pilates grande."
+			],
+			"standard": ["Dentro de Urano cabrían unas 63 Tierras."],
+			"advanced": [
+				"La luz del Sol tarda unas 2 horas y 40 minutos en llegar a Urano."
+			]
+		}
+	},
+	"neptune": {
+		"name": "Neptuno",
+		"tagline": "El planeta más ventoso",
+		"description": {
+			"simple": "Neptuno es el planeta más alejado del Sol. Es un gigante helado de color azul intenso, muy frío y con muchísimo viento: sus vientos son los más rápidos del sistema solar. Neptuno está tan lejos que no se puede ver sin telescopio. Tarda 165 años en dar una vuelta al Sol.",
+			"standard": "Neptuno es el octavo planeta y el más lejano, unas 30 veces más lejos del Sol que la Tierra. Como Urano, es un gigante helado, y el metano de su atmósfera lo vuelve azul. Neptuno tiene los vientos más rápidos del sistema solar, de más de 2000 km/h. Fue el primer planeta descubierto gracias a las matemáticas: los astrónomos predijeron su posición a partir de cómo tiraba de Urano y lo encontraron en 1846.",
+			"advanced": "Neptuno orbita a unas 30 UA, donde la luz solar es aproximadamente 900 veces más débil que en la Tierra. Aun así, tiene una potente fuente de calor interno —emite unas 2,6 veces la energía que recibe del Sol—, que ayuda a impulsar los vientos más rápidos medidos en un planeta, de hasta unos 2100 km/h. Su posición la predijo en 1846 Urbain Le Verrier a partir de las perturbaciones en la órbita de Urano, y Johann Galle lo encontró a menos de 1° de lo previsto. Su luna más grande, Tritón, orbita hacia atrás (en sentido retrógrado) y probablemente es un objeto capturado del cinturón de Kuiper."
+		},
+		"facts": {
+			"simple": [
+				"Neptuno es el único planeta que nunca puedes ver sin telescopio.",
+				"Un año en Neptuno dura unos 165 años terrestres.",
+				"Su luna más grande, Tritón, gira a su alrededor al revés."
+			],
+			"standard": [
+				"Neptuno no completó su primera órbita entera desde su descubrimiento en 1846 hasta 2011.",
+				"La luz del Sol tarda unas 4 horas en llegar a Neptuno.",
+				"La Voyager 2 es la única sonda que ha visitado Neptuno, en 1989."
+			],
+			"advanced": [
+				"Tritón tiene géiseres que lanzan nitrógeno gaseoso a varios kilómetros de altura.",
+				"Neptuno es un poco más pequeño que Urano, pero tiene cerca de un 18 % más de masa, así que es más denso.",
+				"Su anillo más externo, el anillo Adams, contiene arcos brillantes llamados Liberté, Égalité y Fraternité."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Neptuno sería tan grande como una pelota de pilates grande, casi del mismo tamaño que Urano."
+			],
+			"standard": ["Dentro de Neptuno cabrían unas 58 Tierras."],
+			"advanced": [
+				"Si el Sol fuera una puerta de 2 m de alto, Neptuno sería una pelota de tenis a unos 6,5 km de distancia."
+			]
+		}
+	},
+	"moon": {
+		"name": "Luna",
+		"tagline": "La compañera de la Tierra",
+		"description": {
+			"simple": "La Luna es la vecina más cercana de la Tierra en el espacio. Es una bola de roca cubierta de polvo gris y cráteres. La Luna no brilla por sí misma: refleja la luz del Sol. Doce astronautas han caminado sobre la Luna.",
+			"standard": "La Luna es el único satélite natural de la Tierra; mide aproximadamente una cuarta parte del ancho de la Tierra y está, de media, a 384 400 km. Tarda unos 27,3 días en orbitar la Tierra, y como gira sobre sí misma exactamente una vez en ese tiempo, siempre nos muestra la misma cara. Su gravedad causa la mayor parte de las mareas de nuestros océanos. Entre 1969 y 1972, doce astronautas de las misiones Apolo caminaron por su superficie.",
+			"advanced": "Probablemente la Luna se formó hace unos 4500 millones de años a partir de los restos lanzados cuando un cuerpo del tamaño de Marte chocó contra la joven Tierra. Tiene acoplamiento de marea: su rotación y su órbita sideral de 27,3 días están sincronizadas, de modo que un hemisferio mira siempre hacia la Tierra, mientras que el ciclo de fases (el mes sinódico) dura unos 29,5 días. Esa misma interacción de marea transfiere poco a poco momento angular de la rotación de la Tierra a la órbita de la Luna, lo que alarga nuestro día y aleja la Luna unos 3,8 cm cada año."
+		},
+		"facts": {
+			"simple": [
+				"En la Luna pesarías solo alrededor de una sexta parte que en la Tierra.",
+				"Las huellas de los astronautas siguen allí, porque no hay viento que las borre.",
+				"La Luna tarda más o menos un mes en dar una vuelta a la Tierra."
+			],
+			"standard": [
+				"La luz de la Luna tarda solo unos 1,3 segundos en llegar a la Tierra.",
+				"La Luna es la quinta luna más grande del sistema solar.",
+				"La Luna se aleja de la Tierra unos 3,8 cm cada año."
+			],
+			"advanced": [
+				"La gravedad en su superficie es de 1,62 m/s², un 16,5 % de la terrestre.",
+				"La Luna estabiliza la inclinación del eje terrestre, lo que evita que nuestro clima cambie de forma descontrolada.",
+				"El ciclo de fases (29,5 días) es más largo que la órbita (27,3 días) porque mientras tanto la Tierra avanza por su propia órbita."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, la Luna sería una pelota de tenis a unos 6,5 m de distancia."
+			],
+			"standard": ["Dentro de la Tierra cabrían unas 50 Lunas."],
+			"advanced": [
+				"Cuando la Luna está en su punto más lejano, todos los demás planetas cabrían uno al lado del otro en el hueco entre la Tierra y la Luna."
+			]
+		}
+	},
+	"phobos": {
+		"name": "Fobos",
+		"tagline": "La luna condenada de Marte",
+		"description": {
+			"simple": "Fobos es la más grande de las dos lunas diminutas de Marte. Es una roca oscura y llena de bultos, con forma parecida a una patata. Fobos da vueltas a Marte tan deprisa que gira a su alrededor unas tres veces al día. Poco a poco va cayendo hacia Marte, y algún día se romperá en pedazos.",
+			"standard": "Fobos es una luna oscura con forma de patata de solo unos 22 km de ancho, que orbita a apenas 6000 km sobre la superficie de Marte. Da una vuelta a Marte en 7 horas y 39 minutos, más rápido de lo que gira el planeta. Por eso, visto desde Marte, sale por el oeste y se pone por el este, a menudo dos veces en un mismo día. La gravedad de Marte lo va acercando lentamente, unos 2 m cada cien años, y dentro de unos 30 a 50 millones de años Fobos probablemente se desintegrará en un anillo de escombros o se estrellará contra Marte.",
+			"advanced": "Fobos orbita con un semieje mayor de 9376 km, muy por dentro de la órbita síncrona de Marte (unos 20 400 km). Por eso, el abultamiento de marea que provoca en Marte se queda rezagado respecto a él y le resta energía orbital, de modo que Fobos se acerca en espiral unos 1,8 cm al año. En unos 30-50 millones de años debería cruzar el límite de Roche, donde las fuerzas de marea superan su débil autogravedad: un montón de escombros poco cohesionado se extendería formando un anillo, mientras que un cuerpo más sólido podría chocar antes contra Marte. Los largos surcos paralelos que cruzan su superficie podrían ser las primeras señales de esta tensión de marea, aunque algunos quizá sean rastros de restos lanzados por impactos."
+		},
+		"facts": {
+			"simple": [
+				"Fobos tiene un cráter gigante llamado Stickney que mide casi la mitad del ancho de toda la luna.",
+				"Visto desde Marte, Fobos sale por el oeste y se pone por el este, al revés que nuestro Sol y nuestra Luna.",
+				"En Fobos pesarías tan poco que un salto fuerte podría llevarte a cientos de metros de altura."
+			],
+			"standard": [
+				"El cráter Stickney mide unos 9 km de ancho: el impacto que lo formó pudo haber estado a punto de hacer añicos a Fobos.",
+				"El cráter lleva el nombre de Angeline Stickney, la esposa de Asaph Hall, que lo animó a seguir buscando lunas en Marte.",
+				"Asaph Hall descubrió Fobos en agosto de 1877, seis días después de haber encontrado Deimos."
+			],
+			"advanced": [
+				"Su periodo orbital de 7 h 39 min es solo un tercio de un sol marciano (24 h 37 min), así que adelanta a la rotación del planeta.",
+				"Fobos es muy oscuro (albedo geométrico de unos 0,07), y su baja densidad, de unos 1,86 g/cm³, apunta a un interior poroso, quizá un montón de escombros.",
+				"La gravedad en su superficie es de solo unos 0,0057 m/s², aproximadamente 1/1700 de la terrestre, y la velocidad de escape es de unos 11 m/s (40 km/h)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Un coche por la autopista podría ir de un extremo de Fobos al otro en un cuarto de hora, más o menos."
+			],
+			"standard": [
+				"Fobos se hunde hacia Marte más o menos la altura de una puerta cada cien años: es lento, pero basta para condenarlo en unas decenas de millones de años."
+			],
+			"advanced": [
+				"Fobos orbita a solo unos 6000 km sobre Marte, aproximadamente la distancia en avión de Madrid a Nueva York."
+			]
+		}
+	},
+	"deimos": {
+		"name": "Deimos",
+		"tagline": "Una luna que parece una estrella",
+		"description": {
+			"simple": "Deimos es la luna más pequeña de Marte: mide solo unos 12 km de ancho. Está cubierta de un polvo suave y fino que rellena sus cráteres, por eso parece lisa. Desde Marte, Deimos es tan pequeña y está tan lejos que parece una estrella brillante. Su nombre significa Terror, y el de su luna hermana, Fobos, significa Miedo.",
+			"standard": "Deimos es una luna diminuta y llena de bultos, de unos 12 km de ancho, que orbita Marte cada 30 horas a una distancia de unos 23 500 km. Una gruesa capa de polvo rellena muchos de sus cráteres, por eso parece mucho más lisa que Fobos. El astrónomo estadounidense Asaph Hall la descubrió en agosto de 1877, unos días antes que Fobos, y las dos lunas recibieron los nombres de Fobos y Deimos —el Miedo y el Terror—, que en la mitología griega acompañan a la batalla al dios de la guerra, Ares, al que los romanos llamaban Marte. Los científicos aún debaten si las dos lunas son asteroides capturados o si se formaron a partir de los restos lanzados por un impacto gigante en Marte.",
+			"advanced": "Deimos (unos 16 × 12 × 10 km) orbita a 23 463 km, justo por fuera de la órbita síncrona de Marte, así que las mareas la empujan muy lentamente hacia fuera en lugar de atraerla hacia dentro como a Fobos. Su periodo de 30,3 horas es solo un poco más largo que un sol marciano, de modo que se desplaza muy despacio por el cielo: sale por el este y permanece sobre el horizonte más de dos días. Ambas lunas son oscuras y su espectro se parece al de los asteroides primitivos ricos en carbono, lo que sugiere una captura, pero sus órbitas casi circulares y cercanas al plano ecuatorial de Marte encajan mejor con una formación a partir de un disco de escombros tras un gran impacto. La misión japonesa MMX debe traer a la Tierra una muestra de Fobos hacia 2031 y observar Deimos por el camino, lo que podría resolver la cuestión."
+		},
+		"facts": {
+			"simple": [
+				"Si saltaras en Deimos, pasarían muchos minutos antes de que volvieras a bajar.",
+				"Deimos la descubrió en 1877 un astrónomo llamado Asaph Hall.",
+				"Deimos tarda poco más de un día en dar una vuelta a Marte."
+			],
+			"standard": [
+				"En fase llena, Deimos brillaría en el cielo marciano más o menos como Venus en el nuestro.",
+				"Dos cráteres de Deimos se llaman Swift y Voltaire, por dos escritores que imaginaron dos lunas en Marte más de un siglo antes de que se descubrieran.",
+				"Deimos mide solo la mitad de ancho que Fobos y tiene más o menos una séptima parte de su masa."
+			],
+			"advanced": [
+				"La gravedad en su superficie es de solo unos 0,003 m/s², aproximadamente 1/3000 de la terrestre.",
+				"La órbita de Deimos es casi perfectamente circular (excentricidad de unos 0,0003) y está cerca del plano ecuatorial de Marte.",
+				"Asaph Hall encontró Deimos el 12 de agosto de 1877 con el refractor de 26 pulgadas del Observatorio Naval de los Estados Unidos en Washington, entonces el mayor telescopio refractor del mundo."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Dar una vuelta corriendo alrededor de Deimos sería más o menos como correr un maratón."
+			],
+			"standard": [
+				"Vista desde Marte, Deimos es apenas algo más que un punto de luz: a un astronauta le parecería una estrella brillante que cruza lentamente el cielo."
+			],
+			"advanced": [
+				"La velocidad de escape de Deimos es de solo unos 5,6 m/s (20 km/h): un ciclista que saltara desde una rampa a velocidad de ciudad podría abandonarla para siempre."
+			]
+		}
+	},
+	"io": {
+		"name": "Ío",
+		"tagline": "La luna de los volcanes",
+		"description": {
+			"simple": "Ío es el lugar con más volcanes que conocemos. Cientos de volcanes echan lava y lanzan fuentes de gas y polvo muy alto hacia el cielo. Sus colores amarillos, naranjas y rojos vienen del azufre. Júpiter y sus otras lunas grandes aprietan a Ío una y otra vez, y todo ese apretar calienta su interior.",
+			"standard": "Ío es un poco más grande que nuestra Luna y es el mundo con más actividad volcánica que se conoce: se han encontrado allí más de 400 volcanes activos, algunos de los cuales lanzan penachos de gas y polvo a cientos de kilómetros de altura. El calor no viene del Sol, sino de las mareas. La órbita de Ío va sincronizada con las de las lunas Europa y Ganímedes, lo que la mantiene ligeramente ovalada, así que la enorme gravedad de Júpiter aprieta y estira a Ío a medida que cambia su distancia. Galileo Galilei descubrió Ío en enero de 1610, junto con Europa, Ganímedes y Calisto: las primeras lunas encontradas alrededor de otro planeta.",
+			"advanced": "Ío está atrapada en una resonancia de Laplace 1:2:4: por cada órbita de Ganímedes, Europa completa dos e Ío cuatro. Los tirones regulares mantienen la órbita de Ío ligeramente excéntrica (e ≈ 0,004), así que su distancia a Júpiter —y el abultamiento de marea que Júpiter le provoca— cambia en cada órbita de 42,5 horas, y la fricción de esta flexión constante libera unos 10¹⁴ W de calor. Ese calor alimenta erupciones de lava silicatada de hasta unos 1600 K, más caliente que casi toda la lava actual de la Tierra, y penachos ricos en azufre de hasta unos 500 km de altura, que renuevan la superficie tan deprisa que no se ha encontrado ningún cráter de impacto. El gas de los volcanes de Ío alimenta un anillo en forma de rosquilla de partículas cargadas alrededor de Júpiter: el toro de plasma de Ío."
+		},
+		"facts": {
+			"simple": [
+				"Los volcanes de Ío se vieron por primera vez en 1979, en fotos tomadas por la sonda Voyager 1.",
+				"Ío no tiene cráteres de rocas espaciales, porque la lava nueva los va tapando.",
+				"Ío da una vuelta a Júpiter en menos de dos días."
+			],
+			"standard": [
+				"Loki Patera, el volcán más potente de Ío, es una depresión volcánica de unos 200 km de ancho ocupada por un lago de lava.",
+				"Ío orbita dentro de los intensos cinturones de radiación de Júpiter, donde un astronauta sin protección recibiría una dosis mortal en menos de un día.",
+				"Desde Ío, Júpiter se ve casi 40 veces más ancho que nuestra Luna llena desde la Tierra."
+			],
+			"advanced": [
+				"Las mediciones de gravedad de los sobrevuelos cercanos de Juno en diciembre de 2023 y febrero de 2024 sugieren que Ío no tiene un océano global de magma poco profundo; sus volcanes parecen alimentarse de reservas de magma separadas.",
+				"Con una densidad media de unos 3,53 g/cm³, Ío es la luna más densa que se conoce: un cuerpo rocoso con núcleo de hierro y casi sin agua.",
+				"La gravedad en su superficie es de 1,80 m/s², un 18 % de la terrestre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Ío es un poco más grande que nuestra Luna, pero en lugar de polvo gris y tranquilo está cubierta de volcanes en erupción."
+			],
+			"standard": [
+				"Los penachos volcánicos de Ío pueden subir hasta unos 500 km de altura, más alto de lo que orbita la Estación Espacial Internacional sobre la Tierra."
+			],
+			"advanced": [
+				"Las mareas de Júpiter suben y bajan la superficie sólida de Ío hasta unos 100 m en cada órbita, más o menos la altura de un edificio de 30 pisos."
+			]
+		}
+	},
+	"europa": {
+		"name": "Europa",
+		"tagline": "Un océano bajo el hielo",
+		"description": {
+			"simple": "Europa es un poco más pequeña que nuestra Luna y está cubierta de hielo blanco con largas grietas de color marrón rojizo. Bajo el hielo probablemente hay un océano enorme y profundo de agua salada. El hielo está encima como la tapa de una olla. Como los seres vivos de la Tierra necesitan agua, los científicos creen que Europa es uno de los mejores lugares para buscar vida fuera de la Tierra.",
+			"standard": "Europa es algo más pequeña que nuestra Luna, pero bajo su capa de hielo —probablemente de unas decenas de kilómetros de grosor— hay un océano global de agua líquida salada, quizá de unos 100 km de profundidad. Las mareas de Júpiter flexionan la luna y ayudan a que ese océano no se congele. Con agua, ingredientes químicos y una fuente de energía, Europa es uno de los lugares más prometedores para buscar vida fuera de la Tierra. La sonda Europa Clipper de la NASA despegó en octubre de 2024 y debe llegar a Júpiter en 2030 para averiguar si Europa podría albergar vida.",
+			"advanced": "Los datos del magnetómetro de la sonda Galileo revelaron un campo magnético inducido por el campo giratorio de Júpiter, que se explica mejor con un océano salado y conductor de la electricidad bajo el hielo. La corteza de hielo, de unos 10-30 km de grosor según las estimaciones, es geológicamente joven, probablemente de solo decenas de millones de años, con grietas, crestas y terreno caótico donde el agua o el hielo templado pudieron llegar a la superficie. Se cree que el océano descansa directamente sobre un fondo rocoso, donde las reacciones entre el agua y la roca podrían aportar energía química, como en las fuentes hidrotermales de la Tierra. Europa Clipper hará decenas de sobrevuelos cercanos para medir el grosor del hielo, la salinidad del océano y la composición de la superficie."
+		},
+		"facts": {
+			"simple": [
+				"La superficie helada de Europa es una de las más lisas del sistema solar: casi no tiene montañas ni cráteres grandes.",
+				"En la superficie de Europa hace muchísimo frío: unos −160 °C cerca del ecuador.",
+				"Europa da una vuelta a Júpiter en unos tres días y medio."
+			],
+			"standard": [
+				"Galileo Galilei descubrió Europa en enero de 1610, junto con las otras tres lunas grandes de Júpiter.",
+				"En 2023, el telescopio espacial James Webb encontró en la superficie de Europa dióxido de carbono que, según los científicos, procede del océano de abajo.",
+				"Los telescopios han visto posibles penachos de vapor de agua saliendo de Europa, pero aún se discute si son reales."
+			],
+			"advanced": [
+				"Europa está en resonancia orbital 2:1 con Ío y 1:2 con Ganímedes, lo que mantiene la pequeña excentricidad (unos 0,009) que produce su calentamiento de marea.",
+				"Las partículas cargadas de la magnetosfera de Júpiter rompen el hielo de la superficie y producen una atmósfera de oxígeno muy tenue; las mediciones de Juno sugieren unos 12 kg de oxígeno por segundo.",
+				"La gravedad en su superficie es de 1,31 m/s², un 13 % de la terrestre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"El océano de Europa podría ser tan profundo que cabrían en él unos diez montes Everest, uno encima de otro."
+			],
+			"standard": [
+				"Europa es más pequeña que nuestra Luna, pero su océano oculto podría contener el doble de agua que todos los océanos de la Tierra."
+			],
+			"advanced": [
+				"Europa tiene solo 1/70 del volumen de la Tierra, pero su océano podría contener entre dos y tres veces más agua que todos los océanos terrestres juntos."
+			]
+		}
+	},
+	"ganymede": {
+		"name": "Ganímedes",
+		"tagline": "La luna más grande de todas",
+		"description": {
+			"simple": "Ganímedes es la luna más grande de todo el sistema solar. ¡Es incluso más grande que el planeta Mercurio! Ganímedes está hecha de roca y hielo, y muy por debajo de su superficie probablemente hay un océano escondido. Es la única luna que conocemos que produce su propio magnetismo, igual que la Tierra.",
+			"standard": "Ganímedes es la luna más grande del sistema solar: con 5268 km de diámetro es más ancha que el planeta Mercurio, aunque tiene menos de la mitad de su masa. Es la única luna conocida que genera su propio campo magnético, que descubrió la sonda Galileo en 1996. Ese campo produce auroras brillantes, y la forma en que oscilan de un lado a otro, observada por el telescopio espacial Hubble, reveló un océano salado escondido bajo el hielo. La sonda JUICE de la ESA, lanzada en 2023, debe llegar a Júpiter en 2031 y entrar en órbita alrededor de Ganímedes en 2034.",
+			"advanced": "Ganímedes está completamente diferenciada, con un núcleo rico en hierro, un manto rocoso y gruesas capas de hielo y agua; la convección en su núcleo de hierro líquido probablemente genera un campo dipolar intrínseco de unos 720 nT en el ecuador. Este campo crea una pequeña magnetosfera propia dentro de la de Júpiter, mucho mayor. En 2015, el Hubble mostró que los óvalos aurorales de Ganímedes oscilan menos de lo esperado cuando el campo de Júpiter pasa sobre ellos, porque un océano salado conductor, que se cree que está a unos 150 km bajo la superficie, induce un campo secundario que contrarresta el cambio. Está previsto que JUICE sea la primera sonda en orbitar una luna distinta de la nuestra, entrando en órbita alrededor de Ganímedes en diciembre de 2034 para cartografiar su campo magnético, su interior y su corteza de hielo."
+		},
+		"facts": {
+			"simple": [
+				"Ganímedes la descubrió Galileo Galilei hace más de 400 años, en 1610.",
+				"Ganímedes tiene luces brillantes cerca de sus polos, llamadas auroras, como las auroras boreales de la Tierra.",
+				"Ganímedes tarda más o menos una semana en dar una vuelta a Júpiter."
+			],
+			"standard": [
+				"El océano oculto de Ganímedes podría contener más agua que todos los océanos de la Tierra.",
+				"Su superficie tiene dos tipos de terreno: regiones oscuras, antiguas y llenas de cráteres, y regiones más claras y jóvenes, cruzadas por largos surcos y crestas.",
+				"En 2021, la sonda Juno de la NASA pasó a poco más de 1000 km sobre Ganímedes, lo más cerca que había llegado una sonda en más de 20 años."
+			],
+			"advanced": [
+				"La gravedad en su superficie es de 1,43 m/s², un 15 % de la terrestre, menos que en nuestra Luna (1,62 m/s²), aunque Ganímedes es mucho más grande.",
+				"Su densidad media, de solo unos 1,94 g/cm³, indica que Ganímedes está formada por cantidades más o menos iguales de roca y hielo de agua.",
+				"Ganímedes forma parte de la resonancia de Laplace 1:2:4: completa una órbita (7,15 días) por cada dos de Europa y cuatro de Ío."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Ganímedes es aproximadamente una vez y media más ancha que nuestra Luna."
+			],
+			"standard": [
+				"Ganímedes es más grande que el planeta Mercurio e incluso tiene su propio campo magnético con auroras: una luna que se comporta como un pequeño planeta."
+			],
+			"advanced": [
+				"Ganímedes es un 8 % más ancha que Mercurio, pero solo tiene un 45 % de su masa: la mayor parte de la diferencia la ponen el hielo y el agua."
+			]
+		}
+	},
+	"callisto": {
+		"name": "Calisto",
+		"tagline": "El antiguo mundo de cráteres",
+		"description": {
+			"simple": "Calisto es la segunda luna más grande de Júpiter y es casi tan grande como el planeta Mercurio. Su superficie oscura está cubierta de cráteres de arriba abajo. Casi no ha cambiado en unos 4000 millones de años, así que es como un diario muy antiguo de las rocas espaciales que chocaron contra ella. Calisto está lejos de la peligrosa radiación de Júpiter, así que algún día los astronautas podrían construir allí una base.",
+			"standard": "Calisto es la tercera luna más grande del sistema solar y mide casi exactamente lo mismo que Mercurio. Su superficie está tan llena de cráteres que apenas queda sitio para otros nuevos, y ha cambiado muy poco en unos 4000 millones de años, porque no hay volcanes ni placas en movimiento que borren los cráteres. Su mayor cicatriz de impacto, la cuenca Valhalla, tiene un centro brillante de unos 600 km de ancho, rodeado de anillos que llegan a unos 1800 km de su centro. Como Calisto orbita fuera de los cinturones de radiación más intensos de Júpiter, un estudio de la NASA la propuso como posible base para futuros exploradores humanos.",
+			"advanced": "La superficie de Calisto está saturada de cráteres —los nuevos impactos borran sobre todo a los más antiguos— y la densidad de cráteres indica una superficie de unos 4000 millones de años, la más antigua de las lunas galileanas. A diferencia de Ío, Europa y Ganímedes, Calisto no forma parte de la resonancia de Laplace y casi no recibe calentamiento de marea; su interior parece estar solo parcialmente diferenciado, una mezcla de roca y hielo. Aun así, la sonda Galileo detectó un campo magnético inducido que podría indicar un océano salado a unos 150-200 km bajo la superficie. A unos 1,9 millones de km de Júpiter, recibe en la superficie una dosis de radiación de solo unos 0,1 mSv al día, y por eso el estudio HOPE de la NASA de 2003 eligió Calisto como destino de una posible misión tripulada con una base en superficie."
+		},
+		"facts": {
+			"simple": [
+				"Galileo Galilei descubrió Calisto en enero de 1610 con uno de los primeros telescopios.",
+				"Calisto no tiene grandes montañas ni volcanes: sobre todo, cráteres.",
+				"Calisto tarda más de dos semanas en dar una vuelta a Júpiter."
+			],
+			"standard": [
+				"Calisto tarda 16,7 días en orbitar Júpiter, más que cualquiera de las otras tres lunas grandes.",
+				"Los científicos creen que podría haber un océano salado muy por debajo de la corteza de Calisto, aunque las mareas apenas calientan esta luna.",
+				"Calisto es la más oscura de las cuatro lunas galileanas: refleja solo una quinta parte de la luz solar que le llega."
+			],
+			"advanced": [
+				"Calisto tiene solo un tercio de la masa de Mercurio, aunque es casi igual de ancha (4821 km frente a 4879 km).",
+				"Los bordes de cráter brillantes y helados y las tierras bajas oscuras y polvorientas dan a la superficie de Calisto un aspecto moteado (albedo geométrico de unos 0,22).",
+				"La gravedad en su superficie es de 1,24 m/s², un 13 % de la terrestre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Calisto es casi exactamente igual de ancha que el planeta Mercurio."
+			],
+			"standard": [
+				"Los cráteres de Calisto son más antiguos que los fósiles más antiguos conocidos en la Tierra: su cara apenas ha cambiado en unos 4000 millones de años."
+			],
+			"advanced": [
+				"Una persona en la superficie de Calisto recibiría unos 0,1 mSv de radiación al día, unas diez veces el fondo natural de la Tierra; en Europa la dosis sería decenas de miles de veces mayor."
+			]
+		}
+	},
+	"mimas": {
+		"name": "Mimas",
+		"tagline": "La luna Estrella de la Muerte",
+		"description": {
+			"simple": "Mimas es una luna pequeña y helada de Saturno. En un lado tiene un cráter gigantesco, así que se parece mucho a la Estrella de la Muerte de las películas de La guerra de las galaxias. El choque que formó el cráter casi partió Mimas en pedazos. Ahora los científicos creen que incluso podría haber un océano escondido muy por debajo de su corteza de hielo.",
+			"standard": "Mimas mide solo unos 396 km de ancho, pero su mayor cráter, Herschel, tiene 139 km: aproximadamente un tercio de toda la luna. Con sus altas paredes y su pico central, Herschel hace que Mimas se parezca a la Estrella de la Muerte de La guerra de las galaxias. Mimas da una vuelta a Saturno en solo 22,6 horas, y su gravedad ayuda a mantener la división de Cassini —el hueco oscuro entre los dos anillos más brillantes de Saturno— casi libre de partículas de hielo. En 2024, unos científicos que estudiaron pequeños bamboleos en la órbita de Mimas, medidos por la sonda Cassini, anunciaron que bajo su hielo podría esconderse un océano joven.",
+			"advanced": "Mimas (diámetro medio de 396 km, densidad de 1,15 g/cm³) está formada sobre todo por hielo de agua y es la más pequeña de las grandes lunas esféricas de Saturno. El cráter Herschel, de 139 km de diámetro, con paredes de unos 5 km de altura y un pico central de unos 6 km, es la huella de un impacto que casi hizo añicos la luna. Las partículas de hielo del borde interior de la división de Cassini orbitan Saturno exactamente dos veces por cada órbita de Mimas; esta resonancia 2:1 amplifica sus órbitas y ayuda a mantener el hueco casi despejado. En 2024, Lainey y sus colegas mostraron que la precesión de la órbita de Mimas y su libración se explican mejor con un océano global a 20-30 km bajo la superficie, probablemente de menos de 25 millones de años: lo bastante joven como para no haber dejado huellas en la antigua superficie llena de cráteres, aunque algunos investigadores aún consideran indirectas estas pruebas."
+		},
+		"facts": {
+			"simple": [
+				"Mimas da una vuelta a Saturno en menos de un día terrestre.",
+				"Mimas está hecha sobre todo de hielo, como una bola de nieve gigante.",
+				"En Mimas podrías saltar más de 100 veces más alto que en la Tierra."
+			],
+			"standard": [
+				"El cráter Herschel lleva el nombre de William Herschel, que descubrió Mimas en 1789.",
+				"La gravedad de Mimas es solo un 0,65 % de la terrestre, así que un alumno de 50 kg pesaría allí más o menos lo mismo que una lata pequeña de refresco en la Tierra.",
+				"En 2010, un mapa de temperaturas hecho por la sonda Cassini mostró en Mimas un dibujo de zonas cálidas y frías con la forma de Pac-Man."
+			],
+			"advanced": [
+				"La gravedad en su superficie es de unos 0,064 m/s², aproximadamente un 0,65 % de la terrestre.",
+				"Las mareas de Saturno han estirado Mimas hasta darle una forma ligeramente de huevo, cuyo eje más largo es un 10 % más largo que el más corto.",
+				"La órbita relativamente excéntrica de Mimas (e ≈ 0,02) permite que las mareas de Saturno flexionen la luna: una posible fuente de calor para su joven océano."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si Mimas fuera un balón de fútbol, el cráter Herschel sería más o menos tan ancho como una galleta."
+			],
+			"standard": [
+				"Si la Tierra tuviera un cráter tan grande, en proporción a su tamaño, como Herschel en Mimas, mediría unos 4500 km de ancho: más que Australia."
+			],
+			"advanced": [
+				"Mimas orbita a solo 185 539 km del centro de Saturno —menos de la mitad de la distancia entre la Tierra y la Luna—, pero completa cada órbita en menos de 23 horas."
+			]
+		}
+	},
+	"enceladus": {
+		"name": "Encélado",
+		"tagline": "La luna de los géiseres",
+		"description": {
+			"simple": "Encélado es una luna pequeña y de un blanco brillante que gira alrededor de Saturno. Bajo su capa de hielo hay un océano de agua salada. En su polo sur, el agua sale disparada por unas grietas largas, como fuentes gigantes, y vuela muy lejos, hacia el espacio. Hay tanta agua pulverizada que forma uno de los anillos de Saturno.",
+			"standard": "Encélado mide solo unos 504 km de ancho, pero es uno de los mundos más activos del sistema solar. Desde cuatro largas grietas cerca de su polo sur, apodadas «rayas de tigre», salen disparados al espacio chorros de vapor de agua y granos de hielo a unos 400 m/s (1440 km/h). El agua procede de un océano salado bajo el hielo, y gran parte de lo que expulsa se extiende a lo largo de la órbita de la luna y forma el ancho anillo E de Saturno. La sonda Cassini de la NASA descubrió los penachos en 2005 y más tarde voló directamente a través de ellos para «probarlos».",
+			"advanced": "Encélado esconde un océano global salado bajo una corteza de hielo de unos 20-25 km de grosor de media, pero de solo unos pocos kilómetros en el polo sur. El calor que lo mantiene líquido procede sobre todo de la flexión de marea: una resonancia orbital 2:1 con Dione mantiene la pequeña excentricidad orbital de Encélado (unos 0,005), de modo que las mareas de Saturno comprimen la luna de forma distinta a lo largo de cada órbita. Al tomar muestras de los penachos y de los granos del anillo E, Cassini encontró sales, nanopartículas de sílice que apuntan a reacciones de agua caliente con la roca en el fondo marino, hidrógeno molecular, diversas moléculas orgánicas y, según se publicó en 2023, fosfatos. Todo ello convierte el océano de Encélado en uno de los lugares más prometedores para buscar vida fuera de la Tierra."
+		},
+		"facts": {
+			"simple": [
+				"Encélado es una de las cosas más brillantes del sistema solar: su hielo fresco refleja casi toda la luz del Sol que le llega.",
+				"Una sonda llamada Cassini atravesó los chorros de agua y los «probó».",
+				"En su superficie hace un frío tremendo: unos −200 °C."
+			],
+			"standard": [
+				"El sobrevuelo más cercano de Cassini, en 2008, pasó a solo unos 25 km sobre la superficie de Encélado.",
+				"Los penachos expulsan unos 200 kg de agua cada segundo.",
+				"William Herschel descubrió Encélado el 28 de agosto de 1789, unas semanas antes de encontrar Mimas."
+			],
+			"advanced": [
+				"Con un albedo geométrico de unos 1,4, Encélado es uno de los cuerpos más reflectantes que se conocen, porque los granos de hielo de sus penachos vuelven a pintar su superficie una y otra vez.",
+				"En 2023, Postberg y sus colegas detectaron fosfatos de sodio en granos de hielo del anillo E procedentes de Encélado, lo que implica que el océano contiene probablemente al menos 100 veces más fosfato que los océanos de la Tierra.",
+				"La gravedad en su superficie es de solo 0,113 m/s² y la velocidad de escape, de unos 240 m/s, así que muchas partículas de los penachos abandonan Encélado por completo y alimentan el anillo E."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Los chorros de agua de Encélado salen disparados más rápido de lo que vuela un avión de pasajeros."
+			],
+			"standard": [
+				"Encélado mide solo lo que hay de Madrid a Barcelona en línea recta, pero lanza al espacio agua suficiente para alimentar todo un anillo de Saturno."
+			],
+			"advanced": [
+				"El anillo E, alimentado por Encélado, abarca cientos de miles de kilómetros: varios cientos de veces el diámetro de la luna de 504 km que lo abastece."
+			]
+		}
+	},
+	"tethys": {
+		"name": "Tetis",
+		"tagline": "La bola de hielo llena de cicatrices",
+		"description": {
+			"simple": "Tetis es una luna de Saturno hecha casi por completo de hielo. Tiene un cráter enorme llamado Odiseo y una grieta gigante llamada Ithaca Chasma que recorre un buen trozo de la luna. Dos lunas diminutas viajan por el mismo camino que Tetis: una va delante de ella y otra detrás.",
+			"standard": "Tetis mide unos 1062 km de ancho y está hecha casi totalmente de hielo de agua: su densidad (0,98 g/cm³) es incluso un poco menor que la del agua líquida. Su mayor cráter, Odiseo, tiene unos 400 km de ancho, más de un tercio del diámetro de la luna. Un enorme sistema de cañones, Ithaca Chasma, de unos 100 km de ancho y más de 2000 km de largo, rodea unas tres cuartas partes de Tetis. Dos lunas diminutas, Telesto y Calipso, comparten su órbita: una unos 60° por delante de Tetis y otra unos 60° por detrás.",
+			"advanced": "Con una densidad de 0,98 g/cm³, Tetis es casi hielo de agua puro con solo una pequeña fracción de roca: la densidad más baja de las grandes lunas de Saturno. Odiseo (unos 400 km) es poco profundo para su tamaño porque el hielo que tiene debajo ha fluido y se ha relajado lentamente con el tiempo. Ithaca Chasma, de hasta unos 3 km de profundidad, pudo formarse cuando un océano primitivo se congeló y el hielo, al expandirse, agrietó la corteza, o puede estar relacionado con el impacto de Odiseo. Telesto y Calipso ocupan los puntos de Lagrange L4 y L5 de Tetis, donde la gravedad combinada de Saturno y Tetis mantiene a los cuerpos pequeños moviéndose al compás de la luna mayor."
+		},
+		"facts": {
+			"simple": [
+				"Tetis tarda menos de dos días en dar una vuelta a Saturno.",
+				"Tetis es una de las lunas más brillantes, porque su hielo está muy limpio.",
+				"Cada una de las dos compañeras de viaje de Tetis mide solo lo que una ciudad grande."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini descubrió Tetis en 1684, el mismo año en que encontró Dione.",
+				"Telesto y Calipso miden solo unos 25 km y 21 km de ancho.",
+				"Tetis orbita Saturno cada 1,89 días a una distancia de unos 294 600 km."
+			],
+			"advanced": [
+				"Su albedo geométrico de unos 1,23 convierte a Tetis en uno de los cuerpos más reflectantes del sistema solar, gracias en parte a una capa de granos de hielo procedentes del anillo E de Encélado.",
+				"Los mapas térmicos de Cassini mostraron en Tetis un dibujo de «Pac-Man» como el de Mimas, causado por electrones de alta energía de la magnetosfera de Saturno que alteran la superficie de un hemisferio.",
+				"La gravedad en su superficie es de unos 0,146 m/s², aproximadamente un 1,5 % de la terrestre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Tetis es tan ligera para su tamaño que, en una bañera lo bastante grande, flotaría como un cubito de hielo."
+			],
+			"standard": [
+				"Ithaca Chasma es más de cuatro veces más largo que el Gran Cañón y rodea unas tres cuartas partes de la luna."
+			],
+			"advanced": [
+				"En proporción a su tamaño, Odiseo es como un cráter de unos 4800 km de diámetro en la Tierra: más ancho que Estados Unidos de costa a costa."
+			]
+		}
+	},
+	"dione": {
+		"name": "Dione",
+		"tagline": "La luna de los acantilados de hielo",
+		"description": {
+			"simple": "Dione es una luna helada de Saturno. En las primeras fotos, los científicos vieron unas finas rayas blancas y se preguntaron qué eran. Más tarde, fotos tomadas desde más cerca mostraron que son enormes acantilados de hielo brillante. Dos lunas diminutas viajan por el camino de Dione alrededor de Saturno: una delante y otra detrás.",
+			"standard": "Dione mide unos 1123 km de ancho y está hecha de roca y hielo. Las imágenes de las sondas Voyager, hacia 1980, mostraron en un lado unas vetas brillantes y tenues; en 2004-2005, la sonda Cassini reveló que este «terreno de vetas» es en realidad una red de cañones bordeados de acantilados de hielo de cientos de metros de altura. Dos lunas pequeñas, Helena y Pollux, comparten la órbita de Dione, una unos 60° por delante y otra unos 60° por detrás. Las mediciones de la gravedad de Dione sugieren que aún podría existir un océano muy por debajo del hielo.",
+			"advanced": "Dione (densidad de 1,48 g/cm³) está formada por masas aproximadamente iguales de roca y hielo de agua. Las vetas brillantes de su hemisferio posterior son fracturas tectónicas (chasmata) cuyas paredes empinadas dejan al descubierto hielo fresco y limpio. Dione está en resonancia orbital 1:2 con Encélado, lo que mantiene ligeramente excéntrica la órbita de Encélado y así ayuda a alimentar sus géiseres. Los modelos de los datos de gravedad y forma de Cassini elaborados por Beuthe y sus colegas en 2016 sugieren una corteza de hielo de unos 100 km de grosor que flota sobre un océano de varias decenas de kilómetros de profundidad, una interpretación plausible pero aún no confirmada por observación directa."
+		},
+		"facts": {
+			"simple": [
+				"Dione da una vuelta a Saturno en menos de tres días.",
+				"En Dione hace unos −186 °C, tanto frío que allí el hielo es duro como la roca.",
+				"Dione tiene un poquito de oxígeno a su alrededor, pero muchísimo menos del necesario para respirar."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini descubrió Dione en 1684, solo unas semanas después de encontrar Tetis.",
+				"Helena mide unos 35 km de ancho, mientras que Pollux mide solo unos 3 km.",
+				"En 2010, Cassini detectó una capa muy tenue de iones de oxígeno alrededor de Dione."
+			],
+			"advanced": [
+				"La gravedad en su superficie es de unos 0,232 m/s², aproximadamente un 2,4 % de la terrestre.",
+				"Dione orbita Saturno cada 2,74 días y tiene acoplamiento de marea: siempre muestra la misma cara al planeta.",
+				"La resonancia con Encélado también flexiona ligeramente a Dione, lo que le proporciona cierto calentamiento de marea propio."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Dione está más o menos igual de lejos de Saturno que nuestra Luna de la Tierra."
+			],
+			"standard": [
+				"Los acantilados de hielo de Dione miden cientos de metros de altura —tanto como rascacielos— y son tan brillantes que, de lejos, parecían finos hilos de escarcha."
+			],
+			"advanced": [
+				"Si el océano propuesto para Dione existe, está a unos 100 km de profundidad: más de ocho veces más hondo que el pozo más profundo jamás perforado en la Tierra (unos 12 km)."
+			]
+		}
+	},
+	"rhea": {
+		"name": "Rea",
+		"tagline": "Un soplo de oxígeno",
+		"description": {
+			"simple": "Rea es la segunda luna más grande de Saturno. Es una bola helada de hielo con algo de roca dentro, cubierta de cráteres antiguos. Alrededor de Rea hay un poquito de oxígeno, el gas que respiramos. Pero hay tan poco que nunca podrías respirarlo.",
+			"standard": "Rea mide unos 1527 km de ancho, lo que la convierte en la segunda luna más grande de Saturno después de Titán. Está formada por unas tres cuartas partes de hielo y una cuarta parte de roca, su superficie está entre −174 y −220 °C y está cubierta de cráteres antiguos, entre ellos la cuenca Tirawa, de unos 400 km de ancho. En 2010, los científicos anunciaron que la sonda Cassini de la NASA había detectado alrededor de Rea una «exosfera» extremadamente tenue de oxígeno y dióxido de carbono. Según la NASA, era la primera vez que una sonda captaba directamente moléculas de una atmósfera de oxígeno en un mundo distinto de la Tierra.",
+			"advanced": "Rea (densidad de 1,24 g/cm³) es una mezcla fría y muy craterizada de aproximadamente tres cuartas partes de hielo y una cuarta parte de roca en masa. Su exosfera, detectada por los instrumentos de Cassini en sobrevuelos de 2005, 2007 y 2010, contiene oxígeno y dióxido de carbono en una proporción de aproximadamente 5 a 2, con solo entre 100 000 y 1 000 000 de moléculas por cm³ cerca de la superficie. El oxígeno se produce por radiólisis: las partículas cargadas atrapadas en el campo magnético de Saturno golpean la superficie de hielo de agua, rompen las moléculas de agua y liberan oxígeno. El origen del dióxido de carbono es menos seguro: podría proceder de hielo seco atrapado desde que se formó la luna o de material orgánico irradiado de la superficie."
+		},
+		"facts": {
+			"simple": [
+				"Rea tarda unos cuatro días y medio en dar una vuelta a Saturno.",
+				"En Rea la temperatura puede bajar hasta unos −220 °C.",
+				"Rea se descubrió hace más de 350 años, en 1672."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini descubrió Rea el 23 de diciembre de 1672.",
+				"El oxígeno de la superficie de Rea es unos 5 billones de veces menos denso que el oxígeno del aire en la superficie de la Tierra.",
+				"La gravedad en su superficie es de solo 0,264 m/s², así que pesarías menos del 3 % de lo que pesas en la Tierra."
+			],
+			"advanced": [
+				"Los indicios de un tenue anillo alrededor de Rea, anunciados en 2008, se descartaron cuando Cassini observó expresamente el supuesto plano del anillo desde varios ángulos.",
+				"Rea orbita a unos 527 100 km en 4,52 días y, como las demás grandes lunas interiores de Saturno, tiene acoplamiento de marea.",
+				"Los datos de gravedad de Cassini sugieren que la roca y el hielo de Rea quizá solo se separaron en parte, pero su estructura interna aún se debate."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Unas ocho Reas puestas una al lado de otra cubrirían el ancho de la Tierra."
+			],
+			"standard": [
+				"Una sola bocanada de aire en la Tierra contiene más moléculas de oxígeno que un cubo de más de un kilómetro de lado de la tenue exosfera de Rea."
+			],
+			"advanced": [
+				"Con la gravedad de la superficie de Rea, un salto que en la Tierra te eleva 0,5 m te llevaría a casi 19 m de altura."
+			]
+		}
+	},
+	"titan": {
+		"name": "Titán",
+		"tagline": "Un mundo de lluvia de metano",
+		"description": {
+			"simple": "Titán es la luna más grande de Saturno: es incluso más grande que el planeta Mercurio. Es la única luna envuelta en un aire espeso. En Titán llueve, y hay ríos, lagos y mares. Pero no son de agua: a unos −179 °C el agua está congelada y dura como la roca, así que la lluvia y los mares son de metano líquido, un gas que en la Tierra quemamos para cocinar y para la calefacción.",
+			"standard": "Titán mide unos 5150 km de ancho: es la luna más grande de Saturno, la segunda más grande del sistema solar y más grande que el planeta Mercurio. Es la única luna con una atmósfera espesa, formada sobre todo por nitrógeno, y la presión en su superficie es aproximadamente 1,5 veces la de la Tierra. A unos −179 °C, el metano hace lo que el agua hace en la Tierra: forma nubes, cae como lluvia, excava ríos y llena lagos y mares como el Kraken Mare y el Ligeia Mare. En enero de 2005, la sonda europea Huygens aterrizó en Titán —todavía el aterrizaje más lejano de la historia—, y el dron Dragonfly de la NASA debe despegar en julio de 2028 y llegar en 2034.",
+			"advanced": "Titán (diámetro de 5150 km, densidad de 1,88 g/cm³) es un 6 % más ancho que Mercurio, pero solo tiene un 40 % de su masa. Su atmósfera de nitrógeno contiene cerca de un 5 % de metano junto al suelo; a unos 1,45 bar y 94 K es aproximadamente cuatro veces más densa que el aire de la Tierra al nivel del mar. La luz solar descompone el metano en la alta atmósfera y produce la neblina orgánica anaranjada e hidrocarburos más pesados, como el etano, así que el metano debe reponerse de alguna forma, quizá desde el interior. Durante mucho tiempo se pensó que Titán escondía un océano global de agua, pero un nuevo análisis de 2025 de los datos de seguimiento de Cassini defendió en su lugar un hielo espeso y fangoso de alta presión con bolsas de agua líquida; la cuestión sigue abierta."
+		},
+		"facts": {
+			"simple": [
+				"La sonda Huygens aterrizó en Titán en 2005: ninguna nave ha aterrizado nunca más lejos de la Tierra.",
+				"Titán está envuelto en una neblina naranja, así que las cámaras normales no pueden ver su superficie desde el espacio.",
+				"Titán tarda unos 16 días en dar una vuelta a Saturno."
+			],
+			"standard": [
+				"Christiaan Huygens descubrió Titán el 25 de marzo de 1655: fue la primera luna de Saturno que se encontró.",
+				"El Kraken Mare, el mayor mar de Titán, ocupa más o menos la misma superficie que el mar Caspio, el lago más grande de la Tierra.",
+				"Dragonfly es un dron del tamaño de un coche con ocho rotores que volará de un lugar a otro para estudiar la química de Titán."
+			],
+			"advanced": [
+				"La gravedad en su superficie es de 1,35 m/s², un 14 % de la terrestre e incluso menos que la de la Luna (1,62 m/s²).",
+				"Huygens transmitió datos durante un descenso de unas 2,5 horas y luego durante más de una hora desde la superficie, donde encontró guijarros redondeados de hielo de agua en una llanura húmeda de metano.",
+				"Gerard Kuiper demostró en 1944 que Titán tiene atmósfera, al detectar metano en su espectro."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"En Titán el aire es tan espeso y la gravedad tan débil que una persona con alas atadas a los brazos quizá podría volar."
+			],
+			"standard": [
+				"Titán es el único lugar, aparte de la Tierra, donde conocemos ríos, lagos y mares en la superficie, pero allí contienen metano y etano líquidos a unos −179 °C."
+			],
+			"advanced": [
+				"Sobre cada metro cuadrado de la superficie de Titán hay unas diez veces más gas que sobre un metro cuadrado de la Tierra."
+			]
+		}
+	},
+	"hyperion": {
+		"name": "Hiperión",
+		"tagline": "La esponja que da tumbos",
+		"description": {
+			"simple": "Hiperión es una luna muy rara de Saturno. No es redonda, sino que tiene forma de patata, y su superficie está llena de agujeros, como una esponja. Además, Hiperión da tumbos de una forma tan loca y desordenada que nadie puede decir exactamente hacia dónde mirará después. Es tan ligera para su tamaño que probablemente gran parte de su interior es espacio vacío.",
+			"standard": "Hiperión mide unos 360 × 266 × 205 km, lo que la convierte en una de las lunas de forma irregular más grandes del sistema solar. Las imágenes de cerca que tomó la sonda Cassini en 2005 mostraron una superficie repleta de cráteres profundos y de bordes afilados que le dan aspecto de esponja. Su densidad es de solo unos 0,54 g/cm³ —más o menos la mitad que la del hielo de agua—, así que los científicos creen que cerca del 40 % de su volumen podría ser espacio vacío. Hiperión no gira de forma regular: los tirones de Saturno y de la cercana Titán la hacen dar tumbos caóticos, así que su orientación no se puede predecir durante mucho tiempo.",
+			"advanced": "Hiperión está atrapada en una resonancia orbital 4:3 con Titán (cuatro órbitas de Hiperión por cada tres de Titán), lo que mantiene su órbita bastante excéntrica (e ≈ 0,1). Como la luna es tan alargada, los pares de marea que ejerce Saturno sobre ella varían mucho a lo largo de esta órbita excéntrica, así que Hiperión no puede asentarse en una rotación síncrona; en cambio, su velocidad de giro y su eje cambian de forma caótica, y diferencias minúsculas crecen exponencialmente en pocas órbitas. Wisdom, Peale y Mignard predijeron este comportamiento en 1984, observaciones posteriores lo confirmaron, y desde entonces Hiperión es el ejemplo de manual de rotación caótica. Su porosidad de alrededor del 40 % también podría explicar sus extraños cráteres: los impactos comprimen el hielo poroso en lugar de lanzar material hacia fuera, y dejan hoyos profundos con pocos materiales eyectados."
+		},
+		"facts": {
+			"simple": [
+				"Hiperión tarda unas tres semanas en dar una vuelta a Saturno.",
+				"Muchos cráteres de Hiperión tienen algo oscuro en el fondo, como la suciedad en los agujeros de una esponja.",
+				"A Hiperión la encontraron en 1848 unos astrónomos de Estados Unidos y de Inglaterra casi al mismo tiempo."
+			],
+			"standard": [
+				"Hiperión fue descubierta en 1848 por William Cranch Bond y su hijo George Phillips Bond, y de forma independiente por William Lassell.",
+				"Hiperión orbita Saturno cada 21,3 días a una distancia media de unos 1,48 millones de km, justo más allá de Titán.",
+				"Hiperión fue la primera luna en la que se descubrió que daba tumbos caóticos; más tarde se vio que las pequeñas lunas de Plutón Nix e Hidra también lo hacen."
+			],
+			"advanced": [
+				"El diámetro medio de Hiperión es de unos 270 km, pero su eje más largo mide unas 1,8 veces el más corto.",
+				"En 2005, Cassini atravesó un haz de electrones que salía de la superficie de Hiperión, cargada eléctricamente a unos −200 V.",
+				"A diferencia de las demás grandes lunas regulares de Saturno, Hiperión no tiene acoplamiento de marea."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Hiperión es, para su tamaño, más o menos tan ligera como una piedra pómez, así que flotaría en el agua."
+			],
+			"standard": [
+				"Hiperión da tumbos como un balón de rugby que rebota por el campo: diferencias minúsculas la hacen girar de otra manera, así que nadie puede predecir durante mucho tiempo qué lado mirará hacia Saturno."
+			],
+			"advanced": [
+				"Con cerca del 40 % de su volumen vacío, Hiperión es más o menos tan porosa como un montón de arena suelta."
+			]
+		}
+	},
+	"iapetus": {
+		"name": "Jápeto",
+		"tagline": "La luna de dos caras",
+		"description": {
+			"simple": "Jápeto es una luna de Saturno con dos lados muy distintos. Una mitad es oscura como el carbón y la otra es brillante como la nieve. Una cordillera larga y alta le rodea la cintura, y por eso Jápeto se parece un poco a una nuez. Está lejos de Saturno y tarda más de dos meses en darle una vuelta.",
+			"standard": "Jápeto mide unos 1469 km de ancho y es la tercera luna más grande de Saturno. Su cara delantera —la que mira hacia delante mientras orbita— es tan oscura como el carbón, mientras que la cara trasera es casi tan brillante como la nieve. Cuando Giovanni Domenico Cassini descubrió Jápeto en 1671, solo podía verlo cuando estaba a un lado de Saturno, y adivinó correctamente que una mitad debía de ser mucho más oscura que la otra. La sonda Cassini, bautizada en su honor, reveló más tarde una cresta a lo largo del ecuador de unos 1300 km de largo, con picos de hasta unos 20 km de altura, que da a Jápeto la forma de una nuez.",
+			"advanced": "La superficie bicolor de Jápeto probablemente es el resultado de un proceso desbocado. El polvo oscuro, procedente en gran parte de la luna retrógrada Febe y de su enorme anillo, cae sobre el hemisferio delantero de Jápeto; la superficie oscurecida absorbe más luz solar durante los largos días de 79 días de Jápeto y se calienta ligeramente, así que el hielo de agua se sublima allí y vuelve a congelarse en el lado trasero, más frío y brillante, y en los polos, lo que hace un lado cada vez más oscuro y el otro cada vez más brillante. El albedo va de unos 0,03-0,05 en la región oscura Cassini Regio a unos 0,5-0,6 en el lado brillante. La cresta ecuatorial, de hasta unos 20 km de altura y 1300 km de longitud, sigue sin explicación: entre las propuestas están un abultamiento que se quedó congelado de una época de giro más rápido o material caído de un anillo que se desplomó."
+		},
+		"facts": {
+			"simple": [
+				"Las montañas más altas de Jápeto miden más del doble que el monte Everest.",
+				"Desde Jápeto tendrías una vista preciosa de los anillos de Saturno, porque su camino alrededor de Saturno está inclinado.",
+				"Jápeto se descubrió hace más de 350 años, en 1671."
+			],
+			"standard": [
+				"Jápeto orbita Saturno a unos 3,56 millones de km: más de nueve veces la distancia entre la Tierra y la Luna.",
+				"Como tiene acoplamiento de marea, un día en Jápeto dura lo mismo que su órbita: unos 79 días.",
+				"Gran parte del material oscuro probablemente procede de Febe, una pequeña luna exterior cuyo polvo forma un anillo enorme y tenue alrededor de Saturno."
+			],
+			"advanced": [
+				"Su densidad de unos 1,09 g/cm³ indica un cuerpo formado sobre todo por hielo de agua, con solo un 20 % de roca, aproximadamente.",
+				"Jápeto está notablemente achatado, una forma que pudo quedarse congelada cuando giraba mucho más rápido al principio de su historia, quizá una vez cada 16 horas.",
+				"Su órbita está inclinada unos 7,6° respecto a su plano de Laplace, mucho más que las de las demás grandes lunas de Saturno."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si Jápeto fuera un balón de fútbol, su cresta gigante sería un bultito de solo unos 3 mm de alto alrededor de su cintura."
+			],
+			"standard": [
+				"El lado oscuro de Jápeto refleja más o menos tanta luz como el asfalto recién puesto, mientras que su lado brillante refleja más de diez veces más; por eso Cassini podía ver la luna a un lado de Saturno, pero no al otro."
+			],
+			"advanced": [
+				"Jápeto está tan lejos que Saturno solo ocuparía unos 2° en su cielo: aun así, casi cuatro veces el ancho de la Luna llena vista desde la Tierra."
+			]
+		}
+	},
+	"phoebe": {
+		"name": "Febe",
+		"tagline": "La luna de Saturno que va en dirección contraria",
+		"description": {
+			"simple": "Febe es una luna pequeña y oscura de Saturno, de unos 200 km de ancho. Da vueltas a Saturno en dirección contraria —al revés que las lunas grandes de Saturno— y mucho más lejos. Los científicos creen que Febe no se formó junto a Saturno, sino que vino de muy lejos en el sistema solar y quedó atrapada por la gravedad de Saturno. El polvo que se desprende de Febe forma un anillo enorme y muy tenue alrededor de Saturno.",
+			"standard": "Febe mide unos 213 km de ancho y gira alrededor de Saturno a una distancia media de unos 12,9 millones de km, más de tres veces más lejos que Jápeto, la más exterior de las grandes lunas de Saturno. Orbita hacia atrás (en sentido retrógrado), lo que indica claramente que Saturno la capturó: Febe es probablemente una visitante del sistema solar exterior, emparentada con los cuerpos helados del cinturón de Kuiper. Pequeños impactos arrancan polvo de su superficie oscura, y ese polvo forma el anillo de Febe, descubierto en 2009 por el telescopio espacial Spitzer de la NASA. Parte del polvo deriva hacia dentro y cae sobre un lado de Jápeto, lo que ayuda a oscurecer ese lado.",
+			"advanced": "La órbita de Febe —semieje mayor de unos 12,9 millones de km, excentricidad de 0,16, inclinación de unos 175° respecto a su plano de Laplace— es retrógrada y queda muy por fuera de los satélites regulares de Saturno: la firma de un cuerpo capturado, no de uno formado en el disco de Saturno. Su densidad de unos 1,64 g/cm³, mayor que la de las lunas heladas interiores de Saturno, y una superficie oscura (albedo geométrico de unos 0,08) que contiene hielo de agua, dióxido de carbono y probablemente compuestos orgánicos apuntan a un origen entre los objetos del cinturón de Kuiper o los centauros. Los impactos de micrometeoritos alimentan el anillo de Febe, un disco de polvo inmenso y tenue inclinado, como la órbita de Febe, unos 27° respecto a los anillos principales de Saturno. La presión de radiación hace que sus granos se acerquen lentamente en espiral hacia dentro, donde Jápeto los barre con su hemisferio delantero: un ingrediente clave del llamativo aspecto bicolor de esa luna."
+		},
+		"facts": {
+			"simple": [
+				"Febe necesita más o menos un año y medio para dar una vuelta a Saturno.",
+				"Febe fue la primera luna descubierta en fotografías.",
+				"Febe gira sobre sí misma en solo unas 9 horas, mucho más rápido de lo que viaja alrededor de Saturno."
+			],
+			"standard": [
+				"La sonda Cassini pasó a solo 2068 km de Febe el 11 de junio de 2004, unas tres semanas antes de entrar en órbita alrededor de Saturno.",
+				"William Henry Pickering descubrió Febe en 1899 en placas fotográficas tomadas en 1898 en un observatorio cercano a Arequipa, en Perú.",
+				"El mayor cráter de Febe, Jasón, mide unos 100 km de ancho: casi la mitad del ancho de la propia Febe."
+			],
+			"advanced": [
+				"Febe gira una vez cada 9,27 horas, así que, a diferencia de las grandes lunas regulares de Saturno, no tiene acoplamiento de marea.",
+				"La masa de Febe, de unos 8,3 × 10¹⁸ kg, se midió por su atracción sobre Cassini durante el sobrevuelo de 2004.",
+				"Febe es casi redonda aunque solo mide unos 213 km de ancho, y algunos científicos lo interpretan como una señal de que al principio de su historia estuvo caliente y blanda."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Febe da vueltas a Saturno como un coche que recorre una rotonda en dirección contraria."
+			],
+			"standard": [
+				"El anillo de polvo que procede de Febe es tan inmenso que en su interior cabrían unos mil millones de Tierras, pero es tan tenue que no se descubrió hasta 2009, con un telescopio infrarrojo."
+			],
+			"advanced": [
+				"Si nuestros ojos pudieran ver el anillo de Febe, ocuparía en el cielo nocturno más o menos el ancho de dos Lunas llenas, una a cada lado de Saturno."
+			]
+		}
+	},
+	"miranda": {
+		"name": "Miranda",
+		"tagline": "La luna Frankenstein",
+		"description": {
+			"simple": "Miranda es la más pequeña de las cinco lunas grandes de Urano: mide unos 470 km de ancho. Su superficie parece cosida a partir de trozos diferentes, por eso la llaman la luna Frankenstein. Tiene uno de los acantilados más altos que conocemos. Solo una nave, la Voyager 2, ha pasado cerca de ella, en 1986.",
+			"standard": "Miranda, de unos 470 km de ancho, es la más interior y la más pequeña de las cinco grandes lunas de Urano. Cuando la Voyager 2 pasó cerca en enero de 1986, reveló un revoltijo de paisajes totalmente distintos: viejas llanuras llenas de cráteres justo al lado de enormes regiones de surcos y crestas llamadas coronas. Miranda tiene además Verona Rupes, un acantilado de entre 5 y 20 km de altura según las estimaciones, posiblemente el más alto del sistema solar. La luna la descubrió en 1948 Gerard Kuiper, que le puso el nombre de la hija del mago Próspero en La tempestad, de Shakespeare.",
+			"advanced": "Las tres coronas de Miranda —Arden, Elsinore e Inverness— son provincias ovaladas o poligonales de unos cientos de kilómetros de ancho, rodeadas de crestas y surcos paralelos que cortan el terreno más antiguo lleno de cráteres. Las primeras ideas de que Miranda se hizo pedazos y volvió a recomponerse han dado paso en gran medida a modelos en los que el calentamiento de marea provocó el ascenso de hielo templado, probablemente durante una antigua resonancia orbital con Umbriel que también podría explicar la inclinación orbital de Miranda, inusualmente grande, de unos 4,3°. Un estudio de 2024 llegó a sugerir que Miranda pudo tener un océano subterráneo de unos 100 km de profundidad en los últimos cientos de millones de años. Su baja densidad, de unos 1,2 g/cm³, muestra que es sobre todo hielo de agua."
+		},
+		"facts": {
+			"simple": [
+				"Miranda da una vuelta a Urano en menos de un día y medio.",
+				"Miranda lleva el nombre de una chica de una obra de teatro de William Shakespeare.",
+				"En Miranda pesarías menos de la centésima parte de lo que pesas en la Tierra."
+			],
+			"standard": [
+				"La Voyager 2 pasó a solo unos 29 000 km de Miranda, más cerca que de cualquier otra luna de Urano.",
+				"Miranda orbita a unos 129 900 km de Urano y necesita unas 34 horas para dar una vuelta.",
+				"Como Urano está tumbado de lado y sus grandes lunas giran sobre su ecuador, la órbita de Miranda también está volcada: a veces, desde la Tierra, parece una diana alrededor del planeta."
+			],
+			"advanced": [
+				"La gravedad en la superficie de Miranda es de solo unos 0,08 m/s², menos del 1 % de la terrestre.",
+				"Se cree que Verona Rupes es un escarpe de falla, formado donde la corteza helada de Miranda se separó.",
+				"La Voyager 2 solo pudo fotografiar el hemisferio sur de Miranda, que en 1986 estaba orientado hacia el Sol; la mitad norte nunca se ha visto de cerca."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la superficie de Miranda fuera un puzle, las piezas vendrían de varias cajas diferentes."
+			],
+			"standard": [
+				"El acantilado Verona Rupes podría tener hasta 20 km de altura —más del doble que el monte Everest—, y con la débil gravedad de Miranda una piedra que se dejara caer tardaría unos 12 minutos en llegar al fondo."
+			],
+			"advanced": [
+				"Llevado a la escala de la Tierra, un acantilado de 20 km en Miranda tendría más de 500 km de altura: más que la órbita de la Estación Espacial Internacional."
+			]
+		}
+	},
+	"ariel": {
+		"name": "Ariel",
+		"tagline": "La luna joven y brillante de Urano",
+		"description": {
+			"simple": "Ariel es una de las cinco lunas grandes de Urano y mide unos 1160 km de ancho. Es la más brillante de todas, con una superficie helada que parece nueva. La cruzan unos valles largos y profundos llamados cañones. Solo una nave, la Voyager 2, ha pasado cerca de ella.",
+			"standard": "Ariel, de unos 1160 km de ancho, orbita Urano cada 2,5 días a una distancia de unos 190 900 km. Tiene la superficie más brillante de las grandes lunas de Urano y probablemente la más joven: tiene menos cráteres grandes que sus vecinas, así que algo debió de renovar su superficie. La atraviesan largos cañones en todas direcciones; uno de ellos, Kachina Chasma, mide más de 600 km. William Lassell descubrió Ariel en 1851, la misma noche que Umbriel, y su nombre viene del espíritu Ariel de La tempestad, de Shakespeare, y de un duendecillo del poema El rizo robado, de Alexander Pope.",
+			"advanced": "Con un albedo geométrico de unos 0,5, Ariel es la más reflectante de las grandes lunas de Urano, y sus cráteres grandes, relativamente escasos, indican la superficie más joven de las cinco. Sus cañones son fosas tectónicas (grabens): bloques de corteza que se hundieron entre fallas al estirarse la corteza, probablemente cuando el interior se calentó por las mareas durante una antigua resonancia orbital o se expandió al congelarse, y el fondo de algunos cañones parece haber quedado inundado por material helado. En 2024, el telescopio espacial James Webb encontró en Ariel depósitos sorprendentemente gruesos de hielo de dióxido de carbono, hielo de monóxido de carbono e indicios de minerales carbonatados. Algunos investigadores ven en ello material de un posible océano subterráneo, aunque las partículas cargadas de la magnetosfera de Urano también producen dióxido de carbono en la superficie, y probablemente intervienen ambos procesos."
+		},
+		"facts": {
+			"simple": [
+				"Ariel da una vuelta a Urano en unos dos días y medio.",
+				"Ariel lleva el nombre de un espíritu mágico de una obra de William Shakespeare que podía volar e incluso desatar una tormenta.",
+				"Ariel está hecha más o menos de mitad hielo y mitad roca."
+			],
+			"standard": [
+				"La Voyager 2 solo pudo fotografiar un 35 % de la superficie de Ariel durante su sobrevuelo de 1986.",
+				"Como Urano está tumbado de lado, los polos de Ariel reciben unos 42 años seguidos de luz solar y después unos 42 años de oscuridad.",
+				"Los nombres Ariel, Umbriel, Titania y Oberón los propuso en 1852 John Herschel, hijo de William Herschel, el descubridor de Urano."
+			],
+			"advanced": [
+				"La gravedad en la superficie de Ariel es de unos 0,25 m/s², aproximadamente una cuarentava parte de la terrestre.",
+				"Su densidad de unos 1,54 g/cm³ indica cantidades más o menos iguales de hielo de agua y roca.",
+				"La órbita de Ariel es casi circular (excentricidad de unos 0,001) y está casi exactamente en el plano ecuatorial de Urano, inclinado unos 98° respecto a la órbita del planeta."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"El cañón más largo de Ariel es tan largo que un coche por la autopista tardaría más de seis horas en ir de un extremo al otro."
+			],
+			"standard": [
+				"Ariel y Umbriel tienen casi exactamente el mismo tamaño, pero Ariel refleja más o menos el doble de luz y tiene muchos menos cráteres grandes: como dos gemelos, uno con la cara recién lavada y otro que no se la ha limpiado en miles de millones de años."
+			],
+			"advanced": [
+				"Si Ariel se agrandara hasta el tamaño de la Tierra, Kachina Chasma mediría unos 6800 km de largo, más o menos la longitud del río Nilo."
+			]
+		}
+	},
+	"umbriel": {
+		"name": "Umbriel",
+		"tagline": "Luna oscura, anillo brillante",
+		"description": {
+			"simple": "Umbriel es una de las cinco lunas grandes de Urano y mide unos 1170 km de ancho. Es la más oscura de todas y está cubierta de cráteres antiguos. En su superficie oscura hay un misterioso anillo brillante. Umbriel lleva el nombre de un duendecillo sombrío de un poema antiguo.",
+			"standard": "Umbriel, de unos 1170 km de ancho, es casi exactamente igual de grande que Ariel, pero es la más oscura de las grandes lunas de Urano. Su superficie es antigua y está repleta de cráteres, así que probablemente ha cambiado poco en miles de millones de años. Cerca de su ecuador está el cráter Wunda, de unos 131 km de ancho, con un extraño anillo brillante en el fondo; los científicos todavía no saben con seguridad qué es. Umbriel la descubrió en 1851 William Lassell, y lleva el nombre de un duendecillo sombrío del poema El rizo robado, de Alexander Pope.",
+			"advanced": "El albedo geométrico de Umbriel, de unos 0,26, es aproximadamente la mitad que el de Ariel, y su superficie muy craterizada, con cráteres de hasta unos 210 km de diámetro, muestra pocas señales de renovación, lo que la convierte en una de las superficies más antiguas entre las grandes lunas de Urano. Todavía no está claro por qué es tan uniformemente oscura; una posibilidad es una capa de material oscuro y rico en carbono alterado por la radiación. El anillo brillante del fondo de Wunda podría ser un depósito de impacto o una mancha de escarcha de dióxido de carbono: se ha detectado hielo de dióxido de carbono en los hemisferios posteriores de las grandes lunas de Urano. La Voyager 2 solo fotografió un 40 % de Umbriel, con una resolución de unos 5 km en el mejor de los casos, así que gran parte de ella sigue sin cartografiar."
+		},
+		"facts": {
+			"simple": [
+				"Umbriel da una vuelta a Urano en unos cuatro días.",
+				"El nombre de Umbriel suena a «umbra», la palabra latina para sombra: un buen nombre para una luna tan oscura.",
+				"Umbriel se descubrió la misma noche que Ariel, en 1851."
+			],
+			"standard": [
+				"En el poema de Pope, a Umbriel se le llama «el sombrío y melancólico duende».",
+				"La Voyager 2 solo fotografió un 40 % de la superficie de Umbriel en 1986.",
+				"Umbriel orbita a unos 266 000 km de Urano y necesita unos 4,1 días para dar una vuelta."
+			],
+			"advanced": [
+				"La gravedad en la superficie de Umbriel es de unos 0,25 m/s², casi la misma que en Ariel.",
+				"Su densidad de unos 1,5 g/cm³ sugiere una mezcla de hielo de agua y roca, con material oscuro rico en carbono en la superficie.",
+				"Unos cañones orientados más o menos de noreste a suroeste indican que Umbriel tuvo actividad geológica muy al principio de su historia."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Umbriel y Ariel son casi del mismo tamaño, pero al lado de Ariel, Umbriel parece una bola de nieve llena de hollín junto a una limpia."
+			],
+			"standard": [
+				"Sobre la cara oscura de Umbriel, el anillo brillante del cráter Wunda destaca como la marca blanca que deja una taza sobre una mesa oscura, y nadie sabe con seguridad qué lo formó."
+			],
+			"advanced": [
+				"Umbriel refleja solo la mitad de luz que Ariel, aunque sus diámetros difieren apenas en un 1 %: como dos pelotas idénticas, una pintada de gris claro y otra de gris oscuro."
+			]
+		}
+	},
+	"titania": {
+		"name": "Titania",
+		"tagline": "La reina de las lunas de Urano",
+		"description": {
+			"simple": "Titania es la luna más grande de Urano y mide unos 1580 km de ancho, algo menos de la mitad que nuestra Luna. Lleva el nombre de la reina de las hadas de una obra de William Shakespeare. Su superficie helada está partida por cañones enormes. William Herschel, el astrónomo que descubrió Urano, encontró Titania en 1787.",
+			"standard": "Titania, de unos 1580 km de ancho, es la luna más grande de Urano y la octava más grande del sistema solar. Su superficie está cortada por enormes valles de falla; el más largo, Messina Chasma, recorre unos 1500 km. Estos cañones probablemente se formaron cuando el interior de Titania se expandió y agrietó la corteza helada, como una botella de agua olvidada en el congelador. William Herschel descubrió Titania el 11 de enero de 1787, la misma noche que Oberón, y lleva el nombre de la reina de las hadas de El sueño de una noche de verano, de Shakespeare.",
+			"advanced": "La densidad de Titania, de unos 1,65 g/cm³, sugiere cantidades más o menos iguales de hielo de agua y roca, probablemente separadas en un núcleo rocoso y un manto helado; algunos modelos admiten una fina capa de agua líquida en el límite entre ambos, mantenida líquida por el amoníaco, que actúa como anticongelante. Sus cañones (chasmata) son fosas tectónicas formadas por una extensión global de la corteza, y tiene menos cráteres grandes que Oberón, así que su superficie es probablemente más joven. Cuando Titania pasó por delante de una estrella en 2001, la estrella desapareció de golpe, lo que limita cualquier atmósfera a una presión en superficie inferior a unos 10-20 nanobares. La Voyager 2 solo fotografió un 40 % de su superficie, casi toda en el hemisferio sur, que en 1986 estaba orientado hacia el Sol."
+		},
+		"facts": {
+			"simple": [
+				"Titania tarda casi nueve días en dar una vuelta a Urano.",
+				"Titania está hecha más o menos de mitad hielo y mitad roca.",
+				"El mayor cráter de Titania, Gertrude, mide más de 300 km de ancho."
+			],
+			"standard": [
+				"Titania orbita a unos 436 300 km de Urano, un poco más lejos que nuestra Luna de la Tierra.",
+				"Los lugares de Titania llevan nombres de Shakespeare: los cráteres, de personajes femeninos como Gertrude, la madre de Hamlet, y los cañones, de lugares como Messina.",
+				"Como las demás lunas grandes de Urano, Titania siempre muestra la misma cara a su planeta."
+			],
+			"advanced": [
+				"La gravedad en la superficie de Titania es de unos 0,36 m/s², aproximadamente un 3,7 % de la terrestre.",
+				"Su periodo orbital es de 8,706 días, y su órbita es casi perfectamente circular (excentricidad de unos 0,001).",
+				"Como las demás grandes lunas de Urano, Titania tiene más hielo de dióxido de carbono en su hemisferio posterior, producido probablemente en parte por partículas cargadas de la magnetosfera de Urano."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"El cañón más largo de Titania es tan largo que da casi un tercio de la vuelta a toda la luna."
+			],
+			"standard": [
+				"El gran cañón de Titania, Messina Chasma, mide unos 1500 km de largo —más de tres veces la longitud del Gran Cañón de Estados Unidos— en una luna que no llega a la mitad del ancho de la nuestra."
+			],
+			"advanced": [
+				"Titania mide casi la mitad de ancho que nuestra Luna, pero como es aproximadamente mitad hielo, solo tiene una veinteava parte de la masa de la Luna."
+			]
+		}
+	},
+	"oberon": {
+		"name": "Oberón",
+		"tagline": "El viejo rey de las hadas",
+		"description": {
+			"simple": "Oberón es la más exterior de las cinco lunas grandes de Urano y la segunda más grande: mide unos 1520 km de ancho. Lleva el nombre del rey de las hadas de una obra de William Shakespeare, y Titania, la reina de las hadas, es su vecina. La superficie de Oberón es antigua y está llena de cráteres, algunos con el fondo oscuro. William Herschel encontró Oberón y Titania la misma noche de 1787.",
+			"standard": "Oberón, de unos 1520 km de ancho, es la segunda luna más grande de Urano y la que orbita más lejos de las cinco grandes, a unos 583 500 km del planeta, una vez cada 13,5 días. Su superficie es antigua y está cubierta de cráteres de impacto, lo que sugiere que allí ha cambiado poco en miles de millones de años. El fondo de varios cráteres grandes está cubierto de material oscuro, y la Voyager 2 vio una montaña de unos 11 km de altura en su borde. Oberón lleva el nombre del rey de las hadas de El sueño de una noche de verano, de Shakespeare.",
+			"advanced": "Oberón es la más craterizada de las grandes lunas de Urano, con cráteres de hasta unos 206 km de diámetro (Hamlet), lo que convierte su superficie en una de las más antiguas del sistema de Urano. Los depósitos oscuros del fondo de cráteres como Hamlet, Othello y Macbeth podrían ser material que brotó del interior después de los impactos, pero su origen sigue sin estar claro. Su órbita lleva a Oberón fuera de la magnetosfera de Urano durante parte del tiempo, así que su superficie queda expuesta alternativamente al plasma atrapado del planeta y al viento solar. La Voyager 2 solo vio Oberón desde unos 470 600 km de distancia y fotografió aproximadamente un 40 % de su superficie a baja resolución."
+		},
+		"facts": {
+			"simple": [
+				"Oberón tarda unas dos semanas en dar una vuelta a Urano.",
+				"Oberón siempre muestra la misma cara a Urano, igual que nuestra Luna a la Tierra.",
+				"Los cráteres de Oberón llevan nombres de personajes de las obras de Shakespeare, como Hamlet y Macbeth."
+			],
+			"standard": [
+				"Hamlet, el mayor cráter de Oberón, mide unos 206 km de ancho.",
+				"Herschel descubrió Oberón y Titania en 1787, solo seis años después de haber descubierto el propio Urano.",
+				"Oberón es casi exactamente igual de grande que Rea, la luna de Saturno."
+			],
+			"advanced": [
+				"La gravedad en la superficie de Oberón es de unos 0,35 m/s², aproximadamente un 3,6 % de la terrestre.",
+				"Su densidad de unos 1,66 g/cm³ sugiere cantidades más o menos iguales de hielo de agua y roca.",
+				"Como Urano está volcado, la órbita de Oberón también lo está: gira a unos 98° del plano de la trayectoria de Urano alrededor del Sol."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"La montaña más alta de Oberón mide unos 11 km: más que el monte Everest, la montaña más alta de la Tierra."
+			],
+			"standard": [
+				"La cara maltrecha de Oberón es como un libro de historia que nadie ha borrado: sus cráteres aún guardan la huella de impactos de hace miles de millones de años."
+			],
+			"advanced": [
+				"Oberón orbita a unas 1,5 veces la distancia entre la Tierra y la Luna, pero como Urano tiene unas 14,5 veces la masa de la Tierra, una órbita dura solo 13,5 días en lugar de 27,3."
+			]
+		}
+	},
+	"triton": {
+		"name": "Tritón",
+		"tagline": "La luna que va marcha atrás",
+		"description": {
+			"simple": "Tritón es la luna más grande de Neptuno, y da vueltas a Neptuno al revés: en sentido contrario al giro de Neptuno. Esa es una pista de que Tritón no nació allí: probablemente la gravedad de Neptuno lo atrapó hace mucho tiempo. Tritón es uno de los lugares más fríos que se han medido, y tiene géiseres que expulsan polvo oscuro. Muy, muy despacio, Tritón se va acercando a Neptuno.",
+			"standard": "Tritón es, con diferencia, la luna más grande de Neptuno: mide 2707 km de ancho y es un poco más grande que el planeta enano Plutón. Orbita Neptuno hacia atrás —en contra de la rotación del planeta— y es la única luna grande del sistema solar que lo hace, por eso los astrónomos creen que Neptuno lo capturó del cinturón de Kuiper hace mucho tiempo. Cuando la Voyager 2 pasó cerca en 1989, vio géiseres de nitrógeno gaseoso que llevaban polvo oscuro hasta unos 8 km de altura, sobre una superficie a unos −235 °C. Las mareas van atrayendo lentamente a Tritón hacia dentro, así que dentro de miles de millones de años podría deshacerse en anillos o caer sobre Neptuno.",
+			"advanced": "La órbita de Tritón es retrógrada y está inclinada unos 157° respecto al ecuador de Neptuno, algo que no se puede explicar por una formación en un disco alrededor del planeta; la explicación más aceptada es la captura de un objeto del cinturón de Kuiper, quizá un miembro de un par binario cuyo compañero salió despedido. La captura habría dejado a Tritón en una órbita muy excéntrica, y amortiguarla hasta el círculo casi perfecto de hoy (e ≈ 0,00002) pudo fundir su interior y dispersar o destruir las lunas originales de Neptuno. Su superficie de hielo de nitrógeno, metano y agua refleja la mayor parte de la luz solar que recibe (albedo de unos 0,76), lo que ayuda a mantenerlo a unos 38 K. Como orbita en contra de la rotación de Neptuno, el abultamiento de marea que provoca le va restando energía orbital; podría alcanzar el límite de Roche de Neptuno dentro de varios miles de millones de años, aunque las estimaciones van de unos 3600 a 28 000 millones de años."
+		},
+		"facts": {
+			"simple": [
+				"Tritón se encontró en 1846, solo 17 días después de que se descubriera el propio Neptuno.",
+				"Tritón es tan helado y brillante que refleja la mayor parte de la luz solar que le llega.",
+				"Solo una nave ha visitado Tritón: la Voyager 2, en 1989."
+			],
+			"standard": [
+				"Tritón contiene más del 99,5 % de toda la masa que orbita Neptuno.",
+				"Partes de la superficie de Tritón están arrugadas formando un dibujo llamado terreno de piel de melón, porque se parece a la cáscara de un melón.",
+				"Tritón tarda 5,9 días en orbitar Neptuno y siempre le muestra la misma cara, igual que nuestra Luna a la Tierra."
+			],
+			"advanced": [
+				"Tritón tiene una atmósfera de nitrógeno muy tenue, con una presión en superficie de unos 1,4 Pa, aproximadamente 1/70 000 de la terrestre.",
+				"Algunos modelos sugieren que el calor de la desintegración radiactiva y de las mareas podría mantener un océano líquido bajo la corteza helada de Tritón.",
+				"La gravedad en su superficie es de 0,78 m/s², un 8 % de la terrestre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Tritón está unos 150 grados más frío que la temperatura más baja jamás medida en la Tierra."
+			],
+			"standard": [
+				"Tritón da vueltas a Neptuno en sentido contrario, como un coche que recorre una rotonda marcha atrás: una pista de que Neptuno lo capturó del cinturón de Kuiper."
+			],
+			"advanced": [
+				"Tritón es un 14 % más ancho que Plutón, con una densidad parecida y hielos similares de nitrógeno, metano y agua: un mundo parecido a Plutón que Neptuno se quedó para sí."
+			]
+		}
+	},
+	"nereid": {
+		"name": "Nereida",
+		"tagline": "La órbita de montaña rusa",
+		"description": {
+			"simple": "Nereida es una luna pequeña y gris de Neptuno. Su camino alrededor de Neptuno no es un círculo, sino un óvalo largo y estirado. A veces se acerca bastante a Neptuno y luego se aleja muchísimo otra vez. Los científicos creen que algo grande pudo lanzarla a este camino tan raro hace mucho tiempo.",
+			"standard": "Nereida mide unos 340 km de ancho y tiene una de las órbitas más alargadas de todas las lunas conocidas. Durante su órbita de 360 días, su distancia a Neptuno va de unos 1,4 millones de km a unos 9,7 millones de km, casi siete veces más. Gerard Kuiper la descubrió en 1949; fue la segunda luna de Neptuno que se encontró y la última descubierta antes de que llegara la Voyager 2 en 1989. Durante mucho tiempo los astrónomos pensaron que Nereida era un objeto capturado, pero un estudio de 2026 sugiere que podría ser una de las lunas originales de Neptuno, lanzada a su órbita desenfrenada cuando llegó Tritón.",
+			"advanced": "La órbita de Nereida tiene una excentricidad de unos 0,75, una de las más altas conocidas para una luna, con su punto más cercano a unos 1,37 millones de km y el más lejano a unos 9,65 millones de km de Neptuno. Es prógrada y solo moderadamente inclinada, a diferencia de las lunas irregulares típicas, que se consideran cuerpos capturados. Se han propuesto dos orígenes: un objeto capturado del cinturón de Kuiper, o una luna regular de Neptuno dispersada hacia fuera cuando Tritón fue capturado. En 2026, espectros del telescopio espacial James Webb mostraron hielo de agua cristalino y dióxido de carbono, y una superficie distinta de la de los objetos del cinturón de Kuiper pero parecida a la de las lunas de Urano, lo que favorece la segunda idea; si es así, Nereida podría ser la última superviviente intacta de la familia original de lunas de Neptuno."
+		},
+		"facts": {
+			"simple": [
+				"Nereida la descubrió en 1949 un astrónomo llamado Gerard Kuiper.",
+				"Nereida es la tercera luna más grande de Neptuno.",
+				"Nadie ha visto nunca una foto de cerca de Nereida."
+			],
+			"standard": [
+				"La Voyager 2 solo pudo fotografiar Nereida desde unos 4,7 millones de km, así que su forma y su superficie siguen siendo en gran parte desconocidas.",
+				"Nereida gira sobre sí misma una vez cada 11,6 horas, aproximadamente, según las mediciones del telescopio espacial Kepler.",
+				"La pequeña luna exterior Halimede tiene un color gris parecido y podría ser un fragmento arrancado de Nereida en una colisión."
+			],
+			"advanced": [
+				"El diámetro medio de Nereida es de unos 340 km, parecido al de Mimas, la luna de Saturno.",
+				"Nereida es, con diferencia, la mayor de las lunas irregulares de Neptuno y reúne cerca del 98 % de su masa conjunta (sin contar a Tritón).",
+				"Se ha observado que el brillo de Nereida varía mucho en plazos de días a años, y la causa aún no se explica del todo."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Nereida tarda casi exactamente lo mismo en dar una vuelta a Neptuno que la Tierra en dar una vuelta al Sol."
+			],
+			"standard": [
+				"Nereida se acerca a Neptuno y vuelve a alejarse como un cometa: en su punto más lejano está unas siete veces más lejos que en el más cercano."
+			],
+			"advanced": [
+				"Incluso en su punto más cercano, Nereida está unas 3,6 veces más lejos de Neptuno que nuestra Luna de la Tierra; en el más lejano, unas 25 veces."
+			]
+		}
+	},
+	"proteus": {
+		"name": "Proteo",
+		"tagline": "Escondido en el resplandor de Neptuno",
+		"description": {
+			"simple": "Proteo es una luna oscura y llena de bultos de Neptuno, de unos 420 km de ancho. Es casi lo bastante grande para que su propia gravedad la apriete hasta hacerla una bola, pero no del todo, así que parece una caja abollada. Aunque es bastante grande, nadie la vio hasta que la sonda espacial Voyager 2 pasó junto a Neptuno en 1989. Estaba escondida en el resplandor brillante de Neptuno.",
+			"standard": "Proteo es la segunda luna más grande de Neptuno, de unos 420 km de ancho, y sin embargo no se descubrió hasta 1989, en imágenes de la Voyager 2. Desde la Tierra se pierde en el resplandor de Neptuno, porque orbita a solo unos 117 600 km del centro del planeta —menos de cinco radios de Neptuno— y su superficie refleja solo una décima parte de la luz solar que le llega. Proteo es más o menos lo más grande que puede ser un cuerpo como él sin que su propia gravedad lo redondee, así que sigue siendo un bloque irregular con forma de caja. Da la vuelta a Neptuno a toda velocidad en solo 27 horas.",
+			"advanced": "Con un diámetro medio de unos 420 km, Proteo está cerca del tamaño a partir del cual la autogravedad debería vencer la resistencia del hielo y la roca y dar al cuerpo una forma más o menos esferoidal (hidrostática); sin embargo, ha seguido siendo irregular. En su superficie domina la cuenca de impacto Pharos, de unos 255 km de ancho y 10-15 km de profundidad, formada por un impacto que casi hizo añicos la luna. Los científicos creen que Proteo no se formó junto con Neptuno, sino que volvió a agregarse a partir de escombros después de que Neptuno capturara a Tritón, cuya llegada habría desbaratado el sistema de lunas original. La diminuta luna Hipocampo, encontrada en imágenes del Hubble en 2013, orbita solo unos 12 000 km por dentro de la órbita de Proteo y podría ser un fragmento arrancado por el impacto de Pharos."
+		},
+		"facts": {
+			"simple": [
+				"Proteo da una vuelta a Neptuno en poco más de un día.",
+				"Desde Proteo, Neptuno se vería unas 50 veces más ancho que la Luna llena vista desde la Tierra.",
+				"Proteo tiene un cráter gigante que mide más de la mitad del ancho de toda la luna."
+			],
+			"standard": [
+				"La Voyager 2 encontró Proteo en 1989, unas semanas antes de pasar junto a Neptuno.",
+				"Proteo lleva el nombre de un dios marino de la mitología griega capaz de cambiar de forma: muy apropiado para una luna con una forma tan rara.",
+				"Tritón, la luna más grande de Neptuno, es más de seis veces más ancho que Proteo."
+			],
+			"advanced": [
+				"Proteo orbita más despacio (26,9 h) de lo que gira Neptuno (unas 16,1 h), así que las mareas lo van empujando lentamente hacia fuera.",
+				"La masa de Proteo nunca se ha medido con precisión, así que su densidad y su gravedad superficial (probablemente de unos 0,07 m/s²) siguen siendo inciertas.",
+				"Su órbita casi circular y cercana al plano ecuatorial de Neptuno es típica de una luna nacida en un disco alrededor del planeta, a diferencia de las órbitas de Tritón y Nereida."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Cruzar Proteo en coche por la autopista llevaría unas cuatro horas."
+			],
+			"standard": [
+				"Proteo es más grande que Nereida, que los astrónomos vieron desde la Tierra en 1949, y sin embargo Proteo siguió escondido otros 40 años: como un trozo de carbón junto a un foco."
+			],
+			"advanced": [
+				"Mimas, la luna de Saturno, de unos 396 km de diámetro, es redonda, mientras que Proteo, un poco más grande, no lo es: el tamaño al que una luna se vuelve redonda depende de su composición y de lo caliente que estuvo en el pasado."
+			]
+		}
+	}
+}
