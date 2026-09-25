@@ -184,10 +184,10 @@
 
 /* wide screens: the caption takes the body card's corner, clear of the body in the centre */
 @media (min-width: 1200px) {
+	/* spanning the flexible row, it never makes the HUD taller than the screen: a tall caption grows upwards */
 	:global(html[data-intro="playing"]) .intro {
-		grid-row: 3;
+		grid-row: 2 / 4;
 		grid-column: 1;
-		justify-self: stretch;
 	}
 }
 
