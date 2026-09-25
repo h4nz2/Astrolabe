@@ -10,6 +10,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { HuntPanelSlot } from "./hunt/Hunt"
 import { LightSlot } from "./light/LightPanel"
 import Scene from "./scene/Scene"
 import BodyHighlight from "./ui/BodyHighlight"
@@ -97,6 +98,7 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<ScalePanel />
 					</div>
+					<HuntPanelSlot />
 				</div>
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />
