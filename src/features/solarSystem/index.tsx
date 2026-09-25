@@ -90,7 +90,6 @@ const SolarSystem = () => {
 						<OverviewButton />
 						<FocusPicker />
 						<FrameMenu />
-						<IntroMenu />
 					</div>
 					<FrameBadgePanel />
 					<LightSlot
@@ -105,6 +104,7 @@ const SolarSystem = () => {
 						<TeacherBar layers={<SceneToggles />}>
 							<PostcardButton />
 							<SoundControl />
+							<IntroMenu />
 							<LanguageMenu />
 						</TeacherBar>
 						<InlineLayers>

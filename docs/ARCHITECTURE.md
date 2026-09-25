@@ -348,7 +348,7 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - **Once per device, never over a link:** it plays on arrival only when no simulation parameter is in the URL
   (`hasExplicitView`: any key of `simSearchSchema`; `lang`/`reading` do not count) and localStorage
   `astrolabe.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
-  exactly there. Replayed deliberately from the Help menu (`intro/IntroMenu.tsx`, in the picker panel), which also
+  exactly there. Replayed deliberately from the Help menu (`intro/IntroMenu.tsx`, beside the language menu), which also
   shows the hints again. e2e: `playwright.config.ts` presets the key so every test is a returning visitor;
   `e2e/intro.spec.ts` clears it.
 - **Hand-over** (`status: "handover"`): the hints (`IntroHints.tsx`: drag to look around, scroll or pinch to zoom,
