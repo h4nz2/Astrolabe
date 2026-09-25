@@ -7,14 +7,17 @@
  * with…") and by link; see docs/ARCHITECTURE.md, "Comparison".
  */
 import { useLayoutEffect, useMemo, useState } from "react"
-import { Button } from "@mantine/core"
+import { Box, Button } from "@mantine/core"
 import { IconArrowLeft } from "@tabler/icons-react"
 import { getRouteApi, useCanGoBack, useRouter } from "@tanstack/react-router"
 
 import { LanguageMenu, useI18n } from "@/i18n"
+import { useBodyName } from "@/i18n/bodies"
 import { dateToJD } from "@/sim"
 
+import { PostcardButton, PostcardSlot } from "../solarSystem/postcard/Postcard"
 import FactsPanel from "./FactsPanel"
+import { takeComparisonPostcard } from "./picture"
 import Pickers from "./Pickers"
 import { completeBodies, formatBodies, parseBodies, promote } from "./selection"
 import Stage from "./Stage"
@@ -24,7 +27,9 @@ import classes from "./Compare.module.css"
 const route = getRouteApi("/compare")
 
 const Compare = () => {
-	const { t } = useI18n()
+	const i18n = useI18n()
+	const { t } = i18n
+	const name = useBodyName()
 	const search = route.useSearch()
 	const navigate = route.useNavigate()
 	const router = useRouter()
@@ -79,6 +84,13 @@ const Compare = () => {
 					<h1 className={classes.title}>{t("compare.title")}</h1>
 					<p className={classes.subtitle}>{t("compare.subtitle")}</p>
 				</div>
+				<Box ml="auto">
+					<PostcardButton
+						onTake={() =>
+							void takeComparisonPostcard(ids, jd, live, i18n, name)
+						}
+					/>
+				</Box>
 			</header>
 			<Pickers ids={ids} onChange={setIds} />
 			<Stage ids={ids} onPick={(id) => setIds(promote(ids, id))} />
@@ -90,6 +102,7 @@ const Compare = () => {
 				live={live}
 			/>
 			<footer className={classes.footer}>{t("app.name")}</footer>
+			<PostcardSlot />
 		</main>
 	)
 }

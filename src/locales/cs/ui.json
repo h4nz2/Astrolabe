@@ -57,10 +57,10 @@
 			"star": "Hvězda",
 			"planet": "Planeta",
 			"moon": "Měsíc",
+			"moonOf": "{parentId, select, sun {Měsíc Slunce} mercury {Měsíc Merkuru} venus {Měsíc Venuše} earth {Měsíc Země} mars {Měsíc Marsu} jupiter {Měsíc Jupiteru} saturn {Měsíc Saturnu} uranus {Měsíc Uranu} neptune {Měsíc Neptunu} moon {Měsíc Měsíce} pluto {Měsíc Pluta} eris {Měsíc Eridy} haumea {Měsíc Haumey} makemake {Měsíc Makemaka} other {Měsíc planety {parent}}}",
 			"dwarfPlanet": "Trpasličí planeta",
 			"asteroid": "Planetka",
-			"comet": "Kometa",
-			"moonOf": "{parentId, select, sun {Měsíc Slunce} mercury {Měsíc Merkuru} venus {Měsíc Venuše} earth {Měsíc Země} mars {Měsíc Marsu} jupiter {Měsíc Jupiteru} saturn {Měsíc Saturnu} uranus {Měsíc Uranu} neptune {Měsíc Neptunu} moon {Měsíc Měsíce} pluto {Měsíc Pluta} eris {Měsíc Eridy} haumea {Měsíc Haumey} makemake {Měsíc Makemaka} other {Měsíc planety {parent}}}"
+			"comet": "Kometa"
 		},
 		"fallback": {
 			"moonDescription": "{name} je měsíc {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}}. Má průměr asi {diameter} a svou {parentId, select, pluto {trpasličí planetu} eris {trpasličí planetu} haumea {trpasličí planetu} makemake {trpasličí planetu} other {planetu}} oběhne jednou za {period}.",
@@ -146,8 +146,8 @@
 			"allMoonsHint": "Zobrazit i spoustu malých měsíců, nejen ty s vlastním příběhem",
 			"markers": "Značky",
 			"orbitNames": "Názvy drah",
-			"smallBodies": "Malá tělesa",
-			"alwaysLit": "Vždy osvětlené"
+			"alwaysLit": "Vždy osvětlené",
+			"smallBodies": "Malá tělesa"
 		},
 		"scale": {
 			"label": "Měřítko",
@@ -381,8 +381,6 @@
 			"across": "průměr {value}",
 			"sunlight": "Sluneční světlo sem dorazí za {time}",
 			"sunlight@simple": "Světlo ze Slunce sem doletí za {time}",
-			"sunlightRange": "Sluneční světlo sem letí {near} až {far} – podle toho, kde se právě na své dlouhé dráze nachází",
-			"sunlightRange@simple": "Světlo ze Slunce sem doletí za {near}, když je nejblíž, a za {far}, když je nejdál",
 			"gap": "{parentId, select, sun {Slunce by se do této mezery vešlo} earth {Země by se do této mezery vešla} venus {Venuše by se do této mezery vešla} mercury {Merkur by se do této mezery vešel} mars {Mars by se do této mezery vešel} jupiter {Jupiter by se do této mezery vešel} saturn {Saturn by se do této mezery vešel} uranus {Uran by se do této mezery vešel} neptune {Neptun by se do této mezery vešel} moon {Měsíc by se do této mezery vešel} pluto {Pluto by se do této mezery vešlo} eris {Eris by se do této mezery vešla} haumea {Haumea by se do této mezery vešla} makemake {Makemake by se do této mezery vešel} other {{parent} by se do této mezery vešel}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}}",
 			"fromParent": "{distance} {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}",
 			"lap": "Jednou oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} za {period}",
@@ -393,7 +391,9 @@
 			"weightMore@simple": "Z 30 kg na Zemi by tu bylo {kg} kg",
 			"weightSimilar": "Váha by tu ukázala zhruba totéž co na Zemi",
 			"weightLess": "Váha by tu ukázala {percent} % toho, co na Zemi",
-			"weightLess@simple": "Z 30 kg na Zemi by tu bylo jen {kg} kg"
+			"weightLess@simple": "Z 30 kg na Zemi by tu bylo jen {kg} kg",
+			"sunlightRange": "Sluneční světlo sem letí {near} až {far} – podle toho, kde se právě na své dlouhé dráze nachází",
+			"sunlightRange@simple": "Světlo ze Slunce sem doletí za {near}, když je nejblíž, a za {far}, když je nejdál"
 		},
 		"flight": {
 			"label": "Let",
@@ -478,12 +478,11 @@
 				"note@advanced": "Tvoje hmotnost je všude stejná; mění se jen tíhová síla, a s ní i to, co ukáže váha."
 			},
 			"share": "Uložit jako obrázek",
-			"shareHint": "Vytvoří na tomto zařízení obrázek s tvým věkem. Nic se nenahrává.",
+			"shareHint": "Vytvoří na tomto zařízení obrázek planet na obrazovce s tvým věkem pod ním. Nic se nenahrává.",
 			"card": {
 				"title": "Kolik je mi let na jiných planetách?",
 				"date": "Dne {date}",
 				"distance": "Moje cesta kolem Slunce: už {distance} km.",
-				"footer": "Astrolabe – naše sluneční soustava",
 				"fileName": "muj-vek-na-planetach"
 			}
 		},
@@ -806,6 +805,50 @@
 				"join2@simple": "{a} a {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} a {c}"
+			}
+		},
+		"postcard": {
+			"take": "Vyfotit",
+			"takeHint": "Udělej obrázek toho, co vidíš – k uložení nebo sdílení",
+			"takeHint@simple": "Udělej obrázek toho, co vidíš",
+			"title": "Tvoje pohlednice z vesmíru",
+			"close": "Zavřít",
+			"preview": "Obrázek: {title}",
+			"caption": "Popisek",
+			"captionPlaceholder": "Napiš něco k tomuto obrázku",
+			"names": "Jména v obrázku",
+			"link": "QR kód, který otevře tento pohled",
+			"link@simple": "Kód, který otevře tento pohled",
+			"download": "Uložit obrázek",
+			"copy": "Kopírovat obrázek",
+			"share": "Sdílet…",
+			"copyLink": "Kopírovat odkaz",
+			"copied": "Obrázek zkopírován. Můžeš ho kamkoli vložit.",
+			"linkCopied": "Odkaz zkopírován.",
+			"copyFailed": "Tento prohlížeč kopírování nedovolil. Obrázek raději ulož.",
+			"shareFailed": "Sdílení se nepovedlo. Obrázek raději ulož.",
+			"privacy": "Obrázek vzniká na tomto zařízení. Nic se nenahrává.",
+			"privacy@simple": "Obrázek vzniká přímo tady ve tvém zařízení. Nikam se nic neposílá.",
+			"privacyBirthday": "Datum tam schválně chybí, aby tvoje narozeniny zůstaly soukromé.",
+			"overview": "Naše sluneční soustava",
+			"overviewCaption": "Slunce a jeho osm planet",
+			"birthdayCaption": "Kde byly planety v den mého narození",
+			"scan": "Naskenuj a otevři tento pohled",
+			"scan@simple": "Naskenuj mě a podívej se na to",
+			"compareTitle": "{a} a {b} vedle sebe",
+			"compareScale": "Skutečné poměry velikostí: všechna tělesa jsou nakreslena ve stejném měřítku.",
+			"scaleNote": {
+				"trueScale": "Skutečné měřítko: skutečné velikosti i vzdálenosti.",
+				"trueScale@simple": "Všechno je tu tak velké a tak daleko od sebe jako ve skutečnosti.",
+				"textbook": "Není v měřítku: planety jsou nakresleny mnohem blíž k sobě, než ve skutečnosti jsou.",
+				"textbook@simple": "Není to jako ve skutečnosti: planety jsou od sebe mnohem dál.",
+				"textbook@advanced": "Není v měřítku: velikosti ve správném poměru, vzdálenosti zhuštěné.",
+				"bigPlanets": "Není v měřítku: tělesa jsou nakreslena mnohem větší, než jsou.",
+				"bigPlanets@simple": "Není to jako ve skutečnosti: planety jsou ve skutečnosti mnohem menší.",
+				"bigPlanets@advanced": "Není v měřítku: vzdálenosti skutečné, velikosti přehnané.",
+				"everythingVisible": "Není v měřítku: tělesa jsou nakreslena větší a blíž k sobě, než ve skutečnosti jsou.",
+				"everythingVisible@simple": "Není to jako ve skutečnosti: planety jsou mnohem menší a mnohem dál od sebe.",
+				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné."
 			}
 		},
 		"smallBodies": {

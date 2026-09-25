@@ -24,6 +24,7 @@ import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
 import LightFront from "../light/LightFront"
+import SceneCapture from "../postcard/SceneCapture"
 import DprSync from "../present/DprSync"
 import { labelSlotCount } from "../labels/project"
 import Belts from "../smallBodies/Belts"
@@ -90,6 +91,7 @@ function Scene() {
 					<BodyPicking />
 					<CameraRig />
 					<HighlightTracker />
+					<SceneCapture />
 				</SimFrameContext.Provider>
 			</Canvas>
 			<LabelLayer board={labels} />

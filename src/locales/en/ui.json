@@ -56,11 +56,11 @@
 		"kind": {
 			"star": "Star",
 			"planet": "Planet",
-			"dwarfPlanet": "Dwarf planet",
 			"moon": "Moon",
+			"moonOf": "{parentId, select, other {Moon of {parent}}}",
+			"dwarfPlanet": "Dwarf planet",
 			"asteroid": "Asteroid",
-			"comet": "Comet",
-			"moonOf": "{parentId, select, other {Moon of {parent}}}"
+			"comet": "Comet"
 		},
 		"fallback": {
 			"moonDescription": "{name} is a moon of {parentId, select, other {{parent}}}. It is about {diameter} across and travels once around {parentId, select, pluto {its dwarf planet} eris {its dwarf planet} haumea {its dwarf planet} makemake {its dwarf planet} other {its planet}} every {period}.",
@@ -146,8 +146,8 @@
 			"allMoonsHint": "Also show the many small moons, not only the ones with a story",
 			"markers": "Markers",
 			"orbitNames": "Orbit names",
-			"smallBodies": "Small bodies",
-			"alwaysLit": "Always lit"
+			"alwaysLit": "Always lit",
+			"smallBodies": "Small bodies"
 		},
 		"scale": {
 			"label": "Scale",
@@ -381,8 +381,6 @@
 			"across": "{value} across",
 			"sunlight": "Sunlight takes {time} to get here",
 			"sunlight@simple": "Light from the Sun needs {time} to get here",
-			"sunlightRange": "Sunlight takes between {near} and {far} to get here, depending on where it is on its long orbit",
-			"sunlightRange@simple": "Light from the Sun needs {near} to reach it when it is closest and {far} when it is farthest away",
 			"gap": "{parentId, select, other {{parent}}} would fit into the gap {count, plural, one {# time} other {# times}}",
 			"fromParent": "{distance} from {parentId, select, other {{parent}}}",
 			"lap": "Goes once around {parentId, select, other {{parent}}} in {period}",
@@ -393,7 +391,9 @@
 			"weightMore@simple": "30 kg on Earth would be {kg} kg here",
 			"weightSimilar": "You would weigh about as much as on Earth",
 			"weightLess": "You would weigh {percent}% of your weight on Earth",
-			"weightLess@simple": "30 kg on Earth would be only {kg} kg here"
+			"weightLess@simple": "30 kg on Earth would be only {kg} kg here",
+			"sunlightRange": "Sunlight takes between {near} and {far} to get here, depending on where it is on its long orbit",
+			"sunlightRange@simple": "Light from the Sun needs {near} to reach it when it is closest and {far} when it is farthest away"
 		},
 		"flight": {
 			"label": "Flight",
@@ -478,12 +478,11 @@
 				"note@advanced": "Your mass stays the same everywhere; only gravity’s pull changes, and with it what a scale shows."
 			},
 			"share": "Save as picture",
-			"shareHint": "Makes a picture of your ages on this device. Nothing is uploaded.",
+			"shareHint": "Makes a picture of the planets on screen with your ages below, on this device. Nothing is uploaded.",
 			"card": {
 				"title": "How old am I on the other planets?",
 				"date": "On {date}",
 				"distance": "I have travelled {distance} km around the Sun.",
-				"footer": "Astrolabe – our solar system",
 				"fileName": "my-age-on-the-planets"
 			}
 		},
@@ -807,6 +806,50 @@
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} and {c}"
 			}
+		},
+		"postcard": {
+			"take": "Take a picture",
+			"takeHint": "Take a picture of what you see, to save or share",
+			"takeHint@simple": "Take a picture of what you see",
+			"title": "Your postcard from space",
+			"close": "Close",
+			"preview": "Picture: {title}",
+			"caption": "Caption",
+			"captionPlaceholder": "Write something about this picture",
+			"names": "Names on the picture",
+			"link": "QR code that opens this view",
+			"link@simple": "Code to open this view",
+			"download": "Save picture",
+			"copy": "Copy picture",
+			"share": "Share…",
+			"copyLink": "Copy link",
+			"copied": "Picture copied. Paste it anywhere.",
+			"linkCopied": "Link copied.",
+			"copyFailed": "This browser did not allow copying. Save the picture instead.",
+			"shareFailed": "Sharing did not work. Save the picture instead.",
+			"privacy": "The picture is made on this device. Nothing is uploaded.",
+			"privacy@simple": "The picture is made right here on your device. Nothing is sent anywhere.",
+			"privacyBirthday": "The date is left out, so your birthday stays private.",
+			"overview": "Our solar system",
+			"overviewCaption": "The Sun and its eight planets",
+			"birthdayCaption": "Where the planets were on the day I was born",
+			"scan": "Scan to open this view",
+			"scan@simple": "Scan me to explore it yourself",
+			"scaleNote": {
+				"trueScale": "True scale: real sizes and real distances.",
+				"trueScale@simple": "Everything here is as big and as far apart as in real life.",
+				"textbook": "Not to scale: the planets are drawn much closer together than they are.",
+				"textbook@simple": "Not like real life: the planets are really much farther apart.",
+				"textbook@advanced": "Not to scale: sizes true to each other, distances compressed.",
+				"bigPlanets": "Not to scale: the bodies are drawn much bigger than they are.",
+				"bigPlanets@simple": "Not like real life: the planets are really much smaller.",
+				"bigPlanets@advanced": "Not to scale: distances true, sizes exaggerated.",
+				"everythingVisible": "Not to scale: the bodies are drawn bigger and closer together than they are.",
+				"everythingVisible@simple": "Not like real life: the planets are really much smaller and much farther apart.",
+				"everythingVisible@advanced": "Not to scale: sizes exaggerated and distances compressed."
+			},
+			"compareTitle": "{a} and {b} side by side",
+			"compareScale": "True relative sizes: every body is drawn at the same scale."
 		},
 		"smallBodies": {
 			"beltName": "{belt, select, asteroidbelt {Asteroid belt} kuiperbelt {Kuiper belt} other {{belt}}}",

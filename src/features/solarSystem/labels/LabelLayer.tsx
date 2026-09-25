@@ -52,7 +52,12 @@ function LabelLayer({ board }: LabelLayerProps) {
 	}, [board, name, showLabels, orbitNames])
 
 	return (
-		<div className={classes.layer} aria-hidden hidden={!showLabels}>
+		<div
+			className={classes.layer}
+			aria-hidden
+			hidden={!showLabels}
+			data-label-layer
+		>
 			{bodies.map((body, i) => (
 				<span
 					key={body.id}

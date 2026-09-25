@@ -45,19 +45,30 @@ const SATURN_RINGS: readonly [number, string][] = [
 	[136_800, "rgba(196, 178, 142, 0)"],
 ]
 
-const ringGradient = (body: Body): string => {
+/**
+ * The rings as gradient stops: [fraction of the outer radius, colour]
+ * (shared with the comparison's picture, ./picture.ts).
+ */
+export function ringStops(body: Body): [number, string][] {
 	const rings = body.rings
-	if (rings === null) return "none"
-	const at = (km: number) => `${((km / rings.outerRadiusKm) * 100).toFixed(2)}%`
-	const stops =
-		body.id === "saturn"
-			? SATURN_RINGS.map(([km, color]) => `${color} ${at(km)}`)
-			: [
-					`rgba(200, 190, 170, 0) ${at(rings.innerRadiusKm)}`,
-					`rgba(200, 190, 170, 0.08) ${at(rings.innerRadiusKm)}`,
-					`rgba(200, 190, 170, 0.08) 99.5%`,
-					"rgba(200, 190, 170, 0) 100%",
-				]
+	if (rings === null) return []
+	if (body.id === "saturn") {
+		return SATURN_RINGS.map(([km, color]) => [km / rings.outerRadiusKm, color])
+	}
+	const inner = rings.innerRadiusKm / rings.outerRadiusKm
+	return [
+		[inner, "rgba(200, 190, 170, 0)"],
+		[inner, "rgba(200, 190, 170, 0.08)"],
+		[0.995, "rgba(200, 190, 170, 0.08)"],
+		[1, "rgba(200, 190, 170, 0)"],
+	]
+}
+
+const ringGradient = (body: Body): string => {
+	if (body.rings === null) return "none"
+	const stops = ringStops(body).map(
+		([at, color]) => `${color} ${(at * 100).toFixed(2)}%`,
+	)
 	return `radial-gradient(circle closest-side, ${stops.join(", ")})`
 }
 
