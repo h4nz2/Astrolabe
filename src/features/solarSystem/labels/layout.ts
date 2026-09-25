@@ -17,14 +17,15 @@
  *    Approaching a planet pulls its moons apart on screen and their names fade
  *    in one by one.
  * 3. Priority (`labelRank`): hovered, selected, focused, then the Sun, the
- *    planets, the moons; within a tier the larger body first.
+ *    planets, the featured moons (#17), the other moons; within a tier the
+ *    larger body first.
  * 4. Placement (`placeLabels`): greedy in priority order. A label sits beside
  *    its body's disc (right, left, below, above, then the diagonals; the side
  *    it had last frame first, so labels do not hop), never on it, fully
  *    inside the viewport, never over another label and, if at all possible,
  *    never over another body's dot, never under a HUD panel. A label with no
  *    free side is hidden, never squeezed in. At most `MOON_LABEL_BUDGET` moon
- *    names show at once, the largest moons first.
+ *    names show at once, the featured moons first, then the largest.
  *
  * Labels keep their on-screen size whatever the zoom (CSS, relative to the
  * viewport), so they are readable when a planet is one pixel and small beside
@@ -73,9 +74,10 @@ export const OBSTACLE_MAX_RADIUS_PX = 24
  * At most this many moon names at once (the hovered, selected or focused moon
  * and moons whose disc is at least `MOON_DISC_NAMED_PX` wide are extra). Giant
  * planets have dozens of moons, most of them a few kilometres of rock; the
- * largest few are the ones a lesson is about, and more names are only noise.
+ * featured few (#17: up to 9 around Saturn) are the ones a lesson is about,
+ * and more names are only noise.
  */
-export const MOON_LABEL_BUDGET = 8
+export const MOON_LABEL_BUDGET = 10
 /** A moon drawn at least this radius (px) is a world on screen and always may be named. */
 export const MOON_DISC_NAMED_PX = 8
 /** Screen rectangles labels keep out of (HUD panels), at most. */
@@ -180,6 +182,7 @@ export interface LabelState {
 	selectedId: string | null
 	hoverId: string | null
 	showMoons: boolean
+	showAllMoons: boolean
 }
 
 /**
@@ -213,17 +216,22 @@ const KIND_TIER: Record<BodyKind, number> = {
 	asteroid: 4,
 }
 
+/** Sun 0, planets 1, featured moons 2, the long tail of moons 3 (#17). */
+const labelTier = (body: Pick<Body, "kind" | "featured">): number =>
+	KIND_TIER[body.kind] + (body.kind === "moon" && !body.featured ? 1 : 0)
+
 /**
- * The static order of `bodies` for labelling: the Sun, the planets, the moons,
- * the larger first within each; returned as a rank per body index.
+ * The static order of `bodies` for labelling: the Sun, the planets, the
+ * featured moons, the other moons, the larger first within each; returned as
+ * a rank per body index.
  */
 export function staticLabelRanks(
-	bodies: readonly Pick<Body, "kind" | "radiusKm">[],
+	bodies: readonly Pick<Body, "kind" | "radiusKm" | "featured">[],
 ): Float64Array {
 	const indices = bodies.map((_, i) => i)
 	indices.sort(
 		(a, b) =>
-			KIND_TIER[bodies[a].kind] - KIND_TIER[bodies[b].kind] ||
+			labelTier(bodies[a]) - labelTier(bodies[b]) ||
 			bodies[b].radiusKm - bodies[a].radiusKm ||
 			a - b,
 	)

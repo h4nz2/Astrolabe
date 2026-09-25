@@ -13,7 +13,7 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { PerspectiveCamera, Vector3, type Camera, type Points } from "three"
 
 import type { Body, BodyKind } from "@/data"
-import { isBodyShown, useSimStore, type SimState } from "@/store/sim"
+import { isBodyShown, useSimStore, type MoonVisibility } from "@/store/sim"
 
 import { pixelsPerUnitAtDistanceOne } from "./picking"
 import { useSimFrame, type SimFrame } from "./simFrame"
@@ -88,7 +88,7 @@ export function fillMarkers(
 	frame: SimFrame,
 	camera: Camera,
 	heightPx: number,
-	state: Pick<SimState, "showMoons" | "focusId">,
+	state: MoonVisibility,
 ): number {
 	const { positions, colors, vertexBody } = buffers
 	const pxPerUnit =

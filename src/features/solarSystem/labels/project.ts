@@ -7,9 +7,10 @@
 import { PerspectiveCamera, Vector3 } from "three"
 
 import type { Body } from "@/data"
-import { degToRad } from "@/sim"
+import { degToRad, toUnits } from "@/sim"
 import { isBodyShown } from "@/store/sim"
 
+import { moonOrbitFade, orbitScreenRadiusPx } from "../bodies/moonOrbitFade"
 import { MARKER_HIDE_DIAMETER_PX, MARKER_SIZE_PX } from "../scene/Markers"
 import type { SimFrame } from "../scene/simFrame"
 import {
@@ -71,6 +72,40 @@ export const isBudgeted = (
 	radiusPx < MOON_DISC_NAMED_PX
 
 const view = new Vector3()
+const parentAt = new Vector3()
+
+/**
+ * Whether moon `i`'s orbit line is faded out right now (#17,
+ * ../bodies/moonOrbitFade.ts): its name is then not written along it.
+ */
+function isMoonOrbitFaded(
+	frame: SimFrame,
+	i: number,
+	camera: PerspectiveCamera,
+	pxPerUnit: number,
+): boolean {
+	const body = frame.bodies[i]
+	if (body.kind !== "moon" || body.parentId === null) return false
+	const p = frame.index.get(body.parentId)
+	if (p === undefined) return false
+	const { displayKm } = frame
+	const radius = Math.hypot(
+		displayKm[i * 3] - displayKm[p * 3],
+		displayKm[i * 3 + 1] - displayKm[p * 3 + 1],
+		displayKm[i * 3 + 2] - displayKm[p * 3 + 2],
+	)
+	frame.renderPosition(p, parentAt)
+	return (
+		moonOrbitFade(
+			orbitScreenRadiusPx(
+				toUnits(radius),
+				parentAt.distanceTo(camera.position),
+				pxPerUnit,
+			),
+			body,
+		) === 0
+	)
+}
 const anchor: OrbitAnchor = { x: 0, y: 0, depth: 0 }
 
 /**
@@ -187,6 +222,7 @@ export function fillLabelLayout(
 			(frame.topIndex[i] === i && heliocentricFaded) ||
 			!isBodyShown(body, state) ||
 			!isLabelCandidate(body, state, focusParentId) ||
+			isMoonOrbitFaded(frame, i, camera, pxPerUnit) ||
 			!orbitAnchor(
 				orbitCache,
 				frame,

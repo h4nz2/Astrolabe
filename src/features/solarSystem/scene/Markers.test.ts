@@ -46,6 +46,30 @@ describe("isMoonDotShown", () => {
 })
 
 describe("fillMarkers", () => {
+	it("dots only the featured moons until all moons are asked for (#17)", () => {
+		const frame = createSimFrame(bodies, J2000_JD)
+		const buffers = createMarkerBuffers(bodies.length)
+		const far = cameraAt(0, toUnits(1e10), 0)
+		const dotted = (showAllMoons: boolean) =>
+			drawnBodies(
+				buffers,
+				fillMarkers(buffers, frame, far, HEIGHT_PX, {
+					showMoons: true,
+					showAllMoons,
+					focusId: "jupiter",
+				}),
+			).map((i) => bodies[i].id)
+		const story = dotted(false)
+		expect(story).toEqual(
+			expect.arrayContaining(["io", "europa", "ganymede", "callisto"]),
+		)
+		expect(story).not.toContain("metis")
+		expect(
+			story.filter((id) => moonsOf("jupiter").some((m) => m.id === id)),
+		).toHaveLength(4)
+		expect(dotted(true)).toContain("metis")
+	})
+
 	it("draws the Sun and the planets from afar, moons only around the focus family", () => {
 		const frame = createSimFrame(bodies, J2000_JD)
 		const buffers = createMarkerBuffers(bodies.length)
@@ -54,6 +78,7 @@ describe("fillMarkers", () => {
 		// the Sun: no moon dots at all
 		let drawn = fillMarkers(buffers, frame, far, HEIGHT_PX, {
 			showMoons: true,
+			showAllMoons: true,
 			focusId: "sun",
 		})
 		expect(drawn).toBe(nonMoons)
@@ -75,6 +100,7 @@ describe("fillMarkers", () => {
 		updateSimFrame(frame, J2000_JD, earth)
 		drawn = fillMarkers(buffers, frame, far, HEIGHT_PX, {
 			showMoons: true,
+			showAllMoons: true,
 			focusId: "earth",
 		})
 		expect(drawn).toBe(nonMoons + moonsOf("earth").length)
@@ -86,6 +112,7 @@ describe("fillMarkers", () => {
 		updateSimFrame(frame, J2000_JD, index("io"))
 		drawn = fillMarkers(buffers, frame, far, HEIGHT_PX, {
 			showMoons: true,
+			showAllMoons: true,
 			focusId: "io",
 		})
 		expect(drawn).toBe(nonMoons + moonsOf("jupiter").length)
@@ -103,7 +130,7 @@ describe("fillMarkers", () => {
 			frame,
 			cameraAt(0, toUnits(1e10), 0),
 			HEIGHT_PX,
-			{ showMoons: false, focusId: "io" },
+			{ showMoons: false, showAllMoons: true, focusId: "io" },
 		)
 		expect(drawn).toBe(nonMoons + 1)
 		const ids = drawnBodies(buffers, drawn)
@@ -121,7 +148,7 @@ describe("fillMarkers", () => {
 		updateSimFrame(frame, J2000_JD, earth)
 		const buffers = createMarkerBuffers(bodies.length)
 		const radius = toUnits(bodies[earth].radiusKm)
-		const state = { showMoons: true, focusId: "earth" }
+		const state = { showMoons: true, showAllMoons: true, focusId: "earth" }
 		// 6 Earth radii away: Earth is ~150 px tall, well over the hide diameter
 		let drawn = fillMarkers(
 			buffers,

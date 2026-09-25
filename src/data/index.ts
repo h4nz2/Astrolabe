@@ -12,6 +12,7 @@ import bodiesJson from "./bodies.json"
 
 export { SMALL_BODY_KINDS } from "./schema"
 export type {
+	Appearance,
 	Belt,
 	BeltZone,
 	BodiesFile,

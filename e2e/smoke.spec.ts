@@ -24,7 +24,7 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 		await expect(focus).toBeVisible()
 		await expect(focus).toHaveValue("Sun")
 		await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
-		await expect(page.getByRole("switch")).toHaveCount(7)
+		await expect(page.getByRole("switch")).toHaveCount(8)
 		// the clock is formatted for the locale; <time dateTime> carries the instant
 		const clock = page.locator("time")
 		await expect(clock).toBeVisible()
@@ -107,12 +107,14 @@ test("the layer switches travel with a shared link", async ({ page }) => {
 		"/solar_system?focus=earth&orbits=false&labels=false&moons=false&markers=false",
 	)
 	for (const name of ["Orbits", "Labels", "Moons", "Markers"]) {
-		await expect(page.getByRole("switch", { name })).not.toBeChecked()
+		await expect(
+			page.getByRole("switch", { name, exact: true }),
+		).not.toBeChecked()
 	}
 	await expect(page).toHaveURL(/[?&]moons=false(&|$)/)
 
 	// on is the default and leaves the URL; the other switches stay in it
-	const moons = page.getByRole("switch", { name: "Moons" })
+	const moons = page.getByRole("switch", { name: "Moons", exact: true })
 	await moons.click({ force: true })
 	await expect(moons).toBeChecked()
 	await expect(page).not.toHaveURL(/[?&]moons=/)
@@ -144,7 +146,7 @@ test("hiding the moons with the orbits on keeps the scene alive and the focused 
 	const focus = page.getByRole("combobox", { name: "Focus body" })
 	await expect(focus).toHaveValue("Io")
 	await expect(page.getByRole("switch", { name: "Orbits" })).toBeChecked()
-	const moons = page.getByRole("switch", { name: "Moons" })
+	const moons = page.getByRole("switch", { name: "Moons", exact: true })
 	await expect(moons).toBeChecked()
 
 	// Mantine's transparent switch input covers its label and intercepts the pointer,

@@ -31,6 +31,7 @@ const state = (patch: Partial<LabelState> = {}): LabelState => ({
 	selectedId: null,
 	hoverId: null,
 	showMoons: true,
+	showAllMoons: true,
 	...patch,
 })
 

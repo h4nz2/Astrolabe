@@ -36,6 +36,7 @@ const baseState: LabelFrameState = {
 	selectedId: null,
 	hoverId: null,
 	showMoons: true,
+	showAllMoons: true,
 	showMarkers: true,
 	showOrbits: true,
 	showOrbitLabels: false,
@@ -227,6 +228,7 @@ describe("fillLabelLayout", () => {
 		const layout = lay(frame, cameraAt(30 * r), {
 			focusId: "io",
 			showMoons: false,
+			showAllMoons: true,
 		})
 		const moons = eligible(layout).filter(
 			(id) => bodies[index(id)].kind === "moon",

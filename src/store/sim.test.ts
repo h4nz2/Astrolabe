@@ -63,12 +63,29 @@ describe("sim store", () => {
 		expect(useSimStore.getState().showMarkers).toBe(false)
 	})
 
+	it("shows the featured moons by default and the long tail only on request (#17)", () => {
+		const titan = { id: "titan", kind: "moon", featured: true } as const
+		const ymir = { id: "ymir", kind: "moon" } as const
+		const saturn = { id: "saturn", kind: "planet" } as const
+		const story = { showMoons: true, showAllMoons: false, focusId: "saturn" }
+		const all = { ...story, showAllMoons: true }
+		expect(isBodyShown(titan, story)).toBe(true)
+		expect(isBodyShown(ymir, story)).toBe(false)
+		expect(isBodyShown(saturn, story)).toBe(true)
+		expect(isBodyShown(ymir, all)).toBe(true)
+		// the long tail needs the moons switch as well
+		expect(isBodyShown(ymir, { ...all, showMoons: false })).toBe(false)
+		// a focused long-tail moon is always drawn
+		expect(isBodyShown(ymir, { ...story, focusId: "ymir" })).toBe(true)
+		expect(useSimStore.getState().showAllMoons).toBe(false)
+	})
+
 	it("keeps the focus visible while the moons are hidden", () => {
-		const io = { id: "io", kind: "moon" } as const
-		const europa = { id: "europa", kind: "moon" } as const
+		const io = { id: "io", kind: "moon", featured: true } as const
+		const europa = { id: "europa", kind: "moon", featured: true } as const
 		const jupiter = { id: "jupiter", kind: "planet" } as const
-		const shown = { showMoons: true, focusId: "sun" }
-		const hidden = { showMoons: false, focusId: "io" }
+		const shown = { showMoons: true, showAllMoons: false, focusId: "sun" }
+		const hidden = { showMoons: false, showAllMoons: true, focusId: "io" }
 		expect(isBodyShown(io, shown)).toBe(true)
 		expect(isBodyShown(europa, shown)).toBe(true)
 		expect(isBodyShown(io, hidden)).toBe(true)

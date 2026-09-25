@@ -8,6 +8,7 @@
  */
 import type { Body } from "@/data"
 import { SECONDS_PER_DAY } from "@/sim"
+import { isBodyShown } from "@/store/sim"
 
 /**
  * Laps per drawn frame from which motion is no longer followable: a sixth of
@@ -34,13 +35,15 @@ export const lapsPerSecond = (periodDays: number, warp: number): number =>
 /**
  * The bodies whose motion the viewer can see: the planets, plus the moons of
  * the focused planet's family (the focused planet or the focused moon's
- * planet) while moons are shown, and the focus itself. Distant moon systems are
- * dots in the overview, so their laps do not count.
+ * planet) that are drawn (`isBodyShown`: the long tail only with
+ * `showAllMoons`), and the focus itself. Distant moon systems are dots in the
+ * overview, so their laps do not count.
  */
 export function bodiesInView(
 	bodies: readonly Body[],
 	focusId: string,
 	showMoons: boolean,
+	showAllMoons = false,
 ): Body[] {
 	const focus = bodies.find((body) => body.id === focusId)
 	const family = focus?.kind === "moon" ? focus.parentId : focusId
@@ -50,7 +53,9 @@ export function bodiesInView(
 			body.parentId !== null &&
 			(body.kind === "planet" ||
 				body.id === focusId ||
-				(showMoons && body.kind === "moon" && body.parentId === family)),
+				(body.kind === "moon" &&
+					body.parentId === family &&
+					isBodyShown(body, { showMoons, showAllMoons, focusId }))),
 	)
 }
 

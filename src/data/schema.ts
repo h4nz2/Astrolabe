@@ -68,6 +68,20 @@ export const BodyTextures = z.object({
 	night: z.string().min(1).optional(),
 })
 
+/**
+ * Curated presentation hints beside the textures (#17), so a moon on the shared placeholder
+ * map still looks like itself: `tint`, an sRGB "#rrggbb" the colour map is multiplied with
+ * (Triton pinkish, Callisto brown), and `veiled`, an opaque haze hides the surface in visible
+ * light, so only the tint is drawn (Titan).
+ */
+export const Appearance = z.object({
+	tint: z
+		.string()
+		.regex(/^#[0-9a-f]{6}$/)
+		.optional(),
+	veiled: z.literal(true).optional(),
+})
+
 export const Rings = z
 	.object({
 		innerRadiusKm: z.number().positive(),
@@ -134,10 +148,16 @@ export const Body = z
 		orbit: Orbit.nullable(),
 		rotation: Rotation,
 		textures: BodyTextures,
+		appearance: Appearance.optional(),
 		rings: Rings.nullable(),
 		tail: Tail.optional(),
 		/** dictionary fields passed through from the source */
 		info: z.record(z.string(), z.unknown()),
+		/**
+		 * A moon with a story (data/featured-moons.json, #17): shown by default. Every other moon is
+		 * the long tail, drawn only while the viewer asks for all moons (docs/ARCHITECTURE.md, "Moons").
+		 */
+		featured: z.literal(true).optional(),
 	})
 	.superRefine((body, ctx) => {
 		if ((body.kind === "star") !== (body.parentId === null)) {
@@ -152,6 +172,13 @@ export const Body = z
 				code: "custom",
 				message: "orbit must be null exactly for the star",
 				path: ["orbit"],
+			})
+		}
+		if (body.featured && body.kind !== "moon") {
+			ctx.addIssue({
+				code: "custom",
+				message: "only moons are featured; every other body is always shown",
+				path: ["featured"],
 			})
 		}
 		if (body.kind !== "moon" && body.orbit?.phaseSynthetic) {
@@ -232,6 +259,7 @@ export const BeltsFile = z.array(Belt)
 export type BodyKind = z.infer<typeof BodyKind>
 export type Orbit = z.infer<typeof Orbit>
 export type BodyTextures = z.infer<typeof BodyTextures>
+export type Appearance = z.infer<typeof Appearance>
 export type Rotation = z.infer<typeof Rotation>
 export type Rings = z.infer<typeof Rings>
 export type Body = z.infer<typeof Body>

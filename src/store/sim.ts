@@ -56,6 +56,11 @@ export interface SimState extends NavigationSlice {
 	showOrbits: boolean
 	showLabels: boolean
 	showMoons: boolean
+	/**
+	 * The long tail (#17): every moon, not only the featured ones with a story
+	 * (`Body.featured`). Off by default; needs `showMoons`.
+	 */
+	showAllMoons: boolean
 	/** Screen-sized dots for bodies too small to see (scene/Markers.tsx). */
 	showMarkers: boolean
 	/** Names written along the orbit lines (labels/, #20); off by default. */
@@ -89,12 +94,20 @@ export interface SimState extends NavigationSlice {
 	setShowOrbits: (show: boolean) => void
 	setShowLabels: (show: boolean) => void
 	setShowMoons: (show: boolean) => void
+	setShowAllMoons: (show: boolean) => void
 	setShowMarkers: (show: boolean) => void
 	setShowOrbitLabels: (show: boolean) => void
 	setShowSmallBodies: (show: boolean) => void
 	/** Travels (glides) to the wall clock, arriving on the present. */
 	setNow: () => void
 }
+
+/** The store fields that decide which moons are drawn (`isBodyShown`). */
+export type MoonVisibility = Pick<
+	SimState,
+	"showMoons" | "showAllMoons" | "focusId"
+> &
+	Partial<Pick<SimState, "showSmallBodies">>
 
 /** The body a moon orbits, else the body itself: the system a body belongs to. */
 const systemOf = (
@@ -105,18 +118,24 @@ const systemOf = (
 		: body.id
 
 /**
- * Whether a body is rendered at all (meshes, orbit line, marker): moons only
- * while `showMoons` is on, except the focus, which stays visible so hiding the
- * moons never leaves the camera staring at nothing (docs/ARCHITECTURE.md, "Toggles").
- * Small bodies (#23: dwarf planets, asteroids, comets and their moons) only while
- * `showSmallBodies` is on, except the focus's own system: picking Pluto shows Pluto and Charon.
+ * Whether a body is rendered at all (meshes, orbit line, marker, picking,
+ * labels, shadows): the Sun and planets always; moons while `showMoons` is on,
+ * the featured ones only unless `showAllMoons` asks for the long tail (#17,
+ * docs/ARCHITECTURE.md, "Moons"); and always the focus, so hiding moons never
+ * leaves the camera staring at nothing. Small bodies (#23: dwarf planets,
+ * asteroids, comets and their moons) only while `showSmallBodies` is on, except
+ * the focus's own system: picking Pluto shows Pluto and Charon.
  */
 export const isBodyShown = (
-	body: Pick<Body, "id" | "kind"> & Partial<Pick<Body, "parentId">>,
-	state: Pick<SimState, "showMoons" | "focusId"> &
-		Partial<Pick<SimState, "showSmallBodies">>,
+	body: Pick<Body, "id" | "kind" | "featured"> &
+		Partial<Pick<Body, "parentId">>,
+	state: MoonVisibility,
 ): boolean => {
-	if (!state.showMoons && body.kind === "moon" && body.id !== state.focusId) {
+	if (
+		body.kind === "moon" &&
+		body.id !== state.focusId &&
+		!(state.showMoons && (body.featured === true || state.showAllMoons))
+	) {
 		return false
 	}
 	if (state.showSmallBodies === true) return true
@@ -156,6 +175,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	showOrbits: true,
 	showLabels: true,
 	showMoons: true,
+	showAllMoons: false,
 	showMarkers: true,
 	showOrbitLabels: false,
 	showSmallBodies: false,
@@ -203,6 +223,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	setShowOrbits: (show) => set({ showOrbits: show }),
 	setShowLabels: (show) => set({ showLabels: show }),
 	setShowMoons: (show) => set({ showMoons: show }),
+	setShowAllMoons: (show) => set({ showAllMoons: show }),
 	setShowMarkers: (show) => set({ showMarkers: show }),
 	setShowOrbitLabels: (show) => set({ showOrbitLabels: show }),
 	setShowSmallBodies: (show) => set({ showSmallBodies: show }),

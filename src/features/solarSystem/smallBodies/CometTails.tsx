@@ -229,13 +229,19 @@ function CometTail({ index }: { index: number }) {
 function CometTails() {
 	const frame = useSimFrame()
 	const showMoons = useSimStore((state) => state.showMoons)
+	const showAllMoons = useSimStore((state) => state.showAllMoons)
 	const focusId = useSimStore((state) => state.focusId)
 	const showSmallBodies = useSimStore((state) => state.showSmallBodies)
 	return (
 		<>
 			{frame.bodies.map((body: Body, index) =>
 				body.tail !== undefined &&
-				isBodyShown(body, { showMoons, focusId, showSmallBodies }) ? (
+				isBodyShown(body, {
+					showMoons,
+					showAllMoons,
+					focusId,
+					showSmallBodies,
+				}) ? (
 					<CometTail key={body.id} index={index} />
 				) : null,
 			)}

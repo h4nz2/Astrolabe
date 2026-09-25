@@ -1,7 +1,7 @@
 /**
  * An OrbitLine for every orbiting body while `showOrbits` is on; moon orbits
- * only while `showMoons` is on as well, except the focus, whose orbit is always
- * drawn (`isBodyShown`). An asteroid's orbit (#23) only while it is the focus or
+ * by the same rule as the moons themselves (`isBodyShown`); the focus's orbit
+ * is always drawn. An asteroid's orbit (#23) only while it is the focus or
  * the selection: seven lines stacked in the belt would only hide the belt.
  */
 import type { Body } from "@/data"
@@ -22,6 +22,7 @@ function OrbitLines() {
 	const frame = useSimFrame()
 	const showOrbits = useSimStore((state) => state.showOrbits)
 	const showMoons = useSimStore((state) => state.showMoons)
+	const showAllMoons = useSimStore((state) => state.showAllMoons)
 	const focusId = useSimStore((state) => state.focusId)
 	const selectedId = useSimStore((state) => state.selectedId)
 	const showSmallBodies = useSimStore((state) => state.showSmallBodies)
@@ -32,7 +33,14 @@ function OrbitLines() {
 		<>
 			{frame.bodies.map((body, index) => {
 				if (body.orbit === null || body.parentId === null) return null
-				if (!isBodyShown(body, { showMoons, focusId, showSmallBodies })) {
+				if (
+					!isBodyShown(body, {
+						showMoons,
+						showAllMoons,
+						focusId,
+						showSmallBodies,
+					})
+				) {
 					return null
 				}
 				if (!isOrbitDrawn(body, focusId, selectedId)) return null

@@ -2,15 +2,18 @@ import { SMALL_BODY_KINDS, bodyById, childrenOf, planets, sun } from "@/data"
 
 /**
  * The bodies the Left/Right arrows cycle through from `id`, in orbital order:
- * the moons of the same planet for a moon, otherwise the Sun and the planets
- * (so the arrows are never dead keys on the Sun); for a dwarf planet, an asteroid
- * or a comet (#23) the others of its kind. Empty for an unknown id.
+ * the drawn moons of the same planet for a moon (the featured ones, all of
+ * them with `allMoons`, and `id` itself; #17), otherwise the Sun and the
+ * planets (so the arrows are never dead keys on the Sun); for a dwarf planet,
+ * an asteroid or a comet (#23) the others of its kind. Empty for an unknown id.
  */
-export function focusRing(id: string): string[] {
+export function focusRing(id: string, allMoons = false): string[] {
 	const body = bodyById.get(id)
 	if (body === undefined) return []
 	if (body.kind === "moon" && body.parentId !== null) {
-		return childrenOf(body.parentId).map((sibling) => sibling.id)
+		return childrenOf(body.parentId)
+			.filter((sibling) => allMoons || sibling.featured || sibling.id === id)
+			.map((sibling) => sibling.id)
 	}
 	if (SMALL_BODY_KINDS.includes(body.kind) && body.parentId !== null) {
 		return childrenOf(body.parentId)
@@ -21,8 +24,12 @@ export function focusRing(id: string): string[] {
 }
 
 /** The neighbour of `id` in its ring, wrapping around; `id` itself when it has none. */
-export function cycleFocus(id: string, direction: 1 | -1): string {
-	const ring = focusRing(id)
+export function cycleFocus(
+	id: string,
+	direction: 1 | -1,
+	allMoons = false,
+): string {
+	const ring = focusRing(id, allMoons)
 	const at = ring.indexOf(id)
 	if (at === -1 || ring.length < 2) return id
 	return ring[(at + direction + ring.length) % ring.length]
