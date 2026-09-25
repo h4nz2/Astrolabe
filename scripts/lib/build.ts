@@ -13,6 +13,7 @@ import type {
 	Body,
 	BodyKind,
 	BodyTextures,
+	ImageCredit,
 	Orbit,
 	Rings,
 	Rotation,
@@ -27,6 +28,7 @@ import { IAU_ORIENTATIONS, PLANET_OBLATENESS } from "./iau"
 import { slug } from "./names"
 import { normalizeName } from "./names"
 import { parseMass, parseNumber } from "./numbers"
+import { creditsOf, resolveSurfaces, surfacePath } from "./surfaces"
 import { densityKgPerM3, laplaceRadiusKm, periodDaysFromKepler } from "./orbit"
 import {
 	first,
@@ -120,6 +122,13 @@ export interface BuildOptions {
 	 * Absent: no moon is featured.
 	 */
 	featuredMoons?: unknown
+	/**
+	 * parsed data/moon-surfaces.json (#37): every moon's surface map and its source. Absent: moons
+	 * keep the source's textures (or the shared placeholder).
+	 */
+	surfaces?: unknown
+	/** parsed data/moon-surfaces.built.json: moon id -> { color } of its generated map */
+	builtSurfaces?: unknown
 }
 
 export interface BuildStats {
@@ -142,6 +151,8 @@ export interface BuildResult {
 	stats: BuildStats
 	/** non-fatal findings, for stderr */
 	warnings: string[]
+	/** image sources in use, with credit and licence (src/data/credits.json; #37) */
+	credits: ImageCredit[]
 }
 
 /** A data problem that must stop the build (missing planet texture, malformed ring file, ...). */
@@ -903,6 +914,87 @@ export const markFeatured = (bodies: Body[], source: unknown): void => {
 	}
 }
 
+/** data/moon-surfaces.built.json: moon id -> the generated map's mean colour. */
+const BuiltSurfaces = z.record(
+	z.string(),
+	z.object({ color: z.string().regex(/^#[0-9a-f]{6}$/) }).loose(),
+)
+
+/**
+ * Gives every moon its surface from data/moon-surfaces.json (#37), in place: the texture,
+ * where it comes from (`surface`) and its mean colour (`appearance.color`, drawn until the map
+ * has loaded). Colours are baked into the maps, so curated tints no longer apply to moons. A
+ * moon without a surface, a surface for something that is not a moon of that planet, or a
+ * missing image stops the build. Returns the credits of the sources in use.
+ */
+export const applySurfaces = (
+	bodies: Body[],
+	options: Pick<BuildOptions, "surfaces" | "builtSurfaces" | "fileExists">,
+): ImageCredit[] => {
+	if (options.surfaces === undefined) return []
+	let resolved: ReturnType<typeof resolveSurfaces>
+	try {
+		resolved = resolveSurfaces(options.surfaces)
+	} catch (error) {
+		throw new BuildError(error instanceof Error ? error.message : String(error))
+	}
+	const built = BuiltSurfaces.safeParse(options.builtSurfaces ?? {})
+	if (!built.success) {
+		throw new BuildError("invalid data/moon-surfaces.built.json")
+	}
+	const usage: { bodyId: string; sourceId: string }[] = []
+	const moons = new Set<string>()
+	bodies.forEach((body, i) => {
+		if (body.kind !== "moon") return
+		moons.add(body.id)
+		const surface = resolved.byId.get(body.id)
+		if (surface === undefined) {
+			throw new BuildError(
+				`moon "${body.id}" has no surface in data/moon-surfaces.json`,
+			)
+		}
+		if (surface.planet !== body.parentId) {
+			throw new BuildError(
+				`data/moon-surfaces.json puts "${body.id}" under "${surface.planet}", but it orbits "${body.parentId}"`,
+			)
+		}
+		const base = surfacePath(surface.planet, body.id)
+		if (!options.fileExists(base)) {
+			throw new BuildError(
+				`${body.id}: ${base} is missing under public/ (run pnpm gen:surfaces)`,
+			)
+		}
+		const color = built.data[body.id]?.color
+		const kind =
+			surface.kind === "map"
+				? "map"
+				: surface.recipe.pattern === "haze"
+					? "haze"
+					: "painted"
+		const rest: Body = { ...body }
+		delete rest.appearance
+		bodies[i] = {
+			...rest,
+			textures: { base },
+			...(color === undefined ? {} : { appearance: { color } }),
+			surface: {
+				kind,
+				source: surface.sourceId,
+				...(surface.kind === "map" && surface.filled ? { filled: true } : {}),
+			},
+		}
+		usage.push({ bodyId: body.id, sourceId: surface.sourceId })
+	})
+	for (const id of resolved.byId.keys()) {
+		if (!moons.has(id)) {
+			throw new BuildError(
+				`data/moon-surfaces.json lists "${id}", which is not a moon in the data`,
+			)
+		}
+	}
+	return creditsOf(resolved.catalogue, usage)
+}
+
 /**
  * Builds the topologically ordered body list: the Sun, the planets by semi-major axis,
  * then each planet's moons (by semi-major axis) grouped right after the planet block.
@@ -940,6 +1032,7 @@ export const buildBodies = (
 	}
 
 	markFeatured(bodies, options.featuredMoons)
+	const credits = applySurfaces(bodies, options)
 
 	return {
 		bodies,
@@ -949,5 +1042,6 @@ export const buildBodies = (
 			ctx.equatorRotated,
 		),
 		warnings: ctx.warnings,
+		credits,
 	}
 }
