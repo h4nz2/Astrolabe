@@ -117,9 +117,6 @@
 	align-self: end;
 	min-width: 0;
 	max-width: 100%;
-	/* a tall card (a selection while a body is held still, #31) must not push the time controls off screen */
-	max-height: 45dvh;
-	overflow-y: auto;
 }
 
 .time {
