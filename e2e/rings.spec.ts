@@ -32,6 +32,9 @@ const collectErrors = (page: Page): string[] => {
 	return errors
 }
 
+const HUD_HIDDEN =
+	"body * { visibility: hidden !important } canvas { visibility: visible !important }"
+
 // only the focused planet: no moons, orbits, markers or names round it
 const bare = "moons=false&orbits=false&markers=false&labels=false"
 
@@ -45,6 +48,8 @@ const ringZoneLit = async (page: Page, name: string): Promise<number> => {
 	mkdirSync(screenshotDir, { recursive: true })
 	const png = await page.screenshot({
 		path: path.join(screenshotDir, `${name}.png`),
+		// the scene alone: HUD panels and names hidden for the picture
+		style: HUD_HIDDEN,
 	})
 	return page.evaluate(async (base64) => {
 		const image = new Image()
