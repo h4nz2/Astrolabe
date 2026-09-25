@@ -1,0 +1,96 @@
+{
+	"voyager1": {
+		"name": "Voyager 1",
+		"tagline": {
+			"simple": "Nejvzdálenější věc, jakou kdy lidé postavili",
+			"standard": "Nejvzdálenější předmět vyrobený lidmi",
+			"advanced": "Nejvzdálenější předmět vyrobený lidmi, už v mezihvězdném prostoru"
+		},
+		"description": {
+			"simple": "Voyager 1 odstartoval ze Země v roce 1977. Proletěl kolem Jupiteru a Saturnu a vyfotografoval je. Dnes je dál než cokoli jiného, co lidé vyrobili, venku mezi hvězdami. Pořád posílá domů tiché zprávy.",
+			"standard": "Voyager 1 odstartoval v roce 1977, v roce 1979 proletěl kolem Jupiteru a v roce 1980 kolem Saturnu, kde si zblízka prohlédl měsíc Titan. V roce 1990 se otočil a vyfotografoval Zemi jako bledě modrou tečku. Od roku 1998 je nejvzdálenějším předmětem vyrobeným lidmi a v srpnu 2012 překročil heliopauzu, kde sluneční vítr ustupuje plynu mezi hvězdami. Data domů stále posílá s výkonem asi 20 wattů.",
+			"advanced": "Voyager 1 využil gravitační manévr u Jupiteru (březen 1979) k cestě k Saturnu (listopad 1980); těsný průlet kolem Titanu jeho dráhu prudce vychýlil z roviny planet. V únoru 1998 předstihl Pioneer 10 jako nejvzdálenější sonda a 25. srpna 2012, asi 121 au od Slunce, překročil heliopauzu do mezihvězdného prostoru. Jeho jaderný zdroj energie ztrácí asi 4 watty ročně, a tak se přístroje jeden po druhém vypínají."
+		}
+	},
+	"voyager2": {
+		"name": "Voyager 2",
+		"tagline": "Jediný návštěvník Uranu a Neptunu",
+		"description": {
+			"simple": "Voyager 2 je dvojče Voyageru 1. Je to jediná sonda, která navštívila všechny čtyři obří planety: Jupiter, Saturn, Uran a Neptun. Odstartovala v roce 1977 a pořád letí a posílá zprávy.",
+			"standard": "Voyager 2 odstartoval v srpnu 1977, 16 dní před svým dvojčetem. Vzácné seskupení vnějších planet mu dovolilo přeskočit od Jupiteru (1979) k Saturnu (1981), Uranu (1986) a Neptunu (1989): takzvaná Velká cesta. Dodnes je jedinou sondou, která navštívila Uran a Neptun. V listopadu 2018 překročil heliopauzu do mezihvězdného prostoru.",
+			"advanced": "Každý průlet Voyageru 2 byl gravitační manévr, který ohnul jeho dráhu a zrychlil ho k další planetě; třicetiletá cesta k Neptunu se tak zkrátila na dvanáct let. Seskupení planet, které to umožnilo, se opakuje jen zhruba jednou za 175 let. Po Neptunu a jeho měsíci Tritonu (srpen 1989) zamířil jižně od roviny planet a 5. listopadu 2018, asi 119 au od Slunce, překročil heliopauzu."
+		}
+	},
+	"pioneer10": {
+		"name": "Pioneer 10",
+		"tagline": "První sonda k Jupiteru",
+		"description": {
+			"simple": "Pioneer 10 byl první sondou, která proletěla pásem planetek a kolem Jupiteru, v roce 1973. Veze kovovou destičku s obrázkem dvou lidí, kdyby ji někdy někdo našel. Naposledy jsme o ní slyšeli v roce 2003.",
+			"standard": "Pioneer 10 odstartoval v březnu 1972. Jako první sonda proletěl pásem planetek a v prosinci 1973 jako první navštívil Jupiter. Potom pokračoval dál, ven ze Sluneční soustavy. Jeho poslední slabý signál dorazil na Zemi 23. ledna 2003; od té doby letí mlčky dál.",
+			"advanced": "Pioneer 10 proletěl asi 200 000 km od středu Jupiteru a změřil jeho silné radiační pásy; tyto poznatky ovlivnily všechny pozdější mise. Jeho dráha desítky let sloužila jako test gravitace daleko od Slunce: drobná „anomálie Pioneeru“ v jeho pohybu se v roce 2012 ukázala jako teplo jeho vlastního zdroje energie, které ho postrkovalo. Spojení se ztratilo v roce 2003, když byl tento zdroj už příliš slabý."
+		}
+	},
+	"pioneer11": {
+		"name": "Pioneer 11",
+		"tagline": "První sonda k Saturnu",
+		"description": {
+			"simple": "Pioneer 11 proletěl kolem Jupiteru a v roce 1979 jako první sonda navštívil Saturn. Došla mu energie a v roce 1995 umlkl. Pořád letí pryč od Slunce.",
+			"standard": "Pioneer 11 odstartoval v dubnu 1973. V prosinci 1974 proletěl jen 42 000 km nad mračny Jupiteru a jeho gravitace ho vymrštila napříč Sluneční soustavou k Saturnu, kam dorazil v září 1979: vůbec první návštěva Saturnu. Jeho vědecká práce skončila v září 1995, kdy mu už nestačila energie.",
+			"advanced": "Těsný průlet Pioneeru 11 kolem Jupiteru byl gravitační manévr, který ho vrhl zpět napříč Sluneční soustavou k Saturnu. Tam proletěl pod prstenci, objevil tenký prstenec F a ukázal, že sonda může rovinu prstenců bezpečně překročit, na což pak spoléhaly oba Voyagery. Běžný provoz skončil 30. září 1995."
+		}
+	},
+	"newHorizons": {
+		"name": "New Horizons",
+		"tagline": "První návštěva Pluta",
+		"description": {
+			"simple": "New Horizons je malá a rychlá sonda, velká asi jako piano. V roce 2015 proletěla kolem Pluta a poslala první snímky zblízka, i s velkou ledovou plání ve tvaru srdce. V roce 2019 navštívila Arrokoth, malý ledový svět ještě dál.",
+			"standard": "New Horizons odstartovala v lednu 2006 jako nejrychlejší sonda, jaká kdy opustila Zemi. V roce 2007 prolétla kolem Jupiteru a 14. července 2015 minula Pluto jen 12 500 km nad jeho povrchem. 1. ledna 2019 proletěla kolem Arrokothu, nejvzdálenějšího tělesa, jaké kdy nějaká sonda navštívila. Dnes zkoumá Kuiperův pás.",
+			"advanced": "New Horizons opustila Zemi rychlostí asi 16 km/s, nejvyšší startovní rychlostí ze všech sond, a gravitační manévr u Jupiteru zkrátil cestu asi o tři roky. V soustavě Pluta (14. července 2015) našla hory z vodního ledu a mladou pláň z dusíkového ledu, Sputnik Planitia. Arrokoth se ukázal jako dvě části, které kdysi jemně splynuly, což napovídá, jak vznikaly první stavební kameny planet."
+		}
+	},
+	"cassini": {
+		"name": "Cassini",
+		"tagline": "Třináct let u Saturnu",
+		"description": {
+			"simple": "Cassini doletěla k Saturnu a třináct let kolem něj obíhala a zkoumala planetu, její prstence a měsíce. Vezla malý přistávací modul Huygens, který přistál na měsíci Titan. Nakonec se Cassini schválně zřítila do Saturnu a shořela.",
+			"standard": "Cassini odstartovala v roce 1997 a k Saturnu, kam dorazila v červenci 2004, potřebovala gravitační manévry u Venuše (dvakrát), Země a Jupiteru. Její sonda Huygens přistála v lednu 2005 na Titanu a Cassini objevila gejzíry vody tryskající z Enceladu. Když jí docházelo palivo, byla 15. září 2017 navedena do Saturnu, aby nikdy nemohla dopadnout na měsíc, na kterém by mohl být život.",
+			"advanced": "Cassini-Huygens byla společná mise NASA, ESA a Italské kosmické agentury. Během 294 oběhů Saturnu využívala těsné průlety kolem Titanu, aby měnila dráhu bez paliva. Huygens poprvé přistál ve vnější Sluneční soustavě. Posledních 22 oběhů „Velkého finále“ vedlo mezi planetou a jejími prstenci, než sonda shořela v atmosféře Saturnu."
+		}
+	},
+	"parker": {
+		"name": "Parker Solar Probe",
+		"tagline": "Sonda, která se dotkla Slunce",
+		"description": {
+			"simple": "Parker Solar Probe létá blíž ke Slunci než cokoli, co lidé vyrobili. Silný tepelný štít ji chrání před horkem. V nejbližším bodě se kolem Slunce řítí rychleji než jakákoli jiná sonda.",
+			"standard": "Parker Solar Probe odstartovala v srpnu 2018 a díky sedmi průletům kolem Venuše se ke Slunci přibližovala stále víc. 24. prosince 2024 prolétla 6,1 milionu km nad povrchem Slunce rychlostí asi 690 000 km/h, rychleji než jakýkoli předmět vyrobený lidmi. Proletuje korónou, vnější atmosférou Slunce, aby zjistila, proč je tak horká.",
+			"advanced": "Doletět ke Slunci je těžké: sonda ze Země musí ztratit skoro celou oběžnou rychlost Země, 30 km/s. Parker díky sedmi gravitačním manévrům u Venuše snížila svůj nejbližší bod na 9,86 slunečního poloměru od středu Slunce. Její 11,4 cm silný tepelný štít z uhlíkové pěny odolává asi 1 400 °C, zatímco přístroje za ním zůstávají skoro při pokojové teplotě."
+		}
+	},
+	"jwst": {
+		"name": "Vesmírný dalekohled Jamese Webba",
+		"tagline": "Obří dalekohled daleko za Měsícem",
+		"description": {
+			"simple": "Vesmírný dalekohled Jamese Webba je obrovský dalekohled se zlatým zrcadlem. Vidí tepelné (infračervené) světlo úplně prvních hvězd a galaxií. Vznáší se asi 1,5 milionu km od Země, vždycky na straně odvrácené od Slunce.",
+			"standard": "Webbův dalekohled odstartoval 25. prosince 2021 a za měsíc doletěl do svého domova u bodu L2 soustavy Slunce–Země, 1,5 milionu km za Zemí na straně odvrácené od Slunce: asi čtyřikrát dál než Měsíc. Sluneční clona velká jako tenisový kurt tam udržuje jeho 6,5 m zrcadlo dost chladné, aby vidělo infračervené světlo nejstarších galaxií.",
+			"advanced": "V bodě L2 udržuje přitažlivost Slunce a Země dohromady sondu v kroku s pozemským rokem. Webb na samotném bodě nestojí, ale obíhá ho po velké halo dráze s periodou asi šesti měsíců, která ho drží mimo zemský stín. Při teplotě asi 40 K (−233 °C) jeho zrcadlo a přístroje vidí světlo, které rozpínání vesmíru protáhlo do infračervené oblasti."
+		}
+	},
+	"juno": {
+		"name": "Juno",
+		"tagline": "Na oběžné dráze kolem Jupiteru",
+		"description": {
+			"simple": "Juno obíhá kolem Jupiteru od roku 2016. Prolétá těsně nad jeho mračny, aby zjistila, co je uvnitř planety. Pomalu se otáčí a se svými třemi dlouhými slunečními panely vypadá jako větrník.",
+			"standard": "Juno odstartovala v roce 2011, v roce 2013 nabrala rychlost při průletu kolem Země a 5. července 2016 dorazila k Jupiteru. Po dlouhé protáhlé dráze nad póly se noří až několik tisíc kilometrů nad vrcholky mračen a pak zase stoupá daleko ven. Byla první sondou, která k Jupiteru doletěla jen na sluneční energii.",
+			"advanced": "Juno mapuje gravitační a magnetické pole Jupiteru, aby zjistila, co leží hluboko uvnitř: jádro se ukázalo jako velké a rozředěné, promíchané s okolním vodíkem. Její polární dráha se vyhýbá nejhoršímu záření radiačních pásů. Od roku 2021 ji dráha vede i kolem měsíců Ganymed, Europa a Io."
+		}
+	},
+	"europaClipper": {
+		"name": "Europa Clipper",
+		"tagline": "Na cestě k Jupiterovu měsíci Europa",
+		"description": {
+			"simple": "Europa Clipper je na cestě k Jupiteru. Tam bude znovu a znovu prolétat kolem Jupiterova ledového měsíce Europa. Pod ledem Europy je nejspíš slaný oceán a vědci chtějí vědět, jestli by tam mohl existovat život.",
+			"standard": "Europa Clipper odstartovala v říjnu 2024 a je největší sondou, jakou NASA kdy postavila pro planetární misi. Gravitaci Marsu (2025) a Země (2026) využije, aby v roce 2030 doletěla k Jupiteru, a pak bude při desítkách těsných průletů kolem Europy zkoumat oceán skrytý pod jejím ledem.",
+			"advanced": "Europa leží hluboko v Jupiterových radiačních pásech, proto bude Clipper obíhat kolem Jupiteru, ne kolem Europy, a na zhruba 50 průletů se k ní ponoří s elektronikou chráněnou v silnostěnném trezoru. Změří tloušťku ledového krunýře, slanost oceánu a chemii povrchu, aby posoudila, zda by Europa mohla hostit život."
+		}
+	}
+}

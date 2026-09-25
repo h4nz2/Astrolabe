@@ -31,6 +31,10 @@ import SoundProbe from "../sound/SoundProbe"
 import { labelSlotCount } from "../labels/project"
 import Belts from "../smallBodies/Belts"
 import CometTails from "../smallBodies/CometTails"
+import { createCraftFrame } from "../spacecraft/craftFrame"
+import { createCraftLabels } from "../spacecraft/craftLabels"
+import SpacecraftLabelLayer from "../spacecraft/SpacecraftLabelLayer"
+import SpacecraftScene from "../spacecraft/SpacecraftScene"
 import BodyPicking, { activateBody } from "./BodyPicking"
 import HighlightTracker from "./HighlightTracker"
 import HoverCursor from "./HoverCursor"
@@ -53,9 +57,16 @@ function Scene() {
 			),
 		[],
 	)
+	// spacecraft (#35): their own frame, and their names after the bodies' label slots
+	const craftFrame = useMemo(() => createCraftFrame(frame), [frame])
+	const craftSlot = labelSlotCount(bodies.length)
 	const labels = useMemo(
-		() => createLabelBoard(labelSlotCount(bodies.length)),
-		[],
+		() => createLabelBoard(craftSlot + craftFrame.craft.length),
+		[craftSlot, craftFrame],
+	)
+	const craftLabels = useMemo(
+		() => createCraftLabels(frame, craftFrame, craftSlot),
+		[frame, craftFrame, craftSlot],
 	)
 
 	return (
@@ -89,7 +100,16 @@ function Scene() {
 					<Belts />
 					<CometTails />
 					<LightFront />
-					<Labels board={labels} onActivate={activateBody} />
+					<SpacecraftScene
+						frame={frame}
+						craftFrame={craftFrame}
+						labels={{ layout: labels.layout, firstSlot: craftSlot }}
+					/>
+					<Labels
+						board={labels}
+						onActivate={activateBody}
+						extension={craftLabels}
+					/>
 					<BodyPicking />
 					<CameraRig />
 					<HighlightTracker />
@@ -99,6 +119,7 @@ function Scene() {
 				</SimFrameContext.Provider>
 			</Canvas>
 			<LabelLayer board={labels} />
+			<SpacecraftLabelLayer board={labels} firstSlot={craftSlot} />
 		</>
 	)
 }
