@@ -1170,7 +1170,9 @@
 			"menu": "Aide",
 			"replay": "Revoir l’introduction",
 			"replay@simple": "Revoir le début",
-			"hints": "Montrer comment se déplacer"
+			"hints": "Montrer comment se déplacer",
+			"menuHint": "Revois la courte introduction, ou revois comment te déplacer dans le système solaire.",
+			"menuHint@simple": "Regarde encore le début, ou apprends à te déplacer."
 		}
 	},
 	"solarWalk": {

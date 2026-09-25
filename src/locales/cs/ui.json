@@ -1170,7 +1170,9 @@
 			"menu": "Nápověda",
 			"replay": "Přehrát úvod znovu",
 			"replay@simple": "Pustit začátek ještě jednou",
-			"hints": "Ukázat, jak se pohybovat"
+			"hints": "Ukázat, jak se pohybovat",
+			"menuHint": "Přehraj si znovu krátký úvod, nebo si ještě jednou ukaž, jak se pohybovat po sluneční soustavě.",
+			"menuHint@simple": "Podívej se znovu na začátek, nebo se nauč, jak se pohybovat."
 		}
 	},
 	"solarWalk": {

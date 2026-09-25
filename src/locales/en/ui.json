@@ -1170,7 +1170,9 @@
 			"menu": "Help",
 			"replay": "Play the opening again",
 			"replay@simple": "Watch the start again",
-			"hints": "Show how to move around"
+			"hints": "Show how to move around",
+			"menuHint": "Play the short opening again, or see once more how to move around the solar system.",
+			"menuHint@simple": "Watch the start again, or learn how to move around."
 		}
 	},
 	"solarWalk": {

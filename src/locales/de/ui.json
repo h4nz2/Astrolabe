@@ -1170,7 +1170,9 @@
 			"menu": "Hilfe",
 			"replay": "Intro noch einmal abspielen",
 			"replay@simple": "Den Anfang noch mal ansehen",
-			"hints": "Zeigen, wie man sich bewegt"
+			"hints": "Zeigen, wie man sich bewegt",
+			"menuHint": "Spiel das kurze Intro noch einmal ab oder lass dir noch einmal zeigen, wie du dich im Sonnensystem bewegst.",
+			"menuHint@simple": "Sieh dir den Anfang noch einmal an oder lerne, wie du dich bewegst."
 		}
 	},
 	"solarWalk": {
