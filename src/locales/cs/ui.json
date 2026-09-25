@@ -1070,7 +1070,8 @@
 			"iceGiants@simple": "Dva modří obři",
 			"potatoMoons": "Bramborové měsíce",
 			"weighMost": "Kde by ti váha ukázala nejvíc?",
-			"bigForItsPlanet": "Náš Měsíc je nezvykle velký"
+			"bigForItsPlanet": "Náš Měsíc je nezvykle velký",
+			"plutoMoon": "Pluto je menší než náš Měsíc"
 		},
 		"teasers": {
 			"sunEarth": "Celý náš svět je vedle své hvězdy jen tečka: napříč Sluncem se vejde 109 Zemí.",
@@ -1114,7 +1115,10 @@
 			"moonsBeatPlanet@simple": "Dva měsíce jsou větší než planeta! Merkur je ale z těžšího materiálu, a tak je těžší.",
 			"weighMost": "Na Měsíci by ti váha ukázala šestinu toho, co doma, na horní hranici Jupiterových mraků dva a půlkrát víc.",
 			"weighMost@advanced": "Tíhové zrychlení na povrchu: Měsíc 0,17 g, Mars 0,38 g, Země 1 g, Jupiter 2,5 g na horní hranici mraků.",
-			"weighMost@simple": "Na Měsíci by ti váha ukázala jen málo. Na Jupiteru by ukázala víc než dvakrát tolik co doma."
+			"weighMost@simple": "Na Měsíci by ti váha ukázala jen málo. Na Jupiteru by ukázala víc než dvakrát tolik co doma.",
+			"plutoMoon": "Pluto je jen dvoutřetinový oproti našemu Měsíci a Měsíc je více než pětkrát těžší.",
+			"plutoMoon@simple": "Pluto je menší než náš Měsíc! A náš Měsíc je taky mnohem těžší.",
+			"plutoMoon@advanced": "Pluto má 68 % průměru Měsíce a jen 18 % jeho hmotnosti – i proto je trpasličí planetou."
 		},
 		"ideaGroups": {
 			"sizes": "Velikosti",

@@ -1070,7 +1070,8 @@
 			"iceGiants@simple": "The two blue giants",
 			"potatoMoons": "Potato moons",
 			"weighMost": "Where would you weigh the most?",
-			"bigForItsPlanet": "Our Moon is unusually big"
+			"bigForItsPlanet": "Our Moon is unusually big",
+			"plutoMoon": "Pluto is smaller than our Moon"
 		},
 		"teasers": {
 			"sunEarth": "Our whole world is a dot beside its star: 109 Earths fit across the Sun.",
@@ -1114,7 +1115,10 @@
 			"moonsBeatPlanet@simple": "Two moons are bigger than a planet! But Mercury is made of heavier stuff, so it is heavier.",
 			"weighMost": "On the Moon you would weigh a sixth of what you weigh at home; at Jupiter’s cloud tops, two and a half times as much.",
 			"weighMost@advanced": "Surface gravity: Moon 0.17 g, Mars 0.38 g, Earth 1 g, Jupiter 2.5 g at the cloud tops.",
-			"weighMost@simple": "On the Moon you would be very light. On Jupiter you would be more than twice as heavy as at home."
+			"weighMost@simple": "On the Moon you would be very light. On Jupiter you would be more than twice as heavy as at home.",
+			"plutoMoon": "Pluto is only two thirds as wide as our Moon, and the Moon is more than five times as heavy.",
+			"plutoMoon@simple": "Pluto is smaller than our Moon! Our Moon is much heavier too.",
+			"plutoMoon@advanced": "Pluto has 68% of the Moon’s diameter and only 18% of its mass: one reason it is a dwarf planet."
 		},
 		"ideaGroups": {
 			"sizes": "Sizes",

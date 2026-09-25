@@ -1070,7 +1070,8 @@
 			"iceGiants@simple": "Les deux géantes bleues",
 			"potatoMoons": "Des lunes en forme de patate",
 			"weighMost": "Où pèserais-tu le plus ?",
-			"bigForItsPlanet": "Notre Lune est étonnamment grande"
+			"bigForItsPlanet": "Notre Lune est étonnamment grande",
+			"plutoMoon": "Pluton est plus petite que notre Lune"
 		},
 		"teasers": {
 			"sunEarth": "Notre monde entier n’est qu’un point à côté de son étoile : 109 Terres tiennent en travers du Soleil.",
@@ -1114,7 +1115,10 @@
 			"moonsBeatPlanet@simple": "Deux lunes sont plus grandes qu’une planète ! Mais Mercure est faite de matière plus lourde, alors elle pèse plus.",
 			"weighMost": "Sur la Lune, tu pèserais un sixième de ton poids à la maison ; au sommet des nuages de Jupiter, deux fois et demie plus.",
 			"weighMost@advanced": "Gravité de surface : Lune 0,17 g, Mars 0,38 g, Terre 1 g, Jupiter 2,5 g au sommet des nuages.",
-			"weighMost@simple": "Sur la Lune, tu serais tout léger. Sur Jupiter, tu serais plus de deux fois plus lourd qu’à la maison."
+			"weighMost@simple": "Sur la Lune, tu serais tout léger. Sur Jupiter, tu serais plus de deux fois plus lourd qu’à la maison.",
+			"plutoMoon": "Pluton n’est large que des deux tiers de notre Lune, et la Lune est plus de cinq fois plus lourde.",
+			"plutoMoon@simple": "Pluton est plus petite que notre Lune ! Et notre Lune est aussi beaucoup plus lourde.",
+			"plutoMoon@advanced": "Pluton a 68 % du diamètre de la Lune et seulement 18 % de sa masse : une des raisons pour lesquelles c’est une planète naine."
 		},
 		"ideaGroups": {
 			"sizes": "Tailles",

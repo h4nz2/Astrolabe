@@ -1070,7 +1070,8 @@
 			"iceGiants@simple": "Die zwei blauen Riesen",
 			"potatoMoons": "Kartoffelmonde",
 			"weighMost": "Wo wärst du am schwersten?",
-			"bigForItsPlanet": "Unser Mond ist ungewöhnlich groß"
+			"bigForItsPlanet": "Unser Mond ist ungewöhnlich groß",
+			"plutoMoon": "Pluto ist kleiner als unser Mond"
 		},
 		"teasers": {
 			"sunEarth": "Unsere ganze Welt ist ein Punkt neben ihrem Stern: 109 Erden passen quer über die Sonne.",
@@ -1114,7 +1115,10 @@
 			"moonsBeatPlanet@simple": "Zwei Monde sind größer als ein Planet! Aber Merkur besteht aus schwererem Material, darum ist er schwerer.",
 			"weighMost": "Auf dem Mond würdest du ein Sechstel so viel wiegen wie zu Hause, an Jupiters Wolkenobergrenze zweieinhalbmal so viel.",
 			"weighMost@advanced": "Schwerebeschleunigung an der Oberfläche: Mond 0,17 g, Mars 0,38 g, Erde 1 g, Jupiter 2,5 g an der Wolkenobergrenze.",
-			"weighMost@simple": "Auf dem Mond wärst du ganz leicht. Auf Jupiter wärst du mehr als doppelt so schwer wie zu Hause."
+			"weighMost@simple": "Auf dem Mond wärst du ganz leicht. Auf Jupiter wärst du mehr als doppelt so schwer wie zu Hause.",
+			"plutoMoon": "Pluto ist nur zwei Drittel so breit wie unser Mond, und der Mond ist mehr als fünfmal so schwer.",
+			"plutoMoon@simple": "Pluto ist kleiner als unser Mond! Und unser Mond ist auch viel schwerer.",
+			"plutoMoon@advanced": "Pluto hat 68 % des Monddurchmessers und nur 18 % seiner Masse – ein Grund, warum er ein Zwergplanet ist."
 		},
 		"ideaGroups": {
 			"sizes": "Größen",
