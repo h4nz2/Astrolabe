@@ -1,0 +1,1202 @@
+{
+	"sun": {
+		"name": "Slunce",
+		"tagline": "Naše hvězda",
+		"description": {
+			"simple": "Slunce je hvězda, stejně jako hvězdy, které vidíš v noci. Vypadá tak velké a jasné jen proto, že je k nám tak blízko. Slunce je obrovská koule žhavého plynu. Dává nám světlo a teplo a bez něj by na Zemi nebyl žádný život.",
+			"standard": "Slunce je hvězda ve středu naší sluneční soustavy. Je to obrovská koule horkého plynu, hlavně vodíku a helia, a obsahuje víc než 99,8 % veškeré hmoty sluneční soustavy. Hluboko v jeho jádru se vodík slučuje na helium a uvolňuje energii, která k nám asi za 8 minut dorazí jako světlo a teplo. Jeho gravitace drží všechny planety na jejich drahách.",
+			"advanced": "Slunce je hvězda hlavní posloupnosti spektrálního typu G (G2V), stará asi 4,6 miliardy let, která má za sebou zhruba polovinu období spalování vodíku. V jeho jádru se při teplotě asi 15 milionů °C každou sekundu přemění termojadernou fúzí zhruba 600 milionů tun vodíku na helium, přičemž se asi 4 miliony tun hmoty změní v energii. Tato energie se tisíce let prodírá ven zářivou a konvektivní zónou a pak urazí 150 milionů km k Zemi zhruba za 8 minut a 20 sekund. Slunce rotuje diferenciálně: na rovníku jedna otočka trvá asi 25 dní, u pólů kolem 35 dní."
+		},
+		"facts": {
+			"simple": [
+				"Do Slunce by se vešlo asi 1,3 milionu Zemí.",
+				"Sluneční světlo k nám letí asi 8 minut.",
+				"Nikdy se nedívej přímo do Slunce – může ti poškodit oči."
+			],
+			"standard": [
+				"Slunce je asi 109krát širší než Země.",
+				"Jeho viditelný povrch má asi 5 500 °C, jádro dosahuje asi 15 milionů °C.",
+				"Světlo ze Slunce doletí k Zemi zhruba za 8 minut a 20 sekund.",
+				"Slunce obsahuje 99,86 % hmotnosti celé sluneční soustavy."
+			],
+			"advanced": [
+				"Hmotnost: asi 333 000 hmotností Země (1,989 × 10³⁰ kg).",
+				"Tíhové zrychlení na povrchu je asi 28krát větší než na Zemi (274 m/s²).",
+				"Složení podle hmotnosti: asi 73 % vodíku, 25 % helia a 2 % těžších prvků.",
+				"Jeden oběh kolem středu Mléčné dráhy trvá Slunci asi 230 milionů let."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, bylo by Slunce vysoké jako osmipatrový dům."
+			],
+			"standard": [
+				"Kdyby bylo Slunce nafukovací míč o průměru 1 m, byla by Země hrášek o průměru 9 mm ve vzdálenosti asi 107 m."
+			],
+			"advanced": [
+				"Slunce je k Zemi jako basketbalový míč (24 cm) k zrnku o velikosti 2,2 mm ve vzdálenosti 26 m."
+			]
+		}
+	},
+	"mercury": {
+		"name": "Merkur",
+		"tagline": "Nejmenší a nejrychlejší planeta",
+		"description": {
+			"simple": "Merkur je nejmenší planeta a ze všech je nejblíž Slunci. Je to šedá kamenná koule plná kráterů, trochu jako náš Měsíc. Kolem Slunce uhání rychleji než kterákoli jiná planeta. Ve dne je tam takové horko, že by se roztavilo olovo, ale v noci je tam mrazivá zima.",
+			"standard": "Merkur je nejmenší planeta a zároveň planeta nejbližší Slunci, které oběhne jednou za 88 dní. Nemá téměř žádnou atmosféru, která by udržela teplo, takže jeho povrch má ve dne asi 430 °C a v noci jen asi −180 °C. Jeho šedý povrch posetý krátery se hodně podobá našemu Měsíci. Merkur nemá žádné měsíce.",
+			"advanced": "Merkur obíhá Slunce v průměrné vzdálenosti 0,39 AU po nejvýstřednější dráze ze všech planet (e = 0,21). Během dvou oběhů se otočí přesně třikrát – jde o rezonanci rotace a oběhu 3 : 2 –, takže jeden sluneční den tam trvá 176 pozemských dní, tedy dva celé merkurovské roky. Železné jádro sahající asi do 85 % poloměru dává Merkuru druhou nejvyšší hustotu ze všech planet a slabé globální magnetické pole. Jeho řídká exosféra neudrží teplo a na trvale zastíněných dnech polárních kráterů se skrývá vodní led."
+		},
+		"facts": {
+			"simple": [
+				"Rok na Merkuru trvá jen 88 dní.",
+				"Merkur nemá žádné měsíce.",
+				"Je jen o trochu větší než náš Měsíc."
+			],
+			"standard": [
+				"Merkur je nejrychlejší planeta: obíhá Slunce rychlostí asi 47 km za sekundu.",
+				"Od jednoho východu Slunce k dalšímu uplyne 176 pozemských dní.",
+				"Jeho průměr je asi 38 % průměru Země.",
+				"Přestože je Slunci nejblíž, není Merkur nejteplejší planetou – tou je Venuše."
+			],
+			"advanced": [
+				"Jeho vzdálenost od Slunce se mění mezi 46 a 70 miliony km (výstřednost 0,21).",
+				"Pomalé stáčení Merkurovy dráhy (stáčení perihelia) bylo jedním z prvních potvrzení Einsteinovy obecné teorie relativity.",
+				"Střední hustota 5,43 g/cm³ – vyšší má jen Země."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Merkur asi tak velký jako pomeranč."
+			],
+			"standard": ["Do Země by se vešlo asi 18 Merkurů."],
+			"advanced": [
+				"V perihéliu vypadá Slunce na obloze Merkuru víc než třikrát širší než ze Země."
+			]
+		}
+	},
+	"venus": {
+		"name": "Venuše",
+		"tagline": "Nejteplejší planeta",
+		"description": {
+			"simple": "Venuše je skoro stejně velká jako Země, ale na výlet tam rozhodně nechceš. Obalují ji husté jedovaté mraky, které zadržují sluneční teplo. Proto je Venuše nejteplejší planetou ze všech – ještě teplejší než Merkur. Často ji uvidíš jasně zářit na večerní nebo ranní obloze.",
+			"standard": "Venuše je velikostí téměř dvojčetem Země, ale její hustá atmosféra z oxidu uhličitého způsobuje nekontrolovatelný skleníkový efekt. Povrch má asi 465 °C – víc než Merkur, přestože je Venuše od Slunce skoro dvakrát dál – a tlak vzduchu je asi 90krát vyšší než na Zemi. Mraky z kyseliny sírové zakrývají povrch před pohledem. Po Měsíci je Venuše nejjasnějším přirozeným tělesem noční oblohy.",
+			"advanced": "Venuše má 95 % průměru Země a 82 % její hmotnosti, a přesto se vyvinula úplně jinak. Hustá atmosféra z CO₂ s povrchovým tlakem asi 92 barů pohání nekontrolovatelný skleníkový efekt, který udržuje povrch ve dne i v noci, od pólů až po rovník na teplotě kolem 465 °C. Venuše rotuje retrográdně a velmi pomalu: jedna siderická otočka trvá 243 pozemských dní, déle než její 225denní rok, takže sluneční den trvá asi 117 pozemských dní. Radarové mapy ze sondy Magellan odhalily sopečný povrch starý jen několik set milionů let."
+		},
+		"facts": {
+			"simple": [
+				"Venuše se točí opačně než většina planet, takže tam Slunce vychází na západě.",
+				"Den na Venuši je delší než její rok!",
+				"Venuše nemá žádné měsíce."
+			],
+			"standard": [
+				"Její povrch má asi 465 °C – dost na to, aby se roztavilo olovo.",
+				"Tlak vzduchu na povrchu je stejný jako v hloubce 900 m pod hladinou oceánu.",
+				"Venuše se k Zemi přibližuje víc než kterákoli jiná planeta – až na asi 38 milionů km."
+			],
+			"advanced": [
+				"Její mraky odrážejí asi tři čtvrtiny slunečního světla, které na ně dopadá (Bondovo albedo 0,76).",
+				"Horní vrstvy atmosféry obletí planetu asi za 4 dny, zhruba 60krát rychleji, než se otáčí povrch (superrotace).",
+				"Jedna siderická otočka trvá 243 pozemských dní, a to v retrográdním směru."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byla by Venuše taky fotbalový míč – jen maličko menší."
+			],
+			"standard": [
+				"Kdyby byla Země fotbalový míč o průměru 22 cm, měla by Venuše průměr 21 cm."
+			],
+			"advanced": [
+				"Atmosféra Venuše je asi 93krát hmotnější než atmosféra Země."
+			]
+		}
+	},
+	"earth": {
+		"name": "Země",
+		"tagline": "Náš domov",
+		"description": {
+			"simple": "Země je náš domov a jediná planeta, o které víme, že je na ní život. Většinu jejího povrchu pokrývají oceány, a proto z vesmíru vypadá modře. Země se jednou za den otočí kolem své osy, a tak se střídá den a noc. Cesta kolem Slunce jí trvá jeden rok.",
+			"standard": "Země je třetí planeta od Slunce a jediný svět, o kterém víme, že na něm existuje život. Kapalná voda pokrývá asi 71 % jejího povrchu a atmosféra z dusíku a kyslíku nás chrání a udržuje mírné teploty. Zemská osa je skloněná asi o 23,4°, a díky tomu máme roční období. Země obíhá Slunce v průměrné vzdálenosti asi 150 milionů km, jednou za 365,25 dne.",
+			"advanced": "Země je největší a nejhustší ze čtyř kamenných planet (5,51 g/cm³). Její tekuté železné vnější jádro vytváří magnetické pole, které odklání sluneční vítr, a desková tektonika neustále recykluje zemskou kůru. Sklon osy 23,4°, stabilizovaný naším neobvykle velkým Měsícem, způsobuje roční období. Země obíhá ve vzdálenosti 1 AU (149,6 milionu km) s výstředností 0,017, takže se její vzdálenost od Slunce mění jen asi o 3 % – a nejblíž Slunci je Země na začátku ledna."
+		},
+		"facts": {
+			"simple": [
+				"Z každých 100 dílků zemského povrchu je asi 71 pokryto vodou.",
+				"Země má jeden měsíc – říkáme mu prostě Měsíc.",
+				"Země je jediná planeta, která není pojmenovaná po nějakém bohovi."
+			],
+			"standard": [
+				"Země se pohybuje kolem Slunce rychlostí asi 30 km za sekundu – to je víc než 100 000 km/h.",
+				"Roční období nezpůsobuje vzdálenost od Slunce, ale sklon zemské osy (23,4°).",
+				"Země je nejhustší planetou sluneční soustavy."
+			],
+			"advanced": [
+				"Vůči hvězdám se Země otočí jednou za 23 h 56 min (hvězdný den); 24hodinový sluneční den je asi o 4 minuty delší.",
+				"Atmosféru tvoří podle objemu asi 78 % dusíku a 21 % kyslíku.",
+				"Země je stará asi 4,54 miliardy let."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Jet autem rychlostí 100 km/h kolem rovníku bez jediné zastávky by trvalo asi 17 dní."
+			],
+			"standard": [
+				"Letadlo letící rychlostí 900 km/h by ke Slunci letělo asi 19 let."
+			],
+			"advanced": [
+				"Dráha Země je tak blízko kružnici, že kdybys ji ve správném měřítku nakreslil na papír, nerozeznal bys ji od kruhu."
+			]
+		}
+	},
+	"mars": {
+		"name": "Mars",
+		"tagline": "Rudá planeta",
+		"description": {
+			"simple": "Marsu se říká rudá planeta, protože jeho povrch pokrývá rezavě červený prach. Je menší a mnohem studenější než Země. Na Marsu je nejvyšší sopka, jakou známe, a má dva malinké měsíce. Po Marsu jezdí roboti, kterým se říká rovery, a prozkoumávají ho za nás.",
+			"standard": "Mars je čtvrtá planeta od Slunce a má zhruba poloviční průměr oproti Zemi. Oxid železa – rez – v jeho prachu mu dává červenou barvu. Mars má roční období i polární čepičky, ale jeho atmosféra je velmi řídká a průměrná teplota je asi −60 °C. Je na něm největší sopka sluneční soustavy, Olympus Mons, a kaňon Valles Marineris dlouhý asi 4 000 km – zhruba jako vzdálenost z Lisabonu do Moskvy.",
+			"advanced": "Mars má asi 53 % průměru Země a 38 % jejího povrchového tíhového zrychlení. Jeho řídká atmosféra z CO₂ s povrchovým tlakem pod 1 % pozemského nedokáže planetu udržet v teple a průměrná teplota se pohybuje kolem −60 °C. Vyschlá říční údolí, dávná jezerní dna a minerály, které vznikají jen ve vodě, ukazují, že po jeho povrchu kdysi tekla kapalná voda. Se sklonem osy 25,2° a dnem dlouhým 24 h 37 min má Mars dny a roční období podobné těm pozemským, ale každé roční období trvá asi dvakrát déle, protože marsovský rok má 687 pozemských dní."
+		},
+		"facts": {
+			"simple": [
+				"Den na Marsu je jen asi o 40 minut delší než den na Zemi.",
+				"Mars má dva malé měsíce, Phobos a Deimos.",
+				"Na Marsu bys vážil méně než polovinu toho, co vážíš na Zemi."
+			],
+			"standard": [
+				"Olympus Mons je vysoký asi 22 km – dva a půlkrát víc než Mount Everest.",
+				"Rok na Marsu trvá 687 pozemských dní.",
+				"Prachové bouře na Marsu se mohou rozrůst tak, že zahalí celou planetu."
+			],
+			"advanced": [
+				"Tlak na povrchu je jen asi 0,6 % pozemského, takže kapalná voda se rychle vypaří nebo zmrzne.",
+				"Jeho vzdálenost od Slunce se mění zhruba mezi 207 a 249 miliony km (výstřednost 0,093).",
+				"Phobos se po spirále pomalu přibližuje a asi za 30 až 50 milionů let se rozpadne nebo dopadne na Mars."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Mars asi tak velký jako grapefruit."
+			],
+			"standard": ["Do Země by se vešlo víc než šest Marsů."],
+			"advanced": [
+				"Z Marsu vypadá Slunce jen asi na dvě třetiny tak široké jako ze Země."
+			]
+		}
+	},
+	"jupiter": {
+		"name": "Jupiter",
+		"tagline": "Obr sluneční soustavy",
+		"description": {
+			"simple": "Jupiter je největší planeta – vešlo by se do něj víc než 1 300 Zemí. Je to obrovská koule plynu a nemá žádnou pevnou půdu, na které by se dalo stát. Jeho pruhy jsou pásy mraků a jeho Velká rudá skvrna je bouře větší než celá Země. Jupiter má moc a moc měsíců.",
+			"standard": "Jupiter je největší planeta, 11krát širší než Země a hmotnější než všechny ostatní planety dohromady. Tento plynný obr je tvořený hlavně vodíkem a heliem a jeho barevné pásy mraků roztahují rychlé větry a rychlá rotace: den na Jupiteru trvá méně než 10 hodin. Velká rudá skvrna je bouře širší než Země, která zuří už víc než 150 let. Jeho čtyři největší měsíce objevil Galileo Galilei v roce 1610.",
+			"advanced": "Jupiter má 318 hmotností Země – asi 2,5krát víc než všechny ostatní planety dohromady. Pod vrcholky mraků z amoniakového ledu jsou vodík a helium stlačovány tak silně, že se hluboko uvnitř vodík chová jako tekutý kov; proudy v této vrstvě vytvářejí nejsilnější planetární magnetické pole ve sluneční soustavě. Jupiter se otočí asi za 9 h 56 min, nejrychleji ze všech planet, a proto je na pólech viditelně zploštělý. Vyzařuje víc tepla, než od Slunce přijímá – jde o teplo, které mu zbylo z doby vzniku a z pomalého smršťování."
+		},
+		"facts": {
+			"simple": [
+				"Den na Jupiteru trvá méně než 10 hodin – je to nejkratší den ze všech planet.",
+				"Jupiter má tenké tmavé prstence, které jsou velmi špatně vidět.",
+				"Jeho měsíc Ganymed je větší než planeta Merkur."
+			],
+			"standard": [
+				"Rok na Jupiteru trvá skoro 12 pozemských let.",
+				"Jupiter je od Slunce v průměru asi 5,2krát dál než Země.",
+				"Známe víc než 90 měsíců, které obíhají kolem Jupiteru."
+			],
+			"advanced": [
+				"Jeho měsíc Io je nejvulkaničtěji aktivním tělesem sluneční soustavy; zahřívá ho slapové hnětení.",
+				"Jeho měsíc Europa pod ledovou kůrou podle všeho skrývá globální oceán kapalné vody.",
+				"Jupiterova gravitace formuje pás planetek a vytváří v něm mezery (Kirkwoodovy mezery)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Jupiter koule vysoká asi 2,5 m – vyšší než dospělý člověk."
+			],
+			"standard": ["Do Jupiteru by se vešlo asi 1 321 Zemí."],
+			"advanced": [
+				"Průměr Jupiteru je asi desetina průměru Slunce a jeho hmotnost asi tisícina."
+			]
+		}
+	},
+	"saturn": {
+		"name": "Saturn",
+		"tagline": "Planeta s prstenci",
+		"description": {
+			"simple": "Saturn je slavný svými krásnými prstenci. Jsou z miliard kousků ledu a kamení – některé jsou malé jako zrnka písku, jiné velké jako dům. Saturn je obrovská koule plynu a na svou velikost je tak lehký, že by plaval na vodě – kdyby se našla dost velká vana!",
+			"standard": "Saturn, šestá planeta, je druhá největší planeta a má nejnižší hustotu: v průměru je lehčí než voda. Jeho jasné prstence jsou široké asi 270 000 km, ale většinou jen asi 10 m tlusté, a skládají se z nespočtu kousků ledu a kamene. Saturn má víc známých měsíců než kterákoli jiná planeta; mezi nimi je i Titan, který je větší než Merkur a má hustou atmosféru.",
+			"advanced": "Saturn má 95 hmotností Země, ale střední hustotu jen 0,69 g/cm³, nejnižší ze všech planet. Díky rychlé rotaci (asi 10 h 33 min) je nejzploštělejší planetou: jeho rovníkový průměr je asi o 10 % větší než polární. Hlavní prstence, tvořené převážně vodním ledem s trochou horniny, mají rozpětí asi 270 000 km, ale většinou jsou jen asi 10 m tlusté a možná jsou mnohem mladší než samotný Saturn. Sonda Cassini, která kolem Saturnu obíhala v letech 2004 až 2017, objevila pod ledem měsíce Enceladus globální oceán, jehož voda uniká gejzíry na jižním pólu."
+		},
+		"facts": {
+			"simple": [
+				"Saturn má víc měsíců než kterákoli jiná planeta, kterou známe.",
+				"Rok na Saturnu trvá skoro 30 pozemských let.",
+				"Jeho největší měsíc Titan má jezera – ne z vody, ale z tekutého metanu."
+			],
+			"standard": [
+				"Saturn je od Slunce asi 9,5krát dál než Země.",
+				"Větry na Saturnově rovníku dosahují rychlosti asi 1 800 km/h.",
+				"Kolem severního pólu Saturnu se táhne šestiúhelníkový útvar z mraků – hexagon."
+			],
+			"advanced": [
+				"Saturn vyzařuje víc než dvakrát tolik energie, kolik přijímá od Slunce.",
+				"Titan je jediný měsíc s hustou atmosférou; tlak na jeho povrchu je asi 1,5krát vyšší než na Zemi.",
+				"Mezery v prstencích, například Cassiniho dělení, vytváří gravitace měsíců (dráhové rezonance)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Saturn koule vysoká přes 2 m – a jeho prstence by byly široké asi 5 m."
+			],
+			"standard": ["Do Saturnu by se vešlo víc než 750 Zemí."],
+			"advanced": [
+				"Hlavní prstence Saturnu by sahaly asi do dvou třetin vzdálenosti ze Země k Měsíci."
+			]
+		}
+	},
+	"uranus": {
+		"name": "Uran",
+		"tagline": "Planeta, která se valí po boku",
+		"description": {
+			"simple": "Uran je studená modrozelená planeta daleko od Slunce. Je zvláštní tím, že leží na boku, takže se kolem Slunce valí jako míč. Jeden oběh kolem Slunce mu trvá 84 let. Uran má tenké tmavé prstence a hodně měsíců.",
+			"standard": "Uran je sedmá planeta a je čtyřikrát širší než Země. Je to ledový obr: pod atmosférou z vodíku a helia leží silná vrstva vodního, amoniakového a metanového ledu. Modrozelenou barvu mu dává plynný metan. Uran je překlopený asi o 98°, takže se po své dráze valí po boku a na každém pólu je asi 42 let den a potom 42 let tma. Byla to první planeta objevená dalekohledem – objevil ji William Herschel v roce 1781.",
+			"advanced": "Sklon osy Uranu asi 98° znamená, že jeho prstence a pravidelné měsíce obíhají téměř kolmo k rovině jeho dráhy a jeho roční období jsou nejextrémnější ve sluneční soustavě. Rotuje retrográdně s periodou 17 h 14 min. Na rozdíl od ostatních obřích planet Uran téměř nevydává vnitřní teplo a v jeho atmosféře byla naměřena nejnižší teplota na jakékoli planetě, asi −224 °C. Jeho magnetické pole je skloněné asi o 59° vůči ose rotace a posunuté mimo střed planety. Zatím kolem něj proletěla jediná sonda, Voyager 2 v roce 1986."
+		},
+		"facts": {
+			"simple": [
+				"Uran má 13 prstenců, ale jsou tenké a tmavé.",
+				"Jeho měsíce jsou pojmenované po postavách z her Williama Shakespeara a básní Alexandra Popea.",
+				"Uran má nejstudenější vzduch ze všech planet."
+			],
+			"standard": [
+				"Rok na Uranu trvá 84 pozemských let.",
+				"Uran je od Slunce asi 19krát dál než Země.",
+				"Nejnižší teplota naměřená v jeho atmosféře je asi −224 °C."
+			],
+			"advanced": [
+				"Uran je jediná planeta pojmenovaná po řeckém, a ne římském bohovi.",
+				"Jeho úzké prstence jsou z materiálu tmavého jako dřevěné uhlí.",
+				"William Herschel si nejdřív myslel, že Uran je kometa."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Uran velký jako velký gymnastický míč."
+			],
+			"standard": ["Do Uranu by se vešlo asi 63 Zemí."],
+			"advanced": ["Sluneční světlo letí k Uranu asi 2 hodiny a 40 minut."]
+		}
+	},
+	"neptune": {
+		"name": "Neptun",
+		"tagline": "Největrnější planeta",
+		"description": {
+			"simple": "Neptun je planeta nejvzdálenější od Slunce. Je to temně modrý ledový obr, velmi studený a velmi větrný – jeho větry jsou nejrychlejší ve sluneční soustavě. Neptun je tak daleko, že ho bez dalekohledu neuvidíš. Jeden oběh kolem Slunce mu trvá 165 let.",
+			"standard": "Neptun je osmá a nejvzdálenější planeta, od Slunce asi 30krát dál než Země. Stejně jako Uran je to ledový obr a modrou barvu mu dává metan v atmosféře. Neptun má nejrychlejší větry ve sluneční soustavě, přes 2 000 km/h. Byla to první planeta nalezená pomocí matematiky: astronomové předpověděli jeho polohu podle toho, jak přitahuje Uran, a v roce 1846 ho spatřili.",
+			"advanced": "Neptun obíhá ve vzdálenosti asi 30 AU, kde je sluneční světlo zhruba 900krát slabší než u Země. Přesto má silný vnitřní zdroj tepla – vyzařuje asi 2,6krát víc energie, než od Slunce přijímá –, který pomáhá pohánět nejrychlejší větry naměřené na jakékoli planetě, až asi 2 100 km/h. Jeho polohu předpověděl v roce 1846 Urbain Le Verrier z poruch v dráze Uranu a Johann Galle ho našel necelý 1° od předpovězeného místa. Jeho největší měsíc Triton obíhá pozpátku (retrográdně) a je nejspíš zachyceným tělesem z Kuiperova pásu."
+		},
+		"facts": {
+			"simple": [
+				"Neptun je jediná planeta, kterou bez dalekohledu nikdy neuvidíš.",
+				"Rok na Neptunu trvá asi 165 pozemských let.",
+				"Jeho největší měsíc Triton kolem něj obíhá pozpátku."
+			],
+			"standard": [
+				"Neptun dokončil svůj první celý oběh od objevu v roce 1846 teprve v roce 2011.",
+				"Sluneční světlo letí k Neptunu asi 4 hodiny.",
+				"Voyager 2 je jediná sonda, která Neptun navštívila, a to v roce 1989."
+			],
+			"advanced": [
+				"Na Tritonu jsou gejzíry, které vystřelují plynný dusík do výšky několika kilometrů.",
+				"Neptun je o něco menší než Uran, ale asi o 18 % hmotnější, takže má vyšší hustotu.",
+				"Jeho nejvzdálenější prstenec, Adamsův prstenec, obsahuje jasné oblouky pojmenované Liberté, Égalité a Fraternité."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Neptun velký jako velký gymnastický míč – skoro stejně velký jako Uran."
+			],
+			"standard": ["Do Neptunu by se vešlo asi 58 Zemí."],
+			"advanced": [
+				"Kdyby Slunce byly vchodové dveře vysoké 2 m, byl by Neptun tenisový míček vzdálený asi 6,5 km."
+			]
+		}
+	},
+	"moon": {
+		"name": "Měsíc",
+		"tagline": "Průvodce Země",
+		"description": {
+			"simple": "Měsíc je nejbližší soused Země ve vesmíru. Je to kamenná koule pokrytá šedým prachem a krátery. Měsíc sám nesvítí – odráží světlo ze Slunce. Po Měsíci se prošlo dvanáct astronautů.",
+			"standard": "Měsíc je jediná přirozená družice Země. Jeho průměr je asi čtvrtina průměru Země a je od nás v průměru 384 400 km. Jeden oběh kolem Země mu trvá asi 27,3 dne, a protože se za tu dobu otočí přesně jednou kolem své osy, ukazuje nám stále stejnou tvář. Jeho gravitace způsobuje většinu přílivu a odlivu v našich oceánech. V letech 1969 až 1972 se po jeho povrchu prošlo dvanáct astronautů z programu Apollo.",
+			"advanced": "Měsíc nejspíš vznikl asi před 4,5 miliardy let z úlomků vyvržených při srážce tělesa velikosti Marsu s mladou Zemí. Je vázaný slapovými silami: jeho rotace a 27,3denní siderický oběh jsou synchronizované, takže k Zemi je stále natočena jedna polokoule, zatímco cyklus fází (synodický měsíc) trvá asi 29,5 dne. Stejné slapové působení pomalu přenáší moment hybnosti z rotace Země na oběh Měsíce, čímž prodlužuje náš den a vzdaluje Měsíc asi o 3,8 cm ročně."
+		},
+		"facts": {
+			"simple": [
+				"Na Měsíci bys vážil jen asi šestinu toho, co na Zemi.",
+				"Stopy astronautů jsou tam pořád, protože tam není vítr, který by je odfoukal.",
+				"Jeden oběh kolem Země trvá Měsíci asi měsíc."
+			],
+			"standard": [
+				"Měsíční světlo doletí k Zemi jen asi za 1,3 sekundy.",
+				"Měsíc je pátým největším měsícem sluneční soustavy.",
+				"Měsíc se od Země každý rok vzdálí asi o 3,8 cm."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu je 1,62 m/s², asi 16,5 % pozemského.",
+				"Měsíc stabilizuje sklon zemské osy, a tím chrání naše podnebí před divokými výkyvy.",
+				"Cyklus fází (29,5 dne) je delší než oběh (27,3 dne), protože Země se mezitím posune po své vlastní dráze."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Měsíc tenisový míček vzdálený asi 6,5 m."
+			],
+			"standard": ["Do Země by se vešlo asi 50 Měsíců."],
+			"advanced": [
+				"Když je Měsíc nejdál, vešly by se do mezery mezi Zemí a Měsícem všechny ostatní planety vedle sebe."
+			]
+		}
+	},
+	"phobos": {
+		"name": "Phobos",
+		"tagline": "Odsouzený měsíc Marsu",
+		"description": {
+			"simple": "Phobos je větší ze dvou malinkých měsíců Marsu. Je to tmavý hrbolatý kámen, tvarem trochu podobný bramboře. Phobos kolem Marsu uhání tak rychle, že ho za jeden den oběhne asi třikrát. Velmi pomalu padá k Marsu – a jednou se rozpadne.",
+			"standard": "Phobos je tmavý měsíc ve tvaru brambory, široký jen asi 22 km, který obíhá pouhých 6 000 km nad povrchem Marsu. Mars oběhne za 7 hodin a 39 minut – rychleji, než se planeta otočí. Při pohledu z Marsu proto vychází na západě a zapadá na východě, často dvakrát za jediný den. Gravitace Marsu si ho pomalu přitahuje, asi o 2 m za sto let, a zhruba za 30 až 50 milionů let bude Phobos nejspíš roztrhán na prstenec trosek, nebo dopadne na Mars.",
+			"advanced": "Phobos obíhá s velkou poloosou 9 376 km, hluboko uvnitř synchronní dráhy Marsu (asi 20 400 km). Slapová výduť, kterou na Marsu vyvolává, se proto za ním opožďuje a odčerpává mu dráhovou energii, takže se Phobos po spirále přibližuje asi o 1,8 cm za rok. Zhruba za 30–50 milionů let by měl překročit Rocheovu mez, kde slapové síly přemohou jeho slabou vlastní gravitaci: volně držená hromada suti by se rozprostřela do prstence, kdežto pevnější těleso by mohlo Mars dřív zasáhnout. Dlouhé rovnoběžné brázdy na jeho povrchu mohou být prvními známkami tohoto slapového napětí, i když některé mohou být spíš stopami úlomků po dopadech."
+		},
+		"facts": {
+			"simple": [
+				"Phobos má obří kráter jménem Stickney, který je skoro poloviční než celý měsíc.",
+				"Při pohledu z Marsu Phobos vychází na západě a zapadá na východě – obráceně než naše Slunce a Měsíc.",
+				"Na Phobosu bys vážil tak málo, že by tě jeden pořádný skok vynesl do výšky stovek metrů."
+			],
+			"standard": [
+				"Kráter Stickney je široký asi 9 km – dopad, který ho vytvořil, mohl Phobos málem roztříštit.",
+				"Kráter je pojmenovaný po Angeline Stickneyové, manželce Asapha Halla, která ho povzbuzovala, aby v hledání měsíců Marsu nepřestával.",
+				"Asaph Hall objevil Phobos v srpnu 1877, šest dní poté, co našel Deimos."
+			],
+			"advanced": [
+				"Jeho oběžná doba 7 h 39 min je jen asi třetina marsovského solu (24 h 37 min), takže rotaci planety předbíhá.",
+				"Phobos je velmi tmavý (geometrické albedo asi 0,07) a jeho nízká hustota asi 1,86 g/cm³ ukazuje na porézní nitro, možná hromadu suti.",
+				"Tíhové zrychlení na povrchu je jen asi 0,0057 m/s², zhruba 1/1 700 pozemského, a úniková rychlost je asi 11 m/s (40 km/h)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Auto na dálnici by z jednoho konce Phobosu na druhý dojelo asi za čtvrt hodiny."
+			],
+			"standard": [
+				"Phobos klesá k Marsu zhruba o výšku dveří za sto let – pomalu, ale dost na to, aby ho to během několika desítek milionů let zničilo."
+			],
+			"advanced": [
+				"Phobos obíhá jen asi 6 000 km nad Marsem – zhruba tolik, kolik je letecky z Frankfurtu do New Yorku."
+			]
+		}
+	},
+	"deimos": {
+		"name": "Deimos",
+		"tagline": "Měsíc jako hvězda",
+		"description": {
+			"simple": "Deimos je menší měsíc Marsu – široký jen asi 12 km. Pokrývá ho měkký jemný prach, který zaplňuje jeho krátery, takže vypadá hladce. Z Marsu je Deimos tak malý a daleký, že vypadá jako jasná hvězda. Jeho jméno znamená Hrůza a jméno jeho bratra Phobose znamená Strach.",
+			"standard": "Deimos je malinký hrbolatý měsíc široký asi 12 km, který obíhá Mars jednou za 30 hodin ve vzdálenosti asi 23 500 km. Silná vrstva prachu zaplňuje mnoho jeho kráterů, takže vypadá mnohem hladší než Phobos. Americký astronom Asaph Hall ho objevil v srpnu 1877, několik dní před Phobosem, a oba měsíce dostaly jména po Phobovi a Deimovi – Strachu a Hrůze –, kteří v řeckých bájích doprovázejí do bitvy boha války Área, jehož Římané nazývali Mars. Vědci se dodnes přou, zda jsou oba měsíce zachycené planetky, nebo zda vznikly z trosek vymrštěných obřím dopadem na Mars.",
+			"advanced": "Deimos (asi 16 × 12 × 10 km) obíhá ve vzdálenosti 23 463 km, těsně vně synchronní dráhy Marsu, takže ho slapy velmi pomalu odtlačují ven, místo aby ho přitahovaly dovnitř jako Phobos. Jeho oběžná doba 30,3 hodiny je jen o málo delší než marsovský sol, a proto se po obloze posouvá velmi pomalu: vychází na východě a nad obzorem zůstává víc než dva dny. Oba měsíce jsou tmavé a spektrálně se podobají primitivním planetkám bohatým na uhlík, což ukazuje na zachycení, ale jejich téměř kruhové dráhy blízko rovníkové roviny Marsu spíš odpovídají vzniku z disku trosek po velkém dopadu. Japonská mise MMX má kolem roku 2031 dopravit na Zemi vzorek z Phobosu a cestou pozorovat i Deimos, což by mohlo otázku rozhodnout."
+		},
+		"facts": {
+			"simple": [
+				"Kdybys na Deimu vyskočil, trvalo by mnoho minut, než bys zase dopadl dolů.",
+				"Deimos objevil v roce 1877 astronom jménem Asaph Hall.",
+				"Deimos oběhne Mars za o něco víc než jeden den."
+			],
+			"standard": [
+				"V úplňku by Deimos na marsovské obloze zářil zhruba tak jasně jako Venuše na té naší.",
+				"Dva krátery na Deimu nesou jména Swift a Voltaire, po spisovatelích, kteří si dva měsíce Marsu představovali víc než sto let před jejich objevem.",
+				"Deimos má jen asi poloviční průměr oproti Phobosu a má zhruba sedminu jeho hmotnosti."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu je jen asi 0,003 m/s², zhruba 1/3 000 pozemského.",
+				"Dráha Deimu je téměř dokonale kruhová (výstřednost asi 0,0003) a leží blízko rovníkové roviny Marsu.",
+				"Asaph Hall našel Deimos 12. srpna 1877 26palcovým refraktorem Námořní observatoře USA ve Washingtonu, tehdy největším čočkovým dalekohledem na světě."
+			]
+		},
+		"comparisons": {
+			"simple": ["Oběhnout Deimos dokola by bylo asi tak daleko jako maraton."],
+			"standard": [
+				"Z Marsu je Deimos sotva víc než světelný bod – astronautovi by připadal jako jasná hvězda, která se pomalu sune po obloze."
+			],
+			"advanced": [
+				"Úniková rychlost Deimu je jen asi 5,6 m/s (20 km/h) – cyklista, který by městskou rychlostí vyjel z rampy, by z něj navždy uletěl."
+			]
+		}
+	},
+	"io": {
+		"name": "Io",
+		"tagline": "Sopečný měsíc",
+		"description": {
+			"simple": "Io je nejvíc sopečné místo, jaké známe. Stovky sopek chrlí lávu a vystřelují fontány plynu a prachu vysoko do nebe. Jeho žlutou, oranžovou a červenou barvu způsobuje síra. Jupiter a jeho další velké měsíce Io pořád mačkají a všechno to mačkání zahřívá jeho nitro.",
+			"standard": "Io je o něco větší než náš Měsíc a je to nejaktivnější sopečný svět, jaký známe: našlo se na něm víc než 400 činných sopek a některé vyvrhují chocholy plynu a prachu do výšky stovek kilometrů. Teplo nepochází ze Slunce, ale ze slapových sil. Dráha Io je sladěná s měsíci Europa a Ganymed, a proto zůstává mírně oválná; Jupiterova obrovská gravitace tak Io stlačuje a natahuje podle toho, jak se mění jeho vzdálenost. Galileo Galilei objevil Io v lednu 1610 spolu s Europou, Ganymedem a Kallisto – byly to vůbec první měsíce nalezené u jiné planety.",
+			"advanced": "Io je zapojeno do Laplaceovy rezonance 1 : 2 : 4: na každý oběh Ganymedu připadají dva oběhy Europy a čtyři oběhy Io. Pravidelné postrky udržují dráhu Io mírně výstřednou (e ≈ 0,004), takže jeho vzdálenost od Jupiteru – a tím i slapová výduť, kterou na něm Jupiter vyvolává – se během každého 42,5hodinového oběhu mění, a tření při tomto neustálém hnětení uvolňuje zhruba 10¹⁴ W tepla. Toto teplo pohání erupce silikátové lávy o teplotě až asi 1 600 K, žhavější než většina dnešní lávy na Zemi, a chocholy bohaté na síru vysoké až asi 500 km, které obnovují povrch tak rychle, že na něm nebyly nalezeny žádné impaktní krátery. Plyn ze sopek Io zásobuje prstenec nabitých částic kolem Jupiteru, plazmový torus Io."
+		},
+		"facts": {
+			"simple": [
+				"Sopky na Io byly poprvé spatřeny v roce 1979 na snímcích sondy Voyager 1.",
+				"Io nemá žádné krátery od vesmírných kamenů, protože je nová láva pořád zakrývá.",
+				"Io oběhne Jupiter za méně než dva dny."
+			],
+			"standard": [
+				"Loki Patera, nejmocnější sopka na Io, je sopečná proláklina široká asi 200 km vyplněná jezerem lávy.",
+				"Io obíhá uvnitř Jupiterových intenzivních radiačních pásů, kde by nechráněný astronaut dostal smrtelnou dávku za méně než jeden den.",
+				"Z Io vypadá Jupiter skoro 40krát širší než náš Měsíc v úplňku ze Země."
+			],
+			"advanced": [
+				"Gravitační měření z blízkých průletů sondy Juno v prosinci 2023 a únoru 2024 naznačují, že Io nemá mělký globální magmatický oceán; jeho sopky jsou zřejmě zásobovány oddělenými magmatickými rezervoáry.",
+				"Se střední hustotou asi 3,53 g/cm³ je Io nejhustším známým měsícem – kamenným tělesem s železným jádrem a téměř bez vody.",
+				"Tíhové zrychlení na povrchu je 1,80 m/s², asi 18 % pozemského."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Io je o trochu větší než náš Měsíc – jenže místo tichého šedého prachu je pokryté soptícími sopkami."
+			],
+			"standard": [
+				"Sopečné chocholy na Io mohou vystoupat do výšky asi 500 km – výš, než nad Zemí obíhá Mezinárodní vesmírná stanice."
+			],
+			"advanced": [
+				"Jupiterovy slapy zvedají a spouštějí pevný povrch Io při každém oběhu až asi o 100 m – zhruba o výšku třicetipatrové budovy."
+			]
+		}
+	},
+	"europa": {
+		"name": "Europa",
+		"tagline": "Oceán pod ledem",
+		"description": {
+			"simple": "Europa je o trochu menší než náš Měsíc a pokrývá ji bílý led s dlouhými červenohnědými prasklinami. Pod ledem je nejspíš obrovský hluboký oceán slané vody. Led na něm leží jako poklička na hrnci. Protože živé věci na Zemi potřebují vodu, vědci si myslí, že Europa je jedno z nejlepších míst, kde hledat život mimo Zemi.",
+			"standard": "Europa je o něco menší než náš Měsíc, ale pod její ledovou slupkou – nejspíš několik desítek kilometrů tlustou – leží globální oceán slané kapalné vody, možná asi 100 km hluboký. Slapové síly Jupiteru měsíc hnětou a pomáhají udržet oceán nezamrzlý. Díky vodě, chemickým surovinám a zdroji energie je Europa jedním z nejslibnějších míst pro hledání života mimo Zemi. Sonda NASA Europa Clipper odstartovala v říjnu 2024 a k Jupiteru má doletět v roce 2030, aby zjistila, zda by Europa mohla hostit život.",
+			"advanced": "Data z magnetometru sondy Galileo odhalila magnetické pole indukované rotujícím polem Jupiteru – nejlépe ho vysvětluje elektricky vodivý slaný oceán pod ledem. Ledová slupka, odhadem asi 10–30 km tlustá, je geologicky mladá, nejspíš jen desítky milionů let stará, s prasklinami, hřbety a chaotickým terénem, kde se k povrchu mohla dostat voda nebo teplý led. Oceán podle všeho leží přímo na kamenném dně, kde by reakce mezi vodou a horninou mohly dodávat chemickou energii, podobně jako u hydrotermálních průduchů na Zemi. Europa Clipper vykoná desítky blízkých průletů, aby změřila tloušťku ledu, slanost oceánu a složení povrchu."
+		},
+		"facts": {
+			"simple": [
+				"Ledový povrch Europy patří k nejhladším ve sluneční soustavě – nemá skoro žádné velké hory ani krátery.",
+				"Na povrchu Europy je velká zima: u rovníku asi −160 °C.",
+				"Europa oběhne Jupiter asi za tři a půl dne."
+			],
+			"standard": [
+				"Galileo Galilei objevil Europu v lednu 1610 spolu s dalšími třemi velkými měsíci Jupiteru.",
+				"V roce 2023 našel Vesmírný dalekohled Jamese Webba na povrchu Europy oxid uhličitý, který podle vědců pochází z oceánu pod ním.",
+				"Dalekohledy zachytily možné chocholy vodní páry stoupající z Europy, ale zda jsou skutečné, se stále vede spor."
+			],
+			"advanced": [
+				"Europa je v dráhové rezonanci 2 : 1 s Io a 1 : 2 s Ganymedem, která udržuje malou výstřednost (asi 0,009) pohánějící její slapový ohřev.",
+				"Nabité částice z Jupiterovy magnetosféry štěpí povrchový led a vytvářejí velmi řídkou kyslíkovou atmosféru; měření sondy Juno naznačují asi 12 kg kyslíku za sekundu.",
+				"Tíhové zrychlení na povrchu je 1,31 m/s², asi 13 % pozemského."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Oceán Europy může být tak hluboký, že by se do něj vešlo asi deset Mount Everestů postavených na sebe."
+			],
+			"standard": [
+				"Europa je menší než náš Měsíc, a přesto může její skrytý oceán obsahovat asi dvakrát víc vody než všechny oceány Země."
+			],
+			"advanced": [
+				"Europa má jen asi 1/70 objemu Země, ale její oceán může obsahovat dvakrát až třikrát víc vody než všechny pozemské oceány dohromady."
+			]
+		}
+	},
+	"ganymede": {
+		"name": "Ganymed",
+		"tagline": "Největší měsíc ze všech",
+		"description": {
+			"simple": "Ganymed je největší měsíc v celé sluneční soustavě. Je dokonce větší než planeta Merkur! Ganymed je z kamene a ledu a hluboko pod jeho povrchem je nejspíš skrytý oceán. Je to jediný známý měsíc, který si vyrábí vlastní magnetismus, stejně jako Země.",
+			"standard": "Ganymed je největší měsíc sluneční soustavy: s průměrem 5 268 km je širší než planeta Merkur, i když má méně než polovinu jeho hmotnosti. Je to jediný známý měsíc, který vytváří vlastní magnetické pole – objevila ho sonda Galileo v roce 1996. Toto pole vyvolává zářící polární záře a to, jak se kývají sem a tam, pozorované Hubbleovým vesmírným dalekohledem, prozradilo slaný oceán ukrytý hluboko pod ledem. Sonda ESA JUICE, vypuštěná v roce 2023, má doletět k Jupiteru v roce 2031 a v roce 2034 se usadit na oběžné dráze kolem Ganymedu.",
+			"advanced": "Ganymed je plně diferencovaný: má jádro bohaté na železo, kamenný plášť a silné vrstvy ledu a vody; konvekce v tekutém železném jádru nejspíš pohání vlastní dipólové pole o síle asi 720 nT na rovníku. Toto pole si uvnitř mnohem větší magnetosféry Jupiteru vymezuje malou vlastní magnetosféru. V roce 2015 Hubble ukázal, že se oválné polární záře Ganymedu kývají méně, než se čekalo, když přes ně přechází pole Jupiteru, protože vodivý slaný oceán, který leží podle všeho asi 150 km pod povrchem, indukuje sekundární pole, jež změně působí proti. JUICE se má stát první sondou, která bude obíhat jiný měsíc než ten náš: na oběžnou dráhu kolem Ganymedu vstoupí v prosinci 2034 a zmapuje jeho magnetické pole, nitro i ledovou slupku."
+		},
+		"facts": {
+			"simple": [
+				"Ganymed objevil před víc než 400 lety, v roce 1610, Galileo Galilei.",
+				"Ganymed má u pólů zářící světla, kterým se říká polární záře – jako na Zemi.",
+				"Ganymed oběhne Jupiter asi za týden."
+			],
+			"standard": [
+				"Skrytý oceán Ganymedu může obsahovat víc vody než všechny oceány Země.",
+				"Jeho povrch má dva druhy terénu: tmavé, staré oblasti hustě poseté krátery a světlejší, mladší oblasti protkané dlouhými brázdami a hřbety.",
+				"V roce 2021 proletěla sonda NASA Juno jen něco přes 1 000 km nad Ganymedem – tak blízko se k němu žádná sonda nedostala víc než 20 let."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu je 1,43 m/s², asi 15 % pozemského – méně než na našem Měsíci (1,62 m/s²), přestože je Ganymed mnohem větší.",
+				"Jeho střední hustota jen asi 1,94 g/cm³ znamená, že Ganymed tvoří zhruba stejným dílem hornina a vodní led.",
+				"Ganymed je součástí Laplaceovy rezonance 1 : 2 : 4: na jeden jeho oběh (7,15 dne) připadají dva oběhy Europy a čtyři oběhy Io."
+			]
+		},
+		"comparisons": {
+			"simple": ["Ganymed je asi jedenapůlkrát širší než náš Měsíc."],
+			"standard": [
+				"Ganymed je větší než planeta Merkur a má dokonce vlastní magnetické pole s polárními zářemi – je to měsíc, který se chová jako malá planeta."
+			],
+			"advanced": [
+				"Ganymed je asi o 8 % širší než Merkur, ale má jen asi 45 % jeho hmotnosti – většinu rozdílu tvoří led a voda."
+			]
+		}
+	},
+	"callisto": {
+		"name": "Kallisto",
+		"tagline": "Prastarý svět kráterů",
+		"description": {
+			"simple": "Kallisto je druhý největší měsíc Jupiteru a je skoro tak velký jako planeta Merkur. Jeho tmavý povrch je celý posetý krátery. Asi 4 miliardy let se skoro nezměnil, takže je jako prastarý deník vesmírných kamenů, které do něj narazily. Kallisto je daleko od nebezpečného záření Jupiteru, takže tam jednou možná astronauti postaví základnu.",
+			"standard": "Kallisto je třetí největší měsíc sluneční soustavy a má skoro přesně stejný průměr jako Merkur. Jeho povrch je krátery tak přeplněný, že pro nové už skoro nezbývá místo, a asi za 4 miliardy let se změnil jen velmi málo, protože krátery nesmazávají žádné sopky ani pohyblivé desky. Jeho největší jizva po dopadu, pánev Valhalla, má jasný střed široký asi 600 km a kolem něj prstence, které sahají asi 1 800 km od středu. Protože Kallisto obíhá vně nejsilnějších Jupiterových radiačních pásů, jedna studie NASA ho navrhla jako možnou základnu pro budoucí lidské výpravy.",
+			"advanced": "Povrch Kallisto je krátery nasycený – nové dopady většinou smazávají starší – a hustota kráterů ukazuje na povrch starý zhruba 4 miliardy let, nejstarší ze všech Galileových měsíců. Na rozdíl od Io, Europy a Ganymedu není Kallisto součástí Laplaceovy rezonance a slapový ohřev téměř nedostává; jeho nitro je podle všeho diferencované jen částečně, jako směs horniny a ledu. Přesto sonda Galileo zachytila indukované magnetické pole, které může ukazovat na slaný oceán asi 150–200 km pod povrchem. Ve vzdálenosti asi 1,9 milionu km od Jupiteru dostává povrch dávku záření jen asi 0,1 mSv za den, a proto studie NASA HOPE z roku 2003 zvolila Kallisto za cíl možné pilotované mise s povrchovou základnou."
+		},
+		"facts": {
+			"simple": [
+				"Galileo Galilei objevil Kallisto v lednu 1610 pomocí jednoho z úplně prvních dalekohledů.",
+				"Kallisto nemá žádné velké hory ani sopky – skoro jen krátery.",
+				"Kallisto oběhne Jupiter za víc než dva týdny."
+			],
+			"standard": [
+				"Kallisto oběhne Jupiter za 16,7 dne, déle než kterýkoli z dalších tří velkých měsíců.",
+				"Vědci si myslí, že hluboko pod kůrou Kallisto může být slaný oceán, i když slapy tento měsíc téměř nezahřívají.",
+				"Kallisto je nejtmavší ze čtyř Galileových měsíců – odráží jen asi pětinu slunečního světla, které na něj dopadá."
+			],
+			"advanced": [
+				"Kallisto má jen asi třetinu hmotnosti Merkuru, přestože je skoro stejně široký (4 821 km oproti 4 879 km).",
+				"Jasné ledové okraje kráterů a tmavé prašné nížiny dávají povrchu Kallisto skvrnitý vzhled (geometrické albedo asi 0,22).",
+				"Tíhové zrychlení na povrchu je 1,24 m/s², asi 13 % pozemského."
+			]
+		},
+		"comparisons": {
+			"simple": ["Kallisto je skoro přesně tak široký jako planeta Merkur."],
+			"standard": [
+				"Krátery na Kallisto jsou starší než nejstarší známé zkameněliny na Zemi – jeho tvář se asi 4 miliardy let skoro nezměnila."
+			],
+			"advanced": [
+				"Člověk stojící na Kallisto by dostal asi 0,1 mSv záření za den, zhruba desetkrát víc než přirozené pozadí na Zemi – na Europě by dávka byla desítky tisíckrát vyšší."
+			]
+		}
+	},
+	"mimas": {
+		"name": "Mimas",
+		"tagline": "Měsíc jako Hvězda smrti",
+		"description": {
+			"simple": "Mimas je malý ledový měsíc Saturnu. Na jedné straně má obrovský kráter, takže vypadá hodně jako Hvězda smrti z filmů Star Wars. Náraz, který kráter vytvořil, Mimas málem rozbil. Vědci si teď myslí, že hluboko pod jeho ledovou kůrou může být dokonce skrytý oceán.",
+			"standard": "Mimas má průměr jen asi 396 km, ale jeho největší kráter Herschel je široký 139 km – asi třetina celého měsíce. S vysokými valy a centrálním vrcholem dělá Herschel z Mimasu dvojníka Hvězdy smrti ze Star Wars. Mimas oběhne Saturn za pouhých 22,6 hodiny a jeho gravitace pomáhá udržovat Cassiniho dělení – tmavou mezeru mezi dvěma nejjasnějšími prstenci Saturnu – z velké části bez ledových částic. V roce 2024 vědci, kteří studovali drobné výkyvy v dráze Mimasu změřené sondou Cassini, oznámili, že se pod jeho ledem možná skrývá mladý oceán.",
+			"advanced": "Mimas (střední průměr 396 km, hustota 1,15 g/cm³) je tvořen převážně vodním ledem a je nejmenším z velkých kulatých měsíců Saturnu. Kráter Herschel, široký 139 km, s valy vysokými asi 5 km a centrálním vrcholem vysokým asi 6 km, je záznamem dopadu, který měsíc málem roztříštil. Ledové částice na vnitřním okraji Cassiniho dělení oběhnou Saturn přesně dvakrát za každý oběh Mimasu; tato rezonance 2 : 1 rozkmitává jejich dráhy a pomáhá udržovat mezeru z velké části prázdnou. V roce 2024 Lainey a kolegové ukázali, že stáčení dráhy Mimasu a jeho libraci nejlépe vysvětluje globální oceán 20–30 km pod povrchem, starý nejspíš méně než 25 milionů let – dost mladý na to, aby na starém povrchu posetém krátery nezanechal stopy, i když někteří badatelé tyto důkazy stále považují za nepřímé."
+		},
+		"facts": {
+			"simple": [
+				"Mimas oběhne Saturn za méně než jeden pozemský den.",
+				"Mimas je hlavně z ledu, jako obří sněhová koule.",
+				"Na Mimasu bys vyskočil víc než 100krát výš než na Zemi."
+			],
+			"standard": [
+				"Kráter Herschel je pojmenovaný po Williamu Herschelovi, který Mimas objevil v roce 1789.",
+				"Gravitace na Mimasu je jen asi 0,65 % pozemské, takže 50kilový žák by tam vážil asi tak málo jako malá plechovka limonády na Zemi.",
+				"V roce 2010 ukázala teplotní mapa ze sondy Cassini na Mimasu vzor teplých a studených oblastí ve tvaru Pac-Mana."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu je asi 0,064 m/s², zhruba 0,65 % pozemského.",
+				"Slapy Saturnu protáhly Mimas do mírně vejčitého tvaru, jehož nejdelší osa je asi o 10 % delší než nejkratší.",
+				"Poměrně výstředná dráha Mimasu (e ≈ 0,02) umožňuje Saturnovým slapům měsíc hníst – to je možný zdroj tepla pro jeho mladý oceán."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byl Mimas fotbalový míč, byl by kráter Herschel asi tak široký jako sušenka."
+			],
+			"standard": [
+				"Kdyby měla Země vzhledem ke své velikosti tak velký kráter jako Mimas Herschel, byl by široký asi 4 500 km – širší než Austrálie."
+			],
+			"advanced": [
+				"Mimas obíhá jen 185 539 km od středu Saturnu – méně než polovinu vzdálenosti Země–Měsíc – a přesto každý oběh zvládne za méně než 23 hodin."
+			]
+		}
+	},
+	"enceladus": {
+		"name": "Enceladus",
+		"tagline": "Měsíc gejzírů",
+		"description": {
+			"simple": "Enceladus je malý, zářivě bílý měsíc Saturnu. Pod jeho ledovou slupkou je oceán slané vody. Na jižním pólu z dlouhých prasklin tryská voda jako obří fontány a letí daleko do vesmíru. Té spršky je tolik, že z ní vzniká jeden ze Saturnových prstenců.",
+			"standard": "Enceladus má průměr jen asi 504 km, a přesto je jedním z nejaktivnějších světů sluneční soustavy. Ze čtyř dlouhých prasklin u jeho jižního pólu, přezdívaných „tygří pruhy“, tryskají do vesmíru proudy vodní páry a ledových zrnek rychlostí asi 400 m/s (1 440 km/h). Voda pochází ze slaného oceánu pod ledem a velká část spršky se rozptýlí podél dráhy měsíce a vytváří široký prstenec E Saturnu. Sonda NASA Cassini objevila výtrysky v roce 2005 a později jimi proletěla, aby je „ochutnala“.",
+			"advanced": "Enceladus skrývá globální slaný oceán pod ledovou slupkou, která je v průměru zhruba 20–25 km tlustá, ale na jižním pólu jen několik kilometrů. Teplo, které ho udržuje kapalný, pochází hlavně ze slapového hnětení: dráhová rezonance 2 : 1 s Dione udržuje malou výstřednost dráhy Enceladu (asi 0,005), takže ho Saturnovy slapy během každého oběhu stlačují různě silně. Odběrem vzorků z výtrysků a zrnek prstence E našla Cassini soli, nanočástice oxidu křemičitého ukazující na horké reakce vody s horninou na mořském dně, molekulární vodík, řadu organických molekul a – jak bylo oznámeno v roce 2023 – fosforečnany. Díky tomu všemu je oceán Enceladu jedním z nejslibnějších míst pro hledání života mimo Zemi."
+		},
+		"facts": {
+			"simple": [
+				"Enceladus patří k nejlesklejším věcem ve sluneční soustavě – jeho čerstvý led odráží většinu slunečního světla, které na něj dopadá.",
+				"Sonda Cassini proletěla přímo vodní sprškou a „ochutnala“ ji.",
+				"Na povrchu je mrazivá zima: asi −200 °C."
+			],
+			"standard": [
+				"Při nejtěsnějším průletu v roce 2008 prolétla Cassini jen asi 25 km nad povrchem Enceladu.",
+				"Výtrysky každou sekundu vyvrhnou zhruba 200 kg vody.",
+				"William Herschel objevil Enceladus 28. srpna 1789, několik týdnů předtím, než našel Mimas."
+			],
+			"advanced": [
+				"S geometrickým albedem asi 1,4 patří Enceladus k nejodrazivějším známým tělesům, protože ledová zrnka z jeho výtrysků jeho povrch neustále přebarvují.",
+				"V roce 2023 Postberg a kolegové oznámili nález fosforečnanů sodných v ledových zrnkách z Enceladu v prstenci E, z čehož plyne, že koncentrace fosforečnanů v oceánu je nejspíš nejméně 100krát vyšší než v pozemských oceánech.",
+				"Tíhové zrychlení na povrchu je jen 0,113 m/s² a úniková rychlost asi 240 m/s, takže mnoho částic z výtrysků Enceladus úplně opustí a zásobuje prstenec E."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Vodní trysky Enceladu stříkají ven rychleji, než letí dopravní letadlo."
+			],
+			"standard": [
+				"Enceladus je zhruba tak široký jako celá Česká republika od západu na východ, a přesto chrlí do vesmíru tolik vody, že z ní vzniká celý prstenec Saturnu."
+			],
+			"advanced": [
+				"Prstenec E, který Enceladus zásobuje, se táhne přes stovky tisíc kilometrů – několiksetnásobek průměru 504 km velkého měsíce, který ho živí."
+			]
+		}
+	},
+	"tethys": {
+		"name": "Tethys",
+		"tagline": "Zjizvená ledová koule",
+		"description": {
+			"simple": "Tethys je měsíc Saturnu, který je skoro celý z ledu. Má obrovský kráter jménem Odysseus a obří puklinu jménem Ithaca Chasma, která se táhne kus cesty kolem měsíce. Po stejné dráze jako Tethys putují dva malinké měsíce, jeden před ním a jeden za ním.",
+			"standard": "Tethys má průměr asi 1 062 km a je téměř celý z vodního ledu – jeho hustota (0,98 g/cm³) je dokonce o něco nižší než hustota kapalné vody. Jeho největší kráter Odysseus je široký asi 400 km, víc než třetina průměru měsíce. Obrovský systém kaňonů Ithaca Chasma, široký asi 100 km a dlouhý přes 2 000 km, se táhne asi přes tři čtvrtiny obvodu Tethys. Jeho dráhu sdílejí dva malinké měsíce, Telesto a Calypso – jeden asi 60° před Tethys a druhý asi 60° za ním.",
+			"advanced": "S hustotou 0,98 g/cm³ je Tethys téměř čistý vodní led jen s malým podílem horniny – má nejnižší hustotu z velkých měsíců Saturnu. Odysseus (asi 400 km) je na svou velikost mělký, protože led pod ním během času pomalu tekl a sesedal se. Ithaca Chasma, hluboká až asi 3 km, mohla vzniknout, když zamrzl dávný oceán a rozpínající se led rozlámal kůru, nebo může souviset s dopadem, který vytvořil Odyssea. Telesto a Calypso se nacházejí v Lagrangeových bodech L4 a L5 soustavy Saturn–Tethys, kde společná gravitace Saturnu a Tethys udržuje malá tělesa v kroku s větším měsícem."
+		},
+		"facts": {
+			"simple": [
+				"Tethys oběhne Saturn za méně než dva dny.",
+				"Tethys je jeden z nejjasnějších měsíců, protože jeho led je tak čistý.",
+				"Dva malí společníci Tethys jsou každý široký asi jen jako velké město."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini objevil Tethys v roce 1684, ve stejném roce jako Dione.",
+				"Telesto a Calypso mají průměr jen asi 25 km a 21 km.",
+				"Tethys oběhne Saturn jednou za 1,89 dne ve vzdálenosti asi 294 600 km."
+			],
+			"advanced": [
+				"Díky geometrickému albedu asi 1,23 patří Tethys k nejodrazivějším tělesům sluneční soustavy; pomáhá mu v tom povlak ledových zrnek z prstence E, který zásobuje Enceladus.",
+				"Tepelné mapy ze sondy Cassini ukázaly na Tethys vzor „Pac-Mana“ podobný tomu na Mimasu; způsobují ho vysokoenergetické elektrony ze Saturnovy magnetosféry, které mění povrch jedné polokoule.",
+				"Tíhové zrychlení na povrchu je asi 0,146 m/s², zhruba 1,5 % pozemského."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Tethys je na svou velikost tak lehký, že by v dost velké vaně plaval jako kostka ledu."
+			],
+			"standard": [
+				"Ithaca Chasma je víc než čtyřikrát delší než Grand Canyon a obepíná asi tři čtvrtiny obvodu měsíce."
+			],
+			"advanced": [
+				"Vzhledem k velikosti měsíce je Odysseus jako kráter na Zemi o průměru asi 4 800 km – širší než Spojené státy od pobřeží k pobřeží."
+			]
+		}
+	},
+	"dione": {
+		"name": "Dione",
+		"tagline": "Měsíc ledových útesů",
+		"description": {
+			"simple": "Dione je ledový měsíc Saturnu. Na prvních snímcích vědci viděli tenké bílé proužky a lámali si hlavu, co to je. Pozdější, bližší snímky ukázaly, že jsou to obrovské jasné útesy z ledu. Po dráze Dione kolem Saturnu putují dva malinké měsíce, jeden před ní a jeden za ní.",
+			"standard": "Dione má průměr asi 1 123 km a je z horniny a ledu. Snímky ze sond Voyager kolem roku 1980 ukázaly na jedné straně jasné, jemné proužky; v letech 2004–2005 sonda Cassini odhalila, že tento „vláknitý terén“ je ve skutečnosti síť kaňonů lemovaných ledovými útesy vysokými stovky metrů. Dráhu Dione sdílejí dva malé měsíce, Helene a Polydeuces – jeden asi 60° před ní a druhý asi 60° za ní. Měření gravitace Dione naznačují, že hluboko pod ledem možná dodnes existuje oceán.",
+			"advanced": "Dione (hustota 1,48 g/cm³) se skládá zhruba ze stejných hmotnostních dílů horniny a vodního ledu. Jasná vlákna na její zadní polokouli jsou tektonické zlomy (chasmata), jejichž strmé stěny odhalují čerstvý, čistý led. Dione je v dráhové rezonanci 1 : 2 s Enceladem, která udržuje dráhu Enceladu mírně výstřednou, a tím pomáhá pohánět jeho gejzíry. Modelování gravitačních a tvarových dat ze sondy Cassini, které v roce 2016 provedli Beuthe a kolegové, naznačuje ledovou slupku asi 100 km tlustou, plovoucí na oceánu hlubokém několik desítek kilometrů – je to věrohodný výklad, zatím ale nepotvrzený přímým pozorováním."
+		},
+		"facts": {
+			"simple": [
+				"Dione oběhne Saturn za méně než tři dny.",
+				"Na Dione je asi −186 °C – taková zima, že je tam led tvrdý jako kámen.",
+				"Kolem Dione je trošička kyslíku, ale na dýchání je ho úplně málo."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini objevil Dione v roce 1684, jen několik týdnů poté, co našel Tethys.",
+				"Helene má průměr asi 35 km, kdežto Polydeuces jen asi 3 km.",
+				"V roce 2010 zachytila sonda Cassini kolem Dione velmi řídkou vrstvu kyslíkových iontů."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu je asi 0,232 m/s², zhruba 2,4 % pozemského.",
+				"Dione oběhne Saturn jednou za 2,74 dne a je slapově vázaná, takže je k planetě natočena stále stejnou stranou.",
+				"Rezonance s Enceladem mírně hněte i Dione, takže i ona má trochu vlastního slapového ohřevu."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Dione je od Saturnu asi stejně daleko jako náš Měsíc od Země."
+			],
+			"standard": [
+				"Ledové útesy na Dione jsou vysoké stovky metrů – jako mrakodrapy – a tak jasné, že zdálky vypadaly jako tenké proužky jinovatky."
+			],
+			"advanced": [
+				"Pokud předpokládaný oceán Dione existuje, leží asi 100 km hluboko – víc než osmkrát hlouběji než nejhlubší vrt, jaký byl kdy na Zemi vyvrtán (asi 12 km)."
+			]
+		}
+	},
+	"rhea": {
+		"name": "Rhea",
+		"tagline": "Závan kyslíku",
+		"description": {
+			"simple": "Rhea je druhý největší měsíc Saturnu. Je to zmrzlá koule z ledu s trochou kamene uvnitř a pokrývají ji staré krátery. Kolem Rhey je trošička kyslíku – plynu, který dýcháme. Je ho ale tak málo, že by se jím nikdy nedalo dýchat.",
+			"standard": "Rhea má průměr asi 1 527 km, a je tak po Titanu druhým největším měsícem Saturnu. Zhruba ze tří čtvrtin je z ledu a z jedné čtvrtiny z horniny, její povrch má teplotu mezi −174 a −220 °C a pokrývají ho prastaré krátery, mezi nimi i pánev Tirawa široká asi 400 km. V roce 2010 vědci oznámili, že sonda NASA Cassini zachytila kolem Rhey nesmírně řídkou „exosféru“ z kyslíku a oxidu uhličitého. Podle NASA to bylo poprvé, kdy sonda přímo zachytila molekuly kyslíkové atmosféry u jiného světa než Země.",
+			"advanced": "Rhea (hustota 1,24 g/cm³) je studená, hustě krátery posetá směs tvořená hmotnostně asi ze tří čtvrtin ledem a z jedné čtvrtiny horninou. Její exosféra, zachycená přístroji sondy Cassini při průletech v letech 2005, 2007 a 2010, obsahuje kyslík a oxid uhličitý v poměru zhruba 5 : 2, přičemž u povrchu je jen asi 100 000 až 1 000 000 molekul na cm³. Kyslík vzniká radiolýzou: nabité částice zachycené v magnetickém poli Saturnu dopadají na povrch z vodního ledu, rozbíjejí molekuly vody a uvolňují kyslík. Původ oxidu uhličitého je méně jistý – může pocházet ze suchého ledu uvězněného od vzniku měsíce, nebo z ozářeného organického materiálu na povrchu."
+		},
+		"facts": {
+			"simple": [
+				"Rhea oběhne Saturn asi za čtyři a půl dne.",
+				"Na Rhee může být zima až asi −220 °C.",
+				"Rhea byla objevena před víc než 350 lety, v roce 1672."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini objevil Rheu 23. prosince 1672.",
+				"Kyslík u povrchu Rhey je asi 5 bilionkrát řidší než kyslík ve vzduchu u povrchu Země.",
+				"Tíhové zrychlení na povrchu je jen 0,264 m/s², takže bys tam vážil méně než 3 % toho, co vážíš na Zemi."
+			],
+			"advanced": [
+				"Náznaky slabého prstence kolem Rhey, oznámené v roce 2008, byly vyvráceny, když Cassini cíleně pozorovala předpokládanou rovinu prstence z několika úhlů.",
+				"Rhea obíhá ve vzdálenosti asi 527 100 km s oběžnou dobou 4,52 dne a stejně jako ostatní velké vnitřní měsíce Saturnu je slapově vázaná.",
+				"Gravitační data ze sondy Cassini naznačují, že se hornina a led v Rhee oddělily možná jen částečně, ale o její vnitřní stavbě se stále diskutuje."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Asi osm Rhey postavených vedle sebe by se natáhlo přes celou Zemi."
+			],
+			"standard": [
+				"Jediný nádech vzduchu na Zemi obsahuje víc molekul kyslíku než krychle řídké exosféry Rhey o hraně delší než kilometr."
+			],
+			"advanced": [
+				"Při tíhovém zrychlení na Rhee by tě skok, který tě na Zemi zvedne o 0,5 m, vynesl skoro 19 m vysoko."
+			]
+		}
+	},
+	"titan": {
+		"name": "Titan",
+		"tagline": "Svět metanového deště",
+		"description": {
+			"simple": "Titan je největší měsíc Saturnu – je dokonce větší než planeta Merkur. Je to jediný měsíc zahalený do hustého vzduchu. Na Titanu prší a jsou tam řeky, jezera i moře. Nejsou ale z vody: při teplotě asi −179 °C je voda zmrzlá na kámen, takže déšť i moře tvoří tekutý metan – plyn, který na Zemi pálíme při vaření a topení.",
+			"standard": "Titan má průměr asi 5 150 km – je to největší měsíc Saturnu, druhý největší měsíc sluneční soustavy a je větší než planeta Merkur. Je to jediný měsíc s hustou atmosférou, tvořenou hlavně dusíkem, a tlak na jeho povrchu je asi 1,5krát vyšší než na Zemi. Při teplotě asi −179 °C dělá metan to, co na Zemi voda: tvoří mraky, padá jako déšť, vymílá řeky a plní jezera a moře, jako jsou Kraken Mare a Ligeia Mare. V lednu 2005 přistála na Titanu evropská sonda Huygens – dodnes je to nejvzdálenější přistání vůbec – a vrtulníkový dron NASA Dragonfly má odstartovat v červenci 2028 a doletět v roce 2034.",
+			"advanced": "Titan (průměr 5 150 km, hustota 1,88 g/cm³) je asi o 6 % širší než Merkur, ale má jen asi 40 % jeho hmotnosti. Jeho dusíková atmosféra obsahuje u země asi 5 % metanu; při tlaku asi 1,45 baru a teplotě 94 K je zhruba čtyřikrát hustší než vzduch na Zemi u hladiny moře. Sluneční světlo rozkládá metan v horní atmosféře, čímž vzniká oranžový organický opar a těžší uhlovodíky, například ethan, takže metan se musí nějak doplňovat, možná z nitra. Dlouho se mělo za to, že Titan skrývá globální vodní oceán, ale nová analýza sledovacích dat sondy Cassini z roku 2025 naopak hovoří pro silnou vrstvu kašovitého vysokotlakého ledu s kapsami kapalné vody – otázka zůstává otevřená."
+		},
+		"facts": {
+			"simple": [
+				"Sonda Huygens přistála na Titanu v roce 2005 – žádná sonda nikdy nepřistála dál od Země.",
+				"Titan je zahalený do oranžového oparu, takže obyčejné kamery jeho povrch z vesmíru nevidí.",
+				"Titan oběhne Saturn asi za 16 dní."
+			],
+			"standard": [
+				"Christiaan Huygens objevil Titan 25. března 1655 – byl to první nalezený měsíc Saturnu.",
+				"Kraken Mare, největší moře Titanu, má zhruba stejnou rozlohu jako Kaspické moře, největší jezero na Zemi.",
+				"Dragonfly je dron velký jako auto s osmi vrtulemi, který bude létat z místa na místo a zkoumat chemii Titanu."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu je 1,35 m/s², asi 14 % pozemského a dokonce méně než na Měsíci (1,62 m/s²).",
+				"Huygens vysílal data během asi 2,5hodinového sestupu a pak ještě víc než hodinu z povrchu, kde našel zaoblené oblázky z vodního ledu na pláni nasáklé metanem.",
+				"Gerard Kuiper v roce 1944 dokázal, že Titan má atmosféru, když v jeho spektru zachytil metan."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Na Titanu je vzduch tak hustý a gravitace tak slabá, že člověk s křídly připoutanými k rukám by možná dokázal létat."
+			],
+			"standard": [
+				"Titan je kromě Země jediné místo, o kterém víme, že má na povrchu řeky, jezera a moře – jenže tam jsou z tekutého metanu a ethanu o teplotě asi −179 °C."
+			],
+			"advanced": [
+				"Nad každým čtverečním metrem povrchu Titanu je asi desetkrát víc plynu než nad čtverečním metrem Země."
+			]
+		}
+	},
+	"hyperion": {
+		"name": "Hyperion",
+		"tagline": "Kotrmelcující houba",
+		"description": {
+			"simple": "Hyperion je podivný měsíc Saturnu. Není kulatý, ale spíš ve tvaru brambory, a jeho povrch je plný děr jako houba na mytí. Hyperion se navíc převaluje tak divoce a zmateně, že nikdo nedokáže přesně říct, kterou stranou bude natočený příště. Na svou velikost je tak lehký, že je uvnitř nejspíš hodně prázdného místa.",
+			"standard": "Hyperion měří asi 360 × 266 × 205 km, a patří tak k největším nepravidelně tvarovaným měsícům sluneční soustavy. Detailní snímky ze sondy Cassini z roku 2005 ukázaly povrch nahuštěný hlubokými krátery s ostrými okraji, díky nimž vypadá jako houba. Jeho hustota je jen asi 0,54 g/cm³ – asi poloviční oproti vodnímu ledu –, takže vědci soudí, že zhruba 40 % jeho objemu může tvořit prázdný prostor. Hyperion se neotáčí pravidelně: tahy Saturnu a blízkého Titanu ho nutí chaoticky se převalovat, takže jeho natočení nelze na delší dobu předpovědět.",
+			"advanced": "Hyperion je v dráhové rezonanci 4 : 3 s Titanem (čtyři oběhy Hyperionu na tři oběhy Titanu), která udržuje jeho dráhu poměrně výstřednou (e ≈ 0,1). Protože je měsíc tak protáhlý, slapové momenty Saturnu se podél této výstředné dráhy silně mění, takže Hyperion se nemůže ustálit v synchronní rotaci; rychlost i osa jeho rotace se místo toho mění chaoticky a nepatrné rozdíly exponenciálně narůstají během několika oběhů. Wisdom, Peale a Mignard toto chování předpověděli v roce 1984, pozdější pozorování je potvrdila a Hyperion je od té doby učebnicovým příkladem chaotické rotace. Jeho pórovitost zhruba 40 % může vysvětlovat i jeho podivné krátery: dopady pórovitý led spíš stlačí, než aby z něj vymrštily materiál, a zanechají hluboké jámy s malým množstvím vyvrženiny."
+		},
+		"facts": {
+			"simple": [
+				"Hyperion oběhne Saturn asi za tři týdny.",
+				"Mnoho kráterů na Hyperionu má na dně tmavou hmotu, jako špínu v dírkách houby.",
+				"Hyperion našli v roce 1848 astronomové v Americe a v Anglii skoro ve stejnou dobu."
+			],
+			"standard": [
+				"Hyperion objevili v roce 1848 William Cranch Bond a jeho syn George Phillips Bond a nezávisle na nich William Lassell.",
+				"Hyperion oběhne Saturn jednou za 21,3 dne v průměrné vzdálenosti asi 1,48 milionu km, kousek za Titanem.",
+				"Hyperion byl prvním měsícem, u kterého se zjistilo, že se chaoticky převaluje; později se totéž zjistilo i u malých Plutových měsíců Nix a Hydra."
+			],
+			"advanced": [
+				"Střední průměr Hyperionu je asi 270 km, ale jeho nejdelší osa je asi 1,8krát delší než nejkratší.",
+				"V roce 2005 proletěla Cassini svazkem elektronů vycházejících z elektricky nabitého povrchu Hyperionu, který měl napětí asi −200 V.",
+				"Na rozdíl od ostatních velkých pravidelných měsíců Saturnu není Hyperion slapově vázaný."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Hyperion je na svou velikost asi tak lehký jako pemza, takže by plaval na vodě."
+			],
+			"standard": [
+				"Hyperion se převaluje jako ragbyový míč skákající po hřišti: nepatrné rozdíly ho roztočí jinak, takže nikdo nedokáže na delší dobu předpovědět, která strana bude natočená k Saturnu."
+			],
+			"advanced": [
+				"Se zhruba 40 % prázdného objemu je Hyperion asi tak pórovitý jako hromada sypkého písku."
+			]
+		}
+	},
+	"iapetus": {
+		"name": "Iapetus",
+		"tagline": "Měsíc se dvěma tvářemi",
+		"description": {
+			"simple": "Iapetus je měsíc Saturnu se dvěma úplně odlišnými stranami. Jedna polovina je tmavá jako uhlí a druhá jasná jako sníh. Kolem jeho středu vede dlouhý vysoký horský hřbet, takže Iapetus vypadá trochu jako vlašský ořech. Je daleko od Saturnu a jeden oběh kolem něj mu trvá víc než dva měsíce.",
+			"standard": "Iapetus má průměr asi 1 469 km a je třetím největším měsícem Saturnu. Jeho přední strana – ta, která při oběhu míří dopředu – je tmavá jako uhlí, zatímco zadní strana je skoro tak jasná jako sníh. Když Giovanni Domenico Cassini v roce 1671 Iapetus objevil, viděl ho jen tehdy, když byl na jedné straně od Saturnu, a správně odhadl, že jedna polovina musí být mnohem tmavší než druhá. Sonda Cassini, pojmenovaná po něm, později odhalila podél rovníku hřbet dlouhý asi 1 300 km s vrcholy vysokými až asi 20 km, který dává Iapetu tvar vlašského ořechu.",
+			"advanced": "Dvoubarevný povrch Iapeta je nejspíš výsledkem samozesilujícího procesu. Tmavý prach, pocházející převážně z retrográdního měsíce Phoebe a jeho obrovského prstence, dopadá na přední polokouli Iapeta; ztmavlý povrch během dlouhých, 79denních dnů pohlcuje víc slunečního světla a mírně se ohřívá, takže tam vodní led sublimuje a znovu zamrzá na chladnější, jasnější zadní straně a na pólech – jedna strana tak neustále tmavne a druhá se zjasňuje. Albedo se pohybuje od asi 0,03–0,05 v tmavé oblasti Cassini Regio po asi 0,5–0,6 na světlé straně. Rovníkový hřbet, vysoký až asi 20 km a dlouhý 1 300 km, zůstává nevysvětlen: mezi návrhy patří výduť zamrzlá z doby rychlejší rotace nebo materiál, který spadl z rozpadlého prstence."
+		},
+		"facts": {
+			"simple": [
+				"Nejvyšší hory na Iapetu jsou víc než dvakrát vyšší než Mount Everest.",
+				"Z Iapeta by byl nádherný výhled na Saturnovy prstence, protože jeho dráha kolem Saturnu je nakloněná.",
+				"Iapetus byl objeven před víc než 350 lety, v roce 1671."
+			],
+			"standard": [
+				"Iapetus obíhá Saturn ve vzdálenosti asi 3,56 milionu km – víc než devětkrát dál, než je Měsíc od Země.",
+				"Protože je slapově vázaný, trvá jeden den na Iapetu stejně dlouho jako jeho oběh: asi 79 dní.",
+				"Velká část tmavého materiálu nejspíš pochází z Phoebe, malého vnějšího měsíce, jehož prach tvoří kolem Saturnu obrovský slabý prstenec."
+			],
+			"advanced": [
+				"Jeho hustota asi 1,09 g/cm³ ukazuje na těleso převážně z vodního ledu jen s asi 20 % horniny.",
+				"Iapetus je znatelně zploštělý – tento tvar možná zamrzl v době, kdy se na počátku své historie otáčel mnohem rychleji, snad jednou za 16 hodin.",
+				"Jeho dráha je vůči Laplaceově rovině skloněná asi o 7,6°, mnohem víc než dráhy ostatních velkých měsíců Saturnu."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byl Iapetus fotbalový míč, byl by jeho obří hřbet jen asi 3 mm vysoký hrbolek vedoucí kolem jeho středu."
+			],
+			"standard": [
+				"Tmavá strana Iapeta odráží jen asi tolik světla jako čerstvý asfalt, kdežto jasná strana víc než desetkrát víc – proto Cassini viděl měsíc na jedné straně od Saturnu, ale na druhé ne."
+			],
+			"advanced": [
+				"Iapetus je tak daleko, že by Saturn na jeho obloze měl šířku jen asi 2° – to je pořád skoro čtyřikrát víc než úplněk viděný ze Země."
+			]
+		}
+	},
+	"phoebe": {
+		"name": "Phoebe",
+		"tagline": "Saturnův měsíc v protisměru",
+		"description": {
+			"simple": "Phoebe je malý tmavý měsíc Saturnu, široký asi 200 km. Obíhá kolem Saturnu obráceně – opačným směrem než Saturnovy velké měsíce – a mnohem dál. Vědci si myslí, že Phoebe nevznikla u Saturnu, ale přiletěla z dalekých končin sluneční soustavy a Saturnova gravitace ji chytila. Prach odražený z Phoebe tvoří kolem Saturnu obrovský, velmi slabý prstenec.",
+			"standard": "Phoebe má průměr asi 213 km a obíhá Saturn v průměrné vzdálenosti asi 12,9 milionu km – víc než třikrát dál než Iapetus, nejvzdálenější z velkých Saturnových měsíců. Obíhá pozpátku (retrográdně), což silně naznačuje, že ji Saturn zachytil: Phoebe je nejspíš návštěvnice z vnější sluneční soustavy, příbuzná ledových těles Kuiperova pásu. Drobné dopady z jejího tmavého povrchu vyrážejí prach, který tvoří prstenec Phoebe, objevený v roce 2009 Spitzerovým vesmírným dalekohledem NASA. Část prachu se snáší dovnitř a dopadá na jednu stranu Iapeta, kterou tak pomáhá ztmavit.",
+			"advanced": "Dráha Phoebe – velká poloosa asi 12,9 milionu km, výstřednost 0,16, sklon asi 175° vůči Laplaceově rovině – je retrográdní a leží daleko vně pravidelných Saturnových satelitů, což je znak zachyceného tělesa, a ne tělesa, které vzniklo v Saturnově disku. Její hustota asi 1,64 g/cm³, vyšší než u vnitřních ledových měsíců Saturnu, a tmavý povrch (geometrické albedo asi 0,08) obsahující vodní led, oxid uhličitý a nejspíš organické sloučeniny ukazují na původ mezi objekty Kuiperova pásu nebo kentaury. Dopady mikrometeoritů zásobují prstenec Phoebe, obrovský řídký prachový disk skloněný – stejně jako dráha Phoebe – asi o 27° vůči hlavním prstencům Saturnu. Tlak záření způsobuje, že se jeho zrnka pomalu po spirále stáčejí dovnitř, kde je Iapetus sbírá svou přední polokoulí – to je klíčová přísada nápadného dvoubarevného vzhledu tohoto měsíce."
+		},
+		"facts": {
+			"simple": [
+				"Phoebe potřebuje na jeden oběh kolem Saturnu asi rok a půl.",
+				"Phoebe byla vůbec prvním měsícem objeveným na fotografiích.",
+				"Phoebe se otočí kolem své osy jen asi za 9 hodin – mnohem rychleji, než oběhne Saturn."
+			],
+			"standard": [
+				"Sonda Cassini prolétla 11. června 2004 jen 2 068 km od Phoebe, asi tři týdny předtím, než se usadila na oběžné dráze kolem Saturnu.",
+				"William Henry Pickering objevil Phoebe v roce 1899 na fotografických deskách pořízených v roce 1898 na observatoři u Arequipy v Peru.",
+				"Největší kráter na Phoebe, Jason, je široký asi 100 km – skoro polovina šířky celé Phoebe."
+			],
+			"advanced": [
+				"Phoebe se otočí jednou za 9,27 hodiny, takže na rozdíl od velkých pravidelných měsíců Saturnu není slapově vázaná.",
+				"Hmotnost Phoebe, asi 8,3 × 10¹⁸ kg, byla změřena podle toho, jak při průletu v roce 2004 přitahovala sondu Cassini.",
+				"Phoebe je téměř kulatá, přestože má průměr jen asi 213 km, což někteří vědci považují za známku toho, že byla na počátku své historie teplá a měkká."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Phoebe jezdí kolem Saturnu jako auto, které jede po kruhovém objezdu v protisměru."
+			],
+			"standard": [
+				"Prachový prstenec, který pochází z Phoebe, je tak obrovský, že by se do něj vešla asi miliarda Zemí – a přesto je tak slabý, že byl objeven až v roce 2009 infračerveným dalekohledem."
+			],
+			"advanced": [
+				"Kdyby naše oči viděly prstenec Phoebe, zabíral by na noční obloze asi šířku dvou úplňků, po jednom na každé straně Saturnu."
+			]
+		}
+	},
+	"miranda": {
+		"name": "Miranda",
+		"tagline": "Frankensteinův měsíc",
+		"description": {
+			"simple": "Miranda je nejmenší z pěti velkých měsíců Uranu, široká asi 470 km. Její povrch vypadá, jako by ho někdo sešil z různých kousků, a proto se jí říká Frankensteinův měsíc. Má jeden z nejvyšších útesů, jaké vůbec známe. Kolem ní proletěla jen jediná sonda, Voyager 2, v roce 1986.",
+			"standard": "Miranda, široká asi 470 km, je nejvnitřnější a nejmenší z pěti velkých měsíců Uranu. Když kolem ní v lednu 1986 proletěl Voyager 2, odhalil změť naprosto odlišných krajin: staré pláně posázené krátery hned vedle obrovských oblastí brázd a hřbetů, kterým se říká korony. Na Mirandě je také Verona Rupes, útes vysoký odhadem 5 až 20 km – možná nejvyšší ve sluneční soustavě. Měsíc objevil v roce 1948 Gerard Kuiper a pojmenoval ho po dceři kouzelníka Prospera ze Shakespearovy Bouře.",
+			"advanced": "Tři korony Mirandy – Arden, Elsinore a Inverness – jsou oválné nebo mnohoúhelníkové oblasti o rozměrech několika set kilometrů, lemované rovnoběžnými hřbety a žlaby, které protínají starší terén posetý krátery. Dřívější představy, že byla Miranda roztříštěna a znovu poskládána, z velké části ustoupily modelům, v nichž slapový ohřev vyvolal výstup teplého ledu, nejspíš během dávné dráhové rezonance s Umbrielem, která může vysvětlovat i neobvykle velký sklon dráhy Mirandy, asi 4,3°. Studie z roku 2024 dokonce naznačila, že Miranda mohla během posledních několika set milionů let mít podpovrchový oceán hluboký kolem 100 km. Její nízká hustota asi 1,2 g/cm³ ukazuje, že je převážně z vodního ledu."
+		},
+		"facts": {
+			"simple": [
+				"Miranda oběhne Uran za méně než jeden a půl dne.",
+				"Miranda je pojmenovaná po dívce z divadelní hry Williama Shakespeara.",
+				"Na Mirandě bys vážil méně než setinu toho, co vážíš na Zemi."
+			],
+			"standard": [
+				"Voyager 2 prolétl jen asi 29 000 km od Mirandy, blíž než u kteréhokoli jiného měsíce Uranu.",
+				"Miranda obíhá asi 129 900 km od Uranu a jeden oběh jí trvá asi 34 hodin.",
+				"Protože Uran leží na boku a jeho velké měsíce obíhají nad jeho rovníkem, je překlopená i dráha Mirandy – ze Země někdy vypadá jako terč kolem planety."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu Mirandy je jen asi 0,08 m/s², méně než 1 % pozemského.",
+				"Verona Rupes je podle všeho zlomový svah, který vznikl tam, kde se ledová kůra Mirandy roztrhla.",
+				"Voyager 2 mohl vyfotografovat jen jižní polokouli Mirandy, která byla v roce 1986 natočená ke Slunci; severní polovinu zblízka nikdo nikdy neviděl."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byl povrch Mirandy skládačka, pocházely by dílky z několika různých krabic."
+			],
+			"standard": [
+				"Útes Verona Rupes může být vysoký až 20 km – víc než dvakrát víc než Mount Everest – a ve slabé gravitaci Mirandy by upuštěný kámen mohl padat asi 12 minut, než dopadne dolů."
+			],
+			"advanced": [
+				"Zvětšený na velikost Země by 20 km vysoký útes na Mirandě měřil přes 500 km – víc, než ve které výšce obíhá Mezinárodní vesmírná stanice."
+			]
+		}
+	},
+	"ariel": {
+		"name": "Ariel",
+		"tagline": "Jasný mladý měsíc Uranu",
+		"description": {
+			"simple": "Ariel je jeden z pěti velkých měsíců Uranu, široký asi 1 160 km. Je z nich nejjasnější a má ledový povrch, který vypadá jako nový. Vedou přes něj dlouhá hluboká údolí, kterým se říká kaňony. Kolem něj proletěla jen jediná sonda, Voyager 2.",
+			"standard": "Ariel, široký asi 1 160 km, oběhne Uran jednou za 2,5 dne ve vzdálenosti asi 190 900 km. Má nejjasnější a nejspíš i nejmladší povrch z velkých měsíců Uranu: má méně velkých kráterů než jeho sousedé, takže jeho povrch musel něco obnovit. Křižují ho dlouhé kaňony; jeden z nich, Kachina Chasma, se táhne přes 600 km. William Lassell objevil Ariel v roce 1851, ve stejnou noc jako Umbriel, a jméno má po duchu Arielovi ze Shakespearovy Bouře a po skřítkovi z básně Alexandra Popea Uloupená kadeř.",
+			"advanced": "S geometrickým albedem asi 0,5 je Ariel nejodrazivějším z velkých měsíců Uranu a poměrně řídké velké krátery naznačují nejmladší povrch z celé pětice. Jeho kaňony jsou příkopové propadliny – bloky kůry, které poklesly mezi zlomy, když se kůra natahovala, nejspíš když bylo nitro zahříváno slapy během dávné dráhové rezonance nebo když se při zamrzání rozpínalo –, a dna některých kaňonů byla zřejmě zaplavena ledovým materiálem. V roce 2024 našel Vesmírný dalekohled Jamese Webba na Arielu překvapivě silné vrstvy ledu z oxidu uhličitého, ledu z oxidu uhelnatého a náznaky uhličitanových minerálů. Někteří badatelé v tom vidí materiál z možného podpovrchového oceánu, ale oxid uhličitý na povrchu vytvářejí i nabité částice z magnetosféry Uranu a nejspíš se uplatňují oba procesy."
+		},
+		"facts": {
+			"simple": [
+				"Ariel oběhne Uran asi za dva a půl dne.",
+				"Ariel je pojmenovaný po kouzelném duchu z divadelní hry Williama Shakespeara, který uměl létat a dokonce rozpoutat bouři.",
+				"Ariel je zhruba napůl z ledu a napůl z kamene."
+			],
+			"standard": [
+				"Voyager 2 mohl při průletu v roce 1986 vyfotografovat jen asi 35 % povrchu Arielu.",
+				"Protože Uran leží na boku, mají póly Arielu asi 42 let nepřetržitého slunečního světla a pak asi 42 let tmy.",
+				"Jména Ariel, Umbriel, Titania a Oberon navrhl v roce 1852 John Herschel, syn objevitele Uranu Williama Herschela."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu Arielu je asi 0,25 m/s², zhruba čtyřicetina pozemského.",
+				"Jeho hustota asi 1,54 g/cm³ ukazuje na zhruba stejné množství vodního ledu a horniny.",
+				"Dráha Arielu je téměř kruhová (výstřednost asi 0,001) a leží skoro přesně v rovníkové rovině Uranu, která je vůči dráze Uranu skloněná asi o 98°."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Nejdelší kaňon na Arielu je tak dlouhý, že by auto na dálnici jelo z jednoho konce na druhý víc než šest hodin."
+			],
+			"standard": [
+				"Ariel a Umbriel jsou skoro přesně stejně velcí, ale Ariel odráží asi dvakrát víc světla a má mnohem méně velkých kráterů – jako dvojčata, z nichž jedno má čerstvě umytý obličej a druhé se nemylo miliardy let."
+			],
+			"advanced": [
+				"Kdyby se Ariel nafoukl na velikost Země, měřila by Kachina Chasma asi 6 800 km – zhruba jako řeka Nil."
+			]
+		}
+	},
+	"umbriel": {
+		"name": "Umbriel",
+		"tagline": "Tmavý měsíc, světlý prstenec",
+		"description": {
+			"simple": "Umbriel je jeden z pěti velkých měsíců Uranu, široký asi 1 170 km. Je z nich nejtmavší a pokrývají ho staré krátery. Na jeho tmavém povrchu je záhadný světlý kruh. Umbriel je pojmenovaný po zasmušilém skřítkovi ze staré básně.",
+			"standard": "Umbriel, široký asi 1 170 km, je skoro přesně stejně velký jako Ariel, ale je nejtmavší z velkých měsíců Uranu. Jeho povrch je starý a nahuštěný krátery, takže se nejspíš miliardy let skoro nezměnil. Blízko jeho rovníku leží kráter Wunda široký asi 131 km, na jehož dně je podivný světlý prstenec – vědci si dodnes nejsou jistí, co to je. Umbriel objevil v roce 1851 William Lassell a je pojmenovaný po zasmušilém skřítkovi z básně Alexandra Popea Uloupená kadeř.",
+			"advanced": "Geometrické albedo Umbrielu, asi 0,26, je zhruba poloviční oproti Arielu a jeho hustě krátery posetý povrch s krátery až asi 210 km širokými nevykazuje téměř žádné známky obnovy, takže patří k nejstarším povrchům mezi velkými měsíci Uranu. Proč je tak rovnoměrně tmavý, zatím není jasné; jednou z možností je povlak tmavého materiálu bohatého na uhlík, pozměněného zářením. Světlý prstenec na dně kráteru Wunda může být usazeninou po dopadu nebo skvrnou jinovatky z oxidu uhličitého – led z oxidu uhličitého byl zjištěn na zadních polokoulích velkých měsíců Uranu. Voyager 2 vyfotografoval jen asi 40 % Umbrielu, s rozlišením nanejvýš asi 5 km, takže velká část zůstává nezmapovaná."
+		},
+		"facts": {
+			"simple": [
+				"Umbriel oběhne Uran asi za čtyři dny.",
+				"Jméno Umbriel zní jako „umbra“, latinsky stín – to je pro tak tmavý měsíc dobré jméno.",
+				"Umbriel byl objeven ve stejnou noc jako Ariel, v roce 1851."
+			],
+			"standard": [
+				"V Popeově básni se o Umbrielovi mluví jako o „zasmušilém, melancholickém skřítkovi“.",
+				"Voyager 2 vyfotografoval v roce 1986 jen asi 40 % povrchu Umbrielu.",
+				"Umbriel obíhá asi 266 000 km od Uranu a jeden oběh mu trvá asi 4,1 dne."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu Umbrielu je asi 0,25 m/s², skoro stejné jako na Arielu.",
+				"Jeho hustota asi 1,5 g/cm³ ukazuje na směs vodního ledu a horniny s tmavým materiálem bohatým na uhlík na povrchu.",
+				"Kaňony vedoucí zhruba od severovýchodu k jihozápadu naznačují, že byl Umbriel geologicky aktivní ve velmi raném období své historie."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Umbriel a Ariel jsou skoro stejně velcí, ale vedle Arielu vypadá Umbriel jako začouzená sněhová koule vedle čisté."
+			],
+			"standard": [
+				"Na tmavé tváři Umbrielu vystupuje světlý prstenec v kráteru Wunda jako bílý kroužek po hrnku na tmavém stole – a nikdo s jistotou neví, co ho vytvořilo."
+			],
+			"advanced": [
+				"Umbriel odráží jen asi polovinu světla oproti Arielu, přestože se jejich průměry liší jen asi o 1 % – jako dva stejné míče, z nichž jeden je natřený světle šedou a druhý tmavě šedou barvou."
+			]
+		}
+	},
+	"titania": {
+		"name": "Titania",
+		"tagline": "Královna měsíců Uranu",
+		"description": {
+			"simple": "Titania je největší měsíc Uranu, široká asi 1 580 km – o něco méně než polovina šířky našeho Měsíce. Je pojmenovaná po královně víl z divadelní hry Williama Shakespeara. Její ledový povrch rozdělují obrovské kaňony. Titanii našel v roce 1787 William Herschel, astronom, který objevil Uran.",
+			"standard": "Titania, široká asi 1 580 km, je největší měsíc Uranu a osmý největší měsíc sluneční soustavy. Její povrch rozbrázdila obrovská zlomová údolí; nejdelší z nich, Messina Chasma, se táhne asi 1 500 km. Tyto kaňony nejspíš vznikly, když se nitro Titanie rozpínalo a ledová kůra praskla jako láhev s vodou zapomenutá v mrazáku. William Herschel objevil Titanii 11. ledna 1787, ve stejnou noc jako Oberon, a jméno má po královně víl ze Shakespearova Snu noci svatojánské.",
+			"advanced": "Hustota Titanie, asi 1,65 g/cm³, ukazuje na zhruba stejné množství vodního ledu a horniny, nejspíš rozdělených na kamenné jádro a ledový plášť; některé modely připouštějí na jejich rozhraní tenkou vrstvu kapalné vody, kterou udržuje v kapalném stavu amoniak jako nemrznoucí směs. Její kaňony (chasmata) jsou příkopové propadliny vzniklé globálním roztahováním kůry a má méně velkých kráterů než Oberon, takže její povrch je nejspíš mladší. Když Titania v roce 2001 přešla před hvězdou, hvězda náhle zmizela, což omezuje případnou atmosféru na povrchový tlak pod asi 10–20 nanobarů. Voyager 2 vyfotografoval jen asi 40 % jejího povrchu, téměř výhradně na jižní polokouli, která byla v roce 1986 natočená ke Slunci."
+		},
+		"facts": {
+			"simple": [
+				"Titania oběhne Uran skoro za devět dní.",
+				"Titania je zhruba napůl z ledu a napůl z kamene.",
+				"Největší kráter na Titanii, Gertruda, je široký přes 300 km."
+			],
+			"standard": [
+				"Titania obíhá asi 436 300 km od Uranu – o kousek dál, než je náš Měsíc od Země.",
+				"Místa na Titanii jsou pojmenovaná podle Shakespeara: krátery po ženských postavách, například po Hamletově matce Gertrudě, a kaňony po místech, například po Messině.",
+				"Stejně jako ostatní velké měsíce Uranu je Titania ke své planetě natočená stále stejnou stranou."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu Titanie je asi 0,36 m/s², zhruba 3,7 % pozemského.",
+				"Její oběžná doba je 8,706 dne a dráha je téměř dokonale kruhová (výstřednost asi 0,001).",
+				"Stejně jako ostatní velké měsíce Uranu má Titania víc ledu z oxidu uhličitého na zadní polokouli; zčásti ho nejspíš vytvářejí nabité částice z magnetosféry Uranu."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Nejdelší kaňon na Titanii je tak dlouhý, že sahá skoro do třetiny cesty kolem celého měsíce."
+			],
+			"standard": [
+				"Velký kaňon Titanie, Messina Chasma, je dlouhý asi 1 500 km – víc než třikrát delší než Grand Canyon v USA – a to na měsíci, který nemá ani poloviční průměr oproti tomu našemu."
+			],
+			"advanced": [
+				"Titania má skoro poloviční průměr oproti našemu Měsíci, ale protože je asi z poloviny z ledu, má jen asi dvacetinu jeho hmotnosti."
+			]
+		}
+	},
+	"oberon": {
+		"name": "Oberon",
+		"tagline": "Starý král víl",
+		"description": {
+			"simple": "Oberon je nejvzdálenější z pěti velkých měsíců Uranu a druhý největší, široký asi 1 520 km. Je pojmenovaný po králi víl z divadelní hry Williama Shakespeara – a Titania, královna víl, je jeho soused. Povrch Oberonu je starý a plný kráterů, některé z nich mají tmavé dno. William Herschel našel Oberon a Titanii ve stejnou noc v roce 1787.",
+			"standard": "Oberon, široký asi 1 520 km, je druhý největší měsíc Uranu a obíhá nejdál z pěti velkých měsíců, asi 583 500 km od planety, jednou za 13,5 dne. Jeho povrch je starý a pokrytý impaktními krátery, což naznačuje, že se tam miliardy let skoro nic nezměnilo. Dna několika velkých kráterů pokrývá tmavý materiál a Voyager 2 zahlédl na jeho okraji horu vysokou asi 11 km. Oberon je pojmenovaný po králi víl ze Shakespearova Snu noci svatojánské.",
+			"advanced": "Oberon je krátery nejhustěji posetý z velkých měsíců Uranu, s krátery až asi 206 km širokými (Hamlet), což z jeho povrchu dělá jeden z nejstarších v soustavě Uranu. Tmavé usazeniny na dnech kráterů jako Hamlet, Othello a Macbeth mohou být materiálem, který po dopadech vyvřel z nitra, jejich původ je však stále nejasný. Dráha zavádí Oberon část doby mimo magnetosféru Uranu, takže jeho povrch je střídavě vystaven plazmatu zachycenému planetou a slunečnímu větru. Voyager 2 viděl Oberon jen ze vzdálenosti asi 470 600 km a v nízkém rozlišení vyfotografoval zhruba 40 % jeho povrchu."
+		},
+		"facts": {
+			"simple": [
+				"Oberon oběhne Uran asi za dva týdny.",
+				"Oberon je k Uranu natočený stále stejnou stranou, stejně jako náš Měsíc k Zemi.",
+				"Krátery na Oberonu jsou pojmenované po postavách ze Shakespearových her, například po Hamletovi a Macbethovi."
+			],
+			"standard": [
+				"Hamlet, největší kráter na Oberonu, je široký asi 206 km.",
+				"Herschel objevil Oberon a Titanii v roce 1787, jen šest let poté, co objevil samotný Uran.",
+				"Oberon je skoro přesně stejně velký jako Saturnův měsíc Rhea."
+			],
+			"advanced": [
+				"Tíhové zrychlení na povrchu Oberonu je asi 0,35 m/s², zhruba 3,6 % pozemského.",
+				"Jeho hustota asi 1,66 g/cm³ ukazuje na zhruba stejné množství vodního ledu a horniny.",
+				"Protože je Uran překlopený, je překlopená i dráha Oberonu: obíhá asi 98° od roviny dráhy Uranu kolem Slunce."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Nejvyšší hora na Oberonu je vysoká asi 11 km – víc než Mount Everest, nejvyšší hora na Zemi."
+			],
+			"standard": [
+				"Otlučená tvář Oberonu je jako kniha dějin, kterou nikdo nevygumoval: jeho krátery dodnes zaznamenávají dopady staré miliardy let."
+			],
+			"advanced": [
+				"Oberon obíhá asi 1,5krát dál od Uranu, než je náš Měsíc od Země, ale protože je Uran asi 14,5krát hmotnější než Země, trvá jeden oběh jen 13,5 dne místo 27,3."
+			]
+		}
+	},
+	"triton": {
+		"name": "Triton",
+		"tagline": "Měsíc, který jede pozpátku",
+		"description": {
+			"simple": "Triton je největší měsíc Neptunu a obíhá kolem Neptunu obráceně – pozpátku vůči tomu, jak se Neptun točí. To je stopa, která prozrazuje, že se tam Triton nenarodil: nejspíš ho kdysi dávno chytila Neptunova gravitace. Triton patří k nejstudenějším místům, jaká byla kdy změřena, a má gejzíry, které vyfukují tmavý prach. Velmi, velmi pomalu se Triton přibližuje k Neptunu.",
+			"standard": "Triton je zdaleka největší měsíc Neptunu, má průměr 2 707 km a je o něco větší než trpasličí planeta Pluto. Obíhá Neptun pozpátku – proti směru rotace planety – a je jediným velkým měsícem sluneční soustavy, který to dělá; proto si astronomové myslí, že ho Neptun kdysi zachytil z Kuiperova pásu. Když kolem něj v roce 1989 proletěl Voyager 2, uviděl gejzíry plynného dusíku, které vynášely tmavý prach do výšky asi 8 km, na povrchu o teplotě asi −235 °C. Slapy Triton pomalu táhnou dovnitř, takže za miliardy let může být roztrhán na prstence, nebo spadne do Neptunu.",
+			"advanced": "Dráha Tritonu je retrográdní a skloněná asi o 157° vůči Neptunovu rovníku, což nelze vysvětlit vznikem v disku kolem planety; hlavním vysvětlením je zachycení objektu z Kuiperova pásu, možná jednoho člena dvojice, jehož partner byl odvržen. Zachycení by Triton zanechalo na velmi výstředné dráze a utlumení této dráhy na dnešní téměř dokonalou kružnici (e ≈ 0,00002) mohlo roztavit jeho nitro a rozptýlit nebo zničit původní měsíce Neptunu. Jeho povrch z dusíkového, metanového a vodního ledu odráží většinu dopadajícího slunečního světla (albedo asi 0,76), což pomáhá udržovat teplotu kolem 38 K. Protože obíhá proti směru Neptunovy rotace, slapová výduť, kterou vyvolává, mu pomalu odčerpává dráhovou energii; Neptunovy Rocheovy meze může dosáhnout za několik miliard let, i když odhady se pohybují od asi 3,6 do 28 miliard let."
+		},
+		"facts": {
+			"simple": [
+				"Triton byl nalezen v roce 1846, jen 17 dní poté, co byl objeven samotný Neptun.",
+				"Triton je tak ledový a jasný, že odráží většinu slunečního světla, které na něj dopadne.",
+				"Triton navštívila jen jediná sonda: Voyager 2, v roce 1989."
+			],
+			"standard": [
+				"Triton obsahuje víc než 99,5 % veškeré hmoty, která obíhá kolem Neptunu.",
+				"Části povrchu Tritonu jsou zvrásněné do vzoru, kterému se říká terén melounové kůry, protože vypadá jako slupka melounu.",
+				"Triton oběhne Neptun za 5,9 dne a je k němu natočený stále stejnou tváří, stejně jako náš Měsíc k Zemi."
+			],
+			"advanced": [
+				"Triton má velmi řídkou dusíkovou atmosféru s povrchovým tlakem asi 1,4 Pa, zhruba 1/70 000 pozemského.",
+				"Některé modely naznačují, že teplo z radioaktivního rozpadu a slapů by pod ledovou kůrou Tritonu mohlo udržovat kapalný oceán.",
+				"Tíhové zrychlení na povrchu je 0,78 m/s², asi 8 % pozemského."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Na Tritonu je asi o 150 stupňů chladněji než při nejnižší teplotě, jaká kdy byla naměřena na Zemi."
+			],
+			"standard": [
+				"Triton obíhá Neptun obráceně, jako auto, které couvá dokola po kruhovém objezdu – to je stopa, že ho Neptun zachytil z Kuiperova pásu."
+			],
+			"advanced": [
+				"Triton je asi o 14 % širší než Pluto, má podobnou hustotu a podobný dusíkový, metanový a vodní led – je to svět podobný Plutu, který si Neptun vzal pro sebe."
+			]
+		}
+	},
+	"nereid": {
+		"name": "Nereida",
+		"tagline": "Dráha jako horská dráha",
+		"description": {
+			"simple": "Nereida je malý šedý měsíc Neptunu. Její cesta kolem Neptunu není kruh, ale dlouhý protáhlý ovál. Někdy se k Neptunu přiblíží docela blízko a pak se zase odhoupne daleko ven. Vědci si myslí, že ji na tuhle podivnou dráhu kdysi dávno vymrštilo něco velkého.",
+			"standard": "Nereida má průměr asi 340 km a jednu z nejprotáhlejších drah ze všech známých měsíců. Během jejího 360denního oběhu se její vzdálenost od Neptunu mění z asi 1,4 milionu km na asi 9,7 milionu km – skoro sedmkrát víc. Objevil ji v roce 1949 Gerard Kuiper; byl to druhý kdy nalezený měsíc Neptunu a poslední objevený před příletem Voyageru 2 v roce 1989. Astronomové si dlouho mysleli, že Nereida je zachycené těleso, ale studie z roku 2026 naznačuje, že může jít o jeden z původních měsíců Neptunu, vymrštěný na svou divokou dráhu, když přibyl Triton.",
+			"advanced": "Dráha Nereidy má výstřednost asi 0,75, jednu z nejvyšších známých u měsíců, přičemž nejbližší bod leží asi 1,37 milionu km a nejvzdálenější asi 9,65 milionu km od Neptunu. Je prográdní a jen mírně skloněná, na rozdíl od typických nepravidelných měsíců, které jsou považovány za zachycená tělesa. Byly navrženy dva původy: zachycený objekt z Kuiperova pásu, nebo pravidelný měsíc Neptunu rozptýlený ven při zachycení Tritonu. V roce 2026 ukázala spektra z Vesmírného dalekohledu Jamese Webba krystalický vodní led a oxid uhličitý a povrch nepodobný objektům Kuiperova pásu, ale podobný měsícům Uranu, což podporuje druhou možnost – pokud je to tak, může být Nereida posledním neporušeným přeživším z původní rodiny Neptunových měsíců."
+		},
+		"facts": {
+			"simple": [
+				"Nereidu objevil v roce 1949 astronom jménem Gerard Kuiper.",
+				"Nereida je třetí největší měsíc Neptunu.",
+				"Nikdo nikdy neviděl snímek Nereidy zblízka."
+			],
+			"standard": [
+				"Voyager 2 mohl Nereidu vyfotografovat jen ze vzdálenosti asi 4,7 milionu km, takže její tvar a povrch jsou stále z velké části neznámé.",
+				"Nereida se otočí jednou asi za 11,6 hodiny, jak ukázala měření Keplerova vesmírného dalekohledu.",
+				"Malý vnější měsíc Halimede má podobnou šedou barvu a může být úlomkem, který se od Nereidy odštípl při srážce."
+			],
+			"advanced": [
+				"Střední průměr Nereidy je asi 340 km, podobně jako u Saturnova měsíce Mimas.",
+				"Nereida je zdaleka největší z nepravidelných měsíců Neptunu a obsahuje asi 98 % jejich celkové hmotnosti (nepočítaje Triton).",
+				"Jasnost Nereidy se výrazně mění v průběhu dnů až let a příčina stále není úplně vysvětlena."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Nereida oběhne Neptun skoro přesně za stejnou dobu, za jakou Země oběhne Slunce."
+			],
+			"standard": [
+				"Nereida se k Neptunu přibližuje a zase se vzdaluje jako kometa – v nejvzdálenějším bodě je asi sedmkrát dál než v nejbližším."
+			],
+			"advanced": [
+				"I v nejbližším bodě je Nereida od Neptunu asi 3,6krát dál, než je náš Měsíc od Země; v nejvzdálenějším bodě je to asi 25krát víc."
+			]
+		}
+	},
+	"proteus": {
+		"name": "Proteus",
+		"tagline": "Skrytý v Neptunově záři",
+		"description": {
+			"simple": "Proteus je tmavý hrbolatý měsíc Neptunu, široký asi 420 km. Je skoro dost velký na to, aby ho jeho vlastní gravitace zmáčkla do koule – ale ne úplně, takže vypadá jako pomačkaná krabice. I když je docela velký, nikdo ho neviděl, dokud kolem Neptunu v roce 1989 neproletěla sonda Voyager 2. Schovával se v jasné záři Neptunu.",
+			"standard": "Proteus je druhý největší měsíc Neptunu, široký asi 420 km, a přesto byl objeven teprve v roce 1989 na snímcích z Voyageru 2. Ze Země se ztrácí v záři Neptunu, protože obíhá jen asi 117 600 km od středu planety – méně než pět poloměrů Neptunu – a jeho povrch odráží jen asi desetinu slunečního světla, které na něj dopadá. Proteus je zhruba tak velký, jak jen těleso jako on může být, aniž by ho vlastní gravitace stáhla do kulatého tvaru, takže zůstává nepravidelnou hroudou podobnou krabici. Kolem Neptunu uhání za pouhých 27 hodin.",
+			"advanced": "Se středním průměrem asi 420 km se Proteus blíží velikosti, při níž by vlastní gravitace měla překonat pevnost ledu a horniny a stáhnout těleso do přibližně sféroidního (hydrostatického) tvaru – přesto zůstal nepravidelný. Jeho povrchu vévodí impaktní pánev Pharos, široká asi 255 km a hluboká 10–15 km, vytvořená dopadem, který měsíc málem roztříštil. Vědci si myslí, že Proteus nevznikl spolu s Neptunem, ale znovu se nahromadil z trosek poté, co Neptun zachytil Triton, jehož příchod by původní soustavu měsíců rozvrátil. Malinký měsíc Hippocamp, nalezený v roce 2013 na snímcích z Hubbleova dalekohledu, obíhá jen asi 12 000 km uvnitř dráhy Protea a může být úlomkem odraženým při dopadu, který vytvořil Pharos."
+		},
+		"facts": {
+			"simple": [
+				"Proteus oběhne Neptun za o něco víc než jeden den.",
+				"Z Protea by Neptun vypadal asi 50krát širší než úplněk, jak ho vidíme my.",
+				"Proteus má obří kráter, který má víc než polovinu šířky celého měsíce."
+			],
+			"standard": [
+				"Voyager 2 našel Protea v roce 1989, několik týdnů před průletem kolem Neptunu.",
+				"Proteus je pojmenovaný po mořském bohu z řeckých bájí, který uměl měnit podobu – to se k tak podivně tvarovanému měsíci hodí.",
+				"Triton, největší měsíc Neptunu, je víc než šestkrát širší než Proteus."
+			],
+			"advanced": [
+				"Proteus obíhá pomaleji (26,9 h), než se Neptun otáčí (asi 16,1 h), takže ho slapy pomalu odtlačují ven.",
+				"Hmotnost Protea nebyla nikdy přesně změřena, takže jeho hustota i tíhové zrychlení na povrchu (nejspíš kolem 0,07 m/s²) jsou stále nejisté.",
+				"Jeho téměř kruhová dráha blízko rovníkové roviny Neptunu je typická pro měsíc zrozený v disku kolem planety – na rozdíl od drah Tritonu a Nereidy."
+			]
+		},
+		"comparisons": {
+			"simple": ["Přejet Proteus po dálnici by trvalo asi čtyři hodiny."],
+			"standard": [
+				"Proteus je větší než Nereida, kterou astronomové zahlédli ze Země už v roce 1949, a přesto zůstal skrytý dalších 40 let – jako kus uhlí ležící vedle reflektoru."
+			],
+			"advanced": [
+				"Saturnův měsíc Mimas s průměrem asi 396 km je kulatý, kdežto o něco větší Proteus ne – velikost, při níž se měsíc stane kulatým, závisí na tom, z čeho je, a na tom, jak teplý kdysi byl."
+			]
+		}
+	}
+}
