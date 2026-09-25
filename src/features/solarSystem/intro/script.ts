@@ -89,8 +89,8 @@ export const MOON_DISTANCE_KM = moon?.orbit?.semiMajorAxisKm ?? 384_400
 
 /** The Earth-Moon shot frames a sphere this much larger than the Moon's orbit. */
 const MOON_FIT_MARGIN = 1.25
-/** The inner-planets shot frames a sphere of this radius around the Sun, in TRUE km (1.8 AU: Mars and a margin). */
-export const INNER_FIT_KM = 1.8 * 149_597_870.7
+/** The inner-planets shot frames a sphere of this radius around the Sun, in TRUE km (2 AU: Mars and a margin). */
+export const INNER_FIT_KM = 2 * 149_597_870.7
 
 /** An angle in [-180, 180), degrees. */
 const wrapDeg = (deg: number): number =>
@@ -134,7 +134,7 @@ export function introSteps({
 	return [
 		step("earth", {
 			view: earthView,
-			shot: { azimuthDeg: az(0), elevationDeg: 12, distance: 0.85 },
+			shot: { azimuthDeg: az(0), elevationDeg: 12, distance: 1 },
 		}),
 		step("moon", {
 			view: earthView,

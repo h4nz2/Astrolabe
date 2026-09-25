@@ -145,15 +145,21 @@
 	}
 }
 
-/* the opening's captions and hints (#30): the open middle row, right above the bottom panels */
+/*
+ * The opening (#30): its captions and hints sit in the open middle row, right
+ * above the bottom panels. While it plays the body card gives way to the
+ * caption and the rest of the HUD steps back (still usable: hover or focus
+ * brings a panel back); `data-intro` on <html> is set by intro/IntroOverlay.tsx.
+ */
 .intro {
 	grid-row: 2;
 	grid-column: 1 / -1;
 	align-self: end;
 	justify-self: center;
+	min-width: 0;
+	max-width: 100%;
 }
 
-/* while the opening plays, the HUD steps back (still usable: hover or focus brings a panel back) */
 :global(html[data-intro="playing"]) .panel {
 	opacity: 0.3;
 	transition: opacity 400ms ease;
@@ -162,6 +168,19 @@
 :global(html[data-intro="playing"]) .panel:hover,
 :global(html[data-intro="playing"]) .panel:focus-within {
 	opacity: 1;
+}
+
+:global(html[data-intro="playing"]) .info {
+	display: none;
+}
+
+/* wide screens: the caption takes the body card's corner, clear of the body in the centre */
+@media (min-width: 1200px) {
+	:global(html[data-intro="playing"]) .intro {
+		grid-row: 3;
+		grid-column: 1;
+		justify-self: stretch;
+	}
 }
 
 /* wide screens: the body info sits beside the time controls on one bottom row */
@@ -202,6 +221,22 @@
 	.intro {
 		grid-row: 4;
 		justify-self: stretch;
+	}
+
+	/* the opening gets the whole screen but the picker row; everything else is back at the hand-over */
+	:global(html[data-intro="playing"]) .toggles,
+	:global(html[data-intro="playing"]) .light,
+	:global(html[data-intro="playing"]) .time {
+		display: none;
+	}
+
+	/* the hints take the place of the card's own click hint */
+	:global(html[data-intro="hints"]) .info {
+		display: none;
+	}
+
+	:global(html[data-intro="hints"]) .intro {
+		grid-row: 5;
 	}
 
 	.pickerStack {

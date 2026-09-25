@@ -19,15 +19,19 @@ import { INTRO_BEATS } from "./script"
 
 import classes from "./Intro.module.css"
 
-/** Mirrors the status on `<html data-intro>`, so the HUD can step back while the opening plays. */
-const useDocumentStatus = (status: string) => {
+/**
+ * Mirrors the opening on `<html data-intro>` ("playing", or "hints" while the
+ * hints are up), so the HUD can make room (SolarSystem.module.css).
+ */
+const useDocumentStatus = (value: "playing" | "hints" | null) => {
 	useEffect(() => {
+		if (value === null) return
 		const root = document.documentElement
-		root.dataset.intro = status
+		root.dataset.intro = value
 		return () => {
 			delete root.dataset.intro
 		}
-	}, [status])
+	}, [value])
 }
 
 const Opening = () => {
@@ -102,7 +106,14 @@ const Opening = () => {
 /** The opening's slot in the HUD: the captions while it plays, the hints after it. */
 const IntroOverlay = ({ className }: { className?: string }) => {
 	const status = useIntroStore((state) => state.status)
-	useDocumentStatus(status)
+	const hints = useIntroStore((state) => state.hints)
+	useDocumentStatus(
+		status === "playing"
+			? "playing"
+			: status === "handover" && hints
+				? "hints"
+				: null,
+	)
 	if (status === "off") return null
 	return (
 		<div className={`${classes.slot} ${className ?? ""}`}>
