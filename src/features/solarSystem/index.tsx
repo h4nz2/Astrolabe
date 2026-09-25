@@ -10,6 +10,7 @@ import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import { HuntPanelSlot } from "./hunt/Hunt"
+import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
 import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
@@ -95,6 +96,7 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<TeacherBar layers={<SceneToggles />}>
 							<SpacecraftMenu />
+							<PostcardButton />
 							<LanguageMenu />
 						</TeacherBar>
 						<InlineLayers>
@@ -118,6 +120,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<PostcardSlot />
 			<PresentationLayer />
 		</div>
 	)
