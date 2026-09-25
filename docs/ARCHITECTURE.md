@@ -831,8 +831,14 @@ whole comparison is its link: `/compare?bodies=earth,jupiter,saturn&t=<jd>` (`se
 - **The list** (`selection.ts`, pure): `bodies[0]` and `[1]` are the pair the facts talk about, further ids are drawn
   alongside (at most `MAX_COMPARE` = 10). A missing or short list is completed (`completeBodies`, `defaultPartner`:
   Earth for the Sun and planets, the Sun for Earth, our Moon for moons, Earth for the Moon) and written back to the
-  URL. Pickers reuse the focus picker's `focusOptions`; ideas are `COMPARE_PRESETS` (`compare.presets.<id>`). A click
-  on a drawn body outside the pair `promote`s it into the pair.
+  URL. Pickers reuse the focus picker's `focusOptions`. A click on a drawn body outside the pair `promote`s it into
+  the pair.
+- **Ideas** (#40) are pure data, `COMPARE_PRESETS`: a body list (its link), a group (`COMPARE_PRESET_GROUPS`: sizes,
+  moons, surprises; `compare.ideaGroups.<group>`), and the fact that makes its point (`lead`, a `PairFactKey`). Text:
+  title `compare.presets.<id>`, one-line teaser `compare.teasers.<id>` (every locale and reading level). The page
+  recognises an idea by its **set** of bodies (`presetFor`: swapping or promoting keeps it, adding or removing a body
+  leaves it) and then names it above the facts and passes `lead` to `pairFacts` (also for the postcard). New idea =
+  one entry + its strings; `ideas.test.ts` checks each teaser's claims against the data.
 - **The drawing** (`layout.ts` pure, `Stage.tsx`): one scale (px per km) for every body, the largest at which the
   tallest body fits the height and every slot (at least the label's width) fits the width; if even the narrowest slots
   do not fit, the row scrolls sideways. Order of the system (`drawOrder`: the Sun, each planet with its moons). Each

@@ -12,6 +12,8 @@
  */
 import { bodies, bodyById, planets } from "@/data"
 
+import type { PairFactKey } from "./compareFacts"
+
 /** The most bodies drawn side by side: the Sun and the eight planets fit, with one to spare. */
 export const MAX_COMPARE = 10
 
@@ -128,11 +130,39 @@ export const drawOrder = (ids: readonly string[]): string[] =>
 		)
 		.map(({ id }) => id)
 
-/** A ready-made comparison a teacher can pick without choosing bodies one by one. */
+/** The headings the ideas are listed under (`compare.ideaGroups.<group>`). */
+export const COMPARE_PRESET_GROUPS = ["sizes", "moons", "surprises"] as const
+export type ComparePresetGroup = (typeof COMPARE_PRESET_GROUPS)[number]
+
+/**
+ * A ready-made comparison a teacher can pick without choosing bodies one by
+ * one (#24), each carrying a surprise (#40). The idea is pure data: its title
+ * is `compare.presets.<id>`, its one-line teaser `compare.teasers.<id>` (both
+ * with reading levels, in every locale). Its link is its body list; the page
+ * recognises the idea by that set of bodies (`presetFor`), so swapping the
+ * pair or clicking a drawn body keeps it, adding or removing a body leaves it.
+ */
 export interface ComparePreset {
-	/** `compare.presets.<id>` in the locales */
-	id: "sunEarth" | "earthMoon" | "planets" | "sunPlanets" | "bigMoons"
+	id:
+		| "sunEarth"
+		| "earthMoon"
+		| "planets"
+		| "sunPlanets"
+		| "bigMoons"
+		| "earthTwin"
+		| "moonsBeatPlanet"
+		| "jupiterAcrossSun"
+		| "marsSmall"
+		| "galileanMoons"
+		| "iceGiants"
+		| "potatoMoons"
+		| "weighMost"
+		| "bigForItsPlanet"
+	group: ComparePresetGroup
+	/** The first two are the pair the facts talk about. */
 	bodies: readonly string[]
+	/** The comparison that makes the idea's point, shown first (else the usual order). */
+	lead?: PairFactKey
 }
 
 const planetIds = planets.map((planet) => planet.id)
@@ -144,13 +174,93 @@ const earthJupiterFirst = [
 	...earthFirst.filter((id) => id !== "earth" && id !== "jupiter"),
 ]
 
+/** Listed by group, in this order within each group. Every body set is unique. */
 export const COMPARE_PRESETS: readonly ComparePreset[] = [
-	{ id: "sunEarth", bodies: ["earth", "sun"] },
-	{ id: "earthMoon", bodies: ["earth", "moon"] },
-	{ id: "planets", bodies: earthJupiterFirst },
-	{ id: "sunPlanets", bodies: ["earth", "sun", ...earthFirst.slice(1)] },
+	// sizes
+	{ id: "sunEarth", group: "sizes", bodies: ["earth", "sun"], lead: "volume" },
+	{
+		id: "sunPlanets",
+		group: "sizes",
+		bodies: ["earth", "sun", ...earthFirst.slice(1)],
+		lead: "mass",
+	},
+	{
+		id: "jupiterAcrossSun",
+		group: "sizes",
+		bodies: ["jupiter", "sun", "earth"],
+		lead: "size",
+	},
+	{
+		id: "planets",
+		group: "sizes",
+		bodies: earthJupiterFirst,
+		lead: "mass",
+	},
+	{
+		id: "marsSmall",
+		group: "sizes",
+		bodies: ["mars", "earth", "moon"],
+		lead: "size",
+	},
+	{
+		id: "iceGiants",
+		group: "sizes",
+		bodies: ["uranus", "neptune", "earth"],
+		lead: "size",
+	},
+	// moons
+	{ id: "earthMoon", group: "moons", bodies: ["earth", "moon"], lead: "size" },
+	{
+		id: "bigForItsPlanet",
+		group: "moons",
+		bodies: ["moon", "earth", "jupiter", "ganymede"],
+		lead: "size",
+	},
 	{
 		id: "bigMoons",
+		group: "moons",
 		bodies: ["moon", "ganymede", "titan", "callisto", "io", "europa", "triton"],
+		lead: "size",
+	},
+	{
+		id: "galileanMoons",
+		group: "moons",
+		bodies: ["io", "ganymede", "europa", "callisto", "moon"],
+		lead: "orbit",
+	},
+	{
+		id: "potatoMoons",
+		group: "moons",
+		bodies: ["phobos", "moon", "deimos"],
+		lead: "size",
+	},
+	// surprises
+	{
+		id: "earthTwin",
+		group: "surprises",
+		bodies: ["venus", "earth"],
+		lead: "size",
+	},
+	{
+		id: "moonsBeatPlanet",
+		group: "surprises",
+		bodies: ["ganymede", "mercury", "titan"],
+		lead: "size",
+	},
+	{
+		id: "weighMost",
+		group: "surprises",
+		bodies: ["earth", "jupiter", "mars", "moon"],
+		lead: "weight",
 	},
 ]
+
+/** The idea on screen: the preset with exactly these bodies, in any order. */
+export function presetFor(ids: readonly string[]): ComparePreset | undefined {
+	const set = new Set(ids)
+	return COMPARE_PRESETS.find(
+		(preset) =>
+			preset.bodies.length === set.size &&
+			preset.bodies.every((id) => set.has(id)),
+	)
+}
