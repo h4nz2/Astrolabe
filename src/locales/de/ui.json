@@ -40,6 +40,7 @@
 		"tagline": "Zu den Sternen!",
 		"dictionary": "Lexikon",
 		"solarSystem": "Sonnensystem",
+		"tour": "Geführte Tour",
 		"birthday": "Geburtstag im Weltall",
 		"hunt": "Schnitzeljagd",
 		"solarWalk": "Planetenweg",
@@ -1165,6 +1166,29 @@
 			"replay": "Intro noch einmal abspielen",
 			"replay@simple": "Den Anfang noch mal ansehen",
 			"hints": "Zeigen, wie man sich bewegt"
+		},
+		"tours": {
+			"menu": "Geführte Touren",
+			"menuShort": "Touren",
+			"meta": "{count, plural, one {# Station} other {# Stationen}} · etwa {minutes, plural, one {# Minute} other {# Minuten}}",
+			"keys": "Weiter und zurück mit den Pfeiltasten oder einem Presenter. Du kannst dich jederzeit umsehen: Die Tour wartet auf dich.",
+			"keys@simple": "Mit den Pfeiltasten geht es weiter. Du kannst dich jederzeit umsehen: Die Tour wartet auf dich.",
+			"card": "Tour: {title}",
+			"stopOf": "Station {n} von {count}",
+			"back": "Zurück",
+			"next": "Weiter",
+			"finish": "Beenden",
+			"autoplay": "Automatisch weiter",
+			"autoplayHint": "Nach jeder Station von selbst weitergehen",
+			"share": "Link zu dieser Station kopieren",
+			"copied": "Link kopiert",
+			"collapse": "Karte einklappen",
+			"expand": "Karte ausklappen",
+			"close": "Tour beenden",
+			"away": "Du siehst dich gerade selbst um. Die Tour wartet bei Station {n}.",
+			"away@simple": "Du schaust dich gerade selbst um. Die Tour wartet auf dich.",
+			"resume": "Zurück zur Tour",
+			"goTo": "Station {n}: {title}"
 		}
 	},
 	"solarWalk": {

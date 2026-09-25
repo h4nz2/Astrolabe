@@ -1,0 +1,407 @@
+{
+	"grandTour": {
+		"title": {
+			"simple": "Die große Rundreise",
+			"standard": "Die große Rundreise",
+			"advanced": "Die große Rundreise"
+		},
+		"summary": {
+			"simple": "Besuche die Sonne und alle acht Planeten, einen nach dem anderen.",
+			"standard": "Von der Sonne bis hinter Neptun: was es da draußen gibt, der Reihe nach.",
+			"advanced": "Von der Sonne bis zum Kuipergürtel: die acht Planeten und was jeden einzelnen besonders macht."
+		},
+		"stops": {
+			"system": {
+				"title": {
+					"simple": "Unser Zuhause im All",
+					"standard": "Unser Sonnensystem",
+					"advanced": "Das Sonnensystem"
+				},
+				"text": {
+					"simple": "Das ist unser Sonnensystem. In der Mitte ist die Sonne, ein Stern. Acht Planeten kreisen um sie, und viele davon haben Monde. Wir wohnen auf dem dritten Planeten: der Erde. Besuchen wir sie alle!",
+					"standard": "Ein Stern, acht Planeten und Hunderte von Monden. Alles hier kreist um die Sonne, festgehalten von ihrer Schwerkraft, und alle Planeten laufen in dieselbe Richtung, fast in einer flachen Ebene. Die Planeten sind viel größer gezeichnet, als sie wirklich sind, damit du sie sehen kannst. Wir besuchen sie alle, von innen nach außen.",
+					"advanced": "Ein Stern, acht Planeten und Hunderte bekannter Monde, entstanden vor etwa 4,6 Milliarden Jahren aus einer einzigen abgeflachten Wolke aus Gas und Staub. Deshalb laufen die Planeten fast in derselben Ebene und in dieselbe Richtung. Größen und Abstände sind in dieser Ansicht verzerrt (siehe das Feld „Maßstab“); alle Angaben der Tour verwenden die wahren Werte."
+				}
+			},
+			"sun": {
+				"title": "Die Sonne",
+				"text": {
+					"simple": "Die Sonne ist ein Stern: eine riesige Kugel aus glühend heißem Gas. Sie ist so groß, dass mehr als eine Million Erden hineinpassen würden. Ihr Licht schenkt uns Wärme und Tageslicht.",
+					"standard": "Die Sonne enthält 99,8 % der gesamten Masse des Sonnensystems. Sie ist 109 Erden breit, und etwa 1,3 Millionen Erden hätten in ihr Platz. Tief in ihrem Kern verschmilzt bei 15 Millionen °C Wasserstoff zu Helium. Daher kommt ihr ganzes Licht.",
+					"advanced": "Ein gewöhnlicher Stern mittleren Alters: 1,39 Millionen km Durchmesser, 99,86 % der Masse des Sonnensystems. In ihrem Kern verschmilzt sie bei etwa 15 Millionen K jede Sekunde rund 600 Millionen Tonnen Wasserstoff zu Helium und wandelt dabei 4 Millionen Tonnen Masse in Energie um (E = mc²). Licht, das ihre Oberfläche verlässt, erreicht die Erde 8 Minuten und 20 Sekunden später."
+				}
+			},
+			"mercury": {
+				"title": "Merkur",
+				"text": {
+					"simple": "Merkur ist der kleinste Planet und der Sonne am nächsten. Er hat keine Luft, die ihn warm hält. Deshalb ist es auf der Tagseite so heiß, dass Blei schmilzt, und auf der Nachtseite eiskalt.",
+					"standard": "Der kleinste Planet und der schnellste: Eine Runde um die Sonne dauert nur 88 Tage. Merkur hat fast keine Atmosphäre, die Wärme speichern könnte. Auf seiner Tagseite wird es 430 °C heiß, auf der Nachtseite sinkt die Temperatur auf −180 °C.",
+					"advanced": "Der innerste Planet, 4879 km groß, mit einem Jahr von 88 Tagen. Er dreht sich so langsam, dass ein Sonnentag (von Sonnenaufgang zu Sonnenaufgang) 176 Erdtage dauert: zwei seiner Jahre. Ohne Atmosphäre schwankt die Oberfläche zwischen 430 °C und −180 °C. Sein riesiger Eisenkern füllt etwa 85 % seines Radius."
+				}
+			},
+			"venus": {
+				"title": "Venus",
+				"text": {
+					"simple": "Venus ist fast so groß wie die Erde, aber dort könnte niemand leben. Dicke Wolken halten die Hitze fest, und es ist heißer als in einem Backofen: der heißeste Planet von allen. Außerdem dreht sie sich falsch herum.",
+					"standard": "Venus ist fast so groß wie die Erde, doch ihre dicke Luft aus Kohlendioxid hält die Wärme der Sonne gefangen: Mit 465 °C ist sie heißer als Merkur, obwohl sie doppelt so weit von der Sonne entfernt ist. Sie dreht sich rückwärts, und zwar so langsam, dass ein Tag auf der Venus länger dauert als ihr Jahr.",
+					"advanced": "12 104 km Durchmesser, fast so groß wie die Erde. Ihre Atmosphäre besteht zu 96 % aus Kohlendioxid, bei 92-fachem Erddruck, und ein galoppierender Treibhauseffekt hält die Oberfläche Tag und Nacht auf 465 °C. Sie rotiert rückläufig in 243 Tagen, länger als ihr Jahr von 225 Tagen; die Sonne geht im Westen auf."
+				}
+			},
+			"earth": {
+				"title": "Erde",
+				"text": {
+					"simple": "Zu Hause! Die Erde ist der einzige Ort, an dem wir Leben kennen. Es gibt flüssiges Wasser, Luft zum Atmen und genau die richtige Wärme von der Sonne. Der Mond umkreist sie einmal im Monat.",
+					"standard": "Unser Planet ist die einzige Welt, auf der wir Leben kennen. Sie hat genau den richtigen Abstand zur Sonne, damit Wasser flüssig bleibt, und Wasser bedeckt 71 % ihrer Oberfläche. Ihre schräge Achse beschert uns die Jahreszeiten. Achte auf die Fluganzeige: Sie verrät dir, wie weit jede Reise dieser Tour wirklich ist.",
+					"advanced": "12 742 km Durchmesser, 150 Millionen km (1 Astronomische Einheit) von der Sonne entfernt. Flüssiges Wasser, ein schützendes Magnetfeld und eine Atmosphäre aus Stickstoff und Sauerstoff (vom Leben selbst erzeugt) machen sie zur einzigen bekannten bewohnten Welt. Ihre Achse ist um 23,4° geneigt, das verursacht die Jahreszeiten."
+				}
+			},
+			"mars": {
+				"title": "Mars",
+				"text": {
+					"simple": "Mars ist rot, weil sein Staub rostig ist. Er hat den höchsten Vulkan im ganzen Sonnensystem, und vor langer Zeit flossen dort Flüsse. Heute fahren Roboter auf dem Mars herum und erforschen ihn für uns.",
+					"standard": "Der rote Planet verdankt seine Farbe dem Eisenoxid: Rost. Mars ist halb so groß wie die Erde und hat den Olympus Mons, einen etwa 22 km hohen Vulkan, zweieinhalbmal so hoch wie der Mount Everest. Ausgetrocknete Flussbetten zeigen, dass hier einmal Wasser floss. Seine beiden kleinen Monde heißen Phobos und Deimos.",
+					"advanced": "6779 km Durchmesser, mit einer dünnen Kohlendioxid-Atmosphäre von weniger als 1 % des Erddrucks. Der Olympus Mons ragt etwa 22 km auf, der Canyon Valles Marineris ist 4000 km lang. Alte Flussdeltas und Seeböden zeigen, dass Mars einst feuchter und wärmer war; Wassereis gibt es noch an den Polen und im Boden. Ein Tag dauert etwa 24 h 40 min, ein Jahr 687 Tage."
+				}
+			},
+			"jupiter": {
+				"title": "Jupiter",
+				"text": {
+					"simple": "Jupiter ist der größte Planet. Mehr als tausend Erden würden in ihn hineinpassen! Man kann nirgends auf ihm stehen: Er ist eine riesige Gaskugel mit Wolkenstreifen und einem gewaltigen Sturm, dem Großen Roten Fleck.",
+					"standard": "Der Riese: 11 Erden breit und mehr als doppelt so schwer wie alle anderen Planeten zusammen. Jupiter besteht vor allem aus Wasserstoff und Helium und hat keine feste Oberfläche. Der Große Rote Fleck ist ein Sturm, breiter als die Erde, der seit weit über 150 Jahren tobt. Seine vier großen Monde entdeckte Galileo Galilei 1610.",
+					"advanced": "139 820 km Durchmesser und 318 Erdmassen: 2,5-mal so viel wie alle anderen Planeten zusammen. Er dreht sich in unter 10 Stunden, was ihn sichtbar abplattet und seine Wolken zu Bändern zieht. Der Große Rote Fleck, ein Hochdruckwirbel breiter als die Erde, wird seit mindestens 1831 beobachtet. Ganymed, der größte Mond des Sonnensystems, ist größer als Merkur."
+				}
+			},
+			"saturn": {
+				"title": "Saturn",
+				"text": {
+					"simple": "Saturn hat die schönsten Ringe. Sie bestehen aus Milliarden Eisstücken, manche so klein wie Sand, manche so groß wie ein Haus. Saturn ist so leicht, dass er in einer riesigen Badewanne schwimmen würde!",
+					"standard": "Saturns Ringe bestehen aus unzähligen Brocken Wassereis. Sie sind etwa 280 000 km breit, aber meist nur rund 10 m dick. Saturn ist 9 Erden breit und trotzdem der einzige Planet mit geringerer Dichte als Wasser. Sein Mond Titan ist größer als der Planet Merkur.",
+					"advanced": "116 460 km Durchmesser bei einer mittleren Dichte von 0,69 g/cm³, weniger als Wasser. Seine Hauptringe sind etwa 280 000 km breit, aber meist nur rund 10 m dick: überwiegend Wassereis, in Stücken von Staubkorn- bis Hausgröße. Sie könnten viel jünger sein als Saturn selbst. Von seinen vielen Monden hat Titan eine dichte Atmosphäre, und Enceladus sprüht einen Ozean ins All."
+				}
+			},
+			"uranus": {
+				"title": "Uranus",
+				"text": {
+					"simple": "Uranus rollt auf der Seite liegend um die Sonne, wie ein Ball, der dahinrollt. Vielleicht hat ihn vor langer Zeit etwas sehr Großes umgestoßen. Er ist ein Eisriese und sehr, sehr kalt.",
+					"standard": "Uranus ist umgekippt: Seine Achse liegt fast flach in seiner Bahn. Schau, wie seine Monde ihn umkreisen, von oben nach unten. Ein Jahr auf Uranus dauert 84 Erdjahre, also bekommt jeder Pol 42 Jahre lang Sonnenlicht und dann 42 Jahre Dunkelheit. Er war der erste Planet, der mit einem Teleskop entdeckt wurde, 1781.",
+					"advanced": "Ein Eisriese mit 50 724 km Durchmesser, dessen Drehachse um 98° gekippt ist, wahrscheinlich durch einen gewaltigen Einschlag früh in seiner Geschichte. Monde und Ringe laufen in seiner gekippten Äquatorebene. Während seines 84-jährigen Umlaufs liegt jeder Pol etwa 42 Jahre im Dauertag. 1781 von Wilhelm Herschel entdeckt, der erste mit einem Teleskop gefundene Planet."
+				}
+			},
+			"neptune": {
+				"title": "Neptun",
+				"text": {
+					"simple": "Neptun ist der äußerste Planet: Sonnenlicht braucht etwa 4 Stunden bis dorthin. Er hat die schnellsten Winde im Sonnensystem. Man hat ihn durch Rechnen gefunden, bevor ihn jemand gesehen hat!",
+					"standard": "Der äußerste Planet, 4,5 Milliarden km von der Sonne entfernt. Ein Jahr dauert hier 165 Erdjahre. Neptun hat die schnellsten Winde im Sonnensystem, bis zu 2100 km/h. Gefunden wurde er 1846 durch Berechnung: Astronomen bemerkten, dass Uranus aus seiner Bahn gezogen wurde, und rechneten aus, wo der unsichtbare Planet sein musste.",
+					"advanced": "30 AE von der Sonne entfernt, wo das Sonnenlicht 900-mal schwächer ist als bei der Erde. Seine Winde erreichen etwa 2100 km/h. 1846 fand Johann Galle ihn weniger als 1° von der Position entfernt, die Urbain Le Verrier aus den Unregelmäßigkeiten der Uranusbahn berechnet hatte: der erste durch Mathematik entdeckte Planet. Sein großer Mond Triton läuft rückwärts um ihn, wohl ein eingefangenes Objekt aus dem Kuipergürtel."
+				}
+			},
+			"beyond": {
+				"title": {
+					"simple": "Hinter den Planeten",
+					"standard": "Jenseits von Neptun",
+					"advanced": "Jenseits von Neptun"
+				},
+				"text": {
+					"simple": "Das Sonnensystem hört bei Neptun nicht auf. Weiter draußen gibt es eisige Welten wie Pluto. Die Raumsonde Voyager 1 fliegt schon fast 50 Jahre und ist heute das am weitesten entfernte Ding, das Menschen je gebaut haben.",
+					"standard": "Hinter Neptun liegt der Kuipergürtel, ein Ring aus eisigen Körpern, zu dem der Zwergplanet Pluto gehört. Noch viel weiter draußen reicht die Oortsche Wolke aus Kometen vielleicht ein Drittel des Weges zum nächsten Stern. Voyager 1, 1977 gestartet, ist mehr als 25 Milliarden km entfernt: Gegen Ende 2026 braucht ihr Funksignal einen ganzen Tag bis zu uns.",
+					"advanced": "Jenseits von 30 AE enthält der Kuipergürtel (etwa 30 bis 50 AE) eisige Überreste der Planetenentstehung, darunter Pluto. Die Oortsche Wolke aus Kometen reicht vielleicht über 100 000 AE hinaus. Voyager 1, 1977 gestartet, verließ 2012 die Heliosphäre der Sonne und ist gegen Ende 2026 einen Lichttag von der Erde entfernt. Der nächste Stern, Proxima Centauri, ist 4,2 Lichtjahre entfernt."
+				}
+			}
+		}
+	},
+	"howBig": {
+		"title": {
+			"simple": "Wie groß ist das All?",
+			"standard": "Wie groß ist es wirklich?",
+			"advanced": "Wie groß ist es wirklich?"
+		},
+		"summary": {
+			"simple": "Finde heraus, wie winzig die Planeten sind und wie weit sie wirklich voneinander entfernt sind.",
+			"standard": "Die Lektion über den Maßstab: Jedes Bild des Sonnensystems lügt. Sieh die Wahrheit und spüre, wie leer der Weltraum ist.",
+			"advanced": "Vom üblichen verzerrten Bild zum echten Maßstab: Größen, Abstände, Lichtlaufzeiten und die Leere dazwischen."
+		},
+		"stops": {
+			"usual": {
+				"title": {
+					"simple": "Das Bild, das wir kennen",
+					"standard": "Das Bild, das du kennst",
+					"advanced": "Das übliche Bild"
+				},
+				"text": {
+					"simple": "So sieht das Sonnensystem in Büchern aus. Aber das stimmt nicht! Die Planeten sind viel zu groß und viel zu nah beieinander gezeichnet. Finden wir heraus, wie es wirklich ist.",
+					"standard": "So wird das Sonnensystem meistens gezeichnet, in Büchern und auch hier. Es ist eine Lüge, und zwar eine nötige: Die Planeten sind etwa 10-mal zu groß und viel zu nah an der Sonne gezeichnet, sonst könntest du sie gar nicht sehen. Diese Tour nimmt die Lüge auseinander.",
+					"advanced": "Diese Ansicht (Alles sichtbar) ist eine bewusste Verzerrung: Die Planeten sind zehnfach und mehr vergrößert, und die Abstände sind gestaucht, damit alle acht Bahnen auf einen Bildschirm passen. Jede Schulbuchgrafik macht dasselbe. In dieser Tour entfernen wir die Verzerrungen Schritt für Schritt."
+				}
+			},
+			"earth": {
+				"title": "Wir starten zu Hause",
+				"text": {
+					"simple": "Für uns ist die Erde riesig. Um sie mit dem Flugzeug einmal zu umrunden, bräuchtest du fast zwei ganze Tage ohne Pause.",
+					"standard": "Die Erde ist 12 742 km breit und hat einen Umfang von 40 000 km. Ein Flugzeug bräuchte ohne Zwischenstopp fast zwei Tage, um sie zu umrunden. Merk dir dieses Gefühl von „groß“: Wir werden es noch brauchen.",
+					"advanced": "12 742 km Durchmesser, 40 075 km Umfang am Äquator: etwa 45 Stunden nonstop für ein Verkehrsflugzeug mit 900 km/h. Alles Weitere messen wir daran."
+				}
+			},
+			"moon": {
+				"title": {
+					"simple": "Der Mond ist weit weg",
+					"standard": "Der Mond, in wahrem Abstand",
+					"advanced": "Erde und Mond im echten Maßstab"
+				},
+				"text": {
+					"simple": "Jetzt schalten wir auf die wahre Größe um! Schau, wie weit weg der Mond wirklich ist. Zwischen Erde und Mond passen 30 Erden in einer Reihe. Astronauten brauchten drei Tage, um dorthin zu fliegen.",
+					"standard": "Jetzt schalten wir auf den echten Maßstab um: Sieh zu, wie der Mond nach außen wandert. Er ist 384 400 km entfernt, weit genug, um 30 Erden in die Lücke zu legen oder sogar alle anderen Planeten nebeneinander. Die Apollo-Astronauten brauchten drei Tage für diese Strecke.",
+					"advanced": "Ab hier im echten Maßstab. Der mittlere Abstand Erde–Mond beträgt 384 400 km: 30 Erddurchmesser und mehr als die Durchmesser der anderen sieben Planeten zusammen (etwa 380 000 km). Die Apollo-Besatzungen brauchten rund drei Tage dafür. Der Mond misst 3474 km, gut ein Viertel der Erde."
+				}
+			},
+			"sun": {
+				"title": {
+					"simple": "Die riesige Sonne",
+					"standard": "Die Sonne in wahrer Größe",
+					"advanced": "Die Sonne in wahrer Größe"
+				},
+				"text": {
+					"simple": "Hier ist die Sonne in ihrer echten Größe. Sie ist 109 Erden breit! Wäre die Sonne hohl, würden mehr als eine Million Erden in sie hineinpassen.",
+					"standard": "Die Sonne ist 1,4 Millionen km breit: 109 Erden nebeneinander. Vom Volumen her würden etwa 1,3 Millionen Erden in sie hineinpassen. Das ganze System aus Erde und Mond, das du eben gesehen hast, hätte in der Sonne bequem Platz.",
+					"advanced": "Durchmesser 1,39 Millionen km, 109 Erddurchmesser; Volumen 1,3 Millionen Erden. Die ganze Mondbahn (768 800 km Durchmesser) passte in die Sonne, mit mehr als einer halben Million km Reserve. Trotzdem enthält sie 99,86 % der Masse des Sonnensystems."
+				}
+			},
+			"gap": {
+				"title": {
+					"simple": "Wo ist die Erde?",
+					"standard": "Und jetzt such die Erde",
+					"advanced": "Eine Astronomische Einheit"
+				},
+				"text": {
+					"simple": "Findest du die Erde? Der Kreis zeigt nur, wo sie ist. Die echte Erde ist von hier aus viel zu klein, um sie zu sehen. Ein Auto, das ohne Pause zur Sonne fährt, bräuchte mehr als 170 Jahre!",
+					"standard": "Die Erde ist 150 Millionen km von der Sonne entfernt: 11 700 Erden in einer Reihe. In diesem echten Maßstab ist sie viel zu klein, um sie zu sehen; Punkt und Ring zeigen nur, wo sie ist. Ein Auto mit 100 km/h bräuchte 171 Jahre bis dorthin. Das Sonnenlicht schafft es in 8 Minuten und 20 Sekunden.",
+					"advanced": "1 AE = 149,6 Millionen km, 11 740 Erddurchmesser. Der gezeichnete Punkt ist nur eine Markierung: Die wahre Erdscheibe ist hier ein winziger Bruchteil eines Pixels. Mit dem Auto bei 100 km/h: 171 Jahre; mit dem Verkehrsflugzeug: 19 Jahre; mit Licht: 499 Sekunden. Jedes Mal, wenn du die Sonne siehst, siehst du sie so, wie sie vor 8 Minuten war."
+				}
+			},
+			"neptune": {
+				"title": {
+					"simple": "Bis zu Neptun",
+					"standard": "Hinaus bis Neptun",
+					"advanced": "Hinaus bis Neptun"
+				},
+				"text": {
+					"simple": "Hier sind alle Planeten in ihren echten Abständen. Die inneren Planeten drängen sich nah an der Sonne, die anderen sind sehr weit voneinander entfernt. Sonnenlicht braucht etwa vier Stunden bis zu Neptun.",
+					"standard": "Das ganze Planetensystem im echten Maßstab. Neptun ist 30-mal so weit von der Sonne entfernt wie die Erde: 4,5 Milliarden km. Das Sonnenlicht, das Schnellste, was es gibt, braucht über 4 Stunden bis dorthin. Die vier inneren Planeten drängen sich in der Mitte; man kann sie kaum auseinanderhalten.",
+					"advanced": "Neptuns Bahn, 30 AE (4,5 Milliarden km) Radius. Licht braucht 4,2 Stunden dafür. Die Abstände sind sehr ungleich: Die vier Gesteinsplaneten passen alle innerhalb von 1,5 AE, dann folgt eine große Lücke bis Jupiter bei 5,2 AE, und jeder Riese ist 1,5- bis 2-mal so weit draußen wie der vorige."
+				}
+			},
+			"empty": {
+				"title": {
+					"simple": "Was ist wirklich da?",
+					"standard": "Was wirklich da ist",
+					"advanced": "Fast vollkommen leer"
+				},
+				"text": {
+					"simple": "Jetzt schalten wir die Punkte und die Namen aus. So sieht das Sonnensystem wirklich aus: Die Sonne ist ein winziger Punkt, und die Planeten sind viel zu klein, um sie zu sehen. Der Weltraum ist fast ganz leer!",
+					"standard": "Markierungen und Namen sind jetzt aus. Das ist es, was wirklich da ist: eine kleine Sonne und, soweit dein Auge es erkennt, sonst nichts. Die Sonne und alle Planeten zusammen füllen weniger als ein Hundertmilliardstel des Raums innerhalb der Neptunbahn. Der Weltraum ist fast vollkommen leer.",
+					"advanced": "Markierungen und Beschriftungen aus: Im echten Maßstab bedeckt hier kein Planet auch nur ein einziges Pixel. Sonne und Planeten nehmen weniger als 10⁻¹¹ des Volumens einer Kugel mit dem Radius der Neptunbahn ein. Diese Leere, nicht die Größe der Körper, ist die eigentliche Lektion über den Maßstab."
+				}
+			},
+			"basketball": {
+				"title": {
+					"simple": "Wenn die Sonne ein Basketball wäre",
+					"standard": "Wenn die Sonne ein Basketball wäre",
+					"advanced": "Die Sonne als Basketball"
+				},
+				"text": {
+					"simple": "Stell dir die Sonne als Basketball vor. Dann ist die Erde ein Stecknadelkopf in 26 Metern Entfernung, Jupiter eine Kirsche in 134 Metern und Neptun eine Erbse fast 800 Meter weit weg. Der nächste Stern wäre 6900 km entfernt!",
+					"standard": "Schrumpf alles, bis die Sonne ein Basketball ist: Die Erde wird ein Stecknadelkopf in 26 m Entfernung, Jupiter eine Kirsche in 134 m, Neptun eine Erbse in 776 m. In diesem Maßstab ist der nächste Stern, Proxima Centauri, 6900 km entfernt. Dieses Modell kannst du auf dem Schulgelände ablaufen.",
+					"advanced": "Im Maßstab 1 : 5,8 Milliarden ist die Sonne ein Basketball von 24 cm, die Erde ein Stecknadelkopf von 2,2 mm in 26 m, Jupiter 24 mm in 134 m und Neptun 8,5 mm in 776 m. Proxima Centauri, 4,2 Lichtjahre entfernt, läge 6900 km weit weg: Das Sonnensystem ist eine winzige Insel in einem Ozean aus Nichts."
+				},
+				"link": {
+					"simple": "Draußen ablaufen",
+					"standard": "Das Modell ablaufen",
+					"advanced": "Das Modell ablaufen"
+				}
+			}
+		}
+	},
+	"earthMoves": {
+		"title": {
+			"simple": "Warum läuft Mars rückwärts?",
+			"standard": "Woher wissen wir, dass sich die Erde bewegt?",
+			"advanced": "Woher wissen wir, dass sich die Erde bewegt?"
+		},
+		"summary": {
+			"simple": "Manchmal scheint Mars am Himmel rückwärts zu laufen. Finde heraus, warum!",
+			"standard": "Mars zieht manchmal eine Schleife rückwärts über unseren Himmel. Bis die Erklärung feststand, vergingen zweitausend Jahre.",
+			"advanced": "Rückläufige Bewegung, Epizykel und die kopernikanische Wende, von Aristarch bis Bessel."
+		},
+		"stops": {
+			"wanderers": {
+				"title": {
+					"simple": "Die wandernden Sterne",
+					"standard": "Wandelsterne",
+					"advanced": "Planetes: die Umherschweifenden"
+				},
+				"text": {
+					"simple": "Schon vor langer Zeit sahen Menschen, dass manche Sterne über den Himmel wandern. Sie nannten sie Wandelsterne. Mars wandert meistens in eine Richtung, aber manchmal bleibt er stehen und läuft eine Weile rückwärts. Warum? Finden wir es heraus.",
+					"standard": "Seit Tausenden von Jahren beobachten Menschen den Himmel. Die meisten Sterne bleiben an ihrem Platz, aber einige wandern: Die alten Griechen nannten sie „planetes“, Umherschweifende. Mars zieht meist ostwärts vor den Sternen entlang, aber etwa alle zwei Jahre bleibt er stehen, läuft zwei bis drei Monate rückwärts und zieht dann weiter. Hier ist der Oktober 2024, kurz bevor es passierte.",
+					"advanced": "Babylonische Astronomen zeichneten jahrhundertelang Planetenpositionen auf, und die Griechen nannten die wandernden Lichter „planetes“. Mars bewegt sich normalerweise ostwärts vor den Sternen, doch um jede Opposition (alle 780 Tage) wendet er sich für 60 bis 80 Tage nach Westen: die rückläufige Bewegung. Hier ist der 1. Oktober 2024, zwei Monate vor der Oppositionsschleife 2024/25."
+				}
+			},
+			"fromEarth": {
+				"title": {
+					"simple": "Mars von der Erde aus gesehen",
+					"standard": "Von der Erde aus gesehen",
+					"advanced": "Die geozentrische Sicht"
+				},
+				"text": {
+					"simple": "Jetzt halten wir die Erde fest, so wie es sich für uns anfühlt. Schau auf die orange Linie von Mars. Sie geht vorwärts, wird langsamer, macht eine Schleife rückwärts und geht dann wieder vorwärts!",
+					"standard": "Jetzt halten wir die Erde fest, so wie es sich anfühlt, auf ihr zu stehen, und lassen die Zeit mit einer Woche pro Sekunde laufen. Beobachte die orange Spur von Mars: Er zieht weiter, wird langsamer, kehrt in einer Schleife um und zieht dann weiter. Genau das sahen die Menschen von Dezember 2024 bis Februar 2025 am Himmel.",
+					"advanced": "Jetzt ist das Bezugssystem das der Erde (nicht rotierend, an den Sternen ausgerichtet). Die Spur von Mars relativ zur Erde zeigt die Schleife, die der Himmel zeigte: stillstehend am 7. Dezember 2024, rückläufig bis zum 24. Februar 2025. Auch die Sonne umkreist die Erde in diesem Bezugssystem einmal im Jahr, genau so, wie sie uns erscheint."
+				}
+			},
+			"opposition": {
+				"title": {
+					"simple": "Die Erde überholt Mars",
+					"standard": "16. Januar 2025: Opposition",
+					"advanced": "Opposition, 16. Januar 2025"
+				},
+				"text": {
+					"simple": "Halt! An diesem Tag standen Erde, Sonne und Mars in einer Linie. Mars war hell und die ganze Nacht gut zu sehen. Gerade sieht es so aus, als ob er rückwärts läuft. Schau auf die kleine Karte, um zu sehen, warum.",
+					"standard": "Die Zeit steht am Tag der Opposition: Die Erde steht genau zwischen Sonne und Mars. Mars ist am hellsten und mitten in seiner Rückwärtsschleife. Die kleine Karte neben der Szene zeigt denselben Augenblick von oberhalb der Sonne. Siehst du, warum Mars rückwärts zu laufen scheint?",
+					"advanced": "In der Opposition steht die Erde zwischen Sonne und Mars, und Mars befindet sich in der Mitte seines rückläufigen Bogens. Die größte Annäherung war vier Tage vorher, mit 96 Millionen km. Die kleine Karte zeigt denselben Augenblick heliozentrisch: Unsere Sichtlinie zu Mars schwenkt rückwärts, weil die Erde auf ihrer Bahn schneller ist."
+				}
+			},
+			"epicycles": {
+				"title": {
+					"simple": "Kreise auf Kreisen",
+					"standard": "Die alte Antwort: Kreise auf Kreisen",
+					"advanced": "Die Epizykel des Ptolemäus"
+				},
+				"text": {
+					"simple": "Früher glaubten die Menschen, dass sich alles um die Erde dreht. Um die Schleifen zu erklären, sagten sie: Die Planeten laufen auf kleinen Kreisen, die auf großen Kreisen sitzen. Das klappte recht gut, war aber sehr kompliziert.",
+					"standard": "Steht die Erde still, zieht jeder Planet Schleifen, und die Sonne umkreist uns einmal im Jahr. Um 150 n. Chr. erklärte Ptolemäus die Schleifen mit Kreisen, die auf Kreisen laufen: Epizykeln. Sein Modell sagte die Planeten gut genug voraus, um 1400 Jahre lang benutzt zu werden, brauchte aber immer mehr Kreise, um genau zu bleiben.",
+					"advanced": "Bei feststehender Erde zeichnen Merkur und Venus Schleifenrosetten, und Mars zieht bei jeder Opposition eine Schleife. Der Almagest des Ptolemäus (um 150 n. Chr.) bildete das nach: jeder Planet auf einem Epizykel, dessen Mittelpunkt auf einem Deferenten um die Erde läuft, dazu Äquanten. Das war genau genug, um 1400 Jahre zu überdauern, konnte aber nicht erklären, warum die Schleifen von Merkur und Venus an die Sonne gebunden bleiben."
+				}
+			},
+			"copernicus": {
+				"title": {
+					"simple": "Die Sonne in die Mitte",
+					"standard": "Kopernikus: die Sonne in der Mitte",
+					"advanced": "Das heliozentrische Modell"
+				},
+				"text": {
+					"simple": "Jetzt setzen wir die Sonne wieder in die Mitte und schauen uns dieselben Monate an. Keine Schleifen mehr! Die Erde läuft auf der Innenbahn und ist schneller. Wenn sie Mars überholt, sieht es nur so aus, als ob Mars rückwärts läuft.",
+					"standard": "Zurück zur Sonne in der Mitte, dieselben Monate noch einmal. Die Schleifen sind weg: Jeder Planet kreist einfach um die Sonne. Die Erde ist auf der Innenbahn schneller und überholt Mars, und während sie vorbeizieht, scheint Mars zurückzufallen, wie ein langsameres Auto, das du auf der Autobahn überholst. Nikolaus Kopernikus veröffentlichte diese Idee 1543.",
+					"advanced": "Derselbe Zeitraum, heliozentrisch. Die rückläufige Bewegung ist ein Projektionseffekt: Die Erde mit der kürzeren und schnelleren Bahn überholt Mars, und die Sichtlinie zwischen beiden schwenkt vor den Sternen rückwärts. Kopernikus (1543) leitete genau daraus die Reihenfolge der Planeten und ihre relativen Abstände ab. Aristarch von Samos hatte schon um 270 v. Chr. ein Sonnensystem mit der Sonne im Zentrum vorgeschlagen."
+				}
+			},
+			"galileo": {
+				"title": {
+					"simple": "Galileis Entdeckung",
+					"standard": "1610: Galileis Fernrohr",
+					"advanced": "1610: Belege aus dem Fernrohr"
+				},
+				"text": {
+					"simple": "1610 schaute Galileo Galilei mit seinem neuen Fernrohr auf Jupiter. Er sah vier kleine Monde, die um ihn kreisten. Also dreht sich nicht alles um die Erde! Das half den Menschen, der neuen Idee zu glauben.",
+					"standard": "Wir sind zurück im Januar 1610. Galileo Galilei richtete sein neues Fernrohr auf Jupiter und fand vier Monde, die ihn umkreisen: der Beweis, dass sich nicht alles um die Erde dreht. Er sah auch, dass die Venus alle Phasen zeigt, wie unser Mond. Das ist nur möglich, wenn die Venus um die Sonne läuft.",
+					"advanced": "Januar 1610: Galilei entdeckt Io, Europa, Ganymed und Kallisto, ein Miniatursystem mit einem anderen Zentrum als der Erde. Später im selben Jahr beobachtet er den vollständigen Phasenzyklus der Venus, einschließlich der Phasen einer fast vollen Venus, die die Anordnung des Ptolemäus nicht erzeugen kann. Das widerlegte Ptolemäus, aber noch nicht das Mischmodell von Tycho Brahe."
+				}
+			},
+			"settled": {
+				"title": {
+					"simple": "Die Erde bewegt sich wirklich",
+					"standard": "Endlich geklärt",
+					"advanced": "Der Beweis: Aberration und Parallaxe"
+				},
+				"text": {
+					"simple": "Heute wissen wir es ganz sicher: Die Erde kreist einmal im Jahr um die Sonne, mit etwa 30 km in jeder Sekunde. Es dauerte ungefähr 2000 Jahre, bis sich die Menschen ganz sicher waren. Raumsonden nutzen dieses Wissen, um zu anderen Planeten zu fliegen.",
+					"standard": "Die Erde rast mit etwa 30 km pro Sekunde um die Sonne. Der endgültige Beweis kam 1838, als Friedrich Bessel maß, wie ein naher Stern im Lauf des Jahres hin und her rückt: der Blick von einer bewegten Erde aus. Von Aristarchs erster Idee bis zu Bessel vergingen mehr als zweitausend Jahre. Jede Sonde, die wir zum Mars schicken, verlässt sich darauf.",
+					"advanced": "Der direkte Beweis für die Bewegung der Erde kam durch James Bradleys Aberration des Sternlichts (1729) und Friedrich Bessels Parallaxe von 61 Cygni (1838), 0,3 Bogensekunden: die scheinbare Verschiebung der Sterne, während sich die Erde 300 Millionen km quer über ihre Bahn bewegt. Die Bahngeschwindigkeit der Erde beträgt 29,8 km/s. Keplers Ellipsen (1609) und Newtons Gravitation (1687) machten aus dem Bild Physik."
+				}
+			}
+		}
+	},
+	"whereLife": {
+		"title": {
+			"simple": "Gibt es da draußen Leben?",
+			"standard": "Wo könnte es Leben geben?",
+			"advanced": "Wo könnte es Leben geben?"
+		},
+		"summary": {
+			"simple": "Besuche die Orte, an denen Forschende hoffen, Lebewesen zu finden.",
+			"standard": "Erde, Mars und drei Ozeanmonde: die Orte, an denen wir nach Leben suchen.",
+			"advanced": "Flüssiges Wasser, Energie und Chemie: die vielversprechendsten Orte im Sonnensystem für die Suche nach Leben."
+		},
+		"stops": {
+			"earth": {
+				"title": {
+					"simple": "Was braucht das Leben?",
+					"standard": "Was Leben braucht",
+					"advanced": "Die Zutaten des Lebens"
+				},
+				"text": {
+					"simple": "Jedes Lebewesen auf der Erde braucht Wasser. Es braucht auch Energie, zum Beispiel Sonnenlicht oder Wärme, und die richtigen Zutaten. Leben gibt es an erstaunlichen Orten: im Eis, in kochend heißen Quellen und tief im dunklen Meer.",
+					"standard": "Alles Leben, das wir kennen, braucht drei Dinge: flüssiges Wasser, eine Energiequelle und die richtige Chemie, auf Kohlenstoff aufgebaut. Auf der Erde taucht Leben fast überall auf, wo das zusammenkommt: im antarktischen Eis, in kochenden heißen Quellen und an heißen Schloten auf dem dunklen Meeresgrund. Wo sonst im Sonnensystem kommt es zusammen?",
+					"advanced": "Leben, wie wir es kennen, braucht flüssiges Wasser als Lösungsmittel, eine Energiequelle (Licht oder chemische Gefälle) und eine Chemie auf Kohlenstoffbasis mit Elementen wie Stickstoff, Phosphor und Schwefel. Extremophile gedeihen von −20 °C kalten Salzlaugen bis zu Hydrothermalquellen über 120 °C, manche ganz ohne Sonnenlicht. Das weitet die Suche weit über erdähnliche Planeten hinaus."
+				}
+			},
+			"mars": {
+				"title": {
+					"simple": "Mars: früher ein nasser Planet",
+					"standard": "Mars: einst nass",
+					"advanced": "Mars: eine lebensfreundliche Vergangenheit"
+				},
+				"text": {
+					"simple": "Heute ist Mars kalt und trocken. Aber vor langer Zeit gab es dort Flüsse und Seen. Vielleicht lebten dort winzige Lebewesen. Der Rover Perseverance sammelt Steine aus einem alten See, um nach Spuren zu suchen.",
+					"standard": "Heute ist Mars kalt und trocken, und seine Luft ist viel zu dünn, als dass flüssiges Wasser lange bestehen könnte. Aber vor Milliarden Jahren füllten Flüsse hier Seen. Seit 2021 erkundet der Rover Perseverance den Jezero-Krater, einen alten Seeboden, und sammelt Gesteinsproben. Manche zeigen Muster, die auf der Erde oft von Mikroben stammen; sicher sagen kann das nur ein Labor auf der Erde.",
+					"advanced": "Vor etwa 3,5 Milliarden Jahren hatte Mars Flüsse, Deltas und Seen. Perseverance, seit 2021 im Jezero-Krater, hat Proben der alten Seeablagerungen gesammelt; ein 2024 gefundenes Gestein zeigt Mineralmuster, die auf der Erde oft mit Mikroben zusammenhängen, aber auch ohne Leben entstehen könnten. Wassereis überdauert an den Polen und im Boden."
+				}
+			},
+			"europa": {
+				"title": {
+					"simple": "Europa: ein Ozean unter dem Eis",
+					"standard": "Europa: ein Ozean unter Eis",
+					"advanced": "Europa: ein Ozean unter der Oberfläche"
+				},
+				"text": {
+					"simple": "Dieser Mond des Jupiter ist mit Eis bedeckt. Unter dem Eis gibt es einen riesigen Ozean aus Salzwasser, mit mehr Wasser als alle Meere der Erde zusammen! Eine Raumsonde ist schon auf dem Weg dorthin.",
+					"standard": "Europa, einer der großen Jupitermonde, ist von einem viele Kilometer dicken Eispanzer bedeckt. Darunter liegt ein salziger Ozean mit etwa doppelt so viel Wasser wie alle Ozeane der Erde. Die Gezeiten des Jupiter walken den Mond durch und halten ihn innen warm. Die NASA-Sonde Europa Clipper, 2024 gestartet, kommt 2030 an.",
+					"advanced": "Magnetometerdaten der Sonde Galileo verrieten einen leitfähigen, salzigen Ozean unter einer vielleicht 15–25 km dicken Eisschale, mit etwa doppelt so viel Wasser wie die Ozeane der Erde. Die Gezeitenverformung durch Jupiter liefert die Wärme, und der Meeresboden könnte in Kontakt mit Gestein stehen, wie bei Hydrothermalquellen auf der Erde. Europa Clipper (Start 2024) kommt 2030 an."
+				}
+			},
+			"enceladus": {
+				"title": {
+					"simple": "Enceladus: Wasserfontänen",
+					"standard": "Enceladus: Geysire ins All",
+					"advanced": "Enceladus: Proben aus einem Ozean"
+				},
+				"text": {
+					"simple": "Enceladus ist ein kleiner Mond des Saturn. An seinem Südpol schießen Wasserfontänen ins All hinaus! Das Wasser kommt aus einem Ozean, der unter dem Eis versteckt ist.",
+					"standard": "Enceladus ist ein kleiner Saturnmond, nur 500 km groß. Aus Spalten nahe seinem Südpol schießen Geysire Wasser aus einem verborgenen Ozean ins All. Die Sonde Cassini flog mitten hindurch und fand Salz, organische Moleküle und Wasserstoff: genau die Art Chemie, von der Mikroben auf der Erde leben.",
+					"advanced": "Nur 504 km groß und doch geologisch aktiv: Fontänen aus den „Tigerstreifen“-Spalten an seinem Südpol lassen Wasser aus einem globalen Ozean unter der Oberfläche entweichen. Cassini nahm direkt Proben und fand Salze, Silikatkörnchen, die auf Hydrothermalaktivität hindeuten, molekularen Wasserstoff, organische Verbindungen und später Phosphate: fast jede Zutat, die Leben braucht."
+				}
+			},
+			"titan": {
+				"title": {
+					"simple": "Titan: Seen und Regen",
+					"standard": "Titan: ein seltsamer Zwilling der Erde",
+					"advanced": "Titan: eine andere Chemie"
+				},
+				"text": {
+					"simple": "Titan ist der größte Mond des Saturn. Er hat dicke Luft, Wolken, Regen und Seen, genau wie die Erde. Aber dort ist es so kalt, dass der Regen und die Seen nicht aus Wasser sind!",
+					"standard": "Saturns größter Mond hat eine dichte orange Atmosphäre, Wolken, Regen, Flüsse und Seen, wie die Erde. Doch bei −179 °C bestehen Regen und Seen aus flüssigem Methan, nicht aus Wasser. Tief unter der Oberfläche könnte es außerdem einen Wasserozean geben. Eine fliegende Drohne namens Dragonfly soll dort 2034 landen.",
+					"advanced": "Titan hat eine Stickstoffatmosphäre mit 1,5-fachem Erddruck am Boden und einen Methankreislauf mit Wolken, Regen und Kohlenwasserstoffmeeren wie dem Kraken Mare bei −179 °C. In seinen Meeren könnte eine exotische Chemie ablaufen, und unter der Eiskruste liegt vielleicht ein Wasserozean. Die NASA-Drohne Dragonfly soll 2028 starten und 2034 landen."
+				}
+			},
+			"habitable": {
+				"title": {
+					"simple": "Nicht zu heiß, nicht zu kalt",
+					"standard": "Die Goldlöckchen-Zone",
+					"advanced": "Habitable Zone und darüber hinaus"
+				},
+				"text": {
+					"simple": "Die Erde ist genau am richtigen Platz: nicht zu heiß wie die Venus und nicht zu kalt wie der Mars. Aber die Ozeanmonde zeigen, dass sich Leben auch weit weg von der Sonne verstecken könnte, von innen gewärmt.",
+					"standard": "Die Erde kreist in der „Goldlöckchen-Zone“: nicht zu heiß, nicht zu kalt, sodass Wasser auf ihrer Oberfläche flüssig bleiben kann. Venus ist zu heiß, Mars zu kalt. Doch Europa und Enceladus zeigen, dass es Ozeane auch weit weg von der Sonne geben kann, von innen geheizt. Die besten Orte für die Suche nach Leben liegen vielleicht unter dem Eis.",
+					"advanced": "Die klassische habitable Zone, in der Oberflächenwasser flüssig bleiben kann, reicht bei der Sonne je nach Klimamodell etwa von 0,95 bis 1,7 AE. Die Ozeanmonde durchbrechen diese Regel: Gezeitenheizung hält bei 5 und 9,5 AE Wasser unter dem Eis flüssig. Dieselbe Idee leitet die Suche nach Leben bei anderen Sternen."
+				}
+			}
+		}
+	}
+}

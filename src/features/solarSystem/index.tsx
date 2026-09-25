@@ -28,6 +28,9 @@ import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
+import TourCard from "./tours/TourCard"
+import TourMenu from "./tours/TourMenu"
+import TourSync from "./tours/TourSync"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -85,6 +88,7 @@ const SolarSystem = () => {
 			<UrlSync />
 			<IntroController />
 			<SoundDirector />
+			<TourSync />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
@@ -98,6 +102,7 @@ const SolarSystem = () => {
 						<FocusPicker />
 						<FrameMenu />
 						<SkyTonightPickerIcon />
+						<TourMenu />
 					</div>
 					<FrameBadgePanel />
 					<LightSlot
@@ -130,6 +135,7 @@ const SolarSystem = () => {
 				<div className={`${classes.panel} ${classes.info}`}>
 					<SpacecraftInfo fallback={<BodyInfo />} />
 				</div>
+				<TourCard className={`${classes.panel} ${classes.tour}`} />
 				<div className={`${classes.time} ${classes.bottom}`}>
 					<FlightReadout className={classes.panel} />
 					<div className={classes.panel}>

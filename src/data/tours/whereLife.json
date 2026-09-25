@@ -1,0 +1,38 @@
+{
+	"id": "whereLife",
+	"order": 4,
+	"stops": [
+		{
+			"id": "earth",
+			"view": "earth",
+			"scale": "everythingVisible",
+			"time": "now",
+			"speed": "hour",
+			"camera": { "distance": 1.4 },
+			"layers": { "orbits": true, "labels": true, "markers": true }
+		},
+		{ "id": "mars", "view": "mars", "camera": { "distance": 1.3 } },
+		{
+			"id": "europa",
+			"view": "europa",
+			"camera": { "distance": 1.5 }
+		},
+		{
+			"id": "enceladus",
+			"view": "enceladus",
+			"camera": { "distance": 1.5 }
+		},
+		{
+			"id": "titan",
+			"view": "titan",
+			"camera": { "distance": 1.5 }
+		},
+		{
+			"id": "habitable",
+			"view": "sun",
+			"fit": { "au": 2 },
+			"camera": { "elevation": 60 },
+			"select": "earth"
+		}
+	]
+}
