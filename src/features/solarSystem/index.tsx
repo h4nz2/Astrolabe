@@ -3,10 +3,13 @@ import { Group } from "@mantine/core"
 
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
+import { isFrameAnchored } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
 import { BirthdayPanelSlot } from "./birthday/Birthday"
+import FrameBadge from "./frame/FrameBadge"
+import FrameMenu from "./frame/FrameMenu"
 import Scene from "./scene/Scene"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
@@ -46,6 +49,17 @@ const CentreBadgePanel = () => {
 	)
 }
 
+/** The anchored frame's badge (#31), present only while a body is held still. */
+const FrameBadgePanel = () => {
+	const anchored = useSimStore((state) => isFrameAnchored(state))
+	if (!anchored) return null
+	return (
+		<div className={classes.panel}>
+			<FrameBadge />
+		</div>
+	)
+}
+
 /** The solar system page: the 3D scene filling the viewport with the HUD floating above it. */
 const SolarSystem = () => {
 	return (
@@ -57,9 +71,13 @@ const SolarSystem = () => {
 			<BodyHighlight />
 			<CentreMarker />
 			<div className={classes.hud}>
-				<div className={`${classes.panel} ${classes.picker}`}>
-					<OverviewButton />
-					<FocusPicker />
+				<div className={classes.pickerStack}>
+					<div className={`${classes.panel} ${classes.picker}`}>
+						<OverviewButton />
+						<FocusPicker />
+						<FrameMenu />
+					</div>
+					<FrameBadgePanel />
 				</div>
 				<CentreBadgePanel />
 				<div className={classes.toggles}>

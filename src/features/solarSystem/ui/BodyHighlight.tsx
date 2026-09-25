@@ -59,7 +59,9 @@ const BodyHighlight = () => {
 							{t(
 								action === "reframe"
 									? "solarSystem.pick.closer"
-									: "solarSystem.pick.visit",
+									: action === "select"
+										? "solarSystem.pick.follow"
+										: "solarSystem.pick.visit",
 							)}
 						</span>
 					</span>

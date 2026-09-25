@@ -33,8 +33,8 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, ui/)
+src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, trails.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -234,6 +234,7 @@ selectedId: string | null   drives info panels, labels, the URL; never moves the
 view: View                  { kind: "overview" } | { kind: "body", id } | { kind: "point", anchorId, offsetKm }
                             (a point: offsetKm is TRUE km from the anchor, drawn through the scale engine; #15)
 focusId: string             body the view is centred on (the Sun for the overview, a point's anchor)
+frameId: string             body the reference frame holds still (#31): the Sun (Sun-centred) or focusId
 shot: CameraShot | null     { azimuthDeg, elevationDeg, distance } at rest; distance is a multiple of the default framing
 transition, sequence        the running move and the running tour
 panning: boolean            a pan (or its damped glide) is moving the pivot right now
@@ -241,8 +242,10 @@ viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
 Actions: `select`, `setFocus` (click: select + focus), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
-(the way out), `skip`, and sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
-request carries a partial `shot`, `durationMs` and a `profile`. Invalid views and unknown bodies are ignored.
+(the way out), `skip`, `anchorFrame(id, request?)` / `releaseFrame()` (#31), and sequences (`playSequence`, `goToStep`,
+`nextStep`, `resumeSequence`, `stopSequence`). A request carries a partial `shot`, `durationMs`, a `profile` and a
+`fit` region (`{ km, around }`: frame a sphere of `km` TRUE km around the centre, drawn as a distance from body
+`around` is; overrides the shot's distance). Invalid views and unknown bodies are ignored.
 Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
 Director (`camera/director.ts`, unit-tested frame by frame):
@@ -278,6 +281,45 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
   `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
 - Building on it: #16 clicks call `setFocus` (see Picking); #31 anchors the frame to `focusId` (a point's anchor).
+
+### Anchored reference frame (`src/sim/referenceFrame.ts`, `features/solarSystem/frame/`; #31)
+
+"Hold Earth still": everything is drawn relative to a body, which stays fixed on screen, and the planets' paths
+become the sky's motions (the Sun's yearly circle, Mercury's and Venus's flowers, Mars's retrograde loop).
+
+- **Model.** `frameId` in the navigation slice: the Sun (Sun-centred, the default) or the focus. An anchored frame
+  follows the focus (centring Mars holds Mars still); the overview, `reset()` (home button, Escape) and
+  `releaseFrame()` return to the Sun. `anchorFrame(id, request)` anchors and centres on `id` (a point already near it
+  stays). The frame is non-rotating: its axes stay fixed to the stars, like the sky.
+- **Drawing (re-rooting).** The scale engine keeps directions true only from parent to child, so an anchored frame
+  re-roots the one rule at the anchor's top-level body P (the root's child it belongs to; a moon's planet): P stays
+  where it is drawn, every other top-level body goes to `P + framedOffset(true(body) - true(P))` (`orbitDistance`
+  in root radii), moons ride along. Every direction seen from P is its true sky direction in every preset; the Sun
+  lands exactly where it was; at true scale nothing changes. `applyReferenceFrame` runs inside `updateSimFrame` /
+  `setSimFrameScale` from `SimFrame.frameBlend` (anchors + weights), so everything drawn (meshes, markers, labels,
+  framing) follows without knowing about frames. Lighting stays in true km, unaffected.
+- **Blend.** `frame/ReferenceFrameSync.tsx` (useFrame -1.5, before SimClock) eases `frameBlend` to the store's frame
+  over `FRAME_BLEND_MS` (1.2 s, cross-fading two anchors); the first frame lands at once (deep links).
+  `anchoredWeight` / `anchorWeight` read it: orbit lines around the Sun (and their names) fade out as it rises.
+- **Camera.** Through the director only: a `fit` request frames the preset's region; a pan while anchored lands back
+  on the body held still or becomes a point anchored to it (never a new frame, never the Sun's neighbourhood).
+- **Clicks** (#16's `scene/picking.ts`): while a body is held still, a click on another body selects it
+  (`bodyClickAction` "select": its trail brightens, the badge reads its motion) instead of flying there, and a click
+  on empty space only deselects; the picker and "Hold ... still" move the frame on purpose, the badge, the home button
+  and Escape leave it.
+- **Trails** (`frame/trails.ts`, `frame/Trails.tsx`): one line per top-level body (the Sun and the planets) but P,
+  relative to P, as a pure function of time: the window `trailWindow(jd, sinceJD)` (the last `TRAIL_LENGTH_DAYS`,
+  two years; from `sinceJD` after "Restart the trails", `src/store/trails.ts`) sampled on whole Julian days plus the
+  exact current position as the head. Slid incrementally, recomputed after a jump; runs backwards; the tail fades,
+  the selected or hovered body's trail is brighter. Samples are TRUE offsets drawn with `framedOffset`.
+- **HUD.** `frame/FrameMenu.tsx` in the picker panel always names the frame ("Sun-centred", "Seen from Earth") and
+  offers the presets (`frame/presets.ts`: Sun-centred; Seen from Earth: the planets = Earth, Mars selected, top-down
+  fit of 2.7 AU, 1 month/s; Seen from Earth: the Moon = Earth, Moon selected, Moon's orbit, 1 day/s) and "Hold
+  <focus> still". `frame/FrameBadge.tsx` (top centre while anchored) names the frame, explains it, reads the sky
+  from the anchor (`frame/sky.ts`: forwards / stationary / retrograde from the ecliptic longitude rate, or the phase
+  of a body of the same family) beside a map of the same moment from above the Sun (`frame/inset.ts`, true
+  proportions, line of sight) or the phase disc, and holds "Back to Sun-centred" and "Restart the trails".
+  Strings: `solarSystem.frame.*`.
 
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
@@ -363,7 +405,7 @@ React UI subscribes with selectors, and reads the clock only through `useThrottl
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
 Scale presets). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
-off by default, as `orbitNames=true` while on. Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
+off by default, as `orbitNames=true` while on; `frame=<id>` while a body is held still (#31). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
@@ -388,6 +430,8 @@ export interface SimFrame {
 	spinJD: number // spin time (see Rotation); written by SpinClock only
 	scale: ScaleSettings // change with setSimFrameScale only
 	scaleVersion: number // bumps on scale change; cache scale-derived geometry on it
+	frameBlend: FrameBlend // anchored reference frames and their weights (#31), written by ReferenceFrameSync
+	topIndex: Int32Array // top-level body (the root's child) of every body
 	renderPosition(i: number, out: Vector3): Vector3
 	renderPositionOf(id: string, out: Vector3): Vector3
 	renderRadius(i: number): number
@@ -431,7 +475,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `ScaleTransition`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
+  `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
   `HighlightTracker`, later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
 
 ## Picking: click a body to focus on it (`scene/picking.ts`, `scene/BodyPicking.tsx`; #16)
