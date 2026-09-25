@@ -79,7 +79,6 @@ const SolarSystem = () => {
 						<OverviewButton />
 						<FocusPicker />
 						<FrameMenu />
-						<SpacecraftMenu />
 					</div>
 					<FrameBadgePanel />
 					<LightSlot
@@ -93,7 +92,10 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">
 							<SceneToggles />
-							<LanguageMenu />
+							<Group gap={4} wrap="nowrap">
+								<SpacecraftMenu />
+								<LanguageMenu />
+							</Group>
 						</Group>
 					</div>
 					<div className={classes.panel}>

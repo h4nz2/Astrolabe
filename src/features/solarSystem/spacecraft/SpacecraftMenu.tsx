@@ -59,7 +59,7 @@ const SpacecraftMenu = () => {
 		<Popover
 			opened={opened}
 			onChange={setOpened}
-			position="bottom-start"
+			position="bottom-end"
 			width={340}
 			shadow="md"
 			radius="md"

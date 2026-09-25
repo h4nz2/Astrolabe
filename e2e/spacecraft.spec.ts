@@ -86,7 +86,9 @@ test("Voyager 1: where it is, when it launched, how long its signal takes", asyn
 	)
 	expect(au).toBeGreaterThan(165)
 	expect(au).toBeLessThan(175)
-	await expect(info.locator("[data-fact=signal]")).toContainText(/2[2-4] hours/)
+	await expect(info.locator("[data-fact=signal]")).toContainText(
+		/2[2-4] h \d+ min/,
+	)
 	// the targets it visited
 	await expect(info).toContainText("Flies past Jupiter")
 	await expect(info).toContainText("Flies past Saturn")
@@ -167,7 +169,7 @@ test("the layer switch hides every craft; names are translated", async ({
 	const info = page.getByRole("region", { name: "Ausgewählte Raumsonde" })
 	await expect(info).toContainText("James-Webb-Weltraumteleskop")
 	await expect(info).toContainText("Raumsonde")
-	await expect(info.locator("[data-fact=signal]")).toContainText("Sekunden")
+	await expect(info.locator("[data-fact=signal]")).toContainText(/^[\d,]+ s/)
 	await expect(page.locator("span[data-craft=jwst]")).toHaveText(
 		"James-Webb-Weltraumteleskop",
 	)

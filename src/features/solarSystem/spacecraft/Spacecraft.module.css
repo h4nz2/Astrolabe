@@ -8,20 +8,78 @@ span.label {
 	letter-spacing: 0.03em;
 }
 
-/* the info panel (in place of the body info) */
+/* the info panel (in place of the body info, in the same style) */
 .panel {
-	max-width: 22rem;
+	width: min(26rem, 100%);
+	font-size: var(--mantine-font-size-sm);
+}
+
+.header {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.25rem;
+}
+
+.title {
+	flex: 1;
+	min-width: 0;
 }
 
 .name {
+	margin: 0;
+	font-size: var(--mantine-font-size-xl);
+	font-weight: 700;
+	line-height: 1.2;
 	color: #7fe3f7;
+}
+
+.tagline {
+	margin: 0;
+	color: var(--mantine-color-gray-4);
+}
+
+.kind {
+	color: #7fe3f7;
+	font-weight: 600;
+}
+
+.facts {
+	margin: 0.5rem 0 0;
+	display: grid;
+	gap: 0.375rem;
+}
+
+.fact {
+	display: grid;
+	grid-template-columns: 7.5rem minmax(0, 1fr);
+	column-gap: 0.75rem;
+	align-items: baseline;
+}
+
+.factLabel {
+	color: var(--mantine-color-dimmed);
+	font-size: var(--mantine-font-size-xs);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.factValue {
+	margin: 0;
+	color: var(--mantine-color-gray-0);
+	font-variant-numeric: tabular-nums;
+}
+
+.factDetail {
+	display: block;
+	color: var(--mantine-color-dimmed);
+	font-size: var(--mantine-font-size-xs);
 }
 
 .status {
 	display: flex;
 	align-items: center;
 	gap: 0.4rem;
-	margin: 0 0 0.375rem;
+	margin: 0.375rem 0 0;
 	font-weight: 600;
 }
 

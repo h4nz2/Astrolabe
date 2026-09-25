@@ -35,7 +35,6 @@ import { craftFacts, showCraft, showEvent } from "./facts"
 import { formatDuration } from "../light/lightTravel"
 import { eventLabel } from "./text"
 
-import infoClasses from "../ui/BodyInfo.module.css"
 import classes from "./Spacecraft.module.css"
 
 /** A distance for people: "348,400 km", "25.5 billion km" / "25,5 Milliarden km". */
@@ -49,6 +48,29 @@ export function formatDistance(km: number, i18n: I18n): string {
 		maximumSignificantDigits: 3,
 	}).format(km)
 }
+
+/** One row of the facts: a label, the value, and an optional line under it. */
+const Fact = ({
+	label,
+	id,
+	detail,
+	children,
+}: {
+	label: string
+	id: string
+	detail?: string
+	children: ReactNode
+}) => (
+	<div className={classes.fact}>
+		<dt className={classes.factLabel}>{label}</dt>
+		<dd className={classes.factValue} data-fact={id}>
+			{children}
+			{detail !== undefined && (
+				<span className={classes.factDetail}>{detail}</span>
+			)}
+		</dd>
+	</div>
+)
 
 const asOfJD = isoToJD(`${spacecraftAsOf}T00:00Z`)
 
@@ -146,70 +168,64 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 
 	return (
 		<section
-			className={`${infoClasses.root} ${classes.panel}`}
+			className={classes.panel}
 			aria-label={t("solarSystem.spacecraft.panel")}
 			data-craft={craft.id}
 		>
-			<header className={infoClasses.title}>
-				<span className={`${infoClasses.name} ${classes.name}`}>
-					{text.name}
-				</span>
-				<span className={infoClasses.kind}>
-					{t("solarSystem.spacecraft.kind")}
-				</span>
+			<header className={classes.header}>
+				<div className={classes.title}>
+					<h2 className={classes.name}>{text.name}</h2>
+					<p className={classes.tagline}>
+						<span className={classes.kind}>
+							{t("solarSystem.spacecraft.kind")}
+						</span>
+						{" · "}
+						{text.tagline}
+					</p>
+				</div>
 				<CloseButton
 					size="sm"
-					ml="auto"
 					aria-label={t("solarSystem.spacecraft.close")}
 					onClick={() => useSpacecraftStore.getState().selectCraft(null)}
 				/>
 			</header>
-			<p className={infoClasses.tagline}>{text.tagline}</p>
 			<p className={classes.status} data-phase={phase}>
 				{status}
 			</p>
-			<dl className={infoClasses.facts}>
-				<dt className={infoClasses.label}>
-					{t("solarSystem.spacecraft.launched")}
-				</dt>
-				<dd className={infoClasses.value}>{day(craft.launch)}</dd>
+			<dl className={classes.facts}>
+				<Fact label={t("solarSystem.spacecraft.launched")} id="launch">
+					{day(craft.launch)}
+				</Fact>
 				{known && (
 					<>
-						<dt className={infoClasses.label}>
-							{t("solarSystem.spacecraft.distanceSun")}
-						</dt>
-						<dd className={infoClasses.value} data-fact="sun">
+						<Fact
+							label={t("solarSystem.spacecraft.distanceSun")}
+							id="sun"
+							detail={t("units.au", {
+								value: i18n.significant(kmToAu(facts.sunDistanceKm)),
+							})}
+						>
 							{formatDistance(facts.sunDistanceKm, i18n)}
-							<span className={infoClasses.secondary}>
-								{t("units.au", {
-									value: i18n.significant(kmToAu(facts.sunDistanceKm)),
-								})}
-							</span>
-						</dd>
-						<dt className={infoClasses.label}>
-							{t("solarSystem.spacecraft.distanceEarth")}
-						</dt>
-						<dd className={infoClasses.value} data-fact="earth">
+						</Fact>
+						<Fact label={t("solarSystem.spacecraft.distanceEarth")} id="earth">
 							{formatDistance(facts.earthDistanceKm, i18n)}
-						</dd>
-						<dt className={infoClasses.label}>
-							{t("solarSystem.spacecraft.signal")}
-						</dt>
-						<dd className={infoClasses.value} data-fact="signal">
+						</Fact>
+						<Fact
+							label={t("solarSystem.spacecraft.signal")}
+							id="signal"
+							detail={t("solarSystem.spacecraft.signalNote")}
+						>
 							{formatDuration(facts.signalSeconds, i18n)}
-							<span className={infoClasses.secondary}>
-								{t("solarSystem.spacecraft.signalNote")}
-							</span>
-						</dd>
-						<dt className={infoClasses.label}>
-							{t("solarSystem.spacecraft.speed", {
+						</Fact>
+						<Fact
+							label={t("solarSystem.spacecraft.speed", {
 								centreId: facts.anchorId,
 								centre: bodyName(facts.anchorId),
 							})}
-						</dt>
-						<dd className={infoClasses.value} data-fact="speed">
+							id="speed"
+						>
 							{i18n.quantity(facts.speedKmS, "kilometer-per-second")}
-						</dd>
+						</Fact>
 					</>
 				)}
 			</dl>
