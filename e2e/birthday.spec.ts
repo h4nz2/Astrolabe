@@ -128,10 +128,21 @@ test("travels to the next birthday on Mars and saves a picture", async ({
 		page.getByRole("button", { name: "Pause", pressed: true }),
 	).toBeVisible()
 
-	const download = page.waitForEvent("download")
+	// the picture is the postcard of the view (#33), with the ages and without the birth date
 	await panel(page).getByRole("button", { name: "Save as picture" }).click()
+	const postcard = page.getByRole("dialog", {
+		name: "Your postcard from space",
+	})
+	await expect(postcard).toContainText("your birthday stays private")
+	await expect(postcard.getByTestId("postcard-image")).toBeVisible({
+		timeout: 20_000,
+	})
+	const download = page.waitForEvent("download")
+	await postcard.getByRole("button", { name: "Save picture" }).click()
 	const file = await download
 	expect(file.suggestedFilename()).toBe("my-age-on-the-planets.png")
+	await postcard.getByRole("button", { name: "Close" }).click()
+	await expect(postcard).toBeHidden()
 
 	// closing keeps the birthday in memory for this visit
 	await panel(page).getByRole("button", { name: "Close" }).click()

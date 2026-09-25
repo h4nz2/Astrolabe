@@ -470,12 +470,11 @@
 				"note@advanced": "Deine Masse bleibt überall gleich; nur die Schwerkraft ändert sich und damit, was eine Waage anzeigt."
 			},
 			"share": "Als Bild speichern",
-			"shareHint": "Erstellt ein Bild deiner Alter auf diesem Gerät. Nichts wird hochgeladen.",
+			"shareHint": "Macht auf diesem Gerät ein Bild der Planeten auf dem Bildschirm, mit deinem Alter auf jedem Planeten darunter. Nichts wird hochgeladen.",
 			"card": {
 				"title": "Wie alt bin ich auf den anderen Planeten?",
 				"date": "Am {date}",
 				"distance": "Ich bin {distance} km um die Sonne gereist.",
-				"footer": "Astrolabe – unser Sonnensystem",
 				"fileName": "mein-alter-auf-den-planeten"
 			}
 		},
@@ -799,6 +798,50 @@
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} und {c}"
 			}
+		},
+		"postcard": {
+			"take": "Foto machen",
+			"takeHint": "Mach ein Bild von dem, was du siehst – zum Speichern oder Teilen",
+			"takeHint@simple": "Mach ein Bild von dem, was du siehst",
+			"title": "Deine Postkarte aus dem All",
+			"close": "Schließen",
+			"preview": "Bild: {title}",
+			"caption": "Bildunterschrift",
+			"captionPlaceholder": "Schreib etwas zu diesem Bild",
+			"names": "Namen im Bild",
+			"link": "QR-Code, der diese Ansicht öffnet",
+			"link@simple": "Code, der diese Ansicht öffnet",
+			"download": "Bild speichern",
+			"copy": "Bild kopieren",
+			"share": "Teilen …",
+			"copyLink": "Link kopieren",
+			"copied": "Bild kopiert. Du kannst es überall einfügen.",
+			"linkCopied": "Link kopiert.",
+			"copyFailed": "Dieser Browser erlaubt das Kopieren nicht. Speichere das Bild stattdessen.",
+			"shareFailed": "Teilen hat nicht geklappt. Speichere das Bild stattdessen.",
+			"privacy": "Das Bild entsteht auf diesem Gerät. Nichts wird hochgeladen.",
+			"privacy@simple": "Das Bild entsteht hier auf deinem Gerät. Nichts wird irgendwohin geschickt.",
+			"privacyBirthday": "Das Datum fehlt absichtlich, damit dein Geburtstag privat bleibt.",
+			"overview": "Unser Sonnensystem",
+			"overviewCaption": "Die Sonne und ihre acht Planeten",
+			"birthdayCaption": "Wo die Planeten am Tag meiner Geburt standen",
+			"scan": "Scannen, um diese Ansicht zu öffnen",
+			"scan@simple": "Scann mich und schau selbst nach",
+			"scaleNote": {
+				"trueScale": "Maßstabsgetreu: echte Größen und echte Abstände.",
+				"trueScale@simple": "Alles ist hier so groß und so weit voneinander entfernt wie in echt.",
+				"textbook": "Nicht maßstabsgetreu: Die Planeten sind viel näher beieinander gezeichnet, als sie sind.",
+				"textbook@simple": "Nicht wie in echt: In Wirklichkeit sind die Planeten viel weiter voneinander entfernt.",
+				"textbook@advanced": "Nicht maßstabsgetreu: Größen im richtigen Verhältnis, Abstände gestaucht.",
+				"bigPlanets": "Nicht maßstabsgetreu: Die Himmelskörper sind viel größer gezeichnet, als sie sind.",
+				"bigPlanets@simple": "Nicht wie in echt: In Wirklichkeit sind die Planeten viel kleiner.",
+				"bigPlanets@advanced": "Nicht maßstabsgetreu: Abstände echt, Größen übertrieben.",
+				"everythingVisible": "Nicht maßstabsgetreu: Die Himmelskörper sind größer und näher beieinander gezeichnet, als sie sind.",
+				"everythingVisible@simple": "Nicht wie in echt: In Wirklichkeit sind die Planeten viel kleiner und viel weiter voneinander entfernt.",
+				"everythingVisible@advanced": "Nicht maßstabsgetreu: Größen übertrieben, Abstände gestaucht."
+			},
+			"compareTitle": "{a} und {b} im Vergleich",
+			"compareScale": "Echte Größenverhältnisse: Alle Himmelskörper sind im gleichen Maßstab gezeichnet."
 		},
 		"tours": {
 			"menu": "Geführte Touren",

@@ -470,12 +470,11 @@
 				"note@advanced": "Tu masa es la misma en todas partes; solo cambia la atracción de la gravedad y, con ella, lo que marca una báscula."
 			},
 			"share": "Guardar como imagen",
-			"shareHint": "Crea una imagen de tus edades en este dispositivo. No se sube nada.",
+			"shareHint": "Crea en este dispositivo una imagen de los planetas en pantalla, con tus edades debajo. No se sube nada.",
 			"card": {
 				"title": "¿Cuántos años tengo en los otros planetas?",
 				"date": "El {date}",
 				"distance": "He viajado {distance} km alrededor del Sol.",
-				"footer": "Astrolabe – nuestro sistema solar",
 				"fileName": "mi-edad-en-los-planetas"
 			}
 		},
@@ -798,6 +797,50 @@
 				"join2@simple": "{a} y {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} y {c}"
+			}
+		},
+		"postcard": {
+			"take": "Hacer una foto",
+			"takeHint": "Haz una foto de lo que ves para guardarla o compartirla",
+			"takeHint@simple": "Haz una foto de lo que ves",
+			"title": "Tu postal desde el espacio",
+			"close": "Cerrar",
+			"preview": "Imagen: {title}",
+			"caption": "Pie de foto",
+			"captionPlaceholder": "Escribe algo sobre esta imagen",
+			"names": "Nombres en la imagen",
+			"link": "Código QR que abre esta vista",
+			"link@simple": "Código para abrir esta vista",
+			"download": "Guardar imagen",
+			"copy": "Copiar imagen",
+			"share": "Compartir…",
+			"copyLink": "Copiar enlace",
+			"copied": "Imagen copiada. Puedes pegarla donde quieras.",
+			"linkCopied": "Enlace copiado.",
+			"copyFailed": "Este navegador no permite copiar. Guarda la imagen en su lugar.",
+			"shareFailed": "No se pudo compartir. Guarda la imagen en su lugar.",
+			"privacy": "La imagen se crea en este dispositivo. No se sube nada.",
+			"privacy@simple": "La imagen se hace aquí mismo, en tu dispositivo. No se envía a ninguna parte.",
+			"privacyBirthday": "La fecha no aparece, para que tu cumpleaños siga siendo privado.",
+			"overview": "Nuestro sistema solar",
+			"overviewCaption": "El Sol y sus ocho planetas",
+			"birthdayCaption": "Dónde estaban los planetas el día en que nací",
+			"scan": "Escanea para abrir esta vista",
+			"scan@simple": "Escanéame y descúbrelo por tu cuenta",
+			"compareTitle": "{a} y {b}, lado a lado",
+			"compareScale": "Tamaños relativos reales: todos los cuerpos están dibujados a la misma escala.",
+			"scaleNote": {
+				"trueScale": "Escala real: tamaños reales y distancias reales.",
+				"trueScale@simple": "Aquí todo es tan grande y está tan lejos como en la realidad.",
+				"textbook": "No está a escala: los planetas aparecen mucho más juntos de lo que están.",
+				"textbook@simple": "No es como en la realidad: los planetas están mucho más lejos unos de otros.",
+				"textbook@advanced": "No está a escala: tamaños proporcionales entre sí, distancias comprimidas.",
+				"bigPlanets": "No está a escala: los cuerpos aparecen mucho más grandes de lo que son.",
+				"bigPlanets@simple": "No es como en la realidad: los planetas son mucho más pequeños.",
+				"bigPlanets@advanced": "No está a escala: distancias reales, tamaños exagerados.",
+				"everythingVisible": "No está a escala: los cuerpos aparecen más grandes y más juntos de lo que son.",
+				"everythingVisible@simple": "No es como en la realidad: los planetas son mucho más pequeños y están mucho más lejos unos de otros.",
+				"everythingVisible@advanced": "No está a escala: tamaños exagerados y distancias comprimidas."
 			}
 		},
 		"tours": {
