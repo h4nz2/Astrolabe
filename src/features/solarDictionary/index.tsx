@@ -7,7 +7,8 @@ import {
 	type Textures,
 } from "@/data/solarDictionary"
 import { bodyById } from "@/data"
-import { LanguageMenu, useI18n } from "@/i18n"
+import { useI18n } from "@/i18n"
+import { CornerBar } from "@/features/help/HelpButton"
 import { bodyName } from "@/i18n/bodies"
 import Loader from "@/primitives/Loader"
 import Navbar from "./components/Navbar"
@@ -107,7 +108,7 @@ const SolarDictionary: FC<SolarDictionaryProps> = () => {
 
 	return (
 		<Box w="100%" h="100vh">
-			<LanguageMenu placement="corner" />
+			<CornerBar />
 			<Navbar
 				activeEntityIndex={activeEntityIndex}
 				activeTexture={activeTexture}
