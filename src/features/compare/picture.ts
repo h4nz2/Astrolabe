@@ -27,7 +27,7 @@ import {
 	layoutStage,
 	stageBody,
 } from "./layout"
-import { drawOrder } from "./selection"
+import { drawOrder, presetFor } from "./selection"
 import { ringStops } from "./Stage"
 
 export const PICTURE_WIDTH = 1920
@@ -267,7 +267,9 @@ export async function takeComparisonPostcard(
 	}
 	const shot = await drawComparison(ids, name, size)
 	const [a, b] = [getBody(ids[0]), getBody(ids[1])]
-	const facts = pairFacts(a, b, i18n, { jd, live }).map(
+	// an idea's postcard leads with the comparison that makes its point (#40)
+	const lead = presetFor(ids)?.lead
+	const facts = pairFacts(a, b, i18n, { jd, live, lead }).map(
 		(fact) => fact.comparison,
 	)
 	const hideDate = hidesTimeInUrl(useBirthdayStore.getState())

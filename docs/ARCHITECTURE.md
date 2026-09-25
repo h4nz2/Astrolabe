@@ -13,7 +13,7 @@ it, and if it must change, change it in the same change set.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
 - Data: static JSON validated with zod at build time. No GraphQL, no server.
 - Tests: Vitest (`src/**/*.test.ts`, `scripts/**/*.test.ts`); Playwright smoke tests (`e2e/`, against `vite preview`).
-  `astronomy-engine` is a test-only reference ephemeris.
+  `astronomy-engine` is the tests' reference ephemeris and, since #36, the observing astronomy of Sky tonight.
 - ESLint 10 flat config + typescript-eslint + react-hooks; Prettier (tabs, no semicolons).
 - Hosting: static `dist/`, `VITE_BASE` sets Vite `base`. CI (GitHub Actions): typecheck, lint, test, build, e2e, deploy
   to GitHub Pages. Cloudflare Workers also serves `dist/` (`wrangler.jsonc`, SPA fallback, `npx wrangler deploy`;
@@ -36,8 +36,11 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, credits.json (image sources + licences, #37), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, presentation.ts, postcard.ts, sound.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, ui/),
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
+                             presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, simSearch.ts (URL schema),
+                             urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, ui/,
+                             birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
@@ -585,7 +588,8 @@ are left out; a link without a switch turns it on. `simSearch.ts` drops invalid 
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
 only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
-`?birthday=true` opens the birthday panel; `?hunt=` the scavenger hunt (see Scavenger hunt). `paused=true` (written
+`?birthday=true` opens the birthday panel, `?sky=true` the sky tonight panel (#36; never written back); `?hunt=` the
+scavenger hunt (see Scavenger hunt). `paused=true` (written
 while paused, so a prepared moment opens standing still), `present=true` and `contrast=high` belong to #29 (see
 Presentation; `presentationSearch` in `src/store/presentation.ts`, merged into the same write).
 
@@ -865,8 +869,14 @@ whole comparison is its link: `/compare?bodies=earth,jupiter,saturn&t=<jd>` (`se
 - **The list** (`selection.ts`, pure): `bodies[0]` and `[1]` are the pair the facts talk about, further ids are drawn
   alongside (at most `MAX_COMPARE` = 10). A missing or short list is completed (`completeBodies`, `defaultPartner`:
   Earth for the Sun and planets, the Sun for Earth, our Moon for moons, Earth for the Moon) and written back to the
-  URL. Pickers reuse the focus picker's `focusOptions`; ideas are `COMPARE_PRESETS` (`compare.presets.<id>`). A click
-  on a drawn body outside the pair `promote`s it into the pair.
+  URL. Pickers reuse the focus picker's `focusOptions`. A click on a drawn body outside the pair `promote`s it into
+  the pair.
+- **Ideas** (#40) are pure data, `COMPARE_PRESETS`: a body list (its link), a group (`COMPARE_PRESET_GROUPS`: sizes,
+  moons, surprises; `compare.ideaGroups.<group>`), and the fact that makes its point (`lead`, a `PairFactKey`). Text:
+  title `compare.presets.<id>`, one-line teaser `compare.teasers.<id>` (every locale and reading level). The page
+  recognises an idea by its **set** of bodies (`presetFor`: swapping or promoting keeps it, adding or removing a body
+  leaves it) and then names it above the facts and passes `lead` to `pairFacts` (also for the postcard). New idea =
+  one entry + its strings; `ideas.test.ts` checks each teaser's claims against the data.
 - **The drawing** (`layout.ts` pure, `Stage.tsx`): one scale (px per km) for every body, the largest at which the
   tallest body fits the height and every slot (at least the label's width) fits the width; if even the narrowest slots
   do not fit, the row scrolls sideways. Order of the system (`drawOrder`: the Sun, each planet with its moons). Each
@@ -1002,6 +1012,52 @@ rule decides the defaults: **off until asked, never a surprise**.
   while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings);
   `BodyRecording` in the body card under the facts (Listen/Stop, the explanation and the credit with the licence
   linked to its source, always visible so nothing depends on hearing it).
+
+## Sky tonight (`features/solarSystem/skyTonight`, `src/store/skyTonight.ts`; #36)
+
+"What is in the sky tonight": the Moon and the planets a person standing outside can see tonight from a place, when,
+where (compass point, height in words and in fists at arm's length), how bright, with what (eyes, binoculars,
+telescope), why the hidden ones are hidden, and the geometry behind each sighting.
+
+- **Astronomy: astronomy-engine at runtime** (a dependency since #36, loaded only in the panel's lazy chunk, about
+  39 kB gzip with the city list). The simulation's Kepler model draws the planets within 0.1 deg of it in 2025-2030
+  (`sky.test.ts` checks the angle from the Sun agrees within 0.5 deg, so "Show me in space" draws what the list says),
+  but leaves the Moon up to 2.4 deg out (no evection or variation): a quarter of an hour on a moonrise. Observing needs
+  more than positions anyway: precession and nutation to the equator of date, the Moon's topocentric parallax,
+  refraction, rise and set searches, twilight and visual magnitudes, all tested in the library. The simulation stays
+  the one model for everything drawn.
+- **Pure core** (`sky.ts`): `skyTonight(place, nowMs)` finds the night going on or the next one (`nightAround`: sunset
+  to sunrise; the next 24 h in a polar night; nothing under the midnight sun), samples it every 10 min, and per body
+  takes the longest stretch in which it is at least 5 deg up (the Moon 1 deg) while the Sun is low enough for its
+  brightness (`sunLimit`: Venus at -3 deg, Saturn -7, Uranus -12, the Moon at sunset); edges refined to a minute.
+  It returns `from`/`until`, `fromDusk`/`untilDawn`, the position when first seen and at its highest, magnitude,
+  `brightness`, `aid` (eyes to mag 4.5, binoculars to 7.5), elongation and side, or a `reason` (`sunGlare` under 20
+  deg, `twilight` under 50, `brightSky` in a white night, `daytime`), plus the Moon's phase (#31's `Phase`) and the next
+  full and new moon. The Sun's altitude is geometric (sunset -0.833, civil dusk -6), bodies' refracted.
+- **Words** (`text.ts`, pure, `solarSystem.sky.*`): times in the place's time zone rounded to 5 min in the locale's
+  clock; `where` is one ICU select over height and compass point; the youngest readers get one position, the others
+  the highest point too, advanced readers altitude, azimuth and magnitude. `whyCase` picks the explanation: `far`
+  (135 deg and more: opposite the Sun), `evening`/`morning`, `near` (under 45), `moon`.
+- **Places** (`places.ts`): about 310 cities (densely in the shipped languages' countries: CH, DE, AT, CZ, ES, FR;
+  every continent), picked as country, then city; country names from `Intl.DisplayNames`, city names per language
+  in the data (German in the rows, Czech, Spanish and French in `EXONYMS`: Curych, Ginebra, Vienne). `suggestedCity`
+  guesses from the device's time zone (legacy zone names mapped), else the language's region, else London.
+- **Location and privacy.** Children use the app, so: the panel never opens by itself (button, or `?sky=true` from the
+  hero); it asks before it shows anything, offering the time-zone guess as a question to confirm with one tap
+  ("Are you near Zurich?"), the country and city lists, and "Use my device's location", which first explains (the
+  simple level says "ask a grown-up first") and calls the Geolocation API only on a second tap, with low accuracy.
+  A device position is rounded to 0.1 deg (about 10 km) on arrival and named by the nearest listed city. The place lives
+  in `useSkyTonightStore` in memory only: never in the URL, storage or any request (there is no server); "Change place"
+  or closing the page forgets it.
+- **Why, in 3D** (`explain.ts`): `showWhy(id, ms)` holds Earth still (#31's `anchorFrame`, so the Sun and the planet
+  are drawn at their true directions from Earth in every preset), from straight above, fitting the Sun and the planet
+  (the Moon's orbit for the Moon), selects the body and `travelAndStop`s to the moment the list says to look.
+- **UI**: `SkyTonight.tsx` (the launcher, a small panel under the focus picker and the light launcher from 600 px
+  up, an icon in the picker's row on phones, where another row would push the top panels over the planets; and
+  the slot; eager and small) and the lazy `SkyTonightPanel.tsx`, docked at the right like the birthday and hunt panels;
+  opening one closes the others. The launcher is not in the time controls: with the birthday and hunt buttons there
+  they are already as wide as a 1280 px screen allows beside the body card. The Moon's disc is turned round south of
+  the equator. "Now" is the wall clock at opening, not the simulation clock.
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 

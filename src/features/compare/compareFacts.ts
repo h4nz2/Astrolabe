@@ -481,12 +481,15 @@ export interface PairFactsOptions {
 	jd: number
 	/** The moment is the present (the label says "right now", else the date). */
 	live: boolean
+	/** A comparison to put first: the one that makes an idea's point (#40). */
+	lead?: PairFactKey
 }
 
 /**
  * Everything worth saying about `a` beside `b` that applies to them: size,
  * volume, mass, weight, year or orbit, day, the strange calendars, and how
- * far apart they are at `options.jd`.
+ * far apart they are at `options.jd`. `options.lead` comes first, the rest
+ * keep their order.
  */
 export function pairFacts(
 	a: Body,
@@ -495,7 +498,7 @@ export function pairFacts(
 	options: PairFactsOptions,
 ): PairFact[] {
 	if (a.id === b.id) return []
-	return [
+	const facts = [
 		sizeFact(a, b, i18n),
 		volumeFact(a, b, i18n),
 		massFact(a, b, i18n),
@@ -506,4 +509,10 @@ export function pairFacts(
 		dayYearFact(b, i18n),
 		distanceFact(a, b, i18n, options.jd, options.live),
 	].filter((item): item is PairFact => item !== null)
+	const lead = options.lead
+	if (lead === undefined) return facts
+	return [
+		...facts.filter((item) => item.key === lead),
+		...facts.filter((item) => item.key !== lead),
+	]
 }
