@@ -4,8 +4,9 @@
  * on this date"), counts the kilometres crossed while the camera flies, and
  * says how long light, the fastest spacecraft launch ever and a car would take
  * (`flightFacts.ts`). It appears when a flight departs, offers Skip while it
- * runs, and stays after the arrival until the view moves on or it is closed,
- * so a class can read it and a teacher can talk about it.
+ * runs, and stays after the arrival (without the counter) until the view
+ * moves on or it is closed, so a class can read it and a teacher can talk
+ * about it.
  *
  * Reads the flight record (`src/store/flight.ts`), never the camera; the
  * counter and the bar are written straight to the DOM once per animation
@@ -62,6 +63,7 @@ const FlightCard = ({
 
 	// the kilometres crossed, following the camera's own easing
 	useEffect(() => {
+		if (flight.arrived) return
 		let frame = 0
 		let shown = ""
 		const draw = () => {
@@ -118,12 +120,18 @@ const FlightCard = ({
 					</Button>
 				)}
 			</header>
-			<div className={classes.progress} aria-hidden>
-				<div className={classes.track}>
-					<div ref={bar} className={classes.bar} />
+			{!flight.arrived && (
+				<div className={classes.progress} aria-hidden>
+					<div className={classes.track}>
+						<div ref={bar} className={classes.bar} />
+					</div>
+					<span
+						ref={counter}
+						className={classes.counter}
+						data-testid="flight-crossed"
+					/>
 				</div>
-				<span ref={counter} className={classes.counter} />
-			</div>
+			)}
 			<p className={classes.question}>{t("solarSystem.flight.question")}</p>
 			<ul className={classes.times}>
 				{times.map(({ mode, label, time }) => {

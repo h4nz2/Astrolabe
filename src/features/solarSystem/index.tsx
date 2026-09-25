@@ -62,7 +62,6 @@ const SolarSystem = () => {
 					<FocusPicker />
 				</div>
 				<CentreBadgePanel />
-				<FlightReadout className={classes.panel} />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">
@@ -77,9 +76,12 @@ const SolarSystem = () => {
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />
 				</div>
-				<div className={`${classes.panel} ${classes.time}`}>
-					<TimeControls />
-					<SpinControl />
+				<div className={`${classes.time} ${classes.bottom}`}>
+					<FlightReadout className={classes.panel} />
+					<div className={classes.panel}>
+						<TimeControls />
+						<SpinControl />
+					</div>
 				</div>
 			</div>
 		</div>
