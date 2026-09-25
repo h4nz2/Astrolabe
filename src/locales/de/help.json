@@ -293,10 +293,10 @@
 			"how": {
 				"standard": [
 					"Öffne es auf der Startseite oder mit „Mehr dazu im Lexikon“ im Steckbrief einer Welt.",
-					"Wähle eine Welt in der Liste, dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt."
+					"Wähle eine Welt in der Punktreihe oben, dann „Oberfläche“, „Gelände“, „Ozeane“ oder „Wolken“, wo es sie gibt."
 				],
 				"simple": [
-					"Wähl einen Planeten in der Liste.",
+					"Wähl oben in der Punktreihe einen Planeten.",
 					"Probier „Gelände“ und „Wolken“ aus, dann verändert sich das Bild."
 				]
 			}

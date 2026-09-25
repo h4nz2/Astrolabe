@@ -293,10 +293,10 @@
 			"how": {
 				"standard": [
 					"Ábrelo desde la página de inicio o con «Leer más en el diccionario» en la ficha de un mundo.",
-					"Elige un mundo en la lista y luego Superficie, Relieve, Océanos o Nubes, si los tiene."
+					"Elige un mundo en la fila de puntos de arriba y luego Superficie, Relieve, Océanos o Nubes, si los tiene."
 				],
 				"simple": [
-					"Elige un planeta en la lista.",
+					"Elige un planeta en la fila de puntos de arriba.",
 					"Prueba Relieve y Nubes para cambiar el dibujo."
 				]
 			}

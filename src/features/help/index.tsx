@@ -9,7 +9,7 @@
  * see content.ts): adding a feature's entry needs no code. `?q=` is the
  * search, `?topic=` scrolls to an entry, a group, `controls` or `credits`.
  */
-import { useEffect, useMemo, useRef, useState, type MouseEvent } from "react"
+import { useEffect, useMemo, useState, type MouseEvent } from "react"
 import {
 	Button,
 	CloseButton,
@@ -63,6 +63,9 @@ const anchorId = (topic: string) => `help-${topic}`
 
 /** How long the search waits for the typing to pause before it writes `?q=`, ms. */
 const QUERY_WRITE_MS = 250
+
+/** How long after opening `?topic=` the page keeps landing on it while the router settles, ms. */
+const TOPIC_SETTLE_MS = 3000
 
 function scrollToTopic(topic: string, smooth: boolean): boolean {
 	const target = document.getElementById(anchorId(topic))
@@ -280,6 +283,8 @@ const Help = () => {
 				void navigate({
 					search: (previous) => ({ ...previous, q: next }),
 					replace: true,
+					// the reader stays where they are while typing
+					resetScroll: false,
 				}),
 			QUERY_WRITE_MS,
 		)
@@ -297,12 +302,25 @@ const Help = () => {
 	const [highlight, setHighlight] = useState<string | null>(
 		search.topic ?? null,
 	)
-	const scrolled = useRef(false)
 	useEffect(() => {
-		if (scrolled.current || search.topic === undefined) return
-		scrolled.current = true
-		scrollToTopic(search.topic, false)
-	}, [search.topic])
+		if (search.topic === undefined) return
+		const topic = search.topic
+		scrollToTopic(topic, false)
+		// the router scrolls to the top after rendering a navigation (this one,
+		// and the language normalizing the address); land on the topic again
+		// after those, for the page's first moments only
+		const until = performance.now() + TOPIC_SETTLE_MS
+		const unsubscribe = router.subscribe("onRendered", () => {
+			if (performance.now() < until) {
+				requestAnimationFrame(() => scrollToTopic(topic, false))
+			}
+		})
+		const timer = setTimeout(unsubscribe, TOPIC_SETTLE_MS)
+		return () => {
+			clearTimeout(timer)
+			unsubscribe()
+		}
+	}, [search.topic, router])
 
 	const back = () => {
 		if (canGoBack) router.history.back()

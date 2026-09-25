@@ -293,10 +293,10 @@
 			"how": {
 				"standard": [
 					"Open it from the start page, or with “Read more in the dictionary” on a world’s card.",
-					"Pick a world in the list, then Surface, Terrain, Oceans or Clouds where it has them."
+					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them."
 				],
 				"simple": [
-					"Pick a planet in the list.",
+					"Pick a planet in the row of dots at the top.",
 					"Try Terrain and Clouds to change the picture."
 				]
 			}

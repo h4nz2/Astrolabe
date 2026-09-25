@@ -293,10 +293,10 @@
 			"how": {
 				"standard": [
 					"Ouvre-le depuis la page d’accueil, ou avec « En savoir plus dans le dictionnaire » sur la fiche d’un monde.",
-					"Choisis un monde dans la liste, puis Surface, Relief, Océans ou Nuages quand il en a."
+					"Choisis un monde dans la rangée de points en haut, puis Surface, Relief, Océans ou Nuages quand il en a."
 				],
 				"simple": [
-					"Choisis une planète dans la liste.",
+					"Choisis une planète dans la rangée de points en haut.",
 					"Essaie Relief et Nuages pour changer l’image."
 				]
 			}
