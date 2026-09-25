@@ -69,6 +69,13 @@ export const simSearchSchema = z.object({
 	present: layerSwitch,
 	contrast: z.enum(["high"]).optional().catch(undefined),
 	paused: layerSwitch,
+	// the scavenger hunt (#34): `true` opens the chooser, a hunt id or question
+	// ids joined by "." play that hunt (resolveHunt in features/solarSystem/hunt);
+	// kept on every navigation of the page (the route's retainSearchParams)
+	hunt: z
+		.union([z.literal(true), z.string().trim().min(1)])
+		.optional()
+		.catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>
