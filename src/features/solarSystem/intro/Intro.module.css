@@ -1,0 +1,224 @@
+/*
+ * The opening (#30). The slot sits in the HUD grid's open middle row, right
+ * above the bottom panels (SolarSystem.module.css `.intro`), so the caption
+ * never covers the body in the centre of the view or another panel.
+ */
+.slot {
+	display: flex;
+	justify-content: center;
+	min-width: 0;
+	max-width: 100%;
+	pointer-events: none;
+}
+
+/* the caption card: large enough to read from the back of a classroom */
+.card {
+	pointer-events: auto;
+	width: min(40rem, 100%);
+	padding: 0.9rem 1.25rem 0.75rem;
+	border-radius: var(--mantine-radius-lg);
+	background: rgba(8, 10, 16, 0.72);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	text-align: center;
+}
+
+.caption {
+	animation: captionIn 600ms ease-out both;
+}
+
+.title {
+	margin: 0;
+	font-size: clamp(1.3rem, 0.8rem + 1.2vw, 2.1rem);
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--mantine-color-gray-0);
+	text-wrap: balance;
+}
+
+.detail {
+	margin: 0.35rem 0 0;
+	font-size: clamp(1rem, 0.85rem + 0.6vw, 1.35rem);
+	line-height: 1.35;
+	color: var(--mantine-color-gray-3);
+	text-wrap: balance;
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-top: 0.75rem;
+}
+
+.segments {
+	display: flex;
+	gap: 0.3rem;
+	flex: 1;
+	max-width: 14rem;
+}
+
+.segment {
+	position: relative;
+	flex: 1;
+	height: 4px;
+	border-radius: 2px;
+	background: rgba(255, 255, 255, 0.2);
+	overflow: hidden;
+}
+
+.segment::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--mantine-color-orange-5);
+	transform-origin: left center;
+	transform: scaleX(0);
+}
+
+.segment[data-state="done"]::after {
+	transform: scaleX(1);
+}
+
+.segment[data-state="now"]::after {
+	animation: fill linear both;
+	/* the duration is the beat's length, set inline; without one it is simply full */
+	transform: scaleX(1);
+}
+
+.skip {
+	flex: none;
+}
+
+/* the hand-over hints: one line of three items, fading by itself */
+.hints {
+	pointer-events: auto;
+	padding: 0.5rem 1rem;
+	border-radius: var(--mantine-radius-xl);
+	background: rgba(8, 10, 16, 0.72);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+	animation: captionIn 600ms ease-out both;
+	transition: opacity 700ms ease;
+}
+
+.hints[data-leaving] {
+	opacity: 0;
+}
+
+.hintList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.4rem 1.25rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.hint {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: clamp(0.95rem, 0.85rem + 0.35vw, 1.15rem);
+	color: var(--mantine-color-gray-1);
+	white-space: nowrap;
+}
+
+.hint svg {
+	flex: none;
+	color: var(--mantine-color-orange-4);
+}
+
+/* Earth's pulse: over the canvas, under the HUD panels, never catching the pointer */
+.pulseLayer {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.pulse {
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	border-radius: 50%;
+	border: 2px solid rgba(125, 200, 255, 0.95);
+	box-shadow:
+		0 0 0 1px rgba(0, 0, 0, 0.6),
+		0 0 14px rgba(125, 200, 255, 0.45);
+	will-change: transform;
+}
+
+.pulseWave {
+	position: absolute;
+	inset: -2px;
+	border-radius: 50%;
+	border: 2px solid rgba(125, 200, 255, 0.8);
+	animation: wave 2.2s ease-out infinite;
+}
+
+@keyframes wave {
+	from {
+		transform: scale(1);
+		opacity: 0.9;
+	}
+	to {
+		transform: scale(2.4);
+		opacity: 0;
+	}
+}
+
+@keyframes fill {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes captionIn {
+	from {
+		opacity: 0;
+		transform: translateY(0.4rem);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.caption,
+	.hints {
+		animation: none;
+	}
+
+	.hints {
+		transition: none;
+	}
+
+	.pulseWave {
+		animation: none;
+		opacity: 0;
+	}
+}
+
+@media (max-width: 599px) {
+	.card {
+		padding: 0.7rem 0.9rem 0.6rem;
+	}
+
+	.hints {
+		padding: 0.45rem 0.75rem;
+	}
+
+	.hintList {
+		gap: 0.3rem 0.9rem;
+	}
+}
