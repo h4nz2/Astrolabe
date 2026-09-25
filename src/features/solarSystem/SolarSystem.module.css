@@ -99,6 +99,18 @@
 	}
 }
 
+/* the light panel (#27): a button, or the open panel; under the picker, on phones above the body card */
+.light {
+	padding: 0.25rem;
+	min-height: 0;
+	/* what the open panel's scrolling body may take, after its header, tabs and the HUD around it */
+	--light-panel-body-max: calc(100dvh - 27rem);
+}
+
+.light:has([data-light-panel]) {
+	padding: 0.5rem 0.75rem;
+}
+
 .info {
 	grid-area: info;
 	justify-self: start;
@@ -134,7 +146,7 @@
 			"picker"
 			"toggles"
 			"centre"
-			"."
+			"light"
 			"info"
 			"time";
 		gap: 0.5rem;
@@ -157,5 +169,15 @@
 	.info {
 		max-height: 45dvh;
 		overflow-y: auto;
+	}
+
+	.light {
+		grid-area: light;
+		align-self: end;
+		justify-self: start;
+		max-height: 100%;
+		/* the row is what the other panels leave: the open panel scrolls as a whole in it */
+		overflow-y: auto;
+		--light-panel-body-max: 30dvh;
 	}
 }
