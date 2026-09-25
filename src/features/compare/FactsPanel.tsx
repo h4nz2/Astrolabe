@@ -12,6 +12,7 @@ import { useI18n } from "@/i18n"
 import { useBodyText } from "@/i18n/bodies"
 
 import { pairFacts } from "./compareFacts"
+import type { ComparePreset } from "./selection"
 
 import classes from "./Compare.module.css"
 
@@ -23,16 +24,19 @@ export interface FactsPanelProps {
 	more: boolean
 	jd: number
 	live: boolean
+	/** The idea on screen (#40): named with its teaser, its point first. */
+	idea?: ComparePreset
 }
 
-const FactsPanel = ({ a, b, more, jd, live }: FactsPanelProps) => {
+const FactsPanel = ({ a, b, more, jd, live, idea }: FactsPanelProps) => {
 	const i18n = useI18n()
 	const { t } = i18n
 	const textA = useBodyText(a)
 	const textB = useBodyText(b)
 	const facts = useMemo(
-		() => pairFacts(getBody(a), getBody(b), i18n, { jd, live }),
-		[a, b, i18n, jd, live],
+		() =>
+			pairFacts(getBody(a), getBody(b), i18n, { jd, live, lead: idea?.lead }),
+		[a, b, i18n, jd, live, idea],
 	)
 	const stories = [textA, textB]
 		.map((text) => ({ id: text.id, story: text.comparisons[0] }))
@@ -43,6 +47,14 @@ const FactsPanel = ({ a, b, more, jd, live }: FactsPanelProps) => {
 
 	return (
 		<section className={classes.facts} data-testid="compare-facts">
+			{idea !== undefined && (
+				<p className={classes.idea} data-testid="compare-idea">
+					<span className={classes.ideaTitle}>
+						{t(`compare.presets.${idea.id}`)}
+					</span>{" "}
+					{t(`compare.teasers.${idea.id}`)}
+				</p>
+			)}
 			<header className={classes.factsHeader}>
 				<h2 className={classes.factsTitle}>
 					{t("compare.facts.heading", { a: textA.name, b: textB.name })}

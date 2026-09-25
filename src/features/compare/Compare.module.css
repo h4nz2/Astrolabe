@@ -396,3 +396,37 @@ button.slot:focus-visible {
 		height: clamp(200px, 42vh, 380px);
 	}
 }
+
+/* the ideas (#40): a menu of questions, grouped, each with its teaser */
+.ideas {
+	max-height: min(70vh, 36rem);
+	overflow-y: auto;
+}
+
+.ideaName {
+	display: block;
+	font-weight: 600;
+}
+
+.ideaTeaser {
+	display: block;
+	color: var(--mantine-color-dimmed);
+	font-size: var(--mantine-font-size-xs);
+	line-height: 1.35;
+}
+
+/* the idea on screen, above the facts */
+.idea {
+	margin: 0;
+	padding: 0.5rem 0.75rem;
+	border-left: 3px solid var(--mantine-color-orange-6);
+	background: rgb(253 126 20 / 8%);
+	border-radius: 0 var(--mantine-radius-sm) var(--mantine-radius-sm) 0;
+	font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.15rem);
+	line-height: 1.4;
+}
+
+.ideaTitle {
+	font-weight: 700;
+	color: var(--mantine-color-orange-4);
+}
