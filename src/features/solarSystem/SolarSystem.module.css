@@ -246,3 +246,13 @@
 		display: none;
 	}
 }
+
+/* a held frame's badge (#31) fills the left column: while a tour narrates, the body card makes way */
+@media (max-height: 1000px) {
+	.hud:has([data-tour-card][data-collapsed="false"]):has(
+			[data-testid="frame-badge"]
+		)
+		.info {
+		display: none;
+	}
+}
