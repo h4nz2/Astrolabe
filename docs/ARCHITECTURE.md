@@ -906,7 +906,9 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   key-driven moves jump (`durationMs: 0`) and the scale switches without animating.
 - **Back to the start** (`present/restoreStart.ts`): re-applies `startSearch` through the store actions (view,
   frame, camera, selection, speed, pause, time glide, layers, animated scale); without a link that is the opening
-  state (overview, now, 1x). Presentation settings are left alone: they belong to the room, not the lesson.
+  state (overview, now, 1x). Presentation settings are left alone: they belong to the room, not the lesson. A
+  guided tour opened since ends (`exitTour`); a link that itself opened on a tour stop starts that tour on that stop
+  again, with the restored scene as its baseline.
 - **Sharing** (`present/SharePanel.tsx`, lazy): the current address with a copy button (`useClipboard`) and a QR
   code (`uqr` encodes, `present/qr.ts` draws one SVG path), small in the popover and large for the class
   (`ClassQr`, a modal outside the popover).
@@ -1193,7 +1195,8 @@ index)` with no holds (stops wait for the presenter; `finishMove()` when jumping
   its own card; only menu tours are written to the URL.
 - **Leaving and coming back.** `tourStatus(sequence, tour)`: `playing` while `sequence.steps` is the tour's;
   `exploring` when the sequence was interrupted (a click on a body); `left` when it was ended (Escape, the home
-  button, another sequence). The tour itself only ends with `exitTour` (the card's close button, Finish; a tour
+  button, another sequence). The tour itself only ends with `exitTour` (the card's close button, Finish, #29's
+  back to the start (R / Home), which reopens it only when the lesson link was a tour link; a tour
   still set when the page mounts again without `?tour=` is ended there, never on unmount, which would write the URL). `resumeTour()` re-enters the stop and so restores its whole scene. A drag at a waiting stop does not
   interrupt (#10). `followSequence()` gives the stop its scene when something else moved the sequence
   (`nextStep()`).

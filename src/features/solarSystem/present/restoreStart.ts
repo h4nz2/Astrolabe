@@ -11,7 +11,12 @@
  * its animated switch. With `instant` (reduced motion) nothing animates.
  * The presentation settings are left alone: they belong to the room, not to
  * the lesson.
+ *
+ * A guided tour (#28) opened since is part of the wandering off and ends,
+ * the card with it. A lesson link that itself opened on a tour stop
+ * (`?tour=<id>&stop=<n>`) opens on that stop again, as a fresh tour.
  */
+import { tourById } from "@/data/tours"
 import { isFrameAnchored } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
@@ -24,11 +29,13 @@ import {
 	viewFromSearch,
 } from "@/store/urlSync"
 
+import { exitTour, startTour } from "../tours/player"
 import { switchScale } from "../ui/ScalePanel"
 
 export function restoreStart(search: SimSearch, instant: boolean): void {
 	const store = useSimStore.getState()
 	const durationMs = instant ? 0 : undefined
+	exitTour()
 	store.stopSequence()
 
 	// time: speed and pause first, so a glide lands in the link's state
@@ -61,5 +68,14 @@ export function restoreStart(search: SimSearch, instant: boolean): void {
 	if (useScaleStore.getState().targetId !== scale) {
 		if (instant) useScaleStore.getState().setPreset(scale)
 		else switchScale(scale)
+	}
+
+	// the link's own tour, begun again on its stop (after the scene above, which becomes its baseline)
+	if (search.tour !== undefined && tourById.has(search.tour)) {
+		startTour(search.tour, {
+			startAt: (search.stop ?? 1) - 1,
+			auto: search.autoplay === true,
+			jump: instant,
+		})
 	}
 }
