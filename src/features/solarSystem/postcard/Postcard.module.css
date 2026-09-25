@@ -1,0 +1,28 @@
+/* The postcard dialog (#33): the preview fits the dialog without scrolling on a laptop. */
+.preview {
+	display: flex;
+	justify-content: center;
+	background: #07090f;
+	border-radius: var(--mantine-radius-sm);
+}
+
+.image {
+	display: block;
+	max-width: 100%;
+	max-height: min(58vh, 640px);
+	width: auto;
+	height: auto;
+	object-fit: contain;
+}
+
+.placeholder {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	max-height: min(58vh, 640px);
+}
+
+.lock {
+	flex: none;
+	margin-top: 1px;
+	color: var(--mantine-color-dimmed);
+}

@@ -28,7 +28,7 @@ const closeSkyWhenOpened = (
 	if (state.open && !previous.open) useSkyTonightStore.getState().setOpen(false)
 }
 
-/** The HUD button that opens "What is in the sky tonight" (in the time controls). */
+/** The HUD button that opens "What is in the sky tonight". */
 export const SkyTonightButton = () => {
 	const { t } = useI18n()
 	const open = useSkyTonightStore((state) => state.open)
@@ -50,6 +50,17 @@ export const SkyTonightButton = () => {
 		</Tooltip>
 	)
 }
+
+/**
+ * The button's place in the HUD: a small panel under the focus picker (and
+ * the light launcher, #27), not in the time controls, which were already as
+ * wide as a 1280 px screen allows beside the body card.
+ */
+export const SkyTonightLauncher = ({ className }: { className: string }) => (
+	<div className={`${className} ${classes.launcher}`}>
+		<SkyTonightButton />
+	</div>
+)
 
 /**
  * The sky panel's place on the page: nothing until opened. A link with

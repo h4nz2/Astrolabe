@@ -13,7 +13,7 @@ import {
 } from "@mantine/core"
 import { DatePicker } from "@mantine/dates"
 import {
-	IconDownload,
+	IconCamera,
 	IconHistory,
 	IconLock,
 	IconPencil,
@@ -25,6 +25,8 @@ import { getBody } from "@/data"
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { useBirthdayStore } from "@/store/birthday"
+import type { PostcardExtra } from "@/store/postcard"
+import { useSimStore } from "@/store/sim"
 
 import {
 	calendarLabels,
@@ -46,7 +48,8 @@ import {
 	weightOn,
 	type BirthdayFacts,
 } from "./birthday"
-import { cardText, downloadCard, worldColor } from "./card"
+import { takePostcard } from "../postcard/take"
+import { cardText, worldColor, type CardText } from "./card"
 
 import "@mantine/dates/styles.css"
 import classes from "./BirthdayPanel.module.css"
@@ -315,6 +318,28 @@ const WeightList = () => {
 	)
 }
 
+/** The clock shows the birth date (the planets as they stood that day). */
+const atBirth = (facts: BirthdayFacts): boolean =>
+	Math.abs(useSimStore.getState().simTimeJD - facts.birthJD) < 0.5
+
+/** The birthday result on the postcard of the view (#33): the ages under the picture, never the birth date. */
+const birthdayPostcard = (
+	card: CardText,
+	caption: string | undefined,
+): PostcardExtra => ({
+	title: card.title,
+	caption,
+	date: card.date,
+	rows: card.rows.map((row) => ({
+		id: row.id,
+		label: row.name,
+		value: row.age,
+		color: worldColor(row.id),
+	})),
+	note: card.distance,
+	fileName: card.fileName,
+})
+
 /** The result for an entered birth date. */
 const Results = ({
 	facts,
@@ -395,10 +420,15 @@ const Results = ({
 					<Button
 						variant="default"
 						size="xs"
-						leftSection={<IconDownload size={16} />}
+						leftSection={<IconCamera size={16} />}
 						onClick={() =>
-							void downloadCard(
-								cardText(facts, i18n, name, formatDay, distance),
+							takePostcard(
+								birthdayPostcard(
+									cardText(facts, i18n, name, formatDay, distance),
+									atBirth(facts)
+										? t("solarSystem.postcard.birthdayCaption")
+										: undefined,
+								),
 							)
 						}
 					>
