@@ -65,3 +65,17 @@
 		display: none;
 	}
 }
+
+/*
+ * Projector mode (#29): the presets and the honesty statements, large; the
+ * preset's description and the separate lie switches give way (S cycles the
+ * presets from the keyboard).
+ */
+:global(html[data-presenting]) .summary,
+:global(html[data-presenting]) .lie > :not(.statement) {
+	display: none;
+}
+
+:global(html[data-presenting]) .statement {
+	font-size: var(--mantine-font-size-md);
+}

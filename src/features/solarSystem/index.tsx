@@ -1,5 +1,4 @@
 import { Suspense } from "react"
-import { Group } from "@mantine/core"
 
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
@@ -13,6 +12,8 @@ import FrameMenu from "./frame/FrameMenu"
 import { HuntPanelSlot } from "./hunt/Hunt"
 import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
 import { LightSlot } from "./light/LightPanel"
+import { InlineLayers, TeacherBar } from "./present/TeacherBar"
+import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
@@ -91,13 +92,13 @@ const SolarSystem = () => {
 				<LightSlot phone className={`${classes.panel} ${classes.light}`} />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
-						<Group gap="sm" justify="space-between" wrap="nowrap">
+						<TeacherBar layers={<SceneToggles />}>
+							<PostcardButton />
+							<LanguageMenu />
+						</TeacherBar>
+						<InlineLayers>
 							<SceneToggles />
-							<Group gap={4} wrap="nowrap">
-								<PostcardButton />
-								<LanguageMenu />
-							</Group>
-						</Group>
+						</InlineLayers>
 					</div>
 					<div className={classes.panel}>
 						<ScalePanel />
@@ -117,6 +118,7 @@ const SolarSystem = () => {
 			</div>
 			<BirthdayPanelSlot />
 			<PostcardSlot />
+			<PresentationLayer />
 		</div>
 	)
 }

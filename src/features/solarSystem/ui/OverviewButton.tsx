@@ -5,7 +5,7 @@ import { IconHome2 } from "@tabler/icons-react"
 import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
 
-import { hasModifier, isEditableTarget, isInModalDialog } from "./keyboard"
+import { hasModifier, isEditableTarget } from "./keyboard"
 
 /**
  * Escape is the way out from anywhere; an open dropdown or a text field keeps
@@ -15,8 +15,13 @@ import { hasModifier, isEditableTarget, isInModalDialog } from "./keyboard"
 const handleKeyDown = (event: KeyboardEvent): void => {
 	if (event.key !== "Escape") return
 	if (hasModifier(event) || isEditableTarget(event.target)) return
-	// a modal dialog (the postcard, #33) closes on its own Escape
-	if (isInModalDialog(event.target)) return
+	// a modal dialog (#29's shortcut list, the class QR code) closes on Escape and nothing else
+	if (
+		event.target instanceof Element &&
+		event.target.closest("[aria-modal='true']") !== null
+	) {
+		return
+	}
 	event.preventDefault()
 	useSimStore.getState().reset()
 }

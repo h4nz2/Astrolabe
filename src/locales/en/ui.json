@@ -626,6 +626,88 @@
 				"label": "{observer} and {body} on their orbits around the Sun, with the line of sight from {observer} to {body}"
 			}
 		},
+		"present": {
+			"button": "Present",
+			"layers": "Layers",
+			"buttonHint": "Present to a class: large text, high contrast, keyboard, sharing",
+			"title": "Present to a class",
+			"projector": "Large text for a projector",
+			"projectorHint": "Bigger text and buttons, readable from the back of the room",
+			"highContrast": "High contrast",
+			"highContrastHint": "For washed-out projectors and rooms that cannot be darkened",
+			"hideControls": "Hide the controls",
+			"fullscreen": "Full screen",
+			"exitFullscreen": "Leave full screen",
+			"restart": "Back to the start",
+			"restartHint": "The view this page was opened with",
+			"shortcuts": "Keyboard shortcuts",
+			"share": {
+				"button": "Share",
+				"title": "Share this view",
+				"explain": "The link opens exactly this view: the same body, camera, date, speed, scale and language. Bookmark it to prepare a lesson, or send it as homework.",
+				"explain@simple": "The link opens exactly what you see now. Save it or send it to someone.",
+				"link": "Link to this view",
+				"copy": "Copy link",
+				"copied": "Link copied",
+				"copyFailed": "Could not copy: select the link and copy it by hand",
+				"qr": "Scan to open this view on a phone or tablet",
+				"qrLabel": "QR code of the link to this view",
+				"qrShow": "Show the QR code to the class"
+			},
+			"chrome": {
+				"show": "Show the controls",
+				"hint": "Controls hidden: press H or use the button to bring them back",
+				"hint@simple": "The buttons are hidden. Press H to get them back."
+			},
+			"help": {
+				"title": "Keyboard shortcuts",
+				"intro": "Every key also works while the controls are hidden. A presenter remote's buttons step through the planets.",
+				"groups": {
+					"move": "Moving around",
+					"time": "Time",
+					"show": "What is shown",
+					"present": "Presenting"
+				},
+				"keys": {
+					"space": "Space",
+					"pageUpDown": "Page Up / Page Down",
+					"arrows": "← / →",
+					"digits": "1 – 8",
+					"home": "Home",
+					"esc": "Esc"
+				},
+				"pause": "Pause or play",
+				"speed": "Faster or slower",
+				"step": "Previous or next body (a presenter remote's buttons)",
+				"planets": "The planets, from Mercury (1) to Neptune (8)",
+				"overview": "The whole solar system",
+				"reset": "Back to the overview, from anywhere",
+				"start": "Back to the start: the view the link opened with",
+				"scale": "Next scale: Everything visible, Textbook, True scale",
+				"scale@simple": "Switch between pretend sizes and real sizes",
+				"labels": "Names on or off (hide them for a quiz)",
+				"chrome": "Hide or show all controls",
+				"fullscreen": "Full screen on or off",
+				"projector": "Large text on or off",
+				"contrast": "High contrast on or off",
+				"help": "This list"
+			},
+			"announce": {
+				"focus": "Now showing {body}",
+				"overview": "The whole solar system",
+				"start": "Back to the start",
+				"scale": "Scale: {preset}",
+				"labelsOn": "Names shown",
+				"labelsOff": "Names hidden",
+				"chromeHidden": "Controls hidden. Press H to show them again.",
+				"chromeShown": "Controls shown",
+				"projectorOn": "Large text on",
+				"projectorOff": "Large text off",
+				"contrastOn": "High contrast on",
+				"contrastOff": "High contrast off",
+				"step": "Step {n} of {total}"
+			}
+		},
 		"light": {
 			"open": "Speed of light",
 			"open@simple": "How fast is light?",
