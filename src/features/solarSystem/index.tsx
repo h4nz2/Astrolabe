@@ -7,6 +7,7 @@ import { isFrameAnchored } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
+import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import Scene from "./scene/Scene"
@@ -98,6 +99,7 @@ const SolarSystem = () => {
 					<SpinControl />
 				</div>
 			</div>
+			<BirthdayPanelSlot />
 		</div>
 	)
 }

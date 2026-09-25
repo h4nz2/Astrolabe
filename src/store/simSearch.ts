@@ -57,6 +57,9 @@ export const simSearchSchema = z.object({
 	// the scale preset (#21), a preset id of src/sim/scale.ts; absent is the
 	// default (Everything visible), unknown ids are ignored when applied
 	scale: z.string().optional().catch(undefined),
+	// `?birthday=true` opens the birthday panel (#26) on arrival; it is only an
+	// instruction and never carries a date (a birth date never enters the URL)
+	birthday: z.boolean().optional().catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>
