@@ -17,6 +17,7 @@ import { createSunlitMaterial } from "../lighting/SunlitMaterial"
 import { createSimFrame, setSimFrameScale } from "../scene/simFrame"
 import {
 	RING_SEGMENTS,
+	createRingEdgeGeometry,
 	createRingGeometry,
 	ringRadiiInBodyRadii,
 } from "./Rings"
@@ -46,14 +47,30 @@ describe("createRingGeometry", () => {
 		let min = Infinity
 		let max = 0
 		for (let k = 0; k < position.count; k++) {
-			expect(Math.abs(position.getY(k))).toBeLessThan(1e-9)
+			expect(Math.abs(position.getY(k))).toBeLessThan(1e-6)
 			const r = Math.hypot(position.getX(k), position.getZ(k))
 			min = Math.min(min, r)
 			max = Math.max(max, r)
 		}
-		expect(min).toBeCloseTo(inner, 9)
+		// (float32 vertices)
+		expect(min).toBeCloseTo(inner, 6)
 		// the outer polygon's edges touch the outer circle from outside: no flat facets inside it
-		expect(max * Math.cos(Math.PI / RING_SEGMENTS)).toBeCloseTo(outer, 9)
+		expect(max * Math.cos(Math.PI / RING_SEGMENTS)).toBeCloseTo(outer, 6)
+	})
+})
+
+describe("createRingEdgeGeometry", () => {
+	it("is an open rim at the outer radius, y in -1..1, for the edge-on line", () => {
+		const saturn = getBody("saturn")
+		const geometry = createRingEdgeGeometry(saturn.rings!, saturn.radiusKm)
+		const position = geometry.getAttribute("position")
+		for (let k = 0; k < position.count; k++) {
+			expect(Math.hypot(position.getX(k), position.getZ(k))).toBeCloseTo(
+				140220 / 58232,
+				6,
+			)
+			expect(Math.abs(position.getY(k))).toBeCloseTo(1, 9)
+		}
 	})
 })
 
@@ -137,6 +154,17 @@ describe("ring materials", () => {
 		expect(material.depthWrite).toBe(false)
 		expect(material.side).toBe(DoubleSide)
 		expect(material.fragmentShader).toContain("sunlightCasterVisibility")
+		expect(material.defines).toEqual({})
+		const edge = createRingMaterial({
+			uniforms,
+			color,
+			peak,
+			innerRadiusKm: 74510,
+			outerRadiusKm: 140220,
+			edge: true,
+		})
+		expect(edge.defines).toEqual({ RING_EDGE: "" })
+		expect(edge.uniforms.uSunKm).toBe(uniforms.uSunKm)
 	})
 
 	it("switch the planet's ring shadow on by define, so ringless bodies pay nothing", () => {

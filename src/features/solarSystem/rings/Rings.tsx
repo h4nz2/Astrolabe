@@ -4,11 +4,18 @@
  * the axial tilt but never the spin. The annulus is built in planet radii and
  * scaled every frame by the planet's drawn radius, exactly like the sphere:
  * rings keep their true proportion to the planet in every scale preset
- * (`displayBodyLengthKm`) and can never detach from it.
+ * (`displayBodyLengthKm`) and can never detach from it. Exactly edge-on the
+ * sheet covers no pixel, so a thin rim (`RING_EDGE`) draws the line real rings
+ * make, fading out as soon as the sheet opens up.
  */
 import { use, useEffect, useMemo, useRef } from "react"
 import { useFrame, type ThreeEvent } from "@react-three/fiber"
-import { RingGeometry, type Mesh } from "three"
+import {
+	CylinderGeometry,
+	RingGeometry,
+	type Mesh,
+	type ShaderMaterial,
+} from "three"
 
 import type { SunlightUniforms } from "../lighting/bodyLighting"
 import { createRingMaterial } from "../lighting/ringMaterial"
@@ -47,6 +54,34 @@ export function createRingGeometry(
 	return geometry.rotateX(-Math.PI / 2)
 }
 
+/**
+ * The edge-on rim: an open cylinder at the outer radius, y in -1..1 (the shader
+ * flattens it into the ring plane and extrudes it a pixel or two along the pole).
+ */
+export function createRingEdgeGeometry(
+	rings: Pick<RingData, "outerRadiusKm">,
+	radiusKm: number,
+	segments = RING_SEGMENTS,
+): CylinderGeometry {
+	const outer = rings.outerRadiusKm / radiusKm
+	return new CylinderGeometry(outer, outer, 2, segments, 1, true)
+}
+
+const noRaycast = () => undefined
+
+/** One frame: both meshes at the planet's drawn radius, the rim's pixel size current. */
+export function updateRings(
+	sheet: Mesh | null,
+	edge: Mesh | null,
+	edgeMaterial: ShaderMaterial,
+	scale: number,
+	viewportHeight: number,
+): void {
+	sheet?.scale.setScalar(scale)
+	edge?.scale.setScalar(scale)
+	edgeMaterial.uniforms.uViewportHeight.value = viewportHeight
+}
+
 export interface RingsProps {
 	rings: RingData
 	radiusKm: number
@@ -62,38 +97,71 @@ export interface RingsProps {
 function Rings({ rings, radiusKm, index, uniforms, ...handlers }: RingsProps) {
 	const frame = useSimFrame()
 	const meshRef = useRef<Mesh>(null)
+	const edgeRef = useRef<Mesh>(null)
 	const textures = use(loadRingTextures(rings))
 	const geometry = useMemo(
 		() => createRingGeometry(rings, radiusKm),
 		[rings, radiusKm],
 	)
-	const material = useMemo(
-		() =>
-			createRingMaterial({
-				uniforms,
-				color: textures.color,
-				peak: textures.peak,
-				innerRadiusKm: rings.innerRadiusKm,
-				outerRadiusKm: rings.outerRadiusKm,
-			}),
-		[uniforms, textures, rings],
+	const edgeGeometry = useMemo(
+		() => createRingEdgeGeometry(rings, radiusKm),
+		[rings, radiusKm],
 	)
-	useEffect(() => () => geometry.dispose(), [geometry])
-	useEffect(() => () => material.dispose(), [material])
+	const [material, edgeMaterial] = useMemo(() => {
+		const options = {
+			uniforms,
+			color: textures.color,
+			peak: textures.peak,
+			innerRadiusKm: rings.innerRadiusKm,
+			outerRadiusKm: rings.outerRadiusKm,
+		}
+		return [
+			createRingMaterial(options),
+			createRingMaterial({ ...options, edge: true }),
+		]
+	}, [uniforms, textures, rings])
+	useEffect(
+		() => () => {
+			geometry.dispose()
+			edgeGeometry.dispose()
+		},
+		[geometry, edgeGeometry],
+	)
+	useEffect(
+		() => () => {
+			material.dispose()
+			edgeMaterial.dispose()
+		},
+		[material, edgeMaterial],
+	)
 
-	useFrame(() => {
-		// the planet's drawn radius, the same scale as its sphere
-		meshRef.current?.scale.setScalar(frame.renderRadius(index))
-	})
+	useFrame((state) =>
+		updateRings(
+			meshRef.current,
+			edgeRef.current,
+			edgeMaterial,
+			frame.renderRadius(index),
+			state.size.height * state.viewport.dpr,
+		),
+	)
 
 	return (
-		<mesh
-			ref={meshRef}
-			geometry={geometry}
-			material={material}
-			scale={frame.renderRadius(index)}
-			{...handlers}
-		/>
+		<>
+			<mesh
+				ref={meshRef}
+				geometry={geometry}
+				material={material}
+				scale={frame.renderRadius(index)}
+				{...handlers}
+			/>
+			<mesh
+				ref={edgeRef}
+				geometry={edgeGeometry}
+				material={edgeMaterial}
+				scale={frame.renderRadius(index)}
+				raycast={noRaycast}
+			/>
+		</>
 	)
 }
 
