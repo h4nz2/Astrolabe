@@ -4,6 +4,8 @@ import { useI18n } from "@/i18n"
 import { useLightingStore } from "@/store/lighting"
 import { useSimStore } from "@/store/sim"
 
+import classes from "./SceneToggles.module.css"
+
 /** Switches for the orbit lines, the labels, the moons (all of them, #17), the markers, the orbit names, the small bodies (#23) and the "always lit" teaching mode. */
 const SceneToggles = () => {
 	const { t } = useI18n()
@@ -26,6 +28,7 @@ const SceneToggles = () => {
 
 	return (
 		<Group
+			className={classes.layers}
 			gap="md"
 			wrap="wrap"
 			role="group"

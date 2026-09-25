@@ -114,10 +114,11 @@ test("Pluto is findable and focusable by name, with Charon beside it", async ({
 	await expect(card.getByRole("heading", { name: "Pluto" })).toBeVisible()
 	// Pluto lives in the Kuiper belt: the card says what that belt is
 	await expect(card.getByTestId("belt-note")).toContainText("Kuiper belt")
-	// its moons come with it
-	await expect(
-		page.locator("[data-body=charon][data-visible=true]"),
-	).toHaveCount(1)
+	// its moons come with it: Charon is drawn and listed in the card
+	await expect(card.getByRole("button", { name: "Charon" })).toBeVisible()
+	expect(
+		await page.evaluate(() => window.__astrolabe!.screenOf("charon")),
+	).not.toBeNull()
 	await page.screenshot({ path: path.join(screenshotDir, "pluto.png") })
 })
 
