@@ -5,8 +5,11 @@
  * public/ paths and a `ringsFor` lookup for the ring files other agents produce.
  * That keeps the mapping unit-testable with small fixtures.
  */
+import { z } from "zod"
+
 import { Rings as RingsSchema } from "../../src/data/schema"
 import type {
+	Appearance,
 	Body,
 	BodyKind,
 	BodyTextures,
@@ -112,6 +115,11 @@ export interface BuildOptions {
 	fileExists: (publicPath: string) => boolean
 	/** parsed data/rings/<planetId>.json, or null when there is no such file */
 	ringsFor: (planetId: string) => unknown
+	/**
+	 * parsed data/featured-moons.json (#17): planet id -> moon id -> the story in one line.
+	 * Absent: no moon is featured.
+	 */
+	featuredMoons?: unknown
 }
 
 export interface BuildStats {
@@ -125,6 +133,8 @@ export interface BuildStats {
 	periodDerived: number
 	placeholderTextures: number
 	rings: number
+	/** moons flagged `featured` (data/featured-moons.json) */
+	featured: number
 }
 
 export interface BuildResult {
@@ -253,6 +263,26 @@ export const usesPlaceholderTexture = (
 	body.textures.base === PLACEHOLDER_TEXTURE &&
 	(body.parentId === null || !ownsPlaceholderTexture(body.parentId))
 
+/**
+ * Curated presentation hints of a moon (#17, `Appearance` in the schema): `tint` ("#rrggbb")
+ * and `veiled` from its source records. A malformed tint is dropped with a warning; nothing
+ * curated gives nothing (the key is left out).
+ */
+const appearanceOf = (
+	sources: readonly Raw[],
+	label: string,
+	ctx: Context,
+): Pick<Body, "appearance"> => {
+	const appearance: Appearance = {}
+	const tint = first(sources, (raw) => str(raw.tint))
+	if (tint !== null) {
+		if (/^#[0-9a-f]{6}$/i.test(tint)) appearance.tint = tint.toLowerCase()
+		else ctx.warnings.push(`${label}: tint "${tint}" is not #rrggbb, dropped`)
+	}
+	if (sources.some((raw) => raw.veiled === true)) appearance.veiled = true
+	return Object.keys(appearance).length === 0 ? {} : { appearance }
+}
+
 const resolveTextures = (
 	source: Raw | null,
 	kind: BodyKind,
@@ -294,6 +324,7 @@ const resolveTextures = (
 	for (const key of TEXTURE_KEYS) {
 		if (key !== "base" && found[key] !== undefined) textures[key] = found[key]
 	}
+
 	return textures
 }
 
@@ -310,6 +341,7 @@ const assemble = (
 	orbit: fields.orbit,
 	rotation: fields.rotation,
 	textures: fields.textures,
+	...(fields.appearance === undefined ? {} : { appearance: fields.appearance }),
 	rings: fields.rings,
 	info: fields.info,
 })
@@ -767,6 +799,7 @@ const buildMoon = (
 		orbit,
 		rotation: spin.rotation,
 		textures,
+		...appearanceOf(sources, label, ctx),
 		rings: null,
 		info,
 	})
@@ -800,7 +833,9 @@ const statsOf = (
 	let periodDerived = 0
 	let placeholderTextures = 0
 	let rings = 0
+	let featured = 0
 	for (const body of bodies) {
+		if (body.featured) featured++
 		perKind[body.kind]++
 		if (body.kind === "moon" && body.parentId !== null) {
 			moonsPerPlanet[body.parentId] = (moonsPerPlanet[body.parentId] ?? 0) + 1
@@ -821,6 +856,50 @@ const statsOf = (
 		periodDerived,
 		placeholderTextures,
 		rings,
+		featured,
+	}
+}
+
+/** data/featured-moons.json: planet id -> moon id -> why it is featured (one line). */
+const FeaturedMoons = z.record(
+	z.string(),
+	z.record(z.string(), z.string().trim().min(1)),
+)
+
+/**
+ * Flags the curated moons `featured` (#17), in place. Every listed moon must exist and
+ * orbit the planet it is listed under; anything else stops the build, so the curated
+ * set can never silently shrink when the source data changes.
+ */
+export const markFeatured = (bodies: Body[], source: unknown): void => {
+	if (source === undefined) return
+	const parsed = FeaturedMoons.safeParse(
+		Object.fromEntries(
+			Object.entries(rec(source) ?? {}).filter(([key]) => !key.startsWith("$")),
+		),
+	)
+	if (!parsed.success) {
+		throw new BuildError(
+			`invalid data/featured-moons.json (${parsed.error.issues.map((issue) => issue.message).join("; ")})`,
+		)
+	}
+	const index = new Map(bodies.map((body, i) => [body.id, i]))
+	for (const [planetId, moons] of Object.entries(parsed.data)) {
+		for (const moonId of Object.keys(moons)) {
+			const i = index.get(moonId)
+			const moon = i === undefined ? undefined : bodies[i]
+			if (moon === undefined || moon.kind !== "moon") {
+				throw new BuildError(
+					`featured moon "${moonId}" is not a moon in the data`,
+				)
+			}
+			if (moon.parentId !== planetId) {
+				throw new BuildError(
+					`featured moon "${moonId}" orbits "${moon.parentId}", not "${planetId}"`,
+				)
+			}
+			bodies[i as number] = { ...moon, featured: true }
+		}
 	}
 }
 
@@ -859,6 +938,8 @@ export const buildBodies = (
 			.sort(byOrbitThenId)
 		bodies.push(...moons)
 	}
+
+	markFeatured(bodies, options.featuredMoons)
 
 	return {
 		bodies,

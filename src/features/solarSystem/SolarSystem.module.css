@@ -161,6 +161,17 @@
 			". . ."
 			"info time .";
 	}
+
+	/*
+	 * A tall card (a planet's facts and moons, #17) may grow up the left side
+	 * past the top row (the toggles are on the right), keeping the picker clear,
+	 * and scrolls rather than running off the bottom of a 720 px projector.
+	 */
+	.info {
+		grid-row: 1 / -1;
+		max-height: calc(100% - 3.75rem);
+		overflow-y: auto;
+	}
 }
 
 /* phones: the panels stack; the body card sits above the time controls (its facts fold away) */

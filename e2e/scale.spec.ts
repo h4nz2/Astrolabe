@@ -149,7 +149,7 @@ test("a focused planet is framed from its drawn size and its moons stay in place
 	await page.screenshot({ path: path.join(screenshotDir, "jupiter.png") })
 
 	// every orbit line re-derives from the scaled values on a layer toggle
-	const moons = page.getByRole("switch", { name: "Moons" })
+	const moons = page.getByRole("switch", { name: "Moons", exact: true })
 	await moons.click({ force: true })
 	await expect(moons).not.toBeChecked()
 	await moons.click({ force: true })
