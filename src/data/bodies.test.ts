@@ -201,6 +201,9 @@ describe("bodies.json", () => {
 			inclinationDeg: 7.09,
 		})
 		expect(getBody("nereid").massKg).toBe(3.1e19)
+		// the export has no eccentricity for Hyperion; JPL SAT441 mean elements give 0.105
+		// (its 4:3 resonance with Titan keeps it eccentric, as its story says)
+		expect(getBody("hyperion").orbit?.eccentricity).toBe(0.105)
 		expect(getBody("amalthea").massKg).toBe(2.08e18)
 		expect(getBody("perdita").massKg).toBe(1.8e16)
 		expect(getBody("anthe").radiusKm).toBe(0.9)

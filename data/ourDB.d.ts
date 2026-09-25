@@ -173,7 +173,7 @@ export interface SatellitesEntity {
 	distanceFromParent: number
 	orbitalPeriod: number | string
 	orbitalInclination: number
-	/** hand-curated for Ganymede and Nereid; the export has no eccentricities here */
+	/** hand-curated for Ganymede, Nereid and Hyperion (JPL SAT441); the export has no eccentricities here */
 	eccentricity?: number | null
 	gravity?: number | null
 	surfaceTemps: SurfaceTemps

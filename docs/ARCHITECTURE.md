@@ -148,7 +148,8 @@ Build rules (`scripts/lib/`):
   knee, so rings stay true to their planet in every preset; Jupiter's Thebe gossamer ring, out to 3.2, is left out).
   A missing ring texture fails the build.
 - Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements, the
-  Moon's precession rates from Meeus ch. 47 and its true sidereal month 27.321661 d) are made in `data/ourDB.json` itself. Sanity checks (Kepler period, density) warn on stderr.
+  Moon's precession rates from Meeus ch. 47 and its true sidereal month 27.321661 d, Hyperion's eccentricity 0.105 from JPL
+  SAT441) are made in `data/ourDB.json` itself. Sanity checks (Kepler period, density) warn on stderr.
 
 ## Simulation (`src/sim`, pure and unit-tested)
 

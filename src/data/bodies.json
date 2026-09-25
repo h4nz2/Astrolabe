@@ -4273,7 +4273,7 @@
 		"massKg": 5620000000000000000,
 		"orbit": {
 			"semiMajorAxisKm": 1481010,
-			"eccentricity": 0,
+			"eccentricity": 0.105,
 			"inclinationDeg": 27.643,
 			"longAscNodeDeg": 169.81,
 			"argPeriapsisDeg": 237.576,
