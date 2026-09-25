@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest"
 import type { z } from "zod"
 
 import { bodyById } from "@/data"
+import { spacecraftById } from "@/data/spacecraft"
 import { DEFAULT_LOCALE, LOCALES, READING_LEVELS, createI18n } from "@/i18n"
 import { isScalePresetId } from "@/sim"
 import { parseOffset, parseShot } from "@/store/navigation"
@@ -234,6 +235,12 @@ function linkProblems(path: string): string[] {
 			) {
 				problems.push("at does not parse, or has no focus")
 			}
+		}
+		if (
+			search.craft !== undefined &&
+			!spacecraftById.has(String(search.craft))
+		) {
+			problems.push(`craft: no spacecraft "${String(search.craft)}"`)
 		}
 		if (
 			typeof search.hunt === "string" &&

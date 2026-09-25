@@ -28,6 +28,7 @@ import {
 } from "./skyTonight/SkyTonight"
 import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
+import CraftLink from "./spacecraft/CraftLink"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
 import BodyHighlight from "./ui/BodyHighlight"
@@ -143,6 +144,7 @@ const SolarSystem = () => {
 			</div>
 			<BirthdayPanelSlot />
 			<LightLink />
+			<CraftLink />
 			<SkyTonightSlot />
 			<PostcardSlot />
 			<PresentationLayer />

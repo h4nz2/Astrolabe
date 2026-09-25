@@ -329,6 +329,32 @@
 				]
 			}
 		},
+		"spacecraft": {
+			"title": {
+				"standard": "Real spacecraft",
+				"simple": "Space probes"
+			},
+			"what": {
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST and Europa Clipper, drawn where they really are on the date on screen, with their paths and milestones.",
+				"simple": "Real space probes that people built, shown where they are right now."
+			},
+			"why": {
+				"standard": "Voyager 1 is still sending messages from far beyond the planets: its card shows how long its signal takes to reach us, and why the trip took so many gravity assists.",
+				"simple": "Voyager 1 left Earth in 1977 and is still flying. A message from it takes almost a day to reach us!"
+			},
+			"how": {
+				"standard": [
+					"Open “Spacecraft” (the satellite button at the top right) and pick a craft: the view flies to it.",
+					"Its card shows launch, distance, signal time and milestones; a milestone takes time to that moment.",
+					"“Show every path” draws all their routes at once; the Spacecraft switch hides them."
+				],
+				"simple": [
+					"Press the satellite button at the top right.",
+					"Pick Voyager 1.",
+					"Read how far away it is."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "The picture dictionary",

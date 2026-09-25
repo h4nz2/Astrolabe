@@ -66,6 +66,11 @@
 			"try": "/solar_system?sky=true"
 		},
 		{
+			"id": "spacecraft",
+			"group": "lookingAround",
+			"try": "/solar_system?craft=voyager1"
+		},
+		{
 			"id": "dictionary",
 			"group": "lookingAround",
 			"try": "/solar_dictionary?entity=4"

@@ -329,6 +329,32 @@
 				]
 			}
 		},
+		"spacecraft": {
+			"title": {
+				"standard": "Naves espaciales reales",
+				"simple": "Sondas espaciales"
+			},
+			"what": {
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST y Europa Clipper, dibujadas donde están de verdad en la fecha de la pantalla, con sus trayectorias y sus hitos.",
+				"simple": "Sondas espaciales de verdad, construidas por personas, justo donde están ahora."
+			},
+			"why": {
+				"standard": "La Voyager 1 sigue enviando mensajes desde mucho más allá de los planetas: su tarjeta muestra cuánto tarda su señal en llegarnos y por qué el viaje necesitó tantas asistencias gravitatorias.",
+				"simple": "La Voyager 1 salió de la Tierra en 1977 y sigue volando. ¡Un mensaje suyo tarda casi un día en llegar!"
+			},
+			"how": {
+				"standard": [
+					"Abre «Naves espaciales» (el botón del satélite arriba a la derecha) y elige una: la vista vuela hasta ella.",
+					"Su tarjeta muestra el lanzamiento, la distancia, el tiempo de la señal y los «Hitos»; un hito lleva el tiempo a ese momento.",
+					"«Mostrar todas las trayectorias» dibuja todas las rutas a la vez; el interruptor «Naves espaciales» las oculta."
+				],
+				"simple": [
+					"Pulsa el botón del satélite arriba a la derecha.",
+					"Elige la Voyager 1.",
+					"Lee lo lejos que está."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "El diccionario visual",

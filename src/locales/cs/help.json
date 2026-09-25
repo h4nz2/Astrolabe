@@ -329,6 +329,32 @@
 				]
 			}
 		},
+		"spacecraft": {
+			"title": {
+				"standard": "Skutečné kosmické sondy",
+				"simple": "Vesmírné sondy"
+			},
+			"what": {
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST a Europa Clipper, nakreslené tam, kde ke zobrazenému datu opravdu jsou, s jejich drahami a milníky.",
+				"simple": "Skutečné sondy, které postavili lidé, ukázané tam, kde právě jsou."
+			},
+			"why": {
+				"standard": "Voyager 1 pořád posílá zprávy z dálky daleko za planetami: kartička ukáže, jak dlouho k nám letí jeho signál a proč cesta potřebovala tolik gravitačních praků.",
+				"simple": "Voyager 1 odletěl ze Země v roce 1977 a letí pořád. Zpráva od něj k nám letí skoro den!"
+			},
+			"how": {
+				"standard": [
+					"Otevři „Kosmické sondy“ (tlačítko se satelitem vpravo nahoře) a vyber sondu: pohled k ní přeletí.",
+					"Kartička ukáže start, vzdálenost, dobu letu signálu a „Milníky“; milník přesune čas do toho okamžiku.",
+					"„Zobrazit všechny dráhy“ nakreslí všechny cesty najednou; přepínač „Kosmické sondy“ je skryje."
+				],
+				"simple": [
+					"Stiskni tlačítko se satelitem vpravo nahoře.",
+					"Vyber Voyager 1.",
+					"Přečti si, jak je daleko."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Obrazový slovník",

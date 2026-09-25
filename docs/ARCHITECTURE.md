@@ -855,7 +855,7 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
 
 **Store (`src/store/spacecraft.ts`).** `showSpacecraft` (on), `showAllPaths` (off), `selectedCraftId`,
 `hoverCraftId`, `trajectoriesReady`. Selecting a craft clears the body selection; choosing a body or any request for
-the overview (home, Escape) clears the craft. Not in the URL yet.
+the overview (home, Escape) clears the craft. Not mirrored in the URL; `?craft=<id>` selects and shows one on arrival (#43, `CraftLink.tsx`).
 
 **HUD.** `SpacecraftMenu` (satellite button in the top-right bar, beside the language button): layer switch, "Show every path", every craft
 with its tagline and status at the simulation date; picking one selects it and flies there (`showCraft`: a point
@@ -1109,6 +1109,8 @@ entry, in every locale and reading level, in the same change.
   "Play the opening again" and "Show how to move around". `?intro=play` replays the opening (the `opening` entry).
 - `?light=flash|delay|beyond` on `/solar_system` (`light/LightLink.tsx`) opens the light panel on that tab, `flash`
   with a flash already sent from the Sun: an instruction only, dropped from the URL like `birthday`.
+  `?craft=<spacecraft id>` (`spacecraft/CraftLink.tsx`) selects a spacecraft (#35) and flies to it once its
+  trajectory has loaded, the same kind of instruction.
 - Surface-map provenance is not recorded in the repository; the credits say so and point at #37, which records each
   map's source and licence as it confirms them.
 

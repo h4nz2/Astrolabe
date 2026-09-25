@@ -329,6 +329,32 @@
 				]
 			}
 		},
+		"spacecraft": {
+			"title": {
+				"standard": "Echte Raumsonden",
+				"simple": "Raumsonden"
+			},
+			"what": {
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST und Europa Clipper, gezeichnet dort, wo sie am angezeigten Datum wirklich sind, mit ihren Bahnen und Meilensteinen.",
+				"simple": "Echte Raumsonden, die Menschen gebaut haben, dort gezeigt, wo sie gerade sind."
+			},
+			"why": {
+				"standard": "Voyager 1 sendet noch immer Nachrichten von weit jenseits der Planeten: Ihr Steckbrief zeigt, wie lange ihr Signal bis zu uns braucht und warum die Reise so viele Swing-by-Manöver brauchte.",
+				"simple": "Voyager 1 ist 1977 losgeflogen und fliegt immer noch. Eine Nachricht von ihr braucht fast einen Tag bis zu uns!"
+			},
+			"how": {
+				"standard": [
+					"Öffne „Raumsonden“ (den Satelliten-Knopf oben rechts) und wähle eine Sonde: Die Ansicht fliegt zu ihr.",
+					"Ihr Steckbrief zeigt Start, Abstand, Signallaufzeit und „Meilensteine“; ein Meilenstein bringt die Zeit zu diesem Moment.",
+					"„Alle Bahnen zeigen“ zeichnet alle Wege auf einmal; der Schalter „Raumsonden“ blendet sie aus."
+				],
+				"simple": [
+					"Drück oben rechts auf den Satelliten-Knopf.",
+					"Wähl Voyager 1.",
+					"Lies, wie weit sie weg ist."
+				]
+			}
+		},
 		"dictionary": {
 			"title": {
 				"standard": "Das Bildlexikon",
