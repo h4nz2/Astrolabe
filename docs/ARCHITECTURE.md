@@ -117,8 +117,8 @@ Build rules (`scripts/lib/`):
 - Moons are merged from the source's `moons` (API export) and `satellites` (curated) arrays by normalized English name;
   `ISS` is skipped; curated-only moons are built from their curated fields; a missing period is derived from Kepler's
   third law (`info.periodDerived`). Untextured moons get the shared placeholder `earth/satellites/moon_1k.jpg`.
-- Moon phases are all 0 in the source, so they are spread from `hash(id)` and flagged `phaseSynthetic`. Only the Moon and
-  the Galileans have real (curated) phases.
+- Moon phases are all 0 in the source, so they are spread from `hash(id)` and flagged `phaseSynthetic`. Only the Moon,
+  the Galileans and Phoebe (JPL mean elements, #17) have real (curated) phases.
 - Retrograde spin is normalized to one encoding: tilt to the IAU pole (`180 - obliquity`) plus a negative period.
 - IAU poles and prime meridians (WGCCRE 2015 at J2000) for the Sun, planets and Moon come from `scripts/lib/iau.ts`,
   with Mars's and Neptune's periodic terms evaluated at J2000 (the constant terms alone put Mars's pole 1.5 deg off).
