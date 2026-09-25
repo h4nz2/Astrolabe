@@ -10,6 +10,10 @@ import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import { HuntPanelSlot } from "./hunt/Hunt"
+import IntroController from "./intro/IntroController"
+import IntroMenu from "./intro/IntroMenu"
+import IntroOverlay from "./intro/IntroOverlay"
+import IntroPulse from "./intro/IntroPulse"
 import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
 import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
@@ -79,11 +83,13 @@ const SolarSystem = () => {
 	return (
 		<div className={classes.page}>
 			<UrlSync />
+			<IntroController />
 			<SoundDirector />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
 			<BodyHighlight />
+			<IntroPulse />
 			<CentreMarker />
 			<div className={classes.hud}>
 				<div className={classes.pickerStack}>
@@ -108,6 +114,7 @@ const SolarSystem = () => {
 							<SpacecraftMenu />
 							<PostcardButton />
 							<SoundControl />
+							<IntroMenu />
 							<LanguageMenu />
 						</TeacherBar>
 						<InlineLayers>
@@ -119,6 +126,7 @@ const SolarSystem = () => {
 					</div>
 					<HuntPanelSlot />
 				</div>
+				<IntroOverlay className={classes.intro} />
 				<div className={`${classes.panel} ${classes.info}`}>
 					<SpacecraftInfo fallback={<BodyInfo />} />
 				</div>

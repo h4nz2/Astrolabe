@@ -329,6 +329,68 @@
 			"centreOn": "Recentrer : {body}",
 			"centreOn@simple": "Retour : {body}"
 		},
+		"spacecraft": {
+			"layer": "Sondes spatiales",
+			"menu": "Sondes spatiales",
+			"menuHint": "De vraies sondes spatiales : choisis-en une et vole jusqu’à elle",
+			"menuTitle": "Sondes spatiales réelles",
+			"menuIntro": "Des machines que l’humanité a envoyées dans l’espace. Leurs positions viennent des données de suivi de la NASA et du JPL.",
+			"menuIntro@simple": "De vraies machines envoyées dans l’espace. On sait où elles sont parce que la NASA les suit.",
+			"allPaths": "Afficher toutes les trajectoires",
+			"kind": "Sonde spatiale",
+			"panel": "Sonde spatiale sélectionnée",
+			"close": "Fermer",
+			"show": "Montrer",
+			"showHint": "Amener la vue jusqu’à {name}",
+			"launched": "Lancement",
+			"launched@simple": "Partie de la Terre",
+			"phase": {
+				"planned": "Pas encore lancée (lancement le {date})",
+				"planned@simple": "Pas encore dans l’espace. Elle part le {date}.",
+				"active": "Mission en cours",
+				"active@simple": "Fonctionne toujours",
+				"silent": "Silencieuse depuis le {date}, elle vole toujours",
+				"silent@simple": "Plus de messages depuis le {date}, mais elle vole encore",
+				"destroyed": "Mission terminée le {date}",
+				"destroyed@simple": "Elle n’existe plus depuis le {date}"
+			},
+			"noData": "Sa position à cette date n’est pas dans les données (du {from} au {to}).",
+			"noData@simple": "On ne sait pas où elle est à cette date.",
+			"predicted": "Prévision : cette date est encore dans le futur",
+			"predicted@simple": "Calculé à l’avance : cette date n’est pas encore arrivée",
+			"distanceSun": "Distance au Soleil",
+			"distanceEarth": "Distance à la Terre",
+			"speed": "Vitesse {centreId, select, sun {autour du Soleil} earth {par rapport à la Terre} other {par rapport à {centre}}}",
+			"signal": "Temps du signal jusqu’à la Terre",
+			"signal@simple": "Un message radio vers la Terre met",
+			"signalNote": "Les ondes radio voyagent à la vitesse de la lumière.",
+			"signalNote@simple": "Et pourtant, à la vitesse de la lumière !",
+			"milestones": "Étapes",
+			"planned": "prévu",
+			"goTo": "Voyager au {date}",
+			"event": {
+				"launch": "Lancement",
+				"flyby": "{targetId, select, earth {Survol de la Terre} uranus {Survol d’Uranus} io {Survol d’Io} europa {Survol d’Europe} arrokoth {Survol d’Arrokoth} other {Survol de {target}}}",
+				"orbitInsertion": "{targetId, select, earth {Mise en orbite autour de la Terre} other {Mise en orbite autour de {target}}}",
+				"probeLanding": "{targetId, select, other {Sa sonde se pose sur {target}}}",
+				"impact": "{targetId, select, other {Plonge dans {target}}}",
+				"arrival": "{targetId, select, l2 {Arrive au point L2 Soleil–Terre} other {Arrive à {target}}}",
+				"heliopause": "Franchit l’héliopause, vers l’espace interstellaire",
+				"heliopause@simple": "Quitte la bulle du Soleil, vers les étoiles",
+				"closestToSun": "Plus près du Soleil que jamais",
+				"paleBlueDot": "Photographie la Terre comme un « point bleu pâle »",
+				"farthest": "Devient l’objet fabriqué par l’humanité le plus lointain",
+				"firstImages": "Premières images publiées",
+				"lastContact": "Dernier signal reçu",
+				"missionEnd": "Fin de la mission"
+			},
+			"distanceAt": "{distance} du centre",
+			"target": {
+				"pluto": "Pluton",
+				"arrokoth": "Arrokoth",
+				"l2": "L2 Soleil–Terre"
+			}
+		},
 		"pick": {
 			"visit": "Clique pour t’y rendre",
 			"visit@simple": "Clique pour y aller",
@@ -1040,67 +1102,60 @@
 				"showHint": "Immobilise la Terre à ce moment-là, vue d’en haut, avec le Soleil et {body} dans leurs vraies directions."
 			}
 		},
-		"spacecraft": {
-			"layer": "Sondes spatiales",
-			"menu": "Sondes spatiales",
-			"menuHint": "De vraies sondes spatiales : choisis-en une et vole jusqu’à elle",
-			"menuTitle": "Sondes spatiales réelles",
-			"menuIntro": "Des machines que l’humanité a envoyées dans l’espace. Leurs positions viennent des données de suivi de la NASA et du JPL.",
-			"menuIntro@simple": "De vraies machines envoyées dans l’espace. On sait où elles sont parce que la NASA les suit.",
-			"allPaths": "Afficher toutes les trajectoires",
-			"kind": "Sonde spatiale",
-			"panel": "Sonde spatiale sélectionnée",
-			"close": "Fermer",
-			"show": "Montrer",
-			"showHint": "Amener la vue jusqu’à {name}",
-			"launched": "Lancement",
-			"launched@simple": "Partie de la Terre",
-			"phase": {
-				"planned": "Pas encore lancée (lancement le {date})",
-				"planned@simple": "Pas encore dans l’espace. Elle part le {date}.",
-				"active": "Mission en cours",
-				"active@simple": "Fonctionne toujours",
-				"silent": "Silencieuse depuis le {date}, elle vole toujours",
-				"silent@simple": "Plus de messages depuis le {date}, mais elle vole encore",
-				"destroyed": "Mission terminée le {date}",
-				"destroyed@simple": "Elle n’existe plus depuis le {date}"
+		"intro": {
+			"label": "Introduction",
+			"skip": "Passer l’intro",
+			"skip@simple": "Passer",
+			"progress": "Partie {beat, number} sur {count, number}",
+			"earth": {
+				"title": "Voici la Terre.",
+				"detail": "Tous les gens que tu connais vivent ici.",
+				"detail@simple": "Tous ceux que tu connais habitent ici !",
+				"detail@advanced": "Chaque personne que tu as rencontrée vit sur ce petit monde."
 			},
-			"noData": "Sa position à cette date n’est pas dans les données (du {from} au {to}).",
-			"noData@simple": "On ne sait pas où elle est à cette date.",
-			"predicted": "Prévision : cette date est encore dans le futur",
-			"predicted@simple": "Calculé à l’avance : cette date n’est pas encore arrivée",
-			"distanceSun": "Distance au Soleil",
-			"distanceEarth": "Distance à la Terre",
-			"speed": "Vitesse {centreId, select, sun {autour du Soleil} earth {par rapport à la Terre} other {par rapport à {centre}}}",
-			"signal": "Temps du signal jusqu’à la Terre",
-			"signal@simple": "Un message radio vers la Terre met",
-			"signalNote": "Les ondes radio voyagent à la vitesse de la lumière.",
-			"signalNote@simple": "Et pourtant, à la vitesse de la lumière !",
-			"milestones": "Étapes",
-			"planned": "prévu",
-			"goTo": "Voyager au {date}",
-			"event": {
-				"launch": "Lancement",
-				"flyby": "{targetId, select, earth {Survol de la Terre} uranus {Survol d’Uranus} io {Survol d’Io} europa {Survol d’Europe} arrokoth {Survol d’Arrokoth} other {Survol de {target}}}",
-				"orbitInsertion": "{targetId, select, earth {Mise en orbite autour de la Terre} other {Mise en orbite autour de {target}}}",
-				"probeLanding": "{targetId, select, other {Sa sonde se pose sur {target}}}",
-				"impact": "{targetId, select, other {Plonge dans {target}}}",
-				"arrival": "{targetId, select, l2 {Arrive au point L2 Soleil–Terre} other {Arrive à {target}}}",
-				"heliopause": "Franchit l’héliopause, vers l’espace interstellaire",
-				"heliopause@simple": "Quitte la bulle du Soleil, vers les étoiles",
-				"closestToSun": "Plus près du Soleil que jamais",
-				"paleBlueDot": "Photographie la Terre comme un « point bleu pâle »",
-				"farthest": "Devient l’objet fabriqué par l’humanité le plus lointain",
-				"firstImages": "Premières images publiées",
-				"lastContact": "Dernier signal reçu",
-				"missionEnd": "Fin de la mission"
+			"moon": {
+				"title": "La Lune",
+				"detail": "{earths, number} Terres tiendraient dans l’espace entre nous.",
+				"detail@simple": "{earths, number} Terres tiendraient entre nous et la Lune !",
+				"detail@advanced": "À {km} : {earths, number} diamètres terrestres."
 			},
-			"distanceAt": "{distance} du centre",
-			"target": {
-				"pluto": "Pluton",
-				"arrokoth": "Arrokoth",
-				"l2": "L2 Soleil–Terre"
-			}
+			"inner": {
+				"title": "Les planètes intérieures",
+				"title@simple": "Nos planètes les plus proches",
+				"detail": "{planets} : les quatre mondes rocheux les plus proches du Soleil.",
+				"detail@simple": "{planets}.",
+				"detail@advanced": "{planets} : les planètes rocheuses, toutes à moins de 250 millions de km du Soleil."
+			},
+			"system": {
+				"title": "Tout le Système solaire, à sa vraie taille",
+				"title@simple": "Tout, à sa vraie taille",
+				"detail": "Les planètes sont bien trop petites pour être vues. Les points montrent seulement où elles sont.",
+				"detail@simple": "Les planètes sont si minuscules qu’on ne les voit pas ! Les points montrent où elles sont.",
+				"detail@advanced": "La Terre est maintenant bien plus petite qu’un pixel, et l’espace est presque entièrement vide. Les points ne font que repérer les planètes."
+			},
+			"scale": {
+				"title": "Alors on les dessine plus grosses et plus proches",
+				"title@simple": "Alors on les dessine plus grosses !",
+				"detail": "Tu vois maintenant chaque planète, mais pas à l’échelle. Le panneau « Échelle » te ramène aux vraies tailles.",
+				"detail@simple": "Tu vois maintenant chaque planète. Dans le panneau « Échelle », tu retrouves leur vraie taille.",
+				"detail@advanced": "« Tout visible » : tailles agrandies, distances resserrées. « Échelle réelle », dans le panneau « Échelle », montre la réalité."
+			},
+			"hint": {
+				"label": "Comment te déplacer",
+				"drag": "Fais glisser pour regarder autour",
+				"drag@simple": "Fais glisser pour tourner",
+				"zoom": "Molette pour zoomer",
+				"zoom@simple": "Tourne la molette pour t’approcher",
+				"pinch": "Pince pour zoomer",
+				"click": "Clique sur une planète pour t’y rendre",
+				"click@simple": "Clique sur une planète pour la visiter",
+				"tap": "Touche une planète pour t’y rendre",
+				"tap@simple": "Touche une planète pour la visiter"
+			},
+			"menu": "Aide",
+			"replay": "Revoir l’introduction",
+			"replay@simple": "Revoir le début",
+			"hints": "Montrer comment se déplacer"
 		}
 	},
 	"solarWalk": {

@@ -329,6 +329,68 @@
 			"centreOn": "Centre on {body}",
 			"centreOn@simple": "Back to {body}"
 		},
+		"spacecraft": {
+			"layer": "Spacecraft",
+			"menu": "Spacecraft",
+			"menuHint": "Real spacecraft: find one and fly to it",
+			"menuTitle": "Real spacecraft",
+			"menuIntro": "Machines people have sent out. Positions come from NASA/JPL tracking data.",
+			"menuIntro@simple": "Real machines people have sent into space. We know where they are because NASA tracks them.",
+			"allPaths": "Show every path",
+			"kind": "Spacecraft",
+			"panel": "Selected spacecraft",
+			"close": "Close",
+			"show": "Show",
+			"showHint": "Fly the view to {name}",
+			"launched": "Launched",
+			"launched@simple": "Left Earth",
+			"phase": {
+				"planned": "Not launched yet (launch on {date})",
+				"planned@simple": "Not in space yet. It starts on {date}.",
+				"active": "Mission active",
+				"active@simple": "Still working",
+				"silent": "Silent since {date}, still flying",
+				"silent@simple": "No messages since {date}, but it is still flying",
+				"destroyed": "Mission ended on {date}",
+				"destroyed@simple": "It stopped existing on {date}"
+			},
+			"noData": "Its position on this date is not in the data ({from} to {to}).",
+			"noData@simple": "We do not know where it is on this date.",
+			"predicted": "Predicted: this date is still in the future",
+			"predicted@simple": "Worked out in advance: this date has not happened yet",
+			"distanceSun": "Distance from the Sun",
+			"distanceEarth": "Distance from Earth",
+			"speed": "{centreId, select, sun {Speed around the Sun} other {Speed relative to {centre}}}",
+			"signal": "Signal time to Earth",
+			"signal@simple": "A radio message to Earth takes",
+			"signalNote": "Radio waves travel at the speed of light.",
+			"signalNote@simple": "Even at the speed of light!",
+			"milestones": "Milestones",
+			"planned": "planned",
+			"goTo": "Travel to {date}",
+			"event": {
+				"launch": "Launch",
+				"flyby": "{targetId, select, other {Flies past {target}}}",
+				"orbitInsertion": "{targetId, select, other {Enters orbit around {target}}}",
+				"probeLanding": "{targetId, select, other {Its probe lands on {target}}}",
+				"impact": "{targetId, select, other {Plunges into {target}}}",
+				"arrival": "{targetId, select, l2 {Arrives at the Sun–Earth L2 point} other {Arrives at {target}}}",
+				"heliopause": "Crosses the heliopause into interstellar space",
+				"heliopause@simple": "Leaves the Sun's bubble, out among the stars",
+				"closestToSun": "Closest ever to the Sun",
+				"paleBlueDot": "Photographs Earth as a “pale blue dot”",
+				"farthest": "Becomes the most distant human-made object",
+				"firstImages": "First images released",
+				"lastContact": "Last signal received",
+				"missionEnd": "Mission ends"
+			},
+			"distanceAt": "{distance} from the centre",
+			"target": {
+				"pluto": "Pluto",
+				"arrokoth": "Arrokoth",
+				"l2": "Sun–Earth L2"
+			}
+		},
 		"pick": {
 			"visit": "Click to fly there",
 			"visit@simple": "Click to go there",
@@ -1040,67 +1102,60 @@
 				"showHint": "Holds Earth still at that moment, seen from above, with the Sun and {body} at their true directions."
 			}
 		},
-		"spacecraft": {
-			"layer": "Spacecraft",
-			"menu": "Spacecraft",
-			"menuHint": "Real spacecraft: find one and fly to it",
-			"menuTitle": "Real spacecraft",
-			"menuIntro": "Machines people have sent out. Positions come from NASA/JPL tracking data.",
-			"menuIntro@simple": "Real machines people have sent into space. We know where they are because NASA tracks them.",
-			"allPaths": "Show every path",
-			"kind": "Spacecraft",
-			"panel": "Selected spacecraft",
-			"close": "Close",
-			"show": "Show",
-			"showHint": "Fly the view to {name}",
-			"launched": "Launched",
-			"launched@simple": "Left Earth",
-			"phase": {
-				"planned": "Not launched yet (launch on {date})",
-				"planned@simple": "Not in space yet. It starts on {date}.",
-				"active": "Mission active",
-				"active@simple": "Still working",
-				"silent": "Silent since {date}, still flying",
-				"silent@simple": "No messages since {date}, but it is still flying",
-				"destroyed": "Mission ended on {date}",
-				"destroyed@simple": "It stopped existing on {date}"
+		"intro": {
+			"label": "Opening",
+			"skip": "Skip intro",
+			"skip@simple": "Skip",
+			"progress": "Part {beat, number} of {count, number}",
+			"earth": {
+				"title": "This is Earth.",
+				"detail": "Everyone you know lives here.",
+				"detail@simple": "Everyone you know lives here!",
+				"detail@advanced": "Every person you have ever met lives on this one small world."
 			},
-			"noData": "Its position on this date is not in the data ({from} to {to}).",
-			"noData@simple": "We do not know where it is on this date.",
-			"predicted": "Predicted: this date is still in the future",
-			"predicted@simple": "Worked out in advance: this date has not happened yet",
-			"distanceSun": "Distance from the Sun",
-			"distanceEarth": "Distance from Earth",
-			"speed": "{centreId, select, sun {Speed around the Sun} other {Speed relative to {centre}}}",
-			"signal": "Signal time to Earth",
-			"signal@simple": "A radio message to Earth takes",
-			"signalNote": "Radio waves travel at the speed of light.",
-			"signalNote@simple": "Even at the speed of light!",
-			"milestones": "Milestones",
-			"planned": "planned",
-			"goTo": "Travel to {date}",
-			"event": {
-				"launch": "Launch",
-				"flyby": "{targetId, select, other {Flies past {target}}}",
-				"orbitInsertion": "{targetId, select, other {Enters orbit around {target}}}",
-				"probeLanding": "{targetId, select, other {Its probe lands on {target}}}",
-				"impact": "{targetId, select, other {Plunges into {target}}}",
-				"arrival": "{targetId, select, l2 {Arrives at the Sun–Earth L2 point} other {Arrives at {target}}}",
-				"heliopause": "Crosses the heliopause into interstellar space",
-				"heliopause@simple": "Leaves the Sun's bubble, out among the stars",
-				"closestToSun": "Closest ever to the Sun",
-				"paleBlueDot": "Photographs Earth as a “pale blue dot”",
-				"farthest": "Becomes the most distant human-made object",
-				"firstImages": "First images released",
-				"lastContact": "Last signal received",
-				"missionEnd": "Mission ends"
+			"moon": {
+				"title": "The Moon",
+				"detail": "{earths, number} Earths would fit in the gap.",
+				"detail@simple": "{earths, number} Earths would fit between us and the Moon!",
+				"detail@advanced": "{km} away: {earths, number} Earth diameters."
 			},
-			"distanceAt": "{distance} from the centre",
-			"target": {
-				"pluto": "Pluto",
-				"arrokoth": "Arrokoth",
-				"l2": "Sun–Earth L2"
-			}
+			"inner": {
+				"title": "The inner planets",
+				"title@simple": "Our nearest planets",
+				"detail": "{planets}, the four rocky worlds nearest the Sun.",
+				"detail@simple": "{planets}.",
+				"detail@advanced": "{planets}: the rocky planets, all within 250 million km of the Sun."
+			},
+			"system": {
+				"title": "The whole solar system, at its real size",
+				"title@simple": "Everything, at its real size",
+				"detail": "The planets are far too small to see. The dots only show where they are.",
+				"detail@simple": "The planets are too tiny to see! The dots show where they are.",
+				"detail@advanced": "Earth is now much smaller than one pixel, and space is almost entirely empty. The dots only mark the planets."
+			},
+			"scale": {
+				"title": "So we draw them bigger and closer",
+				"title@simple": "So we draw them bigger!",
+				"detail": "Now you can see every planet, but not to scale. The Scale panel switches back to real sizes.",
+				"detail@simple": "Now you can see every planet. The Scale panel shows their real size again.",
+				"detail@advanced": "“Everything visible”: sizes enlarged, distances squeezed. “True scale” in the Scale panel shows the real thing."
+			},
+			"hint": {
+				"label": "How to move around",
+				"drag": "Drag to look around",
+				"drag@simple": "Drag to turn",
+				"zoom": "Scroll to zoom",
+				"zoom@simple": "Scroll to go closer",
+				"pinch": "Pinch to zoom",
+				"click": "Click a planet to fly there",
+				"click@simple": "Click a planet to visit it",
+				"tap": "Tap a planet to fly there",
+				"tap@simple": "Tap a planet to visit it"
+			},
+			"menu": "Help",
+			"replay": "Play the opening again",
+			"replay@simple": "Watch the start again",
+			"hints": "Show how to move around"
 		}
 	},
 	"solarWalk": {

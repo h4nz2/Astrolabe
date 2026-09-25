@@ -37,7 +37,7 @@ src/sim/                     pure simulation, no React or three objects (import 
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, simSearch.ts (URL schema),
                              urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, ui/,
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, ui/,
                              birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
@@ -331,6 +331,35 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   `profile: FLIGHT_PROFILE`; it flies with the readout like a user's flight, and `durationMs` on the step overrides the
   automatic length. Outside a sequence, `focus(id, { profile: FLIGHT_PROFILE })` does the same. `finishMove()` skips
   the current move of a sequence without ending it (`skip()` still ends the whole sequence).
+
+### The first ten seconds: the opening (`features/solarSystem/intro`; #30)
+
+- **What plays:** on a first visit, close on Earth (from its sunlit side, `sunlitAzimuthDeg`) in **true scale**, then
+  pull back: the Moon's orbit, the inner planets, the whole system (Earth far below a pixel, the markers showing where
+  the planets are), and finally the animated switch to Everything visible ("so we draw them bigger and closer"). It
+  ends on exactly the overview a reset shows, in the default preset. 14 s (`introSteps` in `intro/script.ts`, pure;
+  tested under `INTRO_MAX_MS` = 15 s). With `prefers-reduced-motion` the same shots are cuts, held a little longer,
+  and the scale switch jumps.
+- **Mechanism:** a plain `playSequence` (one step per beat, explicit `durationMs`/`holdMs`, `fit` regions for the Moon
+  and the inner planets). The scale is the one non-camera cue: `intro/intro.ts` (`useIntroStore`, `watchIntro`)
+  watches the sequence and switches the scale at the last beat (`useScaleStore.switchTo`). Tours (#28) should do the
+  same for their own cues; there is no second player.
+- **Never in the way:** anything that interrupts a sequence ends the opening at once (a drag, wheel or pinch, a click
+  on a body, the picker, Escape, the home button, the Skip button, another sequence); an interrupted opening's
+  sequence is stopped, never left for a tour player to resume. An early end restores Everything visible (1 s ease
+  after a camera grab, a jump after Skip/Escape) unless the viewer picked a scale themselves, which is kept. The HUD
+  is dimmed while it plays (`html[data-intro="playing"]`), still usable (hover or focus brings a panel back).
+- **Once per device, never over a link:** it plays on arrival only when no simulation parameter is in the URL
+  (`hasExplicitView`: any key of `simSearchSchema`; `lang`/`reading` do not count) and localStorage
+  `astrolabe.introSeen` is unset (set when it starts; guarded, nothing is sent anywhere). A link with a view opens
+  exactly there. Replayed deliberately from the Help menu (`intro/IntroMenu.tsx`, beside the language menu), which also
+  shows the hints again. e2e: `playwright.config.ts` presets the key so every test is a returning visitor;
+  `e2e/intro.spec.ts` clears it.
+- **Hand-over** (`status: "handover"`): the hints (`IntroHints.tsx`: drag to look around, scroll or pinch to zoom,
+  click or tap a planet; touch words for `pointer: coarse`) fade 3 s after the first camera input or after 10 s, and
+  Earth pulses (`IntroPulse.tsx`, placed every frame by `IntroPulseTracker.tsx` in the Canvas with #16's
+  `placeRing`) until a body is selected or focused, at most 45 s. Captions and hints sit in the HUD grid's open middle
+  row, right above the bottom panels (`.intro` in `SolarSystem.module.css`). Strings: `solarSystem.intro.*`.
 
 ### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
 

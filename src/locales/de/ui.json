@@ -329,6 +329,68 @@
 			"centreOn": "{body} in die Mitte",
 			"centreOn@simple": "Zurück zu {body}"
 		},
+		"spacecraft": {
+			"layer": "Raumsonden",
+			"menu": "Raumsonden",
+			"menuHint": "Echte Raumsonden: eine finden und hinfliegen",
+			"menuTitle": "Echte Raumsonden",
+			"menuIntro": "Maschinen, die Menschen ins All geschickt haben. Die Positionen stammen aus Bahndaten von NASA/JPL.",
+			"menuIntro@simple": "Echte Maschinen, die Menschen ins All geschickt haben. Wir wissen, wo sie sind, weil die NASA sie verfolgt.",
+			"allPaths": "Alle Bahnen zeigen",
+			"kind": "Raumsonde",
+			"panel": "Ausgewählte Raumsonde",
+			"close": "Schließen",
+			"show": "Zeigen",
+			"showHint": "Ansicht zu {name} fliegen",
+			"launched": "Gestartet",
+			"launched@simple": "Losgeflogen",
+			"phase": {
+				"planned": "Noch nicht gestartet (Start am {date})",
+				"planned@simple": "Noch nicht im All. Sie startet am {date}.",
+				"active": "Mission läuft",
+				"active@simple": "Arbeitet noch",
+				"silent": "Still seit {date}, fliegt weiter",
+				"silent@simple": "Seit {date} keine Nachrichten mehr, aber sie fliegt weiter",
+				"destroyed": "Mission beendet am {date}",
+				"destroyed@simple": "Seit {date} gibt es sie nicht mehr"
+			},
+			"noData": "Ihre Position an diesem Datum ist nicht in den Daten ({from} bis {to}).",
+			"noData@simple": "Wir wissen nicht, wo sie an diesem Datum ist.",
+			"predicted": "Vorausberechnet: Dieses Datum liegt in der Zukunft",
+			"predicted@simple": "Im Voraus berechnet: Dieses Datum kommt erst noch",
+			"distanceSun": "Abstand zur Sonne",
+			"distanceEarth": "Abstand zur Erde",
+			"speed": "{centreId, select, sun {Geschwindigkeit um die Sonne} earth {Geschwindigkeit relativ zur Erde} venus {Geschwindigkeit relativ zur Venus} other {Geschwindigkeit relativ zum {centre}}}",
+			"signal": "Signallaufzeit zur Erde",
+			"signal@simple": "Eine Funknachricht zur Erde braucht",
+			"signalNote": "Funkwellen sind so schnell wie das Licht.",
+			"signalNote@simple": "Und das mit Lichtgeschwindigkeit!",
+			"milestones": "Meilensteine",
+			"planned": "geplant",
+			"goTo": "Reise zum {date}",
+			"event": {
+				"launch": "Start",
+				"flyby": "{targetId, select, earth {Vorbeiflug an der Erde} venus {Vorbeiflug an der Venus} mars {Vorbeiflug am Mars} jupiter {Vorbeiflug am Jupiter} saturn {Vorbeiflug am Saturn} uranus {Vorbeiflug am Uranus} neptune {Vorbeiflug am Neptun} other {Vorbeiflug an {target}}}",
+				"orbitInsertion": "{targetId, select, other {Schwenkt in eine Umlaufbahn um {target} ein}}",
+				"probeLanding": "{targetId, select, other {Ihre Landesonde landet auf {target}}}",
+				"impact": "{targetId, select, saturn {Stürzt in den Saturn} jupiter {Stürzt in den Jupiter} other {Stürzt in {target}}}",
+				"arrival": "{targetId, select, l2 {Erreicht den Lagrange-Punkt L2 von Sonne und Erde} other {Erreicht {target}}}",
+				"heliopause": "Überquert die Heliopause in den interstellaren Raum",
+				"heliopause@simple": "Verlässt die Blase der Sonne, hinaus zu den Sternen",
+				"closestToSun": "So nah an der Sonne wie nie zuvor",
+				"paleBlueDot": "Fotografiert die Erde als „blassblauen Punkt“",
+				"farthest": "Wird zum entferntesten von Menschen gebauten Objekt",
+				"firstImages": "Erste Bilder veröffentlicht",
+				"lastContact": "Letztes Signal empfangen",
+				"missionEnd": "Die Mission endet"
+			},
+			"distanceAt": "{distance} vom Mittelpunkt",
+			"target": {
+				"pluto": "Pluto",
+				"arrokoth": "Arrokoth",
+				"l2": "L2 von Sonne und Erde"
+			}
+		},
 		"pick": {
 			"visit": "Klicken zum Hinfliegen",
 			"visit@simple": "Klick drauf und flieg hin",
@@ -1040,67 +1102,60 @@
 				"showHint": "Hält die Erde in diesem Moment fest, von oben gesehen, mit der Sonne und {body} in ihren wahren Richtungen."
 			}
 		},
-		"spacecraft": {
-			"layer": "Raumsonden",
-			"menu": "Raumsonden",
-			"menuHint": "Echte Raumsonden: eine finden und hinfliegen",
-			"menuTitle": "Echte Raumsonden",
-			"menuIntro": "Maschinen, die Menschen ins All geschickt haben. Die Positionen stammen aus Bahndaten von NASA/JPL.",
-			"menuIntro@simple": "Echte Maschinen, die Menschen ins All geschickt haben. Wir wissen, wo sie sind, weil die NASA sie verfolgt.",
-			"allPaths": "Alle Bahnen zeigen",
-			"kind": "Raumsonde",
-			"panel": "Ausgewählte Raumsonde",
-			"close": "Schließen",
-			"show": "Zeigen",
-			"showHint": "Ansicht zu {name} fliegen",
-			"launched": "Gestartet",
-			"launched@simple": "Losgeflogen",
-			"phase": {
-				"planned": "Noch nicht gestartet (Start am {date})",
-				"planned@simple": "Noch nicht im All. Sie startet am {date}.",
-				"active": "Mission läuft",
-				"active@simple": "Arbeitet noch",
-				"silent": "Still seit {date}, fliegt weiter",
-				"silent@simple": "Seit {date} keine Nachrichten mehr, aber sie fliegt weiter",
-				"destroyed": "Mission beendet am {date}",
-				"destroyed@simple": "Seit {date} gibt es sie nicht mehr"
+		"intro": {
+			"label": "Intro",
+			"skip": "Intro überspringen",
+			"skip@simple": "Überspringen",
+			"progress": "Teil {beat, number} von {count, number}",
+			"earth": {
+				"title": "Das ist die Erde.",
+				"detail": "Alle Menschen, die du kennst, leben hier.",
+				"detail@simple": "Alle, die du kennst, wohnen hier!",
+				"detail@advanced": "Jeder Mensch, dem du je begegnet bist, lebt auf dieser einen kleinen Welt."
 			},
-			"noData": "Ihre Position an diesem Datum ist nicht in den Daten ({from} bis {to}).",
-			"noData@simple": "Wir wissen nicht, wo sie an diesem Datum ist.",
-			"predicted": "Vorausberechnet: Dieses Datum liegt in der Zukunft",
-			"predicted@simple": "Im Voraus berechnet: Dieses Datum kommt erst noch",
-			"distanceSun": "Abstand zur Sonne",
-			"distanceEarth": "Abstand zur Erde",
-			"speed": "{centreId, select, sun {Geschwindigkeit um die Sonne} earth {Geschwindigkeit relativ zur Erde} venus {Geschwindigkeit relativ zur Venus} other {Geschwindigkeit relativ zum {centre}}}",
-			"signal": "Signallaufzeit zur Erde",
-			"signal@simple": "Eine Funknachricht zur Erde braucht",
-			"signalNote": "Funkwellen sind so schnell wie das Licht.",
-			"signalNote@simple": "Und das mit Lichtgeschwindigkeit!",
-			"milestones": "Meilensteine",
-			"planned": "geplant",
-			"goTo": "Reise zum {date}",
-			"event": {
-				"launch": "Start",
-				"flyby": "{targetId, select, earth {Vorbeiflug an der Erde} venus {Vorbeiflug an der Venus} mars {Vorbeiflug am Mars} jupiter {Vorbeiflug am Jupiter} saturn {Vorbeiflug am Saturn} uranus {Vorbeiflug am Uranus} neptune {Vorbeiflug am Neptun} other {Vorbeiflug an {target}}}",
-				"orbitInsertion": "{targetId, select, other {Schwenkt in eine Umlaufbahn um {target} ein}}",
-				"probeLanding": "{targetId, select, other {Ihre Landesonde landet auf {target}}}",
-				"impact": "{targetId, select, saturn {Stürzt in den Saturn} jupiter {Stürzt in den Jupiter} other {Stürzt in {target}}}",
-				"arrival": "{targetId, select, l2 {Erreicht den Lagrange-Punkt L2 von Sonne und Erde} other {Erreicht {target}}}",
-				"heliopause": "Überquert die Heliopause in den interstellaren Raum",
-				"heliopause@simple": "Verlässt die Blase der Sonne, hinaus zu den Sternen",
-				"closestToSun": "So nah an der Sonne wie nie zuvor",
-				"paleBlueDot": "Fotografiert die Erde als „blassblauen Punkt“",
-				"farthest": "Wird zum entferntesten von Menschen gebauten Objekt",
-				"firstImages": "Erste Bilder veröffentlicht",
-				"lastContact": "Letztes Signal empfangen",
-				"missionEnd": "Die Mission endet"
+			"moon": {
+				"title": "Der Mond",
+				"detail": "{earths, number} Erden hätten dazwischen Platz.",
+				"detail@simple": "Zwischen uns und dem Mond hätten {earths, number} Erden Platz!",
+				"detail@advanced": "{km} entfernt: {earths, number} Erddurchmesser."
 			},
-			"distanceAt": "{distance} vom Mittelpunkt",
-			"target": {
-				"pluto": "Pluto",
-				"arrokoth": "Arrokoth",
-				"l2": "L2 von Sonne und Erde"
-			}
+			"inner": {
+				"title": "Die inneren Planeten",
+				"title@simple": "Unsere nächsten Planeten",
+				"detail": "{planets}: die vier Gesteinswelten nahe der Sonne.",
+				"detail@simple": "{planets}.",
+				"detail@advanced": "{planets}: die Gesteinsplaneten, alle weniger als 250 Millionen km von der Sonne entfernt."
+			},
+			"system": {
+				"title": "Das ganze Sonnensystem in echter Größe",
+				"title@simple": "Alles in echter Größe",
+				"detail": "Die Planeten sind viel zu klein, um sie zu sehen. Die Punkte zeigen nur, wo sie sind.",
+				"detail@simple": "Die Planeten sind zu winzig, um sie zu sehen! Die Punkte zeigen, wo sie sind.",
+				"detail@advanced": "Die Erde ist jetzt viel kleiner als ein Pixel, und der Raum ist fast völlig leer. Die Punkte markieren nur die Planeten."
+			},
+			"scale": {
+				"title": "Darum zeichnen wir sie größer und näher",
+				"title@simple": "Darum zeichnen wir sie größer!",
+				"detail": "Jetzt siehst du jeden Planeten, aber nicht maßstabsgetreu. Im Feld „Maßstab“ geht es zurück zur echten Größe.",
+				"detail@simple": "Jetzt siehst du jeden Planeten. Im Feld „Maßstab“ siehst du wieder ihre echte Größe.",
+				"detail@advanced": "„Alles sichtbar“: Größen vergrößert, Abstände gestaucht. „Echter Maßstab“ im Feld „Maßstab“ zeigt die Wirklichkeit."
+			},
+			"hint": {
+				"label": "So bewegst du dich",
+				"drag": "Ziehen zum Umsehen",
+				"drag@simple": "Ziehen zum Drehen",
+				"zoom": "Scrollen zum Zoomen",
+				"zoom@simple": "Scrollen, um näher zu kommen",
+				"pinch": "Mit zwei Fingern zoomen",
+				"click": "Klicke auf einen Planeten, um dorthin zu fliegen",
+				"click@simple": "Klicke auf einen Planeten, um ihn zu besuchen",
+				"tap": "Tippe auf einen Planeten, um dorthin zu fliegen",
+				"tap@simple": "Tippe auf einen Planeten, um ihn zu besuchen"
+			},
+			"menu": "Hilfe",
+			"replay": "Intro noch einmal abspielen",
+			"replay@simple": "Den Anfang noch mal ansehen",
+			"hints": "Zeigen, wie man sich bewegt"
 		}
 	},
 	"solarWalk": {
