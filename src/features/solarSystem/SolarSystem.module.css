@@ -126,14 +126,53 @@
 	max-width: 100%;
 }
 
-/* wide screens: the body info sits beside the time controls on one bottom row */
+/* the time controls, with the flight readout (#18) stacked above them while one shows */
+.bottom {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+}
+
+.bottom > * {
+	max-width: 100%;
+}
+
+@media (max-width: 599px) {
+	.bottom {
+		align-items: stretch;
+	}
+}
+
+/*
+ * Short screens (#29): a tall body card scrolls in its own box instead of
+ * pushing the time controls (and #18's flight readout) off the bottom.
+ */
+@media (min-width: 600px) and (max-width: 999px) {
+	.info {
+		max-height: 35dvh;
+		overflow-y: auto;
+	}
+}
+
+/*
+ * wide screens: the body info sits beside the time controls on one bottom
+ * row; the top panels reach down into the free middle row (#29), so a tall
+ * frame badge or scale panel never pushes the bottom row off screen
+ */
 @media (min-width: 1000px) {
 	.hud {
 		grid-template-rows: auto minmax(0, 1fr) auto;
 		grid-template-areas:
 			"picker centre toggles"
-			". . ."
+			"picker . toggles"
 			"info time .";
+	}
+
+	.info {
+		max-height: calc(100dvh - 6rem);
+		overflow-y: auto;
 	}
 }
 
@@ -204,9 +243,10 @@
 }
 
 /* the body card may be tall at projector size: it scrolls rather than pushing the time controls off screen */
-:global(html[data-presenting]) .info {
-	max-height: 55dvh;
-	overflow-y: auto;
+@media (min-width: 1000px) {
+	:global(html[data-presenting]) .info {
+		max-height: 55dvh;
+	}
 }
 
 /*
@@ -219,7 +259,7 @@
 		grid-template-rows: auto minmax(0, 1fr) auto auto;
 		grid-template-areas:
 			"picker centre toggles"
-			". . ."
+			"picker . toggles"
 			"info . ."
 			"time time time";
 	}
