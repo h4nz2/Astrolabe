@@ -1,6 +1,7 @@
 # Astrolabe architecture (rebuild, September 2026)
 
-A true-scale, interactive 3D model of the solar system (Sun, planets, moons) plus the visual dictionary and hero page,
+A true-scale, interactive 3D model of the solar system (Sun, planets, moons, and since #23 dwarf planets, asteroids,
+comets and the two belts) plus the visual dictionary and hero page,
 shipped as a client-only static site. This is the shared contract for humans and agents working on the rebuild: follow
 it, and if it must change, change it in the same change set.
 
@@ -25,16 +26,18 @@ it, and if it must change, change it in the same change set.
 ```
 data/ourDB.json              raw source (le-systeme-solaire.net export + curated fields); only solarDictionary.ts imports it
 data/rings/<planet>.json     ring systems the source lacks or gets wrong (Jupiter, Uranus, Neptune)
+                             (small bodies' JPL elements and the belts' zones are curated in ourDB.json itself, #23)
 scripts/build-bodies.ts      data/ -> src/data/bodies.json (pnpm build:data); the pure, tested mapping lives in scripts/lib/
 scripts/gen-ring-textures.ts data/rings -> public/assets/textures/<planet>/rings/ (pnpm gen:rings)
 src/routes/                  file routes; src/routeTree.gen.ts is generated and committed
 src/providers/               Mantine theme, I18nProvider, GSAP transition context, Layout
 src/i18n/                    languages and reading levels (see i18n); body content in bodies.ts ("@/i18n/bodies")
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
-src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
+src/data/                    bodies.json, belts.json (#23), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, light/, rings/, ui/),
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, light/, rings/,
+                             smallBodies/ (#23), ui/),
                              solarWalk/ (the basketball solar system, #25)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
@@ -55,7 +58,8 @@ public/assets/textures/      pruned; unreferenced tiered variants are kept for l
 ## Data model (`src/data/schema.ts`)
 
 ```ts
-type BodyKind = "star" | "planet" | "moon"
+type BodyKind =
+	"star" | "planet" | "dwarfPlanet" | "moon" | "asteroid" | "comet" // #23 added the small kinds
 
 interface Orbit {
 	semiMajorAxisKm: number
@@ -99,16 +103,37 @@ interface Body {
 		outerRadiusKm: number
 		textures: { alpha: string; color: string }
 	} | null
+	tail?: { lengthKmAt1Au: number } // a comet's tail (#23), a presentation hint like rings
 	info: Record<string, unknown> // dictionary fields passed through; a source 0 ("unknown") is dropped
+}
+
+interface Belt {
+	// src/data/belts.json (#23): not bodies, a field of dots
+	id: string // "asteroidbelt", "kuiperbelt"
+	name: string
+	parentId: string // "sun"
+	dots: number // how many are drawn
+	color: string
+	members: { count: number; minDiameterKm: number } // the real population the dots stand for
+	meanSeparationKm: number // typical distance between neighbouring members
+	extentKm: [number, number] // a body with its semi-major axis in here is "in the belt" (HUD)
+	zones: {
+		share: number
+		semiMajorAxisKm: [number, number]
+		eccentricity: [number, number]
+		inclinationSigmaDeg: number
+		perihelionMinKm?: number
+	}[]
 }
 ```
 
 `bodies.json` holds physics and presentation hints only, as an array in topological order (parents first): the Sun, the
-8 planets and their moons (dwarf planets, asteroids and comets are in the source but not emitted yet). Editorial content
+8 planets, their moons, then (#23, appended so existing indices stay put) the dwarf planets, asteroids and comets by
+semi-major axis and the dwarf planets' moons. Editorial content
 lives in the i18n resources (#11), keyed by body `id`, so a new body is added by data alone and its story as content.
 
-`src/data/bodies.json` is a committed, deterministic build artifact. CI runs `pnpm check:data` (rebuild +
-`git diff --exit-code`), so rebuild after changing `data/`, `scripts/` or the textures.
+`src/data/bodies.json` and `src/data/belts.json` are committed, deterministic build artifacts. CI runs `pnpm check:data`
+(rebuild + `git diff --exit-code`), so rebuild after changing `data/`, `scripts/` or the textures.
 
 Build rules (`scripts/lib/`):
 
@@ -131,6 +156,16 @@ Build rules (`scripts/lib/`):
   u = 0 (inner) to u = 1 (outer), gray level = face-on opacity. Every ring lies within 3 planet radii (the moon curve's
   knee, so rings stay true to their planet in every preset; Jupiter's Thebe gossamer ring, out to 3.2, is left out).
   A missing ring texture fails the build.
+- Small bodies (#23): `dwarfPlanets` (Ceres was moved there from `asteroids`), `asteroids` and `comets` are emitted
+  with their kind, but only with real elements (`hasRealElements`: a semi-major axis, a period and a phase not all 0);
+  the rest of the source (most asteroids, Shoemaker-Levy 9, Hyakutake) is skipped and counted, never placed at a
+  made-up phase. The emitted ones carry osculating J2000-ecliptic elements from the JPL Small-Body Database with their
+  own `epochJD` (Halley: epoch moved to its 1986-02-09 perihelion, period the mean to the 2061-07-28 return; Pluto's
+  moons from JPL Horizons). Small bodies without a map get a stand-in texture (`SMALL_BODY_TEXTURES`: neutral rock,
+  darker for comet nuclei; the source's Pluto map on Eris, Haumea and Makemake was dropped). Pluto's IAU pole is the
+  north-side one with a negative rate (the report gives the positive pole) and its map was turned to match
+  (`public/assets/textures/pluto/pluto.jpg`). A comet's `tailLengthKmAt1Au` becomes `tail`. The belts come from the
+  curated `asteroidBelt` / `kuiperBelt` records (zones in AU, converted to km; shares must sum to 1).
 - Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements, the
   Moon's precession rates from Meeus ch. 47 and its true sidereal month 27.321661 d) are made in `data/ourDB.json` itself. Sanity checks (Kepler period, density) warn on stderr.
 
@@ -439,6 +474,57 @@ Driven by data alone: a body with `rings` gets them (Jupiter, Saturn, Uranus, Ne
 - Picking: the ring sheet is a real scene target, nearer than `BodyPicking`'s "empty space": a click on the rings is
   `activateBody(planet)` and hovering them hovers the planet, so a click on Saturn's rings never resets the view.
 
+## Small bodies (`src/sim/comet.ts`, `src/sim/belts.ts`, `features/solarSystem/smallBodies/`; #23)
+
+Dwarf planets, asteroids and comets are ordinary bodies (kinds `dwarfPlanet`, `asteroid`, `comet`): placed, scaled,
+lit, labelled, picked and framed by the rules every body follows (the scale engine goes by depth, never by kind).
+Only these kind rules exist, all additive:
+
+- **The "Small bodies" layer** (`showSmallBodies`, off by default, `?smallBodies=true` while on; a HUD switch).
+  `isBodyShown` hides small bodies and their moons (`isSmallBody` in `@/data`) while it is off, except the focus's own
+  system: picking Pluto in the focus picker shows Pluto and Charon without switching the layer. The belts, the comet
+  tails and the HUD legend follow the layer. Decision: the planets' overview stays exactly as legible as before; the
+  small bodies are one switch (or one pick) away.
+- Labels: tiers Sun, planets, dwarf planets, comets, then moons and asteroids (asteroids share the moons' budget).
+  Orbit lines: an asteroid's only while focused or selected (`isOrbitDrawn`); colours per kind (`ORBIT_COLORS`).
+  Markers: a colour per kind. Trails (#31): the Sun and the planets only. Picker: groups "Dwarf planets" (each with its
+  moons), "Asteroids", "Comets"; Left/Right cycle within a kind. Card facts: small bodies are measured in our Moon, a
+  distance with e >= 0.5 is a range (`sunlightRange`).
+- Very elongated orbits (e >= `TRUE_ANOMALY_SAMPLING_E` 0.9: Halley, Hale-Bopp, NEOWISE) are sampled at uniform
+  true anomalies (`bodies/OrbitLine.tsx`), so the hairpin round the Sun stays round; everything else is unchanged.
+
+**Comets.** `src/sim/comet.ts` is the whole model, in true km: `cometActivity(r)` (0 beyond `TAIL_ONSET_KM` 4 AU,
+smooth to 1 at `TAIL_FULL_KM` 1.5 AU), `tailLengthKm(tail, r)` (the curated length at 1 AU x activity x 1 AU / r),
+`antiSunDirection` (from the TRUE positions: the Sun direction of #22's lighting), `nextPerihelionJD` /
+`previousPerihelionJD`. `smallBodies/cometTail.ts` samples the gas tail straight along the anti-Sun direction and the
+dust tail (0.6 of the length) bent back against the motion, and draws every sample with `mapTruePointKm` (the
+planets' rule and the anchored frames of #31): the tail points away from the drawn Sun in every preset and is its
+true length at true scale. `CometTails.tsx` draws them as camera-facing additive ribbons (never thinner than
+1.5 / 3 px) plus a coma sprite (true radius 1e5 km x activity, at least 3 px), for every shown body with `tail`.
+`cometWatch.ts`: "Watch it pass the Sun" selects and centres the comet (fit: its perihelion distance around the
+Sun, so the Sun is in the frame), glides to where it crosses 4 AU inbound (or stays, mid-passage) and runs at the
+speed preset that shows the whole passage in about 90 s; comets returning after 2999 (Hale-Bopp, NEOWISE) replay
+their last passage.
+
+**Belts.** `src/data/belts.json` describes each belt by zones (the main belt's four between the Kirkwood gaps; the
+Kuiper belt's plutinos, cold and hot classical belt and scattered disc). `src/sim/belts.ts` turns a belt into dots
+once, deterministically (`seededRandom(hashSeed(id))`): a, e, |normal| inclination, random node, periapsis and phase,
+mean motion from the parent's mass; `beltDotPositionKm` is the double-precision twin of the shader. `Belts.tsx`
+draws one `Points` per belt; `beltShader.ts` solves Kepler per dot on the GPU (8 Newton steps), maps the true
+position with the root's `orbitDistance` curve and blends the anchored frames exactly like `applyReferenceFrame`
+(`updateBeltUniforms` feeds the root's and anchors' drawn and true positions; a unit test re-implements the shader
+in JS and matches `mapTruePointKm` in every preset and frame). 10,000 dots, no per-frame CPU work beyond a few
+uniforms. Dots are `BELT_DOT_PX` (2.2 px) at 55 % opacity whatever the zoom: flying into the belt shows a sparse
+scatter, never a rock field. The belt's name (drei `Html`) sits on its middle circle on the viewer's left while that
+circle is 70 px .. 1.2 viewports on screen; it is not part of the label layout (like the light front's label).
+
+**Honesty in the HUD** (`SmallBodyNotes.tsx`, `smallBodyText.ts`, strings under `solarSystem.smallBodies.*`): the
+overview card, while the layer is on, and the card of a belt member (semi-major axis within the belt's `extentKm`)
+say what a dot stands for (`members.count / dots`: about 380 asteroids over 1 km), how far apart neighbours are
+(`meanSeparationKm`, in Earth–Moon distances) and that the dots are drawn far too big; a comet's card says where it
+is (falling in / heading out), its tail's true length and direction ("so now the tail goes first"), its next (or
+last) perihelion, and offers the watch button.
+
 ## Floating origin
 
 GPU positions are float32, so the render origin is the camera's pivot in display space:
@@ -450,7 +536,7 @@ near the camera jitters.
 
 ```
 simTimeJD, timeWarp, paused, clock, lastTickMs    time; change only through the actions below
-hoverId, showOrbits, showLabels, showMoons, showMarkers, showOrbitLabels
+hoverId, showOrbits, showLabels, showMoons, showMarkers, showOrbitLabels, showSmallBodies (#23)
 ...NavigationSlice
 setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing moves at the change
 setSimTime(jd)                                    instant jump
@@ -464,7 +550,7 @@ Anything positioned in time is a pure function of a JD, never of frames. In `use
 React UI subscribes with selectors, and reads the clock only through `useThrottledSimTime()` (10 Hz).
 
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
-Scale presets). The layer switches `orbits`,
+Scale presets). `smallBodies=true` while the small bodies are shown (#23, off by default). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
 off by default, as `orbitNames=true` while on; `frame=<id>` while a body is held still (#31). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
@@ -527,7 +613,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
-- Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
+- Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus,
+  hiding the small bodies (#23) never hides the focus's system.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
@@ -535,7 +622,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
+  `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Belts`, `CometTails`, `LightFront`, `Labels`, `BodyPicking`, `CameraRig`,
   `HighlightTracker`, later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
 
 ## Picking: click a body to focus on it (`scene/picking.ts`, `scene/BodyPicking.tsx`; #16)
