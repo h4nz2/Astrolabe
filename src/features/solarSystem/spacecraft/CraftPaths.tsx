@@ -18,7 +18,12 @@
  */
 import { useMemo } from "react"
 import { extend, useFrame } from "@react-three/fiber"
-import { Line, type BufferAttribute, type Points } from "three"
+import {
+	Line,
+	type BufferAttribute,
+	type LineBasicMaterial,
+	type Points,
+} from "three"
 
 import { rootIndexOf, toUnits } from "@/sim"
 import {
@@ -32,6 +37,7 @@ import {
 } from "@/sim/spacecraft"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
+import { anchoredWeight } from "../frame/frameBlend"
 import type { SimFrame } from "../scene/simFrame"
 import type { CraftFrame } from "./craftFrame"
 import { CRAFT_COLOR } from "./CraftMarkers"
@@ -242,6 +248,16 @@ export function attachAttribute(
 	else slot.futureAttribute = attribute
 }
 
+/** Scales the slot's opacity by `fade` (0..1); a fully faded slot is not drawn. */
+function fadeSlot(slot: LineSlot, fade: number, emphasis: PathEmphasis): void {
+	const { flown, future } = slot
+	if (flown === null || future === null) return
+	const opacity = PATH_OPACITY[emphasis]
+	;(flown.material as LineBasicMaterial).opacity = opacity.flown * fade
+	;(future.material as LineBasicMaterial).opacity = opacity.future * fade
+	flown.visible = future.visible = fade > 0.001
+}
+
 /** Applies a split to the slot's two lines. */
 function applySplit(slot: LineSlot, split: PathSplit): void {
 	const { flown, future, flownAttribute, futureAttribute } = slot
@@ -301,6 +317,7 @@ const TRACK_CAPACITY = 8192
 export interface PathRuntime {
 	readonly trajectory: CraftTrajectory
 	readonly index: number
+	readonly emphasis: PathEmphasis
 	path: CruisePath
 	/** The SimFrame's scaleVersion `path` was built for. */
 	pathScale: number
@@ -321,11 +338,13 @@ export function createPathRuntime(
 	craftFrame: CraftFrame,
 	index: number,
 	trajectory: CraftTrajectory,
+	emphasis: PathEmphasis,
 ): PathRuntime {
 	const path = buildCruisePath(frame, craftFrame, index, trajectory)
 	return {
 		trajectory,
 		index,
+		emphasis,
 		path,
 		pathScale: frame.scaleVersion,
 		cruise: createLineSlot(path.times.length + 1),
@@ -384,6 +403,13 @@ export function updatePathRuntime(
 		split,
 	)
 	applySplit(runtime.cruise, split)
+	// the cruise path is drawn in the Sun's frame: it fades out while a body is
+	// held still (#31), like the orbit lines around the Sun
+	fadeSlot(
+		runtime.cruise,
+		1 - anchoredWeight(frame.frameBlend, cruise.root),
+		runtime.emphasis,
+	)
 
 	// the loops around the planet being orbited, around where it is now
 	const segment =
@@ -460,8 +486,8 @@ export function CraftPath({
 	milestones,
 }: CraftPathProps) {
 	const runtime = useMemo(
-		() => createPathRuntime(frame, craftFrame, index, trajectory),
-		[frame, craftFrame, index, trajectory],
+		() => createPathRuntime(frame, craftFrame, index, trajectory, emphasis),
+		[frame, craftFrame, index, trajectory, emphasis],
 	)
 	useFrame(() => updatePathRuntime(runtime, frame, craftFrame))
 

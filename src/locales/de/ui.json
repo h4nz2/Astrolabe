@@ -525,6 +525,96 @@
 				"label": "{observer} und {body} auf ihren Bahnen um die Sonne, mit der Blicklinie von {observer} zu {body}"
 			}
 		},
+		"light": {
+			"open": "Lichtgeschwindigkeit",
+			"open@simple": "Wie schnell ist Licht?",
+			"openHint": "Schick einen Lichtblitz los und sieh zu, wie lange er durch das Sonnensystem braucht",
+			"title": "Das langsame Licht",
+			"close": "Schließen",
+			"tabs": {
+				"pulse": "Lichtblitz",
+				"delay": "Funkverzögerung",
+				"beyond": "Noch weiter"
+			},
+			"intro": "Nichts ist schneller als Licht: {speed, number} km in jeder Sekunde. Schick einen Lichtblitz los und sieh, wie lange er trotzdem durch das Sonnensystem braucht.",
+			"intro@simple": "Nichts ist schneller als Licht. In einer Sekunde könnte es 7-mal um die Erde fliegen! Schick einen Lichtblitz los und sieh, wie lange er bis zu den Planeten braucht.",
+			"intro@advanced": "Licht legt genau {speed, number} km/s zurück. Schick einen Puls los und sieh zu, wie er mit dieser Geschwindigkeit das Sonnensystem durchquert, in Echtzeit.",
+			"from": "Licht senden von",
+			"send": "Lichtblitz senden",
+			"sendAgain": "Nochmal senden",
+			"clear": "Lichtblitz entfernen",
+			"travelling": "Das Licht ist unterwegs seit",
+			"travelling@simple": "So lange ist das Licht schon unterwegs:",
+			"covered": "{distance} zurückgelegt",
+			"covered@simple": "{distance} geschafft",
+			"waiting": "Die Zeit ist auf die Zeit vor dem Lichtblitz zurückgelaufen.",
+			"clock": {
+				"realTime": "Echtzeit: Eine Sekunde hier ist eine echte Sekunde.",
+				"realTime@simple": "Echtzeit: genau so schnell wie im echten Leben.",
+				"fast": "Beschleunigt auf {speed}. Die Uhr zählt trotzdem die echte Reisezeit des Lichts.",
+				"fast@simple": "Die Zeit läuft schneller als im echten Leben ({speed}). Die Uhr zeigt trotzdem, wie lange das Licht wirklich braucht.",
+				"reversed": "Die Zeit läuft rückwärts: Das Licht zieht sich dorthin zurück, wo es herkam.",
+				"paused": "Die Zeit ist angehalten und das Licht mit ihr.",
+				"backToRealTime": "Zurück zur Echtzeit"
+			},
+			"arrivals": "Wann das Licht ankommt",
+			"arrivals@simple": "Wann das Licht dort ist",
+			"reached": "erreicht",
+			"pending": "in {duration}",
+			"announce": "Angekommen {id, select, sun {bei der Sonne} venus {bei der Venus} earth {bei der Erde} moon {beim Mond} other {beim {body}}} nach {duration}.",
+			"announce@simple": "Das Licht ist {id, select, sun {bei der Sonne} venus {bei der Venus} earth {bei der Erde} moon {beim Mond} other {beim {body}}}! Es hat {duration} gebraucht.",
+			"leftPlanets": "Das Licht hat alle Planeten hinter sich gelassen. Den nächsten Stern erreicht es erst in {years, number} Jahren.",
+			"leftPlanets@simple": "Das Licht ist an allen Planeten vorbei. Bis zum nächsten Stern braucht es noch {years, number} Jahre!",
+			"frontLabel": "Licht · {duration}",
+			"km": "{value} km",
+			"delay": {
+				"intro": "Auch Funksignale sind genau so schnell wie Licht. So lange braucht eine Nachricht von der Erde gerade.",
+				"intro@simple": "Funknachrichten sind so schnell wie Licht, aber nicht schneller. So lange braucht eine Nachricht von der Erde.",
+				"to": "Nachricht von der Erde an",
+				"oneWay": "Hinweg",
+				"roundTrip": "Hin und zurück",
+				"now": "Gerade {distance} entfernt",
+				"now@advanced": "Gerade {distance} ({au} AE) entfernt",
+				"range": "Je nachdem, wo beide auf ihren Bahnen stehen, dauert es zwischen {min} und {max}.",
+				"range@simple": "Die Planeten bewegen sich, darum ändert sich das: von {min} bis {max}.",
+				"rover": "Einen Rover dort von der Erde aus fahren? Du siehst, wo er vor {oneWay} war, und er bekommt deinen Befehl erst {oneWay} später: Du lenkst {roundTrip} in der Vergangenheit. {id, select, moon {Bei ein paar Sekunden geht das noch: Sowjetische Teams haben die Lunochod-Rover auf dem Mond von der Erde aus gesteuert.} mars {Deshalb fahren die Rover auf dem Mars selbstständig.} other {Deshalb müssen Raumsonden so weit draußen selbst steuern.}}",
+				"rover@simple": "Stell dir vor, du steuerst dort einen Roboter mit einer Fernbedienung. Jeder Knopfdruck braucht {oneWay}, bis er ankommt, und was passiert ist, siehst du erst {oneWay} später. {id, select, moon {Auf dem Mond sind das nur ein paar Sekunden, darum wurden dort wirklich Roboter von der Erde aus gefahren.} mars {Darum müssen die Roboter auf dem Mars alleine fahren.} other {Darum müssen Roboter dort draußen selbst steuern.}}",
+				"watch": "Signal von der Erde senden und zusehen"
+			},
+			"beyond": {
+				"intro": "Die Planeten sind nur unsere Nachbarschaft. Dahinter braucht selbst Licht Jahre.",
+				"intro@simple": "Die Planeten sind nur unsere Nachbarn. Alles andere ist so weit weg, dass selbst Licht Jahre braucht!",
+				"proximaCentauri": {
+					"name": "Proxima Centauri, der nächste Stern",
+					"text": "Sein Licht ist {duration} alt, wenn es bei uns ankommt. Wir sehen den Stern so, wie er damals war.",
+					"text@simple": "Sein Licht braucht {duration} bis zu uns."
+				},
+				"galacticCentre": {
+					"name": "Das Zentrum der Milchstraße",
+					"text": "Sein Licht war {duration} unterwegs. Als es losflog, jagten Menschen noch Mammuts.",
+					"text@simple": "Sein Licht braucht {duration}. Als es losflog, jagten die Menschen noch Mammuts!"
+				},
+				"andromeda": {
+					"name": "Die Andromeda-Galaxie",
+					"text": "Ihr Licht war {duration} unterwegs. Als es losflog, stellten unsere Vorfahren die ersten Steinwerkzeuge her.",
+					"text@simple": "Ihr Licht braucht {duration}. Als es losflog, gab es noch keine Menschen – nur unsere sehr frühen Vorfahren."
+				}
+			},
+			"duration": {
+				"second": "{count, number} s",
+				"second@simple": "{count, plural, one {# Sekunde} other {# Sekunden}}",
+				"minute": "{count, number} Min.",
+				"minute@simple": "{count, plural, one {# Minute} other {# Minuten}}",
+				"hour": "{count, number} Std.",
+				"hour@simple": "{count, plural, one {# Stunde} other {# Stunden}}",
+				"day": "{count, plural, one {# Tag} other {# Tage}}",
+				"year": "{count, plural, one {# Jahr} other {# Jahre}}",
+				"join2": "{a} {b}",
+				"join2@simple": "{a} und {b}",
+				"join3": "{a} {b} {c}",
+				"join3@simple": "{a}, {b} und {c}"
+			}
+		},
 		"spacecraft": {
 			"layer": "Raumsonden",
 			"menu": "Raumsonden",
@@ -565,7 +655,6 @@
 			"milestones": "Meilensteine",
 			"planned": "geplant",
 			"goTo": "Reise zum {date}",
-			"hours": "{hours} {minutes}",
 			"event": {
 				"launch": "Start",
 				"flyby": "{targetId, select, earth {Vorbeiflug an der Erde} venus {Vorbeiflug an der Venus} mars {Vorbeiflug am Mars} jupiter {Vorbeiflug am Jupiter} saturn {Vorbeiflug am Saturn} uranus {Vorbeiflug am Uranus} neptune {Vorbeiflug am Neptun} other {Vorbeiflug an {target}}}",

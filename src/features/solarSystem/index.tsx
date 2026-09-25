@@ -10,6 +10,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { LightSlot } from "./light/LightPanel"
 import Scene from "./scene/Scene"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
@@ -81,8 +82,13 @@ const SolarSystem = () => {
 						<SpacecraftMenu />
 					</div>
 					<FrameBadgePanel />
+					<LightSlot
+						phone={false}
+						className={`${classes.panel} ${classes.light}`}
+					/>
 				</div>
 				<CentreBadgePanel />
+				<LightSlot phone className={`${classes.panel} ${classes.light}`} />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">

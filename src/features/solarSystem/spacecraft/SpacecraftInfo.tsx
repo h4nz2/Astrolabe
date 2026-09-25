@@ -32,7 +32,8 @@ import { useSpacecraftStore } from "@/store/spacecraft"
 import useThrottledSimTime from "../scene/useThrottledSimTime"
 import { formatDayUTC } from "../ui/timeTravel"
 import { craftFacts, showCraft, showEvent } from "./facts"
-import { eventLabel, formatSignalTime } from "./text"
+import { formatDuration } from "../light/lightTravel"
+import { eventLabel } from "./text"
 
 import infoClasses from "../ui/BodyInfo.module.css"
 import classes from "./Spacecraft.module.css"
@@ -195,7 +196,7 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 							{t("solarSystem.spacecraft.signal")}
 						</dt>
 						<dd className={infoClasses.value} data-fact="signal">
-							{formatSignalTime(facts.signalSeconds, i18n)}
+							{formatDuration(facts.signalSeconds, i18n)}
 							<span className={infoClasses.secondary}>
 								{t("solarSystem.spacecraft.signalNote")}
 							</span>

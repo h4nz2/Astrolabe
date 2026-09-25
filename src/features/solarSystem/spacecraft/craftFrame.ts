@@ -14,8 +14,12 @@ import {
 	type CraftPhase,
 	type CraftState,
 	type CraftTrajectory,
+	type TruePointMapper,
 } from "@/sim/spacecraft"
 
+import { rootIndexOf } from "@/sim"
+
+import { mapTruePointKm } from "../light/lightFront"
 import type { SimFrame } from "../scene/simFrame"
 import { trajectoryOf } from "./trajectories"
 
@@ -35,12 +39,15 @@ export interface CraftFrame {
 	jd: number
 	/** The SimFrame's scaleVersion of the last update (paths re-derive when it moves on). */
 	scaleVersion: number
+	/** Places a true point like a body there would be drawn, anchored frames (#31) included. */
+	readonly map: TruePointMapper
 }
 
 export function createCraftFrame(
 	frame: SimFrame,
 	craft: readonly Spacecraft[] = catalogue,
 ): CraftFrame {
+	const root = rootIndexOf(frame.bodies)
 	const craftFrame: CraftFrame = {
 		craft,
 		trajectories: craft.map((entry) => trajectoryOf(entry.id)),
@@ -49,6 +56,8 @@ export function createCraftFrame(
 		present: new Uint8Array(craft.length),
 		jd: Number.NaN,
 		scaleVersion: -1,
+		map: (anchor, x, y, z, out) =>
+			mapTruePointKm(frame, root, anchor, x, y, z, out),
 	}
 	updateCraftFrame(craftFrame, frame)
 	return craftFrame
@@ -71,7 +80,14 @@ export function updateCraftFrame(
 			craftFrame.present[k] = 0
 			continue
 		}
-		const state = craftStateAt(trajectory, jd, frame, craftFrame.states[k])
+		const state = craftStateAt(
+			trajectory,
+			jd,
+			frame,
+			craftFrame.states[k],
+			undefined,
+			craftFrame.map,
+		)
 		craftFrame.present[k] = isInSpace(phase) && state.available ? 1 : 0
 	}
 	craftFrame.jd = jd

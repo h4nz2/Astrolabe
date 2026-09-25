@@ -23,6 +23,7 @@ import Trails from "../frame/Trails"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
+import LightFront from "../light/LightFront"
 import { labelSlotCount } from "../labels/project"
 import { createCraftFrame } from "../spacecraft/craftFrame"
 import { createCraftLabels } from "../spacecraft/craftLabels"
@@ -89,6 +90,7 @@ function Scene() {
 					<OrbitLines />
 					<Trails />
 					<Markers />
+					<LightFront />
 					<SpacecraftScene
 						frame={frame}
 						craftFrame={craftFrame}

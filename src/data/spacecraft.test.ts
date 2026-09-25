@@ -21,7 +21,6 @@ import {
 	type ScaleSettings,
 } from "@/sim"
 import {
-	LIGHT_SPEED_KM_S,
 	craftStateAt,
 	createCraftState,
 	decodeTrajectory,
@@ -30,6 +29,8 @@ import {
 	type CentreFrame,
 	type CraftTrajectory,
 } from "@/sim/spacecraft"
+
+import { SPEED_OF_LIGHT_KM_S } from "@/sim/light"
 
 import { bodies } from "."
 import checks from "./spacecraftCheck.json"
@@ -254,7 +255,7 @@ describe("where the craft are", () => {
 	it("puts Voyager 1 about a light-day away in 2026", () => {
 		const { state, frame } = at("voyager1", "2026-11-15T00:00Z")
 		const hours =
-			dist(state.trueKm, bodyKm(frame, "earth")) / LIGHT_SPEED_KM_S / 3600
+			dist(state.trueKm, bodyKm(frame, "earth")) / SPEED_OF_LIGHT_KM_S / 3600
 		expect(hours).toBeGreaterThan(22.5)
 		expect(hours).toBeLessThan(25)
 	})

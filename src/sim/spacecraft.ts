@@ -33,12 +33,10 @@ import type {
 
 import { bracket, hermitePosition, hermiteVelocity } from "./hermite"
 import { propagate, type Vec3 } from "./kepler"
+import { lightSeconds } from "./light"
 import { childDistanceCurve, displayOffset, type ScaleSettings } from "./scale"
 import { J2000_JD, UNIX_EPOCH_JD, MS_PER_DAY } from "./time"
 import { AU_KM } from "./units"
-
-/** Speed of light, km/s. */
-export const LIGHT_SPEED_KM_S = 299_792.458
 
 /** Julian Date of an ISO instant (`1977-09-05T12:56Z`). */
 export const isoToJD = (iso: string): number =>
@@ -216,7 +214,22 @@ export const createCraftState = (): CraftState => ({
 	planetWeight: 0,
 })
 
+/**
+ * Draws a TRUE point (km, the frame of `positionsKm`) around body `anchor`
+ * into `out` (display km). The default maps the offset from the anchor with
+ * `displayOffset`; the scene passes one that also follows the anchored
+ * reference frames (#31, `mapTruePointKm`).
+ */
+export type TruePointMapper = (
+	anchor: number,
+	x: number,
+	y: number,
+	z: number,
+	out: Float64Array,
+) => void
+
 const rel = new Float64Array(3)
+const truePoint = new Float64Array(3)
 const vel = new Float64Array(3)
 const mapped = new Float64Array(3)
 
@@ -231,8 +244,18 @@ function accumulate(
 	centreTrue: ArrayLike<number>,
 	centreDisplay: ArrayLike<number>,
 	weight: number,
+	map: TruePointMapper | undefined,
 ): void {
 	const c = segment.centerIndex
+	if (map !== undefined) {
+		for (let k = 0; k < 3; k++) truePoint[k] = centreTrue[k] + rel[k]
+		map(c, truePoint[0], truePoint[1], truePoint[2], mapped)
+		for (let k = 0; k < 3; k++) {
+			state.trueKm[k] += weight * truePoint[k]
+			state.displayKm[k] += weight * mapped[k]
+		}
+		return
+	}
 	const body = frame.bodies[c]
 	displayOffset(
 		rel[0],
@@ -273,6 +296,7 @@ export function craftStateAt(
 	frame: CentreFrame,
 	state: CraftState,
 	centres: (frame: CentreFrame, index: number) => void = centreOf,
+	map?: TruePointMapper,
 ): CraftState {
 	if (!(jd >= trajectory.fromJD && jd <= trajectory.toJD)) {
 		state.available = false
@@ -308,6 +332,7 @@ export function craftStateAt(
 			centreTrueScratch,
 			centreDisplayScratch,
 			weight,
+			map,
 		)
 	}
 	if (helio !== null && weight < 1) {
@@ -320,6 +345,7 @@ export function craftStateAt(
 			centreTrueScratch,
 			centreDisplayScratch,
 			1 - weight,
+			map,
 		)
 	}
 	segmentState(anchor, jd, rel, vel)
@@ -512,12 +538,10 @@ export const isInSpace = (phase: CraftPhase): boolean =>
 	phase === "active" || phase === "silent"
 
 /** One-way light (radio) time between two true positions, seconds. */
-export function lightTimeSeconds(
+export const lightTimeSeconds = (
 	a: ArrayLike<number>,
 	b: ArrayLike<number>,
-): number {
-	return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]) / LIGHT_SPEED_KM_S
-}
+): number => lightSeconds(distanceKm(a, b))
 
 /** Distance between two true positions, km. */
 export const distanceKm = (
