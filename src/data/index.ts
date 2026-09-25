@@ -10,6 +10,7 @@ import type { Body } from "./schema"
 import bodiesJson from "./bodies.json"
 
 export type {
+	Appearance,
 	BodiesFile,
 	Body,
 	BodyKind,

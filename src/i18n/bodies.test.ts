@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 
-import { bodyById, planets, sun } from "@/data"
+import { bodies, bodyById, planets, sun } from "@/data"
 
 import {
 	BodyContentFile,
@@ -14,8 +14,16 @@ import {
 import { DEFAULT_LOCALE, LOCALES, READING_LEVELS } from "./catalog"
 import { createI18n } from "./core"
 
-/** Bodies that must have every field at every reading level in every locale. */
-const AUTHORED = [sun.id, ...planets.map((planet) => planet.id)]
+/**
+ * Bodies that must have every field at every reading level in every locale:
+ * the Sun, the planets and every featured moon (#17: a moon is featured for
+ * its story, so the story must be written).
+ */
+const AUTHORED = [
+	sun.id,
+	...planets.map((planet) => planet.id),
+	...bodies.filter((body) => body.featured).map((body) => body.id),
+]
 
 /** Moons whose names every locale must state (translated or confirmed identical). */
 const MAJOR_MOONS = [
@@ -34,6 +42,7 @@ const MAJOR_MOONS = [
 	"titan",
 	"hyperion",
 	"iapetus",
+	"phoebe",
 	"miranda",
 	"ariel",
 	"umbriel",
@@ -87,6 +96,11 @@ describe.each(LOCALES)("bodies.json of %s", (locale) => {
 				[...READING_LEVELS].sort(),
 			)
 		}
+	})
+
+	it("covers every featured moon (#17)", () => {
+		expect(AUTHORED).toEqual(expect.arrayContaining(["titan", "phoebe"]))
+		expect(AUTHORED).toHaveLength(1 + 8 + 24)
 	})
 
 	it("names the major moons", () => {
@@ -152,22 +166,29 @@ describe("getBodyText", () => {
 	})
 
 	it("generates a description from the data for moons without one", () => {
-		const io = getBodyText("io", createI18n({ locale: "en" }))
-		expect(io.authored).toBe(false)
-		expect(io.tagline).toBe("Moon of Jupiter")
-		expect(io.description).toMatch(
-			/^Io is a moon of Jupiter\. It is about 3,6\d\d km across/,
+		const himalia = getBodyText("himalia", createI18n({ locale: "en" }))
+		expect(himalia.authored).toBe(false)
+		expect(himalia.tagline).toBe("Moon of Jupiter")
+		expect(himalia.description).toMatch(
+			/^Himalia is a moon of Jupiter\. It is about 170 km across/,
 		)
-		expect(io.description).toMatch(/every 1\.77 days\.$/)
+		expect(himalia.description).toMatch(/every 250\.\d+ days\.$/)
 
-		const deIo = getBodyText("io", createI18n({ locale: "de" }))
-		expect(deIo.description).toMatch(/^Io ist ein Mond des Jupiter\./)
-		expect(deIo.facts).toEqual([])
+		const deHimalia = getBodyText("himalia", createI18n({ locale: "de" }))
+		expect(deHimalia.description).toMatch(/^Himalia ist ein Mond des Jupiter\./)
+		expect(deHimalia.facts).toEqual([])
 	})
 
 	it("uses hours for moons that circle their planet in under a day", () => {
-		const phobos = getBodyText("phobos", createI18n({ locale: "en" }))
-		expect(phobos.description).toMatch(/every 7\.\d+ hours\.$/)
+		const metis = getBodyText("metis", createI18n({ locale: "en" }))
+		expect(metis.description).toMatch(/every 7\.\d+ hours\.$/)
+	})
+
+	it("tells the story of a featured moon (#17)", () => {
+		const titan = getBodyText("titan", createI18n({ locale: "de" }))
+		expect(titan.authored).toBe(true)
+		expect(titan.tagline).toBe("Eine Welt mit Methanregen")
+		expect(titan.comparisons).toHaveLength(1)
 	})
 })
 

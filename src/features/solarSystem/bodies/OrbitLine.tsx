@@ -24,11 +24,15 @@
  * Precession (the Moon's orbit turns: its node once in 18.6 years, its perigee
  * once in 8.85): the ellipse is resampled from `orbitAt(orbit, jd)` whenever
  * the orbit has turned more than `ORBIT_RESAMPLE_DEG` since the last sampling.
+ *
+ * Moons (#17): a moon's line fades in with its drawn size on screen and the
+ * long tail is fainter (./moonOrbitFade.ts); a line faded out is not drawn.
  */
 import { useMemo, useRef } from "react"
 import { extend, useFrame } from "@react-three/fiber"
 import {
 	Line,
+	PerspectiveCamera,
 	Vector3,
 	type BufferAttribute,
 	type LineBasicMaterial,
@@ -52,7 +56,9 @@ import {
 } from "@/sim"
 
 import { anchoredWeight } from "../frame/frameBlend"
+import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame, type SimFrame } from "../scene/simFrame"
+import { moonOrbitFade, orbitScreenRadiusPx } from "./moonOrbitFade"
 
 // R3F's createInstance strips the `three` prefix when it mounts <threeLine>,
 // but commitUpdate validates the raw type against the catalogue on every
@@ -364,6 +370,7 @@ export function updateOrbitBuffers(
 }
 
 const shift = new Vector3()
+const parentScratch = new Vector3()
 
 function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 	const frame = useSimFrame()
@@ -379,7 +386,7 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		[orbit, frame],
 	)
 
-	useFrame(() => {
+	useFrame(({ camera, size }) => {
 		const line = lineRef.current
 		const attribute = attributeRef.current
 		if (
@@ -389,6 +396,31 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 			orbit === null
 		) {
 			return
+		}
+		const material = materialRef.current
+		// a moon's orbit fades in with its size on screen (#17); a faded-out
+		// line is neither updated nor drawn (it catches up when it reappears)
+		let moonFade = 1
+		if (body.kind === "moon" && camera instanceof PerspectiveCamera) {
+			const parent = frame.bodies[parentIndex]
+			frame.renderPosition(parentIndex, parentScratch)
+			moonFade = moonOrbitFade(
+				orbitScreenRadiusPx(
+					toUnits(
+						displayDistanceKm(
+							orbit.semiMajorAxisKm,
+							parent.radiusKm,
+							frame.displayRadiiKm[parentIndex],
+							childDistanceCurve(frame.scale, parent.parentId === null),
+						),
+					),
+					parentScratch.distanceTo(camera.position),
+					pixelsPerUnitAtDistanceOne(camera, size.height),
+				),
+				body,
+			)
+			line.visible = moonFade > 0
+			if (!line.visible) return
 		}
 		const rebuilt = updateOrbitBuffers(
 			buffers,
@@ -403,11 +435,12 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		else attribute.addUpdateRange(anchorVertex(buffers.slot) * 3, 3)
 		attribute.needsUpdate = true
 		line.position.copy(shift)
-		const material = materialRef.current
 		if (aroundRoot && material !== null) {
 			const fade = 1 - anchoredWeight(frame.frameBlend, parentIndex)
 			material.opacity = ORBIT_OPACITY * fade
 			line.visible = fade > 0.001
+		} else if (body.kind === "moon" && material !== null) {
+			material.opacity = ORBIT_OPACITY * moonFade
 		}
 	})
 

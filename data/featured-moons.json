@@ -1,0 +1,39 @@
+{
+	"$comment": "Issue #17: the moons shown by default, curated by story, not by size. A moon is listed here when it has a story a student can repeat (the reason is the one-line pitch; the full story is in src/locales/<locale>/bodies.json, which must carry authored content for every moon listed here). Every other moon is the long tail: hidden until the viewer asks for all moons. Keyed by planet id, then moon id; the build fails on an unknown id or a wrong planet. The rule is written down in docs/ARCHITECTURE.md, 'Moons'.",
+	"earth": {
+		"moon": "Our companion: phases, tides, eclipses, and the only other world people have walked on"
+	},
+	"mars": {
+		"phobos": "Spirals toward Mars and will be torn apart; rises in the west twice a day",
+		"deimos": "A speck of a moon that looks like a bright star from Mars"
+	},
+	"jupiter": {
+		"io": "The most volcanic world known, squeezed hot by Jupiter's tides",
+		"europa": "An ocean of liquid water under the ice: a place to look for life",
+		"ganymede": "The largest moon, bigger than Mercury, with its own magnetic field",
+		"callisto": "The most cratered surface known, unchanged for four billion years"
+	},
+	"saturn": {
+		"mimas": "The 'Death Star' moon with one giant crater",
+		"enceladus": "Geysers of water shoot from an ocean under its south pole",
+		"tethys": "A ball of almost pure ice with a canyon most of the way around it",
+		"dione": "Bright ice cliffs, and two tiny moons sharing its orbit",
+		"rhea": "Saturn's second-largest moon, with a whiff of oxygen",
+		"titan": "The only moon with thick air, plus methane rain, rivers and seas",
+		"hyperion": "A sponge-like moon that tumbles chaotically",
+		"iapetus": "Two-faced: one side dark as coal, the other bright as snow",
+		"phoebe": "Orbits backwards, a captured wanderer that paints Iapetus dark"
+	},
+	"uranus": {
+		"miranda": "A patchwork moon with some of the tallest cliffs known",
+		"ariel": "The brightest, youngest surface of Uranus's big moons",
+		"umbriel": "The darkest of Uranus's big moons, with a mysterious bright ring",
+		"titania": "Uranus's largest moon, named after Shakespeare's fairy queen",
+		"oberon": "The outermost big moon of the system tipped on its side"
+	},
+	"neptune": {
+		"triton": "Orbits the wrong way: a captured world with nitrogen geysers",
+		"nereid": "One of the most stretched orbits of any moon",
+		"proteus": "As big as a lump can get before gravity pulls it round"
+	}
+}
