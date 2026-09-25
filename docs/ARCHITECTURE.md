@@ -767,7 +767,7 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
 
 - markers (`CraftMarkers.tsx`): 9 px cyan diamonds with a dark rim (bodies are round dots), dimmer for a silent
   craft; hidden near a planet that is still a dot until 10 px clear of it (the moon-name rule), unless selected or
-  hovered; angular picking; hover shows the pointer, a tap selects.
+  hovered; angular picking; 12 px pick radius (smaller than #16's finger target, so a tap beside a planet stays the planet's); hover shows the pointer, a tap selects.
 - paths (`CraftPaths.tsx`, for the selected and hovered craft, or all with "Show every path"): the cruise path in
   the Sun's frame with each vertex placed where the planets were at that time (rebuilt on a scale change), bright
   up to the craft and dim beyond; during an orbit phase (Cassini, Juno, JWST) a local track of +-`trackDays`

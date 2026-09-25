@@ -23,8 +23,7 @@ import { useSpacecraftStore } from "@/store/spacecraft"
 import { pickLabel, type LabelLayout } from "../labels/layout"
 import { applyHoverCursor } from "../scene/HoverCursor"
 import type { SimFrame } from "../scene/simFrame"
-import { TARGET_RADIUS_PX } from "../scene/picking"
-import { currentPointerKind, isTapEvent } from "../scene/tap"
+import { isTapEvent } from "../scene/tap"
 import type { CraftFrame } from "./craftFrame"
 import {
 	CRAFT_MARKER_SIZE_PX,
@@ -35,6 +34,14 @@ import {
 
 /** The spacecraft colour (markers, names, paths): a cyan no body uses. */
 export const CRAFT_COLOR: readonly [number, number, number] = [0.4, 0.9, 1]
+/**
+ * Pointer radius (px) that hits a craft's diamond, for every pointer. Smaller
+ * than a body's generous target (#16: 24 px for a finger): a craft hit wins
+ * over everything behind it, so a tap aimed beside a small planet must not
+ * land on a craft near it. Natural bodies come first.
+ */
+export const CRAFT_PICK_RADIUS_PX = 12
+
 /** A silent craft (mission over, still flying) is drawn at this brightness. */
 export const SILENT_DIM = 0.5
 
@@ -119,7 +126,7 @@ export function fillCraftMarkers(
 	return drawn
 }
 
-/** The drawn vertex nearest the ray within `radiusPx` (the pointer's target radius, #16), or -1. */
+/** The drawn vertex nearest the ray within `radiusPx`, or -1. */
 export function pickCraftMarker(
 	positions: Float32Array,
 	drawn: number,
@@ -233,7 +240,7 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 				origin,
 				direction,
 				1 / pixelsPerUnit(camera, size.height),
-				TARGET_RADIUS_PX[currentPointerKind()],
+				CRAFT_PICK_RADIUS_PX,
 			)
 			if (best < 0) return
 			const o = best * 3
