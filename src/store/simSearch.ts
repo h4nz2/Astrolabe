@@ -63,6 +63,9 @@ export const simSearchSchema = z.object({
 	// `?birthday=true` opens the birthday panel (#26) on arrival; it is only an
 	// instruction and never carries a date (a birth date never enters the URL)
 	birthday: z.boolean().optional().catch(undefined),
+	// `?sky=true` opens "What is in the sky tonight" (#36) on arrival; only an
+	// instruction: the place is never in the URL
+	sky: z.boolean().optional().catch(undefined),
 	// presentation mode (#29): `present=true` opens in projector mode,
 	// `contrast=high` with high contrast, `paused=true` with the clock stopped
 	// (see src/store/presentation.ts); only the non-default value is written

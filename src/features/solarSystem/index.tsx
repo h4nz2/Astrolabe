@@ -15,6 +15,11 @@ import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
+import {
+	SkyTonightLauncher,
+	SkyTonightPickerIcon,
+	SkyTonightSlot,
+} from "./skyTonight/SkyTonight"
 import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
 import TourCard from "./tours/TourCard"
@@ -88,6 +93,7 @@ const SolarSystem = () => {
 						<OverviewButton />
 						<FocusPicker />
 						<FrameMenu />
+						<SkyTonightPickerIcon />
 						<TourMenu />
 					</div>
 					<FrameBadgePanel />
@@ -95,6 +101,7 @@ const SolarSystem = () => {
 						phone={false}
 						className={`${classes.panel} ${classes.light}`}
 					/>
+					<SkyTonightLauncher className={classes.panel} />
 				</div>
 				<CentreBadgePanel />
 				<LightSlot phone className={`${classes.panel} ${classes.light}`} />
@@ -127,6 +134,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<SkyTonightSlot />
 			<PostcardSlot />
 			<PresentationLayer />
 		</div>
