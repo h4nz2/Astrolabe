@@ -5,7 +5,8 @@
  * lazily behind a Suspense boundary with a plain coloured fallback material.
  * The Sun is emissive (Bloom arrives in Phase 6); every other body is lit by
  * it through the sunlight model (../lighting, docs/ARCHITECTURE.md, "Lighting"),
- * whose uniforms this component rewrites every frame.
+ * whose uniforms this component rewrites every frame. A ringed planet's rings
+ * (../rings/Rings.tsx) sit in the pole frame and share those uniforms.
  */
 import { Suspense, useMemo, useRef } from "react"
 import { useTexture } from "@react-three/drei"
@@ -31,6 +32,8 @@ import {
 	type SunlightUniforms,
 } from "../lighting/bodyLighting"
 import SunlitMaterial from "../lighting/SunlitMaterial"
+import Rings from "../rings/Rings"
+import { useRingTextures } from "../rings/ringTextures"
 import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame } from "../scene/simFrame"
 import { isDiscVisible } from "./moonOrbitFade"
@@ -82,12 +85,26 @@ function MappedMaterial({ body, uniforms }: MaterialProps) {
 	const urls =
 		night === undefined ? [assetUrl(base)] : [assetUrl(base), assetUrl(night)]
 	const [map, nightMap] = useTexture(urls, markSRGBAll)
+	// a ringed planet carries its rings' shadow band (#12)
+	const ringTextures = useRingTextures(body.rings)
+	const ringShadow = useMemo(
+		() =>
+			ringTextures === null || body.rings === null
+				? undefined
+				: {
+						color: ringTextures.color,
+						innerRadiusKm: body.rings.innerRadiusKm,
+						outerRadiusKm: body.rings.outerRadiusKm,
+					},
+		[ringTextures, body.rings],
+	)
 	return (
 		<SunlitMaterial
 			uniforms={uniforms}
 			color={body.appearance?.tint}
 			map={map}
 			nightMap={nightMap}
+			ringShadow={ringShadow}
 		/>
 	)
 }
@@ -187,6 +204,18 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 					)}
 				</Suspense>
 			</mesh>
+			{body.rings !== null && (
+				// in the pole frame: the rings follow the tilt, never the spin (#12, #13)
+				<Suspense fallback={null}>
+					<Rings
+						rings={body.rings}
+						radiusKm={body.radiusKm}
+						index={index}
+						uniforms={uniforms}
+						bodyId={body.id}
+					/>
+				</Suspense>
+			)}
 		</group>
 	)
 }

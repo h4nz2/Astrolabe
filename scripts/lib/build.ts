@@ -54,8 +54,16 @@ export const EARTH_NIGHT_TEXTURE = "/assets/textures/earth_night_4k.jpg"
 /** Radius for moons with neither a mean radius nor a diameter. */
 export const DEFAULT_MOON_RADIUS_KM = 5
 
-/** Planets with rings that the source does not describe; data/rings/<id>.json fills the gap. */
-export const EXTERNAL_RING_PLANETS: readonly string[] = ["uranus", "neptune"]
+/**
+ * Planets whose rings come from data/rings/<id>.json: Uranus and Neptune are missing from the
+ * source, and its Jupiter ring (an opaque copy of a Saturn-like texture) is replaced by the
+ * real, faint structure (halo, main ring, Amalthea gossamer ring).
+ */
+export const EXTERNAL_RING_PLANETS: readonly string[] = [
+	"jupiter",
+	"uranus",
+	"neptune",
+]
 
 /** A regular moon whose period is further than this from Kepler's third law gets a warning. */
 export const KEPLER_PERIOD_TOLERANCE = 0.1
