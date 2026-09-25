@@ -135,6 +135,12 @@ export {
 	sunVisibleFraction,
 } from "./lighting"
 export type { LitBody } from "./lighting"
+export {
+	RING_MIN_MU,
+	ringShadowTransmittance,
+	ringU,
+	slantOpacity,
+} from "./rings"
 export { SCALE_LIES, bodyDistortion, presetForLies } from "./scaleLies"
 export type {
 	BodyDistortion,
