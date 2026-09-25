@@ -6,6 +6,7 @@ import Loader from "@/primitives/Loader"
 import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
+import LightPanel from "./light/LightPanel"
 import Scene from "./scene/Scene"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -58,6 +59,9 @@ const SolarSystem = () => {
 					<FocusPicker />
 				</div>
 				<CentreBadgePanel />
+				<div className={`${classes.panel} ${classes.light}`}>
+					<LightPanel />
+				</div>
 				<div className={`${classes.panel} ${classes.toggles}`}>
 					<Group gap="sm" justify="space-between" wrap="nowrap">
 						<SceneToggles />

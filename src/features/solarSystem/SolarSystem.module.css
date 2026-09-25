@@ -22,7 +22,7 @@
 	grid-template-rows: auto minmax(0, 1fr) auto auto;
 	grid-template-areas:
 		"picker centre toggles"
-		". . ."
+		"light . ."
 		"info info info"
 		"time time time";
 	gap: 0.75rem;
@@ -68,6 +68,23 @@
 	align-self: start;
 }
 
+/* the light panel (#27): a button, or the open panel, on the left below the picker */
+.light {
+	grid-area: light;
+	justify-self: start;
+	align-self: start;
+	max-height: 100%;
+	min-height: 0;
+	overflow: hidden;
+	padding: 0.25rem;
+	/* what the open panel's scrolling body may take, after its header and tabs */
+	--light-panel-body-max: calc(100dvh - 22rem);
+}
+
+.light:has([data-light-panel]) {
+	padding: 0.5rem 0.75rem;
+}
+
 .info {
 	grid-area: info;
 	justify-self: start;
@@ -87,7 +104,7 @@
 		grid-template-rows: auto minmax(0, 1fr) auto;
 		grid-template-areas:
 			"picker centre toggles"
-			". . ."
+			"light . ."
 			"info time .";
 	}
 }
@@ -101,7 +118,7 @@
 			"picker"
 			"toggles"
 			"centre"
-			"."
+			"light"
 			"time";
 		gap: 0.5rem;
 		padding: 0.5rem;
@@ -116,5 +133,10 @@
 
 	.info {
 		display: none;
+	}
+
+	.light {
+		align-self: end;
+		--light-panel-body-max: 30dvh;
 	}
 }

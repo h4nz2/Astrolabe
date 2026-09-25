@@ -33,8 +33,8 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, ui/)
+src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, light.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, light/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -475,6 +475,35 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
   frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
   Nothing is capped or hidden in the scene; positions stay true.
+
+## Light travel (`src/sim/light.ts`, `src/store/light.ts`, `features/solarSystem/light/`; #27)
+
+Every light time comes from TRUE positions; only the drawn front goes through the scale engine.
+
+- Pure (`src/sim/light.ts`): `SPEED_OF_LIGHT_KM_S`, `lightSeconds`, `frontRadiusKm(emitJD, jd)` (c x simulation
+  time since the flash, 0 before it), `truePositionAt` (one body's true position at any JD), `arrivalJD` (solves
+  |pos(t) - origin| = c (t - emitJD): the light meets a body where it is on arrival), `distanceBetweenKm`,
+  `neighbourhoodRadiusKm` (Hill sphere, at least 4 radii) and `distanceRangeKm` (the min/max over both orbits, e.g.
+  Mars 3 to 22 light-minutes from Earth).
+- Store (`useLightStore`): `pulse` = `{ emitterId, emitJD }` only; the front is a function of the clock, so it
+  pauses, speeds up and runs backwards with everything else. `send()` also sets the clock to 1x forwards (real time
+  is the lesson; faster is a deliberate click in the time controls, and the panel says the clock still counts true
+  travel time). Panel state (`open`, `tab`, emitter, delay target). Not persisted or in the URL.
+- Drawing (`light/lightFront.ts`, `LightFront.tsx`, in the Canvas after the markers): the circle where the light
+  sphere cuts the plane through its source, centred on where the source was when it sent the flash (fixed in the
+  Sun-centred frame), plus a faint glow fan and a DOM label ("Light · 4 min 12 s", drei `Html`) riding on it toward
+  the next body it reaches. Each point is drawn like a body: anchor's drawn position + `displayOffset` of its true
+  offset from the anchor. The anchor is the Sun (the planets' rule, so the front crosses every drawn planet exactly
+  on arrival in every preset), except while the front is inside the source planet's neighbourhood (a planet, or a
+  moon's planet): then that planet with the moons' rule, so the Earth -> Moon flash crosses the drawn Moon at 1.3 s.
+  That early front fades out over the outer 40 % of the neighbourhood, where the two rules disagree (in every preset
+  but true scale, where both are the identity). An #31-style anchored frame would need the same re-rooting.
+- Panel (`light/LightPanel.tsx`, HUD grid area `light`, left below the picker; a button with the running clock
+  while closed): Flash (source picker, running clock, distance covered, clock note with "Back to real time",
+  arrivals `pulseArrivals` announced in an `aria-live` line), Signal delay (from Earth to any body: picked, or the
+  scene selection; one way, round trip, live distance, range, what it means for a rover), Farther out (Proxima
+  Centauri, the galactic centre, Andromeda). Durations: `formatDuration` in `light/lightTravel.ts` (ICU units under
+  `solarSystem.light.duration.*`, abbreviated at standard/advanced, spelled out at simple).
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 

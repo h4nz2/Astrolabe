@@ -21,6 +21,7 @@ import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
+import LightFront from "../light/LightFront"
 import { labelSlotCount } from "../labels/project"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
@@ -70,6 +71,7 @@ function Scene() {
 					</Suspense>
 					<OrbitLines />
 					<Markers />
+					<LightFront />
 					<Labels board={labels} />
 					<CameraRig />
 				</SimFrameContext.Provider>
