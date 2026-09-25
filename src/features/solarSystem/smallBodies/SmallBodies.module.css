@@ -1,11 +1,10 @@
-.beltLabelAnchor {
-	pointer-events: none;
-}
-
 /* a belt's name, written on the belt like an orbit's name (labels/Labels.module.css) */
 .beltLabel {
-	display: block;
-	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	z-index: 1;
 	white-space: nowrap;
 	font-size: clamp(11px, 0.75vw + 5px, 15px);
 	font-style: italic;

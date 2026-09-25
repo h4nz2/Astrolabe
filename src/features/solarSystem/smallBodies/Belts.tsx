@@ -8,17 +8,17 @@
  * HUD note (SmallBodiesNote.tsx) says how many real asteroids each dot stands for and how
  * far apart they are.
  */
-import { useEffect, useMemo, useRef } from "react"
+import { useEffect, useMemo } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { Html } from "@react-three/drei"
 import {
 	BufferAttribute,
 	BufferGeometry,
-	Group,
 	NormalBlending,
+	PerspectiveCamera,
 	Points,
 	ShaderMaterial,
 	Vector3,
+	type Camera,
 } from "three"
 
 import { belts, bodyById, type Belt } from "@/data"
@@ -28,7 +28,11 @@ import { generateBeltOrbits } from "@/sim/belts"
 import { useSimStore } from "@/store/sim"
 
 import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
-import { FRAME_BLEND_SLOTS, useSimFrame } from "../scene/simFrame"
+import {
+	FRAME_BLEND_SLOTS,
+	useSimFrame,
+	type SimFrame,
+} from "../scene/simFrame"
 import { beltFragmentShader, beltVertexShader } from "./beltShader"
 import {
 	beltLabelPosition,
@@ -36,6 +40,7 @@ import {
 	createBeltUniforms,
 	hexToRgb,
 	updateBeltUniforms,
+	type BeltUniforms,
 } from "./belts"
 
 import classes from "./SmallBodies.module.css"
@@ -76,16 +81,93 @@ const createBeltPoints = (belt: Belt): Points => {
 const centre = new Vector3()
 const labelAt = new Vector3()
 const side = new Vector3()
+const projected = new Vector3()
+
+/** The belt's name element (plain DOM beside the canvas, removed with a guard on unmount). */
+const createBeltLabel = (beltId: string): HTMLSpanElement => {
+	const label = document.createElement("span")
+	label.className = classes.beltLabel
+	label.dataset.belt = beltId
+	label.dataset.visible = "false"
+	label.setAttribute("aria-hidden", "true")
+	return label
+}
+
+/**
+ * Puts the belt's name beside the canvas with its text; returns the clean-up, which removes
+ * it only while it is still attached (the canvas's host may be gone when the page is left).
+ */
+export function attachBeltLabel(
+	label: HTMLSpanElement,
+	canvas: HTMLCanvasElement,
+	text: string,
+): () => void {
+	label.textContent = text
+	canvas.parentElement?.appendChild(label)
+	return () => {
+		label.parentNode?.removeChild(label)
+	}
+}
+
+/**
+ * Per frame: the belt shader's uniforms, and its name on the belt's middle circle on the
+ * viewer's left, shown only while that circle is a sensible size on screen.
+ */
+export function updateBeltField(
+	points: Points,
+	label: HTMLSpanElement | null,
+	frame: SimFrame,
+	root: number,
+	midKm: number,
+	camera: Camera,
+	pixelRatio: number,
+	size: { width: number; height: number },
+): void {
+	updateBeltUniforms(
+		(points.material as ShaderMaterial).uniforms as unknown as BeltUniforms,
+		frame,
+		root,
+		pixelRatio,
+	)
+	if (label === null) return
+	side.setFromMatrixColumn(camera.matrixWorld, 0).negate()
+	beltLabelPosition(frame, midKm, side.x, side.z, labelAt)
+	frame.renderPosition(root, centre)
+	const distance = camera.position.distanceTo(centre)
+	const pxPerUnit =
+		camera instanceof PerspectiveCamera
+			? pixelsPerUnitAtDistanceOne(camera, size.height)
+			: 0
+	const radiusPx =
+		distance > 0 ? (labelAt.distanceTo(centre) * pxPerUnit) / distance : 0
+	projected.copy(labelAt).project(camera)
+	const inFront = projected.z > -1 && projected.z < 1
+	const shown =
+		inFront &&
+		radiusPx >= BELT_LABEL_MIN_PX &&
+		radiusPx <= BELT_LABEL_MAX_VIEWPORTS * size.height
+	label.dataset.visible = shown ? "true" : "false"
+	if (!shown) return
+	const x = ((projected.x + 1) / 2) * size.width
+	const y = ((1 - projected.y) / 2) * size.height
+	label.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -50%)`
+}
 
 function BeltField({ belt }: { belt: Belt }) {
 	const frame = useSimFrame()
 	const { t } = useI18n()
 	const points = useMemo(() => createBeltPoints(belt), [belt])
-	const labelRef = useRef<Group>(null)
-	const labelTextRef = useRef<HTMLSpanElement>(null)
 	const root = useMemo(() => rootIndexOf(frame.bodies), [frame])
 	const midKm = useMemo(() => beltMidRadiusKm(belt), [belt])
-	const heightPx = useThree((state) => state.size.height)
+	const size = useThree((state) => state.size)
+	const gl = useThree((state) => state.gl)
+	const text = t("solarSystem.smallBodies.beltName", { belt: belt.id })
+	const label = useMemo(() => createBeltLabel(belt.id), [belt.id])
+
+	useEffect(
+		() => attachBeltLabel(label, gl.domElement, text),
+		[label, gl, text],
+	)
 
 	useEffect(
 		() => () => {
@@ -95,60 +177,20 @@ function BeltField({ belt }: { belt: Belt }) {
 		[points],
 	)
 
-	useFrame(({ camera, gl }) => {
-		const material = points.material as ShaderMaterial
-		updateBeltUniforms(
-			material.uniforms as unknown as Parameters<typeof updateBeltUniforms>[0],
+	useFrame(({ camera }) =>
+		updateBeltField(
+			points,
+			label,
 			frame,
 			root,
+			midKm,
+			camera,
 			gl.getPixelRatio(),
-		)
-		// the name: on the belt's middle circle, on the viewer's left
-		const label = labelRef.current
-		const text = labelTextRef.current
-		if (label === null || text === null) return
-		side.setFromMatrixColumn(camera.matrixWorld, 0).negate()
-		beltLabelPosition(frame, midKm, side.x, side.z, labelAt)
-		label.position.copy(labelAt)
-		frame.renderPosition(root, centre)
-		const distance = camera.position.distanceTo(centre)
-		const radiusUnits = labelAt.distanceTo(centre)
-		const pxPerUnit =
-			"fov" in camera
-				? pixelsPerUnitAtDistanceOne(
-						camera as Parameters<typeof pixelsPerUnitAtDistanceOne>[0],
-						heightPx,
-					)
-				: 0
-		const radiusPx = distance > 0 ? (radiusUnits * pxPerUnit) / distance : 0
-		const shown =
-			radiusPx >= BELT_LABEL_MIN_PX &&
-			radiusPx <= BELT_LABEL_MAX_VIEWPORTS * heightPx
-		text.dataset.visible = shown ? "true" : "false"
-	})
-
-	return (
-		<>
-			<primitive object={points} />
-			<group ref={labelRef}>
-				<Html
-					className={classes.beltLabelAnchor}
-					zIndexRange={[5, 0]}
-					style={{ pointerEvents: "none" }}
-				>
-					<span
-						ref={labelTextRef}
-						className={classes.beltLabel}
-						data-belt={belt.id}
-						data-visible="false"
-						aria-hidden
-					>
-						{t("solarSystem.smallBodies.beltName", { belt: belt.id })}
-					</span>
-				</Html>
-			</group>
-		</>
+			size,
+		),
 	)
+
+	return <primitive object={points} />
 }
 
 /** The belts, while the "Small bodies" layer is on. */
