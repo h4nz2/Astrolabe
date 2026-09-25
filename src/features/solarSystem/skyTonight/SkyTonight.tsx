@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useLayoutEffect } from "react"
-import { Button, Center, Loader, Tooltip } from "@mantine/core"
+import { ActionIcon, Button, Center, Loader, Tooltip } from "@mantine/core"
+import { useMediaQuery } from "@mantine/hooks"
 import { useSearch } from "@tanstack/react-router"
 import { IconMoonStars } from "@tabler/icons-react"
 
@@ -51,16 +52,54 @@ export const SkyTonightButton = () => {
 	)
 }
 
+/** The HUD's phone breakpoint (SolarSystem.module.css). */
+const PHONE_QUERY = "(max-width: 599px)"
+
+const useIsPhone = () =>
+	useMediaQuery(PHONE_QUERY, false, { getInitialValueInEffect: false })
+
 /**
- * The button's place in the HUD: a small panel under the focus picker (and
- * the light launcher, #27), not in the time controls, which were already as
- * wide as a 1280 px screen allows beside the body card.
+ * The button's place in the HUD from 600 px up: a small panel under the focus
+ * picker (and the light launcher, #27), not in the time controls, which were
+ * already as wide as a 1280 px screen allows beside the body card.
  */
-export const SkyTonightLauncher = ({ className }: { className: string }) => (
-	<div className={`${className} ${classes.launcher}`}>
-		<SkyTonightButton />
-	</div>
-)
+export const SkyTonightLauncher = ({ className }: { className: string }) => {
+	const phone = useIsPhone()
+	if (phone) return null
+	return (
+		<div className={`${className} ${classes.launcher}`}>
+			<SkyTonightButton />
+		</div>
+	)
+}
+
+/**
+ * On phones the launcher is an icon in the focus picker's row: a row of its
+ * own would push the panels at the top of a phone over the planets.
+ */
+export const SkyTonightPickerIcon = () => {
+	const { t } = useI18n()
+	const phone = useIsPhone()
+	const open = useSkyTonightStore((state) => state.open)
+	if (!phone) return null
+	return (
+		<Tooltip label={t("solarSystem.sky.openHint")} openDelay={400}>
+			<ActionIcon
+				variant={open ? "filled" : "light"}
+				color="orange"
+				size="lg"
+				aria-label={t("solarSystem.sky.open")}
+				aria-expanded={open}
+				aria-controls={open ? "sky-tonight-panel" : undefined}
+				onClick={() =>
+					open ? useSkyTonightStore.getState().setOpen(false) : openSky()
+				}
+			>
+				<IconMoonStars size={18} />
+			</ActionIcon>
+		</Tooltip>
+	)
+}
 
 /**
  * The sky panel's place on the page: nothing until opened. A link with

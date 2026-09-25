@@ -1008,8 +1008,9 @@ telescope), why the hidden ones are hidden, and the geometry behind each sightin
 - **Why, in 3D** (`explain.ts`): `showWhy(id, ms)` holds Earth still (#31's `anchorFrame`, so the Sun and the planet
   are drawn at their true directions from Earth in every preset), from straight above, fitting the Sun and the planet
   (the Moon's orbit for the Moon), selects the body and `travelAndStop`s to the moment the list says to look.
-- **UI**: `SkyTonight.tsx` (the launcher, a small panel under the focus picker and the light launcher, and the
-  slot; eager and small) and the lazy `SkyTonightPanel.tsx`, docked at the right like the birthday and hunt panels;
+- **UI**: `SkyTonight.tsx` (the launcher, a small panel under the focus picker and the light launcher from 600 px
+  up, an icon in the picker's row on phones, where another row would push the top panels over the planets; and
+  the slot; eager and small) and the lazy `SkyTonightPanel.tsx`, docked at the right like the birthday and hunt panels;
   opening one closes the others. The launcher is not in the time controls: with the birthday and hunt buttons there
   they are already as wide as a 1280 px screen allows beside the body card. The Moon's disc is turned round south of
   the equator. "Now" is the wall clock at opening, not the simulation clock.
