@@ -40,6 +40,7 @@
 		"tagline": "Vers les étoiles !",
 		"dictionary": "Dictionnaire",
 		"solarSystem": "Modèle solaire",
+		"tour": "Faire une visite guidée",
 		"birthday": "Ton anniversaire dans l’espace",
 		"hunt": "Chasse au trésor",
 		"solarWalk": "Le système solaire à pied"
@@ -798,6 +799,29 @@
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} et {c}"
 			}
+		},
+		"tours": {
+			"menu": "Visites guidées",
+			"menuShort": "Visites",
+			"meta": "{count, plural, one {# étape} many {# d’étapes} other {# étapes}} · environ {minutes, plural, one {# minute} many {# de minutes} other {# minutes}}",
+			"keys": "Avance et recule avec les flèches ou une télécommande de présentation. Tu peux regarder autour de toi à tout moment : la visite t’attend.",
+			"keys@simple": "Utilise les flèches pour continuer. Tu peux regarder autour de toi quand tu veux : la visite t’attend.",
+			"card": "Visite : {title}",
+			"stopOf": "Étape {n} sur {count}",
+			"back": "Retour",
+			"next": "Suivant",
+			"finish": "Terminer",
+			"autoplay": "Lecture automatique",
+			"autoplayHint": "Passer tout seul à l’étape suivante",
+			"share": "Copier un lien vers cette étape",
+			"copied": "Lien copié",
+			"collapse": "Replier la carte",
+			"expand": "Déplier la carte",
+			"close": "Terminer la visite",
+			"away": "Tu explores tout seul. La visite t’attend à l’étape {n}.",
+			"away@simple": "Tu regardes autour de toi. La visite t’attend.",
+			"resume": "Retour à la visite",
+			"goTo": "Étape {n} : {title}"
 		}
 	},
 	"solarWalk": {

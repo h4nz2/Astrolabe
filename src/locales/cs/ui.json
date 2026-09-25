@@ -40,6 +40,7 @@
 		"tagline": "Ke hvězdám!",
 		"dictionary": "Slovník",
 		"solarSystem": "Model soustavy",
+		"tour": "Prohlídka s průvodcem",
 		"birthday": "Tvoje narozeniny ve vesmíru",
 		"hunt": "Pátrací hra",
 		"solarWalk": "Projdi sluneční soustavu"
@@ -798,6 +799,29 @@
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} a {c}"
 			}
+		},
+		"tours": {
+			"menu": "Prohlídky s průvodcem",
+			"menuShort": "Prohlídky",
+			"meta": "{count, plural, one {# zastávka} few {# zastávky} many {# zastávky} other {# zastávek}} · asi {minutes, plural, one {# minuta} few {# minuty} many {# minuty} other {# minut}}",
+			"keys": "Dopředu a zpět se pohybuješ šipkami nebo prezentačním ovladačem. Kdykoli se můžeš rozhlédnout: prohlídka na tebe počká.",
+			"keys@simple": "Šipkami jdeš dál. Kdykoli se můžeš rozhlédnout: prohlídka na tebe počká.",
+			"card": "Prohlídka: {title}",
+			"stopOf": "Zastávka {n} z {count}",
+			"back": "Zpět",
+			"next": "Dál",
+			"finish": "Dokončit",
+			"autoplay": "Automaticky dál",
+			"autoplayHint": "Po každé zastávce pokračovat samo",
+			"share": "Zkopírovat odkaz na tuto zastávku",
+			"copied": "Odkaz zkopírován",
+			"collapse": "Sbalit kartu",
+			"expand": "Rozbalit kartu",
+			"close": "Ukončit prohlídku",
+			"away": "Rozhlížíš se na vlastní pěst. Prohlídka na tebe čeká na zastávce {n}.",
+			"away@simple": "Rozhlížíš se sám. Prohlídka na tebe počká.",
+			"resume": "Zpátky k prohlídce",
+			"goTo": "Zastávka {n}: {title}"
 		}
 	},
 	"solarWalk": {
