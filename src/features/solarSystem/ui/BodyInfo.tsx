@@ -8,14 +8,17 @@
  * toggle so the card never buries the scene.
  */
 import { useMemo, useState } from "react"
-import { ActionIcon, Anchor, CloseButton } from "@mantine/core"
+import { ActionIcon, Anchor, Button, CloseButton } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import {
 	IconChevronDown,
 	IconChevronUp,
 	IconHandClick,
+	IconScale,
 } from "@tabler/icons-react"
-import { Link } from "@tanstack/react-router"
+import { Link, useNavigate } from "@tanstack/react-router"
+
+import { compareSearchFor } from "@/features/compare/links"
 
 import { bodyById } from "@/data"
 import { useI18n } from "@/i18n"
@@ -41,6 +44,32 @@ export const cardBodyId = (
 
 /** Matches the phone layout of SolarSystem.module.css. */
 const PHONE_QUERY = "(max-width: 599px)"
+
+/**
+ * "Compare with…" (#24): the body beside its first partner at true relative
+ * size, measured at the moment on screen. In the card's header, so it is one
+ * click away however long the facts are and while a phone folds them away.
+ */
+const CompareButton = ({ bodyId }: { bodyId: string }) => {
+	const { t } = useI18n()
+	const navigate = useNavigate()
+	return (
+		<Button
+			variant="light"
+			color="orange"
+			size="compact-sm"
+			leftSection={<IconScale size={16} />}
+			onClick={() =>
+				void navigate({
+					to: "/compare",
+					search: compareSearchFor(bodyId, useSimStore.getState()),
+				})
+			}
+		>
+			{t("solarSystem.card.compare")}
+		</Button>
+	)
+}
 
 const ClickHint = () => {
 	const { t } = useI18n()
@@ -85,6 +114,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 					<h2 className={classes.name}>{text.name}</h2>
 					<p className={classes.tagline}>{text.tagline}</p>
 				</div>
+				<CompareButton bodyId={body.id} />
 				<ActionIcon
 					className={classes.toggle}
 					variant="subtle"
