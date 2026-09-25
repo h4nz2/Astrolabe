@@ -1048,6 +1048,61 @@
 				"show@simple": "In 3D zeigen",
 				"showHint": "Hält die Erde in diesem Moment fest, von oben gesehen, mit der Sonne und {body} in ihren wahren Richtungen."
 			}
+		},
+		"intro": {
+			"label": "Intro",
+			"skip": "Intro überspringen",
+			"skip@simple": "Überspringen",
+			"progress": "Teil {beat, number} von {count, number}",
+			"earth": {
+				"title": "Das ist die Erde.",
+				"detail": "Alle Menschen, die du kennst, leben hier.",
+				"detail@simple": "Alle, die du kennst, wohnen hier!",
+				"detail@advanced": "Jeder Mensch, dem du je begegnet bist, lebt auf dieser einen kleinen Welt."
+			},
+			"moon": {
+				"title": "Der Mond",
+				"detail": "{earths, number} Erden hätten dazwischen Platz.",
+				"detail@simple": "Zwischen uns und dem Mond hätten {earths, number} Erden Platz!",
+				"detail@advanced": "{km} entfernt: {earths, number} Erddurchmesser."
+			},
+			"inner": {
+				"title": "Die inneren Planeten",
+				"title@simple": "Unsere nächsten Planeten",
+				"detail": "{planets}: die vier Gesteinswelten nahe der Sonne.",
+				"detail@simple": "{planets}.",
+				"detail@advanced": "{planets}: die Gesteinsplaneten, alle weniger als 250 Millionen km von der Sonne entfernt."
+			},
+			"system": {
+				"title": "Das ganze Sonnensystem in echter Größe",
+				"title@simple": "Alles in echter Größe",
+				"detail": "Die Planeten sind viel zu klein, um sie zu sehen. Die Punkte zeigen nur, wo sie sind.",
+				"detail@simple": "Die Planeten sind zu winzig, um sie zu sehen! Die Punkte zeigen, wo sie sind.",
+				"detail@advanced": "Die Erde ist jetzt viel kleiner als ein Pixel, und der Raum ist fast völlig leer. Die Punkte markieren nur die Planeten."
+			},
+			"scale": {
+				"title": "Darum zeichnen wir sie größer und näher",
+				"title@simple": "Darum zeichnen wir sie größer!",
+				"detail": "Jetzt siehst du jeden Planeten, aber nicht maßstabsgetreu. Im Feld „Maßstab“ geht es zurück zur echten Größe.",
+				"detail@simple": "Jetzt siehst du jeden Planeten. Im Feld „Maßstab“ siehst du wieder ihre echte Größe.",
+				"detail@advanced": "„Alles sichtbar“: Größen vergrößert, Abstände gestaucht. „Echter Maßstab“ im Feld „Maßstab“ zeigt die Wirklichkeit."
+			},
+			"hint": {
+				"label": "So bewegst du dich",
+				"drag": "Ziehen zum Umsehen",
+				"drag@simple": "Ziehen zum Drehen",
+				"zoom": "Scrollen zum Zoomen",
+				"zoom@simple": "Scrollen, um näher zu kommen",
+				"pinch": "Mit zwei Fingern zoomen",
+				"click": "Klicke auf einen Planeten, um dorthin zu fliegen",
+				"click@simple": "Klicke auf einen Planeten, um ihn zu besuchen",
+				"tap": "Tippe auf einen Planeten, um dorthin zu fliegen",
+				"tap@simple": "Tippe auf einen Planeten, um ihn zu besuchen"
+			},
+			"menu": "Hilfe",
+			"replay": "Intro noch einmal abspielen",
+			"replay@simple": "Den Anfang noch mal ansehen",
+			"hints": "Zeigen, wie man sich bewegt"
 		}
 	},
 	"solarWalk": {
