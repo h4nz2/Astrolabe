@@ -653,11 +653,11 @@
 				"simple": "Hotová porovnání"
 			},
 			"what": {
-				"standard": "Připravená porovnání: Slunce a Země, Země a Měsíc, všech osm planet, Slunce a planety, největší měsíce.",
+				"standard": "Patnáct připravených porovnání ve třech skupinách, „Velikosti“, „Měsíce“ a „Překvapení“, a každé začíná tím jedním faktem, o který jde: „Dvojče Země“, „Měsíce větší než planeta“, „Kde by ti váha ukázala nejvíc?“.",
 				"simple": "Vyber si hotové porovnání, třeba všech osm planet v řadě."
 			},
 			"why": {
-				"standard": "Každé z nich jedním kliknutím rozproudí debatu ve třídě, třeba o tom, které měsíce jsou větší než planeta Merkur.",
+				"standard": "Každé z nich jedním kliknutím rozproudí debatu ve třídě: odkaz výše otevře měsíce, které jsou větší než planeta Merkur.",
 				"simple": "Víš, že některé měsíce jsou větší než planeta?"
 			},
 			"how": {

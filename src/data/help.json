@@ -133,7 +133,7 @@
 		{
 			"id": "compareIdeas",
 			"group": "comparing",
-			"try": "/compare?bodies=moon,ganymede,titan,callisto,io,europa,triton"
+			"try": "/compare?bodies=ganymede,mercury,titan"
 		},
 		{
 			"id": "present",

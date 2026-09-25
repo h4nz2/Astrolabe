@@ -653,17 +653,17 @@
 				"simple": "Ready-made comparisons"
 			},
 			"what": {
-				"standard": "Ready-made comparisons: the Sun and Earth, Earth and the Moon, all eight planets, the Sun and the planets, the biggest moons.",
+				"standard": "Fifteen ready-made comparisons in three groups, Sizes, Moons and Surprises, each opening with the one fact that makes its point: “Earth’s twin”, “Moons bigger than a planet”, “Where would you weigh the most?”.",
 				"simple": "Pick a ready-made comparison, like all eight planets in a row."
 			},
 			"why": {
-				"standard": "Each one starts a class discussion in one click, for example which moons are bigger than the planet Mercury.",
+				"standard": "Each one starts a class discussion in one click: the link above opens the moons that are bigger than the planet Mercury.",
 				"simple": "Did you know some moons are bigger than a planet?"
 			},
 			"how": {
 				"standard": [
 					"On the comparison page, open Ideas.",
-					"Pick one; click any world in the row to talk about it."
+					"Pick one; its name appears above the facts. Click any world in the row to talk about it."
 				],
 				"simple": ["Press Ideas.", "Pick “All eight planets”."]
 			}

@@ -658,11 +658,11 @@
 				"simple": "Fertige Vergleiche"
 			},
 			"what": {
-				"standard": "Fertige Vergleiche: Sonne und Erde, Erde und Mond, alle acht Planeten, die Sonne und die Planeten, die größten Monde.",
+				"standard": "Fünfzehn fertige Vergleiche in drei Gruppen, „Größen“, „Monde“ und „Überraschungen“, und jeder beginnt mit der einen Tatsache, auf die es ankommt: „Der Zwilling der Erde“, „Monde, größer als ein Planet“, „Wo wärst du am schwersten?“.",
 				"simple": "Wähl einen fertigen Vergleich, zum Beispiel alle acht Planeten in einer Reihe."
 			},
 			"why": {
-				"standard": "Jeder startet mit einem Klick ein Gespräch in der Klasse, zum Beispiel darüber, welche Monde größer sind als der Planet Merkur.",
+				"standard": "Jeder startet mit einem Klick ein Gespräch in der Klasse: Der Link oben öffnet die Monde, die größer sind als der Planet Merkur.",
 				"simple": "Wusstest du, dass manche Monde größer sind als ein Planet?"
 			},
 			"how": {
