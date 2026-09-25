@@ -954,8 +954,9 @@ Every light time comes from TRUE positions; only the drawn front goes through th
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 
 Two axes: the **locale** (language) and the **reading level** (`simple` 8–11, `standard` 12–15 and the default,
-`advanced` 16+). Shipped locales: English (`en`, the reference and fallback) and German (`de`, standard German
-orthography). Body names: the Sun, the planets and the major moons are translated ("Erde", "Ganymed"); every other
+`advanced` 16+). Shipped locales: English (`en`, the reference and fallback), German (`de`, standard German
+orthography), Czech (`cs`), Spanish (`es`, neutral international Spanish, "tú") and French (`fr`, "tu").
+Body names: the Sun, the planets and the major moons are translated ("Erde", "Země", "Tierra", "Terre"); every other
 body keeps its catalogue name, and provisional designations (`S/2003 J 2`) are never translated.
 
 ### Resources (`src/locales`, no code)
@@ -968,7 +969,8 @@ src/locales/<locale>/hunts.json  the scavenger hunt's clues, hints and discoveri
 ```
 
 - Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences
-  by concatenation. A plural must list every category of the language (`one`/`other` in en/de; the tests check).
+  by concatenation. A plural must list every category of the language (`one`/`other` in en/de,
+  `one`/`many`/`other` in es/fr, `one`/`few`/`many`/`other` in cs; the tests check).
 - A reading-level variant is a sibling key with an `@level` suffix; the plain key serves the default level and every
   level without its own text: `"orbitalPeriod": "Orbital period", "orbitalPeriod@simple": "Time for one lap"`.
 - Lookup falls back along the locale chain (`de-CH` -> `de` -> `en`) and, within a locale, from the level variant
