@@ -15,7 +15,9 @@
  */
 import type { Tour } from "@/data/tours"
 import { tourById } from "@/data/tours"
-import { OVERVIEW_BODY_ID, type Sequence } from "@/store/navigation"
+import { dateToJD } from "@/sim"
+import { FLIGHT_PROFILE } from "@/store/flight"
+import { HOME_SHOT, OVERVIEW_BODY_ID, type Sequence } from "@/store/navigation"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore, type SimState } from "@/store/sim"
 import {
@@ -23,6 +25,7 @@ import {
 	useTourStore,
 	type TourBaseline,
 	type TourLayerKey,
+	type TourScene,
 	type TourState,
 } from "@/store/tour"
 import { useTrailStore } from "@/store/trails"
@@ -159,12 +162,21 @@ export function startTour(
 ): void {
 	const resolved = typeof tour === "string" ? tourById.get(tour) : tour
 	if (resolved === undefined || resolved.stops.length === 0) return
+	const previous = useTourStore.getState()
+	// one returning tour after another (event after event, #41) returns to where the first began
+	const baseline =
+		resolved.returnOnExit === true && previous.baseline?.scene !== undefined
+			? previous.baseline
+			: {
+					...currentBaseline(),
+					scene: resolved.returnOnExit === true ? currentScene() : undefined,
+				}
 	useTourStore.setState({
 		tour: resolved,
 		index: 0,
 		steps: null,
 		auto,
-		baseline: currentBaseline(),
+		baseline,
 		collapsed: false,
 	})
 	enterStop(startAt, jump ? "jump" : "restore")
@@ -204,12 +216,76 @@ export function setTourAuto(auto: boolean): void {
 	if (useTourStore.getState().auto !== auto) useTourStore.setState({ auto })
 }
 
-/** Ends the tour; the scene stays as the last stop left it, to explore on. */
+/**
+ * Ends the tour; the scene stays as the last stop left it, to explore on. A
+ * tour with `returnOnExit` (a sky event, #41) goes back to the view, time,
+ * speed, scale and layers the viewer had before it began.
+ */
 export function exitTour(): void {
-	const { steps } = useTourStore.getState()
+	const { steps, baseline } = useTourStore.getState()
 	const sim = useSimStore.getState()
 	if (steps !== null && sim.sequence?.steps === steps) sim.stopSequence()
 	useTourStore.setState({ tour: null, index: 0, steps: null, baseline: null })
+	if (baseline?.scene !== undefined) restoreScene(baseline, baseline.scene)
+}
+
+/** The clock counts as showing the present within this many days of the wall clock (a minute). */
+const NOW_TOLERANCE_DAYS = 1 / 1440
+
+/** Where the viewer is now, for a tour that returns on exit. */
+export function currentScene(
+	sim: SimState = useSimStore.getState(),
+	now: Date = new Date(),
+): TourScene {
+	return {
+		view: sim.view,
+		shot: sim.shot,
+		frameId: sim.frameId,
+		selectedId: sim.selectedId,
+		jd: sim.simTimeJD,
+		atNow:
+			!sim.paused &&
+			sim.timeWarp === 1 &&
+			Math.abs(sim.simTimeJD - dateToJD(now)) < NOW_TOLERANCE_DAYS,
+	}
+}
+
+/** Back to `scene` and the settings of `baseline`, through the store actions: animated, like any move. */
+function restoreScene(baseline: TourBaseline, scene: TourScene): void {
+	const scaleStore = useScaleStore.getState()
+	if (baseline.scale !== null && scaleStore.targetId !== baseline.scale) {
+		scaleStore.switchTo(baseline.scale, performance.now())
+	}
+	const sim = useSimStore.getState()
+	for (const key of Object.keys(TOUR_LAYER_FIELDS) as TourLayerKey[]) {
+		const field = TOUR_LAYER_FIELDS[key]
+		if (sim[field] !== baseline.layers[key]) {
+			sim[LAYER_SETTERS[field]](baseline.layers[key])
+		}
+	}
+	if (scene.atNow) {
+		sim.setTimeWarp(1)
+		sim.setPaused(false)
+		sim.setNow()
+	} else {
+		sim.setTimeWarp(baseline.warp)
+		sim.setPaused(baseline.paused)
+		sim.travelTo(scene.jd)
+	}
+	const request = {
+		shot:
+			scene.shot ?? (scene.view.kind === "overview" ? HOME_SHOT : undefined),
+		// from one body to another: the flight (#18)
+		profile:
+			scene.view.kind === "body" && sim.view.kind === "body"
+				? FLIGHT_PROFILE
+				: undefined,
+	}
+	if (scene.frameId !== OVERVIEW_BODY_ID)
+		sim.anchorFrame(scene.frameId, request)
+	else if (sim.frameId !== OVERVIEW_BODY_ID) sim.releaseFrame(request)
+	if (scene.frameId === OVERVIEW_BODY_ID) sim.goTo(scene.view, request)
+	sim.select(scene.selectedId)
 }
 
 /**

@@ -28,6 +28,7 @@ import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
+import EventCard from "./events/EventCard"
 import TourCard from "./tours/TourCard"
 import TourMenu from "./tours/TourMenu"
 import TourSync from "./tours/TourSync"
@@ -136,6 +137,7 @@ const SolarSystem = () => {
 					<SpacecraftInfo fallback={<BodyInfo />} />
 				</div>
 				<TourCard className={`${classes.panel} ${classes.tour}`} />
+				<EventCard className={`${classes.panel} ${classes.tour}`} />
 				<div className={`${classes.time} ${classes.bottom}`}>
 					<FlightReadout className={classes.panel} />
 					<div className={classes.panel}>

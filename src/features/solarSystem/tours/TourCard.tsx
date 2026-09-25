@@ -20,6 +20,7 @@ import {
 	IconRoute,
 } from "@tabler/icons-react"
 
+import { eventOfTourId } from "@/data/skyEvents"
 import type { Tour, TourLink } from "@/data/tours"
 import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
@@ -116,7 +117,10 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 	const sequence = useSimStore((state) => state.sequence)
 	const status = tourStatus(sequence, { tour, steps })
 
-	if (tour === null || status === null) return null
+	// a sky event (#41) plays as a tour but has its own card (events/EventCard)
+	if (tour === null || status === null || eventOfTourId(tour.id) !== null) {
+		return null
+	}
 	const stop = tour.stops[index]
 	const tourText = words.tour(tour)
 	const stopText = words.stop(tour, stop)

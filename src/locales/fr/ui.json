@@ -221,7 +221,7 @@
 			"travel": {
 				"open": "Voyager à une date",
 				"title": "Voyager dans le temps",
-				"moments": "Moments",
+				"moments": "Phénomènes du ciel",
 				"pickDate": "Choisir une date",
 				"arrival": "Le temps s’arrête à ton arrivée. Appuie sur Lecture pour repartir.",
 				"range": "N’importe quel jour de l’an {first} à l’an {last}. Tu arrives à midi (UTC).",
@@ -235,52 +235,6 @@
 					"previousDecade": "Décennie précédente",
 					"monthLevel": "Choisir un autre mois",
 					"yearLevel": "Choisir une autre année"
-				}
-			},
-			"moments": {
-				"galileoMoons": {
-					"name": "Galilée voit les lunes de Jupiter",
-					"description": "Les premières lunes jamais découvertes autour d’une autre planète."
-				},
-				"uranusFound": {
-					"name": "Découverte d’Uranus",
-					"description": "William Herschel trouve la première planète inconnue des Anciens."
-				},
-				"neptuneFound": {
-					"name": "Découverte de Neptune",
-					"description": "Trouvée exactement là où les mathématiques l’avaient prédite."
-				},
-				"sputnik": {
-					"name": "Lancement de Spoutnik 1",
-					"description": "Le premier satellite artificiel ouvre l’ère spatiale."
-				},
-				"moonLanding": {
-					"name": "Premiers pas sur la Lune",
-					"description": "Apollo 11 se pose sur la Lune."
-				},
-				"voyagerLaunch": {
-					"name": "Départ de Voyager 2",
-					"description": "Jupiter, Saturne, Uranus et Neptune s’alignent pour un « Grand Tour », ce qui n’arrive qu’environ tous les 175 ans."
-				},
-				"voyagerNeptune": {
-					"name": "Voyager 2 atteint Neptune",
-					"description": "Douze ans après son lancement : la seule visite que Neptune ait jamais reçue."
-				},
-				"marsClosest": {
-					"name": "Mars au plus près",
-					"description": "Mars s’approche de la Terre plus qu’en près de 60 000 ans. La Terre se trouve entre le Soleil et Mars."
-				},
-				"venusTransit": {
-					"name": "Transit de Vénus",
-					"description": "Vénus passe juste entre le Soleil et la Terre."
-				},
-				"greatConjunction": {
-					"name": "La grande conjonction",
-					"description": "Vues depuis la Terre, Jupiter et Saturne se touchent presque dans le ciel."
-				},
-				"nextVenusTransit": {
-					"name": "Le prochain transit de Vénus",
-					"description": "La prochaine fois que Vénus passera devant le Soleil. Quelqu’un dans cette salle le verra-t-il ?"
 				}
 			}
 		},
@@ -1189,6 +1143,67 @@
 			"away@simple": "Tu regardes autour de toi. La visite t’attend.",
 			"resume": "Retour à la visite",
 			"goTo": "Étape {n} : {title}"
+		},
+		"events": {
+			"listLabel": "Éclipses, transits et autres phénomènes du ciel",
+			"upcoming": "Bientôt",
+			"groups": {
+				"solarEclipse": "Éclipses de Soleil",
+				"lunarEclipse": "Éclipses de Lune",
+				"transit": "Transits devant le Soleil",
+				"gathering": "Planètes réunies",
+				"closeApproach": "Mars s’approche",
+				"shadowsRings": "Ombres et anneaux",
+				"history": "Moments d’histoire"
+			},
+			"card": "Phénomène du ciel : {title}",
+			"when": "Quand : {when}",
+			"where": "Où : {where}",
+			"shown": "{direction, select, early {La scène le montre {amount} trop tôt} late {La scène le montre {amount} trop tard} other {La scène le montre à l’heure réelle}} : les orbites de l’application sont proches des vraies, mais pas exactes.",
+			"shown@simple": "{direction, select, early {L’application le montre {amount} trop tôt.} late {L’application le montre {amount} trop tard.} other {L’application le montre à l’heure réelle.}} Ses planètes sont presque, mais pas tout à fait, là où sont les vraies.",
+			"views": {
+				"label": "Point de vue",
+				"space": "Depuis l’espace",
+				"earth": "Depuis la Terre"
+			},
+			"hint": {
+				"space": {
+					"solarEclipse": "L’ombre de la Lune sur la face de jour de la Terre.",
+					"solarEclipse@simple": "La tache sombre, c’est l’ombre de la Lune.",
+					"lunarEclipse": "Soleil, Terre et Lune alignés : la Lune est dans l’ombre de la Terre.",
+					"lunarEclipse@simple": "La Terre est entre le Soleil et la Lune.",
+					"transit": "Vu d’en haut : le Soleil, la planète et la Terre alignés.",
+					"transit@simple": "D’en haut : la planète est entre le Soleil et nous.",
+					"gathering": "Vu d’en haut : où sont vraiment les planètes.",
+					"gathering@simple": "D’en haut : les planètes sont très éloignées.",
+					"closeApproach": "Vu d’en haut : la Terre double Mars par la corde.",
+					"closeApproach@simple": "D’en haut : la Terre dépasse Mars.",
+					"shadowsRings": "De près, depuis l’espace.",
+					"history": "La scène ce jour-là."
+				},
+				"earth": {
+					"solarEclipse": "Dans l’ombre de la Lune, au télescope : la Lune couvre le Soleil.",
+					"solarEclipse@simple": "Depuis la Terre : la Lune couvre le Soleil.",
+					"lunarEclipse": "La Lune vue depuis la Terre, aux jumelles.",
+					"lunarEclipse@simple": "Depuis la Terre : la Lune rouge.",
+					"transit": "Au télescope avec un filtre solaire : le point de la planète sur le Soleil.",
+					"transit@simple": "Depuis la Terre : un petit point noir sur le Soleil.",
+					"gathering": "Depuis la Terre : les planètes d’un seul côté de notre ciel.",
+					"gathering@simple": "Depuis la Terre : les planètes côte à côte.",
+					"closeApproach": "Mars au télescope, toujours au même grossissement : compare les phénomènes.",
+					"closeApproach@simple": "Mars au télescope. Elle paraît grande comment ?",
+					"shadowsRings": "Au télescope, depuis la Terre.",
+					"history": "Au télescope, depuis la Terre."
+				}
+			},
+			"scaleNote": "À l’échelle réelle : chaque taille et chaque distance sont vraies. En sortant, l’échelle d’avant revient.",
+			"scaleNote@simple": "Tout est montré à sa vraie taille et à sa vraie distance.",
+			"leave": "Quitter",
+			"leaveLabel": "Quitter le phénomène : retour à la vue, à l’heure et à l’échelle d’avant",
+			"away": "Tu regardes autour de toi par toi-même.",
+			"resume": "Retour au phénomène",
+			"share": "Copier un lien vers ce phénomène",
+			"copied": "Lien copié"
 		}
 	},
 	"solarWalk": {

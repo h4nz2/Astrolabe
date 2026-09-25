@@ -132,3 +132,17 @@ export const eventsInGroup = (group: EventGroup): SkyEvent[] =>
 /** The real instant of an event as a `Date`. */
 export const eventDate = (event: Pick<SkyEvent, "utc">): Date =>
 	new Date(event.utc)
+
+/**
+ * A sky event plays as a guided tour (#28) with one stop per view; its id in
+ * the tour player and in links (`?tour=event-solar2024&stop=2`).
+ */
+export const EVENT_TOUR_PREFIX = "event-"
+
+export const eventTourId = (id: string): string => `${EVENT_TOUR_PREFIX}${id}`
+
+/** The event a tour id stands for, or null when it is not an event's. */
+export const eventOfTourId = (tourId: string): SkyEvent | null =>
+	tourId.startsWith(EVENT_TOUR_PREFIX)
+		? (skyEventById.get(tourId.slice(EVENT_TOUR_PREFIX.length)) ?? null)
+		: null

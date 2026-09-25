@@ -18,6 +18,7 @@ import Bodies from "../bodies/Bodies"
 import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
+import Corona from "../events/Corona"
 import ReferenceFrameSync from "../frame/ReferenceFrameSync"
 import Trails from "../frame/Trails"
 import IntroPulseTracker from "../intro/IntroPulseTracker"
@@ -92,6 +93,7 @@ function Scene() {
 					<Suspense fallback={null}>
 						<Bodies />
 					</Suspense>
+					<Corona />
 					<OrbitLines />
 					<Trails />
 					<Markers />

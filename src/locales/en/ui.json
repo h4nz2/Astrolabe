@@ -221,7 +221,7 @@
 			"travel": {
 				"open": "Travel to a date",
 				"title": "Travel in time",
-				"moments": "Moments",
+				"moments": "Sky events",
 				"pickDate": "Pick a date",
 				"arrival": "Time stops when you arrive. Press play to run on.",
 				"range": "Any day from the year {first} to {last}. You arrive at noon (UTC).",
@@ -235,52 +235,6 @@
 					"previousDecade": "Previous decade",
 					"monthLevel": "Pick another month",
 					"yearLevel": "Pick another year"
-				}
-			},
-			"moments": {
-				"galileoMoons": {
-					"name": "Galileo sees Jupiter’s moons",
-					"description": "The first moons ever found around another planet."
-				},
-				"uranusFound": {
-					"name": "Uranus is discovered",
-					"description": "William Herschel finds the first planet unknown to the ancients."
-				},
-				"neptuneFound": {
-					"name": "Neptune is discovered",
-					"description": "Found right where mathematics predicted it would be."
-				},
-				"sputnik": {
-					"name": "Sputnik 1 launches",
-					"description": "The first artificial satellite starts the space age."
-				},
-				"moonLanding": {
-					"name": "First Moon landing",
-					"description": "Apollo 11 touches down on the Moon."
-				},
-				"voyagerLaunch": {
-					"name": "Voyager 2 sets off",
-					"description": "Jupiter, Saturn, Uranus and Neptune line up for a Grand Tour, as they do only every 175 years or so."
-				},
-				"voyagerNeptune": {
-					"name": "Voyager 2 reaches Neptune",
-					"description": "Twelve years after launch: the only visit Neptune has ever had."
-				},
-				"marsClosest": {
-					"name": "Mars at its closest",
-					"description": "Mars comes nearer to Earth than in almost 60,000 years. Earth sits between the Sun and Mars."
-				},
-				"venusTransit": {
-					"name": "Transit of Venus",
-					"description": "Venus passes right between the Sun and Earth."
-				},
-				"greatConjunction": {
-					"name": "The great conjunction",
-					"description": "Seen from Earth, Jupiter and Saturn nearly touch in the sky."
-				},
-				"nextVenusTransit": {
-					"name": "The next transit of Venus",
-					"description": "The next time Venus crosses in front of the Sun. Will anyone in this room see it?"
 				}
 			}
 		},
@@ -1189,6 +1143,67 @@
 			"away@simple": "You are looking around on your own. The tour waits for you.",
 			"resume": "Back to the tour",
 			"goTo": "Stop {n}: {title}"
+		},
+		"events": {
+			"listLabel": "Eclipses, transits and other sky events",
+			"upcoming": "Coming up",
+			"groups": {
+				"solarEclipse": "Solar eclipses",
+				"lunarEclipse": "Lunar eclipses",
+				"transit": "Transits across the Sun",
+				"gathering": "Planets together",
+				"closeApproach": "Mars comes close",
+				"shadowsRings": "Shadows and rings",
+				"history": "Moments in history"
+			},
+			"card": "Sky event: {title}",
+			"when": "When: {when}",
+			"where": "Where: {where}",
+			"shown": "{direction, select, early {The scene shows it {amount} early} late {The scene shows it {amount} late} other {The scene shows it at the real time}}: the app’s orbits are close to the real ones, but not exact.",
+			"shown@simple": "{direction, select, early {The app shows it {amount} early.} late {The app shows it {amount} late.} other {The app shows it at the real time.}} Its planets are almost, but not quite, where the real ones are.",
+			"views": {
+				"label": "Point of view",
+				"space": "From space",
+				"earth": "From Earth"
+			},
+			"hint": {
+				"space": {
+					"solarEclipse": "The Moon’s shadow on the Earth’s day side.",
+					"solarEclipse@simple": "The dark spot is the Moon’s shadow.",
+					"lunarEclipse": "Sun, Earth and Moon in one line: the Moon is in the Earth’s shadow.",
+					"lunarEclipse@simple": "The Earth is between the Sun and the Moon.",
+					"transit": "Seen from above: the Sun, the planet and the Earth in one line.",
+					"transit@simple": "From above: the planet is between the Sun and us.",
+					"gathering": "Seen from above: where the planets really are.",
+					"gathering@simple": "From above: the planets are far apart.",
+					"closeApproach": "Seen from above: the Earth passes Mars on the inside track.",
+					"closeApproach@simple": "From above: the Earth overtakes Mars.",
+					"shadowsRings": "Close up, from space.",
+					"history": "The scene on that day."
+				},
+				"earth": {
+					"solarEclipse": "Standing in the Moon’s shadow, through a telescope: the Moon covers the Sun.",
+					"solarEclipse@simple": "From the Earth: the Moon covers the Sun.",
+					"lunarEclipse": "Looking up at the Moon from the Earth, through binoculars.",
+					"lunarEclipse@simple": "From the Earth: the red Moon.",
+					"transit": "Through a telescope with a solar filter: the planet’s dot on the Sun.",
+					"transit@simple": "From the Earth: a small black dot on the Sun.",
+					"gathering": "From the Earth: the planets on one side of our sky.",
+					"gathering@simple": "From the Earth: the planets side by side.",
+					"closeApproach": "Mars through a telescope, always at the same magnification: compare the events.",
+					"closeApproach@simple": "Mars through a telescope. How big does it look?",
+					"shadowsRings": "Through a telescope on the Earth.",
+					"history": "Through a telescope on the Earth."
+				}
+			},
+			"scaleNote": "Shown at true scale: every size and distance is real. Leaving switches back.",
+			"scaleNote@simple": "Everything is shown at its real size and distance.",
+			"leave": "Leave",
+			"leaveLabel": "Leave the event: back to the view, time and scale you had",
+			"away": "You are looking around on your own.",
+			"resume": "Back to the event",
+			"share": "Copy a link to this event",
+			"copied": "Link copied"
 		}
 	},
 	"solarWalk": {

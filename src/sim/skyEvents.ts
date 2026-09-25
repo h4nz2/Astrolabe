@@ -571,3 +571,36 @@ export function bestInstant(
 	const refined = (a + b) / 2
 	return metric(refined) <= bestValue ? refined : best
 }
+
+/** How far above the ground an observer's eye stands, in the Earth's radii (clear of the drawn sphere's facets). */
+export const OBSERVER_HEIGHT = 0.002
+
+/**
+ * Where an observer on the Earth stands to watch body `target` at `jd` (true
+ * km from the Earth's centre, scene axes): for a sky event whose geometry
+ * names a place (a solar eclipse's point of greatest eclipse, the point under
+ * the Moon in a lunar eclipse, under the Sun in a transit), there; otherwise
+ * the point of the surface facing the target. Slightly above the ground.
+ */
+export function earthObserverKm(
+	geometry: SkyGeometry,
+	target: string,
+	jd: number,
+	check?: EventCheck,
+): [number, number, number] {
+	const radius = geometry.radius(EARTH) * (1 + OBSERVER_HEIGHT)
+	const measured =
+		check === undefined
+			? undefined
+			: measureEvent(geometry, check, jd).surfaceKm
+	const direction =
+		measured ??
+		(target === EARTH ? [0, 1, 0] : Array.from(geometry.fromEarth(target, jd)))
+	const length = norm(direction)
+	if (!(length > 0)) return [0, radius, 0]
+	return [
+		(direction[0] / length) * radius,
+		(direction[1] / length) * radius,
+		(direction[2] / length) * radius,
+	]
+}
