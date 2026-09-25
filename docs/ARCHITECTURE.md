@@ -387,7 +387,7 @@ near the camera jitters.
 
 ```
 simTimeJD, timeWarp, paused, clock, lastTickMs    time; change only through the actions below
-hoverId, showOrbits, showLabels, showMoons, showMarkers, showOrbitLabels
+hoverId, showOrbits, showLabels, showMoons, showAllMoons (#17), showMarkers, showOrbitLabels
 ...NavigationSlice
 setTimeWarp(n), togglePause(), setPaused(b)       re-anchor the clock: nothing moves at the change
 setSimTime(jd)                                    instant jump
@@ -403,7 +403,7 @@ React UI subscribes with selectors, and reads the clock only through `useThrottl
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
 Scale presets). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
-off by default, as `orbitNames=true` while on. Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
+off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, the long tail of moons). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
@@ -462,7 +462,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
-- Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
+- Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers (featured moons, the long tail
+  only with `showAllMoons`; see Moons); hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
@@ -542,8 +543,8 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
   diagonals; last frame's side first), never on its own disc, inside the viewport, never over another label or a HUD
   `.panel` (`setKeepOut`, re-read every 0.25 s), first try clear of every dot (<= 24 px), else only of labelled ones.
   No free position: hidden. 2 px hysteresis against flicker; 0.2 s fades (`fadeLabels`).
-- **Density:** at most `MOON_LABEL_BUDGET` (8) moon names at once (largest first); the hovered, selected or focused
-  moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget.
+- **Density:** at most `MOON_LABEL_BUDGET` (10) moon names at once (featured moons first, then largest; #17); the hovered, selected or focused
+  moon and moons drawn >= 8 px radius are extra. Orbit names rank after every body name and share the moon budget; a faded-out moon orbit (see Moons) gets no name.
 - **Size:** CSS, relative to the viewport (planets 13..19 px, moons 12..16 px, orbits 11..15 px), never the zoom.
   Light text with a dark multi-layer halo for contrast on black space and bright planet faces alike; the Sun
   and moons take their marker colours, the selection is orange, hover underlines.
@@ -603,7 +604,8 @@ src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/d
 - `bodies.json`: per body `name`, `tagline`, `description`, `facts[]`, `comparisons[]`; each text field is either
   one value for all levels or `{ "simple": …, "standard": …, "advanced": … }` (the default level required). Plain text,
   not ICU. The Sun and the eight planets have every field at every level in every locale (tested); moons without
-  content get a generated description from their data (`bodies.fallback.moonDescription`).
+  content get a generated description from their data (`bodies.fallback.moonDescription`). Every featured moon (#17,
+  see Moons) has every field at every level in every locale (tested).
 - `src/i18n/locales.test.ts` and `bodies.test.ts` are the contract: every locale has exactly English's keys and
   variants, parses, uses only known arguments and complete plurals, and mirrors English's body content structure.
 
