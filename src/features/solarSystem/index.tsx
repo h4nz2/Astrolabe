@@ -15,6 +15,8 @@ import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
+import SoundControl from "./sound/SoundControl"
+import SoundDirector from "./sound/SoundDirector"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -70,6 +72,7 @@ const SolarSystem = () => {
 	return (
 		<div className={classes.page}>
 			<UrlSync />
+			<SoundDirector />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
@@ -94,6 +97,7 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<TeacherBar layers={<SceneToggles />}>
 							<PostcardButton />
+							<SoundControl />
 							<LanguageMenu />
 						</TeacherBar>
 						<InlineLayers>
