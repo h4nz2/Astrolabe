@@ -156,14 +156,21 @@ const eventPlanet = (target: string | undefined): Body | null => {
 
 /**
  * A milestone: time glides to it and stops, and the view goes to the planet
- * it happened at, or to where the craft was.
+ * it happened at, or to where the craft was. The date is kept inside the
+ * trajectory data, so the craft is on screen on arrival: the launch goes to
+ * the first state (minutes after lift-off), Cassini's plunge to its last.
  */
 export function showEvent(
 	craft: Spacecraft,
 	event: { date: string; target?: string },
 	scale: ScaleSettings,
 ): void {
-	const jd = isoToJD(event.date)
+	const trajectory = trajectoryOf(craft.id)
+	const eventJD = isoToJD(event.date)
+	const jd =
+		trajectory === null
+			? eventJD
+			: Math.min(trajectory.toJD, Math.max(trajectory.fromJD, eventJD))
 	useSpacecraftStore.getState().selectCraft(craft.id)
 	travelAndStop(jd)
 	const planet = eventPlanet(event.target)
@@ -172,10 +179,7 @@ export function showEvent(
 		store.focus(planet.id)
 		return
 	}
-	const trajectory = trajectoryOf(craft.id)
-	if (trajectory === null) return
-	const clamped = Math.min(trajectory.toJD, Math.max(trajectory.fromJD, jd))
-	const view = craftView(craft, clamped, scale)
+	const view = craftView(craft, jd, scale)
 	if (view !== null) {
 		store.goTo(
 			{ kind: "point", anchorId: view.anchorId, offsetKm: view.offsetKm },

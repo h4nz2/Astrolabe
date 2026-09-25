@@ -60,8 +60,10 @@ useSimStore.subscribe((state, previous) => {
 	if (useSpacecraftStore.getState().selectedCraftId === null) return
 	const bodyChosen =
 		state.selectedId !== previous.selectedId && state.selectedId !== null
+	// a new request for the overview (even from the overview: the home button, Escape)
 	const toOverview =
-		state.view !== previous.view && state.view.kind === "overview"
+		state.transition !== previous.transition &&
+		state.transition?.view.kind === "overview"
 	if (bodyChosen || toOverview) {
 		useSpacecraftStore.setState({ selectedCraftId: null })
 	}
