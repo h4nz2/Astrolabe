@@ -40,13 +40,15 @@
 		"tagline": "To the stars!",
 		"dictionary": "Dictionary",
 		"solarSystem": "Solar Model",
+		"birthday": "Your birthday in space",
 		"solarWalk": "Walk the solar system"
 	},
 	"units": {
 		"approx": "≈ {value}",
 		"au": "{value} AU",
 		"gravity": "{value} m/s²",
-		"kelvin": "{value} K"
+		"kelvin": "{value} K",
+		"millionKm": "{value} million km"
 	},
 	"bodies": {
 		"kind": {
@@ -321,6 +323,117 @@
 			"interplanetary@simple": "out between the planets",
 			"centreOn": "Centre on {body}",
 			"centreOn@simple": "Back to {body}"
+		},
+		"pick": {
+			"visit": "Click to fly there",
+			"visit@simple": "Click to go there",
+			"closer": "Click to fly back in close",
+			"hint": "Click or tap any planet to fly there.",
+			"hint@simple": "Click or tap a planet to visit it!"
+		},
+		"card": {
+			"dictionary": "Read more in the dictionary",
+			"dictionary@simple": "Find out more",
+			"showFacts": "Show facts",
+			"hideFacts": "Hide facts",
+			"close": "Close and return to the overview"
+		},
+		"facts": {
+			"label": {
+				"size": "Size",
+				"size@simple": "How big",
+				"distance": "Distance",
+				"distance@simple": "How far",
+				"year": "Year",
+				"year@simple": "One year",
+				"orbit": "Orbit",
+				"orbit@simple": "One lap",
+				"weight": "Your weight"
+			},
+			"sizeWider": "{ref, select, moon {{count, plural, one {# Moon wide} other {# Moons wide}}} other {{count, plural, one {# Earth wide} other {# Earths wide}}}}",
+			"sizeSimilar": "{ref, select, moon {About as wide as our Moon} other {About as wide as Earth}}",
+			"sizeNarrower": "{ref, select, moon {Our Moon is {count, number} times as wide} other {Earth is {count, number} times as wide}}",
+			"across": "{value} across",
+			"sunlight": "Sunlight takes {time} to get here",
+			"sunlight@simple": "Light from the Sun needs {time} to get here",
+			"gap": "{parentId, select, other {{parent}}} would fit into the gap {count, plural, one {# time} other {# times}}",
+			"fromParent": "{distance} from {parentId, select, other {{parent}}}",
+			"lap": "Goes once around {parentId, select, other {{parent}}} in {period}",
+			"yearEarth": "One lap around the Sun: that is what a year is",
+			"yearLonger": "{count, plural, one {One lap around the Sun takes # Earth year} other {One lap around the Sun takes # Earth years}}",
+			"yearShorter": "{count, plural, one {Goes around the Sun # time in one Earth year} other {Goes around the Sun # times in one Earth year}}",
+			"weightMore": "You would weigh {count, number} times as much as on Earth",
+			"weightMore@simple": "30 kg on Earth would be {kg} kg here",
+			"weightSimilar": "You would weigh about as much as on Earth",
+			"weightLess": "You would weigh {percent}% of your weight on Earth",
+			"weightLess@simple": "30 kg on Earth would be only {kg} kg here"
+		},
+		"birthday": {
+			"open": "Your birthday",
+			"openHint": "How old are you on other planets?",
+			"title": "Your birthday in space",
+			"close": "Close",
+			"intro": "Pick the day you were born. You will see how old you are on every planet, where the planets stood that day and how far you have travelled.",
+			"intro@simple": "When were you born? Pick the day and find out how old you are on the other planets!",
+			"intro@advanced": "Pick a date of birth. Ages, days and weights are computed from each world’s orbital period, rotation and surface gravity.",
+			"calendarHint": "First the year, then the month, then the day.",
+			"privacy": "Nothing is saved or sent anywhere. Your birthday stays on this screen and is forgotten when you close the page.",
+			"privacy@simple": "Your birthday is not saved and not sent anywhere. When you close the page, it is gone.",
+			"privacyLink": "While a birthday is entered, links to this page leave out the date.",
+			"born": "Born on {date}",
+			"change": "Change date",
+			"forget": "Forget my birthday",
+			"showBirthSky": "Show the planets on the day I was born",
+			"showBirthSky@simple": "Show the sky on my birthday",
+			"tabs": {
+				"label": "Compare",
+				"years": "Years",
+				"days": "Days",
+				"weight": "Weight"
+			},
+			"distance": "Since you were born, Earth has carried you {distance} kilometres around the Sun, at about {speed, number} km every second. That is {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
+			"distance@simple": "Since you were born, you have travelled {distance} kilometres around the Sun – without ever leaving the ground! That is as far as {trips, plural, one {# trip} other {# trips}} to the Moon and back.",
+			"distance@advanced": "Since your birth, Earth’s orbital motion has carried you {distance} km around the Sun at a mean {speed, number} km/s: {trips, plural, one {# return trip} other {# return trips}} to the Moon.",
+			"years": {
+				"intro": "A year is one trip around the Sun. Your birthday on another planet comes when it is back where it was on the day you were born.",
+				"intro@simple": "A year is one trip around the Sun. Planets far away take much longer, so you are younger there!",
+				"intro@advanced": "A year is the sidereal orbital period: your birthday on a planet is when it returns to the point of its orbit where it was at your birth.",
+				"age": "{age, plural, =0 {not 1 year old yet} one {# year old} other {# years old}}",
+				"exact": "{orbits} orbits",
+				"next": "Next birthday: {date}",
+				"first": "First birthday: {date}",
+				"earthAgeThen": "{age, plural, one {You will be # on Earth.} other {You will be # on Earth.}}",
+				"go": "{planetId, select, other {Travel to your next birthday on {planet}}}",
+				"today": "{planetId, select, earth {Happy birthday!} other {Happy birthday on {planet}!}}"
+			},
+			"days": {
+				"intro": "A day lasts from one sunrise to the next. On Mercury a day is longer than a year, so you have had more birthdays there than sunrises!",
+				"intro@simple": "A day lasts from one sunrise to the next. On some planets the Sun rises again after a few hours, on others only after months!",
+				"intro@advanced": "A solar day (sunrise to sunrise) follows from the sidereal rotation and the orbit: 1/solar = 1/sidereal − 1/year. Venus spins backwards, so its Sun rises every 117 Earth days.",
+				"lived": "{count, plural, one {# day lived} other {# days lived}}",
+				"length": "One day there: {length}"
+			},
+			"weight": {
+				"intro": "Pick a weight on Earth and see what a scale would show on other worlds.",
+				"intro@simple": "How heavy would you be on other worlds? Move the slider!",
+				"slider": "Weight on Earth",
+				"onEarth": "{kg} kg on Earth",
+				"kg": "{kg} kg",
+				"noSurface": "No ground to stand on",
+				"noSurfaceNote": "* No ground to stand on: this is the pull at the top of the clouds (on the Sun, at its glowing surface).",
+				"note": "You stay the same everywhere – only the pull of the world changes.",
+				"note@simple": "You do not get bigger or smaller – the world just pulls on you harder or more gently!",
+				"note@advanced": "Your mass stays the same everywhere; only gravity’s pull changes, and with it what a scale shows."
+			},
+			"share": "Save as picture",
+			"shareHint": "Makes a picture of your ages on this device. Nothing is uploaded.",
+			"card": {
+				"title": "How old am I on the other planets?",
+				"date": "On {date}",
+				"distance": "I have travelled {distance} km around the Sun.",
+				"footer": "Astrolabe – our solar system",
+				"fileName": "my-age-on-the-planets"
+			}
 		}
 	},
 	"solarWalk": {

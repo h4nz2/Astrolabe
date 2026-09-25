@@ -39,6 +39,7 @@ import {
 	type CameraShot,
 	type View,
 } from "./navigation"
+import { hidesTimeInUrl, useBirthdayStore } from "./birthday"
 import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
@@ -93,10 +94,13 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * written as it is (not rounded), so a link runs at exactly the speed it was
  * taken at,
  * backwards included; a zero warp (which the schema rejects) is left out.
+ * With `hideTime` (a birth date is entered, #26) no `t` is written at all, so
+ * a copied link opens on "now" and never carries someone's birthday.
  */
 export function searchFromState(
 	state: Mirrored,
 	previous: SimSearch,
+	hideTime = false,
 ): SimSearch {
 	const { timeWarp, view, shot } = state
 	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
@@ -113,9 +117,11 @@ export function searchFromState(
 				: undefined,
 		cam:
 			shot === null || sameShot(shot, HOME_SHOT) ? undefined : formatShot(shot),
-		t: shouldMirrorTime(state.paused, timeWarp)
-			? roundJD(state.simTimeJD)
-			: previous.t,
+		t: hideTime
+			? undefined
+			: shouldMirrorTime(state.paused, timeWarp)
+				? roundJD(state.simTimeJD)
+				: previous.t,
 		warp:
 			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
 	}
@@ -250,6 +256,7 @@ export function useSimUrlSync(): void {
 					scalePreset: useScaleStore.getState().targetId,
 				},
 				searchRef.current,
+				hidesTimeInUrl(useBirthdayStore.getState()),
 			)
 			if (sameSearch(next, searchRef.current)) return
 			searchRef.current = next
@@ -286,11 +293,18 @@ export function useSimUrlSync(): void {
 		const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
 			if (state.targetId !== previous.targetId) write()
 		})
+		// entering or forgetting a birth date takes `t` out of the URL or puts it back
+		const unsubscribeBirthday = useBirthdayStore.subscribe(
+			(state, previous) => {
+				if (hidesTimeInUrl(state) !== hidesTimeInUrl(previous)) write()
+			},
+		)
 		write()
 
 		return () => {
 			unsubscribe()
 			unsubscribeScale()
+			unsubscribeBirthday()
 			if (timer !== undefined) clearTimeout(timer)
 		}
 	}, [navigate])

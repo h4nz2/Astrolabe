@@ -1,0 +1,57 @@
+/* Over the canvas, under the HUD panels; never catches the pointer. */
+.layer {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+/* sized and moved every frame by scene/HighlightTracker.tsx */
+.ring {
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	border-radius: 50%;
+	will-change: transform;
+}
+
+.hover {
+	border: 2px solid rgba(255, 255, 255, 0.9);
+	box-shadow:
+		0 0 0 1px rgba(0, 0, 0, 0.6),
+		0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+.selection {
+	border: 2px solid var(--mantine-color-orange-5);
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6);
+	opacity: 0.85;
+}
+
+/* the name under the hover ring, legible on a projector */
+.caption {
+	position: absolute;
+	top: calc(100% + 6px);
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.2rem 0.55rem;
+	border-radius: var(--mantine-radius-sm);
+	background: rgba(12, 14, 20, 0.82);
+	white-space: nowrap;
+	line-height: 1.25;
+}
+
+.name {
+	font-size: var(--mantine-font-size-md);
+	font-weight: 600;
+	color: var(--mantine-color-gray-0);
+}
+
+.hint {
+	font-size: var(--mantine-font-size-xs);
+	color: var(--mantine-color-gray-4);
+}

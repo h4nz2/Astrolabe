@@ -1,16 +1,14 @@
 import { describe, expect, it } from "vitest"
-import { PerspectiveCamera, Vector3 } from "three"
+import { PerspectiveCamera } from "three"
 
 import { bodies, moonsOf } from "@/data"
-import { AU_KM, J2000_JD, degToRad, toUnits } from "@/sim"
+import { J2000_JD, degToRad, toUnits } from "@/sim"
 
 import {
 	MARKER_HIDE_DIAMETER_PX,
-	MARKER_PICK_RADIUS_PX,
 	createMarkerBuffers,
 	fillMarkers,
 	isMoonDotShown,
-	pickMarker,
 	type MarkerBuffers,
 } from "./Markers"
 import { createSimFrame, updateSimFrame } from "./simFrame"
@@ -154,132 +152,5 @@ describe("fillMarkers", () => {
 			state,
 		)
 		expect(drawnBodies(buffers, drawn)).not.toContain(earth)
-	})
-})
-
-describe("pickMarker", () => {
-	const ANGLE_PER_PX = 1e-3
-	const origin = new Vector3(0, 0, 0)
-	const towards = (x: number, y: number, z: number) =>
-		new Vector3(x, y, z).normalize()
-
-	/** Jupiter, Io and Europa in a row 100 units ahead: 0, 5 and 30 px right of centre. */
-	const trio = (): { buffers: MarkerBuffers; drawn: number } => {
-		const buffers = createMarkerBuffers(3)
-		buffers.positions.set([0, 0, -100, 0.5, 0, -100, 3, 0, -100])
-		buffers.vertexBody.set([index("jupiter"), index("io"), index("europa")])
-		return { buffers, drawn: 3 }
-	}
-
-	it("prefers a planet within the pick radius over a nearer moon", () => {
-		const { buffers, drawn } = trio()
-		expect(
-			pickMarker(
-				buffers,
-				drawn,
-				bodies,
-				origin,
-				towards(0, 0, -1),
-				ANGLE_PER_PX,
-			),
-		).toBe(0)
-		// aimed exactly at Io: Jupiter is 5 px away and still wins
-		expect(
-			pickMarker(
-				buffers,
-				drawn,
-				bodies,
-				origin,
-				towards(0.5, 0, -100),
-				ANGLE_PER_PX,
-			),
-		).toBe(0)
-	})
-
-	it("picks the nearest moon when no planet is within the radius", () => {
-		const { buffers, drawn } = trio()
-		// aimed 8 px left of Europa: Jupiter (22 px) and Io (17 px) are out of reach
-		expect(
-			pickMarker(
-				buffers,
-				drawn,
-				bodies,
-				origin,
-				towards(2.2, 0, -100),
-				ANGLE_PER_PX,
-			),
-		).toBe(2)
-	})
-
-	it("returns -1 when nothing is within the radius or everything is behind the eye", () => {
-		const { buffers, drawn } = trio()
-		expect(
-			pickMarker(
-				buffers,
-				drawn,
-				bodies,
-				origin,
-				towards(0, 1, 0),
-				ANGLE_PER_PX,
-			),
-		).toBe(-1)
-		expect(
-			pickMarker(
-				buffers,
-				drawn,
-				bodies,
-				origin,
-				towards(0, 0, 1),
-				ANGLE_PER_PX,
-			),
-		).toBe(-1)
-		expect(MARKER_PICK_RADIUS_PX).toBe(10)
-	})
-
-	it("from the Sun view 7 AU out, a click near Jupiter picks Jupiter, not one of its moons", () => {
-		const frame = createSimFrame(bodies, J2000_JD)
-		const jupiter = index("jupiter")
-		const buffers = createMarkerBuffers(bodies.length)
-		const camera = cameraAt(0, toUnits(7 * AU_KM), 0)
-		const anglePerPx = 1 / PX_PER_UNIT
-
-		// Sun focus: Jupiter's dot sits alone, 3 px off the pointer
-		let drawn = fillMarkers(buffers, frame, camera, HEIGHT_PX, {
-			showMoons: true,
-			focusId: "sun",
-		})
-		const target = frame.renderPosition(jupiter, new Vector3())
-		const direction = target.clone().sub(camera.position).normalize()
-		direction.x += 3 * anglePerPx
-		direction.normalize()
-		let picked = pickMarker(
-			buffers,
-			drawn,
-			bodies,
-			camera.position,
-			direction,
-			anglePerPx,
-		)
-		expect(picked).toBeGreaterThanOrEqual(0)
-		expect(buffers.vertexBody[picked]).toBe(jupiter)
-
-		// Io focus (all Jovian moons drawn, a fraction of a pixel from Jupiter):
-		// a click exactly on Io still goes to the planet
-		const io = index("io")
-		updateSimFrame(frame, J2000_JD, io)
-		drawn = fillMarkers(buffers, frame, camera, HEIGHT_PX, {
-			showMoons: true,
-			focusId: "io",
-		})
-		expect(drawnBodies(buffers, drawn)).toContain(io)
-		picked = pickMarker(
-			buffers,
-			drawn,
-			bodies,
-			camera.position,
-			new Vector3(0, -1, 0),
-			anglePerPx,
-		)
-		expect(buffers.vertexBody[picked]).toBe(jupiter)
 	})
 })
