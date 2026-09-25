@@ -4,27 +4,26 @@
  * as `hoverId`; this mirrors it onto the canvas as `cursor: pointer`. Rendered
  * once inside the Canvas, renders nothing and never re-renders: it watches the
  * store through `subscribe`, which fires on every clock tick, so the canvas is
- * only written when the hover, the view or the selection changed.
+ * only written when the hover, the view, the shot or the selection changed.
  */
 import { useLayoutEffect } from "react"
 import { useThree } from "@react-three/fiber"
 
 import { useSimStore, type SimState } from "@/store/sim"
 
-type ClickState = Pick<SimState, "hoverId" | "view" | "selectedId">
+import { bodyClickAction } from "./picking"
+
+type ClickState = Pick<SimState, "hoverId" | "view" | "selectedId"> &
+	Partial<Pick<SimState, "shot">>
 
 /**
- * Whether a click on the hovered body would do anything (`setFocus`): every
- * body but the focus once it is also selected. That one fills the view up
- * close, where a hand over it would only suggest a click on every drag.
+ * Whether a click on the hovered body would do anything (`bodyClickAction`):
+ * every body but the focus once it is also selected and framed. That one
+ * fills the view up close, where a hand over it would only suggest a click on
+ * every drag.
  */
-export const isClickTarget = ({
-	hoverId,
-	view,
-	selectedId,
-}: ClickState): boolean =>
-	hoverId !== null &&
-	!(view.kind === "body" && view.id === hoverId && selectedId === hoverId)
+export const isClickTarget = (state: ClickState): boolean =>
+	state.hoverId !== null && bodyClickAction(state, state.hoverId) !== "none"
 
 /** Writes the cursor for `state` onto the canvas; `null` restores the default. */
 export function applyHoverCursor(
@@ -43,6 +42,7 @@ function HoverCursor() {
 			if (
 				state.hoverId !== previous.hoverId ||
 				state.view !== previous.view ||
+				state.shot !== previous.shot ||
 				state.selectedId !== previous.selectedId
 			) {
 				applyHoverCursor(canvas, state)

@@ -88,12 +88,12 @@ function CameraRig() {
 	useEffect(() => {
 		if (director === null) return
 		director.attach()
-		const hide = exposeDebugHandle(director)
+		const hide = exposeDebugHandle(director, gl.domElement)
 		return () => {
 			hide()
 			director.detach()
 		}
-	}, [director])
+	}, [director, gl])
 
 	useFrame((_state, delta) => {
 		director?.tick(performance.now(), delta)

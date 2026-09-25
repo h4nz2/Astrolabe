@@ -8,6 +8,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import Scene from "./scene/Scene"
+import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
 import CentreBadge from "./ui/CentreBadge"
@@ -53,6 +54,7 @@ const SolarSystem = () => {
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
+			<BodyHighlight />
 			<CentreMarker />
 			<div className={classes.hud}>
 				<div className={`${classes.panel} ${classes.picker}`}>
