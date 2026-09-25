@@ -34,6 +34,10 @@ export const TOUR_KEYS: Readonly<Record<string, "next" | "back">> = {
 	PageUp: "back",
 }
 
+/** Widgets that use the arrow keys themselves (tabs, sliders, menus, radio groups). */
+const ARROW_WIDGETS =
+	"[role='tab'], [role='tablist'], [role='slider'], [role='menu'], [role='menuitem'], [role='radio'], [role='radiogroup']"
+
 /**
  * Steps the tour on a presenter key. Listens in the capture phase so, while a
  * tour runs, the arrows step it instead of cycling the focus between bodies.
@@ -41,7 +45,13 @@ export const TOUR_KEYS: Readonly<Record<string, "next" | "back">> = {
 function onTourKey(event: KeyboardEvent): void {
 	const action = TOUR_KEYS[event.key]
 	if (action === undefined || useTourStore.getState().tour === null) return
-	if (hasModifier(event) || event.shiftKey || isEditableTarget(event.target)) {
+	if (
+		hasModifier(event) ||
+		event.shiftKey ||
+		isEditableTarget(event.target) ||
+		(event.target instanceof Element &&
+			event.target.closest(ARROW_WIDGETS) !== null)
+	) {
 		return
 	}
 	event.preventDefault()
