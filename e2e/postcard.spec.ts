@@ -97,7 +97,9 @@ test("one click takes the view, stamps it and saves it on the device", async ({
 
 	// the names are painted onto the picture (labels are DOM, not WebGL)
 	const withNames = await pictureStats(page)
-	await dialog(page).getByText("Names on the picture").click()
+	await dialog(page)
+		.getByRole("switch", { name: "Names on the picture" })
+		.click()
 	await expect
 		.poll(async () => (await pictureStats(page)).src, { timeout: 10_000 })
 		.not.toBe(withNames.src)
