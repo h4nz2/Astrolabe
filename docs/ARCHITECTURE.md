@@ -93,12 +93,14 @@ interface Body {
 		clouds?: string
 		night?: string
 	}
+	appearance?: { tint?: string; veiled?: true } // #17: "#rrggbb" times the map; veiled = the tint alone (Titan)
 	rings: {
 		innerRadiusKm: number
 		outerRadiusKm: number
 		textures: { alpha: string; color: string }
 	} | null
 	info: Record<string, unknown> // dictionary fields passed through; a source 0 ("unknown") is dropped
+	featured?: true // a moon with a story, shown by default (data/featured-moons.json; see Moons)
 }
 ```
 
@@ -125,6 +127,9 @@ Build rules (`scripts/lib/`):
   Irregular moons without a period and Hyperion (`rotationChaotic` in the source: it tumbles) keep `null`: no spin.
 - Moon inclinations refer to the Laplace plane: inside the planet's Laplace radius they are rotated from the planet's
   equator into the ecliptic (`frames.ts`), so regular moons and rings are coplanar; outside it they are kept as ecliptic.
+- Featured moons (#17): `data/featured-moons.json` (planet id -> moon id -> the story in one line) flags moons
+  `featured`; an unknown id or a wrong planet stops the build. A curated `tint` / `veiled` on a moon's source record
+  becomes its `appearance`.
 - Rings: Jupiter and Saturn from the source, Uranus and Neptune from `data/rings/`. Strips run u = 0 (inner) to u = 1
   (outer). A missing ring texture fails the build.
 - Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements, the
@@ -335,6 +340,41 @@ and eclipses are the real ones in every scale preset (a moon drawn 10x too big n
   Time warp and spin are therefore independent: warp sets orbital speed, the spin mode only ever slows spin down.
 - The mode is not persisted or in the URL (like "Always lit"): every visit opens with the true spin. The canvas
   carries `data-spin-mode`.
+
+## Moons (#17)
+
+Moons are natural satellites only. The data holds 183 (Earth 1, Mars 2, Jupiter 57, Saturn 82, Uranus 27, Neptune
+14); most are rocks a few kilometres across with provisional names. Drawing them all as equals buries Titan among
+specks and ties an orbit tangle round Jupiter and Saturn, so the rule is **curated by story, not by size**:
+
+- **Featured moons** (`Body.featured`, listed with their one-line story in `data/featured-moons.json`): a moon is
+  featured when it has a story a student can repeat. 24 today: the Moon; Phobos, Deimos; Io, Europa, Ganymede,
+  Callisto; Mimas, Enceladus, Tethys, Dione, Rhea, Titan, Hyperion, Iapetus, Phoebe; Miranda, Ariel, Umbriel,
+  Titania, Oberon; Proteus, Triton, Nereid. Every featured moon must have authored content (name, tagline,
+  description, facts, comparisons) at every reading level in every locale (`src/i18n/bodies.test.ts`). To feature
+  a moon: add it to the JSON, write its content, `pnpm build:data`.
+- **The long tail** (every other moon) is drawn only while `showAllMoons` is on: the "All moons" switch
+  (`allMoons=true` in the URL, off by default, needs the Moons switch), or "Show 53 smaller moons" in a planet's
+  card. A focused moon is always drawn. `isBodyShown` (store/sim.ts) is the one rule, so meshes, orbit lines,
+  markers, picking, labels, shadows, the too-fast warning and the arrow keys (`focusRing`) all follow it.
+- **Appear when meaningful**: a moon's orbit line fades in with its drawn size on screen
+  (`bodies/moonOrbitFade.ts`: hidden below 14 px radius, full from 48 px), so from the overview (any preset) moon
+  systems are clean dots and approaching a planet draws its system in. Long-tail orbits are drawn at 40 % of a
+  featured orbit's opacity, so the swarm stays behind the story. Moon dots and names stay limited to the focus
+  family (Markers, Labels); names rank featured moons first (`MOON_LABEL_BUDGET` 10: all 9 of Saturn's).
+- **Moon distances** are the scale engine's `moonDistance` curve (see Scale), not a second model.
+- **Card** (`ui/MoonSystem.tsx`, `ui/moonSystem.ts`): a planet's card lists its featured moons (a click flies
+  there), "See the whole moon system" (`goTo` the planet with a shot fitting the outermost drawn orbit,
+  `moonSystemShotDistance`, from 35 deg elevation) and the long-tail switch; a moon's card has "Read its story"
+  (the authored description; moons have no dictionary entry) and a way back to its planet. The FocusPicker lists
+  featured moons first. The card scrolls on wide screens instead of running off a 720 px projector.
+- **Appearance**: only a handful of moons have texture maps; the rest share the Moon's map. `appearance.tint`
+  (curated in `data/ourDB.json`) gives featured moons their own hue; `veiled` draws Titan as its haze colour alone.
+- **Tidal locking** is #13's (Rotation). Hyperion tumbles.
+- **Performance budget** (a mid-range laptop, integrated GPU, 1080p): default view 9 planets + 24 featured moons,
+  at most ~70 draw calls for bodies and orbits; with All moons on, 192 bodies + 191 orbit lines, at most ~400 draw
+  calls, and no per-frame allocation. Orbit lines that are faded out are not drawn at all, so the overview costs
+  the same with All moons on. Measured in headless Chromium (software GL) with `renderer.info`.
 
 ## Floating origin
 

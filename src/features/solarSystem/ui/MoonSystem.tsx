@@ -16,11 +16,7 @@ import { bodyKindLabel, useBodyName, useBodyText } from "@/i18n/bodies"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
-import {
-	SYSTEM_ELEVATION_DEG,
-	moonSystemOf,
-	moonSystemShotDistance,
-} from "./moonSystem"
+import { moonSystemOf, moonSystemShot } from "./moonSystem"
 
 import classes from "./MoonSystem.module.css"
 
@@ -55,15 +51,13 @@ const PlanetMoons = ({ planet }: { planet: Body }) => {
 		goTo(
 			{ kind: "body", id: planet.id },
 			{
-				shot: {
-					elevationDeg: SYSTEM_ELEVATION_DEG,
-					distance: moonSystemShotDistance(
-						planet,
-						drawn,
-						useScaleStore.getState().scale,
-						viewAspect(),
-					),
-				},
+				shot: moonSystemShot(
+					planet,
+					drawn,
+					useScaleStore.getState().scale,
+					viewAspect(),
+					useSimStore.getState().simTimeJD,
+				),
 			},
 		)
 	}

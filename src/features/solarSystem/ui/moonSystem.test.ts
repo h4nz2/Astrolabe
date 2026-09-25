@@ -1,12 +1,22 @@
 import { describe, expect, it } from "vitest"
 
 import { bodies, getBody, moonsOf, planets } from "@/data"
-import { SCALE_PRESETS, displayDistanceKm } from "@/sim"
+import {
+	J2000_JD,
+	SCALE_PRESETS,
+	displayDistanceKm,
+	propagate,
+	radToDeg,
+	spinAxis,
+} from "@/sim"
 
 import { CAMERA_FOV_DEG, FRAMING_RADII, fitDistance } from "../camera/framing"
 import {
+	SYSTEM_ELEVATION_DEG,
 	SYSTEM_MARGIN,
+	moonSystemDirection,
 	moonSystemOf,
+	moonSystemShot,
 	moonSystemShotDistance,
 } from "./moonSystem"
 
@@ -115,5 +125,42 @@ describe("moonSystemShotDistance", () => {
 			).toBeGreaterThanOrEqual(1)
 		}
 		expect(moonSystemShotDistance(getBody("venus"), [], scale, 1.5)).toBe(1)
+	})
+})
+
+describe("moonSystemDirection", () => {
+	it.each(["jupiter", "saturn", "uranus", "neptune", "earth"])(
+		"looks down on %s's equator from the Sun's side",
+		(id) => {
+			const planet = getBody(id)
+			const d = moonSystemDirection(planet, J2000_JD)
+			expect(Math.hypot(d.x, d.y, d.z)).toBeCloseTo(1, 9)
+			const pole = spinAxis(planet.rotation, planet.orbit)
+			const dot = Math.abs(d.x * pole.x + d.y * pole.y + d.z * pole.z)
+			// SYSTEM_ELEVATION_DEG above the equator plane, on the northern side
+			expect(radToDeg(Math.asin(dot))).toBeCloseTo(SYSTEM_ELEVATION_DEG, 6)
+			expect(d.y).toBeGreaterThan(-1e-9)
+			const p = propagate(planet.orbit!, J2000_JD)
+			expect(d.x * -p.x + d.y * -p.y + d.z * -p.z).toBeGreaterThan(0)
+		},
+	)
+
+	it("turns into camera angles the director understands", () => {
+		const saturn = getBody("saturn")
+		const shot = moonSystemShot(
+			saturn,
+			moonSystemOf("saturn").featured,
+			SCALE_PRESETS.everythingVisible,
+			1.5,
+			J2000_JD,
+		)
+		const d = moonSystemDirection(saturn, J2000_JD)
+		const az = (shot.azimuthDeg * Math.PI) / 180
+		const el = (shot.elevationDeg * Math.PI) / 180
+		// camera-controls: theta about +Y from +Z, phi from +Y
+		expect(Math.cos(el) * Math.sin(az)).toBeCloseTo(d.x, 9)
+		expect(Math.sin(el)).toBeCloseTo(d.y, 9)
+		expect(Math.cos(el) * Math.cos(az)).toBeCloseTo(d.z, 9)
+		expect(shot.distance).toBeGreaterThan(1)
 	})
 })
