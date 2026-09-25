@@ -171,8 +171,16 @@
 	}
 
 	.info {
-		max-height: calc(100dvh - 6rem);
+		max-height: 50dvh;
 		overflow-y: auto;
+	}
+
+	/* a column taller than the room it has (a frame badge, a crowded scale panel) scrolls in place */
+	.pickerStack,
+	.toggles {
+		max-height: 100%;
+		overflow-y: auto;
+		overscroll-behavior: contain;
 	}
 }
 
