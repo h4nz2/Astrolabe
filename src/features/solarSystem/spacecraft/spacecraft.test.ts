@@ -181,6 +181,7 @@ describe("craft names in the label layout", () => {
 						showMarkers: true,
 						showOrbits: true,
 						showOrbitLabels: false,
+						showAllMoons: false,
 					},
 					ranks,
 					undefined,
