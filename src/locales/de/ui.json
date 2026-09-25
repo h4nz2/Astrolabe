@@ -260,7 +260,7 @@
 			"show": "Zeigen",
 			"showHint": "Ansicht zu {name} fliegen",
 			"launched": "Gestartet",
-			"launched@simple": "Von der Erde los",
+			"launched@simple": "Losgeflogen",
 			"phase": {
 				"planned": "Noch nicht gestartet (Start am {date})",
 				"planned@simple": "Noch nicht im All. Sie startet am {date}.",
