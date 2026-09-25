@@ -20,8 +20,8 @@ const ready = async (page: Page, url: string) => {
 }
 
 const card = (page: Page) => page.locator("[data-event-card]")
-const clock = (page: Page) =>
-	page.getByRole("button", { name: "Travel to a date" }).locator("time")
+// the HUD clock (the event card gives its date as text)
+const clock = (page: Page) => page.locator("time")
 const camera = (page: Page) =>
 	page.evaluate(() => {
 		const handle = window.__astrolabe!
