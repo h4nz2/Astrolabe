@@ -165,6 +165,7 @@ const HuntCard = ({ hunt }: { hunt: (typeof HUNTS)[number] }) => {
 			<Group gap="xs" justify="space-between" wrap="nowrap">
 				<Text fw={700}>{title}</Text>
 				<Badge
+					className={classes.badge}
 					variant="light"
 					color={
 						hunt.difficulty === "easy"
@@ -524,8 +525,8 @@ const HuntPanel = () => {
 					</Group>
 				</Group>
 				{hunt !== null && step < total && (
-					<Group gap="xs" justify="space-between" wrap="nowrap" mt={4}>
-						<Group gap="xs" wrap="nowrap" miw={0}>
+					<>
+						<Group gap="xs" justify="space-between" wrap="nowrap" mt={4}>
 							<Text
 								size="sm"
 								fw={600}
@@ -537,10 +538,10 @@ const HuntPanel = () => {
 									total,
 								})}
 							</Text>
-							<ProgressDots total={total} solved={solved} current={step} />
+							{!collapsed && <ShareButton huntKey={hunt.key} />}
 						</Group>
-						{!collapsed && <ShareButton huntKey={hunt.key} />}
-					</Group>
+						<ProgressDots total={total} solved={solved} current={step} />
+					</>
 				)}
 			</header>
 			<div className={classes.body}>
