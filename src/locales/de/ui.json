@@ -41,6 +41,7 @@
 		"dictionary": "Lexikon",
 		"solarSystem": "Sonnensystem",
 		"birthday": "Geburtstag im Weltall",
+		"hunt": "Schnitzeljagd",
 		"solarWalk": "Planetenweg"
 	},
 	"units": {
@@ -340,7 +341,8 @@
 			"dictionary@simple": "Mehr erfahren",
 			"showFacts": "Fakten zeigen",
 			"hideFacts": "Fakten ausblenden",
-			"close": "Schließen und zur Übersicht zurück"
+			"close": "Schließen und zur Übersicht zurück",
+			"compare": "Vergleichen mit …"
 		},
 		"moons": {
 			"label": "Monde",
@@ -476,6 +478,66 @@
 				"fileName": "mein-alter-auf-den-planeten"
 			}
 		},
+		"hunt": {
+			"open": "Schnitzeljagd",
+			"openHint": "Löse Rätsel, indem du Welten in der Szene findest",
+			"title": "Schnitzeljagd",
+			"close": "Schließen",
+			"collapse": "Einklappen",
+			"expand": "Ausklappen",
+			"intro": "Jedes Rätsel beschreibt eine Welt. Finde sie in der Szene und klick sie an: Das ist deine Antwort. Tipps sind gratis, und es gibt keine Punkte und kein Zeitlimit.",
+			"intro@simple": "Lies das Rätsel, finde die Welt und klick sie an! Du kommst nicht weiter? Hol dir einen Tipp.",
+			"choose": "Wähle eine Jagd",
+			"difficulty": {
+				"easy": "Leicht",
+				"medium": "Mittel",
+				"hard": "Knifflig"
+			},
+			"clueCount": "{count, plural, one {# Rätsel} other {# Rätsel}}",
+			"inProgress": "Weitermachen: Rätsel {step} von {total}",
+			"progress": "Rätsel {step} von {total}",
+			"progressLabel": "{found} von {total} gefunden",
+			"answerHow": "Finde sie in der Szene und klick sie an.",
+			"answerHow@simple": "Finde sie und klick sie an!",
+			"firstHint": "Brauchst du einen Tipp?",
+			"moreHint": "Noch ein Tipp",
+			"hintLabel": "Tipp {n}",
+			"showMe": "Zeig es mir",
+			"showMeHint": "Hinfliegen und das Rätsel lösen",
+			"guess": {
+				"other": "Das ist {bodyId, select, sun {die Sonne} earth {die Erde} moon {der Mond} venus {die Venus} other {{name}}} – leider nicht die Lösung. Such weiter!",
+				"other@simple": "Das ist {bodyId, select, sun {die Sonne} earth {die Erde} moon {der Mond} venus {die Venus} other {{name}}}. Versuch eine andere Welt!",
+				"warm": "Warm! Die Lösung ist in der Nähe {bodyId, select, earth {der Erde} other {von {name}}}. Schau dich dort um.",
+				"almost": "Ja, {name}! Jetzt schau {frameId, select, earth {von der Erde} other {von {frame}}} aus zu: Wähle oben links den Blickwinkel."
+			},
+			"found": "Gefunden!",
+			"next": "Nächstes Rätsel",
+			"finish": "Fertig",
+			"done": {
+				"title": "Geschafft!",
+				"text": "{count, plural, one {Du hast das Rätsel gelöst.} other {Du hast alle # Rätsel gelöst.}}",
+				"text@simple": "{count, plural, one {Du hast es geschafft!} other {Du hast es geschafft: alle # gefunden!}}",
+				"found": "Diese Welten hast du gefunden. Klick eine an, um sie noch einmal zu besuchen:",
+				"again": "Noch einmal spielen",
+				"other": "Andere Jagd wählen"
+			},
+			"custom": {
+				"title": "Eigene Jagd zusammenstellen",
+				"intro": "Hake die Rätsel für deine Stunde an und starte die Jagd oder teile sie mit deiner Klasse.",
+				"name": "Deine eigene Jagd",
+				"count": "{count, plural, =0 {Kein Rätsel gewählt} one {# Rätsel gewählt} other {# Rätsel gewählt}}",
+				"start": "Starten"
+			},
+			"share": {
+				"button": "Teilen",
+				"title": "Diese Jagd teilen",
+				"text": "Alle, die diesen Link öffnen, bekommen dieselbe Jagd, in derselben Sprache und Lesestufe. Der Fortschritt bleibt auf jedem Gerät; nichts wird auf einem Server gespeichert.",
+				"copy": "Link kopieren",
+				"copied": "Kopiert",
+				"link": "Link zu dieser Jagd"
+			},
+			"otherHunts": "Andere Jagden"
+		},
 		"frame": {
 			"label": "Blickwinkel",
 			"label@simple": "Von wo du zuschaust",
@@ -563,6 +625,88 @@
 				"title": "Von oberhalb der Sonne",
 				"title@simple": "Von hoch oben gesehen",
 				"label": "{observer} und {body} auf ihren Bahnen um die Sonne, mit der Blicklinie von {observer} zu {body}"
+			}
+		},
+		"present": {
+			"button": "Präsentieren",
+			"layers": "Ebenen",
+			"buttonHint": "Vor der Klasse zeigen: große Schrift, hoher Kontrast, Tastatur, teilen",
+			"title": "Vor der Klasse zeigen",
+			"projector": "Große Schrift für den Beamer",
+			"projectorHint": "Größere Schrift und Knöpfe, lesbar bis in die letzte Reihe",
+			"highContrast": "Hoher Kontrast",
+			"highContrastHint": "Für blasse Beamer und Räume, die sich nicht abdunkeln lassen",
+			"hideControls": "Bedienelemente ausblenden",
+			"fullscreen": "Vollbild",
+			"exitFullscreen": "Vollbild beenden",
+			"restart": "Zurück zum Anfang",
+			"restartHint": "Die Ansicht, mit der diese Seite geöffnet wurde",
+			"shortcuts": "Tastenkürzel",
+			"share": {
+				"button": "Teilen",
+				"title": "Diese Ansicht teilen",
+				"explain": "Der Link öffnet genau diese Ansicht: derselbe Himmelskörper, dieselbe Kamera, dasselbe Datum, Tempo, derselbe Maßstab und dieselbe Sprache. Setze ein Lesezeichen, um eine Lektion vorzubereiten, oder verschicke ihn als Hausaufgabe.",
+				"explain@simple": "Der Link öffnet genau das, was du jetzt siehst. Speichere ihn oder schick ihn jemandem.",
+				"link": "Link zu dieser Ansicht",
+				"copy": "Link kopieren",
+				"copied": "Link kopiert",
+				"copyFailed": "Kopieren ging nicht: Markiere den Link und kopiere ihn selbst",
+				"qr": "Scannen, um diese Ansicht auf einem Handy oder Tablet zu öffnen",
+				"qrLabel": "QR-Code des Links zu dieser Ansicht",
+				"qrShow": "QR-Code der Klasse zeigen"
+			},
+			"chrome": {
+				"show": "Bedienelemente zeigen",
+				"hint": "Bedienelemente ausgeblendet: Drücke H oder den Knopf, um sie zurückzuholen",
+				"hint@simple": "Die Knöpfe sind versteckt. Drücke H, um sie zurückzuholen."
+			},
+			"help": {
+				"title": "Tastenkürzel",
+				"intro": "Alle Tasten funktionieren auch, wenn die Bedienelemente ausgeblendet sind. Die Knöpfe eines Presenters blättern durch die Planeten.",
+				"groups": {
+					"move": "Bewegen",
+					"time": "Zeit",
+					"show": "Was zu sehen ist",
+					"present": "Präsentieren"
+				},
+				"keys": {
+					"space": "Leertaste",
+					"pageUpDown": "Bild ↑ / Bild ↓",
+					"arrows": "← / →",
+					"digits": "1 – 8",
+					"home": "Pos1",
+					"esc": "Esc"
+				},
+				"pause": "Anhalten oder weiterlaufen lassen",
+				"speed": "Schneller oder langsamer",
+				"step": "Vorheriger oder nächster Himmelskörper (die Knöpfe eines Presenters)",
+				"planets": "Die Planeten, von Merkur (1) bis Neptun (8)",
+				"overview": "Das ganze Sonnensystem",
+				"reset": "Zurück zur Übersicht, von überall",
+				"start": "Zurück zum Anfang: die Ansicht, mit der der Link geöffnet wurde",
+				"scale": "Nächster Maßstab: Alles sichtbar, Schulbuch, Echter Maßstab",
+				"scale@simple": "Zwischen erfundenen und echten Größen wechseln",
+				"labels": "Namen ein oder aus (für ein Quiz ausblenden)",
+				"chrome": "Alle Bedienelemente aus- oder einblenden",
+				"fullscreen": "Vollbild ein oder aus",
+				"projector": "Große Schrift ein oder aus",
+				"contrast": "Hoher Kontrast ein oder aus",
+				"help": "Diese Liste"
+			},
+			"announce": {
+				"focus": "Jetzt zu sehen: {body}",
+				"overview": "Das ganze Sonnensystem",
+				"start": "Zurück zum Anfang",
+				"scale": "Maßstab: {preset}",
+				"labelsOn": "Namen eingeblendet",
+				"labelsOff": "Namen ausgeblendet",
+				"chromeHidden": "Bedienelemente ausgeblendet. Drücke H, um sie wieder zu zeigen.",
+				"chromeShown": "Bedienelemente eingeblendet",
+				"projectorOn": "Große Schrift an",
+				"projectorOff": "Große Schrift aus",
+				"contrastOn": "Hoher Kontrast an",
+				"contrastOff": "Hoher Kontrast aus",
+				"step": "Schritt {n} von {total}"
 			}
 		},
 		"light": {
@@ -821,5 +965,130 @@
 			"football": "ein Fußball"
 		},
 		"starName": "Proxima Centauri"
+	},
+	"compare": {
+		"title": "Nebeneinander",
+		"subtitle": "Echte Größen im Vergleich",
+		"subtitle@simple": "Echte Größen, alle gleich stark verkleinert",
+		"back": "Zurück zum Sonnensystem",
+		"pick": {
+			"compare": "Vergleiche",
+			"with": "mit",
+			"first": "Erster Himmelskörper",
+			"second": "Verglichen mit",
+			"add": "Himmelskörper hinzufügen",
+			"addPlaceholder": "Hinzufügen …",
+			"full": "Höchstens {max, number} Himmelskörper",
+			"remove": "{name} entfernen",
+			"swap": "Die beiden tauschen",
+			"presets": "Ideen"
+		},
+		"presets": {
+			"sunEarth": "Sonne und Erde",
+			"earthMoon": "Erde und Mond",
+			"planets": "Alle acht Planeten",
+			"sunPlanets": "Die Sonne und die Planeten",
+			"bigMoons": "Die größten Monde"
+		},
+		"stage": {
+			"label": "{names}, nebeneinander in echter Größe zueinander gezeichnet",
+			"scale": "Ein Maßstab für alle: 1 Pixel = {km}.",
+			"scale@simple": "Alles ist gleich stark verkleinert: 1 Pixel steht für {km}.",
+			"scale@advanced": "Gemeinsamer Maßstab, 1 px : {km}. Achsen geneigt wie im All.",
+			"tiny": "{count, plural, one {In diesem Maßstab so klein, dass ein Kreis die Stelle zeigt: {names}.} other {In diesem Maßstab so klein, dass Kreise die Stellen zeigen: {names}.}}",
+			"tiny@simple": "{count, plural, one {Ohne den Kreis würdest du hier kaum finden: {names}.} other {Ohne die Kreise würdest du hier kaum finden: {names}.}}",
+			"pick": "Mit {nameId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} other {{name}}} vergleichen",
+			"pickHint": "Klicke einen anderen Himmelskörper an, um ihn zu vergleichen.",
+			"pickHint@simple": "Tippe eine andere Welt an, um sie zu vergleichen."
+		},
+		"facts": {
+			"heading": "{a} und {b}",
+			"pictureIt": "Stell es dir vor",
+			"label": {
+				"size": "Größe",
+				"size@simple": "Wie groß",
+				"volume": "Volumen",
+				"volume@simple": "Was hineinpasst",
+				"mass": "Masse",
+				"mass@simple": "Wie schwer",
+				"weight": "Dein Gewicht",
+				"year": "Jahr",
+				"year@simple": "Eine Runde um die Sonne",
+				"orbit": "Umlauf",
+				"orbit@simple": "Eine Runde",
+				"day": "Tag",
+				"day@simple": "Von Sonnenaufgang zu Sonnenaufgang",
+				"dayYear": "Tag und Jahr",
+				"dayYear@simple": "Ein seltsamer Kalender",
+				"distanceNow": "Entfernung jetzt gerade",
+				"distanceNow@simple": "Wie weit voneinander, jetzt gerade",
+				"distanceOn": "Entfernung am {date}",
+				"distanceOn@simple": "Wie weit voneinander am {date}"
+			},
+			"size": {
+				"times": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} ist {n}-mal so breit wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}.",
+				"times@simple": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} ist {n}-mal breiter als {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}.",
+				"times@advanced": "Verhältnis der Durchmesser: {big} zu {small} = {n} : 1.",
+				"similar": "{aId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{a}}} und {bId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{b}}} sind fast gleich breit.",
+				"similar@simple": "{aId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{a}}} und {bId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{b}}} sind fast gleich groß.",
+				"similar@advanced": "Die Durchmesser von {a} und {b} unterscheiden sich nur um {percent} %."
+			},
+			"volume": "Etwa {n} {smallId, select, earth {{count, plural, one {Erde} other {Erden}}} moon {{count, plural, one {Mond} other {Monde}}} other {{count, plural, one {Kugel} other {Kugeln}} so groß wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}}} würden in {bigId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {den Mond} mercury {den Merkur} mars {den Mars} jupiter {den Jupiter} saturn {den Saturn} uranus {den Uranus} neptune {den Neptun} other {{big}}} passen.",
+			"volume@simple": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} ist so groß, dass etwa {n} {smallId, select, earth {{count, plural, one {Erde} other {Erden}}} moon {{count, plural, one {Mond} other {Monde}}} other {{count, plural, one {Kugel} other {Kugeln}} so groß wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}}} hineinpassen würden.",
+			"volume@advanced": "Verhältnis der Volumen: {big} zu {small} = {n} : 1.",
+			"mass": {
+				"times": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} hat {n}-mal so viel Masse wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}.",
+				"times@simple": "{bigId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{big}}} ist {n}-mal so schwer wie {smallId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{small}}}.",
+				"times@advanced": "Verhältnis der Massen: {big} zu {small} = {n} : 1.",
+				"similar": "{aId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{a}}} und {bId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{b}}} haben etwa gleich viel Masse.",
+				"similar@simple": "{aId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{a}}} und {bId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{b}}} sind etwa gleich schwer."
+			},
+			"weight": {
+				"more": "Auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} würdest du {n}-mal so viel wiegen wie auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}}.",
+				"more@simple": "{homeId, select, earth {Wer auf der Erde 30 kg wiegt, würde auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} {kgOther} kg wiegen.} other {Wer auf der Erde 30 kg wiegt, würde auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}} {kgHome} kg und auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} {kgOther} kg wiegen.}}",
+				"more@advanced": "Die Schwerkraft auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} ist {n}-mal so stark wie auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}}.",
+				"less": "Auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} würdest du nur {percent} % von dem wiegen, was du auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}} wiegst.",
+				"less@simple": "{homeId, select, earth {Wer auf der Erde 30 kg wiegt, würde auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} {kgOther} kg wiegen.} other {Wer auf der Erde 30 kg wiegt, würde auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}} {kgHome} kg und auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} {kgOther} kg wiegen.}}",
+				"less@advanced": "Die Schwerkraft auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} beträgt {percent} % der Schwerkraft auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}}.",
+				"similar": "Auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} würdest du etwa gleich viel wiegen wie auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}}.",
+				"similar@simple": "{homeId, select, earth {Wer auf der Erde 30 kg wiegt, würde auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} {kgOther} kg wiegen.} other {Wer auf der Erde 30 kg wiegt, würde auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}} {kgHome} kg und auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} {kgOther} kg wiegen.}}",
+				"similar@advanced": "Die Schwerkraft auf {otherId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{other}}} ist fast gleich stark wie auf {homeId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{home}}}.",
+				"noSurface": "{xId, select, sun {Die Sonne hat keinen festen Boden: Das ist die Anziehung an ihrer sichtbaren Oberfläche.} other {{x} hat keinen festen Boden: Das ist die Anziehung an der Obergrenze seiner Wolken.}}",
+				"noSurface@simple": "{xId, select, sun {Auf der Sonne kann man nicht stehen: Das ist die Anziehung an ihrer leuchtenden Oberfläche.} other {Auf {x} gibt es keinen Boden zum Stehen: Das ist die Anziehung oben an seinen Wolken.}}"
+			},
+			"year": {
+				"times": "Ein Jahr auf {slowId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{slow}}} dauert so lange wie {n} Jahre auf {fastId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{fast}}}.",
+				"times@simple": "Während {slowId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{slow}}} einmal um die Sonne läuft, läuft {fastId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {der Mond} other {{fast}}} {n}-mal herum.",
+				"times@advanced": "Verhältnis der Umlaufzeiten: {slow} zu {fast} = {n} : 1.",
+				"similar": "Ein Jahr auf {aId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{a}}} ist fast so lang wie ein Jahr auf {bId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{b}}}."
+			},
+			"orbit": {
+				"times": "Während {slow} einmal um {parentId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {den Mond} mercury {den Merkur} mars {den Mars} jupiter {den Jupiter} saturn {den Saturn} uranus {den Uranus} neptune {den Neptun} other {{parent}}} läuft, läuft {fast} {n}-mal herum.",
+				"times@advanced": "Verhältnis der Umlaufzeiten um {parentId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {den Mond} mercury {den Merkur} mars {den Mars} jupiter {den Jupiter} saturn {den Saturn} uranus {den Uranus} neptune {den Neptun} other {{parent}}}: {slow} zu {fast} = {n} : 1.",
+				"similar": "{a} und {b} brauchen etwa gleich lange für eine Runde um {parentId, select, sun {die Sonne} earth {die Erde} venus {die Venus} moon {den Mond} mercury {den Merkur} mars {den Mars} jupiter {den Jupiter} saturn {den Saturn} uranus {den Uranus} neptune {den Neptun} other {{parent}}}."
+			},
+			"day": {
+				"times": "Ein Tag auf {longId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{long}}} dauert so lange wie {n} Tage auf {shortId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{short}}}.",
+				"times@simple": "Von einem Sonnenaufgang zum nächsten dauert es auf {longId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{long}}} {n}-mal so lange wie auf {shortId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{short}}}.",
+				"times@advanced": "Verhältnis der Sonnentage (Sonnenaufgang bis Sonnenaufgang): {long} zu {short} = {n} : 1.",
+				"similar": "Ein Tag auf {aId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{a}}} ist etwa so lang wie ein Tag auf {bId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{b}}}."
+			},
+			"dayYear": {
+				"day": "Auf {xId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{x}}} dauert ein Tag, von Sonnenaufgang zu Sonnenaufgang, länger als ein ganzes Jahr: {day} gegenüber {year}.",
+				"day@simple": "Auf {xId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{x}}} ist ein Tag länger als ein Jahr! Von einem Sonnenaufgang zum nächsten dauert es {day}, eine Runde um die Sonne aber nur {year}.",
+				"day@advanced": "Der Sonnentag auf {xId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{x}}} ({day}) ist länger als die Umlaufzeit ({year}); eine Drehung dauert {turn}.",
+				"turn": "{xId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{x}}} dreht sich so langsam, dass eine Drehung länger dauert als ein ganzes Jahr: {turn} gegenüber {year}.",
+				"turn@simple": "{xId, select, sun {Die Sonne} earth {Die Erde} venus {Die Venus} moon {Der Mond} other {{x}}} dreht sich so langsam, dass eine Drehung länger dauert als eine Runde um die Sonne: {turn} gegenüber {year}.",
+				"turn@advanced": "Die siderische Rotation auf {xId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} mercury {dem Merkur} mars {dem Mars} jupiter {dem Jupiter} saturn {dem Saturn} uranus {dem Uranus} neptune {dem Neptun} other {{x}}} ({turn}) ist länger als die Umlaufzeit ({year}); der Sonnentag dauert {day}."
+			},
+			"distance": {
+				"light": "Licht braucht {light} {aId, select, sun {von der Sonne} earth {von der Erde} venus {von der Venus} moon {vom Mond} mercury {vom Merkur} mars {vom Mars} jupiter {vom Jupiter} saturn {vom Saturn} uranus {vom Uranus} neptune {vom Neptun} other {von {a}}} {bId, select, sun {zur Sonne} earth {zur Erde} venus {zur Venus} moon {zum Mond} mercury {zum Merkur} mars {zum Mars} jupiter {zum Jupiter} saturn {zum Saturn} uranus {zum Uranus} neptune {zum Neptun} other {zu {b}}}.",
+				"light@simple": "Sogar das Licht, das Schnellste, was es gibt, braucht {light} {aId, select, sun {von der Sonne} earth {von der Erde} venus {von der Venus} moon {vom Mond} mercury {vom Merkur} mars {vom Mars} jupiter {vom Jupiter} saturn {vom Saturn} uranus {vom Uranus} neptune {vom Neptun} other {von {a}}} {bId, select, sun {zur Sonne} earth {zur Erde} venus {zur Venus} moon {zum Mond} mercury {zum Merkur} mars {zum Mars} jupiter {zum Jupiter} saturn {zum Saturn} uranus {zum Uranus} neptune {zum Neptun} other {zu {b}}}. Ein Auto, das ohne Pause 100 km/h fährt, bräuchte {drive}.",
+				"light@advanced": "Lichtlaufzeit zwischen {aId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} other {{a}}} und {bId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} other {{b}}}: {light}.",
+				"range": "Die Entfernung ändert sich ständig, weil beide sich bewegen: Licht braucht zwischen {min} und {max}.",
+				"range@simple": "Beide bewegen sich, deshalb ändert sich die Entfernung: Manchmal braucht das Licht nur {min}, manchmal {max}.",
+				"range@advanced": "Über ihre Bahnen reicht die Entfernung von etwa {minKm} bis {maxKm} ({min} bis {max} Lichtlaufzeit)."
+			}
+		}
 	}
 }

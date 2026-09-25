@@ -1,5 +1,4 @@
 import { Suspense } from "react"
-import { Group, Stack } from "@mantine/core"
 
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
@@ -10,7 +9,10 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { HuntPanelSlot } from "./hunt/Hunt"
 import { LightSlot } from "./light/LightPanel"
+import { InlineLayers, TeacherBar } from "./present/TeacherBar"
+import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
@@ -91,18 +93,18 @@ const SolarSystem = () => {
 				<LightSlot phone className={`${classes.panel} ${classes.light}`} />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
-						<Group gap="sm" justify="space-between" wrap="nowrap">
+						<TeacherBar layers={<SceneToggles />}>
+							<SpacecraftMenu />
+							<LanguageMenu />
+						</TeacherBar>
+						<InlineLayers>
 							<SceneToggles />
-							{/* stacked, so the switches keep their width and the panel its height */}
-							<Stack gap={4} align="flex-end">
-								<LanguageMenu />
-								<SpacecraftMenu />
-							</Stack>
-						</Group>
+						</InlineLayers>
 					</div>
 					<div className={classes.panel}>
 						<ScalePanel />
 					</div>
+					<HuntPanelSlot />
 				</div>
 				<div className={`${classes.panel} ${classes.info}`}>
 					<SpacecraftInfo fallback={<BodyInfo />} />
@@ -116,6 +118,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<PresentationLayer />
 		</div>
 	)
 }
