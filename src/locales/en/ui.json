@@ -525,6 +525,96 @@
 				"title@simple": "Seen from high above",
 				"label": "{observer} and {body} on their orbits around the Sun, with the line of sight from {observer} to {body}"
 			}
+		},
+		"light": {
+			"open": "Speed of light",
+			"open@simple": "How fast is light?",
+			"openHint": "Send a flash of light and watch how long it takes to cross the solar system",
+			"title": "Watch light crawl",
+			"close": "Close",
+			"tabs": {
+				"pulse": "Flash",
+				"delay": "Signal delay",
+				"beyond": "Farther out"
+			},
+			"intro": "Nothing is faster than light: {speed, number} km every second. Send a flash and see how long it still takes to cross the solar system.",
+			"intro@simple": "Nothing is faster than light. It could go round the Earth 7 times in one second! Send a flash of light and see how long it takes to reach the planets.",
+			"intro@advanced": "Light travels at exactly {speed, number} km/s. Send a pulse and watch it cross the solar system at that speed, in real time.",
+			"from": "Send light from",
+			"send": "Send a flash",
+			"sendAgain": "Send again",
+			"clear": "Remove the flash",
+			"travelling": "Light has been travelling for",
+			"travelling@simple": "The light has been on its way for",
+			"covered": "{distance} covered",
+			"covered@simple": "{distance} so far",
+			"waiting": "Time has run back to before the flash was sent.",
+			"clock": {
+				"realTime": "Real time: one second here is one second in real life.",
+				"realTime@simple": "Real time: exactly as fast as in real life.",
+				"fast": "Sped up to {speed}. The clock still counts the light's true travel time.",
+				"fast@simple": "Time is running faster than real life ({speed}). The clock still shows how long the light really needs.",
+				"reversed": "Time runs backwards, so the light shrinks back to where it came from.",
+				"paused": "Time is paused, and the light with it.",
+				"backToRealTime": "Back to real time"
+			},
+			"arrivals": "When the light arrives",
+			"arrivals@simple": "When the light gets there",
+			"reached": "reached",
+			"pending": "in {duration}",
+			"announce": "Reached {id, select, sun {the Sun} moon {the Moon} other {{body}}} after {duration}.",
+			"announce@simple": "The light is at {id, select, sun {the Sun} moon {the Moon} other {{body}}}! It took {duration}.",
+			"leftPlanets": "The light has passed every planet. At this speed it reaches the nearest star in {years, number} years.",
+			"leftPlanets@simple": "The light has passed all the planets. To reach the nearest star it needs {years, number} more years!",
+			"frontLabel": "Light · {duration}",
+			"km": "{value} km",
+			"delay": {
+				"intro": "Radio signals travel at the speed of light too. This is how long a message from Earth takes right now.",
+				"intro@simple": "Radio messages are as fast as light, but not faster. This is how long a message from Earth needs.",
+				"to": "Message from Earth to",
+				"oneWay": "One way",
+				"roundTrip": "There and back",
+				"now": "{distance} away right now",
+				"now@advanced": "{distance} ({au} AU) away right now",
+				"range": "Depending on where both are in their orbits, it takes between {min} and {max}.",
+				"range@simple": "The planets move, so this changes: from {min} to {max}.",
+				"rover": "Driving a rover there from Earth? You would see where it was {oneWay} ago, and it would get your command {oneWay} later: you would be steering {roundTrip} into the past. {id, select, moon {With a few seconds that still works: Soviet teams drove the Lunokhod rovers on the Moon from Earth.} mars {That is why the rovers on Mars drive themselves.} other {That is why spacecraft that far away must steer themselves.}}",
+				"rover@simple": "Imagine steering a robot there with a remote control. Every button you press takes {oneWay} to get there, and you only see what happened {oneWay} later. {id, select, moon {On the Moon that is just a few seconds, so people really did drive robots there from Earth.} mars {That is why the robots on Mars have to drive by themselves.} other {That is why robots out there have to steer themselves.}}",
+				"watch": "Send a signal from Earth and watch"
+			},
+			"beyond": {
+				"intro": "The planets are only our neighbourhood. Beyond them, even light needs years.",
+				"intro@simple": "The planets are only our neighbours. Everything farther away is so far that even light needs years!",
+				"proximaCentauri": {
+					"name": "Proxima Centauri, the nearest star",
+					"text": "Its light is {duration} old when it reaches us. We see the star as it was back then.",
+					"text@simple": "Its light needs {duration} to get to us."
+				},
+				"galacticCentre": {
+					"name": "The centre of the Milky Way",
+					"text": "Its light has been travelling for {duration}. When it set off, people were still hunting mammoths.",
+					"text@simple": "Its light needs {duration}. When it set off, people were still hunting mammoths!"
+				},
+				"andromeda": {
+					"name": "The Andromeda galaxy",
+					"text": "Its light has been travelling for {duration}. When it set off, our ancestors were making the first stone tools.",
+					"text@simple": "Its light needs {duration}. When it set off, there were no people yet – only our very early ancestors."
+				}
+			},
+			"duration": {
+				"second": "{count, number} s",
+				"second@simple": "{count, plural, one {# second} other {# seconds}}",
+				"minute": "{count, number} min",
+				"minute@simple": "{count, plural, one {# minute} other {# minutes}}",
+				"hour": "{count, number} h",
+				"hour@simple": "{count, plural, one {# hour} other {# hours}}",
+				"day": "{count, plural, one {# day} other {# days}}",
+				"year": "{count, plural, one {# year} other {# years}}",
+				"join2": "{a} {b}",
+				"join2@simple": "{a} and {b}",
+				"join3": "{a} {b} {c}",
+				"join3@simple": "{a}, {b} and {c}"
+			}
 		}
 	},
 	"solarWalk": {
