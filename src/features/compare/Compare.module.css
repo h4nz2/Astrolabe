@@ -111,9 +111,11 @@
 	border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* the margins are PAD_X and PAD_TOP in Stage.tsx */
 .row {
 	position: relative;
-	height: 100%;
+	height: calc(100% - 10px);
+	margin: 10px 12px 0;
 }
 
 .slot {

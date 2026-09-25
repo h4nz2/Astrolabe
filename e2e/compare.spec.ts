@@ -107,7 +107,10 @@ test("bodies are picked, swapped, added from ideas and promoted by a click", asy
 	await expect(heading).toHaveText("Earth and Jupiter")
 
 	// pick the second body from the list
-	await page.getByRole("combobox", { name: "Compared with" }).click()
+	const second = page.getByRole("combobox", { name: "Compared with" })
+	await second.click()
+	// narrowed so the option is in view without scrolling the long list
+	await second.fill("Mars")
 	await page.getByRole("option", { name: "Mars", exact: true }).click()
 	await expect(heading).toHaveText("Earth and Mars")
 	await expect(page).toHaveURL(/bodies=earth%2Cmars|bodies=earth,mars/)

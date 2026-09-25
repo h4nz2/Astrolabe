@@ -22,6 +22,9 @@ import classes from "./Compare.module.css"
 
 /** Room under the drawing for the names, px. */
 const LABEL_SPACE = 52
+/** A margin round the drawing, px (`.row` in the CSS), so no globe touches the frame. */
+const PAD_X = 12
+const PAD_TOP = 10
 const GAP = 16
 
 /**
@@ -132,8 +135,8 @@ const Stage = ({ ids, onPick }: StageProps) => {
 			layoutStage(
 				drawOrder(ids).map((id) => stageBody(getBody(id))),
 				{
-					width: Math.max(0, width),
-					height: Math.max(0, height - LABEL_SPACE),
+					width: Math.max(0, width - 2 * PAD_X),
+					height: Math.max(0, height - LABEL_SPACE - PAD_TOP),
 					gap: phone ? 8 : GAP,
 					minSlot: phone ? 64 : 88,
 				},
