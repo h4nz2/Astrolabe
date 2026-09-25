@@ -946,6 +946,10 @@
 			"intro": "Astrolabe je open source: kdokoli ji smí používat, zkoumat, vylepšovat a sdílet."
 		}
 	},
+	"creditNames": {
+		"rings": "Modely prstenců této aplikace",
+		"surfaceMaps": "Mapy povrchu Slunce, planet a měsíců"
+	},
 	"credits": {
 		"solarSystemApi": "Výchozí seznam Slunce, planet a měsíců: velikosti, hmotnosti, dráhy a údaje o objevu.",
 		"jpl": "Přesné dráhy planet, Měsíce, Galileových měsíců a Phoebe (střední dráhové elementy), podle kterých byl seznam opraven.",

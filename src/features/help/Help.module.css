@@ -210,6 +210,11 @@
 		display: block;
 	}
 
+	.controls td,
+	.controls th {
+		padding-block: 0.15rem;
+	}
+
 	.controls tr {
 		padding: 0.5rem 0;
 		border-bottom: 1px solid var(--mantine-color-dark-5);
@@ -260,15 +265,17 @@
 }
 
 .creditName {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.25rem;
 	font-weight: 600;
 	color: var(--mantine-color-gray-1);
 }
 
 a.creditName {
 	color: var(--mantine-color-orange-3);
+}
+
+a.creditName svg {
+	margin-left: 0.25rem;
+	vertical-align: -0.1em;
 }
 
 .creditWhat {

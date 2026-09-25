@@ -951,6 +951,10 @@
 			"intro": "Astrolabe ist Open Source: Alle dürfen sie nutzen, untersuchen, verbessern und weitergeben."
 		}
 	},
+	"creditNames": {
+		"rings": "Ringmodelle dieser App",
+		"surfaceMaps": "Oberflächenkarten von Sonne, Planeten und Monden"
+	},
 	"credits": {
 		"solarSystemApi": "Die Ausgangsliste der Sonne, der Planeten und der Monde: Größen, Massen, Umlaufbahnen und Angaben zur Entdeckung.",
 		"jpl": "Genaue Umlaufbahnen der Planeten, des Mondes, der Galileischen Monde und von Phoebe (mittlere Bahnelemente), mit denen die Liste korrigiert wurde.",

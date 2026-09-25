@@ -946,6 +946,10 @@
 			"intro": "Astrolabe is open source: anyone may use it, study it, improve it and share it."
 		}
 	},
+	"creditNames": {
+		"rings": "Ring models of this app",
+		"surfaceMaps": "Surface maps of the Sun, planets and moons"
+	},
 	"credits": {
 		"solarSystemApi": "The starting list of the Sun, planets and moons: sizes, masses, orbits and discovery details.",
 		"jpl": "Accurate orbits for the planets, the Moon, the Galilean moons and Phoebe (mean orbital elements), used to correct the list.",

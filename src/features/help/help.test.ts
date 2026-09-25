@@ -82,6 +82,11 @@ describe("the help page's words (src/locales/<locale>/help.json)", () => {
 		expect(Object.keys(english.credits).sort()).toEqual(
 			HELP_CREDITS.map((credit) => credit.id).sort(),
 		)
+		expect(Object.keys(english.creditNames).sort()).toEqual(
+			HELP_CREDITS.filter((credit) => credit.name === undefined)
+				.map((credit) => credit.id)
+				.sort(),
+		)
 		expect(Object.keys(english.licences).sort()).toEqual(
 			[...new Set(HELP_CREDITS.map((credit) => credit.licence))].sort(),
 		)

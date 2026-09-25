@@ -8,6 +8,7 @@
  * entries.<entryId>        { title, what, why, how[] }
  * controls.<controlId>     { action, mouse?, touch?, keys? }
  * creditSections.<section> { title, intro }
+ * creditNames.<creditId>   a credit's name, where it is a description (not a proper name)
  * credits.<creditId>       what the source gave the app
  * licences.<licenceId>     the licence's name
  * ```
@@ -102,8 +103,8 @@ export const HelpFile = z
 				.object({
 					id,
 					section: z.enum(CREDIT_SECTIONS),
-					/** The source's own name: never translated. */
-					name: text,
+					/** The source's own name, never translated; absent: `creditNames.<id>` in the locale (a description, not a name). */
+					name: text.optional(),
 					url: z.url().optional(),
 					licence: id,
 				})
@@ -162,6 +163,8 @@ export const HelpTextFile = z
 			z.string(),
 			z.object({ title: text, intro: text }).strict(),
 		),
+		/** Names of credits that are descriptions rather than proper names (no `name` in help.json). */
+		creditNames: z.record(z.string(), text),
 		credits: z.record(z.string(), text),
 		licences: z.record(z.string(), text),
 	})
@@ -259,6 +262,12 @@ export const creditSectionText = (
 	intro:
 		lookup<string>(i18n, (file) => file.creditSections[section]?.intro) ?? "",
 })
+
+/** A credit's name: its own (data), else the locale's description of it. */
+export const creditName = (credit: HelpCredit, i18n: Reader): string =>
+	credit.name ??
+	lookup<string>(i18n, (file) => file.creditNames[credit.id]) ??
+	credit.id
 
 export const creditText = (creditId: string, i18n: Reader): string =>
 	lookup<string>(i18n, (file) => file.credits[creditId]) ?? ""

@@ -951,6 +951,10 @@
 			"intro": "Astrolabe es de código abierto: cualquiera puede usarla, estudiarla, mejorarla y compartirla."
 		}
 	},
+	"creditNames": {
+		"rings": "Modelos de anillos de esta aplicación",
+		"surfaceMaps": "Mapas de superficie del Sol, los planetas y las lunas"
+	},
 	"credits": {
 		"solarSystemApi": "La lista de partida del Sol, los planetas y las lunas: tamaños, masas, órbitas y datos de su descubrimiento.",
 		"jpl": "Órbitas precisas de los planetas, la Luna, las lunas galileanas y Febe (elementos orbitales medios), usadas para corregir la lista.",

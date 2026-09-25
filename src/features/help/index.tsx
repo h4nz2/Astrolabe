@@ -39,6 +39,7 @@ import {
 	HELP_CONTROLS,
 	HELP_CREDITS,
 	controlText,
+	creditName,
 	creditSectionText,
 	creditText,
 	entryText,
@@ -234,7 +235,9 @@ function Credits({ i18n }: { i18n: I18n }) {
 								{credits.map((credit) => (
 									<li key={credit.id} data-credit={credit.id}>
 										{credit.url === undefined ? (
-											<span className={classes.creditName}>{credit.name}</span>
+											<span className={classes.creditName}>
+												{creditName(credit, i18n)}
+											</span>
 										) : (
 											<a
 												className={classes.creditName}
@@ -242,7 +245,7 @@ function Credits({ i18n }: { i18n: I18n }) {
 												target="_blank"
 												rel="noreferrer"
 											>
-												{credit.name}
+												{creditName(credit, i18n)}
 												<IconExternalLink size={13} aria-hidden />
 											</a>
 										)}

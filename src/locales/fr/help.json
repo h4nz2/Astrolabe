@@ -951,6 +951,10 @@
 			"intro": "Astrolabe est open source : tout le monde peut l’utiliser, l’étudier, l’améliorer et la partager."
 		}
 	},
+	"creditNames": {
+		"rings": "Modèles d’anneaux de cette application",
+		"surfaceMaps": "Cartes de surface du Soleil, des planètes et des lunes"
+	},
 	"credits": {
 		"solarSystemApi": "La liste de départ du Soleil, des planètes et des lunes : tailles, masses, orbites et détails de leur découverte.",
 		"jpl": "Des orbites précises pour les planètes, la Lune, les lunes galiléennes et Phœbé (éléments orbitaux moyens), utilisées pour corriger la liste.",
