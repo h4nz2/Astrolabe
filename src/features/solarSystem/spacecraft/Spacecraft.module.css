@@ -1,0 +1,153 @@
+/*
+ * Spacecraft (#35): names in the scene and the info panel. The cyan is the
+ * spacecraft colour everywhere (markers, paths, names), a hue no natural body
+ * uses, so a machine is never mistaken for a world.
+ */
+span.label {
+	color: #7fe3f7;
+	letter-spacing: 0.03em;
+}
+
+/* the info panel (in place of the body info) */
+.panel {
+	max-width: 22rem;
+}
+
+.name {
+	color: #7fe3f7;
+}
+
+.status {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin: 0 0 0.375rem;
+	font-weight: 600;
+}
+
+/* a lamp: working, silent (still flying), gone, or not yet launched */
+.status::before,
+.craftStatus::before {
+	content: "";
+	flex: none;
+	width: 0.55rem;
+	height: 0.55rem;
+	border-radius: 50%;
+	background: #4fd18b;
+	box-shadow: 0 0 6px rgba(79, 209, 139, 0.7);
+}
+
+.status[data-phase="silent"]::before,
+[data-phase="silent"] .craftStatus::before {
+	background: #8c95a3;
+	box-shadow: none;
+}
+
+.status[data-phase="destroyed"]::before,
+[data-phase="destroyed"] .craftStatus::before {
+	background: #c0504d;
+	box-shadow: none;
+}
+
+.status[data-phase="planned"]::before,
+[data-phase="planned"] .craftStatus::before {
+	background: transparent;
+	border: 1px solid #8c95a3;
+	box-shadow: none;
+}
+
+.note {
+	margin: 0.25rem 0 0;
+	color: var(--mantine-color-dimmed);
+	font-size: var(--mantine-font-size-xs);
+}
+
+.description {
+	margin: 0;
+	color: var(--mantine-color-gray-3);
+	line-height: 1.45;
+}
+
+.milestones {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.milestone {
+	display: grid;
+	grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+	gap: 0.5rem;
+	align-items: baseline;
+	width: 100%;
+	padding: 0.2rem 0.375rem;
+	border-radius: var(--mantine-radius-sm);
+	font-size: var(--mantine-font-size-xs);
+}
+
+.milestone:hover,
+.milestone:focus-visible {
+	background: rgba(255, 255, 255, 0.07);
+}
+
+.milestone:focus-visible {
+	outline: 2px solid var(--mantine-color-cyan-6);
+	outline-offset: -2px;
+}
+
+.milestoneDate {
+	color: var(--mantine-color-dimmed);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.milestoneText {
+	color: var(--mantine-color-gray-2);
+}
+
+.milestoneDetail {
+	display: block;
+	color: var(--mantine-color-dimmed);
+}
+
+/* the menu */
+.dropdown {
+	max-width: calc(100vw - 1rem);
+}
+
+.craft {
+	display: grid;
+	width: 100%;
+	padding: 0.375rem 0.5rem;
+	border-radius: var(--mantine-radius-sm);
+}
+
+.craft:hover,
+.craft:focus-visible,
+.craft[data-selected] {
+	background: rgba(127, 227, 247, 0.08);
+}
+
+.craft:focus-visible {
+	outline: 2px solid var(--mantine-color-cyan-6);
+	outline-offset: -2px;
+}
+
+.craftName {
+	font-size: var(--mantine-font-size-sm);
+	font-weight: 600;
+	color: #7fe3f7;
+}
+
+.craftTagline {
+	font-size: var(--mantine-font-size-xs);
+	color: var(--mantine-color-gray-4);
+}
+
+.craftStatus {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-size: var(--mantine-font-size-xs);
+	color: var(--mantine-color-dimmed);
+}

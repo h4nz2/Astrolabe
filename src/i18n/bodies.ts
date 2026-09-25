@@ -29,7 +29,7 @@ import type { I18n } from "./core"
 const levelIds = READING_LEVELS as readonly string[]
 
 /** A value, or one value per reading level (the default level required). */
-const leveled = <T extends z.ZodType>(value: T) =>
+export const leveled = <T extends z.ZodType>(value: T) =>
 	z.union([
 		value,
 		z

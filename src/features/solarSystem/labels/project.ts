@@ -43,6 +43,24 @@ export interface LabelFrameState extends LabelState {
 }
 
 /**
+ * Names of things that are not bodies (spacecraft, #35), laid out in the same
+ * pass as the bodies' so they follow the same rules and never collide. An
+ * extension owns the slots after the bodies' and orbits' (from
+ * `labelSlotCount(bodies)`); every frame, after the bodies are projected, it
+ * projects its own, sets their geometry, rank and eligibility and appends the
+ * eligible ones to `layout.order`. Occlusion, sorting, placement and fading
+ * then treat them like any other label.
+ */
+export interface LabelExtension {
+	fill(
+		layout: LabelLayout,
+		camera: PerspectiveCamera,
+		pxPerUnit: number,
+		state: LabelFrameState,
+	): void
+}
+
+/**
  * The layout's slots: one per body (its name beside it), then one per body
  * for its orbit's name (`orbitSlot`), so a layout has `2 * bodies.length`.
  */
@@ -114,7 +132,7 @@ function project(
  * `staticLabelRanks(frame.bodies)`. Labels that are no longer candidates but
  * still fading out keep following their bodies. With `orbitCache`, the orbits
  * of labelled bodies get their names too while `showOrbitLabels` is on, after
- * every body name in priority.
+ * every body name in priority. An `extension` adds its own labels (spacecraft).
  */
 export function fillLabelLayout(
 	layout: LabelLayout,
@@ -125,6 +143,7 @@ export function fillLabelLayout(
 	state: LabelFrameState,
 	staticRanks: Float64Array,
 	orbitCache?: OrbitAnchorCache,
+	extension?: LabelExtension,
 ): void {
 	layout.viewportWidth = widthPx
 	layout.viewportHeight = heightPx
@@ -206,11 +225,14 @@ export function fillLabelLayout(
 		order[layout.orderLength++] = slot
 	}
 	if (!orbitNames) {
-		for (let slot = n; slot < layout.count; slot++) {
+		const orbitEnd = Math.min(layout.count, labelSlotCount(n))
+		for (let slot = n; slot < orbitEnd; slot++) {
 			eligible[slot] = 0
 			visible[slot] = 0
 		}
 	}
+
+	extension?.fill(layout, camera, pxPerUnit, state)
 
 	// eligibility needs every candidate projected: occlusion and moon clearance
 	for (let k = 0; k < layout.orderLength; k++) {

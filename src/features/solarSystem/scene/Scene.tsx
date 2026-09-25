@@ -22,6 +22,10 @@ import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
 import { labelSlotCount } from "../labels/project"
+import { createCraftFrame } from "../spacecraft/craftFrame"
+import { createCraftLabels } from "../spacecraft/craftLabels"
+import SpacecraftLabelLayer from "../spacecraft/SpacecraftLabelLayer"
+import SpacecraftScene from "../spacecraft/SpacecraftScene"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
@@ -40,9 +44,16 @@ function Scene() {
 			),
 		[],
 	)
+	// spacecraft (#35): their own frame, and their names after the bodies' label slots
+	const craftFrame = useMemo(() => createCraftFrame(frame), [frame])
+	const craftSlot = labelSlotCount(bodies.length)
 	const labels = useMemo(
-		() => createLabelBoard(labelSlotCount(bodies.length)),
-		[],
+		() => createLabelBoard(craftSlot + craftFrame.craft.length),
+		[craftSlot, craftFrame],
+	)
+	const craftLabels = useMemo(
+		() => createCraftLabels(frame, craftFrame, craftSlot),
+		[frame, craftFrame, craftSlot],
 	)
 
 	return (
@@ -68,11 +79,17 @@ function Scene() {
 					</Suspense>
 					<OrbitLines />
 					<Markers />
-					<Labels board={labels} />
+					<SpacecraftScene
+						frame={frame}
+						craftFrame={craftFrame}
+						labels={{ layout: labels.layout, firstSlot: craftSlot }}
+					/>
+					<Labels board={labels} extension={craftLabels} />
 					<CameraRig />
 				</SimFrameContext.Provider>
 			</Canvas>
 			<LabelLayer board={labels} />
+			<SpacecraftLabelLayer board={labels} firstSlot={craftSlot} />
 		</>
 	)
 }

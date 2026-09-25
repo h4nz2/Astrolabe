@@ -7,6 +7,8 @@ import { useSimStore } from "@/store/sim"
 import { useSimUrlSync } from "@/store/urlSync"
 
 import Scene from "./scene/Scene"
+import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
+import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
 import CentreBadge from "./ui/CentreBadge"
@@ -55,6 +57,7 @@ const SolarSystem = () => {
 				<div className={`${classes.panel} ${classes.picker}`}>
 					<OverviewButton />
 					<FocusPicker />
+					<SpacecraftMenu />
 				</div>
 				<CentreBadgePanel />
 				<div className={`${classes.panel} ${classes.toggles}`}>
@@ -64,7 +67,7 @@ const SolarSystem = () => {
 					</Group>
 				</div>
 				<div className={`${classes.panel} ${classes.info}`}>
-					<BodyInfo />
+					<SpacecraftInfo fallback={<BodyInfo />} />
 				</div>
 				<div className={`${classes.panel} ${classes.time}`}>
 					<TimeControls />
