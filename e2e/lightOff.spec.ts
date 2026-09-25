@@ -53,6 +53,8 @@ test("the closed light button shows the running flash and stops it in one click"
 test("the flash in the scene carries its own stop button", async ({ page }) => {
 	await open(page)
 	await sendFlash(page)
+	// the label rides on the growing front: hold it still to aim at it
+	await page.getByRole("button", { name: "Pause" }).click()
 	const view = await page.evaluate(
 		() => window.__astrolabe!.store.getState().view,
 	)
