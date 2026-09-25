@@ -216,6 +216,12 @@ test("share: the link is the view, copied or scanned", async ({
 	await context.grantPermissions(["clipboard-read", "clipboard-write"])
 	await page.setViewportSize({ width: 1280, height: 800 })
 	await open(page, "focus=jupiter&lang=en")
+	// a running clock rewrites `t` in the address every second: hold it still, so the
+	// shared link and the address are compared at the same instant
+	await page.evaluate(() =>
+		window.__astrolabe!.store.getState().setPaused(true),
+	)
+	await expect(page).toHaveURL(/[?&]t=/)
 
 	await page.getByRole("button", { name: "Share", exact: true }).click()
 	const panel = page.getByRole("dialog", { name: "Share", exact: true })
