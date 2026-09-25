@@ -735,7 +735,7 @@ the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `con
   grows the root font size (112.5 %, 125 % from 1600x900 up: everything in rem grows), overrides Mantine's colour
   variables for high contrast (tokens tested for WCAG AAA in `present/contrast.test.ts`) and hides open menus with the
   controls. Feature CSS modules key on the same attributes with `:global(html[data-...])` (panels, labels, scale
-  panel, spin control, centre marker, birthday panel). Projector mode (and a phone, where the HUD stacks over the scene) folds the layer switches into a menu
+  panel, spin control, centre marker, birthday panel). Projector mode (and any screen below 1000 px, where the HUD crowds the scene) folds the layer switches into a menu
   (`present/TeacherBar.tsx`), hides the spin control and the scale panel's description and lie switches (the
   statements stay, larger), and makes the labels about a third larger. Presenting also preloads the lazy panels.
 - **Hiding never unmounts** the HUD (`:global(html[data-chrome="hidden"]) .hud { display: none }`): the HUD's own keys

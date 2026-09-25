@@ -10,14 +10,17 @@ import { PresentMenu, ShareMenu } from "./PresentMenu"
 
 import classes from "./Presentation.module.css"
 
-/** Phones: the HUD stacks over the scene, so the layer switches fold into a menu there too. */
-const PHONE_QUERY = "(max-width: 599px)"
+/**
+ * Below the wide layout (phones and 600-999 px) the HUD crowds the scene,
+ * so the layer switches fold into a menu there too.
+ */
+const NARROW_QUERY = "(max-width: 999px)"
 
-/** The layer switches sit in a menu while presenting and on phones, inline otherwise. */
+/** The layer switches sit in a menu while presenting and below 1000 px, inline otherwise. */
 function useFoldedLayers(): boolean {
 	const presenting = usePresentationStore((state) => state.presenting)
-	const phone = useMediaQuery(PHONE_QUERY) ?? false
-	return presenting || phone
+	const narrow = useMediaQuery(NARROW_QUERY) ?? false
+	return presenting || narrow
 }
 
 /**
@@ -54,7 +57,7 @@ function LayersMenu({ children }: { children: ReactNode }) {
 /**
  * The top-right panel's header (#29): the teacher's menu, sharing and
  * whatever else is passed (the language menu); while presenting and on
- * phones, the layer switches too, folded into a menu (`layers`).
+ * narrow screens, the layer switches too, folded into a menu (`layers`).
  */
 export function TeacherBar({
 	children,
@@ -74,7 +77,7 @@ export function TeacherBar({
 	)
 }
 
-/** The layer switches in the panel itself, unless presenting or on a phone (then they are in the bar's menu). */
+/** The layer switches in the panel itself, unless presenting or on a narrow screen (then they are in the bar's menu). */
 export function InlineLayers({ children }: { children: ReactNode }) {
 	const folded = useFoldedLayers()
 	if (folded) return null

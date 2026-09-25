@@ -265,7 +265,8 @@
 /* the body card may be tall at projector size: it scrolls rather than pushing the time controls off screen */
 @media (min-width: 1000px) {
 	:global(html[data-presenting]) .info {
-		grid-row: 1 / span 3;
+		grid-row: info;
+		max-height: 55dvh;
 	}
 }
 

@@ -332,4 +332,12 @@ test("short screens: a tall body card never pushes the time controls off screen"
 			expect(box!.y + box!.height).toBeLessThanOrEqual(600.5)
 		}
 	}
+	// below 1000 px the layer switches sit behind one button
+	await expect(
+		page.getByRole("switch", { name: "Beschriftungen" }),
+	).toHaveCount(0)
+	await page.getByRole("button", { name: "Ebenen" }).click()
+	await expect(
+		page.getByRole("switch", { name: "Beschriftungen" }),
+	).toBeVisible()
 })
