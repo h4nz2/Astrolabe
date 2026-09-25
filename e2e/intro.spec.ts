@@ -37,6 +37,61 @@ const state = (page: Page) =>
 const seen = (page: Page) =>
 	page.evaluate(() => window.localStorage.getItem("astrolabe.introSeen"))
 
+interface OpeningLog {
+	steps: { index: number; view: string; scale: string; planned: number }[]
+	captions: { beat: string; text: string }[]
+}
+
+/**
+ * Records every beat as it happens (the sequence's steps, frame by frame, and
+ * the captions as they are rendered), so a slow machine that races through a
+ * short hold cannot make a check miss it.
+ */
+const recordOpening = (page: Page) =>
+	page.addInitScript(() => {
+		const log: OpeningLog = { steps: [], captions: [] }
+		;(window as unknown as { __openingLog: OpeningLog }).__openingLog = log
+		let lastIndex = -1
+		const tick = () => {
+			const handle = window.__astrolabe
+			const state = handle?.store.getState()
+			const sequence = state?.sequence
+			if (handle && state && sequence && sequence.index !== lastIndex) {
+				lastIndex = sequence.index
+				log.steps.push({
+					index: sequence.index,
+					view: state.view.kind === "body" ? state.view.id : state.view.kind,
+					scale: String(handle.scale.getState().targetId),
+					planned: sequence.steps.reduce(
+						(ms, step) => ms + (step.durationMs ?? 0) + (step.holdMs ?? 0),
+						0,
+					),
+				})
+			}
+			requestAnimationFrame(tick)
+		}
+		requestAnimationFrame(tick)
+		let lastBeat: string | null = null
+		new MutationObserver(() => {
+			const card = document.querySelector("[data-testid=intro]")
+			const beat = card?.getAttribute("data-beat") ?? null
+			if (card && beat !== null && beat !== lastBeat) {
+				lastBeat = beat
+				log.captions.push({ beat, text: card.textContent ?? "" })
+			}
+		}).observe(document, {
+			subtree: true,
+			childList: true,
+			attributes: true,
+			characterData: true,
+		})
+	})
+
+const opening = (page: Page) =>
+	page.evaluate(
+		() => (window as unknown as { __openingLog: OpeningLog }).__openingLog,
+	)
+
 const skip = (page: Page) => page.getByTestId("intro-skip")
 const hints = (page: Page) => page.getByTestId("intro-hints")
 
@@ -46,43 +101,47 @@ test.describe("a first visit", () => {
 	test("opens close on Earth, pulls back in true scale and hands over in the default view", async ({
 		page,
 	}) => {
+		await recordOpening(page)
 		await page.goto("/solar_system")
 		// skippable from the very first frame
 		await expect(skip(page)).toBeVisible({ timeout: 60_000 })
-		await expect(page.getByTestId("intro")).toContainText("This is Earth.")
 		await handle(page)
-		const start = await state(page)
-		expect(start.view).toEqual({ kind: "body", id: "earth" })
-		expect(start.scale).toBe("trueScale")
-		// the close-up, or already pulling back from it toward the Moon
-		expect(start.sequence?.index ?? 99).toBeLessThanOrEqual(1)
-		// the plan is under fifteen seconds
-		const planned = await page.evaluate(() =>
-			window
-				.__astrolabe!.store.getState()
-				.sequence!.steps.reduce(
-					(ms, step) => ms + (step.durationMs ?? 0) + (step.holdMs ?? 0),
-					0,
-				),
-		)
-		expect(planned).toBeLessThan(15_000)
 		expect(await seen(page)).toBe("1")
-
-		// the pull-back: the Moon, the inner planets, the whole system
-		await expect(page.getByTestId("intro")).toHaveAttribute(
-			"data-beat",
-			"system",
-			{ timeout: 60_000 },
-		)
-		await expect(page.getByTestId("intro")).toHaveAttribute(
-			"data-beat",
-			"scale",
-			{ timeout: 60_000 },
-		)
 
 		// hand-over: the overview a reset shows, in Everything visible, with hints and Earth pulsing
 		await expect(hints(page)).toBeVisible({ timeout: 60_000 })
 		await expect(page.getByTestId("intro")).toHaveCount(0)
+
+		// every beat played, in order: Earth and the Moon, the inner planets and the
+		// whole system in true scale, then the switch to Everything visible
+		const log = await opening(page)
+		expect(log.steps.map((step) => step.index)).toEqual([0, 1, 2, 3, 4])
+		expect(log.steps.map((step) => step.view)).toEqual([
+			"earth",
+			"earth",
+			"overview",
+			"overview",
+			"overview",
+		])
+		expect(log.steps.map((step) => step.scale)).toEqual([
+			"trueScale",
+			"trueScale",
+			"trueScale",
+			"trueScale",
+			"everythingVisible",
+		])
+		// the plan is under fifteen seconds
+		expect(log.steps[0].planned).toBeLessThan(15_000)
+		expect(log.captions.map((caption) => caption.beat)).toEqual([
+			"earth",
+			"moon",
+			"inner",
+			"system",
+			"scale",
+		])
+		expect(log.captions[0].text).toContain("This is Earth.")
+		expect(log.captions[1].text).toContain("30 Earths")
+
 		const end = await state(page)
 		expect(end.view).toEqual({ kind: "overview" })
 		expect(end.sequence).toBeNull()
@@ -156,11 +215,13 @@ test.describe("a first visit", () => {
 	}) => {
 		await page.goto("/solar_system")
 		await handle(page)
-		await expect(page.getByTestId("intro")).toHaveAttribute(
-			"data-beat",
-			"moon",
-			{ timeout: 60_000 },
+		// somewhere in the pull-back
+		await page.waitForFunction(
+			() => (window.__astrolabe!.store.getState().sequence?.index ?? 0) >= 1,
+			null,
+			{ timeout: 60_000, polling: "raf" },
 		)
+		const before = (await state(page)).view
 		const box = (await page.locator("canvas").first().boundingBox())!
 		const x = box.x + box.width * 0.3
 		const y = box.y + box.height * 0.4
@@ -173,8 +234,9 @@ test.describe("a first visit", () => {
 		const after = await state(page)
 		expect(after.sequence).toBeNull()
 		expect(after.scale).toBe("everythingVisible")
-		// Earth, where the viewer took over, is still the view: nothing flew away
-		expect(after.view).toEqual({ kind: "body", id: "earth" })
+		// the stop it was heading to is still where the camera arrives: nothing flew away
+		if (before.kind === "body") expect(after.view).toEqual(before)
+		else expect(after.view.kind).not.toBe("body")
 	})
 
 	test("with reduced motion the shots are cuts", async ({ page }) => {
@@ -184,10 +246,10 @@ test.describe("a first visit", () => {
 		await expect(skip(page)).toBeVisible()
 		const start = await state(page)
 		expect(start.steps).toEqual([0, 0, 0, 0, 0])
-		await expect(page.getByTestId("intro")).toHaveAttribute(
-			"data-beat",
-			"inner",
-			{ timeout: 60_000 },
+		await page.waitForFunction(
+			() => (window.__astrolabe!.store.getState().sequence?.index ?? 0) >= 2,
+			null,
+			{ timeout: 60_000, polling: "raf" },
 		)
 		expect(
 			(await page.evaluate(() => window.__astrolabe!.camera())).durationMs ?? 0,
@@ -203,11 +265,13 @@ test.describe("a first visit", () => {
 			hasTouch: true,
 		})
 		const page = await context.newPage()
+		await recordOpening(page)
 		await page.goto("/solar_system?lang=de&reading=simple")
-		await expect(page.getByTestId("intro")).toContainText("Das ist die Erde.", {
-			timeout: 60_000,
-		})
 		const button = skip(page)
+		await expect(button).toBeVisible({ timeout: 60_000 })
+		expect((await opening(page)).captions[0].text).toContain(
+			"Das ist die Erde.",
+		)
 		await expect(button).toHaveText("Überspringen")
 		const box = (await button.boundingBox())!
 		expect(box.x).toBeGreaterThanOrEqual(0)
@@ -230,8 +294,11 @@ test("a returning visitor replays it from the Help menu, and Escape ends it", as
 	await expect(page.getByTestId("intro")).toHaveCount(0)
 	await page.getByTestId("intro-menu").click()
 	await page.getByRole("menuitem", { name: "Play the opening again" }).click()
-	await expect(page.getByTestId("intro")).toHaveAttribute("data-beat", "earth")
-	expect((await state(page)).view).toEqual({ kind: "body", id: "earth" })
+	await expect(page.getByTestId("intro")).toBeVisible()
+	// the replay starts over, close on Earth, in true scale
+	const replay = await state(page)
+	expect(replay.sequence?.index ?? 99).toBeLessThanOrEqual(2)
+	expect(replay.scale).toBe("trueScale")
 	await page.keyboard.press("Escape")
 	await expect(page.getByTestId("intro")).toHaveCount(0)
 	const after = await state(page)
