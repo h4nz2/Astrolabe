@@ -264,7 +264,7 @@ const PulseTab = () => {
 			<Text size="xs" c="gray.4" lh={1.4}>
 				{t("solarSystem.light.intro", { speed: SPEED_OF_LIGHT_KM_S })}
 			</Text>
-			<Group gap="xs" align="flex-end" wrap="nowrap">
+			<Group gap="xs" align="flex-end" wrap="wrap">
 				<div className={classes.grow}>
 					<BodySelect
 						label={t("solarSystem.light.from")}
@@ -477,7 +477,8 @@ const LightPanel = () => {
 			<ScrollArea.Autosize
 				mah="var(--light-panel-body-max, 50dvh)"
 				type="auto"
-				offsetScrollbars
+				scrollbars="y"
+				offsetScrollbars="y"
 			>
 				{tab === "pulse" && <PulseTab />}
 				{tab === "delay" && <DelayTab />}
