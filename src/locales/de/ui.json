@@ -49,7 +49,8 @@
 		"au": "{value} AE",
 		"gravity": "{value} m/s²",
 		"kelvin": "{value} K",
-		"millionKm": "{value} Mio. km"
+		"millionKm": "{value} Mio. km",
+		"billionKm": "{value} Mrd. km"
 	},
 	"bodies": {
 		"kind": {
@@ -369,6 +370,31 @@
 			"weightSimilar": "Du würdest etwa so viel wiegen wie auf der Erde",
 			"weightLess": "Du würdest nur {percent} % deines Gewichts auf der Erde wiegen",
 			"weightLess@simple": "30 kg auf der Erde wären hier nur {kg} kg"
+		},
+		"flight": {
+			"label": "Reise",
+			"route": "{from} → {to}",
+			"route@simple": "Reise: {from} → {to}",
+			"distance": "An diesem Tag {distance} voneinander entfernt",
+			"distance@simple": "{distance} weit weg",
+			"distance@advanced": "{distance} ({au}) Luftlinie an diesem Datum",
+			"crossed": "{distance} zurückgelegt",
+			"crossed@simple": "{distance} geschafft",
+			"question": "Wie lange würde die Reise dauern?",
+			"question@simple": "Wie lange bräuchte man bis dorthin?",
+			"question@advanced": "Reisezeit bei gleichbleibender Geschwindigkeit",
+			"light": "Licht",
+			"light@simple": "Licht, das Schnellste, was es gibt",
+			"light@advanced": "Licht ({speed})",
+			"probe": "New Horizons, der schnellste Start aller Zeiten",
+			"probe@simple": "Der schnellste Raketenstart aller Zeiten",
+			"probe@advanced": "Startgeschwindigkeit von New Horizons ({speed})",
+			"car": "Ein Auto mit {speed}",
+			"car@simple": "Ein Auto, das nie anhält",
+			"car@advanced": "Ein Auto mit {speed}, ohne Pause",
+			"skip": "Überspringen",
+			"skip@simple": "Sofort hin",
+			"close": "Schließen"
 		},
 		"birthday": {
 			"open": "Dein Geburtstag",
