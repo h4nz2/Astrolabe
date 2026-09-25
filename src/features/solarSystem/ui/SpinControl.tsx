@@ -1,8 +1,9 @@
-import { SegmentedControl, Select, Tooltip } from "@mantine/core"
+import { SegmentedControl, Select } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import { IconRotate360 } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { MIN_SECONDS_PER_EARTH_TURN, SPIN_MODES, isSpinMode } from "@/sim"
 import { useSpinStore } from "@/store/spin"
 
@@ -29,22 +30,28 @@ const SpinControl = () => {
 		value,
 		label: t(`solarSystem.spin.mode.${value}`),
 	}))
-	const hint = t(`solarSystem.spin.hint.${mode}`, {
-		seconds: MIN_SECONDS_PER_EARTH_TURN[mode],
-	})
+	// what each mode does, on the mode itself (#39)
+	const hints = Object.fromEntries(
+		SPIN_MODES.map((value) => [
+			value,
+			t(`solarSystem.spin.hint.${value}`, {
+				seconds: MIN_SECONDS_PER_EARTH_TURN[value],
+			}),
+		]),
+	)
 	const onChange = (value: string | null) => {
 		if (isSpinMode(value)) setMode(value)
 	}
 
 	return (
 		<div className={classes.root}>
-			<Tooltip label={hint} openDelay={400} multiline w={260}>
-				<div className={classes.row}>
-					<span className={classes.label} aria-hidden>
-						<IconRotate360 size={16} />
-						{t("solarSystem.spin.label")}
-					</span>
-					{compact ? (
+			<div className={classes.row}>
+				<span className={classes.label} aria-hidden>
+					<IconRotate360 size={16} />
+					{t("solarSystem.spin.label")}
+				</span>
+				{compact ? (
+					<Hint text={hints[mode]}>
 						<Select
 							size="xs"
 							radius="md"
@@ -55,7 +62,9 @@ const SpinControl = () => {
 							allowDeselect={false}
 							comboboxProps={{ shadow: "md" }}
 						/>
-					) : (
+					</Hint>
+				) : (
+					<Hint options={hints}>
 						<SegmentedControl
 							size="xs"
 							radius="md"
@@ -65,9 +74,9 @@ const SpinControl = () => {
 							onChange={onChange}
 							data={items}
 						/>
-					)}
-				</div>
-			</Tooltip>
+					</Hint>
+				)}
+			</div>
 			{mode !== "realistic" && (
 				<p className={classes.notice} role="status">
 					{t("solarSystem.spin.notice")}

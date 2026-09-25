@@ -219,12 +219,40 @@
 				"standard": [
 					"The switches are in the panel at the top right; on small screens and while presenting they are under “Layers”.",
 					"Press L to hide or show every name at once.",
-					"All moons works only while Moons is on."
+					"All moons works only while Moons is on.",
+					"Rest the pointer on a switch, or press and hold it, to read what it does; a greyed-out switch says what to turn on first."
 				],
 				"simple": [
 					"Find the switches at the top right.",
 					"Click one to turn it off, and again to turn it back on.",
-					"Press L to hide all the names."
+					"Press L to hide all the names.",
+					"Hold the mouse over a switch to find out what it does."
+				]
+			}
+		},
+		"hints": {
+			"title": {
+				"standard": "What does this switch do?",
+				"simple": "What does this button do?"
+			},
+			"what": {
+				"standard": "Every switch, choice and button in the solar system explains itself in one sentence: what it does and why you would use it. A greyed-out switch says what to turn on first.",
+				"simple": "Every switch and button can tell you what it does."
+			},
+			"why": {
+				"standard": "You can plan a lesson without flipping every switch to find out what it does: what the markers are, or why “Always lit” hides day and night.",
+				"simple": "You never have to guess what a switch does."
+			},
+			"how": {
+				"standard": [
+					"Mouse: rest the pointer on a switch, or on its name, for half a second.",
+					"Keyboard: move to it with Tab; screen readers read the same sentence.",
+					"Touch: press and hold the switch or its name. A quick tap still just switches it.",
+					"Esc closes the hint."
+				],
+				"simple": [
+					"Hold the mouse still over a switch.",
+					"On a tablet, press and hold the switch with your finger."
 				]
 			}
 		},
@@ -944,6 +972,12 @@
 		"name": {
 			"action": "See a world’s name",
 			"mouse": "Point at it"
+		},
+		"hint": {
+			"action": "See what a switch or button does",
+			"mouse": "Rest the pointer on it",
+			"touch": "Press and hold it",
+			"keys": "Tab to it"
 		},
 		"siblings": {
 			"action": "Next or previous world of the same family",

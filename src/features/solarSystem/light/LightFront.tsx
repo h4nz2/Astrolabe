@@ -31,6 +31,7 @@ import { LineSegments2 } from "three/examples/jsm/lines/LineSegments2.js"
 import { LineSegmentsGeometry } from "three/examples/jsm/lines/LineSegmentsGeometry.js"
 
 import { useI18n, type I18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { frontRadiusKm, secondsSince } from "@/sim/light"
 import { toUnits } from "@/sim"
 import { useLightStore, type LightPulse } from "@/store/light"
@@ -315,21 +316,22 @@ const FrontLabel = ({
 	return (
 		<span ref={ref} className={classes.label} data-light-front-label>
 			<span ref={textRef} />
-			<button
-				type="button"
-				className={classes.stop}
-				aria-label={stop}
-				title={stop}
-				data-light-front-stop
-				onPointerDown={keepFromScene}
-				onPointerUp={keepFromScene}
-				onClick={(event) => {
-					event.stopPropagation()
-					useLightStore.getState().clear()
-				}}
-			>
-				<IconX size={12} stroke={2.5} />
-			</button>
+			<Hint text={i18n.t("solarSystem.light.stopHint")}>
+				<button
+					type="button"
+					className={classes.stop}
+					aria-label={stop}
+					data-light-front-stop
+					onPointerDown={keepFromScene}
+					onPointerUp={keepFromScene}
+					onClick={(event) => {
+						event.stopPropagation()
+						useLightStore.getState().clear()
+					}}
+				>
+					<IconX size={12} stroke={2.5} />
+				</button>
+			</Hint>
 		</span>
 	)
 }

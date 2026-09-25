@@ -1,8 +1,9 @@
 import { Suspense, lazy, useLayoutEffect } from "react"
-import { ActionIcon, Tooltip } from "@mantine/core"
+import { ActionIcon } from "@mantine/core"
 import { IconCamera } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { usePostcardStore } from "@/store/postcard"
 
 import { takePostcard } from "./take"
@@ -23,7 +24,7 @@ export const PostcardButton = ({ onTake }: PostcardButtonProps) => {
 	const { t } = useI18n()
 	const label = t("solarSystem.postcard.take")
 	return (
-		<Tooltip label={t("solarSystem.postcard.takeHint")} openDelay={400}>
+		<Hint text={t("solarSystem.postcard.takeHint")}>
 			<ActionIcon
 				variant="subtle"
 				color="gray"
@@ -34,7 +35,7 @@ export const PostcardButton = ({ onTake }: PostcardButtonProps) => {
 			>
 				<IconCamera size={18} />
 			</ActionIcon>
-		</Tooltip>
+		</Hint>
 	)
 }
 

@@ -10,6 +10,7 @@ import type { ReactNode } from "react"
 
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { Hint } from "@/primitives/hint"
 import { OVERVIEW_BODY_ID, isFrameAnchored } from "@/store/navigation"
 import { useSimStore } from "@/store/sim"
 
@@ -50,70 +51,74 @@ const FrameMenu = () => {
 	const canHold = focusId !== OVERVIEW_BODY_ID && focusId !== frameId
 
 	return (
-		<Menu shadow="md" position="bottom-start" width={300}>
-			<Menu.Target>
-				<Button
-					className={classes.menuButton}
-					variant={anchored ? "filled" : "subtle"}
-					color={anchored ? "orange" : "gray"}
-					size="compact-sm"
-					leftSection={
-						anchored ? (
-							<IconPinned size={16} aria-hidden />
-						) : (
-							<IconSun size={16} aria-hidden />
-						)
-					}
-					aria-label={t("solarSystem.frame.menu", { current })}
-					data-testid="frame-menu"
-				>
-					<span className={classes.menuText}>{current}</span>
-				</Button>
-			</Menu.Target>
-			<Menu.Dropdown>
-				<Menu.Label>{t("solarSystem.frame.label")}</Menu.Label>
-				{FRAME_PRESET_IDS.map((id) => (
-					<Menu.Item
-						key={id}
-						leftSection={PRESET_ICONS[id]}
-						rightSection={
-							active === id ? <IconCheck size={14} aria-hidden /> : null
+		<Hint text={t("solarSystem.frame.hint")}>
+			<Menu shadow="md" position="bottom-start" width={300}>
+				<Menu.Target>
+					<Button
+						className={classes.menuButton}
+						variant={anchored ? "filled" : "subtle"}
+						color={anchored ? "orange" : "gray"}
+						size="compact-sm"
+						leftSection={
+							anchored ? (
+								<IconPinned size={16} aria-hidden />
+							) : (
+								<IconSun size={16} aria-hidden />
+							)
 						}
-						aria-current={active === id || undefined}
-						onClick={() => applyFramePreset(id)}
-						data-preset={id}
+						aria-label={t("solarSystem.frame.menu", { current })}
+						data-testid="frame-menu"
 					>
-						<Text size="sm">{t(`solarSystem.frame.presets.${id}.title`)}</Text>
-						<Text size="xs" c="dimmed">
-							{t(`solarSystem.frame.presets.${id}.hint`)}
+						<span className={classes.menuText}>{current}</span>
+					</Button>
+				</Menu.Target>
+				<Menu.Dropdown>
+					<Menu.Label>{t("solarSystem.frame.label")}</Menu.Label>
+					{FRAME_PRESET_IDS.map((id) => (
+						<Menu.Item
+							key={id}
+							leftSection={PRESET_ICONS[id]}
+							rightSection={
+								active === id ? <IconCheck size={14} aria-hidden /> : null
+							}
+							aria-current={active === id || undefined}
+							onClick={() => applyFramePreset(id)}
+							data-preset={id}
+						>
+							<Text size="sm">
+								{t(`solarSystem.frame.presets.${id}.title`)}
+							</Text>
+							<Text size="xs" c="dimmed">
+								{t(`solarSystem.frame.presets.${id}.hint`)}
+							</Text>
+						</Menu.Item>
+					))}
+					<Menu.Divider />
+					{canHold ? (
+						<Menu.Item
+							leftSection={<IconPinned size={18} aria-hidden />}
+							onClick={() => anchorFrame(focusId)}
+							data-preset="hold"
+						>
+							<Text size="sm">
+								{t("solarSystem.frame.presets.hold.title", {
+									body: name(focusId),
+								})}
+							</Text>
+							<Text size="xs" c="dimmed">
+								{t("solarSystem.frame.presets.hold.hint", {
+									body: name(focusId),
+								})}
+							</Text>
+						</Menu.Item>
+					) : focusId === OVERVIEW_BODY_ID ? (
+						<Text size="xs" c="dimmed" px="sm" py={6}>
+							{t("solarSystem.frame.presets.hold.disabled")}
 						</Text>
-					</Menu.Item>
-				))}
-				<Menu.Divider />
-				{canHold ? (
-					<Menu.Item
-						leftSection={<IconPinned size={18} aria-hidden />}
-						onClick={() => anchorFrame(focusId)}
-						data-preset="hold"
-					>
-						<Text size="sm">
-							{t("solarSystem.frame.presets.hold.title", {
-								body: name(focusId),
-							})}
-						</Text>
-						<Text size="xs" c="dimmed">
-							{t("solarSystem.frame.presets.hold.hint", {
-								body: name(focusId),
-							})}
-						</Text>
-					</Menu.Item>
-				) : focusId === OVERVIEW_BODY_ID ? (
-					<Text size="xs" c="dimmed" px="sm" py={6}>
-						{t("solarSystem.frame.presets.hold.disabled")}
-					</Text>
-				) : null}
-			</Menu.Dropdown>
-		</Menu>
+					) : null}
+				</Menu.Dropdown>
+			</Menu>
+		</Hint>
 	)
 }
 

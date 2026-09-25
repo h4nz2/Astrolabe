@@ -219,12 +219,40 @@
 				"standard": [
 					"Die Schalter sind im Feld oben rechts; auf kleinen Bildschirmen und beim Präsentieren findest du sie unter „Ebenen“.",
 					"Drücke L, um alle Namen auf einmal aus- oder einzublenden.",
-					"„Alle Monde“ funktioniert nur, solange „Monde“ eingeschaltet ist."
+					"„Alle Monde“ funktioniert nur, solange „Monde“ eingeschaltet ist.",
+					"Lass den Zeiger auf einem Schalter ruhen oder halte ihn gedrückt, um zu lesen, was er tut; ein ausgegrauter Schalter sagt, was du zuerst einschalten musst."
 				],
 				"simple": [
 					"Such die Schalter oben rechts.",
 					"Klick einen an, um ihn auszuschalten, und noch einmal, um ihn wieder einzuschalten.",
-					"Drück L, dann sind alle Namen versteckt."
+					"Drück L, dann sind alle Namen versteckt.",
+					"Halte die Maus über einen Schalter, um zu erfahren, was er macht."
+				]
+			}
+		},
+		"hints": {
+			"title": {
+				"standard": "Was macht dieser Schalter?",
+				"simple": "Was macht dieser Knopf?"
+			},
+			"what": {
+				"standard": "Jeder Schalter, jede Auswahl und jeder Knopf im Sonnensystem erklärt sich in einem Satz: was er tut und wozu er gut ist. Ein ausgegrauter Schalter sagt, was du zuerst einschalten musst.",
+				"simple": "Jeder Schalter und jeder Knopf kann dir sagen, was er macht."
+			},
+			"why": {
+				"standard": "So planst du eine Stunde, ohne jeden Schalter ausprobieren zu müssen: was Markierungen sind oder warum „Immer beleuchtet“ Tag und Nacht versteckt.",
+				"simple": "Du musst nie raten, was ein Schalter macht."
+			},
+			"how": {
+				"standard": [
+					"Maus: Lass den Zeiger eine halbe Sekunde auf einem Schalter oder seinem Namen ruhen.",
+					"Tastatur: Geh mit Tab hin; Bildschirmleser lesen denselben Satz vor.",
+					"Touch: Halte den Schalter oder seinen Namen gedrückt. Ein kurzes Tippen schaltet ihn weiterhin einfach um.",
+					"Esc schließt den Hinweis."
+				],
+				"simple": [
+					"Halte die Maus still über einen Schalter.",
+					"Auf einem Tablet: Drück mit dem Finger länger auf den Schalter."
 				]
 			}
 		},
@@ -949,6 +977,12 @@
 		"name": {
 			"action": "Den Namen einer Welt sehen",
 			"mouse": "Mit der Maus darauf zeigen"
+		},
+		"hint": {
+			"action": "Sehen, was ein Schalter oder Knopf macht",
+			"mouse": "Zeiger darauf ruhen lassen",
+			"touch": "Gedrückt halten",
+			"keys": "Mit Tab hingehen"
 		},
 		"siblings": {
 			"action": "Nächste oder vorherige Welt derselben Familie",
