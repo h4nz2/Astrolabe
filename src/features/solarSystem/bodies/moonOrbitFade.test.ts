@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest"
 
 import {
 	LONG_TAIL_ORBIT_FACTOR,
+	MIN_MOON_DISC_PX,
+	isDiscVisible,
 	ORBIT_FADE_FULL_PX,
 	ORBIT_FADE_START_PX,
 	moonOrbitFade,
@@ -43,5 +45,18 @@ describe("moonOrbitFade", () => {
 	it("draws the long tail fainter than the featured moons", () => {
 		expect(moonOrbitFade(1e9, longTail)).toBe(LONG_TAIL_ORBIT_FACTOR)
 		expect(LONG_TAIL_ORBIT_FACTOR).toBeLessThan(1)
+	})
+})
+
+describe("isDiscVisible", () => {
+	it("skips a moon smaller than half a pixel and keeps anything bigger", () => {
+		expect(isDiscVisible(1, 1000, 100)).toBe(false) // 0.1 px
+		expect(isDiscVisible(1, 1000 / (MIN_MOON_DISC_PX * 10), 1000)).toBe(true)
+		expect(isDiscVisible(1, 10, 100)).toBe(true)
+	})
+
+	it("always draws a moon with the camera inside or at it", () => {
+		expect(isDiscVisible(1, 0, 100)).toBe(true)
+		expect(isDiscVisible(1, 0.5, 0)).toBe(true)
 	})
 })

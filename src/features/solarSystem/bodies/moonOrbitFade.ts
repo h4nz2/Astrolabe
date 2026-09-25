@@ -11,6 +11,10 @@
  * The long tail (moons that are not `featured`) is drawn fainter
  * (`LONG_TAIL_ORBIT_FACTOR`), so with all moons shown the featured orbits
  * still read as the system and the rest as the swarm around it.
+ *
+ * The moon itself is not drawn while its disc is under `MIN_MOON_DISC_PX`
+ * (`isDiscVisible`): its marker dot shows where it is, and a hundred and
+ * fifty sub-pixel spheres would only cost the frame.
  */
 import type { Body } from "@/data"
 
@@ -51,3 +55,15 @@ export const moonOrbitFade = (
 ): number =>
 	smoothstep(ORBIT_FADE_START_PX, ORBIT_FADE_FULL_PX, radiusPx) *
 	(moon.featured ? 1 : LONG_TAIL_ORBIT_FACTOR)
+
+/** A moon whose drawn disc is smaller than this radius on screen (px) is not drawn. */
+export const MIN_MOON_DISC_PX = 0.5
+
+/** Whether a sphere of `radiusUnits` at `distanceUnits` is at least `MIN_MOON_DISC_PX` in radius on screen. */
+export const isDiscVisible = (
+	radiusUnits: number,
+	distanceUnits: number,
+	pxPerUnit: number,
+): boolean =>
+	distanceUnits <= radiusUnits ||
+	(radiusUnits * pxPerUnit) / distanceUnits >= MIN_MOON_DISC_PX
