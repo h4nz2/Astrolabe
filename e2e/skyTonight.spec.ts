@@ -11,7 +11,8 @@
  */
 import { expect, test, type Page } from "@playwright/test"
 
-test.describe.configure({ timeout: 60_000 })
+// every test drives the software-rendered scene and opens a lazy panel: slow under a full parallel run
+test.describe.configure({ timeout: 120_000 })
 test.use({ timezoneId: "Europe/Zurich", locale: "en-GB" })
 
 const NOW = new Date("2026-09-25T12:00:00Z")
