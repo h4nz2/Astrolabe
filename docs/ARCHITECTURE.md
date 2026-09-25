@@ -35,8 +35,8 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, belts.json (#23), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, rings/,
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, presentation.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, present/, rings/,
                              smallBodies/ (#23), ui/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
@@ -632,7 +632,9 @@ are left out; a link without a switch turns it on. `simSearch.ts` drops invalid 
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
 only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
-`?birthday=true` opens the birthday panel; `?hunt=` the scavenger hunt (see Scavenger hunt).
+`?birthday=true` opens the birthday panel; `?hunt=` the scavenger hunt (see Scavenger hunt). `paused=true` (written
+while paused, so a prepared moment opens standing still), `present=true` and `contrast=high` belong to #29 (see
+Presentation; `presentationSearch` in `src/store/presentation.ts`, merged into the same write).
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -694,10 +696,10 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
   toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel), `FlightReadout`
-  (#18, above the time controls). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
+  (#18, above the time controls), `TeacherBar` (#29: Present, Share and the language menu heading the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
-  ArrowLeft/Right cycle siblings.
+  ArrowLeft/Right cycle siblings; the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Belts`, `CometTails`, `LightFront`, `Labels`, `BodyPicking`, `CameraRig`,
   `HighlightTracker`, later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
@@ -804,6 +806,47 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
   frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
   Nothing is capped or hidden in the scene; positions stay true.
+
+## Presentation: teacher mode (`features/solarSystem/present`, `src/store/presentation.ts`; #29)
+
+A teacher at a projector with a class: legible from the back, controllable from the keyboard or a presenter remote,
+no chrome if wanted, and a prepared view that opens exactly as it was left. Everything a lesson needs is already in
+the URL, so "save the lesson" is the link itself (plus `paused`, `present`, `contrast`); there is no second mechanism.
+
+- **State** (`usePresentationStore`): `presenting` (projector mode, `?present=true`), `highContrast`
+  (`?contrast=high`; `prefers-contrast: more` also turns the styles on), `chromeHidden` (never in the URL: a link
+  must never open without its way back; reset when the page unmounts), `helpOpen`, `qrOpen`, `startSearch` (the
+  search the page was opened with, seeded by `urlSync.ts`), `announcement` (for the live region).
+- **Document attributes** (`present/usePresentationDocument.ts`): `data-presenting`, `data-contrast="high"`,
+  `data-chrome="hidden"` and `data-idle` on `<html>`, so styles reach Mantine's portals. `present/presentation.css`
+  grows the root font size (112.5 %, 125 % from 1600x900 up: everything in rem grows), overrides Mantine's colour
+  variables for high contrast (tokens tested for WCAG AAA in `present/contrast.test.ts`) and hides open menus with the
+  controls. Feature CSS modules key on the same attributes with `:global(html[data-...])` (panels, labels, scale
+  panel, spin control, centre marker, birthday panel). Projector mode (and any screen below 1000 px, where the HUD crowds the scene) folds the layer switches into a menu
+  (`present/TeacherBar.tsx`), hides the spin control and the scale panel's description and lie switches (the
+  statements stay, larger), and makes the labels about a third larger. Presenting also preloads the lazy panels.
+- **Hiding never unmounts** the HUD (`:global(html[data-chrome="hidden"]) .hud { display: none }`): the HUD's own keys
+  (Space, +/-, Left/Right, Escape) keep working. `PresentationLayer` (outside the HUD) keeps a "Show the controls"
+  button that appears on pointer movement or focus, and hides an idle pointer.
+- **Keys** (`present/keys.ts` pure mapping, `present/commands.ts` actions, `present/usePresenterKeys.ts` listener):
+  PageDown/PageUp next/previous (presenter remotes), 0 the whole system, 1-8 the planets from the Sun, R/Home back to
+  the start, S next named scale preset, L names, H controls, F full screen, P projector, C contrast, ? the shortcut
+  list. Ctrl/Cmd/Alt combinations are never taken; text fields and open lists keep their keys, radio buttons and
+  switches do not (a clicked speed preset never leaves the keys dead); inside a modal dialog only "?" counts, and
+  Escape in a modal closes only the modal (`ui/OverviewButton.tsx`). Each command returns a sentence for the polite
+  live region, so screen-reader users hear what a key did with the controls hidden. With `prefers-reduced-motion`
+  key-driven moves jump (`durationMs: 0`) and the scale switches without animating.
+- **Back to the start** (`present/restoreStart.ts`): re-applies `startSearch` through the store actions (view,
+  frame, camera, selection, speed, pause, time glide, layers, animated scale); without a link that is the opening
+  state (overview, now, 1x). Presentation settings are left alone: they belong to the room, not the lesson.
+- **Sharing** (`present/SharePanel.tsx`, lazy): the current address with a copy button (`useClipboard`) and a QR
+  code (`uqr` encodes, `present/qr.ts` draws one SVG path), small in the popover and large for the class
+  (`ClassQr`, a modal outside the popover).
+- **Second screen**: the layout is viewport-relative; `present/DprSync.tsx` in the Canvas re-applies the `dpr` range
+  when the device pixel ratio changes (dragging the window to a projector), which the Canvas otherwise reads once.
+- **For #28 (tours):** PageDown/PageUp already step a running `playSequence` (`presenterStep`: next, resume after an
+  interruption, previous); a tour played through the navigation model is presentable from a remote with no extra
+  code. Number keys stay the planets unless a tour decides otherwise. **For #32 (sound):** it must start muted.
 
 ## Birthday (`features/solarSystem/birthday`, `src/store/birthday.ts`; #26)
 

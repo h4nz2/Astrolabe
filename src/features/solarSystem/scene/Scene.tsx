@@ -24,6 +24,7 @@ import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
 import LightFront from "../light/LightFront"
+import DprSync from "../present/DprSync"
 import { labelSlotCount } from "../labels/project"
 import Belts from "../smallBodies/Belts"
 import CometTails from "../smallBodies/CometTails"
@@ -68,6 +69,7 @@ function Scene() {
 				style={{ position: "absolute", inset: 0 }}
 			>
 				<color attach="background" args={[SCENE_BACKGROUND]} />
+				<DprSync />
 				<SimFrameContext.Provider value={frame}>
 					<ScaleSync />
 					<ScaleTransition />

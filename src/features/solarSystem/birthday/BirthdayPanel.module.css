@@ -123,3 +123,8 @@
 	margin-top: 0.1rem;
 	color: var(--mantine-color-teal-4);
 }
+
+/* hidden with the rest of the controls (#29, H) */
+:global(html[data-chrome="hidden"]) .panel {
+	display: none;
+}
