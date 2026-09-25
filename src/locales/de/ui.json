@@ -41,6 +41,7 @@
 		"dictionary": "Lexikon",
 		"solarSystem": "Sonnensystem",
 		"birthday": "Geburtstag im Weltall",
+		"hunt": "Schnitzeljagd",
 		"solarWalk": "Planetenweg"
 	},
 	"units": {
@@ -474,6 +475,66 @@
 				"distance": "Ich bin {distance} km um die Sonne gereist.",
 				"fileName": "mein-alter-auf-den-planeten"
 			}
+		},
+		"hunt": {
+			"open": "Schnitzeljagd",
+			"openHint": "Löse Rätsel, indem du Welten in der Szene findest",
+			"title": "Schnitzeljagd",
+			"close": "Schließen",
+			"collapse": "Einklappen",
+			"expand": "Ausklappen",
+			"intro": "Jedes Rätsel beschreibt eine Welt. Finde sie in der Szene und klick sie an: Das ist deine Antwort. Tipps sind gratis, und es gibt keine Punkte und kein Zeitlimit.",
+			"intro@simple": "Lies das Rätsel, finde die Welt und klick sie an! Du kommst nicht weiter? Hol dir einen Tipp.",
+			"choose": "Wähle eine Jagd",
+			"difficulty": {
+				"easy": "Leicht",
+				"medium": "Mittel",
+				"hard": "Knifflig"
+			},
+			"clueCount": "{count, plural, one {# Rätsel} other {# Rätsel}}",
+			"inProgress": "Weitermachen: Rätsel {step} von {total}",
+			"progress": "Rätsel {step} von {total}",
+			"progressLabel": "{found} von {total} gefunden",
+			"answerHow": "Finde sie in der Szene und klick sie an.",
+			"answerHow@simple": "Finde sie und klick sie an!",
+			"firstHint": "Brauchst du einen Tipp?",
+			"moreHint": "Noch ein Tipp",
+			"hintLabel": "Tipp {n}",
+			"showMe": "Zeig es mir",
+			"showMeHint": "Hinfliegen und das Rätsel lösen",
+			"guess": {
+				"other": "Das ist {bodyId, select, sun {die Sonne} earth {die Erde} moon {der Mond} venus {die Venus} other {{name}}} – leider nicht die Lösung. Such weiter!",
+				"other@simple": "Das ist {bodyId, select, sun {die Sonne} earth {die Erde} moon {der Mond} venus {die Venus} other {{name}}}. Versuch eine andere Welt!",
+				"warm": "Warm! Die Lösung ist in der Nähe {bodyId, select, earth {der Erde} other {von {name}}}. Schau dich dort um.",
+				"almost": "Ja, {name}! Jetzt schau {frameId, select, earth {von der Erde} other {von {frame}}} aus zu: Wähle oben links den Blickwinkel."
+			},
+			"found": "Gefunden!",
+			"next": "Nächstes Rätsel",
+			"finish": "Fertig",
+			"done": {
+				"title": "Geschafft!",
+				"text": "{count, plural, one {Du hast das Rätsel gelöst.} other {Du hast alle # Rätsel gelöst.}}",
+				"text@simple": "{count, plural, one {Du hast es geschafft!} other {Du hast es geschafft: alle # gefunden!}}",
+				"found": "Diese Welten hast du gefunden. Klick eine an, um sie noch einmal zu besuchen:",
+				"again": "Noch einmal spielen",
+				"other": "Andere Jagd wählen"
+			},
+			"custom": {
+				"title": "Eigene Jagd zusammenstellen",
+				"intro": "Hake die Rätsel für deine Stunde an und starte die Jagd oder teile sie mit deiner Klasse.",
+				"name": "Deine eigene Jagd",
+				"count": "{count, plural, =0 {Kein Rätsel gewählt} one {# Rätsel gewählt} other {# Rätsel gewählt}}",
+				"start": "Starten"
+			},
+			"share": {
+				"button": "Teilen",
+				"title": "Diese Jagd teilen",
+				"text": "Alle, die diesen Link öffnen, bekommen dieselbe Jagd, in derselben Sprache und Lesestufe. Der Fortschritt bleibt auf jedem Gerät; nichts wird auf einem Server gespeichert.",
+				"copy": "Link kopieren",
+				"copied": "Kopiert",
+				"link": "Link zu dieser Jagd"
+			},
+			"otherHunts": "Andere Jagden"
 		},
 		"frame": {
 			"label": "Blickwinkel",
