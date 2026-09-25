@@ -25,6 +25,7 @@ import { useI18n } from "@/i18n"
 import { useBodyText } from "@/i18n/bodies"
 import { useSimStore, type SimState } from "@/store/sim"
 
+import BodyRecording from "../sound/BodyRecording"
 import {
 	SmallBodiesLegend,
 	SmallBodyNotes,
@@ -138,6 +139,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 			{open && (
 				<>
 					{story !== undefined && <p className={classes.story}>{story}</p>}
+					<BodyRecording bodyId={body.id} />
 					<MoonSystem body={body} />
 					<dl className={classes.facts}>
 						{facts.map((fact) => (

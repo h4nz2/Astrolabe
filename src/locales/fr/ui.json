@@ -546,6 +546,57 @@
 			},
 			"otherHunts": "Autres chasses"
 		},
+		"sound": {
+			"toggle": "Son",
+			"hintOff": "Le son est coupé. Clique ou appuie sur M pour l’activer.",
+			"hintOn": "Le son est activé. Clique ou appuie sur M pour le couper.",
+			"settings": "Réglages du son",
+			"on": "Son activé",
+			"offNote": "Coupé tant que tu ne l’actives pas. Tout dans l’application fonctionne aussi sans son.",
+			"offNote@simple": "Le son reste coupé jusqu’à ce que tu l’allumes. Tu peux aussi tout utiliser sans son.",
+			"volume": "Volume",
+			"ambient": "Ambiance sonore",
+			"ambientHint": "Change selon l’endroit où tu es : chaude près du Soleil, ténue et froide au-delà de Neptune.",
+			"ambientHint@simple": "Chaude près du Soleil, froide et légère très loin.",
+			"cues": "Sons de mouvement",
+			"cuesHint": "Un souffle quand tu voles, une note douce quand tu arrives ou que tu trouves quelque chose.",
+			"recordings": "Écoute l’espace",
+			"honest": "L’espace est silencieux : le son ne se propage pas dans le vide. Ces enregistrements sont de vraies mesures d’ondes radio et d’ondes de plasma, transformées en son.",
+			"honest@simple": "Dans l’espace, il n’y a pas d’air, donc pas de son. Des sondes spatiales ont mesuré des ondes invisibles, et des scientifiques en ont fait des sons que nous pouvons entendre.",
+			"honest@advanced": "Le son a besoin d’un milieu, et le quasi-vide de l’espace ne transmet aucune onde de pression audible. Ce sont des mesures d’ondes radio et d’ondes de plasma (champs électriques) captées par des antennes et jouées sur un haut-parleur, certaines abaissées en fréquence.",
+			"listenLabel": "Écouter : {title}",
+			"stopLabel": "Arrêter : {title}",
+			"credit": "{mission}, {year} · {credit}",
+			"shortcut": "Activer ou couper le son (toujours coupé à l’ouverture de l’application)",
+			"recording": {
+				"sunRadioBursts": {
+					"title": "Sursauts radio du Soleil",
+					"title@simple": "Les sursauts radio du Soleil",
+					"what": "Ce n’est pas du son : des ondes radio d’une éruption solaire géante du 28 octobre 2003, captées par la sonde Cassini et abaissées pour que nous puissions les entendre. Le sifflement descendant est une bouffée d’électrons qui fonce loin du Soleil.",
+					"what@simple": "En 2003, il y a eu une énorme explosion sur le Soleil. La sonde spatiale Cassini a capté ses ondes radio, et des scientifiques en ont fait du son. Le sifflement qui descend, c’est l’explosion qui file loin du Soleil.",
+					"what@advanced": "Sursauts radio de type III de l’éruption X17 du 28 octobre 2003, enregistrés par l’instrument Radio and Plasma Wave Science de Cassini à 8,7 UA du Soleil. Les électrons de l’éruption excitent des oscillations du plasma dont la fréquence baisse à mesure qu’ils atteignent un plasma plus ténu ; l’enregistrement est décalé dans le domaine audible."
+				},
+				"earthChorus": {
+					"title": "Le chœur de l’aube de la Terre",
+					"title@simple": "Le chant d’oiseaux de la Terre",
+					"what": "Ce n’est pas du son : des ondes radio dans les ceintures de radiation autour de la Terre, mesurées avec une antenne par le satellite Injun 3. Elles vibrent justement à des fréquences que nous pouvons entendre et gazouillent comme des oiseaux à l’aube, d’où leur nom.",
+					"what@simple": "Autour de la Terre, il y a des ondes invisibles créées par de minuscules particules très rapides. Un satellite les a mesurées avec une antenne, et on peut les écouter comme des sons. Elles gazouillent comme des oiseaux le matin !",
+					"what@advanced": "Chœur (mode sifflement) dans les ceintures de Van Allen : des tons montants produits par des électrons qui spiralent le long du champ magnétique terrestre, enregistrés par Injun 3. Les ondes se situent dans la bande audible, donc le signal de champ électrique de l’antenne est joué tel quel. C’est une onde électromagnétique, pas une onde de pression."
+				},
+				"jupiterWhistlers": {
+					"title": "Des éclairs sur Jupiter",
+					"what": "Ce n’est pas du son : des ondes radio émises par des éclairs, captées en 1979 par l’antenne de Voyager 1 et jouées sur un haut-parleur. Leur sifflement descend parce qu’elles se sont étirées en voyageant le long du champ magnétique de Jupiter. Ce fut le premier signe d’orages sur Jupiter.",
+					"what@simple": "Quand la sonde Voyager 1 est passée près de Jupiter, son antenne a capté des ondes radio venant d’éclairs. Transformées en son, elles sifflent. C’est comme ça qu’on a découvert qu’il y a des orages sur Jupiter !",
+					"what@advanced": "Sifflements joviens enregistrés en 1979 par l’instrument d’ondes de plasma de Voyager 1 : les impulsions des éclairs se dispersent le long de lignes de champ magnétique fermées, les hautes fréquences arrivant en premier, d’où le ton descendant. La première preuve (indirecte) d’éclairs sur Jupiter."
+				},
+				"saturnRadio": {
+					"title": "La voix radio de Saturne",
+					"what": "Ce n’est pas du son : des ondes radio venant des aurores de Saturne, enregistrées par Cassini en 2003. Elles sont bien trop aiguës pour être entendues, alors on les a abaissées 44 fois et accélérées : ces 30 secondes correspondent à environ 11 minutes à Saturne.",
+					"what@simple": "Saturne a des aurores, et elles envoient des ondes radio. La sonde Cassini les a captées. Des scientifiques les ont rendues plus graves et plus rapides pour qu’on puisse les entendre. Elles font un peu peur !",
+					"what@advanced": "Rayonnement kilométrique de Saturne, l’émission radio de ses aurores, enregistré par le RPWS de Cassini lors de son approche en 2003. Fréquences divisées par 44, temps compressé 22 fois (30 s ici ≈ 11 min). Les tons montants et descendants suivent de petites sources radio qui se déplacent le long des lignes de champ aurorales."
+				}
+			}
+		},
 		"frame": {
 			"label": "Point de vue",
 			"label@simple": "D’où tu regardes",
