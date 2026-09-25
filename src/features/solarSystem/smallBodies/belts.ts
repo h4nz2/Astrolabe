@@ -13,7 +13,7 @@ import type { SimFrame } from "../scene/simFrame"
 /** Size of a belt dot on screen (CSS px): a marker of where members are, never their size. */
 export const BELT_DOT_PX = 2.2
 /** Opacity of a dot: faint, so a belt reads as a haze and never as a wall of rock. */
-export const BELT_DOT_OPACITY = 0.55
+export const BELT_DOT_OPACITY = 0.45
 
 /** What the belt shader reads each frame. */
 export interface BeltUniforms {

@@ -547,7 +547,7 @@ draws one `Points` per belt; `beltShader.ts` solves Kepler per dot on the GPU (8
 position with the root's `orbitDistance` curve and blends the anchored frames exactly like `applyReferenceFrame`
 (`updateBeltUniforms` feeds the root's and anchors' drawn and true positions; a unit test re-implements the shader
 in JS and matches `mapTruePointKm` in every preset and frame). 10,000 dots, no per-frame CPU work beyond a few
-uniforms. Dots are `BELT_DOT_PX` (2.2 px) at 55 % opacity whatever the zoom: flying into the belt shows a sparse
+uniforms. Dots are `BELT_DOT_PX` (2.2 px) at 45 % opacity whatever the zoom: flying into the belt shows a sparse
 scatter, never a rock field. The belt's name (drei `Html`) sits on its middle circle on the viewer's left while that
 circle is 70 px .. 1.2 viewports on screen; it is not part of the label layout (like the light front's label).
 
