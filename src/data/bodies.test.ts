@@ -153,11 +153,12 @@ describe("bodies.json", () => {
 			innerRadiusKm: 74510,
 			outerRadiusKm: 140220,
 		})
+		// from data/rings/{jupiter,uranus,neptune}.json (the source has rings: false)
+		// Jupiter: the halo's inner edge to the Amalthea gossamer ring's outer edge
 		expect(getBody("jupiter").rings).toMatchObject({
-			innerRadiusKm: 110500,
-			outerRadiusKm: 129000,
+			innerRadiusKm: 92000,
+			outerRadiusKm: 181350,
 		})
-		// from data/rings/{uranus,neptune}.json (the source has rings: false)
 		expect(getBody("uranus").rings).toMatchObject({
 			innerRadiusKm: 41500,
 			outerRadiusKm: 51500,

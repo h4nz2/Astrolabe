@@ -9,6 +9,7 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
@@ -79,8 +80,13 @@ const SolarSystem = () => {
 						<FrameMenu />
 					</div>
 					<FrameBadgePanel />
+					<LightSlot
+						phone={false}
+						className={`${classes.panel} ${classes.light}`}
+					/>
 				</div>
 				<CentreBadgePanel />
+				<LightSlot phone className={`${classes.panel} ${classes.light}`} />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
 						<TeacherBar layers={<SceneToggles />}>

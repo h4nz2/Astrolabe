@@ -40,7 +40,8 @@
 		"tagline": "Zu den Sternen!",
 		"dictionary": "Lexikon",
 		"solarSystem": "Sonnensystem",
-		"birthday": "Geburtstag im Weltall"
+		"birthday": "Geburtstag im Weltall",
+		"solarWalk": "Planetenweg"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -184,7 +185,9 @@
 			"markersOn": "Die Punkte markieren nur, wo die Planeten sind: Die Planeten selbst sind zu klein, um sie zu sehen.",
 			"markersOn@simple": "Die Punkte zeigen, wo die Planeten sind. Die Planeten sind zu klein, um sie zu sehen!",
 			"markersOff": "Die Markierungen sind aus: Schalte sie ein, um die Planeten zu finden.",
-			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!"
+			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!",
+			"walk": "Zu klein, um es sich vorzustellen? Lauf es ab: das Sonnensystem mit der Sonne als Basketball.",
+			"walk@simple": "Zu klein zum Sehen? Lauf das Sonnensystem auf dem Sportplatz ab!"
 		},
 		"time": {
 			"play": "Abspielen",
@@ -603,6 +606,199 @@
 				"contrastOff": "Hoher Kontrast aus",
 				"step": "Schritt {n} von {total}"
 			}
+		},
+		"light": {
+			"open": "Lichtgeschwindigkeit",
+			"open@simple": "Wie schnell ist Licht?",
+			"openHint": "Schick einen Lichtblitz los und sieh zu, wie lange er durch das Sonnensystem braucht",
+			"title": "Das langsame Licht",
+			"close": "Schließen",
+			"tabs": {
+				"pulse": "Lichtblitz",
+				"delay": "Funkverzögerung",
+				"beyond": "Noch weiter"
+			},
+			"intro": "Nichts ist schneller als Licht: {speed, number} km in jeder Sekunde. Schick einen Lichtblitz los und sieh, wie lange er trotzdem durch das Sonnensystem braucht.",
+			"intro@simple": "Nichts ist schneller als Licht. In einer Sekunde könnte es 7-mal um die Erde fliegen! Schick einen Lichtblitz los und sieh, wie lange er bis zu den Planeten braucht.",
+			"intro@advanced": "Licht legt genau {speed, number} km/s zurück. Schick einen Puls los und sieh zu, wie er mit dieser Geschwindigkeit das Sonnensystem durchquert, in Echtzeit.",
+			"from": "Licht senden von",
+			"send": "Lichtblitz senden",
+			"sendAgain": "Nochmal senden",
+			"clear": "Lichtblitz entfernen",
+			"travelling": "Das Licht ist unterwegs seit",
+			"travelling@simple": "So lange ist das Licht schon unterwegs:",
+			"covered": "{distance} zurückgelegt",
+			"covered@simple": "{distance} geschafft",
+			"waiting": "Die Zeit ist auf die Zeit vor dem Lichtblitz zurückgelaufen.",
+			"clock": {
+				"realTime": "Echtzeit: Eine Sekunde hier ist eine echte Sekunde.",
+				"realTime@simple": "Echtzeit: genau so schnell wie im echten Leben.",
+				"fast": "Beschleunigt auf {speed}. Die Uhr zählt trotzdem die echte Reisezeit des Lichts.",
+				"fast@simple": "Die Zeit läuft schneller als im echten Leben ({speed}). Die Uhr zeigt trotzdem, wie lange das Licht wirklich braucht.",
+				"reversed": "Die Zeit läuft rückwärts: Das Licht zieht sich dorthin zurück, wo es herkam.",
+				"paused": "Die Zeit ist angehalten und das Licht mit ihr.",
+				"backToRealTime": "Zurück zur Echtzeit"
+			},
+			"arrivals": "Wann das Licht ankommt",
+			"arrivals@simple": "Wann das Licht dort ist",
+			"reached": "erreicht",
+			"pending": "in {duration}",
+			"announce": "Angekommen {id, select, sun {bei der Sonne} venus {bei der Venus} earth {bei der Erde} moon {beim Mond} other {beim {body}}} nach {duration}.",
+			"announce@simple": "Das Licht ist {id, select, sun {bei der Sonne} venus {bei der Venus} earth {bei der Erde} moon {beim Mond} other {beim {body}}}! Es hat {duration} gebraucht.",
+			"leftPlanets": "Das Licht hat alle Planeten hinter sich gelassen. Den nächsten Stern erreicht es erst in {years, number} Jahren.",
+			"leftPlanets@simple": "Das Licht ist an allen Planeten vorbei. Bis zum nächsten Stern braucht es noch {years, number} Jahre!",
+			"frontLabel": "Licht · {duration}",
+			"km": "{value} km",
+			"delay": {
+				"intro": "Auch Funksignale sind genau so schnell wie Licht. So lange braucht eine Nachricht von der Erde gerade.",
+				"intro@simple": "Funknachrichten sind so schnell wie Licht, aber nicht schneller. So lange braucht eine Nachricht von der Erde.",
+				"to": "Nachricht von der Erde an",
+				"oneWay": "Hinweg",
+				"roundTrip": "Hin und zurück",
+				"now": "Gerade {distance} entfernt",
+				"now@advanced": "Gerade {distance} ({au} AE) entfernt",
+				"range": "Je nachdem, wo beide auf ihren Bahnen stehen, dauert es zwischen {min} und {max}.",
+				"range@simple": "Die Planeten bewegen sich, darum ändert sich das: von {min} bis {max}.",
+				"rover": "Einen Rover dort von der Erde aus fahren? Du siehst, wo er vor {oneWay} war, und er bekommt deinen Befehl erst {oneWay} später: Du lenkst {roundTrip} in der Vergangenheit. {id, select, moon {Bei ein paar Sekunden geht das noch: Sowjetische Teams haben die Lunochod-Rover auf dem Mond von der Erde aus gesteuert.} mars {Deshalb fahren die Rover auf dem Mars selbstständig.} other {Deshalb müssen Raumsonden so weit draußen selbst steuern.}}",
+				"rover@simple": "Stell dir vor, du steuerst dort einen Roboter mit einer Fernbedienung. Jeder Knopfdruck braucht {oneWay}, bis er ankommt, und was passiert ist, siehst du erst {oneWay} später. {id, select, moon {Auf dem Mond sind das nur ein paar Sekunden, darum wurden dort wirklich Roboter von der Erde aus gefahren.} mars {Darum müssen die Roboter auf dem Mars alleine fahren.} other {Darum müssen Roboter dort draußen selbst steuern.}}",
+				"watch": "Signal von der Erde senden und zusehen"
+			},
+			"beyond": {
+				"intro": "Die Planeten sind nur unsere Nachbarschaft. Dahinter braucht selbst Licht Jahre.",
+				"intro@simple": "Die Planeten sind nur unsere Nachbarn. Alles andere ist so weit weg, dass selbst Licht Jahre braucht!",
+				"proximaCentauri": {
+					"name": "Proxima Centauri, der nächste Stern",
+					"text": "Sein Licht ist {duration} alt, wenn es bei uns ankommt. Wir sehen den Stern so, wie er damals war.",
+					"text@simple": "Sein Licht braucht {duration} bis zu uns."
+				},
+				"galacticCentre": {
+					"name": "Das Zentrum der Milchstraße",
+					"text": "Sein Licht war {duration} unterwegs. Als es losflog, jagten Menschen noch Mammuts.",
+					"text@simple": "Sein Licht braucht {duration}. Als es losflog, jagten die Menschen noch Mammuts!"
+				},
+				"andromeda": {
+					"name": "Die Andromeda-Galaxie",
+					"text": "Ihr Licht war {duration} unterwegs. Als es losflog, stellten unsere Vorfahren die ersten Steinwerkzeuge her.",
+					"text@simple": "Ihr Licht braucht {duration}. Als es losflog, gab es noch keine Menschen – nur unsere sehr frühen Vorfahren."
+				}
+			},
+			"duration": {
+				"second": "{count, number} s",
+				"second@simple": "{count, plural, one {# Sekunde} other {# Sekunden}}",
+				"minute": "{count, number} Min.",
+				"minute@simple": "{count, plural, one {# Minute} other {# Minuten}}",
+				"hour": "{count, number} Std.",
+				"hour@simple": "{count, plural, one {# Stunde} other {# Stunden}}",
+				"day": "{count, plural, one {# Tag} other {# Tage}}",
+				"year": "{count, plural, one {# Jahr} other {# Jahre}}",
+				"join2": "{a} {b}",
+				"join2@simple": "{a} und {b}",
+				"join3": "{a} {b} {c}",
+				"join3@simple": "{a}, {b} und {c}"
+			}
 		}
+	},
+	"solarWalk": {
+		"back": "3D-Modell",
+		"title": "Wenn die Sonne {object} wäre …",
+		"lead": "… wäre die Erde {earth}, {earthDistance} entfernt. Jede Größe und jeder Abstand auf dieser Seite ist echt, nur alles gleich stark verkleinert, bis es auf einen Sportplatz passt. Nimm die Sonne mit nach draußen und lauf es ab.",
+		"lead@simple": "… wäre die Erde so klein wie {earth} und {earthDistance} weit weg! Nimm die Sonne mit nach draußen und lauf das Sonnensystem ab.",
+		"lead@advanced": "… hätte die Erde {earthSize} Durchmesser und wäre {earthDistance} entfernt. Das ist ein maßstabsgetreues Modell im Maßstab 1 : {ratio}: Jede Größe und jeder Abstand ist um denselben Faktor verkleinert. Nimm die Sonne mit nach draußen und lauf es ab.",
+		"sunLabel": "Die Sonne ist",
+		"sunObject": {
+			"orange": "eine Orange",
+			"football": "ein Fußball",
+			"basketball": "ein Basketball",
+			"exerciseBall": "ein Gymnastikball"
+		},
+		"sunObjectName": {
+			"orange": "Orange",
+			"football": "Fußball",
+			"basketball": "Basketball",
+			"exerciseBall": "Gymnastikball"
+		},
+		"landmarkLabel": "Vergleichen mit",
+		"landmarkOption": {
+			"none": "Nur Meter",
+			"pitch": "Fußballfeld ({length})",
+			"track": "Laufbahn ({length} pro Runde)"
+		},
+		"viewLabel": "Anzeigen als",
+		"view": {
+			"walk": "Weg",
+			"table": "Tabelle"
+		},
+		"print": "Drucken",
+		"open3d": "In 3D im echten Maßstab ansehen",
+		"open3dBody": "{name} in 3D im echten Maßstab ansehen",
+		"summary": "Der ganze Weg bis zum Neptun: {distance}, zu Fuß etwa {time}.",
+		"summary@simple": "Der Weg bis zum Neptun ist {distance} lang. Dafür brauchst du etwa {time}.",
+		"summary@advanced": "Von der Sonne bis zum Neptun: {distance}, bei 4 km/h Gehtempo etwa {time}.",
+		"start": "Start",
+		"sunStop": "Hier ist die Sonne {object} mit {size} Durchmesser. Leg sie an den Start: ans Schultor oder in eine Ecke des Sportplatzes.",
+		"sunStop@simple": "Die Sonne ist {object}. Leg sie an den Start, zum Beispiel ans Schultor.",
+		"sunStop@advanced": "Hier ist die Sonne {object} mit {size} Durchmesser (in Wirklichkeit {trueSize}). Leg sie an den Start: ans Schultor oder in eine Ecke des Sportplatzes.",
+		"leg": "Geh {distance} weiter",
+		"size": "{size} Durchmesser – etwa so groß wie {thing}",
+		"size@simple": "Etwa so groß wie {thing}",
+		"size@advanced": "{size} Durchmesser (in Wirklichkeit {trueSize}) – etwa so groß wie {thing}",
+		"distance": "{distance} von der Sonne",
+		"distance@advanced": "{distance} von der Sonne (in Wirklichkeit {trueDistance})",
+		"moon": "{name}: {size}, etwa so groß wie {thing}, {distance} vom Planeten",
+		"moon@simple": "{name}: so groß wie {thing}, {distance} vom Planeten",
+		"moon@advanced": "{name}: {size} (in Wirklichkeit {trueSize}), {distance} vom Planeten (in Wirklichkeit {trueDistance})",
+		"landmarkCount": {
+			"pitch": "{count, plural, one {# Fußballfeld} other {# Fußballfelder}}",
+			"track": "{count, plural, one {# Runde auf der Laufbahn} other {# Runden auf der Laufbahn}}"
+		},
+		"landmarkMarker": {
+			"pitch": "Ende eines Fußballfelds: {length} von der Sonne",
+			"track": "Eine Runde auf der Laufbahn: {length} von der Sonne"
+		},
+		"starTitle": "Der nächste Stern",
+		"star": "Und jetzt weiter. In diesem Maßstab ist der nächste Stern nach der Sonne, Proxima Centauri, {distance} entfernt – mit dem Flugzeug etwa {flight}. Dein ganzer Weg bis zum Neptun passt {times}-mal hinein.",
+		"star@simple": "Und der nächste Stern? In diesem Maßstab ist er {distance} weit weg! Sogar ein Flugzeug bräuchte etwa {flight} bis dorthin.",
+		"star@advanced": "Proxima Centauri, 4,25 Lichtjahre entfernt, läge {distance} vom Start: {times}-mal der Weg bis zum Neptun, etwa {flight} Flug bei 900 km/h. Der kleine Rote Zwerg hätte {size} Durchmesser, etwa so groß wie {thing}.",
+		"starLesson": "Das Sonnensystem, das du gerade abgelaufen bist, ist eine winzige Insel in einem Ozean aus leerem Raum.",
+		"starLesson@simple": "Der Weltraum ist wirklich, wirklich leer!",
+		"starLesson@advanced": "Zwischen den Sternen ist fast nichts: Der nächste Nachbar der Sonne ist Tausende Sonnensystem-Wege entfernt.",
+		"lineUp": "Im Weltraum stehen die Planeten nie so in einer Reihe. Jeder kreist auf seiner eigenen Bahn um die Sonne, darum sind sie rundherum verteilt. Der Weg zeigt, wie weit jeder im Mittel von der Sonne entfernt ist.",
+		"lineUp@simple": "In Wirklichkeit stehen die Planeten nie so in einer Reihe. Jeder fliegt auf seiner eigenen Bahn um die Sonne.",
+		"lineUp@advanced": "Die Planeten stehen nie in einer Linie: Der Weg setzt jeden in seinen mittleren Abstand zur Sonne (die große Halbachse seiner Bahn). Größen sind mittlere Durchmesser, aus denselben Daten wie das 3D-Modell. Proxima Centauri: 4,2465 Lichtjahre (Gaia DR3).",
+		"tableCaption": "Wenn die Sonne {object} wäre: das Sonnensystem im Maßstab 1 : {ratio}",
+		"column": {
+			"stop": "Nr.",
+			"body": "Himmelskörper",
+			"size": "Größe",
+			"thing": "Etwa so groß wie",
+			"distance": "Abstand zur Sonne",
+			"leg": "Ab letzter Station",
+			"done": "Erledigt"
+		},
+		"landmarkColumn": {
+			"pitch": "Fußballfelder",
+			"track": "Runden"
+		},
+		"moonDistance": "{distance} vom Planeten",
+		"printNote": "Die Kreise sind in ihrer Größe im Modell gedruckt.",
+		"thing": {
+			"fineSand": "ein feines Sandkorn",
+			"salt": "ein Salzkorn",
+			"sugar": "ein Zuckerkorn",
+			"poppySeed": "ein Mohnkorn",
+			"pinhead": "ein Stecknadelkopf",
+			"peppercorn": "ein Pfefferkorn",
+			"pea": "eine Erbse",
+			"marble": "eine Murmel",
+			"cherry": "eine Kirsche",
+			"walnut": "eine Walnuss",
+			"tableTennisBall": "ein Tischtennisball",
+			"tennisBall": "ein Tennisball",
+			"orange": "eine Orange",
+			"grapefruit": "eine Grapefruit",
+			"melon": "eine kleine Melone",
+			"football": "ein Fußball"
+		},
+		"starName": "Proxima Centauri"
 	}
 }
