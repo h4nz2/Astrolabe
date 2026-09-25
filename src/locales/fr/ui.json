@@ -469,12 +469,11 @@
 				"note@advanced": "Ta masse reste la même partout ; seule l’attraction gravitationnelle change, et avec elle ce qu’indique une balance."
 			},
 			"share": "Enregistrer en image",
-			"shareHint": "Crée une image de tes âges sur cet appareil. Rien n’est envoyé en ligne.",
+			"shareHint": "Crée sur cet appareil une image des planètes à l’écran, avec tes âges en dessous. Rien n’est envoyé en ligne.",
 			"card": {
 				"title": "Quel âge ai-je sur les autres planètes ?",
 				"date": "Le {date}",
 				"distance": "J’ai parcouru {distance} km autour du Soleil.",
-				"footer": "Astrolabe – notre système solaire",
 				"fileName": "mon-age-sur-les-planetes"
 			}
 		},
@@ -797,6 +796,50 @@
 				"join2@simple": "{a} et {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} et {c}"
+			}
+		},
+		"postcard": {
+			"take": "Prendre une photo",
+			"takeHint": "Prends une photo de ce que tu vois, pour l’enregistrer ou la partager",
+			"takeHint@simple": "Prends une photo de ce que tu vois",
+			"title": "Ta carte postale de l’espace",
+			"close": "Fermer",
+			"preview": "Image : {title}",
+			"caption": "Légende",
+			"captionPlaceholder": "Écris quelque chose sur cette image",
+			"names": "Noms sur l’image",
+			"link": "Code QR qui ouvre cette vue",
+			"link@simple": "Code pour ouvrir cette vue",
+			"download": "Enregistrer l’image",
+			"copy": "Copier l’image",
+			"share": "Partager…",
+			"copyLink": "Copier le lien",
+			"copied": "Image copiée. Tu peux la coller n’importe où.",
+			"linkCopied": "Lien copié.",
+			"copyFailed": "Ce navigateur ne permet pas de copier. Enregistre plutôt l’image.",
+			"shareFailed": "Le partage n’a pas fonctionné. Enregistre plutôt l’image.",
+			"privacy": "L’image est créée sur cet appareil. Rien n’est envoyé en ligne.",
+			"privacy@simple": "L’image est faite ici, sur ton appareil. Rien n’est envoyé nulle part.",
+			"privacyBirthday": "La date n’y figure pas, pour que ton anniversaire reste privé.",
+			"overview": "Notre système solaire",
+			"overviewCaption": "Le Soleil et ses huit planètes",
+			"birthdayCaption": "Là où étaient les planètes le jour de ma naissance",
+			"scan": "Scanne pour ouvrir cette vue",
+			"scan@simple": "Scanne-moi pour explorer toi-même",
+			"compareTitle": "{a} et {b} côte à côte",
+			"compareScale": "Tailles relatives réelles : tous les corps sont dessinés à la même échelle.",
+			"scaleNote": {
+				"trueScale": "Échelle réelle : vraies tailles et vraies distances.",
+				"trueScale@simple": "Ici, tout est aussi grand et aussi éloigné qu’en vrai.",
+				"textbook": "Pas à l’échelle : les planètes sont dessinées bien plus proches les unes des autres qu’en réalité.",
+				"textbook@simple": "Pas comme en vrai : en réalité, les planètes sont bien plus éloignées les unes des autres.",
+				"textbook@advanced": "Pas à l’échelle : tailles justes entre elles, distances comprimées.",
+				"bigPlanets": "Pas à l’échelle : les corps sont dessinés bien plus grands qu’en réalité.",
+				"bigPlanets@simple": "Pas comme en vrai : en réalité, les planètes sont bien plus petites.",
+				"bigPlanets@advanced": "Pas à l’échelle : distances réelles, tailles exagérées.",
+				"everythingVisible": "Pas à l’échelle : les corps sont dessinés plus grands et plus proches qu’en réalité.",
+				"everythingVisible@simple": "Pas comme en vrai : en réalité, les planètes sont bien plus petites et bien plus éloignées.",
+				"everythingVisible@advanced": "Pas à l’échelle : tailles exagérées et distances comprimées."
 			}
 		}
 	},

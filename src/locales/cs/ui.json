@@ -469,12 +469,11 @@
 				"note@advanced": "Tvoje hmotnost je všude stejná; mění se jen tíhová síla, a s ní i to, co ukáže váha."
 			},
 			"share": "Uložit jako obrázek",
-			"shareHint": "Vytvoří na tomto zařízení obrázek s tvým věkem. Nic se nenahrává.",
+			"shareHint": "Vytvoří na tomto zařízení obrázek planet na obrazovce s tvým věkem pod ním. Nic se nenahrává.",
 			"card": {
 				"title": "Kolik je mi let na jiných planetách?",
 				"date": "Dne {date}",
 				"distance": "Moje cesta kolem Slunce: už {distance} km.",
-				"footer": "Astrolabe – naše sluneční soustava",
 				"fileName": "muj-vek-na-planetach"
 			}
 		},
@@ -797,6 +796,50 @@
 				"join2@simple": "{a} a {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} a {c}"
+			}
+		},
+		"postcard": {
+			"take": "Vyfotit",
+			"takeHint": "Udělej obrázek toho, co vidíš – k uložení nebo sdílení",
+			"takeHint@simple": "Udělej obrázek toho, co vidíš",
+			"title": "Tvoje pohlednice z vesmíru",
+			"close": "Zavřít",
+			"preview": "Obrázek: {title}",
+			"caption": "Popisek",
+			"captionPlaceholder": "Napiš něco k tomuto obrázku",
+			"names": "Jména v obrázku",
+			"link": "QR kód, který otevře tento pohled",
+			"link@simple": "Kód, který otevře tento pohled",
+			"download": "Uložit obrázek",
+			"copy": "Kopírovat obrázek",
+			"share": "Sdílet…",
+			"copyLink": "Kopírovat odkaz",
+			"copied": "Obrázek zkopírován. Můžeš ho kamkoli vložit.",
+			"linkCopied": "Odkaz zkopírován.",
+			"copyFailed": "Tento prohlížeč kopírování nedovolil. Obrázek raději ulož.",
+			"shareFailed": "Sdílení se nepovedlo. Obrázek raději ulož.",
+			"privacy": "Obrázek vzniká na tomto zařízení. Nic se nenahrává.",
+			"privacy@simple": "Obrázek vzniká přímo tady ve tvém zařízení. Nikam se nic neposílá.",
+			"privacyBirthday": "Datum tam schválně chybí, aby tvoje narozeniny zůstaly soukromé.",
+			"overview": "Naše sluneční soustava",
+			"overviewCaption": "Slunce a jeho osm planet",
+			"birthdayCaption": "Kde byly planety v den mého narození",
+			"scan": "Naskenuj a otevři tento pohled",
+			"scan@simple": "Naskenuj mě a podívej se na to",
+			"compareTitle": "{a} a {b} vedle sebe",
+			"compareScale": "Skutečné poměry velikostí: všechna tělesa jsou nakreslena ve stejném měřítku.",
+			"scaleNote": {
+				"trueScale": "Skutečné měřítko: skutečné velikosti i vzdálenosti.",
+				"trueScale@simple": "Všechno je tu tak velké a tak daleko od sebe jako ve skutečnosti.",
+				"textbook": "Není v měřítku: planety jsou nakresleny mnohem blíž k sobě, než ve skutečnosti jsou.",
+				"textbook@simple": "Není to jako ve skutečnosti: planety jsou od sebe mnohem dál.",
+				"textbook@advanced": "Není v měřítku: velikosti ve správném poměru, vzdálenosti zhuštěné.",
+				"bigPlanets": "Není v měřítku: tělesa jsou nakreslena mnohem větší, než jsou.",
+				"bigPlanets@simple": "Není to jako ve skutečnosti: planety jsou ve skutečnosti mnohem menší.",
+				"bigPlanets@advanced": "Není v měřítku: vzdálenosti skutečné, velikosti přehnané.",
+				"everythingVisible": "Není v měřítku: tělesa jsou nakreslena větší a blíž k sobě, než ve skutečnosti jsou.",
+				"everythingVisible@simple": "Není to jako ve skutečnosti: planety jsou mnohem menší a mnohem dál od sebe.",
+				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné."
 			}
 		}
 	},
