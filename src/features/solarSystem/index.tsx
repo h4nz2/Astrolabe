@@ -15,6 +15,8 @@ import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
 import Scene from "./scene/Scene"
+import SoundControl from "./sound/SoundControl"
+import SoundDirector from "./sound/SoundDirector"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
 import BodyHighlight from "./ui/BodyHighlight"
@@ -72,6 +74,7 @@ const SolarSystem = () => {
 	return (
 		<div className={classes.page}>
 			<UrlSync />
+			<SoundDirector />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
@@ -97,6 +100,7 @@ const SolarSystem = () => {
 						<TeacherBar layers={<SceneToggles />}>
 							<SpacecraftMenu />
 							<PostcardButton />
+							<SoundControl />
 							<LanguageMenu />
 						</TeacherBar>
 						<InlineLayers>
