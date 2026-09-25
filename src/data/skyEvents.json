@@ -1,0 +1,251 @@
+[
+	{
+		"id": "solar1999",
+		"group": "solarEclipse",
+		"utc": "1999-08-11T11:03:02Z",
+		"check": { "kind": "solarEclipse", "type": "total" }
+	},
+	{
+		"id": "solar2017",
+		"group": "solarEclipse",
+		"utc": "2017-08-21T18:25:30Z",
+		"check": { "kind": "solarEclipse", "type": "total" }
+	},
+	{
+		"id": "solar2024",
+		"group": "solarEclipse",
+		"utc": "2024-04-08T18:17:19Z",
+		"check": { "kind": "solarEclipse", "type": "total" }
+	},
+	{
+		"id": "solar2026",
+		"group": "solarEclipse",
+		"utc": "2026-08-12T17:45:47Z",
+		"check": { "kind": "solarEclipse", "type": "total" }
+	},
+	{
+		"id": "annular2027",
+		"group": "solarEclipse",
+		"utc": "2027-02-06T15:59:33Z",
+		"check": { "kind": "solarEclipse", "type": "annular" }
+	},
+	{
+		"id": "solar2027",
+		"group": "solarEclipse",
+		"utc": "2027-08-02T10:06:35Z",
+		"check": { "kind": "solarEclipse", "type": "total" }
+	},
+	{
+		"id": "lunar2018",
+		"group": "lunarEclipse",
+		"utc": "2018-07-27T20:21:42Z",
+		"check": { "kind": "lunarEclipse", "type": "total" }
+	},
+	{
+		"id": "lunar2025mar",
+		"group": "lunarEclipse",
+		"utc": "2025-03-14T06:58:42Z",
+		"check": { "kind": "lunarEclipse", "type": "total" }
+	},
+	{
+		"id": "lunar2025sep",
+		"group": "lunarEclipse",
+		"utc": "2025-09-07T18:11:42Z",
+		"check": { "kind": "lunarEclipse", "type": "total" }
+	},
+	{
+		"id": "lunar2026aug",
+		"group": "lunarEclipse",
+		"utc": "2026-08-28T04:12:49Z",
+		"check": { "kind": "lunarEclipse", "type": "partial" }
+	},
+	{
+		"id": "lunar2028dec",
+		"group": "lunarEclipse",
+		"utc": "2028-12-31T16:51:55Z",
+		"check": { "kind": "lunarEclipse", "type": "total" }
+	},
+	{
+		"id": "venusTransit",
+		"group": "transit",
+		"utc": "2012-06-06T01:29:55Z",
+		"check": { "kind": "transit", "body": "venus" }
+	},
+	{
+		"id": "mercury2019",
+		"group": "transit",
+		"utc": "2019-11-11T15:18:53Z",
+		"check": { "kind": "transit", "body": "mercury" }
+	},
+	{
+		"id": "mercury2032",
+		"group": "transit",
+		"utc": "2032-11-13T08:54:15Z",
+		"check": { "kind": "transit", "body": "mercury" }
+	},
+	{
+		"id": "nextVenusTransit",
+		"group": "transit",
+		"utc": "2117-12-11T02:48:05Z",
+		"check": { "kind": "transit", "body": "venus" }
+	},
+	{
+		"id": "greatConjunction",
+		"group": "gathering",
+		"utc": "2020-12-21T18:26:36Z",
+		"check": {
+			"kind": "conjunction",
+			"bodies": ["jupiter", "saturn"],
+			"maxDeg": 0.2
+		}
+	},
+	{
+		"id": "venusJupiter2023",
+		"group": "gathering",
+		"utc": "2023-03-02T05:04:00Z",
+		"check": {
+			"kind": "conjunction",
+			"bodies": ["venus", "jupiter"],
+			"maxDeg": 0.6
+		}
+	},
+	{
+		"id": "parade2025",
+		"group": "gathering",
+		"utc": "2025-02-28T18:00:00Z",
+		"check": {
+			"kind": "gathering",
+			"bodies": [
+				"mercury",
+				"venus",
+				"mars",
+				"jupiter",
+				"saturn",
+				"uranus",
+				"neptune"
+			],
+			"maxSpanDeg": 120
+		}
+	},
+	{
+		"id": "venusMars2027",
+		"group": "gathering",
+		"utc": "2027-11-25T00:40:00Z",
+		"check": {
+			"kind": "conjunction",
+			"bodies": ["venus", "mars"],
+			"maxDeg": 0.4
+		}
+	},
+	{
+		"id": "gathering2040",
+		"group": "gathering",
+		"utc": "2040-09-08T18:00:00Z",
+		"check": {
+			"kind": "gathering",
+			"bodies": ["mercury", "venus", "mars", "jupiter", "saturn"],
+			"maxSpanDeg": 10
+		}
+	},
+	{
+		"id": "marsClosest",
+		"group": "closeApproach",
+		"utc": "2003-08-27T09:50:00Z",
+		"check": {
+			"kind": "closestApproach",
+			"body": "mars",
+			"distanceKm": 55757000
+		}
+	},
+	{
+		"id": "mars2027",
+		"group": "closeApproach",
+		"utc": "2027-02-20T00:11:00Z",
+		"check": {
+			"kind": "closestApproach",
+			"body": "mars",
+			"distanceKm": 101414000
+		}
+	},
+	{
+		"id": "mars2035",
+		"group": "closeApproach",
+		"utc": "2035-09-11T14:17:00Z",
+		"check": {
+			"kind": "closestApproach",
+			"body": "mars",
+			"distanceKm": 56906000
+		}
+	},
+	{
+		"id": "ioShadow2027",
+		"group": "shadowsRings",
+		"utc": "2027-01-21T14:47:00Z",
+		"check": { "kind": "moonShadow", "moon": "io" }
+	},
+	{
+		"id": "saturnEdgeOn2025",
+		"group": "shadowsRings",
+		"utc": "2025-03-23T14:48:00Z",
+		"check": { "kind": "ringPlaneCrossing", "body": "saturn" }
+	},
+	{
+		"id": "saturnEdgeOn2038",
+		"group": "shadowsRings",
+		"utc": "2038-10-15T14:56:00Z",
+		"check": { "kind": "ringPlaneCrossing", "body": "saturn" }
+	},
+	{
+		"id": "galileoMoons",
+		"group": "history",
+		"utc": "1610-01-07T18:00:00Z",
+		"check": { "kind": "visible", "body": "jupiter", "minElongationDeg": 90 },
+		"space": { "body": "jupiter" },
+		"earth": { "body": "jupiter", "fovDeg": 0.4 }
+	},
+	{
+		"id": "uranusFound",
+		"group": "history",
+		"utc": "1781-03-13T22:00:00Z",
+		"check": { "kind": "visible", "body": "uranus", "minElongationDeg": 60 },
+		"space": { "body": "uranus" },
+		"earth": { "body": "uranus", "fovDeg": 0.012 }
+	},
+	{
+		"id": "neptuneFound",
+		"group": "history",
+		"utc": "1846-09-23T22:00:00Z",
+		"check": { "kind": "visible", "body": "neptune", "minElongationDeg": 90 },
+		"space": { "body": "neptune" },
+		"earth": { "body": "neptune", "fovDeg": 0.008 }
+	},
+	{
+		"id": "sputnik",
+		"group": "history",
+		"utc": "1957-10-04T19:28:00Z",
+		"check": { "kind": "moment" },
+		"space": { "body": "earth" }
+	},
+	{
+		"id": "moonLanding",
+		"group": "history",
+		"utc": "1969-07-20T20:17:00Z",
+		"check": { "kind": "moment" },
+		"space": { "body": "moon" },
+		"earth": { "body": "moon", "fovDeg": 1 }
+	},
+	{
+		"id": "voyagerLaunch",
+		"group": "history",
+		"utc": "1977-08-20T14:29:00Z",
+		"check": { "kind": "moment" },
+		"space": { "fitAu": 32, "craft": "voyager2" }
+	},
+	{
+		"id": "voyagerNeptune",
+		"group": "history",
+		"utc": "1989-08-25T03:56:00Z",
+		"check": { "kind": "moment" },
+		"space": { "body": "neptune", "craft": "voyager2" }
+	}
+]
