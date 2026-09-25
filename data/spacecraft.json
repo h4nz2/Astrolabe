@@ -1,5 +1,5 @@
 {
-	"$comment": "Curated spacecraft catalogue (#35), the input of `pnpm build:spacecraft` (scripts/build-spacecraft.ts), which adds the trajectories from JPL Horizons and writes src/data/spacecraft.json. Times are UTC. `horizonsId` is the Horizons target id; `dataFrom`/`dataTo` stay inside the range Horizons covers. `end` is null while the mission is operating. `centres` force the positions to be kept relative to a planet for a time range (JWST lives around Sun-Earth L2, at the edge of Earth's Hill sphere). `orbits` are the phases spent in orbit around a planet: the app draws them as a track around the planet instead of along the cruise path. Events with a date after `asOf` are plans, not history.",
+	"$comment": "Curated spacecraft catalogue (#35), the input of `pnpm build:spacecraft` (scripts/build-spacecraft.ts), which adds the trajectories from JPL Horizons and writes src/data/spacecraft.json. Times are UTC. `horizonsId` is the Horizons target id; `dataFrom`/`dataTo` stay inside the range Horizons covers. `end` is null while the mission is operating. `centres` force the positions to be kept relative to a planet for a time range (JWST lives around Sun-Earth L2, at the edge of Earth's Hill sphere). `orbits` are the phases spent around a planet (in orbit, or at Sun-Earth L2 for JWST): the app draws them as a track around where the planet is now instead of along the cruise path. Events with a date after `asOf` are plans, not history.",
 	"asOf": "2026-09-25",
 	"craft": [
 		{
@@ -157,7 +157,9 @@
 					"to": "2031-09-20T00:00Z"
 				}
 			],
-			"orbits": []
+			"orbits": [
+				{ "center": "earth", "from": "2021-12-25T13:01Z", "trackDays": 30 }
+			]
 		},
 		{
 			"id": "juno",

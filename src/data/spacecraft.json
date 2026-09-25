@@ -316,7 +316,13 @@
 					"kind": "firstImages"
 				}
 			],
-			"orbits": []
+			"orbits": [
+				{
+					"center": "earth",
+					"from": "2021-12-25T13:01Z",
+					"trackDays": 30
+				}
+			]
 		},
 		{
 			"id": "juno",

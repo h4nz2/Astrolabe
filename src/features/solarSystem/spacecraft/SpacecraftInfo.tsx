@@ -221,11 +221,7 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 				</p>
 			)}
 			{known && facts.predicted && (
-				<p className={classes.note}>
-					{t("solarSystem.spacecraft.predicted", {
-						date: day(`${spacecraftAsOf}T00:00Z`),
-					})}
-				</p>
+				<p className={classes.note}>{t("solarSystem.spacecraft.predicted")}</p>
 			)}
 			<Button
 				size="compact-sm"

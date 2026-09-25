@@ -6,14 +6,11 @@
  * active scale only for where the camera should go.
  */
 import { bodies, bodyById, type Body } from "@/data"
-import {
-	spacecraftAsOf,
-	spacecraftById,
-	type Spacecraft,
-} from "@/data/spacecraft"
+import { spacecraftById, type Spacecraft } from "@/data/spacecraft"
 import {
 	TRUE_SCALE,
 	buildIndex,
+	dateToJD,
 	computePositions,
 	rootIndexOf,
 	toUnits,
@@ -46,7 +43,7 @@ export interface CraftFacts {
 	phase: CraftPhase
 	/** Position known (inside the data range). */
 	available: boolean
-	/** Past the day the data was compiled: a prediction. */
+	/** A date in the future (after the wall clock): the position is a prediction. */
 	predicted: boolean
 	sunDistanceKm: number
 	earthDistanceKm: number
@@ -80,7 +77,7 @@ export function craftFacts(craft: Spacecraft, jd: number): CraftFacts | null {
 	return {
 		phase: craftPhase(craft, jd),
 		available: state.available,
-		predicted: jd > isoToJD(`${spacecraftAsOf}T00:00Z`),
+		predicted: jd > dateToJD(new Date()) + 1,
 		sunDistanceKm: distanceKm(state.trueKm, at(rootIndex)),
 		earthDistanceKm: distanceKm(state.trueKm, at(earthIndex)),
 		signalSeconds: lightTimeSeconds(state.trueKm, at(earthIndex)),
