@@ -169,3 +169,27 @@ test("speaks German", async ({ page }) => {
 	).toBeVisible()
 	await expect(german).toContainText("Nichts wird hochgeladen")
 })
+
+test("works from the comparison: the pair at true relative size with its facts", async ({
+	page,
+}) => {
+	await page.goto("/compare?bodies=earth,jupiter&t=2461308.5")
+	await expect(page.getByTestId("compare-stage")).toBeVisible()
+	await page.getByRole("button", { name: "Take a picture" }).click()
+	await expect(dialog(page)).toBeVisible({ timeout: 20_000 })
+	await expect(page.getByTestId("postcard-image")).toBeVisible({
+		timeout: 20_000,
+	})
+	// the size comparison is the caption
+	await expect(
+		dialog(page).getByRole("textbox", { name: "Caption" }),
+	).toHaveValue(/Jupiter/)
+	const stats = await pictureStats(page)
+	expect(stats.width).toBeGreaterThan(1920)
+	expect(stats.bright).toBeGreaterThan(0.01)
+	const download = page.waitForEvent("download")
+	await dialog(page).getByRole("button", { name: "Save picture" }).click()
+	expect((await download).suggestedFilename()).toBe(
+		"astrolabe-earth-jupiter.png",
+	)
+})

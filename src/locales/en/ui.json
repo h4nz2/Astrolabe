@@ -756,7 +756,9 @@
 				"everythingVisible": "Not to scale: the bodies are drawn bigger and closer together than they are.",
 				"everythingVisible@simple": "Not like real life: the planets are really much smaller and much farther apart.",
 				"everythingVisible@advanced": "Not to scale: sizes exaggerated and distances compressed."
-			}
+			},
+			"compareTitle": "{a} and {b} side by side",
+			"compareScale": "True relative sizes: every body is drawn at the same scale."
 		}
 	},
 	"solarWalk": {

@@ -756,7 +756,9 @@
 				"everythingVisible": "Nicht maßstabsgetreu: Die Himmelskörper sind größer und näher beieinander gezeichnet, als sie sind.",
 				"everythingVisible@simple": "Nicht wie in echt: In Wirklichkeit sind die Planeten viel kleiner und viel weiter voneinander entfernt.",
 				"everythingVisible@advanced": "Nicht maßstabsgetreu: Größen übertrieben, Abstände gestaucht."
-			}
+			},
+			"compareTitle": "{a} und {b} im Vergleich",
+			"compareScale": "Echte Größenverhältnisse: Alle Himmelskörper sind im gleichen Maßstab gezeichnet."
 		}
 	},
 	"solarWalk": {

@@ -769,8 +769,10 @@ handed to the visitor. Everything happens on the device: no upload, no server, n
   overview button's Escape ignores keys inside a modal dialog (`isInModalDialog` in `ui/keyboard.ts`).
 - **For other features:** `takePostcard(extra)` with a `PostcardExtra` (`title`, `caption`, `date` (null: none),
   `rows` of `{ id, label, value, color? }`, `note`, `fileName`) stamps a feature's own facts under the view; the
-  birthday panel is the worked example. A page without the 3D scene (e.g. a DOM comparison) can render its own
-  `SceneShot` (`image` canvas, `ratio`, `labels`) and call `usePostcardStore.getState().show(...)` directly.
+  birthday panel is the worked example; `facts` (sentences) and `scaleNote` (a page with a scale of its own) too. A page
+  without the 3D scene draws its own `SceneShot` (`image` canvas, `ratio`, `labels`), calls
+  `usePostcardStore.getState().show(...)` and renders `<PostcardButton onTake>` and `<PostcardSlot />`: the
+  comparison is the worked example (`features/compare/picture.ts`).
 
 ## Comparison (`features/compare`, route `/compare`; #24)
 
@@ -798,6 +800,9 @@ whole comparison is its link: `/compare?bodies=earth,jupiter,saturn&t=<jd>` (`se
   `solarDayDays`, `hasNoSurface`, `formatBigNumber` and #16's `roughly`. Sentences are `compare.facts.*` with simple
   and advanced variants; German picks articles and prepositions by `<role>Id` selects. Under the facts, each body's
   first authored comparison (#11).
+- **Postcard** (#33, `picture.ts`): the camera button in the header redraws the stage with Canvas 2D from the same
+  `layoutStage` at 1920 x 1080 (textures, shade, tilt, `ringStops` from `Stage.tsx`, circled tiny bodies; names and
+  sizes as the postcard's labels) and stamps the pair's comparisons under it (see Postcard).
 - **Entry:** the focused body's card (`ui/BodyInfo.tsx`) has "Compare with…" in its header (always in view, also while a
   phone folds the facts); it opens the body with its default partner at the moment on screen (`links.ts`
   `compareSearchFor`: `t` unless the clock shows the present at 1x). "Back" returns through the history, else to

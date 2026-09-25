@@ -52,6 +52,7 @@ export interface PostcardText {
 	caption: string
 	scaleNote: string | null
 	rows: readonly PostcardRow[]
+	facts: readonly string[]
 	note: string | null
 	/** The app's name: where the picture came from. */
 	footer: string
@@ -85,10 +86,13 @@ export function postcardText(
 			body?.tagline ??
 			i18n.t("solarSystem.postcard.overviewCaption"),
 		scaleNote:
-			snapshot.scalePreset === null
-				? null
-				: i18n.t(SCALE_NOTE[snapshot.scalePreset]),
+			extra?.scaleNote !== undefined
+				? extra.scaleNote
+				: snapshot.scalePreset === null
+					? null
+					: i18n.t(SCALE_NOTE[snapshot.scalePreset]),
 		rows: extra?.rows ?? [],
+		facts: extra?.facts ?? [],
 		note: extra?.note ?? null,
 		footer: i18n.t("app.title"),
 		scan: i18n.t("solarSystem.postcard.scan"),

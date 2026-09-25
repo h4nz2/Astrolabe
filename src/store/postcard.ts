@@ -51,7 +51,11 @@ export interface PostcardExtra {
 	/** Replaces the simulation date; null leaves the date out. */
 	date?: string | null
 	rows?: readonly PostcardRow[]
+	/** Sentences worth passing on (a comparison's facts), one short paragraph each. */
+	facts?: readonly string[]
 	note?: string
+	/** Replaces the scale preset's statement (a page with a scale of its own); null leaves it out. */
+	scaleNote?: string | null
 	/** With the ".png" extension. */
 	fileName?: string
 }

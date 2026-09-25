@@ -244,6 +244,13 @@ function drawStamp(
 		})
 		y += Math.ceil(text.rows.length / columns) * cellHeight
 	}
+	if (text.facts.length > 0) {
+		y += 0.3 * u
+		for (const fact of text.facts) {
+			y += 0.25 * u
+			block(fact, 400, 0.8 * u, "#dee2e6", 2, 1.3)
+		}
+	}
 	if (text.note !== null) {
 		y += 0.35 * u
 		block(text.note, 400, 0.75 * u, "#ced4da", 3, 1.3)

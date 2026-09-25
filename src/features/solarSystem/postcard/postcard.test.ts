@@ -86,6 +86,7 @@ describe("what the postcard says", () => {
 		expect(text.fileName).toBe("astrolabe-jupiter-2026-09-25.png")
 		expect(text.rows).toEqual([])
 		expect(text.note).toBeNull()
+		expect(text.facts).toEqual([])
 	})
 
 	it("speaks German, at every reading level", () => {
@@ -124,6 +125,8 @@ describe("what the postcard says", () => {
 					caption: "My birthday sky",
 					rows: [{ id: "mars", label: "Mars", value: "6 years old" }],
 					note: "11.3 billion km",
+					facts: ["Jupiter is 11 times as wide as Earth."],
+					scaleNote: "True relative sizes",
 					fileName: "my-age.png",
 				},
 			}),
@@ -134,6 +137,8 @@ describe("what the postcard says", () => {
 		expect(text.caption).toBe("My birthday sky")
 		expect(text.rows).toHaveLength(1)
 		expect(text.note).toBe("11.3 billion km")
+		expect(text.facts).toEqual(["Jupiter is 11 times as wide as Earth."])
+		expect(text.scaleNote).toBe("True relative sizes")
 		expect(text.fileName).toBe("my-age.png")
 	})
 

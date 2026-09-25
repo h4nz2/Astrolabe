@@ -10,11 +10,16 @@ import { takePostcard } from "./take"
 // the dialog (and the QR encoder behind it) loads with the first picture
 const PostcardDialog = lazy(() => import("./PostcardDialog"))
 
+export interface PostcardButtonProps {
+	/** What the click takes (default: the 3D view, `takePostcard()`). */
+	onTake?: () => void
+}
+
 /**
  * "Take a picture" (#33): one click takes the view as it is on screen, with
  * no HUD, and opens the postcard to save, copy or share it.
  */
-export const PostcardButton = () => {
+export const PostcardButton = ({ onTake }: PostcardButtonProps) => {
 	const { t } = useI18n()
 	const label = t("solarSystem.postcard.take")
 	return (
@@ -25,7 +30,7 @@ export const PostcardButton = () => {
 				size="lg"
 				aria-label={label}
 				aria-haspopup="dialog"
-				onClick={() => takePostcard()}
+				onClick={() => (onTake === undefined ? takePostcard() : onTake())}
 			>
 				<IconCamera size={18} />
 			</ActionIcon>
