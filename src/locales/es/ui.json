@@ -539,6 +539,57 @@
 			},
 			"otherHunts": "Otras búsquedas"
 		},
+		"sound": {
+			"toggle": "Sonido",
+			"hintOff": "El sonido está apagado. Haz clic o pulsa M para activarlo.",
+			"hintOn": "El sonido está activado. Haz clic o pulsa M para silenciarlo.",
+			"settings": "Ajustes de sonido",
+			"on": "Sonido activado",
+			"offNote": "Apagado hasta que lo actives. Todo en la aplicación funciona también sin sonido.",
+			"offNote@simple": "El sonido está apagado hasta que tú lo enciendas. También puedes usarlo todo sin sonido.",
+			"volume": "Volumen",
+			"ambient": "Sonido de fondo",
+			"ambientHint": "Cambia según dónde estés: cálido cerca del Sol, tenue y frío más allá de Neptuno.",
+			"ambientHint@simple": "Cálido cerca del Sol, frío y suave muy lejos.",
+			"cues": "Sonidos de movimiento",
+			"cuesHint": "Un zumbido al volar, un tono suave al llegar o al encontrar algo.",
+			"recordings": "Escucha el espacio",
+			"honest": "El espacio es silencioso: el sonido no puede viajar por el vacío. Estas grabaciones son mediciones reales de ondas de radio y de plasma convertidas en sonido.",
+			"honest@simple": "En el espacio no hay aire, así que no hay sonido. Unas sondas espaciales midieron ondas invisibles y los científicos las convirtieron en sonidos que podemos oír.",
+			"honest@advanced": "El sonido necesita un medio, y el casi vacío del espacio no transmite ondas de presión audibles. Son mediciones de ondas de radio y de plasma (campos eléctricos) captadas por antenas y reproducidas por un altavoz, algunas desplazadas a frecuencias más bajas.",
+			"listenLabel": "Escuchar: {title}",
+			"stopLabel": "Detener: {title}",
+			"credit": "{mission}, {year} · {credit}",
+			"shortcut": "Activar o desactivar el sonido (siempre apagado al abrir la aplicación)",
+			"recording": {
+				"sunRadioBursts": {
+					"title": "Estallidos de radio del Sol",
+					"title@simple": "Los estallidos de radio del Sol",
+					"what": "No es sonido: ondas de radio de una enorme fulguración solar del 28 de octubre de 2003, captadas por la sonda Cassini y bajadas de tono para que podamos oírlas. El silbido que desciende es una ráfaga de electrones que se aleja del Sol a toda velocidad.",
+					"what@simple": "En 2003 hubo una explosión enorme en el Sol. La sonda espacial Cassini captó sus ondas de radio y los científicos las convirtieron en sonido. El silbido que baja es la explosión alejándose del Sol.",
+					"what@advanced": "Estallidos de radio de tipo III de la fulguración X17 del 28 de octubre de 2003, registrados por el instrumento Radio and Plasma Wave Science de Cassini a 8,7 UA del Sol. Los electrones de la fulguración excitan oscilaciones del plasma cuya frecuencia baja a medida que alcanzan plasma más tenue; la grabación está desplazada al rango audible."
+				},
+				"earthChorus": {
+					"title": "El coro del amanecer de la Tierra",
+					"title@simple": "El canto de pájaros de la Tierra",
+					"what": "No es sonido: ondas de radio en los cinturones de radiación que rodean la Tierra, medidas con una antena por el satélite Injun 3. Resulta que vibran a frecuencias que podemos oír y trinan como pájaros al amanecer; de ahí su nombre.",
+					"what@simple": "Alrededor de la Tierra hay ondas invisibles producidas por partículas diminutas y rápidas. Un satélite las midió con una antena y podemos escucharlas como sonido. ¡Trinan como pájaros por la mañana!",
+					"what@advanced": "Coro (modo silbido) en los cinturones de Van Allen: tonos ascendentes generados por electrones que giran en espiral a lo largo del campo magnético terrestre, registrados por Injun 3. Las ondas están en la banda audible, así que la señal de campo eléctrico de la antena se reproduce sin cambios: una onda electromagnética, no de presión."
+				},
+				"jupiterWhistlers": {
+					"title": "Rayos en Júpiter",
+					"what": "No es sonido: ondas de radio de rayos, captadas en 1979 por la antena de la Voyager 1 y reproducidas por un altavoz. Silban hacia abajo porque se estiraron al viajar a lo largo del campo magnético de Júpiter. Fueron la primera señal de tormentas en Júpiter.",
+					"what@simple": "Cuando la Voyager 1 pasó junto a Júpiter, su antena captó ondas de radio de rayos. Convertidas en sonido, silban. ¡Así descubrimos por primera vez que en Júpiter hay tormentas!",
+					"what@advanced": "Silbidos jovianos registrados en 1979 por el instrumento de ondas de plasma de la Voyager 1: los impulsos de los rayos se dispersan a lo largo de líneas de campo magnético cerradas y las frecuencias altas llegan primero, de ahí el tono descendente. La primera prueba (indirecta) de rayos en Júpiter."
+				},
+				"saturnRadio": {
+					"title": "La voz de radio de Saturno",
+					"what": "No es sonido: ondas de radio de las auroras de Saturno, registradas por Cassini en 2003. Son demasiado agudas para oírlas, así que se bajaron 44 veces de tono y se aceleraron: estos 30 segundos son unos 11 minutos en Saturno.",
+					"what@simple": "Saturno tiene auroras, y estas emiten ondas de radio. La sonda Cassini las captó. Los científicos las hicieron más graves y más rápidas para que podamos oírlas. ¡Suenan misteriosas!",
+					"what@advanced": "Radiación kilométrica de Saturno, la emisión de radio de sus auroras, registrada por el RPWS de Cassini durante su aproximación en 2003. Frecuencias divididas por 44 y tiempo comprimido 22 veces (30 s aquí ≈ 11 min). Los tonos que suben y bajan siguen pequeñas fuentes de radio que se desplazan por las líneas de campo aurorales."
+				}
+			}
+		},
 		"frame": {
 			"label": "Punto de vista",
 			"label@simple": "Desde dónde miras",
