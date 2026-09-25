@@ -7,7 +7,7 @@ it, and if it must change, change it in the same change set.
 ## Stack
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
-- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`. Search params are
+- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25). Search params are
   zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
@@ -34,7 +34,8 @@ src/locales/                 translation resources: config.json, <locale>/ui.jso
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, ui/)
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, ui/),
+                             solarWalk/ (the basketball solar system, #25)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -223,6 +224,31 @@ on-screen size (in the overview: the whole drawn planetary system).
   Everything visible, so the switch to true scale stays the lesson.
 - **True scale's navigation aid** is the marker layer (a dot for every body, on by default) plus labels, the focus
   picker and the overview button; there is no extra "find Earth" widget.
+
+### The basketball solar system (`src/features/solarWalk`, route `/solar_walk`; #25)
+
+True scale taken out onto the school field: "if the Sun were a basketball, Earth is a pinhead 26 m away".
+
+- **Not a second model.** `walk.ts` (pure) measures #21's true scale with a new ruler: every length is what
+  the engine draws under `TRUE_SCALE` (`bodyDistortion`), times one factor that makes the Sun's diameter the
+  chosen object's (`SUN_OBJECTS`: orange 8 cm, football 22 cm, basketball 24 cm (default), exercise ball 1 m).
+  `walk.test.ts` checks it against published values (Earth 2.2 mm at 25.8 m, Neptune 776 m, 1 AU = 107.5 Sun
+  diameters, the nearest star 6,900 km) and that every model length is the true km times the same factor.
+- **Stops:** the Sun at the start, the planets by mean distance (semi-major axis) with the leg from the previous
+  stop, their big moons (radius >= 1000 km: the Moon, the Galileans, Titan, Triton) and the nearest star (Proxima
+  Centauri, `NEAREST_STAR`; not a body of the app). Sizes are compared with the nearest everyday thing on a log
+  scale (`THINGS`: typical diameters from a grain of fine sand to a football, never off by more than 1.5x).
+- **Landmarks** (`LANDMARKS`: football pitch 105 m, running-track lap 400 m): distances in landmark lengths and a
+  marker where the first one ends. Teachers pick names, never type numbers.
+- **Text:** `walkText.ts` builds every sentence from `I18n` (tested in en/de at each level); lengths through
+  `lengths.ts` (`formatLength`: mm/cm/m/km, two significant digits below 10, whole numbers up to 999,
+  "149.6 million km" for true values, "1 : 5.8 billion" for the scale).
+- **Views:** the walk (a path of stop cards, the default) and a table (projectable). Printing always prints the
+  table: controls hidden, black on white, a tick column, bodies up to 30 mm drawn at their model size in CSS mm.
+- **URL:** `?sun=<object>&landmark=pitch|track|none&view=walk|table` (`search.ts`, zod only, so the route chunk
+  stays light); defaults are left out.
+- **Links with the 3D model:** the Scale panel shows "Walk it" in True scale; every stop opens
+  `/solar_system?scale=trueScale&focus=<id>`. The hero page has a button.
 
 ## Navigation (`src/store/navigation.ts`, `features/solarSystem/camera`; #10)
 
