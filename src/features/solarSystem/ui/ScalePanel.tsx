@@ -1,5 +1,6 @@
 import { useId } from "react"
-import { SegmentedControl, Text } from "@mantine/core"
+import { Link } from "@tanstack/react-router"
+import { Anchor, SegmentedControl, Text } from "@mantine/core"
 
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
@@ -163,6 +164,11 @@ const ScalePanel = () => {
 							: "solarSystem.scale.markersOff",
 					)}
 				</Text>
+			)}
+			{targetId === "trueScale" && (
+				<Anchor component={Link} to="/solar_walk" className={classes.walk}>
+					{t("solarSystem.scale.walk")}
+				</Anchor>
 			)}
 		</section>
 	)

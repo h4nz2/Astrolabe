@@ -39,7 +39,9 @@
 		"credits": "Mit Liebe gemacht von odi und hrj",
 		"tagline": "Zu den Sternen!",
 		"dictionary": "Lexikon",
-		"solarSystem": "Sonnensystem"
+		"solarSystem": "Sonnensystem",
+		"birthday": "Geburtstag im Weltall",
+		"solarWalk": "Planetenweg"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -185,7 +187,9 @@
 			"markersOn": "Die Punkte markieren nur, wo die Planeten sind: Die Planeten selbst sind zu klein, um sie zu sehen.",
 			"markersOn@simple": "Die Punkte zeigen, wo die Planeten sind. Die Planeten sind zu klein, um sie zu sehen!",
 			"markersOff": "Die Markierungen sind aus: Schalte sie ein, um die Planeten zu finden.",
-			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!"
+			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!",
+			"walk": "Zu klein, um es sich vorzustellen? Lauf es ab: das Sonnensystem mit der Sonne als Basketball.",
+			"walk@simple": "Zu klein zum Sehen? Lauf das Sonnensystem auf dem Sportplatz ab!"
 		},
 		"time": {
 			"play": "Abspielen",
@@ -327,7 +331,8 @@
 			"visit@simple": "Klick drauf und flieg hin",
 			"closer": "Klicken, um wieder nah heranzufliegen",
 			"hint": "Klicke oder tippe auf einen Planeten, um hinzufliegen.",
-			"hint@simple": "Klick oder tipp auf einen Planeten und besuch ihn!"
+			"hint@simple": "Klick oder tipp auf einen Planeten und besuch ihn!",
+			"follow": "Klicken, um den Weg zu verfolgen"
 		},
 		"card": {
 			"dictionary": "Mehr dazu im Lexikon",
@@ -377,6 +382,265 @@
 			"weightSimilar": "Du würdest etwa so viel wiegen wie auf der Erde",
 			"weightLess": "Du würdest nur {percent} % deines Gewichts auf der Erde wiegen",
 			"weightLess@simple": "30 kg auf der Erde wären hier nur {kg} kg"
+		},
+		"birthday": {
+			"open": "Dein Geburtstag",
+			"openHint": "Wie alt bist du auf anderen Planeten?",
+			"title": "Dein Geburtstag im Weltall",
+			"close": "Schließen",
+			"intro": "Wähle den Tag, an dem du geboren bist. Du siehst, wie alt du auf jedem Planeten bist, wo die Planeten an diesem Tag standen und wie weit du schon gereist bist.",
+			"intro@simple": "Wann bist du geboren? Wähle den Tag und finde heraus, wie alt du auf den anderen Planeten bist!",
+			"intro@advanced": "Wähle ein Geburtsdatum. Alter, Tage und Gewichte werden aus Umlaufzeit, Rotation und Oberflächenschwerkraft jeder Welt berechnet.",
+			"calendarHint": "Erst das Jahr, dann den Monat, dann den Tag.",
+			"privacy": "Nichts wird gespeichert oder irgendwohin gesendet. Dein Geburtstag bleibt auf diesem Bildschirm und ist vergessen, sobald du die Seite schließt.",
+			"privacy@simple": "Dein Geburtstag wird nicht gespeichert und nirgendwohin geschickt. Wenn du die Seite schließt, ist er weg.",
+			"privacyLink": "Solange ein Geburtstag eingegeben ist, enthalten Links auf diese Seite kein Datum.",
+			"born": "Geboren am {date}",
+			"change": "Datum ändern",
+			"forget": "Meinen Geburtstag vergessen",
+			"showBirthSky": "Zeig die Planeten an meinem Geburtstag",
+			"showBirthSky@simple": "Zeig den Himmel an meinem Geburtstag",
+			"tabs": {
+				"label": "Vergleichen",
+				"years": "Jahre",
+				"days": "Tage",
+				"weight": "Gewicht"
+			},
+			"distance": "Seit deiner Geburt hat dich die Erde {distance} Kilometer um die Sonne getragen, mit etwa {speed, number} km pro Sekunde. Das sind {trips, plural, one {# Reise} other {# Reisen}} zum Mond und zurück.",
+			"distance@simple": "Seit deiner Geburt bist du {distance} Kilometer um die Sonne gereist – ohne je den Boden zu verlassen! So weit ist es {trips, plural, one {# Mal} other {# Mal}} zum Mond und zurück.",
+			"distance@advanced": "Seit deiner Geburt hat dich die Bahnbewegung der Erde {distance} km um die Sonne getragen, mit im Mittel {speed, number} km/s: {trips, plural, one {# Hin- und Rückflug} other {# Hin- und Rückflüge}} zum Mond.",
+			"years": {
+				"intro": "Ein Jahr ist eine Runde um die Sonne. Dein Geburtstag auf einem anderen Planeten ist, wenn er wieder dort steht, wo er an deinem Geburtstag war.",
+				"intro@simple": "Ein Jahr ist eine Runde um die Sonne. Weit entfernte Planeten brauchen viel länger, darum bist du dort jünger!",
+				"intro@advanced": "Ein Jahr ist die siderische Umlaufzeit: Dein Geburtstag auf einem Planeten ist, wenn er den Punkt seiner Bahn wieder erreicht, an dem er bei deiner Geburt stand.",
+				"age": "{age, plural, =0 {noch nicht 1 Jahr alt} one {# Jahr alt} other {# Jahre alt}}",
+				"exact": "{orbits} Umläufe",
+				"next": "Nächster Geburtstag: {date}",
+				"first": "Erster Geburtstag: {date}",
+				"earthAgeThen": "{age, plural, one {Auf der Erde bist du dann #.} other {Auf der Erde bist du dann #.}}",
+				"go": "{planetId, select, venus {Reise zu deinem nächsten Geburtstag auf der {planet}} earth {Reise zu deinem nächsten Geburtstag auf der {planet}} other {Reise zu deinem nächsten Geburtstag auf dem {planet}}}",
+				"today": "{planetId, select, earth {Alles Gute zum Geburtstag!} venus {Alles Gute zum Geburtstag auf der {planet}!} other {Alles Gute zum Geburtstag auf dem {planet}!}}"
+			},
+			"days": {
+				"intro": "Ein Tag dauert von einem Sonnenaufgang bis zum nächsten. Auf dem Merkur ist ein Tag länger als ein Jahr – dort hattest du mehr Geburtstage als Sonnenaufgänge!",
+				"intro@simple": "Ein Tag dauert von einem Sonnenaufgang bis zum nächsten. Auf manchen Planeten geht die Sonne nach ein paar Stunden wieder auf, auf anderen erst nach Monaten!",
+				"intro@advanced": "Ein Sonnentag (Sonnenaufgang bis Sonnenaufgang) folgt aus siderischer Rotation und Umlauf: 1/Sonnentag = 1/Rotation − 1/Jahr. Die Venus dreht sich rückwärts, darum geht ihre Sonne alle 117 Erdtage auf.",
+				"lived": "{count, plural, one {# Tag erlebt} other {# Tage erlebt}}",
+				"length": "Ein Tag dort: {length}"
+			},
+			"weight": {
+				"intro": "Wähle ein Gewicht auf der Erde und sieh, was eine Waage auf anderen Welten anzeigen würde.",
+				"intro@simple": "Wie schwer wärst du auf anderen Welten? Schieb den Regler!",
+				"slider": "Gewicht auf der Erde",
+				"onEarth": "{kg} kg auf der Erde",
+				"kg": "{kg} kg",
+				"noSurface": "Kein Boden zum Stehen",
+				"noSurfaceNote": "* Kein Boden zum Stehen: Das ist die Anziehung an der Wolkenobergrenze (bei der Sonne an ihrer leuchtenden Oberfläche).",
+				"note": "Du bleibst überall gleich – nur die Anziehung der Welt ändert sich.",
+				"note@simple": "Du wirst nicht größer oder kleiner – die Welt zieht nur stärker oder sanfter an dir!",
+				"note@advanced": "Deine Masse bleibt überall gleich; nur die Schwerkraft ändert sich und damit, was eine Waage anzeigt."
+			},
+			"share": "Als Bild speichern",
+			"shareHint": "Erstellt ein Bild deiner Alter auf diesem Gerät. Nichts wird hochgeladen.",
+			"card": {
+				"title": "Wie alt bin ich auf den anderen Planeten?",
+				"date": "Am {date}",
+				"distance": "Ich bin {distance} km um die Sonne gereist.",
+				"footer": "Astrolabe – unser Sonnensystem",
+				"fileName": "mein-alter-auf-den-planeten"
+			}
+		},
+		"frame": {
+			"label": "Blickwinkel",
+			"label@simple": "Von wo du zuschaust",
+			"menu": "Blickwinkel: {current}",
+			"current": {
+				"sun": "Sonne im Zentrum",
+				"sun@simple": "Sonne in der Mitte",
+				"held": "{bodyId, select, earth {Von der Erde aus gesehen} other {{body} steht still}}",
+				"held@simple": "{bodyId, select, earth {Die Erde steht still} other {{body} steht still}}"
+			},
+			"presets": {
+				"sun": {
+					"title": "Sonne im Zentrum",
+					"title@simple": "Sonne in der Mitte",
+					"hint": "So bewegen sich die Planeten wirklich: um die Sonne.",
+					"hint@simple": "Die Planeten kreisen um die Sonne.",
+					"hint@advanced": "Heliozentrisches Bezugssystem: Jede Bahn ist eine Ellipse um die Sonne."
+				},
+				"planets": {
+					"title": "Von der Erde aus: die Planeten",
+					"title@simple": "Von der Erde aus: Planeten",
+					"hint": "Die Erde festhalten und zusehen, wie Mars eine Schleife rückwärts zieht.",
+					"hint@simple": "Die Erde steht still. Schau, wie Mars rückwärts läuft!",
+					"hint@advanced": "Geozentrisches Bezugssystem: die Oppositionsschleifen, für die einst die Epizykel erfunden wurden."
+				},
+				"moon": {
+					"title": "Von der Erde aus: der Mond",
+					"title@simple": "Von der Erde aus: Mond",
+					"hint": "Die Erde festhalten und die Mondphasen verfolgen.",
+					"hint@simple": "Schau, wie der Mond zu- und abnimmt.",
+					"hint@advanced": "Geozentrisches Bezugssystem: Die Phasen folgen aus dem Winkel zwischen Sonne, Mond und Erde."
+				},
+				"hold": {
+					"title": "{body} festhalten",
+					"title@simple": "{body} anhalten",
+					"hint": "Alles andere bewegt sich darum herum.",
+					"hint@advanced": "Ein nicht rotierendes Bezugssystem mit {body} im Zentrum, die Achsen fest zu den Sternen.",
+					"disabled": "Zuerst einen Planeten oder Mond in die Mitte holen.",
+					"disabled@simple": "Wähle zuerst einen Planeten oder Mond."
+				}
+			},
+			"badge": {
+				"label": "Bezugssystem",
+				"explain": "{bodyId, select, earth {Die Erde} other {{body}}} steht still, alles andere bewegt sich darum herum. Die Linien zeigen die Wege {restarted, select, yes {seit dem Neustart} other {der letzten zwei Jahre}}.",
+				"explain@simple": "{bodyId, select, earth {Die Erde} other {{body}}} steht still, und alles andere bewegt sich darum herum. Die Linien zeigen, wo alles war.",
+				"explain@advanced": "Ein nicht rotierendes Bezugssystem mit {body} im Zentrum, die Achsen fest zu den Sternen. Die Spuren sind die Wege aller Körper relativ zu {body} {restarted, select, yes {seit dem Neustart} other {in den letzten zwei Jahren}}.",
+				"back": "Zurück: Sonne im Zentrum",
+				"back@simple": "Sonne wieder in die Mitte",
+				"restart": "Spuren neu beginnen",
+				"restart@simple": "Linien wegwischen"
+			},
+			"motion": {
+				"prograde": "{body} bewegt sich vorwärts vor den Sternen.",
+				"prograde@simple": "{body} läuft vorwärts.",
+				"prograde@advanced": "{body} ist rechtläufig: {rate} pro Tag nach Osten entlang der Ekliptik.",
+				"stationary": "{body} scheint stillzustehen und gleich umzukehren.",
+				"stationary@simple": "{body} scheint anzuhalten!",
+				"stationary@advanced": "{body} steht nahe einem Stillstandspunkt: Die ekliptikale Länge ändert sich kaum noch.",
+				"retrograde": "{body} scheint rückwärts zu laufen! Das sieht nur so aus: {observerId, select, earth {Die Erde} other {{observer}}} und {body} ziehen gerade aneinander vorbei.",
+				"retrograde@simple": "{body} läuft scheinbar rückwärts! In Wirklichkeit überholen sich {observerId, select, earth {die Erde} other {{observer}}} und {body} gerade, wie Autos auf der Autobahn.",
+				"retrograde@advanced": "{body} ist rückläufig: Von {observerId, select, earth {der Erde} other {{observer}}} aus gesehen nimmt die ekliptikale Länge um {rate} pro Tag ab. Ptolemäus erklärte das mit Epizykeln, Kopernikus mit einer bewegten Erde."
+			},
+			"phase": {
+				"caption": "{bodyId, select, moon {Der Mond} other {{body}}}, {observerId, select, earth {von der Erde} moon {vom Mond} other {von {observer}}} aus gesehen",
+				"status": "{phase} · {fraction, number, ::percent} beleuchtet",
+				"status@simple": "{phase}",
+				"name": {
+					"new": "{bodyId, select, moon {Neumond} other {Neu}}",
+					"waxingCrescent": "Zunehmende Sichel",
+					"waxingCrescent@simple": "Dünn und wachsend",
+					"firstQuarter": "Erstes Viertel",
+					"firstQuarter@simple": "Halb hell, wachsend",
+					"waxingGibbous": "Zunehmend, fast voll",
+					"waxingGibbous@simple": "Fast voll, wachsend",
+					"full": "{bodyId, select, moon {Vollmond} other {Voll}}",
+					"waningGibbous": "Abnehmend, fast voll",
+					"waningGibbous@simple": "Fast voll, schrumpfend",
+					"lastQuarter": "Letztes Viertel",
+					"lastQuarter@simple": "Halb hell, schrumpfend",
+					"waningCrescent": "Abnehmende Sichel",
+					"waningCrescent@simple": "Dünn und schrumpfend"
+				}
+			},
+			"inset": {
+				"title": "Von oberhalb der Sonne",
+				"title@simple": "Von hoch oben gesehen",
+				"label": "{observer} und {body} auf ihren Bahnen um die Sonne, mit der Blicklinie von {observer} zu {body}"
+			}
 		}
+	},
+	"solarWalk": {
+		"back": "3D-Modell",
+		"title": "Wenn die Sonne {object} wäre …",
+		"lead": "… wäre die Erde {earth}, {earthDistance} entfernt. Jede Größe und jeder Abstand auf dieser Seite ist echt, nur alles gleich stark verkleinert, bis es auf einen Sportplatz passt. Nimm die Sonne mit nach draußen und lauf es ab.",
+		"lead@simple": "… wäre die Erde so klein wie {earth} und {earthDistance} weit weg! Nimm die Sonne mit nach draußen und lauf das Sonnensystem ab.",
+		"lead@advanced": "… hätte die Erde {earthSize} Durchmesser und wäre {earthDistance} entfernt. Das ist ein maßstabsgetreues Modell im Maßstab 1 : {ratio}: Jede Größe und jeder Abstand ist um denselben Faktor verkleinert. Nimm die Sonne mit nach draußen und lauf es ab.",
+		"sunLabel": "Die Sonne ist",
+		"sunObject": {
+			"orange": "eine Orange",
+			"football": "ein Fußball",
+			"basketball": "ein Basketball",
+			"exerciseBall": "ein Gymnastikball"
+		},
+		"sunObjectName": {
+			"orange": "Orange",
+			"football": "Fußball",
+			"basketball": "Basketball",
+			"exerciseBall": "Gymnastikball"
+		},
+		"landmarkLabel": "Vergleichen mit",
+		"landmarkOption": {
+			"none": "Nur Meter",
+			"pitch": "Fußballfeld ({length})",
+			"track": "Laufbahn ({length} pro Runde)"
+		},
+		"viewLabel": "Anzeigen als",
+		"view": {
+			"walk": "Weg",
+			"table": "Tabelle"
+		},
+		"print": "Drucken",
+		"open3d": "In 3D im echten Maßstab ansehen",
+		"open3dBody": "{name} in 3D im echten Maßstab ansehen",
+		"summary": "Der ganze Weg bis zum Neptun: {distance}, zu Fuß etwa {time}.",
+		"summary@simple": "Der Weg bis zum Neptun ist {distance} lang. Dafür brauchst du etwa {time}.",
+		"summary@advanced": "Von der Sonne bis zum Neptun: {distance}, bei 4 km/h Gehtempo etwa {time}.",
+		"start": "Start",
+		"sunStop": "Hier ist die Sonne {object} mit {size} Durchmesser. Leg sie an den Start: ans Schultor oder in eine Ecke des Sportplatzes.",
+		"sunStop@simple": "Die Sonne ist {object}. Leg sie an den Start, zum Beispiel ans Schultor.",
+		"sunStop@advanced": "Hier ist die Sonne {object} mit {size} Durchmesser (in Wirklichkeit {trueSize}). Leg sie an den Start: ans Schultor oder in eine Ecke des Sportplatzes.",
+		"leg": "Geh {distance} weiter",
+		"size": "{size} Durchmesser – etwa so groß wie {thing}",
+		"size@simple": "Etwa so groß wie {thing}",
+		"size@advanced": "{size} Durchmesser (in Wirklichkeit {trueSize}) – etwa so groß wie {thing}",
+		"distance": "{distance} von der Sonne",
+		"distance@advanced": "{distance} von der Sonne (in Wirklichkeit {trueDistance})",
+		"moon": "{name}: {size}, etwa so groß wie {thing}, {distance} vom Planeten",
+		"moon@simple": "{name}: so groß wie {thing}, {distance} vom Planeten",
+		"moon@advanced": "{name}: {size} (in Wirklichkeit {trueSize}), {distance} vom Planeten (in Wirklichkeit {trueDistance})",
+		"landmarkCount": {
+			"pitch": "{count, plural, one {# Fußballfeld} other {# Fußballfelder}}",
+			"track": "{count, plural, one {# Runde auf der Laufbahn} other {# Runden auf der Laufbahn}}"
+		},
+		"landmarkMarker": {
+			"pitch": "Ende eines Fußballfelds: {length} von der Sonne",
+			"track": "Eine Runde auf der Laufbahn: {length} von der Sonne"
+		},
+		"starTitle": "Der nächste Stern",
+		"star": "Und jetzt weiter. In diesem Maßstab ist der nächste Stern nach der Sonne, Proxima Centauri, {distance} entfernt – mit dem Flugzeug etwa {flight}. Dein ganzer Weg bis zum Neptun passt {times}-mal hinein.",
+		"star@simple": "Und der nächste Stern? In diesem Maßstab ist er {distance} weit weg! Sogar ein Flugzeug bräuchte etwa {flight} bis dorthin.",
+		"star@advanced": "Proxima Centauri, 4,25 Lichtjahre entfernt, läge {distance} vom Start: {times}-mal der Weg bis zum Neptun, etwa {flight} Flug bei 900 km/h. Der kleine Rote Zwerg hätte {size} Durchmesser, etwa so groß wie {thing}.",
+		"starLesson": "Das Sonnensystem, das du gerade abgelaufen bist, ist eine winzige Insel in einem Ozean aus leerem Raum.",
+		"starLesson@simple": "Der Weltraum ist wirklich, wirklich leer!",
+		"starLesson@advanced": "Zwischen den Sternen ist fast nichts: Der nächste Nachbar der Sonne ist Tausende Sonnensystem-Wege entfernt.",
+		"lineUp": "Im Weltraum stehen die Planeten nie so in einer Reihe. Jeder kreist auf seiner eigenen Bahn um die Sonne, darum sind sie rundherum verteilt. Der Weg zeigt, wie weit jeder im Mittel von der Sonne entfernt ist.",
+		"lineUp@simple": "In Wirklichkeit stehen die Planeten nie so in einer Reihe. Jeder fliegt auf seiner eigenen Bahn um die Sonne.",
+		"lineUp@advanced": "Die Planeten stehen nie in einer Linie: Der Weg setzt jeden in seinen mittleren Abstand zur Sonne (die große Halbachse seiner Bahn). Größen sind mittlere Durchmesser, aus denselben Daten wie das 3D-Modell. Proxima Centauri: 4,2465 Lichtjahre (Gaia DR3).",
+		"tableCaption": "Wenn die Sonne {object} wäre: das Sonnensystem im Maßstab 1 : {ratio}",
+		"column": {
+			"stop": "Nr.",
+			"body": "Himmelskörper",
+			"size": "Größe",
+			"thing": "Etwa so groß wie",
+			"distance": "Abstand zur Sonne",
+			"leg": "Ab letzter Station",
+			"done": "Erledigt"
+		},
+		"landmarkColumn": {
+			"pitch": "Fußballfelder",
+			"track": "Runden"
+		},
+		"moonDistance": "{distance} vom Planeten",
+		"printNote": "Die Kreise sind in ihrer Größe im Modell gedruckt.",
+		"thing": {
+			"fineSand": "ein feines Sandkorn",
+			"salt": "ein Salzkorn",
+			"sugar": "ein Zuckerkorn",
+			"poppySeed": "ein Mohnkorn",
+			"pinhead": "ein Stecknadelkopf",
+			"peppercorn": "ein Pfefferkorn",
+			"pea": "eine Erbse",
+			"marble": "eine Murmel",
+			"cherry": "eine Kirsche",
+			"walnut": "eine Walnuss",
+			"tableTennisBall": "ein Tischtennisball",
+			"tennisBall": "ein Tennisball",
+			"orange": "eine Orange",
+			"grapefruit": "eine Grapefruit",
+			"melon": "eine kleine Melone",
+			"football": "ein Fußball"
+		},
+		"starName": "Proxima Centauri"
 	}
 }

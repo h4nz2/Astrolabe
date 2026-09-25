@@ -29,6 +29,7 @@ import {
 	type LabelState,
 	type Side,
 } from "./layout"
+import { anchoredWeight } from "../frame/frameBlend"
 import {
 	orbitAnchor,
 	type OrbitAnchor,
@@ -208,6 +209,8 @@ export function fillLabelLayout(
 		state.showOrbits &&
 		state.showOrbitLabels &&
 		layout.count >= labelSlotCount(n)
+	const heliocentricFaded =
+		anchoredWeight(frame.frameBlend, frame.topIndex[0]) > 0.5
 	for (let i = 0; orbitNames && i < n; i++) {
 		const slot = orbitSlot(i, n)
 		const body = bodies[i]
@@ -215,6 +218,8 @@ export function fillLabelLayout(
 		visible[slot] = 0
 		if (
 			body.orbit === null ||
+			// orbits around the Sun fade out in an anchored frame (#31)
+			(frame.topIndex[i] === i && heliocentricFaded) ||
 			!isBodyShown(body, state) ||
 			!isLabelCandidate(body, state, focusParentId) ||
 			isMoonOrbitFaded(frame, i, camera, pxPerUnit) ||

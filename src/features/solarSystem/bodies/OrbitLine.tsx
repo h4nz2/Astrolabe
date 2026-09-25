@@ -32,10 +32,10 @@ import { useMemo, useRef } from "react"
 import { extend, useFrame } from "@react-three/fiber"
 import {
 	Line,
-	LineBasicMaterial,
 	PerspectiveCamera,
 	Vector3,
 	type BufferAttribute,
+	type LineBasicMaterial,
 } from "three"
 
 import type { Body } from "@/data"
@@ -55,6 +55,7 @@ import {
 	type Vec3,
 } from "@/sim"
 
+import { anchoredWeight } from "../frame/frameBlend"
 import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame, type SimFrame } from "../scene/simFrame"
 import { moonOrbitFade, orbitScreenRadiusPx } from "./moonOrbitFade"
@@ -375,6 +376,10 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 	const frame = useSimFrame()
 	const lineRef = useRef<Line>(null)
 	const attributeRef = useRef<BufferAttribute>(null)
+	const materialRef = useRef<LineBasicMaterial>(null)
+	// an orbit around the Sun is a path in the Sun-centred frame only; an
+	// anchored frame (#31) fades it out and draws trails instead
+	const aroundRoot = frame.bodies[parentIndex].parentId === null
 	const orbit = body.orbit
 	const buffers = useMemo(
 		() => (orbit === null ? null : createOrbitBuffers(orbit, frame.jd)),
@@ -405,7 +410,17 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		else attribute.addUpdateRange(anchorVertex(buffers.slot) * 3, 3)
 		attribute.needsUpdate = true
 		line.position.copy(shift)
-		if (body.kind === "moon" && camera instanceof PerspectiveCamera) {
+		const material = materialRef.current
+		if (aroundRoot && material !== null) {
+			const fade = 1 - anchoredWeight(frame.frameBlend, parentIndex)
+			material.opacity = ORBIT_OPACITY * fade
+			line.visible = fade > 0.001
+		} else if (
+			body.kind === "moon" &&
+			material !== null &&
+			camera instanceof PerspectiveCamera
+		) {
+			// a moon's orbit fades in with its size on screen (#17)
 			frame.renderPosition(parentIndex, parentScratch)
 			const fade = moonOrbitFade(
 				orbitScreenRadiusPx(
@@ -415,10 +430,8 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 				),
 				body,
 			)
+			material.opacity = ORBIT_OPACITY * fade
 			line.visible = fade > 0
-			if (line.material instanceof LineBasicMaterial) {
-				line.material.opacity = ORBIT_OPACITY * fade
-			}
 		}
 	})
 
@@ -434,6 +447,7 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 				/>
 			</bufferGeometry>
 			<lineBasicMaterial
+				ref={materialRef}
 				color={body.kind === "moon" ? ORBIT_COLORS.moon : ORBIT_COLORS.planet}
 				transparent
 				opacity={ORBIT_OPACITY}

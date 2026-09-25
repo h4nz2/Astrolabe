@@ -1,0 +1,485 @@
+/* The basketball solar system (#25): a scrolling page, a walk on screen, a table on paper. */
+.page {
+	height: 100vh;
+	height: 100dvh;
+	overflow-y: auto;
+	background: #0b0d12;
+	color: var(--mantine-color-gray-1);
+}
+
+.inner {
+	max-width: 52rem;
+	margin: 0 auto;
+	padding: 1rem 1rem 4rem;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	/* room for the language switcher in the corner */
+	padding-right: 4.5rem;
+}
+
+.back {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: var(--mantine-font-size-sm);
+	color: var(--mantine-color-gray-4);
+	align-self: flex-start;
+}
+
+.title {
+	margin: 0.5rem 0 0;
+	font-size: clamp(1.75rem, 5vw, 2.75rem);
+	line-height: 1.1;
+	color: var(--mantine-color-orange-4);
+}
+
+.lead {
+	font-size: var(--mantine-font-size-lg);
+	line-height: 1.45;
+	color: var(--mantine-color-gray-2);
+	max-width: 40rem;
+}
+
+.controls {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin: 1.5rem 0 1rem;
+	padding: 0.75rem;
+	background: rgba(20, 22, 28, 0.9);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--mantine-radius-md);
+}
+
+.control {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	min-width: 0;
+}
+
+.controlLabel {
+	font-size: var(--mantine-font-size-xs);
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--mantine-color-gray-5);
+}
+
+.option {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	line-height: 1.2;
+}
+
+.optionSize {
+	font-size: var(--mantine-font-size-xs);
+	opacity: 0.75;
+}
+
+.actions {
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.buttons {
+	flex-wrap: wrap;
+}
+
+.summary {
+	font-size: var(--mantine-font-size-md);
+	font-weight: 600;
+	color: var(--mantine-color-orange-2);
+	margin-bottom: 1rem;
+}
+
+/* the walk: stops along a path drawn down the left */
+.walk {
+	--path-x: 1rem;
+	position: relative;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.walk::before {
+	content: "";
+	position: absolute;
+	top: 1rem;
+	bottom: 1rem;
+	left: var(--path-x);
+	border-left: 2px dashed rgba(255, 255, 255, 0.25);
+}
+
+.stop {
+	position: relative;
+	padding-left: 2.75rem;
+	margin-bottom: 0.75rem;
+}
+
+/* a stop's place on the path, level with its name */
+.card::before,
+.marker::before {
+	content: "";
+	position: absolute;
+	left: calc(var(--path-x) - 2.75rem - 0.45rem);
+	top: 0.95rem;
+	width: 0.9rem;
+	height: 0.9rem;
+	border-radius: 50%;
+	background: var(--mantine-color-gray-2);
+	box-shadow: 0 0 0 3px #0b0d12;
+}
+
+.stop[data-stop="sun"] .card::before {
+	background: var(--mantine-color-orange-5);
+}
+
+.marker::before {
+	top: 0.55rem;
+	border-radius: 2px;
+	transform: rotate(45deg) scale(0.8);
+	background: var(--mantine-color-teal-5);
+}
+
+.leg {
+	margin: 0 0 0.35rem;
+	font-size: var(--mantine-font-size-sm);
+	font-weight: 600;
+	color: var(--mantine-color-gray-4);
+}
+
+.card {
+	position: relative;
+	background: rgba(20, 22, 28, 0.9);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--mantine-radius-md);
+	padding: 0.6rem 0.9rem 0.75rem;
+}
+
+.sunCard {
+	border-color: rgba(253, 126, 20, 0.45);
+}
+
+.cardHeader {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.cardTitle {
+	margin: 0;
+	flex: 1;
+	font-size: var(--mantine-font-size-xl);
+	line-height: 1.3;
+}
+
+.number,
+.start {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 1.6rem;
+	height: 1.6rem;
+	padding: 0 0.4rem;
+	border-radius: 0.8rem;
+	font-size: var(--mantine-font-size-sm);
+	font-weight: 700;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.start {
+	background: var(--mantine-color-orange-8);
+}
+
+.open3d {
+	display: inline-flex;
+	color: var(--mantine-color-gray-4);
+}
+
+.size {
+	margin: 0.25rem 0 0;
+	font-size: var(--mantine-font-size-lg);
+	color: var(--mantine-color-orange-2);
+}
+
+.line {
+	margin: 0.2rem 0 0;
+	font-size: var(--mantine-font-size-md);
+	color: var(--mantine-color-gray-2);
+}
+
+.landmark {
+	color: var(--mantine-color-teal-3);
+}
+
+.moons {
+	margin: 0.4rem 0 0;
+	padding-left: 1.1rem;
+	font-size: var(--mantine-font-size-sm);
+	color: var(--mantine-color-gray-4);
+}
+
+/* where a whole landmark length is reached, between two stops */
+.markerStop {
+	padding-left: 2.75rem;
+	margin-bottom: 0.75rem;
+}
+
+.marker {
+	position: relative;
+	margin: 0;
+	padding: 0.35rem 0.75rem;
+	border: 1px dashed var(--mantine-color-teal-6);
+	border-radius: var(--mantine-radius-sm);
+	font-size: var(--mantine-font-size-sm);
+	color: var(--mantine-color-teal-3);
+}
+
+/* the shock: the nearest star */
+.star {
+	margin: 2rem 0 1.5rem;
+	padding: 1.25rem;
+	border-radius: var(--mantine-radius-md);
+	background: radial-gradient(
+		ellipse at top,
+		rgba(250, 82, 82, 0.18),
+		rgba(20, 22, 28, 0.9) 70%
+	);
+	border: 1px solid rgba(250, 82, 82, 0.35);
+	text-align: center;
+}
+
+.farLeg {
+	margin: 0;
+	font-size: clamp(2.25rem, 9vw, 4rem);
+	font-weight: 800;
+	line-height: 1.1;
+	color: var(--mantine-color-red-4);
+}
+
+.starTitle {
+	margin: 0.5rem 0 0;
+	font-size: var(--mantine-font-size-xl);
+}
+
+.starText {
+	margin: 0.5rem auto 0;
+	max-width: 36rem;
+	font-size: var(--mantine-font-size-lg);
+	line-height: 1.45;
+}
+
+.starLesson {
+	margin: 0.75rem 0 0;
+	font-weight: 700;
+	color: var(--mantine-color-orange-3);
+}
+
+.note {
+	font-size: var(--mantine-font-size-sm);
+	font-style: italic;
+	color: var(--mantine-color-gray-4);
+}
+
+/* the table view: projectable, and the printed hand-out */
+.tableView {
+	overflow-x: auto;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--mantine-font-size-md);
+}
+
+.caption {
+	caption-side: top;
+	text-align: left;
+	font-weight: 700;
+	padding-bottom: 0.5rem;
+}
+
+.table th,
+.table td {
+	padding: 0.4rem 0.5rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+	text-align: left;
+	vertical-align: middle;
+}
+
+.table thead th {
+	font-size: var(--mantine-font-size-xs);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--mantine-color-gray-5);
+}
+
+.num {
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.sizeCell {
+	white-space: nowrap;
+}
+
+.moonRow th,
+.moonRow td {
+	font-size: var(--mantine-font-size-sm);
+	color: var(--mantine-color-gray-4);
+}
+
+.moonRow th {
+	padding-left: 1.5rem;
+	font-weight: 400;
+}
+
+.starRow th,
+.starRow td {
+	border-top: 2px solid rgba(250, 82, 82, 0.5);
+}
+
+.tick {
+	text-align: center;
+}
+
+.box {
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	border: 1.5px solid currentColor;
+	border-radius: 2px;
+}
+
+/* a body drawn at its model size: exact on paper only, so only printed */
+.modelCircle {
+	display: none;
+	vertical-align: middle;
+	margin-left: 0.5rem;
+	fill: #000;
+}
+
+.screenHidden {
+	display: none;
+}
+
+.printNote {
+	display: none;
+}
+
+@media (max-width: 599px) {
+	.header {
+		padding-right: 0;
+		padding-top: 2.5rem;
+	}
+
+	.table {
+		font-size: var(--mantine-font-size-sm);
+	}
+}
+
+@media print {
+	:global(html),
+	:global(body) {
+		overflow: visible !important;
+		background: #fff !important;
+	}
+
+	.page {
+		height: auto;
+		overflow: visible;
+		background: #fff;
+		color: #000;
+	}
+
+	.inner {
+		max-width: none;
+		padding: 0;
+	}
+
+	.noPrint,
+	.back,
+	.controls,
+	.walk,
+	.farLeg {
+		display: none !important;
+	}
+
+	.header {
+		padding: 0;
+	}
+
+	.title,
+	.lead,
+	.summary,
+	.note,
+	.starLesson,
+	.caption {
+		color: #000;
+	}
+
+	.lead {
+		font-size: 11pt;
+	}
+
+	/* the table is the hand-out, whichever view is on screen */
+	.tableView {
+		display: block !important;
+		overflow: visible;
+	}
+
+	.printNote {
+		display: block;
+		margin: 0.25rem 0 0;
+		font-size: 9pt;
+	}
+
+	.table {
+		font-size: 10pt;
+		color: #000;
+	}
+
+	.table th,
+	.table td,
+	.table thead th,
+	.moonRow th,
+	.moonRow td {
+		border-bottom: 1px solid #999;
+		color: #000;
+	}
+
+	.starRow th,
+	.starRow td {
+		border-top: 2px solid #000;
+	}
+
+	.table tr {
+		break-inside: avoid;
+	}
+
+	.modelCircle {
+		display: inline-block;
+	}
+
+	.star {
+		margin: 1rem 0;
+		padding: 0;
+		background: none;
+		border: none;
+		text-align: left;
+		color: #000;
+		break-inside: avoid;
+	}
+
+	.starText {
+		margin: 0.25rem 0 0;
+		max-width: none;
+		font-size: 11pt;
+	}
+}

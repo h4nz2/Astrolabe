@@ -72,6 +72,19 @@ export interface ViewRequest {
 	durationMs?: number
 	/** A transit profile name (camera/profiles.ts); unknown names use the default. */
 	profile?: string
+	/**
+	 * Frame a region on arrival instead of `shot.distance` (#31): a sphere of
+	 * `km` TRUE km around the view's centre, drawn as a distance from body
+	 * `around` is drawn at the active scale (`"sun"`: a distance between the
+	 * planets; a planet: a distance in its moon system).
+	 */
+	fit?: FitRegion
+}
+
+/** A region the camera frames on arrival, see `ViewRequest.fit`. */
+export interface FitRegion {
+	readonly km: number
+	readonly around: string
 }
 
 /** The transition the camera rig is executing (or about to start). */
@@ -83,6 +96,8 @@ export interface Transition {
 	/** null: automatic (from the length of the move). 0: jump. */
 	readonly durationMs: number | null
 	readonly profile: string | null
+	/** The region to frame on arrival (overrides the shot's distance), if any. */
+	readonly fit: FitRegion | null
 	/**
 	 * The user grabbed the camera mid-transition: the rig stops scripting the
 	 * distance and direction (the user owns them from the current pose) while
@@ -132,6 +147,14 @@ export interface NavigationSlice {
 	 * and the "always show the focus" rule follow it.
 	 */
 	focusId: string
+	/**
+	 * The body the reference frame is anchored to (#31): the Sun (the overview's
+	 * body) for the Sun-centred frame, the default; otherwise a body held still
+	 * while everything else moves around it. It is always either the Sun or
+	 * `focusId`: an anchored frame follows the focus (centring another body
+	 * holds that one still), and the overview or `reset()` return to the Sun.
+	 */
+	frameId: string
 	/** The camera around `view` as it last came to rest (published by the camera rig), or null while unknown. */
 	shot: CameraShot | null
 	transition: Transition | null
@@ -162,6 +185,14 @@ export interface NavigationSlice {
 	reset: () => void
 	/** Finishes the running transition (or the whole sequence) at once. */
 	skip: () => void
+	/**
+	 * Holds body `id` still (#31): anchors the reference frame to it and
+	 * centres the view on it (a request may set the camera and a region to
+	 * fit). Unknown ids are ignored; the Sun releases the frame (`releaseFrame`).
+	 */
+	anchorFrame: (id: string, request?: ViewRequest) => void
+	/** Back to the Sun-centred frame: the overview, keeping the selection. */
+	releaseFrame: (request?: ViewRequest) => void
 
 	/** Camera rig: the transition `id` arrived. Stale ids are ignored. */
 	settle: (id: number, now?: number) => void
@@ -223,6 +254,27 @@ export const viewBodyId = (view: View): string => {
 			return view.anchorId
 	}
 }
+
+/** True while the reference frame is anchored to a body other than the Sun (#31). */
+export const isFrameAnchored = (state: Pick<NavigationSlice, "frameId">) =>
+	state.frameId !== OVERVIEW_BODY_ID
+
+/**
+ * The frame a view gets (#31): the Sun-centred frame stays Sun-centred; an
+ * anchored frame follows the view's centre, and the overview releases it.
+ */
+export const frameForView = (frameId: string, view: View): string =>
+	frameId === OVERVIEW_BODY_ID || view.kind === "overview"
+		? OVERVIEW_BODY_ID
+		: viewBodyId(view)
+
+const sanitizeFit = (fit: FitRegion | undefined): FitRegion | null =>
+	fit !== undefined &&
+	Number.isFinite(fit.km) &&
+	fit.km > 0 &&
+	bodyById.has(fit.around)
+		? { km: fit.km, around: fit.around }
+		: null
 
 export const isValidView = (view: View): boolean => {
 	switch (view.kind) {
@@ -394,6 +446,7 @@ export function createNavigationSlice(
 		const duration = request?.durationMs
 		const shot = sanitizeShot(request?.shot)
 		set({
+			frameId: frameForView(extra.frameId ?? get().frameId, view),
 			...extra,
 			view,
 			focusId: viewBodyId(view),
@@ -408,6 +461,7 @@ export function createNavigationSlice(
 						? Math.max(0, duration)
 						: null,
 				profile: request?.profile ?? null,
+				fit: sanitizeFit(request?.fit),
 				handedOver: false,
 			},
 		})
@@ -439,6 +493,7 @@ export function createNavigationSlice(
 		selectedId: null,
 		view: OVERVIEW,
 		focusId: OVERVIEW_BODY_ID,
+		frameId: OVERVIEW_BODY_ID,
 		shot: null,
 		transition: null,
 		sequence: null,
@@ -474,7 +529,32 @@ export function createNavigationSlice(
 			)
 		},
 		reset: () => {
-			start(OVERVIEW, { shot: HOME_SHOT }, { selectedId: null, sequence: null })
+			start(
+				OVERVIEW,
+				{ shot: HOME_SHOT },
+				{ selectedId: null, sequence: null, frameId: OVERVIEW_BODY_ID },
+			)
+		},
+		anchorFrame: (id, request) => {
+			if (!bodyById.has(id)) return
+			if (id === OVERVIEW_BODY_ID) {
+				get().releaseFrame(request)
+				return
+			}
+			const { view } = get()
+			// a free centre already held with this body stays where it is
+			const target: View =
+				view.kind === "point" && view.anchorId === id
+					? view
+					: { kind: "body", id }
+			start(target, request, { ...interruptSequence(), frameId: id })
+		},
+		releaseFrame: (request) => {
+			start(
+				OVERVIEW,
+				{ ...request, shot: { ...HOME_SHOT, ...request?.shot } },
+				{ ...interruptSequence(), frameId: OVERVIEW_BODY_ID },
+			)
 		},
 		skip: () => {
 			const { sequence, transition } = get()
@@ -486,6 +566,7 @@ export function createNavigationSlice(
 			if (transition === null) return
 			start(transition.view, {
 				shot: transition.shot ?? undefined,
+				fit: transition.fit ?? undefined,
 				durationMs: 0,
 			})
 		},
@@ -537,7 +618,11 @@ export function createNavigationSlice(
 		settleAt: (view) => {
 			if (!isValidView(view) || get().transition !== null) return
 			if (sameView(view, get().view)) return
-			set({ view, focusId: viewBodyId(view) })
+			set({
+				view,
+				focusId: viewBodyId(view),
+				frameId: frameForView(get().frameId, view),
+			})
 		},
 		setPanning: (panning) => {
 			if (get().panning !== panning) set({ panning })
