@@ -6,4 +6,6 @@ This is an open source project, which is not bound by any external requirements,
 
 ## Keep the help page current
 
-The in-app help page (issue #43) lists every user-facing feature with what it is, why it is worth using, how to use it and a "try it" link. Adding, changing or removing a user-facing feature includes updating its help entry, in every locale and reading level, in the same change. A feature is not done until its help entry is. Until the help page exists, note new features in issue #43 instead.
+The in-app help page (issue #43) lists every user-facing feature with what it is, why it is worth using, how to use it and a "try it" link. Adding, changing or removing a user-facing feature includes updating its help entry, in every locale and reading level, in the same change. A feature is not done until its help entry is.
+
+How: add the entry (its group and a "try it" link) to `src/data/help.json` and its words to `src/locales/<locale>/help.json` in every locale, with a simple and a standard version; no code is needed. `pnpm test` (`src/features/help/help.test.ts`) and `e2e/help.spec.ts` check that every entry is complete and every link opens. See `docs/ARCHITECTURE.md`, "Help page".

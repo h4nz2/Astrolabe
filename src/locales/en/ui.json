@@ -1477,5 +1477,40 @@
 				"range@advanced": "Over their orbits the distance ranges from about {minKm} to {maxKm} ({min} to {max} of light time)."
 			}
 		}
+	},
+	"help": {
+		"button": "Help",
+		"buttonHint": "Every feature and how to use it",
+		"more": "More help: the opening, how to move",
+		"title": "Help",
+		"heading": "Everything Astrolabe can do",
+		"heading@simple": "What can I do here?",
+		"lead": "Every feature in one place: what it is, why it is worth trying and how to use it. “Try it” opens the app with the feature ready.",
+		"lead@simple": "Here is everything you can do. Press “Try it” to go and do it!",
+		"back": "Back",
+		"searchLabel": "Search the help",
+		"searchPlaceholder": "Search, for example “eclipse” or “Mars”",
+		"clearSearch": "Clear the search",
+		"results": "{count, plural, =0 {Nothing matches “{query}”. Try another word, or browse the groups below.} one {# feature matches “{query}”.} other {# features match “{query}”.}}",
+		"contents": "On this page",
+		"why": "Why",
+		"how": "How",
+		"try": "Try it",
+		"tryLabel": "Try it: {title}",
+		"controls": {
+			"title": "Controls and shortcuts",
+			"intro": "Mouse, touch and keyboard in the 3D solar system. Keys do nothing while you type in a box.",
+			"action": "To do this",
+			"mouse": "Mouse",
+			"touch": "Touch",
+			"keys": "Keyboard",
+			"none": "–"
+		},
+		"credits": {
+			"title": "Credits and sources",
+			"licence": "Licence: {licence}"
+		},
+		"readingLevel": "You are reading the {level} version. Change the language and reading level in the menu at the top right.",
+		"shortcutsLink": "Every feature and how to use it: open the help page"
 	}
 }

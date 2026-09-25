@@ -1,9 +1,17 @@
 /**
  * The Help menu (#30): the opening is shown once per device, and replayed
  * only deliberately from here; the movement hints can be called back too.
+ * Since #43 it is the chevron beside the Help button (a split button): the
+ * button opens the help page in one click, the chevron offers the rest.
  */
 import { ActionIcon, Menu, Tooltip } from "@mantine/core"
-import { IconHandClick, IconHelp, IconPlayerPlay } from "@tabler/icons-react"
+import { Link } from "@tanstack/react-router"
+import {
+	IconBook,
+	IconChevronDown,
+	IconHandClick,
+	IconPlayerPlay,
+} from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
 
@@ -11,7 +19,7 @@ import { showHints, startIntro } from "./intro"
 
 const IntroMenu = () => {
 	const { t } = useI18n()
-	const label = t("solarSystem.intro.menu")
+	const label = t("help.more")
 	return (
 		<Menu shadow="md" position="bottom-start">
 			<Menu.Target>
@@ -19,15 +27,22 @@ const IntroMenu = () => {
 					<ActionIcon
 						variant="subtle"
 						color="gray"
-						size="lg"
+						size="md"
 						aria-label={label}
 						data-testid="intro-menu"
 					>
-						<IconHelp size={18} />
+						<IconChevronDown size={16} />
 					</ActionIcon>
 				</Tooltip>
 			</Menu.Target>
 			<Menu.Dropdown>
+				<Menu.Item
+					component={Link}
+					to="/help"
+					leftSection={<IconBook size={16} aria-hidden />}
+				>
+					{t("help.buttonHint")}
+				</Menu.Item>
 				<Menu.Item
 					leftSection={<IconPlayerPlay size={16} aria-hidden />}
 					onClick={startIntro}

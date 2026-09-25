@@ -1,5 +1,6 @@
 import { Suspense } from "react"
 
+import { HelpButton } from "@/features/help/HelpButton"
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
 import { isFrameAnchored } from "@/store/navigation"
@@ -15,6 +16,7 @@ import IntroMenu from "./intro/IntroMenu"
 import IntroOverlay from "./intro/IntroOverlay"
 import IntroPulse from "./intro/IntroPulse"
 import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
+import LightLink from "./light/LightLink"
 import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
@@ -26,6 +28,7 @@ import {
 } from "./skyTonight/SkyTonight"
 import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
+import CraftLink from "./spacecraft/CraftLink"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
 import TourCard from "./tours/TourCard"
@@ -119,6 +122,7 @@ const SolarSystem = () => {
 							<SpacecraftMenu />
 							<PostcardButton />
 							<SoundControl />
+							<HelpButton />
 							<IntroMenu />
 							<LanguageMenu />
 						</TeacherBar>
@@ -145,6 +149,8 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<LightLink />
+			<CraftLink />
 			<SkyTonightSlot />
 			<PostcardSlot />
 			<PresentationLayer />

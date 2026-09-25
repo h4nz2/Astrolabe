@@ -1,0 +1,1088 @@
+{
+	"groups": {
+		"lookingAround": {
+			"title": "Looking around",
+			"intro": {
+				"standard": "Find your way around the solar system and see what each world is like.",
+				"simple": "Fly to planets and moons and take a close look."
+			}
+		},
+		"time": {
+			"title": "Time",
+			"intro": {
+				"standard": "Speed time up, run it backwards or jump to any date.",
+				"simple": "Make time go fast, go backwards or jump to another day."
+			}
+		},
+		"sizeDistance": {
+			"title": "Size and distance",
+			"intro": {
+				"standard": "How big the worlds really are, and how far apart.",
+				"simple": "How big is everything, and how far away?"
+			}
+		},
+		"light": {
+			"title": "Light",
+			"intro": {
+				"standard": "Sunlight makes day, night and eclipses, and even light needs time to travel.",
+				"simple": "The Sun makes day and night. And light needs time to get anywhere."
+			}
+		},
+		"comparing": {
+			"title": "Comparing",
+			"intro": {
+				"standard": "Put worlds next to each other at their true sizes.",
+				"simple": "Put two worlds next to each other and see which is bigger."
+			}
+		},
+		"teachers": {
+			"title": "For teachers",
+			"intro": "Show the solar system to a class: projector, keyboard, links and QR codes."
+		},
+		"games": {
+			"title": "Games",
+			"intro": {
+				"standard": "Hunt for worlds, find your age on Mars and take a picture to keep.",
+				"simple": "Play a hunt, find out how old you are on Mars, and take a picture."
+			}
+		}
+	},
+	"entries": {
+		"opening": {
+			"title": {
+				"standard": "The opening",
+				"simple": "The start film"
+			},
+			"what": {
+				"standard": "Fourteen seconds that start close on Earth at its real size and pull back until Earth is smaller than a pixel, then draw everything bigger so you can see it.",
+				"simple": "A short film that flies from Earth out to the whole solar system."
+			},
+			"why": {
+				"standard": "It makes the point of the app before anyone reads a word: space is huge and almost empty. It works without sound.",
+				"simple": "It shows how big and how empty space is."
+			},
+			"how": {
+				"standard": [
+					"It plays once, on the first visit; “Skip intro”, a drag or Esc ends it at any time.",
+					"To see it again, open the arrow next to Help and choose “Play the opening again”.",
+					"“Show how to move around” in the same menu brings back the hints for dragging, zooming and clicking."
+				],
+				"simple": [
+					"It plays the first time you come.",
+					"To watch it again, press the arrow next to Help, then “Play the opening again”."
+				]
+			}
+		},
+		"flyToWorld": {
+			"title": {
+				"standard": "Fly to any world",
+				"simple": "Fly to a planet"
+			},
+			"what": {
+				"standard": "Click a planet, a moon or its name and the camera flies there: it pulls back, crosses the gap and comes down close.",
+				"simple": "Click a planet and you fly there."
+			},
+			"why": {
+				"standard": "The flight shows how far apart the worlds are, and a readout says how long light, a spacecraft and a car would need for the same trip.",
+				"simple": "On the way you see how far it is, and how long a car would need. Years and years!"
+			},
+			"how": {
+				"standard": [
+					"Point at a planet or its name: a ring appears with “Click to fly there”.",
+					"Click or tap it. To land at once, press Skip in the readout.",
+					"On a small dot, click anywhere near it: the target is generous."
+				],
+				"simple": [
+					"Move the mouse over a planet. A ring shows up.",
+					"Click it. Now watch the trip.",
+					"Press “Be there now” if you do not want to wait."
+				]
+			}
+		},
+		"findByName": {
+			"title": {
+				"standard": "Find a world by name",
+				"simple": "Find a world by its name"
+			},
+			"what": {
+				"standard": "The box at the top left lists the Sun, every planet and the moons with a story; type to search.",
+				"simple": "Type the name of a planet or moon, and you go there."
+			},
+			"why": {
+				"standard": "Some worlds are too small to click, and a class can follow along when you name where you are going.",
+				"simple": "Some moons are too tiny to click. The name box finds them."
+			},
+			"how": {
+				"standard": [
+					"Click the box at the top left and type a name, such as “Titan”.",
+					"Pick it from the list: the camera flies there.",
+					"Press ← or → to visit the next world of the same family; the house button or Esc takes you back to the whole system."
+				],
+				"simple": [
+					"Click the box at the top left.",
+					"Type a name, like Titan, and pick it.",
+					"Press Esc to see the whole solar system again."
+				]
+			}
+		},
+		"lookAround": {
+			"title": {
+				"standard": "Turn, zoom and move the view",
+				"simple": "Look around"
+			},
+			"what": {
+				"standard": "Drag to turn around the world you are looking at, zoom in and out, and slide the view anywhere, even into empty space between the planets.",
+				"simple": "Turn the view, zoom in and out, and move to any place, even empty space."
+			},
+			"why": {
+				"standard": "Looking from the side, from above and from far away is how the shapes of orbits and the emptiness of space become real.",
+				"simple": "From far away you see how empty space is."
+			},
+			"how": {
+				"standard": [
+					"Turn: drag with the left mouse button or one finger.",
+					"Zoom: the mouse wheel, a trackpad pinch, or two fingers.",
+					"Move sideways: drag with the right button, Shift + drag, or two fingers together. Let go on a planet and the view centres on it.",
+					"In empty space a badge shows where you are; “Centre on …” or “Back to overview” brings you home."
+				],
+				"simple": [
+					"Drag to turn the view.",
+					"Use the mouse wheel or two fingers to zoom.",
+					"Drag with the right mouse button to slide the view away."
+				]
+			}
+		},
+		"worldCard": {
+			"title": {
+				"standard": "The world’s card",
+				"simple": "Facts about a world"
+			},
+			"what": {
+				"standard": "When you look at a world, a card shows its name and facts you can picture: its size in Earths, how long sunlight takes to get there, how long its year is and what you would weigh there.",
+				"simple": "A card tells you about the world you are looking at: how big it is, how far from the Sun, and what you would weigh there."
+			},
+			"why": {
+				"standard": "Comparisons stick where big numbers do not; the exact number is always right underneath.",
+				"simple": "“Nine Earths wide” is easier to picture than a big number."
+			},
+			"how": {
+				"standard": [
+					"Fly to a world: its card appears.",
+					"“Read more in the dictionary” opens its page, “Compare with…” puts it next to another world.",
+					"On a phone, tap the arrow on the card to open the facts."
+				],
+				"simple": [
+					"Fly to a planet.",
+					"Read its card.",
+					"On a phone, tap the little arrow to see more."
+				]
+			}
+		},
+		"moons": {
+			"title": "Moons",
+			"what": {
+				"standard": "Every planet’s natural moons, from our Moon to the tiny rocks around Saturn; the moons with a story are shown first.",
+				"simple": "Planets have moons. Jupiter and Saturn have lots of them!"
+			},
+			"why": {
+				"standard": "A moon system is a small solar system: Io’s volcanoes, Europa’s hidden ocean and Titan’s thick air all happen around a planet.",
+				"simple": "Some moons have volcanoes, and some have oceans under the ice."
+			},
+			"how": {
+				"standard": [
+					"Fly to a planet: its card lists its best-known moons. Click one to fly there.",
+					"“See the whole moon system” steps back until every orbit fits.",
+					"“Show … smaller moons” or the All moons switch adds the many small ones; a moon’s card has “Read its story”.",
+					"A moon’s card says where its surface comes from: a spacecraft’s map, filled in where no one has ever looked, or painted from what is known."
+				],
+				"simple": [
+					"Fly to Jupiter.",
+					"Click a moon in the card to fly to it.",
+					"Press “See all its moons”."
+				]
+			}
+		},
+		"layers": {
+			"title": {
+				"standard": "Names, orbits and markers",
+				"simple": "Names, paths and dots"
+			},
+			"what": {
+				"standard": "Switches decide what is drawn: orbits, names, moons, all moons, dot markers, the names of the orbits and “Always lit”.",
+				"simple": "Switches turn the names, the paths and the dots on and off."
+			},
+			"why": {
+				"standard": "Hide the names for a quiz, or switch the markers off at true scale to see how invisible the planets really are.",
+				"simple": "Hide the names and ask your friends which planet is which!"
+			},
+			"how": {
+				"standard": [
+					"The switches are in the panel at the top right; on small screens and while presenting they are under “Layers”.",
+					"Press L to hide or show every name at once.",
+					"All moons works only while Moons is on."
+				],
+				"simple": [
+					"Find the switches at the top right.",
+					"Click one to turn it off, and again to turn it back on.",
+					"Press L to hide all the names."
+				]
+			}
+		},
+		"rings": {
+			"title": "Rings",
+			"what": {
+				"standard": "Jupiter, Saturn, Uranus and Neptune have rings, drawn at their real sizes, tilted with their planet and casting real shadows.",
+				"simple": "Four planets have rings: Jupiter, Saturn, Uranus and Neptune."
+			},
+			"why": {
+				"standard": "Saturn’s rings open and close over the years as it goes round the Sun, and Uranus’s stand on end because the planet lies on its side.",
+				"simple": "Saturn’s rings are very thin. From the side they almost disappear!"
+			},
+			"how": {
+				"standard": [
+					"Fly to Saturn and drag down until you look at the rings edge-on.",
+					"Travel a few years in time to see them tip towards the Sun and away.",
+					"Visit Uranus and Neptune for thin, dark rings."
+				],
+				"simple": [
+					"Fly to Saturn.",
+					"Drag to look at the rings from the side.",
+					"Then fly to Uranus. Its rings stand up!"
+				]
+			}
+		},
+		"spin": {
+			"title": {
+				"standard": "Days, tilt and spin",
+				"simple": "Planets spin"
+			},
+			"what": {
+				"standard": "Every world turns on its tilted axis at its true speed: Venus backwards, Uranus on its side, and the Moon always showing us the same face.",
+				"simple": "Every planet spins around. One turn is one day there."
+			},
+			"why": {
+				"standard": "Spin makes day and night, and the tilt makes the seasons; the spin setting slows the turning so you can watch days pass while time runs fast.",
+				"simple": "Spinning makes day and night. Venus even spins the other way!"
+			},
+			"how": {
+				"standard": [
+					"Fly to Earth and make time run faster.",
+					"Under the time controls, choose Spin: Slowed or Slow motion to watch the days, Stopped to hold it still.",
+					"Realistic puts every world back to its true position for the date."
+				],
+				"simple": [
+					"Fly to Earth.",
+					"Make time go faster.",
+					"Choose Slow motion under the time buttons to watch Earth spin."
+				]
+			}
+		},
+		"seenFromEarth": {
+			"title": {
+				"standard": "Seen from Earth",
+				"simple": "Hold Earth still"
+			},
+			"what": {
+				"standard": "Hold Earth still and watch everything else move around it, the way the sky moves for us: Mars loops backwards, the Moon goes through its phases.",
+				"simple": "Keep Earth still and watch how the other planets move from here."
+			},
+			"why": {
+				"standard": "For two thousand years people explained these loops with Earth at the centre; seeing both views side by side shows why the Sun-centred one won.",
+				"simple": "From Earth, Mars sometimes seems to walk backwards. Now you can see why."
+			},
+			"how": {
+				"standard": [
+					"Click “Sun-centred” next to the name box and choose “Seen from Earth: the planets” or “Seen from Earth: the Moon”.",
+					"Watch the badge at the top: it says what the selected world is doing in our sky.",
+					"“Hold … still” works for any world; “Back to Sun-centred” returns."
+				],
+				"simple": [
+					"Click “Sun in the middle” at the top left.",
+					"Choose “From Earth: the planets”.",
+					"Watch Mars make a loop."
+				]
+			}
+		},
+		"skyTonight": {
+			"title": {
+				"standard": "What is in the sky tonight",
+				"simple": "The sky tonight"
+			},
+			"what": {
+				"standard": "Which planets and what Moon you can see tonight from your town: when, in which direction, how high, and whether you need binoculars.",
+				"simple": "Find out which planets you can see from your town tonight, and where to look."
+			},
+			"why": {
+				"standard": "It is the bridge from the screen to the real sky, and “Why can I see it?” shows the Earth, Sun and planet lined up in 3D.",
+				"simple": "Go outside and find Jupiter or Venus with your own eyes!"
+			},
+			"how": {
+				"standard": [
+					"Press “Tonight’s sky” under the name box and choose your town (the app never asks for your location on its own).",
+					"Read the list: what you can see, when, where and with what.",
+					"Press “Why can I see it?” next to a planet to see the reason in space."
+				],
+				"simple": [
+					"Press “Tonight’s sky”.",
+					"Pick your town. Ask a grown-up before using the device’s location.",
+					"Read where to look, then go outside!"
+				]
+			}
+		},
+		"spacecraft": {
+			"title": {
+				"standard": "Real spacecraft",
+				"simple": "Space probes"
+			},
+			"what": {
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST and Europa Clipper, drawn where they really are on the date on screen, with their paths and milestones.",
+				"simple": "Real space probes that people built, shown where they are right now."
+			},
+			"why": {
+				"standard": "Voyager 1 is still sending messages from far beyond the planets: its card shows how long its signal takes to reach us, and why the trip took so many gravity assists.",
+				"simple": "Voyager 1 left Earth in 1977 and is still flying. A message from it takes almost a day to reach us!"
+			},
+			"how": {
+				"standard": [
+					"Open “Spacecraft” (the satellite button at the top right) and pick a craft: the view flies to it.",
+					"Its card shows launch, distance, signal time and milestones; a milestone takes time to that moment.",
+					"“Show every path” draws all their routes at once; the Spacecraft switch hides them."
+				],
+				"simple": [
+					"Press the satellite button at the top right.",
+					"Pick Voyager 1.",
+					"Read how far away it is."
+				]
+			}
+		},
+		"dictionary": {
+			"title": {
+				"standard": "The picture dictionary",
+				"simple": "The planet book"
+			},
+			"what": {
+				"standard": "A page for the Sun and each planet, with a big turning globe, its surface maps and the key numbers explained.",
+				"simple": "A page for the Sun and every planet, with a big spinning picture."
+			},
+			"why": {
+				"standard": "It is the quiet way to read about one world at a time, and to peel off its clouds or see its mountains and oceans.",
+				"simple": "Read about one planet at a time, and see its mountains and clouds."
+			},
+			"how": {
+				"standard": [
+					"Open it from the start page, or with “Read more in the dictionary” on a world’s card.",
+					"Pick a world in the row of dots at the top, then Surface, Terrain, Oceans or Clouds where it has them."
+				],
+				"simple": [
+					"Pick a planet in the row of dots at the top.",
+					"Try Terrain and Clouds to change the picture."
+				]
+			}
+		},
+		"sound": {
+			"title": {
+				"standard": "Sound and the sounds of space",
+				"simple": "Listen to space"
+			},
+			"what": {
+				"standard": "Optional sound: a background hum that changes with where you are, soft tones when you fly and arrive, and real recordings made by spacecraft at the Sun, Earth, Jupiter and Saturn.",
+				"simple": "Turn on sound to hear a hum, a whoosh when you fly, and real recordings from space probes."
+			},
+			"why": {
+				"standard": "Space itself is silent; the recordings are radio and plasma waves measured by antennas and turned into sound, which is a surprise worth hearing. Everything also works with sound off.",
+				"simple": "Space has no air, so it is silent. But space probes measured invisible waves, and we can listen to them!"
+			},
+			"how": {
+				"standard": [
+					"Sound is always off when the app opens. Press the speaker button at the top right, or M, to turn it on.",
+					"The arrow next to it opens the volume, the background hum, the motion sounds and “Listen to space”.",
+					"Fly to the Sun, Earth, Jupiter or Saturn and play its recording from the card; the text says what you hear."
+				],
+				"simple": [
+					"Press the speaker button at the top right.",
+					"Fly to Jupiter.",
+					"Press play on its card and listen."
+				]
+			}
+		},
+		"language": {
+			"title": {
+				"standard": "Language and reading level",
+				"simple": "Your language"
+			},
+			"what": {
+				"standard": "Astrolabe speaks English, German, Czech, Spanish and French, each at three reading levels: simple, standard and advanced.",
+				"simple": "Read everything in your language, and in easy words."
+			},
+			"why": {
+				"standard": "The same view can be explained to a nine-year-old and to a sixth-former, and a shared link keeps both choices.",
+				"simple": "Simple words for younger readers, more detail for older ones."
+			},
+			"how": {
+				"standard": [
+					"Open the language menu at the top right (it shows EN, DE, …).",
+					"Pick a language and a reading level; every page and link follows."
+				],
+				"simple": [
+					"Click the button with EN at the top right.",
+					"Choose your language, and choose Simple."
+				]
+			}
+		},
+		"timeControls": {
+			"title": {
+				"standard": "Play, pause, reverse and speed",
+				"simple": "Make time go faster"
+			},
+			"what": {
+				"standard": "Buttons at the bottom run time forwards or backwards, pause it, and pick a speed from real time to ten years a second.",
+				"simple": "Buttons at the bottom make time go, stop, go faster or go backwards."
+			},
+			"why": {
+				"standard": "At real time nothing seems to move; at a month a second the inner planets race and the outer ones crawl, which is Kepler’s law you can see.",
+				"simple": "Speed time up and see that planets near the Sun go round much faster."
+			},
+			"how": {
+				"standard": [
+					"Press ▶ to play, ⏸ to pause, ◀ to run backwards (Space pauses too).",
+					"Pick a speed in the row next to them, or press + and −.",
+					"“Now” brings you back to the present."
+				],
+				"simple": [
+					"Press the play button at the bottom.",
+					"Pick a faster speed, like 1 month/s.",
+					"Press Space to stop."
+				]
+			}
+		},
+		"timeTravel": {
+			"title": {
+				"standard": "Travel to any date",
+				"simple": "Jump to another day"
+			},
+			"what": {
+				"standard": "Click the date to jump to any day from the year 1000 to 2999, or to a famous moment such as the Moon landing or Mars at its closest.",
+				"simple": "Go to any day, like the day of the Moon landing."
+			},
+			"why": {
+				"standard": "Real events happened where the planets really were; the scene shows the sky on that date, and time stops when you arrive.",
+				"simple": "You can see where the planets were on a special day."
+			},
+			"how": {
+				"standard": [
+					"Click the date and time at the bottom.",
+					"Choose a moment from the list, or “Pick a date” and click the year, the month and the day.",
+					"The planets glide there and time stops; press play to run on."
+				],
+				"simple": [
+					"Click the date at the bottom.",
+					"Pick “Mars at its closest” or pick a day.",
+					"Watch the planets move there."
+				]
+			}
+		},
+		"tooFast": {
+			"title": {
+				"standard": "When time runs too fast",
+				"simple": "Too fast to see"
+			},
+			"what": {
+				"standard": "At very high speeds a warning names the world that moves too fast to follow and how many laps it makes each second.",
+				"simple": "When time goes super fast, a note tells you which planet is going too fast to see."
+			},
+			"why": {
+				"standard": "Like a wagon wheel in a film, a planet that laps more than a sixth of its orbit per picture can seem to stand still or go backwards; the note explains what you really see.",
+				"simple": "A very fast planet can look like it stops or goes backwards. It does not really!"
+			},
+			"how": {
+				"standard": [
+					"Pick the fastest speed, 10 years/s.",
+					"Read the line under the speeds; choose a slower speed or pause and it goes away."
+				],
+				"simple": [
+					"Pick the fastest speed.",
+					"Read the note, then pick a slower speed."
+				]
+			}
+		},
+		"scale": {
+			"title": {
+				"standard": "True scale and the scale presets",
+				"simple": "Real sizes"
+			},
+			"what": {
+				"standard": "The scene normally draws the worlds bigger and closer together so you can see them; one click shows real sizes and real distances.",
+				"simple": "Normally the planets are drawn much too big. One click shows how small they really are."
+			},
+			"why": {
+				"standard": "At true scale the planets vanish into empty space: the most surprising lesson in the app, and a statement always says how far the picture is from the truth.",
+				"simple": "At real size you cannot even see the planets. Space is very, very empty!"
+			},
+			"how": {
+				"standard": [
+					"In the Scale panel at the top right, click True scale, Textbook or Everything visible (or press S).",
+					"The Sizes and Distances switches change one lie at a time.",
+					"At true scale, the dots show where the planets are; turn Markers off to see how little is left."
+				],
+				"simple": [
+					"Find Scale at the top right.",
+					"Click True scale.",
+					"Where did the planets go? The dots show where they are."
+				]
+			}
+		},
+		"howFar": {
+			"title": {
+				"standard": "How far is it?",
+				"simple": "How far away is it?"
+			},
+			"what": {
+				"standard": "Every flight between two worlds shows their true distance on the date on screen, and how long light, the fastest spacecraft and a car would take.",
+				"simple": "When you fly to a planet, you see how far away it is."
+			},
+			"why": {
+				"standard": "A car would need hundreds of years to reach Jupiter: the numbers turn a flight of a few seconds into a sense of real distance.",
+				"simple": "A car would need hundreds of years to drive to Jupiter!"
+			},
+			"how": {
+				"standard": [
+					"Fly from one world to another.",
+					"Read the readout above the time controls while you travel; close it when you arrive.",
+					"The distance changes with the date, because the planets move."
+				],
+				"simple": [
+					"Fly from Earth to another planet.",
+					"Read the box above the time buttons."
+				]
+			}
+		},
+		"solarWalk": {
+			"title": {
+				"standard": "The basketball solar system",
+				"simple": "Walk the solar system"
+			},
+			"what": {
+				"standard": "If the Sun were a basketball, Earth would be a pinhead 26 metres away: a page that turns the true scale into a walk across the school field.",
+				"simple": "Make the Sun as big as a ball, and see how far you must walk to each planet."
+			},
+			"why": {
+				"standard": "Walking the distances is the one scale lesson a class never forgets, and the table prints on one page.",
+				"simple": "You can really walk it at school! Neptune is very far away."
+			},
+			"how": {
+				"standard": [
+					"Open it from the start page, or with “Walk it” in the Scale panel at true scale.",
+					"Choose what the Sun is (an orange, a football, a basketball, an exercise ball) and a landmark to measure against.",
+					"Switch to Table and Print it to take outside."
+				],
+				"simple": [
+					"Choose a ball for the Sun.",
+					"Read how far to walk to each planet.",
+					"Print the table and walk it outside."
+				]
+			}
+		},
+		"dayNight": {
+			"title": {
+				"standard": "Sunlight, day and night",
+				"simple": "Day and night"
+			},
+			"what": {
+				"standard": "The Sun is the only light: every world has a day side and a night side, with Earth’s city lights in the dark.",
+				"simple": "The Sun lights up one side of every planet. The other side is night."
+			},
+			"why": {
+				"standard": "Seasons, phases and the midnight sun follow from the light alone: look at the Arctic in June.",
+				"simple": "You can see where it is day and where it is night on Earth right now."
+			},
+			"how": {
+				"standard": [
+					"Fly to Earth and turn the camera towards the line between day and night.",
+					"Travel to 21 June and 21 December to compare the poles.",
+					"The Always lit switch lights everything from where you look, to study the surfaces."
+				],
+				"simple": [
+					"Fly to Earth.",
+					"Turn the view to see the night side and its city lights.",
+					"Turn on Always lit to see every side."
+				]
+			}
+		},
+		"eclipses": {
+			"title": "Eclipses",
+			"what": {
+				"standard": "Shadows are real: the Moon’s shadow crosses Earth in a solar eclipse, and the Moon darkens inside Earth’s shadow in a lunar one, on the real dates.",
+				"simple": "Sometimes the Moon hides the Sun, or goes into Earth’s shadow."
+			},
+			"why": {
+				"standard": "Eclipses only happen when the Sun, Earth and Moon line up exactly; watching one from the side shows why they are rare.",
+				"simple": "The Sun, Earth and Moon must be in a perfect line. That is why eclipses are rare."
+			},
+			"how": {
+				"standard": [
+					"Open the link: the Moon inside Earth’s shadow on 14 March 2025.",
+					"Travel to 8 April 2024, fly to Earth and turn to its day side to find the Moon’s small, dark shadow.",
+					"Keep Always lit off, or the shadows disappear."
+				],
+				"simple": [
+					"Open the link and look at the dark Moon.",
+					"Drag to see Earth and the Sun behind it."
+				]
+			}
+		},
+		"lightFlash": {
+			"title": {
+				"standard": "Send a flash of light",
+				"simple": "Race the light"
+			},
+			"what": {
+				"standard": "Send a flash from the Sun or any planet and watch it spread at the real speed of light, ticking off each world as it arrives.",
+				"simple": "Send a flash of light from the Sun and watch it travel to the planets."
+			},
+			"why": {
+				"standard": "Light is the fastest thing there is, yet it needs 8 minutes to reach Earth and over 4 hours to reach Neptune: the size of the solar system in time.",
+				"simple": "Light is super fast, but it still needs 8 minutes to get from the Sun to us!"
+			},
+			"how": {
+				"standard": [
+					"Press “Speed of light” at the top left, then “Send a flash”.",
+					"Pick where it starts; the list shows when it reaches each world.",
+					"Time switches to real time; a faster speed is allowed and the panel still counts true travel time.",
+					"To stop it, press “Stop the flash”, the × on its label or beside the clock on the button, or X. Once it has passed Neptune it fades by itself."
+				],
+				"simple": [
+					"Press “How fast is light?”.",
+					"Press “Send a flash”.",
+					"Watch the circle grow and reach the planets.",
+					"Press “Turn the light off” to stop it."
+				]
+			}
+		},
+		"signalDelay": {
+			"title": {
+				"standard": "Signal delay",
+				"simple": "Calling Mars"
+			},
+			"what": {
+				"standard": "How long a message from Earth takes to reach any world right now, there and back, and how that changes as the planets move.",
+				"simple": "A message to Mars takes minutes to arrive. See how long for each world."
+			},
+			"why": {
+				"standard": "Nobody can steer a Mars rover with a joystick: by the time it hears you, many minutes have passed.",
+				"simple": "That is why you cannot drive a Mars robot like a toy car."
+			},
+			"how": {
+				"standard": [
+					"Open “Speed of light” and choose the “Signal delay” tab.",
+					"Pick a world, or click one in the scene."
+				],
+				"simple": [
+					"Open “How fast is light?”.",
+					"Click “Signal delay” and pick Mars."
+				]
+			}
+		},
+		"fartherOut": {
+			"title": {
+				"standard": "Light from the stars",
+				"simple": "Old starlight"
+			},
+			"what": {
+				"standard": "How long light takes from the nearest star, the centre of our galaxy and the Andromeda galaxy.",
+				"simple": "Light from far stars is very, very old when it gets here."
+			},
+			"why": {
+				"standard": "When you look at a star you see the past: Andromeda’s light set off long before the first modern humans lived.",
+				"simple": "Looking at stars is like looking back in time!"
+			},
+			"how": {
+				"standard": ["Open “Speed of light” and choose the “Farther out” tab."],
+				"simple": ["Open “How fast is light?”.", "Click “Farther out”."]
+			}
+		},
+		"compare": {
+			"title": {
+				"standard": "Side by side",
+				"simple": "Which is bigger?"
+			},
+			"what": {
+				"standard": "Two or more worlds next to each other at their true relative sizes, with plain comparisons: how many fit inside, what you would weigh, how long their days and years are.",
+				"simple": "See two worlds next to each other at their real sizes."
+			},
+			"why": {
+				"standard": "Earth next to the Sun is a dot you have to look for: sizes finally make sense when they share one picture.",
+				"simple": "Next to the Sun, Earth is a tiny dot!"
+			},
+			"how": {
+				"standard": [
+					"On a world’s card, press “Compare with…”.",
+					"Change either world with the pickers, add more with “Add…”, or click one in the row to compare it instead.",
+					"The camera button makes a picture of the comparison."
+				],
+				"simple": [
+					"On a planet’s card, press “Compare with…”.",
+					"Pick another world to compare."
+				]
+			}
+		},
+		"compareIdeas": {
+			"title": {
+				"standard": "Comparison ideas",
+				"simple": "Ready-made comparisons"
+			},
+			"what": {
+				"standard": "Fifteen ready-made comparisons in three groups, Sizes, Moons and Surprises, each opening with the one fact that makes its point: “Earth’s twin”, “Moons bigger than a planet”, “Where would you weigh the most?”.",
+				"simple": "Pick a ready-made comparison, like all eight planets in a row."
+			},
+			"why": {
+				"standard": "Each one starts a class discussion in one click: the link above opens the moons that are bigger than the planet Mercury.",
+				"simple": "Did you know some moons are bigger than a planet?"
+			},
+			"how": {
+				"standard": [
+					"On the comparison page, open Ideas.",
+					"Pick one; its name appears above the facts. Click any world in the row to talk about it."
+				],
+				"simple": ["Press Ideas.", "Pick “All eight planets”."]
+			}
+		},
+		"tours": {
+			"title": {
+				"standard": "Guided tours",
+				"simple": "Tours"
+			},
+			"what": {
+				"standard": "Narrated step-by-step tours: the app moves the camera and sets the date, speed and scale, while a card says what you are looking at. Four are ready: the Grand Tour, how big space really is, how we know the Earth moves, and where there could be life.",
+				"simple": "Let the app show you around, stop by stop, while a card tells you what you see."
+			},
+			"why": {
+				"standard": "A tour turns the sandbox into a ready-made lesson, and the class can still look around at any stop: the tour waits.",
+				"simple": "You do not have to know where to go. And you can look around at every stop!"
+			},
+			"how": {
+				"standard": [
+					"Press “Tours” next to the name box and pick a tour.",
+					"Step with “Next” and “Back” on the card, the arrow keys, or a presenter remote (Page Down / Page Up).",
+					"Look around at any time; “Back to the tour” restores the stop. “Autoplay” moves on by itself, and the link button copies a link to the current stop. Teachers can write their own tours as data (src/data/tours/README.md)."
+				],
+				"simple": [
+					"Press “Tours” at the top left and pick one.",
+					"Read the card, then press “Next” or an arrow key.",
+					"Look around whenever you like, then press “Back to the tour”."
+				]
+			}
+		},
+		"present": {
+			"title": "Projector mode",
+			"what": "Larger text, names and buttons, readable from the back of the room, with the switches folded away.",
+			"why": "A laptop screen on a projector is too small to read; projector mode fixes that with one key.",
+			"how": [
+				"Open Present at the top right and choose “Large text for a projector”, or press P.",
+				"Press F for full screen.",
+				"Everything else keeps working: keys, links and the controls."
+			]
+		},
+		"contrast": {
+			"title": "High contrast",
+			"what": "Stronger colours and outlines for washed-out projectors and bright rooms.",
+			"why": "A pale beamer in daylight hides grey text and faint lines; high contrast keeps everything legible.",
+			"how": [
+				"Open Present and choose “High contrast”, or press C.",
+				"It also switches on by itself when the computer asks for more contrast."
+			]
+		},
+		"presenterKeys": {
+			"title": "Keyboard and presenter remote",
+			"what": "Every step of a lesson has a key, and a presenter remote’s buttons step from planet to planet.",
+			"why": "Stay at the front of the room: 1 to 8 fly to the planets, 0 shows the whole system, S changes the scale, L hides the names.",
+			"how": [
+				"Press ? to see every shortcut.",
+				"Page Down and Page Up (the remote’s buttons) go to the next or previous world, or step through a tour.",
+				"The table of controls below lists them all."
+			]
+		},
+		"hideControls": {
+			"title": "Hide the controls",
+			"what": "Take every button and panel off the screen, so only space is left.",
+			"why": "For looking, for screenshots and for a projector: the class sees the solar system, not the interface.",
+			"how": [
+				"Press H, or open Present and choose “Hide the controls”.",
+				"Press H again, or move the mouse and click “Show the controls”, to bring them back. Keys keep working while hidden."
+			]
+		},
+		"prepareLesson": {
+			"title": "Prepare a lesson",
+			"what": "The address of the page is the lesson: it holds the world, camera, date, speed, scale, layers, language and whether time is paused.",
+			"why": "Set up a view before class, bookmark it, and it opens exactly the same in front of the students.",
+			"how": [
+				"Set up the view, pause time if you want it to open still, and bookmark the page or copy its address.",
+				"In class, open the link; press R (or Home) at any time to go back to exactly that start.",
+				"Press Esc to leave to the whole system."
+			]
+		},
+		"share": {
+			"title": "Share with the class",
+			"what": "A link to exactly what is on screen, with a copy button and a QR code big enough to scan from the back row.",
+			"why": "Students open the same view on their own tablets and explore from there, with no typing.",
+			"how": [
+				"Open Share at the top right.",
+				"Copy the link, or press “Show the QR code to the class”."
+			]
+		},
+		"ownHunt": {
+			"title": "Make your own scavenger hunt",
+			"what": "Pick clues from the whole question bank and turn them into a hunt for your lesson.",
+			"why": "The hunt fits the topic of the day, and a link starts it for every student in your language.",
+			"how": [
+				"Open Scavenger hunt and choose “Make your own hunt”.",
+				"Tick the clues, then Start, or Share to get the link for the class."
+			]
+		},
+		"hunt": {
+			"title": "Scavenger hunt",
+			"what": {
+				"standard": "Clues to solve by finding the right world in the scene and clicking it, with hints when you are stuck and a story when you find it.",
+				"simple": "Read a clue, find the right world, and click it!"
+			},
+			"why": {
+				"standard": "Searching makes you explore: there is no score and no timer, and every wrong guess is a world you just visited.",
+				"simple": "You learn a lot while you look. There is no timer, and no losing."
+			},
+			"how": {
+				"standard": [
+					"Press “Scavenger hunt” and pick a hunt: Easy, Medium or Tricky.",
+					"Read the clue, find the world and click it.",
+					"Stuck? “Need a hint?”, and after the last hint “Show me”."
+				],
+				"simple": [
+					"Press “Scavenger hunt”.",
+					"Pick an easy hunt.",
+					"Read the clue and click the right world."
+				]
+			}
+		},
+		"birthday": {
+			"title": {
+				"standard": "Your birthday in space",
+				"simple": "How old are you on Mars?"
+			},
+			"what": {
+				"standard": "Pick your birth date to see your age on every planet, your next birthday there, the days you have lived and how far Earth has carried you around the Sun.",
+				"simple": "Find out how old you are on other planets, and when your next birthday there is."
+			},
+			"why": {
+				"standard": "A year is one lap around the Sun, so on Mars you are about half your age and on Mercury four times older.",
+				"simple": "A year on Mars is almost two Earth years, so you are younger there!"
+			},
+			"how": {
+				"standard": [
+					"Press “Your birthday” and pick the year, the month and the day.",
+					"The planets fly to the day you were born; ⏭ next to a planet travels to your next birthday there.",
+					"Your date is never saved or sent anywhere: it is forgotten when you close the page, or at once with “Forget my birthday”."
+				],
+				"simple": [
+					"Press “Your birthday”.",
+					"Pick your year, month and day.",
+					"Read how old you are on each planet."
+				]
+			}
+		},
+		"postcard": {
+			"title": {
+				"standard": "Take a picture",
+				"simple": "Take a picture"
+			},
+			"what": {
+				"standard": "Turn what is on screen into a postcard with the date, a caption, an honest note about the scale and a QR code back to the view.",
+				"simple": "Make a picture of what you see, to save or send."
+			},
+			"why": {
+				"standard": "Something to keep, print or send home, and the QR code opens the same view again.",
+				"simple": "Keep your favourite view of space, or show it at home."
+			},
+			"how": {
+				"standard": [
+					"Press the camera button at the top right.",
+					"Write a caption, switch the names or the QR code off.",
+					"Save, copy or share the picture. It is made on your device; nothing is uploaded."
+				],
+				"simple": [
+					"Press the camera button at the top right.",
+					"Write something about your picture.",
+					"Press Save picture."
+				]
+			}
+		}
+	},
+	"controls": {
+		"turn": {
+			"action": "Turn around the world you are looking at",
+			"mouse": "Drag with the left button",
+			"touch": "Drag with one finger"
+		},
+		"zoom": {
+			"action": "Zoom in and out",
+			"mouse": "Mouse wheel, trackpad pinch, or drag with the middle button",
+			"touch": "Pinch with two fingers"
+		},
+		"move": {
+			"action": "Move the view sideways",
+			"mouse": "Drag with the right button, or Shift + drag",
+			"touch": "Drag with two fingers together"
+		},
+		"fly": {
+			"action": "Fly to a world",
+			"mouse": "Click it or its name",
+			"touch": "Tap it or its name"
+		},
+		"back": {
+			"action": "Back to the whole solar system",
+			"mouse": "Click empty space, or the house button",
+			"touch": "Tap empty space, or the house button",
+			"keys": "Esc"
+		},
+		"name": {
+			"action": "See a world’s name",
+			"mouse": "Point at it"
+		},
+		"siblings": {
+			"action": "Next or previous world of the same family",
+			"keys": "← / →"
+		},
+		"planets": {
+			"action": "The planets from Mercury (1) to Neptune (8), the whole system (0)",
+			"keys": "1 – 8, 0"
+		},
+		"pause": {
+			"action": "Pause or play",
+			"mouse": "The pause and play buttons",
+			"touch": "The pause and play buttons",
+			"keys": "Space"
+		},
+		"speed": {
+			"action": "Faster or slower",
+			"mouse": "The speed buttons",
+			"touch": "The speed buttons",
+			"keys": "+ / −"
+		},
+		"step": {
+			"action": "Next or previous (a presenter remote)",
+			"keys": "Page Down / Page Up"
+		},
+		"start": {
+			"action": "Back to the view the link opened with",
+			"keys": "R or Home"
+		},
+		"scale": {
+			"action": "Next scale: Everything visible, Textbook, True scale",
+			"mouse": "The Scale panel",
+			"touch": "The Scale panel",
+			"keys": "S"
+		},
+		"stopLight": {
+			"action": "Stop the light flash",
+			"mouse": "× on the flash’s label",
+			"touch": "× on the flash’s label",
+			"keys": "X"
+		},
+		"names": {
+			"action": "Names on or off",
+			"mouse": "The Labels switch",
+			"touch": "The Labels switch",
+			"keys": "L"
+		},
+		"hide": {
+			"action": "Hide or show the controls",
+			"mouse": "Present → Hide the controls",
+			"touch": "Present → Hide the controls",
+			"keys": "H"
+		},
+		"fullscreen": {
+			"action": "Full screen on or off",
+			"mouse": "Present → Full screen",
+			"touch": "Present → Full screen",
+			"keys": "F"
+		},
+		"projector": {
+			"action": "Large text for a projector",
+			"mouse": "Present → Large text",
+			"touch": "Present → Large text",
+			"keys": "P"
+		},
+		"contrast": {
+			"action": "High contrast on or off",
+			"mouse": "Present → High contrast",
+			"touch": "Present → High contrast",
+			"keys": "C"
+		},
+		"sound": {
+			"action": "Sound on or off (always off when the app opens)",
+			"mouse": "The speaker button",
+			"touch": "The speaker button",
+			"keys": "M"
+		},
+		"shortcuts": {
+			"action": "List of keyboard shortcuts",
+			"mouse": "Present → Keyboard shortcuts",
+			"touch": "Present → Keyboard shortcuts",
+			"keys": "?"
+		}
+	},
+	"creditSections": {
+		"data": {
+			"title": "Data",
+			"intro": "Where the numbers come from: sizes, orbits, rotation and dates."
+		},
+		"maps": {
+			"title": "Surface maps",
+			"intro": "The pictures wrapped around the globes."
+		},
+		"sounds": {
+			"title": "Sounds",
+			"intro": "The recordings you can listen to. The app’s own tones are made in the browser."
+		},
+		"software": {
+			"title": "Software",
+			"intro": "Open-source building blocks the app is made from."
+		},
+		"app": {
+			"title": "This app",
+			"intro": "Astrolabe is open source: anyone may use it, study it, improve it and share it."
+		}
+	},
+	"creditNames": {
+		"rings": "Ring models of this app",
+		"surfaceMaps": "Maps of the Sun and the planets, and Saturn’s rings"
+	},
+	"credits": {
+		"solarSystemApi": "The starting list of the Sun, planets and moons: sizes, masses, orbits and discovery details.",
+		"jpl": "Accurate orbits for the planets, the Moon, the Galilean moons and Phoebe (mean orbital elements), used to correct the list.",
+		"iau": "Where every pole points and how fast each world turns, so the Sun is overhead at Greenwich at noon.",
+		"meeus": "How the Moon’s orbit slowly turns, so eclipses land on their real dates.",
+		"rings": "The rings of Jupiter, Uranus and Neptune, drawn for this app from published ring radii and opacities.",
+		"surfaceMaps": "They came with the first version of the project (2022) and where they come from was never recorded, so their source is unknown. The moons’ maps below are credited one by one (issue #37).",
+		"spaceAudio": "Four real recordings of radio and plasma waves, measured by Cassini, Voyager 1 and Injun 3 and turned into sound.",
+		"three": "Draws the 3D scene in the browser.",
+		"react": "Builds the pages and panels.",
+		"fiber": "Connects three.js to React.",
+		"mantine": "Buttons, menus, calendars and dialogs.",
+		"tabler": "The icons.",
+		"tanstack": "Pages and the links that hold every view.",
+		"gsap": "Animations on the start page and the dictionary.",
+		"smallLibraries": "App state, data checks, dates, QR codes and translations with plurals.",
+		"astrolabe": "Made by the Astrolabe contributors. Anyone can add a feature, a tour or a translation."
+	},
+	"licences": {
+		"openData": "published as open data (no formal licence named)",
+		"publicDomain": "public domain (NASA)",
+		"facts": "published scientific values",
+		"mit": "MIT licence",
+		"mitZlib": "MIT and zlib licences",
+		"mitBsd": "MIT and BSD licences",
+		"gsap": "GSAP standard licence (no charge)",
+		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)",
+		"unknown": "source unknown",
+		"publicDomainPlain": "public domain",
+		"noKnownRestrictions": "no known restrictions (check before commercial use)"
+	}
+}
