@@ -30,3 +30,8 @@
 	color: var(--mantine-color-orange-3);
 	text-align: center;
 }
+
+/* projector mode (#29): the spin speed is a detail the class does not need to see */
+:global(html[data-presenting]) .root {
+	display: none;
+}

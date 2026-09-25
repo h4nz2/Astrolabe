@@ -341,7 +341,8 @@
 			"dictionary@simple": "Find out more",
 			"showFacts": "Show facts",
 			"hideFacts": "Hide facts",
-			"close": "Close and return to the overview"
+			"close": "Close and return to the overview",
+			"compare": "Compare with…"
 		},
 		"moons": {
 			"label": "Moons",
@@ -626,6 +627,88 @@
 				"label": "{observer} and {body} on their orbits around the Sun, with the line of sight from {observer} to {body}"
 			}
 		},
+		"present": {
+			"button": "Present",
+			"layers": "Layers",
+			"buttonHint": "Present to a class: large text, high contrast, keyboard, sharing",
+			"title": "Present to a class",
+			"projector": "Large text for a projector",
+			"projectorHint": "Bigger text and buttons, readable from the back of the room",
+			"highContrast": "High contrast",
+			"highContrastHint": "For washed-out projectors and rooms that cannot be darkened",
+			"hideControls": "Hide the controls",
+			"fullscreen": "Full screen",
+			"exitFullscreen": "Leave full screen",
+			"restart": "Back to the start",
+			"restartHint": "The view this page was opened with",
+			"shortcuts": "Keyboard shortcuts",
+			"share": {
+				"button": "Share",
+				"title": "Share this view",
+				"explain": "The link opens exactly this view: the same body, camera, date, speed, scale and language. Bookmark it to prepare a lesson, or send it as homework.",
+				"explain@simple": "The link opens exactly what you see now. Save it or send it to someone.",
+				"link": "Link to this view",
+				"copy": "Copy link",
+				"copied": "Link copied",
+				"copyFailed": "Could not copy: select the link and copy it by hand",
+				"qr": "Scan to open this view on a phone or tablet",
+				"qrLabel": "QR code of the link to this view",
+				"qrShow": "Show the QR code to the class"
+			},
+			"chrome": {
+				"show": "Show the controls",
+				"hint": "Controls hidden: press H or use the button to bring them back",
+				"hint@simple": "The buttons are hidden. Press H to get them back."
+			},
+			"help": {
+				"title": "Keyboard shortcuts",
+				"intro": "Every key also works while the controls are hidden. A presenter remote's buttons step through the planets.",
+				"groups": {
+					"move": "Moving around",
+					"time": "Time",
+					"show": "What is shown",
+					"present": "Presenting"
+				},
+				"keys": {
+					"space": "Space",
+					"pageUpDown": "Page Up / Page Down",
+					"arrows": "← / →",
+					"digits": "1 – 8",
+					"home": "Home",
+					"esc": "Esc"
+				},
+				"pause": "Pause or play",
+				"speed": "Faster or slower",
+				"step": "Previous or next body (a presenter remote's buttons)",
+				"planets": "The planets, from Mercury (1) to Neptune (8)",
+				"overview": "The whole solar system",
+				"reset": "Back to the overview, from anywhere",
+				"start": "Back to the start: the view the link opened with",
+				"scale": "Next scale: Everything visible, Textbook, True scale",
+				"scale@simple": "Switch between pretend sizes and real sizes",
+				"labels": "Names on or off (hide them for a quiz)",
+				"chrome": "Hide or show all controls",
+				"fullscreen": "Full screen on or off",
+				"projector": "Large text on or off",
+				"contrast": "High contrast on or off",
+				"help": "This list"
+			},
+			"announce": {
+				"focus": "Now showing {body}",
+				"overview": "The whole solar system",
+				"start": "Back to the start",
+				"scale": "Scale: {preset}",
+				"labelsOn": "Names shown",
+				"labelsOff": "Names hidden",
+				"chromeHidden": "Controls hidden. Press H to show them again.",
+				"chromeShown": "Controls shown",
+				"projectorOn": "Large text on",
+				"projectorOff": "Large text off",
+				"contrastOn": "High contrast on",
+				"contrastOff": "High contrast off",
+				"step": "Step {n} of {total}"
+			}
+		},
 		"light": {
 			"open": "Speed of light",
 			"open@simple": "How fast is light?",
@@ -874,5 +957,130 @@
 			"football": "a football"
 		},
 		"starName": "Proxima Centauri"
+	},
+	"compare": {
+		"title": "Side by side",
+		"subtitle": "True relative sizes",
+		"subtitle@simple": "Real sizes, all shrunk the same",
+		"back": "Back to the solar system",
+		"pick": {
+			"compare": "Compare",
+			"with": "with",
+			"first": "First body",
+			"second": "Compared with",
+			"add": "Add a body",
+			"addPlaceholder": "Add…",
+			"full": "At most {max, number} bodies",
+			"remove": "Remove {name}",
+			"swap": "Swap the two",
+			"presets": "Ideas"
+		},
+		"presets": {
+			"sunEarth": "The Sun and Earth",
+			"earthMoon": "Earth and the Moon",
+			"planets": "All eight planets",
+			"sunPlanets": "The Sun and the planets",
+			"bigMoons": "The biggest moons"
+		},
+		"stage": {
+			"label": "{names}, drawn side by side at their true relative sizes",
+			"scale": "One scale for all: 1 pixel = {km}.",
+			"scale@simple": "Everything is shrunk by the same amount: 1 pixel stands for {km}.",
+			"scale@advanced": "Common scale, 1 px : {km}. Axes tilted as in space.",
+			"tiny": "{count, plural, one {{names} is so small at this scale that it is circled.} other {{names} are so small at this scale that they are circled.}}",
+			"tiny@simple": "{count, plural, one {{names} is so small here that you could hardly find it without the circle.} other {{names} are so small here that you could hardly find them without the circles.}}",
+			"pick": "Compare with {nameId, select, sun {the Sun} moon {the Moon} other {{name}}}",
+			"pickHint": "Click another body to compare it instead.",
+			"pickHint@simple": "Tap another world to compare that one."
+		},
+		"facts": {
+			"heading": "{a} and {b}",
+			"pictureIt": "Picture it",
+			"label": {
+				"size": "Size",
+				"size@simple": "How big",
+				"volume": "Volume",
+				"volume@simple": "What fits inside",
+				"mass": "Mass",
+				"mass@simple": "How heavy",
+				"weight": "Your weight",
+				"year": "Year",
+				"year@simple": "One lap around the Sun",
+				"orbit": "Orbit",
+				"orbit@simple": "One lap",
+				"day": "Day",
+				"day@simple": "Sunrise to sunrise",
+				"dayYear": "Day and year",
+				"dayYear@simple": "A strange calendar",
+				"distanceNow": "Distance right now",
+				"distanceNow@simple": "How far apart, right now",
+				"distanceOn": "Distance on {date}",
+				"distanceOn@simple": "How far apart on {date}"
+			},
+			"size": {
+				"times": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} is {n} times as wide as {smallId, select, sun {the Sun} moon {the Moon} other {{small}}}.",
+				"times@simple": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} is {n} times wider than {smallId, select, sun {the Sun} moon {the Moon} other {{small}}}.",
+				"times@advanced": "{bigId, select, sun {The Sun’s} moon {The Moon’s} other {{big}’s}} diameter is {n} times {smallId, select, sun {the Sun’s} moon {the Moon’s} other {{small}’s}}.",
+				"similar": "{aId, select, sun {The Sun} moon {The Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}} are almost the same width.",
+				"similar@simple": "{aId, select, sun {The Sun} moon {The Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}} are nearly the same size.",
+				"similar@advanced": "The diameters of {aId, select, sun {the Sun} moon {the Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}} differ by only {percent}%."
+			},
+			"volume": "About {n} {smallId, select, earth {{count, plural, one {Earth} other {Earths}}} moon {{count, plural, one {Moon} other {Moons}}} other {{count, plural, one {ball} other {balls}} the size of {small}}} would fit inside {bigId, select, sun {the Sun} moon {the Moon} other {{big}}}.",
+			"volume@simple": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} is so big that about {n} {smallId, select, earth {{count, plural, one {Earth} other {Earths}}} moon {{count, plural, one {Moon} other {Moons}}} other {{count, plural, one {ball} other {balls}} the size of {small}}} could fit inside it.",
+			"volume@advanced": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} has {n} times the volume of {smallId, select, sun {the Sun} moon {the Moon} other {{small}}}.",
+			"mass": {
+				"times": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} has {n} times as much mass as {smallId, select, sun {the Sun} moon {the Moon} other {{small}}}.",
+				"times@simple": "{bigId, select, sun {The Sun} moon {The Moon} other {{big}}} is {n} times as heavy as {smallId, select, sun {the Sun} moon {the Moon} other {{small}}}.",
+				"times@advanced": "{bigId, select, sun {The Sun’s} moon {The Moon’s} other {{big}’s}} mass is {n} times {smallId, select, sun {the Sun’s} moon {the Moon’s} other {{small}’s}}.",
+				"similar": "{aId, select, sun {The Sun} moon {The Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}} have about the same mass.",
+				"similar@simple": "{aId, select, sun {The Sun} moon {The Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}} are about equally heavy."
+			},
+			"weight": {
+				"more": "On {otherId, select, sun {the Sun} moon {the Moon} other {{other}}} you would weigh {n} times as much as on {homeId, select, sun {the Sun} moon {the Moon} other {{home}}}.",
+				"more@simple": "{homeId, select, earth {Someone who weighs 30 kg on Earth would weigh {kgOther} kg on {otherId, select, sun {the Sun} moon {the Moon} other {{other}}}.} other {Someone who weighs 30 kg on Earth would weigh {kgHome} kg on {homeId, select, sun {the Sun} moon {the Moon} other {{home}}} and {kgOther} kg on {otherId, select, sun {the Sun} moon {the Moon} other {{other}}}.}}",
+				"more@advanced": "{otherId, select, sun {The Sun’s} moon {The Moon’s} other {{other}’s}} surface gravity is {n} times {homeId, select, sun {the Sun’s} moon {the Moon’s} other {{home}’s}}.",
+				"less": "On {otherId, select, sun {the Sun} moon {the Moon} other {{other}}} you would weigh only {percent}% of what you weigh on {homeId, select, sun {the Sun} moon {the Moon} other {{home}}}.",
+				"less@simple": "{homeId, select, earth {Someone who weighs 30 kg on Earth would weigh {kgOther} kg on {otherId, select, sun {the Sun} moon {the Moon} other {{other}}}.} other {Someone who weighs 30 kg on Earth would weigh {kgHome} kg on {homeId, select, sun {the Sun} moon {the Moon} other {{home}}} and {kgOther} kg on {otherId, select, sun {the Sun} moon {the Moon} other {{other}}}.}}",
+				"less@advanced": "{otherId, select, sun {The Sun’s} moon {The Moon’s} other {{other}’s}} surface gravity is {percent}% of {homeId, select, sun {the Sun’s} moon {the Moon’s} other {{home}’s}}.",
+				"similar": "You would weigh about the same on {otherId, select, sun {the Sun} moon {the Moon} other {{other}}} as on {homeId, select, sun {the Sun} moon {the Moon} other {{home}}}.",
+				"similar@simple": "{homeId, select, earth {Someone who weighs 30 kg on Earth would weigh {kgOther} kg on {otherId, select, sun {the Sun} moon {the Moon} other {{other}}}.} other {Someone who weighs 30 kg on Earth would weigh {kgHome} kg on {homeId, select, sun {the Sun} moon {the Moon} other {{home}}} and {kgOther} kg on {otherId, select, sun {the Sun} moon {the Moon} other {{other}}}.}}",
+				"similar@advanced": "{otherId, select, sun {The Sun} moon {The Moon} other {{other}}} and {homeId, select, sun {the Sun} moon {the Moon} other {{home}}} have almost the same surface gravity.",
+				"noSurface": "{xId, select, sun {The Sun has no solid ground: this is the pull at its visible surface.} other {{x} has no solid ground: this is the pull at its cloud tops.}}",
+				"noSurface@simple": "{xId, select, sun {The Sun has no ground to stand on: this is the pull at its glowing surface.} other {{x} has no ground to stand on: this is the pull at the top of its clouds.}}"
+			},
+			"year": {
+				"times": "One year on {slowId, select, sun {the Sun} moon {the Moon} other {{slow}}} lasts as long as {n} years on {fastId, select, sun {the Sun} moon {the Moon} other {{fast}}}.",
+				"times@simple": "While {slowId, select, sun {the Sun} moon {the Moon} other {{slow}}} goes around the Sun once, {fastId, select, sun {the Sun} moon {the Moon} other {{fast}}} goes around {n} times.",
+				"times@advanced": "{slowId, select, sun {The Sun’s} moon {The Moon’s} other {{slow}’s}} orbital period is {n} times {fastId, select, sun {the Sun’s} moon {the Moon’s} other {{fast}’s}}.",
+				"similar": "A year on {aId, select, sun {the Sun} moon {the Moon} other {{a}}} is almost as long as a year on {bId, select, sun {the Sun} moon {the Moon} other {{b}}}."
+			},
+			"orbit": {
+				"times": "While {slowId, select, sun {the Sun} moon {the Moon} other {{slow}}} goes once around {parentId, select, sun {the Sun} moon {the Moon} other {{parent}}}, {fastId, select, sun {the Sun} moon {the Moon} other {{fast}}} goes around {n} times.",
+				"times@advanced": "{slowId, select, sun {The Sun’s} moon {The Moon’s} other {{slow}’s}} orbital period around {parentId, select, sun {the Sun} moon {the Moon} other {{parent}}} is {n} times {fastId, select, sun {the Sun’s} moon {the Moon’s} other {{fast}’s}}.",
+				"similar": "{aId, select, sun {The Sun} moon {The Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}} take about equally long to go around {parentId, select, sun {the Sun} moon {the Moon} other {{parent}}}."
+			},
+			"day": {
+				"times": "A day on {longId, select, sun {the Sun} moon {the Moon} other {{long}}} lasts as long as {n} days on {shortId, select, sun {the Sun} moon {the Moon} other {{short}}}.",
+				"times@simple": "From one sunrise to the next takes {n} times as long on {longId, select, sun {the Sun} moon {the Moon} other {{long}}} as on {shortId, select, sun {the Sun} moon {the Moon} other {{short}}}.",
+				"times@advanced": "{longId, select, sun {The Sun’s} moon {The Moon’s} other {{long}’s}} solar day (sunrise to sunrise) is {n} times {shortId, select, sun {the Sun’s} moon {the Moon’s} other {{short}’s}}.",
+				"similar": "A day on {aId, select, sun {the Sun} moon {the Moon} other {{a}}} is about as long as a day on {bId, select, sun {the Sun} moon {the Moon} other {{b}}}."
+			},
+			"dayYear": {
+				"day": "On {xId, select, other {{x}}}, one day from sunrise to sunrise lasts longer than a whole year there: {day} against {year}.",
+				"day@simple": "On {xId, select, other {{x}}} a day is longer than a year! From one sunrise to the next takes {day}, but one lap around the Sun only {year}.",
+				"day@advanced": "{xId, select, other {{x}}}’s solar day ({day}) is longer than its orbital period ({year}); it turns once in {turn}.",
+				"turn": "{xId, select, other {{x}}} turns so slowly that one turn takes longer than its whole year: {turn} against {year}.",
+				"turn@simple": "{xId, select, other {{x}}} spins so slowly that one turn takes longer than one lap around the Sun: {turn} against {year}.",
+				"turn@advanced": "{xId, select, other {{x}}}’s sidereal rotation ({turn}) is longer than its orbital period ({year}); its solar day is {day}."
+			},
+			"distance": {
+				"light": "Light needs {light} to get from {aId, select, sun {the Sun} moon {the Moon} other {{a}}} to {bId, select, sun {the Sun} moon {the Moon} other {{b}}}.",
+				"light@simple": "Even light, the fastest thing there is, needs {light} to get from {aId, select, sun {the Sun} moon {the Moon} other {{a}}} to {bId, select, sun {the Sun} moon {the Moon} other {{b}}}. A car driving non-stop at 100 km/h would need {drive}.",
+				"light@advanced": "Light-travel time between {aId, select, sun {the Sun} moon {the Moon} other {{a}}} and {bId, select, sun {the Sun} moon {the Moon} other {{b}}}: {light}.",
+				"range": "The distance keeps changing as they move: light needs between {min} and {max}.",
+				"range@simple": "They keep moving, so the distance changes: sometimes light needs only {min}, sometimes {max}.",
+				"range@advanced": "Over their orbits the distance ranges from about {minKm} to {maxKm} ({min} to {max} of light time)."
+			}
+		}
 	}
 }

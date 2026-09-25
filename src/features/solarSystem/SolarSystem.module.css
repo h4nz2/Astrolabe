@@ -182,6 +182,13 @@
 	display: none;
 }
 
+/* with the right column reaching into the middle row (#29), the hints keep to the centre column */
+@media (min-width: 1000px) {
+	.intro {
+		grid-column: 2;
+	}
+}
+
 /* wide screens: the caption takes the body card's corner, clear of the body in the centre */
 @media (min-width: 1200px) {
 	/* spanning the flexible row, it never makes the HUD taller than the screen: a tall caption grows upwards */
@@ -191,13 +198,28 @@
 	}
 }
 
-/* wide screens: the body info sits beside the time controls on one bottom row */
+/*
+ * Short screens (#29): a tall body card scrolls in its own box instead of
+ * pushing the time controls (and #18's flight readout) off the bottom.
+ */
+@media (min-width: 600px) and (max-width: 999px) {
+	.info {
+		max-height: 35dvh;
+		overflow-y: auto;
+	}
+}
+
+/*
+ * wide screens: the body info sits beside the time controls on one bottom
+ * row; the right column reaches down into the free middle row (#29), so a
+ * tall scale panel never pushes the bottom row off screen
+ */
 @media (min-width: 1000px) {
 	.hud {
 		grid-template-rows: auto minmax(0, 1fr) auto;
 		grid-template-areas:
 			"picker centre toggles"
-			". . ."
+			". . toggles"
 			"info time .";
 	}
 
@@ -210,6 +232,13 @@
 		grid-row: 1 / -1;
 		max-height: calc(100% - 3.75rem);
 		overflow-y: auto;
+	}
+
+	/* a column taller than the room it has (a crowded scale panel) scrolls in place (#29) */
+	.toggles {
+		max-height: 100%;
+		overflow-y: auto;
+		overscroll-behavior: contain;
 	}
 }
 
@@ -276,4 +305,64 @@
 		overflow-y: auto;
 		--light-panel-body-max: 30dvh;
 	}
+}
+
+/*
+ * Teacher and presentation mode (#29; attributes on <html>, see
+ * present/usePresentationDocument.ts). Hiding never unmounts the HUD: its
+ * keys (Space, +/-, arrows, Escape) keep working with nothing on screen.
+ */
+:global(html[data-chrome="hidden"]) .hud {
+	display: none;
+}
+
+/*
+ * Projector: calmer, more opaque panels, so text reads over any part of the
+ * scene, and a narrower right column (the layer switches fold into a menu).
+ */
+:global(html[data-presenting]) .panel {
+	background: rgba(12, 13, 17, 0.88);
+}
+
+:global(html[data-presenting]) .toggles {
+	width: 22rem;
+}
+
+/* the body card may be tall at projector size: it scrolls rather than pushing the time controls off screen */
+@media (min-width: 1000px) {
+	:global(html[data-presenting]) .info {
+		grid-row: info;
+		max-height: 55dvh;
+	}
+}
+
+/*
+ * Wide projections: the time controls get the whole bottom row, so the
+ * picker, the card and the right column keep their width (with the time
+ * controls in the middle column, the side columns shrink to a sliver).
+ */
+@media (min-width: 1000px) {
+	:global(html[data-presenting]) .hud {
+		grid-template-rows: auto minmax(0, 1fr) auto auto;
+		grid-template-areas:
+			"picker centre toggles"
+			". . toggles"
+			"info . ."
+			"time time time";
+	}
+}
+
+@media (max-width: 599px) {
+	:global(html[data-presenting]) .toggles {
+		width: auto;
+	}
+}
+
+/* high contrast: solid black panels with a white edge, nothing see-through */
+:global(html[data-contrast="high"]) .panel {
+	background: #000;
+	border: 2px solid #fff;
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	box-shadow: none;
 }
