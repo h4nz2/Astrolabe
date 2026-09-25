@@ -337,12 +337,26 @@
 }
 
 /* a held frame's badge (#31) fills the left column: while a tour narrates, the body card makes way */
-@media (max-height: 1000px) {
-	.hud:has([data-tour-card][data-collapsed="false"]):has(
-			[data-testid="frame-badge"]
-		)
-		.info {
-		display: none;
+.hud:has([data-tour-card][data-collapsed="false"]):has(
+		[data-testid="frame-badge"]
+	)
+	.info {
+	display: none;
+}
+
+/*
+ * Wide screens with a tour: the time controls get the whole bottom row (as in
+ * #29's projector layout), so the side columns keep room for the body card
+ * and the narration instead of shrinking to a sliver beside the time controls.
+ */
+@media (min-width: 1000px) {
+	.hud:has([data-tour-card]) {
+		grid-template-rows: auto minmax(0, 1fr) auto auto;
+		grid-template-areas:
+			"picker centre toggles"
+			". . ."
+			"info . ."
+			"time time time";
 	}
 }
 
