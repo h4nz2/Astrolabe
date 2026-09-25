@@ -13,6 +13,8 @@ import FrameMenu from "./frame/FrameMenu"
 import { HuntPanelSlot } from "./hunt/Hunt"
 import { LightSlot } from "./light/LightPanel"
 import Scene from "./scene/Scene"
+import SoundControl from "./sound/SoundControl"
+import SoundDirector from "./sound/SoundDirector"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -68,6 +70,7 @@ const SolarSystem = () => {
 	return (
 		<div className={classes.page}>
 			<UrlSync />
+			<SoundDirector />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
@@ -92,7 +95,10 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">
 							<SceneToggles />
-							<LanguageMenu />
+							<Group gap={4} wrap="nowrap">
+								<SoundControl />
+								<LanguageMenu />
+							</Group>
 						</Group>
 					</div>
 					<div className={classes.panel}>

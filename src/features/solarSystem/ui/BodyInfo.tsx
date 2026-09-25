@@ -22,6 +22,7 @@ import { useI18n } from "@/i18n"
 import { useBodyText } from "@/i18n/bodies"
 import { useSimStore, type SimState } from "@/store/sim"
 
+import BodyRecording from "../sound/BodyRecording"
 import { headlineFacts } from "./bodyFacts"
 import { dictionaryEntry } from "./dictionaryEntry"
 import MoonSystem from "./MoonSystem"
@@ -117,6 +118,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							</div>
 						))}
 					</dl>
+					<BodyRecording bodyId={body.id} />
 					{entry !== null && (
 						<Anchor
 							className={classes.more}

@@ -24,6 +24,7 @@ import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
 import LightFront from "../light/LightFront"
+import SoundProbe from "../sound/SoundProbe"
 import { labelSlotCount } from "../labels/project"
 import BodyPicking, { activateBody } from "./BodyPicking"
 import HighlightTracker from "./HighlightTracker"
@@ -84,6 +85,7 @@ function Scene() {
 					<BodyPicking />
 					<CameraRig />
 					<HighlightTracker />
+					<SoundProbe />
 				</SimFrameContext.Provider>
 			</Canvas>
 			<LabelLayer board={labels} />
