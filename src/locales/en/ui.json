@@ -41,6 +41,7 @@
 		"dictionary": "Dictionary",
 		"solarSystem": "Solar Model",
 		"birthday": "Your birthday in space",
+		"hunt": "Scavenger hunt",
 		"solarWalk": "Walk the solar system"
 	},
 	"units": {
@@ -435,6 +436,66 @@
 				"footer": "Astrolabe – our solar system",
 				"fileName": "my-age-on-the-planets"
 			}
+		},
+		"hunt": {
+			"open": "Scavenger hunt",
+			"openHint": "Solve clues by finding worlds in the scene",
+			"title": "Scavenger hunt",
+			"close": "Close",
+			"collapse": "Fold up",
+			"expand": "Unfold",
+			"intro": "Every clue describes a world. Find it in the scene and click it: that is your answer. Hints are free, and there is no score and no time limit.",
+			"intro@simple": "Read the clue, find the world and click it! Stuck? Ask for a hint.",
+			"choose": "Pick a hunt",
+			"difficulty": {
+				"easy": "Easy",
+				"medium": "Medium",
+				"hard": "Tricky"
+			},
+			"clueCount": "{count, plural, one {# clue} other {# clues}}",
+			"inProgress": "Carry on: clue {step} of {total}",
+			"progress": "Clue {step} of {total}",
+			"progressLabel": "{found} of {total} found",
+			"answerHow": "Find it in the scene and click it.",
+			"answerHow@simple": "Find it and click it!",
+			"firstHint": "Need a hint?",
+			"moreHint": "Another hint",
+			"hintLabel": "Hint {n}",
+			"showMe": "Show me",
+			"showMeHint": "Fly there and solve the clue",
+			"guess": {
+				"other": "That is {bodyId, select, other {{name}}}. Not the one – keep exploring!",
+				"other@simple": "That is {bodyId, select, other {{name}}}. Try another one!",
+				"warm": "Warm! The answer is close to {bodyId, select, other {{name}}}. Look around it.",
+				"almost": "Yes, {name}! Now watch it from {frameId, select, other {{frame}}}: choose the point of view at the top left."
+			},
+			"found": "Found it!",
+			"next": "Next clue",
+			"finish": "Finish",
+			"done": {
+				"title": "Hunt complete!",
+				"text": "{count, plural, one {You solved the clue.} other {You solved all # clues.}}",
+				"text@simple": "{count, plural, one {You did it!} other {You did it: all # found!}}",
+				"found": "The worlds you found. Click one to visit it again:",
+				"again": "Play again",
+				"other": "Choose another hunt"
+			},
+			"custom": {
+				"title": "Make your own hunt",
+				"intro": "Tick the clues for your lesson, then start the hunt or share it with your class.",
+				"name": "Your own hunt",
+				"count": "{count, plural, =0 {No clues picked} one {# clue picked} other {# clues picked}}",
+				"start": "Start"
+			},
+			"share": {
+				"button": "Share",
+				"title": "Share this hunt",
+				"text": "Everyone who opens this link gets the same hunt, in the same language and reading level. Progress stays on each device; nothing is stored on a server.",
+				"copy": "Copy link",
+				"copied": "Copied",
+				"link": "Link to this hunt"
+			},
+			"otherHunts": "Other hunts"
 		},
 		"frame": {
 			"label": "Point of view",
