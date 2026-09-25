@@ -163,9 +163,6 @@ export default function Hint({ text, reason, options, children }: HintProps) {
 		let lastPointer = "mouse"
 		const find = (target: EventTarget | null) =>
 			resolve(zone, target, optionsRef.current)
-		const inPopup = (target: EventTarget | null) =>
-			target instanceof Node &&
-			[...popups.values()].some((popup) => popup.contains(target))
 
 		const over = (event: PointerEvent) => {
 			if (event.pointerType === "touch") return
@@ -175,7 +172,7 @@ export default function Hint({ text, reason, options, children }: HintProps) {
 		const out = (event: PointerEvent) => {
 			if (event.pointerType === "touch") return
 			const to = event.relatedTarget
-			if (to instanceof Node && (zone.contains(to) || inPopup(to))) return
+			if (to instanceof Node && zone.contains(to)) return
 			controller.hoverEnd()
 		}
 		const down = (event: PointerEvent) => {
@@ -242,7 +239,7 @@ export default function Hint({ text, reason, options, children }: HintProps) {
 			zone.removeEventListener("focusout", focusOut)
 			controller.dispose()
 		}
-	}, [zone, popups, controller])
+	}, [zone, controller])
 
 	// while a hint shows: Escape, a touch elsewhere, scrolling or resizing close it
 	useEffect(() => {
@@ -250,14 +247,10 @@ export default function Hint({ text, reason, options, children }: HintProps) {
 		const key = (event: KeyboardEvent) => {
 			if (event.key === "Escape") controller.dismiss()
 		}
+		// a touch elsewhere closes it (a touch on the control starts its own press)
 		const down = (event: PointerEvent) => {
 			const target = event.target
 			if (target instanceof Node && zone?.contains(target)) return
-			if (
-				target instanceof Node &&
-				[...popups.values()].some((p) => p.contains(target))
-			)
-				return
 			controller.dismiss()
 		}
 		const away = () => controller.dismiss()
@@ -271,7 +264,7 @@ export default function Hint({ text, reason, options, children }: HintProps) {
 			window.removeEventListener("scroll", away, true)
 			window.removeEventListener("resize", away)
 		}
-	}, [state, zone, popups, controller])
+	}, [state, zone, controller])
 
 	// beside the control, measured before paint
 	useLayoutEffect(() => {
@@ -318,12 +311,6 @@ export default function Hint({ text, reason, options, children }: HintProps) {
 							role="tooltip"
 							className={classes.hint}
 							hidden={state?.key !== key}
-							onPointerEnter={() => controller.hintHovered()}
-							onPointerLeave={(event) => {
-								const to = event.relatedTarget
-								if (to instanceof Node && zone?.contains(to)) return
-								controller.hoverEnd()
-							}}
 						>
 							{body}
 							{why !== undefined && (

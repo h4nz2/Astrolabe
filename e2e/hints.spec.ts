@@ -28,6 +28,16 @@ const switchRoot = (page: Page, name: string) =>
 		.locator(".mantine-Switch-root")
 		.filter({ has: page.getByRole("switch", { name, exact: true }) })
 
+/**
+ * Moves the mouse onto the middle of `target`. Mantine lays a switch's
+ * transparent input over its whole label, so Playwright's own hover() would
+ * refuse the label text as "covered"; that input is what a real pointer hits.
+ */
+async function pointAt(page: Page, target: Locator) {
+	const box = (await target.boundingBox())!
+	await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2)
+}
+
 /** The hint and the control it describes do not overlap. */
 async function expectBeside(control: Locator, tip: Locator) {
 	const a = (await control.boundingBox())!
@@ -46,7 +56,7 @@ test("hovering a switch's label or its track shows what it does, beside it", asy
 	await open(page)
 	const alwaysLit = switchRoot(page, "Always lit")
 
-	await alwaysLit.getByText("Always lit", { exact: true }).hover()
+	await pointAt(page, alwaysLit.getByText("Always lit", { exact: true }))
 	await expect(hint(page)).toHaveText(
 		/^Lights every body from where you look, so the night side is not black\./,
 	)
@@ -57,12 +67,12 @@ test("hovering a switch's label or its track shows what it does, beside it", asy
 	await expect(hint(page)).toHaveCount(0)
 
 	// the switch itself is a target too, not only its label
-	await alwaysLit.locator(".mantine-Switch-track").hover()
+	await pointAt(page, alwaysLit.locator(".mantine-Switch-track"))
 	await expect(hint(page)).toContainText("hides the day and night lesson")
 	await expectBeside(alwaysLit, hint(page))
 
 	// moving along the row switches hints without a second wait
-	await switchRoot(page, "Orbits").hover()
+	await pointAt(page, switchRoot(page, "Orbits"))
 	await expect(hint(page)).toContainText("Draws the path each planet")
 
 	// clicking hides the hint and still toggles
@@ -109,9 +119,10 @@ test("a disabled switch says what to turn on first", async ({ page }) => {
 	await expect(toggle(page, "All moons")).toHaveAccessibleDescription(
 		/Turn on Moons first\.$/,
 	)
-	await switchRoot(page, "All moons").hover()
+	await pointAt(page, switchRoot(page, "All moons"))
 	await expect(hint(page)).toContainText("Turn on Moons first.")
 
+	// the open hint lies over the row above, which stays clickable
 	await toggle(page, "Labels").click()
 	await expect(toggle(page, "Orbit names")).toHaveAccessibleDescription(
 		/Turn on Labels first\.$/,
@@ -149,10 +160,12 @@ test("hints follow the language and the reading level, and grow on a projector",
 	page,
 }) => {
 	await open(page, "lang=de&reading=simple")
-	await page
-		.getByRole("group", { name: "Szenenebenen" })
-		.getByText("Immer beleuchtet", { exact: true })
-		.hover()
+	await pointAt(
+		page,
+		page
+			.getByRole("group", { name: "Szenenebenen" })
+			.getByText("Immer beleuchtet", { exact: true }),
+	)
 	await expect(hint(page)).toHaveText(
 		/^Beleuchtet jeden Planeten von deiner Seite/,
 	)

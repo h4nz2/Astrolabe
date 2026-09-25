@@ -13,7 +13,7 @@ export const FOCUS_DELAY_MS = 250
 export const LONG_PRESS_MS = 500
 /** A finger that moves farther than this is scrolling or dragging, not pressing. */
 export const LONG_PRESS_SLOP_PX = 10
-/** Leaving a control closes its hint after this grace, so the pointer can move onto the hint. */
+/** Leaving a control closes its hint after this grace, so crossing a gap between two parts of it does not flicker. */
 export const CLOSE_DELAY_MS = 120
 /** Within this long of another hint closing, the next one opens at once (moving along a row of switches). */
 export const WARM_MS = 400
@@ -86,11 +86,6 @@ export class HintController<A> {
 		this.clearTimer()
 		if (this.state !== null)
 			this.timer = setTimeout(() => this.close(), CLOSE_DELAY_MS)
-	}
-
-	/** The pointer moved onto the open hint itself: keep it (WCAG 1.4.13, hoverable). */
-	hintHovered(): void {
-		if (this.state !== null) this.clearTimer()
 	}
 
 	/** Keyboard focus reached the option `key`; `visible` is `:focus-visible` (not a mouse click). */

@@ -43,12 +43,12 @@ describe("hover", () => {
 		expect(controller.current?.via).toBe("hover")
 	})
 
-	it("closes after a short grace, which moving onto the hint cancels", () => {
+	it("closes after a short grace, which coming back cancels", () => {
 		const { controller, open } = make()
 		controller.hoverStart("", "a")
 		vi.advanceTimersByTime(HOVER_DELAY_MS)
 		controller.hoverEnd()
-		controller.hintHovered()
+		controller.hoverStart("", "a")
 		vi.advanceTimersByTime(CLOSE_DELAY_MS * 2)
 		expect(open()).toBe("")
 		controller.hoverEnd()

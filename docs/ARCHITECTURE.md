@@ -940,8 +940,9 @@ import { Hint, hintKey } from "@/primitives/hint"
   touch: a **long press** (500 ms, 10 px slop) shows it, and the click that ends the long press is swallowed in the
   capture phase before React sees it, so a plain tap still just toggles and a long press never does. The long-press
   hint stays until the next touch anywhere. A mouse press hides the hint until the pointer leaves; Escape, scrolling
-  and resizing dismiss it; the pointer may move onto the hint without it closing (WCAG 1.4.13). One hint is open in the
-  whole page. The zone also blocks the browser's long-press callout and text selection.
+  and resizing dismiss it. The hint is `pointer-events: none`: in a dense panel it lies over the neighbouring row,
+  which must stay clickable, so it is not "hoverable" in the WCAG 1.4.13 sense (it stays while the pointer is on
+  the control, and its text is always the control's description). One hint is open in the whole page. The zone also blocks the browser's long-press callout and text selection.
 - **Placement** (`placement.ts`, pure and unit-tested): above the control when it fits, else below, else the roomier
   side; centred and clamped into the viewport, 8 px from the control, never overlapping it. The anchor is the whole
   control (the union of the zone's children: a Switch's track and label) or, for options, the option's label/button.

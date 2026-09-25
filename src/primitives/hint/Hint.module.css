@@ -28,6 +28,8 @@
 	text-align: left;
 	white-space: normal;
 	overflow-wrap: break-word;
+	/* never in the way: the switches it lies over stay clickable and hoverable */
+	pointer-events: none;
 	animation: appear 120ms ease-out;
 }
 
