@@ -125,7 +125,10 @@ test("bodies are picked, swapped, added from ideas and promoted by a click", asy
 	).toBeVisible()
 
 	// a click on a drawn body makes it the second of the pair
-	await page.getByRole("button", { name: "Compare with Saturn" }).click()
+	await page
+		.getByTestId("compare-stage")
+		.getByRole("button", { name: "Compare with Saturn" })
+		.click()
 	await expect(heading).toHaveText("Earth and Saturn")
 	await expect(
 		page.locator("[data-body=saturn][data-role=second]"),

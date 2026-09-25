@@ -65,8 +65,28 @@
 	width: 10rem;
 }
 
-.pill {
+/* a further body: its name (compare with it) and a cross (remove it) */
+.chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.125rem;
+	padding: 0.125rem 0.25rem 0.125rem 0.75rem;
+	border-radius: 999px;
+	background: var(--mantine-color-dark-5);
+}
+
+.chipName {
+	padding: 0.25rem 0;
+	border: 0;
+	background: none;
+	color: var(--mantine-color-gray-1);
+	font: inherit;
+	font-size: var(--mantine-font-size-sm);
 	cursor: pointer;
+}
+
+.chipName:hover {
+	color: var(--mantine-color-orange-4);
 }
 
 /* the drawing */

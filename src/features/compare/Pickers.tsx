@@ -9,8 +9,8 @@ import { useMemo } from "react"
 import {
 	ActionIcon,
 	Button,
+	CloseButton,
 	Menu,
-	Pill,
 	Select,
 	Tooltip,
 	type ComboboxItem,
@@ -97,20 +97,22 @@ const Pickers = ({ ids, onChange }: PickersProps) => {
 				</ActionIcon>
 			</Tooltip>
 			{ids.slice(2).map((id) => (
-				<Pill
-					key={id}
-					size="lg"
-					className={classes.pill}
-					withRemoveButton
-					removeButtonProps={{
-						"aria-label": t("compare.pick.remove", { name: name(id) }),
-					}}
-					onRemove={() => onChange(removeBody(ids, id))}
-					onClick={() => onChange(promote(ids, id))}
-					data-body={id}
-				>
-					{name(id)}
-				</Pill>
+				// the further bodies: a click compares with it, the cross removes it
+				<span key={id} className={classes.chip} data-body={id}>
+					<button
+						type="button"
+						className={classes.chipName}
+						aria-label={t("compare.stage.pick", { nameId: id, name: name(id) })}
+						onClick={() => onChange(promote(ids, id))}
+					>
+						{name(id)}
+					</button>
+					<CloseButton
+						size="sm"
+						aria-label={t("compare.pick.remove", { name: name(id) })}
+						onClick={() => onChange(removeBody(ids, id))}
+					/>
+				</span>
 			))}
 			<Select
 				{...select}
