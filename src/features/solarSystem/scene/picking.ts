@@ -20,7 +20,11 @@ import { PerspectiveCamera, Vector3 } from "three"
 
 import type { Body } from "@/data"
 import { degToRad } from "@/sim"
-import type { CameraShot, NavigationSlice } from "@/store/navigation"
+import {
+	OVERVIEW_BODY_ID,
+	type CameraShot,
+	type NavigationSlice,
+} from "@/store/navigation"
 
 import type { SimFrame } from "./simFrame"
 import type { PointerKind } from "./tap"
@@ -197,7 +201,13 @@ export const hasGenerousTarget = (
 type ClickState = Pick<NavigationSlice, "view" | "selectedId"> & {
 	/** The camera at rest; unknown means framed. */
 	shot?: CameraShot | null
+	/** The body the reference frame holds still (#31); absent or the Sun: Sun-centred. */
+	frameId?: string
 }
+
+/** A body other than the Sun is held still (#31). */
+const anchoredFrame = (frameId: string | undefined): boolean =>
+	frameId !== undefined && frameId !== OVERVIEW_BODY_ID
 
 export type BodyClickAction =
 	/** select it and fly to it (`setFocus`) */
@@ -206,6 +216,12 @@ export type BodyClickAction =
 	| "reframe"
 	/** it is the focus and selected, and framed: nothing to do */
 	| "none"
+	/**
+	 * another body while one is held still (#31): select it (its trail is
+	 * highlighted, the frame's badge reads its motion) without leaving the
+	 * frame; the picker or "Hold ... still" move the frame on purpose
+	 */
+	| "select"
 
 /** What a click on body `id` does. */
 export function bodyClickAction(
@@ -213,6 +229,9 @@ export function bodyClickAction(
 	id: string,
 ): BodyClickAction {
 	const { view, selectedId, shot } = state
+	if (anchoredFrame(state.frameId) && id !== state.frameId) {
+		return selectedId === id ? "none" : "select"
+	}
 	if (view.kind !== "body" || view.id !== id) return "focus"
 	if (selectedId !== id) return "focus"
 	if (shot != null && shot.distance > REFRAME_DISTANCE) return "reframe"
@@ -229,11 +248,14 @@ export type EmptyClickAction =
 
 /** What a click on empty space does (#16: "exit is obvious and always available"). */
 export function emptyClickAction(
-	state: Pick<NavigationSlice, "view" | "selectedId" | "sequence">,
+	state: Pick<NavigationSlice, "view" | "selectedId" | "sequence"> & {
+		frameId?: string
+	},
 	nearMiss: boolean,
 ): EmptyClickAction {
 	if (nearMiss || state.sequence !== null) return "none"
-	if (state.view.kind === "overview") {
+	// a body held still (#31) is left only through its badge, the home button or Escape
+	if (state.view.kind === "overview" || anchoredFrame(state.frameId)) {
 		return state.selectedId !== null ? "deselect" : "none"
 	}
 	return "reset"

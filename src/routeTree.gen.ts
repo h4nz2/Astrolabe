@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from "./routes/index"
 import { Route as CompareRouteImport } from "./routes/compare"
 import { Route as Solar_dictionaryRouteImport } from "./routes/solar_dictionary"
 import { Route as Solar_systemRouteImport } from "./routes/solar_system"
+import { Route as Solar_walkRouteImport } from "./routes/solar_walk"
 
 const IndexRoute = IndexRouteImport.update({
   id: "/",
@@ -34,18 +35,25 @@ const Solar_systemRoute = Solar_systemRouteImport.update({
   path: "/solar_system",
   getParentRoute: () => rootRouteImport,
 } as any)
+const Solar_walkRoute = Solar_walkRouteImport.update({
+  id: "/solar_walk",
+  path: "/solar_walk",
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   "/": typeof IndexRoute
   "/compare": typeof CompareRoute
   "/solar_dictionary": typeof Solar_dictionaryRoute
   "/solar_system": typeof Solar_systemRoute
+  "/solar_walk": typeof Solar_walkRoute
 }
 export interface FileRoutesByTo {
   "/": typeof IndexRoute
   "/compare": typeof CompareRoute
   "/solar_dictionary": typeof Solar_dictionaryRoute
   "/solar_system": typeof Solar_systemRoute
+  "/solar_walk": typeof Solar_walkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,21 @@ export interface FileRoutesById {
   "/compare": typeof CompareRoute
   "/solar_dictionary": typeof Solar_dictionaryRoute
   "/solar_system": typeof Solar_systemRoute
+  "/solar_walk": typeof Solar_walkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: "/" | "/compare" | "/solar_dictionary" | "/solar_system"
+  fullPaths:
+    "/" | "/compare" | "/solar_dictionary" | "/solar_system" | "/solar_walk"
   fileRoutesByTo: FileRoutesByTo
-  to: "/" | "/compare" | "/solar_dictionary" | "/solar_system"
-  id: "__root__" | "/" | "/compare" | "/solar_dictionary" | "/solar_system"
+  to: "/" | "/compare" | "/solar_dictionary" | "/solar_system" | "/solar_walk"
+  id:
+    | "__root__"
+    | "/"
+    | "/compare"
+    | "/solar_dictionary"
+    | "/solar_system"
+    | "/solar_walk"
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +83,7 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   Solar_dictionaryRoute: typeof Solar_dictionaryRoute
   Solar_systemRoute: typeof Solar_systemRoute
+  Solar_walkRoute: typeof Solar_walkRoute
 }
 
 declare module "@tanstack/react-router" {
@@ -99,6 +116,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof Solar_systemRouteImport
       parentRoute: typeof rootRouteImport
     }
+    "/solar_walk": {
+      id: "/solar_walk"
+      path: "/solar_walk"
+      fullPath: "/solar_walk"
+      preLoaderRoute: typeof Solar_walkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +131,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   Solar_dictionaryRoute: Solar_dictionaryRoute,
   Solar_systemRoute: Solar_systemRoute,
+  Solar_walkRoute: Solar_walkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

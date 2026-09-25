@@ -53,6 +53,9 @@ export function activateBody(id: string): void {
 		case "reframe":
 			store.focus(id, { shot: { distance: 1 } })
 			return
+		case "select":
+			store.select(id)
+			return
 		case "none":
 			return
 	}

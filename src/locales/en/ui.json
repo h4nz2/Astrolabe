@@ -40,7 +40,8 @@
 		"tagline": "To the stars!",
 		"dictionary": "Dictionary",
 		"solarSystem": "Solar Model",
-		"birthday": "Your birthday in space"
+		"birthday": "Your birthday in space",
+		"solarWalk": "Walk the solar system"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -184,7 +185,9 @@
 			"markersOn": "The dots only mark where the planets are: the planets themselves are too small to see.",
 			"markersOn@simple": "The dots show where the planets are. The planets are too small to see!",
 			"markersOff": "Markers are off: switch them on to find the planets.",
-			"markersOff@simple": "Switch on Markers to find the planets!"
+			"markersOff@simple": "Switch on Markers to find the planets!",
+			"walk": "Too small to imagine? Walk it: the solar system with the Sun as a basketball.",
+			"walk@simple": "Too small to see? Walk the solar system on your school field!"
 		},
 		"time": {
 			"play": "Play",
@@ -326,7 +329,8 @@
 			"visit@simple": "Click to go there",
 			"closer": "Click to fly back in close",
 			"hint": "Click or tap any planet to fly there.",
-			"hint@simple": "Click or tap a planet to visit it!"
+			"hint@simple": "Click or tap a planet to visit it!",
+			"follow": "Click to follow its path"
 		},
 		"card": {
 			"dictionary": "Read more in the dictionary",
@@ -432,7 +436,199 @@
 				"footer": "Astrolabe – our solar system",
 				"fileName": "my-age-on-the-planets"
 			}
+		},
+		"frame": {
+			"label": "Point of view",
+			"label@simple": "Where you watch from",
+			"menu": "Point of view: {current}",
+			"current": {
+				"sun": "Sun-centred",
+				"sun@simple": "Sun in the middle",
+				"held": "{bodyId, select, earth {Seen from Earth} other {{body} held still}}",
+				"held@simple": "{bodyId, select, earth {Earth stands still} other {{body} stands still}}"
+			},
+			"presets": {
+				"sun": {
+					"title": "Sun-centred",
+					"title@simple": "Sun in the middle",
+					"hint": "How the planets really move: around the Sun.",
+					"hint@simple": "The planets go round the Sun.",
+					"hint@advanced": "Heliocentric frame: every orbit is an ellipse around the Sun."
+				},
+				"planets": {
+					"title": "Seen from Earth: the planets",
+					"title@simple": "From Earth: the planets",
+					"hint": "Hold Earth still and watch Mars loop backwards.",
+					"hint@simple": "Earth stands still. Watch Mars go backwards!",
+					"hint@advanced": "Geocentric frame: the retrograde loops that epicycles were invented to explain."
+				},
+				"moon": {
+					"title": "Seen from Earth: the Moon",
+					"title@simple": "From Earth: the Moon",
+					"hint": "Hold Earth still and watch the Moon's phases.",
+					"hint@simple": "Watch the Moon grow and shrink.",
+					"hint@advanced": "Geocentric frame: the phases follow from the angle between the Sun, the Moon and Earth."
+				},
+				"hold": {
+					"title": "Hold {body} still",
+					"title@simple": "Make {body} stand still",
+					"hint": "Everything else moves around it.",
+					"hint@advanced": "A non-rotating frame centred on {body}, its axes fixed to the stars.",
+					"disabled": "Centre on a planet or a moon first.",
+					"disabled@simple": "Pick a planet or a moon first."
+				}
+			},
+			"badge": {
+				"label": "Reference frame",
+				"explain": "{bodyId, select, other {{body}}} stays still; everything else moves around it. The lines show each path {restarted, select, yes {since you restarted them} other {over the last two years}}.",
+				"explain@simple": "{bodyId, select, other {{body}}} stands still and everything else moves around it. The lines show where things went.",
+				"explain@advanced": "A non-rotating frame centred on {body}, its axes fixed to the stars. The trails are each body's path relative to {body} {restarted, select, yes {since the restart} other {over the last two years}}.",
+				"back": "Back to Sun-centred",
+				"back@simple": "Put the Sun back in the middle",
+				"restart": "Restart the trails",
+				"restart@simple": "Wipe the lines"
+			},
+			"motion": {
+				"prograde": "{body} is moving forwards against the stars.",
+				"prograde@simple": "{body} is moving forwards.",
+				"prograde@advanced": "{body} is in direct (prograde) motion: {rate} a day eastwards along the ecliptic.",
+				"stationary": "{body} seems to stand still: it is about to turn round.",
+				"stationary@simple": "{body} seems to stop!",
+				"stationary@advanced": "{body} is near a stationary point: its ecliptic longitude has almost stopped changing.",
+				"retrograde": "{body} seems to move backwards! It only looks that way: {observerId, select, other {{observer}}} and {body} are passing each other.",
+				"retrograde@simple": "{body} looks like it is going backwards! It isn't really: {observerId, select, other {{observer}}} and {body} are overtaking each other, like cars on a motorway.",
+				"retrograde@advanced": "{body} is in retrograde motion: seen from {observerId, select, other {{observer}}}, its ecliptic longitude decreases by {rate} a day. Ptolemy explained it with epicycles, Copernicus with a moving Earth."
+			},
+			"phase": {
+				"caption": "{bodyId, select, moon {The Moon} other {{body}}} as seen from {observerId, select, other {{observer}}}",
+				"status": "{phase} · {fraction, number, ::percent} lit",
+				"status@simple": "{phase}",
+				"name": {
+					"new": "{bodyId, select, moon {New moon} other {New}}",
+					"waxingCrescent": "Waxing crescent",
+					"waxingCrescent@simple": "Thin and growing",
+					"firstQuarter": "First quarter",
+					"firstQuarter@simple": "Half lit, growing",
+					"waxingGibbous": "Waxing gibbous",
+					"waxingGibbous@simple": "Nearly full, growing",
+					"full": "{bodyId, select, moon {Full moon} other {Full}}",
+					"waningGibbous": "Waning gibbous",
+					"waningGibbous@simple": "Nearly full, shrinking",
+					"lastQuarter": "Last quarter",
+					"lastQuarter@simple": "Half lit, shrinking",
+					"waningCrescent": "Waning crescent",
+					"waningCrescent@simple": "Thin and shrinking"
+				}
+			},
+			"inset": {
+				"title": "From above the Sun",
+				"title@simple": "Seen from high above",
+				"label": "{observer} and {body} on their orbits around the Sun, with the line of sight from {observer} to {body}"
+			}
 		}
+	},
+	"solarWalk": {
+		"back": "3D model",
+		"title": "If the Sun were {object}…",
+		"lead": "…Earth would be {earth}, {earthDistance} away. Every size and distance on this page is the real one, shrunk by the same amount to fit a school field. Take the Sun outside and walk it.",
+		"lead@simple": "…Earth would be as small as {earth} and {earthDistance} away! Take the Sun outside and walk the solar system.",
+		"lead@advanced": "…Earth would be {earthSize} across and {earthDistance} away. This is a true-scale model at 1 : {ratio}: every size and every distance is shrunk by the same factor. Take the Sun outside and walk it.",
+		"sunLabel": "The Sun is",
+		"sunObject": {
+			"orange": "an orange",
+			"football": "a football",
+			"basketball": "a basketball",
+			"exerciseBall": "an exercise ball"
+		},
+		"sunObjectName": {
+			"orange": "Orange",
+			"football": "Football",
+			"basketball": "Basketball",
+			"exerciseBall": "Exercise ball"
+		},
+		"landmarkLabel": "Compare with",
+		"landmarkOption": {
+			"none": "Metres only",
+			"pitch": "Football pitch ({length})",
+			"track": "Running track ({length} a lap)"
+		},
+		"viewLabel": "Show as",
+		"view": {
+			"walk": "Walk",
+			"table": "Table"
+		},
+		"print": "Print",
+		"open3d": "See it in 3D at true scale",
+		"open3dBody": "See {name} in 3D at true scale",
+		"summary": "The whole walk to Neptune: {distance}, about {time} on foot.",
+		"summary@simple": "The walk to Neptune is {distance} long. It takes about {time}.",
+		"summary@advanced": "From the Sun to Neptune: {distance}, about {time} at a walking pace of 4 km/h.",
+		"start": "Start",
+		"sunStop": "Here the Sun is {object}, {size} across. Put it at the start: the school gate or a corner of the field.",
+		"sunStop@simple": "The Sun is {object}. Put it at the start, for example at the school gate.",
+		"sunStop@advanced": "Here the Sun is {object}, {size} across (really {trueSize}). Put it at the start: the school gate or a corner of the field.",
+		"leg": "Walk {distance}",
+		"size": "{size} across – about the size of {thing}",
+		"size@simple": "About as big as {thing}",
+		"size@advanced": "{size} across (really {trueSize}) – about the size of {thing}",
+		"distance": "{distance} from the Sun",
+		"distance@advanced": "{distance} from the Sun (really {trueDistance})",
+		"moon": "{name}: {size}, about the size of {thing}, {distance} from the planet",
+		"moon@simple": "{name}: as big as {thing}, {distance} from the planet",
+		"moon@advanced": "{name}: {size} (really {trueSize}), {distance} from the planet (really {trueDistance})",
+		"landmarkCount": {
+			"pitch": "{count, plural, one {# football pitch} other {# football pitches}}",
+			"track": "{count, plural, one {# lap of the track} other {# laps of the track}}"
+		},
+		"landmarkMarker": {
+			"pitch": "The end of a football pitch: {length} from the Sun",
+			"track": "One lap of the running track: {length} from the Sun"
+		},
+		"starTitle": "The nearest star",
+		"star": "Now keep going. At this scale the nearest star after the Sun, Proxima Centauri, is {distance} away – about {flight} by plane. Your whole walk to Neptune fits into that {times} times.",
+		"star@simple": "And the next star? At this scale it is {distance} away! Even a plane would need about {flight} to get there.",
+		"star@advanced": "Proxima Centauri, 4.25 light-years away, lands {distance} from the start: {times} times the walk to Neptune, about {flight} of flying at 900 km/h. This small red dwarf would be {size} across, about the size of {thing}.",
+		"starLesson": "The solar system you just walked is a tiny island in an ocean of empty space.",
+		"starLesson@simple": "Space is really, really empty!",
+		"starLesson@advanced": "Between the stars there is almost nothing: the Sun's nearest neighbour is thousands of solar-system walks away.",
+		"lineUp": "In space the planets are never lined up like this. Each one circles the Sun on its own path, so they are spread out all around it. The walk shows how far each one is from the Sun on average.",
+		"lineUp@simple": "In real life the planets are never in a row like this. Each one goes round the Sun on its own path.",
+		"lineUp@advanced": "The planets are never aligned: the walk puts each one at its mean distance from the Sun (the semi-major axis of its orbit). Sizes are mean diameters, from the same data as the 3D model. Proxima Centauri: 4.2465 light-years (Gaia DR3).",
+		"tableCaption": "If the Sun were {object}: the solar system at 1 : {ratio}",
+		"column": {
+			"stop": "No.",
+			"body": "Body",
+			"size": "Size",
+			"thing": "About as big as",
+			"distance": "From the Sun",
+			"leg": "From the last stop",
+			"done": "Done"
+		},
+		"landmarkColumn": {
+			"pitch": "Football pitches",
+			"track": "Track laps"
+		},
+		"moonDistance": "{distance} from the planet",
+		"printNote": "The circles are printed at their size in the model.",
+		"thing": {
+			"fineSand": "a grain of fine sand",
+			"salt": "a grain of salt",
+			"sugar": "a grain of sugar",
+			"poppySeed": "a poppy seed",
+			"pinhead": "a pinhead",
+			"peppercorn": "a peppercorn",
+			"pea": "a pea",
+			"marble": "a marble",
+			"cherry": "a cherry",
+			"walnut": "a walnut",
+			"tableTennisBall": "a table tennis ball",
+			"tennisBall": "a tennis ball",
+			"orange": "an orange",
+			"grapefruit": "a grapefruit",
+			"melon": "a small melon",
+			"football": "a football"
+		},
+		"starName": "Proxima Centauri"
 	},
 	"compare": {
 		"title": "Side by side",

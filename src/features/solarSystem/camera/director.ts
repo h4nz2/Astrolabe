@@ -23,10 +23,19 @@
 import type { CameraControlsImpl } from "@react-three/drei"
 import { Spherical, Vector3, type PerspectiveCamera } from "three"
 
-import { KM_PER_UNIT, degToRad, radToDeg } from "@/sim"
+import {
+	KM_PER_UNIT,
+	childDistanceCurve,
+	degToRad,
+	displayDistanceKm,
+	radToDeg,
+	toUnits,
+} from "@/sim"
 import {
 	HOME_SHOT,
 	OVERVIEW,
+	isFrameAnchored,
+	type FitRegion,
 	type View,
 	type ViewMode,
 	viewBodyId,
@@ -39,6 +48,7 @@ import type { SimFrame } from "../scene/simFrame"
 import {
 	CAMERA_MAX_DISTANCE,
 	defaultDistance,
+	fitDistance,
 	minDollyDistance,
 	minViewDistance,
 } from "./framing"
@@ -267,8 +277,14 @@ export class CameraDirector {
 			this.begin(now)
 			return
 		}
+		const fit = pending?.fit ?? null
 		shotToPose(
-			{ ...HOME_SHOT, ...state.shot, ...pending?.shot },
+			{
+				...HOME_SHOT,
+				...state.shot,
+				...pending?.shot,
+				...(fit === null ? {} : { distance: this.fitFactor(fit, view) }),
+			},
 			this.defaultDistance(view),
 			this.pose,
 		)
@@ -326,7 +342,10 @@ export class CameraDirector {
 			this.toPose,
 		)
 
-		this.toFactor = transition.shot?.distance ?? 1
+		this.toFactor =
+			transition.fit !== null
+				? this.fitFactor(transition.fit, view)
+				: (transition.shot?.distance ?? 1)
 		this.profile = transitProfile(transition.profile)
 		this.runningId = transition.id
 		this.runningView = view
@@ -541,12 +560,17 @@ export class CameraDirector {
 		void this.controls.moveTo(0, 0, 0, false)
 		this.setOrigin(pivot)
 
+		// in an anchored frame (#31) the centre stays with the body held still:
+		// a pan lands back on it or becomes a point near it, never a new frame
+		const held = isFrameAnchored(state)
+			? this.frame.index.get(state.frameId)
+			: undefined
 		const snapped = snapTarget(
 			this.frame,
 			cameraKm,
 			pivot,
 			this.camera.fov,
-			this.isOnScreen,
+			held === undefined ? this.isOnScreen : (i) => i === held,
 		)
 		if (snapped >= 0) {
 			const view = this.snapView(state.view, snapped)
@@ -558,7 +582,7 @@ export class CameraDirector {
 			return
 		}
 
-		const anchor = neighbourhoodOf(this.frame, pivot)
+		const anchor = held ?? neighbourhoodOf(this.frame, pivot)
 		const offset = pointOffsetKm(this.frame, anchor, pivot, new Float64Array(3))
 		const view: View = {
 			kind: "point",
@@ -701,6 +725,28 @@ export class CameraDirector {
 		out[1] = positions[at + 1] + anchored.offsetKm[1]
 		out[2] = positions[at + 2] + anchored.offsetKm[2]
 		return out
+	}
+
+	/**
+	 * The shot distance (a multiple of the view's default) that frames
+	 * `fit`: a sphere of `fit.km` true km, drawn as a distance from body
+	 * `fit.around` is drawn under the active scale.
+	 */
+	private fitFactor(fit: FitRegion, view: View): number {
+		const i = this.frame.index.get(fit.around)
+		const fallback = 1
+		if (i === undefined) return fallback
+		const body = this.frame.bodies[i]
+		const drawnKm = displayDistanceKm(
+			fit.km,
+			body.radiusKm,
+			this.frame.displayRadiiKm[i],
+			childDistanceCurve(this.frame.scale, body.parentId === null),
+		)
+		const factor =
+			fitDistance(toUnits(drawnKm), this.camera.fov, this.camera.aspect) /
+			this.defaultDistance(view)
+		return Number.isFinite(factor) && factor > 0 ? factor : fallback
 	}
 
 	private defaultDistance(view: View): number {

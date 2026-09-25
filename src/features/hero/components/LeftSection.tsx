@@ -40,6 +40,7 @@ const LeftSection: FC<LeftSectionProps> = () => {
 					<Button to="/solar_dictionary" label={t("hero.dictionary")} />
 					<Button to="/solar_system" label={t("hero.solarSystem")} />
 					<BirthdayButton label={t("hero.birthday")} />
+					<Button to="/solar_walk" label={t("hero.solarWalk")} />
 				</Flex>
 			</Box>
 		</Container>
