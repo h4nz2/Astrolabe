@@ -157,7 +157,7 @@ export const MAX_TRANSIT_MS = 3000
 /**
  * The automatic duration of a move of `length` (see `zoomPanLength`): about
  * 1.1 s from the overview down to a planet, 2.5 s between the far planets.
- * Tuning the feel of long flights (#18) starts here.
+ * Flights between bodies (#18) have their own (`flightProfile.durationMs`).
  */
 export const transitDurationMs = (length: number): number =>
 	length < 1e-6

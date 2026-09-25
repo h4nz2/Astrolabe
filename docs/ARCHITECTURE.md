@@ -33,7 +33,7 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, simSearch.ts (URL schema), urlSync.ts
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, simSearch.ts (URL schema), urlSync.ts
 src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, labels/, lighting/, ui/)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
@@ -240,8 +240,9 @@ panning: boolean            a pan (or its damped glide) is moving the pivot righ
 viewMode(state)             "overview" | "focused" | "free" | "transit"
 ```
 
-Actions: `select`, `setFocus` (click: select + focus), `focus`, `overview`, `goTo(view, request?)`, `jumpTo`, `reset`
-(the way out), `skip`, and sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
+Actions: `select`, `setFocus` (click: select + focus; a flight from another body, see Flights), `focus`, `overview`,
+`goTo(view, request?)`, `jumpTo`, `reset` (the way out), `skip`, `finishMove` (skip the move, stay in the sequence), and
+sequences (`playSequence`, `goToStep`, `nextStep`, `resumeSequence`, `stopSequence`). A
 request carries a partial `shot`, `durationMs` and a `profile`. Invalid views and unknown bodies are ignored.
 Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
@@ -253,9 +254,42 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   automatic sequence steps. A pan while settled is folded into a pending pan (nothing moves on screen) and committed
   when released (see Re-centring).
 - A non-finite camera or a view of a missing body resets to the overview.
-- Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s.
+- Profiles (`camera/profiles.ts`): the default `smooth` is van Wijk and Nuij's zoom-and-pan (`camera/pose.ts`), 0.8–3 s;
+  `fly` is the flight between bodies (see Flights). A profile may add `lift` to its sample and its own `durationMs`.
 - `window.__astrolabe` (`camera/debugHandle.ts`) exposes `camera()` (`director.snapshot()`) and the store for the
   console and e2e tests. Read the camera, never write it.
+
+### Flights: fly between planets (`camera/profiles.ts`, `src/store/flight.ts`, `ui/FlightReadout.tsx`; #18)
+
+- **When:** `setFocus` from a body, or from a point near another body, requests `profile: FLIGHT_PROFILE` ("fly"); from
+  the overview it only descends (`smooth`). Every selection path (click, label, picker search, arrow keys, the centre
+  badge) goes through `setFocus`, so all of them fly.
+- **Shape** (`flightPlan`, `flightProfile`, pure): pull back until the gap fits the narrow side of the view
+  `FLIGHT_TOP_FIT` (2.4) times (portrait phones included, never lower than either end), travel at that height, descend.
+  Distance is eased in log space over the climb and the descent (up to `FLIGHT_ZOOM_SHARE` = 25 % of the time each, in
+  proportion to their e-folds); the pivot crosses over [`travelStart`, `travelEnd`] = halfway up to halfway down, eased,
+  so the phases flow into one move and over 90 % of the crossing happens at the top. The camera rises to at least
+  `LIFT_ELEVATION_DEG` (50°) above the plane mid-flight (`lift`), so the crossing is seen from above and never end-on:
+  the orbits, planets and labels passing beneath are what moves in frame. 2.5–5 s (`FLIGHT_MIN_MS`..`FLIGHT_MAX_MS`,
+  2.2 s + 120 ms per e-fold of zoom). Both pivots are re-read every frame (the destination is met where it is on
+  arrival); interruptions, hand-over and Escape are the director's as for every move. With `prefers-reduced-motion`
+  a flight jumps (the readout still shows).
+- **Record** (`useFlightStore`, written only by the director): on departure `depart(...)` with `fromId`, `toId`,
+  `distanceKm`, `startedAt`, `durationMs`, `travelStart` and `travelEnd`. `fromId` is the body the pivot was held on
+  (after a mid-flight retarget: the nearer end), `distanceKm` the TRUE centre-to-centre distance at departure. Any
+  other move calls `transitionStarted`: one landing on the flight's destination (a skip, a re-frame) keeps it as
+  arrived, anything else drops it. `flightProgress(flight, now)` / `travelledAt` give the share crossed with the
+  pivot's own easing.
+- **Readout** (`ui/FlightReadout.tsx`, words in `ui/flightFacts.ts`, `solarSystem.flight.*`): stacked above the time
+  controls (`.bottom` in `SolarSystem.module.css`) while the view is the flight's destination. Route, true distance
+  ("896 million km apart on this date", AU at the advanced level), a bar and "… km crossed" counter written to the DOM
+  per animation frame while flying, and the time light (299,792 km/s), New Horizons' launch speed (16.26 km/s, the
+  fastest launch ever) and a car at 100 km/h would take. Skip (`finishMove`: lands the move, stays in a tour) while
+  flying, a close button (`dismiss`) after arrival. The question line hides below 800 px of height and on phones.
+- **For tours and the opening (#28, #30):** the step `flightStep("neptune", { holdMs })` is a body view with
+  `profile: FLIGHT_PROFILE`; it flies with the readout like a user's flight, and `durationMs` on the step overrides the
+  automatic length. Outside a sequence, `focus(id, { profile: FLIGHT_PROFILE })` does the same. `finishMove()` skips
+  the current move of a sequence without ending it (`skip()` still ends the whole sequence).
 
 ### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
 
@@ -425,7 +459,8 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
   `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
-  toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
+  toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel), `FlightReadout`
+  (#18, above the time controls). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
@@ -468,8 +503,8 @@ hover ring, name and cursor apply to labels too.
   (< 600 px) the card sits above the time controls with its facts folded behind a toggle.
 - `window.__astrolabe.screenOf(id)` gives a body's screen position and drawn radius, and `.scale` the scale store, for
   the console and e2e tests.
-- Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`; a fly profile can be
-  requested through `focus(id, request)`), #24 compare (the card's action
+- Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`, which flies from a
+  focused body; see Flights), #24 compare (the card's action
   row takes "Compare with…"), #28/#29/#34 (select or focus through the store).
 
 ## Labels (`features/solarSystem/labels`; #20)
