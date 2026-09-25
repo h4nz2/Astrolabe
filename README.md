@@ -72,3 +72,6 @@ Set `VITE_BASE=/sub/path/` when the site is served from a sub path.
 ## Licensing
 
 The code in this project is licensed under the MIT [license](LICENSE).
+
+The moon surface maps come from NASA, USGS and other open sources; each one's source, credit and licence is
+recorded in `data/moon-surfaces.json` (and listed in `src/data/credits.json`).

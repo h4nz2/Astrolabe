@@ -356,6 +356,15 @@
 			"readMore": "Lire son histoire",
 			"readLess": "Afficher moins"
 		},
+		"surface": {
+			"map": "Carte de la surface : {source}.",
+			"unseen": "Une partie de {moon} n’a jamais été photographiée : cette partie de la carte est complétée pour ressembler au reste.",
+			"unseen@simple": "Personne n’a jamais vu {moon} en entier. La partie manquante de la carte est complétée.",
+			"painted": "Aucune sonde n’a cartographié {moon} de près : cette surface est peinte d’après ce que l’on sait, sa couleur et la quantité de lumière du Soleil qu’elle renvoie.",
+			"painted@simple": "Aucune sonde n’a photographié {moon} de près. Cette surface est peinte avec sa vraie couleur.",
+			"haze": "Le sol de {moon} est caché sous une épaisse brume orange. C’est ainsi que nos yeux voient {moon}.",
+			"haze@simple": "Une épaisse brume orange cache le sol de {moon}. C’est ainsi que nos yeux voient {moon}."
+		},
 		"facts": {
 			"label": {
 				"size": "Taille",

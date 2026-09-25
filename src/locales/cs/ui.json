@@ -356,6 +356,15 @@
 			"readMore": "Přečíst příběh",
 			"readLess": "Zobrazit méně"
 		},
+		"surface": {
+			"map": "Mapa povrchu: {source}.",
+			"unseen": "Část měsíce {moon} nikdo nikdy nevyfotografoval, proto je tato část mapy doplněna tak, aby odpovídala zbytku.",
+			"unseen@simple": "Celý měsíc {moon} ještě nikdo neviděl. Chybějící část mapy je doplněná.",
+			"painted": "Žádná sonda měsíc {moon} zblízka nezmapovala, proto je tento povrch namalován podle toho, co víme: podle jeho barvy a toho, kolik slunečního světla odráží.",
+			"painted@simple": "Žádná sonda měsíc {moon} zblízka nevyfotila. Tento povrch je namalovaný v jeho skutečné barvě.",
+			"haze": "Povrch měsíce {moon} skrývá hustý oranžový opar. Takhle měsíc {moon} vidí naše oči.",
+			"haze@simple": "Hustý oranžový opar zakrývá povrch měsíce {moon}. Takhle ho vidí naše oči."
+		},
 		"facts": {
 			"label": {
 				"size": "Velikost",

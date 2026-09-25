@@ -356,6 +356,15 @@
 			"readMore": "Die ganze Geschichte lesen",
 			"readLess": "Weniger zeigen"
 		},
+		"surface": {
+			"map": "Oberflächenkarte: {source}.",
+			"unseen": "Ein Teil von {moon} wurde nie fotografiert; dieser Teil der Karte ist passend zum Rest ergänzt.",
+			"unseen@simple": "Niemand hat {moon} je ganz gesehen. Der fehlende Teil der Karte ist ergänzt.",
+			"painted": "Keine Raumsonde hat {moon} aus der Nähe kartiert. Diese Oberfläche ist nach dem gemalt, was bekannt ist: der Farbe und wie viel Sonnenlicht sie zurückwirft.",
+			"painted@simple": "Keine Raumsonde hat {moon} aus der Nähe fotografiert. Diese Oberfläche ist in der echten Farbe gemalt.",
+			"haze": "Der Boden von {moon} liegt unter dichtem orangefarbenem Dunst verborgen. So sieht {moon} für unsere Augen aus.",
+			"haze@simple": "Dichter orangefarbener Dunst verdeckt den Boden von {moon}. So sieht {moon} für unsere Augen aus."
+		},
 		"facts": {
 			"label": {
 				"size": "Größe",
