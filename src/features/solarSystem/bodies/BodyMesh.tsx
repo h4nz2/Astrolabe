@@ -88,11 +88,14 @@ function MappedMaterial({ body, uniforms }: MaterialProps) {
 	const urls =
 		night === undefined ? [assetUrl(base)] : [assetUrl(base), assetUrl(night)]
 	const [map, nightMap] = useTexture(urls, markSRGBAll)
-	// a ringed planet carries its rings' shadow band (#12)
+	// a ringed planet carries its rings' shadow band (#12), unless its rings
+	// are drawn far more opaque than they are (Jupiter's, Neptune's)
 	const ringTextures = useRingTextures(body.rings)
 	const ringShadow = useMemo(
 		() =>
-			ringTextures === null || body.rings === null
+			ringTextures === null ||
+			body.rings === null ||
+			body.rings.castsShadow === false
 				? undefined
 				: {
 						color: ringTextures.color,

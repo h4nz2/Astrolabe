@@ -311,7 +311,8 @@
 			"textures": {
 				"alpha": "/assets/textures/jupiter/rings/rings_alpha.png",
 				"color": "/assets/textures/jupiter/rings/rings_color.png"
-			}
+			},
+			"castsShadow": false
 		},
 		"info": {
 			"gravity": 24.79,
@@ -502,7 +503,8 @@
 			"textures": {
 				"alpha": "/assets/textures/neptune/rings/rings_alpha.png",
 				"color": "/assets/textures/neptune/rings/rings_color.png"
-			}
+			},
+			"castsShadow": false
 		},
 		"info": {
 			"gravity": 11.15,

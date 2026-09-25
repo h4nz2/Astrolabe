@@ -731,6 +731,18 @@ describe("buildBodies", () => {
 		})
 	})
 
+	it("passes a ring file's castsShadow through, and only when it is set", () => {
+		const shadowless = buildBodies(fixture, {
+			...options,
+			ringsFor: (planetId) =>
+				planetId === "uranus" ? { ...uranusRings, castsShadow: false } : null,
+		})
+		expect(
+			shadowless.bodies.find((body) => body.id === "uranus")?.rings,
+		).toEqual({ ...uranusRings, castsShadow: false })
+		expect(get("uranus").rings).not.toHaveProperty("castsShadow")
+	})
+
 	it("warns when a ringed planet has no ring file", () => {
 		const without = buildBodies(fixture, { ...options, ringsFor: () => null })
 		expect(

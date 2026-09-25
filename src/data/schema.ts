@@ -108,6 +108,13 @@ export const Rings = z
 			alpha: z.string().min(1),
 			color: z.string().min(1),
 		}),
+		/**
+		 * false: the rings cast no shadow on their planet. For rings drawn far more opaque than
+		 * they are (Jupiter's and Neptune's, optical depth 1e-6 to 0.1, exaggerated so they can be
+		 * seen at all): their real shadow is invisible, and the exaggerated one would draw dark
+		 * lines across the planet that are not there. Absent: they cast one (Saturn, Uranus).
+		 */
+		castsShadow: z.boolean().optional(),
 	})
 	.refine((rings) => rings.outerRadiusKm > rings.innerRadiusKm, {
 		message: "outerRadiusKm must be larger than innerRadiusKm",

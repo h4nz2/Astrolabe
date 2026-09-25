@@ -59,6 +59,8 @@ const ringSystemSchema = z
 			alpha: z.string().startsWith("/assets/"),
 			color: z.string().startsWith("/assets/"),
 		}),
+		// read by the build (src/data/schema.ts, Rings), not here
+		castsShadow: z.boolean().optional(),
 		bands: z.array(bandSchema).min(1),
 	})
 	.refine((system) => system.outerRadiusKm > system.innerRadiusKm, {

@@ -34,6 +34,16 @@ describe("which bodies have rings", () => {
 			"neptune",
 		])
 	})
+
+	it("casts a shadow on the planet only where the drawn opacity is true (#12)", () => {
+		// Jupiter's and Neptune's rings are drawn far more opaque than they are:
+		// their shadow would be dark lines across the planet that are not there
+		expect(
+			ringed
+				.filter((body) => body.rings?.castsShadow !== false)
+				.map((b) => b.id),
+		).toEqual(["saturn", "uranus"])
+	})
 })
 
 describe("createRingGeometry", () => {

@@ -585,7 +585,9 @@ Driven by data alone: a body with `rings` gets them (Jupiter, Saturn, Uranus, Ne
 - The rings' shadow on the planet: `createSunlitMaterial({ ringShadow })` sets `USE_RING_SHADOW`; the body shader
   intersects the ray from the surface point toward the Sun with the ring plane (the pole is the sphere's local +Y,
   which the spin leaves alone) and multiplies the sunlight by the slant transmittance of the mean opacity there
-  (`ringShadowTransmittance`). Ringless bodies compile none of it.
+  (`ringShadowTransmittance`). Ringless bodies compile none of it, and neither do planets whose ring file says
+  `"castsShadow": false` (Jupiter, Neptune): their rings are drawn far more opaque than they are (optical depth
+  1e-6 to 0.1), so their real shadow is invisible and the exaggerated one drew dark lines across the planet.
 - Picking: the ring sheet is a real scene target, nearer than `BodyPicking`'s "empty space": a click on the rings is
   `activateBody(planet)` and hovering them hovers the planet, so a click on Saturn's rings never resets the view.
 
