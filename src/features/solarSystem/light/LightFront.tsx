@@ -6,8 +6,14 @@
  * frame from the SimFrame and the simulation time, so the front pauses,
  * speeds up and runs backwards with the clock.
  */
-import { useEffect, useMemo, useRef, type RefObject } from "react"
-import { useFrame } from "@react-three/fiber"
+import {
+	useEffect,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	type RefObject,
+} from "react"
+import { useFrame, useThree } from "@react-three/fiber"
 import { Html } from "@react-three/drei"
 import { IconX } from "@tabler/icons-react"
 import {
@@ -356,6 +362,23 @@ function LightFront() {
 
 	useEffect(() => () => disposeFront(objects), [objects])
 
+	// The label's own layer over the canvas, owned here rather than React's:
+	// drei's <Html> appends to the canvas wrapper by default, and leaving the
+	// page with a flash on screen then threw "removeChild ... not a child"
+	// while the scene was torn down (found by the help page's try-it test, #43).
+	const gl = useThree((three) => three.gl)
+	const layer = useMemo(() => {
+		const div = document.createElement("div")
+		div.style.cssText =
+			"position:absolute;inset:0;overflow:hidden;pointer-events:none;"
+		return div
+	}, [])
+	const layerRef = useRef<HTMLElement>(layer)
+	useLayoutEffect(() => {
+		gl.domElement.parentNode?.appendChild(layer)
+		return () => layer.remove()
+	}, [gl, layer])
+
 	useFrame(() =>
 		drawFront(
 			frame,
@@ -376,7 +399,12 @@ function LightFront() {
 			<group ref={labelRef}>
 				{pulse !== null && (
 					// z-index 0: the HUD panels, later in the page, stay on top of it
-					<Html center zIndexRange={[0, 0]} style={{ pointerEvents: "none" }}>
+					<Html
+						center
+						portal={layerRef}
+						zIndexRange={[0, 0]}
+						style={{ pointerEvents: "none" }}
+					>
 						<FrontLabel pulse={pulse} frame={frame} i18n={i18n} ref={textRef} />
 					</Html>
 				)}

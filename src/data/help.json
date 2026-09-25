@@ -1,0 +1,341 @@
+{
+	"$comment": "Issue #43: the help page's structure. Every user-facing feature is an entry: its group, and a 'try' link (a path inside the app with its search params, never lang or reading) that opens the app with the feature ready. The words (title, what, why, how) live in src/locales/<locale>/help.json at every reading level. Adding a feature = one entry here + its text in every locale's help.json; src/features/help/help.test.ts and e2e/help.spec.ts check that every link parses and opens. See docs/ARCHITECTURE.md, 'Help page'.",
+	"groups": [
+		"lookingAround",
+		"time",
+		"sizeDistance",
+		"light",
+		"comparing",
+		"teachers",
+		"games"
+	],
+	"entries": [
+		{
+			"id": "opening",
+			"group": "lookingAround",
+			"try": "/solar_system?intro=play"
+		},
+		{
+			"id": "flyToWorld",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=earth"
+		},
+		{
+			"id": "findByName",
+			"group": "lookingAround",
+			"try": "/solar_system"
+		},
+		{
+			"id": "lookAround",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=mars&at=6_0_-2"
+		},
+		{
+			"id": "worldCard",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=saturn"
+		},
+		{
+			"id": "moons",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=jupiter"
+		},
+		{
+			"id": "layers",
+			"group": "lookingAround",
+			"try": "/solar_system?orbitNames=true"
+		},
+		{
+			"id": "rings",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=saturn&t=2457897.5&cam=160_40_1"
+		},
+		{
+			"id": "spin",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=earth&warp=3600"
+		},
+		{
+			"id": "skyTonight",
+			"group": "lookingAround",
+			"try": "/solar_system?sky=true"
+		},
+		{
+			"id": "dictionary",
+			"group": "lookingAround",
+			"try": "/solar_dictionary?entity=4"
+		},
+		{
+			"id": "sound",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=jupiter"
+		},
+		{
+			"id": "language",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=mars"
+		},
+		{
+			"id": "timeControls",
+			"group": "time",
+			"try": "/solar_system?warp=86400"
+		},
+		{
+			"id": "timeTravel",
+			"group": "time",
+			"try": "/solar_system?t=2452878.91&paused=true"
+		},
+		{
+			"id": "tooFast",
+			"group": "time",
+			"try": "/solar_system?warp=315576000"
+		},
+		{
+			"id": "seenFromEarth",
+			"group": "time",
+			"try": "/solar_system?focus=earth&frame=earth&sel=mars&t=2460691.5&cam=0_89.9_120&warp=2629800"
+		},
+		{
+			"id": "scale",
+			"group": "sizeDistance",
+			"try": "/solar_system?scale=trueScale"
+		},
+		{
+			"id": "howFar",
+			"group": "sizeDistance",
+			"try": "/solar_system?focus=earth&scale=trueScale"
+		},
+		{
+			"id": "solarWalk",
+			"group": "sizeDistance",
+			"try": "/solar_walk"
+		},
+		{
+			"id": "spacecraft",
+			"group": "sizeDistance",
+			"try": "/solar_system?craft=voyager1"
+		},
+		{
+			"id": "dayNight",
+			"group": "light",
+			"try": "/solar_system?focus=earth&t=2461122.5"
+		},
+		{
+			"id": "eclipses",
+			"group": "light",
+			"try": "/solar_system?focus=moon&t=2460748.72"
+		},
+		{
+			"id": "lightFlash",
+			"group": "light",
+			"try": "/solar_system?light=flash"
+		},
+		{
+			"id": "signalDelay",
+			"group": "light",
+			"try": "/solar_system?light=delay"
+		},
+		{
+			"id": "fartherOut",
+			"group": "light",
+			"try": "/solar_system?light=beyond"
+		},
+		{
+			"id": "compare",
+			"group": "comparing",
+			"try": "/compare?bodies=earth,sun"
+		},
+		{
+			"id": "compareIdeas",
+			"group": "comparing",
+			"try": "/compare?bodies=ganymede,mercury,titan"
+		},
+		{
+			"id": "tours",
+			"group": "teachers",
+			"try": "/solar_system?tour=grandTour"
+		},
+		{
+			"id": "present",
+			"group": "teachers",
+			"try": "/solar_system?focus=earth&present=true"
+		},
+		{
+			"id": "contrast",
+			"group": "teachers",
+			"try": "/solar_system?contrast=high"
+		},
+		{
+			"id": "presenterKeys",
+			"group": "teachers",
+			"try": "/solar_system?focus=earth"
+		},
+		{
+			"id": "hideControls",
+			"group": "teachers",
+			"try": "/solar_system?focus=saturn"
+		},
+		{
+			"id": "prepareLesson",
+			"group": "teachers",
+			"try": "/solar_system?focus=earth&frame=earth&sel=mars&cam=0_89.9_120&t=2460691.5&warp=2629800&paused=true"
+		},
+		{
+			"id": "share",
+			"group": "teachers",
+			"try": "/solar_system?focus=jupiter"
+		},
+		{
+			"id": "ownHunt",
+			"group": "teachers",
+			"try": "/solar_system?hunt=walkedOn.volcanoMoon.geysers"
+		},
+		{
+			"id": "hunt",
+			"group": "games",
+			"try": "/solar_system?hunt=true"
+		},
+		{
+			"id": "birthday",
+			"group": "games",
+			"try": "/solar_system?birthday=true"
+		},
+		{
+			"id": "postcard",
+			"group": "games",
+			"try": "/solar_system?focus=jupiter"
+		}
+	],
+	"controls": [
+		"turn",
+		"zoom",
+		"move",
+		"fly",
+		"back",
+		"name",
+		"siblings",
+		"planets",
+		"pause",
+		"speed",
+		"step",
+		"start",
+		"scale",
+		"stopLight",
+		"names",
+		"hide",
+		"fullscreen",
+		"projector",
+		"contrast",
+		"sound",
+		"shortcuts"
+	],
+	"credits": [
+		{
+			"id": "solarSystemApi",
+			"section": "data",
+			"name": "L’OpenData du Système Solaire (le-systeme-solaire.net)",
+			"url": "https://api.le-systeme-solaire.net/",
+			"licence": "openData"
+		},
+		{
+			"id": "jpl",
+			"section": "data",
+			"name": "NASA JPL Solar System Dynamics",
+			"url": "https://ssd.jpl.nasa.gov/",
+			"licence": "publicDomain"
+		},
+		{
+			"id": "iau",
+			"section": "data",
+			"name": "IAU Working Group on Cartographic Coordinates and Rotational Elements (Archinal et al., 2018)",
+			"url": "https://doi.org/10.1007/s10569-017-9805-5",
+			"licence": "facts"
+		},
+		{
+			"id": "meeus",
+			"section": "data",
+			"name": "Jean Meeus, Astronomical Algorithms",
+			"licence": "facts"
+		},
+		{
+			"id": "rings",
+			"section": "data",
+			"url": "https://github.com/h4nz2/Astrolabe/tree/main/data/rings",
+			"licence": "facts"
+		},
+		{
+			"id": "surfaceMaps",
+			"section": "maps",
+			"licence": "unknown"
+		},
+		{
+			"id": "spaceAudio",
+			"section": "sounds",
+			"name": "NASA / University of Iowa, Radio and Plasma Wave Group (space-audio.org)",
+			"url": "https://space-audio.org/",
+			"licence": "ccBy"
+		},
+		{
+			"id": "three",
+			"section": "software",
+			"name": "three.js",
+			"url": "https://threejs.org/",
+			"licence": "mit"
+		},
+		{
+			"id": "react",
+			"section": "software",
+			"name": "React",
+			"url": "https://react.dev/",
+			"licence": "mit"
+		},
+		{
+			"id": "fiber",
+			"section": "software",
+			"name": "React Three Fiber, drei, postprocessing (pmndrs)",
+			"url": "https://docs.pmnd.rs/",
+			"licence": "mitZlib"
+		},
+		{
+			"id": "mantine",
+			"section": "software",
+			"name": "Mantine",
+			"url": "https://mantine.dev/",
+			"licence": "mit"
+		},
+		{
+			"id": "tabler",
+			"section": "software",
+			"name": "Tabler Icons",
+			"url": "https://tabler.io/icons",
+			"licence": "mit"
+		},
+		{
+			"id": "tanstack",
+			"section": "software",
+			"name": "TanStack Router",
+			"url": "https://tanstack.com/router",
+			"licence": "mit"
+		},
+		{
+			"id": "gsap",
+			"section": "software",
+			"name": "GSAP",
+			"url": "https://gsap.com/standard-license",
+			"licence": "gsap"
+		},
+		{
+			"id": "smallLibraries",
+			"section": "software",
+			"name": "zustand, zod, Day.js, uqr, FormatJS intl-messageformat",
+			"licence": "mitBsd"
+		},
+		{
+			"id": "astrolabe",
+			"section": "app",
+			"name": "Astrolabe",
+			"url": "https://github.com/h4nz2/Astrolabe",
+			"licence": "mit"
+		}
+	]
+}

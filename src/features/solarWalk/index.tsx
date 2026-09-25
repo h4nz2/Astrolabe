@@ -4,7 +4,8 @@ import { Button, Group, SegmentedControl, Text, Title } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import { IconArrowLeft, IconPlanet, IconPrinter } from "@tabler/icons-react"
 
-import { LanguageMenu, useI18n } from "@/i18n"
+import { useI18n } from "@/i18n"
+import { CornerBar } from "@/features/help/HelpButton"
 import { useBodyName } from "@/i18n/bodies"
 
 import { formatLength } from "./lengths"
@@ -77,7 +78,7 @@ const SolarWalk = () => {
 	return (
 		<div className={classes.page}>
 			<div className={classes.noPrint}>
-				<LanguageMenu placement="corner" />
+				<CornerBar />
 			</div>
 			<div className={classes.inner}>
 				<header className={classes.header}>

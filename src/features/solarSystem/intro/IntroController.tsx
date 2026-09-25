@@ -16,8 +16,11 @@ import {
 
 const IntroController = () => {
 	const search = useSearch({ from: "/solar_system" })
-	// decided from the URL the page was opened with, before anything writes to it
-	const [play] = useState(() => shouldPlayOnArrival(search))
+	// decided from the URL the page was opened with, before anything writes to it;
+	// `?intro=play` replays it on purpose (the help page's link, #43)
+	const [play] = useState(
+		() => search.intro === "play" || shouldPlayOnArrival(search),
+	)
 
 	useLayoutEffect(() => {
 		const unwatch = watchIntro()

@@ -1,0 +1,32 @@
+/* Pages without a HUD pin help and the language menu to the top-right corner (#43). */
+.corner {
+	position: fixed;
+	top: 0.75rem;
+	right: 0.75rem;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	/* opaque rather than a backdrop blur: a blur over an animated canvas costs a compositing pass every frame */
+	background: rgba(20, 22, 28, 0.9);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: var(--mantine-radius-md);
+	padding: 0.25rem;
+}
+
+@media print {
+	.corner {
+		display: none;
+	}
+}
+
+/* phones: the icon alone (its name stays its label), like the comparison's back arrow */
+@media (max-width: 599px) {
+	.label {
+		display: none;
+	}
+
+	.section {
+		margin: 0;
+	}
+}

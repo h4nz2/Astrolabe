@@ -1,0 +1,1093 @@
+{
+	"groups": {
+		"lookingAround": {
+			"title": "Explorer",
+			"intro": {
+				"standard": "Oriente-toi dans le système solaire et découvre à quoi ressemble chaque monde.",
+				"simple": "Vole vers les planètes et les lunes, et regarde-les de près."
+			}
+		},
+		"time": {
+			"title": "Le temps",
+			"intro": {
+				"standard": "Accélère le temps, fais-le reculer ou saute à n’importe quelle date.",
+				"simple": "Fais aller le temps très vite, fais-le reculer ou saute à un autre jour."
+			}
+		},
+		"sizeDistance": {
+			"title": "Tailles et distances",
+			"intro": {
+				"standard": "La vraie taille des mondes, et la distance qui les sépare.",
+				"simple": "C’est grand comment, et c’est loin comment ?"
+			}
+		},
+		"light": {
+			"title": "La lumière",
+			"intro": {
+				"standard": "La lumière du Soleil fait le jour, la nuit et les éclipses, et même la lumière a besoin de temps pour voyager.",
+				"simple": "Le Soleil fait le jour et la nuit. Et la lumière met du temps pour arriver quelque part."
+			}
+		},
+		"comparing": {
+			"title": "Comparer",
+			"intro": {
+				"standard": "Place des mondes côte à côte, à leur vraie taille.",
+				"simple": "Mets deux mondes côte à côte et regarde lequel est le plus grand."
+			}
+		},
+		"teachers": {
+			"title": "Pour les enseignants",
+			"intro": "Montre le système solaire à une classe : vidéoprojecteur, clavier, liens et QR codes."
+		},
+		"games": {
+			"title": "Jeux",
+			"intro": {
+				"standard": "Pars à la chasse aux mondes, découvre ton âge sur Mars et prends une photo en souvenir.",
+				"simple": "Joue à la chasse au trésor, découvre ton âge sur Mars et prends une photo."
+			}
+		}
+	},
+	"entries": {
+		"opening": {
+			"title": {
+				"standard": "L’introduction",
+				"simple": "Le film du début"
+			},
+			"what": {
+				"standard": "Quatorze secondes qui commencent tout près de la Terre, à sa vraie taille, et reculent jusqu’à ce que la Terre soit plus petite qu’un pixel ; ensuite tout est dessiné plus grand pour que tu puisses le voir.",
+				"simple": "Un petit film qui part de la Terre et s’envole jusqu’au système solaire entier."
+			},
+			"why": {
+				"standard": "Elle montre l’idée de l’application avant qu’on lise un mot : l’espace est immense et presque vide. Elle marche sans le son.",
+				"simple": "Elle montre à quel point l’espace est grand et vide."
+			},
+			"how": {
+				"standard": [
+					"Elle passe une fois, à la première visite ; « Passer l’intro », un glissement ou Échap l’arrêtent à tout moment.",
+					"Pour la revoir, ouvre la flèche à côté de « Aide » et choisis « Revoir l’introduction ».",
+					"« Montrer comment se déplacer », dans le même menu, fait revenir les conseils pour glisser, zoomer et cliquer."
+				],
+				"simple": [
+					"Elle passe la première fois que tu viens.",
+					"Pour la revoir, appuie sur la flèche à côté de « Aide », puis sur « Revoir l’introduction »."
+				]
+			}
+		},
+		"flyToWorld": {
+			"title": {
+				"standard": "Voler vers n’importe quel monde",
+				"simple": "Voler vers une planète"
+			},
+			"what": {
+				"standard": "Clique sur une planète, une lune ou son nom, et la caméra s’y rend : elle recule, traverse le vide et redescend tout près.",
+				"simple": "Clique sur une planète, et hop, tu t’envoles vers elle."
+			},
+			"why": {
+				"standard": "Le vol montre la distance entre les mondes, et un encadré indique combien de temps il faudrait à la lumière, à un engin spatial et à une voiture pour faire le même trajet.",
+				"simple": "En route, tu vois si c’est loin, et combien de temps il faudrait à une voiture. Des années et des années !"
+			},
+			"how": {
+				"standard": [
+					"Pointe une planète ou son nom : un anneau apparaît avec « Clique pour t’y rendre ».",
+					"Clique ou touche-la. Pour arriver tout de suite, appuie sur « Passer » dans l’encadré.",
+					"Sur un petit point, clique n’importe où tout autour : la zone de clic est large."
+				],
+				"simple": [
+					"Passe la souris sur une planète. Un anneau apparaît.",
+					"Clique dessus. Maintenant, regarde le voyage.",
+					"Appuie sur « Y être tout de suite » si tu ne veux pas attendre."
+				]
+			}
+		},
+		"findByName": {
+			"title": {
+				"standard": "Chercher un monde par son nom",
+				"simple": "Trouver un monde avec son nom"
+			},
+			"what": {
+				"standard": "Le champ en haut à gauche liste le Soleil, toutes les planètes et les lunes qui ont une histoire ; tape pour chercher.",
+				"simple": "Tape le nom d’une planète ou d’une lune, et tu y vas."
+			},
+			"why": {
+				"standard": "Certains mondes sont trop petits pour cliquer dessus, et une classe suit mieux quand tu annonces où tu vas.",
+				"simple": "Certaines lunes sont trop petites pour cliquer dessus. La case des noms les trouve."
+			},
+			"how": {
+				"standard": [
+					"Clique sur le champ en haut à gauche et tape un nom, par exemple « Titan ».",
+					"Choisis-le dans la liste : la caméra s’y rend.",
+					"Appuie sur ← ou → pour visiter le monde suivant de la même famille ; le bouton maison ou Échap te ramène à tout le système."
+				],
+				"simple": [
+					"Clique sur la case en haut à gauche.",
+					"Tape un nom, comme Titan, et choisis-le.",
+					"Appuie sur Échap pour revoir tout le système solaire."
+				]
+			}
+		},
+		"lookAround": {
+			"title": {
+				"standard": "Tourner, zoomer et déplacer la vue",
+				"simple": "Regarder partout"
+			},
+			"what": {
+				"standard": "Fais glisser pour tourner autour du monde que tu regardes, zoome et dézoome, et déplace la vue où tu veux, même dans le vide entre les planètes.",
+				"simple": "Tourne la vue, zoome, et va où tu veux, même dans l’espace vide."
+			},
+			"why": {
+				"standard": "Regarder de côté, d’en haut et de loin : c’est comme ça que la forme des orbites et le vide de l’espace deviennent réels.",
+				"simple": "De loin, tu vois à quel point l’espace est vide."
+			},
+			"how": {
+				"standard": [
+					"Tourner : fais glisser avec le bouton gauche de la souris ou avec un doigt.",
+					"Zoomer : la molette, un pincement sur le pavé tactile, ou deux doigts.",
+					"Déplacer sur le côté : fais glisser avec le bouton droit, Maj + glisser, ou deux doigts ensemble. Relâche sur une planète et la vue se centre sur elle.",
+					"Dans le vide, un badge indique où tu es ; « Recentrer : … » ou « Retour à la vue d’ensemble » te ramène."
+				],
+				"simple": [
+					"Fais glisser pour tourner la vue.",
+					"Utilise la molette de la souris ou deux doigts pour zoomer.",
+					"Fais glisser avec le bouton droit de la souris pour déplacer la vue."
+				]
+			}
+		},
+		"worldCard": {
+			"title": {
+				"standard": "La fiche du monde",
+				"simple": "Tout sur un monde"
+			},
+			"what": {
+				"standard": "Quand tu regardes un monde, une fiche affiche son nom et des faits faciles à imaginer : sa taille en Terres, le temps que met la lumière du Soleil pour y arriver, la durée de son année et ce que tu y pèserais.",
+				"simple": "Une fiche te parle du monde que tu regardes : sa taille, sa distance au Soleil et ce que tu pèserais là-bas."
+			},
+			"why": {
+				"standard": "Les comparaisons restent en tête, les grands nombres non ; le chiffre exact est toujours juste en dessous.",
+				"simple": "« Large comme neuf Terres », c’est plus facile à imaginer qu’un grand nombre."
+			},
+			"how": {
+				"standard": [
+					"Vole vers un monde : sa fiche apparaît.",
+					"« En savoir plus dans le dictionnaire » ouvre sa page, « Comparer avec… » le place à côté d’un autre monde.",
+					"Sur un téléphone, touche la flèche de la fiche pour afficher les infos."
+				],
+				"simple": [
+					"Vole vers une planète.",
+					"Lis sa fiche.",
+					"Sur un téléphone, touche la petite flèche pour en voir plus."
+				]
+			}
+		},
+		"moons": {
+			"title": "Les lunes",
+			"what": {
+				"standard": "Toutes les lunes naturelles des planètes, de notre Lune aux minuscules rochers autour de Saturne ; les lunes qui ont une histoire apparaissent en premier.",
+				"simple": "Les planètes ont des lunes. Jupiter et Saturne en ont plein !"
+			},
+			"why": {
+				"standard": "Un système de lunes est un petit système solaire : les volcans d’Io, l’océan caché d’Europe et l’épaisse atmosphère de Titan, tout cela se passe autour d’une planète.",
+				"simple": "Certaines lunes ont des volcans, et d’autres ont des océans sous la glace."
+			},
+			"how": {
+				"standard": [
+					"Vole vers une planète : sa fiche liste ses lunes les plus connues. Clique sur l’une d’elles pour t’y rendre.",
+					"« Voir tout le système de lunes » recule jusqu’à ce que toutes les orbites tiennent à l’écran.",
+					"« Afficher … petites lunes » ou l’interrupteur Toutes les lunes ajoute les nombreuses petites lunes ; la fiche d’une lune propose « Lire son histoire ».",
+					"La fiche d’une lune dit d’où vient sa surface : une carte prise par une sonde, complétée là où personne n’a jamais regardé, ou peinte d’après ce qu’on sait."
+				],
+				"simple": [
+					"Vole vers Jupiter.",
+					"Clique sur une lune dans la fiche pour y aller.",
+					"Appuie sur « Voir toutes ses lunes »."
+				]
+			}
+		},
+		"layers": {
+			"title": {
+				"standard": "Noms, orbites et repères",
+				"simple": "Noms, chemins et points"
+			},
+			"what": {
+				"standard": "Des interrupteurs décident de ce qui est dessiné : les orbites, les noms, les lunes, toutes les lunes, les points de repère, les noms des orbites et « Toujours éclairé ».",
+				"simple": "Des interrupteurs montrent ou cachent les noms, les chemins et les points."
+			},
+			"why": {
+				"standard": "Masque les noms pour un quiz, ou désactive les repères à l’échelle réelle pour voir à quel point les planètes sont vraiment invisibles.",
+				"simple": "Cache les noms et demande à tes amis quelle planète est laquelle !"
+			},
+			"how": {
+				"standard": [
+					"Les interrupteurs sont dans le panneau en haut à droite ; sur les petits écrans et pendant une présentation, ils sont sous « Calques ».",
+					"Appuie sur L pour masquer ou afficher tous les noms d’un coup.",
+					"L’interrupteur Toutes les lunes ne marche que si Lunes est activé."
+				],
+				"simple": [
+					"Trouve les interrupteurs en haut à droite.",
+					"Clique sur un interrupteur pour l’éteindre, et encore une fois pour le rallumer.",
+					"Appuie sur L pour cacher tous les noms."
+				]
+			}
+		},
+		"rings": {
+			"title": "Les anneaux",
+			"what": {
+				"standard": "Jupiter, Saturne, Uranus et Neptune ont des anneaux, dessinés à leur vraie taille, inclinés comme leur planète et qui projettent de vraies ombres.",
+				"simple": "Quatre planètes ont des anneaux : Jupiter, Saturne, Uranus et Neptune."
+			},
+			"why": {
+				"standard": "Les anneaux de Saturne s’ouvrent et se referment au fil des années, pendant qu’elle fait le tour du Soleil, et ceux d’Uranus sont dressés à la verticale parce que la planète est couchée sur le côté.",
+				"simple": "Les anneaux de Saturne sont très fins. Vus de côté, ils disparaissent presque !"
+			},
+			"how": {
+				"standard": [
+					"Vole vers Saturne et fais glisser vers le bas jusqu’à voir les anneaux par la tranche.",
+					"Voyage de quelques années dans le temps pour les voir s’incliner vers le Soleil, puis dans l’autre sens.",
+					"Visite Uranus et Neptune pour voir des anneaux fins et sombres."
+				],
+				"simple": [
+					"Vole vers Saturne.",
+					"Fais glisser pour regarder les anneaux de côté.",
+					"Puis vole vers Uranus. Ses anneaux sont debout !"
+				]
+			}
+		},
+		"spin": {
+			"title": {
+				"standard": "Jours, inclinaison et rotation",
+				"simple": "Les planètes tournent"
+			},
+			"what": {
+				"standard": "Chaque monde tourne sur son axe incliné à sa vraie vitesse : Vénus à l’envers, Uranus couchée sur le côté, et la Lune qui nous montre toujours la même face.",
+				"simple": "Chaque planète tourne sur elle-même. Un tour, c’est un jour là-bas."
+			},
+			"why": {
+				"standard": "La rotation fait le jour et la nuit, et l’inclinaison fait les saisons ; le réglage Rotation ralentit les planètes pour que tu voies passer les jours même quand le temps va vite.",
+				"simple": "Quand une planète tourne sur elle-même, ça fait le jour et la nuit. Vénus tourne même dans l’autre sens !"
+			},
+			"how": {
+				"standard": [
+					"Vole vers la Terre et fais aller le temps plus vite.",
+					"Sous les commandes du temps, choisis Rotation : Ralentie ou Au ralenti pour voir passer les jours, Arrêtée pour la figer.",
+					"Réaliste remet chaque monde dans sa vraie position pour la date."
+				],
+				"simple": [
+					"Vole vers la Terre.",
+					"Fais aller le temps plus vite.",
+					"Choisis Au ralenti sous les boutons du temps pour voir la Terre tourner."
+				]
+			}
+		},
+		"seenFromEarth": {
+			"title": {
+				"standard": "Vu depuis la Terre",
+				"simple": "La Terre ne bouge plus"
+			},
+			"what": {
+				"standard": "Garde la Terre immobile et regarde tout le reste bouger autour d’elle, comme le ciel bouge pour nous : Mars fait une boucle à reculons, la Lune passe par ses phases.",
+				"simple": "Garde la Terre immobile et regarde comment les autres planètes bougent, vues d’ici."
+			},
+			"why": {
+				"standard": "Pendant deux mille ans, on a expliqué ces boucles avec la Terre au centre ; voir les deux points de vue côte à côte montre pourquoi celui centré sur le Soleil l’a emporté.",
+				"simple": "Vue depuis la Terre, Mars a parfois l’air de marcher à reculons. Maintenant, tu peux voir pourquoi."
+			},
+			"how": {
+				"standard": [
+					"Clique sur « Centré sur le Soleil » à côté du champ des noms et choisis « Vu depuis la Terre : les planètes » ou « Vu depuis la Terre : la Lune ».",
+					"Regarde le badge en haut : il dit ce que fait le monde sélectionné dans notre ciel.",
+					"« Point fixe : … » fonctionne avec n’importe quel monde ; « Revenir au Soleil au centre » te ramène au départ."
+				],
+				"simple": [
+					"Clique sur « Le Soleil au milieu » en haut à gauche.",
+					"Choisis « Depuis la Terre : les planètes ».",
+					"Regarde Mars faire une boucle."
+				]
+			}
+		},
+		"skyTonight": {
+			"title": {
+				"standard": "Qu’y a-t-il dans le ciel cette nuit ?",
+				"simple": "Le ciel cette nuit"
+			},
+			"what": {
+				"standard": "Quelles planètes et quelle Lune tu peux voir cette nuit depuis ta ville : quand, dans quelle direction, à quelle hauteur et s’il te faut des jumelles.",
+				"simple": "Découvre quelles planètes tu peux voir cette nuit depuis ta ville, et où regarder."
+			},
+			"why": {
+				"standard": "C’est le pont entre l’écran et le vrai ciel, et « Pourquoi est-ce visible ? » montre en 3D comment la Terre, le Soleil et la planète sont placés.",
+				"simple": "Sors et trouve Jupiter ou Vénus de tes propres yeux !"
+			},
+			"how": {
+				"standard": [
+					"Appuie sur « Le ciel cette nuit » sous la case du nom et choisis ta ville (l’application ne demande jamais ta position d’elle-même).",
+					"Lis la liste : ce que tu peux voir, quand, où et avec quoi.",
+					"Appuie sur « Pourquoi est-ce visible ? » à côté d’une planète pour voir la raison dans l’espace."
+				],
+				"simple": [
+					"Appuie sur « Le ciel cette nuit ».",
+					"Choisis ta ville. Demande à un adulte avant d’utiliser la position de l’appareil.",
+					"Lis où regarder, puis sors !"
+				]
+			}
+		},
+		"spacecraft": {
+			"title": {
+				"standard": "De vraies sondes spatiales",
+				"simple": "Les sondes spatiales"
+			},
+			"what": {
+				"standard": "Voyager, Pioneer, New Horizons, Cassini, Juno, Parker, JWST et Europa Clipper, dessinées là où elles sont vraiment à la date affichée, avec leurs trajectoires et leurs étapes.",
+				"simple": "De vraies sondes construites par des humains, montrées là où elles sont maintenant."
+			},
+			"why": {
+				"standard": "Voyager 1 envoie encore des messages depuis bien au-delà des planètes : sa fiche montre combien de temps son signal met à nous parvenir, et pourquoi le voyage a demandé tant d’assistances gravitationnelles.",
+				"simple": "Voyager 1 a quitté la Terre en 1977 et vole toujours. Un message d’elle met presque un jour à nous arriver !"
+			},
+			"how": {
+				"standard": [
+					"Ouvre « Sondes spatiales » (le bouton satellite en haut à droite) et choisis une sonde : la vue vole jusqu’à elle.",
+					"Sa fiche montre le lancement, la distance, le temps du signal et les « Étapes » ; une étape amène le temps à ce moment.",
+					"« Afficher toutes les trajectoires » dessine toutes les routes à la fois ; l’interrupteur « Sondes spatiales » les cache."
+				],
+				"simple": [
+					"Appuie sur le bouton satellite en haut à droite.",
+					"Choisis Voyager 1.",
+					"Lis à quelle distance elle est."
+				]
+			}
+		},
+		"dictionary": {
+			"title": {
+				"standard": "Le dictionnaire illustré",
+				"simple": "Le livre des planètes"
+			},
+			"what": {
+				"standard": "Une page pour le Soleil et pour chaque planète, avec un grand globe qui tourne, ses cartes de surface et les chiffres clés expliqués.",
+				"simple": "Une page pour le Soleil et pour chaque planète, avec une grande image qui tourne."
+			},
+			"why": {
+				"standard": "C’est la façon tranquille de découvrir un monde à la fois, d’enlever ses nuages ou de voir ses montagnes et ses océans.",
+				"simple": "Découvre une planète à la fois, et regarde ses montagnes et ses nuages."
+			},
+			"how": {
+				"standard": [
+					"Ouvre-le depuis la page d’accueil, ou avec « En savoir plus dans le dictionnaire » sur la fiche d’un monde.",
+					"Choisis un monde dans la rangée de points en haut, puis Surface, Relief, Océans ou Nuages quand il en a."
+				],
+				"simple": [
+					"Choisis une planète dans la rangée de points en haut.",
+					"Essaie Relief et Nuages pour changer l’image."
+				]
+			}
+		},
+		"sound": {
+			"title": {
+				"standard": "Le son et les sons de l’espace",
+				"simple": "Écoute l’espace"
+			},
+			"what": {
+				"standard": "Du son, seulement si tu veux : une ambiance sonore qui change selon l’endroit où tu es, des tons doux quand tu voles et arrives, et de vrais enregistrements faits par des sondes près du Soleil, de la Terre, de Jupiter et de Saturne.",
+				"simple": "Active le son pour entendre un bourdonnement, un souffle quand tu voles et de vrais enregistrements de sondes spatiales."
+			},
+			"why": {
+				"standard": "L’espace lui-même est silencieux ; les enregistrements sont des ondes radio et de plasma mesurées par des antennes puis transformées en son, une surprise à écouter. Tout fonctionne aussi sans le son.",
+				"simple": "Dans l’espace, il n’y a pas d’air, donc pas de son. Mais des sondes ont mesuré des ondes invisibles, et tu peux les écouter !"
+			},
+			"how": {
+				"standard": [
+					"À l’ouverture de l’application, le son est toujours coupé. Appuie sur le bouton haut-parleur en haut à droite, ou sur M, pour l’activer.",
+					"La flèche à côté ouvre le volume, « Ambiance sonore », « Sons de mouvement » et « Écoute l’espace ».",
+					"Vole vers le Soleil, la Terre, Jupiter ou Saturne et lance son enregistrement depuis la fiche ; le texte explique ce que tu entends."
+				],
+				"simple": [
+					"Appuie sur le bouton haut-parleur en haut à droite.",
+					"Vole vers Jupiter.",
+					"Appuie sur lecture dans sa fiche et écoute."
+				]
+			}
+		},
+		"language": {
+			"title": {
+				"standard": "Langue et niveau de lecture",
+				"simple": "Ta langue"
+			},
+			"what": {
+				"standard": "Astrolabe parle anglais, allemand, tchèque, espagnol et français, chaque fois avec trois niveaux de lecture : simple, standard et avancé.",
+				"simple": "Lis tout dans ta langue, et avec des mots faciles."
+			},
+			"why": {
+				"standard": "La même vue peut être expliquée à un enfant de neuf ans comme à un lycéen, et un lien partagé garde les deux choix.",
+				"simple": "Des mots simples pour les plus jeunes, plus de détails pour les plus grands."
+			},
+			"how": {
+				"standard": [
+					"Ouvre le menu des langues en haut à droite (il affiche FR, EN, …).",
+					"Choisis une langue et un niveau de lecture ; chaque page et chaque lien suivent."
+				],
+				"simple": [
+					"Clique sur le bouton FR en haut à droite.",
+					"Choisis ta langue, puis choisis Simple."
+				]
+			}
+		},
+		"timeControls": {
+			"title": {
+				"standard": "Lecture, pause, marche arrière et vitesse",
+				"simple": "Faire aller le temps plus vite"
+			},
+			"what": {
+				"standard": "Les boutons en bas font avancer ou reculer le temps, le mettent en pause et règlent sa vitesse, du temps réel jusqu’à dix ans par seconde.",
+				"simple": "Les boutons en bas font avancer le temps, l’arrêtent, l’accélèrent ou le font reculer."
+			},
+			"why": {
+				"standard": "En temps réel, rien ne semble bouger ; à un mois par seconde, les planètes intérieures foncent et les planètes extérieures se traînent : c’est la loi de Kepler, sous tes yeux.",
+				"simple": "Accélère le temps et regarde : les planètes proches du Soleil font le tour bien plus vite."
+			},
+			"how": {
+				"standard": [
+					"Appuie sur ▶ pour lancer, sur ⏸ pour mettre en pause, sur ◀ pour reculer (Espace met aussi en pause).",
+					"Choisis une vitesse dans la rangée juste à côté, ou appuie sur + et −.",
+					"« Maintenant » te ramène au présent."
+				],
+				"simple": [
+					"Appuie sur le bouton de lecture en bas.",
+					"Choisis une vitesse plus rapide, comme 1 mois/s.",
+					"Appuie sur Espace pour arrêter."
+				]
+			}
+		},
+		"timeTravel": {
+			"title": {
+				"standard": "Voyager à n’importe quelle date",
+				"simple": "Sauter à un autre jour"
+			},
+			"what": {
+				"standard": "Clique sur la date pour sauter à n’importe quel jour entre l’an 1000 et l’an 2999, ou à un moment célèbre comme les premiers pas sur la Lune ou Mars au plus près.",
+				"simple": "Va à n’importe quel jour, comme le jour des premiers pas sur la Lune."
+			},
+			"why": {
+				"standard": "Les vrais événements ont eu lieu là où les planètes se trouvaient vraiment ; la scène montre le ciel à cette date, et le temps s’arrête à ton arrivée.",
+				"simple": "Tu peux voir où étaient les planètes lors d’un jour spécial."
+			},
+			"how": {
+				"standard": [
+					"Clique sur la date et l’heure en bas.",
+					"Choisis un moment dans la liste, ou « Choisir une date », puis clique sur l’année, le mois et le jour.",
+					"Les planètes glissent jusque-là et le temps s’arrête ; appuie sur Lecture pour repartir."
+				],
+				"simple": [
+					"Clique sur la date en bas.",
+					"Choisis « Mars au plus près » ou choisis un jour.",
+					"Regarde les planètes se déplacer jusque-là."
+				]
+			}
+		},
+		"tooFast": {
+			"title": {
+				"standard": "Quand le temps va trop vite",
+				"simple": "Trop vite pour bien voir"
+			},
+			"what": {
+				"standard": "À très grande vitesse, un avertissement nomme le monde qui bouge trop vite pour être suivi et indique combien de tours il fait chaque seconde.",
+				"simple": "Quand le temps va super vite, un message te dit quelle planète va trop vite pour être vue."
+			},
+			"why": {
+				"standard": "Comme une roue de chariot dans un film, une planète qui parcourt plus d’un sixième de son orbite d’une image à l’autre peut sembler immobile ou reculer ; le message explique ce que tu vois vraiment.",
+				"simple": "Une planète très rapide peut avoir l’air de s’arrêter ou de reculer. Mais en vrai, ce n’est pas le cas !"
+			},
+			"how": {
+				"standard": [
+					"Choisis la vitesse la plus rapide, 10 ans/s.",
+					"Lis la ligne sous les vitesses ; choisis une vitesse plus lente ou mets en pause, et elle disparaît."
+				],
+				"simple": [
+					"Choisis la vitesse la plus rapide.",
+					"Lis le message, puis choisis une vitesse plus lente."
+				]
+			}
+		},
+		"scale": {
+			"title": {
+				"standard": "L’échelle réelle et les préréglages d’échelle",
+				"simple": "Les vraies tailles"
+			},
+			"what": {
+				"standard": "D’habitude, la scène dessine les mondes plus grands et plus proches les uns des autres pour que tu puisses les voir ; un clic montre les vraies tailles et les vraies distances.",
+				"simple": "D’habitude, les planètes sont dessinées beaucoup trop grandes. Un clic montre à quel point elles sont petites en vrai."
+			},
+			"why": {
+				"standard": "À l’échelle réelle, les planètes disparaissent dans le vide : c’est la leçon la plus surprenante de l’application, et une phrase indique toujours à quel point l’image s’écarte de la réalité.",
+				"simple": "Avec les vraies tailles, on ne voit même plus les planètes. L’espace est vraiment, vraiment vide !"
+			},
+			"how": {
+				"standard": [
+					"Dans le panneau Échelle en haut à droite, clique sur Échelle réelle, Manuel scolaire ou Tout visible (ou appuie sur S).",
+					"Les interrupteurs Tailles et Distances changent un seul mensonge à la fois.",
+					"À l’échelle réelle, les points montrent où sont les planètes ; désactive Repères pour voir le peu qu’il en reste."
+				],
+				"simple": [
+					"Trouve Échelle en haut à droite.",
+					"Clique sur Échelle réelle.",
+					"Où sont passées les planètes ? Les points montrent où elles sont."
+				]
+			}
+		},
+		"howFar": {
+			"title": {
+				"standard": "À quelle distance ?",
+				"simple": "C’est loin comment ?"
+			},
+			"what": {
+				"standard": "Chaque vol entre deux mondes affiche leur vraie distance à la date affichée, et le temps qu’il faudrait à la lumière, à l’engin spatial le plus rapide et à une voiture.",
+				"simple": "Quand tu voles vers une planète, tu vois à quelle distance elle est."
+			},
+			"why": {
+				"standard": "Une voiture mettrait des centaines d’années pour atteindre Jupiter : les chiffres transforment un vol de quelques secondes en une vraie idée de la distance.",
+				"simple": "Une voiture mettrait des centaines d’années pour aller jusqu’à Jupiter !"
+			},
+			"how": {
+				"standard": [
+					"Vole d’un monde à un autre.",
+					"Pendant le voyage, lis l’encadré au-dessus des commandes du temps ; ferme-le à l’arrivée.",
+					"La distance change avec la date, parce que les planètes bougent."
+				],
+				"simple": [
+					"Vole de la Terre vers une autre planète.",
+					"Lis la case au-dessus des boutons du temps."
+				]
+			}
+		},
+		"solarWalk": {
+			"title": {
+				"standard": "Le système solaire en ballon de basket",
+				"simple": "Le système solaire à pied"
+			},
+			"what": {
+				"standard": "Si le Soleil était un ballon de basket, la Terre serait une tête d’épingle à 26 mètres : une page qui transforme l’échelle réelle en promenade à travers le terrain de l’école.",
+				"simple": "Imagine que le Soleil est gros comme un ballon, et découvre jusqu’où tu dois marcher pour arriver à chaque planète."
+			},
+			"why": {
+				"standard": "Parcourir les distances à pied, c’est la leçon d’échelle qu’une classe n’oublie jamais, et le tableau tient sur une seule page imprimée.",
+				"simple": "Tu peux vraiment faire le parcours à pied à l’école ! Neptune est très, très loin."
+			},
+			"how": {
+				"standard": [
+					"Ouvre-la depuis la page d’accueil, ou avec « Parcours-le à pied » dans le panneau Échelle, à l’échelle réelle.",
+					"Choisis ce qu’est le Soleil (une orange, un ballon de foot, un ballon de basket, un ballon de gym) et un repère pour comparer.",
+					"Passe en Tableau et clique sur Imprimer pour l’emporter dehors."
+				],
+				"simple": [
+					"Choisis un ballon pour le Soleil.",
+					"Lis jusqu’où il faut marcher pour chaque planète.",
+					"Imprime le tableau et fais le parcours dehors."
+				]
+			}
+		},
+		"dayNight": {
+			"title": {
+				"standard": "Lumière du Soleil, jour et nuit",
+				"simple": "Le jour et la nuit"
+			},
+			"what": {
+				"standard": "Le Soleil est la seule lumière : chaque monde a une face de jour et une face de nuit, avec les lumières des villes de la Terre dans le noir.",
+				"simple": "Le Soleil éclaire un côté de chaque planète. De l’autre côté, c’est la nuit."
+			},
+			"why": {
+				"standard": "Les saisons, les phases et le soleil de minuit s’expliquent par la lumière seule : regarde l’Arctique en juin.",
+				"simple": "Tu peux voir où il fait jour et où il fait nuit sur la Terre en ce moment."
+			},
+			"how": {
+				"standard": [
+					"Vole vers la Terre et tourne la caméra vers la ligne entre le jour et la nuit.",
+					"Voyage au 21 juin puis au 21 décembre pour comparer les pôles.",
+					"L’interrupteur Toujours éclairé éclaire tout depuis ton point de vue, pour étudier les surfaces."
+				],
+				"simple": [
+					"Vole vers la Terre.",
+					"Tourne la vue pour voir la face de nuit et les lumières des villes.",
+					"Active Toujours éclairé pour voir tous les côtés."
+				]
+			}
+		},
+		"eclipses": {
+			"title": "Les éclipses",
+			"what": {
+				"standard": "Les ombres sont réelles : l’ombre de la Lune traverse la Terre lors d’une éclipse de Soleil, et la Lune s’assombrit dans l’ombre de la Terre lors d’une éclipse de Lune, aux vraies dates.",
+				"simple": "Parfois, la Lune cache le Soleil, ou elle passe dans l’ombre de la Terre."
+			},
+			"why": {
+				"standard": "Les éclipses n’ont lieu que lorsque le Soleil, la Terre et la Lune sont parfaitement alignés ; en regarder une de côté montre pourquoi elles sont rares.",
+				"simple": "Le Soleil, la Terre et la Lune doivent être parfaitement alignés. C’est pour ça que les éclipses sont rares."
+			},
+			"how": {
+				"standard": [
+					"Ouvre le lien : la Lune dans l’ombre de la Terre le 14 mars 2025.",
+					"Voyage au 8 avril 2024, vole vers la Terre et tourne-toi vers sa face de jour pour trouver la petite ombre sombre de la Lune.",
+					"Laisse Toujours éclairé désactivé, sinon les ombres disparaissent."
+				],
+				"simple": [
+					"Ouvre le lien et regarde la Lune toute sombre.",
+					"Fais glisser pour voir la Terre et le Soleil derrière elle."
+				]
+			}
+		},
+		"lightFlash": {
+			"title": {
+				"standard": "Envoyer un éclair de lumière",
+				"simple": "La course de la lumière"
+			},
+			"what": {
+				"standard": "Envoie un éclair depuis le Soleil ou n’importe quelle planète et regarde-le s’étendre à la vraie vitesse de la lumière, en cochant chaque monde qu’il atteint.",
+				"simple": "Envoie un éclair de lumière depuis le Soleil et regarde-le voyager jusqu’aux planètes."
+			},
+			"why": {
+				"standard": "La lumière est ce qu’il y a de plus rapide, et pourtant elle met 8 minutes pour atteindre la Terre et plus de 4 heures pour atteindre Neptune : la taille du système solaire, mesurée en temps.",
+				"simple": "La lumière va super vite, mais il lui faut quand même 8 minutes pour venir du Soleil jusqu’à nous !"
+			},
+			"how": {
+				"standard": [
+					"Appuie sur « Vitesse de la lumière » en haut à gauche, puis sur « Envoyer un éclair ».",
+					"Choisis d’où il part ; la liste indique quand il atteint chaque monde.",
+					"Le temps passe en temps réel ; tu peux choisir une vitesse plus rapide, et le panneau compte toujours le vrai temps de trajet.",
+					"Pour l’arrêter, appuie sur « Arrêter l’éclair », sur le × de son étiquette ou à côté de l’horloge sur le bouton, ou sur X. Une fois Neptune dépassée, il s’efface tout seul."
+				],
+				"simple": [
+					"Appuie sur « À quelle vitesse va la lumière ? »",
+					"Appuie sur « Envoyer un éclair ».",
+					"Regarde le cercle grandir et atteindre les planètes.",
+					"Appuie sur « Éteindre la lumière » pour l’arrêter."
+				]
+			}
+		},
+		"signalDelay": {
+			"title": {
+				"standard": "Délai du signal",
+				"simple": "Appeler Mars"
+			},
+			"what": {
+				"standard": "Le temps que met un message envoyé depuis la Terre pour atteindre n’importe quel monde en ce moment, en aller simple et en aller-retour, et comment il change quand les planètes bougent.",
+				"simple": "Un message pour Mars met des minutes à arriver. Regarde combien de temps il faut pour chaque monde."
+			},
+			"why": {
+				"standard": "Personne ne peut piloter un rover martien avec un joystick : le temps qu’il t’entende, de longues minutes sont déjà passées.",
+				"simple": "C’est pour ça qu’on ne peut pas conduire un robot sur Mars comme une petite voiture téléguidée."
+			},
+			"how": {
+				"standard": [
+					"Ouvre « Vitesse de la lumière » et choisis l’onglet « Délai du signal ».",
+					"Choisis un monde, ou clique sur l’un d’eux dans la scène."
+				],
+				"simple": [
+					"Ouvre « À quelle vitesse va la lumière ? »",
+					"Clique sur « Délai du signal » et choisis Mars."
+				]
+			}
+		},
+		"fartherOut": {
+			"title": {
+				"standard": "La lumière des étoiles",
+				"simple": "Une très vieille lumière"
+			},
+			"what": {
+				"standard": "Le temps que met la lumière pour venir de l’étoile la plus proche, du centre de notre galaxie et de la galaxie d’Andromède.",
+				"simple": "La lumière des étoiles lointaines est très, très vieille quand elle arrive ici."
+			},
+			"why": {
+				"standard": "Quand tu regardes une étoile, tu vois le passé : la lumière d’Andromède est partie bien avant que vivent les premiers humains modernes.",
+				"simple": "Regarder les étoiles, c’est comme regarder dans le passé !"
+			},
+			"how": {
+				"standard": [
+					"Ouvre « Vitesse de la lumière » et choisis l’onglet « Plus loin »."
+				],
+				"simple": [
+					"Ouvre « À quelle vitesse va la lumière ? »",
+					"Clique sur « Plus loin »."
+				]
+			}
+		},
+		"compare": {
+			"title": {
+				"standard": "Côte à côte",
+				"simple": "Lequel est le plus grand ?"
+			},
+			"what": {
+				"standard": "Deux mondes ou plus côte à côte, à leurs vraies tailles relatives, avec des comparaisons simples : combien tiennent dedans, ce que tu pèserais, la durée de leurs jours et de leurs années.",
+				"simple": "Regarde deux mondes côte à côte, à leur vraie taille."
+			},
+			"why": {
+				"standard": "À côté du Soleil, la Terre est un point qu’il faut chercher : les tailles prennent enfin sens quand elles sont sur la même image.",
+				"simple": "À côté du Soleil, la Terre est un tout petit point !"
+			},
+			"how": {
+				"standard": [
+					"Sur la fiche d’un monde, appuie sur « Comparer avec… ».",
+					"Change l’un ou l’autre monde avec les sélecteurs, ajoutes-en d’autres avec « Ajouter… », ou clique sur un monde de la rangée pour le comparer à la place.",
+					"Le bouton appareil photo fait une image de la comparaison."
+				],
+				"simple": [
+					"Sur la fiche d’une planète, appuie sur « Comparer avec… ».",
+					"Choisis un autre monde à comparer."
+				]
+			}
+		},
+		"compareIdeas": {
+			"title": {
+				"standard": "Idées de comparaisons",
+				"simple": "Des comparaisons toutes prêtes"
+			},
+			"what": {
+				"standard": "Quinze comparaisons toutes prêtes en trois groupes, « Tailles », « Lunes » et « Surprises », chacune ouvrant sur le fait qui dit tout : « La jumelle de la Terre », « Des lunes plus grandes qu’une planète », « Où pèserais-tu le plus ? ».",
+				"simple": "Choisis une comparaison toute prête, comme les huit planètes en rang."
+			},
+			"why": {
+				"standard": "Chacune lance une discussion en classe en un clic : le lien ci-dessus ouvre les lunes plus grandes que la planète Mercure.",
+				"simple": "Savais-tu que certaines lunes sont plus grandes qu’une planète ?"
+			},
+			"how": {
+				"standard": [
+					"Sur la page de comparaison, ouvre Idées.",
+					"Choisis-en une ; clique sur n’importe quel monde de la rangée pour en parler."
+				],
+				"simple": ["Appuie sur Idées.", "Choisis « Les huit planètes »."]
+			}
+		},
+		"tours": {
+			"title": {
+				"standard": "Visites guidées",
+				"simple": "Les visites"
+			},
+			"what": {
+				"standard": "Des visites commentées pas à pas : l’application bouge la caméra et règle la date, la vitesse et l’échelle, pendant qu’une carte explique ce que tu regardes. Quatre sont prêtes : le grand tour, la vraie taille de l’espace, comment on sait que la Terre bouge, et où la vie pourrait exister.",
+				"simple": "Laisse l’application te guider, étape par étape, pendant qu’une carte t’explique ce que tu vois."
+			},
+			"why": {
+				"standard": "Une visite transforme le bac à sable en leçon toute prête, et la classe peut quand même regarder autour d’elle à chaque étape : la visite attend.",
+				"simple": "Pas besoin de savoir où aller. Et à chaque étape, tu peux regarder autour de toi !"
+			},
+			"how": {
+				"standard": [
+					"Appuie sur « Visites » à côté de la case du nom et choisis une visite.",
+					"Avance avec « Suivant » et « Retour » sur la carte, les flèches ou une télécommande de présentation (Page suiv. / Page préc.).",
+					"Regarde autour de toi quand tu veux ; « Retour à la visite » rétablit l’étape. « Lecture automatique » avance toute seule, et le bouton lien copie un lien vers l’étape en cours. Les enseignants peuvent écrire leurs propres visites sous forme de données (src/data/tours/README.md)."
+				],
+				"simple": [
+					"Appuie sur « Visites » en haut à gauche et choisis-en une.",
+					"Lis la carte, puis appuie sur « Suivant » ou sur une flèche.",
+					"Regarde autour de toi quand tu veux, puis appuie sur « Retour à la visite »."
+				]
+			}
+		},
+		"present": {
+			"title": "Mode vidéoprojecteur",
+			"what": "Texte, noms et boutons plus grands, lisibles depuis le fond de la salle, avec les interrupteurs repliés.",
+			"why": "Un écran d’ordinateur portable projeté au mur est trop petit pour être lu ; le mode vidéoprojecteur règle ça d’une seule touche.",
+			"how": [
+				"Ouvre Présenter en haut à droite et choisis « Grand texte pour vidéoprojecteur », ou appuie sur P.",
+				"Appuie sur F pour passer en plein écran.",
+				"Tout le reste continue de fonctionner : les touches, les liens et les commandes."
+			]
+		},
+		"contrast": {
+			"title": "Contraste élevé",
+			"what": "Des couleurs et des contours plus marqués pour les projecteurs pâles et les salles très claires.",
+			"why": "Un vidéoprojecteur pâle en plein jour efface le texte gris et les lignes fines ; le contraste élevé garde tout lisible.",
+			"how": [
+				"Ouvre Présenter et choisis « Contraste élevé », ou appuie sur C.",
+				"Il s’active aussi tout seul quand l’ordinateur demande plus de contraste."
+			]
+		},
+		"presenterKeys": {
+			"title": "Clavier et télécommande de présentation",
+			"what": "Chaque étape d’un cours a sa touche, et les boutons d’une télécommande de présentation passent d’une planète à l’autre.",
+			"why": "Reste devant la classe : 1 à 8 volent vers les planètes, 0 montre tout le système, S change l’échelle, L masque les noms.",
+			"how": [
+				"Appuie sur ? pour voir tous les raccourcis.",
+				"Page suiv. et Page préc. (les boutons de la télécommande) passent au monde suivant ou précédent, ou avancent dans une visite guidée.",
+				"Le tableau des commandes ci-dessous les liste tous."
+			]
+		},
+		"hideControls": {
+			"title": "Masquer les commandes",
+			"what": "Retire tous les boutons et tous les panneaux de l’écran, pour qu’il ne reste que l’espace.",
+			"why": "Pour observer, pour les captures d’écran et pour le vidéoprojecteur : la classe voit le système solaire, pas l’interface.",
+			"how": [
+				"Appuie sur H, ou ouvre Présenter et choisis « Masquer les commandes ».",
+				"Appuie de nouveau sur H, ou bouge la souris et clique sur « Afficher les commandes », pour les faire revenir. Les touches fonctionnent toujours pendant que les commandes sont masquées."
+			]
+		},
+		"prepareLesson": {
+			"title": "Préparer un cours",
+			"what": "L’adresse de la page, c’est le cours : elle contient le monde, la caméra, la date, la vitesse, l’échelle, les calques, la langue, et indique si le temps est en pause.",
+			"why": "Prépare une vue avant le cours, mets-la en favori, et elle s’ouvrira exactement pareille devant les élèves.",
+			"how": [
+				"Prépare la vue, mets le temps en pause si tu veux qu’elle s’ouvre immobile, puis mets la page en favori ou copie son adresse.",
+				"En classe, ouvre le lien ; appuie sur R (ou Début) à tout moment pour revenir exactement à ce point de départ.",
+				"Appuie sur Échap pour passer à tout le système."
+			]
+		},
+		"share": {
+			"title": "Partager avec la classe",
+			"what": "Un lien vers exactement ce qui est à l’écran, avec un bouton pour le copier et un QR code assez grand pour être scanné depuis le dernier rang.",
+			"why": "Les élèves ouvrent la même vue sur leur propre tablette et explorent à partir de là, sans rien taper.",
+			"how": [
+				"Ouvre Partager en haut à droite.",
+				"Copie le lien, ou appuie sur « Montrer le QR code à la classe »."
+			]
+		},
+		"ownHunt": {
+			"title": "Créer ta propre chasse au trésor",
+			"what": "Choisis des énigmes dans toute la banque de questions et fais-en une chasse pour ton cours.",
+			"why": "La chasse colle au sujet du jour, et un lien la lance pour chaque élève dans ta langue.",
+			"how": [
+				"Ouvre Chasse au trésor et choisis « Crée ta propre chasse ».",
+				"Coche les énigmes, puis Commencer, ou Partager pour obtenir le lien pour la classe."
+			]
+		},
+		"hunt": {
+			"title": "Chasse au trésor",
+			"what": {
+				"standard": "Des énigmes à résoudre en trouvant le bon monde dans la scène et en cliquant dessus, avec des indices quand tu bloques et une histoire quand tu le trouves.",
+				"simple": "Lis une énigme, trouve le bon monde et clique dessus !"
+			},
+			"why": {
+				"standard": "Chercher pousse à explorer : il n’y a ni score ni chrono, et chaque mauvaise réponse est un monde que tu viens de visiter.",
+				"simple": "Tu apprends plein de choses en cherchant. Il n’y a pas de chrono, et tu ne peux pas perdre."
+			},
+			"how": {
+				"standard": [
+					"Appuie sur « Chasse au trésor » et choisis une chasse : Facile, Moyen ou Corsé.",
+					"Lis l’énigme, trouve le monde et clique dessus.",
+					"Tu bloques ? « Besoin d’un indice ? », et après le dernier indice, « Montre-moi »."
+				],
+				"simple": [
+					"Appuie sur « Chasse au trésor ».",
+					"Choisis une chasse facile.",
+					"Lis l’énigme et clique sur le bon monde."
+				]
+			}
+		},
+		"birthday": {
+			"title": {
+				"standard": "Ton anniversaire dans l’espace",
+				"simple": "Quel âge as-tu sur Mars ?"
+			},
+			"what": {
+				"standard": "Choisis ta date de naissance pour voir ton âge sur chaque planète, ton prochain anniversaire là-bas, le nombre de jours que tu as vécus et la distance que la Terre t’a fait parcourir autour du Soleil.",
+				"simple": "Découvre quel âge tu as sur les autres planètes, et quand tombe ton prochain anniversaire là-bas."
+			},
+			"why": {
+				"standard": "Une année, c’est un tour du Soleil : sur Mars, tu as donc à peu près la moitié de ton âge, et sur Mercure, quatre fois plus.",
+				"simple": "Une année sur Mars dure presque deux années sur Terre, alors là-bas, tu es plus jeune !"
+			},
+			"how": {
+				"standard": [
+					"Appuie sur « Ton anniversaire » et choisis l’année, le mois et le jour.",
+					"Les planètes se déplacent jusqu’au jour de ta naissance ; ⏭ à côté d’une planète te fait voyager jusqu’à ton prochain anniversaire là-bas.",
+					"Ta date n’est jamais enregistrée ni envoyée : elle est oubliée quand tu fermes la page, ou tout de suite avec « Oublier mon anniversaire »."
+				],
+				"simple": [
+					"Appuie sur « Ton anniversaire ».",
+					"Choisis ton année, ton mois et ton jour.",
+					"Lis quel âge tu as sur chaque planète."
+				]
+			}
+		},
+		"postcard": {
+			"title": {
+				"standard": "Prendre une photo",
+				"simple": "Prendre une photo"
+			},
+			"what": {
+				"standard": "Transforme ce qui est à l’écran en carte postale, avec la date, une légende, une note honnête sur l’échelle et un QR code qui ramène à cette vue.",
+				"simple": "Fais une image de ce que tu vois, pour la garder ou l’envoyer."
+			},
+			"why": {
+				"standard": "Un souvenir à garder, à imprimer ou à envoyer à la maison, et le QR code rouvre la même vue.",
+				"simple": "Garde ta vue préférée de l’espace, ou montre-la à la maison."
+			},
+			"how": {
+				"standard": [
+					"Appuie sur le bouton appareil photo en haut à droite.",
+					"Écris une légende, désactive les noms ou le QR code.",
+					"Enregistre, copie ou partage l’image. Elle est créée sur ton appareil ; rien n’est envoyé en ligne."
+				],
+				"simple": [
+					"Appuie sur le bouton appareil photo en haut à droite.",
+					"Écris quelque chose sur ton image.",
+					"Appuie sur « Enregistrer l’image »."
+				]
+			}
+		}
+	},
+	"controls": {
+		"turn": {
+			"action": "Tourner autour du monde que tu regardes",
+			"mouse": "Glisser avec le bouton gauche",
+			"touch": "Glisser avec un doigt"
+		},
+		"zoom": {
+			"action": "Zoomer et dézoomer",
+			"mouse": "Molette, pincement sur le pavé tactile, ou glisser avec le bouton du milieu",
+			"touch": "Pincer avec deux doigts"
+		},
+		"move": {
+			"action": "Déplacer la vue sur le côté",
+			"mouse": "Glisser avec le bouton droit, ou Maj + glisser",
+			"touch": "Glisser avec deux doigts ensemble"
+		},
+		"fly": {
+			"action": "Voler vers un monde",
+			"mouse": "Cliquer sur le monde ou sur son nom",
+			"touch": "Toucher le monde ou son nom"
+		},
+		"back": {
+			"action": "Revenir à tout le système solaire",
+			"mouse": "Cliquer dans le vide, ou sur le bouton maison",
+			"touch": "Toucher le vide, ou le bouton maison",
+			"keys": "Échap"
+		},
+		"name": {
+			"action": "Voir le nom d’un monde",
+			"mouse": "Pointer le monde"
+		},
+		"siblings": {
+			"action": "Monde suivant ou précédent de la même famille",
+			"keys": "← / →"
+		},
+		"planets": {
+			"action": "Les planètes de Mercure (1) à Neptune (8), tout le système (0)",
+			"keys": "1 – 8, 0"
+		},
+		"pause": {
+			"action": "Pause ou lecture",
+			"mouse": "Les boutons pause et lecture",
+			"touch": "Les boutons pause et lecture",
+			"keys": "Espace"
+		},
+		"speed": {
+			"action": "Plus vite ou plus lentement",
+			"mouse": "Les boutons de vitesse",
+			"touch": "Les boutons de vitesse",
+			"keys": "+ / −"
+		},
+		"step": {
+			"action": "Suivant ou précédent (télécommande de présentation)",
+			"keys": "Page suiv. / Page préc."
+		},
+		"start": {
+			"action": "Revenir à la vue ouverte par le lien",
+			"keys": "R ou Début"
+		},
+		"scale": {
+			"action": "Échelle suivante : Tout visible, Manuel scolaire, Échelle réelle",
+			"mouse": "Le panneau Échelle",
+			"touch": "Le panneau Échelle",
+			"keys": "S"
+		},
+		"stopLight": {
+			"action": "Arrêter l’éclair de lumière",
+			"mouse": "Le × sur l’étiquette de l’éclair",
+			"touch": "Le × sur l’étiquette de l’éclair",
+			"keys": "X"
+		},
+		"names": {
+			"action": "Afficher ou masquer les noms",
+			"mouse": "L’interrupteur Noms",
+			"touch": "L’interrupteur Noms",
+			"keys": "L"
+		},
+		"hide": {
+			"action": "Masquer ou afficher les commandes",
+			"mouse": "Présenter → Masquer les commandes",
+			"touch": "Présenter → Masquer les commandes",
+			"keys": "H"
+		},
+		"fullscreen": {
+			"action": "Activer ou quitter le plein écran",
+			"mouse": "Présenter → Plein écran",
+			"touch": "Présenter → Plein écran",
+			"keys": "F"
+		},
+		"projector": {
+			"action": "Grand texte pour vidéoprojecteur",
+			"mouse": "Présenter → Grand texte",
+			"touch": "Présenter → Grand texte",
+			"keys": "P"
+		},
+		"contrast": {
+			"action": "Activer ou désactiver le contraste élevé",
+			"mouse": "Présenter → Contraste élevé",
+			"touch": "Présenter → Contraste élevé",
+			"keys": "C"
+		},
+		"sound": {
+			"action": "Activer ou couper le son (toujours coupé à l’ouverture de l’application)",
+			"mouse": "Le bouton haut-parleur",
+			"touch": "Le bouton haut-parleur",
+			"keys": "M"
+		},
+		"shortcuts": {
+			"action": "Liste des raccourcis clavier",
+			"mouse": "Présenter → Raccourcis clavier",
+			"touch": "Présenter → Raccourcis clavier",
+			"keys": "?"
+		}
+	},
+	"creditSections": {
+		"data": {
+			"title": "Données",
+			"intro": "D’où viennent les chiffres : tailles, orbites, rotation et dates."
+		},
+		"maps": {
+			"title": "Cartes de surface",
+			"intro": "Les images enroulées autour des globes."
+		},
+		"sounds": {
+			"title": "Sons",
+			"intro": "Les enregistrements que tu peux écouter. Les tons de l’application sont créés dans le navigateur."
+		},
+		"software": {
+			"title": "Logiciels",
+			"intro": "Les briques open source qui composent l’application."
+		},
+		"app": {
+			"title": "Cette application",
+			"intro": "Astrolabe est open source : tout le monde peut l’utiliser, l’étudier, l’améliorer et la partager."
+		}
+	},
+	"creditNames": {
+		"rings": "Modèles d’anneaux de cette application",
+		"surfaceMaps": "Cartes du Soleil et des planètes, et anneaux de Saturne"
+	},
+	"credits": {
+		"solarSystemApi": "La liste de départ du Soleil, des planètes et des lunes : tailles, masses, orbites et détails de leur découverte.",
+		"jpl": "Des orbites précises pour les planètes, la Lune, les lunes galiléennes et Phœbé (éléments orbitaux moyens), utilisées pour corriger la liste.",
+		"iau": "La direction de chaque pôle et la vitesse de rotation de chaque monde, pour qu’à midi le Soleil soit au-dessus de Greenwich.",
+		"meeus": "Comment l’orbite de la Lune tourne lentement, pour que les éclipses tombent à leurs vraies dates.",
+		"rings": "Les anneaux de Jupiter, d’Uranus et de Neptune, dessinés pour cette application à partir des rayons et des opacités d’anneaux publiés.",
+		"surfaceMaps": "Elles viennent de la première version du projet (2022) et leur origine n’a jamais été notée : leur source est inconnue. Les cartes des lunes, ci-dessous, sont créditées une par une (ticket #37).",
+		"spaceAudio": "Quatre vrais enregistrements d’ondes radio et de plasma, mesurés par Cassini, Voyager 1 et Injun 3 et transformés en son.",
+		"three": "Dessine la scène 3D dans le navigateur.",
+		"react": "Construit les pages et les panneaux.",
+		"fiber": "Relie three.js à React.",
+		"mantine": "Boutons, menus, calendriers et boîtes de dialogue.",
+		"tabler": "Les icônes.",
+		"tanstack": "Les pages et les liens qui contiennent chaque vue.",
+		"gsap": "Les animations de la page d’accueil et du dictionnaire.",
+		"smallLibraries": "État de l’application, vérification des données, dates, QR codes et traductions avec pluriels.",
+		"astrolabe": "Réalisé par les contributeurs d’Astrolabe. Tout le monde peut ajouter une fonction, une visite guidée ou une traduction."
+	},
+	"licences": {
+		"openData": "publié en données ouvertes (aucune licence formelle indiquée)",
+		"publicDomain": "domaine public (NASA)",
+		"facts": "valeurs scientifiques publiées",
+		"mit": "licence MIT",
+		"mitZlib": "licences MIT et zlib",
+		"mitBsd": "licences MIT et BSD",
+		"gsap": "licence standard GSAP (gratuite)",
+		"ccBy": "CC BY 4.0 (Saturne : CC BY 3.0)",
+		"unknown": "source inconnue",
+		"publicDomainPlain": "domaine public",
+		"noKnownRestrictions": "aucune restriction connue (à vérifier avant un usage commercial)"
+	}
+}
