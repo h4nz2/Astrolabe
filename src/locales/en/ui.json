@@ -828,7 +828,6 @@
 			"noData@simple": "We do not know where it is on this date.",
 			"predicted": "Predicted: this date is still in the future",
 			"predicted@simple": "Worked out in advance: this date has not happened yet",
-			"near": "Near {body}",
 			"distanceSun": "Distance from the Sun",
 			"distanceEarth": "Distance from Earth",
 			"speed": "{centreId, select, sun {Speed around the Sun} other {Speed relative to {centre}}}",
