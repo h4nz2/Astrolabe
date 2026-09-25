@@ -5,6 +5,7 @@ import { IconMoonStars } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
 import { useBirthdayStore } from "@/store/birthday"
+import { useHuntStore } from "@/store/hunt"
 import { useSkyTonightStore } from "@/store/skyTonight"
 
 import classes from "./SkyTonight.module.css"
@@ -12,10 +13,19 @@ import classes from "./SkyTonight.module.css"
 // the panel brings astronomy-engine and the city list: loaded when first opened
 const SkyTonightPanel = lazy(() => import("./SkyTonightPanel"))
 
-/** Opens the sky panel; the birthday panel (#26) sits in the same place, so it closes. */
+/** Opens the sky panel; the birthday (#26) and hunt (#34) panels sit in the same place, so they close. */
 const openSky = (): void => {
 	useBirthdayStore.getState().setOpen(false)
+	if (useHuntStore.getState().open) useHuntStore.getState().setOpen(false)
 	useSkyTonightStore.getState().setOpen(true)
+}
+
+/** Closes the sky panel when another panel opens in its place. */
+const closeSkyWhenOpened = (
+	state: { open: boolean },
+	previous: { open: boolean },
+): void => {
+	if (state.open && !previous.open) useSkyTonightStore.getState().setOpen(false)
 }
 
 /** The HUD button that opens "What is in the sky tonight" (in the time controls). */
@@ -44,7 +54,7 @@ export const SkyTonightButton = () => {
 /**
  * The sky panel's place on the page: nothing until opened. A link with
  * `?sky=true` (the hero page's button) opens it on arrival. Opening the
- * birthday panel closes it. Leaving the page closes it; the chosen place stays
+ * birthday or the hunt panel closes it. Leaving the page closes it; the chosen place stays
  * in memory until the tab is closed or "Change place" is pressed.
  */
 export const SkyTonightSlot = () => {
@@ -56,14 +66,14 @@ export const SkyTonightSlot = () => {
 	useLayoutEffect(() => {
 		if (requested) openSky()
 	}, [requested])
-	useEffect(
-		() =>
-			useBirthdayStore.subscribe((state, previous) => {
-				if (state.open && !previous.open)
-					useSkyTonightStore.getState().setOpen(false)
-			}),
-		[],
-	)
+	useEffect(() => {
+		const birthday = useBirthdayStore.subscribe(closeSkyWhenOpened)
+		const hunt = useHuntStore.subscribe(closeSkyWhenOpened)
+		return () => {
+			birthday()
+			hunt()
+		}
+	}, [])
 	useLayoutEffect(() => () => useSkyTonightStore.getState().setOpen(false), [])
 	if (!open) return null
 	return (

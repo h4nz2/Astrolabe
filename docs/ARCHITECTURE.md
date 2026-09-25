@@ -33,9 +33,9 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts,
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              birthday.ts, skyTonight.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, light/, rings/, ui/,
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, rings/, ui/,
                              birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
@@ -548,7 +548,8 @@ are left out; a link without a switch turns it on. `simSearch.ts` drops invalid 
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
 only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
-`?birthday=true` opens the birthday panel, `?sky=true` the sky tonight panel (#36); neither is ever written back.
+`?birthday=true` opens the birthday panel, `?sky=true` the sky tonight panel (#36; never written back); `?hunt=` the
+scavenger hunt (see Scavenger hunt).
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -740,6 +741,35 @@ weight on the Sun, the planets and the seven large moons.
   carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
   picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
 
+## Scavenger hunt (`features/solarSystem/hunt`, `src/store/hunt.ts`; #34)
+
+Clues a class solves by finding a world in the scene and selecting it: the exploration is the point, the selection
+is the receipt. No score, no timer, no ranking, no failure state.
+
+- **Content is data.** `src/data/hunts.json` holds the question bank (`id`, `answers`: body ids, any of which
+  solves it; optional `frame`: the body that must be held still, #31) and the ready-made hunts (`id`,
+  `difficulty` easy/medium/hard, question ids in order). The words live in `src/locales/<locale>/hunts.json`
+  (`hunts.<id>.{title, description}`, `questions.<id>.{clue, hints[], found}`; plain text, one value or one per
+  reading level, like `bodies.json`; read by `hunt/text.ts`). `hunt/hunts.test.ts` is the contract: answers are
+  real bodies, every clue and discovery is written for every level in every locale, at least two hints, the last
+  naming the answer. A new clue or hunt is an edit of those three files.
+- **Answering** (`hunt/watch.ts`): the hunt watches `selectedId` (and `frameId`) in the sim store; it has no picking
+  of its own, so a click, a label (#20) or the picker (#16) all answer. A selection that already answers a new clue
+  is let go (`select(null)`), so every answer is a fresh choice. A miss only sets kind words (`guessOf`: "other",
+  "warm" on the planet of a moon that answers, "almost" for the right body outside the clue's frame). Hints
+  escalate; after the last one "Show me" (`showAnswer`) flies there (or applies the matching #31 preset), which
+  solves the clue.
+- **Store** (`useHuntStore`): the hunt `key`, `step`, `hints`, `phase` (asking/found), `found` bodies, plus panel
+  state. Progress is kept in sessionStorage (a reload mid-lesson keeps it; nothing leaves the device).
+- **UI**: `hunt/Hunt.tsx` has the HUD button (in the time controls, beside the birthday) and the panel slot;
+  `HuntPanel.tsx` (lazy) is docked at the right like the birthday panel and carries the HUD `.panel` class, so
+  labels avoid it: the chooser (hunt cards, "Make your own hunt" from the whole bank), then progress dots, the
+  clue in large type, hints, the discovery text and a finish with the worlds found. It folds to the clue alone.
+- **Links**: `?hunt=true` opens the chooser, `?hunt=<hunt id>` or `?hunt=<question ids joined by ".">` (a teacher's
+  own hunt, `resolveHunt`) opens that hunt. The route keeps `hunt` on every navigation (`retainSearchParams`), so
+  the store mirror in `urlSync.ts` leaves it alone; the panel sets and clears it. "Share" builds
+  `/solar_system?hunt=…&lang=…&reading=…` only, so every student starts the same hunt in the teacher's language.
+
 ## Light travel (`src/sim/light.ts`, `src/store/light.ts`, `features/solarSystem/light/`; #27)
 
 Every light time comes from TRUE positions; only the drawn front goes through the scale engine.
@@ -825,6 +855,7 @@ body keeps its catalogue name, and provisional designations (`S/2003 J 2`) are n
 src/locales/config.json          { defaultLocale, readingLevels (menu order), defaultReadingLevel }
 src/locales/<locale>/ui.json     UI strings: a tree of ICU MessageFormat messages
 src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/data/bodies.json)
+src/locales/<locale>/hunts.json  the scavenger hunt's clues, hints and discoveries (#34, see Scavenger hunt)
 ```
 
 - Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences
