@@ -997,6 +997,12 @@ Every light time comes from TRUE positions; only the drawn front goes through th
   scene selection; one way, round trip, live distance, range, what it means for a rover), Farther out (Proxima
   Centauri, the galactic centre, Andromeda). Durations: `formatDuration` in `light/lightTravel.ts` (ICU units under
   `solarSystem.light.duration.*`, abbreviated at standard/advanced, spelled out at simple).
+- Turning it off (#38): `flashState(seconds, pastPlanetsSeconds(pulse))` (`lightTravel.ts`) gives the flash's phase
+  from the clock alone: travelling, then "leaving" once it has passed every planet (label "Beyond the planets · …"),
+  lingering for `FLASH_LINGER` and fading over `FLASH_FADE` (fractions of the time to pass the planets), then
+  ended. The pulse stays in the store, so running time backwards brings it back. While the flash is on screen it can
+  be stopped (`clear()`) from the closed light button (an x beside the clock), from the x on the front's label, from
+  a button under every tab of the open panel, and with the presenter key X (#29).
 
 ## Sound (`features/solarSystem/sound`, `src/store/sound.ts`; #32)
 

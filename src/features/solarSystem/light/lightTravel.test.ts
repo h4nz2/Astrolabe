@@ -3,11 +3,18 @@ import { describe, expect, it } from "vitest"
 import { createI18n } from "@/i18n"
 import { dateToJD } from "@/sim"
 
+import { lightSeconds } from "@/sim/light"
+
 import {
 	BEYOND,
+	FLASH_FADE,
+	FLASH_LINGER,
 	LIGHT_BODY_IDS,
+	PLANETS_EDGE_KM,
 	durationParts,
+	flashState,
 	formatDuration,
+	pastPlanetsSeconds,
 	pulseArrivals,
 	pulseTargetIds,
 	roughSeconds,
@@ -139,6 +146,39 @@ describe("pulse targets and arrivals", () => {
 
 	it("is empty for an unknown source", () => {
 		expect(pulseArrivals({ emitterId: "vulcan", emitJD: JD })).toEqual([])
+	})
+})
+
+describe("the flash's end (#38)", () => {
+	it("passes the planets after its last arrival, and never before the farthest aphelion", () => {
+		for (const emitterId of ["sun", "earth", "neptune"]) {
+			const pulse = { emitterId, emitJD: JD }
+			const past = pastPlanetsSeconds(pulse)
+			expect(past).toBeGreaterThanOrEqual(pulseArrivals(pulse).at(-1)!.seconds)
+			expect(past).toBeGreaterThanOrEqual(lightSeconds(PLANETS_EDGE_KM))
+			expect(pastPlanetsSeconds(pulse)).toBe(past)
+		}
+		// from the Sun: a little over 4 hours
+		const fromSun = pastPlanetsSeconds({ emitterId: "sun", emitJD: JD })
+		expect(fromSun / 3600).toBeGreaterThan(4)
+		expect(fromSun / 3600).toBeLessThan(4.3)
+	})
+
+	it("travels, lingers beyond the planets, fades out and ends; time reversed brings it back", () => {
+		const past = 1000
+		expect(flashState(-1, past)).toEqual({ phase: "notYet", opacity: 0 })
+		expect(flashState(0, past)).toEqual({ phase: "travelling", opacity: 1 })
+		expect(flashState(999, past)).toEqual({ phase: "travelling", opacity: 1 })
+		expect(flashState(1000, past)).toEqual({ phase: "leaving", opacity: 1 })
+		expect(flashState(past * (1 + FLASH_LINGER), past).opacity).toBe(1)
+		const midFade = flashState(past * (1 + FLASH_LINGER + FLASH_FADE / 2), past)
+		expect(midFade.phase).toBe("leaving")
+		expect(midFade.opacity).toBeCloseTo(0.5, 6)
+		const end = past * (1 + FLASH_LINGER + FLASH_FADE)
+		expect(flashState(end, past)).toEqual({ phase: "ended", opacity: 0 })
+		expect(flashState(end * 100, past).phase).toBe("ended")
+		// a pure function of the clock: going back is going back
+		expect(flashState(500, past).phase).toBe("travelling")
 	})
 })
 
