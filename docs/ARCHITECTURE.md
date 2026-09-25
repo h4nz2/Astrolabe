@@ -277,7 +277,7 @@ Director (`camera/director.ts`, unit-tested frame by frame):
 - HUD: `ui/CentreMarker.tsx` (crosshair at the canvas centre while `panning` or free), `ui/CentreBadge.tsx` ("Free view
   near Mars" + "Centre on Mars", or "in interplanetary space" + "Back to overview"); the picker shows no body while free.
   `ui/centre.ts` holds `freeCentreId` (stable selector) and the strings.
-- Building on it: #16 clicks call `setFocus`; #31 anchors the frame to `focusId` (a point's anchor).
+- Building on it: #16 clicks call `setFocus` (see Picking); #31 anchors the frame to `focusId` (a point's anchor).
 
 ## Lighting (`src/sim/lighting.ts`, `features/solarSystem/lighting/`, `src/store/lighting.ts`; #22)
 
@@ -363,11 +363,11 @@ React UI subscribes with selectors, and reads the clock only through `useThrottl
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
 Scale presets). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
-off by default, as `orbitNames=true` while on. Defaults (overview,
-home shot `0_45_1`, `warp=1`, a switch that is on) are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to 0). `useSimUrlSync()` runs
-once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas mounts (no `t` means the wall
-clock at mount), then writes back with `replace: true`, `t` at most once per second and only while paused or at
-|warp| <= 60.
+off by default, as `orbitNames=true` while on. Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
+are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
+0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
+mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
+only while paused or at |warp| <= 60.
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -416,25 +416,61 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   throws). Not drei `<Line>`: it lacks logdepth and depth-fights. Headless SwiftShader drops the focused orbit in
   close-ups; not an app bug.
 - Markers: one `Points` layer (4 px round dots, no depth test) so nothing vanishes at true scale; a dot hides once its
-  body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). Picking is angular
-  (10 px), planets win over moons. `showMarkers` off hides and unpicks them.
-- Interaction: click calls `setFocus`, hover sets `hoverId`; a tap selects, a drag (`scene/tap.ts`) does not.
-  `scene/HoverCursor.tsx` shows a pointer over click targets (`isClickTarget`: any body but the focus once it is also
-  selected, which fills the view up close). Labels join the same picking (see Labels).
+  body is wider than 6 px, and moon dots show only within the focused family (`isMoonDotShown`). The dots are drawn
+  only; picking is `BodyPicking`'s (see Picking). Labels join the same picking (see Labels).
 - Camera (`camera/framing.ts`, `camera/input.ts`): `minDistance = max(1.2 R, R + 2 near)` of the drawn radius, bodies
   framed from 6 radii, the overview fits the drawn planetary system x 1.3 from azimuth 0 / elevation 45. Orbit with
   left button or one finger; dolly with wheel, pinch (ctrl+wheel via `pinchAsDolly`) or middle button; pan with the right
   button, Shift + left, two or three fingers (see Re-centring). A point's zoom limits are its anchor's.
 - Visibility: `isBodyShown(body, state)` is the one rule for meshes, orbits and markers; hiding moons never hides the focus.
 - HUD (`ui/`, plain React over the Canvas, selectors only, never the SimFrame): `TimeControls` (with `SpinControl` below it), `SceneToggles`,
-  `FocusPicker`, `OverviewButton`, `BodyInfo` (hidden below 600 px; shows the body's tagline), `LanguageMenu` (in the
-  toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel). Escape and the overview button call `reset()`. The clock shows the locale's date format inside
+  `FocusPicker`, `OverviewButton`, `BodyInfo` (the focused view's card, see Picking), `LanguageMenu` (in the
+  toggles panel), `CentreBadge` and `CentreMarker` (#15), `ScalePanel` (#21, below the toggles panel). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
-  `ScaleTransition`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `CameraRig`, later `Effects`; then
-  the `LabelLayer` beside the Canvas) and the HUD.
+  `ScaleTransition`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
+  `HighlightTracker`, later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
+
+## Picking: click a body to focus on it (`scene/picking.ts`, `scene/BodyPicking.tsx`; #16)
+
+One invisible object (`BodyPicking`, a `<group>` with its own `raycast`) is the scene's only click and hover target;
+meshes and marker dots have no handlers. Its raycast asks `pickBody` (pure, unit-tested) and always reports a hit: a
+body, or "empty space" at `CAMERA_FAR`, so other clickable scene objects (nearer) still win and stop propagation. The
+labels' own picking (#20) reports its hits at distance 0, so a label beats the body picker; a label tap goes through
+`<Labels onActivate={activateBody}>`, the same action as a tap on the body, and a hovered label sets `hoverId`, so the
+hover ring, name and cursor apply to labels too.
+
+- **Disc**: the ray passes through the drawn sphere of a body drawn at least as big as the target; the nearest wins.
+- **Generous target**: a body drawn smaller than `TARGET_RADIUS_PX` (mouse 12, pen 16, touch 24; by
+  `currentPointerKind()` in `scene/tap.ts`) is hit anywhere within that radius of its centre, whatever its drawn size.
+  A visible disc (radius >= 2 px) right under the pointer wins, then the Sun and planets beat moons, then the nearest
+  edge; a small body in front of a big disc beats the disc, one behind it is hidden. Moons get a
+  target only while their marker dot is drawn or their disc is at least 1 px (`hasGenerousTarget`), so a click into
+  apparently empty space never flies to an invisible moon.
+- **Click on a body** (`bodyClickAction`): `setFocus` (select + fly, framing 6 drawn radii, tracked); the focus after
+  the camera was dollied beyond `REFRAME_DISTANCE` x its framing flies back to the close-up; the framed, selected
+  focus does nothing. **Click on empty space** (`emptyClickAction`): `reset()` from a focused or free view,
+  `select(null)` in the overview; nothing on a near miss (within `NEAR_MISS_FACTOR` x the target radius of a drawn
+  edge) or while a sequence (tour) runs. Only taps count (`isTapEvent`).
+- **Hover**: `hoverId` follows the pointer, but never for a finger or while a button is held (an orbit drag).
+  `HoverCursor` shows `cursor: pointer` for click targets (`isClickTarget` = `bodyClickAction` is not `none`).
+  `ui/BodyHighlight.tsx` renders a white ring with the body's name and "Click to fly there" around the hovered target,
+  and an orange ring around the selected body while its disc is under 40 px; `scene/HighlightTracker.tsx` places both
+  every frame straight on the DOM (`scene/highlight.ts` `placeRing`, `applyRing`), never through React state.
+- **The focused view's card** (`ui/BodyInfo.tsx`): the selection, else the focused body; name, tagline, the first
+  authored comparison, headline facts and a link to the dictionary entry (`ui/dictionaryEntry.ts`: Sun 0, planets
+  1..8), plus a close button (`reset`). Facts are comparative first (`ui/bodyFacts.ts`, `solarSystem.facts.*`): size in
+  Earths (Earth and moons in our Moon), a planet's distance as sunlight travel time, a moon's as how many of its
+  planet fit into the gap, the year in Earth years or laps per Earth year, the spin (#13's rotation period and tidal-lock note), weight relative to Earth; the exact
+  number sits under each. In the overview or a free view the card is a hint that planets can be clicked. On phones
+  (< 600 px) the card sits above the time controls with its facts folded behind a toggle.
+- `window.__astrolabe.screenOf(id)` gives a body's screen position and drawn radius, and `.scale` the scale store, for
+  the console and e2e tests.
+- Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`; a fly profile can be
+  requested through `focus(id, request)`), #24 compare (the card's action
+  row takes "Compare with…"), #28/#29/#34 (select or focus through the store).
 
 ## Labels (`features/solarSystem/labels`; #20)
 
@@ -474,7 +510,7 @@ Slots: `0..n-1` are the bodies' names, `n..2n-1` their orbits' names (`orbitSlot
 - **Picking:** the layer is `pointer-events: none` (drags and wheel zooms that start on a label still reach the
   camera). `Labels.tsx` adds a `<group raycast>` that hit-tests the label boxes (`pickLabel`, 3 px slack) and reports
   a hit at distance 0 with `index` = body index, so labels win over what they are drawn over and share the markers'
-  hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16.
+  hover, cursor and tap (`isTapEvent`) handling. `<Labels onActivate>` is the hook for #16 (`activateBody`).
 - **Switches:** `showLabels` (the Labels switch; `setShowLabels(false)` hides every name at once, e.g. for #30/#33),
   `showOrbitLabels` (Orbit names; needs orbits and labels on).
 - **For later issues:** `[data-body=<id>][data-visible=true]` marks a shown name (tests, tours); a feature that

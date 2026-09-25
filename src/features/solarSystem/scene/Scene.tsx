@@ -22,6 +22,8 @@ import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
 import { labelSlotCount } from "../labels/project"
+import BodyPicking, { activateBody } from "./BodyPicking"
+import HighlightTracker from "./HighlightTracker"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
@@ -72,8 +74,10 @@ function Scene() {
 					</Suspense>
 					<OrbitLines />
 					<Markers />
-					<Labels board={labels} />
+					<Labels board={labels} onActivate={activateBody} />
+					<BodyPicking />
 					<CameraRig />
+					<HighlightTracker />
 				</SimFrameContext.Provider>
 			</Canvas>
 			<LabelLayer board={labels} />

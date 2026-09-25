@@ -32,7 +32,7 @@ test("the solar system renders completely in German", async ({ page }) => {
 	await expect(page.getByRole("switch", { name: "Umlaufbahnen" })).toBeVisible()
 	await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
 	await expect(page.getByRole("radio", { name: "1 Tag/s" })).toHaveCount(1)
-	await expect(page.getByText("Abstand zur Sonne")).toBeVisible()
+	await expect(page.getByText("Das Sonnenlicht braucht")).toBeVisible()
 	await expect(page.getByText("Der Riese des Sonnensystems")).toBeVisible()
 	// German date order and number format
 	await expect(page.locator("time")).toHaveText(
@@ -41,7 +41,7 @@ test("the solar system renders completely in German", async ({ page }) => {
 	await expect(
 		page
 			.getByRole("region", { name: "Himmelskörper im Fokus" })
-			.getByText("69.911 km", { exact: true }),
+			.getByText("139.822 km Durchmesser", { exact: true }),
 	).toBeVisible()
 
 	// the planet's name is translated in the picker, a provisional designation is not
@@ -119,7 +119,7 @@ test.describe("with a Swiss German browser", () => {
 		await expect(
 			page
 				.getByRole("region", { name: "Himmelskörper im Fokus" })
-				.getByText(`69${swissGroup}911 km`, { exact: true }),
+				.getByText(`139${swissGroup}822 km Durchmesser`, { exact: true }),
 		).toBeVisible()
 	})
 

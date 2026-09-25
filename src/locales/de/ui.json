@@ -45,7 +45,8 @@
 		"approx": "≈ {value}",
 		"au": "{value} AE",
 		"gravity": "{value} m/s²",
-		"kelvin": "{value} K"
+		"kelvin": "{value} K",
+		"millionKm": "{value} Mio. km"
 	},
 	"bodies": {
 		"kind": {
@@ -318,6 +319,50 @@
 			"interplanetary@simple": "draußen zwischen den Planeten",
 			"centreOn": "{body} in die Mitte",
 			"centreOn@simple": "Zurück zu {body}"
+		},
+		"pick": {
+			"visit": "Klicken zum Hinfliegen",
+			"visit@simple": "Klick drauf und flieg hin",
+			"closer": "Klicken, um wieder nah heranzufliegen",
+			"hint": "Klicke oder tippe auf einen Planeten, um hinzufliegen.",
+			"hint@simple": "Klick oder tipp auf einen Planeten und besuch ihn!"
+		},
+		"card": {
+			"dictionary": "Mehr dazu im Lexikon",
+			"dictionary@simple": "Mehr erfahren",
+			"showFacts": "Fakten zeigen",
+			"hideFacts": "Fakten ausblenden",
+			"close": "Schließen und zur Übersicht zurück"
+		},
+		"facts": {
+			"label": {
+				"size": "Größe",
+				"size@simple": "Wie groß",
+				"distance": "Entfernung",
+				"distance@simple": "Wie weit",
+				"year": "Jahr",
+				"year@simple": "Ein Jahr",
+				"orbit": "Umlauf",
+				"orbit@simple": "Eine Runde",
+				"weight": "Dein Gewicht"
+			},
+			"sizeWider": "{ref, select, moon {{count, plural, one {So breit wie # Mond} other {So breit wie # Monde}}} other {{count, plural, one {So breit wie # Erde} other {So breit wie # Erden}}}}",
+			"sizeSimilar": "{ref, select, moon {Etwa so breit wie unser Mond} other {Etwa so breit wie die Erde}}",
+			"sizeNarrower": "{ref, select, moon {Unser Mond ist {count, number}-mal so breit} other {Die Erde ist {count, number}-mal so breit}}",
+			"across": "{value} Durchmesser",
+			"sunlight": "Das Sonnenlicht braucht {time} bis hierher",
+			"sunlight@simple": "Licht von der Sonne braucht {time} bis hierher",
+			"gap": "{parentId, select, earth {Die Erde} other {{parent}}} würde {count, number}-mal in die Lücke passen",
+			"fromParent": "{distance} von {parentId, select, earth {der Erde} other {{parent}}} entfernt",
+			"lap": "Umrundet {parentId, select, earth {die Erde} other {den {parent}}} einmal in {period}",
+			"yearEarth": "Eine Runde um die Sonne: genau das ist ein Jahr",
+			"yearLonger": "{count, plural, one {Eine Runde um die Sonne dauert # Erdjahr} other {Eine Runde um die Sonne dauert # Erdjahre}}",
+			"yearShorter": "Umrundet die Sonne {count, number}-mal in einem Erdjahr",
+			"weightMore": "Du würdest {count, number}-mal so viel wiegen wie auf der Erde",
+			"weightMore@simple": "30 kg auf der Erde wären hier {kg} kg",
+			"weightSimilar": "Du würdest etwa so viel wiegen wie auf der Erde",
+			"weightLess": "Du würdest nur {percent} % deines Gewichts auf der Erde wiegen",
+			"weightLess@simple": "30 kg auf der Erde wären hier nur {kg} kg"
 		}
 	}
 }
