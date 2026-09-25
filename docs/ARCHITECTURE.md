@@ -7,7 +7,7 @@ it, and if it must change, change it in the same change set.
 ## Stack
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
-- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25). Search params are
+- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25) and `/compare` (#24). Search params are
   zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
@@ -35,7 +35,7 @@ src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), s
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, simSearch.ts (URL schema), urlSync.ts
 src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, rings/, ui/),
-                             solarWalk/ (the basketball solar system, #25)
+                             solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -643,7 +643,7 @@ hover ring, name and cursor apply to labels too.
   every frame straight on the DOM (`scene/highlight.ts` `placeRing`, `applyRing`), never through React state.
 - **The focused view's card** (`ui/BodyInfo.tsx`): the selection, else the focused body; name, tagline, the first
   authored comparison, headline facts and a link to the dictionary entry (`ui/dictionaryEntry.ts`: Sun 0, planets
-  1..8), plus a close button (`reset`). Facts are comparative first (`ui/bodyFacts.ts`, `solarSystem.facts.*`): size in
+  1..8), "Compare with…" (#24), plus a close button (`reset`). Facts are comparative first (`ui/bodyFacts.ts`, `solarSystem.facts.*`): size in
   Earths (Earth and moons in our Moon), a planet's distance as sunlight travel time, a moon's as how many of its
   planet fit into the gap, the year in Earth years or laps per Earth year, the spin (#13's rotation period and tidal-lock note), weight relative to Earth; the exact
   number sits under each. In the overview or a free view the card is a hint that planets can be clicked. On phones
@@ -651,8 +651,8 @@ hover ring, name and cursor apply to labels too.
 - `window.__astrolabe.screenOf(id)` gives a body's screen position and drawn radius, and `.scale` the scale store, for
   the console and e2e tests.
 - Building on it: #17 moons (focus is how they are seen), #18 fly (clicks call `setFocus`, which flies from a
-  focused body; see Flights), #24 compare (the card's action
-  row takes "Compare with…"), #28/#29/#34 (select or focus through the store).
+  focused body; see Flights), #24 compare ("Compare with…" in the card's header, see Comparison),
+  #28/#29/#34 (select or focus through the store).
 
 ## Labels (`features/solarSystem/labels`; #20)
 
@@ -737,6 +737,37 @@ weight on the Sun, the planets and the seven large moons.
 - Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
   carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
   picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
+
+## Comparison (`features/compare`, route `/compare`; #24)
+
+Two or more bodies side by side at true relative size, independent of where they are, with comparisons a class can
+discuss. A page of its own (plain DOM, no WebGL: light on phones, crisp on a projector, easy to screenshot), so the
+whole comparison is its link: `/compare?bodies=earth,jupiter,saturn&t=<jd>` (`search.ts`; `t` absent = now).
+
+- **The list** (`selection.ts`, pure): `bodies[0]` and `[1]` are the pair the facts talk about, further ids are drawn
+  alongside (at most `MAX_COMPARE` = 10). A missing or short list is completed (`completeBodies`, `defaultPartner`:
+  Earth for the Sun and planets, the Sun for Earth, our Moon for moons, Earth for the Moon) and written back to the
+  URL. Pickers reuse the focus picker's `focusOptions`; ideas are `COMPARE_PRESETS` (`compare.presets.<id>`). A click
+  on a drawn body outside the pair `promote`s it into the pair.
+- **The drawing** (`layout.ts` pure, `Stage.tsx`): one scale (px per km) for every body, the largest at which the
+  tallest body fits the height and every slot (at least the label's width) fits the width; if even the narrowest slots
+  do not fit, the row scrolls sideways. Order of the system (`drawOrder`: the Sun, each planet with its moons). Each
+  globe is a disc painted with `textures.base` (half the map across it) and a CSS shade, turned by `axialTiltDeg`;
+  rings are a radial gradient seen from `RING_OPENING` (Saturn's A/B/C rings and Cassini Division by radius, the others
+  a faint band). A body under `MIN_VISIBLE_PX` across is circled and named in the caption, never enlarged. Slots carry
+  `data-body`, `data-role` (`first`/`second`/`extra`) and `data-radius-px` for tests.
+- **The facts** (`compareFacts.ts`, pure, `FactsPanel.tsx`): `pairFacts(a, b, i18n, { jd, live })` gives size,
+  volume, mass, weight (on Earth when it is one of the two, else on the first), year (both round the Sun) or orbit
+  (both round one planet), solar day (a moon's under its planet's year: our Moon 29.5 days), the strange calendars
+  (Mercury's day longer than its year, Venus turning slower than it orbits), and the true distance at `jd` in light
+  time (with the closest/farthest range for siblings and parent/child). Physics reuses #26's `surfaceGravity`,
+  `solarDayDays`, `hasNoSurface`, `formatBigNumber` and #16's `roughly`. Sentences are `compare.facts.*` with simple
+  and advanced variants; German picks articles and prepositions by `<role>Id` selects. Under the facts, each body's
+  first authored comparison (#11).
+- **Entry:** the focused body's card (`ui/BodyInfo.tsx`) has "Compare with…" in its header (always in view, also while a
+  phone folds the facts); it opens the body with its default partner at the moment on screen (`links.ts`
+  `compareSearchFor`: `t` unless the clock shows the present at 1x). "Back" returns through the history, else to
+  `/solar_system?focus=<first>`.
 
 ## Scavenger hunt (`features/solarSystem/hunt`, `src/store/hunt.ts`; #34)
 
