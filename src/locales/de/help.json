@@ -569,12 +569,14 @@
 				"standard": [
 					"Drücke oben links auf „Lichtgeschwindigkeit“, dann auf „Lichtblitz senden“.",
 					"Wähle, wo er startet; die Liste zeigt, wann er jede Welt erreicht.",
-					"Die Zeit springt auf Echtzeit; ein schnelleres Tempo ist erlaubt, und das Feld zählt trotzdem die echte Reisezeit."
+					"Die Zeit springt auf Echtzeit; ein schnelleres Tempo ist erlaubt, und das Feld zählt trotzdem die echte Reisezeit.",
+					"Zum Anhalten drück „Lichtblitz stoppen“, das × an seiner Beschriftung oder neben der Uhr auf dem Knopf, oder X. Hat er Neptun hinter sich, verblasst er von selbst."
 				],
 				"simple": [
 					"Such den Knopf „Wie schnell ist Licht?“ und drück drauf.",
 					"Drück „Lichtblitz senden“.",
-					"Schau zu, wie der Kreis wächst und die Planeten erreicht."
+					"Schau zu, wie der Kreis wächst und die Planeten erreicht.",
+					"Drück „Licht ausschalten“, um ihn anzuhalten."
 				]
 			}
 		},
@@ -877,6 +879,12 @@
 			"mouse": "Das Feld „Maßstab“",
 			"touch": "Das Feld „Maßstab“",
 			"keys": "S"
+		},
+		"stopLight": {
+			"action": "Lichtblitz stoppen",
+			"mouse": "× an der Beschriftung des Blitzes",
+			"touch": "× an der Beschriftung des Blitzes",
+			"keys": "X"
 		},
 		"names": {
 			"action": "Namen ein oder aus",

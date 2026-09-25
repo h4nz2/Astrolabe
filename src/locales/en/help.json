@@ -569,12 +569,14 @@
 				"standard": [
 					"Press “Speed of light” at the top left, then “Send a flash”.",
 					"Pick where it starts; the list shows when it reaches each world.",
-					"Time switches to real time; a faster speed is allowed and the panel still counts true travel time."
+					"Time switches to real time; a faster speed is allowed and the panel still counts true travel time.",
+					"To stop it, press “Stop the flash”, the × on its label or beside the clock on the button, or X. Once it has passed Neptune it fades by itself."
 				],
 				"simple": [
 					"Press “How fast is light?”.",
 					"Press “Send a flash”.",
-					"Watch the circle grow and reach the planets."
+					"Watch the circle grow and reach the planets.",
+					"Press “Turn the light off” to stop it."
 				]
 			}
 		},
@@ -872,6 +874,12 @@
 			"mouse": "The Scale panel",
 			"touch": "The Scale panel",
 			"keys": "S"
+		},
+		"stopLight": {
+			"action": "Stop the light flash",
+			"mouse": "× on the flash’s label",
+			"touch": "× on the flash’s label",
+			"keys": "X"
 		},
 		"names": {
 			"action": "Names on or off",

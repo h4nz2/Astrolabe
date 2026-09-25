@@ -569,12 +569,14 @@
 				"standard": [
 					"Appuie sur « Vitesse de la lumière » en haut à gauche, puis sur « Envoyer un éclair ».",
 					"Choisis d’où il part ; la liste indique quand il atteint chaque monde.",
-					"Le temps passe en temps réel ; tu peux choisir une vitesse plus rapide, et le panneau compte toujours le vrai temps de trajet."
+					"Le temps passe en temps réel ; tu peux choisir une vitesse plus rapide, et le panneau compte toujours le vrai temps de trajet.",
+					"Pour l’arrêter, appuie sur « Arrêter l’éclair », sur le × de son étiquette ou à côté de l’horloge sur le bouton, ou sur X. Une fois Neptune dépassée, il s’efface tout seul."
 				],
 				"simple": [
 					"Appuie sur « À quelle vitesse va la lumière ? »",
 					"Appuie sur « Envoyer un éclair ».",
-					"Regarde le cercle grandir et atteindre les planètes."
+					"Regarde le cercle grandir et atteindre les planètes.",
+					"Appuie sur « Éteindre la lumière » pour l’arrêter."
 				]
 			}
 		},
@@ -877,6 +879,12 @@
 			"mouse": "Le panneau Échelle",
 			"touch": "Le panneau Échelle",
 			"keys": "S"
+		},
+		"stopLight": {
+			"action": "Arrêter l’éclair de lumière",
+			"mouse": "Le × sur l’étiquette de l’éclair",
+			"touch": "Le × sur l’étiquette de l’éclair",
+			"keys": "X"
 		},
 		"names": {
 			"action": "Afficher ou masquer les noms",

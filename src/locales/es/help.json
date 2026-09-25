@@ -569,12 +569,14 @@
 				"standard": [
 					"Pulsa «Velocidad de la luz» arriba a la izquierda y luego «Enviar un destello».",
 					"Elige desde dónde sale; la lista muestra cuándo llega a cada mundo.",
-					"El tiempo pasa a tiempo real; puedes elegir una velocidad mayor y el panel sigue contando el tiempo de viaje real."
+					"El tiempo pasa a tiempo real; puedes elegir una velocidad mayor y el panel sigue contando el tiempo de viaje real.",
+					"Para detenerlo, pulsa «Detener el destello», la × de su etiqueta o la que está junto al reloj en el botón, o X. Cuando ha pasado Neptuno, se desvanece solo."
 				],
 				"simple": [
 					"Pulsa «¿A qué velocidad va la luz?».",
 					"Pulsa «Enviar un destello».",
-					"Mira cómo el círculo crece y llega a los planetas."
+					"Mira cómo el círculo crece y llega a los planetas.",
+					"Pulsa «Apagar la luz» para detenerlo."
 				]
 			}
 		},
@@ -877,6 +879,12 @@
 			"mouse": "El panel Escala",
 			"touch": "El panel Escala",
 			"keys": "S"
+		},
+		"stopLight": {
+			"action": "Detener el destello de luz",
+			"mouse": "La × de la etiqueta del destello",
+			"touch": "La × de la etiqueta del destello",
+			"keys": "X"
 		},
 		"names": {
 			"action": "Mostrar u ocultar los nombres",

@@ -569,12 +569,14 @@
 				"standard": [
 					"Stiskni vlevo nahoře „Rychlost světla“ a pak „Vyslat záblesk“.",
 					"Vyber, odkud vyletí; seznam ukazuje, kdy dorazí ke kterému světu.",
-					"Čas se přepne na reálný; vyšší rychlost je povolená a panel přesto počítá skutečnou dobu letu."
+					"Čas se přepne na reálný; vyšší rychlost je povolená a panel přesto počítá skutečnou dobu letu.",
+					"Zastavíš ho tlačítkem „Zastavit záblesk“, křížkem × u jeho popisku nebo vedle hodin na tlačítku, případně klávesou X. Až mine Neptun, sám zmizí."
 				],
 				"simple": [
 					"Stiskni „Jak rychlé je světlo?“.",
 					"Stiskni „Vyslat záblesk“.",
-					"Sleduj, jak se kruh zvětšuje a doletí až k planetám."
+					"Sleduj, jak se kruh zvětšuje a doletí až k planetám.",
+					"Zastavíš ho tlačítkem „Vypnout světlo“."
 				]
 			}
 		},
@@ -872,6 +874,12 @@
 			"mouse": "Panel Měřítko",
 			"touch": "Panel Měřítko",
 			"keys": "S"
+		},
+		"stopLight": {
+			"action": "Zastavit světelný záblesk",
+			"mouse": "× u popisku záblesku",
+			"touch": "× u popisku záblesku",
+			"keys": "X"
 		},
 		"names": {
 			"action": "Zapnout nebo vypnout názvy",
