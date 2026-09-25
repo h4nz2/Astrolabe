@@ -1,100 +1,148 @@
-import { bodyById, type Body } from "@/data"
-import { useI18n, type I18n } from "@/i18n"
-import { bodyKindLabel, bodyName, useBodyText } from "@/i18n/bodies"
-import { kmToAu } from "@/sim"
-import { useSimStore } from "@/store/sim"
+/**
+ * The focused view's card (#16): the selected body (else the body the view is
+ * on), its name and tagline, an authored comparison, the headline facts
+ * (comparative first: "11 Earths wide", with the exact number beside it), a
+ * link into its dictionary entry, and a way back to the overview. With
+ * nothing to show (the overview, a free view) it tells a first-time visitor
+ * that the planets can be clicked. On phones the facts fold away behind a
+ * toggle so the card never buries the scene.
+ */
+import { useMemo, useState } from "react"
+import { ActionIcon, Anchor, CloseButton } from "@mantine/core"
+import { useMediaQuery } from "@mantine/hooks"
+import {
+	IconChevronDown,
+	IconChevronUp,
+	IconHandClick,
+} from "@tabler/icons-react"
+import { Link } from "@tanstack/react-router"
+
+import { bodyById } from "@/data"
+import { useI18n } from "@/i18n"
+import { useBodyText } from "@/i18n/bodies"
+import { useSimStore, type SimState } from "@/store/sim"
+
+import { headlineFacts } from "./bodyFacts"
+import { dictionaryEntry } from "./dictionaryEntry"
 
 import classes from "./BodyInfo.module.css"
 
-/** Periods from this long on read better in days (Venus: 243 days, not 5,832 hours). */
-const ROTATION_DAYS_FROM_HOURS = 72
+/** The body the card is about: the selection, else the focused body; null in the overview or a free view. */
+export const cardBodyId = (
+	state: Pick<SimState, "selectedId" | "view">,
+): string | null =>
+	state.selectedId ?? (state.view.kind === "body" ? state.view.id : null)
 
-/** The rotation period, with its direction, and for a tidally locked moon a note saying so. */
-const rotationFacts = (
-	body: Pick<Body, "rotation" | "parentId">,
-	i18n: I18n,
-): { value: string; note: string | null } => {
-	const { periodHours, synchronous } = body.rotation
-	if (periodHours === null) {
-		return { value: i18n.t("solarSystem.info.rotationUnknown"), note: null }
-	}
-	const hours = Math.abs(periodHours)
-	const period =
-		hours >= ROTATION_DAYS_FROM_HOURS
-			? i18n.quantity(hours / 24, "day", "long")
-			: i18n.quantity(hours, "hour", "long")
-	const value =
-		periodHours < 0 ? i18n.t("solarSystem.info.retrograde", { period }) : period
-	const note =
-		synchronous === true && body.parentId !== null
-			? i18n.t("solarSystem.info.synchronous", {
-					parentId: body.parentId,
-					parent: bodyName(body.parentId, i18n.chain),
-				})
-			: null
-	return { value, note }
+/** Matches the phone layout of SolarSystem.module.css. */
+const PHONE_QUERY = "(max-width: 599px)"
+
+const ClickHint = () => {
+	const { t } = useI18n()
+	return (
+		<p className={classes.hint} data-testid="click-hint">
+			<IconHandClick size={18} aria-hidden="true" />
+			{t("solarSystem.pick.hint")}
+		</p>
+	)
 }
 
-/** Compact facts about the selected body, else the focus (the page layout hides it on phones). */
-const BodyInfo = () => {
-	const bodyId = useSimStore((state) => state.selectedId ?? state.focusId)
+const BodyCard = ({ bodyId }: { bodyId: string }) => {
 	const i18n = useI18n()
+	const { t } = i18n
 	const text = useBodyText(bodyId)
 	const body = bodyById.get(bodyId)
+	const facts = useMemo(
+		() => (body === undefined ? [] : headlineFacts(body, i18n)),
+		[body, i18n],
+	)
+	const reset = useSimStore((state) => state.reset)
+	const phone = useMediaQuery(PHONE_QUERY) ?? false
+	const [expanded, setExpanded] = useState<boolean | null>(null)
+	const open = expanded ?? !phone
 	if (body === undefined) return null
-	const { t } = i18n
-	const { orbit } = body
-	const kind = bodyKindLabel(body, i18n)
-	const radius = i18n.quantity(body.radiusKm, "kilometer")
-	const rotation = rotationFacts(body, i18n)
+	const entry = dictionaryEntry(body.id)
+	const story = text.comparisons[0]
+	const close = t("solarSystem.card.close")
+	const toggle = t(
+		open ? "solarSystem.card.hideFacts" : "solarSystem.card.showFacts",
+	)
 
 	return (
-		<section className={classes.root} aria-label={t("solarSystem.info.label")}>
-			<header className={classes.title}>
-				<span className={classes.name}>{text.name}</span>
-				<span className={classes.kind}>{kind}</span>
+		<section
+			className={classes.root}
+			aria-label={t("solarSystem.info.label")}
+			data-testid="body-card"
+			data-card-body={body.id}
+		>
+			<header className={classes.header}>
+				<div className={classes.title}>
+					<h2 className={classes.name}>{text.name}</h2>
+					<p className={classes.tagline}>{text.tagline}</p>
+				</div>
+				<ActionIcon
+					className={classes.toggle}
+					variant="subtle"
+					color="gray"
+					size="lg"
+					aria-label={toggle}
+					aria-expanded={open}
+					title={toggle}
+					onClick={() => setExpanded(!open)}
+				>
+					{open ? <IconChevronDown size={18} /> : <IconChevronUp size={18} />}
+				</ActionIcon>
+				<CloseButton
+					size="lg"
+					aria-label={close}
+					aria-keyshortcuts="Escape"
+					title={close}
+					onClick={reset}
+				/>
 			</header>
-			{text.tagline !== kind && (
-				<p className={classes.tagline}>{text.tagline}</p>
-			)}
-			<dl className={classes.facts}>
-				<dt className={classes.label}>{t("solarSystem.info.radius")}</dt>
-				<dd className={classes.value}>
-					{body.radiusEstimated ? t("units.approx", { value: radius }) : radius}
-				</dd>
-				{orbit !== null && body.parentId !== null && (
-					<>
-						<dt className={classes.label}>
-							{t("solarSystem.info.orbitalPeriod")}
-						</dt>
-						<dd className={classes.value}>
-							{i18n.quantity(orbit.periodDays, "day", "long")}
-						</dd>
-						<dt className={classes.label}>
-							{t("solarSystem.info.distance", {
-								parentId: body.parentId,
-								parent: bodyName(body.parentId, i18n.chain),
-							})}
-						</dt>
-						<dd className={classes.value}>
-							{i18n.quantity(orbit.semiMajorAxisKm, "kilometer")}
-							<span className={classes.secondary}>
-								{t("units.au", {
-									value: i18n.significant(kmToAu(orbit.semiMajorAxisKm)),
-								})}
-							</span>
-						</dd>
-					</>
-				)}
-				<dt className={classes.label}>{t("solarSystem.info.rotation")}</dt>
-				<dd className={classes.value}>
-					{rotation.value}
-					{rotation.note !== null && (
-						<span className={classes.secondary}>{rotation.note}</span>
+			{open && (
+				<>
+					{story !== undefined && <p className={classes.story}>{story}</p>}
+					<dl className={classes.facts}>
+						{facts.map((fact) => (
+							<div key={fact.key} className={classes.fact} data-fact={fact.key}>
+								<dt className={classes.label}>{fact.label}</dt>
+								<dd className={classes.comparison}>
+									{fact.comparison}
+									{fact.value !== null && (
+										<span className={classes.value}>{fact.value}</span>
+									)}
+								</dd>
+							</div>
+						))}
+					</dl>
+					{entry !== null && (
+						<Anchor
+							className={classes.more}
+							size="sm"
+							renderRoot={(props) => (
+								<Link
+									{...props}
+									to="/solar_dictionary"
+									search={{ entity: entry === 0 ? undefined : entry }}
+								/>
+							)}
+						>
+							{t("solarSystem.card.dictionary")} →
+						</Anchor>
 					)}
-				</dd>
-			</dl>
+				</>
+			)}
 		</section>
+	)
+}
+
+/** The card of the selected or focused body, else the click hint. */
+const BodyInfo = () => {
+	const bodyId = useSimStore(cardBodyId)
+	return bodyId === null ? (
+		<ClickHint />
+	) : (
+		<BodyCard key={bodyId} bodyId={bodyId} />
 	)
 }
 

@@ -45,7 +45,8 @@
 		"approx": "≈ {value}",
 		"au": "{value} AU",
 		"gravity": "{value} m/s²",
-		"kelvin": "{value} K"
+		"kelvin": "{value} K",
+		"millionKm": "{value} million km"
 	},
 	"bodies": {
 		"kind": {
@@ -318,6 +319,51 @@
 			"interplanetary@simple": "out between the planets",
 			"centreOn": "Centre on {body}",
 			"centreOn@simple": "Back to {body}"
+		},
+		"pick": {
+			"visit": "Click to fly there",
+			"visit@simple": "Click to go there",
+			"closer": "Click to fly back in close",
+			"hint": "Click or tap any planet to fly there.",
+			"hint@simple": "Click or tap a planet to visit it!",
+			"follow": "Click to follow its path"
+		},
+		"card": {
+			"dictionary": "Read more in the dictionary",
+			"dictionary@simple": "Find out more",
+			"showFacts": "Show facts",
+			"hideFacts": "Hide facts",
+			"close": "Close and return to the overview"
+		},
+		"facts": {
+			"label": {
+				"size": "Size",
+				"size@simple": "How big",
+				"distance": "Distance",
+				"distance@simple": "How far",
+				"year": "Year",
+				"year@simple": "One year",
+				"orbit": "Orbit",
+				"orbit@simple": "One lap",
+				"weight": "Your weight"
+			},
+			"sizeWider": "{ref, select, moon {{count, plural, one {# Moon wide} other {# Moons wide}}} other {{count, plural, one {# Earth wide} other {# Earths wide}}}}",
+			"sizeSimilar": "{ref, select, moon {About as wide as our Moon} other {About as wide as Earth}}",
+			"sizeNarrower": "{ref, select, moon {Our Moon is {count, number} times as wide} other {Earth is {count, number} times as wide}}",
+			"across": "{value} across",
+			"sunlight": "Sunlight takes {time} to get here",
+			"sunlight@simple": "Light from the Sun needs {time} to get here",
+			"gap": "{parentId, select, other {{parent}}} would fit into the gap {count, plural, one {# time} other {# times}}",
+			"fromParent": "{distance} from {parentId, select, other {{parent}}}",
+			"lap": "Goes once around {parentId, select, other {{parent}}} in {period}",
+			"yearEarth": "One lap around the Sun: that is what a year is",
+			"yearLonger": "{count, plural, one {One lap around the Sun takes # Earth year} other {One lap around the Sun takes # Earth years}}",
+			"yearShorter": "{count, plural, one {Goes around the Sun # time in one Earth year} other {Goes around the Sun # times in one Earth year}}",
+			"weightMore": "You would weigh {count, number} times as much as on Earth",
+			"weightMore@simple": "30 kg on Earth would be {kg} kg here",
+			"weightSimilar": "You would weigh about as much as on Earth",
+			"weightLess": "You would weigh {percent}% of your weight on Earth",
+			"weightLess@simple": "30 kg on Earth would be only {kg} kg here"
 		},
 		"frame": {
 			"label": "Point of view",
