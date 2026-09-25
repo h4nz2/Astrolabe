@@ -21,6 +21,18 @@ export default defineConfig({
 	reporter: process.env.CI ? "github" : "list",
 	use: {
 		baseURL,
+		// every test is a returning visitor: the opening (#30) plays only on a first
+		// visit, so it never runs over another test's scene; e2e/intro.spec.ts
+		// clears this to be a first-time visitor
+		storageState: {
+			cookies: [],
+			origins: [
+				{
+					origin: baseURL,
+					localStorage: [{ name: "astrolabe.introSeen", value: "1" }],
+				},
+			],
+		},
 		screenshot: "only-on-failure",
 		trace: "retain-on-failure",
 	},

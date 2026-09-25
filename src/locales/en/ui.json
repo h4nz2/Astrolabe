@@ -1041,6 +1041,61 @@
 				"showHint": "Holds Earth still at that moment, seen from above, with the Sun and {body} at their true directions."
 			}
 		},
+		"intro": {
+			"label": "Opening",
+			"skip": "Skip intro",
+			"skip@simple": "Skip",
+			"progress": "Part {beat, number} of {count, number}",
+			"earth": {
+				"title": "This is Earth.",
+				"detail": "Everyone you know lives here.",
+				"detail@simple": "Everyone you know lives here!",
+				"detail@advanced": "Every person you have ever met lives on this one small world."
+			},
+			"moon": {
+				"title": "The Moon",
+				"detail": "{earths, number} Earths would fit in the gap.",
+				"detail@simple": "{earths, number} Earths would fit between us and the Moon!",
+				"detail@advanced": "{km} away: {earths, number} Earth diameters."
+			},
+			"inner": {
+				"title": "The inner planets",
+				"title@simple": "Our nearest planets",
+				"detail": "{planets}, the four rocky worlds nearest the Sun.",
+				"detail@simple": "{planets}.",
+				"detail@advanced": "{planets}: the rocky planets, all within 250 million km of the Sun."
+			},
+			"system": {
+				"title": "The whole solar system, at its real size",
+				"title@simple": "Everything, at its real size",
+				"detail": "The planets are far too small to see. The dots only show where they are.",
+				"detail@simple": "The planets are too tiny to see! The dots show where they are.",
+				"detail@advanced": "Earth is now much smaller than one pixel, and space is almost entirely empty. The dots only mark the planets."
+			},
+			"scale": {
+				"title": "So we draw them bigger and closer",
+				"title@simple": "So we draw them bigger!",
+				"detail": "Now you can see every planet, but not to scale. The Scale panel switches back to real sizes.",
+				"detail@simple": "Now you can see every planet. The Scale panel shows their real size again.",
+				"detail@advanced": "“Everything visible”: sizes enlarged, distances squeezed. “True scale” in the Scale panel shows the real thing."
+			},
+			"hint": {
+				"label": "How to move around",
+				"drag": "Drag to look around",
+				"drag@simple": "Drag to turn",
+				"zoom": "Scroll to zoom",
+				"zoom@simple": "Scroll to go closer",
+				"pinch": "Pinch to zoom",
+				"click": "Click a planet to fly there",
+				"click@simple": "Click a planet to visit it",
+				"tap": "Tap a planet to fly there",
+				"tap@simple": "Tap a planet to visit it"
+			},
+			"menu": "Help",
+			"replay": "Play the opening again",
+			"replay@simple": "Watch the start again",
+			"hints": "Show how to move around"
+		},
 		"tours": {
 			"menu": "Guided tours",
 			"menuShort": "Tours",
