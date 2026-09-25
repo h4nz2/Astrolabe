@@ -139,10 +139,36 @@
 			"labels": "Etiquetas",
 			"moons": "Lunas",
 			"allMoons": "Todas las lunas",
-			"allMoonsHint": "Mostrar también las muchas lunas pequeñas, no solo las que tienen una historia",
 			"markers": "Marcadores",
 			"orbitNames": "Nombres de órbitas",
-			"alwaysLit": "Siempre iluminado"
+			"alwaysLit": "Siempre iluminado",
+			"hint": {
+				"orbits": "Dibuja el camino que recorre cada planeta y cada luna alrededor del Sol o de su planeta. Desactívalo para ver solo los cuerpos.",
+				"orbits@simple": "Muestra el camino de cada planeta alrededor del Sol.",
+				"orbits@advanced": "Dibuja todas las órbitas, para comparar su tamaño, su forma y su inclinación. Desactívalo para ver solo los cuerpos.",
+				"labels": "Escribe el nombre junto a cada cuerpo. Desactívalo para que la clase adivine qué planeta es cuál.",
+				"labels@simple": "Muestra los nombres de los planetas. ¡Desactívalo para jugar a adivinar!",
+				"labels@advanced": "Nombra cada cuerpo que tiene sitio en la pantalla. Desactívalo para un examen o una imagen limpia.",
+				"moons": "Muestra las lunas de los planetas, primero las que tienen una historia. Desactívalo para ver solo el Sol y los planetas.",
+				"moons@simple": "Muestra las lunas que giran alrededor de los planetas.",
+				"moons@advanced": "Muestra los satélites naturales, los más conocidos primero. Desactívalo para reducir la escena al Sol y los planetas.",
+				"allMoons": "Muestra también las muchas lunas pequeñas, no solo las que tienen una historia: la mayoría son rocas de pocos kilómetros.",
+				"allMoons@simple": "Muestra también todas las lunas pequeñas. ¡Hay muchísimas!",
+				"allMoons@advanced": "Añade la larga lista de lunas pequeñas, casi todas rocas capturadas de pocos kilómetros con designaciones provisionales.",
+				"markers": "Pone un punto de color en cada planeta, para encontrarlo aunque sea demasiado pequeño para verse.",
+				"markers@simple": "Pone un punto de color en cada planeta, para encontrarlo aunque sea diminuto.",
+				"markers@advanced": "Marca cada cuerpo con un punto de tamaño fijo en la pantalla: a escala real, los propios planetas son más pequeños que un píxel.",
+				"orbitNames": "Escribe el nombre de cada planeta sobre su órbita, para saber qué camino es de quién.",
+				"orbitNames@simple": "Escribe el nombre del planeta sobre su camino.",
+				"orbitNames@advanced": "Rotula cada órbita con el nombre de su cuerpo: útil cuando los cuerpos están demasiado lejos para nombrarlos.",
+				"alwaysLit": "Ilumina cada cuerpo desde donde miras, para que el lado de noche no sea negro. Bueno para ver superficies; esconde la lección del día y la noche.",
+				"alwaysLit@simple": "Ilumina cada planeta desde tu lado, así nada está oscuro. ¡Pero entonces no ves el día y la noche!",
+				"alwaysLit@advanced": "Ilumina cada cuerpo desde el punto de vista en lugar del Sol: sin lados de noche, fases ni sombras de eclipse. Bueno para el detalle de la superficie, falso para la geometría de la luz solar."
+			},
+			"reason": {
+				"allMoons": "Activa primero Lunas.",
+				"orbitNames": "{missing, select, orbits {Activa primero Órbitas.} labels {Activa primero Etiquetas.} other {Activa primero Órbitas y Etiquetas.}}"
+			}
 		},
 		"scale": {
 			"label": "Escala",
@@ -193,7 +219,21 @@
 			"markersOff": "Los marcadores están desactivados: actívalos para encontrar los planetas.",
 			"markersOff@simple": "¡Activa los Marcadores para encontrar los planetas!",
 			"walk": "¿Demasiado pequeño para imaginarlo? Recórrelo a pie: el sistema solar con el Sol del tamaño de un balón de baloncesto.",
-			"walk@simple": "¿Demasiado pequeño para verlo? ¡Recorre a pie el sistema solar en el patio de tu escuela!"
+			"walk@simple": "¿Demasiado pequeño para verlo? ¡Recorre a pie el sistema solar en el patio de tu escuela!",
+			"hint": {
+				"sizesTrue": "Dibuja cada cuerpo con su tamaño real. De lejos, los planetas son demasiado pequeños para verse.",
+				"sizesTrue@simple": "Planetas tan grandes como son de verdad. ¡De lejos son demasiado pequeños para verlos!",
+				"sizesTrue@advanced": "Radios a escala: desde la vista general cada planeta mide menos de un píxel y solo los marcadores lo encuentran.",
+				"sizesEnlarged": "Dibuja los planetas y las lunas mucho más grandes de lo que son, para verlos de lejos. No está a escala.",
+				"sizesEnlarged@simple": "Hace los planetas mucho más grandes para que puedas verlos. ¡No es así de verdad!",
+				"sizesEnlarged@advanced": "Exagera los radios para que los discos se vean de lejos; la frase de abajo dice cuánto.",
+				"distancesTrue": "Deja cada cuerpo a su distancia real: los planetas quedan muy separados, con un enorme espacio vacío entre ellos.",
+				"distancesTrue@simple": "Planetas tan separados como están de verdad. ¡Hay muchísimo espacio vacío!",
+				"distancesTrue@advanced": "Distancias a escala: Neptuno orbita treinta veces más lejos del Sol que la Tierra.",
+				"distancesSqueezed": "Acerca los planetas entre sí, para que todo el sistema solar quepa en la pantalla. No está a escala.",
+				"distancesSqueezed@simple": "Acerca los planetas para que quepan todos en la pantalla. ¡No es así de verdad!",
+				"distancesSqueezed@advanced": "Comprime las distancias para que todo el sistema quepa en la pantalla; la frase de abajo dice cuánto."
+			}
 		},
 		"time": {
 			"play": "Reproducir",
@@ -211,7 +251,10 @@
 				"day": "{count, plural, one {# día/s} many {# de días/s} other {# días/s}}",
 				"week": "{count, plural, one {# semana/s} many {# de semanas/s} other {# semanas/s}}",
 				"month": "{count, plural, one {# mes/s} many {# de meses/s} other {# meses/s}}",
-				"year": "{count, plural, one {# año/s} many {# de años/s} other {# años/s}}"
+				"year": "{count, plural, one {# año/s} many {# de años/s} other {# años/s}}",
+				"hint": "Cuánto tiempo pasa en el modelo por cada segundo real. Las velocidades rápidas muestran a los planetas girando alrededor del Sol; + y − las recorren.",
+				"hint@simple": "Lo rápido que pasa el tiempo. ¡Elige una velocidad más rápida y mira cómo se mueven los planetas alrededor del Sol!",
+				"hint@advanced": "La aceleración del tiempo: tiempo simulado por segundo real, en una fila de niveles que multiplican la velocidad (+ y − los recorren)."
 			},
 			"reverse": "Retroceder",
 			"reverseHint": "Hacer correr el tiempo hacia atrás",
@@ -390,6 +433,15 @@
 				"pluto": "Plutón",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 Sol-Tierra"
+			},
+			"hint": {
+				"layer": "Muestra las naves espaciales reales que ha enviado la humanidad, donde están en la fecha que se ve.",
+				"layer@simple": "Muestra las sondas que la gente ha enviado al espacio.",
+				"allPaths": "Dibuja el viaje completo de cada nave, no solo el de la que elegiste.",
+				"allPaths@simple": "Muestra el camino de cada nave."
+			},
+			"reason": {
+				"allPaths": "Activa primero Naves espaciales."
 			}
 		},
 		"pick": {
@@ -666,7 +718,9 @@
 					"what@simple": "Saturno tiene auroras, y estas emiten ondas de radio. La sonda Cassini las captó. Los científicos las hicieron más graves y más rápidas para que podamos oírlas. ¡Suenan misteriosas!",
 					"what@advanced": "Radiación kilométrica de Saturno, la emisión de radio de sus auroras, registrada por el RPWS de Cassini durante su aproximación en 2003. Frecuencias divididas por 44 y tiempo comprimido 22 veces (30 s aquí ≈ 11 min). Los tonos que suben y bajan siguen pequeñas fuentes de radio que se desplazan por las líneas de campo aurorales."
 				}
-			}
+			},
+			"settingsHint": "Volumen, sonido de fondo, sonidos de movimiento y grabaciones reales del espacio.",
+			"settingsHint@simple": "Cambia el volumen y escucha sonidos reales del espacio."
 		},
 		"frame": {
 			"label": "Punto de vista",
@@ -755,7 +809,10 @@
 				"title": "Desde encima del Sol",
 				"title@simple": "Visto desde muy arriba",
 				"label": "{observer} y {body} en sus órbitas alrededor del Sol, con la línea de visión de {observer} a {body}"
-			}
+			},
+			"hint": "Elige qué se queda quieto en la imagen: el Sol, o un planeta en el centro, para ver cómo se mueve todo visto desde allí.",
+			"hint@simple": "Elige qué se queda quieto: el Sol o un planeta.",
+			"hint@advanced": "El sistema de referencia: centrado en el Sol, o anclado a un cuerpo para que cualquier otro movimiento se vea relativo a él."
 		},
 		"present": {
 			"button": "Presentar",
@@ -783,7 +840,9 @@
 				"copyFailed": "No se pudo copiar: selecciona el enlace y cópialo a mano",
 				"qr": "Escanea para abrir esta vista en un móvil o una tableta",
 				"qrLabel": "Código QR del enlace a esta vista",
-				"qrShow": "Mostrar el código QR a la clase"
+				"qrShow": "Mostrar el código QR a la clase",
+				"hint": "Un enlace y un código QR que abren exactamente esta vista, para preparar una clase o mandarla como tarea.",
+				"hint@simple": "Consigue un enlace que muestra a otra persona exactamente lo que ves."
 			},
 			"chrome": {
 				"show": "Mostrar los controles",
@@ -839,7 +898,20 @@
 				"contrastOn": "Alto contraste activado",
 				"contrastOff": "Alto contraste desactivado",
 				"step": "Paso {n} de {total}"
-			}
+			},
+			"hint": {
+				"projector": "Además pliega los interruptores de capas en un menú y oculta detalles como el control de rotación, para que la clase vea el sistema solar y no los controles.",
+				"projector@simple": "Hace más grandes las letras y los botones para una pantalla grande.",
+				"projector@advanced": "Agranda toda la interfaz para una proyección y pliega los interruptores que la clase no necesita ver.",
+				"highContrast": "Texto blanco sobre negro con contornos marcados, para que nombres y botones sigan legibles cuando el proyector apaga los colores.",
+				"highContrast@simple": "Blanco y negro, para leer mejor en una pantalla pálida.",
+				"highContrast@advanced": "Blanco sobre negro con contornos marcados y un anillo de foco grueso: cada par de colores cumple el nivel de contraste más estricto (WCAG AAA)."
+			},
+			"reason": {
+				"highContrast": "Tu dispositivo ya pide más contraste, así que se queda activado."
+			},
+			"layersHint": "Lo que muestra la escena: órbitas, nombres, lunas, marcadores e iluminación.",
+			"layersHint@simple": "Elige lo que ves en la imagen."
 		},
 		"light": {
 			"open": "Velocidad de la luz",
@@ -933,7 +1005,9 @@
 				"join2@simple": "{a} y {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} y {c}"
-			}
+			},
+			"stopHint": "Quita el destello de luz de la escena. Puedes enviar otro cuando quieras.",
+			"stopHint@simple": "Apaga la luz. Puedes enviar otro destello cuando quieras."
 		},
 		"postcard": {
 			"take": "Hacer una foto",
@@ -977,8 +1051,20 @@
 				"everythingVisible": "No está a escala: los cuerpos aparecen más grandes y más juntos de lo que son.",
 				"everythingVisible@simple": "No es como en la realidad: los planetas son mucho más pequeños y están mucho más lejos unos de otros.",
 				"everythingVisible@advanced": "No está a escala: tamaños exagerados y distancias comprimidas."
+			},
+			"hint": {
+				"names": "Deja los nombres de los cuerpos en la imagen. Desactívalo para una imagen limpia o un juego de preguntas.",
+				"names@simple": "Muestra los nombres en la imagen.",
+				"link": "Añade a la imagen un código QR que abre exactamente esta vista en un móvil o una tableta.",
+				"link@simple": "Pone un código en la imagen. Escanéalo con un móvil para abrir esta vista."
+			},
+			"reason": {
+				"names": "No se veían nombres al hacer la foto: activa Etiquetas y hazla otra vez.",
+				"link": "El enlace a esta vista es demasiado largo para un código QR."
 			}
 		},
+		"overviewHint": "Vuelve a todo el sistema solar, desde cualquier sitio (Esc).",
+		"overviewHint@simple": "Vuelve y mira todo el sistema solar (Esc).",
 		"sky": {
 			"open": "El cielo esta noche",
 			"openHint": "¿Qué planetas puedes ver esta noche, cuándo y dónde?",
@@ -1171,7 +1257,9 @@
 			"menu": "Ayuda",
 			"replay": "Ver la introducción otra vez",
 			"replay@simple": "Ver el principio otra vez",
-			"hints": "Mostrar cómo moverse"
+			"hints": "Mostrar cómo moverse",
+			"menuHint": "Abre la página de ayuda, vuelve a ver la breve introducción o mira otra vez cómo moverte por el sistema solar.",
+			"menuHint@simple": "Abre la ayuda, mira otra vez el principio o aprende a moverte."
 		},
 		"tours": {
 			"menu": "Visitas guiadas",
@@ -1194,7 +1282,9 @@
 			"away": "Estás explorando por tu cuenta. La visita te espera en la parada {n}.",
 			"away@simple": "Estás mirando por tu cuenta. La visita te espera.",
 			"resume": "Volver a la visita",
-			"goTo": "Parada {n}: {title}"
+			"goTo": "Parada {n}: {title}",
+			"menuHint": "Viajes ya preparados por el sistema solar, con una breve historia en cada parada: buenos para empezar una clase.",
+			"menuHint@simple": "Viajes cortos por el sistema solar que te cuentan una historia en cada parada."
 		}
 	},
 	"solarWalk": {

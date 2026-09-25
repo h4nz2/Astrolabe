@@ -139,10 +139,36 @@
 			"labels": "Názvy",
 			"moons": "Měsíce",
 			"allMoons": "Všechny měsíce",
-			"allMoonsHint": "Zobrazit i spoustu malých měsíců, nejen ty s vlastním příběhem",
 			"markers": "Značky",
 			"orbitNames": "Názvy drah",
-			"alwaysLit": "Vždy osvětlené"
+			"alwaysLit": "Vždy osvětlené",
+			"hint": {
+				"orbits": "Kreslí dráhu, po které každá planeta a měsíc obíhá kolem Slunce nebo své planety. Vypni je a uvidíš jen samotná tělesa.",
+				"orbits@simple": "Ukazuje cestu, po které každá planeta obíhá kolem Slunce.",
+				"orbits@advanced": "Kreslí všechny oběžné dráhy, takže můžeš porovnat jejich velikost, tvar a sklon. Vypni je a uvidíš jen samotná tělesa.",
+				"labels": "Píše název vedle každého tělesa. Vypni je a nech třídu hádat, která planeta je která.",
+				"labels@simple": "Ukazuje jména planet. Vypni je a hrajte hru na hádání!",
+				"labels@advanced": "Pojmenuje každé těleso, pro které je na obrazovce místo. Vypni je pro kvíz nebo čistý obrázek.",
+				"moons": "Ukazuje měsíce planet, nejdřív ty s vlastním příběhem. Vypni je a uvidíš jen Slunce a planety.",
+				"moons@simple": "Ukazuje měsíce, které obíhají kolem planet.",
+				"moons@advanced": "Ukazuje přirozené satelity, nejznámější nejdřív. Vypni je a scéna se zúží na Slunce a planety.",
+				"allMoons": "Ukazuje i spoustu malých měsíců, nejen ty s příběhem: většina z nich jsou kameny velké pár kilometrů.",
+				"allMoons@simple": "Ukazuje i všechny malé měsíčky. Je jich opravdu hodně!",
+				"allMoons@advanced": "Přidá dlouhý zástup malých měsíců, většinou zachycených kamenů o velikosti pár kilometrů s prozatímním označením.",
+				"markers": "Dá na každou planetu barevnou tečku, aby šla najít, i když je příliš malá, aby byla vidět.",
+				"markers@simple": "Dá na každou planetu barevnou tečku, aby šla najít, i když je malinká.",
+				"markers@advanced": "Označí každé těleso tečkou pevné velikosti na obrazovce: ve skutečném měřítku jsou samotné planety menší než pixel.",
+				"orbitNames": "Napíše jméno každé planety k její dráze, takže poznáš, která dráha patří komu.",
+				"orbitNames@simple": "Napíše jméno planety k její cestě.",
+				"orbitNames@advanced": "Popíše každou dráhu jménem jejího tělesa: hodí se, když jsou tělesa sama příliš daleko na popisek.",
+				"alwaysLit": "Osvětlí každé těleso z místa, odkud se díváš, takže noční strana není černá. Dobré pro prohlížení povrchů; skryje ale den a noc.",
+				"alwaysLit@simple": "Osvětlí každou planetu z tvé strany, takže nic není tmavé. Pak ale neuvidíš den a noc!",
+				"alwaysLit@advanced": "Osvětluje každé těleso z místa pozorovatele místo ze Slunce: žádné noční strany, fáze ani stíny zatmění. Dobré pro detaily povrchu, špatné pro geometrii slunečního světla."
+			},
+			"reason": {
+				"allMoons": "Nejdřív zapni Měsíce.",
+				"orbitNames": "{missing, select, orbits {Nejdřív zapni Dráhy.} labels {Nejdřív zapni Názvy.} other {Nejdřív zapni Dráhy a Názvy.}}"
+			}
 		},
 		"scale": {
 			"label": "Měřítko",
@@ -193,7 +219,21 @@
 			"markersOff": "Značky jsou vypnuté: zapni je a planety najdeš.",
 			"markersOff@simple": "Zapni Značky a najdeš planety!",
 			"walk": "Příliš malé na představu? Projdi si to: sluneční soustava se Sluncem velkým jako basketbalový míč.",
-			"walk@simple": "Není nic vidět? Projdi si sluneční soustavu na školním hřišti!"
+			"walk@simple": "Není nic vidět? Projdi si sluneční soustavu na školním hřišti!",
+			"hint": {
+				"sizesTrue": "Kreslí každé těleso v jeho skutečné velikosti. Z dálky jsou pak planety příliš malé, aby byly vidět.",
+				"sizesTrue@simple": "Planety tak velké, jak doopravdy jsou. Z dálky jsou moc malé, aby byly vidět!",
+				"sizesTrue@advanced": "Poloměry v měřítku: v přehledu se každá planeta zmenší pod jeden pixel a najdou ji jen značky.",
+				"sizesEnlarged": "Kreslí planety a měsíce mnohem větší, než jsou, aby byly vidět i z dálky. Není to v měřítku.",
+				"sizesEnlarged@simple": "Planety jsou mnohem větší, aby byly vidět. Doopravdy to tak není!",
+				"sizesEnlarged@advanced": "Zveličí poloměry, aby kotouče zůstaly vidět i z dálky; věta pod tím říká, o kolik.",
+				"distancesTrue": "Nechá každé těleso v jeho skutečné vzdálenosti: planety jsou daleko od sebe a mezi nimi je obrovský prázdný prostor.",
+				"distancesTrue@simple": "Planety tak daleko od sebe, jak doopravdy jsou. Mezi nimi je spousta prázdného místa!",
+				"distancesTrue@advanced": "Vzdálenosti v měřítku: Neptun obíhá třicetkrát dál od Slunce než Země.",
+				"distancesSqueezed": "Přisune planety blíž k sobě, aby se celá sluneční soustava vešla na obrazovku. Není to v měřítku.",
+				"distancesSqueezed@simple": "Přisune planety k sobě, aby se všechny vešly na obrazovku. Doopravdy to tak není!",
+				"distancesSqueezed@advanced": "Stlačí vzdálenosti, aby se celá soustava vešla na obrazovku; věta pod tím říká, o kolik."
+			}
 		},
 		"time": {
 			"play": "Spustit",
@@ -211,7 +251,10 @@
 				"day": "{count, plural, one {# den/s} few {# dny/s} many {# dne/s} other {# dní/s}}",
 				"week": "{count, plural, one {# týden/s} few {# týdny/s} many {# týdne/s} other {# týdnů/s}}",
 				"month": "{count, plural, one {# měsíc/s} few {# měsíce/s} many {# měsíce/s} other {# měsíců/s}}",
-				"year": "{count, plural, one {# rok/s} few {# roky/s} many {# roku/s} other {# let/s}}"
+				"year": "{count, plural, one {# rok/s} few {# roky/s} many {# roku/s} other {# let/s}}",
+				"hint": "Kolik času v modelu uplyne za každou skutečnou sekundu. Vyšší rychlosti ukážou, jak planety obíhají kolem Slunce; + a − mezi nimi přepínají.",
+				"hint@simple": "Jak rychle běží čas. Vyber vyšší rychlost a sleduj, jak planety obíhají kolem Slunce!",
+				"hint@advanced": "Zrychlení času: simulovaný čas za skutečnou sekundu, v řadě stupňů, z nichž každý rychlost násobí (+ a − mezi nimi přepínají)."
 			},
 			"reverse": "Pozpátku",
 			"reverseHint": "Pustit čas pozpátku",
@@ -390,6 +433,15 @@
 				"pluto": "Pluto",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 soustavy Slunce–Země"
+			},
+			"hint": {
+				"layer": "Ukazuje skutečné kosmické sondy, které lidé vyslali, tam, kde jsou k zobrazenému datu.",
+				"layer@simple": "Ukazuje sondy, které lidé poslali do vesmíru.",
+				"allPaths": "Kreslí celou cestu každé sondy, nejen té vybrané.",
+				"allPaths@simple": "Ukazuje cestu každé sondy."
+			},
+			"reason": {
+				"allPaths": "Nejdřív zapni Kosmické sondy."
 			}
 		},
 		"pick": {
@@ -666,7 +718,9 @@
 					"what@simple": "Saturn má polární záře a ty vysílají rádiové vlny. Sonda Cassini je zachytila. Vědci je udělali hlubší a rychlejší, abychom je slyšeli. Znějí strašidelně!",
 					"what@advanced": "Saturnovo kilometrové záření, rádiová emise polárních září, zaznamenané přístrojem RPWS sondy Cassini při přiblížení v roce 2003. Frekvence vyděleny 44, čas zrychlen 22krát (30 s zde ≈ 11 min). Stoupající a klesající tóny sledují malé rádiové zdroje, které se pohybují podél siločar polárních září."
 				}
-			}
+			},
+			"settingsHint": "Hlasitost, zvuk v pozadí, zvuky pohybu a skutečné nahrávky z vesmíru.",
+			"settingsHint@simple": "Nastav hlasitost a poslechni si skutečné zvuky z vesmíru."
 		},
 		"frame": {
 			"label": "Úhel pohledu",
@@ -755,7 +809,10 @@
 				"title": "Pohled shora nad Sluncem",
 				"title@simple": "Pohled z velké výšky",
 				"label": "{observer} a {body} na svých drahách kolem Slunce, se spojnicí pohledu od tělesa {observer} k tělesu {body}"
-			}
+			},
+			"hint": "Vyber, co na obrázku stojí na místě: Slunce, nebo planeta uprostřed – a uvidíš, jak se všechno pohybuje při pohledu odtamtud.",
+			"hint@simple": "Vyber, co stojí na místě: Slunce, nebo planeta.",
+			"hint@advanced": "Vztažná soustava: se Sluncem uprostřed, nebo ukotvená k tělesu, takže každý jiný pohyb je vidět vůči němu."
 		},
 		"present": {
 			"button": "Prezentovat",
@@ -783,7 +840,9 @@
 				"copyFailed": "Kopírování se nepovedlo: označ odkaz a zkopíruj ho ručně",
 				"qr": "Naskenuj a otevři tento pohled v telefonu nebo tabletu",
 				"qrLabel": "QR kód s odkazem na tento pohled",
-				"qrShow": "Ukázat QR kód třídě"
+				"qrShow": "Ukázat QR kód třídě",
+				"hint": "Odkaz a QR kód, které otevřou přesně tento pohled – na přípravu hodiny nebo jako domácí úkol.",
+				"hint@simple": "Získej odkaz, který někomu ukáže přesně to, co vidíš ty."
 			},
 			"chrome": {
 				"show": "Zobrazit ovládání",
@@ -839,7 +898,20 @@
 				"contrastOn": "Vysoký kontrast zapnut",
 				"contrastOff": "Vysoký kontrast vypnut",
 				"step": "Krok {n} z {total}"
-			}
+			},
+			"hint": {
+				"projector": "Navíc sbalí přepínače vrstev do nabídky a skryje podrobnosti jako ovládání rotace, aby třída viděla sluneční soustavu, a ne ovládání.",
+				"projector@simple": "Zvětší písmo a tlačítka pro velké plátno.",
+				"projector@advanced": "Zvětší celé rozhraní pro projekci a schová přepínače, které třída nepotřebuje vidět.",
+				"highContrast": "Bílé písmo na černé s výraznými obrysy, aby jména a tlačítka zůstala čitelná, i když projektor barvy vybledí.",
+				"highContrast@simple": "Černá a bílá, aby se to na bledém plátně lépe četlo.",
+				"highContrast@advanced": "Bílá na černé s výraznými obrysy a silným rámečkem fokusu: každá dvojice barev splňuje nejpřísnější úroveň kontrastu (WCAG AAA)."
+			},
+			"reason": {
+				"highContrast": "Tvoje zařízení už žádá vyšší kontrast, takže zůstává zapnutý."
+			},
+			"layersHint": "Co scéna ukazuje: dráhy, názvy, měsíce, značky a osvětlení.",
+			"layersHint@simple": "Vyber, co na obrázku uvidíš."
 		},
 		"light": {
 			"open": "Rychlost světla",
@@ -933,7 +1005,9 @@
 				"join2@simple": "{a} a {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} a {c}"
-			}
+			},
+			"stopHint": "Odstraní záblesk světla ze scény. Nový můžeš vyslat kdykoli.",
+			"stopHint@simple": "Zhasne světlo. Nový záblesk můžeš vyslat kdykoli."
 		},
 		"postcard": {
 			"take": "Vyfotit",
@@ -977,8 +1051,20 @@
 				"everythingVisible": "Není v měřítku: tělesa jsou nakreslena větší a blíž k sobě, než ve skutečnosti jsou.",
 				"everythingVisible@simple": "Není to jako ve skutečnosti: planety jsou mnohem menší a mnohem dál od sebe.",
 				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné."
+			},
+			"hint": {
+				"names": "Nechá na obrázku jména těles. Vypni je pro čistý obrázek nebo kvíz.",
+				"names@simple": "Ukáže jména na obrázku.",
+				"link": "Přidá na obrázek QR kód, který otevře přesně tento pohled na telefonu nebo tabletu.",
+				"link@simple": "Dá na obrázek kód. Naskenuj ho telefonem a otevře se tento pohled."
+			},
+			"reason": {
+				"names": "Při focení nebyla vidět žádná jména: zapni Názvy a vyfoť to znovu.",
+				"link": "Odkaz na tento pohled je na QR kód příliš dlouhý."
 			}
 		},
+		"overviewHint": "Zpět na celou sluneční soustavu, odkudkoli (Esc).",
+		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc).",
 		"sky": {
 			"open": "Obloha dnes v noci",
 			"openHint": "Které planety dnes v noci uvidíš, kdy a kde?",
@@ -1171,7 +1257,9 @@
 			"menu": "Nápověda",
 			"replay": "Přehrát úvod znovu",
 			"replay@simple": "Pustit začátek ještě jednou",
-			"hints": "Ukázat, jak se pohybovat"
+			"hints": "Ukázat, jak se pohybovat",
+			"menuHint": "Otevři stránku nápovědy, přehraj si znovu krátký úvod, nebo si ještě jednou ukaž, jak se pohybovat po sluneční soustavě.",
+			"menuHint@simple": "Otevři nápovědu, podívej se znovu na začátek, nebo se nauč, jak se pohybovat."
 		},
 		"tours": {
 			"menu": "Prohlídky s průvodcem",
@@ -1194,7 +1282,9 @@
 			"away": "Rozhlížíš se na vlastní pěst. Prohlídka na tebe čeká na zastávce {n}.",
 			"away@simple": "Rozhlížíš se sám. Prohlídka na tebe počká.",
 			"resume": "Zpátky k prohlídce",
-			"goTo": "Zastávka {n}: {title}"
+			"goTo": "Zastávka {n}: {title}",
+			"menuHint": "Připravené cesty sluneční soustavou, na každé zastávce s krátkým příběhem: dobrý začátek hodiny.",
+			"menuHint@simple": "Krátké výlety sluneční soustavou, které ti na každé zastávce vyprávějí příběh."
 		}
 	},
 	"solarWalk": {

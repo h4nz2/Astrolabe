@@ -220,12 +220,40 @@
 				"standard": [
 					"Přepínače jsou v panelu vpravo nahoře; na malých obrazovkách a při prezentaci jsou schované pod „Vrstvy“.",
 					"Klávesou L skryješ nebo zobrazíš všechny názvy naráz.",
-					"Přepínač Všechny měsíce funguje, jen když jsou zapnuté Měsíce."
+					"Přepínač Všechny měsíce funguje, jen když jsou zapnuté Měsíce.",
+					"Nech ukazatel na přepínači nebo na něm podrž prst a přečteš si, co dělá; zašedlý přepínač řekne, co zapnout nejdřív."
 				],
 				"simple": [
 					"Přepínače najdeš vpravo nahoře.",
 					"Kliknutím jeden vypneš, dalším kliknutím ho zase zapneš.",
-					"Stiskni L a všechny názvy zmizí."
+					"Stiskni L a všechny názvy zmizí.",
+					"Podrž myš nad přepínačem a zjistíš, co dělá."
+				]
+			}
+		},
+		"hints": {
+			"title": {
+				"standard": "Co dělá tenhle přepínač?",
+				"simple": "Co dělá tohle tlačítko?"
+			},
+			"what": {
+				"standard": "Každý přepínač, volba a tlačítko ve sluneční soustavě se vysvětlí jednou větou: co dělá a k čemu se hodí. Zašedlý přepínač řekne, co zapnout nejdřív.",
+				"simple": "Každý přepínač a tlačítko ti umí říct, co dělá."
+			},
+			"why": {
+				"standard": "Hodinu můžeš naplánovat bez zkoušení každého přepínače: co jsou značky nebo proč „Vždy osvětlené“ schová den a noc.",
+				"simple": "Nikdy nemusíš hádat, co přepínač dělá."
+			},
+			"how": {
+				"standard": [
+					"Myš: nech ukazatel půl vteřiny na přepínači nebo na jeho názvu.",
+					"Klávesnice: přejdi na něj klávesou Tab; čtečky obrazovky přečtou tutéž větu.",
+					"Dotyk: podrž prst na přepínači nebo na jeho názvu. Krátké klepnutí ho dál jen přepne.",
+					"Esc nápovědu zavře."
+				],
+				"simple": [
+					"Podrž myš nad přepínačem.",
+					"Na tabletu podrž na přepínači prst."
 				]
 			}
 		},
@@ -945,6 +973,12 @@
 		"name": {
 			"action": "Zobrazit název světa",
 			"mouse": "Najeď na něj myší"
+		},
+		"hint": {
+			"action": "Zjistit, co dělá přepínač nebo tlačítko",
+			"mouse": "Nech na něm ukazatel",
+			"touch": "Podrž na něm prst",
+			"keys": "Přejdi na něj klávesou Tab"
 		},
 		"siblings": {
 			"action": "Další nebo předchozí svět ze stejné rodiny",

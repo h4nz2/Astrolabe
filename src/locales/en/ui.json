@@ -139,10 +139,36 @@
 			"labels": "Labels",
 			"moons": "Moons",
 			"allMoons": "All moons",
-			"allMoonsHint": "Also show the many small moons, not only the ones with a story",
 			"markers": "Markers",
 			"orbitNames": "Orbit names",
-			"alwaysLit": "Always lit"
+			"alwaysLit": "Always lit",
+			"hint": {
+				"orbits": "Draws the path each planet and moon travels around the Sun or its planet. Turn it off to see the bodies alone.",
+				"orbits@simple": "Shows the path each planet takes around the Sun.",
+				"orbits@advanced": "Draws every orbit, so you can compare their sizes, shapes and tilts. Turn it off to see the bodies alone.",
+				"labels": "Writes each body’s name beside it. Turn it off to quiz the class on which planet is which.",
+				"labels@simple": "Shows the names of the planets. Turn it off to play a guessing game!",
+				"labels@advanced": "Names every body that has room on screen. Turn it off for a quiz or a clean picture.",
+				"moons": "Shows the moons of the planets, starting with the ones that have a story. Turn it off to see only the Sun and the planets.",
+				"moons@simple": "Shows the moons that travel around the planets.",
+				"moons@advanced": "Shows the natural satellites, the best-known first. Turn it off to reduce the scene to the Sun and the planets.",
+				"allMoons": "Also shows the many small moons, not only the ones with a story: most are rocks a few kilometres across.",
+				"allMoons@simple": "Shows all the little moons too. There are lots of them!",
+				"allMoons@advanced": "Adds the long tail of small moons, most of them captured rocks a few kilometres across with provisional names.",
+				"markers": "Puts a coloured dot on every planet, so you can find it even when it is far too small to see.",
+				"markers@simple": "Puts a coloured dot on each planet, so you can find it even when it is tiny.",
+				"markers@advanced": "Marks every body with a dot of fixed size on screen: at true scale, the planets themselves are smaller than a pixel.",
+				"orbitNames": "Writes each planet’s name on its orbit line, so you can tell which path is which.",
+				"orbitNames@simple": "Writes the planet’s name on its path.",
+				"orbitNames@advanced": "Names each orbit line after its body: useful when the bodies are too far away to be named themselves.",
+				"alwaysLit": "Lights every body from where you look, so the night side is not black. Good for seeing surfaces; hides the day and night lesson.",
+				"alwaysLit@simple": "Lights every planet from your side, so nothing is dark. But then you cannot see day and night!",
+				"alwaysLit@advanced": "Lights each body from the viewpoint instead of the Sun: no night sides, phases or eclipse shadows. Good for surface detail, wrong for the geometry of sunlight."
+			},
+			"reason": {
+				"allMoons": "Turn on Moons first.",
+				"orbitNames": "{missing, select, orbits {Turn on Orbits first.} labels {Turn on Labels first.} other {Turn on Orbits and Labels first.}}"
+			}
 		},
 		"scale": {
 			"label": "Scale",
@@ -193,7 +219,21 @@
 			"markersOff": "Markers are off: switch them on to find the planets.",
 			"markersOff@simple": "Switch on Markers to find the planets!",
 			"walk": "Too small to imagine? Walk it: the solar system with the Sun as a basketball.",
-			"walk@simple": "Too small to see? Walk the solar system on your school field!"
+			"walk@simple": "Too small to see? Walk the solar system on your school field!",
+			"hint": {
+				"sizesTrue": "Draws every body at its real size. From far away the planets become too small to see.",
+				"sizesTrue@simple": "Planets as big as they really are. From far away they are too small to see!",
+				"sizesTrue@advanced": "Radii to scale: from the overview every planet shrinks below a pixel, and only the markers find them.",
+				"sizesEnlarged": "Draws the planets and moons much bigger than they are, so you can see them from far away. Not to scale.",
+				"sizesEnlarged@simple": "Makes the planets much bigger, so you can see them. It is not really like this!",
+				"sizesEnlarged@advanced": "Exaggerates the radii so the discs stay visible from afar; the sentence below says by how much.",
+				"distancesTrue": "Keeps every body at its real distance: the planets end up far apart, with huge empty space between them.",
+				"distancesTrue@simple": "Planets as far apart as they really are. There is lots of empty space!",
+				"distancesTrue@advanced": "Distances to scale: Neptune orbits thirty times farther from the Sun than Earth does.",
+				"distancesSqueezed": "Pulls the planets closer together, so the whole solar system fits on the screen. Not to scale.",
+				"distancesSqueezed@simple": "Pulls the planets closer together, so they all fit on the screen. It is not really like this!",
+				"distancesSqueezed@advanced": "Compresses the distances so the whole system fits the screen; the sentence below says by how much."
+			}
 		},
 		"time": {
 			"play": "Play",
@@ -211,7 +251,10 @@
 				"day": "{count, plural, one {# day/s} other {# days/s}}",
 				"week": "{count, plural, one {# week/s} other {# weeks/s}}",
 				"month": "{count, plural, one {# month/s} other {# months/s}}",
-				"year": "{count, plural, one {# year/s} other {# years/s}}"
+				"year": "{count, plural, one {# year/s} other {# years/s}}",
+				"hint": "How much time passes in the model for every real second. Faster speeds show the planets moving round the Sun; + and − step through them.",
+				"hint@simple": "How fast time goes. Pick a faster speed to watch the planets move round the Sun!",
+				"hint@advanced": "The time warp: simulated time per real second, on a row of presets that each multiply the speed (+ and − step through them)."
 			},
 			"reverse": "Reverse",
 			"reverseHint": "Run time backwards",
@@ -390,6 +433,15 @@
 				"pluto": "Pluto",
 				"arrokoth": "Arrokoth",
 				"l2": "Sun–Earth L2"
+			},
+			"hint": {
+				"layer": "Shows the real spacecraft people have sent out, where they are on the date shown.",
+				"layer@simple": "Shows the space probes people have sent into space.",
+				"allPaths": "Draws the whole journey of every spacecraft, not only the one you picked.",
+				"allPaths@simple": "Shows the path of every space probe."
+			},
+			"reason": {
+				"allPaths": "Turn on Spacecraft first."
 			}
 		},
 		"pick": {
@@ -666,7 +718,9 @@
 					"what@simple": "Saturn has northern lights, and they send out radio waves. The Cassini probe caught them. Scientists made them lower and faster so we can hear them. They sound spooky!",
 					"what@advanced": "Saturn kilometric radiation, the auroral radio emission, recorded by Cassini's RPWS on approach in 2003. Frequencies divided by 44, time compressed 22 times (30 s here ≈ 11 min). The rising and falling tones trace small radio sources moving along auroral field lines."
 				}
-			}
+			},
+			"settingsHint": "Volume, the background hum, motion sounds and real recordings from space.",
+			"settingsHint@simple": "Change how loud it is and listen to real sounds from space."
 		},
 		"frame": {
 			"label": "Point of view",
@@ -755,7 +809,10 @@
 				"title": "From above the Sun",
 				"title@simple": "Seen from high above",
 				"label": "{observer} and {body} on their orbits around the Sun, with the line of sight from {observer} to {body}"
-			}
+			},
+			"hint": "Choose what stays still in the picture: the Sun, or a planet held at the centre, to see how everything moves as seen from there.",
+			"hint@simple": "Choose what stays still: the Sun or a planet.",
+			"hint@advanced": "The reference frame: Sun-centred, or anchored on a body so that every other motion is seen relative to it."
 		},
 		"present": {
 			"button": "Present",
@@ -783,7 +840,9 @@
 				"copyFailed": "Could not copy: select the link and copy it by hand",
 				"qr": "Scan to open this view on a phone or tablet",
 				"qrLabel": "QR code of the link to this view",
-				"qrShow": "Show the QR code to the class"
+				"qrShow": "Show the QR code to the class",
+				"hint": "A link and a QR code that open exactly this view, to prepare a lesson or to send as homework.",
+				"hint@simple": "Get a link that shows someone else exactly what you see."
 			},
 			"chrome": {
 				"show": "Show the controls",
@@ -839,7 +898,20 @@
 				"contrastOn": "High contrast on",
 				"contrastOff": "High contrast off",
 				"step": "Step {n} of {total}"
-			}
+			},
+			"hint": {
+				"projector": "Also folds the layer switches into a menu and hides details such as the spin control, so the class sees the solar system rather than the controls.",
+				"projector@simple": "Makes words and buttons bigger for a big screen.",
+				"projector@advanced": "Scales the whole interface up for a projected screen and folds away the switches a class does not need to see.",
+				"highContrast": "White text on black with strong outlines, so names and buttons stay readable when a projector washes the colours out.",
+				"highContrast@simple": "Black and white, so it is easier to read on a pale screen.",
+				"highContrast@advanced": "White on black with strong outlines and a thick focus ring: every colour pair meets the strictest contrast level (WCAG AAA)."
+			},
+			"reason": {
+				"highContrast": "Your device already asks for more contrast, so it stays on."
+			},
+			"layersHint": "What the scene shows: orbits, names, moons, markers and lighting.",
+			"layersHint@simple": "Choose what you see in the picture."
 		},
 		"light": {
 			"open": "Speed of light",
@@ -933,7 +1005,9 @@
 				"join2@simple": "{a} and {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} and {c}"
-			}
+			},
+			"stopHint": "Takes the flash of light out of the scene. Send a new one whenever you like.",
+			"stopHint@simple": "Turns the light off. You can send a new flash any time."
 		},
 		"postcard": {
 			"take": "Take a picture",
@@ -977,8 +1051,20 @@
 				"everythingVisible@advanced": "Not to scale: sizes exaggerated and distances compressed."
 			},
 			"compareTitle": "{a} and {b} side by side",
-			"compareScale": "True relative sizes: every body is drawn at the same scale."
+			"compareScale": "True relative sizes: every body is drawn at the same scale.",
+			"hint": {
+				"names": "Keeps the body names on the picture. Turn it off for a clean picture or a quiz.",
+				"names@simple": "Shows the names on the picture.",
+				"link": "Adds a QR code to the picture that opens this exact view on a phone or tablet.",
+				"link@simple": "Puts a code on the picture. Scan it with a phone to open this view."
+			},
+			"reason": {
+				"names": "No names were showing when the picture was taken: turn on Labels and take it again.",
+				"link": "The link to this view is too long to fit in a QR code."
+			}
 		},
+		"overviewHint": "Back to the whole solar system, from anywhere (Esc).",
+		"overviewHint@simple": "Go back and see the whole solar system (Esc).",
 		"sky": {
 			"open": "Tonight's sky",
 			"openHint": "Which planets can you see tonight, when and where?",
@@ -1171,7 +1257,9 @@
 			"menu": "Help",
 			"replay": "Play the opening again",
 			"replay@simple": "Watch the start again",
-			"hints": "Show how to move around"
+			"hints": "Show how to move around",
+			"menuHint": "Open the help page, play the short opening again, or see once more how to move around the solar system.",
+			"menuHint@simple": "Open the help, watch the start again, or learn how to move around."
 		},
 		"tours": {
 			"menu": "Guided tours",
@@ -1194,7 +1282,9 @@
 			"away": "You are exploring on your own. The tour waits at stop {n}.",
 			"away@simple": "You are looking around on your own. The tour waits for you.",
 			"resume": "Back to the tour",
-			"goTo": "Stop {n}: {title}"
+			"goTo": "Stop {n}: {title}",
+			"menuHint": "Ready-made journeys through the solar system, each stop with a short story: good for starting a lesson.",
+			"menuHint@simple": "Short trips through the solar system that tell you a story at every stop."
 		}
 	},
 	"solarWalk": {

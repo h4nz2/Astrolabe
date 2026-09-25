@@ -220,12 +220,40 @@
 				"standard": [
 					"Les interrupteurs sont dans le panneau en haut à droite ; sur les petits écrans et pendant une présentation, ils sont sous « Calques ».",
 					"Appuie sur L pour masquer ou afficher tous les noms d’un coup.",
-					"L’interrupteur Toutes les lunes ne marche que si Lunes est activé."
+					"L’interrupteur Toutes les lunes ne marche que si Lunes est activé.",
+					"Laisse le pointeur sur un interrupteur, ou garde le doigt appuyé, pour lire ce qu’il fait ; un interrupteur grisé dit quoi activer d’abord."
 				],
 				"simple": [
 					"Trouve les interrupteurs en haut à droite.",
 					"Clique sur un interrupteur pour l’éteindre, et encore une fois pour le rallumer.",
-					"Appuie sur L pour cacher tous les noms."
+					"Appuie sur L pour cacher tous les noms.",
+					"Laisse la souris sur un interrupteur pour savoir ce qu’il fait."
+				]
+			}
+		},
+		"hints": {
+			"title": {
+				"standard": "À quoi sert cet interrupteur ?",
+				"simple": "À quoi sert ce bouton ?"
+			},
+			"what": {
+				"standard": "Chaque interrupteur, choix et bouton du système solaire s’explique en une phrase : ce qu’il fait et pourquoi l’utiliser. Un interrupteur grisé dit quoi activer d’abord.",
+				"simple": "Chaque interrupteur et chaque bouton peut te dire ce qu’il fait."
+			},
+			"why": {
+				"standard": "Tu peux préparer un cours sans essayer chaque interrupteur : ce que sont les repères, ou pourquoi « Toujours éclairé » cache le jour et la nuit.",
+				"simple": "Tu n’as jamais à deviner ce que fait un interrupteur."
+			},
+			"how": {
+				"standard": [
+					"Souris : laisse le pointeur une demi-seconde sur un interrupteur ou sur son nom.",
+					"Clavier : va dessus avec Tab ; les lecteurs d’écran lisent la même phrase.",
+					"Tactile : garde le doigt appuyé sur l’interrupteur ou sur son nom. Un appui bref se contente toujours de le basculer.",
+					"Échap ferme l’explication."
+				],
+				"simple": [
+					"Laisse la souris immobile sur un interrupteur.",
+					"Sur une tablette, garde le doigt appuyé sur l’interrupteur."
 				]
 			}
 		},
@@ -950,6 +978,12 @@
 		"name": {
 			"action": "Voir le nom d’un monde",
 			"mouse": "Pointer le monde"
+		},
+		"hint": {
+			"action": "Voir à quoi sert un interrupteur ou un bouton",
+			"mouse": "Laisse le pointeur dessus",
+			"touch": "Garde le doigt appuyé",
+			"keys": "Va dessus avec Tab"
 		},
 		"siblings": {
 			"action": "Monde suivant ou précédent de la même famille",
