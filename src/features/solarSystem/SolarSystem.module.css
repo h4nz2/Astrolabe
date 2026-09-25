@@ -99,6 +99,13 @@
 	}
 }
 
+/* the scavenger hunt (#34) opens over this column (hunt/Hunt.module.css) */
+@media (min-width: 600px) {
+	.toggles {
+		position: relative;
+	}
+}
+
 /* the light panel (#27): a button, or the open panel; under the picker, on phones above the body card */
 .light {
 	padding: 0.25rem;

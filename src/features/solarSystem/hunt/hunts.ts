@@ -81,7 +81,8 @@ export interface ResolvedHunt {
 
 /**
  * The hunt a link names: a ready-made hunt's id, or question ids joined by
- * "." (unknown ids are skipped, repeats dropped); null when nothing is left.
+ * "." in the order they are asked (unknown ids are skipped, repeats dropped);
+ * null when nothing is left.
  */
 export function resolveHunt(
 	key: string | undefined | null,
@@ -101,14 +102,14 @@ export function resolveHunt(
 	)
 	if (ids.length === 0) return null
 	return {
-		key: customHuntKey(ids),
+		key: ids.join(CUSTOM_SEPARATOR),
 		id: null,
 		difficulty: null,
 		questions: ids.map((qid) => questionById.get(qid)!),
 	}
 }
 
-/** The link key of a hunt made of these questions, in the bank's order. */
+/** The link key of a hunt made of these questions (the builder's ticks), in the bank's order. */
 export const customHuntKey = (ids: Iterable<string>): string => {
 	const chosen = new Set(ids)
 	return QUESTIONS.filter((question) => chosen.has(question.id))

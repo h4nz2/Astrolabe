@@ -94,11 +94,11 @@ test("pick a hunt, miss kindly, then answer by clicking the world", async ({
 test("hints escalate, and 'Show me' finds the moon", async ({ page }) => {
 	await page.setViewportSize({ width: 1280, height: 800 })
 	// a teacher's own hunt: two clues from the bank
-	await ready(page, "/solar_system?hunt=oceanMoon.geysers&lang=en")
+	await ready(page, "/solar_system?hunt=geysers.nope.oceanMoon&lang=en")
 	await expect(panel(page).getByRole("heading")).toHaveText("Your own hunt")
 	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 1 of 2")
 	await expect(page.getByTestId("hunt-clue")).toContainText(
-		"fountains of water",
+		"geysers that spray water",
 	)
 	expect(search(page).get("hunt")).toBe("geysers.oceanMoon")
 

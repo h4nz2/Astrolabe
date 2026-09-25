@@ -97,6 +97,7 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<ScalePanel />
 					</div>
+					<HuntPanelSlot />
 				</div>
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />
@@ -107,7 +108,6 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
-			<HuntPanelSlot />
 		</div>
 	)
 }

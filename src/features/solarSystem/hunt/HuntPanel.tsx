@@ -22,6 +22,7 @@ import {
 	IconCheck,
 	IconChevronDown,
 	IconChevronUp,
+	IconConfetti,
 	IconCopy,
 	IconEye,
 	IconMapSearch,
@@ -390,14 +391,17 @@ const Done = ({ hunt }: { hunt: ResolvedHunt }) => {
 	const worlds = [...new Set(found)]
 	return (
 		<Stack gap="sm" className={classes.done} data-testid="hunt-done">
-			<div className={classes.burst} aria-hidden="true">
-				{Array.from({ length: 12 }, (_, index) => (
-					<span
-						key={index}
-						className={classes.spark}
-						style={{ "--angle": `${index * 30}deg` } as React.CSSProperties}
-					/>
-				))}
+			<div className={classes.celebrate} aria-hidden="true">
+				<IconConfetti size={48} stroke={1.5} />
+				<div className={classes.burst}>
+					{Array.from({ length: 12 }, (_, index) => (
+						<span
+							key={index}
+							className={classes.spark}
+							style={{ "--angle": `${index * 30}deg` } as React.CSSProperties}
+						/>
+					))}
+				</div>
 			</div>
 			<Title order={3} className={classes.doneTitle}>
 				{t("solarSystem.hunt.done.title")}
@@ -408,7 +412,7 @@ const Done = ({ hunt }: { hunt: ResolvedHunt }) => {
 			<Text size="sm" c="dimmed">
 				{t("solarSystem.hunt.done.found")}
 			</Text>
-			<Group gap={6}>
+			<Group gap={6} justify="center">
 				{worlds.map((id) => (
 					<Button
 						key={id}
@@ -421,7 +425,7 @@ const Done = ({ hunt }: { hunt: ResolvedHunt }) => {
 					</Button>
 				))}
 			</Group>
-			<Group gap="xs" mt="xs">
+			<Group gap="xs" mt="xs" justify="center">
 				<Button
 					color="orange"
 					leftSection={<IconRefresh size={16} />}

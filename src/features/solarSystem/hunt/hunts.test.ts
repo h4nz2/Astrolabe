@@ -188,14 +188,14 @@ describe("resolveHunt", () => {
 		)
 	})
 
-	it("builds a teacher's hunt from clue ids, in the bank's order", () => {
+	it("builds a teacher's hunt from clue ids, in the link's order", () => {
 		const hunt = resolveHunt("oceanMoon.geysers.nope.geysers")
 		expect(hunt?.id).toBeNull()
 		expect(hunt?.questions.map((question) => question.id)).toEqual([
-			"geysers",
 			"oceanMoon",
+			"geysers",
 		])
-		expect(hunt?.key).toBe("geysers.oceanMoon")
+		expect(hunt?.key).toBe("oceanMoon.geysers")
 		expect(resolveHunt(hunt!.key)?.key).toBe(hunt!.key)
 	})
 
