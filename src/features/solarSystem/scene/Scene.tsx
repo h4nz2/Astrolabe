@@ -18,6 +18,8 @@ import Bodies from "../bodies/Bodies"
 import OrbitLines from "../bodies/OrbitLines"
 import CameraRig from "../camera/CameraRig"
 import { CAMERA_FAR, CAMERA_FOV_DEG, CAMERA_NEAR } from "../camera/framing"
+import ReferenceFrameSync from "../frame/ReferenceFrameSync"
+import Trails from "../frame/Trails"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
@@ -26,10 +28,14 @@ import { createCraftFrame } from "../spacecraft/craftFrame"
 import { createCraftLabels } from "../spacecraft/craftLabels"
 import SpacecraftLabelLayer from "../spacecraft/SpacecraftLabelLayer"
 import SpacecraftScene from "../spacecraft/SpacecraftScene"
+import BodyPicking, { activateBody } from "./BodyPicking"
+import HighlightTracker from "./HighlightTracker"
 import HoverCursor from "./HoverCursor"
 import Markers from "./Markers"
 import ScaleSync from "./ScaleSync"
+import ScaleTransition from "./ScaleTransition"
 import SimClock from "./SimClock"
+import SpinClock from "./SpinClock"
 import { SimFrameContext, createSimFrame } from "./simFrame"
 
 export const SCENE_BACKGROUND = "#0b0d12"
@@ -72,20 +78,30 @@ function Scene() {
 				<color attach="background" args={[SCENE_BACKGROUND]} />
 				<SimFrameContext.Provider value={frame}>
 					<ScaleSync />
+					<ScaleTransition />
+					<ReferenceFrameSync />
 					<SimClock />
+					<SpinClock />
 					<HoverCursor />
 					<Suspense fallback={null}>
 						<Bodies />
 					</Suspense>
 					<OrbitLines />
+					<Trails />
 					<Markers />
 					<SpacecraftScene
 						frame={frame}
 						craftFrame={craftFrame}
 						labels={{ layout: labels.layout, firstSlot: craftSlot }}
 					/>
-					<Labels board={labels} extension={craftLabels} />
+					<Labels
+						board={labels}
+						onActivate={activateBody}
+						extension={craftLabels}
+					/>
+					<BodyPicking />
 					<CameraRig />
+					<HighlightTracker />
 				</SimFrameContext.Provider>
 			</Canvas>
 			<LabelLayer board={labels} />

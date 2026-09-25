@@ -22,9 +22,15 @@ import {
 	computeDisplayPositions,
 	computeDisplayRadii,
 	computePositions,
+	rootIndexOf,
 	toUnits,
 	type ScaleSettings,
 } from "@/sim"
+import {
+	applyReferenceFrame,
+	topLevelIndices,
+	type FrameBlend,
+} from "@/sim/referenceFrame"
 
 export interface SimFrame {
 	/** From "@/data", topological order (every parent before its children). */
@@ -41,10 +47,24 @@ export interface SimFrame {
 	readonly originKm: Float64Array
 	/** Simulation time (Julian Date) of the last update. */
 	jd: number
+	/**
+	 * Spin time: the Julian Date every body's spin angle is evaluated at, written by
+	 * scene/SpinClock.tsx. Equals `jd` in the realistic spin mode (src/sim/spin.ts).
+	 */
+	spinJD: number
 	/** The active scale; change it with `setSimFrameScale`, never by assignment. */
 	scale: ScaleSettings
 	/** Incremented by every `setSimFrameScale`; per-frame consumers cache scale-derived geometry on it. */
 	scaleVersion: number
+	/**
+	 * The anchored reference frames the display positions are drawn in (#31,
+	 * src/sim/referenceFrame.ts): top-level anchor bodies and their weights,
+	 * written by scene/ReferenceFrameSync.tsx before every tick. All weights
+	 * 0 (the default) is the Sun-centred frame.
+	 */
+	readonly frameBlend: FrameBlend
+	/** Top-level body (the root's child it belongs to) of every body; the root for the root. */
+	readonly topIndex: Int32Array
 	/** `toUnits(displayKm[i] - originKm)` written into `out`. */
 	renderPosition(i: number, out: Vector3): Vector3
 	/** Same by id; throws for an unknown id. */
@@ -75,6 +95,8 @@ export function createSimFrame(
 		index,
 	)
 	const originKm = new Float64Array(3)
+	const topIndex = topLevelIndices(bodies, index)
+	const root = rootIndexOf(bodies)
 
 	const frame: SimFrame = {
 		bodies,
@@ -84,8 +106,14 @@ export function createSimFrame(
 		displayRadiiKm,
 		originKm,
 		jd,
+		spinJD: jd,
 		scale,
 		scaleVersion: 0,
+		frameBlend: {
+			anchors: new Int32Array(FRAME_BLEND_SLOTS).fill(root),
+			weights: new Float64Array(FRAME_BLEND_SLOTS),
+		},
+		topIndex,
 		renderPosition(i, out) {
 			const o = i * 3
 			out.x = toUnits(displayKm[o] - originKm[0])
@@ -105,7 +133,13 @@ export function createSimFrame(
 	return frame
 }
 
-/** Display positions from the current true positions and scale. */
+/** Anchored frames blended at once: the one being left and the one being entered. */
+export const FRAME_BLEND_SLOTS = 2
+
+// shared by every SimFrame (they are updated one at a time); grows to the largest body list
+let frameScratch = new Float64Array(0)
+
+/** Display positions from the current true positions, scale and reference frame. */
 const refreshDisplay = (frame: SimFrame): void => {
 	computeDisplayPositions(
 		frame.bodies,
@@ -114,6 +148,18 @@ const refreshDisplay = (frame: SimFrame): void => {
 		frame.scale,
 		frame.index,
 		frame.displayKm,
+	)
+	if (frameScratch.length < frame.bodies.length * 3) {
+		frameScratch = new Float64Array(frame.bodies.length * 3)
+	}
+	applyReferenceFrame(
+		frame.bodies,
+		frame.positionsKm,
+		frame.displayKm,
+		frame.scale,
+		frame.topIndex,
+		frame.frameBlend,
+		frameScratch,
 	)
 }
 

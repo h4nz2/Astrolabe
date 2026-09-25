@@ -1,14 +1,16 @@
 /**
  * One body: a group placed every frame from the SimFrame, oriented by the IAU
- * pole (local +Y) and spun about it by `rotationAngle`. The texture loads
+ * pole (local +Y; the pole frame of ./orientation.ts) and a mesh inside it spun
+ * about that pole by `bodySpinAngle` (spin mode and tidal locking included). The texture loads
  * lazily behind a Suspense boundary with a plain coloured fallback material.
  * The Sun is emissive (Bloom arrives in Phase 6); every other body is lit by
  * it through the sunlight model (../lighting, docs/ARCHITECTURE.md, "Lighting"),
- * whose uniforms this component rewrites every frame.
+ * whose uniforms this component rewrites every frame. A ringed planet's rings
+ * (../rings/Rings.tsx) sit in the pole frame and share those uniforms.
  */
 import { Suspense, useMemo, useRef } from "react"
 import { useTexture } from "@react-three/drei"
-import { useFrame, type ThreeEvent } from "@react-three/fiber"
+import { useFrame } from "@react-three/fiber"
 import {
 	SphereGeometry,
 	SRGBColorSpace,
@@ -18,7 +20,7 @@ import {
 } from "three"
 
 import type { Body } from "@/data"
-import { occluderCandidates, rootIndexOf, rotationAngle } from "@/sim"
+import { occluderCandidates, rootIndexOf } from "@/sim"
 import { useLightingStore } from "@/store/lighting"
 import { isBodyShown, useSimStore } from "@/store/sim"
 import { assetUrl } from "@/utils/assetUrl"
@@ -29,9 +31,10 @@ import {
 	type SunlightUniforms,
 } from "../lighting/bodyLighting"
 import SunlitMaterial from "../lighting/SunlitMaterial"
+import Rings from "../rings/Rings"
+import { useRingTextures } from "../rings/ringTextures"
 import { useSimFrame } from "../scene/simFrame"
-import { isTapEvent } from "../scene/tap"
-import { bodyOrientation } from "./orientation"
+import { bodyOrientation, bodySpinAngle, createBodySpin } from "./orientation"
 
 export interface BodyMeshProps {
 	body: Body
@@ -79,7 +82,27 @@ function TexturedMaterial({ body, uniforms }: MaterialProps) {
 	const urls =
 		night === undefined ? [assetUrl(base)] : [assetUrl(base), assetUrl(night)]
 	const [map, nightMap] = useTexture(urls, markSRGBAll)
-	return <SunlitMaterial uniforms={uniforms} map={map} nightMap={nightMap} />
+	// a ringed planet carries its rings' shadow band (#12)
+	const ringTextures = useRingTextures(body.rings)
+	const ringShadow = useMemo(
+		() =>
+			ringTextures === null || body.rings === null
+				? undefined
+				: {
+						color: ringTextures.color,
+						innerRadiusKm: body.rings.innerRadiusKm,
+						outerRadiusKm: body.rings.outerRadiusKm,
+					},
+		[ringTextures, body.rings],
+	)
+	return (
+		<SunlitMaterial
+			uniforms={uniforms}
+			map={map}
+			nightMap={nightMap}
+			ringShadow={ringShadow}
+		/>
+	)
 }
 
 function FallbackMaterial({ body, uniforms }: MaterialProps) {
@@ -94,6 +117,10 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 	const groupRef = useRef<Group>(null)
 	const meshRef = useRef<Mesh>(null)
 	const orientation = useMemo(() => bodyOrientation(body), [body])
+	const spin = useMemo(
+		() => createBodySpin(body, index, frame),
+		[body, index, frame],
+	)
 	const sunIndex = useMemo(() => rootIndexOf(frame.bodies), [frame])
 	const uniforms = useMemo(
 		() => createSunlightUniforms(body, frame.bodies[sunIndex].radiusKm),
@@ -116,7 +143,7 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 		frame.renderPosition(index, group.position)
 		// the drawn radius under the active scale (docs/ARCHITECTURE.md, "Scale")
 		mesh.scale.setScalar(frame.renderRadius(index))
-		mesh.rotation.y = rotationAngle(body.rotation, frame.jd)
+		mesh.rotation.y = bodySpinAngle(body, spin, frame)
 		if (body.kind === "star") return
 		updateSunlight(
 			uniforms,
@@ -129,29 +156,12 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 		)
 	})
 
-	const onClick = (event: ThreeEvent<MouseEvent>) => {
-		if (!isTapEvent(event)) return
-		event.stopPropagation()
-		useSimStore.getState().setFocus(body.id)
-	}
-	const onPointerOver = (event: ThreeEvent<PointerEvent>) => {
-		event.stopPropagation()
-		useSimStore.getState().setHover(body.id)
-	}
-	const onPointerOut = () => {
-		const store = useSimStore.getState()
-		if (store.hoverId === body.id) store.setHover(null)
-	}
-
 	return (
 		<group ref={groupRef} quaternion={orientation}>
 			<mesh
 				ref={meshRef}
 				geometry={unitSphere(sphereSegments(body))}
 				scale={frame.renderRadius(index)}
-				onClick={onClick}
-				onPointerOver={onPointerOver}
-				onPointerOut={onPointerOut}
 			>
 				<Suspense
 					fallback={<FallbackMaterial body={body} uniforms={uniforms} />}
@@ -163,6 +173,18 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 					)}
 				</Suspense>
 			</mesh>
+			{body.rings !== null && (
+				// in the pole frame: the rings follow the tilt, never the spin (#12, #13)
+				<Suspense fallback={null}>
+					<Rings
+						rings={body.rings}
+						radiusKm={body.radiusKm}
+						index={index}
+						uniforms={uniforms}
+						bodyId={body.id}
+					/>
+				</Suspense>
+			)}
 		</group>
 	)
 }

@@ -8,6 +8,8 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { cameraAtRest, nextFrames } from "./support/scene"
+
 const screenshotDir = path.join("test-results", "lighting")
 
 // headless chromium noise that is not an app bug
@@ -95,7 +97,7 @@ test("a planet shows a day side and a night side that is dark but never lost, an
 	await expect(page.getByRole("combobox", { name: "Focus body" })).toHaveValue(
 		"Earth",
 	)
-	await page.waitForTimeout(2000)
+	await cameraAtRest(page)
 
 	const honest = await discPixels(page, "earth-honest")
 	const total = honest.day + honest.night + honest.space
@@ -109,14 +111,14 @@ test("a planet shows a day side and a night side that is dark but never lost, an
 	await expect(alwaysLit).not.toBeChecked()
 	await alwaysLit.click({ force: true })
 	await expect(alwaysLit).toBeChecked()
-	await page.waitForTimeout(1000)
+	await nextFrames(page)
 	const lit = await discPixels(page, "earth-always-lit")
 	expect(lit.day).toBeGreaterThan(0.9 * total)
 	expect(lit.night).toBeLessThan(0.3 * honest.night)
 
 	await alwaysLit.click({ force: true })
 	await expect(alwaysLit).not.toBeChecked()
-	await page.waitForTimeout(1000)
+	await nextFrames(page)
 	const back = await discPixels(page, "earth-honest-again")
 	expect(back.night).toBeGreaterThan(0.2 * total)
 	expect(errors).toEqual([])

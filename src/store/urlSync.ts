@@ -2,11 +2,12 @@
  * Mirrors the simulation store into the `/solar_system` URL and back.
  *
  * On mount the validated search params (`focus`, `at`, `sel`, `cam`, `t`,
- * `warp` and the layer switches `orbits`, `labels`, `moons`, `markers`) seed
- * the store: the view (`focus`: a body, with `at` a point in space near it,
- * absent: the overview) and its camera shot are applied as a jump, so a
- * shared link opens exactly on the view it was taken from. From then on view,
- * selection, camera shot, warp and the layer switches are written to the URL
+ * `warp`, the layer switches `orbits`, `labels`, `moons`, `markers` and the
+ * scale preset `scale`) seed the store: the view (`focus`: a body, with `at`
+ * a point in space near it, absent: the overview) and its camera shot are
+ * applied as a jump, so a shared link opens exactly on the view it was taken
+ * from. From then on view, selection, camera shot, warp, the layer switches
+ * and the scale preset are written to the URL
  * as they change (the shot when the camera comes to rest) and the simulation
  * time follows at most once per second, and only while it is slow enough to
  * be worth a link (paused or |warp| <= 1 min/s).
@@ -19,13 +20,20 @@ import { useEffect, useLayoutEffect, useRef } from "react"
 import { useNavigate, useSearch } from "@tanstack/react-router"
 
 import { bodyById } from "@/data"
-import { dateToJD } from "@/sim"
+import {
+	DEFAULT_SCALE_PRESET,
+	dateToJD,
+	isScalePresetId,
+	type ScalePresetId,
+} from "@/sim"
 
 import {
 	HOME_SHOT,
 	OVERVIEW,
 	formatOffset,
 	formatShot,
+	isFrameAnchored,
+	OVERVIEW_BODY_ID,
 	parseOffset,
 	parseShot,
 	sameShot,
@@ -33,6 +41,8 @@ import {
 	type CameraShot,
 	type View,
 } from "./navigation"
+import { hidesTimeInUrl, useBirthdayStore } from "./birthday"
+import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
 
@@ -69,7 +79,11 @@ type Mirrored = Omit<Layers, "showOrbitLabels"> &
 	Pick<
 		SimState,
 		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
-	>
+	> &
+	Partial<Pick<SimState, "frameId">> & {
+		/** The chosen scale preset (#21, `useScaleStore`'s `targetId`); absent or null writes nothing. */
+		scalePreset?: ScalePresetId | null
+	}
 
 type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
 
@@ -83,10 +97,13 @@ type MirroredClock = Pick<SimState, "timeWarp" | "simTimeJD">
  * written as it is (not rounded), so a link runs at exactly the speed it was
  * taken at,
  * backwards included; a zero warp (which the schema rejects) is left out.
+ * With `hideTime` (a birth date is entered, #26) no `t` is written at all, so
+ * a copied link opens on "now" and never carries someone's birthday.
  */
 export function searchFromState(
 	state: Mirrored,
 	previous: SimSearch,
+	hideTime = false,
 ): SimSearch {
 	const { timeWarp, view, shot } = state
 	const focus = view.kind === "overview" ? undefined : viewBodyId(view)
@@ -103,9 +120,15 @@ export function searchFromState(
 				: undefined,
 		cam:
 			shot === null || sameShot(shot, HOME_SHOT) ? undefined : formatShot(shot),
-		t: shouldMirrorTime(state.paused, timeWarp)
-			? roundJD(state.simTimeJD)
-			: previous.t,
+		frame:
+			state.frameId !== undefined && isFrameAnchored({ frameId: state.frameId })
+				? state.frameId
+				: undefined,
+		t: hideTime
+			? undefined
+			: shouldMirrorTime(state.paused, timeWarp)
+				? roundJD(state.simTimeJD)
+				: previous.t,
 		warp:
 			timeWarp !== 0 && timeWarp !== DEFAULT_TIME_WARP ? timeWarp : undefined,
 	}
@@ -113,6 +136,10 @@ export function searchFromState(
 		search[param] = state[field] ? undefined : false
 	}
 	search.orbitNames = state.showOrbitLabels ? true : undefined
+	search.scale =
+		state.scalePreset != null && state.scalePreset !== DEFAULT_SCALE_PRESET
+			? state.scalePreset
+			: undefined
 	return search
 }
 
@@ -120,10 +147,12 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.focus === b.focus &&
 	a.at === b.at &&
 	a.sel === b.sel &&
+	a.frame === b.frame &&
 	a.cam === b.cam &&
 	a.t === b.t &&
 	a.warp === b.warp &&
 	a.orbitNames === b.orbitNames &&
+	a.scale === b.scale &&
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
 /**
@@ -160,6 +189,27 @@ export function viewFromSearch(search: SimSearch): {
 }
 
 /**
+ * The body a search holds still (#31): with a known `frame` other than the
+ * Sun, the focus (an anchored frame follows it), or `frame` itself when the
+ * link has no focus; null for the Sun-centred frame.
+ */
+export function frameFromSearch(search: SimSearch): string | null {
+	const { frame } = search
+	if (
+		frame === undefined ||
+		frame === OVERVIEW_BODY_ID ||
+		!bodyById.has(frame)
+	) {
+		return null
+	}
+	const focus =
+		search.focus !== undefined && bodyById.has(search.focus)
+			? search.focus
+			: null
+	return focus ?? frame
+}
+
+/**
  * The layer switches a search sets: a switch the link leaves out is on, except
  * the orbit names, which are off unless the link turns them on.
  */
@@ -169,6 +219,10 @@ export const layersFromSearch = (search: SimSearch): Layers => ({
 	) as Omit<Layers, "showOrbitLabels">),
 	showOrbitLabels: search.orbitNames === true,
 })
+
+/** The scale preset a search opens in: `scale` when it names a preset, else the default. */
+export const scaleFromSearch = (search: SimSearch): ScalePresetId =>
+	isScalePresetId(search.scale) ? search.scale : DEFAULT_SCALE_PRESET
 
 /** Clock fields a search sets; absent params are skipped. */
 export function stateFromSearch(search: SimSearch): Partial<MirroredClock> {
@@ -216,14 +270,27 @@ export function useSimUrlSync(): void {
 		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
 		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
 		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
+		const frameId = frameFromSearch(searchRef.current)
 		store.jumpTo(view, shot)
+		if (frameId !== null) {
+			store.anchorFrame(frameId, { shot: shot ?? undefined, durationMs: 0 })
+		}
 		store.select(selectedId)
 		// the layer switches are plain fields
 		useSimStore.setState(layersFromSearch(searchRef.current))
+		// the scale: a jump as well, the switch animates only when the user makes it
+		useScaleStore.getState().setPreset(scaleFromSearch(searchRef.current))
 
 		let timer: ReturnType<typeof setTimeout> | undefined
 		const write = () => {
-			const next = searchFromState(useSimStore.getState(), searchRef.current)
+			const next = searchFromState(
+				{
+					...useSimStore.getState(),
+					scalePreset: useScaleStore.getState().targetId,
+				},
+				searchRef.current,
+				hidesTimeInUrl(useBirthdayStore.getState()),
+			)
 			if (sameSearch(next, searchRef.current)) return
 			searchRef.current = next
 			void navigate({ to: "/solar_system", search: next, replace: true })
@@ -234,6 +301,7 @@ export function useSimUrlSync(): void {
 		const unsubscribe = useSimStore.subscribe((state, previous) => {
 			if (
 				state.view !== previous.view ||
+				state.frameId !== previous.frameId ||
 				state.selectedId !== previous.selectedId ||
 				state.shot !== previous.shot ||
 				state.timeWarp !== previous.timeWarp ||
@@ -255,10 +323,22 @@ export function useSimUrlSync(): void {
 				}, TIME_SYNC_INTERVAL_MS)
 			}
 		})
+		// the chosen preset goes into the URL at the click, not when the animation lands
+		const unsubscribeScale = useScaleStore.subscribe((state, previous) => {
+			if (state.targetId !== previous.targetId) write()
+		})
+		// entering or forgetting a birth date takes `t` out of the URL or puts it back
+		const unsubscribeBirthday = useBirthdayStore.subscribe(
+			(state, previous) => {
+				if (hidesTimeInUrl(state) !== hidesTimeInUrl(previous)) write()
+			},
+		)
 		write()
 
 		return () => {
 			unsubscribe()
+			unsubscribeScale()
+			unsubscribeBirthday()
 			if (timer !== undefined) clearTimeout(timer)
 		}
 	}, [navigate])

@@ -61,12 +61,14 @@ interface OrbitWindow {
 export interface CruisePath {
 	/** Vertex times, JD, ascending. */
 	readonly times: Float64Array
-	/** Drawn positions, display km, 3 per vertex. */
+	/** Drawn positions relative to the drawn Sun (`root`), display km, 3 per vertex. */
 	readonly display: Float64Array
 	readonly orbits: readonly OrbitWindow[]
 	/** Events on the drawn path: time and drawn position. */
 	readonly eventTimes: Float64Array
 	readonly eventDisplay: Float64Array
+	/** Index of the Sun, the path's origin. */
+	readonly root: number
 }
 
 const orbitWindows = (
@@ -114,18 +116,36 @@ export function buildCruisePath(
 			inOrbit(orbits, event.jd) === null,
 	)
 	const eventTimes = Float64Array.from(events, (event) => event.jd)
+	const eventDisplay = fillPath(
+		trajectory,
+		[...eventTimes],
+		frame,
+		root,
+		new Float64Array(eventTimes.length * 3),
+	)
+	// relative to the drawn Sun, which an anchored frame (#31) moves every frame
+	relativeTo(display, frame.displayKm, root)
+	relativeTo(eventDisplay, frame.displayKm, root)
 	return {
 		times: Float64Array.from(times),
 		display,
 		orbits,
 		eventTimes,
-		eventDisplay: fillPath(
-			trajectory,
-			[...eventTimes],
-			frame,
-			root,
-			new Float64Array(eventTimes.length * 3),
-		),
+		eventDisplay,
+		root,
+	}
+}
+
+/** Subtracts body `i`'s position in `positions` from every point of `points`. */
+function relativeTo(
+	points: Float64Array,
+	positions: ArrayLike<number>,
+	i: number,
+): void {
+	for (let o = 0; o < points.length; o += 3) {
+		points[o] -= positions[i * 3]
+		points[o + 1] -= positions[i * 3 + 1]
+		points[o + 2] -= positions[i * 3 + 2]
 	}
 }
 
@@ -327,6 +347,8 @@ export function attachEvents(
 }
 
 const emptySplit: PathSplit = { count: 0, flownCount: 0, futureStart: 0 }
+const pathOrigin = new Float64Array(3)
+const pathCraft = new Float64Array(3)
 
 /** One frame of a path: rebuild on a scale change, split at the craft, the local track, the milestones. */
 export function updatePathRuntime(
@@ -345,13 +367,19 @@ export function updatePathRuntime(
 	const present = craftFrame.present[index] === 1
 	const orbit = inOrbit(cruise.orbits, jd)
 
+	// the path is kept relative to the drawn Sun: shift the origin and the craft by it
+	const r = cruise.root * 3
+	for (let k = 0; k < 3; k++) {
+		pathOrigin[k] = frame.originKm[k] - frame.displayKm[r + k]
+		pathCraft[k] = state.displayKm[k] - frame.displayKm[r + k]
+	}
 	writeSplitPath(
 		cruise.times,
 		cruise.display,
 		Math.min(cruise.times.length, runtime.cruise.positions.length / 3 - 1),
 		jd,
-		present && orbit === null ? state.displayKm : null,
-		frame.originKm,
+		present && orbit === null ? pathCraft : null,
+		pathOrigin,
 		runtime.cruise.positions,
 		split,
 	)
@@ -404,9 +432,9 @@ export function updatePathRuntime(
 		const out = runtime.eventPositions
 		for (let e = 0; e < count; e++) {
 			const o = e * 3
-			out[o] = toUnits(cruise.eventDisplay[o] - frame.originKm[0])
-			out[o + 1] = toUnits(cruise.eventDisplay[o + 1] - frame.originKm[1])
-			out[o + 2] = toUnits(cruise.eventDisplay[o + 2] - frame.originKm[2])
+			out[o] = toUnits(cruise.eventDisplay[o] - pathOrigin[0])
+			out[o + 1] = toUnits(cruise.eventDisplay[o + 1] - pathOrigin[1])
+			out[o + 2] = toUnits(cruise.eventDisplay[o + 2] - pathOrigin[2])
 		}
 		points.geometry.setDrawRange(0, count)
 		points.geometry.attributes.position.needsUpdate = true

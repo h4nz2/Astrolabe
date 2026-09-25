@@ -419,14 +419,7 @@
 			"orbitalVelocity": 13.1,
 			"orbitalInclination": 1.303,
 			"orbitPositionOffset": 2692,
-			"rings": {
-				"innerRadius": 110500,
-				"outerRadius": 129000,
-				"textures": {
-					"base": "/assets/textures/jupiter/rings/rings_map.png",
-					"colorMap": "/assets/textures/jupiter/rings/rings_color_map.png"
-				}
-			},
+			"rings": false,
 			"textures": {
 				"base": "/assets/textures/jupiter.jpg"
 			},
@@ -2596,7 +2589,7 @@
 					"density": 1.09,
 					"gravity": 0,
 					"escape": 0,
-					"meanRadius": 1471.2,
+					"meanRadius": 734.5,
 					"equaRadius": 0,
 					"polarRadius": 0,
 					"flattening": 0,
@@ -5361,6 +5354,7 @@
 				{
 					"id": "6h",
 					"name": "Hyperion",
+					"rotationChaotic": true,
 					"distanceFromParent": 1481010,
 					"orbitalPeriod": 21.276,
 					"orbitalInclination": 0.43,

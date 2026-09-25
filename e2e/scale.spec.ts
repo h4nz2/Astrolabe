@@ -3,6 +3,8 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { cameraAtRest, nextFrames } from "./support/scene"
+
 // The scale engine (#8): the app opens in the "Everything visible" preset, not
 // at true scale. At true scale the default view (the overview of the planetary
 // system, #10) shows the inner planets packed into a few pixels round the Sun;
@@ -36,7 +38,12 @@ const collectErrors = (page: Page): string[] => {
  * no image library is needed.
  */
 const litPixelsAroundCentre = async (page: Page): Promise<number> => {
-	const png = await page.screenshot()
+	// the scale panel (#21) reaches into the counted region from the right: its
+	// text is not the scene, so it is hidden for the count (its dark backing is
+	// below the threshold)
+	const png = await page.screenshot({
+		style: "section[data-scale-target] { visibility: hidden }",
+	})
 	return page.evaluate(async (base64) => {
 		const image = new Image()
 		image.src = `data:image/png;base64,${base64}`
@@ -84,7 +91,7 @@ test("the solar system opens in Everything visible, with the inner planets' orbi
 		"Sun",
 	)
 	// the camera settles (smooth time 0.4 s) before the picture is judged
-	await page.waitForTimeout(1500)
+	await cameraAtRest(page)
 	mkdirSync(screenshotDir, { recursive: true })
 	await page.screenshot({ path: path.join(screenshotDir, "open-default.png") })
 
@@ -103,19 +110,19 @@ test("the Markers switch hides the planets' dots, so small bodies shrink to thei
 	// a fixed date keeps the planets where the pixel counts expect them
 	await page.goto("/solar_system?t=2461308")
 	await page.waitForLoadState("networkidle")
-	await page.waitForTimeout(1500)
+	await cameraAtRest(page)
 	// without the orbit lines the planets' dots are all that is lit round the Sun
 	const orbits = page.getByRole("switch", { name: "Orbits" })
 	await orbits.click({ force: true })
 	await expect(orbits).not.toBeChecked()
-	await page.waitForTimeout(500)
+	await nextFrames(page)
 	const withMarkers = await litPixelsAroundCentre(page)
 
 	const markers = page.getByRole("switch", { name: "Markers" })
 	await expect(markers).toBeChecked()
 	await markers.click({ force: true })
 	await expect(markers).not.toBeChecked()
-	await page.waitForTimeout(500)
+	await nextFrames(page)
 	const withoutMarkers = await litPixelsAroundCentre(page)
 
 	expect(withMarkers).toBeGreaterThan(withoutMarkers + 20)
@@ -125,6 +132,8 @@ test("the Markers switch hides the planets' dots, so small bodies shrink to thei
 test("a focused planet is framed from its drawn size and its moons stay in place with the moons toggled", async ({
 	page,
 }) => {
+	// a full-page pixel count under software WebGL
+	test.slow()
 	const errors = collectErrors(page)
 	await page.goto("/solar_system?focus=jupiter")
 	await page.waitForLoadState("networkidle")
@@ -133,7 +142,7 @@ test("a focused planet is framed from its drawn size and its moons stay in place
 	await expect(page.getByRole("combobox", { name: "Focus body" })).toHaveValue(
 		"Jupiter",
 	)
-	await page.waitForTimeout(1500)
+	await cameraAtRest(page)
 	// Jupiter fills the middle of the view: it was framed from its drawn radius
 	expect(await litPixelsAroundCentre(page)).toBeGreaterThan(20_000)
 	mkdirSync(screenshotDir, { recursive: true })

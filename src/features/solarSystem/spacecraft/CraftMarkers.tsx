@@ -21,10 +21,10 @@ import { useSimStore } from "@/store/sim"
 import { useSpacecraftStore } from "@/store/spacecraft"
 
 import { pickLabel, type LabelLayout } from "../labels/layout"
-import { MARKER_PICK_RADIUS_PX } from "../scene/Markers"
 import { applyHoverCursor } from "../scene/HoverCursor"
 import type { SimFrame } from "../scene/simFrame"
-import { isTapEvent } from "../scene/tap"
+import { TARGET_RADIUS_PX } from "../scene/picking"
+import { currentPointerKind, isTapEvent } from "../scene/tap"
 import type { CraftFrame } from "./craftFrame"
 import {
 	CRAFT_MARKER_SIZE_PX,
@@ -119,15 +119,16 @@ export function fillCraftMarkers(
 	return drawn
 }
 
-/** The drawn vertex nearest the ray within the pick radius, or -1. */
+/** The drawn vertex nearest the ray within `radiusPx` (the pointer's target radius, #16), or -1. */
 export function pickCraftMarker(
 	positions: Float32Array,
 	drawn: number,
 	origin: Vector3,
 	direction: Vector3,
 	anglePerPx: number,
+	radiusPx: number,
 ): number {
-	const pickTanSq = (MARKER_PICK_RADIUS_PX * anglePerPx) ** 2
+	const pickTanSq = (radiusPx * anglePerPx) ** 2
 	let best = -1
 	let bestTanSq = pickTanSq
 	for (let v = 0; v < drawn; v++) {
@@ -232,6 +233,7 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 				origin,
 				direction,
 				1 / pixelsPerUnit(camera, size.height),
+				TARGET_RADIUS_PX[currentPointerKind()],
 			)
 			if (best < 0) return
 			const o = best * 3
@@ -240,10 +242,10 @@ function CraftMarkers({ frame, craftFrame, labels }: CraftMarkersProps) {
 				buffers.positions[o + 1],
 				buffers.positions[o + 2],
 			)
-			const distance = hit.distanceTo(origin)
 			intersects.push({
-				// just in front of what it is drawn over (a craft sits outside every body)
-				distance: Math.max(0, distance * 0.999),
+				// drawn over everything (no depth test), so it is hit before any body
+				// target or #16's "empty space"
+				distance: 0,
 				point: hit,
 				index: buffers.vertexCraft[best],
 				object: points,

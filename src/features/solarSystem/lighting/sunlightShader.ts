@@ -11,9 +11,12 @@
  * `bodyVertexShader` / `bodyFragmentShader` shade a body's sphere: a
  * Lambert terminator facing the true Sun, eclipse shadows, a faint starlight
  * floor and a cool rim so the night side never disappears, city lights from
- * a night texture, and the "always lit" teaching mode.
+ * a night texture, the shadow band of the planet's rings (`USE_RING_SHADOW`,
+ * ./ringPars.ts) and the "always lit" teaching mode.
  */
 import { MAX_OCCLUDERS } from "@/sim"
+
+import { RING_PARS } from "./ringPars"
 
 export const SUNLIGHT_PARS = /* glsl */ `
 #define SUNLIGHT_MAX_OCCLUDERS ${MAX_OCCLUDERS}
@@ -43,21 +46,26 @@ float sunlightAngle(vec3 a, vec3 b) {
 	return 2.0 * asin(min(length(normalize(a) - normalize(b)) * 0.5, 1.0));
 }
 
-// fraction of the Sun's disc visible from point p (receiver frame, true km)
-float sunVisibility(vec3 p) {
+// fraction of the Sun's disc visible from point p past ONE caster (xyz: centre, w: radius; receiver frame, true km)
+float sunlightCasterVisibility(vec3 p, vec4 caster) {
 	vec3 toSun = uSunKm - p;
 	float sunDistance = length(toSun);
 	float a = asin(min(uSunRadiusKm / sunDistance, 1.0));
+	vec3 toCaster = caster.xyz - p;
+	if (dot(toCaster, toSun) <= 0.0) return 1.0;
+	float casterDistance = length(toCaster);
+	if (casterDistance >= sunDistance) return 1.0;
+	float b = asin(min(caster.w / casterDistance, 1.0));
+	float c = sunlightAngle(toSun, toCaster);
+	return 1.0 - min(sunlightDiscOverlap(a, b, c) / (PI * a * a), 1.0);
+}
+
+// fraction of the Sun's disc visible from point p (receiver frame, true km)
+float sunVisibility(vec3 p) {
 	float visible = 1.0;
 	for (int k = 0; k < SUNLIGHT_MAX_OCCLUDERS; k++) {
 		if (k >= uOccluderCount) break;
-		vec3 toCaster = uOccluders[k].xyz - p;
-		if (dot(toCaster, toSun) <= 0.0) continue;
-		float casterDistance = length(toCaster);
-		if (casterDistance >= sunDistance) continue;
-		float b = asin(min(uOccluders[k].w / casterDistance, 1.0));
-		float c = sunlightAngle(toSun, toCaster);
-		visible *= 1.0 - min(sunlightDiscOverlap(a, b, c) / (PI * a * a), 1.0);
+		visible *= sunlightCasterVisibility(p, uOccluders[k]);
 	}
 	return visible;
 }
@@ -70,11 +78,18 @@ export const bodyVertexShader = /* glsl */ `
 varying vec2 vUv;
 varying vec3 vNormalWorld;
 varying vec3 vWorldPosition;
+#ifdef USE_RING_SHADOW
+varying vec3 vRingPole;
+#endif
 
 void main() {
 	vUv = uv;
 	// the mesh scales uniformly, so the model matrix keeps normals perpendicular
 	vNormalWorld = normalize(mat3(modelMatrix) * normal);
+	#ifdef USE_RING_SHADOW
+	// the spin turns about local +Y, so +Y stays the pole: the ring plane's normal
+	vRingPole = normalize(mat3(modelMatrix) * vec3(0.0, 1.0, 0.0));
+	#endif
 	vec4 world = modelMatrix * vec4(position, 1.0);
 	vWorldPosition = world.xyz;
 	gl_Position = projectionMatrix * viewMatrix * world;
@@ -86,6 +101,10 @@ export const bodyFragmentShader = /* glsl */ `
 #include <common>
 #include <logdepthbuf_pars_fragment>
 ${SUNLIGHT_PARS}
+#ifdef USE_RING_SHADOW
+${RING_PARS}
+varying vec3 vRingPole;
+#endif
 
 uniform vec3 uColor;
 uniform float uBodyRadiusKm;
@@ -115,6 +134,10 @@ void main() {
 	vec3 n = normalize(vNormalWorld);
 	vec3 v = normalize(cameraPosition - vWorldPosition);
 	float facing = max(dot(n, v), 0.0);
+	#ifdef USE_RING_SHADOW
+	// the rings' shadow band (#12); outside any branch: its texture lookup needs derivatives
+	float ringLight = ringTransmittance(n * uBodyRadiusKm, normalize(vRingPole));
+	#endif
 
 	vec3 color;
 	if (uAlwaysLit > 0.5) {
@@ -125,6 +148,9 @@ void main() {
 		float ndl = dot(n, l);
 		// the same direction on the true-size globe: the shadow lands where it really does
 		float shade = ndl > -0.05 ? sunVisibility(n * uBodyRadiusKm) : 1.0;
+		#ifdef USE_RING_SHADOW
+		shade *= ringLight;
+		#endif
 		float day = max(ndl, 0.0) * shade;
 		// how far into the night this point is (0 by day, 1 past a short twilight band)
 		float night = 1.0 - smoothstep(-0.08, 0.12, ndl * shade);

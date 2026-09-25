@@ -1,6 +1,6 @@
 /**
  * Pure simulation code: units, time, the simulation clock, Kepler propagation,
- * hierarchy positions, axial rotation. No React, no three.js. See docs/ARCHITECTURE.md.
+ * hierarchy positions, axial rotation and spin speed. No React, no three.js. See docs/ARCHITECTURE.md.
  */
 export {
 	AU_KM,
@@ -91,8 +91,21 @@ export {
 	equatorNode,
 	rotationAngle,
 	spinAxis,
+	synchronousAngle,
 } from "./rotation"
 export type { RotationElements } from "./rotation"
+export {
+	DEFAULT_SPIN_MODE,
+	EARTH_SIDEREAL_DAY_DAYS,
+	MAX_SPIN_STEP_MS,
+	MIN_SECONDS_PER_EARTH_TURN,
+	SPIN_MODES,
+	advanceSpinClock,
+	createSpinClock,
+	isSpinMode,
+	maxSpinStepDays,
+} from "./spin"
+export type { SpinClock, SpinMode } from "./spin"
 export {
 	GLIDE_MAX_MS,
 	GLIDE_MIN_MS,
@@ -122,3 +135,16 @@ export {
 	sunVisibleFraction,
 } from "./lighting"
 export type { LitBody } from "./lighting"
+export {
+	RING_MIN_MU,
+	ringShadowTransmittance,
+	ringU,
+	slantOpacity,
+} from "./rings"
+export { SCALE_LIES, bodyDistortion, presetForLies } from "./scaleLies"
+export type {
+	BodyDistortion,
+	DistanceLie,
+	ScaleLies,
+	SizeLie,
+} from "./scaleLies"

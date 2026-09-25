@@ -153,11 +153,12 @@ describe("bodies.json", () => {
 			innerRadiusKm: 74510,
 			outerRadiusKm: 140220,
 		})
+		// from data/rings/{jupiter,uranus,neptune}.json (the source has rings: false)
+		// Jupiter: the halo's inner edge to the Amalthea gossamer ring's outer edge
 		expect(getBody("jupiter").rings).toMatchObject({
-			innerRadiusKm: 110500,
-			outerRadiusKm: 129000,
+			innerRadiusKm: 92000,
+			outerRadiusKm: 181350,
 		})
-		// from data/rings/{uranus,neptune}.json (the source has rings: false)
 		expect(getBody("uranus").rings).toMatchObject({
 			innerRadiusKm: 41500,
 			outerRadiusKm: 51500,
@@ -195,7 +196,8 @@ describe("bodies.json", () => {
 		expect(getBody("amalthea").massKg).toBe(2.08e18)
 		expect(getBody("perdita").massKg).toBe(1.8e16)
 		expect(getBody("anthe").radiusKm).toBe(0.9)
-		expect(getBody("neptune").rotation.periodHours).toBe(15.9663)
+		// from the IAU rate 541.1397757 deg/day
+		expect(getBody("neptune").rotation.periodHours).toBeCloseTo(15.9663, 3)
 	})
 
 	it("uses the JPL/Standish J2000 mean elements for the planets", () => {
@@ -221,13 +223,14 @@ describe("bodies.json", () => {
 
 	it("encodes retrograde spin once: negative period, tilt to the IAU north pole", () => {
 		expect(getBody("venus").rotation).toMatchObject({
-			periodHours: -5832.5,
 			axialTiltDeg: 2.64,
 		})
+		// the period comes from the IAU rate W1 = -1.4813688 deg/day
+		expect(getBody("venus").rotation.periodHours).toBeCloseTo(-5832.44, 2)
 		expect(getBody("uranus").rotation).toMatchObject({
-			periodHours: -17.24,
 			axialTiltDeg: 82.23,
 		})
+		expect(getBody("uranus").rotation.periodHours).toBeCloseTo(-17.24, 6)
 		const retrograde = bodies
 			.filter((body) => (body.rotation.periodHours ?? 0) < 0)
 			.map((body) => body.id)

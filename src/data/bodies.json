@@ -8,7 +8,7 @@
 		"massKg": 1.989e30,
 		"orbit": null,
 		"rotation": {
-			"periodHours": 609.12,
+			"periodHours": 609.119878176,
 			"axialTiltDeg": 7.25,
 			"poleRaDeg": 286.13,
 			"poleDecDeg": 63.87,
@@ -69,7 +69,7 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": 1407.6,
+			"periodHours": 1407.507501657,
 			"axialTiltDeg": 0.0352,
 			"poleRaDeg": 281.0103,
 			"poleDecDeg": 61.4155,
@@ -125,7 +125,7 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": -5832.5,
+			"periodHours": -5832.443615661,
 			"axialTiltDeg": 2.64,
 			"poleRaDeg": 272.76,
 			"poleDecDeg": 67.16,
@@ -181,7 +181,7 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": 23.9345,
+			"periodHours": 23.934471174,
 			"axialTiltDeg": 23.4393,
 			"poleRaDeg": 0,
 			"poleDecDeg": 90,
@@ -239,11 +239,11 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": 24.6229,
+			"periodHours": 24.622962143,
 			"axialTiltDeg": 25.19,
-			"poleRaDeg": 317.269202,
-			"poleDecDeg": 54.432516,
-			"primeMeridianDeg": 176.049863
+			"poleRaDeg": 317.681106,
+			"poleDecDeg": 52.886346,
+			"primeMeridianDeg": 176.631819
 		},
 		"textures": {
 			"base": "/assets/textures/mars.jpg",
@@ -296,7 +296,7 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": 9.925,
+			"periodHours": 9.92491982,
 			"axialTiltDeg": 3.12,
 			"poleRaDeg": 268.056595,
 			"poleDecDeg": 64.495303,
@@ -306,11 +306,11 @@
 			"base": "/assets/textures/jupiter.jpg"
 		},
 		"rings": {
-			"innerRadiusKm": 110500,
-			"outerRadiusKm": 129000,
+			"innerRadiusKm": 92000,
+			"outerRadiusKm": 181350,
 			"textures": {
-				"alpha": "/assets/textures/jupiter/rings/rings_map.png",
-				"color": "/assets/textures/jupiter/rings/rings_color_map.png"
+				"alpha": "/assets/textures/jupiter/rings/rings_alpha.png",
+				"color": "/assets/textures/jupiter/rings/rings_color.png"
 			}
 		},
 		"info": {
@@ -359,7 +359,7 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": 10.656,
+			"periodHours": 10.656222222,
 			"axialTiltDeg": 26.73,
 			"poleRaDeg": 40.589,
 			"poleDecDeg": 83.537,
@@ -487,11 +487,11 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": 15.9663,
+			"periodHours": 15.966299999,
 			"axialTiltDeg": 28.3,
-			"poleRaDeg": 299.36,
-			"poleDecDeg": 43.46,
-			"primeMeridianDeg": 249.978
+			"poleRaDeg": 299.333739,
+			"poleDecDeg": 42.950359,
+			"primeMeridianDeg": 249.996008
 		},
 		"textures": {
 			"base": "/assets/textures/neptune.jpg"
@@ -556,11 +556,12 @@
 			}
 		},
 		"rotation": {
-			"periodHours": 655.728,
+			"periodHours": 655.719881142,
 			"axialTiltDeg": 6.68,
 			"poleRaDeg": 266.8577,
 			"poleDecDeg": 65.6411,
-			"primeMeridianDeg": 41.1953
+			"primeMeridianDeg": 41.1953,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg",
@@ -605,9 +606,9 @@
 		"orbit": {
 			"semiMajorAxisKm": 9378,
 			"eccentricity": 0.0151,
-			"inclinationDeg": 26.465,
-			"longAscNodeDeg": 84.452,
-			"argPeriapsisDeg": 190.823,
+			"inclinationDeg": 27.779,
+			"longAscNodeDeg": 82.532,
+			"argPeriapsisDeg": 190.804,
 			"meanAnomalyDeg": 71.919,
 			"periodDays": 0.31891,
 			"epochJD": 2451545,
@@ -615,7 +616,8 @@
 		},
 		"rotation": {
 			"periodHours": 7.6534,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/mars/satellites/phobos.jpg"
@@ -662,17 +664,18 @@
 		"orbit": {
 			"semiMajorAxisKm": 23455,
 			"eccentricity": 0,
-			"inclinationDeg": 26.175,
-			"longAscNodeDeg": 83.649,
-			"argPeriapsisDeg": 350.246,
+			"inclinationDeg": 27.489,
+			"longAscNodeDeg": 81.765,
+			"argPeriapsisDeg": 350.186,
 			"meanAnomalyDeg": 64.615,
 			"periodDays": 1.2624,
 			"epochJD": 2451545,
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 30.2976,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -691,7 +694,8 @@
 			},
 			"diameter": 12.4,
 			"orbitalPeriod": 1.2624,
-			"orbitalInclination": 0.93
+			"orbitalInclination": 0.93,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -714,8 +718,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 7.0747,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -725,7 +730,8 @@
 			"mass": "3.6 * 10^16",
 			"diameter": 60,
 			"orbitalPeriod": 0.29478,
-			"orbitalInclination": 0.06
+			"orbitalInclination": 0.06,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -748,8 +754,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 7.1582,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -759,7 +766,8 @@
 			"mass": "0.2 * 10^16",
 			"diameter": 20,
 			"orbitalPeriod": 0.29826,
-			"orbitalInclination": 0.03
+			"orbitalInclination": 0.03,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -782,8 +790,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 11.952,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -799,7 +808,8 @@
 			},
 			"diameter": 187,
 			"orbitalPeriod": 0.498,
-			"orbitalInclination": 0.374
+			"orbitalInclination": 0.374,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -822,8 +832,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 16.188,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -833,7 +844,8 @@
 			"mass": "43 * 10^16",
 			"diameter": 58,
 			"orbitalPeriod": 0.6745,
-			"orbitalInclination": 1.076
+			"orbitalInclination": 1.076,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -855,7 +867,8 @@
 		},
 		"rotation": {
 			"periodHours": 42.4593,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/jupiter/satellites/io.jpg"
@@ -902,7 +915,8 @@
 		},
 		"rotation": {
 			"periodHours": 85.2293,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/jupiter/satellites/europa.jpg"
@@ -947,8 +961,9 @@
 			"epochJD": 2451545
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 171.7092,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/jupiter/satellites/ganymede.jpg"
@@ -964,7 +979,8 @@
 			},
 			"diameter": 5268.2,
 			"orbitalPeriod": 7.15455,
-			"orbitalInclination": 0.204
+			"orbitalInclination": 0.204,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -986,7 +1002,8 @@
 		},
 		"rotation": {
 			"periodHours": 400.536,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -2778,8 +2795,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 11.316,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -2794,7 +2812,8 @@
 				"massValue": 1,
 				"massExponent": 11
 			},
-			"bodyType": "Moon"
+			"bodyType": "Moon",
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -2816,8 +2835,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 13.8,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -2836,7 +2856,8 @@
 			"bodyType": "Moon",
 			"diameter": 86.2,
 			"orbitalPeriod": 0.575,
-			"orbitalInclination": 0.001
+			"orbitalInclination": 0.001,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -2858,8 +2879,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 14.256,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -2878,7 +2900,8 @@
 			"bodyType": "Moon",
 			"diameter": 7.6,
 			"orbitalPeriod": 0.59408,
-			"orbitalInclination": 0.0036
+			"orbitalInclination": 0.0036,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -2900,8 +2923,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 14.448,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -2920,7 +2944,8 @@
 			"bodyType": "Moon",
 			"diameter": 30.2,
 			"orbitalPeriod": 0.60169,
-			"orbitalInclination": 0.003
+			"orbitalInclination": 0.003,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -2943,8 +2968,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 14.712,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -2954,7 +2980,8 @@
 			"mass": "4.95 * 10^15",
 			"diameter": 28.2,
 			"orbitalPeriod": 0.613,
-			"orbitalInclination": 0.008
+			"orbitalInclination": 0.008,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -2976,8 +3003,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 15.096,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -2996,7 +3024,8 @@
 			"bodyType": "Moon",
 			"diameter": 81.4,
 			"orbitalPeriod": 0.6285,
-			"orbitalInclination": 0.05
+			"orbitalInclination": 0.05,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3019,8 +3048,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 16.656,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3030,7 +3060,8 @@
 			"mass": "526.6 * 10^15",
 			"diameter": 116.2,
 			"orbitalPeriod": 0.694,
-			"orbitalInclination": 0.351
+			"orbitalInclination": 0.351,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3052,8 +3083,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 16.8,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3072,7 +3104,8 @@
 			"bodyType": "Moon",
 			"diameter": 179,
 			"orbitalPeriod": 0.695,
-			"orbitalInclination": 0.165
+			"orbitalInclination": 0.165,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3095,8 +3128,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 19.3949,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3106,7 +3140,8 @@
 			"mass": "0.0001 * 10^15",
 			"diameter": 1,
 			"orbitalPeriod": 0.80812,
-			"orbitalInclination": 0.001
+			"orbitalInclination": 0.001,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3129,7 +3164,8 @@
 		},
 		"rotation": {
 			"periodHours": 22.56,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3178,8 +3214,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 24.2297,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3189,7 +3226,8 @@
 			"mass": "0.02 * 10^15",
 			"diameter": 3.2,
 			"orbitalPeriod": 1.00957,
-			"orbitalInclination": 0.007
+			"orbitalInclination": 0.007,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3212,8 +3250,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 24.876,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3223,7 +3262,8 @@
 			"mass": "0.007 * 10^15",
 			"diameter": 1.8,
 			"orbitalPeriod": 1.0365,
-			"orbitalInclination": 0.1
+			"orbitalInclination": 0.1,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3246,8 +3286,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 27.69,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3257,7 +3298,8 @@
 			"mass": "0.05 * 10^15",
 			"diameter": 6,
 			"orbitalPeriod": 1.15375,
-			"orbitalInclination": 0.181
+			"orbitalInclination": 0.181,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3280,7 +3322,8 @@
 		},
 		"rotation": {
 			"periodHours": 32.88,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/saturn/satellites/enceladus.jpg"
@@ -3328,8 +3371,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 45.3072,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3339,7 +3383,8 @@
 			"mass": "9.41 * 10^15",
 			"diameter": 24.8,
 			"orbitalPeriod": 1.887802,
-			"orbitalInclination": 1.19
+			"orbitalInclination": 1.19,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3362,8 +3407,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 45.3072,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/saturn/satellites/tethys.jpg"
@@ -3373,7 +3419,8 @@
 			"mass": "617449 * 10^15",
 			"diameter": 1062,
 			"orbitalPeriod": 1.8878,
-			"orbitalInclination": 1.12
+			"orbitalInclination": 1.12,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3395,8 +3442,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 45.36,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3415,7 +3463,8 @@
 			"bodyType": "Moon",
 			"diameter": 21.4,
 			"orbitalPeriod": 1.887802,
-			"orbitalInclination": 1.56
+			"orbitalInclination": 1.56,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3437,8 +3486,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 65.688,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3454,7 +3504,8 @@
 				"massExponent": 13
 			},
 			"dimension": "3×2×2",
-			"bodyType": "Moon"
+			"bodyType": "Moon",
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3477,8 +3528,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 65.688,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/saturn/satellites/dione.jpg"
@@ -3494,7 +3546,8 @@
 			},
 			"diameter": 1122.8,
 			"orbitalPeriod": 2.737,
-			"orbitalInclination": 0.02
+			"orbitalInclination": 0.02,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3517,8 +3570,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 65.686,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3528,7 +3582,8 @@
 			"mass": "24.46 * 10^15",
 			"diameter": 35.2,
 			"orbitalPeriod": 2.736915,
-			"orbitalInclination": 0.199
+			"orbitalInclination": 0.199,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3551,8 +3606,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 108.432,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/saturn/satellites/rhea.jpg"
@@ -3568,7 +3624,8 @@
 			},
 			"diameter": 1527.6,
 			"orbitalPeriod": 4.518,
-			"orbitalInclination": 0.345
+			"orbitalInclination": 0.345,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -3591,7 +3648,8 @@
 		},
 		"rotation": {
 			"periodHours": 382.8,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -3658,7 +3716,7 @@
 		"name": "Iapetus",
 		"kind": "moon",
 		"parentId": "saturn",
-		"radiusKm": 1471.2,
+		"radiusKm": 734.5,
 		"massKg": 1.805e21,
 		"orbit": {
 			"semiMajorAxisKm": 3560854,
@@ -3673,7 +3731,8 @@
 		},
 		"rotation": {
 			"periodHours": 1903.92,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/saturn/satellites/iapetus.jpg"
@@ -5821,8 +5880,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 8.04,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -5832,7 +5892,8 @@
 			"mass": "0.044 * 10^18",
 			"diameter": 40,
 			"orbitalPeriod": 0.335,
-			"orbitalInclination": 0.08479
+			"orbitalInclination": 0.08479,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -5855,8 +5916,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 9.024,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -5866,7 +5928,8 @@
 			"mass": "0.053 * 10^18",
 			"diameter": 43,
 			"orbitalPeriod": 0.376,
-			"orbitalInclination": 0.1036
+			"orbitalInclination": 0.1036,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -5888,8 +5951,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 10.4299,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -5907,7 +5971,8 @@
 			"bodyType": "Moon",
 			"diameter": 51,
 			"orbitalPeriod": 0.434579,
-			"orbitalInclination": 0.193
+			"orbitalInclination": 0.193,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -5929,8 +5994,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 11.1257,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -5948,7 +6014,8 @@
 			"bodyType": "Moon",
 			"diameter": 80,
 			"orbitalPeriod": 0.464,
-			"orbitalInclination": 0.006
+			"orbitalInclination": 0.006,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -5971,8 +6038,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 11.3676,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -5982,7 +6050,8 @@
 			"mass": "0.18 * 10^18",
 			"diameter": 64,
 			"orbitalPeriod": 0.47365,
-			"orbitalInclination": 0.11125
+			"orbitalInclination": 0.11125,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6004,8 +6073,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 11.8337,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6023,7 +6093,8 @@
 			"bodyType": "Moon",
 			"diameter": 94,
 			"orbitalPeriod": 0.493,
-			"orbitalInclination": 0.06546
+			"orbitalInclination": 0.06546,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6045,8 +6116,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 12.3168,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6064,7 +6136,8 @@
 			"bodyType": "Moon",
 			"diameter": 135,
 			"orbitalPeriod": 0.513,
-			"orbitalInclination": 0.059
+			"orbitalInclination": 0.059,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6086,8 +6159,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 13.403,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6105,7 +6179,8 @@
 			"bodyType": "Moon",
 			"diameter": 72,
 			"orbitalPeriod": 0.55846,
-			"orbitalInclination": 0.279
+			"orbitalInclination": 0.279,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6127,8 +6202,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 14.712,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6146,7 +6222,8 @@
 			"bodyType": "Moon",
 			"diameter": 18,
 			"orbitalPeriod": 0.618,
-			"orbitalInclination": 0.1
+			"orbitalInclination": 0.1,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6168,8 +6245,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 14.9647,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6187,7 +6265,8 @@
 			"bodyType": "Moon",
 			"diameter": 90,
 			"orbitalPeriod": 0.623,
-			"orbitalInclination": 0.031
+			"orbitalInclination": 0.031,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6209,8 +6288,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 15.312,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6227,7 +6307,8 @@
 			},
 			"bodyType": "Moon",
 			"diameter": 30,
-			"orbitalPeriod": 0.638
+			"orbitalPeriod": 0.638,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6249,8 +6330,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 18.2839,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6268,7 +6350,8 @@
 			"bodyType": "Moon",
 			"diameter": 162,
 			"orbitalPeriod": 0.762,
-			"orbitalInclination": 0.3192
+			"orbitalInclination": 0.3192,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6290,8 +6373,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 22.152,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6309,7 +6393,8 @@
 			"bodyType": "Moon",
 			"diameter": 25,
 			"orbitalPeriod": 0.923,
-			"orbitalInclination": 0.1335
+			"orbitalInclination": 0.1335,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6332,7 +6417,8 @@
 		},
 		"rotation": {
 			"periodHours": 33.9235,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6380,7 +6466,8 @@
 		},
 		"rotation": {
 			"periodHours": 60.4891,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6428,7 +6515,8 @@
 		},
 		"rotation": {
 			"periodHours": 99.499,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6476,7 +6564,8 @@
 		},
 		"rotation": {
 			"periodHours": 208.9408,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6524,8 +6613,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 323.112,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6541,7 +6631,8 @@
 			},
 			"diameter": 1522.8,
 			"orbitalPeriod": 13.463,
-			"orbitalInclination": 0.058
+			"orbitalInclination": 0.058,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6918,17 +7009,18 @@
 		"orbit": {
 			"semiMajorAxisKm": 48227,
 			"eccentricity": 0,
-			"inclinationDeg": 31.702,
-			"longAscNodeDeg": 55.29,
-			"argPeriapsisDeg": 27.859,
+			"inclinationDeg": 32.156,
+			"longAscNodeDeg": 54.733,
+			"argPeriapsisDeg": 27.95,
 			"meanAnomalyDeg": 44.152,
 			"periodDays": 0.294,
 			"epochJD": 2451545,
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 7.056,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6938,7 +7030,8 @@
 			"mass": "19 * 10^16",
 			"diameter": 66,
 			"orbitalPeriod": 0.294,
-			"orbitalInclination": 4.75
+			"orbitalInclination": 4.75,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6951,17 +7044,18 @@
 		"orbit": {
 			"semiMajorAxisKm": 50075,
 			"eccentricity": 0.0002,
-			"inclinationDeg": 28.236,
-			"longAscNodeDeg": 49.273,
-			"argPeriapsisDeg": 105.353,
+			"inclinationDeg": 28.692,
+			"longAscNodeDeg": 48.793,
+			"argPeriapsisDeg": 105.354,
 			"meanAnomalyDeg": 295.412,
 			"periodDays": 0.31149,
 			"epochJD": 2451545,
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 7.4758,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -6981,7 +7075,8 @@
 			"bodyType": "Moon",
 			"diameter": 82,
 			"orbitalPeriod": 0.311,
-			"orbitalInclination": 0.135
+			"orbitalInclination": 0.135,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -6994,17 +7089,18 @@
 		"orbit": {
 			"semiMajorAxisKm": 52526,
 			"eccentricity": 0.0001,
-			"inclinationDeg": 27.965,
-			"longAscNodeDeg": 49.306,
-			"argPeriapsisDeg": 68.527,
+			"inclinationDeg": 28.421,
+			"longAscNodeDeg": 48.825,
+			"argPeriapsisDeg": 68.529,
 			"meanAnomalyDeg": 170.756,
 			"periodDays": 0.33466,
 			"epochJD": 2451545,
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 8.0318,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -7024,7 +7120,8 @@
 			"bodyType": "Moon",
 			"diameter": 150,
 			"orbitalPeriod": 0.335,
-			"orbitalInclination": 0.216
+			"orbitalInclination": 0.216,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -7038,17 +7135,18 @@
 		"orbit": {
 			"semiMajorAxisKm": 61953,
 			"eccentricity": 0,
-			"inclinationDeg": 28.056,
-			"longAscNodeDeg": 49.144,
-			"argPeriapsisDeg": 7.695,
+			"inclinationDeg": 28.512,
+			"longAscNodeDeg": 48.665,
+			"argPeriapsisDeg": 7.693,
 			"meanAnomalyDeg": 304.63,
 			"periodDays": 0.429,
 			"epochJD": 2451545,
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 10.296,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -7058,7 +7156,8 @@
 			"mass": "375 * 10^16",
 			"diameter": 176,
 			"orbitalPeriod": 0.429,
-			"orbitalInclination": 0.052
+			"orbitalInclination": 0.052,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -7071,17 +7170,18 @@
 		"orbit": {
 			"semiMajorAxisKm": 73548,
 			"eccentricity": 0.0014,
-			"inclinationDeg": 27.83,
-			"longAscNodeDeg": 49.318,
-			"argPeriapsisDeg": 204.44,
+			"inclinationDeg": 28.287,
+			"longAscNodeDeg": 48.837,
+			"argPeriapsisDeg": 204.442,
 			"meanAnomalyDeg": 223.01,
 			"periodDays": 0.55465,
 			"epochJD": 2451545,
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 13.3116,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -7101,7 +7201,8 @@
 			"bodyType": "Moon",
 			"diameter": 194,
 			"orbitalPeriod": 0.555,
-			"orbitalInclination": 0.251
+			"orbitalInclination": 0.251,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -7114,8 +7215,8 @@
 		"orbit": {
 			"semiMajorAxisKm": 105300,
 			"eccentricity": 0,
-			"inclinationDeg": 28.026,
-			"longAscNodeDeg": 49.235,
+			"inclinationDeg": 28.483,
+			"longAscNodeDeg": 48.755,
 			"argPeriapsisDeg": 356.604,
 			"meanAnomalyDeg": 31.74,
 			"periodDays": 0.95,
@@ -7123,8 +7224,9 @@
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 22.8,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -7139,7 +7241,8 @@
 				"massValue": 3,
 				"massExponent": 16
 			},
-			"bodyType": "Moon"
+			"bodyType": "Moon",
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -7153,17 +7256,18 @@
 		"orbit": {
 			"semiMajorAxisKm": 117647,
 			"eccentricity": 0,
-			"inclinationDeg": 28.049,
-			"longAscNodeDeg": 50.349,
-			"argPeriapsisDeg": 165.772,
+			"inclinationDeg": 28.506,
+			"longAscNodeDeg": 49.852,
+			"argPeriapsisDeg": 165.791,
 			"meanAnomalyDeg": 89.862,
 			"periodDays": 1.122,
 			"epochJD": 2451545,
 			"phaseSynthetic": true
 		},
 		"rotation": {
-			"periodHours": null,
-			"axialTiltDeg": 0
+			"periodHours": 26.928,
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
@@ -7179,7 +7283,8 @@
 			},
 			"diameter": 420,
 			"orbitalPeriod": 1.122,
-			"orbitalInclination": 0.524
+			"orbitalInclination": 0.524,
+			"rotationAssumed": true
 		}
 	},
 	{
@@ -7192,9 +7297,9 @@
 		"orbit": {
 			"semiMajorAxisKm": 354760,
 			"eccentricity": 0.00002,
-			"inclinationDeg": 154.389,
-			"longAscNodeDeg": 177.879,
-			"argPeriapsisDeg": 86.357,
+			"inclinationDeg": 154.101,
+			"longAscNodeDeg": 178.135,
+			"argPeriapsisDeg": 87.173,
 			"meanAnomalyDeg": 133.645,
 			"periodDays": 5.87685,
 			"epochJD": 2451545,
@@ -7202,7 +7307,8 @@
 		},
 		"rotation": {
 			"periodHours": 141.0444,
-			"axialTiltDeg": 0
+			"axialTiltDeg": 0,
+			"synchronous": true
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
