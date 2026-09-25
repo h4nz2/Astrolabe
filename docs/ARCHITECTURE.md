@@ -35,12 +35,13 @@ src/routes/                  file routes; src/routeTree.gen.ts is generated and 
 src/providers/               Mantine theme, I18nProvider, GSAP transition context, Layout
 src/i18n/                    languages and reading levels (see i18n); body content in bodies.ts ("@/i18n/bodies")
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
-src/data/                    bodies.json, credits.json (image sources + licences, #37), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
+src/data/                    bodies.json, credits.json (image sources + licences, #37), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter),
+                             tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
-                             presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, simSearch.ts (URL schema),
+                             presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, ui/,
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, tours/, ui/,
                              birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
@@ -613,7 +614,7 @@ React UI subscribes with selectors, and reads the clock only through `useThrottl
 URL: `/solar_system?focus=io&sel=europa&cam=<az_el_dist>&t=<jd>&warp=<n>&moons=false&scale=trueScale` (`scale`: see
 Scale presets). The layer switches `orbits`,
 `labels`, `moons`, `markers` (`LAYER_PARAMS` in `urlSync.ts`) are written as `=false` while off; the orbit names,
-off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, the long tail of moons); `frame=<id>` while a body is held still (#31). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
+off by default, as `orbitNames=true` while on, and so is `allMoons=true` (#17, the long tail of moons); `frame=<id>` while a body is held still (#31); `tour=<id>&stop=<n>` (and `autoplay=true`) while a guided tour runs (#28). Defaults (overview, home shot `0_45_1`, `warp=1`, a switch that is on)
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
@@ -1121,6 +1122,52 @@ rule decides the defaults: **off until asked, never a surprise**.
   while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings);
   `BodyRecording` in the body card under the facts (Listen/Stop, the explanation and the credit with the licence
   linked to its source, always visible so nothing depends on hearing it).
+
+## Guided tours (`src/data/tours`, `src/store/tour.ts`, `features/solarSystem/tours/`; #28)
+
+A tour is content, not code: an ordered list of stops, each a scene (view, camera, date, speed, scale, layers, the
+body held still) plus narration. Adding one is data only; `src/data/tours/README.md` is the authors' guide.
+
+- **Data.** `src/data/tours/<id>.json` (schema `TourFile` in `src/data/tours.ts`, zod; `TOURS` in menu order,
+  `tourById`; a file that fails the schema is left out). Speeds, scales and moves are names, never numbers
+  (`TOUR_SPEEDS` map onto the #14 presets). Words: `src/locales/<locale>/tours.json`, tour id -> `title`,
+  `summary`, `stops.<stopId>.{title, text, link}`, each plain or per reading level like `bodies.json`
+  (`tours/text.ts`: `tourWords`, `stopWords`, `useTourWords`). `src/data/tours.test.ts` is the contract: schema,
+  known bodies/moments/presets, `frame` only on the body in view, words for every stop in every locale, and the
+  shipped tours at every reading level.
+- **Plan** (`tours/plan.ts`, pure): `stopStep` turns a stop into a `SequenceStep` (the overview gets `HOME_SHOT`;
+  `fit` in AU or km; `move` fly / glide / jump, flying by default between two bodies; `camera.light` picks the
+  azimuth that sees the body lit as asked from the TRUE Sun direction at the stop's date, `sunlitAzimuthDeg`).
+  `stopSettings` folds scale, speed and layers forward from the tour's baseline (the scene when it started), so
+  any stop can be entered on its own and looks as it did in order; `frame` and `select` belong to one stop.
+  `autoHoldMs`: the stop's `autoSeconds`, else the narration read aloud (330 ms a word + 3 s, 7..40 s).
+- **Player** (`tours/player.ts`; `useTourStore` in `src/store/tour.ts` is its plain state: `tour`, `index`,
+  `steps`, `auto`, `baseline`, `collapsed`). `startTour(tour | id, { startAt, auto, jump })`, `nextStop` (after the
+  last: `exitTour`), `previousStop`, `goToStop`, `resumeTour`, `setTourAuto`, `exitTour`. Entering a stop applies,
+  in order: scale (`switchTo`, `setPreset` when jumping), layers, speed, the date (`travelTo` / `setNow`; only the
+  stop's own date when going forward, the latest one when re-entering), the frame (`anchorFrame` /
+  `releaseFrame`, before the camera so the sequence keeps it) and trails, then the camera: `playSequence(steps,
+index)` with no holds (stops wait for the presenter; `finishMove()` when jumping), then the selection. Nothing
+  touches the camera or the clock directly. Any `Tour` object plays, so #30's opening can use the player with
+  its own card; only menu tours are written to the URL.
+- **Leaving and coming back.** `tourStatus(sequence, tour)`: `playing` while `sequence.steps` is the tour's;
+  `exploring` when the sequence was interrupted (a click on a body); `left` when it was ended (Escape, the home
+  button, another sequence). The tour itself only ends with `exitTour` (the card's close button, Finish; a tour
+  still set when the page mounts again without `?tour=` is ended there, never on unmount, which would write the URL). `resumeTour()` re-enters the stop and so restores its whole scene. A drag at a waiting stop does not
+  interrupt (#10). `followSequence()` gives the stop its scene when something else moved the sequence
+  (`nextStep()`).
+- **UI.** `TourMenu` (the "Tours" button in the picker panel: title, summary, stops and minutes per tour).
+  `TourCard` (a `.panel`: bottom right on wide screens, in the body card's row below 1000 px, where it hides the
+  body card while unfolded; phones always): tour and stop counter, heading and narration (`aria-live`), the
+  "exploring" note with "Back to the tour", a dot per stop, Back / Next (Finish), autoplay, copy a link to the stop
+  (`?tour=&stop=` with the language only), fold, close. Type grows with the viewport for projectors.
+  `TourSync` (after `UrlSync`): opens `?tour=<id>&stop=<n>&autoplay=true` as a jump, follows the sequence, runs
+  autoplay (a timer on a waiting stop; the camera coming to rest after a look around restarts it; the last stop
+  never auto-finishes), and the presenter keys in the capture phase while a tour exists: ArrowRight / PageDown
+  next, ArrowLeft / PageUp back (so arrows step the tour instead of cycling bodies). The hero page links to the
+  Grand Tour.
+- **For #29 (presentation mode):** call the player functions (`nextStop`, `previousStop`, `resumeTour`,
+  `exitTour`, `startTour`) rather than `nextStep()`; `[data-tour-card]` marks the card for hiding the chrome.
 
 ## Sky tonight (`features/solarSystem/skyTonight`, `src/store/skyTonight.ts`; #36)
 

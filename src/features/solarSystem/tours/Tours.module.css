@@ -1,0 +1,173 @@
+/*
+ * Guided tours (#28). The card is a HUD `.panel` (SolarSystem.module.css places
+ * it: bottom right on wide screens, in the body card's row below 1000 px), sized
+ * to be read from the back of a classroom.
+ */
+.card {
+	width: 27rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0.625rem 0.875rem 0.75rem;
+	font-size: clamp(0.95rem, 0.55rem + 0.55vw, 1.2rem);
+}
+
+@media (min-width: 1600px) {
+	.card {
+		width: 32rem;
+	}
+}
+
+.card[data-collapsed="true"] {
+	width: auto;
+	padding: 0.375rem 0.5rem;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	gap: 0.375rem;
+	min-width: 0;
+	font-size: var(--mantine-font-size-sm);
+}
+
+.tourIcon {
+	flex: none;
+	color: var(--mantine-color-orange-4);
+}
+
+.tourTitle {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-weight: 700;
+	color: var(--mantine-color-orange-4);
+}
+
+.count {
+	flex: none;
+	color: var(--mantine-color-gray-4);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.title {
+	margin: 0;
+	font-size: 1.3em;
+	line-height: 1.2;
+	font-weight: 700;
+	color: var(--mantine-color-gray-0);
+}
+
+.text {
+	margin: 0;
+	line-height: 1.45;
+	color: var(--mantine-color-gray-1);
+	/* long narration scrolls inside the card instead of pushing the HUD off screen */
+	max-height: 40dvh;
+	overflow-y: auto;
+}
+
+.link {
+	align-self: flex-start;
+}
+
+.away {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.375rem 0.75rem;
+	padding: 0.375rem 0.5rem;
+	border-radius: var(--mantine-radius-sm);
+	background: rgba(255, 146, 43, 0.12);
+	border: 1px solid rgba(255, 146, 43, 0.35);
+	font-size: var(--mantine-font-size-sm);
+	color: var(--mantine-color-orange-1);
+}
+
+.dots {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.125rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dot {
+	display: block;
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	position: relative;
+}
+
+.dot::after {
+	content: "";
+	position: absolute;
+	inset: 0.5rem;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.22);
+}
+
+.dot[data-done]::after {
+	background: var(--mantine-color-orange-9);
+}
+
+.dot[data-current]::after {
+	inset: 0.35rem;
+	background: var(--mantine-color-orange-5);
+}
+
+.dot:hover::after {
+	background: var(--mantine-color-orange-3);
+}
+
+.dot:focus-visible {
+	outline: 2px solid var(--mantine-color-orange-6);
+	outline-offset: -2px;
+	border-radius: 50%;
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.tools {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.menuButton {
+	flex: none;
+}
+
+@media (max-width: 599px) {
+	.card {
+		width: auto;
+	}
+
+	.text {
+		max-height: 22dvh;
+	}
+
+	/* the picker row is narrow on a phone: the button keeps its icon */
+	.menuText {
+		display: none;
+	}
+}
