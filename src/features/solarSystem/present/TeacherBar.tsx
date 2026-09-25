@@ -4,6 +4,7 @@ import { useMediaQuery } from "@mantine/hooks"
 import { IconStack2 } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { usePresentationStore } from "@/store/presentation"
 
 import { PresentMenu, ShareMenu } from "./PresentMenu"
@@ -30,27 +31,29 @@ function useFoldedLayers(): boolean {
 function LayersMenu({ children }: { children: ReactNode }) {
 	const { t } = useI18n()
 	return (
-		<Popover
-			position="bottom-end"
-			width={280}
-			shadow="md"
-			trapFocus
-			returnFocus
-		>
-			<Popover.Target>
-				<Button
-					variant="subtle"
-					color="gray"
-					size="compact-sm"
-					style={{ flexShrink: 0 }}
-					leftSection={<IconStack2 size={16} aria-hidden />}
-					aria-haspopup="dialog"
-				>
-					{t("solarSystem.present.layers")}
-				</Button>
-			</Popover.Target>
-			<Popover.Dropdown>{children}</Popover.Dropdown>
-		</Popover>
+		<Hint text={t("solarSystem.present.layersHint")}>
+			<Popover
+				position="bottom-end"
+				width={280}
+				shadow="md"
+				trapFocus
+				returnFocus
+			>
+				<Popover.Target>
+					<Button
+						variant="subtle"
+						color="gray"
+						size="compact-sm"
+						style={{ flexShrink: 0 }}
+						leftSection={<IconStack2 size={16} aria-hidden />}
+						aria-haspopup="dialog"
+					>
+						{t("solarSystem.present.layers")}
+					</Button>
+				</Popover.Target>
+				<Popover.Dropdown>{children}</Popover.Dropdown>
+			</Popover>
+		</Hint>
 	)
 }
 

@@ -219,12 +219,40 @@
 				"standard": [
 					"Los interruptores están en el panel de arriba a la derecha; en pantallas pequeñas y al presentar, están en «Capas».",
 					"Pulsa L para ocultar o mostrar todos los nombres a la vez.",
-					"Todas las lunas solo funciona si Lunas está activado."
+					"Todas las lunas solo funciona si Lunas está activado.",
+					"Deja el puntero sobre un interruptor, o mantenlo pulsado, para leer qué hace; uno en gris dice qué activar primero."
 				],
 				"simple": [
 					"Busca los interruptores arriba a la derecha.",
 					"Haz clic en uno para apagarlo, y otra vez para volver a encenderlo.",
-					"Pulsa L para ocultar todos los nombres."
+					"Pulsa L para ocultar todos los nombres.",
+					"Deja el ratón sobre un interruptor para saber qué hace."
+				]
+			}
+		},
+		"hints": {
+			"title": {
+				"standard": "¿Qué hace este interruptor?",
+				"simple": "¿Qué hace este botón?"
+			},
+			"what": {
+				"standard": "Cada interruptor, opción y botón del sistema solar se explica en una frase: qué hace y para qué sirve. Un interruptor en gris dice qué activar primero.",
+				"simple": "Cada interruptor y cada botón te puede decir qué hace."
+			},
+			"why": {
+				"standard": "Puedes preparar una clase sin probar cada interruptor para saber qué hace: qué son los marcadores o por qué «Siempre iluminado» esconde el día y la noche.",
+				"simple": "Nunca tienes que adivinar qué hace un interruptor."
+			},
+			"how": {
+				"standard": [
+					"Ratón: deja el puntero medio segundo sobre un interruptor o su nombre.",
+					"Teclado: llega a él con Tab; los lectores de pantalla leen la misma frase.",
+					"Táctil: mantén pulsado el interruptor o su nombre. Un toque rápido sigue cambiándolo sin más.",
+					"Esc cierra la pista."
+				],
+				"simple": [
+					"Deja el ratón quieto sobre un interruptor.",
+					"En una tableta, mantén el dedo sobre el interruptor."
 				]
 			}
 		},
@@ -975,6 +1003,12 @@
 		"name": {
 			"action": "Ver el nombre de un mundo",
 			"mouse": "Pasar el puntero por encima"
+		},
+		"hint": {
+			"action": "Ver qué hace un interruptor o un botón",
+			"mouse": "Deja el puntero encima",
+			"touch": "Mantenlo pulsado",
+			"keys": "Llega a él con Tab"
 		},
 		"siblings": {
 			"action": "Mundo siguiente o anterior de la misma familia",

@@ -23,6 +23,7 @@ import {
 
 import { eventTourId, type SkyEvent } from "@/data/skyEvents"
 import { useI18n, type I18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
 
@@ -177,19 +178,28 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 				</>
 			)}
 			{views.length > 1 && (
-				<SegmentedControl<EventView>
-					fullWidth
-					size="sm"
-					radius="md"
-					color="orange"
-					aria-label={t("solarSystem.events.views.label")}
-					value={view}
-					onChange={showEventView}
-					data={views.map((v) => ({
-						value: v,
-						label: t(`solarSystem.events.views.${v}`),
-					}))}
-				/>
+				<Hint
+					options={Object.fromEntries(
+						views.map((v) => [
+							v,
+							t(`solarSystem.events.hint.${v}.${event.group}`),
+						]),
+					)}
+				>
+					<SegmentedControl<EventView>
+						fullWidth
+						size="sm"
+						radius="md"
+						color="orange"
+						aria-label={t("solarSystem.events.views.label")}
+						value={view}
+						onChange={showEventView}
+						data={views.map((v) => ({
+							value: v,
+							label: t(`solarSystem.events.views.${v}`),
+						}))}
+					/>
+				</Hint>
 			)}
 			{!collapsed && (
 				<>
@@ -221,15 +231,17 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 			)}
 			<div className={classes.controls}>
 				<ShareButton event={event} stop={index} />
-				<Button
-					color="orange"
-					size="sm"
-					onClick={leaveEvent}
-					title={t("solarSystem.events.leaveLabel")}
-					data-testid="event-leave"
-				>
-					{t("solarSystem.events.leave")}
-				</Button>
+				<Hint text={t("solarSystem.events.leaveLabel")}>
+					<Button
+						color="orange"
+						size="sm"
+						onClick={leaveEvent}
+						aria-label={t("solarSystem.events.leaveLabel")}
+						data-testid="event-leave"
+					>
+						{t("solarSystem.events.leave")}
+					</Button>
+				</Hint>
 			</div>
 		</section>
 	)

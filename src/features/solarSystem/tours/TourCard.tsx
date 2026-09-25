@@ -22,6 +22,7 @@ import {
 
 import { eventOfTourId } from "@/data/skyEvents"
 import type { Tour, TourLink } from "@/data/tours"
+import { Hint } from "@/primitives/hint"
 import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
@@ -270,7 +271,7 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 					<div className={classes.controls}>
 						{back}
 						<div className={classes.tools}>
-							<Tooltip label={t("solarSystem.tours.autoplayHint")} withinPortal>
+							<Hint text={t("solarSystem.tours.autoplayHint")}>
 								<ActionIcon
 									variant={auto ? "filled" : "subtle"}
 									color={auto ? "orange" : "gray"}
@@ -286,7 +287,7 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 										<IconPlayerPlay size={18} aria-hidden />
 									)}
 								</ActionIcon>
-							</Tooltip>
+							</Hint>
 							<ShareButton tour={tour} index={index} />
 						</div>
 						{next}

@@ -29,6 +29,7 @@ import { IconBolt, IconBoltOff, IconCheck, IconX } from "@tabler/icons-react"
 
 import { useI18n, type I18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { Hint } from "@/primitives/hint"
 import { kmToAu } from "@/sim"
 import {
 	SPEED_OF_LIGHT_KM_S,
@@ -432,35 +433,37 @@ const OpenButton = () => {
 	const jd = useThrottledSimTime()
 	const seconds = pulse === null ? null : secondsSince(pulse.emitJD, jd)
 	const open = (
-		<UnstyledButton
-			className={classes.open}
-			onClick={() => setOpen(true)}
-			title={i18n.t("solarSystem.light.openHint")}
-			aria-expanded={false}
-		>
-			<IconBolt size={16} className={classes.icon} />
-			<span>{i18n.t("solarSystem.light.open")}</span>
-			{onScreen && seconds !== null && (
-				<span className={classes.openClock}>
-					{formatDuration(seconds, i18n, true)}
-				</span>
-			)}
-		</UnstyledButton>
+		<Hint text={i18n.t("solarSystem.light.openHint")}>
+			<UnstyledButton
+				className={classes.open}
+				onClick={() => setOpen(true)}
+				aria-expanded={false}
+			>
+				<IconBolt size={16} className={classes.icon} />
+				<span>{i18n.t("solarSystem.light.open")}</span>
+				{onScreen && seconds !== null && (
+					<span className={classes.openClock}>
+						{formatDuration(seconds, i18n, true)}
+					</span>
+				)}
+			</UnstyledButton>
+		</Hint>
 	)
 	if (!onScreen) return open
 	const stop = i18n.t("solarSystem.light.stop")
 	return (
 		<Group gap={4} wrap="nowrap">
 			{open}
-			<UnstyledButton
-				className={classes.stopChip}
-				onClick={clear}
-				aria-label={stop}
-				title={stop}
-				data-light-stop="hud"
-			>
-				<IconX size={14} stroke={2.5} />
-			</UnstyledButton>
+			<Hint text={i18n.t("solarSystem.light.stopHint")}>
+				<UnstyledButton
+					className={classes.stopChip}
+					onClick={clear}
+					aria-label={stop}
+					data-light-stop="hud"
+				>
+					<IconX size={14} stroke={2.5} />
+				</UnstyledButton>
+			</Hint>
 		</Group>
 	)
 }

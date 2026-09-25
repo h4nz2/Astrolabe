@@ -1,8 +1,9 @@
 import { useEffect } from "react"
-import { ActionIcon, Tooltip } from "@mantine/core"
+import { ActionIcon } from "@mantine/core"
 import { IconHome2 } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { useSimStore } from "@/store/sim"
 
 import { hasModifier, isEditableTarget } from "./keyboard"
@@ -41,7 +42,7 @@ const OverviewButton = () => {
 	const label = t("solarSystem.overview")
 
 	return (
-		<Tooltip label={label}>
+		<Hint text={t("solarSystem.overviewHint")}>
 			<ActionIcon
 				variant="subtle"
 				color="gray"
@@ -52,7 +53,7 @@ const OverviewButton = () => {
 			>
 				<IconHome2 size={18} />
 			</ActionIcon>
-		</Tooltip>
+		</Hint>
 	)
 }
 

@@ -45,6 +45,7 @@ src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lightin
 src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, intro/, labels/, lighting/, light/, postcard/, present/, rings/, sound/, tours/, ui/,
                              birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43)
+src/primitives/hint/         hover hints for every control (#39, see Hints)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 public/assets/sounds/        the real space recordings (#32) and their CREDITS.md (sources, licences)
@@ -59,6 +60,8 @@ public/assets/sounds/        the real space recordings (#32) and their CREDITS.m
 - Per-frame motion never goes through React state: `useFrame` and mutate refs.
 - Every user-facing string goes through i18n (`useI18n().t`, see i18n) with an entry in every shipped locale; numbers,
   units and dates through its formatters, body names through `bodyName`/`useBodyName`, never `body.name`.
+- Every toggle, and every choice that changes the scene and is not self-explanatory, has a hint: wrap it in
+  `<Hint text={t("…hint.x")}>` (see Hints). No `title=` attributes and no Mantine `Tooltip` for this.
 - Nobody commits; the orchestrator commits at the end of each phase.
 - Done means `pnpm typecheck && pnpm lint && pnpm test && pnpm build` pass (plus `pnpm test:e2e` when the UI changed).
 
@@ -1167,6 +1170,57 @@ rule decides the defaults: **off until asked, never a surprise**.
   while off, and a chevron popover with the master switch, volume slider, the two layers and all recordings);
   `BodyRecording` in the body card under the facts (Listen/Stop, the explanation and the credit with the licence
   linked to its source, always visible so nothing depends on hearing it).
+
+## Hints (`src/primitives/hint`; #39)
+
+What a control does and why you would want it, in one sentence, where the control is: one shared mechanism for every
+switch, option, and HUD button in the solar system page. Hints are also the seed text of each control's help entry
+(#43).
+
+```tsx
+import { Hint, hintKey } from "@/primitives/hint"
+
+<Hint text={t("solarSystem.layers.hint.orbits")}><Switch label={t("solarSystem.layers.orbits")} … /></Hint>
+<Hint text={t("…hint.allMoons")} reason={showMoons ? undefined : t("…reason.allMoons")}><Switch disabled={!showMoons} … /></Hint>
+<Hint options={{ trueScale: t(…), textbook: t(…) }}><SegmentedControl data={…} /></Hint>  // keyed by radio value
+<Hint options={{ pause: t(…), play: t(…) }}><ActionIcon.Group><ActionIcon {...hintKey("pause")} />…</ActionIcon.Group></Hint>
+```
+
+- **Help page (#43):** the entry `hints` (group Looking around) and the controls row `hint` describe the mechanism; a
+  hint sentence is the natural seed of its control's help entry.
+- **Adding a control:** wrap it in `<Hint text>`, add the text under the feature's `hint` namespace in every locale
+  (plain = standard level, plus `@simple`; `@advanced` where an older reader gains something), and, if it can be
+  disabled, a `reason` saying what to turn on first. That is all: no ids, no props on the control.
+- **Zone:** `<Hint>` wraps its children in a `display: contents` span, so it adds no box: flex gaps, grids and
+  `ActionIcon.Group`'s first/last-child borders stay as they were. It wraps a `Popover`/`Menu` from outside (the
+  target gets the hint; events from the portaled dropdown are ignored because they are not DOM descendants).
+- **Triggers** (`controller.ts`, pure and unit-tested with fake timers): mouse/pen hover after 500 ms (the next hint
+  opens at once within 400 ms of one closing, so moving along a row does not wait again); keyboard focus after 250 ms,
+  only when `:focus-visible` and not within 1 s of a pointer press (a tapped text field is always focus-visible);
+  touch: a **long press** (500 ms, 10 px slop) shows it, and the click that ends the long press is swallowed in the
+  capture phase before React sees it, so a plain tap still just toggles and a long press never does. The long-press
+  hint stays until the next touch anywhere. A mouse press hides the hint until the pointer leaves; Escape, scrolling
+  and resizing dismiss it. The hint is `pointer-events: none`: in a dense panel it lies over the neighbouring row,
+  which must stay clickable, so it is not "hoverable" in the WCAG 1.4.13 sense (it stays while the pointer is on
+  the control, and its text is always the control's description). One hint is open in the whole page. The zone also blocks the browser's long-press callout and text selection.
+- **Placement** (`placement.ts`, pure and unit-tested): above the control when it fits, else below, else the roomier
+  side; centred and clamped into the viewport, 8 px from the control, never overlapping it. The anchor is the whole
+  control (the union of the zone's children: a Switch's track and label) or, for options, the option's label/button.
+- **Accessibility:** each hint is a `role="tooltip"` element portaled to `<body>` and kept in the DOM while hidden;
+  the control's `aria-describedby` points at it permanently (appended to any description the control already has),
+  so screen readers read it on focus whether or not it is showing, disabled switches included. A disabled switch's
+  `reason` is part of that description. Disabled controls stay out of the tab order (the platform convention), so
+  keyboard users meet their reason through the screen reader or by hovering; the enabling switch sits right before.
+- **Look:** dark box, `sm` text; `html[data-presenting]` makes it larger (`md`, on top of the projector's bigger root
+  font), `html[data-contrast="high"]` white on black with a white border, `html[data-chrome="hidden"]` hides it.
+- **Where it is used:** the scene layer switches, the scale presets and the Sizes/Distances lies (presets reuse
+  `solarSystem.scale.summary.*`), the spin modes (reusing `solarSystem.spin.hint.*`, one per mode), reverse / pause /
+  play / Now / the speed presets, the point-of-view menu, the Present, Share and Layers buttons, the projector and
+  high-contrast switches, the postcard's switches and button, the birthday, hunt and light buttons and the two
+  "stop the flash" buttons (#38), the sound toggle and its settings button (#32), the sky-tonight launcher and "Show me in space" (#36), the Help menu (#30), the spacecraft menu, its two switches and "Show" (#35), the tours menu and the tour card's autoplay toggle (#28), the Help button (every page) and its "more" chevron (#43), and Overview. The tour card's share button keeps its Mantine `Tooltip`: it doubles as the "Link copied" confirmation. Plain tabs (the light
+  panel's, the birthday panel's) have none, by design. A switch that already shows a Mantine `description` under
+  its label is explained in place; wrap it in `<Hint>` only to add something the description does not say (the
+  projector switch) or a disabled `reason` (high contrast), as the sound panel's switches show.
 
 ## Guided tours (`src/data/tours`, `src/store/tour.ts`, `features/solarSystem/tours/`; #28)
 

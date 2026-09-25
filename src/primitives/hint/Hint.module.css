@@ -1,0 +1,75 @@
+/* The zone adds no box: groups, flex rows and ActionIcon.Group borders stay as they were. */
+.zone {
+	display: contents;
+}
+
+/* a long press shows the hint, not the browser's text selection or callout */
+.zone * {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.hint {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	box-sizing: border-box;
+	max-width: min(20rem, calc(100vw - 16px));
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--mantine-color-dark-3);
+	border-radius: var(--mantine-radius-md);
+	background: var(--mantine-color-dark-7);
+	box-shadow: var(--mantine-shadow-md);
+	color: var(--mantine-color-gray-0);
+	font-size: var(--mantine-font-size-sm);
+	line-height: 1.45;
+	text-align: left;
+	white-space: normal;
+	overflow-wrap: break-word;
+	/* never in the way: the switches it lies over stay clickable and hoverable */
+	pointer-events: none;
+	animation: appear 120ms ease-out;
+}
+
+/* why a disabled control is disabled, and what to do */
+.reason {
+	display: block;
+	margin-top: 0.25rem;
+	color: var(--mantine-color-orange-3);
+	font-weight: 600;
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hint {
+		animation: none;
+	}
+}
+
+/* projector mode (#29): readable from the back of the room */
+:global(html[data-presenting]) .hint {
+	max-width: min(26rem, calc(100vw - 16px));
+	font-size: var(--mantine-font-size-md);
+}
+
+:global(html[data-contrast="high"]) .hint {
+	border: 2px solid #ffffff;
+	background: #000000;
+	color: #ffffff;
+}
+
+:global(html[data-contrast="high"]) .reason {
+	color: #ffc078;
+}
+
+/* hidden controls take their hints with them */
+:global(html[data-chrome="hidden"]) .hint {
+	display: none;
+}

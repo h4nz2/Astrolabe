@@ -1,10 +1,4 @@
-import {
-	ActionIcon,
-	Button,
-	SegmentedControl,
-	Select,
-	Tooltip,
-} from "@mantine/core"
+import { ActionIcon, Button, SegmentedControl, Select } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import {
 	IconPlayerPause,
@@ -13,6 +7,7 @@ import {
 } from "@tabler/icons-react"
 
 import { isoMinuteUTC, useI18n } from "@/i18n"
+import { Hint, hintKey } from "@/primitives/hint"
 import { jdToDate } from "@/sim"
 import { WARP_PRESETS, useSimStore } from "@/store/sim"
 
@@ -104,9 +99,16 @@ const Transport = () => {
 	const reversing = !paused && direction === -1
 	const playing = !paused && direction === 1
 	return (
-		<ActionIcon.Group aria-label={t("solarSystem.time.controls")}>
-			<Tooltip label={t("solarSystem.time.reverseHint")} openDelay={400}>
+		<Hint
+			options={{
+				reverse: t("solarSystem.time.reverseHint"),
+				pause: t("solarSystem.time.pauseHint"),
+				play: t("solarSystem.time.playHint"),
+			}}
+		>
+			<ActionIcon.Group aria-label={t("solarSystem.time.controls")}>
 				<ActionIcon
+					{...hintKey("reverse")}
 					variant={reversing ? "filled" : "default"}
 					color="orange"
 					size="lg"
@@ -120,9 +122,8 @@ const Transport = () => {
 						<IconPlayerPlay size={18} className={classes.flipped} />
 					)}
 				</ActionIcon>
-			</Tooltip>
-			<Tooltip label={t("solarSystem.time.pauseHint")} openDelay={400}>
 				<ActionIcon
+					{...hintKey("pause")}
 					variant={paused ? "filled" : "default"}
 					color="orange"
 					size="lg"
@@ -132,9 +133,8 @@ const Transport = () => {
 				>
 					<IconPlayerPause size={18} />
 				</ActionIcon>
-			</Tooltip>
-			<Tooltip label={t("solarSystem.time.playHint")} openDelay={400}>
 				<ActionIcon
+					{...hintKey("play")}
 					variant={playing ? "filled" : "default"}
 					color="orange"
 					size="lg"
@@ -148,8 +148,8 @@ const Transport = () => {
 						<IconPlayerPlay size={18} />
 					)}
 				</ActionIcon>
-			</Tooltip>
-		</ActionIcon.Group>
+			</ActionIcon.Group>
+		</Hint>
 	)
 }
 
@@ -177,33 +177,37 @@ const SpeedPresets = () => {
 	}))
 	const choose = (value: number) => setTimeWarp(withDirection(value, direction))
 
-	return compact ? (
-		<Select
-			size="xs"
-			radius="md"
-			aria-label={t("solarSystem.time.warp.label")}
-			value={String(speed)}
-			onChange={(value) => {
-				if (value !== null) choose(Number(value))
-			}}
-			data={items.map((item) => ({
-				label: item.label,
-				value: String(item.value),
-			}))}
-			allowDeselect={false}
-			comboboxProps={{ shadow: "md" }}
-			className={classes.speedSelect}
-		/>
-	) : (
-		<SegmentedControl<number>
-			size="xs"
-			radius="md"
-			color="orange"
-			aria-label={t("solarSystem.time.warp.label")}
-			value={speed}
-			onChange={choose}
-			data={items}
-		/>
+	return (
+		<Hint text={t("solarSystem.time.warp.hint")}>
+			{compact ? (
+				<Select
+					size="xs"
+					radius="md"
+					aria-label={t("solarSystem.time.warp.label")}
+					value={String(speed)}
+					onChange={(value) => {
+						if (value !== null) choose(Number(value))
+					}}
+					data={items.map((item) => ({
+						label: item.label,
+						value: String(item.value),
+					}))}
+					allowDeselect={false}
+					comboboxProps={{ shadow: "md" }}
+					className={classes.speedSelect}
+				/>
+			) : (
+				<SegmentedControl<number>
+					size="xs"
+					radius="md"
+					color="orange"
+					aria-label={t("solarSystem.time.warp.label")}
+					value={speed}
+					onChange={choose}
+					data={items}
+				/>
+			)}
+		</Hint>
 	)
 }
 
@@ -224,7 +228,7 @@ const TimeControls = () => {
 				<TimeTravel>
 					<SimDateTime />
 				</TimeTravel>
-				<Tooltip label={t("solarSystem.time.nowHint")} openDelay={400}>
+				<Hint text={t("solarSystem.time.nowHint")}>
 					<Button
 						variant="subtle"
 						color="orange"
@@ -233,7 +237,7 @@ const TimeControls = () => {
 					>
 						{t("solarSystem.time.now")}
 					</Button>
-				</Tooltip>
+				</Hint>
 				<BirthdayButton />
 				<HuntButton />
 			</div>
