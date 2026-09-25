@@ -356,26 +356,851 @@
 			]
 		}
 	},
-	"phobos": { "name": "Phobos" },
-	"deimos": { "name": "Deimos" },
-	"io": { "name": "Io" },
-	"europa": { "name": "Europa" },
-	"ganymede": { "name": "Ganymede" },
-	"callisto": { "name": "Callisto" },
-	"mimas": { "name": "Mimas" },
-	"enceladus": { "name": "Enceladus" },
-	"tethys": { "name": "Tethys" },
-	"dione": { "name": "Dione" },
-	"rhea": { "name": "Rhea" },
-	"titan": { "name": "Titan" },
-	"hyperion": { "name": "Hyperion" },
-	"iapetus": { "name": "Iapetus" },
-	"miranda": { "name": "Miranda" },
-	"ariel": { "name": "Ariel" },
-	"umbriel": { "name": "Umbriel" },
-	"titania": { "name": "Titania" },
-	"oberon": { "name": "Oberon" },
-	"triton": { "name": "Triton" },
-	"nereid": { "name": "Nereid" },
-	"proteus": { "name": "Proteus" }
+	"phobos": {
+		"name": "Phobos",
+		"tagline": "The doomed moon of Mars",
+		"description": {
+			"simple": "Phobos is the bigger of Mars’s two tiny moons. It is a dark, lumpy rock shaped a bit like a potato. Phobos races around Mars so fast that it goes around about three times a day. Very slowly, it is falling toward Mars – and one day it will break apart.",
+			"standard": "Phobos is a dark, potato-shaped moon only about 22 km across, orbiting just 6,000 km above the surface of Mars. It circles Mars in 7 hours and 39 minutes – faster than the planet turns. So, seen from Mars, it rises in the west and sets in the east, often twice in a single day. Mars’s gravity is slowly pulling it closer, by about 2 m every hundred years, and in roughly 30 to 50 million years Phobos will probably be torn apart into a ring of rubble or crash onto Mars.",
+			"advanced": "Phobos orbits at a semi-major axis of 9,376 km, well inside Mars’s synchronous orbit (about 20,400 km). The tidal bulge it raises on Mars therefore lags behind it and drains its orbital energy, so Phobos spirals inward by about 1.8 cm per year. Within roughly 30–50 million years it should cross the Roche limit, where tidal forces overcome its weak self-gravity: a loosely bound rubble pile would spread into a ring, while a stronger body might hit Mars first. The long parallel grooves across its surface may be early signs of this tidal stress, although some may instead be trails of debris from impacts."
+		},
+		"facts": {
+			"simple": [
+				"Phobos has a giant crater called Stickney that is almost half as wide as the whole moon.",
+				"Seen from Mars, Phobos rises in the west and sets in the east – the opposite of our Sun and Moon.",
+				"On Phobos you would weigh so little that one strong jump could carry you hundreds of metres high."
+			],
+			"standard": [
+				"Stickney crater is about 9 km wide – the impact that made it may have nearly shattered Phobos.",
+				"The crater is named after Angeline Stickney, the wife of Asaph Hall, who encouraged him to keep searching for moons of Mars.",
+				"Asaph Hall discovered Phobos in August 1877, six days after he had found Deimos."
+			],
+			"advanced": [
+				"Its orbital period of 7 h 39 min is only about a third of a Martian sol (24 h 37 min), so it laps the planet’s rotation.",
+				"Phobos is very dark (geometric albedo about 0.07), and its low density of about 1.86 g/cm³ points to a porous interior, perhaps a rubble pile.",
+				"Surface gravity is only about 0.0057 m/s², roughly 1/1,700 of Earth’s, and the escape velocity is about 11 m/s (40 km/h)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"A car on a motorway could drive from one end of Phobos to the other in about a quarter of an hour."
+			],
+			"standard": [
+				"Phobos sinks toward Mars by about the height of a door every hundred years – slow, but enough to doom it within some tens of millions of years."
+			],
+			"advanced": [
+				"Phobos orbits only about 6,000 km above Mars – roughly the flight distance from Frankfurt to New York."
+			]
+		}
+	},
+	"deimos": {
+		"name": "Deimos",
+		"tagline": "A moon like a star",
+		"description": {
+			"simple": "Deimos is the smaller moon of Mars – only about 12 km across. It is covered in soft, fine dust that fills up its craters, so it looks smooth. From Mars, Deimos is so small and far away that it looks like a bright star. Its name means Terror, and its brother moon Phobos means Fear.",
+			"standard": "Deimos is a tiny, lumpy moon about 12 km across that orbits Mars every 30 hours at a distance of about 23,500 km. A thick layer of dust fills many of its craters, so it looks much smoother than Phobos. The American astronomer Asaph Hall discovered it in August 1877, a few days before Phobos, and both moons were named after Phobos and Deimos – Fear and Terror – who in Greek myth go into battle with the war god Ares, known to the Romans as Mars. Scientists still debate whether the two moons are captured asteroids or formed from debris thrown up by a giant impact on Mars.",
+			"advanced": "Deimos (about 16 × 12 × 10 km) orbits at 23,463 km, just outside Mars’s synchronous orbit, so tides push it very slowly outward instead of pulling it inward like Phobos. Its 30.3-hour period is only a little longer than a Martian sol, so it drifts very slowly across the sky: it rises in the east and stays above the horizon for more than two days. Both moons are dark and spectrally resemble primitive, carbon-rich asteroids, which suggests capture, but their nearly circular orbits close to Mars’s equatorial plane fit better with formation from a debris disk after a large impact. Japan’s MMX mission is to bring a sample of Phobos back to Earth around 2031 and to observe Deimos along the way, which may settle the question."
+		},
+		"facts": {
+			"simple": [
+				"If you jumped on Deimos, it would take many minutes before you came back down.",
+				"Deimos was discovered in 1877 by an astronomer called Asaph Hall.",
+				"Deimos takes a little more than one day to go around Mars."
+			],
+			"standard": [
+				"At full phase, Deimos would shine in the Martian sky about as brightly as Venus does in ours.",
+				"Two craters on Deimos are named Swift and Voltaire, after writers who imagined two moons of Mars more than a century before they were discovered.",
+				"Deimos is only about half as wide as Phobos and has roughly a seventh of its mass."
+			],
+			"advanced": [
+				"Surface gravity is only about 0.003 m/s², roughly 1/3,000 of Earth’s.",
+				"Deimos’s orbit is almost perfectly circular (eccentricity about 0.0003) and lies close to Mars’s equatorial plane.",
+				"Asaph Hall found Deimos on 12 August 1877 with the 26-inch refractor of the US Naval Observatory in Washington, then the largest refracting telescope in the world."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Running once around Deimos would be about as far as a marathon."
+			],
+			"standard": [
+				"Seen from Mars, Deimos is barely more than a point of light – to an astronaut it would look like a bright star slowly drifting across the sky."
+			],
+			"advanced": [
+				"Deimos’s escape velocity is only about 5.6 m/s (20 km/h) – a cyclist riding at city speed off a ramp could leave it for good."
+			]
+		}
+	},
+	"io": {
+		"name": "Io",
+		"tagline": "The volcano moon",
+		"description": {
+			"simple": "Io is the most volcanic place we know of. Hundreds of volcanoes pour out lava and shoot fountains of gas and dust high into the sky. Its yellow, orange and red colours come from sulfur. Jupiter and its other big moons keep squeezing Io, and all that squeezing heats up its inside.",
+			"standard": "Io is slightly larger than our Moon and is the most volcanically active world known: more than 400 active volcanoes have been found there, some throwing plumes of gas and dust hundreds of kilometres high. The heat does not come from the Sun but from tides. Io’s orbit is locked in step with the moons Europa and Ganymede, which keeps it slightly oval, so Jupiter’s enormous gravity squeezes and stretches Io as its distance changes. Galileo Galilei discovered Io in January 1610, together with Europa, Ganymede and Callisto – the first moons ever found around another planet.",
+			"advanced": "Io is caught in a 1:2:4 Laplace resonance: for every orbit of Ganymede, Europa completes two and Io four. The regular tugs keep Io’s orbit slightly eccentric (e ≈ 0.004), so its distance from Jupiter – and the tidal bulge Jupiter raises – changes during each 42.5-hour orbit, and friction from this constant flexing releases roughly 10¹⁴ W of heat. That heat drives silicate lava eruptions at up to about 1,600 K, hotter than most lava on Earth today, and sulfur-rich plumes up to about 500 km high, resurfacing the moon so quickly that no impact craters have been found. Gas from Io’s volcanoes feeds a doughnut of charged particles around Jupiter, the Io plasma torus."
+		},
+		"facts": {
+			"simple": [
+				"Io’s volcanoes were first spotted in 1979, in pictures taken by the Voyager 1 spacecraft.",
+				"Io has no craters from space rocks, because new lava keeps covering them up.",
+				"Io goes around Jupiter in less than two days."
+			],
+			"standard": [
+				"Loki Patera, the most powerful volcano on Io, is a volcanic depression about 200 km across filled with a lake of lava.",
+				"Io orbits inside Jupiter’s intense radiation belts, where an unprotected astronaut would receive a deadly dose in less than a day.",
+				"From Io, Jupiter looks almost 40 times as wide as our full Moon does from Earth."
+			],
+			"advanced": [
+				"Gravity measurements from Juno’s close flybys in December 2023 and February 2024 suggest that Io has no shallow global magma ocean; its volcanoes seem to be fed by separate magma reservoirs.",
+				"With a mean density of about 3.53 g/cm³, Io is the densest known moon – a rocky, iron-cored body with almost no water.",
+				"Surface gravity is 1.80 m/s², about 18 % of Earth’s."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Io is a little bigger than our Moon – but instead of quiet grey dust, it is covered with erupting volcanoes."
+			],
+			"standard": [
+				"Io’s volcanic plumes can rise about 500 km high – higher than the International Space Station orbits above Earth."
+			],
+			"advanced": [
+				"Jupiter’s tides raise and lower Io’s solid surface by up to about 100 m every orbit – roughly the height of a 30-storey building."
+			]
+		}
+	},
+	"europa": {
+		"name": "Europa",
+		"tagline": "An ocean under the ice",
+		"description": {
+			"simple": "Europa is a bit smaller than our Moon and is covered in white ice with long reddish-brown cracks. Under the ice there is probably a huge, deep ocean of salty water. The ice sits on top of it like a lid on a pot. Because living things on Earth need water, scientists think Europa is one of the best places to look for life beyond Earth.",
+			"standard": "Europa is slightly smaller than our Moon, but beneath its icy shell – probably a few tens of kilometres thick – lies a global ocean of salty liquid water, perhaps around 100 km deep. Tides from Jupiter flex the moon and help keep that ocean from freezing. With water, chemical ingredients and a source of energy, Europa is one of the most promising places to search for life beyond Earth. NASA’s Europa Clipper spacecraft launched in October 2024 and is due to reach Jupiter in 2030 to find out whether Europa could support life.",
+			"advanced": "Magnetometer data from the Galileo spacecraft revealed a magnetic field induced by Jupiter’s rotating field – best explained by an electrically conducting, salty ocean below the ice. The ice shell, estimated at roughly 10–30 km thick, is geologically young, probably only tens of millions of years old, with cracks, ridges and chaos terrain where water or warm ice may have reached the surface. The ocean is thought to lie directly on a rocky seafloor, where reactions between water and rock could supply chemical energy, as at hydrothermal vents on Earth. Europa Clipper will make dozens of close flybys to measure the thickness of the ice, the saltiness of the ocean and the composition of the surface."
+		},
+		"facts": {
+			"simple": [
+				"Europa’s icy surface is one of the smoothest in the solar system – it has hardly any big mountains or craters.",
+				"It is very cold on Europa’s surface: about −160 °C near the equator.",
+				"Europa goes around Jupiter in about three and a half days."
+			],
+			"standard": [
+				"Galileo Galilei discovered Europa in January 1610, together with Jupiter’s three other large moons.",
+				"In 2023 the James Webb Space Telescope found carbon dioxide on Europa’s surface that scientists think came from the ocean below.",
+				"Telescopes have seen possible plumes of water vapour rising from Europa, but whether they are real is still debated."
+			],
+			"advanced": [
+				"Europa is in a 2:1 orbital resonance with Io and a 1:2 resonance with Ganymede, which maintains the small eccentricity (about 0.009) that drives its tidal heating.",
+				"Charged particles from Jupiter’s magnetosphere split the surface ice, producing a very thin oxygen atmosphere; Juno measurements suggest about 12 kg of oxygen per second.",
+				"Surface gravity is 1.31 m/s², about 13 % of Earth’s."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Europa’s ocean may be so deep that about ten Mount Everests stacked on top of each other would fit into it."
+			],
+			"standard": [
+				"Europa is smaller than our Moon, yet its hidden ocean may hold about twice as much water as all of Earth’s oceans."
+			],
+			"advanced": [
+				"Europa has only about 1/70 of Earth’s volume, but its ocean may contain two to three times as much water as all of Earth’s oceans combined."
+			]
+		}
+	},
+	"ganymede": {
+		"name": "Ganymede",
+		"tagline": "The biggest moon of all",
+		"description": {
+			"simple": "Ganymede is the biggest moon in the whole solar system. It is even bigger than the planet Mercury! Ganymede is made of rock and ice, and deep under its surface there is probably a hidden ocean. It is the only moon we know of that makes its own magnetism, just like Earth does.",
+			"standard": "Ganymede is the largest moon in the solar system: at 5,268 km across it is wider than the planet Mercury, although it has less than half of Mercury’s mass. It is the only moon known to generate its own magnetic field, which the Galileo spacecraft discovered in 1996. That field produces glowing aurorae, and the way they rock back and forth, observed by the Hubble Space Telescope, revealed a salty ocean hidden deep under the ice. ESA’s JUICE spacecraft, launched in 2023, is due to reach Jupiter in 2031 and go into orbit around Ganymede in 2034.",
+			"advanced": "Ganymede is fully differentiated, with an iron-rich core, a rocky mantle and thick layers of ice and water; convection in its liquid iron core probably drives an intrinsic dipole field of about 720 nT at the equator. This field carves out a small magnetosphere of its own inside Jupiter’s much larger one. In 2015, Hubble showed that Ganymede’s auroral ovals rock less than expected as Jupiter’s field sweeps past, because a conducting salty ocean, thought to lie about 150 km below the surface, induces a secondary field that counteracts the change. JUICE is planned to become the first spacecraft to orbit a moon other than our own, entering orbit around Ganymede in December 2034 to map its magnetic field, interior and ice shell."
+		},
+		"facts": {
+			"simple": [
+				"Ganymede was discovered more than 400 years ago, in 1610, by Galileo Galilei.",
+				"Ganymede has glowing lights near its poles, called aurorae, like the northern lights on Earth.",
+				"It takes Ganymede about a week to go around Jupiter."
+			],
+			"standard": [
+				"Ganymede’s hidden ocean may contain more water than all of Earth’s oceans.",
+				"Its surface has two kinds of terrain: dark, old, heavily cratered regions and lighter, younger regions crossed by long grooves and ridges.",
+				"In 2021 NASA’s Juno spacecraft flew just over 1,000 km above Ganymede, the closest any spacecraft had come in more than 20 years."
+			],
+			"advanced": [
+				"Surface gravity is 1.43 m/s², about 15 % of Earth’s – less than on our Moon (1.62 m/s²), even though Ganymede is much larger.",
+				"Its mean density of only about 1.94 g/cm³ means that Ganymede consists of roughly equal amounts of rock and water ice.",
+				"Ganymede is part of the 1:2:4 Laplace resonance, completing one orbit (7.15 days) for every two of Europa and four of Io."
+			]
+		},
+		"comparisons": {
+			"simple": ["Ganymede is about one and a half times as wide as our Moon."],
+			"standard": [
+				"Ganymede is bigger than the planet Mercury and even has its own magnetic field with aurorae – a moon that behaves like a small planet."
+			],
+			"advanced": [
+				"Ganymede is about 8 % wider than Mercury but has only about 45 % of its mass – most of the difference is made up of ice and water."
+			]
+		}
+	},
+	"callisto": {
+		"name": "Callisto",
+		"tagline": "The ancient crater world",
+		"description": {
+			"simple": "Callisto is Jupiter’s second-biggest moon and almost as big as the planet Mercury. Its dark surface is covered with craters from top to bottom. It has hardly changed for about 4 billion years, so it is like a very old diary of space rocks crashing into it. Callisto is far away from Jupiter’s dangerous radiation, so one day astronauts might build a base there.",
+			"standard": "Callisto is the third-largest moon in the solar system and almost exactly as wide as Mercury. Its surface is so crowded with craters that there is hardly any room left for new ones, and it has changed very little in about 4 billion years, because no volcanoes or moving plates wipe the craters away. Its biggest impact scar, the Valhalla basin, has a bright centre about 600 km wide, surrounded by rings that reach out about 1,800 km from its middle. Because Callisto orbits outside Jupiter’s strongest radiation belts, a NASA study has suggested it as a possible base for future human explorers.",
+			"advanced": "Callisto’s surface is saturated with craters – new impacts mostly erase older ones – and the crater density points to a surface roughly 4 billion years old, the oldest of the Galilean moons. Unlike Io, Europa and Ganymede, Callisto is not part of the Laplace resonance and receives almost no tidal heating; its interior appears to be only partly differentiated, a mixture of rock and ice. Even so, the Galileo spacecraft detected an induced magnetic field that may point to a salty ocean some 150–200 km below the surface. About 1.9 million km from Jupiter, it receives a surface radiation dose of only about 0.1 mSv per day, which is why NASA’s 2003 HOPE study chose Callisto as the target for a possible crewed mission with a surface base."
+		},
+		"facts": {
+			"simple": [
+				"Galileo Galilei discovered Callisto in January 1610, using one of the very first telescopes.",
+				"Callisto has no big mountains or volcanoes – mostly just craters.",
+				"It takes Callisto more than two weeks to go around Jupiter."
+			],
+			"standard": [
+				"Callisto takes 16.7 days to orbit Jupiter, longer than any of the other three large moons.",
+				"Scientists think a salty ocean may lie deep under Callisto’s crust, even though the moon is barely heated by tides.",
+				"Callisto is the darkest of the four Galilean moons, reflecting only about a fifth of the sunlight that hits it."
+			],
+			"advanced": [
+				"Callisto has only about a third of Mercury’s mass, even though it is almost as wide (4,821 km versus 4,879 km).",
+				"Bright, icy crater rims and dark, dusty lowlands give Callisto’s surface a mottled look (geometric albedo about 0.22).",
+				"Surface gravity is 1.24 m/s², about 13 % of Earth’s."
+			]
+		},
+		"comparisons": {
+			"simple": ["Callisto is almost exactly as wide as the planet Mercury."],
+			"standard": [
+				"Callisto’s craters are older than the oldest known fossils on Earth – its face has hardly changed for about 4 billion years."
+			],
+			"advanced": [
+				"A person standing on Callisto would receive about 0.1 mSv of radiation per day, roughly ten times Earth’s natural background – on Europa the dose would be tens of thousands of times higher."
+			]
+		}
+	},
+	"mimas": {
+		"name": "Mimas",
+		"tagline": "The Death Star moon",
+		"description": {
+			"simple": "Mimas is a small, icy moon of Saturn. On one side it has a gigantic crater, so it looks a lot like the Death Star from the Star Wars films. The crash that made the crater almost broke Mimas apart. Scientists now think there may even be a hidden ocean deep under its icy crust.",
+			"standard": "Mimas is only about 396 km across, but its biggest crater, Herschel, is 139 km wide – about a third of the whole moon. With its high walls and central peak, Herschel makes Mimas look like the Death Star from Star Wars. Mimas circles Saturn in just 22.6 hours, and its gravity helps keep the Cassini Division – the dark gap between Saturn’s two brightest rings – largely clear of ice particles. In 2024, scientists who studied tiny wobbles in Mimas’s orbit, measured by the Cassini spacecraft, reported that a young ocean may be hiding under its ice.",
+			"advanced": "Mimas (mean diameter 396 km, density 1.15 g/cm³) is made mostly of water ice and is the smallest of Saturn’s major round moons. Herschel crater, 139 km across with walls about 5 km high and a central peak about 6 km tall, records an impact that came close to shattering the moon. Ice particles at the inner edge of the Cassini Division orbit Saturn exactly twice for every orbit of Mimas; this 2:1 resonance pumps up their orbits and helps keep the gap largely clear. In 2024, Lainey and colleagues showed that the precession of Mimas’s orbit and its libration are best explained by a global ocean 20–30 km below the surface that is probably less than 25 million years old – young enough to have left no marks on the old, cratered surface, although some researchers still regard the evidence as indirect."
+		},
+		"facts": {
+			"simple": [
+				"Mimas goes once around Saturn in less than one Earth day.",
+				"Mimas is made mostly of ice, like a giant snowball.",
+				"On Mimas you could jump more than 100 times higher than on Earth."
+			],
+			"standard": [
+				"Herschel crater is named after William Herschel, who discovered Mimas in 1789.",
+				"Mimas’s gravity is only about 0.65 % of Earth’s, so a 50 kg student would weigh about as little there as a small can of lemonade does on Earth.",
+				"In 2010, a temperature map made by the Cassini spacecraft showed a warm-and-cold pattern on Mimas shaped like Pac-Man."
+			],
+			"advanced": [
+				"Surface gravity is about 0.064 m/s², roughly 0.65 % of Earth’s.",
+				"Tides from Saturn have stretched Mimas into a slightly egg-shaped body whose longest axis is about 10 % longer than its shortest.",
+				"Mimas’s relatively eccentric orbit (e ≈ 0.02) lets Saturn’s tides flex the moon – a possible heat source for its young ocean."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Mimas were a football, the Herschel crater would be about as wide as a cookie."
+			],
+			"standard": [
+				"If Earth had a crater as large for its size as Herschel is for Mimas, it would be about 4,500 km wide – wider than Australia."
+			],
+			"advanced": [
+				"Mimas orbits only 185,539 km from Saturn’s centre – less than half the distance from Earth to the Moon – yet completes each orbit in under 23 hours."
+			]
+		}
+	},
+	"enceladus": {
+		"name": "Enceladus",
+		"tagline": "The geyser moon",
+		"description": {
+			"simple": "Enceladus is a small, bright white moon of Saturn. Under its icy shell there is an ocean of salty water. At its south pole, water shoots out of long cracks like giant fountains and flies far out into space. There is so much spray that it makes one of Saturn’s rings.",
+			"standard": "Enceladus is only about 504 km across, yet it is one of the most active worlds in the solar system. From four long cracks near its south pole, nicknamed “tiger stripes”, jets of water vapour and ice grains shoot into space at about 400 m/s (1,440 km/h). The water comes from a salty ocean beneath the ice, and much of the spray spreads out along the moon’s orbit to form Saturn’s wide E ring. NASA’s Cassini spacecraft discovered the plumes in 2005 and later flew straight through them to “taste” them.",
+			"advanced": "Enceladus hides a global salty ocean beneath an ice shell roughly 20–25 km thick on average but only a few kilometres thick at the south pole. The heat that keeps it liquid comes mainly from tidal flexing: a 2:1 orbital resonance with Dione maintains Enceladus’s small orbital eccentricity (about 0.005), so Saturn’s tides squeeze the moon by different amounts during each orbit. By sampling the plumes and E-ring grains, Cassini found salts, silica nanoparticles that point to hot water–rock reactions on the seafloor, molecular hydrogen, a range of organic molecules and, as reported in 2023, phosphates. Together these make Enceladus’s ocean one of the most promising places to search for life beyond Earth."
+		},
+		"facts": {
+			"simple": [
+				"Enceladus is one of the shiniest things in the solar system – its fresh ice reflects most of the sunlight that hits it.",
+				"A spacecraft called Cassini flew right through the water spray and ‘tasted’ it.",
+				"It is freezing cold on the surface: about −200 °C."
+			],
+			"standard": [
+				"Cassini’s closest flyby, in 2008, passed only about 25 km above the surface of Enceladus.",
+				"The plumes throw out roughly 200 kg of water every second.",
+				"William Herschel discovered Enceladus on 28 August 1789, a few weeks before he found Mimas."
+			],
+			"advanced": [
+				"With a geometric albedo of about 1.4, Enceladus is among the most reflective bodies known, because ice grains from its plumes keep repainting its surface.",
+				"In 2023, Postberg and colleagues reported sodium phosphates in Enceladus-derived ice grains in the E ring, implying phosphate levels in the ocean probably at least 100 times higher than in Earth’s oceans.",
+				"Surface gravity is only 0.113 m/s² and escape velocity about 240 m/s, so many plume particles leave Enceladus entirely and feed the E ring."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"The water jets of Enceladus shoot out faster than a passenger jet flies."
+			],
+			"standard": [
+				"Enceladus is only about as wide as the distance from Berlin to Munich, yet it sprays enough water into space to feed a whole ring of Saturn."
+			],
+			"advanced": [
+				"The E ring fed by Enceladus spans hundreds of thousands of kilometres – several hundred times the diameter of the 504 km moon that supplies it."
+			]
+		}
+	},
+	"tethys": {
+		"name": "Tethys",
+		"tagline": "The scarred ice ball",
+		"description": {
+			"simple": "Tethys is a moon of Saturn made almost completely of ice. It has a huge crater called Odysseus and a giant crack called Ithaca Chasma that runs a long way around the moon. Two tiny moons travel along the same path as Tethys, one in front of it and one behind it.",
+			"standard": "Tethys is about 1,062 km across and made almost entirely of water ice – its density (0.98 g/cm³) is even slightly lower than that of liquid water. Its biggest crater, Odysseus, is about 400 km wide, more than a third of the moon’s diameter. A vast canyon system, Ithaca Chasma, about 100 km wide and more than 2,000 km long, stretches about three-quarters of the way around Tethys. Two tiny moons, Telesto and Calypso, share its orbit, one about 60° ahead of Tethys and one about 60° behind.",
+			"advanced": "With a density of 0.98 g/cm³, Tethys is almost pure water ice with only a small fraction of rock – the lowest density of Saturn’s major moons. Odysseus (about 400 km) is shallow for its size because the ice beneath it has slowly flowed and relaxed over time. Ithaca Chasma, up to about 3 km deep, may have formed when an early ocean froze and the expanding ice cracked the crust, or it may be linked to the Odysseus impact. Telesto and Calypso occupy Tethys’s L4 and L5 Lagrange points, where the combined gravity of Saturn and Tethys keeps small bodies moving in step with the larger moon."
+		},
+		"facts": {
+			"simple": [
+				"Tethys takes less than two days to go around Saturn.",
+				"Tethys is one of the brightest moons, because its ice is so clean.",
+				"Tethys’s two little travel companions are each only about as wide as a big city."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini discovered Tethys in 1684, the same year he found Dione.",
+				"Telesto and Calypso are only about 25 km and 21 km across.",
+				"Tethys orbits Saturn every 1.89 days at a distance of about 294,600 km."
+			],
+			"advanced": [
+				"Its geometric albedo of about 1.23 makes Tethys one of the most reflective bodies in the solar system, helped by a coating of ice grains from Enceladus’s E ring.",
+				"Cassini thermal maps showed a “Pac-Man” pattern on Tethys like the one on Mimas, caused by high-energy electrons from Saturn’s magnetosphere altering the surface of one hemisphere.",
+				"Surface gravity is about 0.146 m/s², roughly 1.5 % of Earth’s."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Tethys is so light for its size that, in a big enough bathtub, it would float like an ice cube."
+			],
+			"standard": [
+				"Ithaca Chasma is more than four times as long as the Grand Canyon and wraps about three-quarters of the way around the moon."
+			],
+			"advanced": [
+				"Relative to its size, Odysseus is like a crater on Earth about 4,800 km across – wider than the continental United States from coast to coast."
+			]
+		}
+	},
+	"dione": {
+		"name": "Dione",
+		"tagline": "The moon of ice cliffs",
+		"description": {
+			"simple": "Dione is an icy moon of Saturn. In the first pictures of it, scientists saw thin white streaks and wondered what they were. Later, closer pictures showed that they are huge, bright cliffs of ice. Two tiny moons travel along Dione’s path around Saturn, one in front and one behind.",
+			"standard": "Dione is about 1,123 km across and made of rock and ice. Images from the Voyager probes around 1980 showed bright, wispy streaks on one side; in 2004–2005 the Cassini spacecraft revealed that this “wispy terrain” is really a network of canyons lined with ice cliffs hundreds of metres high. Two small moons, Helene and Polydeuces, share Dione’s orbit, one about 60° ahead and one about 60° behind. Measurements of Dione’s gravity suggest that an ocean may still exist deep beneath the ice.",
+			"advanced": "Dione (density 1.48 g/cm³) consists of roughly equal masses of rock and water ice. The bright wisps on its trailing hemisphere are tectonic fractures (chasmata) whose steep walls expose fresh, clean ice. Dione is in a 1:2 orbital resonance with Enceladus, which keeps Enceladus’s orbit slightly eccentric and so helps power its geysers. Modelling of Cassini gravity and shape data by Beuthe and colleagues in 2016 suggests an ice shell about 100 km thick floating on an ocean several tens of kilometres deep – an interpretation that is plausible but not yet confirmed by direct observation."
+		},
+		"facts": {
+			"simple": [
+				"Dione goes once around Saturn in less than three days.",
+				"It is about −186 °C on Dione, so cold that the ice there is as hard as rock.",
+				"Dione has a tiny bit of oxygen around it, but far too little to breathe."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini discovered Dione in 1684, only weeks after he found Tethys.",
+				"Helene is about 35 km across, while Polydeuces is only about 3 km.",
+				"In 2010, Cassini detected a very thin layer of oxygen ions around Dione."
+			],
+			"advanced": [
+				"Surface gravity is about 0.232 m/s², roughly 2.4 % of Earth’s.",
+				"Dione orbits Saturn every 2.74 days and is tidally locked, always turning the same face towards the planet.",
+				"The resonance with Enceladus also flexes Dione slightly, giving it some tidal heating of its own."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Dione is about as far from Saturn as our Moon is from Earth."
+			],
+			"standard": [
+				"Dione’s ice cliffs are hundreds of metres high – as tall as skyscrapers – and so bright that from far away they looked like thin wisps of frost."
+			],
+			"advanced": [
+				"If Dione’s proposed ocean exists, it lies about 100 km down – more than eight times deeper than the deepest hole ever drilled on Earth (about 12 km)."
+			]
+		}
+	},
+	"rhea": {
+		"name": "Rhea",
+		"tagline": "A whiff of oxygen",
+		"description": {
+			"simple": "Rhea is Saturn’s second-biggest moon. It is a frozen ball of ice with some rock inside, covered in old craters. Around Rhea there is a tiny bit of oxygen – the gas we breathe. But there is so little of it that you could never breathe it.",
+			"standard": "Rhea is about 1,527 km across, making it Saturn’s second-largest moon after Titan. It is roughly three-quarters ice and one-quarter rock, its surface is between −174 and −220 °C, and it is covered in ancient craters, including the Tirawa basin, about 400 km wide. In 2010, scientists announced that NASA’s Cassini spacecraft had detected an extremely thin “exosphere” of oxygen and carbon dioxide around Rhea. According to NASA, it was the first time a spacecraft had directly captured molecules of an oxygen atmosphere at a world other than Earth.",
+			"advanced": "Rhea (density 1.24 g/cm³) is a cold, heavily cratered mixture of about three-quarters ice and one-quarter rock by mass. Its exosphere, detected by Cassini’s instruments during flybys in 2005, 2007 and 2010, contains oxygen and carbon dioxide in a ratio of roughly 5 to 2, with only about 100,000 to 1,000,000 molecules per cm³ near the surface. The oxygen is produced by radiolysis: charged particles trapped in Saturn’s magnetic field strike the water-ice surface, break up water molecules and release oxygen. The source of the carbon dioxide is less certain – it may come from dry ice trapped since the moon formed or from irradiated organic material on the surface."
+		},
+		"facts": {
+			"simple": [
+				"Rhea takes about four and a half days to go around Saturn.",
+				"On Rhea it can get as cold as about −220 °C.",
+				"Rhea was discovered more than 350 years ago, in 1672."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini discovered Rhea on 23 December 1672.",
+				"The oxygen at Rhea’s surface is about 5 trillion times less dense than the oxygen in the air at Earth’s surface.",
+				"Surface gravity is only 0.264 m/s², so you would weigh less than 3 % of what you weigh on Earth."
+			],
+			"advanced": [
+				"Hints of a faint ring around Rhea, reported in 2008, were ruled out when Cassini made targeted observations of the supposed ring plane from several angles.",
+				"Rhea orbits at about 527,100 km in 4.52 days and, like Saturn’s other large inner moons, is tidally locked.",
+				"Cassini gravity data suggest that Rhea’s rock and ice may have separated only partly, but its interior structure is still debated."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"About eight Rheas lined up side by side would stretch across Earth."
+			],
+			"standard": [
+				"A single breath of air on Earth holds more oxygen molecules than a cube of Rhea’s thin exosphere more than a kilometre on each side."
+			],
+			"advanced": [
+				"With Rhea’s surface gravity, a jump that lifts you 0.5 m on Earth would carry you almost 19 m high."
+			]
+		}
+	},
+	"titan": {
+		"name": "Titan",
+		"tagline": "A world of methane rain",
+		"description": {
+			"simple": "Titan is Saturn’s biggest moon – it is even bigger than the planet Mercury. It is the only moon wrapped in thick air. On Titan it rains, and there are rivers, lakes and seas. But they are not made of water: at about −179 °C water is frozen as hard as rock, so the rain and the seas are liquid methane, a gas we burn on Earth for cooking and heating.",
+			"standard": "Titan is about 5,150 km across – Saturn’s largest moon, the second-largest moon in the solar system and bigger than the planet Mercury. It is the only moon with a thick atmosphere, made mostly of nitrogen, and the pressure at its surface is about 1.5 times that on Earth. At about −179 °C, methane does what water does on Earth: it forms clouds, falls as rain, carves rivers and fills lakes and seas such as Kraken Mare and Ligeia Mare. In January 2005 the European Huygens probe landed on Titan – still the most distant landing ever – and NASA’s Dragonfly rotorcraft is due to launch in July 2028 and arrive in 2034.",
+			"advanced": "Titan (diameter 5,150 km, density 1.88 g/cm³) is about 6 % wider than Mercury but has only about 40 % of its mass. Its nitrogen atmosphere contains about 5 % methane near the ground; at about 1.45 bar and 94 K it is roughly four times denser than Earth’s air at sea level. Sunlight breaks up methane in the upper atmosphere, producing the orange organic haze and heavier hydrocarbons such as ethane, so the methane must somehow be replenished, possibly from the interior. Titan was long thought to hide a global water ocean, but a 2025 reanalysis of Cassini tracking data argued instead for thick, slushy high-pressure ice with pockets of liquid water – the question is still open."
+		},
+		"facts": {
+			"simple": [
+				"The Huygens probe landed on Titan in 2005 – no spacecraft has ever landed farther from Earth.",
+				"Titan is wrapped in orange haze, so normal cameras cannot see its surface from space.",
+				"Titan takes about 16 days to go around Saturn."
+			],
+			"standard": [
+				"Christiaan Huygens discovered Titan on 25 March 1655 – it was the first moon of Saturn to be found.",
+				"Kraken Mare, Titan’s largest sea, covers roughly as much area as the Caspian Sea, Earth’s largest lake.",
+				"Dragonfly is a car-sized drone with eight rotors that will fly from place to place to study Titan’s chemistry."
+			],
+			"advanced": [
+				"Surface gravity is 1.35 m/s², about 14 % of Earth’s and even less than the Moon’s (1.62 m/s²).",
+				"Huygens transmitted during a descent of about 2.5 hours and then for more than an hour from the surface, where it found rounded pebbles of water ice on a plain moist with methane.",
+				"Gerard Kuiper proved in 1944 that Titan has an atmosphere, when he detected methane in its spectrum."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"On Titan the air is so thick and gravity so weak that a person with wings strapped to their arms might be able to fly."
+			],
+			"standard": [
+				"Titan is the only place besides Earth where we know of rivers, lakes and seas on the surface – but there they hold liquid methane and ethane at about −179 °C."
+			],
+			"advanced": [
+				"Above every square metre of Titan’s surface there is about ten times as much gas as above a square metre of Earth."
+			]
+		}
+	},
+	"hyperion": {
+		"name": "Hyperion",
+		"tagline": "The tumbling sponge",
+		"description": {
+			"simple": "Hyperion is a strange moon of Saturn. It is not round but shaped more like a potato, and its surface is full of holes, like a sponge. Hyperion also tumbles in such a wild, messy way that nobody can say exactly which way it will face next. It is so light for its size that much of its inside is probably empty space.",
+			"standard": "Hyperion measures about 360 × 266 × 205 km, making it one of the largest irregularly shaped moons in the solar system. Close-up images taken by the Cassini spacecraft in 2005 showed a surface packed with deep, sharp-edged craters that give it a sponge-like look. Its density is only about 0.54 g/cm³ – about half that of water ice – so scientists think roughly 40 % of it may be empty space. Hyperion does not spin steadily: tugs from Saturn and nearby Titan make it tumble chaotically, so its orientation cannot be predicted for long.",
+			"advanced": "Hyperion is locked in a 4:3 orbital resonance with Titan (four Hyperion orbits for every three of Titan), which keeps its orbit fairly eccentric (e ≈ 0.1). Because the moon is so elongated, Saturn’s tidal torques on it vary strongly around this eccentric orbit, so Hyperion cannot settle into synchronous rotation; instead its spin rate and axis change chaotically, and tiny differences grow exponentially within a few orbits. Wisdom, Peale and Mignard predicted this behaviour in 1984, later observations supported it, and Hyperion has been the textbook example of chaotic rotation ever since. Its porosity of roughly 40 % may also explain its strange craters: impacts compress the porous ice instead of blasting material out, leaving deep pits with little ejecta."
+		},
+		"facts": {
+			"simple": [
+				"Hyperion takes about three weeks to go around Saturn.",
+				"Many of Hyperion’s craters have dark stuff at the bottom, like dirt in the holes of a sponge.",
+				"Hyperion was found in 1848 by astronomers in America and in England at almost the same time."
+			],
+			"standard": [
+				"Hyperion was discovered in 1848 by William Cranch Bond and his son George Phillips Bond, and independently by William Lassell.",
+				"Hyperion orbits Saturn every 21.3 days at an average distance of about 1.48 million km, just beyond Titan.",
+				"Hyperion was the first moon found to tumble chaotically; Pluto’s small moons Nix and Hydra were later found to tumble too."
+			],
+			"advanced": [
+				"Hyperion’s mean diameter is about 270 km, but its longest axis is about 1.8 times as long as its shortest.",
+				"In 2005, Cassini flew through a beam of electrons coming from Hyperion’s electrically charged surface, which was at about −200 V.",
+				"Unlike Saturn’s other large regular moons, Hyperion is not tidally locked."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Hyperion is about as light for its size as a pumice stone, so it would float in water."
+			],
+			"standard": [
+				"Hyperion tumbles like a rugby ball bouncing across a field: tiny differences send it spinning a different way, so nobody can predict for long which side will face Saturn."
+			],
+			"advanced": [
+				"With roughly 40 % of its volume empty, Hyperion is about as porous as a heap of loose sand."
+			]
+		}
+	},
+	"iapetus": {
+		"name": "Iapetus",
+		"tagline": "The two-faced moon",
+		"description": {
+			"simple": "Iapetus is a moon of Saturn with two very different sides. One half is dark like coal, and the other half is bright like snow. A long, high mountain ridge runs around its middle, which makes Iapetus look a little like a walnut. It is far from Saturn and takes more than two months to go around it once.",
+			"standard": "Iapetus is about 1,469 km across and Saturn’s third-largest moon. Its leading side – the side facing forward as it orbits – is as dark as coal, while the trailing side is almost as bright as snow. When Giovanni Domenico Cassini discovered Iapetus in 1671, he could see it only when it was on one side of Saturn, and he correctly guessed that one half must be much darker than the other. The Cassini spacecraft, named after him, later revealed a ridge along the equator about 1,300 km long with peaks up to about 20 km high, which gives Iapetus the shape of a walnut.",
+			"advanced": "Iapetus’s two-tone surface probably results from a runaway process. Dark dust, largely from the retrograde moon Phoebe and its enormous ring, sweeps onto Iapetus’s leading hemisphere; the darkened surface absorbs more sunlight during Iapetus’s long, 79-day days and warms slightly, so water ice sublimates there and refreezes on the colder, brighter trailing side and at the poles, making one side ever darker and the other ever brighter. The albedo ranges from about 0.03–0.05 in the dark region Cassini Regio to about 0.5–0.6 on the bright side. The equatorial ridge, up to about 20 km high and 1,300 km long, is still unexplained: proposals include a bulge frozen in from a time of faster spin, or material that fell from a collapsed ring."
+		},
+		"facts": {
+			"simple": [
+				"Iapetus’s tallest mountains are more than twice as high as Mount Everest.",
+				"From Iapetus you would have a wonderful view of Saturn’s rings, because its path around Saturn is tilted.",
+				"Iapetus was discovered more than 350 years ago, in 1671."
+			],
+			"standard": [
+				"Iapetus orbits Saturn at about 3.56 million km – more than nine times the distance from Earth to the Moon.",
+				"Because it is tidally locked, one day on Iapetus lasts as long as its orbit: about 79 days.",
+				"Much of the dark material probably comes from Phoebe, a small outer moon whose dust forms an enormous, faint ring around Saturn."
+			],
+			"advanced": [
+				"Its density of about 1.09 g/cm³ implies a body of mostly water ice with only around 20 % rock.",
+				"Iapetus is noticeably flattened, a shape that may have frozen in when it spun much faster early in its history – perhaps once every 16 hours.",
+				"Its orbit is inclined about 7.6° to its Laplace plane, far more than those of Saturn’s other large moons."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Iapetus were a football, its giant ridge would be a bump only about 3 mm high running around its middle."
+			],
+			"standard": [
+				"Iapetus’s dark side reflects only about as much light as fresh asphalt, while its bright side reflects more than ten times as much – which is why Cassini could see the moon on one side of Saturn but not the other."
+			],
+			"advanced": [
+				"Iapetus is so far out that Saturn would appear only about 2° wide in its sky – still nearly four times the width of the full Moon as seen from Earth."
+			]
+		}
+	},
+	"phoebe": {
+		"name": "Phoebe",
+		"tagline": "Saturn’s wrong-way moon",
+		"description": {
+			"simple": "Phoebe is a small, dark moon of Saturn, about 200 km wide. It goes around Saturn the wrong way – in the opposite direction to Saturn’s big moons – and much farther out. Scientists think Phoebe did not form at Saturn but came from far out in the solar system and was caught by Saturn’s gravity. Dust knocked off Phoebe makes a huge, very faint ring around Saturn.",
+			"standard": "Phoebe is about 213 km across and circles Saturn at an average distance of about 12.9 million km – more than three times as far out as Iapetus, the outermost of Saturn’s big moons. It orbits backwards (retrograde), which strongly suggests that Saturn captured it: Phoebe is probably a visitor from the outer solar system, related to the icy bodies of the Kuiper belt. Tiny impacts knock dust off its dark surface, and this dust forms the Phoebe ring, discovered in 2009 by NASA’s Spitzer Space Telescope. Some of the dust drifts inward and lands on one side of Iapetus, helping to make that side dark.",
+			"advanced": "Phoebe’s orbit – semi-major axis about 12.9 million km, eccentricity 0.16, inclination about 175° to its Laplace plane – is retrograde and lies far outside Saturn’s regular satellites, the signature of a captured body rather than one that formed in Saturn’s disc. Its density of about 1.64 g/cm³, higher than that of Saturn’s inner icy moons, and a dark surface (geometric albedo about 0.08) containing water ice, carbon dioxide and probably organic compounds point to an origin among Kuiper-belt objects or centaurs. Micrometeorite impacts feed the Phoebe ring, a vast, tenuous dust disc tilted, like Phoebe’s orbit, about 27° to Saturn’s main rings. Radiation pressure makes its grains slowly spiral inward, where Iapetus sweeps them up on its leading hemisphere – a key ingredient in that moon’s striking two-tone appearance."
+		},
+		"facts": {
+			"simple": [
+				"Phoebe needs about a year and a half to go once around Saturn.",
+				"Phoebe was the first moon ever discovered on photographs.",
+				"Phoebe spins around once in only about 9 hours – much faster than it travels around Saturn."
+			],
+			"standard": [
+				"The Cassini spacecraft flew just 2,068 km past Phoebe on 11 June 2004, about three weeks before it went into orbit around Saturn.",
+				"William Henry Pickering discovered Phoebe in 1899 on photographic plates taken in 1898 at an observatory near Arequipa, Peru.",
+				"Phoebe’s largest crater, Jason, is about 100 km wide – almost half as wide as Phoebe itself."
+			],
+			"advanced": [
+				"Phoebe rotates once every 9.27 hours, so unlike Saturn’s large regular moons it is not tidally locked.",
+				"Phoebe’s mass of about 8.3 × 10¹⁸ kg was measured from its pull on Cassini during the 2004 flyby.",
+				"Phoebe is nearly round although it is only about 213 km across, which some scientists take as a sign that it was warm and soft early in its history."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Phoebe travels around Saturn like a car driving the wrong way round a roundabout."
+			],
+			"standard": [
+				"The dust ring that comes from Phoebe is so vast that about a billion Earths would fit inside it – yet it is so faint that it was only found in 2009, with an infrared telescope."
+			],
+			"advanced": [
+				"If our eyes could see the Phoebe ring, it would span about the width of two full Moons in the night sky, one on either side of Saturn."
+			]
+		}
+	},
+	"miranda": {
+		"name": "Miranda",
+		"tagline": "The Frankenstein moon",
+		"description": {
+			"simple": "Miranda is the smallest of Uranus’s five big moons, about 470 km wide. Its surface looks as if it had been stitched together from different pieces, so people call it the Frankenstein moon. It has one of the tallest cliffs we know of anywhere. Only one spacecraft, Voyager 2, has ever flown past it, in 1986.",
+			"standard": "Miranda, about 470 km across, is the innermost and smallest of Uranus’s five large moons. When Voyager 2 flew past in January 1986, it revealed a jumble of wildly different landscapes: old cratered plains right next to huge regions of grooves and ridges, called coronae. Miranda also has Verona Rupes, a cliff estimated at between 5 and 20 km high – possibly the tallest in the solar system. The moon was discovered in 1948 by Gerard Kuiper, who named it after the daughter of the magician Prospero in Shakespeare’s The Tempest.",
+			"advanced": "Miranda’s three coronae – Arden, Elsinore and Inverness – are oval or polygonal provinces a few hundred kilometres across, ringed by parallel ridges and troughs that cut across older cratered terrain. Early ideas that Miranda was smashed apart and reassembled have largely given way to models in which tidal heating drove upwelling of warm ice, probably during a past orbital resonance with Umbriel that may also explain Miranda’s unusually large orbital inclination of about 4.3°. A 2024 study even suggested that Miranda might have had a subsurface ocean around 100 km deep within the last few hundred million years. Its low density of about 1.2 g/cm³ shows that it is mostly water ice."
+		},
+		"facts": {
+			"simple": [
+				"Miranda goes around Uranus in less than a day and a half.",
+				"Miranda is named after a girl in a play by William Shakespeare.",
+				"On Miranda you would weigh less than one hundredth of what you weigh on Earth."
+			],
+			"standard": [
+				"Voyager 2 passed only about 29,000 km from Miranda, closer than to any other moon of Uranus.",
+				"Miranda orbits about 129,900 km from Uranus and needs about 34 hours for one orbit.",
+				"Because Uranus is tipped over on its side and its big moons circle above its equator, Miranda’s orbit is tipped over too – at times it looks from Earth like a bull’s-eye around the planet."
+			],
+			"advanced": [
+				"Miranda’s surface gravity is only about 0.08 m/s², less than 1 % of Earth’s.",
+				"Verona Rupes is thought to be a fault scarp, formed where Miranda’s icy crust was pulled apart.",
+				"Voyager 2 could only image Miranda’s southern hemisphere, which faced the Sun in 1986; the northern half has never been seen up close."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Miranda’s surface were a jigsaw puzzle, the pieces would come from several different boxes."
+			],
+			"standard": [
+				"The cliff Verona Rupes may be up to 20 km high – more than twice the height of Mount Everest – and in Miranda’s weak gravity a dropped rock could fall for about 12 minutes before hitting the bottom."
+			],
+			"advanced": [
+				"Scaled up to the size of Earth, a 20 km cliff on Miranda would be more than 500 km tall – higher than the orbit of the International Space Station."
+			]
+		}
+	},
+	"ariel": {
+		"name": "Ariel",
+		"tagline": "Uranus’s bright young moon",
+		"description": {
+			"simple": "Ariel is one of Uranus’s five big moons, about 1,160 km wide. It is the brightest of them, with a fresh-looking, icy surface. Long, deep valleys called canyons run across it. Only one spacecraft, Voyager 2, has ever flown past it.",
+			"standard": "Ariel, about 1,160 km across, orbits Uranus every 2.5 days at a distance of about 190,900 km. It has the brightest surface of Uranus’s large moons and probably the youngest: it has fewer large craters than its neighbours, so something must have renewed its surface. Long canyons criss-cross it; one of them, Kachina Chasma, runs for more than 600 km. William Lassell discovered Ariel in 1851, on the same night as Umbriel, and its name comes from the spirit Ariel in Shakespeare’s The Tempest and a sprite in Alexander Pope’s poem The Rape of the Lock.",
+			"advanced": "With a geometric albedo of about 0.5, Ariel is the most reflective of the major Uranian moons, and its comparatively sparse large craters suggest the youngest surface of the five. Its canyons are grabens – blocks of crust that dropped between faults as the crust stretched, probably when the interior was heated by tides during a past orbital resonance or expanded as it froze – and some canyon floors appear to have been flooded by icy material. In 2024 the James Webb Space Telescope found surprisingly thick deposits of carbon dioxide ice, carbon monoxide ice and hints of carbonate minerals on Ariel. Some researchers see this as material from a possible subsurface ocean, although charged particles from Uranus’s magnetosphere also produce carbon dioxide on the surface, and both processes are probably involved."
+		},
+		"facts": {
+			"simple": [
+				"Ariel goes around Uranus in about two and a half days.",
+				"Ariel is named after a magical spirit in a play by William Shakespeare who could fly and even stir up a storm.",
+				"Ariel is made of roughly half ice and half rock."
+			],
+			"standard": [
+				"Voyager 2 could photograph only about 35 % of Ariel’s surface during its 1986 flyby.",
+				"Because Uranus is tipped over on its side, Ariel’s poles get about 42 years of continuous sunlight followed by about 42 years of darkness.",
+				"The names Ariel, Umbriel, Titania and Oberon were suggested in 1852 by John Herschel, the son of Uranus’s discoverer William Herschel."
+			],
+			"advanced": [
+				"Ariel’s surface gravity is about 0.25 m/s², roughly a fortieth of Earth’s.",
+				"Its density of about 1.54 g/cm³ points to roughly equal amounts of water ice and rock.",
+				"Ariel’s orbit is nearly circular (eccentricity about 0.001) and lies almost exactly in Uranus’s equatorial plane, which is tilted about 98° to Uranus’s orbit."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Ariel’s longest canyon is so long that a car on a motorway would need more than six hours to drive from one end to the other."
+			],
+			"standard": [
+				"Ariel and Umbriel are almost exactly the same size, but Ariel reflects about twice as much light and has far fewer big craters – like twins, one with a freshly washed face and one that has not been cleaned for billions of years."
+			],
+			"advanced": [
+				"If Ariel were blown up to the size of Earth, Kachina Chasma would be about 6,800 km long – roughly the length of the river Nile."
+			]
+		}
+	},
+	"umbriel": {
+		"name": "Umbriel",
+		"tagline": "Dark moon, bright ring",
+		"description": {
+			"simple": "Umbriel is one of Uranus’s five big moons, about 1,170 km wide. It is the darkest of them and is covered with old craters. On its dark surface there is a mysterious bright ring. Umbriel is named after a gloomy sprite in an old poem.",
+			"standard": "Umbriel, about 1,170 km across, is almost exactly as big as Ariel, but it is the darkest of Uranus’s large moons. Its surface is old and packed with craters, so it has probably changed little for billions of years. Near its equator lies the crater Wunda, about 131 km wide, with a strange bright ring on its floor – scientists are still not sure what it is. Umbriel was discovered in 1851 by William Lassell and named after a gloomy sprite in Alexander Pope’s poem The Rape of the Lock.",
+			"advanced": "Umbriel’s geometric albedo of about 0.26 is roughly half that of Ariel, and its heavily cratered surface, with craters up to about 210 km across, shows little sign of resurfacing, marking it as one of the oldest surfaces among Uranus’s large moons. Why it is so uniformly dark is still unclear; a coating of dark, carbon-rich material altered by radiation is one possibility. The bright annulus on the floor of Wunda may be an impact deposit or a patch of carbon dioxide frost – carbon dioxide ice has been detected on the trailing hemispheres of Uranus’s large moons. Voyager 2 imaged only about 40 % of Umbriel, at a resolution of about 5 km at best, so much of it remains unmapped."
+		},
+		"facts": {
+			"simple": [
+				"Umbriel goes around Uranus in about four days.",
+				"Umbriel’s name sounds like “umbra”, the Latin word for shadow – a good name for such a dark moon.",
+				"Umbriel was discovered on the same night as Ariel, in 1851."
+			],
+			"standard": [
+				"In Pope’s poem, Umbriel is called “the dusky melancholy sprite”.",
+				"Voyager 2 photographed only about 40 % of Umbriel’s surface in 1986.",
+				"Umbriel orbits about 266,000 km from Uranus and needs about 4.1 days for one orbit."
+			],
+			"advanced": [
+				"Umbriel’s surface gravity is about 0.25 m/s², almost the same as Ariel’s.",
+				"Its density of about 1.5 g/cm³ suggests a mix of water ice and rock, with dark carbon-rich material on the surface.",
+				"Canyons running roughly north-east to south-west hint that Umbriel was geologically active very early in its history."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Umbriel and Ariel are almost the same size, but next to Ariel, Umbriel looks like a sooty snowball beside a clean one."
+			],
+			"standard": [
+				"On Umbriel’s dark face, the bright ring in the crater Wunda stands out like a white ring left by a cup on a dark table – and nobody knows for sure what made it."
+			],
+			"advanced": [
+				"Umbriel reflects only about half as much light as Ariel, although their diameters differ by only about 1 % – like two identical balls, one painted light grey and one dark grey."
+			]
+		}
+	},
+	"titania": {
+		"name": "Titania",
+		"tagline": "Queen of Uranus’s moons",
+		"description": {
+			"simple": "Titania is the biggest moon of Uranus, about 1,580 km wide – a bit less than half as wide as our Moon. It is named after the queen of the fairies in a play by William Shakespeare. Its icy surface is split by enormous canyons. William Herschel, the astronomer who discovered Uranus, found Titania in 1787.",
+			"standard": "Titania, about 1,580 km across, is the largest moon of Uranus and the eighth-largest moon in the solar system. Its surface is cut by huge fault valleys; the longest, Messina Chasma, runs for about 1,500 km. These canyons probably formed when Titania’s interior expanded, cracking the icy crust like a bottle of water left in the freezer. William Herschel discovered Titania on 11 January 1787, on the same night as Oberon, and it is named after the fairy queen in Shakespeare’s A Midsummer Night’s Dream.",
+			"advanced": "Titania’s density of about 1.65 g/cm³ suggests roughly equal amounts of water ice and rock, probably separated into a rocky core and an icy mantle; some models allow a thin layer of liquid water, kept liquid by ammonia acting as antifreeze, at the boundary between them. Its canyons (chasmata) are grabens formed by global extension of the crust, and it has fewer large craters than Oberon, so its surface is probably younger. When Titania passed in front of a star in 2001, the star vanished abruptly, limiting any atmosphere to a surface pressure below about 10–20 nanobar. Voyager 2 imaged only about 40 % of its surface, almost all of it in the southern hemisphere, which faced the Sun in 1986."
+		},
+		"facts": {
+			"simple": [
+				"Titania takes almost nine days to go around Uranus.",
+				"Titania is made of about half ice and half rock.",
+				"Titania’s biggest crater, Gertrude, is more than 300 km wide."
+			],
+			"standard": [
+				"Titania orbits about 436,300 km from Uranus – a bit farther than our Moon is from Earth.",
+				"Places on Titania are named after Shakespeare: craters after female characters such as Gertrude, Hamlet’s mother, and canyons after places such as Messina.",
+				"Like the other big moons of Uranus, Titania always shows the same side to its planet."
+			],
+			"advanced": [
+				"Titania’s surface gravity is about 0.36 m/s², roughly 3.7 % of Earth’s.",
+				"Its orbital period is 8.706 days, and its orbit is almost perfectly circular (eccentricity about 0.001).",
+				"Like Uranus’s other large moons, Titania has more carbon dioxide ice on its trailing hemisphere, probably partly produced by charged particles from Uranus’s magnetosphere."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Titania’s longest canyon is so long that it reaches almost a third of the way around the whole moon."
+			],
+			"standard": [
+				"Titania’s great canyon, Messina Chasma, is about 1,500 km long – more than three times the length of the Grand Canyon in the USA – on a moon less than half as wide as ours."
+			],
+			"advanced": [
+				"Titania is almost half as wide as our Moon, but because it is about half ice, it has only about one twentieth of the Moon’s mass."
+			]
+		}
+	},
+	"oberon": {
+		"name": "Oberon",
+		"tagline": "The old fairy king",
+		"description": {
+			"simple": "Oberon is the outermost of Uranus’s five big moons and the second biggest, about 1,520 km wide. It is named after the king of the fairies in a play by William Shakespeare – and Titania, the fairy queen, is its neighbour. Oberon’s surface is old and full of craters, some with dark floors. William Herschel found Oberon and Titania on the same night in 1787.",
+			"standard": "Oberon, about 1,520 km across, is the second-largest moon of Uranus and orbits farthest out of the five large moons, about 583,500 km from the planet, once every 13.5 days. Its surface is old and covered with impact craters, which suggests that little has changed there for billions of years. The floors of several large craters are covered with dark material, and Voyager 2 spotted a mountain about 11 km high on its edge. Oberon is named after the fairy king in Shakespeare’s A Midsummer Night’s Dream.",
+			"advanced": "Oberon is the most heavily cratered of Uranus’s large moons, with craters up to about 206 km across (Hamlet), which marks its surface as one of the oldest in the Uranian system. Dark deposits on the floors of craters such as Hamlet, Othello and Macbeth may be material that erupted from the interior after the impacts, but their origin is still unclear. Its orbit carries Oberon outside Uranus’s magnetosphere for part of the time, so its surface is exposed alternately to the planet’s trapped plasma and to the solar wind. Voyager 2 saw Oberon only from about 470,600 km away, imaging roughly 40 % of it at low resolution."
+		},
+		"facts": {
+			"simple": [
+				"Oberon takes about two weeks to go around Uranus.",
+				"Oberon always shows the same side to Uranus, just like our Moon does to Earth.",
+				"Craters on Oberon are named after characters from Shakespeare’s plays, like Hamlet and Macbeth."
+			],
+			"standard": [
+				"Hamlet, the largest crater on Oberon, is about 206 km wide.",
+				"Herschel discovered Oberon and Titania in 1787, just six years after he had discovered Uranus itself.",
+				"Oberon is almost exactly as big as Saturn’s moon Rhea."
+			],
+			"advanced": [
+				"Oberon’s surface gravity is about 0.35 m/s², roughly 3.6 % of Earth’s.",
+				"Its density of about 1.66 g/cm³ suggests roughly equal amounts of water ice and rock.",
+				"Because Uranus is tipped over, Oberon’s orbit is too: it circles about 98° from the plane of Uranus’s path around the Sun."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Oberon’s tallest mountain is about 11 km high – taller than Mount Everest, the highest mountain on Earth."
+			],
+			"standard": [
+				"Oberon’s battered face is like a history book that nobody has erased: its craters still record impacts from billions of years ago."
+			],
+			"advanced": [
+				"Oberon orbits about 1.5 times as far from Uranus as our Moon is from Earth, but because Uranus is about 14.5 times as massive as Earth, one orbit takes only 13.5 days instead of 27.3."
+			]
+		}
+	},
+	"triton": {
+		"name": "Triton",
+		"tagline": "The moon going backwards",
+		"description": {
+			"simple": "Triton is Neptune’s biggest moon, and it goes around Neptune the wrong way – backwards compared to the way Neptune spins. That is a clue that Triton was not born there: it was probably caught by Neptune’s gravity long ago. Triton is one of the coldest places ever measured, and it has geysers that blow out dark dust. Very, very slowly, Triton is moving closer to Neptune.",
+			"standard": "Triton is by far Neptune’s largest moon, 2,707 km across and a little bigger than the dwarf planet Pluto. It orbits Neptune backwards – against the planet’s rotation – and is the only large moon in the solar system to do so, which is why astronomers think Neptune captured it from the Kuiper belt long ago. When Voyager 2 flew past in 1989, it saw geysers of nitrogen gas carrying dark dust about 8 km high, on a surface at about −235 °C. Tides are slowly pulling Triton inward, so in billions of years it may be torn apart into rings or fall into Neptune.",
+			"advanced": "Triton’s orbit is retrograde and tilted about 157° to Neptune’s equator, which cannot be explained by formation in a disk around the planet; the leading explanation is the capture of a Kuiper belt object, perhaps one member of a binary pair whose partner was thrown away. Capture would have left Triton on a highly eccentric orbit, and damping that orbit to today’s near-perfect circle (e ≈ 0.00002) may have melted its interior and scattered or destroyed Neptune’s original moons. Its surface of nitrogen, methane and water ice reflects most of the sunlight it receives (albedo about 0.76), which helps keep it at about 38 K. Because it orbits against Neptune’s rotation, the tidal bulge it raises slowly drains its orbital energy; it may reach Neptune’s Roche limit in several billion years, although estimates range from about 3.6 to 28 billion years."
+		},
+		"facts": {
+			"simple": [
+				"Triton was found in 1846, only 17 days after Neptune itself was discovered.",
+				"Triton is so icy and bright that it reflects most of the sunlight that reaches it.",
+				"Only one spacecraft has ever visited Triton: Voyager 2, in 1989."
+			],
+			"standard": [
+				"Triton contains more than 99.5 % of all the mass orbiting Neptune.",
+				"Parts of Triton’s surface are wrinkled into a pattern called cantaloupe terrain, because it looks like the skin of a melon.",
+				"Triton takes 5.9 days to orbit Neptune and always keeps the same face towards it, just as our Moon does with Earth."
+			],
+			"advanced": [
+				"Triton has a very thin nitrogen atmosphere with a surface pressure of about 1.4 Pa, roughly 1/70,000 of Earth’s.",
+				"Some models suggest that heat from radioactive decay and tides could keep a liquid ocean beneath Triton’s icy crust.",
+				"Surface gravity is 0.78 m/s², about 8 % of Earth’s."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Triton is about 150 degrees colder than the coldest temperature ever measured on Earth."
+			],
+			"standard": [
+				"Triton circles Neptune the wrong way round, like a car driving backwards around a roundabout – a clue that Neptune captured it from the Kuiper belt."
+			],
+			"advanced": [
+				"Triton is about 14 % wider than Pluto, with a similar density and similar nitrogen, methane and water ices – a Pluto-like world that Neptune took for itself."
+			]
+		}
+	},
+	"nereid": {
+		"name": "Nereid",
+		"tagline": "The roller-coaster orbit",
+		"description": {
+			"simple": "Nereid is a small, grey moon of Neptune. Its path around Neptune is not a circle but a long, stretched oval. Sometimes it comes quite close to Neptune, and then it swings far out again. Scientists think something big may have thrown it onto this strange path long ago.",
+			"standard": "Nereid is about 340 km across and has one of the most stretched-out orbits of any known moon. During its 360-day orbit, its distance from Neptune swings from about 1.4 million km to about 9.7 million km – nearly seven times farther. Gerard Kuiper discovered it in 1949; it was the second moon of Neptune ever found and the last one discovered before Voyager 2 arrived in 1989. Astronomers long thought Nereid was a captured object, but a 2026 study suggests it may be one of Neptune’s original moons, flung onto its wild orbit when Triton arrived.",
+			"advanced": "Nereid’s orbit has an eccentricity of about 0.75, one of the highest known for any moon, with its closest point near 1.37 million km and its farthest near 9.65 million km from Neptune. It is prograde and only modestly inclined, unlike typical irregular moons, which are thought to be captured bodies. Two origins have been proposed: a captured Kuiper belt object, or a regular moon of Neptune scattered outward when Triton was captured. In 2026, James Webb Space Telescope spectra showed crystalline water ice and carbon dioxide and a surface unlike Kuiper belt objects but similar to the moons of Uranus, favouring the second idea – if so, Nereid may be the last intact survivor of Neptune’s original family of moons."
+		},
+		"facts": {
+			"simple": [
+				"Nereid was discovered in 1949 by an astronomer called Gerard Kuiper.",
+				"Nereid is Neptune’s third-biggest moon.",
+				"Nobody has ever seen a close-up picture of Nereid."
+			],
+			"standard": [
+				"Voyager 2 could only photograph Nereid from about 4.7 million km away, so its shape and surface are still largely unknown.",
+				"Nereid spins once in about 11.6 hours, as measured with the Kepler space telescope.",
+				"The small outer moon Halimede has a similar grey colour and may be a fragment knocked off Nereid in a collision."
+			],
+			"advanced": [
+				"Nereid’s mean diameter is about 340 km, similar to that of Saturn’s moon Mimas.",
+				"Nereid is by far the largest of Neptune’s irregular moons, holding about 98 % of their combined mass (not counting Triton).",
+				"Nereid’s brightness has been seen to vary strongly over days to years, and the cause is still not fully explained."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Nereid takes almost exactly as long to go around Neptune as Earth takes to go around the Sun."
+			],
+			"standard": [
+				"Nereid swings in toward Neptune and back out again like a comet – at its farthest it is about seven times as far away as at its closest."
+			],
+			"advanced": [
+				"Even at its closest, Nereid is about 3.6 times as far from Neptune as our Moon is from Earth; at its farthest, it is about 25 times as far."
+			]
+		}
+	},
+	"proteus": {
+		"name": "Proteus",
+		"tagline": "Hidden in Neptune’s glare",
+		"description": {
+			"simple": "Proteus is a dark, lumpy moon of Neptune, about 420 km wide. It is almost big enough for its own gravity to squeeze it into a ball – but not quite, so it looks like a dented box. Even though it is quite big, nobody saw it until the space probe Voyager 2 flew past Neptune in 1989. It had been hiding in Neptune’s bright glow.",
+			"standard": "Proteus is Neptune’s second-largest moon, about 420 km across, yet it was only discovered in 1989 in images from Voyager 2. From Earth it is lost in the glare of Neptune, because it orbits only about 117,600 km from the planet’s centre – less than five Neptune radii – and its surface reflects only about a tenth of the sunlight that falls on it. Proteus is about as big as a body like it can get without its own gravity pulling it into a round shape, so it remains an irregular, box-like lump. It races around Neptune in just 27 hours.",
+			"advanced": "With a mean diameter of about 420 km, Proteus is close to the size at which self-gravity should overcome the strength of ice and rock and pull a body into a roughly spheroidal (hydrostatic) shape – yet it has stayed irregular. Its surface is dominated by the impact basin Pharos, about 255 km wide and 10–15 km deep, made by an impact that nearly shattered the moon. Scientists think Proteus did not form together with Neptune but re-accreted from debris after Neptune captured Triton, whose arrival would have disrupted the original moon system. The tiny moon Hippocamp, found in Hubble images in 2013, orbits only about 12,000 km inside Proteus’s orbit and may be a fragment knocked off by the Pharos impact."
+		},
+		"facts": {
+			"simple": [
+				"Proteus goes around Neptune in a little more than one day.",
+				"From Proteus, Neptune would look about 50 times as wide as the full Moon looks to us.",
+				"Proteus has a giant crater that is more than half as wide as the whole moon."
+			],
+			"standard": [
+				"Voyager 2 found Proteus in 1989, a few weeks before flying past Neptune.",
+				"Proteus is named after a shape-changing sea god of Greek myths – fitting for such an oddly shaped moon.",
+				"Triton, Neptune’s largest moon, is more than six times as wide as Proteus."
+			],
+			"advanced": [
+				"Proteus orbits more slowly (26.9 h) than Neptune rotates (about 16.1 h), so tides are slowly pushing it outward.",
+				"Proteus’s mass has never been measured precisely, so its density and surface gravity (probably around 0.07 m/s²) are still uncertain.",
+				"Its nearly circular orbit close to Neptune’s equatorial plane is typical of a moon born in a disc around the planet – unlike the orbits of Triton and Nereid."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Driving across Proteus on a motorway would take about four hours."
+			],
+			"standard": [
+				"Proteus is bigger than Nereid, which astronomers spotted from Earth in 1949, yet Proteus stayed hidden for another 40 years – a lump of coal sitting next to a floodlight."
+			],
+			"advanced": [
+				"Saturn’s moon Mimas, about 396 km across, is round, while the slightly larger Proteus is not – the size at which a moon becomes round depends on what it is made of and how warm it once was."
+			]
+		}
+	}
 }

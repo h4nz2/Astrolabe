@@ -56,6 +56,11 @@ export interface SimState extends NavigationSlice {
 	showOrbits: boolean
 	showLabels: boolean
 	showMoons: boolean
+	/**
+	 * The long tail (#17): every moon, not only the featured ones with a story
+	 * (`Body.featured`). Off by default; needs `showMoons`.
+	 */
+	showAllMoons: boolean
 	/** Screen-sized dots for bodies too small to see (scene/Markers.tsx). */
 	showMarkers: boolean
 	/** Names written along the orbit lines (labels/, #20); off by default. */
@@ -84,22 +89,33 @@ export interface SimState extends NavigationSlice {
 	setShowOrbits: (show: boolean) => void
 	setShowLabels: (show: boolean) => void
 	setShowMoons: (show: boolean) => void
+	setShowAllMoons: (show: boolean) => void
 	setShowMarkers: (show: boolean) => void
 	setShowOrbitLabels: (show: boolean) => void
 	/** Travels (glides) to the wall clock, arriving on the present. */
 	setNow: () => void
 }
 
+/** The store fields that decide which moons are drawn (`isBodyShown`). */
+export type MoonVisibility = Pick<
+	SimState,
+	"showMoons" | "showAllMoons" | "focusId"
+>
+
 /**
- * Whether a body is rendered at all (meshes, orbit line, marker): moons only
- * while `showMoons` is on, except the focus, which stays visible so hiding the
- * moons never leaves the camera staring at nothing (docs/ARCHITECTURE.md, "Toggles").
+ * Whether a body is rendered at all (meshes, orbit line, marker, picking,
+ * labels, shadows): the Sun and planets always; moons while `showMoons` is on,
+ * the featured ones only unless `showAllMoons` asks for the long tail (#17,
+ * docs/ARCHITECTURE.md, "Moons"); and always the focus, so hiding moons never
+ * leaves the camera staring at nothing.
  */
 export const isBodyShown = (
-	body: Pick<Body, "id" | "kind">,
-	state: Pick<SimState, "showMoons" | "focusId">,
+	body: Pick<Body, "id" | "kind" | "featured">,
+	state: MoonVisibility,
 ): boolean =>
-	state.showMoons || body.kind !== "moon" || body.id === state.focusId
+	body.kind !== "moon" ||
+	body.id === state.focusId ||
+	(state.showMoons && (body.featured === true || state.showAllMoons))
 
 /**
  * The speed presets (simulated seconds per real second), slowest first: real
@@ -130,6 +146,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	showOrbits: true,
 	showLabels: true,
 	showMoons: true,
+	showAllMoons: false,
 	showMarkers: true,
 	showOrbitLabels: false,
 
@@ -176,6 +193,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	setShowOrbits: (show) => set({ showOrbits: show }),
 	setShowLabels: (show) => set({ showLabels: show }),
 	setShowMoons: (show) => set({ showMoons: show }),
+	setShowAllMoons: (show) => set({ showAllMoons: show }),
 	setShowMarkers: (show) => set({ showMarkers: show }),
 	setShowOrbitLabels: (show) => set({ showOrbitLabels: show }),
 	setNow: () => {

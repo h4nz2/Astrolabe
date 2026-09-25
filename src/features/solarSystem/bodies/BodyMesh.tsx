@@ -12,6 +12,7 @@ import { Suspense, useMemo, useRef } from "react"
 import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import {
+	PerspectiveCamera,
 	SphereGeometry,
 	SRGBColorSpace,
 	type Group,
@@ -33,7 +34,9 @@ import {
 import SunlitMaterial from "../lighting/SunlitMaterial"
 import Rings from "../rings/Rings"
 import { useRingTextures } from "../rings/ringTextures"
+import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame } from "../scene/simFrame"
+import { isDiscVisible } from "./moonOrbitFade"
 import { bodyOrientation, bodySpinAngle, createBodySpin } from "./orientation"
 
 export interface BodyMeshProps {
@@ -77,7 +80,7 @@ function StarMaterial({ body }: { body: Body }) {
 	return <meshBasicMaterial map={map} toneMapped={false} />
 }
 
-function TexturedMaterial({ body, uniforms }: MaterialProps) {
+function MappedMaterial({ body, uniforms }: MaterialProps) {
 	const { base, night } = body.textures
 	const urls =
 		night === undefined ? [assetUrl(base)] : [assetUrl(base), assetUrl(night)]
@@ -98,6 +101,7 @@ function TexturedMaterial({ body, uniforms }: MaterialProps) {
 	return (
 		<SunlitMaterial
 			uniforms={uniforms}
+			color={body.appearance?.tint}
 			map={map}
 			nightMap={nightMap}
 			ringShadow={ringShadow}
@@ -105,11 +109,27 @@ function TexturedMaterial({ body, uniforms }: MaterialProps) {
 	)
 }
 
+/**
+ * The colour map (times the curated tint, #17); a veiled body (Titan: its
+ * surface is hidden by haze in visible light) is its tint alone.
+ */
+function TexturedMaterial({ body, uniforms }: MaterialProps) {
+	if (body.appearance?.veiled) {
+		return <SunlitMaterial uniforms={uniforms} color={body.appearance.tint} />
+	}
+	return <MappedMaterial body={body} uniforms={uniforms} />
+}
+
 function FallbackMaterial({ body, uniforms }: MaterialProps) {
 	if (body.kind === "star") {
 		return <meshBasicMaterial color="#ffb347" toneMapped={false} />
 	}
-	return <SunlitMaterial uniforms={uniforms} color="#5b6472" />
+	return (
+		<SunlitMaterial
+			uniforms={uniforms}
+			color={body.appearance?.veiled ? body.appearance.tint : "#5b6472"}
+		/>
+	)
 }
 
 function BodyMesh({ body, index }: BodyMeshProps) {
@@ -136,11 +156,22 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 		[frame],
 	)
 
-	useFrame(() => {
+	useFrame(({ camera, size }) => {
 		const group = groupRef.current
 		const mesh = meshRef.current
 		if (group === null || mesh === null) return
 		frame.renderPosition(index, group.position)
+		// a moon drawn smaller than a pixel is skipped: its marker dot shows
+		// where it is, and 150 invisible spheres would cost the frame (#17)
+		group.visible =
+			body.kind !== "moon" ||
+			!(camera instanceof PerspectiveCamera) ||
+			isDiscVisible(
+				frame.renderRadius(index),
+				group.position.distanceTo(camera.position),
+				pixelsPerUnitAtDistanceOne(camera, size.height),
+			)
+		if (!group.visible) return
 		// the drawn radius under the active scale (docs/ARCHITECTURE.md, "Scale")
 		mesh.scale.setScalar(frame.renderRadius(index))
 		mesh.rotation.y = bodySpinAngle(body, spin, frame)
