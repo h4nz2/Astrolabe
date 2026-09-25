@@ -5,7 +5,7 @@
  * eight planets"). The pickers list every body grouped by planet, the same
  * list as the solar system's focus picker (`focusOptions`).
  */
-import { useMemo } from "react"
+import { Fragment, useMemo } from "react"
 import {
 	ActionIcon,
 	Button,
@@ -23,6 +23,7 @@ import { useBodyName } from "@/i18n/bodies"
 
 import { focusOptions } from "../solarSystem/ui/FocusPicker"
 import {
+	COMPARE_PRESET_GROUPS,
 	COMPARE_PRESETS,
 	MAX_COMPARE,
 	addBody,
@@ -130,7 +131,7 @@ const Pickers = ({ ids, onChange }: PickersProps) => {
 				className={`${classes.select} ${classes.add}`}
 				data-testid="compare-add"
 			/>
-			<Menu shadow="md" position="bottom-end">
+			<Menu shadow="md" position="bottom-end" width={360}>
 				<Menu.Target>
 					<Button
 						variant="light"
@@ -141,14 +142,28 @@ const Pickers = ({ ids, onChange }: PickersProps) => {
 						{t("compare.pick.presets")}
 					</Button>
 				</Menu.Target>
-				<Menu.Dropdown>
-					{COMPARE_PRESETS.map((preset) => (
-						<Menu.Item
-							key={preset.id}
-							onClick={() => onChange([...preset.bodies])}
-						>
-							{t(`compare.presets.${preset.id}`)}
-						</Menu.Item>
+				<Menu.Dropdown className={classes.ideas}>
+					{COMPARE_PRESET_GROUPS.map((group) => (
+						// ideas grouped so a dozen stay easy to scan (#40)
+						<Fragment key={group}>
+							<Menu.Label>{t(`compare.ideaGroups.${group}`)}</Menu.Label>
+							{COMPARE_PRESETS.filter((preset) => preset.group === group).map(
+								(preset) => (
+									<Menu.Item
+										key={preset.id}
+										data-idea={preset.id}
+										onClick={() => onChange([...preset.bodies])}
+									>
+										<span className={classes.ideaName}>
+											{t(`compare.presets.${preset.id}`)}
+										</span>
+										<span className={classes.ideaTeaser}>
+											{t(`compare.teasers.${preset.id}`)}
+										</span>
+									</Menu.Item>
+								),
+							)}
+						</Fragment>
 					))}
 				</Menu.Dropdown>
 			</Menu>
