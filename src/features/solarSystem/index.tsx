@@ -79,11 +79,11 @@ const SolarSystem = () => {
 						<FrameMenu />
 					</div>
 					<FrameBadgePanel />
+					<div className={`${classes.panel} ${classes.light}`}>
+						<LightPanel />
+					</div>
 				</div>
 				<CentreBadgePanel />
-				<div className={`${classes.panel} ${classes.light}`}>
-					<LightPanel />
-				</div>
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">

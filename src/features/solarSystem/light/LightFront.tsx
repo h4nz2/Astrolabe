@@ -13,15 +13,17 @@ import {
 	BufferAttribute,
 	BufferGeometry,
 	Color,
+	DoubleSide,
 	Group,
-	LineBasicMaterial,
-	LineLoop,
 	Mesh,
 	MeshBasicMaterial,
-	DoubleSide,
+	type InterleavedBuffer,
 } from "three"
+import { LineMaterial } from "three/examples/jsm/lines/LineMaterial.js"
+import { LineSegments2 } from "three/examples/jsm/lines/LineSegments2.js"
+import { LineSegmentsGeometry } from "three/examples/jsm/lines/LineSegmentsGeometry.js"
 
-import { useI18n } from "@/i18n"
+import { useI18n, type I18n } from "@/i18n"
 import { frontRadiusKm, secondsSince } from "@/sim/light"
 import { toUnits } from "@/sim"
 import { useLightStore, type LightPulse } from "@/store/light"
@@ -42,27 +44,41 @@ import classes from "./LightFront.module.css"
 export const FRONT_COLOR = "#ffe7a3"
 /** Opacity of the glow at the front's edge (it fades to 0 toward the source). */
 export const GLOW_OPACITY = 0.16
+/** Width of the front's line, px: thicker than an orbit line, so it reads on a projector at any scale. */
+export const FRONT_WIDTH_PX = 2.5
 
 interface FrontObjects {
-	line: LineLoop
+	line: LineSegments2
 	glow: Mesh
+	/** The front's vertices (FRONT_VERTICES x 3), as `writeFront` fills them. */
 	positions: Float32Array
+	/** The line's segments (start and end per vertex), shared with the GPU buffer. */
+	segments: Float32Array
+	segmentBuffer: InterleavedBuffer
 	glowPositions: Float32Array
-	lineMaterial: LineBasicMaterial
+	lineMaterial: LineMaterial
 	glowMaterial: MeshBasicMaterial
 }
 
-/** The line loop and the glow fan sharing the front's vertices (the fan adds the centre as vertex 0). */
+/** The closed line and the glow fan sharing the front's vertices (the fan adds the centre as vertex 0). */
 const createFrontObjects = (): FrontObjects => {
 	const positions = new Float32Array(FRONT_VERTICES * 3)
-	const lineGeometry = new BufferGeometry()
-	lineGeometry.setAttribute("position", new BufferAttribute(positions, 3))
-	const lineMaterial = new LineBasicMaterial({
-		color: new Color(FRONT_COLOR),
+	const segments = new Float32Array(FRONT_VERTICES * 6)
+	const lineGeometry = new LineSegmentsGeometry()
+	// uses `segments` itself as the instance buffer, so rewriting it updates the line
+	lineGeometry.setPositions(segments)
+	const segmentBuffer = (
+		lineGeometry.attributes.instanceStart as unknown as {
+			data: InterleavedBuffer
+		}
+	).data
+	const lineMaterial = new LineMaterial({
+		color: new Color(FRONT_COLOR).getHex(),
+		linewidth: FRONT_WIDTH_PX,
 		transparent: true,
 		depthWrite: false,
 	})
-	const line = new LineLoop(lineGeometry, lineMaterial)
+	const line = new LineSegments2(lineGeometry, lineMaterial)
 	line.frustumCulled = false
 	line.renderOrder = 2
 
@@ -93,7 +109,16 @@ const createFrontObjects = (): FrontObjects => {
 	const glow = new Mesh(glowGeometry, glowMaterial)
 	glow.frustumCulled = false
 	glow.renderOrder = 1
-	return { line, glow, positions, glowPositions, lineMaterial, glowMaterial }
+	return {
+		line,
+		glow,
+		positions,
+		segments,
+		segmentBuffer,
+		glowPositions,
+		lineMaterial,
+		glowMaterial,
+	}
 }
 
 const centre = new Float64Array(3)
@@ -125,7 +150,17 @@ export function updateFront(
 	objects.glowPositions[1] = toUnits(centre[1] - originKm[1])
 	objects.glowPositions[2] = toUnits(centre[2] - originKm[2])
 	objects.glowPositions.set(objects.positions, 3)
-	objects.line.geometry.attributes.position.needsUpdate = true
+	const { positions, segments } = objects
+	for (let v = 0; v < FRONT_VERTICES; v++) {
+		const next = ((v + 1) % FRONT_VERTICES) * 3
+		segments[v * 6] = positions[v * 3]
+		segments[v * 6 + 1] = positions[v * 3 + 1]
+		segments[v * 6 + 2] = positions[v * 3 + 2]
+		segments[v * 6 + 3] = positions[next]
+		segments[v * 6 + 4] = positions[next + 1]
+		segments[v * 6 + 5] = positions[next + 2]
+	}
+	objects.segmentBuffer.needsUpdate = true
 	objects.glow.geometry.attributes.position.needsUpdate = true
 	objects.lineMaterial.opacity = state.opacity
 	objects.glowMaterial.opacity = GLOW_OPACITY * state.opacity
@@ -209,16 +244,18 @@ function drawFront(
 	}
 }
 
-/** The text on the front: "Light · 4 min 12 s", refreshed at most 10 times a second. */
+/** The text on the front: "Light · 4 min 12 s", refreshed 10 times a second. Outside every React context (see LightFront). */
 const FrontLabel = ({
 	pulse,
+	frame,
+	i18n,
 	ref,
 }: {
 	pulse: LightPulse
+	frame: SimFrame
+	i18n: I18n
 	ref: RefObject<HTMLSpanElement | null>
 }) => {
-	const i18n = useI18n()
-	const frame = useSimFrame()
 	useEffect(() => {
 		const write = () => {
 			if (ref.current === null) return
@@ -236,6 +273,8 @@ const FrontLabel = ({
 
 function LightFront() {
 	const frame = useSimFrame()
+	// drei's <Html> renders in a React root of its own: pass context values down as props
+	const i18n = useI18n()
 	const pulse = useLightStore((state) => state.pulse)
 	const objects = useMemo(() => createFrontObjects(), [])
 	const labelRef = useRef<Group>(null)
@@ -279,8 +318,9 @@ function LightFront() {
 			<primitive object={objects.line} />
 			<group ref={labelRef}>
 				{pulse !== null && (
-					<Html center zIndexRange={[5, 0]} style={{ pointerEvents: "none" }}>
-						<FrontLabel pulse={pulse} ref={textRef} />
+					// z-index 0: the HUD panels, later in the page, stay on top of it
+					<Html center zIndexRange={[0, 0]} style={{ pointerEvents: "none" }}>
+						<FrontLabel pulse={pulse} frame={frame} i18n={i18n} ref={textRef} />
 					</Html>
 				)}
 			</group>

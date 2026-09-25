@@ -10,6 +10,7 @@ import {
 	formatDuration,
 	pulseArrivals,
 	pulseTargetIds,
+	roughSeconds,
 	signalDelay,
 } from "./lightTravel"
 
@@ -45,19 +46,25 @@ describe("durationParts", () => {
 
 	it("carries instead of showing 60 s or 60 min", () => {
 		expect(durationParts(9.97)).toEqual([{ unit: "second", value: 10 }])
-		expect(durationParts(59.6)).toEqual([
-			{ unit: "minute", value: 1 },
-			{ unit: "second", value: 0 },
-		])
-		expect(durationParts(3599.6)).toEqual([
-			{ unit: "hour", value: 1 },
-			{ unit: "minute", value: 0 },
-		])
+		expect(durationParts(59.6)).toEqual([{ unit: "minute", value: 1 }])
+		expect(durationParts(3599.6)).toEqual([{ unit: "hour", value: 1 }])
 		expect(durationParts(2 * 3600 + 59 * 60 + 50)).toEqual([
 			{ unit: "hour", value: 3 },
-			{ unit: "minute", value: 0 },
 		])
 		expect(durationParts(86400 - 20)).toEqual([{ unit: "day", value: 1 }])
+		// a running clock keeps its zeros
+		expect(durationParts(3600, true)).toEqual([
+			{ unit: "hour", value: 1 },
+			{ unit: "minute", value: 0 },
+			{ unit: "second", value: 0 },
+		])
+	})
+
+	it("rounds rough figures to whole minutes", () => {
+		expect(durationParts(roughSeconds(182))).toEqual([
+			{ unit: "minute", value: 3 },
+		])
+		expect(roughSeconds(1.3)).toBe(1.3)
 	})
 
 	it("measures negative durations as positive and drops the unmeasurable", () => {

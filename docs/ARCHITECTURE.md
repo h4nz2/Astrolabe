@@ -622,8 +622,9 @@ Every light time comes from TRUE positions; only the drawn front goes through th
   on arrival in every preset), except while the front is inside the source planet's neighbourhood (a planet, or a
   moon's planet): then that planet with the moons' rule, so the Earth -> Moon flash crosses the drawn Moon at 1.3 s.
   That early front fades out over the outer 40 % of the neighbourhood, where the two rules disagree (in every preset
-  but true scale, where both are the identity). An #31-style anchored frame would need the same re-rooting.
-- Panel (`light/LightPanel.tsx`, HUD grid area `light`, left below the picker; a button with the running clock
+  but true scale, where both are the identity). In an anchored frame (#31) a Sun-anchored point moves like a planet
+  at that place would (`framedOffset` from each anchor, weighted; `mapTruePointKm`), so arrivals stay on time.
+- Panel (`light/LightPanel.tsx`, a `.panel` in the picker stack under the picker; a button with the running clock
   while closed): Flash (source picker, running clock, distance covered, clock note with "Back to real time",
   arrivals `pulseArrivals` announced in an `aria-live` line), Signal delay (from Earth to any body: picked, or the
   scene selection; one way, round trip, live distance, range, what it means for a rover), Farther out (Proxima

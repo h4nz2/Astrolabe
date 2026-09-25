@@ -126,11 +126,27 @@ const YEAR = 365.25 * DAY
  * A duration split into the units a person reads: "1.3 s", "42 s",
  * "8 min 20 s", "4 h 10 min" ("4 h 10 min 12 s" when `precise`, for a
  * running clock), "3 days 4 h", "4.2 years". Values carry correctly (59.96 s
- * is "1 min 0 s", never "60 s"). Negative durations are measured as positive.
+ * is "1 min", never "60 s"); trailing zeros are dropped unless `precise`.
+ * Negative durations are measured as positive.
  */
 export function durationParts(
 	seconds: number,
 	precise = false,
+): { unit: DurationUnit; value: number }[] {
+	const parts = splitDuration(seconds, precise)
+	if (precise) return parts
+	// "1 min", not "1 min 0 s"; "3 h", not "3 h 0 min"
+	while (parts.length > 1 && parts[parts.length - 1].value === 0) parts.pop()
+	return parts
+}
+
+/** Seconds rounded to whole minutes from a minute on: for ranges and rough figures ("3 to 22 min"). */
+export const roughSeconds = (seconds: number): number =>
+	Math.abs(seconds) >= 60 ? Math.round(seconds / 60) * 60 : seconds
+
+function splitDuration(
+	seconds: number,
+	precise: boolean,
 ): { unit: DurationUnit; value: number }[] {
 	const s = Math.abs(seconds)
 	if (!Number.isFinite(s)) return []

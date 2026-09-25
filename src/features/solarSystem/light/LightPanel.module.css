@@ -1,6 +1,7 @@
 /* The light panel (#27): a HUD panel (the `.panel` look comes from SolarSystem.module.css) */
 .panel {
-	width: min(22rem, calc(100vw - 1.5rem));
+	/* the HUD's side gutters and the panel's own padding stay clear on a phone */
+	width: min(22rem, calc(100vw - 3rem));
 }
 
 .open {

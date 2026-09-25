@@ -19,6 +19,7 @@ import {
 	frontOpacity,
 	frontPointDisplayKm,
 	frontSource,
+	mapTruePointKm,
 	writeFront,
 	type FrontState,
 } from "./lightFront"
@@ -198,4 +199,48 @@ describe("the front passes through every body as drawn when the light arrives", 
 			expect(distance(point, earthDrawn) / moonDrawn).toBeCloseTo(1, 2)
 		})
 	}
+})
+
+describe("mapTruePointKm", () => {
+	it("maps every planet and moon onto itself as drawn, in every preset and in anchored frames (#31)", () => {
+		for (const presetId of SCALE_PRESET_IDS) {
+			for (const anchored of [null, "earth", "jupiter"]) {
+				const frame = createSimFrame(bodies, JD, SCALE_PRESETS[presetId])
+				if (anchored !== null) {
+					frame.frameBlend.anchors[0] = at(anchored)
+					frame.frameBlend.weights[0] = anchored === "earth" ? 1 : 0.4
+				}
+				updateSimFrame(frame, JD)
+				const out = new Float64Array(3)
+				for (const id of [
+					"mercury",
+					"earth",
+					"mars",
+					"neptune",
+					"moon",
+					"io",
+				]) {
+					const i = at(id)
+					const body = bodies[i]
+					// planets are drawn by the root's rule, moons by their planet's
+					const anchor = body.kind === "planet" ? 0 : at(body.parentId!)
+					const o = i * 3
+					mapTruePointKm(
+						frame,
+						0,
+						anchor,
+						frame.positionsKm[o],
+						frame.positionsKm[o + 1],
+						frame.positionsKm[o + 2],
+						out,
+					)
+					const scale = Math.max(
+						1,
+						distance(frame.displayKm, frame.displayKm, o),
+					)
+					expect(distance(out, frame.displayKm, o) / scale).toBeLessThan(1e-9)
+				}
+			}
+		}
+	})
 })

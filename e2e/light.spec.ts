@@ -6,6 +6,8 @@
  */
 import { expect, test, type Page } from "@playwright/test"
 
+import { nextFrames } from "./support/scene"
+
 // every test clicks through the panel while swiftshader renders the scene at a few fps
 test.describe.configure({ timeout: 60_000 })
 
@@ -34,7 +36,7 @@ test("a flash from the Sun runs in real time, counts, and announces each planet"
 	const panel = page.locator("[data-light-panel]")
 	await expect(panel).toBeVisible()
 	await expect(
-		panel.getByRole("textbox", { name: "Send light from" }),
+		panel.getByRole("combobox", { name: "Send light from" }),
 	).toHaveValue("Sun")
 	await panel.getByRole("button", { name: "Send a flash" }).click()
 
@@ -63,7 +65,7 @@ test("a flash from the Sun runs in real time, counts, and announces each planet"
 		timeout: 20_000,
 	})
 	await expect(panel.locator("[aria-live]")).toHaveText(
-		/^Reached Mercury after \d min \d+ s\.$/,
+		/^Reached Mercury after \d min( \d+ s)?\.$/,
 	)
 	expect(await elapsed(page)).toBeGreaterThan(150)
 	await panel.getByRole("button", { name: "Back to real time" }).click()
@@ -71,10 +73,13 @@ test("a flash from the Sun runs in real time, counts, and announces each planet"
 
 	// paused, the light stops; reversed, it shrinks back and un-arrives
 	await button(page, "Pause").click()
-	const paused = await elapsed(page)
 	await expect(panel.locator("[data-light-clock=changed]")).toContainText(
 		"paused",
 	)
+	// let the 10 Hz readout catch up with the last frame before the pause
+	await nextFrames(page, 5)
+	const paused = await elapsed(page)
+	await nextFrames(page, 5)
 	expect(await elapsed(page)).toBe(paused)
 	await page.getByText("1 min/s", { exact: true }).click()
 	await button(page, "Reverse").click()
@@ -90,10 +95,8 @@ test("the signal delay from Earth, for a picked or a selected body", async ({
 	await open(page)
 	await button(page, "Speed of light").click()
 	const panel = page.locator("[data-light-panel]")
-	await panel
-		.getByRole("radio", { name: "Signal delay" })
-		.check({ force: true })
-	const target = panel.getByRole("textbox", { name: "Message from Earth to" })
+	await panel.getByText("Signal delay", { exact: true }).click()
+	const target = panel.getByRole("combobox", { name: "Message from Earth to" })
 	await expect(target).toHaveValue("Mars")
 	const oneWay = panel.locator("[data-light-delay]")
 	const marsSeconds = Number(await oneWay.getAttribute("data-light-delay"))
@@ -130,14 +133,14 @@ test("beyond the solar system, and in German", async ({ page }) => {
 	await open(page, "lang=de&reading=simple")
 	await button(page, "Wie schnell ist Licht?").click()
 	const panel = page.locator("[data-light-panel]")
-	await panel.getByRole("radio", { name: "Noch weiter" }).check({ force: true })
+	await panel.getByText("Noch weiter", { exact: true }).click()
 	await expect(panel.locator("[data-beyond=proximaCentauri]")).toContainText(
 		"4,2 Jahre",
 	)
 	await expect(panel.locator("[data-beyond=galacticCentre]")).toContainText(
 		"26.000 Jahre",
 	)
-	await panel.getByRole("radio", { name: "Lichtblitz" }).check({ force: true })
+	await panel.getByText("Lichtblitz", { exact: true }).click()
 	await panel.getByRole("button", { name: "Lichtblitz senden" }).click()
 	await expect(panel).toContainText("So lange ist das Licht schon unterwegs")
 	await expect(panel.locator("[data-body=earth]")).toContainText(

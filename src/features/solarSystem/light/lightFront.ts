@@ -18,6 +18,11 @@
  *    but true scale (a planet drawn 10x too big hides the first minute of the
  *    Sun-anchored front inside itself).
  *
+ * In an anchored reference frame (#31, "see it from Earth") a Sun-anchored
+ * point moves exactly like a planet would at that place (`framedOffset` from
+ * each anchor, weighted), so the front still meets every drawn planet on time;
+ * a planet-anchored point rides along with its planet, like its moons.
+ *
  * At true scale both rules are the identity: the drawn front is the true circle.
  *
  * Pure apart from the typed arrays it fills; allocates nothing per frame.
@@ -31,6 +36,7 @@ import {
 	type ScaleSettings,
 } from "@/sim"
 import { neighbourhoodRadiusKm, truePositionAt } from "@/sim/light"
+import { framedOffset, type FrameBlend } from "@/sim/referenceFrame"
 
 /** Vertices of the drawn circle (a line loop). */
 export const FRONT_VERTICES = 512
@@ -61,6 +67,8 @@ export interface FrontFrame {
 	readonly displayRadiiKm: Float64Array
 	readonly originKm: Float64Array
 	readonly scale: ScaleSettings
+	/** The anchored reference frames (#31) the planets are drawn in. */
+	readonly frameBlend: FrameBlend
 }
 
 /** The source of a pulse sent from body `emitter` at `emitJD`. */
@@ -126,6 +134,69 @@ export function frontOpacity(source: FrontSource, radiusKm: number): number {
 const offset = new Float64Array(3)
 
 /**
+ * Display position (display km) of the TRUE point (px, py, pz) (km,
+ * Sun-centred), drawn relative to body `anchor` as a child of it would be
+ * (a planet's moons' rule, or the planets' rule for the root, including the
+ * anchored frames); written into `out[at..at + 2]`. A body's own true position
+ * maps onto exactly where it is drawn.
+ */
+export function mapTruePointKm(
+	frame: FrontFrame,
+	root: number,
+	anchor: number,
+	px: number,
+	py: number,
+	pz: number,
+	out: Float64Array | Float32Array,
+	at = 0,
+): void {
+	const a = anchor * 3
+	const { positionsKm, displayKm } = frame
+	displayOffset(
+		px - positionsKm[a],
+		py - positionsKm[a + 1],
+		pz - positionsKm[a + 2],
+		frame.bodies[anchor].radiusKm,
+		frame.displayRadiiKm[anchor],
+		childDistanceCurve(frame.scale, anchor === root),
+		offset,
+	)
+	let x = displayKm[a] + offset[0]
+	let y = displayKm[a + 1] + offset[1]
+	let z = displayKm[a + 2] + offset[2]
+	if (anchor === root) {
+		// drawn like a planet at this place in the anchored frames (applyReferenceFrame)
+		const { anchors, weights } = frame.frameBlend
+		let dx = 0
+		let dy = 0
+		let dz = 0
+		for (let k = 0; k < weights.length; k++) {
+			const w = weights[k]
+			const f = anchors[k]
+			if (!(w > 0) || f === root) continue
+			const o = f * 3
+			framedOffset(
+				px - positionsKm[o],
+				py - positionsKm[o + 1],
+				pz - positionsKm[o + 2],
+				frame.bodies[root].radiusKm,
+				frame.scale,
+				offset,
+			)
+			dx += w * (displayKm[o] + offset[0] - x)
+			dy += w * (displayKm[o + 1] + offset[1] - y)
+			dz += w * (displayKm[o + 2] + offset[2] - z)
+		}
+		x += dx
+		y += dy
+		z += dz
+	}
+	out[at] = x
+	out[at + 1] = y
+	out[at + 2] = z
+}
+
+/**
  * Display position (display km) of the front's point at angle `theta` (radians,
  * in the plane of the source, measured from +X toward +Z) at `radiusKm`,
  * anchored on body `anchor`; written into `out[at..at + 2]`.
@@ -139,22 +210,17 @@ export function frontPointDisplayKm(
 	out: Float64Array | Float32Array,
 	at = 0,
 ): void {
-	const a = anchor * 3
-	const body = frame.bodies[anchor]
-	const { positionsKm, displayKm } = frame
 	const { origin } = source
-	displayOffset(
-		origin[0] + radiusKm * Math.cos(theta) - positionsKm[a],
-		origin[1] - positionsKm[a + 1],
-		origin[2] + radiusKm * Math.sin(theta) - positionsKm[a + 2],
-		body.radiusKm,
-		frame.displayRadiiKm[anchor],
-		childDistanceCurve(frame.scale, anchor === source.root),
-		offset,
+	mapTruePointKm(
+		frame,
+		source.root,
+		anchor,
+		origin[0] + radiusKm * Math.cos(theta),
+		origin[1],
+		origin[2] + radiusKm * Math.sin(theta),
+		out,
+		at,
 	)
-	out[at] = displayKm[a] + offset[0]
-	out[at + 1] = displayKm[a + 1] + offset[1]
-	out[at + 2] = displayKm[a + 2] + offset[2]
 }
 
 const point = new Float64Array(3)

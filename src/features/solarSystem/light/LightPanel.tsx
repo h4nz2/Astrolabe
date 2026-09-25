@@ -52,6 +52,7 @@ import {
 	PLANETS_EDGE_KM,
 	formatDuration,
 	pulseArrivals,
+	roughSeconds,
 	signalDelay,
 } from "./lightTravel"
 
@@ -348,8 +349,8 @@ const DelayTab = () => {
 					</Text>
 					<Text size="xs" c="gray.4" lh={1.35}>
 						{t("solarSystem.light.delay.range", {
-							min: formatDuration(delay.minSeconds, i18n),
-							max: formatDuration(delay.maxSeconds, i18n),
+							min: formatDuration(roughSeconds(delay.minSeconds), i18n),
+							max: formatDuration(roughSeconds(delay.maxSeconds), i18n),
 						})}
 					</Text>
 					{targetId !== "sun" && (
