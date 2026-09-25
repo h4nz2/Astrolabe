@@ -192,7 +192,8 @@
 				"standard": [
 					"Fly to a planet: its card lists its best-known moons. Click one to fly there.",
 					"“See the whole moon system” steps back until every orbit fits.",
-					"“Show … smaller moons” or the All moons switch adds the many small ones; a moon’s card has “Read its story”."
+					"“Show … smaller moons” or the All moons switch adds the many small ones; a moon’s card has “Read its story”.",
+					"A moon’s card says where its surface comes from: a spacecraft’s map, filled in where no one has ever looked, or painted from what is known."
 				],
 				"simple": [
 					"Fly to Jupiter.",
@@ -999,7 +1000,7 @@
 	},
 	"creditNames": {
 		"rings": "Ring models of this app",
-		"surfaceMaps": "Surface maps of the Sun, planets and moons"
+		"surfaceMaps": "Maps of the Sun and the planets, and Saturn’s rings"
 	},
 	"credits": {
 		"solarSystemApi": "The starting list of the Sun, planets and moons: sizes, masses, orbits and discovery details.",
@@ -1007,7 +1008,7 @@
 		"iau": "Where every pole points and how fast each world turns, so the Sun is overhead at Greenwich at noon.",
 		"meeus": "How the Moon’s orbit slowly turns, so eclipses land on their real dates.",
 		"rings": "The rings of Jupiter, Uranus and Neptune, drawn for this app from published ring radii and opacities.",
-		"surfaceMaps": "The maps came with the first version of the project (2022). Where each one comes from, and its licence, is being traced and recorded in issue #37; every confirmed source will be credited here.",
+		"surfaceMaps": "They came with the first version of the project (2022) and where they come from was never recorded, so their source is unknown. The moons’ maps below are credited one by one (issue #37).",
 		"spaceAudio": "Four real recordings of radio and plasma waves, measured by Cassini, Voyager 1 and Injun 3 and turned into sound.",
 		"three": "Draws the 3D scene in the browser.",
 		"react": "Builds the pages and panels.",
@@ -1028,6 +1029,9 @@
 		"mitZlib": "MIT and zlib licences",
 		"mitBsd": "MIT and BSD licences",
 		"gsap": "GSAP standard licence (no charge)",
-		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)"
+		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)",
+		"unknown": "source unknown",
+		"publicDomainPlain": "public domain",
+		"noKnownRestrictions": "no known restrictions (check before commercial use)"
 	}
 }

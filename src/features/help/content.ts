@@ -31,6 +31,7 @@ import {
 	type Locale,
 	type ReadingLevel,
 } from "@/i18n"
+import imageCreditData from "@/data/credits.json"
 import helpData from "@/data/help.json"
 
 const levelIds = READING_LEVELS as readonly string[]
@@ -268,6 +269,64 @@ export const creditName = (credit: HelpCredit, i18n: Reader): string =>
 	credit.name ??
 	lookup<string>(i18n, (file) => file.creditNames[credit.id]) ??
 	credit.id
+
+/**
+ * The image sources of #37 (`src/data/credits.json`, written by `pnpm build:data`):
+ * every moon map with its credit and licence, listed under "Surface maps". Read
+ * as JSON, not through `@/data`, so the help page does not load the body data.
+ */
+interface ImageCreditLike {
+	id: string
+	kind: string
+	title: string
+	credit: string
+	url: string
+	licence: string
+}
+export const IMAGE_CREDITS: readonly ImageCreditLike[] =
+	imageCreditData as ImageCreditLike[]
+
+/** credits.json licence names -> `licences.<id>` in the help locales (a new licence needs a line here). */
+export const IMAGE_LICENCE_IDS: Readonly<Record<string, string>> = {
+	"Public domain": "publicDomainPlain",
+	"No known restrictions": "noKnownRestrictions",
+	MIT: "mit",
+}
+
+export interface CreditRow {
+	id: string
+	name: string
+	url?: string
+	what: string
+	licence: string
+}
+
+/** Everything credited in a section, in order: the help page's own credits, then (maps) every image source. */
+export function creditRows(section: CreditSection, i18n: Reader): CreditRow[] {
+	const own = HELP_CREDITS.filter((credit) => credit.section === section).map(
+		(credit) => ({
+			id: credit.id,
+			name: creditName(credit, i18n),
+			url: credit.url,
+			what: creditText(credit.id, i18n),
+			licence: licenceText(credit.licence, i18n),
+		}),
+	)
+	if (section !== "maps") return own
+	return [
+		...own,
+		...IMAGE_CREDITS.map((credit) => ({
+			id: `image-${credit.id}`,
+			name: credit.title,
+			url: credit.url,
+			what: credit.credit,
+			licence:
+				IMAGE_LICENCE_IDS[credit.licence] === undefined
+					? credit.licence
+					: licenceText(IMAGE_LICENCE_IDS[credit.licence], i18n),
+		})),
+	]
+}
 
 export const creditText = (creditId: string, i18n: Reader): string =>
 	lookup<string>(i18n, (file) => file.credits[creditId]) ?? ""

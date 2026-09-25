@@ -192,7 +192,8 @@
 				"standard": [
 					"Vuela a un planeta: su ficha muestra sus lunas más conocidas. Haz clic en una para volar hasta ella.",
 					"«Ver todo el sistema de lunas» aleja la vista hasta que caben todas las órbitas.",
-					"«Mostrar … lunas más pequeñas» o el interruptor Todas las lunas añaden las muchas lunas pequeñas; la ficha de una luna tiene «Leer su historia»."
+					"«Mostrar … lunas más pequeñas» o el interruptor Todas las lunas añaden las muchas lunas pequeñas; la ficha de una luna tiene «Leer su historia».",
+					"La tarjeta de una luna dice de dónde viene su superficie: un mapa de una sonda, completado donde nadie ha mirado nunca, o pintado según lo que se sabe."
 				],
 				"simple": [
 					"Vuela a Júpiter.",
@@ -1004,7 +1005,7 @@
 	},
 	"creditNames": {
 		"rings": "Modelos de anillos de esta aplicación",
-		"surfaceMaps": "Mapas de superficie del Sol, los planetas y las lunas"
+		"surfaceMaps": "Mapas del Sol y de los planetas, y los anillos de Saturno"
 	},
 	"credits": {
 		"solarSystemApi": "La lista de partida del Sol, los planetas y las lunas: tamaños, masas, órbitas y datos de su descubrimiento.",
@@ -1012,7 +1013,7 @@
 		"iau": "Hacia dónde apunta cada polo y a qué velocidad gira cada mundo, para que el Sol esté en lo más alto sobre Greenwich a mediodía.",
 		"meeus": "Cómo gira lentamente la órbita de la Luna, para que los eclipses caigan en sus fechas reales.",
 		"rings": "Los anillos de Júpiter, Urano y Neptuno, dibujados para esta aplicación a partir de radios y opacidades de anillos publicados.",
-		"surfaceMaps": "Los mapas llegaron con la primera versión del proyecto (2022). El origen de cada uno, y su licencia, se está investigando y registrando en la incidencia #37; cada fuente confirmada se citará aquí.",
+		"surfaceMaps": "Llegaron con la primera versión del proyecto (2022) y nunca se anotó de dónde venían, así que su fuente es desconocida. Los mapas de las lunas, abajo, se citan uno por uno (incidencia #37).",
 		"spaceAudio": "Cuatro grabaciones reales de ondas de radio y de plasma, medidas por Cassini, Voyager 1 e Injun 3 y convertidas en sonido.",
 		"three": "Dibuja la escena 3D en el navegador.",
 		"react": "Construye las páginas y los paneles.",
@@ -1033,6 +1034,9 @@
 		"mitZlib": "licencias MIT y zlib",
 		"mitBsd": "licencias MIT y BSD",
 		"gsap": "licencia estándar de GSAP (gratuita)",
-		"ccBy": "CC BY 4.0 (Saturno: CC BY 3.0)"
+		"ccBy": "CC BY 4.0 (Saturno: CC BY 3.0)",
+		"unknown": "fuente desconocida",
+		"publicDomainPlain": "dominio público",
+		"noKnownRestrictions": "sin restricciones conocidas (compruébalo antes de un uso comercial)"
 	}
 }

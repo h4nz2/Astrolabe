@@ -192,7 +192,8 @@
 				"standard": [
 					"Fliege zu einem Planeten: Sein Steckbrief listet seine bekanntesten Monde auf. Klicke einen an, um hinzufliegen.",
 					"„Das ganze Mondsystem ansehen“ zoomt zurück, bis jede Umlaufbahn ins Bild passt.",
-					"„… kleinere Monde zeigen“ oder der Schalter „Alle Monde“ fügt die vielen kleinen hinzu; im Steckbrief eines Mondes steht „Die ganze Geschichte lesen“."
+					"„… kleinere Monde zeigen“ oder der Schalter „Alle Monde“ fügt die vielen kleinen hinzu; im Steckbrief eines Mondes steht „Die ganze Geschichte lesen“.",
+					"Der Steckbrief eines Mondes sagt, woher seine Oberfläche stammt: eine Karte einer Raumsonde, ergänzt, wo noch nie jemand hingesehen hat, oder gemalt nach dem, was man weiß."
 				],
 				"simple": [
 					"Flieg zum Jupiter.",
@@ -1004,7 +1005,7 @@
 	},
 	"creditNames": {
 		"rings": "Ringmodelle dieser App",
-		"surfaceMaps": "Oberflächenkarten von Sonne, Planeten und Monden"
+		"surfaceMaps": "Karten der Sonne und der Planeten und Saturns Ringe"
 	},
 	"credits": {
 		"solarSystemApi": "Die Ausgangsliste der Sonne, der Planeten und der Monde: Größen, Massen, Umlaufbahnen und Angaben zur Entdeckung.",
@@ -1012,7 +1013,7 @@
 		"iau": "Wohin jeder Pol zeigt und wie schnell sich jede Welt dreht, damit die Sonne mittags über Greenwich steht.",
 		"meeus": "Wie sich die Mondbahn langsam dreht, damit Finsternisse auf ihre echten Daten fallen.",
 		"rings": "Die Ringe von Jupiter, Uranus und Neptun, für diese App aus veröffentlichten Radien und Lichtdurchlässigkeiten der Ringe gezeichnet.",
-		"surfaceMaps": "Die Karten stammen aus der ersten Version des Projekts (2022). Woher jede einzelne kommt und unter welcher Lizenz sie steht, wird in Issue #37 nachverfolgt und festgehalten; jede bestätigte Quelle wird hier genannt.",
+		"surfaceMaps": "Sie stammen aus der ersten Version des Projekts (2022), und woher sie kommen, wurde nie festgehalten: Ihre Quelle ist unbekannt. Die Karten der Monde unten sind einzeln angegeben (Issue #37).",
 		"spaceAudio": "Vier echte Aufnahmen von Radio- und Plasmawellen, gemessen von Cassini, Voyager 1 und Injun 3 und in Klang verwandelt.",
 		"three": "Zeichnet die 3D-Szene im Browser.",
 		"react": "Baut die Seiten und Bedienfelder.",
@@ -1033,6 +1034,9 @@
 		"mitZlib": "MIT- und zlib-Lizenz",
 		"mitBsd": "MIT- und BSD-Lizenz",
 		"gsap": "GSAP-Standardlizenz (kostenlos)",
-		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)"
+		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)",
+		"unknown": "Quelle unbekannt",
+		"publicDomainPlain": "gemeinfrei",
+		"noKnownRestrictions": "keine bekannten Einschränkungen (vor kommerzieller Nutzung prüfen)"
 	}
 }

@@ -37,15 +37,12 @@ import { useI18n, type I18n } from "@/i18n"
 import {
 	CREDIT_SECTIONS,
 	HELP_CONTROLS,
-	HELP_CREDITS,
 	controlText,
-	creditName,
+	creditRows,
 	creditSectionText,
-	creditText,
 	entryText,
 	groupText,
 	helpFile,
-	licenceText,
 	matchesQuery,
 	queryWords,
 	searchEntries,
@@ -218,9 +215,7 @@ function Credits({ i18n }: { i18n: I18n }) {
 			</Title>
 			<div className={classes.creditGrid}>
 				{CREDIT_SECTIONS.map((section) => {
-					const credits = HELP_CREDITS.filter(
-						(credit) => credit.section === section,
-					)
+					const credits = creditRows(section, i18n)
 					if (credits.length === 0) return null
 					const text = creditSectionText(section, i18n)
 					return (
@@ -235,9 +230,7 @@ function Credits({ i18n }: { i18n: I18n }) {
 								{credits.map((credit) => (
 									<li key={credit.id} data-credit={credit.id}>
 										{credit.url === undefined ? (
-											<span className={classes.creditName}>
-												{creditName(credit, i18n)}
-											</span>
+											<span className={classes.creditName}>{credit.name}</span>
 										) : (
 											<a
 												className={classes.creditName}
@@ -245,17 +238,13 @@ function Credits({ i18n }: { i18n: I18n }) {
 												target="_blank"
 												rel="noreferrer"
 											>
-												{creditName(credit, i18n)}
+												{credit.name}
 												<IconExternalLink size={13} aria-hidden />
 											</a>
 										)}
-										<span className={classes.creditWhat}>
-											{creditText(credit.id, i18n)}
-										</span>
+										<span className={classes.creditWhat}>{credit.what}</span>
 										<span className={classes.licence}>
-											{t("help.credits.licence", {
-												licence: licenceText(credit.licence, i18n),
-											})}
+											{t("help.credits.licence", { licence: credit.licence })}
 										</span>
 									</li>
 								))}

@@ -192,7 +192,8 @@
 				"standard": [
 					"Vole vers une planète : sa fiche liste ses lunes les plus connues. Clique sur l’une d’elles pour t’y rendre.",
 					"« Voir tout le système de lunes » recule jusqu’à ce que toutes les orbites tiennent à l’écran.",
-					"« Afficher … petites lunes » ou l’interrupteur Toutes les lunes ajoute les nombreuses petites lunes ; la fiche d’une lune propose « Lire son histoire »."
+					"« Afficher … petites lunes » ou l’interrupteur Toutes les lunes ajoute les nombreuses petites lunes ; la fiche d’une lune propose « Lire son histoire ».",
+					"La fiche d’une lune dit d’où vient sa surface : une carte prise par une sonde, complétée là où personne n’a jamais regardé, ou peinte d’après ce qu’on sait."
 				],
 				"simple": [
 					"Vole vers Jupiter.",
@@ -1004,7 +1005,7 @@
 	},
 	"creditNames": {
 		"rings": "Modèles d’anneaux de cette application",
-		"surfaceMaps": "Cartes de surface du Soleil, des planètes et des lunes"
+		"surfaceMaps": "Cartes du Soleil et des planètes, et anneaux de Saturne"
 	},
 	"credits": {
 		"solarSystemApi": "La liste de départ du Soleil, des planètes et des lunes : tailles, masses, orbites et détails de leur découverte.",
@@ -1012,7 +1013,7 @@
 		"iau": "La direction de chaque pôle et la vitesse de rotation de chaque monde, pour qu’à midi le Soleil soit au-dessus de Greenwich.",
 		"meeus": "Comment l’orbite de la Lune tourne lentement, pour que les éclipses tombent à leurs vraies dates.",
 		"rings": "Les anneaux de Jupiter, d’Uranus et de Neptune, dessinés pour cette application à partir des rayons et des opacités d’anneaux publiés.",
-		"surfaceMaps": "Les cartes sont arrivées avec la première version du projet (2022). L’origine de chacune et sa licence sont en cours de recherche et consignées dans le ticket #37 ; chaque source confirmée sera créditée ici.",
+		"surfaceMaps": "Elles viennent de la première version du projet (2022) et leur origine n’a jamais été notée : leur source est inconnue. Les cartes des lunes, ci-dessous, sont créditées une par une (ticket #37).",
 		"spaceAudio": "Quatre vrais enregistrements d’ondes radio et de plasma, mesurés par Cassini, Voyager 1 et Injun 3 et transformés en son.",
 		"three": "Dessine la scène 3D dans le navigateur.",
 		"react": "Construit les pages et les panneaux.",
@@ -1033,6 +1034,9 @@
 		"mitZlib": "licences MIT et zlib",
 		"mitBsd": "licences MIT et BSD",
 		"gsap": "licence standard GSAP (gratuite)",
-		"ccBy": "CC BY 4.0 (Saturne : CC BY 3.0)"
+		"ccBy": "CC BY 4.0 (Saturne : CC BY 3.0)",
+		"unknown": "source inconnue",
+		"publicDomainPlain": "domaine public",
+		"noKnownRestrictions": "aucune restriction connue (à vérifier avant un usage commercial)"
 	}
 }

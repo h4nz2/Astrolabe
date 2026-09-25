@@ -192,7 +192,8 @@
 				"standard": [
 					"Leť k planetě: její karta vypíše nejznámější měsíce. Kliknutím na některý z nich k němu poletíš.",
 					"„Zobrazit celou soustavu měsíců“ poodstoupí, až se vejdou všechny dráhy.",
-					"„Zobrazit … menších měsíců“ nebo přepínač Všechny měsíce přidá spoustu malých měsíců; karta měsíce nabízí „Přečíst příběh“."
+					"„Zobrazit … menších měsíců“ nebo přepínač Všechny měsíce přidá spoustu malých měsíců; karta měsíce nabízí „Přečíst příběh“.",
+					"Kartička měsíce řekne, odkud je jeho povrch: mapa z kosmické sondy, doplněná tam, kam se ještě nikdo nepodíval, nebo namalovaná podle toho, co víme."
 				],
 				"simple": [
 					"Leť k Jupiteru.",
@@ -999,7 +1000,7 @@
 	},
 	"creditNames": {
 		"rings": "Modely prstenců této aplikace",
-		"surfaceMaps": "Mapy povrchu Slunce, planet a měsíců"
+		"surfaceMaps": "Mapy Slunce a planet a Saturnovy prstence"
 	},
 	"credits": {
 		"solarSystemApi": "Výchozí seznam Slunce, planet a měsíců: velikosti, hmotnosti, dráhy a údaje o objevu.",
@@ -1007,7 +1008,7 @@
 		"iau": "Kam míří pól každého světa a jak rychle se který svět otáčí, aby v poledne stálo Slunce nad Greenwichem.",
 		"meeus": "Jak se dráha Měsíce pomalu stáčí, aby zatmění připadla na svá skutečná data.",
 		"rings": "Prstence Jupiteru, Uranu a Neptunu, nakreslené pro tuto aplikaci podle zveřejněných poloměrů a neprůhlednosti prstenců.",
-		"surfaceMaps": "Mapy přišly s první verzí projektu (2022). Odkud která pochází a pod jakou licencí je, se právě dohledává a zapisuje v úkolu #37; každý potvrzený zdroj tu bude uveden.",
+		"surfaceMaps": "Pocházejí z první verze projektu (2022) a jejich původ nebyl nikdy zaznamenán, takže zdroj je neznámý. Mapy měsíců níže jsou uvedeny jednotlivě (issue #37).",
 		"spaceAudio": "Čtyři skutečné nahrávky rádiových a plazmových vln, které změřily sondy Cassini, Voyager 1 a Injun 3, převedené na zvuk.",
 		"three": "Kreslí 3D scénu v prohlížeči.",
 		"react": "Skládá stránky a panely.",
@@ -1028,6 +1029,9 @@
 		"mitZlib": "licence MIT a zlib",
 		"mitBsd": "licence MIT a BSD",
 		"gsap": "standardní licence GSAP (zdarma)",
-		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)"
+		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)",
+		"unknown": "zdroj neznámý",
+		"publicDomainPlain": "volné dílo",
+		"noKnownRestrictions": "žádná známá omezení (před komerčním použitím ověř)"
 	}
 }

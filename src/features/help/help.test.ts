@@ -19,8 +19,11 @@ import {
 	HELP_GROUP_IDS,
 	HelpFile,
 	HelpTextFile,
+	IMAGE_CREDITS,
+	IMAGE_LICENCE_IDS,
 	STANDARD_ONLY_GROUPS,
 	controlText,
+	creditRows,
 	entryText,
 	foldText,
 	groupText,
@@ -88,7 +91,12 @@ describe("the help page's words (src/locales/<locale>/help.json)", () => {
 				.sort(),
 		)
 		expect(Object.keys(english.licences).sort()).toEqual(
-			[...new Set(HELP_CREDITS.map((credit) => credit.licence))].sort(),
+			[
+				...new Set([
+					...HELP_CREDITS.map((credit) => credit.licence),
+					...Object.values(IMAGE_LICENCE_IDS),
+				]),
+			].sort(),
 		)
 		expect(Object.keys(english.creditSections).sort()).toEqual(
 			[...new Set(HELP_CREDITS.map((credit) => credit.section))].sort(),
@@ -242,6 +250,29 @@ function linkProblems(path: string): string[] {
 	}
 	return problems
 }
+
+describe("credits", () => {
+	it("names every image licence of src/data/credits.json in every language", () => {
+		const unnamed = IMAGE_CREDITS.filter(
+			(credit) => IMAGE_LICENCE_IDS[credit.licence] === undefined,
+		).map((credit) => `${credit.id}: ${credit.licence}`)
+		expect(unnamed).toEqual([])
+	})
+
+	it("lists every moon map under the surface maps, with its licence", () => {
+		const rows = creditRows("maps", createI18n({ locale: "de" }))
+		expect(rows.length).toBe(
+			HELP_CREDITS.filter((credit) => credit.section === "maps").length +
+				IMAGE_CREDITS.length,
+		)
+		expect(rows.find((row) => row.id === "image-svs-moon")?.licence).toBe(
+			"gemeinfrei",
+		)
+		expect(rows.find((row) => row.id === "surfaceMaps")?.licence).toBe(
+			"Quelle unbekannt",
+		)
+	})
+})
 
 describe("try it links", () => {
 	it("every entry's link opens a real page with only valid, meaningful params", () => {
