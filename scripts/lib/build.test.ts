@@ -588,6 +588,111 @@ describe("buildBodies", () => {
 		expect(bad.warnings.some((w) => /tint "orange"/.test(w))).toBe(true)
 	})
 
+	describe("moon surfaces (#37)", () => {
+		const moonIds = result.bodies
+			.filter((body) => body.kind === "moon")
+			.map((body) => body.id)
+		const [mapped, ...painted] = moonIds
+		const paintedSource = {
+			title: "Painted",
+			credit: "Astrolabe",
+			short: "Painted by Astrolabe",
+			url: "https://example.org/",
+			licence: "MIT",
+			licenceUrl: "https://example.org/licence",
+		}
+		const catalogue = (members: string[] = painted) => ({
+			sources: {
+				"astrolabe-painted": paintedSource,
+				cassini: {
+					...paintedSource,
+					title: "Cassini map",
+					licence: "Public domain",
+					file: "https://example.org/map.tif",
+				},
+				unused: { ...paintedSource, title: "Unused" },
+			},
+			maps: {
+				[mapped]: {
+					planet: "saturn",
+					source: "cassini",
+					width: 1024,
+					centreLonEast: 180,
+					albedo: 0.9,
+					hue: "#eeeeee",
+					fill: true,
+					unseen: true,
+				},
+			},
+			painted: {},
+			families: {
+				rocks: {
+					planet: "saturn",
+					members,
+					recipe: { pattern: "cratered", albedo: 0.05, hue: "#888888" },
+					basis: "dark rocks",
+				},
+			},
+		})
+		const surfaceFiles = new Set(
+			moonIds.map((id) => `/assets/textures/saturn/satellites/${id}.jpg`),
+		)
+		const withSurfaces = {
+			...options,
+			fileExists: (path: string) =>
+				existing.has(path) || surfaceFiles.has(path),
+			surfaces: catalogue(),
+			builtSurfaces: { [mapped]: { color: "#dddddd", width: 1024, bytes: 1 } },
+		}
+
+		it("gives every moon its own map, source and mean colour, and credits the sources", () => {
+			const built = buildBodies(fixture, withSurfaces)
+			const moon = built.bodies.find((body) => body.id === mapped)
+			expect(moon?.textures).toEqual({
+				base: `/assets/textures/saturn/satellites/${mapped}.jpg`,
+			})
+			expect(moon?.surface).toEqual({
+				kind: "map",
+				source: "cassini",
+				filled: true,
+			})
+			expect(moon?.appearance).toEqual({ color: "#dddddd" })
+			const rock = built.bodies.find((body) => body.id === painted[0])
+			expect(rock?.surface).toEqual({
+				kind: "painted",
+				source: "astrolabe-painted",
+			})
+			expect(built.stats.placeholderTextures).toBe(0)
+			expect(built.credits.map((credit) => credit.id)).toEqual([
+				"astrolabe-painted",
+				"cassini",
+			])
+			expect(built.credits[0].bodies).toEqual(painted)
+			expect(BodiesFile.safeParse(built.bodies).success).toBe(true)
+		})
+
+		it("stops the build on a moon without a surface, an unknown moon or a missing image", () => {
+			expect(() =>
+				buildBodies(fixture, {
+					...withSurfaces,
+					surfaces: catalogue(painted.slice(1)),
+				}),
+			).toThrow(/has no surface/)
+			expect(() =>
+				buildBodies(fixture, {
+					...withSurfaces,
+					surfaces: catalogue([...painted, "ymir"]),
+				}),
+			).toThrow(/"ymir", which is not a moon/)
+			expect(() =>
+				buildBodies(fixture, {
+					...withSurfaces,
+					fileExists: (path: string) => existing.has(path),
+				}),
+			).toThrow(/run pnpm gen:surfaces/)
+		})
+	})
+
 	describe("featured moons (#17)", () => {
 		it("flags the listed moons and nothing else", () => {
 			const built = buildBodies(fixture, {
