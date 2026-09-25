@@ -1,0 +1,154 @@
+{
+	"innerRadiusKm": 74510,
+	"outerRadiusKm": 140220,
+	"textures": {
+		"alpha": "/assets/textures/saturn/rings/rings_alpha.png",
+		"color": "/assets/textures/saturn/rings/rings_color.png"
+	},
+	"sources": [
+		"Radii and optical depths: NASA NSSDC Saturnian Rings Fact Sheet (https://nssdc.gsfc.nasa.gov/planetary/factsheet/satringfact.html); Cuzzi et al. 2009, 'Ring particle composition and size distribution', in Saturn from Cassini-Huygens; Colwell et al. 2009 (Cassini UVIS occultations). Opacity = 1 - exp(-optical depth), face-on.",
+		"Colours: after Cassini ISS natural-colour images (NASA/JPL/Space Science Institute): the B ring cream, the A ring greyer, the C ring and the Cassini Division darker grey-brown."
+	],
+	"bands": [
+		{
+			"name": "C ring (inner)",
+			"innerKm": 74658,
+			"outerKm": 77800,
+			"opacity": 0.049,
+			"color": "#8c8274"
+		},
+		{
+			"name": "C ring",
+			"innerKm": 77900,
+			"outerKm": 84750,
+			"opacity": 0.068,
+			"color": "#8c8274"
+		},
+		{
+			"name": "C ring (plateaus)",
+			"innerKm": 84750,
+			"outerKm": 87290,
+			"opacity": 0.113,
+			"color": "#8c8274"
+		},
+		{
+			"name": "Maxwell ringlet",
+			"innerKm": 87480,
+			"outerKm": 87540,
+			"opacity": 0.699,
+			"color": "#8c8274"
+		},
+		{
+			"name": "C ring (outer)",
+			"innerKm": 87612,
+			"outerKm": 88700,
+			"opacity": 0.095,
+			"color": "#8c8274"
+		},
+		{
+			"name": "C ring plateau",
+			"innerKm": 88700,
+			"outerKm": 89200,
+			"opacity": 0.33,
+			"color": "#8c8274"
+		},
+		{
+			"name": "C ring (outer)",
+			"innerKm": 89200,
+			"outerKm": 90200,
+			"opacity": 0.095,
+			"color": "#8c8274"
+		},
+		{
+			"name": "C ring (ramp)",
+			"innerKm": 90200,
+			"outerKm": 92000,
+			"opacity": 0.131,
+			"color": "#8c8274"
+		},
+		{
+			"name": "B ring (inner, B1)",
+			"innerKm": 92000,
+			"outerKm": 99000,
+			"opacity": 0.667,
+			"color": "#cdb994"
+		},
+		{
+			"name": "B ring (B2)",
+			"innerKm": 99000,
+			"outerKm": 104500,
+			"opacity": 0.918,
+			"color": "#d8c5a1"
+		},
+		{
+			"name": "B ring (core, B3)",
+			"innerKm": 104500,
+			"outerKm": 110000,
+			"opacity": 0.989,
+			"color": "#d8c5a1"
+		},
+		{
+			"name": "B ring (outer, B4)",
+			"innerKm": 110000,
+			"outerKm": 117580,
+			"opacity": 0.865,
+			"color": "#d8c5a1"
+		},
+		{
+			"name": "Huygens ringlet",
+			"innerKm": 117780,
+			"outerKm": 117830,
+			"opacity": 0.551,
+			"color": "#8e867a"
+		},
+		{
+			"name": "Cassini Division",
+			"innerKm": 118100,
+			"outerKm": 120000,
+			"opacity": 0.077,
+			"color": "#8e867a"
+		},
+		{
+			"name": "Cassini Division (ramp)",
+			"innerKm": 120000,
+			"outerKm": 122170,
+			"opacity": 0.139,
+			"color": "#8e867a"
+		},
+		{
+			"name": "A ring (inner)",
+			"innerKm": 122170,
+			"outerKm": 125000,
+			"opacity": 0.551,
+			"color": "#c8b899"
+		},
+		{
+			"name": "A ring",
+			"innerKm": 125000,
+			"outerKm": 133423,
+			"opacity": 0.451,
+			"color": "#c8b899"
+		},
+		{
+			"name": "A ring (outside the Encke gap)",
+			"innerKm": 133745,
+			"outerKm": 136485,
+			"opacity": 0.393,
+			"color": "#c8b899"
+		},
+		{
+			"name": "A ring (outside the Keeler gap)",
+			"innerKm": 136527,
+			"outerKm": 136775,
+			"opacity": 0.259,
+			"color": "#c8b899"
+		},
+		{
+			"name": "F ring",
+			"innerKm": 140155,
+			"outerKm": 140205,
+			"opacity": 0.33,
+			"color": "#bcb3a4"
+		}
+	]
+}

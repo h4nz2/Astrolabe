@@ -322,7 +322,9 @@ describe("bodies.json", () => {
 			expect(moon.textures, moon.id).toEqual({
 				base: `/assets/textures/${moon.parentId}/satellites/${moon.id}.jpg`,
 			})
-			expect(moon.textures.base).not.toBe(PLACEHOLDER_TEXTURE)
+			// the placeholder of the unit fixtures is the Moon's own map
+			if (moon.id !== "moon")
+				expect(moon.textures.base).not.toBe(PLACEHOLDER_TEXTURE)
 			expect(usesPlaceholderTexture(moon), moon.id).toBe(false)
 			bases.add(moon.textures.base)
 			expect(moon.surface, moon.id).toBeDefined()

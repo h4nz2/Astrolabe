@@ -3,8 +3,8 @@
  *
  * All mapping rules live in scripts/lib/build.ts (pure, unit-tested); this file only
  * does the I/O: read the source, the optional data/rings/<planet>.json files and the
- * curated data/featured-moons.json (#17) and the moon surfaces data/moon-surfaces.json (#37,
- * which also gives src/data/credits.json), check
+ * curated data/featured-moons.json (#17), the moon surfaces data/moon-surfaces.json (#37) and
+ * the Sun's and planets' textures data/planet-textures.json (both give src/data/credits.json), check
  * texture paths against public/, validate with the zod schema, write, print stats.
  * Warnings go to stderr, the summary to stdout. Exit code 1 on any data error.
  */
@@ -25,6 +25,7 @@ const paths = {
 	featuredMoons: join(root, "data", "featured-moons.json"),
 	surfaces: join(root, "data", "moon-surfaces.json"),
 	builtSurfaces: join(root, "data", "moon-surfaces.built.json"),
+	planetTextures: join(root, "data", "planet-textures.json"),
 	publicDir: join(root, "public"),
 	out: join(root, "src", "data", "bodies.json"),
 	credits: join(root, "src", "data", "credits.json"),
@@ -67,6 +68,7 @@ const main = (): number => {
 		builtSurfaces: existsSync(paths.builtSurfaces)
 			? readJson(paths.builtSurfaces)
 			: undefined,
+		planetTextures: readJson(paths.planetTextures),
 	})
 	for (const warning of result.warnings) err(`warning: ${warning}`)
 

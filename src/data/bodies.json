@@ -15,7 +15,7 @@
 			"primeMeridianDeg": 84.176
 		},
 		"textures": {
-			"base": "/assets/textures/sun/sun_detailed.png"
+			"base": "/assets/textures/sun/sun.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -49,6 +49,10 @@
 			"bodyType": "Star",
 			"diameter": 1392700,
 			"axialTilt": 7.25
+		},
+		"surface": {
+			"kind": "map",
+			"source": "sdo-aia304"
 		}
 	},
 	{
@@ -105,6 +109,10 @@
 			"orbitalInclination": 7,
 			"axialTilt": 0.0352,
 			"orbitPositionOffset": 48
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-mercury"
 		}
 	},
 	{
@@ -132,8 +140,8 @@
 			"primeMeridianDeg": 160.2
 		},
 		"textures": {
-			"base": "/assets/textures/venus.jpg",
-			"topo": "/assets/textures/venus_topo.jpg"
+			"base": "/assets/textures/venus/venus.jpg",
+			"topo": "/assets/textures/venus/venus_topo.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -161,6 +169,10 @@
 			"orbitalInclination": 3.4,
 			"axialTilt": 177.36,
 			"orbitPositionOffset": 155
+		},
+		"surface": {
+			"kind": "haze",
+			"source": "astrolabe-painted-bands"
 		}
 	},
 	{
@@ -188,11 +200,11 @@
 			"primeMeridianDeg": 190.147
 		},
 		"textures": {
-			"base": "/assets/textures/earth_4k.jpg",
-			"topo": "/assets/textures/earth_topo_4k.jpg",
-			"specular": "/assets/textures/earth_ocean_reflectance_10k.jpg",
-			"clouds": "/assets/textures/earth_clouds_active2.png",
-			"night": "/assets/textures/earth_night_4k.jpg"
+			"base": "/assets/textures/earth/earth.jpg",
+			"topo": "/assets/textures/earth/earth_topo.jpg",
+			"specular": "/assets/textures/earth/earth_ocean.jpg",
+			"clouds": "/assets/textures/earth/earth_clouds.jpg",
+			"night": "/assets/textures/earth/earth_night.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -219,6 +231,10 @@
 			"aphelion": 152100000,
 			"orbitalPeriod": 365.2,
 			"axialTilt": 23.4393
+		},
+		"surface": {
+			"kind": "map",
+			"source": "nasa-blue-marble"
 		}
 	},
 	{
@@ -246,8 +262,8 @@
 			"primeMeridianDeg": 176.631819
 		},
 		"textures": {
-			"base": "/assets/textures/mars.jpg",
-			"topo": "/assets/textures/mars_topo.jpg"
+			"base": "/assets/textures/mars/mars.jpg",
+			"topo": "/assets/textures/mars/mars_topo.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -276,6 +292,10 @@
 			"orbitalInclination": 1.85,
 			"axialTilt": 25.19,
 			"orbitPositionOffset": 85
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-mars"
 		}
 	},
 	{
@@ -303,7 +323,7 @@
 			"primeMeridianDeg": 284.95
 		},
 		"textures": {
-			"base": "/assets/textures/jupiter.jpg"
+			"base": "/assets/textures/jupiter/jupiter.jpg"
 		},
 		"rings": {
 			"innerRadiusKm": 92000,
@@ -339,6 +359,10 @@
 			"orbitalInclination": 1.303,
 			"axialTilt": 3.12,
 			"orbitPositionOffset": 2692
+		},
+		"surface": {
+			"kind": "map",
+			"source": "pia07782"
 		}
 	},
 	{
@@ -366,14 +390,14 @@
 			"primeMeridianDeg": 38.9
 		},
 		"textures": {
-			"base": "/assets/textures/saturn.jpg"
+			"base": "/assets/textures/saturn/saturn.jpg"
 		},
 		"rings": {
 			"innerRadiusKm": 74510,
 			"outerRadiusKm": 140220,
 			"textures": {
-				"alpha": "/assets/textures/saturn/rings/rings_map.png",
-				"color": "/assets/textures/saturn/rings/rings_color_map.png"
+				"alpha": "/assets/textures/saturn/rings/rings_alpha.png",
+				"color": "/assets/textures/saturn/rings/rings_color.png"
 			}
 		},
 		"info": {
@@ -402,6 +426,10 @@
 			"orbitalInclination": 2.48524,
 			"axialTilt": 26.73,
 			"orbitPositionOffset": 13753
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted-bands"
 		}
 	},
 	{
@@ -429,7 +457,7 @@
 			"primeMeridianDeg": 203.81
 		},
 		"textures": {
-			"base": "/assets/textures/uranus.jpg"
+			"base": "/assets/textures/uranus/uranus.jpg"
 		},
 		"rings": {
 			"innerRadiusKm": 41500,
@@ -467,6 +495,10 @@
 			"orbitalInclination": 0.8,
 			"axialTilt": 97.77,
 			"orbitPositionOffset": 29654
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted-bands"
 		}
 	},
 	{
@@ -494,7 +526,7 @@
 			"primeMeridianDeg": 249.996008
 		},
 		"textures": {
-			"base": "/assets/textures/neptune.jpg"
+			"base": "/assets/textures/neptune/neptune.jpg"
 		},
 		"rings": {
 			"innerRadiusKm": 40900,
@@ -532,6 +564,10 @@
 			"orbitalInclination": 1.8,
 			"axialTilt": 28.3,
 			"orbitPositionOffset": 62885
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted-bands"
 		}
 	},
 	{

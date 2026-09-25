@@ -1,5 +1,172 @@
 [
 	{
+		"id": "sdo-aia304",
+		"kind": "map",
+		"title": "SDO/AIA 304 Å synoptic map, Carrington rotation 2285 (June 2024)",
+		"credit": "NASA/SDO and the AIA science team",
+		"short": "SDO · NASA",
+		"url": "https://sdo.gsfc.nasa.gov/data/synoptic/",
+		"licence": "Public domain",
+		"licenceUrl": "https://sdo.gsfc.nasa.gov/data/rules.php",
+		"note": "The Sun in extreme ultraviolet light (30.4 nm), a month near the 2024 solar maximum: the bright patches are active regions. Coloured orange, as SDO shows this light; to the eye the Sun is an almost featureless white disc.",
+		"bodies": [
+			"sun"
+		]
+	},
+	{
+		"id": "usgs-mercury",
+		"kind": "map",
+		"title": "Mercury MESSENGER MDIS global basemap (BDR)",
+		"credit": "NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington (MESSENGER MDIS); mosaic distributed by USGS Astrogeology",
+		"short": "MESSENGER · NASA/JHUAPL/CIW",
+		"url": "https://astrogeology.usgs.gov/search/map/mercury_messenger_mdis_basemap_bdr_mosaic_global_166m",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+		"note": "A grey mosaic, coloured by us in Mercury's faintly brownish grey.",
+		"bodies": [
+			"mercury"
+		]
+	},
+	{
+		"id": "usgs-mercury-relief",
+		"kind": "map",
+		"title": "Mercury MESSENGER global DEM, colour shaded relief (2 km)",
+		"credit": "NASA/JHUAPL/CIW (MESSENGER); elevation model and relief by USGS Astrogeology",
+		"short": "MESSENGER · NASA/USGS",
+		"url": "https://astrogeology.usgs.gov/search/map/mercury_messenger_mdis_dem_global_color_shaded_relief_2km",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+		"note": "Colours show height (blue low, red and white high), not what the eye sees.",
+		"bodies": [
+			"mercury"
+		]
+	},
+	{
+		"id": "usgs-venus-relief",
+		"kind": "map",
+		"title": "Venus Magellan global C3-MDIR colorized topographic mosaic (6.6 km)",
+		"credit": "NASA/JPL (Magellan radar); mosaic by USGS Astrogeology",
+		"short": "Magellan · NASA/JPL/USGS",
+		"url": "https://astrogeology.usgs.gov/search/map/venus_magellan_global_c3_mdir_colorized_topographic_mosaic_6600m",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+		"note": "The ground under the clouds as radar sees it, coloured by height. It is the Terrain view of Venus in the dictionary.",
+		"bodies": [
+			"venus"
+		]
+	},
+	{
+		"id": "nasa-blue-marble",
+		"kind": "map",
+		"title": "Blue Marble Next Generation, July 2004, with topography and bathymetry",
+		"credit": "NASA Earth Observatory (Reto Stöckli), MODIS",
+		"short": "Blue Marble · NASA",
+		"url": "https://visibleearth.nasa.gov/images/73751/july-blue-marble-next-generation-w-topography-and-bathymetry",
+		"licence": "Public domain",
+		"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+		"bodies": [
+			"earth"
+		]
+	},
+	{
+		"id": "nasa-black-marble",
+		"kind": "map",
+		"title": "Earth at Night (Black Marble 2016)",
+		"credit": "NASA Earth Observatory (Joshua Stevens), Suomi NPP VIIRS data from Miguel Román, NASA GSFC",
+		"short": "Black Marble · NASA",
+		"url": "https://visibleearth.nasa.gov/images/144898/earth-at-night-black-marble-2016-color-maps",
+		"licence": "Public domain",
+		"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+		"bodies": [
+			"earth"
+		]
+	},
+	{
+		"id": "nasa-clouds",
+		"kind": "map",
+		"title": "Blue Marble clouds",
+		"credit": "NASA Goddard Space Flight Center (Reto Stöckli, Robert Simmon), MODIS",
+		"short": "Blue Marble · NASA",
+		"url": "https://visibleearth.nasa.gov/images/57747/blue-marble-clouds",
+		"licence": "Public domain",
+		"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+		"bodies": [
+			"earth"
+		]
+	},
+	{
+		"id": "nasa-topography",
+		"kind": "map",
+		"title": "Topography (GEBCO 2008 land elevation)",
+		"credit": "NASA Earth Observatory (Reto Stöckli), from GEBCO and SRTM elevation data",
+		"short": "Visible Earth · NASA",
+		"url": "https://visibleearth.nasa.gov/images/73934/topography",
+		"licence": "Public domain",
+		"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+		"note": "Also gives Earth's Oceans view: everything at sea level or below.",
+		"bodies": [
+			"earth"
+		]
+	},
+	{
+		"id": "usgs-mars",
+		"kind": "map",
+		"title": "Mars Viking MDIM 2.1 colour mosaic, recoloured by NASA Ames",
+		"credit": "NASA/JPL (Viking Orbiters); MDIM 2.1 mosaic by USGS Astrogeology; colour by NASA Ames Research Center",
+		"short": "Viking · NASA/USGS",
+		"url": "https://astrogeology.usgs.gov/search/map/mars_viking_colorized_global_mosaic_232m",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+		"bodies": [
+			"mars"
+		]
+	},
+	{
+		"id": "usgs-mars-relief",
+		"kind": "map",
+		"title": "Mars MGS MOLA global colour shaded relief",
+		"credit": "NASA/JPL/GSFC (Mars Global Surveyor, MOLA); relief by USGS Astrogeology",
+		"short": "MOLA · NASA/USGS",
+		"url": "https://astrogeology.usgs.gov/search/map/mars_mgs_mola_global_color_shaded_relief_463m",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+		"note": "Colours show height (blue low, red and white high), not what the eye sees.",
+		"bodies": [
+			"mars"
+		]
+	},
+	{
+		"id": "pia07782",
+		"kind": "map",
+		"title": "Cassini's best maps of Jupiter: cylindrical map (PIA07782)",
+		"credit": "NASA/JPL/Space Science Institute",
+		"short": "Cassini · NASA/JPL/SSI",
+		"url": "https://science.nasa.gov/photojournal/cassinis-best-maps-of-jupiter-cylindrical-map",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+		"note": "Jupiter in December 2000. Its bands and storms drift and change, so today's Jupiter looks a little different.",
+		"bodies": [
+			"jupiter"
+		]
+	},
+	{
+		"id": "astrolabe-painted-bands",
+		"kind": "painted",
+		"title": "Painted cloud bands",
+		"credit": "Astrolabe contributors (scripts/lib/paint.ts), after Cassini, Voyager 2 and Hubble photographs",
+		"short": "Painted by Astrolabe",
+		"url": "https://github.com/h4nz2/Astrolabe/blob/main/data/planet-textures.json",
+		"licence": "MIT",
+		"licenceUrl": "https://github.com/h4nz2/Astrolabe/blob/main/LICENSE",
+		"note": "Not a photograph: there is no openly licensed global map of these planets, so their bands, colours and storms are painted after spacecraft photographs (each texture's basis is in data/planet-textures.json).",
+		"bodies": [
+			"venus",
+			"saturn",
+			"uranus",
+			"neptune"
+		]
+	},
+	{
 		"id": "svs-moon",
 		"kind": "map",
 		"title": "CGI Moon Kit, LRO colour map",

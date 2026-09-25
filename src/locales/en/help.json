@@ -169,7 +169,8 @@
 				"standard": [
 					"Fly to a world: its card appears.",
 					"“Read more in the dictionary” opens its page, “Compare with…” puts it next to another world.",
-					"On a phone, tap the arrow on the card to open the facts."
+					"On a phone, tap the arrow on the card to open the facts.",
+					"The last line of the card says where the picture of the world comes from: a spacecraft’s map, or painted after spacecraft photos where no complete map exists."
 				],
 				"simple": [
 					"Fly to a planet.",
@@ -1051,16 +1052,14 @@
 		}
 	},
 	"creditNames": {
-		"rings": "Ring models of this app",
-		"surfaceMaps": "Maps of the Sun and the planets, and Saturn’s rings"
+		"rings": "Ring models of this app"
 	},
 	"credits": {
 		"solarSystemApi": "The starting list of the Sun, planets and moons: sizes, masses, orbits and discovery details.",
 		"jpl": "Accurate orbits for the planets, the Moon, the Galilean moons and Phoebe (mean orbital elements), used to correct the list.",
 		"iau": "Where every pole points and how fast each world turns, so the Sun is overhead at Greenwich at noon.",
 		"meeus": "How the Moon’s orbit slowly turns, so eclipses land on their real dates.",
-		"rings": "The rings of Jupiter, Uranus and Neptune, drawn for this app from published ring radii and opacities.",
-		"surfaceMaps": "They came with the first version of the project (2022) and where they come from was never recorded, so their source is unknown. The moons’ maps below are credited one by one (issue #37).",
+		"rings": "The rings of Jupiter, Saturn, Uranus and Neptune, drawn for this app from published ring radii, opacities and colours.",
 		"spaceAudio": "Four real recordings of radio and plasma waves, measured by Cassini, Voyager 1 and Injun 3 and turned into sound.",
 		"three": "Draws the 3D scene in the browser.",
 		"react": "Builds the pages and panels.",
@@ -1081,7 +1080,6 @@
 		"mitBsd": "MIT and BSD licences",
 		"gsap": "GSAP standard licence (no charge)",
 		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)",
-		"unknown": "source unknown",
 		"publicDomainPlain": "public domain",
 		"noKnownRestrictions": "no known restrictions (check before commercial use)"
 	}

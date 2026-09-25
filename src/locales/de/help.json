@@ -169,7 +169,8 @@
 				"standard": [
 					"Fliege zu einer Welt: Ihr Steckbrief erscheint.",
 					"„Mehr dazu im Lexikon“ öffnet ihre Seite, „Vergleichen mit …“ stellt sie neben eine andere Welt.",
-					"Auf dem Handy tippst du auf den Pfeil im Steckbrief, um die Fakten aufzuklappen."
+					"Auf dem Handy tippst du auf den Pfeil im Steckbrief, um die Fakten aufzuklappen.",
+					"Die letzte Zeile des Steckbriefs sagt, woher das Bild der Welt stammt: eine Karte einer Raumsonde oder, wo es keine vollständige Karte gibt, nach Fotos von Raumsonden gemalt."
 				],
 				"simple": [
 					"Flieg zu einem Planeten.",
@@ -1056,16 +1057,14 @@
 		}
 	},
 	"creditNames": {
-		"rings": "Ringmodelle dieser App",
-		"surfaceMaps": "Karten der Sonne und der Planeten und Saturns Ringe"
+		"rings": "Ringmodelle dieser App"
 	},
 	"credits": {
 		"solarSystemApi": "Die Ausgangsliste der Sonne, der Planeten und der Monde: Größen, Massen, Umlaufbahnen und Angaben zur Entdeckung.",
 		"jpl": "Genaue Umlaufbahnen der Planeten, des Mondes, der Galileischen Monde und von Phoebe (mittlere Bahnelemente), mit denen die Liste korrigiert wurde.",
 		"iau": "Wohin jeder Pol zeigt und wie schnell sich jede Welt dreht, damit die Sonne mittags über Greenwich steht.",
 		"meeus": "Wie sich die Mondbahn langsam dreht, damit Finsternisse auf ihre echten Daten fallen.",
-		"rings": "Die Ringe von Jupiter, Uranus und Neptun, für diese App aus veröffentlichten Radien und Lichtdurchlässigkeiten der Ringe gezeichnet.",
-		"surfaceMaps": "Sie stammen aus der ersten Version des Projekts (2022), und woher sie kommen, wurde nie festgehalten: Ihre Quelle ist unbekannt. Die Karten der Monde unten sind einzeln angegeben (Issue #37).",
+		"rings": "Die Ringe von Jupiter, Saturn, Uranus und Neptun, für diese App aus veröffentlichten Radien, Lichtdurchlässigkeiten und Farben der Ringe gezeichnet.",
 		"spaceAudio": "Vier echte Aufnahmen von Radio- und Plasmawellen, gemessen von Cassini, Voyager 1 und Injun 3 und in Klang verwandelt.",
 		"three": "Zeichnet die 3D-Szene im Browser.",
 		"react": "Baut die Seiten und Bedienfelder.",
@@ -1086,7 +1085,6 @@
 		"mitBsd": "MIT- und BSD-Lizenz",
 		"gsap": "GSAP-Standardlizenz (kostenlos)",
 		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)",
-		"unknown": "Quelle unbekannt",
 		"publicDomainPlain": "gemeinfrei",
 		"noKnownRestrictions": "keine bekannten Einschränkungen (vor kommerzieller Nutzung prüfen)"
 	}
