@@ -5,11 +5,15 @@
  * already validated there, so it is cast here rather than parsed again at module load.
  * src/data/bodies.test.ts re-validates the committed file with the zod schema.
  */
-import type { Body } from "./schema"
+import { SMALL_BODY_KINDS, type Belt, type Body } from "./schema"
 
+import beltsJson from "./belts.json"
 import bodiesJson from "./bodies.json"
 
+export { SMALL_BODY_KINDS } from "./schema"
 export type {
+	Belt,
+	BeltZone,
 	BodiesFile,
 	Body,
 	BodyKind,
@@ -17,9 +21,13 @@ export type {
 	Orbit,
 	Rings,
 	Rotation,
+	Tail,
 } from "./schema"
 
-/** Every body in topological order: the Sun, the planets by distance, then each planet's moons. */
+/**
+ * Every body in topological order: the Sun, the planets by distance, each planet's moons,
+ * then the small bodies (#23: dwarf planets, asteroids, comets) and the dwarf planets' moons.
+ */
 export const bodies: Body[] = bodiesJson as Body[]
 
 export const bodyById: Map<string, Body> = new Map(
@@ -56,3 +64,26 @@ const star = bodies.find((body) => body.kind === "star")
 if (star === undefined) throw new Error("bodies.json has no star")
 
 export const sun: Body = star
+
+/** The belts (#23): fields of dots, not bodies (src/data/belts.json). */
+export const belts: Belt[] = beltsJson as Belt[]
+
+/** Dwarf planets, asteroids and comets, each group in orbital order. */
+export const dwarfPlanets: Body[] = bodies.filter(
+	(body) => body.kind === "dwarfPlanet",
+)
+export const asteroids: Body[] = bodies.filter(
+	(body) => body.kind === "asteroid",
+)
+export const comets: Body[] = bodies.filter((body) => body.kind === "comet")
+
+/**
+ * Whether a body belongs to the "Small bodies" layer (#23): a dwarf planet, an asteroid or a
+ * comet, or a moon of one (Charon). Unknown parents count as not small.
+ */
+export const isSmallBody = (body: Pick<Body, "kind" | "parentId">): boolean => {
+	if (SMALL_BODY_KINDS.includes(body.kind)) return true
+	if (body.kind !== "moon" || body.parentId === null) return false
+	const parent = bodyById.get(body.parentId)
+	return parent !== undefined && SMALL_BODY_KINDS.includes(parent.kind)
+}

@@ -34,7 +34,7 @@ import {
 	type LineBasicMaterial,
 } from "three"
 
-import type { Body } from "@/data"
+import type { Body, BodyKind } from "@/data"
 import {
 	childDistanceCurve,
 	displayDistanceKm,
@@ -76,10 +76,15 @@ export const ORBIT_REBUILD_FRACTION = 1e-4
 /** Resample a precessing ellipse once its node and periapsis together have turned this far (degrees). */
 export const ORBIT_RESAMPLE_DEG = 0.05
 
-export const ORBIT_COLORS = {
+export const ORBIT_COLORS: Record<BodyKind, string> = {
+	star: "#8a8f98",
 	planet: "#8a8f98",
 	moon: "#4b5563",
-} as const
+	// #23: dimmer than the planets', so the planets' orbits stay the ones that read first
+	dwarfPlanet: "#6b7280",
+	asteroid: "#6e6556",
+	comet: "#56809a",
+}
 export const ORBIT_OPACITY = 0.6
 
 const ANOMALY_STEP = TWO_PI / ORBIT_SEGMENTS
@@ -424,7 +429,7 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 			</bufferGeometry>
 			<lineBasicMaterial
 				ref={materialRef}
-				color={body.kind === "moon" ? ORBIT_COLORS.moon : ORBIT_COLORS.planet}
+				color={ORBIT_COLORS[body.kind]}
 				transparent
 				opacity={ORBIT_OPACITY}
 			/>

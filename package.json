@@ -11,7 +11,7 @@
 		"dev": "vite",
 		"build": "vite build",
 		"build:data": "tsx scripts/build-bodies.ts",
-		"check:data": "pnpm build:data && git diff --exit-code -- src/data/bodies.json",
+		"check:data": "pnpm build:data && git diff --exit-code -- src/data/bodies.json src/data/belts.json",
 		"preview": "vite preview",
 		"typecheck": "tsc --noEmit -p tsconfig.json",
 		"lint": "eslint . --max-warnings 0",

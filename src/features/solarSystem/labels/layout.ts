@@ -203,7 +203,15 @@ export const isLabelCandidate = (
 	)
 }
 
-const KIND_TIER: Record<BodyKind, number> = { star: 0, planet: 1, moon: 2 }
+const KIND_TIER: Record<BodyKind, number> = {
+	star: 0,
+	planet: 1,
+	// #23: the small bodies rank below the planets; asteroids share the moons' tier
+	dwarfPlanet: 2,
+	comet: 3,
+	moon: 4,
+	asteroid: 4,
+}
 
 /**
  * The static order of `bodies` for labelling: the Sun, the planets, the moons,

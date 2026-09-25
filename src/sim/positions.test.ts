@@ -401,16 +401,21 @@ describe("real elements from @/data against astronomy-engine", () => {
 		}
 	})
 
-	it("only those five moons carry real phases", () => {
+	it("only those five moons (and Pluto's, #23) carry real phases", () => {
 		const real = realBodies.filter(
 			(body) => body.kind === "moon" && !body.orbit?.phaseSynthetic,
 		)
 		expect(real.map((body) => body.id).sort()).toEqual([
 			"callisto",
+			"charon",
 			"europa",
 			"ganymede",
+			"hydra",
 			"io",
+			"kerberos",
 			"moon",
+			"nix",
+			"styx",
 		])
 	})
 })

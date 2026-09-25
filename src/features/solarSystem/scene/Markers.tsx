@@ -26,6 +26,10 @@ const MARKER_COLORS: Record<BodyKind, readonly [number, number, number]> = {
 	star: [1, 0.85, 0.4],
 	planet: [1, 1, 1],
 	moon: [0.62, 0.65, 0.7],
+	// #23: a shade dimmer than the planets; comets icy blue
+	dwarfPlanet: [0.86, 0.87, 0.92],
+	asteroid: [0.78, 0.7, 0.56],
+	comet: [0.62, 0.86, 1],
 }
 
 const scratch = new Vector3()

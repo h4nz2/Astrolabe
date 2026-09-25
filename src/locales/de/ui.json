@@ -54,13 +54,16 @@
 		"kind": {
 			"star": "Stern",
 			"planet": "Planet",
+			"dwarfPlanet": "Zwergplanet",
 			"moon": "Mond",
-			"moonOf": "{parentId, select, earth {Mond der Erde} other {Mond des {parent}}}"
+			"asteroid": "Asteroid",
+			"comet": "Komet",
+			"moonOf": "{parentId, select, earth {Mond der Erde} eris {Mond der Eris} haumea {Mond der Haumea} other {Mond des {parent}}}"
 		},
 		"fallback": {
-			"moonDescription": "{name} ist ein Mond {parentId, select, earth {der Erde} other {des {parent}}}. Er hat einen Durchmesser von etwa {diameter} und umrundet seinen Planeten einmal in {period}.",
-			"moonDescription@simple": "{name} ist einer der Monde, die {parentId, select, earth {die Erde} other {den {parent}}} umkreisen. Er ist etwa {diameter} breit.",
-			"moonDescription@advanced": "{name} umläuft {parentId, select, earth {die Erde} other {den {parent}}} in einem mittleren Abstand von {distance} mit einer Umlaufzeit von {period}. Sein mittlerer Durchmesser beträgt etwa {diameter}."
+			"moonDescription": "{name} ist ein Mond {parentId, select, earth {der Erde} eris {der Eris} haumea {der Haumea} other {des {parent}}}. Er hat einen Durchmesser von etwa {diameter} und umrundet {parentId, select, pluto {seinen Zwergplaneten} eris {seinen Zwergplaneten} haumea {seinen Zwergplaneten} makemake {seinen Zwergplaneten} other {seinen Planeten}} einmal in {period}.",
+			"moonDescription@simple": "{name} ist einer der Monde, die {parentId, select, earth {die Erde} eris {die Eris} haumea {die Haumea} other {den {parent}}} umkreisen. Er ist etwa {diameter} breit.",
+			"moonDescription@advanced": "{name} umläuft {parentId, select, earth {die Erde} eris {die Eris} haumea {die Haumea} other {den {parent}}} in einem mittleren Abstand von {distance} mit einer Umlaufzeit von {period}. Sein mittlerer Durchmesser beträgt etwa {diameter}."
 		}
 	},
 	"dictionary": {

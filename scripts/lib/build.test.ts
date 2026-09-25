@@ -552,7 +552,14 @@ describe("buildBodies", () => {
 	it("reports stats", () => {
 		expect(result.stats).toEqual({
 			total: 9,
-			perKind: { star: 1, planet: 3, moon: 5 },
+			perKind: {
+				star: 1,
+				planet: 3,
+				dwarfPlanet: 0,
+				moon: 5,
+				asteroid: 0,
+				comet: 0,
+			},
 			moonsPerPlanet: { mercury: 0, saturn: 5, uranus: 0 },
 			// rhea, helene, s2004s22 and the collision moon have no mean radius / no texture
 			radiusEstimated: 4,
@@ -561,6 +568,7 @@ describe("buildBodies", () => {
 			periodDerived: 1,
 			placeholderTextures: 4,
 			rings: 2,
+			smallBodiesSkipped: 0,
 		})
 	})
 

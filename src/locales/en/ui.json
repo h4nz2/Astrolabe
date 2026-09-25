@@ -54,11 +54,14 @@
 		"kind": {
 			"star": "Star",
 			"planet": "Planet",
+			"dwarfPlanet": "Dwarf planet",
 			"moon": "Moon",
+			"asteroid": "Asteroid",
+			"comet": "Comet",
 			"moonOf": "{parentId, select, other {Moon of {parent}}}"
 		},
 		"fallback": {
-			"moonDescription": "{name} is a moon of {parentId, select, other {{parent}}}. It is about {diameter} across and travels once around its planet every {period}.",
+			"moonDescription": "{name} is a moon of {parentId, select, other {{parent}}}. It is about {diameter} across and travels once around {parentId, select, pluto {its dwarf planet} eris {its dwarf planet} haumea {its dwarf planet} makemake {its dwarf planet} other {its planet}} every {period}.",
 			"moonDescription@simple": "{name} is one of the moons that circle {parentId, select, other {{parent}}}. It is about {diameter} wide.",
 			"moonDescription@advanced": "{name} orbits {parentId, select, other {{parent}}} at an average distance of {distance} with a period of {period}. Its mean diameter is about {diameter}."
 		}
