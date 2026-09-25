@@ -65,12 +65,15 @@ const Compare = () => {
 			<LanguageMenu placement="corner" />
 			<header className={classes.header}>
 				<Button
+					className={classes.back}
 					variant="subtle"
 					color="gray"
 					leftSection={<IconArrowLeft size={18} />}
+					aria-label={t("compare.back")}
+					title={t("compare.back")}
 					onClick={back}
 				>
-					{t("compare.back")}
+					<span className={classes.backText}>{t("compare.back")}</span>
 				</Button>
 				<div className={classes.heading}>
 					<h1 className={classes.title}>{t("compare.title")}</h1>

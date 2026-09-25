@@ -460,11 +460,11 @@
 		},
 		"stage": {
 			"label": "{names}, nebeneinander in echter Größe zueinander gezeichnet",
-			"scale": "Ein Maßstab für alle: 1 Pixel = {km}",
+			"scale": "Ein Maßstab für alle: 1 Pixel = {km}.",
 			"scale@simple": "Alles ist gleich stark verkleinert: 1 Pixel steht für {km}.",
 			"scale@advanced": "Gemeinsamer Maßstab, 1 px : {km}. Achsen geneigt wie im All.",
-			"tiny": "{count, plural, one {{names} ist in diesem Maßstab zu klein zum Sehen und deshalb eingekreist.} other {{names} sind in diesem Maßstab zu klein zum Sehen und deshalb eingekreist.}}",
-			"tiny@simple": "{count, plural, one {{names} ist hier so klein, dass du es ohne den Kreis nicht finden würdest.} other {{names} sind hier so klein, dass du sie ohne die Kreise nicht finden würdest.}}",
+			"tiny": "{count, plural, one {In diesem Maßstab so klein, dass ein Kreis die Stelle zeigt: {names}.} other {In diesem Maßstab so klein, dass Kreise die Stellen zeigen: {names}.}}",
+			"tiny@simple": "{count, plural, one {Ohne den Kreis würdest du hier kaum finden: {names}.} other {Ohne die Kreise würdest du hier kaum finden: {names}.}}",
 			"pick": "Mit {nameId, select, sun {der Sonne} earth {der Erde} venus {der Venus} moon {dem Mond} other {{name}}} vergleichen",
 			"pickHint": "Klicke einen anderen Himmelskörper an, um ihn zu vergleichen.",
 			"pickHint@simple": "Tippe eine andere Welt an, um sie zu vergleichen."

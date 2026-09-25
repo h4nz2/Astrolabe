@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest"
 import { getBody, planets } from "@/data"
 
 import {
-	MIN_VISIBLE_PX,
+	MARK_BELOW_PX,
 	RING_OPENING,
 	fitScale,
 	layoutStage,
@@ -55,7 +55,7 @@ describe("layoutStage", () => {
 		})
 		const [sun, earth] = layout.items
 		expect(sun.r / earth.r).toBeCloseTo(695_508 / 6371.0084, 6)
-		expect(earth.tiny).toBe(2 * earth.r < MIN_VISIBLE_PX)
+		expect(earth.tiny).toBe(2 * earth.r < MARK_BELOW_PX)
 		expect(earth.tiny).toBe(true)
 		expect(sun.tiny).toBe(false)
 	})

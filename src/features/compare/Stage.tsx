@@ -15,7 +15,7 @@ import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { assetUrl } from "@/utils/assetUrl"
 
-import { MIN_VISIBLE_PX, RING_OPENING, layoutStage, stageBody } from "./layout"
+import { MIN_DRAWN_PX, RING_OPENING, layoutStage, stageBody } from "./layout"
 import { drawOrder } from "./selection"
 
 import classes from "./Compare.module.css"
@@ -51,8 +51,8 @@ const ringGradient = (body: Body): string => {
 			? SATURN_RINGS.map(([km, color]) => `${color} ${at(km)}`)
 			: [
 					`rgba(200, 190, 170, 0) ${at(rings.innerRadiusKm)}`,
-					`rgba(200, 190, 170, 0.22) ${at(rings.innerRadiusKm)}`,
-					`rgba(200, 190, 170, 0.22) 99.5%`,
+					`rgba(200, 190, 170, 0.08) ${at(rings.innerRadiusKm)}`,
+					`rgba(200, 190, 170, 0.08) 99.5%`,
 					"rgba(200, 190, 170, 0) 100%",
 				]
 	return `radial-gradient(circle closest-side, ${stops.join(", ")})`
@@ -69,7 +69,7 @@ interface BodyDrawingProps {
 
 /** One body: an anchor at its centre, turned by the axial tilt, holding the rings' far half, the globe and the near half. */
 const BodyDrawing = ({ body, r, x, y, pxPerKm }: BodyDrawingProps) => {
-	const drawn = Math.max(r, MIN_VISIBLE_PX / 2)
+	const drawn = Math.max(r, MIN_DRAWN_PX / 2)
 	const globe: CSSProperties = {
 		width: 2 * drawn,
 		height: 2 * drawn,

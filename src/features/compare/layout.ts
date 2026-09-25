@@ -19,8 +19,13 @@ import type { Body } from "@/data"
 /** The rings' apparent minor/major axis ratio: seen from about 17° above the ring plane. */
 export const RING_OPENING = 0.3
 
-/** Globes drawn smaller than this (px across) are marked, because nobody finds them unaided. */
-export const MIN_VISIBLE_PX = 2
+/**
+ * Globes drawn smaller than this (px across) are circled: a dot of a few
+ * pixels is invisible from the back of a classroom. They are never enlarged.
+ */
+export const MARK_BELOW_PX = 6
+/** The least a globe is drawn across, px, so a speck still shows as a dot. */
+export const MIN_DRAWN_PX = 1
 
 export interface StageBody {
 	id: string
@@ -50,7 +55,7 @@ export interface StageItem {
 	/** The slot the body stands in: its left edge and width, px. */
 	left: number
 	width: number
-	/** Drawn smaller than MIN_VISIBLE_PX across. */
+	/** Drawn smaller than MARK_BELOW_PX across: circled. */
 	tiny: boolean
 }
 
@@ -143,7 +148,7 @@ export function layoutStage(
 			r,
 			left: x,
 			width,
-			tiny: 2 * r < MIN_VISIBLE_PX,
+			tiny: 2 * r < MARK_BELOW_PX,
 		}
 		x += width + options.gap
 		return item

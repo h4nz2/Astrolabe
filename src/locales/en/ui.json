@@ -460,11 +460,11 @@
 		},
 		"stage": {
 			"label": "{names}, drawn side by side at their true relative sizes",
-			"scale": "One scale for all: 1 pixel = {km}",
+			"scale": "One scale for all: 1 pixel = {km}.",
 			"scale@simple": "Everything is shrunk by the same amount: 1 pixel stands for {km}.",
 			"scale@advanced": "Common scale, 1 px : {km}. Axes tilted as in space.",
-			"tiny": "{count, plural, one {{names} is too small to see at this scale, so it is circled.} other {{names} are too small to see at this scale, so they are circled.}}",
-			"tiny@simple": "{count, plural, one {{names} is so small here that you could not find it without the circle.} other {{names} are so small here that you could not find them without the circles.}}",
+			"tiny": "{count, plural, one {{names} is so small at this scale that it is circled.} other {{names} are so small at this scale that they are circled.}}",
+			"tiny@simple": "{count, plural, one {{names} is so small here that you could hardly find it without the circle.} other {{names} are so small here that you could hardly find them without the circles.}}",
 			"pick": "Compare with {nameId, select, sun {the Sun} moon {the Moon} other {{name}}}",
 			"pickHint": "Click another body to compare it instead.",
 			"pickHint@simple": "Tap another world to compare that one."

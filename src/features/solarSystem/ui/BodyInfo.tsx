@@ -41,8 +41,8 @@ const PHONE_QUERY = "(max-width: 599px)"
 
 /**
  * "Compare with…" (#24): the body beside its first partner at true relative
- * size, measured at the moment on screen. Always shown, also while a phone
- * folds the facts away, so the comparison is one tap from any focused body.
+ * size, measured at the moment on screen. In the card's header, so it is one
+ * click away however long the facts are and while a phone folds them away.
  */
 const CompareButton = ({ bodyId }: { bodyId: string }) => {
 	const { t } = useI18n()
@@ -108,6 +108,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 					<h2 className={classes.name}>{text.name}</h2>
 					<p className={classes.tagline}>{text.tagline}</p>
 				</div>
+				<CompareButton bodyId={body.id} />
 				<ActionIcon
 					className={classes.toggle}
 					variant="subtle"
@@ -144,26 +145,23 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							</div>
 						))}
 					</dl>
+					{entry !== null && (
+						<Anchor
+							className={classes.more}
+							size="sm"
+							renderRoot={(props) => (
+								<Link
+									{...props}
+									to="/solar_dictionary"
+									search={{ entity: entry === 0 ? undefined : entry }}
+								/>
+							)}
+						>
+							{t("solarSystem.card.dictionary")} →
+						</Anchor>
+					)}
 				</>
 			)}
-			<div className={classes.actions}>
-				<CompareButton bodyId={body.id} />
-				{open && entry !== null && (
-					<Anchor
-						className={classes.more}
-						size="sm"
-						renderRoot={(props) => (
-							<Link
-								{...props}
-								to="/solar_dictionary"
-								search={{ entity: entry === 0 ? undefined : entry }}
-							/>
-						)}
-					>
-						{t("solarSystem.card.dictionary")} →
-					</Anchor>
-				)}
-			</div>
 		</section>
 	)
 }
