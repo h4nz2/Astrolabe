@@ -274,6 +274,9 @@ export function useSimUrlSync(): void {
 		const { simTimeJD, timeWarp } = mountState(searchRef.current)
 		const store = useSimStore.getState()
 		if (timeWarp !== undefined) store.setTimeWarp(timeWarp)
+		// #29: a prepared lesson opens paused where it was paused (before the
+		// jump, or the clock runs on at the link's speed for an instant)
+		if (searchRef.current.paused === true) store.setPaused(true)
 		if (simTimeJD !== undefined) store.setSimTime(simTimeJD)
 		const { view, shot, selectedId } = viewFromSearch(searchRef.current)
 		const frameId = frameFromSearch(searchRef.current)
@@ -286,9 +289,7 @@ export function useSimUrlSync(): void {
 		useSimStore.setState(layersFromSearch(searchRef.current))
 		// the scale: a jump as well, the switch animates only when the user makes it
 		useScaleStore.getState().setPreset(scaleFromSearch(searchRef.current))
-		// #29: a prepared lesson opens paused where it was paused, in its
-		// presentation settings, and remembers itself as the start of the lesson
-		if (searchRef.current.paused === true) store.setPaused(true)
+		// #29: the presentation settings, and the link as the start of the lesson
 		usePresentationStore.setState(presentationFromSearch(searchRef.current))
 		usePresentationStore.getState().setStartSearch(searchRef.current)
 

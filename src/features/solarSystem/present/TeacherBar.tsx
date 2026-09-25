@@ -35,9 +35,7 @@ function LayersMenu({ children }: { children: ReactNode }) {
 					{t("solarSystem.present.layers")}
 				</Button>
 			</Popover.Target>
-			<Popover.Dropdown aria-label={t("solarSystem.layers.label")}>
-				{children}
-			</Popover.Dropdown>
+			<Popover.Dropdown>{children}</Popover.Dropdown>
 		</Popover>
 	)
 }

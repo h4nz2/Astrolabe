@@ -125,7 +125,7 @@ export function PresentMenu() {
 					{t("solarSystem.present.button")}
 				</Button>
 			</Popover.Target>
-			<Popover.Dropdown aria-label={t("solarSystem.present.title")}>
+			<Popover.Dropdown>
 				<Stack gap="sm">
 					<Text fw={600}>{t("solarSystem.present.title")}</Text>
 					<Switch
@@ -225,7 +225,7 @@ export function ShareMenu() {
 					{t("solarSystem.present.share.button")}
 				</Button>
 			</Popover.Target>
-			<Popover.Dropdown aria-label={t("solarSystem.present.share.title")}>
+			<Popover.Dropdown>
 				<Text fw={600} mb="xs">
 					{t("solarSystem.present.share.title")}
 				</Text>

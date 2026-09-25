@@ -155,9 +155,22 @@ test("high contrast, reduced motion and the screen reader: German, simple readin
 	expect(colours.text).toBe("rgb(255, 255, 255)")
 
 	// reduced motion: a key jumps instead of flying, and the live region says where
+	await page.evaluate(() => {
+		const probe = window as unknown as { durations: (number | null)[] }
+		probe.durations = []
+		window.__astrolabe!.store.subscribe((s, previous) => {
+			if (s.transition !== null && s.transition !== previous.transition) {
+				probe.durations.push(s.transition.durationMs)
+			}
+		})
+	})
 	await page.keyboard.press("4")
 	await expect(liveRegion(page)).toHaveText("Jetzt zu sehen: Mars")
-	expect((await state(page)).transitionMs).toBe(0)
+	expect(
+		await page.evaluate(
+			() => (window as unknown as { durations: unknown[] }).durations,
+		),
+	).toEqual([0])
 	await cameraAtRest(page)
 
 	// the shortcut list is a real dialog, and Escape closes only the dialog
@@ -174,7 +187,7 @@ test("high contrast, reduced motion and the screen reader: German, simple readin
 
 	// the teacher's menu: its switches say which key they are
 	await page.getByRole("button", { name: "Präsentieren" }).click()
-	const menu = page.getByRole("dialog", { name: "Vor der Klasse zeigen" })
+	const menu = page.getByRole("dialog", { name: "Präsentieren" })
 	await expect(menu).toBeVisible()
 	await expect(
 		menu.getByRole("switch", { name: "Große Schrift für den Beamer" }),
@@ -205,7 +218,7 @@ test("share: the link is the view, copied or scanned", async ({
 	await open(page, "focus=jupiter&lang=en")
 
 	await page.getByRole("button", { name: "Share", exact: true }).click()
-	const panel = page.getByRole("dialog", { name: "Share this view" })
+	const panel = page.getByRole("dialog", { name: "Share", exact: true })
 	const link = panel.getByRole("textbox", { name: "Link to this view" })
 	await expect(link).toHaveValue(/\/solar_system\?.*focus=jupiter/)
 	expect(await link.inputValue()).toBe(page.url())
