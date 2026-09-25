@@ -25,6 +25,8 @@ import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
 import LightFront from "../light/LightFront"
 import { labelSlotCount } from "../labels/project"
+import Belts from "../smallBodies/Belts"
+import CometTails from "../smallBodies/CometTails"
 import BodyPicking, { activateBody } from "./BodyPicking"
 import HighlightTracker from "./HighlightTracker"
 import HoverCursor from "./HoverCursor"
@@ -79,6 +81,8 @@ function Scene() {
 					<OrbitLines />
 					<Trails />
 					<Markers />
+					<Belts />
+					<CometTails />
 					<LightFront />
 					<Labels board={labels} onActivate={activateBody} />
 					<BodyPicking />

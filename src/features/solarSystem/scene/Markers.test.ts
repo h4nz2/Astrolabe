@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { PerspectiveCamera } from "three"
 
-import { bodies, moonsOf } from "@/data"
+import { bodies, isSmallBody, moonsOf } from "@/data"
 import { J2000_JD, degToRad, toUnits } from "@/sim"
 
 import {
@@ -18,7 +18,10 @@ const FOV_DEG = 45
 /** Pixels per scene unit at unit distance, as fillMarkers computes it. */
 const PX_PER_UNIT = HEIGHT_PX / (2 * Math.tan(degToRad(FOV_DEG / 2)))
 const index = (id: string): number => bodies.findIndex((b) => b.id === id)
-const nonMoons = bodies.filter((b) => b.kind !== "moon").length
+// the Sun and the planets: the small bodies (#23) are hidden while their layer is off
+const nonMoons = bodies.filter(
+	(b) => b.kind !== "moon" && !isSmallBody(b),
+).length
 
 const cameraAt = (x: number, y: number, z: number): PerspectiveCamera => {
 	const camera = new PerspectiveCamera(FOV_DEG, 1.5, 1e-5, 1e9)

@@ -222,6 +222,8 @@ export const Belt = z.object({
 	}),
 	/** typical distance between neighbouring members (km) */
 	meanSeparationKm: z.number().positive(),
+	/** distances from the parent (km) a body counts as "in the belt" for the HUD */
+	extentKm: z.tuple([z.number().positive(), z.number().positive()]),
 	zones: z.array(BeltZone).min(1),
 })
 

@@ -10,6 +10,7 @@
 			"minDiameterKm": 1
 		},
 		"meanSeparationKm": 1000000,
+		"extentKm": [344100000, 493700000],
 		"zones": [
 			{
 				"share": 0.36,
@@ -48,6 +49,7 @@
 			"minDiameterKm": 100
 		},
 		"meanSeparationKm": 60000000,
+		"extentKm": [4638000000, 7480000000],
 		"zones": [
 			{
 				"share": 0.2,

@@ -141,8 +141,13 @@ describe("priority", () => {
 		expect(rankOf("jupiter")).toBe(1)
 		expect(rankOf("saturn")).toBe(2)
 		expect(rankOf("mercury")).toBe(8)
-		expect(rankOf("ganymede")).toBe(9)
-		expect(rankOf("titan")).toBe(10)
+		// then the dwarf planets and the comets (#23), then the moons
+		const small = bodies.filter(
+			(b) => b.kind === "dwarfPlanet" || b.kind === "comet",
+		).length
+		expect(rankOf("pluto")).toBeLessThan(rankOf("halley"))
+		expect(rankOf("ganymede")).toBe(9 + small)
+		expect(rankOf("titan")).toBe(10 + small)
 		expect(rankOf("moon")).toBeLessThan(rankOf("europa"))
 		expect(new Set(ranks).size).toBe(bodies.length)
 	})

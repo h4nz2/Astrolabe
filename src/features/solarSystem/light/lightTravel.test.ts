@@ -138,7 +138,7 @@ describe("pulse targets and arrivals", () => {
 	})
 
 	it("is empty for an unknown source", () => {
-		expect(pulseArrivals({ emitterId: "pluto", emitJD: JD })).toEqual([])
+		expect(pulseArrivals({ emitterId: "vulcan", emitJD: JD })).toEqual([])
 	})
 })
 
@@ -157,7 +157,9 @@ describe("signalDelay", () => {
 	it("works for any body, moons of other planets included", () => {
 		expect(signalDelay("earth", "io", JD)!.seconds / 60).toBeGreaterThan(30)
 		expect(signalDelay("earth", "earth", JD)).toBeNull()
-		expect(signalDelay("earth", "pluto", JD)).toBeNull()
+		expect(signalDelay("earth", "vulcan", JD)).toBeNull()
+		// Pluto (#23): more than four hours each way
+		expect(signalDelay("earth", "pluto", JD)!.seconds / 3600).toBeGreaterThan(4)
 	})
 })
 

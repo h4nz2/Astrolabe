@@ -70,12 +70,13 @@ export const LAYER_PARAMS = [
 	["markers", "showMarkers"],
 ] as const
 
-type LayerField = (typeof LAYER_PARAMS)[number][1] | "showOrbitLabels"
+type LayerField =
+	(typeof LAYER_PARAMS)[number][1] | "showOrbitLabels" | "showSmallBodies"
 type Layers = Pick<SimState, LayerField>
 
-// the orbit names (off by default) may be left out
-type Mirrored = Omit<Layers, "showOrbitLabels"> &
-	Partial<Pick<Layers, "showOrbitLabels">> &
+// the orbit names and the small bodies (off by default) may be left out
+type Mirrored = Omit<Layers, "showOrbitLabels" | "showSmallBodies"> &
+	Partial<Pick<Layers, "showOrbitLabels" | "showSmallBodies">> &
 	Pick<
 		SimState,
 		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
@@ -136,6 +137,7 @@ export function searchFromState(
 		search[param] = state[field] ? undefined : false
 	}
 	search.orbitNames = state.showOrbitLabels ? true : undefined
+	search.smallBodies = state.showSmallBodies ? true : undefined
 	search.scale =
 		state.scalePreset != null && state.scalePreset !== DEFAULT_SCALE_PRESET
 			? state.scalePreset
@@ -152,6 +154,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.t === b.t &&
 	a.warp === b.warp &&
 	a.orbitNames === b.orbitNames &&
+	a.smallBodies === b.smallBodies &&
 	a.scale === b.scale &&
 	LAYER_PARAMS.every(([param]) => a[param] === b[param])
 
@@ -211,13 +214,14 @@ export function frameFromSearch(search: SimSearch): string | null {
 
 /**
  * The layer switches a search sets: a switch the link leaves out is on, except
- * the orbit names, which are off unless the link turns them on.
+ * the orbit names and the small bodies (#23), which are off unless the link turns them on.
  */
 export const layersFromSearch = (search: SimSearch): Layers => ({
 	...(Object.fromEntries(
 		LAYER_PARAMS.map(([param, field]) => [field, search[param] ?? true]),
-	) as Omit<Layers, "showOrbitLabels">),
+	) as Omit<Layers, "showOrbitLabels" | "showSmallBodies">),
 	showOrbitLabels: search.orbitNames === true,
+	showSmallBodies: search.smallBodies === true,
 })
 
 /** The scale preset a search opens in: `scale` when it names a preset, else the default. */
@@ -307,7 +311,8 @@ export function useSimUrlSync(): void {
 				state.timeWarp !== previous.timeWarp ||
 				state.paused !== previous.paused ||
 				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field]) ||
-				state.showOrbitLabels !== previous.showOrbitLabels
+				state.showOrbitLabels !== previous.showOrbitLabels ||
+				state.showSmallBodies !== previous.showSmallBodies
 			) {
 				write()
 				return

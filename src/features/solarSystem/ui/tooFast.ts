@@ -50,7 +50,7 @@ export function bodiesInView(
 			body.parentId !== null &&
 			(body.kind === "planet" ||
 				body.id === focusId ||
-				(showMoons && body.parentId === family)),
+				(showMoons && body.kind === "moon" && body.parentId === family)),
 	)
 }
 

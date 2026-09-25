@@ -4,7 +4,7 @@ import { useI18n } from "@/i18n"
 import { useLightingStore } from "@/store/lighting"
 import { useSimStore } from "@/store/sim"
 
-/** Switches for the orbit lines, the labels, the moons, the markers, the orbit names and the "always lit" teaching mode. */
+/** Switches for the orbit lines, the labels, the moons, the markers, the orbit names, the small bodies (#23) and the "always lit" teaching mode. */
 const SceneToggles = () => {
 	const { t } = useI18n()
 	const showOrbits = useSimStore((state) => state.showOrbits)
@@ -17,6 +17,8 @@ const SceneToggles = () => {
 	const setShowMoons = useSimStore((state) => state.setShowMoons)
 	const setShowMarkers = useSimStore((state) => state.setShowMarkers)
 	const setShowOrbitLabels = useSimStore((state) => state.setShowOrbitLabels)
+	const showSmallBodies = useSimStore((state) => state.showSmallBodies)
+	const setShowSmallBodies = useSimStore((state) => state.setShowSmallBodies)
 	const alwaysLit = useLightingStore((state) => state.alwaysLit)
 	const setAlwaysLit = useLightingStore((state) => state.setAlwaysLit)
 
@@ -62,6 +64,13 @@ const SceneToggles = () => {
 				checked={showOrbitLabels}
 				disabled={!showOrbits || !showLabels}
 				onChange={(event) => setShowOrbitLabels(event.currentTarget.checked)}
+			/>
+			<Switch
+				size="xs"
+				color="orange"
+				label={t("solarSystem.layers.smallBodies")}
+				checked={showSmallBodies}
+				onChange={(event) => setShowSmallBodies(event.currentTarget.checked)}
 			/>
 			<Switch
 				size="xs"

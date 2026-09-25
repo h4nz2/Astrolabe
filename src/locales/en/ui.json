@@ -130,7 +130,10 @@
 		"picker": {
 			"label": "Focus body",
 			"placeholder": "Focus a body…",
-			"nothingFound": "No such body"
+			"nothingFound": "No such body",
+			"dwarfPlanets": "Dwarf planets",
+			"asteroids": "Asteroids",
+			"comets": "Comets"
 		},
 		"layers": {
 			"label": "Scene layers",
@@ -139,6 +142,7 @@
 			"moons": "Moons",
 			"markers": "Markers",
 			"orbitNames": "Orbit names",
+			"smallBodies": "Small bodies",
 			"alwaysLit": "Always lit"
 		},
 		"scale": {
@@ -360,6 +364,8 @@
 			"across": "{value} across",
 			"sunlight": "Sunlight takes {time} to get here",
 			"sunlight@simple": "Light from the Sun needs {time} to get here",
+			"sunlightRange": "Sunlight takes between {near} and {far} to get here, depending on where it is on its long orbit",
+			"sunlightRange@simple": "Light from the Sun needs {near} to reach it when it is closest and {far} when it is farthest away",
 			"gap": "{parentId, select, other {{parent}}} would fit into the gap {count, plural, one {# time} other {# times}}",
 			"fromParent": "{distance} from {parentId, select, other {{parent}}}",
 			"lap": "Goes once around {parentId, select, other {{parent}}} in {period}",
@@ -616,6 +622,32 @@
 				"join2@simple": "{a} and {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} and {c}"
+			}
+		},
+		"smallBodies": {
+			"beltName": "{belt, select, asteroidbelt {Asteroid belt} kuiperbelt {Kuiper belt} other {{belt}}}",
+			"perDot": "{belt, select, asteroidbelt {Each dot stands for about {count, number} asteroids bigger than {size}.} other {Each dot stands for about {count, number} icy bodies bigger than {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Every dot stands for about {count, number} real space rocks bigger than {size}.} other {Every dot stands for about {count, number} real icy worlds bigger than {size}.}}",
+			"perDot@advanced": "{belt, select, asteroidbelt {One dot per roughly {count, number} of the estimated {total} asteroids larger than {size}.} other {One dot per roughly {count, number} of the estimated {total} bodies larger than {size}.}}",
+			"spacing": "Neighbours are about {distance} apart – {moons, number} times as far as the Moon is from Earth. Spacecraft fly straight through without steering around anything.",
+			"spacing@simple": "But they are very far apart: {moons, number} times as far as from the Earth to the Moon. Space probes fly right through without bumping into anything.",
+			"spacing@advanced": "Typical separation between neighbours: about {distance}, {moons, number} times the Earth–Moon distance. Probes cross the belt on ordinary trajectories; none has ever needed to avoid an asteroid on the way.",
+			"dotSize": "The dots are drawn far bigger than the real bodies: at their true size you would see nothing at all. In films this is a crowded field of rocks – in space it is almost empty.",
+			"dotSize@simple": "The dots are drawn much too big. In films it is full of rocks crashing into each other – in real space it is almost empty.",
+			"legendKuiper": "Beyond Neptune: the Kuiper belt, the icy edge of the planets’ realm.",
+			"legendKuiper@simple": "Far beyond Neptune is the Kuiper belt, full of icy little worlds.",
+			"comet": {
+				"label": "Comet",
+				"where": "{distance} from the Sun, {direction, select, in {falling toward it} other {heading away from it}}.",
+				"where@simple": "It is {distance} away from the Sun and {direction, select, in {getting closer} other {moving away}}.",
+				"tail": "Its tail is about {length} long and points away from the Sun{direction, select, out { – so now the tail goes first} other {}}.",
+				"tail@simple": "Its tail is about {length} long. It always points away from the Sun{direction, select, out { – even now, when the comet flies away tail first} other {}}!",
+				"noTail": "No tail right now: it only grows within about {onset} of the Sun, where sunlight turns the comet’s ice into gas.",
+				"noTail@simple": "No tail right now. The tail only grows when the comet comes close to the Sun and its ice starts to melt into gas.",
+				"next": "Next time closest to the Sun: {date}.",
+				"last": "Last time closest to the Sun: {date}. It returns in about {years, number} years.",
+				"watch": "Watch it pass the Sun",
+				"watch@simple": "Watch it fly past the Sun"
 			}
 		}
 	},

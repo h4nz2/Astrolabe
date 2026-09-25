@@ -7,7 +7,16 @@ import {
 } from "@mantine/core"
 import { IconFocus2 } from "@tabler/icons-react"
 
-import { bodyById, moonsOf, planets, sun, type Body } from "@/data"
+import {
+	asteroids,
+	bodyById,
+	comets,
+	dwarfPlanets,
+	moonsOf,
+	planets,
+	sun,
+	type Body,
+} from "@/data"
 import { useI18n, type I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import { useSimStore } from "@/store/sim"
@@ -22,11 +31,14 @@ const largestFirst = (a: Body, b: Body): number => b.radiusKm - a.radiusKm
 
 /**
  * The Sun, then one group per planet holding the planet itself and all its
- * moons, largest first; names in the active language, so the search matches
- * "Erde" in German and "Earth" in English.
+ * moons, largest first; then (#23) the dwarf planets each followed by its moons,
+ * the asteroids and the comets. Names in the active language, so the search
+ * matches "Erde" in German and "Earth" in English. Picking a small body shows
+ * it (and its moons) even while the "Small bodies" layer is off.
  */
 export function focusOptions(
 	chain: I18n["chain"],
+	t: I18n["t"],
 ): ComboboxItemGroup<ComboboxItem>[] {
 	const toItem = (body: Body): ComboboxItem => ({
 		value: body.id,
@@ -38,7 +50,18 @@ export function focusOptions(
 			group: bodyName(planet.id, chain),
 			items: [planet, ...moonsOf(planet.id).sort(largestFirst)].map(toItem),
 		})),
-	]
+		{
+			group: t("solarSystem.picker.dwarfPlanets"),
+			items: dwarfPlanets
+				.flatMap((dwarf) => [dwarf, ...moonsOf(dwarf.id).sort(largestFirst)])
+				.map(toItem),
+		},
+		{
+			group: t("solarSystem.picker.asteroids"),
+			items: asteroids.map(toItem),
+		},
+		{ group: t("solarSystem.picker.comets"), items: comets.map(toItem) },
+	].filter((group) => group.items.length > 0)
 }
 
 /** Left/Right cycle the focus among siblings; text fields and other widgets keep their arrows. */
@@ -61,7 +84,7 @@ const FocusPicker = () => {
 	const setFocus = useSimStore((state) => state.setFocus)
 	const i18n = useI18n()
 	const { t, chain } = i18n
-	const data = useMemo(() => focusOptions(chain), [chain])
+	const data = useMemo(() => focusOptions(chain, t), [chain, t])
 	useWindowKeydown(handleKeyDown)
 
 	const renderOption = ({

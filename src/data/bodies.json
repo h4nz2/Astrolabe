@@ -7954,7 +7954,7 @@
 		"info": {
 			"density": 1,
 			"discoveredBy": "Karl L. Harding",
-			"discoveryDate": "12/01/1804",
+			"discoveryDate": "01/09/1804",
 			"alternativeName": "3 Juno",
 			"mass": {
 				"massValue": 2.82,
@@ -8172,9 +8172,9 @@
 			"inclinationDeg": 162.19053,
 			"longAscNodeDeg": 59.098947,
 			"argPeriapsisDeg": 112.241431,
-			"meanAnomalyDeg": 274.382337,
+			"meanAnomalyDeg": 0,
 			"periodDays": 27563.5,
-			"epochJD": 2439875.5
+			"epochJD": 2446469.973616
 		},
 		"rotation": {
 			"periodHours": 52.8,
@@ -8638,7 +8638,7 @@
 		"name": "Dysnomia",
 		"kind": "moon",
 		"parentId": "eris",
-		"radiusKm": 350,
+		"radiusKm": 307.5,
 		"massKg": 145000000000000000000,
 		"orbit": {
 			"semiMajorAxisKm": 37273,

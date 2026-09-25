@@ -22,6 +22,11 @@ import { useI18n } from "@/i18n"
 import { useBodyText } from "@/i18n/bodies"
 import { useSimStore, type SimState } from "@/store/sim"
 
+import {
+	SmallBodiesLegend,
+	SmallBodyNotes,
+} from "../smallBodies/SmallBodyNotes"
+
 import { headlineFacts } from "./bodyFacts"
 import { dictionaryEntry } from "./dictionaryEntry"
 
@@ -115,6 +120,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							</div>
 						))}
 					</dl>
+					<SmallBodyNotes body={body} />
 					{entry !== null && (
 						<Anchor
 							className={classes.more}
@@ -140,7 +146,10 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 const BodyInfo = () => {
 	const bodyId = useSimStore(cardBodyId)
 	return bodyId === null ? (
-		<ClickHint />
+		<>
+			<ClickHint />
+			<SmallBodiesLegend />
+		</>
 	) : (
 		<BodyCard key={bodyId} bodyId={bodyId} />
 	)

@@ -1,0 +1,28 @@
+.beltLabelAnchor {
+	pointer-events: none;
+}
+
+/* a belt's name, written on the belt like an orbit's name (labels/Labels.module.css) */
+.beltLabel {
+	display: block;
+	transform: translate(-50%, -50%);
+	white-space: nowrap;
+	font-size: clamp(11px, 0.75vw + 5px, 15px);
+	font-style: italic;
+	letter-spacing: 0.04em;
+	color: rgb(222 214 196 / 85%);
+	text-shadow:
+		0 0 2px #000,
+		0 0 4px #000,
+		0 0 8px rgb(0 0 0 / 80%);
+	transition: opacity 0.3s;
+	opacity: 1;
+}
+
+.beltLabel[data-belt="kuiperbelt"] {
+	color: rgb(196 212 232 / 85%);
+}
+
+.beltLabel[data-visible="false"] {
+	opacity: 0;
+}

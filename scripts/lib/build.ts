@@ -19,6 +19,7 @@ import type {
 import type { Vec3 } from "../../src/sim/kepler"
 import { eclipticDirection } from "../../src/sim/rotation"
 import { HOURS_PER_DAY } from "../../src/sim/time"
+import { AU_KM } from "../../src/sim/units"
 
 import { rotateElementsToEcliptic } from "./frames"
 import { spreadPhases } from "./hash"
@@ -57,9 +58,6 @@ export const SMALL_BODY_TEXTURES: Readonly<Partial<Record<BodyKind, string>>> =
 		asteroid: "/assets/textures/asteroid.jpg",
 		comet: "/assets/textures/asteroid_dark.jpg",
 	}
-
-/** Kilometres per astronomical unit (IAU 2012). */
-export const AU_KM = 149597870.7
 
 /** Added to Earth when the file exists. */
 export const EARTH_NIGHT_TEXTURE = "/assets/textures/earth_night_4k.jpg"
@@ -1011,7 +1009,12 @@ export const buildBelts = (db: Raw, sunId: string): Belt[] =>
 		const minDiameterKm = positive(num(members?.minDiameterKm))
 		const meanSeparationKm = positive(num(raw.meanSeparationKm))
 		const color = str(raw.color)
+		const extent = rec(raw.distanceFromParent)
+		const extentMin = positive(num(extent?.min))
+		const extentMax = positive(num(extent?.max))
 		if (
+			extentMin === null ||
+			extentMax === null ||
 			dots === null ||
 			count === null ||
 			minDiameterKm === null ||
@@ -1034,6 +1037,7 @@ export const buildBelts = (db: Raw, sunId: string): Belt[] =>
 				color,
 				members: { count, minDiameterKm },
 				meanSeparationKm,
+				extentKm: [extentMin, extentMax],
 				zones,
 			},
 		]
