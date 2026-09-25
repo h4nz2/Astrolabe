@@ -9,3 +9,6 @@ playwright/.cache
 .env*.local
 .DS_Store
 *.log
+
+# downloaded source maps (pnpm gen:surfaces)
+.cache

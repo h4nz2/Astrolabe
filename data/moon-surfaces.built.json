@@ -1,0 +1,962 @@
+{
+	"adrastea": {
+		"color": "#593f32",
+		"width": 512,
+		"bytes": 9352
+	},
+	"aegaeon": {
+		"color": "#979187",
+		"width": 512,
+		"bytes": 5577
+	},
+	"aegir": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8419
+	},
+	"aitne": {
+		"color": "#463c35",
+		"width": 512,
+		"bytes": 8218
+	},
+	"albiorix": {
+		"color": "#483d36",
+		"width": 512,
+		"bytes": 8040
+	},
+	"amalthea": {
+		"color": "#5d4235",
+		"width": 512,
+		"bytes": 9714
+	},
+	"ananke": {
+		"color": "#423f3d",
+		"width": 512,
+		"bytes": 8346
+	},
+	"anthe": {
+		"color": "#9d9b96",
+		"width": 512,
+		"bytes": 5620
+	},
+	"ariel": {
+		"color": "#959390",
+		"width": 1024,
+		"bytes": 46632
+	},
+	"atlas": {
+		"color": "#969086",
+		"width": 512,
+		"bytes": 5242
+	},
+	"bebhionn": {
+		"color": "#4e433b",
+		"width": 512,
+		"bytes": 8494
+	},
+	"belinda": {
+		"color": "#484746",
+		"width": 512,
+		"bytes": 8968
+	},
+	"bergelmir": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8219
+	},
+	"bestla": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 7947
+	},
+	"bianca": {
+		"color": "#464544",
+		"width": 512,
+		"bytes": 8492
+	},
+	"caliban": {
+		"color": "#4c3d34",
+		"width": 512,
+		"bytes": 8498
+	},
+	"callisto": {
+		"color": "#6b645d",
+		"width": 2048,
+		"bytes": 319416
+	},
+	"calypso": {
+		"color": "#c6c5c2",
+		"width": 512,
+		"bytes": 5822
+	},
+	"carme": {
+		"color": "#453b34",
+		"width": 512,
+		"bytes": 8323
+	},
+	"carpo": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7969
+	},
+	"chaldene": {
+		"color": "#493f38",
+		"width": 512,
+		"bytes": 8300
+	},
+	"charon": {
+		"color": "#837e7a",
+		"width": 1024,
+		"bytes": 29203
+	},
+	"cordelia": {
+		"color": "#494847",
+		"width": 512,
+		"bytes": 8843
+	},
+	"cressida": {
+		"color": "#494847",
+		"width": 512,
+		"bytes": 8730
+	},
+	"cupid": {
+		"color": "#474645",
+		"width": 512,
+		"bytes": 8556
+	},
+	"daphnis": {
+		"color": "#979187",
+		"width": 512,
+		"bytes": 5349
+	},
+	"deimos": {
+		"color": "#574d44",
+		"width": 1024,
+		"bytes": 21565
+	},
+	"desdemona": {
+		"color": "#4a4948",
+		"width": 512,
+		"bytes": 9144
+	},
+	"despina": {
+		"color": "#4e4b49",
+		"width": 512,
+		"bytes": 9216
+	},
+	"dia": {
+		"color": "#413f3e",
+		"width": 512,
+		"bytes": 8297
+	},
+	"dione": {
+		"color": "#bcbcb9",
+		"width": 1024,
+		"bytes": 107433
+	},
+	"dysnomia": {
+		"color": "#413e3c",
+		"width": 1024,
+		"bytes": 18374
+	},
+	"elara": {
+		"color": "#403f3d",
+		"width": 512,
+		"bytes": 8132
+	},
+	"enceladus": {
+		"color": "#dfdedd",
+		"width": 1024,
+		"bytes": 155110
+	},
+	"epimetheus": {
+		"color": "#b3afa5",
+		"width": 512,
+		"bytes": 14638
+	},
+	"erriapus": {
+		"color": "#4d423b",
+		"width": 512,
+		"bytes": 8816
+	},
+	"ersa": {
+		"color": "#42403f",
+		"width": 512,
+		"bytes": 8420
+	},
+	"euanthe": {
+		"color": "#42403d",
+		"width": 512,
+		"bytes": 8482
+	},
+	"euporie": {
+		"color": "#413e3c",
+		"width": 512,
+		"bytes": 8199
+	},
+	"europa": {
+		"color": "#b0a291",
+		"width": 2048,
+		"bytes": 324000
+	},
+	"farbauti": {
+		"color": "#3e3e3c",
+		"width": 512,
+		"bytes": 7680
+	},
+	"fenrir": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7977
+	},
+	"ferdinand": {
+		"color": "#423e3b",
+		"width": 512,
+		"bytes": 8042
+	},
+	"fornjot": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 7929
+	},
+	"francisco": {
+		"color": "#44403d",
+		"width": 512,
+		"bytes": 8208
+	},
+	"galatea": {
+		"color": "#494745",
+		"width": 512,
+		"bytes": 8676
+	},
+	"ganymede": {
+		"color": "#8a867b",
+		"width": 2048,
+		"bytes": 266181
+	},
+	"greip": {
+		"color": "#3f3e3c",
+		"width": 512,
+		"bytes": 7975
+	},
+	"halimede": {
+		"color": "#423f3e",
+		"width": 512,
+		"bytes": 8513
+	},
+	"hati": {
+		"color": "#41403e",
+		"width": 512,
+		"bytes": 7817
+	},
+	"helene": {
+		"color": "#c5c4c1",
+		"width": 512,
+		"bytes": 5786
+	},
+	"helike": {
+		"color": "#43403e",
+		"width": 512,
+		"bytes": 8245
+	},
+	"hiiaka": {
+		"color": "#a7a7a6",
+		"width": 1024,
+		"bytes": 32775
+	},
+	"himalia": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7918
+	},
+	"hippocamp": {
+		"color": "#4f4c4a",
+		"width": 512,
+		"bytes": 9380
+	},
+	"hydra": {
+		"color": "#b5b5b3",
+		"width": 1024,
+		"bytes": 33310
+	},
+	"hyperion": {
+		"color": "#95826c",
+		"width": 1024,
+		"bytes": 34691
+	},
+	"hyrrokkin": {
+		"color": "#3d3c3b",
+		"width": 512,
+		"bytes": 7724
+	},
+	"iapetus": {
+		"color": "#73726f",
+		"width": 1024,
+		"bytes": 80836
+	},
+	"ijiraq": {
+		"color": "#4c4037",
+		"width": 512,
+		"bytes": 8795
+	},
+	"io": {
+		"color": "#b59d70",
+		"width": 2048,
+		"bytes": 207801
+	},
+	"janus": {
+		"color": "#b3afa5",
+		"width": 512,
+		"bytes": 15033
+	},
+	"jarnsaxa": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8027
+	},
+	"juliet": {
+		"color": "#494847",
+		"width": 512,
+		"bytes": 8919
+	},
+	"kallichore": {
+		"color": "#473d36",
+		"width": 512,
+		"bytes": 8363
+	},
+	"kari": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7895
+	},
+	"kerberos": {
+		"color": "#979796",
+		"width": 1024,
+		"bytes": 31688
+	},
+	"kiviuq": {
+		"color": "#4d4038",
+		"width": 512,
+		"bytes": 8591
+	},
+	"laomedeia": {
+		"color": "#464442",
+		"width": 512,
+		"bytes": 8393
+	},
+	"larissa": {
+		"color": "#504d4b",
+		"width": 512,
+		"bytes": 9435
+	},
+	"leda": {
+		"color": "#413f3e",
+		"width": 512,
+		"bytes": 8134
+	},
+	"loge": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7815
+	},
+	"lysithea": {
+		"color": "#42403f",
+		"width": 512,
+		"bytes": 8086
+	},
+	"mab": {
+		"color": "#484746",
+		"width": 512,
+		"bytes": 8644
+	},
+	"margaret": {
+		"color": "#44403d",
+		"width": 512,
+		"bytes": 8199
+	},
+	"megaclite": {
+		"color": "#42403d",
+		"width": 512,
+		"bytes": 8170
+	},
+	"methone": {
+		"color": "#a4a19c",
+		"width": 512,
+		"bytes": 5712
+	},
+	"metis": {
+		"color": "#5a4033",
+		"width": 512,
+		"bytes": 9467
+	},
+	"mimas": {
+		"color": "#bbbab9",
+		"width": 1024,
+		"bytes": 118305
+	},
+	"miranda": {
+		"color": "#767574",
+		"width": 1024,
+		"bytes": 53754
+	},
+	"moon": {
+		"color": "#92918b",
+		"width": 1024,
+		"bytes": 63726
+	},
+	"mundilfari": {
+		"color": "#403f3e",
+		"width": 512,
+		"bytes": 7919
+	},
+	"naiad": {
+		"color": "#4d4b49",
+		"width": 512,
+		"bytes": 8967
+	},
+	"namaka": {
+		"color": "#a7a7a6",
+		"width": 1024,
+		"bytes": 33887
+	},
+	"narvi": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 8120
+	},
+	"nereid": {
+		"color": "#5a5957",
+		"width": 1024,
+		"bytes": 22283
+	},
+	"neso": {
+		"color": "#42403e",
+		"width": 512,
+		"bytes": 8530
+	},
+	"nix": {
+		"color": "#9a9793",
+		"width": 1024,
+		"bytes": 32513
+	},
+	"oberon": {
+		"color": "#7c7166",
+		"width": 1024,
+		"bytes": 47597
+	},
+	"ophelia": {
+		"color": "#494847",
+		"width": 512,
+		"bytes": 9220
+	},
+	"orthosie": {
+		"color": "#423f3d",
+		"width": 512,
+		"bytes": 8202
+	},
+	"paaliaq": {
+		"color": "#4c3f37",
+		"width": 512,
+		"bytes": 8773
+	},
+	"pallene": {
+		"color": "#95948f",
+		"width": 512,
+		"bytes": 5315
+	},
+	"pan": {
+		"color": "#8f8a80",
+		"width": 512,
+		"bytes": 5004
+	},
+	"pandia": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7876
+	},
+	"pandora": {
+		"color": "#928d83",
+		"width": 512,
+		"bytes": 5303
+	},
+	"pasiphae": {
+		"color": "#3f3d3b",
+		"width": 512,
+		"bytes": 7901
+	},
+	"pasithee": {
+		"color": "#493e37",
+		"width": 512,
+		"bytes": 8722
+	},
+	"perdita": {
+		"color": "#4a4948",
+		"width": 512,
+		"bytes": 9204
+	},
+	"philophrosyne": {
+		"color": "#413e3c",
+		"width": 512,
+		"bytes": 8151
+	},
+	"phobos": {
+		"color": "#4c443d",
+		"width": 1024,
+		"bytes": 54115
+	},
+	"phoebe": {
+		"color": "#4a4744",
+		"width": 1024,
+		"bytes": 46510
+	},
+	"polydeuces": {
+		"color": "#c2c1be",
+		"width": 512,
+		"bytes": 5917
+	},
+	"portia": {
+		"color": "#4a4948",
+		"width": 512,
+		"bytes": 8832
+	},
+	"praxidike": {
+		"color": "#43413e",
+		"width": 512,
+		"bytes": 8730
+	},
+	"prometheus": {
+		"color": "#979288",
+		"width": 512,
+		"bytes": 5309
+	},
+	"prospero": {
+		"color": "#423f3c",
+		"width": 512,
+		"bytes": 7920
+	},
+	"proteus": {
+		"color": "#4d4b4a",
+		"width": 1024,
+		"bytes": 21740
+	},
+	"psamathe": {
+		"color": "#413f3d",
+		"width": 512,
+		"bytes": 8135
+	},
+	"puck": {
+		"color": "#4a4847",
+		"width": 512,
+		"bytes": 8770
+	},
+	"rhea": {
+		"color": "#d7d7d2",
+		"width": 1024,
+		"bytes": 157601
+	},
+	"rosalind": {
+		"color": "#474645",
+		"width": 512,
+		"bytes": 8543
+	},
+	"s2003j10": {
+		"color": "#463c35",
+		"width": 512,
+		"bytes": 8201
+	},
+	"s2003j12": {
+		"color": "#3f3c3a",
+		"width": 512,
+		"bytes": 7949
+	},
+	"s2003j16": {
+		"color": "#413e3c",
+		"width": 512,
+		"bytes": 8296
+	},
+	"s2003j18": {
+		"color": "#413e3c",
+		"width": 512,
+		"bytes": 8068
+	},
+	"s2003j19": {
+		"color": "#463c35",
+		"width": 512,
+		"bytes": 8158
+	},
+	"s2003j2": {
+		"color": "#423f3d",
+		"width": 512,
+		"bytes": 8402
+	},
+	"s2003j23": {
+		"color": "#413e3c",
+		"width": 512,
+		"bytes": 8012
+	},
+	"s2003j24": {
+		"color": "#413f3e",
+		"width": 512,
+		"bytes": 7736
+	},
+	"s2003j4": {
+		"color": "#43403e",
+		"width": 512,
+		"bytes": 8602
+	},
+	"s2003j9": {
+		"color": "#493e37",
+		"width": 512,
+		"bytes": 8506
+	},
+	"s2004s12": {
+		"color": "#40403e",
+		"width": 512,
+		"bytes": 7847
+	},
+	"s2004s13": {
+		"color": "#403f3d",
+		"width": 512,
+		"bytes": 8006
+	},
+	"s2004s17": {
+		"color": "#3f3e3c",
+		"width": 512,
+		"bytes": 8037
+	},
+	"s2004s20": {
+		"color": "#3e3d3b",
+		"width": 512,
+		"bytes": 7792
+	},
+	"s2004s21": {
+		"color": "#403f3e",
+		"width": 512,
+		"bytes": 8106
+	},
+	"s2004s22": {
+		"color": "#42413f",
+		"width": 512,
+		"bytes": 7976
+	},
+	"s2004s23": {
+		"color": "#42413f",
+		"width": 512,
+		"bytes": 8235
+	},
+	"s2004s24": {
+		"color": "#4a4038",
+		"width": 512,
+		"bytes": 8351
+	},
+	"s2004s25": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8039
+	},
+	"s2004s26": {
+		"color": "#3e3d3b",
+		"width": 512,
+		"bytes": 7879
+	},
+	"s2004s27": {
+		"color": "#403f3e",
+		"width": 512,
+		"bytes": 7973
+	},
+	"s2004s28": {
+		"color": "#3e3d3b",
+		"width": 512,
+		"bytes": 7825
+	},
+	"s2004s29": {
+		"color": "#4a3e36",
+		"width": 512,
+		"bytes": 8587
+	},
+	"s2004s30": {
+		"color": "#424140",
+		"width": 512,
+		"bytes": 8123
+	},
+	"s2004s31": {
+		"color": "#4b3f36",
+		"width": 512,
+		"bytes": 8462
+	},
+	"s2004s32": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8182
+	},
+	"s2004s33": {
+		"color": "#42413f",
+		"width": 512,
+		"bytes": 7989
+	},
+	"s2004s34": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7689
+	},
+	"s2004s35": {
+		"color": "#3d3c3b",
+		"width": 512,
+		"bytes": 7820
+	},
+	"s2004s36": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 7924
+	},
+	"s2004s37": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7917
+	},
+	"s2004s38": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8068
+	},
+	"s2004s39": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 8277
+	},
+	"s2004s7": {
+		"color": "#424140",
+		"width": 512,
+		"bytes": 8325
+	},
+	"s2006s1": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8308
+	},
+	"s2006s3": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7870
+	},
+	"s2007s2": {
+		"color": "#3d3d3b",
+		"width": 512,
+		"bytes": 7540
+	},
+	"s2007s3": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 8063
+	},
+	"s2009s1": {
+		"color": "#918c82",
+		"width": 512,
+		"bytes": 5219
+	},
+	"s2010j1": {
+		"color": "#463c35",
+		"width": 512,
+		"bytes": 8089
+	},
+	"s2010j2": {
+		"color": "#3f3c3a",
+		"width": 512,
+		"bytes": 7999
+	},
+	"s2011j1": {
+		"color": "#483e37",
+		"width": 512,
+		"bytes": 8237
+	},
+	"s2011j2": {
+		"color": "#403e3c",
+		"width": 512,
+		"bytes": 7950
+	},
+	"s20151364721": {
+		"color": "#3d3b38",
+		"width": 1024,
+		"bytes": 16881
+	},
+	"s2016j1": {
+		"color": "#43403e",
+		"width": 512,
+		"bytes": 8417
+	},
+	"s2017j1": {
+		"color": "#43403e",
+		"width": 512,
+		"bytes": 7983
+	},
+	"s2017j2": {
+		"color": "#483e37",
+		"width": 512,
+		"bytes": 8483
+	},
+	"s2017j3": {
+		"color": "#413e3c",
+		"width": 512,
+		"bytes": 7588
+	},
+	"s2017j5": {
+		"color": "#483e37",
+		"width": 512,
+		"bytes": 8211
+	},
+	"s2017j6": {
+		"color": "#413f3c",
+		"width": 512,
+		"bytes": 8345
+	},
+	"s2017j7": {
+		"color": "#413e3c",
+		"width": 512,
+		"bytes": 8072
+	},
+	"s2017j8": {
+		"color": "#463c35",
+		"width": 512,
+		"bytes": 8015
+	},
+	"s2017j9": {
+		"color": "#43403d",
+		"width": 512,
+		"bytes": 8191
+	},
+	"sao": {
+		"color": "#43413f",
+		"width": 512,
+		"bytes": 8454
+	},
+	"setebos": {
+		"color": "#413d3a",
+		"width": 512,
+		"bytes": 7663
+	},
+	"siarnaq": {
+		"color": "#4a3e36",
+		"width": 512,
+		"bytes": 8569
+	},
+	"sinope": {
+		"color": "#403e3b",
+		"width": 512,
+		"bytes": 8188
+	},
+	"skathi": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 7889
+	},
+	"skoll": {
+		"color": "#41403e",
+		"width": 512,
+		"bytes": 8097
+	},
+	"stephano": {
+		"color": "#413e3a",
+		"width": 512,
+		"bytes": 8109
+	},
+	"styx": {
+		"color": "#a2a2a0",
+		"width": 1024,
+		"bytes": 33247
+	},
+	"surtur": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 7631
+	},
+	"suttungr": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 7894
+	},
+	"sycorax": {
+		"color": "#4c3e35",
+		"width": 512,
+		"bytes": 8710
+	},
+	"tarqeq": {
+		"color": "#4e4138",
+		"width": 512,
+		"bytes": 8876
+	},
+	"tarvos": {
+		"color": "#4c413a",
+		"width": 512,
+		"bytes": 8862
+	},
+	"telesto": {
+		"color": "#c6c5c2",
+		"width": 512,
+		"bytes": 5684
+	},
+	"tethys": {
+		"color": "#dad9d6",
+		"width": 1024,
+		"bytes": 156628
+	},
+	"thalassa": {
+		"color": "#4f4c4a",
+		"width": 512,
+		"bytes": 9350
+	},
+	"thebe": {
+		"color": "#593f32",
+		"width": 512,
+		"bytes": 9147
+	},
+	"thelxinoe": {
+		"color": "#403e3c",
+		"width": 512,
+		"bytes": 7975
+	},
+	"themisto": {
+		"color": "#41403f",
+		"width": 512,
+		"bytes": 7997
+	},
+	"thrymr": {
+		"color": "#3f3e3d",
+		"width": 512,
+		"bytes": 8134
+	},
+	"thyone": {
+		"color": "#423f3d",
+		"width": 512,
+		"bytes": 8231
+	},
+	"titan": {
+		"color": "#846231",
+		"width": 1024,
+		"bytes": 3578
+	},
+	"titania": {
+		"color": "#807a75",
+		"width": 1024,
+		"bytes": 45893
+	},
+	"trinculo": {
+		"color": "#413d3a",
+		"width": 512,
+		"bytes": 7911
+	},
+	"triton": {
+		"color": "#abae9d",
+		"width": 2048,
+		"bytes": 195139
+	},
+	"umbriel": {
+		"color": "#6f6d6b",
+		"width": 1024,
+		"bytes": 21544
+	},
+	"ymir": {
+		"color": "#3e3d3c",
+		"width": 512,
+		"bytes": 7592
+	}
+}

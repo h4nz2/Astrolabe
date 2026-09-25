@@ -69,10 +69,12 @@ export const BodyTextures = z.object({
 })
 
 /**
- * Curated presentation hints beside the textures (#17), so a moon on the shared placeholder
- * map still looks like itself: `tint`, an sRGB "#rrggbb" the colour map is multiplied with
- * (Triton pinkish, Callisto brown), and `veiled`, an opaque haze hides the surface in visible
- * light, so only the tint is drawn (Titan).
+ * Curated presentation hints beside the textures (#17): `tint`, an sRGB "#rrggbb" the colour
+ * map is multiplied with, and `veiled`, an opaque haze hides the surface in visible light, so
+ * only the tint is drawn. Since #37 every moon has its own map with its colours baked in, so
+ * no moon uses either; they remain for bodies that need them. `color` (#37) is the map's mean
+ * colour, drawn until the map has loaded (maps load only when the body is near, see
+ * "Moon surfaces" in docs/ARCHITECTURE.md).
  */
 export const Appearance = z.object({
 	tint: z
@@ -80,7 +82,42 @@ export const Appearance = z.object({
 		.regex(/^#[0-9a-f]{6}$/)
 		.optional(),
 	veiled: z.literal(true).optional(),
+	color: z
+		.string()
+		.regex(/^#[0-9a-f]{6}$/)
+		.optional(),
 })
+
+/**
+ * Where a moon's surface map comes from (#37, data/moon-surfaces.json): `map` is a real
+ * spacecraft map, `painted` a surface painted from what is known (colour, brightness, the kind
+ * of terrain) because no spacecraft has mapped the moon, `haze` Titan's haze as seen in visible
+ * light. `filled`: part of a real map was never photographed and is filled in to match.
+ * `source` is the id of its entry in src/data/credits.json.
+ */
+export const Surface = z.object({
+	kind: z.enum(["map", "painted", "haze"]),
+	source: z.string().min(1),
+	filled: z.literal(true).optional(),
+})
+
+/**
+ * One image source with its credit and licence (src/data/credits.json, built from
+ * data/moon-surfaces.json). The help page (#43) lists these; `bodies` are the ids that show it.
+ */
+export const ImageCredit = z.object({
+	id: z.string().min(1),
+	kind: z.enum(["map", "painted"]),
+	title: z.string().min(1),
+	credit: z.string().min(1),
+	short: z.string().min(1),
+	url: z.string().min(1),
+	licence: z.string().min(1),
+	licenceUrl: z.string().min(1),
+	note: z.string().min(1).optional(),
+	bodies: z.array(z.string().min(1)).min(1),
+})
+export const CreditsFile = z.array(ImageCredit)
 
 export const Rings = z
 	.object({
@@ -149,6 +186,8 @@ export const Body = z
 		rotation: Rotation,
 		textures: BodyTextures,
 		appearance: Appearance.optional(),
+		/** a moon's surface map and its source (#37); absent for the Sun and the planets */
+		surface: Surface.optional(),
 		rings: Rings.nullable(),
 		tail: Tail.optional(),
 		/** dictionary fields passed through from the source */
@@ -260,6 +299,8 @@ export type BodyKind = z.infer<typeof BodyKind>
 export type Orbit = z.infer<typeof Orbit>
 export type BodyTextures = z.infer<typeof BodyTextures>
 export type Appearance = z.infer<typeof Appearance>
+export type Surface = z.infer<typeof Surface>
+export type ImageCredit = z.infer<typeof ImageCredit>
 export type Rotation = z.infer<typeof Rotation>
 export type Rings = z.infer<typeof Rings>
 export type Body = z.infer<typeof Body>

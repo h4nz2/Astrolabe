@@ -11,7 +11,7 @@
 		"dev": "vite",
 		"build": "vite build",
 		"build:data": "tsx scripts/build-bodies.ts",
-		"check:data": "pnpm build:data && git diff --exit-code -- src/data/bodies.json src/data/belts.json",
+		"check:data": "pnpm build:data && git diff --exit-code -- src/data/bodies.json src/data/credits.json src/data/belts.json",
 		"preview": "vite preview",
 		"typecheck": "tsc --noEmit -p tsconfig.json",
 		"lint": "eslint . --max-warnings 0",
@@ -20,7 +20,8 @@
 		"test": "vitest run",
 		"test:e2e": "playwright test",
 		"gen:rings": "tsx scripts/gen-ring-textures.ts",
-		"prepare": "husky"
+		"prepare": "husky",
+		"gen:surfaces": "tsx scripts/gen-moon-surfaces.ts"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -40,6 +41,7 @@
 		"postcss-preset-mantine": "^1.18.0",
 		"postcss-simple-vars": "^7.0.1",
 		"prettier": "^3.9.9",
+		"sharp": "0.35.4",
 		"tsx": "^4.23.15",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.70.1",

@@ -5,10 +5,16 @@
  * already validated there, so it is cast here rather than parsed again at module load.
  * src/data/bodies.test.ts re-validates the committed file with the zod schema.
  */
-import { SMALL_BODY_KINDS, type Belt, type Body } from "./schema"
+import {
+	SMALL_BODY_KINDS,
+	type Belt,
+	type Body,
+	type ImageCredit,
+} from "./schema"
 
 import beltsJson from "./belts.json"
 import bodiesJson from "./bodies.json"
+import creditsJson from "./credits.json"
 
 export { SMALL_BODY_KINDS } from "./schema"
 export type {
@@ -19,9 +25,11 @@ export type {
 	Body,
 	BodyKind,
 	BodyTextures,
+	ImageCredit,
 	Orbit,
 	Rings,
 	Rotation,
+	Surface,
 	Tail,
 } from "./schema"
 
@@ -30,6 +38,17 @@ export type {
  * then the small bodies (#23: dwarf planets, asteroids, comets) and the dwarf planets' moons.
  */
 export const bodies: Body[] = bodiesJson as Body[]
+
+/**
+ * Every image source in use, with its credit and licence (#37; built from
+ * data/moon-surfaces.json by `pnpm build:data`). For the help page's credits (#43) and the
+ * "Surface map" line on a moon's card. `bodies` lists the ids that show each source.
+ */
+export const imageCredits: ImageCredit[] = creditsJson as ImageCredit[]
+
+export const creditById: Map<string, ImageCredit> = new Map(
+	imageCredits.map((credit) => [credit.id, credit]),
+)
 
 export const bodyById: Map<string, Body> = new Map(
 	bodies.map((body) => [body.id, body]),

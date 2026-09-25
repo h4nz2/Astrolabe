@@ -3,8 +3,8 @@
  * "Moons"). For a planet: its featured moons by name (a click flies there),
  * "See the whole moon system" (a shot that fits every drawn orbit) and the
  * switch for the long tail ("Show 53 smaller moons"). For a moon: the planet
- * it belongs to (a click flies back) and its written story behind "Read more",
- * because moons have no dictionary entry.
+ * it belongs to (a click flies back), its written story behind "Read more",
+ * because moons have no dictionary entry, and where its surface map comes from (#37).
  */
 import { useState } from "react"
 import { Anchor, Button, Group, UnstyledButton } from "@mantine/core"
@@ -17,6 +17,7 @@ import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 
 import { moonSystemOf, moonSystemShot } from "./moonSystem"
+import SurfaceNote from "./SurfaceNote"
 
 import classes from "./MoonSystem.module.css"
 
@@ -155,6 +156,7 @@ const MoonStory = ({ moon }: { moon: Body }) => {
 					</Anchor>
 				</>
 			)}
+			<SurfaceNote moon={moon} />
 			{parent !== undefined && (
 				<Button
 					className={classes.parent}

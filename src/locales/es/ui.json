@@ -364,6 +364,15 @@
 			"readMore": "Leer su historia",
 			"readLess": "Mostrar menos"
 		},
+		"surface": {
+			"map": "Mapa de la superficie: {source}.",
+			"unseen": "Una parte de {moon} nunca ha sido fotografiada, así que esa parte del mapa está completada para que se parezca al resto.",
+			"unseen@simple": "Nadie ha visto nunca toda la superficie de {moon}. La parte que falta del mapa está completada.",
+			"painted": "Ninguna nave ha cartografiado {moon} de cerca, así que esta superficie está pintada según lo que se sabe: su color y cuánta luz del Sol refleja.",
+			"painted@simple": "Ninguna nave ha sacado fotos de cerca de {moon}. Esta superficie está pintada con su color real.",
+			"haze": "El suelo de {moon} está oculto bajo una espesa bruma naranja. Así ven {moon} nuestros ojos.",
+			"haze@simple": "Una espesa bruma naranja tapa el suelo de {moon}. Así ven {moon} nuestros ojos."
+		},
 		"facts": {
 			"label": {
 				"size": "Tamaño",
