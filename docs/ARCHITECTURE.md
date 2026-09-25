@@ -782,7 +782,7 @@ updates it at `useFrame` priority -0.9 (after SimClock, before the director) and
 `hoverCraftId`, `trajectoriesReady`. Selecting a craft clears the body selection; choosing a body or any request for
 the overview (home, Escape) clears the craft. Not in the URL yet.
 
-**HUD.** `SpacecraftMenu` (satellite button in the layers panel, beside the language button): layer switch, "Show every path", every craft
+**HUD.** `SpacecraftMenu` (satellite button in the layers panel, under the language button): layer switch, "Show every path", every craft
 with its tagline and status at the simulation date; picking one selects it and flies there (`showCraft`: a point
 view at the craft, anchored to its neighbourhood, framed so the Sun or the planet stays in view).
 `SpacecraftInfo` replaces `BodyInfo` while a craft is selected: status lamp, launch, distance from the Sun and

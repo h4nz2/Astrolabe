@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { Group } from "@mantine/core"
+import { Group, Stack } from "@mantine/core"
 
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
@@ -93,10 +93,11 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">
 							<SceneToggles />
-							<Group gap={4} wrap="nowrap">
-								<SpacecraftMenu />
+							{/* stacked, so the switches keep their width and the panel its height */}
+							<Stack gap={4} align="flex-end">
 								<LanguageMenu />
-							</Group>
+								<SpacecraftMenu />
+							</Stack>
 						</Group>
 					</div>
 					<div className={classes.panel}>
