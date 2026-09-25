@@ -253,7 +253,7 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 				{t("solarSystem.spacecraft.show")}
 			</Button>
 			<ScrollArea.Autosize
-				mah="min(15rem, 32dvh)"
+				mah="min(9rem, 20dvh)"
 				type="auto"
 				offsetScrollbars
 				mt={6}

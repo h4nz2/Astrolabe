@@ -51,7 +51,7 @@ span.label {
 
 .fact {
 	display: grid;
-	grid-template-columns: 7.5rem minmax(0, 1fr);
+	grid-template-columns: 6.5rem minmax(0, 1fr);
 	column-gap: 0.75rem;
 	align-items: baseline;
 }
