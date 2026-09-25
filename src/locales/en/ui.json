@@ -40,7 +40,8 @@
 		"tagline": "To the stars!",
 		"dictionary": "Dictionary",
 		"solarSystem": "Solar Model",
-		"birthday": "Your birthday in space"
+		"birthday": "Your birthday in space",
+		"solarWalk": "Walk the solar system"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -184,7 +185,9 @@
 			"markersOn": "The dots only mark where the planets are: the planets themselves are too small to see.",
 			"markersOn@simple": "The dots show where the planets are. The planets are too small to see!",
 			"markersOff": "Markers are off: switch them on to find the planets.",
-			"markersOff@simple": "Switch on Markers to find the planets!"
+			"markersOff@simple": "Switch on Markers to find the planets!",
+			"walk": "Too small to imagine? Walk it: the solar system with the Sun as a basketball.",
+			"walk@simple": "Too small to see? Walk the solar system on your school field!"
 		},
 		"time": {
 			"play": "Play",
@@ -612,5 +615,108 @@
 				"join3@simple": "{a}, {b} and {c}"
 			}
 		}
+	},
+	"solarWalk": {
+		"back": "3D model",
+		"title": "If the Sun were {object}…",
+		"lead": "…Earth would be {earth}, {earthDistance} away. Every size and distance on this page is the real one, shrunk by the same amount to fit a school field. Take the Sun outside and walk it.",
+		"lead@simple": "…Earth would be as small as {earth} and {earthDistance} away! Take the Sun outside and walk the solar system.",
+		"lead@advanced": "…Earth would be {earthSize} across and {earthDistance} away. This is a true-scale model at 1 : {ratio}: every size and every distance is shrunk by the same factor. Take the Sun outside and walk it.",
+		"sunLabel": "The Sun is",
+		"sunObject": {
+			"orange": "an orange",
+			"football": "a football",
+			"basketball": "a basketball",
+			"exerciseBall": "an exercise ball"
+		},
+		"sunObjectName": {
+			"orange": "Orange",
+			"football": "Football",
+			"basketball": "Basketball",
+			"exerciseBall": "Exercise ball"
+		},
+		"landmarkLabel": "Compare with",
+		"landmarkOption": {
+			"none": "Metres only",
+			"pitch": "Football pitch ({length})",
+			"track": "Running track ({length} a lap)"
+		},
+		"viewLabel": "Show as",
+		"view": {
+			"walk": "Walk",
+			"table": "Table"
+		},
+		"print": "Print",
+		"open3d": "See it in 3D at true scale",
+		"open3dBody": "See {name} in 3D at true scale",
+		"summary": "The whole walk to Neptune: {distance}, about {time} on foot.",
+		"summary@simple": "The walk to Neptune is {distance} long. It takes about {time}.",
+		"summary@advanced": "From the Sun to Neptune: {distance}, about {time} at a walking pace of 4 km/h.",
+		"start": "Start",
+		"sunStop": "Here the Sun is {object}, {size} across. Put it at the start: the school gate or a corner of the field.",
+		"sunStop@simple": "The Sun is {object}. Put it at the start, for example at the school gate.",
+		"sunStop@advanced": "Here the Sun is {object}, {size} across (really {trueSize}). Put it at the start: the school gate or a corner of the field.",
+		"leg": "Walk {distance}",
+		"size": "{size} across – about the size of {thing}",
+		"size@simple": "About as big as {thing}",
+		"size@advanced": "{size} across (really {trueSize}) – about the size of {thing}",
+		"distance": "{distance} from the Sun",
+		"distance@advanced": "{distance} from the Sun (really {trueDistance})",
+		"moon": "{name}: {size}, about the size of {thing}, {distance} from the planet",
+		"moon@simple": "{name}: as big as {thing}, {distance} from the planet",
+		"moon@advanced": "{name}: {size} (really {trueSize}), {distance} from the planet (really {trueDistance})",
+		"landmarkCount": {
+			"pitch": "{count, plural, one {# football pitch} other {# football pitches}}",
+			"track": "{count, plural, one {# lap of the track} other {# laps of the track}}"
+		},
+		"landmarkMarker": {
+			"pitch": "The end of a football pitch: {length} from the Sun",
+			"track": "One lap of the running track: {length} from the Sun"
+		},
+		"starTitle": "The nearest star",
+		"star": "Now keep going. At this scale the nearest star after the Sun, Proxima Centauri, is {distance} away – about {flight} by plane. Your whole walk to Neptune fits into that {times} times.",
+		"star@simple": "And the next star? At this scale it is {distance} away! Even a plane would need about {flight} to get there.",
+		"star@advanced": "Proxima Centauri, 4.25 light-years away, lands {distance} from the start: {times} times the walk to Neptune, about {flight} of flying at 900 km/h. This small red dwarf would be {size} across, about the size of {thing}.",
+		"starLesson": "The solar system you just walked is a tiny island in an ocean of empty space.",
+		"starLesson@simple": "Space is really, really empty!",
+		"starLesson@advanced": "Between the stars there is almost nothing: the Sun's nearest neighbour is thousands of solar-system walks away.",
+		"lineUp": "In space the planets are never lined up like this. Each one circles the Sun on its own path, so they are spread out all around it. The walk shows how far each one is from the Sun on average.",
+		"lineUp@simple": "In real life the planets are never in a row like this. Each one goes round the Sun on its own path.",
+		"lineUp@advanced": "The planets are never aligned: the walk puts each one at its mean distance from the Sun (the semi-major axis of its orbit). Sizes are mean diameters, from the same data as the 3D model. Proxima Centauri: 4.2465 light-years (Gaia DR3).",
+		"tableCaption": "If the Sun were {object}: the solar system at 1 : {ratio}",
+		"column": {
+			"stop": "No.",
+			"body": "Body",
+			"size": "Size",
+			"thing": "About as big as",
+			"distance": "From the Sun",
+			"leg": "From the last stop",
+			"done": "Done"
+		},
+		"landmarkColumn": {
+			"pitch": "Football pitches",
+			"track": "Track laps"
+		},
+		"moonDistance": "{distance} from the planet",
+		"printNote": "The circles are printed at their size in the model.",
+		"thing": {
+			"fineSand": "a grain of fine sand",
+			"salt": "a grain of salt",
+			"sugar": "a grain of sugar",
+			"poppySeed": "a poppy seed",
+			"pinhead": "a pinhead",
+			"peppercorn": "a peppercorn",
+			"pea": "a pea",
+			"marble": "a marble",
+			"cherry": "a cherry",
+			"walnut": "a walnut",
+			"tableTennisBall": "a table tennis ball",
+			"tennisBall": "a tennis ball",
+			"orange": "an orange",
+			"grapefruit": "a grapefruit",
+			"melon": "a small melon",
+			"football": "a football"
+		},
+		"starName": "Proxima Centauri"
 	}
 }
