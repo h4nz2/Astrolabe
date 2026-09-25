@@ -56,19 +56,9 @@
 			"try": "/solar_system?focus=earth&warp=3600"
 		},
 		{
-			"id": "seenFromEarth",
-			"group": "lookingAround",
-			"try": "/solar_system?focus=earth&frame=earth&sel=mars&t=2460691.5&cam=0_89.9_120&warp=2629800"
-		},
-		{
 			"id": "skyTonight",
 			"group": "lookingAround",
 			"try": "/solar_system?sky=true"
-		},
-		{
-			"id": "spacecraft",
-			"group": "lookingAround",
-			"try": "/solar_system?craft=voyager1"
 		},
 		{
 			"id": "dictionary",
@@ -101,6 +91,11 @@
 			"try": "/solar_system?warp=315576000"
 		},
 		{
+			"id": "seenFromEarth",
+			"group": "time",
+			"try": "/solar_system?focus=earth&frame=earth&sel=mars&t=2460691.5&cam=0_89.9_120&warp=2629800"
+		},
+		{
 			"id": "scale",
 			"group": "sizeDistance",
 			"try": "/solar_system?scale=trueScale"
@@ -114,6 +109,11 @@
 			"id": "solarWalk",
 			"group": "sizeDistance",
 			"try": "/solar_walk"
+		},
+		{
+			"id": "spacecraft",
+			"group": "sizeDistance",
+			"try": "/solar_system?craft=voyager1"
 		},
 		{
 			"id": "dayNight",
