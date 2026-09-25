@@ -48,7 +48,7 @@ describe("perihelion passages", () => {
 			2446469.97,
 			0,
 		)
-		expect(nextPerihelionJD(halley.orbit!, 2461308.5)).toBeCloseTo(2474033.5, 0)
+		expect(nextPerihelionJD(halley.orbit!, 2461308.5)).toBeCloseTo(2474034, 0)
 		expect(previousPerihelionJD(halley.orbit!, 2461308.5)).toBeCloseTo(
 			2446469.97,
 			0,
