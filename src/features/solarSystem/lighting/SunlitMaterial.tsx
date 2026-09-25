@@ -2,7 +2,7 @@
  * The material of every body except the Sun (docs/ARCHITECTURE.md,
  * "Lighting"): a ShaderMaterial over the body's shared sunlight uniforms
  * (./bodyLighting.ts), optionally with its colour map and a night map
- * (city lights). The uniform objects are shared, not copied, so the per-frame
+ * (city lights) and its rings' shadow band. The uniform objects are shared, not copied, so the per-frame
  * `updateSunlight` reaches every material the body has, including the
  * fallback shown while its textures load.
  *
@@ -15,6 +15,7 @@ import { useEffect, useMemo } from "react"
 import { Color, ShaderMaterial, type Texture } from "three"
 
 import { NIGHT_LIGHTS_INTENSITY, type SunlightUniforms } from "./bodyLighting"
+import { ringParsUniforms, type RingShadow } from "./ringPars"
 import { bodyFragmentShader, bodyVertexShader } from "./sunlightShader"
 
 export interface SunlitMaterialProps {
@@ -23,6 +24,8 @@ export interface SunlitMaterialProps {
 	color?: string
 	map?: Texture
 	nightMap?: Texture
+	/** The planet's rings, whose shadow band falls across it (#12). */
+	ringShadow?: RingShadow
 }
 
 /** A body material over `uniforms` (shared by reference) plus its own textures. */
@@ -31,10 +34,12 @@ export function createSunlitMaterial({
 	color = "#ffffff",
 	map,
 	nightMap,
+	ringShadow,
 }: SunlitMaterialProps): ShaderMaterial {
 	const defines: Record<string, string> = {}
 	if (map !== undefined) defines.USE_BODY_MAP = ""
 	if (nightMap !== undefined) defines.USE_NIGHT_MAP = ""
+	if (ringShadow !== undefined) defines.USE_RING_SHADOW = ""
 	return new ShaderMaterial({
 		uniforms: {
 			...uniforms,
@@ -42,6 +47,7 @@ export function createSunlitMaterial({
 			uMap: { value: map ?? null },
 			uNightMap: { value: nightMap ?? null },
 			uNightLightsIntensity: { value: NIGHT_LIGHTS_INTENSITY },
+			...(ringShadow === undefined ? {} : ringParsUniforms(ringShadow)),
 		},
 		defines,
 		vertexShader: bodyVertexShader,
@@ -54,10 +60,11 @@ function SunlitMaterial({
 	color,
 	map,
 	nightMap,
+	ringShadow,
 }: SunlitMaterialProps) {
 	const material = useMemo(
-		() => createSunlitMaterial({ uniforms, color, map, nightMap }),
-		[uniforms, color, map, nightMap],
+		() => createSunlitMaterial({ uniforms, color, map, nightMap, ringShadow }),
+		[uniforms, color, map, nightMap, ringShadow],
 	)
 	useEffect(() => () => material.dispose(), [material])
 	return <primitive object={material} attach="material" />

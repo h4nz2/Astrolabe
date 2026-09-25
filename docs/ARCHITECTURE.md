@@ -24,7 +24,7 @@ it, and if it must change, change it in the same change set.
 
 ```
 data/ourDB.json              raw source (le-systeme-solaire.net export + curated fields); only solarDictionary.ts imports it
-data/rings/<planet>.json     ring systems the source lacks (Uranus, Neptune)
+data/rings/<planet>.json     ring systems the source lacks or gets wrong (Jupiter, Uranus, Neptune)
 scripts/build-bodies.ts      data/ -> src/data/bodies.json (pnpm build:data); the pure, tested mapping lives in scripts/lib/
 scripts/gen-ring-textures.ts data/rings -> public/assets/textures/<planet>/rings/ (pnpm gen:rings)
 src/routes/                  file routes; src/routeTree.gen.ts is generated and committed
@@ -33,9 +33,9 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, trails.ts, birthday.ts, skyTonight.ts,
-                             simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, ui/,
+src/store/                   sim.ts, navigation.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, birthday.ts,
+                             skyTonight.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, light/, rings/, ui/,
                              birthday/, skyTonight/),
                              solarWalk/ (the basketball solar system, #25)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
@@ -128,8 +128,11 @@ Build rules (`scripts/lib/`):
   Irregular moons without a period and Hyperion (`rotationChaotic` in the source: it tumbles) keep `null`: no spin.
 - Moon inclinations refer to the Laplace plane: inside the planet's Laplace radius they are rotated from the planet's
   equator into the ecliptic (`frames.ts`), so regular moons and rings are coplanar; outside it they are kept as ecliptic.
-- Rings: Jupiter and Saturn from the source, Uranus and Neptune from `data/rings/`. Strips run u = 0 (inner) to u = 1
-  (outer). A missing ring texture fails the build.
+- Rings: Saturn from the source; Jupiter, Uranus and Neptune from `data/rings/` (`EXTERNAL_RING_PLANETS`; the source's
+  Jupiter ring was an opaque Saturn-like texture, replaced by the halo, main and Amalthea gossamer rings). Strips run
+  u = 0 (inner) to u = 1 (outer), gray level = face-on opacity. Every ring lies within 3 planet radii (the moon curve's
+  knee, so rings stay true to their planet in every preset; Jupiter's Thebe gossamer ring, out to 3.2, is left out).
+  A missing ring texture fails the build.
 - Corrections to the source (typos, planet J2000 elements from JPL/Standish, the Moon and Galileans' elements, the
   Moon's precession rates from Meeus ch. 47 and its true sidereal month 27.321661 d) are made in `data/ourDB.json` itself. Sanity checks (Kepler period, density) warn on stderr.
 
@@ -372,11 +375,9 @@ and eclipses are the real ones in every scale preset (a moon drawn 10x too big n
   `<shaderMaterial uniforms>` copies each uniform and would freeze scalars at mount.
 - "Always lit" (`useLightingStore.alwaysLit`, a HUD switch labelled by `solarSystem.layers.alwaysLit`; not persisted): lit from the viewer, no night, no shadows.
 - Phases and seasons are consequences, not features (`phaseAngle`, `illuminatedFraction` give the numbers).
-- Building on it: anything lit by the Sun (#12 rings, #23, #35) includes `SUNLIGHT_PARS`, shares its body's uniforms and
-  calls `sunVisibility(p)` with `p` in that body's true frame (centre at origin, true km). Ring points:
-  `p = local * radiusKm / drawnRadiusKm`; the planet's shadow on its rings is the planet as a caster at the origin. Ring
-  shadows on the planet: intersect the ray from `p` toward `uSunKm` with the equatorial plane and multiply by
-  `1 - ringAlpha(r)` inside the ring radii, behind a define so ringless bodies pay nothing.
+- Building on it: anything lit by the Sun (#23, #35) includes `SUNLIGHT_PARS`, shares its body's uniforms and calls
+  `sunVisibility(p)` with `p` in that body's true frame (centre at origin, true km); `sunlightCasterVisibility(p, caster)`
+  adds one caster of its own (the rings use it for the planet). Rings are the worked example (see Rings).
 
 ## Rotation (`src/sim/rotation.ts`, `src/sim/spin.ts`, `bodies/orientation.ts`, `src/store/spin.ts`; #13)
 
@@ -405,6 +406,40 @@ and eclipses are the real ones in every scale preset (a moon drawn 10x too big n
   Time warp and spin are therefore independent: warp sets orbital speed, the spin mode only ever slows spin down.
 - The mode is not persisted or in the URL (like "Always lit"): every visit opens with the true spin. The canvas
   carries `data-spin-mode`.
+
+## Rings (`src/sim/rings.ts`, `features/solarSystem/rings/`, `lighting/ring*.ts`; #12)
+
+Driven by data alone: a body with `rings` gets them (Jupiter, Saturn, Uranus, Neptune), nobody else does.
+
+- Placement: `rings/Rings.tsx` is a child of BodyMesh's pole-frame group (see Rotation), so the rings lie in the
+  equator and follow the tilt, never the spin (Uranus's stand almost on edge to the ecliptic). The annulus is built in
+  planet radii (`createRingGeometry`, 256 segments, outer polygon circumscribed, both edges cut exactly by radius in
+  the shader) and scaled every frame by `frame.renderRadius(i)` like the sphere: `displayBodyLengthKm`, true
+  proportion to the planet in every preset, never detached.
+- Textures (`rings/ringTextures.ts`): the two strips are read once per ring system (`loadRingTextures`, cached, React
+  `use`) and baked into 1-texel-high textures with hand-built mip chains: `color` = opacity-weighted mean colour (sRGB)
+  - mean opacity in A; `peak` = the highest opacity over the footprint. The shader draws `max(mean, 0.6 * peak)`, so a
+    ring a few km wide (Uranus's) stays a faint line at any zoom instead of averaging away.
+- Optics (`src/sim/rings.ts`, ported to GLSL in `lighting/ringPars.ts`; keep in step): opacity is face-on; crossed at
+  cosine `mu` to the pole it is `1 - (1 - opacity)^(1/mu)` (`slantOpacity`, mu >= 0.02). So a ring seen nearly edge-on
+  is a dense bright line. Exactly edge-on the sheet covers no pixel: a rim at the outer radius (`RING_EDGE`, an open
+  cylinder extruded `RING_EDGE_PX` = 1.5 px along the pole in the vertex shader, needs `uViewportHeight`) draws the
+  line with the whole system's mean opacity and fades out once |cos| > `RING_EDGE_FADE` (0.03).
+- Depth: the rings write no depth and sit `RING_DEPTH_BIAS` behind their plane in the log depth buffer, so the orbit
+  lines of ring moons (coplanar) draw over them instead of dashing through.
+- Lighting (`lighting/ringShader.ts`, `ringMaterial.ts`): the ring material spreads the PLANET's sunlight uniforms (the
+  same objects) and adds its strips; transparent, `depthWrite` off, double-sided. A ring point is `p` = the local point x
+  `radiusKm / drawnRadius` in scene axes; it gets `sunVisibility(p)` (the planet's moons) x the planet as a caster at
+  the origin: the planet's shadow on the rings. The lit face is `RING_BRIGHTNESS`, dimmed toward `RING_GRAZING_LIGHT`
+  as the Sun reaches the ring plane (equinox); the unlit face lets light through thin rings and stays dark behind
+  dense ones (`RING_BACKLIT_DENSE`). Dark rings are brightened in the shader to `RING_MIN_LUMINANCE`, never in the data.
+  "Always lit": lit from the viewer, no shadows.
+- The rings' shadow on the planet: `createSunlitMaterial({ ringShadow })` sets `USE_RING_SHADOW`; the body shader
+  intersects the ray from the surface point toward the Sun with the ring plane (the pole is the sphere's local +Y,
+  which the spin leaves alone) and multiplies the sunlight by the slant transmittance of the mean opacity there
+  (`ringShadowTransmittance`). Ringless bodies compile none of it.
+- Picking: the ring sheet is a real scene target, nearer than `BodyPicking`'s "empty space": a click on the rings is
+  `activateBody(planet)` and hovering them hovers the planet, so a click on Saturn's rings never resets the view.
 
 ## Floating origin
 
@@ -481,8 +516,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
 - Bodies (`bodies/BodyMesh.tsx`): a group per body (the pole frame, see Rotation), scaling one of three shared unit spheres (64/32/16 segments for
   Sun and planets / moons / estimated moons) by the drawn radius; lazy sRGB textures behind a per-body Suspense; every
   body but the Sun uses the sunlit material (see Lighting).
-- Rings: radial UVs, `alphaMap` = alpha strip (linear, gray level = opacity; never use it as `map`), `map` = color strip
-  (sRGB), clamped, double-sided. Brighten dark generated rings in the material, not the data.
+- Rings: see Rings. A child of the body's pole-frame group, sharing its sunlight uniforms.
 - Orbit lines (`bodies/OrbitLine.tsx`): 256 samples plus one anchor vertex written from the body's own position, so the
   line always passes through its body. Rebuilt on scale or large origin/parent moves; otherwise only the anchor updates.
   Use `LineBasicMaterial` on a raw `<threeLine>` registered with `extend({ ThreeLine: Line })` (without it any re-render
@@ -628,6 +662,36 @@ weight on the Sun, the planets and the seven large moons.
 - Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
   carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
   picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
+
+## Light travel (`src/sim/light.ts`, `src/store/light.ts`, `features/solarSystem/light/`; #27)
+
+Every light time comes from TRUE positions; only the drawn front goes through the scale engine.
+
+- Pure (`src/sim/light.ts`): `SPEED_OF_LIGHT_KM_S`, `lightSeconds`, `frontRadiusKm(emitJD, jd)` (c x simulation
+  time since the flash, 0 before it), `truePositionAt` (one body's true position at any JD), `arrivalJD` (solves
+  |pos(t) - origin| = c (t - emitJD): the light meets a body where it is on arrival), `distanceBetweenKm`,
+  `neighbourhoodRadiusKm` (Hill sphere, at least 4 radii) and `distanceRangeKm` (the min/max over both orbits, e.g.
+  Mars 3 to 22 light-minutes from Earth).
+- Store (`useLightStore`): `pulse` = `{ emitterId, emitJD }` only; the front is a function of the clock, so it
+  pauses, speeds up and runs backwards with everything else. `send()` also sets the clock to 1x forwards (real time
+  is the lesson; faster is a deliberate click in the time controls, and the panel says the clock still counts true
+  travel time). Panel state (`open`, `tab`, emitter, delay target). Not persisted or in the URL.
+- Drawing (`light/lightFront.ts`, `LightFront.tsx`, in the Canvas after the markers): the circle where the light
+  sphere cuts the plane through its source, centred on where the source was when it sent the flash (fixed in the
+  Sun-centred frame), plus a faint glow fan and a DOM label ("Light · 4 min 12 s", drei `Html`) riding on it toward
+  the next body it reaches. Each point is drawn like a body: anchor's drawn position + `displayOffset` of its true
+  offset from the anchor. The anchor is the Sun (the planets' rule, so the front crosses every drawn planet exactly
+  on arrival in every preset), except while the front is inside the source planet's neighbourhood (a planet, or a
+  moon's planet): then that planet with the moons' rule, so the Earth -> Moon flash crosses the drawn Moon at 1.3 s.
+  That early front fades out over the outer 40 % of the neighbourhood, where the two rules disagree (in every preset
+  but true scale, where both are the identity). In an anchored frame (#31) a Sun-anchored point moves like a planet
+  at that place would (`framedOffset` from each anchor, weighted; `mapTruePointKm`), so arrivals stay on time.
+- Panel (`light/LightPanel.tsx`, a `.panel` in the picker stack under the picker; a button with the running clock
+  while closed): Flash (source picker, running clock, distance covered, clock note with "Back to real time",
+  arrivals `pulseArrivals` announced in an `aria-live` line), Signal delay (from Earth to any body: picked, or the
+  scene selection; one way, round trip, live distance, range, what it means for a rover), Farther out (Proxima
+  Centauri, the galactic centre, Andromeda). Durations: `formatDuration` in `light/lightTravel.ts` (ICU units under
+  `solarSystem.light.duration.*`, abbreviated at standard/advanced, spelled out at simple).
 
 ## Sky tonight (`features/solarSystem/skyTonight`, `src/store/skyTonight.ts`; #36)
 
