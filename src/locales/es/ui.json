@@ -1,0 +1,1031 @@
+{
+	"locale": {
+		"name": "Español"
+	},
+	"app": {
+		"name": "Astrolabe",
+		"title": "Astrolabe – nuestro sistema solar",
+		"installName": "Astrolabe - Nuestro sistema solar",
+		"shortName": "Astrolabe",
+		"description": "Diccionario visual y modelo 3D a escala real de nuestro sistema solar"
+	},
+	"i18n": {
+		"menu": {
+			"button": "Idioma y nivel de lectura ({code})",
+			"language": "Idioma",
+			"readingLevel": "Nivel de lectura"
+		},
+		"readingLevel": {
+			"simple": {
+				"name": "Sencillo",
+				"description": "De 8 a 11 años: frases cortas, comparaciones cotidianas"
+			},
+			"standard": {
+				"name": "Estándar",
+				"description": "De 12 a 15 años: explicaciones claras con los datos clave"
+			},
+			"advanced": {
+				"name": "Avanzado",
+				"description": "A partir de 16 años: términos precisos y más detalle"
+			}
+		}
+	},
+	"notFound": {
+		"title": "Perdido en el espacio",
+		"text": "No hay nada en esta dirección.",
+		"back": "Volver a las estrellas"
+	},
+	"hero": {
+		"credits": "Hecho con cariño por odi y hrj",
+		"tagline": "¡Hacia las estrellas!",
+		"dictionary": "Diccionario",
+		"solarSystem": "Modelo solar",
+		"birthday": "Tu cumpleaños en el espacio",
+		"hunt": "Búsqueda del tesoro",
+		"solarWalk": "Paseo por el sistema solar"
+	},
+	"units": {
+		"approx": "≈ {value}",
+		"au": "{value} ua",
+		"gravity": "{value} m/s²",
+		"kelvin": "{value} K",
+		"millionKm": "{value} millones de km",
+		"billionKm": "{value} mil millones de km"
+	},
+	"bodies": {
+		"kind": {
+			"star": "Estrella",
+			"planet": "Planeta",
+			"moon": "Luna",
+			"moonOf": "{parentId, select, earth {Luna de la Tierra} other {Luna de {parent}}}"
+		},
+		"fallback": {
+			"moonDescription": "{name} es una luna de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de diámetro y da una vuelta completa a su planeta cada {period}.",
+			"moonDescription@simple": "{name} es una de las lunas que giran alrededor de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de ancho.",
+			"moonDescription@advanced": "{name} orbita alrededor de {parentId, select, earth {la Tierra} other {{parent}}} a una distancia media de {distance}, con un periodo de {period}. Su diámetro medio es de unos {diameter}."
+		}
+	},
+	"dictionary": {
+		"pick": "Mostrar {name}",
+		"textures": {
+			"label": "Texturas disponibles",
+			"base": "Superficie",
+			"topo": "Relieve",
+			"specular": "Océanos",
+			"clouds": "Nubes"
+		},
+		"fact": {
+			"name": "Nombre",
+			"diameter": "Diámetro",
+			"lengthOfDay": "Duración del día",
+			"orbitalPeriod": "Duración del año",
+			"gravity": "Gravedad",
+			"avgTemp": "Temperatura"
+		},
+		"compare": {
+			"sizeBigger": "{count, plural, one {La Tierra cabría # vez en su interior.} many {La Tierra cabría # de veces en su interior.} other {La Tierra cabría # veces en su interior.}}",
+			"sizeBigger@simple": "{count, plural, one {¡Dentro cabría # Tierra!} many {¡Dentro cabrían # de Tierras!} other {¡Dentro cabrían # Tierras!}}",
+			"sizeBigger@advanced": "{count, plural, one {Su volumen es igual al de la Tierra.} many {Su volumen es unas # de veces el de la Tierra.} other {Su volumen es unas # veces el de la Tierra.}}",
+			"sizeSmaller": "{count, plural, one {Cabría # vez dentro de la Tierra.} many {Cabría # de veces dentro de la Tierra.} other {Cabría # veces dentro de la Tierra.}}",
+			"sizeSmaller@simple": "{count, plural, one {¡Es tan grande como la Tierra!} many {¡Cabría # de veces dentro de la Tierra!} other {¡Cabría # veces dentro de la Tierra!}}",
+			"sizeSmaller@advanced": "{count, plural, one {La Tierra tiene el mismo volumen.} many {La Tierra tiene unas # de veces su volumen.} other {La Tierra tiene unas # veces su volumen.}}",
+			"sizeSimilar": "Tiene más o menos el mismo tamaño que nuestro planeta.",
+			"sizeSimilar@simple": "¡Es casi tan grande como la Tierra!",
+			"sizeSimilar@advanced": "Su volumen es parecido al de la Tierra.",
+			"dayLonger": "{days, plural, one {Un día allí dura # día terrestre.} many {Un día allí dura # de días terrestres.} other {Un día allí dura # días terrestres.}}",
+			"dayLonger@simple": "{days, plural, one {¡Un día allí dura lo mismo que # día en la Tierra!} many {¡Un día allí dura lo mismo que # de días en la Tierra!} other {¡Un día allí dura lo mismo que # días en la Tierra!}}",
+			"dayLonger@advanced": "{days, plural, one {De un amanecer al siguiente pasa # día terrestre.} many {De un amanecer al siguiente pasan # de días terrestres.} other {De un amanecer al siguiente pasan # días terrestres.}}",
+			"dayShorter": "{hours, plural, one {Un día allí dura solo # hora.} many {Un día allí dura solo # de horas.} other {Un día allí dura solo # horas.}}",
+			"dayShorter@simple": "{hours, plural, one {¡Un día allí se acaba en solo # hora!} many {¡Un día allí se acaba en solo # de horas!} other {¡Un día allí se acaba en solo # horas!}}",
+			"dayShorter@advanced": "{hours, plural, one {Un día solar dura solo # hora, el {fraction, number, ::percent} de un día terrestre.} many {Un día solar dura solo # de horas, el {fraction, number, ::percent} de un día terrestre.} other {Un día solar dura solo # horas, el {fraction, number, ::percent} de un día terrestre.}}",
+			"daySimilar": "Un día allí dura más o menos lo mismo que en la Tierra.",
+			"daySimilar@simple": "¡Un día allí dura casi lo mismo que un día en la Tierra!",
+			"daySimilar@advanced": "{minutes, plural, one {Su día solar se diferencia del terrestre en solo # minuto.} many {Su día solar se diferencia del terrestre en solo # de minutos.} other {Su día solar se diferencia del terrestre en solo # minutos.}}",
+			"yearLonger": "{years, plural, one {Un año allí dura # año terrestre – ¡una larga espera hasta tu próximo cumpleaños!} many {Un año allí dura # de años terrestres – ¡una larga espera hasta tu próximo cumpleaños!} other {Un año allí dura # años terrestres – ¡una larga espera hasta tu próximo cumpleaños!}}",
+			"yearLonger@simple": "{years, plural, one {¡Tendrías que esperar # año para tu próximo cumpleaños!} many {¡Tendrías que esperar # de años para tu próximo cumpleaños!} other {¡Tendrías que esperar # años para tu próximo cumpleaños!}}",
+			"yearLonger@advanced": "{years, plural, one {Su periodo orbital es de aproximadamente # año terrestre.} many {Su periodo orbital es de aproximadamente # de años terrestres.} other {Su periodo orbital es de aproximadamente # años terrestres.}}",
+			"yearLongerDays": "{days, plural, one {Esperarías # día más para tu cumpleaños.} many {Esperarías # de días más para tu cumpleaños.} other {Esperarías # días más para tu cumpleaños.}}",
+			"yearLongerDays@simple": "{days, plural, one {¡Tendrías que esperar # día más para tu cumpleaños!} many {¡Tendrías que esperar # de días más para tu cumpleaños!} other {¡Tendrías que esperar # días más para tu cumpleaños!}}",
+			"yearLongerDays@advanced": "{days, plural, one {Su año dura # día más que el terrestre.} many {Su año dura # de días más que el terrestre.} other {Su año dura # días más que el terrestre.}}",
+			"yearShorter": "{times, plural, one {Un año allí dura solo {period}: eso es # cumpleaños por año terrestre.} many {Un año allí dura solo {period}: ¡eso son # de cumpleaños por año terrestre!} other {Un año allí dura solo {period}: ¡eso son # cumpleaños por año terrestre!}}",
+			"yearShorter@simple": "{times, plural, one {¡Cumplirías años # vez cada año terrestre!} many {¡Cumplirías años unas # de veces cada año terrestre!} other {¡Cumplirías años unas # veces cada año terrestre!}}",
+			"yearShorter@advanced": "{times, plural, one {Su periodo orbital es de {period}; da # vuelta al Sol por año terrestre.} many {Su periodo orbital es de {period}; da # de vueltas al Sol por año terrestre.} other {Su periodo orbital es de {period}; da # vueltas al Sol por año terrestre.}}",
+			"gravityMore": "¡Pesarías {ratio, number} veces más que en la Tierra!",
+			"gravityMore@simple": "Si en la Tierra pesas 30 kg, ¡allí pesarías {kg, number} kg!",
+			"gravityMore@advanced": "La gravedad en la superficie es {ratio, number} veces la terrestre: tu peso aumentaría, pero tu masa seguiría siendo la misma.",
+			"gravitySimilar": "Pesarías más o menos lo mismo que en la Tierra.",
+			"gravitySimilar@simple": "Notarías el mismo peso que en la Tierra.",
+			"gravitySimilar@advanced": "La gravedad en la superficie difiere menos de un 5 % de la terrestre.",
+			"gravityLess": "Pesarías solo el {percent, number, ::percent} de lo que pesas en la Tierra.",
+			"gravityLess@simple": "Si en la Tierra pesas 30 kg, ¡allí pesarías solo {kg, number} kg!",
+			"gravityLess@advanced": "La gravedad en la superficie es el {percent, number, ::percent} de la terrestre: tu peso disminuiría, pero tu masa seguiría siendo la misma.",
+			"temperature": "Eso son unos {celsius, number} °C.",
+			"temperature@simple": "{range, select, hot {Eso son unos {celsius, number} °C: ¡más calor que dentro de un horno!} cold {Eso son unos {celsius, number} °C: ¡más frío que en cualquier congelador!} other {Eso son unos {celsius, number} °C.}}",
+			"temperature@advanced": "Eso son {celsius, number} °C; el cero absoluto, 0 K, equivale a −273,15 °C."
+		}
+	},
+	"solarSystem": {
+		"overview": "Volver a la vista general",
+		"picker": {
+			"label": "Cuerpo celeste enfocado",
+			"placeholder": "Buscar un cuerpo celeste…",
+			"nothingFound": "No hay ningún cuerpo con ese nombre"
+		},
+		"layers": {
+			"label": "Capas de la escena",
+			"orbits": "Órbitas",
+			"labels": "Etiquetas",
+			"moons": "Lunas",
+			"allMoons": "Todas las lunas",
+			"allMoonsHint": "Mostrar también las muchas lunas pequeñas, no solo las que tienen una historia",
+			"markers": "Marcadores",
+			"orbitNames": "Nombres de órbitas",
+			"alwaysLit": "Siempre iluminado"
+		},
+		"scale": {
+			"label": "Escala",
+			"presetsLabel": "Escala predefinida",
+			"preset": {
+				"trueScale": "Escala real",
+				"textbook": "Libro de texto",
+				"bigPlanets": "Planetas grandes",
+				"everythingVisible": "Todo visible"
+			},
+			"summary": {
+				"trueScale": "Tamaños reales, distancias reales. El espacio está casi completamente vacío.",
+				"trueScale@simple": "Todo es tan grande y está tan lejos como en la realidad. ¡El espacio está casi vacío!",
+				"trueScale@advanced": "A escala real: tamaños y distancias comparten la misma regla. Los planetas apenas ocupan nada del espacio que hay entre ellos.",
+				"textbook": "Como la ilustración de un libro de texto: tamaños reales, pero los planetas aparecen muy juntos. ¡No está a escala!",
+				"textbook@simple": "Como un dibujo del libro de la escuela: los planetas aparecen muy juntos. ¡En realidad no es así!",
+				"textbook@advanced": "Tamaños proporcionales entre sí, distancias comprimidas: la imagen que muestran la mayoría de los diagramas. No está a escala.",
+				"bigPlanets": "Distancias reales, pero los planetas se dibujan demasiado grandes – y aun así se pierden en el espacio vacío.",
+				"bigPlanets@simple": "Los planetas se muestran mucho más grandes, pero tan separados como en la realidad. ¡Aun así parecen diminutos!",
+				"bigPlanets@advanced": "Distancias reales, tamaños exagerados: incluso ampliados diez veces, los planetas son simples motas a lo largo de sus órbitas.",
+				"everythingVisible": "Pensado para mostrarlo todo a la vez: los planetas se dibujan demasiado grandes y demasiado juntos. ¡No está a escala!",
+				"everythingVisible@simple": "Los planetas se muestran más grandes y más juntos para que puedas verlos todos. ¡En realidad no es así!",
+				"everythingVisible@advanced": "Tamaños exagerados y distancias comprimidas para que todos los cuerpos sean visibles a la vez. No está a escala."
+			},
+			"sizes": "Tamaños",
+			"sizesTrue": "Reales",
+			"sizesEnlarged": "Ampliados",
+			"distances": "Distancias",
+			"distancesTrue": "Reales",
+			"distancesSqueezed": "Comprimidas",
+			"sizeTrue": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se dibuja a su tamaño real.",
+			"sizeTrue@simple": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se ve tan grande como es de verdad.",
+			"sizeTrue@advanced": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}}: radio dibujado a escala.",
+			"sizeBigger": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se dibuja {factor, number}× más grande de lo que es.",
+			"sizeBigger@simple": "¡{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se ve {factor, number} veces más grande de lo que es en realidad!",
+			"sizeBigger@advanced": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}}: radio dibujado a {factor, number}× su valor real.",
+			"distanceTrue": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se dibuja a su distancia real {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}}.",
+			"distanceTrue@simple": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} está tan lejos {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}} como en la realidad.",
+			"distanceTrue@advanced": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}}: distancia {parentId, select, sun {al Sol} earth {a la Tierra} other {a {parent}}} dibujada a escala.",
+			"distanceCloser": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se dibuja {factor, number}× más cerca {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}} de lo que está.",
+			"distanceCloser@simple": "¡{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se ve {factor, number} veces más cerca {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}} de lo que está en realidad!",
+			"distanceCloser@advanced": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}}: distancia {parentId, select, sun {al Sol} earth {a la Tierra} other {a {parent}}} dibujada a 1/{factor, number} de su valor real.",
+			"distanceFarther": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se dibuja {factor, number}× más lejos {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}} de lo que está.",
+			"distanceFarther@simple": "¡{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}} se ve {factor, number} veces más lejos {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}} de lo que está en realidad!",
+			"distanceFarther@advanced": "{subjectId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{subject}}}: distancia {parentId, select, sun {al Sol} earth {a la Tierra} other {a {parent}}} dibujada a {factor, number}× su valor real.",
+			"markersOn": "Los puntos solo marcan dónde están los planetas: los planetas en sí son demasiado pequeños para verlos.",
+			"markersOn@simple": "Los puntos muestran dónde están los planetas. ¡Los planetas son demasiado pequeños para verlos!",
+			"markersOff": "Los marcadores están desactivados: actívalos para encontrar los planetas.",
+			"markersOff@simple": "¡Activa los Marcadores para encontrar los planetas!",
+			"walk": "¿Demasiado pequeño para imaginarlo? Recórrelo a pie: el sistema solar con el Sol del tamaño de un balón de baloncesto.",
+			"walk@simple": "¿Demasiado pequeño para verlo? ¡Recorre a pie el sistema solar en el patio de tu escuela!"
+		},
+		"time": {
+			"play": "Reproducir",
+			"pause": "Pausa",
+			"playHint": "Avanzar el tiempo (Espacio)",
+			"pauseHint": "Pausa (Espacio)",
+			"now": "Ahora",
+			"nowHint": "Saltar al momento actual",
+			"warp": {
+				"label": "Velocidad",
+				"realTime": "1x",
+				"factor": "{factor}x",
+				"minute": "{count, plural, one {# min/s} many {# min/s} other {# min/s}}",
+				"hour": "{count, plural, one {# h/s} many {# h/s} other {# h/s}}",
+				"day": "{count, plural, one {# día/s} many {# de días/s} other {# días/s}}",
+				"week": "{count, plural, one {# semana/s} many {# de semanas/s} other {# semanas/s}}",
+				"month": "{count, plural, one {# mes/s} many {# de meses/s} other {# meses/s}}",
+				"year": "{count, plural, one {# año/s} many {# de años/s} other {# años/s}}"
+			},
+			"reverse": "Retroceder",
+			"reverseHint": "Hacer correr el tiempo hacia atrás",
+			"controls": "Reproducir, pausar o retroceder",
+			"tooFast": "{body} da {count, plural, one {# vuelta} many {# de vueltas} other {# vueltas}} {parentId, select, sun {al Sol} earth {a la Tierra} other {a {parent}}} por segundo – demasiado rápido para tu pantalla, así que puede parecer que salta o incluso que va hacia atrás.",
+			"tooFast@simple": "¡{body} da {count, plural, one {# vuelta} many {# de vueltas} other {# vueltas}} alrededor {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}} cada segundo! Es demasiado rápido para verlo bien.",
+			"travel": {
+				"open": "Viajar a una fecha",
+				"title": "Viaje en el tiempo",
+				"moments": "Momentos",
+				"pickDate": "Elige una fecha",
+				"arrival": "El tiempo se detiene al llegar. Pulsa reproducir para continuar.",
+				"range": "Cualquier día desde el año {first} hasta el {last}. Llegas a mediodía (UTC).",
+				"close": "Cerrar",
+				"calendar": {
+					"nextMonth": "Mes siguiente",
+					"previousMonth": "Mes anterior",
+					"nextYear": "Año siguiente",
+					"previousYear": "Año anterior",
+					"nextDecade": "Década siguiente",
+					"previousDecade": "Década anterior",
+					"monthLevel": "Elegir otro mes",
+					"yearLevel": "Elegir otro año"
+				}
+			},
+			"moments": {
+				"galileoMoons": {
+					"name": "Galileo ve las lunas de Júpiter",
+					"description": "Las primeras lunas descubiertas alrededor de otro planeta."
+				},
+				"uranusFound": {
+					"name": "Se descubre Urano",
+					"description": "William Herschel encuentra el primer planeta que los antiguos no conocían."
+				},
+				"neptuneFound": {
+					"name": "Se descubre Neptuno",
+					"description": "Encontrado justo donde las matemáticas predijeron que estaría."
+				},
+				"sputnik": {
+					"name": "Lanzamiento del Sputnik 1",
+					"description": "El primer satélite artificial inaugura la era espacial."
+				},
+				"moonLanding": {
+					"name": "Primer alunizaje",
+					"description": "El Apolo 11 se posa en la Luna."
+				},
+				"voyagerLaunch": {
+					"name": "Despega la Voyager 2",
+					"description": "Júpiter, Saturno, Urano y Neptuno se alinean para un Gran Tour, algo que solo ocurre más o menos cada 175 años."
+				},
+				"voyagerNeptune": {
+					"name": "La Voyager 2 llega a Neptuno",
+					"description": "Doce años después del lanzamiento: la única visita que ha recibido Neptuno."
+				},
+				"marsClosest": {
+					"name": "Marte, más cerca que nunca",
+					"description": "Marte se acerca a la Tierra más que en casi 60 000 años. La Tierra queda entre el Sol y Marte."
+				},
+				"venusTransit": {
+					"name": "Tránsito de Venus",
+					"description": "Venus pasa justo entre el Sol y la Tierra."
+				},
+				"greatConjunction": {
+					"name": "La gran conjunción",
+					"description": "Vistos desde la Tierra, Júpiter y Saturno casi se tocan en el cielo."
+				},
+				"nextVenusTransit": {
+					"name": "El próximo tránsito de Venus",
+					"description": "La próxima vez que Venus pase por delante del Sol. ¿Lo verá alguien de esta sala?"
+				}
+			}
+		},
+		"spin": {
+			"label": "Rotación",
+			"mode": {
+				"realistic": "Realista",
+				"slowed": "Ralentizada",
+				"slow": "Cámara lenta",
+				"stopped": "Detenida"
+			},
+			"hint": {
+				"realistic": "Cada planeta gira a su velocidad real según el reloj, así que el día y la noche coinciden con la fecha.",
+				"realistic@simple": "Los planetas giran exactamente igual de rápido que en la realidad.",
+				"slowed": "La rotación se ralentiza para que la Tierra dé como mucho una vuelta cada {seconds, number} segundos. Las órbitas mantienen su velocidad; los demás planetas siguen girando más rápido o más despacio que la Tierra.",
+				"slowed@simple": "Los planetas giran más despacio, así que puedes verlos girar aunque el tiempo corra deprisa. La Tierra tarda al menos {seconds, number} segundos en dar una vuelta.",
+				"slow": "La rotación se ralentiza para que la Tierra dé como mucho una vuelta cada {seconds, number} segundos: lo bastante lento para ver pasar un solo día. Las órbitas mantienen su velocidad.",
+				"slow@simple": "Los planetas giran muy despacio, así que puedes ver pasar un día entero. La Tierra tarda al menos {seconds, number} segundos en dar una vuelta.",
+				"stopped": "Ningún planeta gira sobre sí mismo, así que es fácil seguir las estaciones mientras los planetas viajan alrededor del Sol. Las lunas siguen mostrando siempre la misma cara a su planeta.",
+				"stopped@simple": "Los planetas dejan de girar sobre sí mismos. Siguen viajando alrededor del Sol."
+			},
+			"notice": "No coincide con el reloj: el día y la noche en los planetas ya no corresponden a la fecha.",
+			"notice@simple": "Los planetas giran más despacio que en la realidad."
+		},
+		"info": {
+			"label": "Cuerpo enfocado",
+			"radius": "Radio",
+			"orbitalPeriod": "Periodo orbital",
+			"orbitalPeriod@simple": "Tiempo de una vuelta",
+			"distance": "{parentId, select, sun {Distancia al Sol} earth {Distancia a la Tierra} other {Distancia a {parent}}}",
+			"rotation": "Periodo de rotación",
+			"rotation@simple": "Tiempo de un giro",
+			"rotationUnknown": "desconocido",
+			"retrograde": "{period}, retrógrado",
+			"retrograde@simple": "{period}, gira al revés",
+			"synchronous": "siempre la misma cara hacia {parentId, select, sun {el Sol} earth {la Tierra} other {{parent}}}",
+			"synchronous@simple": "siempre muestra el mismo lado a {parentId, select, sun {el Sol} earth {la Tierra} other {{parent}}}",
+			"synchronous@advanced": "en rotación síncrona con {parentId, select, sun {el Sol} earth {la Tierra} other {{parent}}}"
+		},
+		"centre": {
+			"label": "Centro de la vista",
+			"freeView": "Vista libre",
+			"freeView@simple": "Flotando en el espacio",
+			"near": "cerca de {body}",
+			"interplanetary": "en el espacio interplanetario",
+			"interplanetary@simple": "allá fuera, entre los planetas",
+			"centreOn": "Centrar en {body}",
+			"centreOn@simple": "Volver a {body}"
+		},
+		"pick": {
+			"visit": "Haz clic para volar hasta allí",
+			"visit@simple": "Haz clic para ir allí",
+			"closer": "Haz clic para volver a acercarte",
+			"hint": "Haz clic o toca cualquier planeta para volar hasta él.",
+			"hint@simple": "¡Haz clic o toca un planeta para visitarlo!",
+			"follow": "Haz clic para seguir su trayectoria"
+		},
+		"card": {
+			"dictionary": "Leer más en el diccionario",
+			"dictionary@simple": "Descubre más",
+			"showFacts": "Mostrar datos",
+			"hideFacts": "Ocultar datos",
+			"close": "Cerrar y volver a la vista general",
+			"compare": "Comparar con…"
+		},
+		"moons": {
+			"label": "Lunas",
+			"none": "{planet} no tiene lunas.",
+			"viewSystem": "Ver todo el sistema de lunas",
+			"viewSystem@simple": "Ver todas sus lunas",
+			"showOthers": "{count, plural, one {Mostrar # luna más pequeña} many {Mostrar # de lunas más pequeñas} other {Mostrar # lunas más pequeñas}}",
+			"hideOthers": "Ocultar las lunas más pequeñas",
+			"othersNote": "Sobre todo rocas de unos pocos kilómetros, muchas de ellas capturadas. Los astrónomos siguen descubriendo más.",
+			"othersNote@simple": "Sobre todo rocas pequeñas. Los científicos siguen encontrando más.",
+			"readMore": "Leer su historia",
+			"readLess": "Mostrar menos"
+		},
+		"facts": {
+			"label": {
+				"size": "Tamaño",
+				"size@simple": "¿Cuánto mide?",
+				"distance": "Distancia",
+				"distance@simple": "¿A qué distancia?",
+				"year": "Año",
+				"year@simple": "Un año",
+				"orbit": "Órbita",
+				"orbit@simple": "Una vuelta",
+				"weight": "Tu peso"
+			},
+			"sizeWider": "{ref, select, moon {{count, plural, one {# Luna de ancho} many {# de Lunas de ancho} other {# Lunas de ancho}}} other {{count, plural, one {# Tierra de ancho} many {# de Tierras de ancho} other {# Tierras de ancho}}}}",
+			"sizeSimilar": "{ref, select, moon {Más o menos del ancho de nuestra Luna} other {Más o menos del ancho de la Tierra}}",
+			"sizeNarrower": "{ref, select, moon {Nuestra Luna es {count, number} veces más ancha} other {La Tierra es {count, number} veces más ancha}}",
+			"across": "{value} de diámetro",
+			"sunlight": "La luz del Sol tarda {time} en llegar aquí",
+			"sunlight@simple": "La luz del Sol necesita {time} para llegar hasta aquí",
+			"gap": "{parentId, select, sun {El Sol} earth {La Tierra} other {{parent}}} cabría {count, plural, one {# vez} many {# de veces} other {# veces}} en ese hueco",
+			"fromParent": "A {distance} {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}}",
+			"lap": "Da una vuelta {parentId, select, sun {al Sol} earth {a la Tierra} other {a {parent}}} en {period}",
+			"yearEarth": "Una vuelta alrededor del Sol: eso es un año",
+			"yearLonger": "{count, plural, one {Una vuelta al Sol dura # año terrestre} many {Una vuelta al Sol dura # de años terrestres} other {Una vuelta al Sol dura # años terrestres}}",
+			"yearShorter": "{count, plural, one {Da # vuelta al Sol en un año terrestre} many {Da # de vueltas al Sol en un año terrestre} other {Da # vueltas al Sol en un año terrestre}}",
+			"weightMore": "Pesarías {count, number} veces más que en la Tierra",
+			"weightMore@simple": "30 kg en la Tierra serían {kg} kg aquí",
+			"weightSimilar": "Pesarías más o menos lo mismo que en la Tierra",
+			"weightLess": "Pesarías el {percent} % de tu peso en la Tierra",
+			"weightLess@simple": "30 kg en la Tierra serían solo {kg} kg aquí"
+		},
+		"flight": {
+			"label": "Vuelo",
+			"route": "{from} → {to}",
+			"route@simple": "De {from} a {to}",
+			"distance": "{distance} de separación en esta fecha",
+			"distance@simple": "A {distance}",
+			"distance@advanced": "{distance} ({au}) en línea recta en esta fecha",
+			"crossed": "{distance} recorridos",
+			"crossed@simple": "{distance} hasta ahora",
+			"question": "¿Cuánto duraría el viaje?",
+			"question@simple": "¿Cuánto se tardaría en llegar?",
+			"question@advanced": "Tiempo de viaje a velocidad constante",
+			"light": "La luz",
+			"light@simple": "La luz, lo más rápido que existe",
+			"light@advanced": "La luz ({speed})",
+			"probe": "New Horizons, el lanzamiento más rápido de la historia",
+			"probe@simple": "El lanzamiento de cohete más rápido de la historia",
+			"probe@advanced": "Velocidad de lanzamiento de New Horizons ({speed})",
+			"car": "Un coche a {speed}",
+			"car@simple": "Un coche que nunca se detiene",
+			"car@advanced": "Un coche a {speed}, sin paradas",
+			"skip": "Saltar",
+			"skip@simple": "Llegar ya",
+			"close": "Cerrar"
+		},
+		"birthday": {
+			"open": "Tu cumpleaños",
+			"openHint": "¿Cuántos años tienes en otros planetas?",
+			"title": "Tu cumpleaños en el espacio",
+			"close": "Cerrar",
+			"intro": "Elige el día en que naciste. Verás cuántos años tienes en cada planeta, dónde estaban los planetas ese día y cuánto has viajado.",
+			"intro@simple": "¿Cuándo naciste? ¡Elige el día y descubre cuántos años tienes en los otros planetas!",
+			"intro@advanced": "Elige una fecha de nacimiento. Las edades, los días y los pesos se calculan a partir del periodo orbital, la rotación y la gravedad superficial de cada mundo.",
+			"calendarHint": "Primero el año, luego el mes y después el día.",
+			"privacy": "No se guarda ni se envía nada. Tu cumpleaños se queda en esta pantalla y se olvida al cerrar la página.",
+			"privacy@simple": "Tu cumpleaños no se guarda ni se envía a ningún sitio. Cuando cierras la página, desaparece.",
+			"privacyLink": "Mientras haya un cumpleaños introducido, los enlaces a esta página no incluyen la fecha.",
+			"born": "Fecha de nacimiento: {date}",
+			"change": "Cambiar fecha",
+			"forget": "Olvidar mi cumpleaños",
+			"showBirthSky": "Mostrar los planetas el día en que nací",
+			"showBirthSky@simple": "Mostrar el cielo el día de mi cumpleaños",
+			"tabs": {
+				"label": "Comparar",
+				"years": "Años",
+				"days": "Días",
+				"weight": "Peso"
+			},
+			"distance": "Desde que naciste, la Tierra te ha llevado {distance} kilómetros alrededor del Sol, a unos {speed, number} km por segundo. Eso son {trips, plural, one {# viaje} many {# de viajes} other {# viajes}} de ida y vuelta a la Luna.",
+			"distance@simple": "Desde que naciste, has viajado {distance} kilómetros alrededor del Sol – ¡sin despegarte nunca del suelo! Es tanto como {trips, plural, one {# viaje} many {# de viajes} other {# viajes}} de ida y vuelta a la Luna.",
+			"distance@advanced": "Desde tu nacimiento, el movimiento orbital de la Tierra te ha llevado {distance} km alrededor del Sol a una media de {speed, number} km/s: {trips, plural, one {# viaje} many {# de viajes} other {# viajes}} de ida y vuelta a la Luna.",
+			"years": {
+				"intro": "Un año es una vuelta alrededor del Sol. Tu cumpleaños en otro planeta llega cuando este vuelve al lugar donde estaba el día en que naciste.",
+				"intro@simple": "Un año es una vuelta alrededor del Sol. Los planetas lejanos tardan mucho más, ¡así que allí eres más joven!",
+				"intro@advanced": "Un año es el periodo orbital sideral: tu cumpleaños en un planeta llega cuando este vuelve al punto de su órbita en el que estaba cuando naciste.",
+				"age": "{age, plural, =0 {menos de 1 año} one {# año} many {# de años} other {# años}}",
+				"exact": "{orbits} vueltas",
+				"next": "Próximo cumpleaños: {date}",
+				"first": "Primer cumpleaños: {date}",
+				"earthAgeThen": "{age, plural, one {En la Tierra tendrás # año.} many {En la Tierra tendrás # de años.} other {En la Tierra tendrás # años.}}",
+				"go": "{planetId, select, earth {Viaja a tu próximo cumpleaños en la Tierra} other {Viaja a tu próximo cumpleaños en {planet}}}",
+				"today": "{planetId, select, earth {¡Feliz cumpleaños!} other {¡Feliz cumpleaños en {planet}!}}"
+			},
+			"days": {
+				"intro": "Un día dura desde un amanecer hasta el siguiente. En Mercurio un día es más largo que un año, ¡así que allí has tenido más cumpleaños que amaneceres!",
+				"intro@simple": "Un día dura desde un amanecer hasta el siguiente. En algunos planetas el Sol vuelve a salir al cabo de unas horas; en otros, ¡solo después de meses!",
+				"intro@advanced": "Un día solar (de amanecer a amanecer) se deduce de la rotación sideral y de la órbita: 1/solar = 1/sideral − 1/año. Venus gira al revés, así que su Sol sale cada 117 días terrestres.",
+				"lived": "{count, plural, one {# día vivido} many {# de días vividos} other {# días vividos}}",
+				"length": "Un día allí: {length}"
+			},
+			"weight": {
+				"intro": "Elige un peso en la Tierra y mira lo que marcaría una báscula en otros mundos.",
+				"intro@simple": "¿Cuánto pesarías en otros mundos? ¡Mueve el control deslizante!",
+				"slider": "Peso en la Tierra",
+				"onEarth": "{kg} kg en la Tierra",
+				"kg": "{kg} kg",
+				"noSurface": "No hay suelo donde pisar",
+				"noSurfaceNote": "* No hay suelo donde pisar: es la atracción en la parte alta de las nubes (en el Sol, en su superficie brillante).",
+				"note": "Tú no cambias en ningún sitio – solo cambia la fuerza con la que tira de ti cada mundo.",
+				"note@simple": "Tu cuerpo no crece ni encoge – ¡el mundo solo tira de ti con más o menos fuerza!",
+				"note@advanced": "Tu masa es la misma en todas partes; solo cambia la atracción de la gravedad y, con ella, lo que marca una báscula."
+			},
+			"share": "Guardar como imagen",
+			"shareHint": "Crea una imagen de tus edades en este dispositivo. No se sube nada.",
+			"card": {
+				"title": "¿Cuántos años tengo en los otros planetas?",
+				"date": "El {date}",
+				"distance": "He viajado {distance} km alrededor del Sol.",
+				"footer": "Astrolabe – nuestro sistema solar",
+				"fileName": "mi-edad-en-los-planetas"
+			}
+		},
+		"hunt": {
+			"open": "Búsqueda del tesoro",
+			"openHint": "Resuelve pistas encontrando mundos en la escena",
+			"title": "Búsqueda del tesoro",
+			"close": "Cerrar",
+			"collapse": "Plegar",
+			"expand": "Desplegar",
+			"intro": "Cada pista describe un mundo. Encuéntralo en la escena y haz clic en él: esa es tu respuesta. Las ayudas son gratis y no hay puntuación ni límite de tiempo.",
+			"intro@simple": "Lee la pista, encuentra el mundo y ¡haz clic en él! ¿Te has atascado? Pide una ayuda.",
+			"choose": "Elige una búsqueda",
+			"difficulty": {
+				"easy": "Fácil",
+				"medium": "Media",
+				"hard": "Complicada"
+			},
+			"clueCount": "{count, plural, one {# pista} many {# de pistas} other {# pistas}}",
+			"inProgress": "Continúa: pista {step} de {total}",
+			"progress": "Pista {step} de {total}",
+			"progressLabel": "{found} de {total} encontrados",
+			"answerHow": "Encuéntralo en la escena y haz clic en él.",
+			"answerHow@simple": "¡Encuéntralo y haz clic en él!",
+			"firstHint": "¿Necesitas una ayuda?",
+			"moreHint": "Otra ayuda",
+			"hintLabel": "Ayuda {n}",
+			"showMe": "Muéstramelo",
+			"showMeHint": "Volar hasta allí y resolver la pista",
+			"guess": {
+				"other": "Eso es {bodyId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{name}}}. No es la respuesta – ¡sigue explorando!",
+				"other@simple": "Eso es {bodyId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{name}}}. ¡Prueba con otro!",
+				"warm": "¡Caliente! La respuesta está cerca {bodyId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {name}}}. Mira a su alrededor.",
+				"almost": "¡Sí, {name}! Ahora obsérvalo desde {frameId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{frame}}}: elige el punto de vista arriba a la izquierda."
+			},
+			"found": "¡Encontrado!",
+			"next": "Siguiente pista",
+			"finish": "Terminar",
+			"done": {
+				"title": "¡Búsqueda completada!",
+				"text": "{count, plural, one {Has resuelto la pista.} many {Has resuelto las # de pistas.} other {Has resuelto las # pistas.}}",
+				"text@simple": "{count, plural, one {¡Lo lograste!} many {¡Lo lograste: encontraste los # de mundos!} other {¡Lo lograste: encontraste los # mundos!}}",
+				"found": "Los mundos que encontraste. Haz clic en uno para volver a visitarlo:",
+				"again": "Jugar otra vez",
+				"other": "Elegir otra búsqueda"
+			},
+			"custom": {
+				"title": "Crea tu propia búsqueda",
+				"intro": "Marca las pistas para tu clase y luego empieza la búsqueda o compártela con tus alumnos.",
+				"name": "Tu propia búsqueda",
+				"count": "{count, plural, =0 {Ninguna pista elegida} one {# pista elegida} many {# de pistas elegidas} other {# pistas elegidas}}",
+				"start": "Empezar"
+			},
+			"share": {
+				"button": "Compartir",
+				"title": "Compartir esta búsqueda",
+				"text": "Todas las personas que abran este enlace tendrán la misma búsqueda, en el mismo idioma y nivel de lectura. El progreso se queda en cada dispositivo; no se guarda nada en ningún servidor.",
+				"copy": "Copiar enlace",
+				"copied": "Copiado",
+				"link": "Enlace a esta búsqueda"
+			},
+			"otherHunts": "Otras búsquedas"
+		},
+		"frame": {
+			"label": "Punto de vista",
+			"label@simple": "Desde dónde miras",
+			"menu": "Punto de vista: {current}",
+			"current": {
+				"sun": "Centrado en el Sol",
+				"sun@simple": "El Sol en el centro",
+				"held": "{bodyId, select, earth {Visto desde la Tierra} moon {La Luna, inmóvil} other {{body}, inmóvil}}",
+				"held@simple": "{bodyId, select, earth {La Tierra no se mueve} moon {La Luna no se mueve} other {{body} no se mueve}}"
+			},
+			"presets": {
+				"sun": {
+					"title": "Centrado en el Sol",
+					"title@simple": "El Sol en el centro",
+					"hint": "Cómo se mueven de verdad los planetas: alrededor del Sol.",
+					"hint@simple": "Los planetas giran alrededor del Sol.",
+					"hint@advanced": "Sistema de referencia heliocéntrico: cada órbita es una elipse alrededor del Sol."
+				},
+				"planets": {
+					"title": "Visto desde la Tierra: los planetas",
+					"title@simple": "Desde la Tierra: los planetas",
+					"hint": "Deja la Tierra fija y mira cómo Marte hace un bucle hacia atrás.",
+					"hint@simple": "La Tierra no se mueve. ¡Mira cómo Marte va hacia atrás!",
+					"hint@advanced": "Sistema de referencia geocéntrico: los bucles retrógrados para cuya explicación se inventaron los epiciclos."
+				},
+				"moon": {
+					"title": "Visto desde la Tierra: la Luna",
+					"title@simple": "Desde la Tierra: la Luna",
+					"hint": "Deja la Tierra fija y observa las fases de la Luna.",
+					"hint@simple": "Mira cómo la Luna crece y mengua.",
+					"hint@advanced": "Sistema de referencia geocéntrico: las fases dependen del ángulo entre el Sol, la Luna y la Tierra."
+				},
+				"hold": {
+					"title": "Fijar {body}",
+					"title@simple": "Parar {body}",
+					"hint": "Todo lo demás se mueve a su alrededor.",
+					"hint@advanced": "Un sistema de referencia sin rotación centrado en {body}, con los ejes fijos respecto a las estrellas.",
+					"disabled": "Primero centra la vista en un planeta o una luna.",
+					"disabled@simple": "Primero elige un planeta o una luna."
+				}
+			},
+			"badge": {
+				"label": "Sistema de referencia",
+				"explain": "{bodyId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{body}}} no se mueve; todo lo demás se mueve a su alrededor. Las líneas muestran cada trayectoria {restarted, select, yes {desde que las reiniciaste} other {durante los dos últimos años}}.",
+				"explain@simple": "{bodyId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{body}}} no se mueve y todo lo demás gira a su alrededor. Las líneas muestran por dónde ha ido cada cosa.",
+				"explain@advanced": "Un sistema de referencia sin rotación centrado en {body}, con los ejes fijos respecto a las estrellas. Las estelas son la trayectoria de cada cuerpo respecto a {body} {restarted, select, yes {desde el reinicio} other {durante los dos últimos años}}.",
+				"back": "Volver a centrar en el Sol",
+				"back@simple": "Poner el Sol otra vez en el centro",
+				"restart": "Reiniciar las estelas",
+				"restart@simple": "Borrar las líneas"
+			},
+			"motion": {
+				"prograde": "{body} avanza respecto a las estrellas.",
+				"prograde@simple": "{body} va hacia delante.",
+				"prograde@advanced": "{body} tiene movimiento directo (progrado): {rate} al día hacia el este a lo largo de la eclíptica.",
+				"stationary": "{body} parece detenerse: está a punto de dar la vuelta.",
+				"stationary@simple": "¡{body} parece pararse!",
+				"stationary@advanced": "{body} está cerca de un punto estacionario: su longitud eclíptica casi ha dejado de cambiar.",
+				"retrograde": "¡{body} parece moverse hacia atrás! Solo lo parece: {observerId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{observer}}} y {body} se están cruzando.",
+				"retrograde@simple": "¡{body} parece ir hacia atrás! En realidad no: {observerId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{observer}}} y {body} se están adelantando, como coches en una autopista.",
+				"retrograde@advanced": "{body} tiene movimiento retrógrado: desde {observerId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{observer}}}, su longitud eclíptica disminuye {rate} al día. Ptolomeo lo explicó con epiciclos; Copérnico, con una Tierra en movimiento."
+			},
+			"phase": {
+				"caption": "{bodyId, select, moon {La Luna vista} earth {La Tierra vista} other {{body} visto}} desde {observerId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{observer}}}",
+				"status": "{phase} · {fraction, number, ::percent} iluminado",
+				"status@simple": "{phase}",
+				"name": {
+					"new": "{bodyId, select, moon {Luna nueva} other {Nueva}}",
+					"waxingCrescent": "Creciente",
+					"waxingCrescent@simple": "Fina y creciendo",
+					"firstQuarter": "Cuarto creciente",
+					"firstQuarter@simple": "Mitad iluminada, creciendo",
+					"waxingGibbous": "Gibosa creciente",
+					"waxingGibbous@simple": "Casi llena, creciendo",
+					"full": "{bodyId, select, moon {Luna llena} other {Llena}}",
+					"waningGibbous": "Gibosa menguante",
+					"waningGibbous@simple": "Casi llena, menguando",
+					"lastQuarter": "Cuarto menguante",
+					"lastQuarter@simple": "Mitad iluminada, menguando",
+					"waningCrescent": "Menguante",
+					"waningCrescent@simple": "Fina y menguando"
+				}
+			},
+			"inset": {
+				"title": "Desde encima del Sol",
+				"title@simple": "Visto desde muy arriba",
+				"label": "{observer} y {body} en sus órbitas alrededor del Sol, con la línea de visión de {observer} a {body}"
+			}
+		},
+		"present": {
+			"button": "Presentar",
+			"layers": "Capas",
+			"buttonHint": "Presentar a una clase: texto grande, alto contraste, teclado, compartir",
+			"title": "Presentar a una clase",
+			"projector": "Texto grande para proyector",
+			"projectorHint": "Texto y botones más grandes, legibles desde el fondo del aula",
+			"highContrast": "Alto contraste",
+			"highContrastHint": "Para proyectores con colores apagados y aulas que no se pueden oscurecer",
+			"hideControls": "Ocultar los controles",
+			"fullscreen": "Pantalla completa",
+			"exitFullscreen": "Salir de pantalla completa",
+			"restart": "Volver al inicio",
+			"restartHint": "La vista con la que se abrió esta página",
+			"shortcuts": "Atajos de teclado",
+			"share": {
+				"button": "Compartir",
+				"title": "Compartir esta vista",
+				"explain": "El enlace abre exactamente esta vista: el mismo cuerpo, cámara, fecha, velocidad, escala e idioma. Guárdalo en marcadores para preparar una clase o envíalo como tarea.",
+				"explain@simple": "El enlace abre exactamente lo que ves ahora. Guárdalo o envíaselo a alguien.",
+				"link": "Enlace a esta vista",
+				"copy": "Copiar enlace",
+				"copied": "Enlace copiado",
+				"copyFailed": "No se pudo copiar: selecciona el enlace y cópialo a mano",
+				"qr": "Escanea para abrir esta vista en un móvil o una tableta",
+				"qrLabel": "Código QR del enlace a esta vista",
+				"qrShow": "Mostrar el código QR a la clase"
+			},
+			"chrome": {
+				"show": "Mostrar los controles",
+				"hint": "Controles ocultos: pulsa H o usa el botón para recuperarlos",
+				"hint@simple": "Los botones están ocultos. Pulsa H para que vuelvan."
+			},
+			"help": {
+				"title": "Atajos de teclado",
+				"intro": "Todas las teclas funcionan también con los controles ocultos. Los botones de un mando de presentaciones recorren los planetas.",
+				"groups": {
+					"move": "Moverse",
+					"time": "Tiempo",
+					"show": "Qué se muestra",
+					"present": "Presentar"
+				},
+				"keys": {
+					"space": "Espacio",
+					"pageUpDown": "Re Pág / Av Pág",
+					"arrows": "← / →",
+					"digits": "1 – 8",
+					"home": "Inicio",
+					"esc": "Esc"
+				},
+				"pause": "Pausar o reproducir",
+				"speed": "Más rápido o más lento",
+				"step": "Cuerpo anterior o siguiente (botones de un mando de presentaciones)",
+				"planets": "Los planetas, de Mercurio (1) a Neptuno (8)",
+				"overview": "Todo el sistema solar",
+				"reset": "Volver a la vista general desde cualquier lugar",
+				"start": "Volver al inicio: la vista con la que se abrió el enlace",
+				"scale": "Siguiente escala: Todo visible, Libro de texto, Escala real",
+				"scale@simple": "Cambiar entre tamaños inventados y tamaños reales",
+				"labels": "Mostrar u ocultar los nombres (ocúltalos para un juego de preguntas)",
+				"chrome": "Ocultar o mostrar todos los controles",
+				"fullscreen": "Activar o desactivar la pantalla completa",
+				"projector": "Activar o desactivar el texto grande",
+				"contrast": "Activar o desactivar el alto contraste",
+				"help": "Esta lista"
+			},
+			"announce": {
+				"focus": "Ahora se muestra: {body}",
+				"overview": "Todo el sistema solar",
+				"start": "De vuelta al inicio",
+				"scale": "Escala: {preset}",
+				"labelsOn": "Nombres visibles",
+				"labelsOff": "Nombres ocultos",
+				"chromeHidden": "Controles ocultos. Pulsa H para volver a mostrarlos.",
+				"chromeShown": "Controles visibles",
+				"projectorOn": "Texto grande activado",
+				"projectorOff": "Texto grande desactivado",
+				"contrastOn": "Alto contraste activado",
+				"contrastOff": "Alto contraste desactivado",
+				"step": "Paso {n} de {total}"
+			}
+		},
+		"light": {
+			"open": "Velocidad de la luz",
+			"open@simple": "¿A qué velocidad va la luz?",
+			"openHint": "Envía un destello de luz y mira cuánto tarda en cruzar el sistema solar",
+			"title": "La luz, a paso de tortuga",
+			"close": "Cerrar",
+			"tabs": {
+				"pulse": "Destello",
+				"delay": "Retraso de la señal",
+				"beyond": "Más allá"
+			},
+			"intro": "Nada es más rápido que la luz: {speed, number} km por segundo. Envía un destello y mira cuánto tarda, aun así, en cruzar el sistema solar.",
+			"intro@simple": "Nada es más rápido que la luz. ¡Podría dar 7 vueltas a la Tierra en un segundo! Envía un destello de luz y mira cuánto tarda en llegar a los planetas.",
+			"intro@advanced": "La luz viaja a exactamente {speed, number} km/s. Envía un pulso y obsérvalo cruzar el sistema solar a esa velocidad, en tiempo real.",
+			"from": "Enviar luz desde",
+			"send": "Enviar un destello",
+			"sendAgain": "Enviar otra vez",
+			"clear": "Quitar el destello",
+			"travelling": "La luz lleva viajando",
+			"travelling@simple": "La luz lleva en camino",
+			"covered": "{distance} recorridos",
+			"covered@simple": "{distance} hasta ahora",
+			"waiting": "El tiempo ha retrocedido hasta antes de enviar el destello.",
+			"clock": {
+				"realTime": "Tiempo real: un segundo aquí es un segundo en la vida real.",
+				"realTime@simple": "Tiempo real: exactamente igual de rápido que en la vida real.",
+				"fast": "Acelerado a {speed}. El reloj sigue contando el tiempo de viaje real de la luz.",
+				"fast@simple": "El tiempo corre más rápido que en la realidad ({speed}). El reloj sigue mostrando cuánto tarda de verdad la luz.",
+				"reversed": "El tiempo corre hacia atrás, así que la luz se encoge de vuelta hacia su origen.",
+				"paused": "El tiempo está en pausa, y la luz también.",
+				"backToRealTime": "Volver al tiempo real"
+			},
+			"arrivals": "Cuándo llega la luz",
+			"arrivals@simple": "Cuándo llega la luz allí",
+			"reached": "alcanzado",
+			"pending": "en {duration}",
+			"announce": "Ha llegado {id, select, sun {al Sol} earth {a la Tierra} moon {a la Luna} other {a {body}}} tras {duration}.",
+			"announce@simple": "¡La luz está {id, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {body}}}! Ha tardado {duration}.",
+			"leftPlanets": "La luz ha dejado atrás todos los planetas. A esta velocidad, llega a la estrella más cercana en {years, number} años.",
+			"leftPlanets@simple": "La luz ha pasado todos los planetas. ¡Para llegar a la estrella más cercana necesita {years, number} años más!",
+			"frontLabel": "Luz · {duration}",
+			"km": "{value} km",
+			"delay": {
+				"intro": "Las señales de radio también viajan a la velocidad de la luz. Esto es lo que tarda ahora mismo un mensaje enviado desde la Tierra.",
+				"intro@simple": "Los mensajes de radio son tan rápidos como la luz, pero no más. Esto es lo que tarda un mensaje enviado desde la Tierra.",
+				"to": "Mensaje de la Tierra a",
+				"oneWay": "Solo ida",
+				"roundTrip": "Ida y vuelta",
+				"now": "A {distance} ahora mismo",
+				"now@advanced": "A {distance} ({au} ua) ahora mismo",
+				"range": "Según dónde estén ambos en sus órbitas, tarda entre {min} y {max}.",
+				"range@simple": "Los planetas se mueven, así que esto cambia: de {min} a {max}.",
+				"rover": "¿Conducir un rover allí desde la Tierra? Verías dónde estaba hace {oneWay}, y recibiría tu orden {oneWay} después: lo estarías manejando con {roundTrip} de retraso. {id, select, moon {Con unos pocos segundos eso todavía funciona: equipos soviéticos condujeron los rovers Lunojod por la Luna desde la Tierra.} mars {Por eso los rovers de Marte se conducen solos.} other {Por eso las naves espaciales que están tan lejos deben guiarse solas.}}",
+				"rover@simple": "Imagina que manejas un robot allí con un mando a distancia. Cada botón que pulsas tarda {oneWay} en llegar, y solo ves lo que pasó {oneWay} después. {id, select, moon {En la Luna son solo unos segundos, así que de verdad se han conducido robots allí desde la Tierra.} mars {Por eso los robots de Marte tienen que conducirse solos.} other {Por eso los robots de allí tienen que guiarse solos.}}",
+				"watch": "Envía una señal desde la Tierra y observa"
+			},
+			"beyond": {
+				"intro": "Los planetas son solo nuestro barrio. Más allá, incluso la luz necesita años.",
+				"intro@simple": "Los planetas son solo nuestros vecinos. ¡Todo lo demás está tan lejos que hasta la luz necesita años!",
+				"proximaCentauri": {
+					"name": "Próxima Centauri, la estrella más cercana",
+					"text": "Cuando su luz nos llega, tiene {duration} de antigüedad. Vemos la estrella tal como era entonces.",
+					"text@simple": "Su luz tarda {duration} en llegar hasta nosotros."
+				},
+				"galacticCentre": {
+					"name": "El centro de la Vía Láctea",
+					"text": "Su luz lleva viajando {duration}. Cuando salió, la gente todavía cazaba mamuts.",
+					"text@simple": "Su luz tarda {duration}. ¡Cuando salió, la gente todavía cazaba mamuts!"
+				},
+				"andromeda": {
+					"name": "La galaxia de Andrómeda",
+					"text": "Su luz lleva viajando {duration}. Cuando salió, nuestros antepasados fabricaban las primeras herramientas de piedra.",
+					"text@simple": "Su luz tarda {duration}. Cuando salió, aún no había personas – solo nuestros antepasados más antiguos."
+				}
+			},
+			"duration": {
+				"second": "{count, number} s",
+				"second@simple": "{count, plural, one {# segundo} many {# de segundos} other {# segundos}}",
+				"minute": "{count, number} min",
+				"minute@simple": "{count, plural, one {# minuto} many {# de minutos} other {# minutos}}",
+				"hour": "{count, number} h",
+				"hour@simple": "{count, plural, one {# hora} many {# de horas} other {# horas}}",
+				"day": "{count, plural, one {# día} many {# de días} other {# días}}",
+				"year": "{count, plural, one {# año} many {# de años} other {# años}}",
+				"join2": "{a} {b}",
+				"join2@simple": "{a} y {b}",
+				"join3": "{a} {b} {c}",
+				"join3@simple": "{a}, {b} y {c}"
+			}
+		}
+	},
+	"solarWalk": {
+		"back": "Modelo 3D",
+		"title": "Si el Sol fuera {object}…",
+		"lead": "…la Tierra sería {earth}, a {earthDistance}. Todos los tamaños y distancias de esta página son los reales, reducidos en la misma proporción para que quepan en el patio de la escuela. Saca el Sol afuera y recórrelo.",
+		"lead@simple": "…¡la Tierra sería tan pequeña como {earth} y estaría a {earthDistance}! Saca el Sol afuera y recorre el sistema solar.",
+		"lead@advanced": "…la Tierra mediría {earthSize} de diámetro y estaría a {earthDistance}. Es un modelo a escala real 1 : {ratio}: todos los tamaños y todas las distancias se reducen por el mismo factor. Saca el Sol afuera y recórrelo.",
+		"sunLabel": "El Sol es",
+		"sunObject": {
+			"orange": "una naranja",
+			"football": "un balón de fútbol",
+			"basketball": "un balón de baloncesto",
+			"exerciseBall": "una pelota de gimnasia"
+		},
+		"sunObjectName": {
+			"orange": "Naranja",
+			"football": "Balón de fútbol",
+			"basketball": "Balón de baloncesto",
+			"exerciseBall": "Pelota de gimnasia"
+		},
+		"landmarkLabel": "Comparar con",
+		"landmarkOption": {
+			"none": "Solo metros",
+			"pitch": "Campo de fútbol ({length})",
+			"track": "Pista de atletismo ({length} por vuelta)"
+		},
+		"viewLabel": "Mostrar como",
+		"view": {
+			"walk": "Paseo",
+			"table": "Tabla"
+		},
+		"print": "Imprimir",
+		"open3d": "Verlo en 3D a escala real",
+		"open3dBody": "Ver {name} en 3D a escala real",
+		"summary": "El paseo completo hasta Neptuno: {distance}, aproximadamente {time} a pie.",
+		"summary@simple": "El paseo hasta Neptuno mide {distance}. Se tarda aproximadamente {time}.",
+		"summary@advanced": "Del Sol a Neptuno: {distance}, aproximadamente {time} a un ritmo de 4 km/h.",
+		"start": "Salida",
+		"sunStop": "Aquí el Sol es {object}, de {size} de diámetro. Colócalo en la salida: la puerta de la escuela o una esquina del patio.",
+		"sunStop@simple": "El Sol es {object}. Colócalo en la salida, por ejemplo en la puerta de la escuela.",
+		"sunStop@advanced": "Aquí el Sol es {object}, de {size} de diámetro (en realidad, {trueSize}). Colócalo en la salida: la puerta de la escuela o una esquina del patio.",
+		"leg": "Camina {distance}",
+		"size": "{size} de diámetro – más o menos del tamaño de {thing}",
+		"size@simple": "Más o menos tan grande como {thing}",
+		"size@advanced": "{size} de diámetro (en realidad, {trueSize}) – más o menos del tamaño de {thing}",
+		"distance": "A {distance} del Sol",
+		"distance@advanced": "A {distance} del Sol (en realidad, {trueDistance})",
+		"moon": "{name}: {size}, más o menos del tamaño de {thing}, a {distance} del planeta",
+		"moon@simple": "{name}: tan grande como {thing}, a {distance} del planeta",
+		"moon@advanced": "{name}: {size} (en realidad, {trueSize}), a {distance} del planeta (en realidad, {trueDistance})",
+		"landmarkCount": {
+			"pitch": "{count, plural, one {# campo de fútbol} many {# de campos de fútbol} other {# campos de fútbol}}",
+			"track": "{count, plural, one {# vuelta a la pista} many {# de vueltas a la pista} other {# vueltas a la pista}}"
+		},
+		"landmarkMarker": {
+			"pitch": "El final de un campo de fútbol: a {length} del Sol",
+			"track": "Una vuelta a la pista de atletismo: a {length} del Sol"
+		},
+		"starTitle": "La estrella más cercana",
+		"star": "Ahora sigue adelante. A esta escala, la estrella más cercana después del Sol, Próxima Centauri, está a {distance}: aproximadamente {flight} en avión. Todo tu paseo hasta Neptuno cabe {times} veces en esa distancia.",
+		"star@simple": "¿Y la siguiente estrella? ¡A esta escala está a {distance}! Incluso un avión tardaría aproximadamente {flight} en llegar.",
+		"star@advanced": "Próxima Centauri, a 4,25 años luz, queda a {distance} de la salida: {times} veces el paseo hasta Neptuno, aproximadamente {flight} de vuelo a 900 km/h. Esta pequeña enana roja mediría {size} de diámetro, más o menos el tamaño de {thing}.",
+		"starLesson": "El sistema solar que acabas de recorrer es una islita en un océano de espacio vacío.",
+		"starLesson@simple": "¡El espacio está muy, muy vacío!",
+		"starLesson@advanced": "Entre las estrellas no hay casi nada: la vecina más cercana del Sol está a miles de paseos por el sistema solar.",
+		"lineUp": "En el espacio, los planetas nunca están alineados así. Cada uno gira alrededor del Sol en su propia órbita, así que están repartidos a su alrededor. El paseo muestra a qué distancia media del Sol está cada uno.",
+		"lineUp@simple": "En la realidad, los planetas nunca están en fila como aquí. Cada uno da vueltas al Sol por su propio camino.",
+		"lineUp@advanced": "Los planetas nunca están alineados: el paseo sitúa a cada uno a su distancia media del Sol (el semieje mayor de su órbita). Los tamaños son diámetros medios, con los mismos datos que el modelo 3D. Próxima Centauri: 4,2465 años luz (Gaia DR3).",
+		"tableCaption": "Si el Sol fuera {object}: el sistema solar a 1 : {ratio}",
+		"column": {
+			"stop": "N.º",
+			"body": "Cuerpo",
+			"size": "Tamaño",
+			"thing": "Tan grande como",
+			"distance": "Desde el Sol",
+			"leg": "Desde la parada anterior",
+			"done": "Hecho"
+		},
+		"landmarkColumn": {
+			"pitch": "Campos de fútbol",
+			"track": "Vueltas a la pista"
+		},
+		"moonDistance": "A {distance} del planeta",
+		"printNote": "Los círculos se imprimen a su tamaño en el modelo.",
+		"thing": {
+			"fineSand": "un grano de arena fina",
+			"salt": "un grano de sal",
+			"sugar": "un grano de azúcar",
+			"poppySeed": "una semilla de amapola",
+			"pinhead": "una cabeza de alfiler",
+			"peppercorn": "un grano de pimienta",
+			"pea": "un guisante",
+			"marble": "una canica",
+			"cherry": "una cereza",
+			"walnut": "una nuez",
+			"tableTennisBall": "una pelota de ping-pong",
+			"tennisBall": "una pelota de tenis",
+			"orange": "una naranja",
+			"grapefruit": "un pomelo",
+			"melon": "un melón pequeño",
+			"football": "un balón de fútbol"
+		},
+		"starName": "Próxima Centauri"
+	},
+	"compare": {
+		"title": "Lado a lado",
+		"subtitle": "Tamaños relativos reales",
+		"subtitle@simple": "Tamaños reales, todos reducidos por igual",
+		"back": "Volver al sistema solar",
+		"pick": {
+			"compare": "Comparar",
+			"with": "con",
+			"first": "Primer cuerpo",
+			"second": "Comparado con",
+			"add": "Añadir un cuerpo",
+			"addPlaceholder": "Añadir…",
+			"full": "Como máximo {max, number} cuerpos",
+			"remove": "Quitar {name}",
+			"swap": "Intercambiar los dos",
+			"presets": "Ideas"
+		},
+		"presets": {
+			"sunEarth": "El Sol y la Tierra",
+			"earthMoon": "La Tierra y la Luna",
+			"planets": "Los ocho planetas",
+			"sunPlanets": "El Sol y los planetas",
+			"bigMoons": "Las lunas más grandes"
+		},
+		"stage": {
+			"label": "{names}, dibujados uno al lado del otro con sus tamaños relativos reales",
+			"scale": "Una misma escala para todos: 1 píxel = {km}.",
+			"scale@simple": "Todo se reduce en la misma proporción: 1 píxel representa {km}.",
+			"scale@advanced": "Escala común, 1 px : {km}. Ejes inclinados como en el espacio.",
+			"tiny": "{count, plural, one {A esta escala, {names} apenas se ve, así que se marca con un círculo.} many {A esta escala, {names} apenas se ven, así que se marcan con círculos.} other {A esta escala, {names} apenas se ven, así que se marcan con círculos.}}",
+			"tiny@simple": "{count, plural, one {Aquí {names} se ve tan poco que sin el círculo sería casi imposible de encontrar.} many {Aquí {names} se ven tan poco que sin los círculos sería casi imposible encontrarlos.} other {Aquí {names} se ven tan poco que sin los círculos sería casi imposible encontrarlos.}}",
+			"pick": "Comparar con {nameId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{name}}}",
+			"pickHint": "Haz clic en otro cuerpo para compararlo en su lugar.",
+			"pickHint@simple": "Toca otro mundo para comparar ese."
+		},
+		"facts": {
+			"heading": "{a} y {b}",
+			"pictureIt": "Imagínatelo",
+			"label": {
+				"size": "Tamaño",
+				"size@simple": "¿Cuánto mide?",
+				"volume": "Volumen",
+				"volume@simple": "Qué cabe dentro",
+				"mass": "Masa",
+				"mass@simple": "¿Cuánto pesa?",
+				"weight": "Tu peso",
+				"year": "Año",
+				"year@simple": "Una vuelta al Sol",
+				"orbit": "Órbita",
+				"orbit@simple": "Una vuelta",
+				"day": "Día",
+				"day@simple": "De amanecer a amanecer",
+				"dayYear": "Día y año",
+				"dayYear@simple": "Un calendario extraño",
+				"distanceNow": "Distancia ahora mismo",
+				"distanceNow@simple": "¿A qué distancia están ahora?",
+				"distanceOn": "Distancia el {date}",
+				"distanceOn@simple": "Distancia entre ellos el {date}"
+			},
+			"size": {
+				"times": "{bigId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{big}}} tiene {n} veces el diámetro {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}}.",
+				"times@simple": "{bigId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{big}}} mide {n} veces más de ancho que {smallId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{small}}}.",
+				"times@advanced": "El diámetro {bigId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {big}}} es {n} veces el {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}}.",
+				"similar": "{aId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{a}}} y {bId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{b}}} tienen casi el mismo ancho.",
+				"similar@simple": "{aId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{a}}} y {bId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{b}}} son casi del mismo tamaño.",
+				"similar@advanced": "Los diámetros {aId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {a}}} y {bId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {b}}} solo se diferencian en un {percent} %."
+			},
+			"volume": "{smallId, select, earth {{count, plural, one {Tierra que cabría} many {Tierras que cabrían} other {Tierras que cabrían}}} moon {{count, plural, one {Luna que cabría} many {Lunas que cabrían} other {Lunas que cabrían}}} other {{count, plural, one {Bola del tamaño {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}} que cabría} many {Bolas del tamaño {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}} que cabrían} other {Bolas del tamaño {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}} que cabrían}}}} dentro {bigId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {big}}}: aproximadamente {n}.",
+			"volume@simple": "¡{bigId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{big}}} es tan grande que dentro cabrían muchísimas {smallId, select, earth {Tierras} moon {Lunas} other {bolas del tamaño {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}}}}: aproximadamente {n}!",
+			"volume@advanced": "{bigId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{big}}} tiene {n} veces el volumen {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}}.",
+			"mass": {
+				"times": "{bigId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{big}}} tiene {n} veces la masa {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}}.",
+				"times@simple": "{bigId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{big}}} pesa {n} veces más que {smallId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{small}}}.",
+				"times@advanced": "La masa {bigId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {big}}} es {n} veces la {smallId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {small}}}.",
+				"similar": "{aId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{a}}} y {bId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{b}}} tienen más o menos la misma masa.",
+				"similar@simple": "{aId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{a}}} y {bId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{b}}} pesan más o menos lo mismo."
+			},
+			"weight": {
+				"more": "{otherId, select, sun {En el Sol} earth {En la Tierra} moon {En la Luna} other {En {other}}} pesarías {n} veces más que {homeId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {home}}}.",
+				"more@simple": "{homeId, select, earth {Alguien que pese 30 kg en la Tierra pesaría {kgOther} kg {otherId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {other}}}.} other {Alguien que pese 30 kg en la Tierra pesaría {kgHome} kg {homeId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {home}}} y {kgOther} kg {otherId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {other}}}.}}",
+				"more@advanced": "La gravedad superficial {otherId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {other}}} es {n} veces la {homeId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {home}}}.",
+				"less": "{otherId, select, sun {En el Sol} earth {En la Tierra} moon {En la Luna} other {En {other}}} pesarías solo el {percent} % de lo que pesas {homeId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {home}}}.",
+				"less@simple": "{homeId, select, earth {Alguien que pese 30 kg en la Tierra pesaría {kgOther} kg {otherId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {other}}}.} other {Alguien que pese 30 kg en la Tierra pesaría {kgHome} kg {homeId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {home}}} y {kgOther} kg {otherId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {other}}}.}}",
+				"less@advanced": "La gravedad superficial {otherId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {other}}} es el {percent} % de la {homeId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {home}}}.",
+				"similar": "Pesarías más o menos lo mismo {otherId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {other}}} que {homeId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {home}}}.",
+				"similar@simple": "{homeId, select, earth {Alguien que pese 30 kg en la Tierra pesaría {kgOther} kg {otherId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {other}}}.} other {Alguien que pese 30 kg en la Tierra pesaría {kgHome} kg {homeId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {home}}} y {kgOther} kg {otherId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {other}}}.}}",
+				"similar@advanced": "{otherId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{other}}} y {homeId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{home}}} tienen casi la misma gravedad superficial.",
+				"noSurface": "{xId, select, sun {El Sol no tiene suelo firme: esta es la atracción en su superficie visible.} other {{x} no tiene suelo firme: esta es la atracción en la parte alta de sus nubes.}}",
+				"noSurface@simple": "{xId, select, sun {El Sol no tiene suelo donde pisar: esta es la atracción en su superficie brillante.} other {{x} no tiene suelo donde pisar: esta es la atracción en la parte alta de sus nubes.}}"
+			},
+			"year": {
+				"times": "Un año {slowId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {slow}}} dura lo mismo que {n} años {fastId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {fast}}}.",
+				"times@simple": "Mientras {slowId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{slow}}} da una vuelta al Sol, {fastId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{fast}}} da {n}.",
+				"times@advanced": "El periodo orbital {slowId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {slow}}} es {n} veces el {fastId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {fast}}}.",
+				"similar": "Un año {aId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {a}}} dura casi lo mismo que un año {bId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {b}}}."
+			},
+			"orbit": {
+				"times": "Mientras {slowId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{slow}}} da una vuelta {parentId, select, sun {al Sol} earth {a la Tierra} moon {a la Luna} other {a {parent}}}, {fastId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{fast}}} da {n}.",
+				"times@advanced": "El periodo orbital {slowId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {slow}}} alrededor {parentId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {parent}}} es {n} veces el {fastId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {fast}}}.",
+				"similar": "{aId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{a}}} y {bId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{b}}} tardan más o menos lo mismo en dar una vuelta {parentId, select, sun {al Sol} earth {a la Tierra} moon {a la Luna} other {a {parent}}}."
+			},
+			"day": {
+				"times": "Un día {longId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {long}}} dura lo mismo que {n} días {shortId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {short}}}.",
+				"times@simple": "De un amanecer al siguiente pasa {n} veces más tiempo {longId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {long}}} que {shortId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {short}}}.",
+				"times@advanced": "El día solar (de amanecer a amanecer) {longId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {long}}} es {n} veces el {shortId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {short}}}.",
+				"similar": "Un día {aId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {a}}} dura más o menos lo mismo que un día {bId, select, sun {en el Sol} earth {en la Tierra} moon {en la Luna} other {en {b}}}."
+			},
+			"dayYear": {
+				"day": "{xId, select, sun {En el Sol} earth {En la Tierra} moon {En la Luna} other {En {x}}}, un día de amanecer a amanecer dura más que todo un año allí: {day} frente a {year}.",
+				"day@simple": "¡{xId, select, sun {En el Sol} earth {En la Tierra} moon {En la Luna} other {En {x}}} un día es más largo que un año! De un amanecer al siguiente pasan {day}, pero una vuelta al Sol dura solo {year}.",
+				"day@advanced": "El día solar {xId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {x}}} ({day}) es más largo que su periodo orbital ({year}); gira sobre su eje una vez cada {turn}.",
+				"turn": "{xId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{x}}} gira tan despacio que una rotación completa dura más que todo su año: {turn} frente a {year}.",
+				"turn@simple": "{xId, select, sun {El Sol} earth {La Tierra} moon {La Luna} other {{x}}} gira tan despacio que una vuelta sobre su eje dura más que una vuelta al Sol: {turn} frente a {year}.",
+				"turn@advanced": "La rotación sideral {xId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {x}}} ({turn}) es más larga que su periodo orbital ({year}); su día solar dura {day}."
+			},
+			"distance": {
+				"light": "La luz tarda {light} en ir {aId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {a}}} {bId, select, sun {al Sol} earth {a la Tierra} moon {a la Luna} other {a {b}}}.",
+				"light@simple": "Incluso la luz, lo más rápido que existe, tarda {light} en ir {aId, select, sun {del Sol} earth {de la Tierra} moon {de la Luna} other {de {a}}} {bId, select, sun {al Sol} earth {a la Tierra} moon {a la Luna} other {a {b}}}. Un coche que circulara sin parar a 100 km/h tardaría {drive}.",
+				"light@advanced": "Tiempo luz entre {aId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{a}}} y {bId, select, sun {el Sol} earth {la Tierra} moon {la Luna} other {{b}}}: {light}.",
+				"range": "La distancia cambia constantemente porque se mueven: la luz tarda entre {min} y {max}.",
+				"range@simple": "Se mueven sin parar, así que la distancia cambia: a veces la luz tarda solo {min}, y otras, {max}.",
+				"range@advanced": "A lo largo de sus órbitas, la distancia varía entre unos {minKm} y {maxKm} (de {min} a {max} de tiempo luz)."
+			}
+		}
+	}
+}
