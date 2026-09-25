@@ -329,7 +329,8 @@
 			"visit@simple": "Klick drauf und flieg hin",
 			"closer": "Klicken, um wieder nah heranzufliegen",
 			"hint": "Klicke oder tippe auf einen Planeten, um hinzufliegen.",
-			"hint@simple": "Klick oder tipp auf einen Planeten und besuch ihn!"
+			"hint@simple": "Klick oder tipp auf einen Planeten und besuch ihn!",
+			"follow": "Klicken, um den Weg zu verfolgen"
 		},
 		"card": {
 			"dictionary": "Mehr dazu im Lexikon",
@@ -433,6 +434,95 @@
 				"distance": "Ich bin {distance} km um die Sonne gereist.",
 				"footer": "Astrolabe – unser Sonnensystem",
 				"fileName": "mein-alter-auf-den-planeten"
+			}
+		},
+		"frame": {
+			"label": "Blickwinkel",
+			"label@simple": "Von wo du zuschaust",
+			"menu": "Blickwinkel: {current}",
+			"current": {
+				"sun": "Sonne im Zentrum",
+				"sun@simple": "Sonne in der Mitte",
+				"held": "{bodyId, select, earth {Von der Erde aus gesehen} other {{body} steht still}}",
+				"held@simple": "{bodyId, select, earth {Die Erde steht still} other {{body} steht still}}"
+			},
+			"presets": {
+				"sun": {
+					"title": "Sonne im Zentrum",
+					"title@simple": "Sonne in der Mitte",
+					"hint": "So bewegen sich die Planeten wirklich: um die Sonne.",
+					"hint@simple": "Die Planeten kreisen um die Sonne.",
+					"hint@advanced": "Heliozentrisches Bezugssystem: Jede Bahn ist eine Ellipse um die Sonne."
+				},
+				"planets": {
+					"title": "Von der Erde aus: die Planeten",
+					"title@simple": "Von der Erde aus: Planeten",
+					"hint": "Die Erde festhalten und zusehen, wie Mars eine Schleife rückwärts zieht.",
+					"hint@simple": "Die Erde steht still. Schau, wie Mars rückwärts läuft!",
+					"hint@advanced": "Geozentrisches Bezugssystem: die Oppositionsschleifen, für die einst die Epizykel erfunden wurden."
+				},
+				"moon": {
+					"title": "Von der Erde aus: der Mond",
+					"title@simple": "Von der Erde aus: Mond",
+					"hint": "Die Erde festhalten und die Mondphasen verfolgen.",
+					"hint@simple": "Schau, wie der Mond zu- und abnimmt.",
+					"hint@advanced": "Geozentrisches Bezugssystem: Die Phasen folgen aus dem Winkel zwischen Sonne, Mond und Erde."
+				},
+				"hold": {
+					"title": "{body} festhalten",
+					"title@simple": "{body} anhalten",
+					"hint": "Alles andere bewegt sich darum herum.",
+					"hint@advanced": "Ein nicht rotierendes Bezugssystem mit {body} im Zentrum, die Achsen fest zu den Sternen.",
+					"disabled": "Zuerst einen Planeten oder Mond in die Mitte holen.",
+					"disabled@simple": "Wähle zuerst einen Planeten oder Mond."
+				}
+			},
+			"badge": {
+				"label": "Bezugssystem",
+				"explain": "{bodyId, select, earth {Die Erde} other {{body}}} steht still, alles andere bewegt sich darum herum. Die Linien zeigen die Wege {restarted, select, yes {seit dem Neustart} other {der letzten zwei Jahre}}.",
+				"explain@simple": "{bodyId, select, earth {Die Erde} other {{body}}} steht still, und alles andere bewegt sich darum herum. Die Linien zeigen, wo alles war.",
+				"explain@advanced": "Ein nicht rotierendes Bezugssystem mit {body} im Zentrum, die Achsen fest zu den Sternen. Die Spuren sind die Wege aller Körper relativ zu {body} {restarted, select, yes {seit dem Neustart} other {in den letzten zwei Jahren}}.",
+				"back": "Zurück: Sonne im Zentrum",
+				"back@simple": "Sonne wieder in die Mitte",
+				"restart": "Spuren neu beginnen",
+				"restart@simple": "Linien wegwischen"
+			},
+			"motion": {
+				"prograde": "{body} bewegt sich vorwärts vor den Sternen.",
+				"prograde@simple": "{body} läuft vorwärts.",
+				"prograde@advanced": "{body} ist rechtläufig: {rate} pro Tag nach Osten entlang der Ekliptik.",
+				"stationary": "{body} scheint stillzustehen und gleich umzukehren.",
+				"stationary@simple": "{body} scheint anzuhalten!",
+				"stationary@advanced": "{body} steht nahe einem Stillstandspunkt: Die ekliptikale Länge ändert sich kaum noch.",
+				"retrograde": "{body} scheint rückwärts zu laufen! Das sieht nur so aus: {observerId, select, earth {Die Erde} other {{observer}}} und {body} ziehen gerade aneinander vorbei.",
+				"retrograde@simple": "{body} läuft scheinbar rückwärts! In Wirklichkeit überholen sich {observerId, select, earth {die Erde} other {{observer}}} und {body} gerade, wie Autos auf der Autobahn.",
+				"retrograde@advanced": "{body} ist rückläufig: Von {observerId, select, earth {der Erde} other {{observer}}} aus gesehen nimmt die ekliptikale Länge um {rate} pro Tag ab. Ptolemäus erklärte das mit Epizykeln, Kopernikus mit einer bewegten Erde."
+			},
+			"phase": {
+				"caption": "{bodyId, select, moon {Der Mond} other {{body}}}, {observerId, select, earth {von der Erde} moon {vom Mond} other {von {observer}}} aus gesehen",
+				"status": "{phase} · {fraction, number, ::percent} beleuchtet",
+				"status@simple": "{phase}",
+				"name": {
+					"new": "{bodyId, select, moon {Neumond} other {Neu}}",
+					"waxingCrescent": "Zunehmende Sichel",
+					"waxingCrescent@simple": "Dünn und wachsend",
+					"firstQuarter": "Erstes Viertel",
+					"firstQuarter@simple": "Halb hell, wachsend",
+					"waxingGibbous": "Zunehmend, fast voll",
+					"waxingGibbous@simple": "Fast voll, wachsend",
+					"full": "{bodyId, select, moon {Vollmond} other {Voll}}",
+					"waningGibbous": "Abnehmend, fast voll",
+					"waningGibbous@simple": "Fast voll, schrumpfend",
+					"lastQuarter": "Letztes Viertel",
+					"lastQuarter@simple": "Halb hell, schrumpfend",
+					"waningCrescent": "Abnehmende Sichel",
+					"waningCrescent@simple": "Dünn und schrumpfend"
+				}
+			},
+			"inset": {
+				"title": "Von oberhalb der Sonne",
+				"title@simple": "Von hoch oben gesehen",
+				"label": "{observer} und {body} auf ihren Bahnen um die Sonne, mit der Blicklinie von {observer} zu {body}"
 			}
 		}
 	},
