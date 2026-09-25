@@ -421,11 +421,11 @@
 			"readLess": "Afficher moins"
 		},
 		"surface": {
-			"sun": "Carte de la surface : {source}, en lumière ultraviolette, où brillent les régions actives du Soleil. Pour nos yeux, le Soleil est une boule blanche éblouissante : ne le regarde jamais en face.",
+			"sun": "Carte de la surface : {source}, en lumière ultraviolette. Pour nos yeux, le Soleil est d’un blanc éblouissant : ne le regarde jamais en face.",
 			"sun@simple": "Cette image du Soleil est prise en lumière ultraviolette, que nos yeux ne voient pas. Ne regarde jamais le Soleil en face !",
-			"bands": "Aucune photo ne montre {body} en entier : cette carte est donc peinte d’après des photos de sondes, avec ses bandes, ses couleurs et ses tempêtes.",
+			"bands": "Aucune photo ne montre {body} en entier : cette carte est donc peinte d’après des photos de sondes.",
 			"bands@simple": "Cette carte de {body} est peinte pour ressembler aux photos prises par les sondes.",
-			"clouds": "D’épais nuages cachent le sol de {body}. C’est ainsi que nos yeux voient {body} ; la vue Relief du dictionnaire montre le sol tel que le radar le voit.",
+			"clouds": "D’épais nuages cachent le sol de {body} ; la vue Relief du dictionnaire le montre tel que le radar le voit.",
 			"clouds@simple": "D’épais nuages recouvrent entièrement {body}. Le dictionnaire montre le sol en dessous.",
 			"map": "Carte de la surface : {source}.",
 			"unseen": "Une partie de {moon} n’a jamais été photographiée : cette partie de la carte est complétée pour ressembler au reste.",

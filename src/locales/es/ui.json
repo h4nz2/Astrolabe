@@ -421,11 +421,11 @@
 			"readLess": "Mostrar menos"
 		},
 		"surface": {
-			"sun": "Mapa de la superficie: {source}, en luz ultravioleta, en la que brillan las regiones activas del Sol. Para nuestros ojos el Sol es una bola blanca deslumbrante: nunca lo mires directamente.",
+			"sun": "Mapa de la superficie: {source}, en luz ultravioleta. Para nuestros ojos el Sol es de un blanco deslumbrante: nunca lo mires directamente.",
 			"sun@simple": "Esta imagen del Sol está tomada en luz ultravioleta, que nuestros ojos no ven. ¡Nunca mires directamente al Sol!",
-			"bands": "Ninguna foto muestra {body} entero, así que este mapa está pintado a partir de fotos de naves espaciales: sus bandas, colores y tormentas.",
+			"bands": "Ninguna foto muestra {body} entero, así que este mapa está pintado a partir de fotos de naves espaciales.",
 			"bands@simple": "Este mapa de {body} está pintado para que se parezca a las fotos de las naves espaciales.",
-			"clouds": "Unas nubes espesas ocultan el suelo de {body}. Así ven {body} nuestros ojos; la vista Relieve del diccionario muestra el suelo como lo ve el radar.",
+			"clouds": "Unas nubes espesas ocultan el suelo de {body}; la vista Relieve del diccionario lo muestra como lo ve el radar.",
 			"clouds@simple": "Unas nubes espesas cubren {body} por completo. En el diccionario puedes ver el suelo que hay debajo.",
 			"map": "Mapa de la superficie: {source}.",
 			"unseen": "Una parte de {moon} nunca ha sido fotografiada, así que esa parte del mapa está completada para que se parezca al resto.",

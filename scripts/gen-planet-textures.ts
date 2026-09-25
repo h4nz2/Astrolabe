@@ -24,6 +24,7 @@ import {
 	relative,
 	resample,
 	rollHalf,
+	softClip,
 	stretch,
 	type Gray,
 	type Rgb,
@@ -222,7 +223,12 @@ const processMap = async (
 			noData = Uint8Array.from(rolled.data)
 		}
 	}
-	if (map.keep) return raster
+	if (map.keep) {
+		const gains = map.balance
+		if (gains === undefined || "gray" in raster) return raster
+		const data = raster.rgb.data.map((v, i) => softClip(v * gains[i % 3]))
+		return { rgb: { ...raster.rgb, data } }
+	}
 	const gray = "gray" in raster ? raster.gray : toGray(raster.rgb)
 	if (map.below !== undefined) {
 		const below = map.below

@@ -19,7 +19,7 @@
 			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Mercury/Messenger/Mercury_MESSENGER_MDIS_Basemap_BDR_Mosaic_Global_256ppd.tif.ovr",
 			"licence": "Public domain",
 			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
-			"note": "A grey mosaic, coloured by us in Mercury's faintly brownish grey."
+			"note": "A grey mosaic, coloured by us in Mercury's faintly brownish grey, about as bright as the Moon's map (Mercury reflects slightly more light than the Moon)."
 		},
 		"usgs-mercury-relief": {
 			"title": "Mercury MESSENGER global DEM, colour shaded relief (2 km)",
@@ -85,7 +85,8 @@
 			"url": "https://astrogeology.usgs.gov/search/map/mars_viking_colorized_global_mosaic_232m",
 			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Mars/MDIM21_AMESColor/MDIM21_AMES_recolor_dd360_jpeg_cog.tif",
 			"licence": "Public domain",
-			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "Published colours white-balanced a little warmer (they are too blue for Mars's butterscotch)."
 		},
 		"usgs-mars-relief": {
 			"title": "Mars MGS MOLA global colour shaded relief",
@@ -136,10 +137,10 @@
 				"centreLonEast": 180,
 				"seam": true,
 				"maxLat": 70,
-				"power": 0.5,
+				"power": 0.55,
 				"level": 0.72,
-				"hue": "#ffc466",
-				"darkHue": "#e0501a"
+				"hue": "#ffb445",
+				"darkHue": "#d63c08"
 			}
 		},
 		"/assets/textures/mercury/mercury.jpg": {
@@ -148,15 +149,19 @@
 			"map": {
 				"format": "tiff",
 				"centreLonEast": 0,
-				"albedo": 0.142,
 				"hue": "#b3aa9c",
-				"darkHue": "#8a7f71"
+				"darkHue": "#8a7f71",
+				"level": 0.58
 			}
 		},
 		"/assets/textures/mercury/mercury_topo.jpg": {
 			"source": "usgs-mercury-relief",
 			"width": 2048,
-			"map": { "format": "isis", "centreLonEast": 180, "keep": true }
+			"map": {
+				"format": "isis",
+				"centreLonEast": 180,
+				"keep": true
+			}
 		},
 		"/assets/textures/venus/venus.jpg": {
 			"source": "astrolabe-painted-bands",
@@ -165,15 +170,15 @@
 			"painted": {
 				"bands": {
 					"bands": [
-						[90, "#ddd1ae"],
-						[70, "#e4d9ba"],
-						[45, "#ece2c6"],
-						[20, "#efe6cb"],
-						[0, "#f1e8ce"],
-						[-20, "#efe6cb"],
-						[-45, "#ebe1c4"],
-						[-70, "#e3d8b8"],
-						[-90, "#dccfab"]
+						[90, "#d9c89c"],
+						[70, "#e1d2a8"],
+						[45, "#e8dbb3"],
+						[20, "#ecdfb8"],
+						[0, "#eee2bb"],
+						[-20, "#ecdfb8"],
+						[-45, "#e7d9b0"],
+						[-70, "#dfcfa4"],
+						[-90, "#d7c597"]
 					],
 					"turbulence": 0.25
 				}
@@ -183,47 +188,77 @@
 		"/assets/textures/venus/venus_topo.jpg": {
 			"source": "usgs-venus-relief",
 			"width": 2048,
-			"map": { "centreLonEast": 0, "keep": true }
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
 		},
 		"/assets/textures/earth/earth.jpg": {
 			"source": "nasa-blue-marble",
 			"width": 4096,
-			"map": { "centreLonEast": 0, "keep": true }
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
 		},
 		"/assets/textures/earth/earth_night.jpg": {
 			"source": "nasa-black-marble",
 			"width": 4096,
-			"map": { "centreLonEast": 0, "keep": true }
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
 		},
 		"/assets/textures/earth/earth_clouds.jpg": {
 			"source": "nasa-clouds",
 			"width": 2048,
-			"map": { "centreLonEast": 0, "keep": true }
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
 		},
 		"/assets/textures/earth/earth_topo.jpg": {
 			"source": "nasa-topography",
 			"width": 2048,
-			"map": { "centreLonEast": 0, "keep": true }
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
 		},
 		"/assets/textures/earth/earth_ocean.jpg": {
 			"source": "nasa-topography",
 			"width": 2048,
-			"map": { "centreLonEast": 0, "below": 0.002 }
+			"map": {
+				"centreLonEast": 0,
+				"below": 0.002
+			}
 		},
 		"/assets/textures/mars/mars.jpg": {
 			"source": "usgs-mars",
 			"width": 2048,
-			"map": { "format": "tiff", "centreLonEast": 180, "keep": true }
+			"map": {
+				"format": "tiff",
+				"centreLonEast": 180,
+				"keep": true,
+				"balance": [1.18, 1.0, 0.72]
+			}
 		},
 		"/assets/textures/mars/mars_topo.jpg": {
 			"source": "usgs-mars-relief",
 			"width": 2048,
-			"map": { "format": "tiff", "centreLonEast": 180, "keep": true }
+			"map": {
+				"format": "tiff",
+				"centreLonEast": 180,
+				"keep": true
+			}
 		},
 		"/assets/textures/jupiter/jupiter.jpg": {
 			"source": "pia07782",
 			"width": 2048,
-			"map": { "centreLonEast": 180, "keep": true }
+			"map": {
+				"centreLonEast": 180,
+				"keep": true
+			}
 		},
 		"/assets/textures/saturn/saturn.jpg": {
 			"source": "astrolabe-painted-bands",
@@ -288,19 +323,19 @@
 			"painted": {
 				"bands": {
 					"bands": [
-						[90, "#aac4dc"],
-						[60, "#a0bdd9"],
-						[45, "#a7c3dd"],
-						[32, "#99b6d5"],
-						[15, "#9ebbd7"],
-						[0, "#a3bfda"],
-						[-14, "#9bb8d6"],
-						[-22, "#8ba8cb"],
-						[-30, "#97b4d4"],
-						[-45, "#a1bdda"],
-						[-55, "#90add0"],
-						[-68, "#a4c0dc"],
-						[-90, "#adc6de"]
+						[90, "#9dbadb"],
+						[60, "#8fb0d8"],
+						[45, "#97b7dc"],
+						[32, "#86a8d2"],
+						[15, "#8cadd5"],
+						[0, "#92b2d8"],
+						[-14, "#89aad3"],
+						[-22, "#7897c4"],
+						[-30, "#84a5d0"],
+						[-45, "#90b0d8"],
+						[-55, "#7e9ecb"],
+						[-68, "#94b3d9"],
+						[-90, "#a0bcdc"]
 					],
 					"turbulence": 0.3,
 					"spots": [

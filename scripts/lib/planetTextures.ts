@@ -32,6 +32,17 @@ export const MapProcess = z
 		centreLonEast: z.union([z.literal(0), z.literal(180)]),
 		/** colours as published, only resized and turned */
 		keep: z.literal(true).optional(),
+		/**
+		 * with `keep`: red, green and blue gains, a white balance for a published colour that is
+		 * off (the NASA Ames Mars colours are too blue for Mars's butterscotch)
+		 */
+		balance: z
+			.tuple([
+				z.number().positive(),
+				z.number().positive(),
+				z.number().positive(),
+			])
+			.optional(),
 		/** a grey source is coloured from `darkHue` (dark) to `hue` (bright) */
 		hue: Hex.optional(),
 		darkHue: Hex.optional(),

@@ -22,7 +22,7 @@
 		"url": "https://astrogeology.usgs.gov/search/map/mercury_messenger_mdis_basemap_bdr_mosaic_global_166m",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
-		"note": "A grey mosaic, coloured by us in Mercury's faintly brownish grey.",
+		"note": "A grey mosaic, coloured by us in Mercury's faintly brownish grey, about as bright as the Moon's map (Mercury reflects slightly more light than the Moon).",
 		"bodies": [
 			"mercury"
 		]
@@ -117,6 +117,7 @@
 		"url": "https://astrogeology.usgs.gov/search/map/mars_viking_colorized_global_mosaic_232m",
 		"licence": "Public domain",
 		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+		"note": "Published colours white-balanced a little warmer (they are too blue for Mars's butterscotch).",
 		"bodies": [
 			"mars"
 		]
