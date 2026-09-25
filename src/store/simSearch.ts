@@ -79,6 +79,13 @@ export const simSearchSchema = z.object({
 		.union([z.literal(true), z.string().trim().min(1)])
 		.optional()
 		.catch(undefined),
+	// a guided tour (#28): the tour's id, the stop counted from 1, and autoplay;
+	// unknown tours are ignored when applied (features/solarSystem/tours)
+	tour: z.string().optional().catch(undefined),
+	stop: z
+		.preprocess(urlNumber, z.coerce.number().int().positive().optional())
+		.catch(undefined),
+	autoplay: z.boolean().optional().catch(undefined),
 })
 
 export type SimSearch = z.output<typeof simSearchSchema>
