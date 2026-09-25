@@ -11,6 +11,7 @@ import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import { HuntPanelSlot } from "./hunt/Hunt"
+import { LightSlot } from "./light/LightPanel"
 import Scene from "./scene/Scene"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
@@ -79,8 +80,13 @@ const SolarSystem = () => {
 						<FrameMenu />
 					</div>
 					<FrameBadgePanel />
+					<LightSlot
+						phone={false}
+						className={`${classes.panel} ${classes.light}`}
+					/>
 				</div>
 				<CentreBadgePanel />
+				<LightSlot phone className={`${classes.panel} ${classes.light}`} />
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
 						<Group gap="sm" justify="space-between" wrap="nowrap">

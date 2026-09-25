@@ -23,6 +23,7 @@ import Trails from "../frame/Trails"
 import { createLabelBoard } from "../labels/board"
 import LabelLayer from "../labels/LabelLayer"
 import Labels from "../labels/Labels"
+import LightFront from "../light/LightFront"
 import { labelSlotCount } from "../labels/project"
 import BodyPicking, { activateBody } from "./BodyPicking"
 import HighlightTracker from "./HighlightTracker"
@@ -78,6 +79,7 @@ function Scene() {
 					<OrbitLines />
 					<Trails />
 					<Markers />
+					<LightFront />
 					<Labels board={labels} onActivate={activateBody} />
 					<BodyPicking />
 					<CameraRig />
