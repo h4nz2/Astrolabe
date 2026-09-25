@@ -5,6 +5,8 @@ import { Hint } from "@/primitives/hint"
 import { useLightingStore } from "@/store/lighting"
 import { useSimStore } from "@/store/sim"
 
+import classes from "./SceneToggles.module.css"
+
 /** Which switches Orbit names still waits for: the argument of `solarSystem.layers.reason.orbitNames`. */
 export function orbitNamesMissing(
 	showOrbits: boolean,
@@ -17,7 +19,7 @@ export function orbitNamesMissing(
 
 /**
  * Switches for the orbit lines, the labels, the moons (all of them, #17), the
- * markers, the orbit names and the "always lit" teaching mode. Each has a hint
+ * markers, the orbit names, the small bodies (#23) and the "always lit" teaching mode. Each has a hint
  * (#39) saying what it does and, while disabled, what to turn on first.
  */
 const SceneToggles = () => {
@@ -34,12 +36,15 @@ const SceneToggles = () => {
 	const setShowAllMoons = useSimStore((state) => state.setShowAllMoons)
 	const setShowMarkers = useSimStore((state) => state.setShowMarkers)
 	const setShowOrbitLabels = useSimStore((state) => state.setShowOrbitLabels)
+	const showSmallBodies = useSimStore((state) => state.showSmallBodies)
+	const setShowSmallBodies = useSimStore((state) => state.setShowSmallBodies)
 	const alwaysLit = useLightingStore((state) => state.alwaysLit)
 	const setAlwaysLit = useLightingStore((state) => state.setAlwaysLit)
 	const missing = orbitNamesMissing(showOrbits, showLabels)
 
 	return (
 		<Group
+			className={classes.layers}
 			gap="md"
 			wrap="wrap"
 			role="group"
@@ -109,6 +114,15 @@ const SceneToggles = () => {
 					checked={showOrbitLabels}
 					disabled={missing !== null}
 					onChange={(event) => setShowOrbitLabels(event.currentTarget.checked)}
+				/>
+			</Hint>
+			<Hint text={t("solarSystem.layers.hint.smallBodies")}>
+				<Switch
+					size="xs"
+					color="orange"
+					label={t("solarSystem.layers.smallBodies")}
+					checked={showSmallBodies}
+					onChange={(event) => setShowSmallBodies(event.currentTarget.checked)}
 				/>
 			</Hint>
 			<Hint text={t("solarSystem.layers.hint.alwaysLit")}>

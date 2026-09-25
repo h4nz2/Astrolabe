@@ -279,6 +279,56 @@
 				]
 			}
 		},
+		"dwarfPlanets": {
+			"title": {
+				"standard": "Pluto und die Zwergplaneten",
+				"simple": "Pluto"
+			},
+			"what": {
+				"standard": "Pluto, Ceres, Eris, Haumea und Makemake sind echte Welten in der App, mit ihren Monden von Charon bis Dysnomia.",
+				"simple": "Pluto und vier andere kleine runde Welten, mit ihren Monden."
+			},
+			"why": {
+				"standard": "Plutos Karte erzählt, warum er 2006 kein Planet mehr war: Wir haben dazugelernt, Pluto hat sich nicht verändert. So funktioniert Wissenschaft.",
+				"simple": "Du erfährst, warum Pluto kein Planet mehr ist."
+			},
+			"how": {
+				"standard": [
+					"Tippe oben links „Pluto“ ins Feld und wähle ihn aus: Er wird gezeigt, auch wenn „Kleinkörper“ aus ist.",
+					"Charon steht in der Karte; „Das ganze Mondsystem ansehen“ zeigt alle fünf Monde.",
+					"← / → springen zum nächsten Zwergplaneten."
+				],
+				"simple": [
+					"Tippe oben links „Pluto“ ins Feld.",
+					"Wähle Pluto, und du fliegst hin."
+				]
+			}
+		},
+		"comets": {
+			"title": {
+				"standard": "Ein Komet zieht an der Sonne vorbei",
+				"simple": "Kometen"
+			},
+			"what": {
+				"standard": "Fünf Kometen auf ihren echten, langgestreckten Bahnen bekommen nahe der Sonne einen leuchtenden Kopf und zwei Schweife und verlieren sie wieder, wenn sie davonziehen.",
+				"simple": "Kometen bekommen einen langen Schweif, wenn sie der Sonne nahe kommen."
+			},
+			"why": {
+				"standard": "Der Schweif zeigt immer von der Sonne weg, also fliegt ein Komet auf dem Rückweg mit dem Schweif voran – zum Ansehen, nicht nur zum Erzählen.",
+				"simple": "Der Schweif zeigt immer von der Sonne weg, auch wenn der Komet davonfliegt!"
+			},
+			"how": {
+				"standard": [
+					"Wähle oben links Halley oder Encke (Gruppe Kometen).",
+					"Drücke in der Karte „Zusehen, wie er an der Sonne vorbeizieht“: Die App springt zum nächsten Besuch und spielt ihn in etwa anderthalb Minuten ab.",
+					"Achte darauf, wohin der Schweif auf dem Hinweg und auf dem Rückweg zeigt."
+				],
+				"simple": [
+					"Wähle oben links Halley.",
+					"Drücke „Zusehen, wie er an der Sonne vorbeifliegt“."
+				]
+			}
+		},
 		"spin": {
 			"title": {
 				"standard": "Tage, Achsneigung und Drehung",
@@ -581,6 +631,31 @@
 				"simple": [
 					"Flieg von der Erde zu einem anderen Planeten.",
 					"Lies das Kästchen über den Zeitknöpfen."
+				]
+			}
+		},
+		"asteroidBelt": {
+			"title": {
+				"standard": "Der Asteroidengürtel ist fast leer",
+				"simple": "Der Asteroidengürtel"
+			},
+			"what": {
+				"standard": "Der Schalter „Kleinkörper“ zeigt den Asteroidengürtel und den Kuipergürtel als Punktwolken, dazu die Zwergplaneten, sieben benannte Asteroiden und fünf Kometen.",
+				"simple": "Ein Schalter zeigt den Asteroidengürtel, den eisigen Kuipergürtel, die Zwergplaneten und Kometen."
+			},
+			"why": {
+				"standard": "Filme zeigen ein dichtes Feld aus Felsen. Die Karte sagt die Wahrheit: Jeder Punkt steht für etwa 380 Asteroiden, und Nachbarn sind rund eine Million km voneinander entfernt – Raumsonden fliegen einfach hindurch.",
+				"simple": "Im Film ist es voller Felsen. Im echten Weltall sind die Felsen sehr, sehr weit voneinander weg."
+			},
+			"how": {
+				"standard": [
+					"Schalte bei den Ebenen „Kleinkörper“ ein.",
+					"Lies den Hinweis in der Karte unten links.",
+					"Wähle im Maßstab „Echter Maßstab“ und fliege zu Vesta oder Ceres: Der Gürtel bleibt ein lockeres Gestreu."
+				],
+				"simple": [
+					"Schalte „Kleinkörper“ ein.",
+					"Lies, was die Karte über die Punkte sagt."
 				]
 			}
 		},

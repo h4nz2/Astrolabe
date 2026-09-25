@@ -279,6 +279,56 @@
 				]
 			}
 		},
+		"dwarfPlanets": {
+			"title": {
+				"standard": "Pluton et les planètes naines",
+				"simple": "Pluton"
+			},
+			"what": {
+				"standard": "Pluton, Cérès, Éris, Hauméa et Makémaké sont de vrais mondes dans l’application, avec leurs lunes, de Charon à Dysnomie.",
+				"simple": "Pluton et quatre autres petits mondes ronds, avec leurs lunes."
+			},
+			"why": {
+				"standard": "La carte de Pluton raconte pourquoi elle n’est plus une planète depuis 2006 : nous avons appris davantage, Pluton n’a pas changé. C’est ainsi que fonctionne la science.",
+				"simple": "Tu découvres pourquoi Pluton n’est plus une planète."
+			},
+			"how": {
+				"standard": [
+					"Tape « Pluton » dans le champ en haut à gauche et choisis-la : elle s’affiche même si « Petits corps » est désactivé.",
+					"Charon figure dans la carte ; « Voir tout le système de lunes » montre les cinq lunes.",
+					"← / → passent à la planète naine suivante."
+				],
+				"simple": [
+					"Tape « Pluton » dans le champ en haut à gauche.",
+					"Choisis Pluton et tu voles jusqu’à elle."
+				]
+			}
+		},
+		"comets": {
+			"title": {
+				"standard": "Une comète passe près du Soleil",
+				"simple": "Les comètes"
+			},
+			"what": {
+				"standard": "Cinq comètes sur leurs vraies orbites très allongées se parent d’une tête lumineuse et de deux queues près du Soleil, et les perdent en s’éloignant.",
+				"simple": "Les comètes ont une longue queue quand elles s’approchent du Soleil."
+			},
+			"why": {
+				"standard": "La queue pointe toujours à l’opposé du Soleil : une comète qui s’éloigne vole donc queue en avant. Il faut le voir pour le croire.",
+				"simple": "La queue pointe toujours à l’opposé du Soleil, même quand la comète s’en va !"
+			},
+			"how": {
+				"standard": [
+					"Choisis Halley ou Encke dans le champ en haut à gauche (groupe Comètes).",
+					"Appuie sur le bouton de sa carte pour la regarder passer près du Soleil : l’application va à son prochain passage et le joue en une minute et demie environ.",
+					"Regarde où pointe la queue à l’aller et au retour."
+				],
+				"simple": [
+					"Choisis Halley dans le champ en haut à gauche.",
+					"Appuie sur le bouton pour la regarder passer près du Soleil."
+				]
+			}
+		},
 		"spin": {
 			"title": {
 				"standard": "Jours, inclinaison et rotation",
@@ -581,6 +631,31 @@
 				"simple": [
 					"Vole de la Terre vers une autre planète.",
 					"Lis la case au-dessus des boutons du temps."
+				]
+			}
+		},
+		"asteroidBelt": {
+			"title": {
+				"standard": "La ceinture d’astéroïdes est presque vide",
+				"simple": "La ceinture d’astéroïdes"
+			},
+			"what": {
+				"standard": "L’interrupteur « Petits corps » montre la ceinture d’astéroïdes et la ceinture de Kuiper sous forme de nuages de points, ainsi que les planètes naines, sept astéroïdes nommés et cinq comètes.",
+				"simple": "Un interrupteur montre la ceinture d’astéroïdes, la ceinture de Kuiper glacée, les planètes naines et les comètes."
+			},
+			"why": {
+				"standard": "Les films montrent un champ de rochers serrés. La carte dit la vérité : chaque point représente environ 380 astéroïdes, et les voisins sont à environ un million de km les uns des autres, si bien que les sondes la traversent en ligne droite.",
+				"simple": "Dans les films, c’est plein de rochers. Dans le vrai espace, ils sont très, très loin les uns des autres."
+			},
+			"how": {
+				"standard": [
+					"Active « Petits corps » parmi les calques.",
+					"Lis la note dans la carte en bas à gauche.",
+					"Choisis « Vraie échelle » dans le panneau d’échelle, puis vole vers Vesta ou Cérès : la ceinture reste une poussière clairsemée."
+				],
+				"simple": [
+					"Active « Petits corps ».",
+					"Lis ce que la carte dit des points."
 				]
 			}
 		},

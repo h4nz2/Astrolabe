@@ -18,7 +18,7 @@
  * (`framedOffset`, src/sim/referenceFrame.ts): their directions are the true
  * directions in the sky, in every scale preset.
  */
-import type { Body } from "@/data"
+import { SMALL_BODY_KINDS, type Body } from "@/data"
 import { toUnits, type ScaleSettings } from "@/sim"
 import { bodyPositionAt, framedOffset } from "@/sim/referenceFrame"
 
@@ -83,13 +83,19 @@ export interface TrailBuffers {
 	writtenCount: number
 }
 
-/** The bodies that get a trail: the root (the Sun) and every top-level body. */
+/**
+ * The bodies that get a trail: the root (the Sun) and every top-level body, except the
+ * small bodies (#23): seventeen more loops would bury the planets' ones.
+ */
 export const trailBodies = (
-	frame: Pick<TrailFrame, "topIndex">,
+	frame: Pick<TrailFrame, "topIndex"> & Partial<Pick<TrailFrame, "bodies">>,
 ): Int32Array => {
 	const list: number[] = []
 	frame.topIndex.forEach((top, i) => {
-		if (top === i) list.push(i)
+		const kind = frame.bodies?.[i]?.kind
+		if (top === i && (kind === undefined || !SMALL_BODY_KINDS.includes(kind))) {
+			list.push(i)
+		}
 	})
 	return Int32Array.from(list)
 }

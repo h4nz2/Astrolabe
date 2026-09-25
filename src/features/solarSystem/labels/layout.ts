@@ -206,7 +206,15 @@ export const isLabelCandidate = (
 	)
 }
 
-const KIND_TIER: Record<BodyKind, number> = { star: 0, planet: 1, moon: 2 }
+const KIND_TIER: Record<BodyKind, number> = {
+	star: 0,
+	planet: 1,
+	// #23: the small bodies rank below the planets; asteroids share the moons' tier
+	dwarfPlanet: 2,
+	comet: 3,
+	moon: 4,
+	asteroid: 4,
+}
 
 /** Sun 0, planets 1, featured moons 2, the long tail of moons 3 (#17). */
 const labelTier = (body: Pick<Body, "kind" | "featured">): number =>

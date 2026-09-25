@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { PerspectiveCamera, Vector3 } from "three"
 
-import { bodies } from "@/data"
+import { bodies, isSmallBody } from "@/data"
 import { J2000_JD, SCALE_PRESETS, SCALE_PRESET_IDS, degToRad } from "@/sim"
 
 import { overviewDistance } from "../camera/framing"
@@ -99,7 +99,10 @@ describe("fillLabelLayout", () => {
 		const camera = cameraAt(overviewDistance(frame.scale, 45, WIDTH / HEIGHT))
 		const layout = lay(frame, camera)
 		expect(eligible(layout)).toEqual(
-			bodies.filter((b) => b.kind !== "moon").map((b) => b.id),
+			// the small bodies (#23) are hidden while their layer is off
+			bodies
+				.filter((b) => b.kind !== "moon" && !isSmallBody(b))
+				.map((b) => b.id),
 		)
 		expect(shown(layout)[0]).toBe("sun")
 		expect(shown(layout)).toEqual(

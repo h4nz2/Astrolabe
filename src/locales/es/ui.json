@@ -59,10 +59,13 @@
 			"star": "Estrella",
 			"planet": "Planeta",
 			"moon": "Luna",
-			"moonOf": "{parentId, select, earth {Luna de la Tierra} other {Luna de {parent}}}"
+			"moonOf": "{parentId, select, earth {Luna de la Tierra} other {Luna de {parent}}}",
+			"dwarfPlanet": "Planeta enano",
+			"asteroid": "Asteroide",
+			"comet": "Cometa"
 		},
 		"fallback": {
-			"moonDescription": "{name} es una luna de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de diámetro y da una vuelta completa a su planeta cada {period}.",
+			"moonDescription": "{name} es una luna de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de diámetro y da una vuelta completa a {parentId, select, pluto {su planeta enano} eris {su planeta enano} haumea {su planeta enano} makemake {su planeta enano} other {su planeta}} cada {period}.",
 			"moonDescription@simple": "{name} es una de las lunas que giran alrededor de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de ancho.",
 			"moonDescription@advanced": "{name} orbita alrededor de {parentId, select, earth {la Tierra} other {{parent}}} a una distancia media de {distance}, con un periodo de {period}. Su diámetro medio es de unos {diameter}."
 		}
@@ -131,7 +134,10 @@
 		"picker": {
 			"label": "Cuerpo celeste enfocado",
 			"placeholder": "Buscar un cuerpo celeste…",
-			"nothingFound": "No hay ningún cuerpo con ese nombre"
+			"nothingFound": "No hay ningún cuerpo con ese nombre",
+			"dwarfPlanets": "Planetas enanos",
+			"asteroids": "Asteroides",
+			"comets": "Cometas"
 		},
 		"layers": {
 			"label": "Capas de la escena",
@@ -161,6 +167,9 @@
 				"orbitNames": "Escribe el nombre de cada planeta sobre su órbita, para saber qué camino es de quién.",
 				"orbitNames@simple": "Escribe el nombre del planeta sobre su camino.",
 				"orbitNames@advanced": "Rotula cada órbita con el nombre de su cuerpo: útil cuando los cuerpos están demasiado lejos para nombrarlos.",
+				"smallBodies": "Muestra Plutón y los demás planetas enanos, asteroides, cometas y los dos cinturones. Apagado por defecto para que los planetas se lean con claridad.",
+				"smallBodies@simple": "Muestra Plutón, los cometas y el cinturón de asteroides.",
+				"smallBodies@advanced": "Añade los planetas enanos, asteroides con nombre, cometas con sus colas y los cinturones de asteroides y de Kuiper como nubes de puntos (cada punto representa muchos cuerpos reales).",
 				"alwaysLit": "Ilumina cada cuerpo desde donde miras, para que el lado de noche no sea negro. Bueno para ver superficies; esconde la lección del día y la noche.",
 				"alwaysLit@simple": "Ilumina cada planeta desde tu lado, así nada está oscuro. ¡Pero entonces no ves el día y la noche!",
 				"alwaysLit@advanced": "Ilumina cada cuerpo desde el punto de vista en lugar del Sol: sin lados de noche, fases ni sombras de eclipse. Bueno para el detalle de la superficie, falso para la geometría de la luz solar."
@@ -168,7 +177,8 @@
 			"reason": {
 				"allMoons": "Activa primero Lunas.",
 				"orbitNames": "{missing, select, orbits {Activa primero Órbitas.} labels {Activa primero Etiquetas.} other {Activa primero Órbitas y Etiquetas.}}"
-			}
+			},
+			"smallBodies": "Cuerpos menores"
 		},
 		"scale": {
 			"label": "Escala",
@@ -479,7 +489,9 @@
 			"painted": "Ninguna nave ha cartografiado {moon} de cerca, así que esta superficie está pintada según lo que se sabe: su color y cuánta luz del Sol refleja.",
 			"painted@simple": "Ninguna nave ha sacado fotos de cerca de {moon}. Esta superficie está pintada con su color real.",
 			"haze": "El suelo de {moon} está oculto bajo una espesa bruma naranja. Así ven {moon} nuestros ojos.",
-			"haze@simple": "Una espesa bruma naranja tapa el suelo de {moon}. Así ven {moon} nuestros ojos."
+			"haze@simple": "Una espesa bruma naranja tapa el suelo de {moon}. Así ven {moon} nuestros ojos.",
+			"paintedVisited": "La sonda {probe} pasó junto a {moon} en {year}, pero sus imágenes aún no están en la aplicación, así que esta superficie está pintada según lo que se sabe: su color y cuánta luz del Sol refleja.",
+			"paintedVisited@simple": "La sonda {probe} fotografió {moon} en {year}, pero esas fotos aún no están en la aplicación. Esta superficie está pintada con su color real."
 		},
 		"facts": {
 			"label": {
@@ -509,7 +521,9 @@
 			"weightMore@simple": "30 kg en la Tierra serían {kg} kg aquí",
 			"weightSimilar": "Pesarías más o menos lo mismo que en la Tierra",
 			"weightLess": "Pesarías el {percent} % de tu peso en la Tierra",
-			"weightLess@simple": "30 kg en la Tierra serían solo {kg} kg aquí"
+			"weightLess@simple": "30 kg en la Tierra serían solo {kg} kg aquí",
+			"sunlightRange": "La luz del Sol tarda entre {near} y {far} en llegar aquí, según en qué punto de su larga órbita se encuentre",
+			"sunlightRange@simple": "La luz del Sol necesita {near} para llegar hasta aquí cuando está más cerca y {far} cuando está más lejos"
 		},
 		"flight": {
 			"label": "Vuelo",
@@ -1279,6 +1293,32 @@
 			"goTo": "Parada {n}: {title}",
 			"menuHint": "Viajes ya preparados por el sistema solar, con una breve historia en cada parada: buenos para empezar una clase.",
 			"menuHint@simple": "Viajes cortos por el sistema solar que te cuentan una historia en cada parada."
+		},
+		"smallBodies": {
+			"beltName": "{belt, select, asteroidbelt {Cinturón de asteroides} kuiperbelt {Cinturón de Kuiper} other {{belt}}}",
+			"perDot": "{belt, select, asteroidbelt {Cada punto representa unos {count, number} asteroides de más de {size}.} other {Cada punto representa unos {count, number} cuerpos helados de más de {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Cada punto representa unas {count, number} rocas espaciales de verdad de más de {size}.} other {Cada punto representa unos {count, number} mundos helados de verdad de más de {size}.}}",
+			"perDot@advanced": "{belt, select, asteroidbelt {Un punto por cada {count, number}, aproximadamente, de los {total} asteroides de más de {size} que se estima que existen.} other {Un punto por cada {count, number}, aproximadamente, de los {total} cuerpos de más de {size} que se estima que existen.}}",
+			"spacing": "Los vecinos están a unos {distance} unos de otros – {moons, number} veces la distancia de la Tierra a la Luna. Las naves espaciales lo atraviesan en línea recta sin tener que esquivar nada.",
+			"spacing@simple": "Pero están muy lejos unos de otros: {moons, number} veces más que de la Tierra a la Luna. Las sondas espaciales lo atraviesan sin chocar con nada.",
+			"spacing@advanced": "Separación típica entre vecinos: unos {distance}, {moons, number} veces la distancia Tierra–Luna. Las sondas cruzan el cinturón en trayectorias normales; ninguna ha tenido nunca que esquivar un asteroide por el camino.",
+			"dotSize": "Los puntos están dibujados mucho más grandes que los cuerpos reales: a su tamaño real no verías nada. En las películas es un campo abarrotado de rocas – en el espacio está casi vacío.",
+			"dotSize@simple": "Los puntos están dibujados demasiado grandes. En las películas está lleno de rocas que chocan entre sí – en el espacio de verdad está casi vacío.",
+			"legendKuiper": "Más allá de Neptuno: el cinturón de Kuiper, el borde helado del reino de los planetas.",
+			"legendKuiper@simple": "Mucho más allá de Neptuno está el cinturón de Kuiper, lleno de pequeños mundos helados.",
+			"comet": {
+				"label": "Cometa",
+				"where": "A {distance} del Sol, {direction, select, in {cayendo hacia él} other {alejándose de él}}.",
+				"where@simple": "Está a {distance} del Sol y {direction, select, in {se está acercando} other {se está alejando}}.",
+				"tail": "Su cola mide unos {length} y apunta en sentido contrario al Sol{direction, select, out { – por eso ahora la cola va por delante} other {}}.",
+				"tail@simple": "Su cola mide unos {length}. ¡Siempre apunta en sentido contrario al Sol{direction, select, out { – incluso ahora, que el cometa se aleja con la cola por delante} other {}}!",
+				"noTail": "Ahora mismo no tiene cola: solo se forma a menos de unos {onset} del Sol, donde la luz solar convierte el hielo del cometa en gas.",
+				"noTail@simple": "Ahora mismo no tiene cola. La cola solo crece cuando el cometa se acerca al Sol y su hielo empieza a convertirse en gas.",
+				"next": "Próximo paso más cerca del Sol: {date}.",
+				"last": "Último paso más cerca del Sol: {date}. Volverá dentro de unos {years, number} años.",
+				"watch": "Ver cómo pasa junto al Sol",
+				"watch@simple": "Mira cómo pasa volando junto al Sol"
+			}
 		}
 	},
 	"solarWalk": {
@@ -1416,7 +1456,8 @@
 			"iceGiants@simple": "Los dos gigantes azules",
 			"potatoMoons": "Lunas con forma de patata",
 			"weighMost": "¿Dónde pesarías más?",
-			"bigForItsPlanet": "Nuestra Luna es excepcionalmente grande"
+			"bigForItsPlanet": "Nuestra Luna es excepcionalmente grande",
+			"plutoMoon": "Plutón es más pequeño que nuestra Luna"
 		},
 		"teasers": {
 			"sunEarth": "Nuestro mundo entero es un punto junto a su estrella: 109 Tierras caben de lado a lado del Sol.",
@@ -1460,7 +1501,10 @@
 			"moonsBeatPlanet@simple": "¡Dos lunas son más grandes que un planeta! Pero Mercurio está hecho de material más pesado, así que pesa más.",
 			"weighMost": "En la Luna pesarías una sexta parte de lo que pesas en casa; en la cima de las nubes de Júpiter, dos veces y media más.",
 			"weighMost@advanced": "Gravedad en superficie: Luna 0,17 g, Marte 0,38 g, Tierra 1 g, Júpiter 2,5 g en la cima de las nubes.",
-			"weighMost@simple": "En la Luna serías muy ligero. En Júpiter pesarías más del doble que en casa."
+			"weighMost@simple": "En la Luna serías muy ligero. En Júpiter pesarías más del doble que en casa.",
+			"plutoMoon": "Plutón mide solo dos tercios del ancho de nuestra Luna, y la Luna pesa más de cinco veces más.",
+			"plutoMoon@simple": "¡Plutón es más pequeño que nuestra Luna! Y nuestra Luna también pesa mucho más.",
+			"plutoMoon@advanced": "Plutón tiene el 68 % del diámetro de la Luna y solo el 18 % de su masa: una de las razones por las que es un planeta enano."
 		},
 		"ideaGroups": {
 			"sizes": "Tamaños",

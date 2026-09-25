@@ -1,0 +1,29 @@
+.note {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	margin: 0.5rem 0 0;
+	padding-top: 0.5rem;
+	border-top: 1px solid rgb(255 255 255 / 12%);
+	font-size: var(--mantine-font-size-sm);
+	line-height: 1.4;
+
+	p {
+		margin: 0;
+	}
+
+	button {
+		align-self: flex-start;
+		margin-top: 0.25rem;
+	}
+}
+
+.title {
+	font-weight: 600;
+}
+
+.aside {
+	color: var(--mantine-color-dimmed);
+	font-size: var(--mantine-font-size-xs);
+	margin: 0.3rem 0 0;
+}

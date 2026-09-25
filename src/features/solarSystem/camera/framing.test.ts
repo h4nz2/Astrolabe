@@ -26,9 +26,9 @@ describe("minDollyDistance", () => {
 	})
 
 	it("keeps the eye more than a near plane away from the surface of the smallest moon", () => {
-		// S/2009 S 1 has the smallest radius in the data (0.3 km)
+		// Bennu (#23) has the smallest radius in the data (0.24 km)
 		const smallest = bodies.reduce((a, b) => (b.radiusKm < a.radiusKm ? b : a))
-		expect(smallest.radiusKm).toBe(0.3)
+		expect(smallest.radiusKm).toBeCloseTo(0.242, 3)
 		const radius = toUnits(smallest.radiusKm)
 		expect(minDollyDistance(radius) - radius).toBeGreaterThan(CAMERA_NEAR)
 	})

@@ -55,7 +55,7 @@ const withDisabled = (
 const Pickers = ({ ids, onChange }: PickersProps) => {
 	const { t, chain } = useI18n()
 	const name = useBodyName()
-	const options = useMemo(() => focusOptions(chain), [chain])
+	const options = useMemo(() => focusOptions(chain, t), [chain, t])
 	const addOptions = useMemo(() => withDisabled(options, ids), [options, ids])
 	const full = ids.length >= MAX_COMPARE
 	const select = {

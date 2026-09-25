@@ -48,7 +48,7 @@ describe("Show me in space", () => {
 	})
 
 	it("ignores unknown bodies and broken times", () => {
-		showWhy("pluto", MS)
+		showWhy("vulcan", MS)
 		showWhy("mars", Number.NaN)
 		expect(store().frameId).toBe("sun")
 	})

@@ -8,7 +8,26 @@
  */
 import { z } from "zod"
 
-export const BodyKind = z.enum(["star", "planet", "moon"])
+/**
+ * What a body is (#23 added the small bodies). Placement and drawing never depend on it
+ * (the scale engine goes by depth in the hierarchy); it names the body, picks its group in
+ * the focus picker, its label and marker tier and whether the "Small bodies" layer hides it.
+ */
+export const BodyKind = z.enum([
+	"star",
+	"planet",
+	"dwarfPlanet",
+	"moon",
+	"asteroid",
+	"comet",
+])
+
+/** Kinds shown only with the "Small bodies" layer (and their moons); see `isSmallBody` in "@/data". */
+export const SMALL_BODY_KINDS: readonly BodyKind[] = [
+	"dwarfPlanet",
+	"asteroid",
+	"comet",
+]
 
 export const Orbit = z.object({
 	semiMajorAxisKm: z.number().positive(),
@@ -141,6 +160,14 @@ export const Rotation = z
 		},
 	)
 
+/**
+ * A comet's tail (#23), a presentation hint like `rings`: the true length (km) of its tail
+ * at 1 AU from the Sun; src/sim/comet.ts grows and shrinks it with the distance.
+ */
+export const Tail = z.object({
+	lengthKmAt1Au: z.number().positive(),
+})
+
 export const Body = z
 	.object({
 		/** unique slug: "sun", "earth", "moon", "io", "s2003j24" */
@@ -162,6 +189,7 @@ export const Body = z
 		/** a moon's surface map and its source (#37); absent for the Sun and the planets */
 		surface: Surface.optional(),
 		rings: Rings.nullable(),
+		tail: Tail.optional(),
 		/** dictionary fields passed through from the source */
 		info: z.record(z.string(), z.unknown()),
 		/**
@@ -192,10 +220,11 @@ export const Body = z
 				path: ["featured"],
 			})
 		}
-		if (body.kind === "planet" && body.orbit?.phaseSynthetic) {
+		if (body.kind !== "moon" && body.orbit?.phaseSynthetic) {
 			ctx.addIssue({
 				code: "custom",
-				message: "planets carry real J2000 elements, never synthetic phases",
+				message:
+					"bodies orbiting the Sun carry real elements, never synthetic phases",
 				path: ["orbit", "phaseSynthetic"],
 			})
 		}
@@ -231,6 +260,41 @@ export const BodiesFile = z.array(Body).superRefine((bodies, ctx) => {
 	}
 })
 
+/** One zone of a belt: its dots are spread uniformly over these element ranges. */
+export const BeltZone = z.object({
+	/** share of the belt's dots, 0..1 (a belt's shares sum to 1) */
+	share: z.number().positive().max(1),
+	semiMajorAxisKm: z.tuple([z.number().positive(), z.number().positive()]),
+	eccentricity: z.tuple([z.number().min(0), z.number().lt(1)]),
+	/** inclinations are |normal(0, sigma)| */
+	inclinationSigmaDeg: z.number().min(0),
+	/** no orbit of the zone comes closer to the parent than this */
+	perihelionMinKm: z.number().positive().optional(),
+})
+
+/**
+ * A belt (#23): not bodies but a field of dots that shows where its members are. `dots` is
+ * how many are drawn, `members` how many real bodies of at least `minDiameterKm` they stand for.
+ */
+export const Belt = z.object({
+	id: z.string().regex(/^[a-z0-9]+$/),
+	name: z.string().min(1),
+	parentId: z.string(),
+	dots: z.number().int().positive(),
+	color: z.string().regex(/^#[0-9a-f]{6}$/),
+	members: z.object({
+		count: z.number().positive(),
+		minDiameterKm: z.number().positive(),
+	}),
+	/** typical distance between neighbouring members (km) */
+	meanSeparationKm: z.number().positive(),
+	/** distances from the parent (km) a body counts as "in the belt" for the HUD */
+	extentKm: z.tuple([z.number().positive(), z.number().positive()]),
+	zones: z.array(BeltZone).min(1),
+})
+
+export const BeltsFile = z.array(Belt)
+
 export type BodyKind = z.infer<typeof BodyKind>
 export type Orbit = z.infer<typeof Orbit>
 export type BodyTextures = z.infer<typeof BodyTextures>
@@ -241,3 +305,6 @@ export type Rotation = z.infer<typeof Rotation>
 export type Rings = z.infer<typeof Rings>
 export type Body = z.infer<typeof Body>
 export type BodiesFile = z.infer<typeof BodiesFile>
+export type Tail = z.infer<typeof Tail>
+export type BeltZone = z.infer<typeof BeltZone>
+export type Belt = z.infer<typeof Belt>

@@ -279,6 +279,56 @@
 				]
 			}
 		},
+		"dwarfPlanets": {
+			"title": {
+				"standard": "Pluto and the dwarf planets",
+				"simple": "Pluto"
+			},
+			"what": {
+				"standard": "Pluto, Ceres, Eris, Haumea and Makemake are real worlds in the app, with their moons, from Charon to Dysnomia.",
+				"simple": "Pluto and four other small round worlds, with their moons."
+			},
+			"why": {
+				"standard": "Pluto’s card tells why it stopped being a planet in 2006: we learned more, Pluto did not change. That is how science works.",
+				"simple": "You can find out why Pluto is not a planet any more."
+			},
+			"how": {
+				"standard": [
+					"Type “Pluto” in the box at the top left and pick it: it is shown even while Small bodies is off.",
+					"Charon is listed in the card; “See the whole moon system” frames all five moons.",
+					"← / → move to the next dwarf planet."
+				],
+				"simple": [
+					"Type “Pluto” in the box at the top left.",
+					"Pick Pluto and you fly there."
+				]
+			}
+		},
+		"comets": {
+			"title": {
+				"standard": "A comet passes the Sun",
+				"simple": "Comets"
+			},
+			"what": {
+				"standard": "Five comets on their real, stretched orbits grow a glowing head and two tails as they near the Sun, and lose them as they leave.",
+				"simple": "Comets grow a long tail when they come close to the Sun."
+			},
+			"why": {
+				"standard": "The tail always points away from the Sun, so a comet that is leaving flies tail first: something to see, not only to be told.",
+				"simple": "The tail always points away from the Sun, even when the comet flies away!"
+			},
+			"how": {
+				"standard": [
+					"Pick Halley or Encke in the box at the top left (group Comets).",
+					"Press “Watch it pass the Sun” in its card: the app goes to its next visit and plays it in about a minute and a half.",
+					"Watch which way the tail points on the way in and on the way out."
+				],
+				"simple": [
+					"Pick Halley in the box at the top left.",
+					"Press “Watch it fly past the Sun”."
+				]
+			}
+		},
 		"spin": {
 			"title": {
 				"standard": "Days, tilt and spin",
@@ -581,6 +631,31 @@
 				"simple": [
 					"Fly from Earth to another planet.",
 					"Read the box above the time buttons."
+				]
+			}
+		},
+		"asteroidBelt": {
+			"title": {
+				"standard": "The asteroid belt is almost empty",
+				"simple": "The asteroid belt"
+			},
+			"what": {
+				"standard": "The Small bodies switch shows the asteroid belt and the Kuiper belt as fields of dots, plus the dwarf planets, seven named asteroids and five comets.",
+				"simple": "A switch shows the asteroid belt, the icy Kuiper belt, the dwarf planets and comets."
+			},
+			"why": {
+				"standard": "Films show a crowded field of rocks. The card says the truth: each dot stands for about 380 asteroids, and neighbours are about a million km apart, so spacecraft fly straight through.",
+				"simple": "In films it is full of rocks. In real space the rocks are very, very far apart."
+			},
+			"how": {
+				"standard": [
+					"Switch on “Small bodies” among the layer switches.",
+					"Read the note in the card at the bottom left.",
+					"Choose True scale in the Scale panel, then fly to Vesta or Ceres: the belt stays a sparse scatter."
+				],
+				"simple": [
+					"Switch on “Small bodies”.",
+					"Read what the card says about the dots."
 				]
 			}
 		},

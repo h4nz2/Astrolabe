@@ -1202,5 +1202,733 @@
 				"Der Saturnmond Mimas ist mit etwa 396 km Durchmesser rund, der etwas größere Proteus dagegen nicht – ab welcher Größe ein Mond rund wird, hängt davon ab, woraus er besteht und wie warm er einmal war."
 			]
 		}
+	},
+	"ceres": {
+		"name": "Ceres",
+		"tagline": "Der Zwergplanet im Asteroidengürtel",
+		"description": {
+			"simple": "Ceres ist das größte Objekt im Asteroidengürtel, dem Ring aus Felsbrocken zwischen Mars und Jupiter. Sie ist rund wie eine Kugel, aber viel kleiner als unser Mond. Als man sie 1801 entdeckte, hielt man sie für einen neuen Planeten. Eine Raumsonde namens Dawn ist um Ceres gekreist und hat helle weiße Flecken gefunden – aus Salz!",
+			"standard": "Ceres ist der größte Körper im Asteroidengürtel zwischen Mars und Jupiter und der einzige Zwergplanet dort. Giuseppe Piazzi entdeckte sie am 1. Januar 1801, und etwa ein halbes Jahrhundert lang zählte sie als Planet – bis in derselben Gegend so viele weitere Brocken auftauchten, dass die Astronomen sie stattdessen Asteroiden nannten. Ceres ist etwa 940 km groß und besteht aus Gestein, vermischt mit Eis. Die NASA-Sonde Dawn umkreiste sie von 2015 bis 2018 und fand helle Flecken im Krater Occator: Salz, das zurückblieb, als salziges Wasser von unten aufstieg und verdunstete.",
+			"advanced": "Ceres (mittlerer Durchmesser etwa 940 km) vereint rund ein Drittel der Masse des Asteroidengürtels und ist dort das einzige Objekt, das massereich genug ist, um sich selbst in eine nahezu runde Form zu ziehen. Nach der IAU-Definition von 2006 ist sie damit ein Zwergplanet: Sie ist rund und umkreist die Sonne, hat ihre Bahn aber nicht von den unzähligen anderen Körpern in ihrer Umgebung geräumt. Ihre geringe Dichte von etwa 2,2 g/cm³ deutet auf Gestein mit Wassereis hin, und Dawn fand Hinweise auf Salzlauge tief unter der Kruste. Die hellen Flecken (Faculae) im 92 km großen Krater Occator bestehen vor allem aus Natriumcarbonat; Ahuna Mons, ein einzeln stehender, etwa 4 km hoher Berg, gilt als Eisvulkan. Ceres umrundet die Sonne alle 4,6 Jahre in einem mittleren Abstand von 2,77 AE."
+		},
+		"facts": {
+			"simple": [
+				"Ceres ist nach der römischen Göttin des Ackerbaus benannt – daher kommt auch das englische Wort „cereal“ für Frühstücksflocken.",
+				"Ein Tag auf Ceres dauert nur etwa 9 Stunden.",
+				"Der Asteroidengürtel ist nicht so voll wie im Film: Die Asteroiden sind so weit voneinander entfernt, dass Raumsonden hindurchfliegen, ohne irgendetwas ausweichen zu müssen."
+			],
+			"standard": [
+				"Ceres war der erste Asteroid, der je entdeckt wurde – am Neujahrstag 1801.",
+				"Die Schwerkraft auf Ceres beträgt nur etwa 3 % der irdischen; du könntest dort mehr als 30-mal so hoch springen wie zu Hause.",
+				"Dawn ging 2018 der Treibstoff aus, doch die verstummte Sonde kreist noch immer um Ceres."
+			],
+			"advanced": [
+				"Alle Asteroiden zusammen haben nur etwa 3 % der Masse des Mondes, und Ceres allein macht davon rund ein Drittel aus.",
+				"Benachbarte Asteroiden sind im Durchschnitt etwa eine Million km voneinander entfernt – mehr als doppelt so weit wie die Erde vom Mond.",
+				"Das 1803 entdeckte chemische Element Cer ist nach Ceres benannt."
+			]
+		},
+		"comparisons": {
+			"simple": ["Wäre die Erde ein Fußball, wäre Ceres eine Murmel."],
+			"standard": [
+				"Ceres ist nur etwa ein Viertel so breit wie unser Mond: Mit 100 km/h wärst du in weniger als 10 Stunden einmal quer darüber gefahren."
+			],
+			"advanced": [
+				"Das Sonnenlicht braucht etwa 23 Minuten bis zu Ceres – fast dreimal so lange wie bis zur Erde."
+			]
+		}
+	},
+	"pluto": {
+		"name": "Pluto",
+		"tagline": "Der Zwergplanet mit Herz",
+		"description": {
+			"simple": "Pluto ist eine kleine, eisige Welt weit hinter Neptun. 76 Jahre lang galt er als neunter Planet. 2006 beschlossen die Astronomen, dass Pluto ein Zwergplanet ist, weil er sich seinen Weg um die Sonne mit vielen anderen eisigen Objekten teilt. Pluto selbst hat sich dabei nicht verändert – nur die Bezeichnung für ihn. Auf seiner Oberfläche liegt eine große, helle Ebene in der Form eines Herzens.",
+			"standard": "Pluto wurde 1930 von Clyde Tombaugh entdeckt und 76 Jahre lang als neunter Planet gezählt. Dann fanden Astronomen 2005 Eris, eine eisige Welt etwa so groß wie Pluto, und mussten entscheiden: War das ein zehnter Planet? 2006 einigte sich die Internationale Astronomische Union (IAU) auf die erste offizielle Definition eines Planeten: Er muss die Sonne umkreisen, massereich genug sein, um rund zu werden, und die Umgebung seiner Bahn geräumt haben. Pluto erfüllt die ersten beiden Punkte, teilt seine Region, den Kuipergürtel, aber mit Tausenden anderen eisigen Körpern – deshalb wurde er zum Zwergplaneten. Pluto hat sich nicht verändert, sondern unser Wissen, und genau so funktioniert Wissenschaft.",
+			"advanced": "Als die NASA-Sonde New Horizons am 14. Juli 2015 vorbeiflog, erwies sich Pluto als überraschend aktiv. Die westliche Hälfte der hellen, herzförmigen Tombaugh Regio ist Sputnik Planitia, ein etwa 1000 km breites Becken voller langsam umwälzendem Stickstoffeis ohne sichtbare Krater; seine Oberfläche muss also jünger als etwa 10 Millionen Jahre sein. Berge aus Wassereis, mehrere Kilometer hoch, und eine dünne Stickstoffatmosphäre mit blauen Dunstschichten runden das Bild ab. Plutos Bahn ist exzentrisch (0,25) und um 17° geneigt; von 1979 bis 1999 war Pluto der Sonne näher als Neptun, doch eine 3:2-Bahnresonanz – Pluto umrundet die Sonne zweimal, während Neptun es dreimal tut – verhindert, dass die beiden jemals zusammenstoßen."
+		},
+		"facts": {
+			"simple": [
+				"Seinen Namen bekam Pluto von Venetia Burney, einem elfjährigen Mädchen aus England.",
+				"Die Raumsonde New Horizons war neuneinhalb Jahre unterwegs, bis sie Pluto erreichte.",
+				"Ein Jahr auf Pluto dauert fast 250 Erdjahre."
+			],
+			"standard": [
+				"New Horizons flog am 14. Juli 2015 an Pluto vorbei und schickte die ersten Nahaufnahmen.",
+				"Pluto hat fünf bekannte Monde: Charon, Nix, Hydra, Kerberos und Styx.",
+				"Ein Jahr auf Pluto dauert etwa 249 Erdjahre; seit seiner Entdeckung 1930 hat er die Sonne also noch nicht einmal umrundet."
+			],
+			"advanced": [
+				"Die IAU beschloss ihre Planetendefinition am 24. August 2006 per Abstimmung auf ihrer Generalversammlung in Prag.",
+				"Pluto dreht sich im Vergleich zu den meisten Planeten rückwärts; ein Tag dauert 6,4 Erdtage – genauso lange, wie Charon für einen Umlauf braucht.",
+				"Plutos Masse beträgt nur etwa 18 % der Mondmasse und 0,2 % der Erdmasse."
+			]
+		},
+		"comparisons": {
+			"simple": ["Wäre die Erde ein Fußball, wäre Pluto ein Tischtennisball."],
+			"standard": [
+				"Pluto ist nur etwa zwei Drittel so breit wie unser Mond – sieben Monde im Sonnensystem sind größer als Pluto."
+			],
+			"advanced": [
+				"Das Sonnenlicht braucht etwa fünfeinhalb Stunden bis zu Pluto; ein Verkehrsflugzeug mit 900 km/h bräuchte ohne Pause etwa 750 Jahre."
+			]
+		}
+	},
+	"haumea": {
+		"name": "Haumea",
+		"tagline": "Das rotierende Ei",
+		"description": {
+			"simple": "Haumea ist ein Zwergplanet weit draußen hinter Neptun. Sie dreht sich so schnell – einmal in weniger als vier Stunden –, dass sie in die Form eines Eis oder eines Rugbyballs gezogen wurde. Haumea hat zwei kleine Monde und sogar einen dünnen Ring.",
+			"standard": "Haumea liegt im Kuipergürtel, der Zone eisiger Körper jenseits von Neptun. Ein Tag dauert dort weniger als vier Stunden; damit gehört sie zu den am schnellsten rotierenden großen Körpern des Sonnensystems. Die schnelle Drehung hat sie in eine gestreckte, eiähnliche Form gezogen, etwa doppelt so lang wie dick. 2017 beobachteten Astronomen, wie Haumea vor einem fernen Stern vorbeizog, und entdeckten dabei einen dünnen Ring – den ersten Ring, der um einen Zwergplaneten gefunden wurde. Ihre beiden Monde, Hiʻiaka und Namaka, sind wie Haumea selbst nach hawaiischen Göttinnen benannt.",
+			"advanced": "Haumeas Rotationsperiode von 3,9 Stunden streckt sie zu einem länglichen Ellipsoid, etwa doppelt so lang wie dick – der Form, in der sich ihre Schwerkraft und ihre Drehung die Waage halten. Ihre Oberfläche ist mit kristallinem Wassereis bedeckt, während ihre Dichte auf ein überwiegend felsiges Inneres unter einer dünnen Eishülle hindeutet. Haumea, ihre Monde und eine Familie eisiger Körper auf ähnlichen Bahnen gelten als Bruchstücke eines gewaltigen Zusammenstoßes in der Frühzeit, der vielleicht auch ihre schnelle Drehung erklärt. Sie umrundet die Sonne alle 283 Jahre in einem mittleren Abstand von 43 AE, auf einer um 28° geneigten Bahn."
+		},
+		"facts": {
+			"simple": [
+				"Ein Tag auf Haumea ist kürzer als ein Schulvormittag: weniger als 4 Stunden.",
+				"Haumea ist nach einer hawaiischen Göttin der Geburt und der Fruchtbarkeit benannt.",
+				"Haumea hat einen Ring, genau wie Saturn – nur viel dünner und lichtschwächer."
+			],
+			"standard": [
+				"Haumeas Ring wurde 2017 entdeckt, als der Zwergplanet vor einem Stern vorbeizog und dessen Licht kurz abschirmte.",
+				"Ein Jahr auf Haumea dauert etwa 283 Erdjahre.",
+				"Ihre helle Oberfläche besteht größtenteils aus Wassereis."
+			],
+			"advanced": [
+				"Mit einer Rotationsperiode von 3,9 Stunden dreht sich Haumea schneller als jeder andere bekannte Zwergplanet.",
+				"Ihr Ring kreist etwa 2300 km vom Zentrum Haumeas entfernt und läuft einmal um, während sich Haumea dreimal dreht.",
+				"Die IAU erkannte Haumea 2008 als Zwergplaneten an."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, hätte Haumea etwa die Größe und Form eines Wachteleis."
+			],
+			"standard": ["Haumea dreht sich etwa sechsmal so schnell wie die Erde."],
+			"advanced": [
+				"In Haumeas mittlerem Abstand kommt das Sonnenlicht fast 6 Stunden nach dem Verlassen der Sonne an und ist etwa 1850-mal schwächer als auf der Erde."
+			]
+		}
+	},
+	"makemake": {
+		"name": "Makemake",
+		"tagline": "Der Zwergplanet, der zu Ostern gefunden wurde",
+		"description": {
+			"simple": "Makemake ist eine kleine, rötliche, eisige Welt weit hinter Neptun. Sie wurde 2005 kurz nach Ostern gefunden, deshalb benannten ihre Entdecker sie nach einem Gott der Menschen auf der Osterinsel. Makemake gehört zu den hellsten Objekten im Kuipergürtel, der Zone eisiger Welten jenseits von Neptun. Sie hat einen winzigen, dunklen Mond.",
+			"standard": "Makemake ist ein Zwergplanet im Kuipergürtel, etwa 1400 km groß – etwas mehr als halb so breit wie Pluto. Seine Entdecker fanden ihn am 31. März 2005, wenige Tage nach Ostern, und benannten ihn später nach Makemake, dem Schöpfergott der Rapa Nui auf der Osterinsel. Nach Pluto ist er das hellste bekannte Objekt im Kuipergürtel und in einem großen Amateurteleskop sichtbar. Seine rötlich-braune Oberfläche ist mit gefrorenem Methan bedeckt. 2016 zeigten Hubble-Aufnahmen einen kleinen, sehr dunklen Mond.",
+			"advanced": "Makemake umrundet die Sonne alle 308 Jahre in einem mittleren Abstand von 45,6 AE, auf einer um 29° geneigten Bahn. Sein Spektrum wird von Methaneis bestimmt, dazu kommen Ethan und andere Verbindungen, die das Sonnenlicht daraus erzeugt hat und die der Oberfläche ihre rötliche Farbe geben. Als Makemake 2011 vor einem lichtschwachen Stern vorbeizog, verschwand der Stern schlagartig und tauchte ebenso plötzlich wieder auf – Makemake hat also höchstens eine extrem dünne Atmosphäre, anders als Pluto. Sein Mond mit dem Spitznamen MK2 ist etwa 1300-mal lichtschwächer als Makemake und viel dunkler; er wurde auf Hubble-Aufnahmen von 2015 gefunden."
+		},
+		"facts": {
+			"simple": [
+				"Ein Jahr auf Makemake dauert etwa 308 Erdjahre.",
+				"Seine Entdecker gaben ihm zuerst den Spitznamen „Easterbunny“ – Osterhase.",
+				"Makemake ist mit gefrorenem Methan bedeckt – dem Hauptbestandteil des Erdgases, mit dem viele Menschen kochen."
+			],
+			"standard": [
+				"Makemake wurde 2008 offiziell als Zwergplanet anerkannt.",
+				"Seine Oberflächentemperatur liegt bei etwa −240 °C.",
+				"Sein einziger bekannter Mond war im Glanz von Makemake versteckt, bis Hubble ihn 2016 sichtbar machte."
+			],
+			"advanced": [
+				"Die Zeitmessung der Sternbedeckung 2011 an mehreren Sternwarten ergab Makemakes Größe: etwa 1430 × 1500 km.",
+				"Seine mittlere Oberflächentemperatur beträgt etwa 32 K (−241 °C).",
+				"Sobald die Bahn seines Mondes genau bekannt ist, verrät sie Makemakes Masse – so, wie Charon und Dysnomia die Massen von Pluto und Eris verraten haben."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Makemake etwa so groß wie eine Kirsche."
+			],
+			"standard": [
+				"Makemake ist etwa 60 % so breit wie Pluto und 40 % so breit wie unser Mond."
+			],
+			"advanced": [
+				"Von Makemake aus gesehen wäre die Sonne nur ein strahlender Lichtpunkt – aber immer noch etwa 200-mal heller als der Vollmond von der Erde aus."
+			]
+		}
+	},
+	"eris": {
+		"name": "Eris",
+		"tagline": "Der Zwergplanet, der einen Streit auslöste",
+		"description": {
+			"simple": "Eris ist ein Zwergplanet, fast genau so groß wie Pluto, aber viel weiter entfernt. Als sie 2005 gefunden wurde, nannten manche sie den zehnten Planeten. Stattdessen stellten die Astronomen eine klare Regel auf, was als Planet zählt – und sowohl Eris als auch Pluto wurden zu Zwergplaneten. Eris ist nach der griechischen Göttin des Streits benannt. Das passt, denn sie hat einen großen Streit ausgelöst!",
+			"standard": "Eris ist etwa so breit wie Pluto, aber rund ein Viertel schwerer, und sie gehört zu den entferntesten bekannten Objekten, die die Sonne umkreisen. Ihre Entdeckung 2005 zwang die Astronomen zu entscheiden, ob sie der zehnte Planet war – oder ob Pluto überhaupt ein Planet ist. Die Antwort war die IAU-Definition von 2006, die beide zu Zwergplaneten machte. Passenderweise ist Eris nach der griechischen Göttin der Zwietracht benannt. Ihre Bahn ist so langgestreckt und geneigt (44°), dass sie für einen Umlauf um die Sonne etwa 560 Jahre braucht. Heute ist Eris etwa 96-mal so weit von der Sonne entfernt wie die Erde, nahe dem sonnenfernsten Punkt ihrer Bahn.",
+			"advanced": "Eris gehört zur Streuscheibe, einer Population eisiger Körper jenseits des Kuipergürtels, deren exzentrische, stark geneigte Bahnen vermutlich durch Neptuns Schwerkraft nach außen geschleudert wurden. Ihre Bahn (große Halbachse 68 AE, Exzentrizität 0,44, Neigung 44°) führt sie zwischen etwa 38 und 98 AE von der Sonne. Als Eris 2010 vor einem Stern vorbeizog, ergab sich ein Durchmesser von etwa 2330 km, knapp unter Plutos 2377 km, während die Bahn ihres Mondes Dysnomia eine um etwa 27 % größere Masse als die Plutos ergibt – Eris ist also dichter und felsiger. Ihre Oberfläche wirft etwa 96 % des auftreffenden Lichts zurück, einer der höchsten Werte im Sonnensystem, vermutlich dank frischen Methanreifs."
+		},
+		"facts": {
+			"simple": [
+				"Ein Jahr auf Eris dauert etwa 560 Erdjahre.",
+				"Eris hat einen Mond namens Dysnomia.",
+				"Eris gehört zu den glänzendsten Dingen im Sonnensystem: Wie frischer Schnee wirft sie fast das ganze Sonnenlicht zurück."
+			],
+			"standard": [
+				"Bevor sie ihren offiziellen Namen bekam, hatte Eris den Spitznamen „Xena“, nach der Heldin einer Fernsehserie.",
+				"Eris ist derzeit mehr als doppelt so weit von der Sonne entfernt wie Pluto.",
+				"Eris bekam ihren offiziellen Namen erst im September 2006, nachdem der Streit um die Planeten beigelegt war."
+			],
+			"advanced": [
+				"Dysnomia umkreist Eris in etwa 37 300 km Abstand alle 15,8 Tage; aus ihrer Bahn können Astronomen Eris wiegen.",
+				"Eris scheint sich alle 15,8 Tage einmal zu drehen, im Gleichtakt mit Dysnomias Umlauf.",
+				"Eris wurde am 5. Januar 2005 auf Aufnahmen vom Oktober 2003 entdeckt."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Eris ein Tischtennisball – nur ein kleines bisschen kleiner als Pluto."
+			],
+			"standard": [
+				"Das Licht braucht heute etwa 13 Stunden bis zu Eris; ein Verkehrsflugzeug mit 900 km/h bräuchte etwa 1800 Jahre."
+			],
+			"advanced": [
+				"In Eris’ heutigem Abstand scheint die Sonne mehr als 9000-mal schwächer als auf der Erde."
+			]
+		}
+	},
+	"charon": {
+		"name": "Charon",
+		"tagline": "Plutos riesiger Partner",
+		"description": {
+			"simple": "Charon ist Plutos größter Mond. Er ist etwa halb so breit wie Pluto – so groß, dass Pluto und Charon umeinander schwingen wie zwei Tänzer, die sich an den Händen halten. Sie zeigen einander immer dieselbe Seite. Stündest du auf Pluto, würde Charon unbeweglich am Himmel hängen – oder du würdest ihn auf der anderen Seite von Pluto nie zu sehen bekommen.",
+			"standard": "Charon ist Plutos größter Mond, etwa 1200 km groß – mehr als halb so breit wie Pluto. Weil Charon im Vergleich zu Pluto so schwer ist, liegt der Punkt, um den beide kreisen, im leeren Raum zwischen ihnen und nicht in Pluto. Beide rotieren gebunden: Sie wenden einander immer dieselbe Seite zu, und ein Tag auf Pluto dauert genauso lange wie ein Umlauf Charons, 6,4 Tage. New Horizons entdeckte eine rötliche Kappe an Charons Nordpol und Schluchten, die viel länger und tiefer sind als der Grand Canyon.",
+			"advanced": "Mit etwa 12 % der Masse Plutos ist Charon im Verhältnis zu seinem Mutterkörper der größte Mond aller Planeten und Zwergplaneten; der gemeinsame Schwerpunkt der beiden liegt mehr als 900 km über Plutos Oberfläche, weshalb manche Astronomen Pluto und Charon einen Doppel-Zwergplaneten nennen. Seine Bahn ermöglichte die erste genaue Messung von Plutos Masse. Seine rötliche Polkappe, Mordor Macula, entsteht vermutlich, wenn aus Plutos Atmosphäre entweichendes Methan auf Charons kaltem Winterpol gefriert und von ultraviolettem Licht in rötliche Verbindungen umgewandelt wird. Seine Oberfläche aus Wassereis ist von einem Gürtel aus Schluchten zerrissen – ein Hinweis darauf, dass ein früherer Ozean unter der Oberfläche gefror und sich dabei ausdehnte."
+		},
+		"facts": {
+			"simple": [
+				"Charon ist nach dem Fährmann benannt, der in griechischen Sagen die Seelen über einen Fluss in die Unterwelt brachte.",
+				"Charon umrundet Pluto in etwas weniger als einer Woche.",
+				"Forscher gaben Charons dunkelroter Polkappe den Spitznamen „Mordor“, nach dem finsteren Land aus „Der Herr der Ringe“."
+			],
+			"standard": [
+				"Charon ist nur etwa 19 600 km von Pluto entfernt – etwa ein Zwanzigstel des Abstands zwischen Erde und Mond.",
+				"Wegen der gebundenen Rotation ist Charon nur von einer Hälfte Plutos aus zu sehen.",
+				"Charons tiefste Schluchten sind etwa 9 km tief – fünfmal so tief wie der Grand Canyon."
+			],
+			"advanced": [
+				"Mittlerer Durchmesser 1212 km; Masse etwa 1,6 × 10²¹ kg, etwa 12 % der Masse Plutos.",
+				"Charons Bahn ist fast perfekt kreisförmig (Exzentrizität 0,0002).",
+				"James Christy entdeckte Charon 1978 als kleine Ausbuchtung auf Fotos von Pluto."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Pluto ein Tischtennisball und Charon eine Haselnuss in 34 cm Entfernung."
+			],
+			"standard": [
+				"Charon kreist nur etwa 19 600 km von Pluto entfernt – ein Verkehrsflugzeug könnte diese Strecke in weniger als einem Tag zurücklegen."
+			],
+			"advanced": [
+				"Der Mond hat etwa 1,2 % der Erdmasse, Charon etwa 12 % der Masse Plutos – im Verhältnis zehnmal so viel."
+			]
+		}
+	},
+	"vesta": {
+		"name": "Vesta",
+		"tagline": "Der hellste Asteroid",
+		"description": {
+			"simple": "Vesta ist das zweitgrößte Objekt im Asteroidengürtel. Sie ist der hellste Asteroid von allen – in sehr dunklen Nächten kannst du sie manchmal sogar ohne Teleskop sehen. Vor langer Zeit hat ein gewaltiger Einschlag ein riesiges Loch in Vesta geschlagen, und einige der Bruchstücke sind als Meteoriten auf der Erde gelandet. Man kann also ein Stück von Vesta in der Hand halten!",
+			"standard": "Vesta ist der zweitgrößte Körper im Asteroidengürtel, etwa 525 km groß. Anders als die meisten Asteroiden ist sie wie ein kleiner Gesteinsplanet in Schichten aufgebaut: ein Eisenkern, ein Gesteinsmantel und eine Kruste aus alter Lava. Die NASA-Sonde Dawn umkreiste Vesta von 2011 bis 2012 und kartierte Rheasilvia, einen etwa 500 km breiten Krater – fast so breit wie Vesta selbst – mit einem Zentralberg, der mehr als doppelt so hoch ist wie der Mount Everest. Der Einschlag, der ihn schuf, schleuderte Gestein heraus, das noch heute auf die Erde fällt: Etwa jeder zwanzigste Meteorit stammt von Vesta.",
+			"advanced": "Vesta ist ein erhaltener Protoplanet: Früh in ihrer Geschichte schmolz sie und trennte sich in einen Eisenkern, einen Mantel und eine basaltische Kruste – derselbe Vorgang, der auch die Erde geformt hat. Ihre Südhalbkugel wird von zwei einander überlappenden Einschlagbecken beherrscht, Rheasilvia (etwa 500 km) und dem älteren Veneneia. Der Rheasilvia-Einschlag vor etwa einer Milliarde Jahren schleuderte rund 1 % von Vestas Volumen heraus und erzeugte eine Familie kleiner Asteroiden, die Vestoiden. Einige dieser Bruchstücke erreichen die Erde als Howardit-Eukrit-Diogenit-Meteoriten (HED), an denen wir Vestas Kruste im Labor untersuchen können. Weil sie nicht ganz rund ist, zählt Vesta als Asteroid und nicht als Zwergplanet."
+		},
+		"facts": {
+			"simple": [
+				"Vesta ist nach der römischen Göttin des Hauses und des Herdfeuers benannt.",
+				"Ein Tag auf Vesta dauert etwas mehr als 5 Stunden.",
+				"Die Raumsonde Dawn besuchte zuerst Vesta und flog dann weiter zu Ceres."
+			],
+			"standard": [
+				"Vesta wurde 1807 von Heinrich Olbers entdeckt.",
+				"Ein Jahr auf Vesta dauert etwa 3,6 Erdjahre.",
+				"Dawn war die erste Raumsonde, die zwei verschiedene Himmelskörper jenseits der Erde umkreiste: Vesta und Ceres."
+			],
+			"advanced": [
+				"Vesta vereint rund ein Zehntel der Masse des gesamten Asteroidengürtels.",
+				"In ihrer hellsten Stellung erreicht Vesta etwa die 5. Größenklasse und ist damit der einzige Asteroid des Hauptgürtels, der manchmal mit bloßem Auge zu sehen ist.",
+				"Ihre Rotationsperiode beträgt 5,34 Stunden, ihre Achse ist um 29° geneigt."
+			]
+		},
+		"comparisons": {
+			"simple": ["Wäre die Erde ein Fußball, wäre Vesta eine Erbse."],
+			"standard": [
+				"Vesta ist etwa 525 km breit – mit 100 km/h wärst du in gut 5 Stunden einmal quer darüber gefahren."
+			],
+			"advanced": [
+				"Der Zentralberg von Rheasilvia ist etwa zweieinhalbmal so hoch wie der Mount Everest – auf einem Körper, der 24-mal schmaler ist als die Erde."
+			]
+		}
+	},
+	"pallas": {
+		"name": "Pallas",
+		"tagline": "Der schräge Riese des Asteroidengürtels",
+		"description": {
+			"simple": "Pallas ist einer der größten Asteroiden, fast so groß wie Vesta. Sie umrundet die Sonne auf einer stark geneigten Bahn und ist deshalb oft ober- oder unterhalb der anderen Asteroiden. Im Film ist der Asteroidengürtel voller Felsen, die dicht an dicht durcheinanderwirbeln – der echte ist dagegen fast leer. Raumsonden fliegen einfach hindurch, ohne irgendetwas ausweichen zu müssen.",
+			"standard": "Pallas war der zweite Asteroid, der je gefunden wurde, entdeckt 1802 von Heinrich Olbers. Sie ist etwa 510 km groß, fast so groß wie Vesta, doch ihre Bahn ist um etwa 35° gegenüber denen der Planeten geneigt – so steil, dass sie schwer zu erreichen ist und noch keine Raumsonde sie besucht hat. Pallas erinnert gut daran, wie leer der Asteroidengürtel wirklich ist: Benachbarte Asteroiden sind im Durchschnitt etwa eine Million km voneinander entfernt, mehr als doppelt so weit wie die Erde vom Mond. Raumsonden wie Pioneer 10, Galileo, Cassini und New Horizons haben den Gürtel durchquert, ohne irgendetwas ausweichen zu müssen.",
+			"advanced": "Pallas hat einen mittleren Durchmesser von etwa 510 km und vereint rund 8 % der Masse des Asteroidengürtels. Ihre Bahn ist ungewöhnlich stark geneigt (34,9°) und exzentrisch (0,23), sodass sie anderen Asteroiden mit hohen Relativgeschwindigkeiten begegnet und Zusammenstöße besonders heftig ausfallen – das könnte ihre stark verkraterte „Golfball“-Oberfläche erklären, die 2020 auf Aufnahmen des Very Large Telescope zu sehen war. Der ganze Gürtel enthält nur etwa 3 % der Mondmasse, und Ceres, Vesta, Pallas und Hygiea zusammen machen mehr als die Hälfte davon aus. Pallas kreist in einem mittleren Abstand von 2,77 AE, fast genau wie Ceres."
+		},
+		"facts": {
+			"simple": [
+				"Pallas ist nach Pallas Athene benannt, der griechischen Göttin der Weisheit.",
+				"Ein Jahr auf Pallas dauert mehr als viereinhalb Erdjahre.",
+				"Alle Asteroiden im Gürtel zusammen wiegen viel weniger als unser Mond."
+			],
+			"standard": [
+				"Wie Ceres wurde auch Pallas nach ihrer Entdeckung jahrzehntelang als Planet gezählt.",
+				"Ihre Bahn ist viel steiler geneigt als die der anderen großen Asteroiden.",
+				"Das Metall Palladium, das in Autokatalysatoren steckt, ist nach Pallas benannt."
+			],
+			"advanced": [
+				"Pallas ist ein seltener B-Typ-Asteroid: kohlenstoffreich und leicht bläulich gefärbt.",
+				"Ihre Rotationsperiode beträgt etwa 7,8 Stunden.",
+				"Palladium wurde 1802 entdeckt und nach dem Asteroiden benannt, der im selben Jahr gefunden worden war."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Pallas eine Erbse – genau wie Vesta."
+			],
+			"standard": [
+				"Alle Asteroiden zusammen haben nur etwa ein Dreißigstel der Mondmasse."
+			],
+			"advanced": [
+				"Ein Flug von einem Asteroiden zu seinem nächsten Nachbarn – im Durchschnitt etwa eine Million km – würde ein Verkehrsflugzeug mehr als sechs Wochen kosten."
+			]
+		}
+	},
+	"juno": {
+		"name": "Juno",
+		"tagline": "Der dritte Asteroid, der je gefunden wurde",
+		"description": {
+			"simple": "Juno ist ein großer Asteroid im Asteroidengürtel, etwa 250 km breit. Sie war der dritte Asteroid, der je gefunden wurde, im Jahr 1804. Sie besteht aus Gestein, vermischt mit Metall, und ist ein bisschen wie eine Kartoffel geformt. Juno ist nach der Königin der römischen Götter benannt.",
+			"standard": "Juno war der dritte entdeckte Asteroid, gefunden 1804 von Karl Harding. Sie ist etwa 250 km groß und einer der größeren Steinasteroiden, aufgebaut aus Silikatgestein, vermischt mit Metall. Ihre Bahn ist recht langgestreckt: Juno kommt der Sonne bis auf etwa 2 AE nahe und schwingt bis etwa 3,4 AE hinaus. Nicht verwechseln mit der NASA-Raumsonde Juno – die wurde zum Jupiter geschickt, nicht zu diesem Asteroiden.",
+			"advanced": "Juno ist ein S-Typ-Asteroid: Ihre Oberfläche besteht aus steinigen Silikaten, vermischt mit Nickeleisen, und wirft mehr Licht zurück als die dunklen, kohlenstoffreichen Asteroiden. Bei einer Exzentrizität von 0,26 schwankt ihr Abstand zur Sonne zwischen etwa 297 und 502 Millionen km, und sie umrundet die Sonne alle 4,4 Jahre. Sie dreht sich in etwa 7,2 Stunden, und ihre Helligkeit ändert sich dabei wegen ihrer unregelmäßigen Form. Zusammen mit Ceres, Pallas und Vesta wurde sie nach ihrer Entdeckung mehrere Jahrzehnte lang als Planet gezählt."
+		},
+		"facts": {
+			"simple": [
+				"Ein Jahr auf Juno dauert fast viereinhalb Erdjahre.",
+				"Juno dreht sich in etwa 7 Stunden einmal um sich selbst.",
+				"Juno ist zu lichtschwach für das bloße Auge – du brauchst ein Fernglas oder ein Teleskop."
+			],
+			"standard": [
+				"Juno ist nach der römischen Königin der Götter benannt, der Frau Jupiters.",
+				"Juno dreht sich in etwa 7,2 Stunden einmal um sich selbst.",
+				"Juno braucht etwa 4,4 Jahre für einen Umlauf um die Sonne."
+			],
+			"advanced": [
+				"Ihre Form, etwa 290 × 240 × 190 km, ist alles andere als rund; Juno ist deshalb kein Zwergplanet.",
+				"Junos Masse beträgt etwa 2,8 × 10¹⁹ kg, rund 1 % der Gesamtmasse des Asteroidengürtels.",
+				"Ihr Perihel liegt bei etwa 1,99 AE, ihr Aphel bei etwa 3,35 AE."
+			]
+		},
+		"comparisons": {
+			"simple": ["Wäre die Erde ein Fußball, wäre Juno ein Pfefferkorn."],
+			"standard": [
+				"Juno ist etwa 250 km breit: Mit 100 km/h wärst du in zweieinhalb Stunden einmal quer darüber gefahren."
+			],
+			"advanced": [
+				"Die Erde ist etwa 50-mal so breit wie Juno, aber etwa 200 000-mal so schwer."
+			]
+		}
+	},
+	"hygiea": {
+		"name": "Hygiea",
+		"tagline": "Ein möglicher Zwergplanet",
+		"description": {
+			"simple": "Hygiea ist das viertgrößte Objekt im Asteroidengürtel. Sie ist sehr dunkel und fast so rund wie ein Ball. Manche Astronomen meinen, sie könnte eines Tages als Zwergplanet gelten. Sie ist nach der griechischen Göttin der Gesundheit benannt – daher kommt das Wort „Hygiene“.",
+			"standard": "Hygiea ist der viertgrößte Asteroid, etwa 410 km groß, und kreist im äußeren Teil des Gürtels in einem mittleren Abstand von 3,15 AE. Annibale de Gasparis entdeckte sie 1849 in Neapel. Ihre Oberfläche ist dunkel und kohlenstoffreich, wie die vieler Asteroiden im äußeren Gürtel. 2019 zeigten scharfe Bilder des Very Large Telescope in Chile, dass Hygiea fast perfekt rund ist; sie könnte also als Zwergplanet gelten – die IAU hat ihre Einstufung aber nicht geändert.",
+			"advanced": "Hygiea ist ein C-Typ-Asteroid, ein dunkler, kohlenstoffhaltiger Körper, und das größte Mitglied einer Asteroidenfamilie, die bei einem gewaltigen Einschlag entstand. Die Beobachtungen mit dem Very Large Telescope fanden 2019 überraschenderweise kein großes Einschlagbecken; Modelle deuten darauf hin, dass der Zusammenstoß Hygiea vollständig zertrümmerte und die Bruchstücke sich danach wieder zu einer Kugel sammelten. Ihre runde Form scheint das Rundheitskriterium der IAU für Zwergplaneten zu erfüllen, doch ihre Einstufung wurde nicht geändert. Ceres, Vesta, Pallas und Hygiea zusammen vereinen mehr als die Hälfte der Masse des Asteroidengürtels."
+		},
+		"facts": {
+			"simple": [
+				"Ein Jahr auf Hygiea dauert etwa fünfeinhalb Erdjahre.",
+				"Ein Tag auf Hygiea dauert fast 14 Stunden.",
+				"Hygiea ist ohne Teleskop zu lichtschwach, um sie zu sehen."
+			],
+			"standard": [
+				"Hygiea braucht etwa 5,6 Jahre für einen Umlauf um die Sonne.",
+				"Sie war der zehnte Asteroid, der je entdeckt wurde.",
+				"Ein Tag auf Hygiea dauert etwa 13,8 Stunden."
+			],
+			"advanced": [
+				"Masse etwa 1,05 × 10²⁰ kg – rund 4 % des gesamten Asteroidengürtels.",
+				"Mittlerer Abstand zur Sonne 3,15 AE; Bahnexzentrizität 0,11.",
+				"Zur Hygiea-Familie gehören Tausende kleiner Asteroiden auf ähnlichen Bahnen – Bruchstücke desselben Einschlags."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Hygiea eine kleine Erbse, etwa 7 mm groß."
+			],
+			"standard": [
+				"Das Sonnenlicht braucht etwa 26 Minuten bis zu Hygiea – dreimal so lange wie bis zur Erde."
+			],
+			"advanced": [
+				"Etwa 700 Hygieas würden zusammen so viel wiegen wie unser Mond."
+			]
+		}
+	},
+	"eros": {
+		"name": "Eros",
+		"tagline": "Der erste Asteroid, auf dem eine Sonde landete",
+		"description": {
+			"simple": "Eros ist ein langer Asteroid in Form einer Erdnuss, etwa 34 km lang. Er kommt der Erde näher als die Asteroiden im Hauptgürtel. Im Jahr 2000 schwenkte eine Raumsonde namens NEAR Shoemaker in eine Umlaufbahn um Eros ein, und ein Jahr später landete sie sanft auf ihm – obwohl sie nie für eine Landung gebaut worden war!",
+			"standard": "Eros, 1898 entdeckt, war der erste erdnahe Asteroid, der je gefunden wurde: Seine Bahn führt ihn näher an die Sonne als Mars, auch wenn sie die Erdbahn nie kreuzt. Er ist etwa 34 km lang. Am 14. Februar 2000 – dem Valentinstag, passend für einen Asteroiden, der nach dem griechischen Gott der Liebe benannt ist – wurde die NASA-Sonde NEAR Shoemaker zur ersten Raumsonde, die einen Asteroiden umkreiste. Nach einem Jahr Kartierung setzte sie am 12. Februar 2001 auf – die erste Landung auf einem Asteroiden.",
+			"advanced": "Eros ist ein S-Typ-Asteroid auf einer Bahn mit einer großen Halbachse von 1,46 AE und einer Exzentrizität von 0,22; er braucht 1,76 Jahre für einen Sonnenumlauf, und sein Perihel bei 1,13 AE macht ihn zu einem marsbahnkreuzenden erdnahen Asteroiden. Nahe Vorbeiflüge von Eros um 1900 und 1931 dienten dazu, seine Parallaxe und damit den Maßstab des Sonnensystems zu messen, die Länge der Astronomischen Einheit. NEAR Shoemaker ermittelte eine mittlere Dichte von etwa 2,7 g/cm³, ähnlich der Erdkruste – ein Hinweis auf einen festen, aber stark zerklüfteten Körper statt eines lockeren Geröllhaufens, bedeckt mit Felsblöcken und Senken voller feinem Staub."
+		},
+		"facts": {
+			"simple": [
+				"Eros ist nach dem griechischen Gott der Liebe benannt – und die Raumsonde kam am Valentinstag an!",
+				"Eros dreht sich in etwas mehr als 5 Stunden einmal um sich selbst.",
+				"Auf Eros ist die Schwerkraft so schwach, dass du einen Stein bis ins All werfen könntest."
+			],
+			"standard": [
+				"NEAR Shoemaker machte etwa 160 000 Bilder von Eros.",
+				"Ein Jahr auf Eros dauert etwa 1,76 Erdjahre.",
+				"Eros ist einer der größten bekannten erdnahen Asteroiden."
+			],
+			"advanced": [
+				"Die NEAR-Mission wurde zu Ehren des Planetengeologen Eugene Shoemaker umbenannt.",
+				"Eros wurde am 13. August 1898 von Gustav Witt in Berlin entdeckt.",
+				"Nach der Landung maß NEAR Shoemaker noch etwa zwei Wochen lang mit seinem Gammastrahlen-Spektrometer die Zusammensetzung der Oberfläche."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Eros so klein wie ein Sandkorn."
+			],
+			"standard": [
+				"Eros ist etwa 34 km lang – ein Auto mit 100 km/h bräuchte etwa 20 Minuten für seine ganze Länge."
+			],
+			"advanced": [
+				"Die Schwerkraft an der Oberfläche von Eros ist tausendfach schwächer als auf der Erde."
+			]
+		}
+	},
+	"bennu": {
+		"name": "Bennu",
+		"tagline": "Der Geröllhaufen, den wir nach Hause geholt haben",
+		"description": {
+			"simple": "Bennu ist ein kleiner Asteroid, nur etwa 500 m breit – wenn du um seine Mitte herumlaufen könntest, bräuchtest du nur etwa 20 Minuten. Er ist kein fester Felsen, sondern ein lockerer Haufen aus Steinen und Geröll, den seine winzige Schwerkraft zusammenhält. 2020 berührte die Raumsonde OSIRIS-REx Bennu für ein paar Sekunden und schnappte sich etwas Staub und Kieselsteine. 2023 brachte eine Kapsel sie sicher zur Erde, wo Forscher sie jetzt untersuchen.",
+			"standard": "Bennu ist ein erdnaher Asteroid, etwa 500 m groß und 1999 entdeckt. Die NASA-Sonde OSIRIS-REx kam 2018 an und fand einen Geröllhaufen: einen lockeren Haufen aus Felsblöcken und Schotter, den eine schwache Schwerkraft zusammenhält. Als sie am 20. Oktober 2020 die Oberfläche berührte, um eine Probe zu nehmen, sank ihr Probenkopf ein wie in ein Bällebad. Die Kapsel mit etwa 120 g Material landete am 24. September 2023 in der Wüste von Utah. Die Probe ist reich an Kohlenstoff und wasserhaltigen Mineralen und enthält Aminosäuren, Bausteine des Lebens.",
+			"advanced": "Bennu ist ein kohlenstoffreicher B-Typ-Asteroid, dessen mittlere Dichte von nur etwa 1,2 g/cm³ zeigt, dass ein großer Teil seines Volumens aus leeren Räumen zwischen den Bruchstücken besteht. Seine Bahn (große Halbachse 1,13 AE, Exzentrizität 0,20) kreuzt die Erdbahn und macht ihn zu einem der am genauesten beobachteten potenziell gefährlichen Asteroiden: Nach der präzisen Bahnverfolgung durch OSIRIS-REx liegt die Wahrscheinlichkeit eines Einschlags am 24. September 2182 bei etwa 1 zu 2700. Die zurückgebrachte Probe enthält Minerale, die sich in flüssigem Wasser bildeten, und Salze aus verdunsteter Salzlauge – Hinweise darauf, dass Bennus Mutterkörper einst Wasser enthielt."
+		},
+		"facts": {
+			"simple": [
+				"Seinen Namen bekam Bennu von einem neunjährigen Jungen, der 2013 einen Namenswettbewerb gewann.",
+				"Bennu dreht sich in etwas mehr als 4 Stunden einmal um sich selbst.",
+				"Die zur Erde gebrachten Stücke von Bennu wiegen etwa 120 g – etwas mehr als eine Tafel Schokolade."
+			],
+			"standard": [
+				"Bennu umrundet die Sonne etwa alle 1,2 Jahre.",
+				"Immer wieder schießen kleine Steinchen von Bennus Oberfläche ins All.",
+				"Nachdem sie ihre Probe abgeliefert hatte, flog die Sonde als OSIRIS-APEX weiter, um 2029 den Asteroiden Apophis zu besuchen."
+			],
+			"advanced": [
+				"Bennus Rotation (etwa 4,3 Stunden) wird pro Jahrhundert um etwa eine Sekunde schneller, angetrieben von Sonnenlicht, das als Wärme wieder abgestrahlt wird (YORP-Effekt).",
+				"Seine Oberfläche wirft nur etwa 4 % des auftreffenden Sonnenlichts zurück und ist mit mehr großen Felsblöcken übersät als erwartet.",
+				"Die Probe enthält 14 der 20 Aminosäuren, aus denen das Leben auf der Erde Proteine aufbaut."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Etwa fünf Fußballfelder hintereinander würden quer über Bennu reichen."
+			],
+			"standard": [
+				"Wäre die Erde ein Fußball, wäre Bennu ein Staubkörnchen, etwa ein Zehntel so breit wie ein Haar."
+			],
+			"advanced": [
+				"Bennus Fluchtgeschwindigkeit beträgt nur etwa 20 cm/s – viel weniger als Schritttempo; ein unvorsichtiger Schritt könnte dich ins All befördern."
+			]
+		}
+	},
+	"arrokoth": {
+		"name": "Arrokoth",
+		"tagline": "Die fernste Welt, die je erkundet wurde",
+		"description": {
+			"simple": "Arrokoth ist eine kleine, rötliche Welt aus Eis und Gestein, weit draußen im Kuipergürtel jenseits von Neptun. Sie sieht aus wie zwei flache Pfannkuchen, die aneinanderkleben – oder wie ein liegender Schneemann. Am Neujahrstag 2019 flog die Raumsonde New Horizons an ihr vorbei. Keine Raumsonde hat je etwas besucht, das weiter entfernt ist.",
+			"standard": "Arrokoth ist ein kleiner, eisiger Körper im Kuipergürtel, etwa 36 km lang. Am 1. Januar 2019 flog die NASA-Sonde New Horizons an ihm vorbei – dreieinhalb Jahre nach ihrem Besuch bei Pluto. Damit ist Arrokoth das fernste Objekt, das je aus der Nähe erkundet wurde, etwa 6,6 Milliarden km von der Erde entfernt. Er besteht aus zwei abgeflachten Hälften, die sanft aneinanderhaften – das zeigt, wie kleine Welten entstanden: Teilchen in einer Wolke aus Staub und Eis ballten sich langsam zusammen. Arrokoth hat sich in 4,5 Milliarden Jahren kaum verändert und ist deshalb wie eine Zeitkapsel aus der Entstehungszeit des Sonnensystems.",
+			"advanced": "Arrokoth (486958, früher 2014 MU69) wurde 2014 mit dem Hubble-Weltraumteleskop gefunden, bei der Suche nach einem Ziel, das New Horizons nach Pluto erreichen konnte. Er kreist im kalten klassischen Kuipergürtel auf einer fast kreisförmigen (Exzentrizität 0,04), kaum geneigten Bahn in 44 AE Abstand und braucht etwa 292 Jahre für einen Umlauf. Er ist ein Kontaktdoppelkörper: Seine beiden Hälften umkreisten einander einst und verschmolzen dann sanft, mit höchstens wenigen km/h – ein Beleg dafür, dass Planetesimale durch den sanften Kollaps von Kieselwolken entstanden und nicht durch heftige Zusammenstöße. Seine tiefrote Farbe stammt von organischen Verbindungen, die durch Strahlung entstanden sind, und auf seiner Oberfläche wurde Methanoleis nachgewiesen."
+		},
+		"facts": {
+			"simple": [
+				"Arrokoth bedeutet „Himmel“ in der Sprache des Volkes der Powhatan.",
+				"Funksignale von New Horizons bei Arrokoth brauchten etwa 6 Stunden bis zur Erde.",
+				"Arrokoth ist sehr rot – sogar röter als Pluto."
+			],
+			"standard": [
+				"Arrokoth wurde 2014 mit dem Hubble-Weltraumteleskop entdeckt, als Forscher ein Ziel für New Horizons suchten.",
+				"Ein Jahr auf Arrokoth dauert etwa 292 Erdjahre.",
+				"New Horizons flog in etwa 3500 km Abstand an Arrokoth vorbei."
+			],
+			"advanced": [
+				"Bevor 2019 sein offizieller Name feststand, hatte 2014 MU69 den Spitznamen „Ultima Thule“.",
+				"New Horizons kam Arrokoth etwa dreieinhalbmal näher als Pluto.",
+				"Sein Abstand zur Sonne ändert sich kaum: Er liegt zwischen etwa 42,5 und 45,6 AE."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Arrokoth ein Sandkorn in mehr als 100 km Entfernung."
+			],
+			"standard": [
+				"Arrokoth ist etwa 36 km lang – etwas kürzer als ein Marathon."
+			],
+			"advanced": [
+				"New Horizons flog mit etwa 14 km/s vorbei: Für die ganze Länge von Arrokoth hätte die Sonde keine 3 Sekunden gebraucht."
+			]
+		}
+	},
+	"halley": {
+		"name": "Halley",
+		"tagline": "Der Halleysche Komet, alle 75 bis 76 Jahre zurück",
+		"description": {
+			"simple": "Der Halleysche Komet ist der berühmteste Komet von allen. Er ist ein Klumpen aus schmutzigem Eis, etwa 15 km lang. Alle 75 oder 76 Jahre kommt er der Sonne nahe: Das Eis wird zu Gas und Staub, und der Komet bekommt einen langen, leuchtenden Schweif. Der Schweif zeigt immer von der Sonne weg. Zuletzt war Halley 1986 zu Besuch, und 2061 kommt er wieder – vielleicht siehst du ihn dann!",
+			"standard": "Der Halleysche Komet kehrt alle 75 bis 76 Jahre ins innere Sonnensystem zurück. Sein Kern ist ein dunkler Klumpen aus Eis und Staub, etwa 15 × 8 km groß. Nähert er sich der Sonne, verwandelt das Sonnenlicht das Eis in Gas, das Staub mitreißt und eine leuchtende Wolke bildet, die Koma, dazu zwei Schweife, die von der Sonne weggedrückt werden: einen geraden, bläulichen Gasschweif und einen gebogenen, weißlichen Staubschweif. Wenn sich der Komet wieder von der Sonne entfernt, fliegen seine Schweife ihm also voraus. Edmond Halley erkannte, dass die Kometen von 1531, 1607 und 1682 ein und derselbe waren, und sagte seine Rückkehr für 1758 voraus; der Komet kam tatsächlich wieder, doch Halley erlebte es nicht mehr. Sein letztes Perihel war am 9. Februar 1986, das nächste folgt am 28. Juli 2061.",
+			"advanced": "Der Komet 1P/Halley bewegt sich auf einer rückläufigen Bahn (Neigung 162°): Er umrundet die Sonne in entgegengesetzter Richtung zu den Planeten. Seine stark exzentrische Bahn (0,97) führt ihn von etwa 0,6 AE, innerhalb der Venusbahn, bis etwa 35 AE hinaus, jenseits von Neptun. Im März 1986 flog die ESA-Sonde Giotto in etwa 600 km Abstand am Kern vorbei und lieferte die ersten Nahaufnahmen eines Kometenkerns: eine Oberfläche dunkler als Kohle, aus der an einigen aktiven Stellen auf der Tagseite Gas- und Staubfontänen schossen. Aufzeichnungen über den Halleyschen Kometen reichen in China mindestens bis ins Jahr 240 v. Chr. zurück."
+		},
+		"facts": {
+			"simple": [
+				"Staub vom Halleyschen Kometen sorgt jedes Jahr für zwei Sternschnuppenschauer, im Mai und im Oktober.",
+				"Der Schriftsteller Mark Twain wurde in einem Halley-Jahr geboren, 1835, und starb im nächsten, 1910.",
+				"Der Halleysche Komet ist auf dem Teppich von Bayeux zu sehen, einer mehr als 900 Jahre alten Stickerei."
+			],
+			"standard": [
+				"1986 flog eine ganze Flotte von Raumsonden aus Europa, der Sowjetunion und Japan an dem Kometen vorbei.",
+				"Im Dezember 2023 erreichte er den fernsten Punkt seiner Bahn jenseits von Neptun; jetzt ist er auf dem Rückweg.",
+				"Der Halleysche Komet ist nach dem Astronomen Edmond Halley benannt, nicht nach dem Menschen, der ihn als Erster sah."
+			],
+			"advanced": [
+				"Der Kern hat eine Masse von etwa 2,2 × 10¹⁴ kg.",
+				"Die Umlaufzeit schwankt von einer Wiederkehr zur nächsten um einige Jahre, weil die Schwerkraft der Planeten am Kometen zerrt.",
+				"Sein Staub verursacht die Eta-Aquariiden im Mai und die Orioniden im Oktober."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Halleys Kern ist nur etwa 15 km lang, doch sein Schweif kann sich über Millionen Kilometer erstrecken – ein Vielfaches der Entfernung von der Erde zum Mond."
+			],
+			"standard": [
+				"Ein Kind, das den Halleyschen Kometen 2061 mit 10 Jahren sieht, ist bei seiner nächsten Wiederkehr danach etwa 85."
+			],
+			"advanced": [
+				"In Sonnennähe rast Halley mit etwa 55 km/s dahin, am fernen Ende seiner Bahn kriecht er mit weniger als 1 km/s – das zweite Keplersche Gesetz in Aktion."
+			]
+		}
+	},
+	"encke": {
+		"name": "Encke",
+		"tagline": "Der Komet mit dem kürzesten Jahr",
+		"description": {
+			"simple": "Der Komet Encke ist ein kleiner Komet, der sehr oft zur Sonne zurückkommt – etwa alle 3 Jahre und 4 Monate. Sein Kern ist nur etwa 5 km breit, und meistens ist er zu lichtschwach, um ihn ohne Fernglas oder Teleskop zu sehen. Staub, den er entlang seiner Bahn zurückgelassen hat, beschert uns im Herbst Sternschnuppen.",
+			"standard": "Der Komet Encke (2P/Encke) hat die kürzeste Umlaufzeit aller hellen Kometen: Er kehrt alle 3,3 Jahre wieder. Pierre Méchain sah ihn 1786 als Erster, doch benannt ist er nach Johann Franz Encke, der 1819 seine Bahn berechnete und zeigte, dass er immer wiederkommt. Er war erst der zweite Komet nach dem Halleyschen, bei dem man das wusste – deshalb beginnt sein Katalogname mit „2P“. Seine Bahn führt ihn näher an die Sonne als Merkur im Mittel und hinaus bis etwa 4 AE, noch innerhalb der Jupiterbahn. Staub von Encke verursacht jedes Jahr im Oktober und November die Sternschnuppen der Tauriden.",
+			"advanced": "Enckes Bahn (große Halbachse 2,22 AE, Exzentrizität 0,85) reicht von 0,34 AE, näher an der Sonne als Merkurs mittlerer Abstand, bis 4,1 AE. Encke bemerkte, dass der Komet jedes Mal einige Stunden früher zurückkehrte, als die Schwerkraft allein vorhersagte – einer der ersten Hinweise auf nichtgravitative Kräfte, die, wie wir heute wissen, von Gasfontänen stammen, die wie kleine Raketentriebwerke auf den rotierenden Kern wirken. Anders als die meisten kurzperiodischen Kometen kommt Encke Jupiter nie nahe, dessen Schwerkraft solche Bahnen sonst umformt; wie er auf seine heutige Bahn gelangte, ist noch umstritten. Da er schon Dutzende Male beobachtet wurde, gehört er zu den am besten untersuchten Kometen."
+		},
+		"facts": {
+			"simple": [
+				"Encke beschert uns im Oktober und November die Sternschnuppen der Tauriden.",
+				"Encke kommt der Sonne näher, als der Planet Merkur im Mittel ist.",
+				"Encke kehrt etwa dreimal in zehn Jahren zur Sonne zurück."
+			],
+			"standard": [
+				"Enckes Kern ist etwa 5 km groß.",
+				"2007 beobachteten die NASA-Sonden STEREO, wie ein Ausbruch der Sonne Enckes Schweif abriss – er wuchs später wieder nach.",
+				"Encke fliegt nie so weit hinaus wie bis zur Jupiterbahn."
+			],
+			"advanced": [
+				"Umlaufzeit 3,31 Jahre; Perihel 0,34 AE; Aphel 4,1 AE.",
+				"Seine Staubspur hat sich über die ganze Bahn verteilt, sodass die Erde sie jedes Jahr durchquert.",
+				"Enckes Bezeichnung 2P bedeutet „zweiter periodischer Komet“; der Halleysche Komet ist 1P."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre Enckes Kern etwa so dünn wie ein Haar."
+			],
+			"standard": [
+				"Encke kehrt etwa 23-mal wieder, während der Halleysche Komet ein einziges Mal zurückkommt."
+			],
+			"advanced": [
+				"In Sonnennähe empfängt Encke fast neunmal so viel Sonnenlicht wie die Erde."
+			]
+		}
+	},
+	"67p": {
+		"name": "67P",
+		"tagline": "Der Quietscheentchen-Komet, den Rosetta besuchte",
+		"description": {
+			"simple": "Der Komet 67P sieht aus wie ein riesiges Quietscheentchen aus Eis und Staub, etwa 4 km lang. Die Raumsonde Rosetta umkreiste ihn zwei Jahre lang und sah zu, wie er aufwachte, als er der Sonne näher kam: Fontänen aus Gas und Staub schossen aus ihm heraus. Rosetta setzte sogar einen kleinen Lander namens Philae auf dem Kometen ab – die allererste Landung auf einem Kometen.",
+			"standard": "Der Komet 67P/Tschurjumow-Gerassimenko wurde 1969 von Klim Tschurjumow und Swetlana Gerassimenko entdeckt. Er besteht aus zwei Teilen, die durch einen schmalen Hals verbunden sind – das ergibt seine berühmte „Quietscheentchen“-Form, etwa 4 km lang. Die ESA-Sonde Rosetta erreichte ihn im August 2014 und umkreiste ihn mehr als zwei Jahre lang; dabei beobachtete sie, wie sich das Eis in Gas verwandelte, als der Komet der Sonne näher kam. Am 12. November 2014 setzte der Lander Philae auf – die erste Landung auf einem Kometen –, prallte aber ab und kam im Schatten einer Felswand zur Ruhe. Rosetta beendete ihre Mission am 30. September 2016 mit einer langsamen, kontrollierten Bruchlandung auf dem Kometen.",
+			"advanced": "67P ist ein Komet der Jupiter-Familie mit einer Umlaufzeit von 6,4 Jahren; sein Abstand zur Sonne schwankt zwischen 1,24 AE und etwa 5,7 AE. Rosetta maß eine Dichte von nur etwa 0,53 g/cm³: Rund 70 % des Kerns sind leerer Raum. Ihre Instrumente fanden die Aminosäure Glycin und Phosphor sowie ein Verhältnis von schwerem zu gewöhnlichem Wasser, das sich deutlich von dem in den Ozeanen der Erde unterscheidet – Kometen wie 67P haben also wohl nicht den Großteil des irdischen Wassers geliefert. Philaes Harpunen zündeten nicht, sodass er zweimal abprallte, bevor er im Schatten liegen blieb, wo seine Batterie nach etwa zweieinhalb Tagen Messbetrieb erschöpft war."
+		},
+		"facts": {
+			"simple": [
+				"Die Schwerkraft auf 67P ist so schwach, dass dich ein kräftiger Sprung ins All befördern würde.",
+				"Der Lander Philae prallte zweimal ab, bevor er liegen blieb.",
+				"Rosetta brauchte zehn Jahre bis zu 67P und erkundete ihn dann mehr als zwei Jahre lang."
+			],
+			"standard": [
+				"67P umrundet die Sonne alle 6,4 Jahre.",
+				"Der Komet ist so porös, dass er auf Wasser schwimmen würde – wenn man eine Badewanne fände, die groß genug ist.",
+				"Rosetta ist nach dem Stein von Rosette benannt, mit dessen Hilfe die ägyptischen Hieroglyphen entziffert wurden."
+			],
+			"advanced": [
+				"Masse etwa 1 × 10¹³ kg – rund 10 Milliarden Tonnen.",
+				"Der Kern dreht sich in etwa 12,4 Stunden einmal um sich selbst.",
+				"67P durchlief sein Perihel am 13. August 2015 bei 1,24 AE, während Rosetta zusah."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"67P ist etwa 4 km lang – du könntest in weniger als einer Stunde von einem Ende zum anderen laufen, wenn du nicht davonschweben würdest."
+			],
+			"standard": [
+				"Wäre die Erde ein Fußball, wäre 67P etwa so dick wie ein menschliches Haar."
+			],
+			"advanced": [
+				"Die mittlere Dichte von 67P, etwa 0,5 g/cm³, ähnelt der von trockenem Kiefernholz."
+			]
+		}
+	},
+	"halebopp": {
+		"name": "Hale-Bopp",
+		"tagline": "Der große Komet von 1997",
+		"description": {
+			"simple": "Hale-Bopp war einer der hellsten Kometen der letzten hundert Jahre. 1997 konnten ihn Menschen auf der ganzen Welt ohne Teleskop am Nachthimmel sehen – sogar aus hell erleuchteten Städten. Er blieb etwa anderthalb Jahre lang sichtbar. Sein Kern ist für einen Kometen riesig, etwa 60 km breit. Erst in etwa 2400 Jahren kommt er wieder.",
+			"standard": "Der Komet Hale-Bopp (C/1995 O1) wurde am 23. Juli 1995 in derselben Nacht unabhängig voneinander von Alan Hale in New Mexico und Thomas Bopp in Arizona entdeckt. Damals war er noch jenseits der Jupiterbahn – ungewöhnlich weit draußen für einen sichtbaren Kometen, weil sein Kern außergewöhnlich groß ist, rund 60 km. Am 1. April 1997 kam er der Sonne am nächsten und wurde wahrscheinlich von mehr Menschen gesehen als je ein Komet zuvor. Seine beiden Schweife, ein bläulicher Gasschweif und ein breiter, weißlicher Staubschweif, zeigten in leicht unterschiedliche Richtungen, aber beide von der Sonne weg.",
+			"advanced": "Hale-Bopp ist ein langperiodischer Komet auf einer fast senkrecht stehenden (Neigung 89°), extrem langgestreckten Bahn (Exzentrizität 0,995). Sein vorheriger Besuch liegt etwa 4200 Jahre zurück; auf dem Weg nach innen kam er 1996 Jupiter nahe, dessen Schwerkraft seine Umlaufzeit auf etwa 2400 Jahre verkürzte. Sein Kern, geschätzt 40 bis 80 km groß, ist einer der größten bekannten Kometenkerne. Neben den üblichen Gas- und Staubschweifen entdeckten Beobachter einen dritten, schwachen Schweif aus Natriumatomen. Seine Bahn reicht heute bis etwa 350 AE von der Sonne hinaus."
+		},
+		"facts": {
+			"simple": [
+				"Hale-Bopp wurde in derselben Nacht von zwei Menschen an zwei verschiedenen Orten entdeckt.",
+				"Sein Kern ist etwa viermal so lang wie der des Halleyschen Kometen.",
+				"Als Hale-Bopp das letzte Mal vorbeikam, vor etwa 4200 Jahren, standen die ägyptischen Pyramiden schon."
+			],
+			"standard": [
+				"Hale-Bopp war etwa 18 Monate lang mit bloßem Auge zu sehen, doppelt so lange wie der bisherige Rekordhalter, der Große Komet von 1811.",
+				"Seine Bahn steht fast im rechten Winkel (89°) zu den Bahnen der Planeten.",
+				"Seine Schweife erstreckten sich über viele Millionen Kilometer."
+			],
+			"advanced": [
+				"Hale-Bopp wurde in etwa 7 AE Abstand von der Sonne entdeckt, weiter draußen als Jupiter.",
+				"Sein Natriumschweif war gerade und schmal, vom Druck des Sonnenlichts nach außen geschoben.",
+				"Hale-Bopp durchlief sein Perihel am 1. April 1997 in etwa 0,9 AE Abstand von der Sonne."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre die Erde ein Fußball, wäre der Kern von Hale-Bopp etwa so groß wie ein Mohnkorn."
+			],
+			"standard": [
+				"Hale-Bopp kommt nur etwa alle 2400 Jahre wieder – rund 30-mal so selten wie der Halleysche Komet."
+			],
+			"advanced": [
+				"Am fernen Ende seiner Bahn, etwa 350 AE draußen, braucht das Sonnenlicht etwa zwei Tage bis zu Hale-Bopp."
+			]
+		}
+	},
+	"neowise": {
+		"name": "NEOWISE",
+		"tagline": "Der große Komet von 2020",
+		"description": {
+			"simple": "Der Komet NEOWISE war ein heller Komet, den man im Juli 2020 mit eigenen Augen sehen konnte. Entdeckt wurde er im März 2020 von einem Weltraumteleskop namens NEOWISE, das dem Kometen seinen Namen gab. Auf Fotos erkennt man deutlich seine zwei Schweife: einen gebogenen, weißlichen Staubschweif und einen dünnen, bläulichen Gasschweif. Erst in etwa 6800 Jahren kommt er wieder.",
+			"standard": "Der Komet NEOWISE (C/2020 F3) wurde am 27. März 2020 vom NASA-Weltraumteleskop NEOWISE entdeckt, das im Infrarotlicht nach Asteroiden und Kometen suchte. Am 3. Juli 2020 kam er der Sonne am nächsten, innerhalb der Merkurbahn, und überstand die Hitze. Im Juli wurde er zum hellsten Kometen, der seit Hale-Bopp 1997 von der Nordhalbkugel aus zu sehen war – mit bloßem Auge gut zu erkennen, tief am Morgen- und später am Abendhimmel. Fotos zeigten deutlich seine zwei Schweife: einen gebogenen, gelblich-weißen Staubschweif und einen geraden, schwachen blauen Gasschweif, beide von der Sonne weg gerichtet. Erst in etwa 6800 Jahren kehrt er zurück.",
+			"advanced": "C/2020 F3 ist ein langperiodischer Komet auf einer stark geneigten (129°), rückläufigen Bahn. Im Perihel war er nur 0,29 AE von der Sonne entfernt, und am 23. Juli 2020 kam er der Erde mit etwa 103 Millionen km (0,69 AE) am nächsten. Die Schwerkraft der Planeten dehnte bei diesem Durchgang seine Bahn: Seine Umlaufzeit wuchs um mehr als 2000 Jahre auf etwa 6800 Jahre, sein Aphel liegt nun mehr als 700 AE von der Sonne entfernt. Sein Kern ist etwa 5 km groß. Spektren zeigten leuchtendes Natrium, und das Sonnenobservatorium SOHO sowie die Parker Solar Probe fotografierten ihn nahe dem Perihel."
+		},
+		"facts": {
+			"simple": [
+				"NEOWISE war für Menschen auf der Nordhalbkugel der hellste Komet seit mehr als 20 Jahren.",
+				"Astronauten auf der Internationalen Raumstation fotografierten ihn aus dem All.",
+				"Sein nächster Besuch liegt so weit in der Zukunft, dass ihn niemand, der heute lebt, wiedersehen wird."
+			],
+			"standard": [
+				"Der Kern von NEOWISE ist etwa 5 km groß.",
+				"Er kam der Sonne näher, als Merkur es jemals tut.",
+				"Das Teleskop NEOWISE, das ihn entdeckte, beendete 2024 seine Mission."
+			],
+			"advanced": [
+				"Im Perihel bewegte sich der Komet mit fast 78 km/s relativ zur Sonne.",
+				"Infrarotteleskope sehen das Wärmeleuchten des dunklen Kometenkerns und seines Staubs – das macht sie zu guten Kometenjägern.",
+				"Seine Bahn ist rückläufig: Er umrundet die Sonne in entgegengesetzter Richtung zu den Planeten."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"NEOWISE kommt erst in etwa 6800 Jahren wieder – das ist länger als die ganze Zeit, seit die Menschen schreiben können."
+			],
+			"standard": [
+				"NEOWISE braucht für einen Umlauf um die Sonne etwa 90-mal so lange wie der Halleysche Komet."
+			],
+			"advanced": [
+				"Am fernen Ende seiner Bahn, mehr als 700 AE draußen, braucht das Sonnenlicht etwa 4 Tage bis zu NEOWISE."
+			]
+		}
+	},
+	"nix": {
+		"name": "Nix",
+		"tagline": "Plutos Mond der Nacht",
+		"description": {
+			"simple": "Nix ist einer der kleinen Monde Plutos, nur etwa 50 km lang und geformt wie eine Kartoffel. Statt Pluto immer dieselbe Seite zu zeigen, taumelt er bei seinem Umlauf. Er ist nach der griechischen Göttin der Nacht benannt.",
+			"standard": "Nix ist ein kleiner, länglicher Mond, etwa 50 × 33 × 31 km groß, der 2005 zusammen mit Hydra mit dem Hubble-Weltraumteleskop entdeckt wurde. Er umkreist Pluto und Charon alle 24,9 Tage. Wie Plutos andere kleine Monde wendet er Pluto nicht immer dieselbe Seite zu, sondern taumelt chaotisch, weil zwei große Körper zugleich an ihm ziehen. Er ist nach Nyx benannt, der griechischen Göttin der Nacht; die Schreibweise mit i vermeidet eine Verwechslung mit einem Asteroiden namens Nyx.",
+			"advanced": "Nix umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 48 700 km Abstand mit einer Umlaufzeit von 24,9 Tagen, fast dem Vierfachen von Charons Umlaufzeit. Seine chaotische, taumelnde Rotation entsteht durch die ständig wechselnde Anziehung des Paares Pluto–Charon. New Horizons fand ein rötliches Gebiet um einen großen Krater auf seiner sonst hellen Oberfläche aus Wassereis. Die Anfangsbuchstaben von Nix und Hydra, N und H, wurden zu Ehren von New Horizons gewählt."
+		}
+	},
+	"hydra": {
+		"name": "Hydra",
+		"tagline": "Plutos äußerster Mond",
+		"description": {
+			"simple": "Hydra ist der Mond, der am weitesten von Pluto entfernt ist. Er ist klein, etwa 51 km lang, und taumelt bei seinem Umlauf. Benannt ist er nach einem vielköpfigen Ungeheuer aus griechischen Sagen.",
+			"standard": "Hydra ist der äußerste der bekannten Monde Plutos, etwa 51 × 36 × 31 km groß. Er wurde 2005 zusammen mit Nix mit dem Hubble-Weltraumteleskop entdeckt und umkreist Pluto und Charon alle 38,2 Tage. New Horizons zeigte, dass seine Oberfläche hell ist und größtenteils aus Wassereis besteht. Benannt ist er nach der vielköpfigen Schlange, gegen die Herakles in der griechischen Sage kämpfte.",
+			"advanced": "Hydra umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 64 700 km Abstand mit einer Umlaufzeit von 38,2 Tagen – fast genau dem Sechsfachen von Charons Umlaufzeit. Wie die anderen kleinen Monde rotiert er chaotisch statt gebunden. Seine helle Oberfläche wird von relativ reinem Wassereis bestimmt. Zusammen mit Nix erhielt er seinen Namen so, dass die Anfangsbuchstaben N und H die Mission New Horizons ehren."
+		}
+	},
+	"kerberos": {
+		"name": "Kerberos",
+		"tagline": "Plutos Mond aus zwei Teilen",
+		"description": {
+			"simple": "Kerberos ist ein winziger Mond Plutos, nur etwa 19 km lang. Er sieht aus wie zwei kleine Klumpen, die aneinanderkleben. Benannt ist er nach dem dreiköpfigen Hund, der in griechischen Sagen die Unterwelt bewacht.",
+			"standard": "Kerberos gehört zu den kleinsten Monden Plutos, etwa 19 × 10 × 9 km groß, und wurde 2011 mit dem Hubble-Weltraumteleskop entdeckt. Er umkreist Pluto und Charon alle 32,2 Tage. New Horizons zeigte, dass er aus zwei Teilen besteht, einem größeren und einem kleineren, und dass seine Oberfläche heller ist, als die Forscher erwartet hatten. Benannt ist er nach dem dreiköpfigen Hund, der in der griechischen Sage den Eingang zur Unterwelt bewacht.",
+			"advanced": "Kerberos umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 57 800 km Abstand mit einer Umlaufzeit von 32,2 Tagen – fast dem Fünffachen von Charons Umlaufzeit, zwischen den Bahnen von Nix und Hydra. Aufnahmen von New Horizons zeigten eine Form aus zwei Teilen, vielleicht zwei verschmolzene Körper, und eine helle Oberfläche aus Wassereis. Wie Plutos andere kleine Monde entstand er wahrscheinlich aus Trümmern des gewaltigen Einschlags, der vermutlich auch Charon hervorgebracht hat."
+		}
+	},
+	"styx": {
+		"name": "Styx",
+		"tagline": "Plutos kleinster bekannter Mond",
+		"description": {
+			"simple": "Styx ist der kleinste bekannte Mond Plutos, nur etwa 16 km lang. Er wurde 2012 gefunden, als Forscher prüften, ob der Weg der Raumsonde New Horizons sicher war. Benannt ist er nach einem Fluss der Unterwelt aus griechischen Sagen.",
+			"standard": "Styx, etwa 16 × 9 × 8 km groß, ist der kleinste bekannte Mond Plutos. Er wurde 2012 mit dem Hubble-Weltraumteleskop entdeckt, bei der Suche nach Monden und Staub, die New Horizons gefährden könnten. Er umkreist Pluto und Charon alle 20,2 Tage, innerhalb der Bahn von Nix. Benannt ist er nach dem Fluss, der in der griechischen Sage die Welt der Lebenden von der Unterwelt trennt.",
+			"advanced": "Styx umkreist den gemeinsamen Schwerpunkt von Pluto und Charon in etwa 42 700 km Abstand mit einer Umlaufzeit von 20,2 Tagen, fast dem Dreifachen von Charons Umlaufzeit; damit ist er der innerste der vier kleinen Monde Plutos. Ein Team unter der Leitung von Mark Showalter fand ihn auf Hubble-Aufnahmen von 2012. New Horizons sah ihn nur aus großer Entfernung, deshalb ist über seine Oberfläche wenig bekannt."
+		}
+	},
+	"dysnomia": {
+		"name": "Dysnomia",
+		"tagline": "Der Mond, der Eris gewogen hat",
+		"description": {
+			"simple": "Dysnomia ist der einzige bekannte Mond des Zwergplaneten Eris. Sie ist viel dunkler als Eris, die so hell ist wie frischer Schnee. Indem sie beobachteten, wie Dysnomia um Eris kreist, konnten Astronomen ausrechnen, wie schwer Eris ist.",
+			"standard": "Dysnomia ist der einzige bekannte Mond von Eris, entdeckt im September 2005 mit dem Keck-Teleskop auf Hawaii. Sie umkreist Eris alle 15,8 Tage in etwa 37 300 km Abstand. Aus ihrer Bahn berechneten Astronomen, dass Eris etwa ein Viertel schwerer ist als Pluto. In der griechischen Sage ist Dysnomia die Tochter der Eris und der Geist der Gesetzlosigkeit – ein Name, der auch auf die Schauspielerin Lucy Lawless anspielt, die Xena spielte, den frühen Spitznamen von Eris.",
+			"advanced": "Dysnomia folgt einer fast kreisförmigen Bahn in etwa 37 300 km Abstand von Eris mit einer Umlaufzeit von 15,8 Tagen; mit dem dritten Keplerschen Gesetz ergibt sich daraus die Masse von Eris, etwa 1,66 × 10²² kg, 27 % mehr als die Plutos. Dysnomia ist sehr dunkel und wirft nur wenige Prozent des auftreffenden Lichts zurück, Eris dagegen etwa 96 %. Sie ist vermutlich mehrere hundert Kilometer groß und wäre damit nach Charon der zweitgrößte bekannte Mond eines Zwergplaneten. Eris scheint sich im Gleichtakt mit Dysnomias Umlauf zu drehen – ein Zeichen, dass Gezeitenkräfte das Paar aneinander gebunden haben."
+		}
+	},
+	"namaka": {
+		"name": "Namaka",
+		"tagline": "Haumeas innerer Mond",
+		"description": {
+			"simple": "Namaka ist der kleinere der beiden Monde des Zwergplaneten Haumea. Sie umrundet Haumea in etwas mehr als zweieinhalb Wochen. Benannt ist sie nach einer hawaiischen Meeresgöttin, einer der Töchter Haumeas.",
+			"standard": "Namaka ist der kleinere und innere der beiden Monde Haumeas, vielleicht 170 km groß. Sie wurde im Juni 2005 mit dem Keck-Teleskop auf Hawaii entdeckt und umkreist Haumea alle 18,3 Tage in etwa 25 700 km Abstand. Wie Haumea und ihr anderer Mond ist sie wahrscheinlich ein Bruchstück, das bei einem Zusammenstoß in der Frühzeit abgesprengt wurde. Benannt ist sie nach Nāmaka, einer hawaiischen Meeresgöttin und Tochter Haumeas.",
+			"advanced": "Namaka umkreist Haumea in etwa 25 700 km Abstand mit einer Umlaufzeit von 18,3 Tagen, auf einer deutlich exzentrischen Bahn (etwa 0,25), die gegen die Bahn des äußeren Mondes Hiʻiaka geneigt ist. Ihre Bahn wird von Hiʻiaka und von Haumeas stark gestreckter Form gestört. Namaka und Hiʻiaka gelten als Bruchstücke des gewaltigen Zusammenstoßes, aus dem auch Haumeas Familie eisiger Körper und womöglich ihre schnelle Drehung hervorgingen."
+		}
+	},
+	"hiiaka": {
+		"name": "Hiʻiaka",
+		"tagline": "Haumeas äußerer Mond",
+		"description": {
+			"simple": "Hiʻiaka ist der größere der beiden Monde des Zwergplaneten Haumea. Sie ist mit Eis bedeckt und umrundet Haumea in etwa sieben Wochen. Benannt ist sie nach einer hawaiischen Göttin des Hula-Tanzes, einer der Töchter Haumeas.",
+			"standard": "Hiʻiaka ist der größere und äußere der beiden Monde Haumeas, etwa 320 km groß. Sie wurde im Januar 2005 mit dem Keck-Teleskop auf Hawaii entdeckt, noch bevor Haumea ihren Namen hatte, und umkreist Haumea alle 49 Tage in etwa 49 900 km Abstand. Wie bei Haumea ist ihre Oberfläche mit Wassereis bedeckt. Benannt ist sie nach Hiʻiaka, der hawaiischen Schutzgöttin der Insel Hawaiʻi und der Hula-Tänzerinnen, einer Tochter Haumeas.",
+			"advanced": "Hiʻiaka umkreist Haumea in etwa 49 900 km Abstand mit einer Umlaufzeit von 49 Tagen auf einer fast kreisförmigen Bahn. Ihr Spektrum zeigt kristallines Wassereis, ganz ähnlich wie Haumeas eigene Oberfläche – das stützt die Vorstellung, dass beide Monde Bruchstücke von Haumeas Eiskruste sind, die bei einem Zusammenstoß in der Frühzeit abgesprengt wurden. Erst die Verfolgung von Hiʻiakas Bahn erlaubte es den Astronomen, Haumeas Masse zu messen."
+		}
+	},
+	"s20151364721": {
+		"name": "S/2015 (136472) 1",
+		"tagline": "Makemakes dunkler kleiner Mond",
+		"description": {
+			"simple": "Dieser winzige, dunkle Mond umkreist den Zwergplaneten Makemake. Neben dem hellen Makemake war er so schwer zu erkennen, dass er erst 2016 auf Bildern des Hubble-Weltraumteleskops gefunden wurde. Forscher gaben ihm den Spitznamen MK2.",
+			"standard": "S/2015 (136472) 1, Spitzname MK2, ist der einzige bekannte Mond von Makemake. Er wurde auf Hubble-Aufnahmen vom April 2015 entdeckt und 2016 bekannt gegeben. Er ist etwa 1300-mal lichtschwächer als Makemake und sehr dunkel, vermutlich kleiner als 200 km. Sein Name ist noch eine vorläufige Bezeichnung: S für Satellit, 2015 für das Jahr der Aufnahme, 136472 für Makemakes Katalognummer und 1 für den ersten gefundenen Mond.",
+			"advanced": "MK2 wurde auf Hubble-Aufnahmen vom April 2015 entdeckt, etwa 21 000 km von Makemake entfernt. Seine Bahn ist noch nicht genau bekannt; sehen wir sie fast von der Kante, verschwindet der Mond die meiste Zeit im Glanz von Makemake – das könnte erklären, warum frühere Suchen ihn übersehen haben. Seine dunkle Oberfläche steht im Gegensatz zu Makemakes hellem Methaneis, vielleicht weil seine schwache Schwerkraft solch flüchtiges Eis nicht festhalten kann. Eine genau vermessene Bahn würde Makemakes Masse und Dichte liefern."
+		}
 	}
 }

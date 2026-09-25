@@ -6,7 +6,7 @@
  * number beside it. Computed from the body model, so every body gets them,
  * translated through the i18n layer (`solarSystem.facts.*`).
  */
-import { bodyById, type Body } from "@/data"
+import { bodyById, isSmallBody, type Body } from "@/data"
 import type { I18n } from "@/i18n"
 import { bodyName } from "@/i18n/bodies"
 import { kmToAu } from "@/sim"
@@ -55,11 +55,16 @@ export const surfaceGravity = (
 		: (GRAVITATIONAL_CONSTANT * body.massKg) / (body.radiusKm * 1000) ** 2
 }
 
-/** Our Moon for moons and for Earth itself, Earth for everything else. */
+/** Our Moon for moons, the small bodies (#23) and Earth itself, Earth for everything else. */
 const sizeReference = (body: Body): Body | undefined =>
-	body.id === "earth" || (body.kind === "moon" && body.id !== "moon")
+	body.id === "earth" ||
+	(body.kind === "moon" && body.id !== "moon") ||
+	isSmallBody(body)
 		? moon
 		: earth
+
+/** From this eccentricity on (comets, #23) the distance is a range, not one number. */
+export const DISTANCE_RANGE_ECCENTRICITY = 0.5
 
 function sizeFact(body: Body, i18n: I18n): HeadlineFact | null {
 	const reference = sizeReference(body)
@@ -102,6 +107,25 @@ function distanceFact(body: Body, i18n: I18n): HeadlineFact | null {
 	if (body.orbit === null || parent === undefined) return null
 	const km = body.orbit.semiMajorAxisKm
 	const label = i18n.t("solarSystem.facts.label.distance")
+	if (
+		parent.parentId === null &&
+		body.orbit.eccentricity >= DISTANCE_RANGE_ECCENTRICITY
+	) {
+		// a comet on a long orbit: from its nearest to its farthest point
+		const near = km * (1 - body.orbit.eccentricity)
+		const far = km * (1 + body.orbit.eccentricity)
+		const au = (x: number) =>
+			i18n.t("units.au", { value: i18n.significant(kmToAu(x), 2) })
+		return {
+			key: "distance",
+			label,
+			comparison: i18n.t("solarSystem.facts.sunlightRange", {
+				near: lightTime(near, i18n),
+				far: lightTime(far, i18n),
+			}),
+			value: `${au(near)} – ${au(far)}`,
+		}
+	}
 	if (parent.parentId === null) {
 		// a planet: how long sunlight takes to get there
 		return {
