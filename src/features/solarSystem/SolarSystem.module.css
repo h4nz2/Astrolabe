@@ -158,25 +158,30 @@
 
 /*
  * wide screens: the body info sits beside the time controls on one bottom
- * row; the top panels reach down into the free middle row (#29), so a tall
- * frame badge or scale panel never pushes the bottom row off screen
+ * row; the right column reaches down into the free middle row (#29), so a
+ * tall scale panel never pushes the bottom row off screen
  */
 @media (min-width: 1000px) {
 	.hud {
 		grid-template-rows: auto minmax(0, 1fr) auto;
 		grid-template-areas:
 			"picker centre toggles"
-			"picker . toggles"
+			". . toggles"
 			"info time .";
 	}
 
+	/*
+	 * A tall card (a planet's facts and moons, #17) may grow up the left side
+	 * past the top row (the toggles are on the right), keeping the picker clear,
+	 * and scrolls rather than running off the bottom of a 720 px projector.
+	 */
 	.info {
-		max-height: 50dvh;
+		grid-row: 1 / -1;
+		max-height: calc(100% - 3.75rem);
 		overflow-y: auto;
 	}
 
-	/* a column taller than the room it has (a frame badge, a crowded scale panel) scrolls in place */
-	.pickerStack,
+	/* a column taller than the room it has (a crowded scale panel) scrolls in place (#29) */
 	.toggles {
 		max-height: 100%;
 		overflow-y: auto;
@@ -253,7 +258,7 @@
 /* the body card may be tall at projector size: it scrolls rather than pushing the time controls off screen */
 @media (min-width: 1000px) {
 	:global(html[data-presenting]) .info {
-		max-height: 55dvh;
+		grid-row: 1 / span 3;
 	}
 }
 
@@ -267,7 +272,7 @@
 		grid-template-rows: auto minmax(0, 1fr) auto auto;
 		grid-template-areas:
 			"picker centre toggles"
-			"picker . toggles"
+			". . toggles"
 			"info . ."
 			"time time time";
 	}

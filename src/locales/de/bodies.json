@@ -358,26 +358,849 @@
 			]
 		}
 	},
-	"phobos": { "name": "Phobos" },
-	"deimos": { "name": "Deimos" },
-	"io": { "name": "Io" },
-	"europa": { "name": "Europa" },
-	"ganymede": { "name": "Ganymed" },
-	"callisto": { "name": "Kallisto" },
-	"mimas": { "name": "Mimas" },
-	"enceladus": { "name": "Enceladus" },
-	"tethys": { "name": "Tethys" },
-	"dione": { "name": "Dione" },
-	"rhea": { "name": "Rhea" },
-	"titan": { "name": "Titan" },
-	"hyperion": { "name": "Hyperion" },
-	"iapetus": { "name": "Iapetus" },
-	"miranda": { "name": "Miranda" },
-	"ariel": { "name": "Ariel" },
-	"umbriel": { "name": "Umbriel" },
-	"titania": { "name": "Titania" },
-	"oberon": { "name": "Oberon" },
-	"triton": { "name": "Triton" },
-	"nereid": { "name": "Nereid" },
-	"proteus": { "name": "Proteus" }
+	"phobos": {
+		"name": "Phobos",
+		"tagline": "Der Marsmond auf Absturzkurs",
+		"description": {
+			"simple": "Phobos ist der größere der beiden winzigen Marsmonde. Er ist ein dunkler, unförmiger Felsbrocken, der ein bisschen wie eine Kartoffel aussieht. Phobos rast so schnell um den Mars, dass er ungefähr dreimal am Tag herumkommt. Ganz langsam fällt er auf den Mars zu – und eines Tages wird er zerbrechen.",
+			"standard": "Phobos ist ein dunkler, kartoffelförmiger Mond von nur etwa 22 km Durchmesser, der bloß rund 6 000 km über der Marsoberfläche kreist. Für eine Runde um den Mars braucht er 7 Stunden und 39 Minuten – weniger Zeit, als sich der Planet einmal um sich selbst dreht. Vom Mars aus gesehen geht er deshalb im Westen auf und im Osten unter, oft zweimal an einem Tag. Die Schwerkraft des Mars zieht ihn langsam näher heran, um etwa 2 m pro Jahrhundert, und in rund 30 bis 50 Millionen Jahren wird Phobos wahrscheinlich zu einem Trümmerring zerrissen oder auf den Mars stürzen.",
+			"advanced": "Phobos umläuft den Mars mit einer großen Halbachse von 9 376 km, also weit innerhalb der synchronen Umlaufbahn (rund 20 400 km). Der Gezeitenwulst, den er auf dem Mars erzeugt, hinkt ihm deshalb hinterher und entzieht ihm Bahnenergie, sodass Phobos sich dem Planeten um etwa 1,8 cm pro Jahr nähert. In rund 30 bis 50 Millionen Jahren dürfte er die Roche-Grenze unterschreiten, an der die Gezeitenkräfte seine schwache Eigengravitation übertreffen: Ein locker gebundener Geröllhaufen würde sich dann zu einem Ring verteilen, ein festerer Körper könnte vorher auf dem Mars einschlagen. Die langen, parallelen Rillen auf seiner Oberfläche könnten erste Anzeichen dieser Gezeitenbelastung sein, manche sind aber vielleicht auch Spuren von Einschlagtrümmern."
+		},
+		"facts": {
+			"simple": [
+				"Phobos hat einen riesigen Krater namens Stickney, der fast halb so breit ist wie der ganze Mond.",
+				"Vom Mars aus gesehen geht Phobos im Westen auf und im Osten unter – genau andersherum als unsere Sonne und unser Mond.",
+				"Auf Phobos wärst du so leicht, dass dich ein kräftiger Sprung Hunderte Meter hoch tragen könnte."
+			],
+			"standard": [
+				"Der Stickney-Krater ist etwa 9 km breit – der Einschlag, der ihn schuf, hat Phobos womöglich beinahe zertrümmert.",
+				"Der Krater trägt den Namen von Angeline Stickney, der Frau von Asaph Hall, die ihn ermutigte, weiter nach Marsmonden zu suchen.",
+				"Asaph Hall entdeckte Phobos im August 1877, sechs Tage nachdem er Deimos gefunden hatte."
+			],
+			"advanced": [
+				"Seine Umlaufzeit von 7 h 39 min beträgt nur etwa ein Drittel eines Marstages (24 h 37 min) – Phobos überholt also die Drehung des Planeten.",
+				"Phobos ist sehr dunkel (geometrische Albedo etwa 0,07), und seine geringe Dichte von rund 1,86 g/cm³ deutet auf ein poröses Inneres hin, vielleicht einen Geröllhaufen.",
+				"Die Schwerebeschleunigung an der Oberfläche beträgt nur etwa 0,0057 m/s², rund ein Siebzehnhundertstel der irdischen, die Fluchtgeschwindigkeit etwa 11 m/s (40 km/h)."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Mit dem Auto auf der Autobahn wärst du in etwa einer Viertelstunde von einem Ende von Phobos zum anderen gefahren."
+			],
+			"standard": [
+				"Phobos sinkt pro Jahrhundert etwa um die Höhe einer Tür auf den Mars zu – langsam, aber genug, um ihn in einigen Dutzend Millionen Jahren zu zerstören."
+			],
+			"advanced": [
+				"Phobos kreist nur etwa 6 000 km über dem Mars – ungefähr so weit wie ein Flug von Frankfurt nach New York."
+			]
+		}
+	},
+	"deimos": {
+		"name": "Deimos",
+		"tagline": "Ein Mond wie ein Stern",
+		"description": {
+			"simple": "Deimos ist der kleinere Marsmond – nur etwa 12 km groß. Er ist mit weichem, feinem Staub bedeckt, der seine Krater auffüllt, deshalb sieht er glatt aus. Vom Mars aus ist Deimos so klein und so weit weg, dass er wie ein heller Stern aussieht. Sein Name bedeutet „Schrecken“, und sein Bruder Phobos heißt „Furcht“.",
+			"standard": "Deimos ist ein winziger, unregelmäßig geformter Mond von etwa 12 km Durchmesser, der den Mars in rund 23 500 km Abstand alle 30 Stunden umrundet. Eine dicke Staubschicht füllt viele seiner Krater, sodass er viel glatter wirkt als Phobos. Der amerikanische Astronom Asaph Hall entdeckte ihn im August 1877, wenige Tage vor Phobos, und benannt wurden beide Monde nach Phobos und Deimos – Furcht und Schrecken –, die in der griechischen Sage den Kriegsgott Ares in die Schlacht begleiten – bei den Römern hieß er Mars. Ob die beiden Monde eingefangene Asteroiden sind oder aus den Trümmern eines gewaltigen Einschlags auf dem Mars entstanden, ist bis heute umstritten.",
+			"advanced": "Deimos (etwa 16 × 12 × 10 km) kreist in 23 463 km Abstand knapp außerhalb der synchronen Umlaufbahn des Mars; die Gezeiten schieben ihn deshalb ganz langsam nach außen, statt ihn wie Phobos nach innen zu ziehen. Seine Umlaufzeit von 30,3 Stunden ist nur wenig länger als ein Marstag, deshalb wandert er sehr gemächlich über den Himmel: Er geht im Osten auf und bleibt mehr als zwei Tage lang über dem Horizont. Beide Monde sind dunkel und ähneln in ihren Spektren urtümlichen, kohlenstoffreichen Asteroiden, was für einen Einfang spricht – ihre fast kreisförmigen Bahnen nahe der Äquatorebene des Mars passen jedoch besser zu einer Entstehung aus einer Trümmerscheibe nach einem großen Einschlag. Die japanische Mission MMX soll um 2031 eine Bodenprobe von Phobos zur Erde bringen und unterwegs auch Deimos beobachten; das könnte die Frage klären."
+		},
+		"facts": {
+			"simple": [
+				"Wenn du auf Deimos hochspringen würdest, würde es viele Minuten dauern, bis du wieder landest.",
+				"Deimos wurde 1877 von einem Astronomen namens Asaph Hall entdeckt.",
+				"Deimos braucht für eine Runde um den Mars etwas länger als einen Tag."
+			],
+			"standard": [
+				"Wenn Deimos voll beleuchtet ist, strahlt er am Marshimmel etwa so hell wie die Venus an unserem.",
+				"Zwei Krater auf Deimos heißen Swift und Voltaire – nach Schriftstellern, die sich zwei Marsmonde ausdachten, mehr als ein Jahrhundert bevor diese entdeckt wurden.",
+				"Deimos ist nur etwa halb so breit wie Phobos und hat nur rund ein Siebtel seiner Masse."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung an der Oberfläche beträgt nur etwa 0,003 m/s², rund ein Dreitausendstel der irdischen.",
+				"Die Bahn von Deimos ist nahezu perfekt kreisförmig (Exzentrizität etwa 0,0003) und liegt dicht an der Äquatorebene des Mars.",
+				"Asaph Hall entdeckte Deimos am 12. August 1877 mit dem 26-Zoll-Linsenteleskop des US Naval Observatory in Washington, damals dem größten Refraktor der Welt."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Einmal um Deimos herumzulaufen wäre ungefähr so weit wie ein Marathon."
+			],
+			"standard": [
+				"Vom Mars aus ist Deimos kaum mehr als ein Lichtpunkt – für Astronauten sähe er aus wie ein heller Stern, der langsam über den Himmel wandert."
+			],
+			"advanced": [
+				"Die Fluchtgeschwindigkeit von Deimos beträgt nur etwa 5,6 m/s (20 km/h) – ein Radfahrer im Stadttempo könnte ihn über eine Rampe für immer verlassen."
+			]
+		}
+	},
+	"io": {
+		"name": "Io",
+		"tagline": "Der Vulkanmond",
+		"description": {
+			"simple": "Io ist der Ort mit den meisten Vulkanen, den wir kennen. Hunderte Vulkane spucken dort Lava und schleudern Fontänen aus Gas und Staub hoch in den Himmel. Seine gelben, orangefarbenen und roten Farben kommen vom Schwefel. Jupiter und seine anderen großen Monde kneten Io ständig durch – und dieses Kneten heizt ihn innen auf.",
+			"standard": "Io ist etwas größer als unser Mond und die vulkanisch aktivste Welt, die wir kennen: Mehr als 400 aktive Vulkane wurden dort gefunden, manche schleudern Gas und Staub Hunderte Kilometer hoch. Die Wärme dafür stammt nicht von der Sonne, sondern von Gezeiten. Ios Umlaufbahn ist im Takt mit den Monden Europa und Ganymed gekoppelt und bleibt dadurch leicht oval – so wird Io von Jupiters gewaltiger Schwerkraft ständig gestaucht und gedehnt, je nachdem, wie nah er dem Planeten gerade ist. Galileo Galilei entdeckte Io im Januar 1610 zusammen mit Europa, Ganymed und Kallisto – es waren die ersten Monde, die man bei einem anderen Planeten fand.",
+			"advanced": "Io ist in einer 1:2:4-Laplace-Resonanz gefangen: Auf jeden Umlauf von Ganymed kommen zwei von Europa und vier von Io. Die regelmäßigen Störungen halten Ios Bahn leicht exzentrisch (e ≈ 0,004), sodass sich sein Abstand zu Jupiter – und damit der Gezeitenwulst – während jedes 42,5-stündigen Umlaufs ändert; die Reibung bei dieser ständigen Verformung setzt rund 10¹⁴ W an Wärme frei. Diese Wärme treibt Ausbrüche von Silikatlava mit bis zu etwa 1 600 K an, heißer als die meiste Lava auf der heutigen Erde, dazu schwefelreiche Fontänen bis in rund 500 km Höhe; die Oberfläche erneuert sich so schnell, dass kein einziger Einschlagkrater gefunden wurde. Gase aus Ios Vulkanen speisen einen ringförmigen Schlauch aus geladenen Teilchen um Jupiter, den Io-Plasmatorus."
+		},
+		"facts": {
+			"simple": [
+				"Ios Vulkane wurden 1979 entdeckt, auf Bildern der Raumsonde Voyager 1.",
+				"Auf Io gibt es keine Einschlagkrater, weil neue Lava sie immer wieder zudeckt.",
+				"Io braucht weniger als zwei Tage für eine Runde um Jupiter."
+			],
+			"standard": [
+				"Loki Patera, der stärkste Vulkan auf Io, ist eine etwa 200 km breite vulkanische Senke, gefüllt mit einem Lavasee.",
+				"Io kreist mitten in Jupiters starken Strahlungsgürteln – ein ungeschützter Astronaut bekäme dort in weniger als einem Tag eine tödliche Dosis ab.",
+				"Von Io aus erscheint Jupiter fast 40-mal so breit wie unser Vollmond von der Erde aus."
+			],
+			"advanced": [
+				"Schwerefeldmessungen bei den nahen Vorbeiflügen der Sonde Juno im Dezember 2023 und Februar 2024 deuten darauf hin, dass Io keinen flachen, globalen Magmaozean besitzt; seine Vulkane werden offenbar aus einzelnen Magmakammern gespeist.",
+				"Mit einer mittleren Dichte von etwa 3,53 g/cm³ ist Io der dichteste bekannte Mond – ein Gesteinskörper mit Eisenkern und fast ohne Wasser.",
+				"Die Schwerebeschleunigung an der Oberfläche beträgt 1,80 m/s², etwa 18 % der irdischen."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Io ist etwas größer als unser Mond – aber statt mit ruhigem grauem Staub ist er mit ausbrechenden Vulkanen übersät."
+			],
+			"standard": [
+				"Ios Vulkanfontänen steigen bis zu etwa 500 km hoch – höher, als die Internationale Raumstation über der Erde kreist."
+			],
+			"advanced": [
+				"Jupiters Gezeiten heben und senken Ios feste Oberfläche bei jedem Umlauf um bis zu etwa 100 m – ungefähr die Höhe eines 30-stöckigen Hochhauses."
+			]
+		}
+	},
+	"europa": {
+		"name": "Europa",
+		"tagline": "Ein Ozean unter dem Eis",
+		"description": {
+			"simple": "Europa ist etwas kleiner als unser Mond und von weißem Eis mit langen, rotbraunen Rissen bedeckt. Unter dem Eis liegt wahrscheinlich ein riesiger, tiefer Ozean aus salzigem Wasser. Das Eis sitzt darauf wie ein Deckel auf einem Topf. Weil Lebewesen auf der Erde Wasser brauchen, halten Forschende Europa für einen der besten Orte, um nach Leben außerhalb der Erde zu suchen.",
+			"standard": "Europa ist etwas kleiner als unser Mond, doch unter seiner Eiskruste – vermutlich einige Dutzend Kilometer dick – liegt ein weltumspannender Ozean aus salzigem, flüssigem Wasser, vielleicht rund 100 km tief. Die Gezeitenkräfte Jupiters verformen den Mond ständig und tragen dazu bei, dass dieser Ozean nicht zufriert. Mit Wasser, den nötigen chemischen Zutaten und einer Energiequelle gehört Europa zu den vielversprechendsten Orten für die Suche nach Leben außerhalb der Erde. Die NASA-Sonde Europa Clipper ist im Oktober 2024 gestartet und soll 2030 Jupiter erreichen, um herauszufinden, ob Europa Leben ermöglichen könnte.",
+			"advanced": "Magnetometerdaten der Raumsonde Galileo zeigten ein Magnetfeld, das von Jupiters rotierendem Feld induziert wird – am besten erklärbar durch einen elektrisch leitfähigen, salzigen Ozean unter dem Eis. Die Eiskruste, deren Dicke auf etwa 10 bis 30 km geschätzt wird, ist geologisch jung, vermutlich nur einige zehn Millionen Jahre alt, mit Rissen, Rücken und chaotischem Gelände, wo Wasser oder warmes Eis bis an die Oberfläche gelangt sein könnte. Der Ozean liegt vermutlich direkt auf einem Gesteinsboden, wo Reaktionen zwischen Wasser und Gestein chemische Energie liefern könnten, ähnlich wie an hydrothermalen Quellen auf der Erde. Europa Clipper wird Dutzende nahe Vorbeiflüge absolvieren, um die Dicke des Eises, den Salzgehalt des Ozeans und die Zusammensetzung der Oberfläche zu messen."
+		},
+		"facts": {
+			"simple": [
+				"Europas Eisoberfläche ist eine der glattesten im Sonnensystem – es gibt dort kaum hohe Berge oder große Krater.",
+				"Auf Europas Oberfläche ist es eisig kalt: etwa −160 °C in der Nähe des Äquators.",
+				"Europa braucht für eine Runde um Jupiter etwa dreieinhalb Tage."
+			],
+			"standard": [
+				"Galileo Galilei entdeckte Europa im Januar 1610, zusammen mit Jupiters drei anderen großen Monden.",
+				"2023 fand das James-Webb-Weltraumteleskop Kohlendioxid auf Europas Oberfläche, das nach Ansicht von Fachleuten aus dem Ozean darunter stammt.",
+				"Teleskope haben mögliche Fontänen aus Wasserdampf über Europa beobachtet – ob es sie wirklich gibt, ist aber noch umstritten."
+			],
+			"advanced": [
+				"Europa steht mit Io in einer 2:1- und mit Ganymed in einer 1:2-Bahnresonanz, die die kleine Exzentrizität (etwa 0,009) aufrechterhält, auf der seine Gezeitenheizung beruht.",
+				"Geladene Teilchen aus Jupiters Magnetosphäre spalten das Oberflächeneis und erzeugen so eine äußerst dünne Sauerstoffatmosphäre; Messungen der Sonde Juno ergaben etwa 12 kg Sauerstoff pro Sekunde.",
+				"Die Schwerebeschleunigung an der Oberfläche beträgt 1,31 m/s², etwa 13 % der irdischen."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Europas Ozean ist vielleicht so tief, dass etwa zehn übereinandergestapelte Mount Everests hineinpassen würden."
+			],
+			"standard": [
+				"Europa ist kleiner als unser Mond, doch sein verborgener Ozean enthält vielleicht etwa doppelt so viel Wasser wie alle Ozeane der Erde."
+			],
+			"advanced": [
+				"Europa hat nur etwa ein Siebzigstel des Erdvolumens, doch sein Ozean könnte zwei- bis dreimal so viel Wasser enthalten wie alle Ozeane der Erde zusammen."
+			]
+		}
+	},
+	"ganymede": {
+		"name": "Ganymed",
+		"tagline": "Der größte Mond von allen",
+		"description": {
+			"simple": "Ganymed ist der größte Mond im ganzen Sonnensystem. Er ist sogar größer als der Planet Merkur! Ganymed besteht aus Gestein und Eis, und tief unter seiner Oberfläche verbirgt sich wahrscheinlich ein Ozean. Er ist der einzige Mond, von dem wir wissen, dass er selbst ein Magnetfeld erzeugt – genau wie die Erde.",
+			"standard": "Ganymed ist der größte Mond des Sonnensystems: Mit 5 268 km Durchmesser ist er breiter als der Planet Merkur, hat aber weniger als die Hälfte von dessen Masse. Er ist der einzige bekannte Mond mit einem eigenen Magnetfeld, das die Raumsonde Galileo 1996 entdeckte. Dieses Feld lässt Polarlichter leuchten, und wie diese hin und her schwanken, verriet dem Hubble-Weltraumteleskop einen salzigen Ozean tief unter dem Eis. Die ESA-Sonde JUICE, 2023 gestartet, soll 2031 bei Jupiter ankommen und 2034 in eine Umlaufbahn um Ganymed einschwenken.",
+			"advanced": "Ganymed ist vollständig differenziert, mit einem eisenreichen Kern, einem Gesteinsmantel und dicken Schichten aus Eis und Wasser; Konvektion im flüssigen Eisenkern treibt vermutlich ein eigenes Dipolfeld von etwa 720 nT am Äquator an. Dieses Feld schafft eine kleine eigene Magnetosphäre innerhalb der viel größeren Magnetosphäre Jupiters. 2015 zeigte Hubble, dass Ganymeds Polarlichtovale weniger stark schwanken als erwartet, wenn Jupiters Feld über ihn hinwegstreicht – weil ein leitfähiger Salzwasserozean, vermutlich etwa 150 km unter der Oberfläche, ein Gegenfeld induziert, das die Änderung abschwächt. JUICE soll als erste Raumsonde einen anderen Mond als unseren umkreisen: Ab Dezember 2034 wird sie von einer Umlaufbahn um Ganymed aus sein Magnetfeld, sein Inneres und seine Eiskruste vermessen."
+		},
+		"facts": {
+			"simple": [
+				"Ganymed wurde vor mehr als 400 Jahren entdeckt, 1610, von Galileo Galilei.",
+				"Ganymed hat leuchtende Lichter nahe seinen Polen, sogenannte Polarlichter – wie die Nordlichter auf der Erde.",
+				"Ganymed braucht etwa eine Woche für eine Runde um Jupiter."
+			],
+			"standard": [
+				"Ganymeds verborgener Ozean enthält möglicherweise mehr Wasser als alle Ozeane der Erde.",
+				"Seine Oberfläche besteht aus zwei Arten von Gelände: dunklen, alten, stark verkraterten Gebieten und helleren, jüngeren Regionen mit langen Furchen und Rücken.",
+				"2021 flog die NASA-Sonde Juno nur gut 1 000 km über Ganymed hinweg – so nah war ihm seit mehr als 20 Jahren keine Raumsonde gekommen."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung an der Oberfläche beträgt 1,43 m/s², etwa 15 % der irdischen – weniger als auf unserem Mond (1,62 m/s²), obwohl Ganymed viel größer ist.",
+				"Seine mittlere Dichte von nur etwa 1,94 g/cm³ bedeutet, dass Ganymed ungefähr zu gleichen Teilen aus Gestein und Wassereis besteht.",
+				"Ganymed gehört zur 1:2:4-Laplace-Resonanz: Auf einen seiner Umläufe (7,15 Tage) kommen zwei von Europa und vier von Io."
+			]
+		},
+		"comparisons": {
+			"simple": ["Ganymed ist etwa anderthalbmal so breit wie unser Mond."],
+			"standard": [
+				"Ganymed ist größer als der Planet Merkur und hat sogar ein eigenes Magnetfeld mit Polarlichtern – ein Mond, der sich wie ein kleiner Planet benimmt."
+			],
+			"advanced": [
+				"Ganymed ist etwa 8 % breiter als Merkur, hat aber nur rund 45 % seiner Masse – den Unterschied machen vor allem Eis und Wasser aus."
+			]
+		}
+	},
+	"callisto": {
+		"name": "Kallisto",
+		"tagline": "Die uralte Kraterwelt",
+		"description": {
+			"simple": "Kallisto ist der zweitgrößte Mond des Jupiter und fast so groß wie der Planet Merkur. Seine dunkle Oberfläche ist von oben bis unten mit Kratern übersät. Seit etwa 4 Milliarden Jahren hat er sich kaum verändert – er ist wie ein uraltes Tagebuch aller Gesteinsbrocken, die auf ihn gestürzt sind. Kallisto ist weit weg von Jupiters gefährlicher Strahlung, deshalb könnten Astronauten dort eines Tages eine Station bauen.",
+			"standard": "Kallisto ist der drittgrößte Mond im Sonnensystem und fast genau so breit wie Merkur. Seine Oberfläche ist so dicht mit Kratern bedeckt, dass kaum Platz für neue bleibt, und sie hat sich in etwa 4 Milliarden Jahren kaum verändert, denn keine Vulkane und keine wandernden Platten löschen die Krater aus. Seine größte Einschlagnarbe, das Valhalla-Becken, hat ein helles Zentrum von etwa 600 km Durchmesser, umgeben von Ringen, die bis zu 1 800 km weit von seiner Mitte reichen. Weil Kallisto außerhalb von Jupiters stärksten Strahlungsgürteln kreist, schlug eine NASA-Studie ihn als möglichen Stützpunkt für künftige menschliche Entdecker vor.",
+			"advanced": "Kallistos Oberfläche ist mit Kratern gesättigt – neue Einschläge löschen vor allem ältere aus –, und die Kraterdichte spricht für ein Oberflächenalter von rund 4 Milliarden Jahren, das höchste unter den Galileischen Monden. Anders als Io, Europa und Ganymed gehört Kallisto nicht zur Laplace-Resonanz und wird durch Gezeiten kaum aufgeheizt; sein Inneres scheint nur teilweise differenziert zu sein, ein Gemisch aus Gestein und Eis. Dennoch maß die Raumsonde Galileo ein induziertes Magnetfeld, das auf einen salzigen Ozean etwa 150 bis 200 km unter der Oberfläche hindeuten könnte. In rund 1,9 Millionen km Abstand von Jupiter beträgt die Strahlendosis an der Oberfläche nur etwa 0,1 mSv pro Tag – deshalb wählte die NASA-Studie HOPE von 2003 Kallisto als Ziel einer möglichen bemannten Mission mit Oberflächenstation."
+		},
+		"facts": {
+			"simple": [
+				"Galileo Galilei entdeckte Kallisto im Januar 1610 mit einem der allerersten Fernrohre.",
+				"Auf Kallisto gibt es keine hohen Berge oder Vulkane – fast nur Krater.",
+				"Kallisto braucht mehr als zwei Wochen für eine Runde um Jupiter."
+			],
+			"standard": [
+				"Kallisto braucht 16,7 Tage für einen Umlauf um Jupiter, länger als jeder der drei anderen großen Monde.",
+				"Forschende vermuten, dass tief unter Kallistos Kruste ein salziger Ozean liegen könnte, obwohl der Mond durch Gezeiten kaum erwärmt wird.",
+				"Kallisto ist der dunkelste der vier Galileischen Monde und wirft nur etwa ein Fünftel des Sonnenlichts zurück, das auf ihn fällt."
+			],
+			"advanced": [
+				"Kallisto hat nur etwa ein Drittel der Masse des Merkur, obwohl er fast genauso breit ist (4 821 km gegenüber 4 879 km).",
+				"Helle, eisreiche Kraterränder und dunkle, staubige Senken geben Kallistos Oberfläche ein fleckiges Aussehen (geometrische Albedo etwa 0,22).",
+				"Die Schwerebeschleunigung an der Oberfläche beträgt 1,24 m/s², etwa 13 % der irdischen."
+			]
+		},
+		"comparisons": {
+			"simple": ["Kallisto ist fast genau so breit wie der Planet Merkur."],
+			"standard": [
+				"Kallistos Krater sind älter als die ältesten bekannten Fossilien der Erde – sein Gesicht hat sich seit etwa 4 Milliarden Jahren kaum verändert."
+			],
+			"advanced": [
+				"Ein Mensch auf Kallisto bekäme etwa 0,1 mSv Strahlung pro Tag ab, rund das Zehnfache der natürlichen Belastung auf der Erde – auf Europa wäre die Dosis Zehntausende Male höher."
+			]
+		}
+	},
+	"mimas": {
+		"name": "Mimas",
+		"tagline": "Der Todesstern-Mond",
+		"description": {
+			"simple": "Mimas ist ein kleiner Eismond des Saturn. Auf einer Seite hat er einen riesigen Krater – deshalb sieht er fast aus wie der Todesstern aus den Star-Wars-Filmen. Der Einschlag, der diesen Krater geschlagen hat, hätte Mimas beinahe zerbrochen. Inzwischen glauben Forschende sogar, dass sich tief unter seiner Eiskruste ein verborgener Ozean befinden könnte.",
+			"standard": "Mimas hat nur etwa 396 km Durchmesser, doch sein größter Krater, Herschel, ist 139 km breit – rund ein Drittel des ganzen Mondes. Mit seinen hohen Wällen und dem Zentralberg lässt Herschel Mimas wie den Todesstern aus Star Wars aussehen. Mimas umrundet Saturn in nur 22,6 Stunden, und seine Schwerkraft hilft, die Cassinische Teilung – die dunkle Lücke zwischen den beiden hellsten Saturnringen – weitgehend frei von Eisteilchen zu halten. 2024 berichteten Forschende, die winzige, von der Raumsonde Cassini gemessene Schwankungen in der Umlaufbahn von Mimas untersucht hatten, dass sich unter seinem Eis ein junger Ozean verbergen könnte.",
+			"advanced": "Mimas (mittlerer Durchmesser 396 km, Dichte 1,15 g/cm³) besteht überwiegend aus Wassereis und ist der kleinste der großen, runden Saturnmonde. Der Krater Herschel – 139 km breit, mit rund 5 km hohen Wällen und einem etwa 6 km hohen Zentralberg – zeugt von einem Einschlag, der den Mond fast zertrümmert hätte. Eisteilchen am Innenrand der Cassinischen Teilung umrunden Saturn genau zweimal, während Mimas einmal umläuft; diese 2:1-Resonanz schaukelt ihre Bahnen auf und hält die Lücke weitgehend frei. 2024 zeigten Lainey und Kollegen, dass sich die Präzession der Mimas-Bahn und die Libration des Mondes am besten durch einen globalen Ozean 20–30 km unter der Oberfläche erklären lassen, der wahrscheinlich jünger als 25 Millionen Jahre ist – so jung, dass er auf der alten, verkraterten Oberfläche noch keine Spuren hinterlassen hat; manche Fachleute halten die Belege allerdings für indirekt."
+		},
+		"facts": {
+			"simple": [
+				"Mimas braucht für eine Runde um Saturn weniger als einen Erdentag.",
+				"Mimas besteht vor allem aus Eis – wie ein riesiger Schneeball.",
+				"Auf Mimas könntest du mehr als 100-mal so hoch springen wie auf der Erde."
+			],
+			"standard": [
+				"Der Krater Herschel ist nach William Herschel benannt, der Mimas 1789 entdeckte.",
+				"Die Schwerkraft auf Mimas beträgt nur etwa 0,65 % der irdischen – eine Schülerin mit 50 kg wöge dort ungefähr so wenig wie auf der Erde eine kleine Dose Limonade.",
+				"2010 zeigte eine Temperaturkarte der Raumsonde Cassini auf Mimas ein Muster aus warmen und kalten Zonen in der Form von Pac-Man."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung an der Oberfläche beträgt etwa 0,064 m/s², rund 0,65 % der irdischen.",
+				"Saturns Gezeitenkräfte haben Mimas leicht eiförmig verformt: Seine längste Achse ist etwa 10 % länger als die kürzeste.",
+				"Durch seine vergleichsweise exzentrische Bahn (e ≈ 0,02) wird Mimas von Saturns Gezeiten durchgewalkt – eine mögliche Wärmequelle für seinen jungen Ozean."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre Mimas ein Fußball, dann wäre der Herschel-Krater ungefähr so groß wie ein Keks."
+			],
+			"standard": [
+				"Hätte die Erde einen im Verhältnis so großen Krater wie Herschel auf Mimas, wäre er etwa 4 500 km breit – breiter als Australien."
+			],
+			"advanced": [
+				"Mimas kreist nur 185 539 km vom Saturnzentrum entfernt – nicht einmal halb so weit, wie der Mond von der Erde entfernt ist – und schafft einen Umlauf trotzdem in weniger als 23 Stunden."
+			]
+		}
+	},
+	"enceladus": {
+		"name": "Enceladus",
+		"tagline": "Der Geysir-Mond",
+		"description": {
+			"simple": "Enceladus ist ein kleiner, strahlend weißer Mond des Saturn. Unter seiner Eisschale liegt ein Ozean aus salzigem Wasser. Am Südpol schießt Wasser wie aus riesigen Springbrunnen aus langen Spalten und fliegt weit hinaus ins All. Dabei kommt so viel zusammen, dass daraus sogar einer der Saturnringe entsteht.",
+			"standard": "Enceladus misst nur etwa 504 km, ist aber eine der aktivsten Welten im Sonnensystem. Aus vier langen Spalten nahe seinem Südpol, den sogenannten „Tigerstreifen“, schießen Fontänen aus Wasserdampf und Eiskörnchen mit etwa 400 m/s (1 440 km/h) ins All. Das Wasser stammt aus einem salzigen Ozean unter dem Eis, und ein großer Teil davon verteilt sich entlang der Mondbahn und bildet Saturns breiten E-Ring. Die NASA-Sonde Cassini entdeckte die Fontänen 2005 und flog später mitten hindurch, um sie zu „kosten“.",
+			"advanced": "Enceladus verbirgt unter einer im Mittel etwa 20–25 km dicken Eisschale einen globalen Salzwasserozean; am Südpol ist das Eis nur wenige Kilometer dick. Flüssig bleibt er vor allem durch Gezeitenreibung: Eine 2:1-Bahnresonanz mit Dione erhält die kleine Bahnexzentrizität von Enceladus (etwa 0,005), sodass Saturns Gezeiten den Mond im Lauf jedes Umlaufs unterschiedlich stark verformen. In den Fontänen und in Eiskörnern des E-Rings fand Cassini Salze, Siliziumdioxid-Nanopartikel, die auf heiße Reaktionen zwischen Wasser und Gestein am Meeresboden hindeuten, molekularen Wasserstoff, vielfältige organische Moleküle und – wie 2023 berichtet – Phosphate. Damit gilt der Ozean von Enceladus als einer der vielversprechendsten Orte für die Suche nach Leben jenseits der Erde."
+		},
+		"facts": {
+			"simple": [
+				"Enceladus gehört zu den hellsten Dingen im Sonnensystem – sein frisches Eis wirft den größten Teil des Sonnenlichts zurück.",
+				"Die Raumsonde Cassini ist mitten durch die Wasserfontänen geflogen und hat sie „gekostet“.",
+				"Auf der Oberfläche ist es eiskalt: etwa −200 °C."
+			],
+			"standard": [
+				"Bei ihrem nächsten Vorbeiflug im Jahr 2008 kam Cassini bis auf etwa 25 km an die Oberfläche von Enceladus heran.",
+				"Die Fontänen schleudern jede Sekunde ungefähr 200 kg Wasser ins All.",
+				"William Herschel entdeckte Enceladus am 28. August 1789, wenige Wochen bevor er Mimas fand."
+			],
+			"advanced": [
+				"Mit einer geometrischen Albedo von etwa 1,4 gehört Enceladus zu den am stärksten reflektierenden Körpern überhaupt, weil Eiskörner aus seinen Fontänen die Oberfläche ständig neu überziehen.",
+				"2023 wiesen Postberg und Kollegen Natriumphosphate in Eiskörnern von Enceladus im E-Ring nach; die Phosphatkonzentration im Ozean dürfte demnach mindestens 100-mal höher sein als in den Ozeanen der Erde.",
+				"Die Schwerebeschleunigung beträgt nur 0,113 m/s² und die Fluchtgeschwindigkeit etwa 240 m/s – deshalb verlassen viele Fontänenteilchen Enceladus ganz und speisen den E-Ring."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Die Wasserfontänen von Enceladus schießen schneller hinaus, als ein Passagierflugzeug fliegt."
+			],
+			"standard": [
+				"Enceladus ist nur etwa so breit wie die Strecke von Berlin nach München – und versprüht doch genug Wasser ins All, um einen ganzen Saturnring zu speisen."
+			],
+			"advanced": [
+				"Der E-Ring, den Enceladus speist, erstreckt sich über Hunderttausende Kilometer – das Mehrhundertfache des Durchmessers jenes nur 504 km großen Mondes, der ihn versorgt."
+			]
+		}
+	},
+	"tethys": {
+		"name": "Tethys",
+		"tagline": "Die vernarbte Eiskugel",
+		"description": {
+			"simple": "Tethys ist ein Mond des Saturn, der fast ganz aus Eis besteht. Er hat einen riesigen Krater namens Odysseus und einen gewaltigen Graben namens Ithaca Chasma, der sich weit um den Mond herumzieht. Zwei winzige Monde reisen auf derselben Bahn wie Tethys – einer vorneweg und einer hinterher.",
+			"standard": "Tethys hat einen Durchmesser von etwa 1 062 km und besteht fast vollständig aus Wassereis – seine Dichte (0,98 g/cm³) ist sogar etwas geringer als die von flüssigem Wasser. Sein größter Krater, Odysseus, ist etwa 400 km breit, mehr als ein Drittel des Monddurchmessers. Ein gewaltiges Grabensystem, Ithaca Chasma, etwa 100 km breit und mehr als 2 000 km lang, zieht sich rund drei Viertel um Tethys herum. Zwei winzige Monde, Telesto und Calypso, teilen sich seine Bahn: Einer läuft etwa 60° voraus, der andere etwa 60° hinterher.",
+			"advanced": "Mit einer Dichte von 0,98 g/cm³ besteht Tethys fast aus reinem Wassereis mit nur wenig Gestein – die geringste Dichte unter den großen Saturnmonden. Odysseus (etwa 400 km) ist für seine Größe flach, weil das Eis darunter im Lauf der Zeit langsam nachgeflossen ist. Ithaca Chasma, bis zu etwa 3 km tief, könnte entstanden sein, als ein früher Ozean gefror und das sich ausdehnende Eis die Kruste aufriss – oder es hängt mit dem Odysseus-Einschlag zusammen. Telesto und Calypso sitzen in den Lagrange-Punkten L4 und L5 von Tethys, wo die gemeinsame Schwerkraft von Saturn und Tethys kleine Körper im Gleichschritt mit dem größeren Mond hält."
+		},
+		"facts": {
+			"simple": [
+				"Tethys braucht für eine Runde um Saturn weniger als zwei Tage.",
+				"Tethys ist einer der hellsten Monde, weil sein Eis so sauber ist.",
+				"Die beiden kleinen Reisebegleiter von Tethys sind jeweils nur etwa so breit wie eine große Stadt."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini entdeckte Tethys 1684 – im selben Jahr wie Dione.",
+				"Telesto und Calypso haben nur etwa 25 km und 21 km Durchmesser.",
+				"Tethys umrundet Saturn alle 1,89 Tage in einem Abstand von etwa 294 600 km."
+			],
+			"advanced": [
+				"Mit einer geometrischen Albedo von etwa 1,23 gehört Tethys zu den am stärksten reflektierenden Körpern im Sonnensystem – unterstützt von einem Überzug aus Eiskörnern aus dem E-Ring von Enceladus.",
+				"Wärmekarten von Cassini zeigten auf Tethys ein „Pac-Man“-Muster wie auf Mimas; es entsteht, weil energiereiche Elektronen aus Saturns Magnetosphäre die Oberfläche einer Hemisphäre verändern.",
+				"Die Schwerebeschleunigung an der Oberfläche beträgt etwa 0,146 m/s², rund 1,5 % der irdischen."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Tethys ist für seine Größe so leicht, dass er in einer riesigen Badewanne wie ein Eiswürfel schwimmen würde."
+			],
+			"standard": [
+				"Ithaca Chasma ist mehr als viermal so lang wie der Grand Canyon und zieht sich rund drei Viertel um den ganzen Mond."
+			],
+			"advanced": [
+				"Im Verhältnis zur Größe entspräche Odysseus auf der Erde einem Krater von etwa 4 800 km Durchmesser – breiter als das US-Festland von Küste zu Küste."
+			]
+		}
+	},
+	"dione": {
+		"name": "Dione",
+		"tagline": "Der Mond der Eisklippen",
+		"description": {
+			"simple": "Dione ist ein Eismond des Saturn. Auf den ersten Bildern entdeckten Forschende dünne weiße Streifen und rätselten, was das sein könnte. Spätere Nahaufnahmen zeigten: Es sind riesige, helle Klippen aus Eis. Zwei winzige Monde reisen auf Diones Bahn um Saturn mit – einer vorneweg und einer hinterher.",
+			"standard": "Dione hat einen Durchmesser von etwa 1 123 km und besteht aus Gestein und Eis. Bilder der Voyager-Sonden um 1980 zeigten auf einer Seite helle, zarte Schlieren; 2004–2005 enthüllte die Raumsonde Cassini, dass dieses „wispy terrain“ in Wahrheit ein Netz aus Gräben mit Hunderte Meter hohen Eisklippen ist. Zwei kleine Monde, Helene und Polydeuces, teilen sich Diones Bahn – einer etwa 60° voraus, einer etwa 60° dahinter. Messungen von Diones Schwerefeld deuten darauf hin, dass tief unter dem Eis noch ein Ozean existieren könnte.",
+			"advanced": "Dione (Dichte 1,48 g/cm³) besteht, nach Masse gerechnet, etwa je zur Hälfte aus Gestein und Wassereis. Die hellen Schlieren auf der nachlaufenden Hemisphäre sind tektonische Bruchzonen (Chasmata), deren steile Wände frisches, sauberes Eis freilegen. Dione steht mit Enceladus in einer 1:2-Bahnresonanz, die die Bahn von Enceladus leicht exzentrisch hält und so dessen Geysire mit antreibt. Modellrechnungen von Beuthe und Kollegen (2016) mit Schwere- und Formdaten von Cassini sprechen für eine etwa 100 km dicke Eisschale, die auf einem mehrere Dutzend Kilometer tiefen Ozean schwimmt – plausibel, aber bisher nicht durch direkte Beobachtung bestätigt."
+		},
+		"facts": {
+			"simple": [
+				"Dione braucht für eine Runde um Saturn weniger als drei Tage.",
+				"Auf Dione ist es etwa −186 °C kalt – so kalt, dass das Eis dort hart wie Stein ist.",
+				"Um Dione gibt es ein kleines bisschen Sauerstoff, aber viel zu wenig zum Atmen."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini entdeckte Dione 1684, nur wenige Wochen nach Tethys.",
+				"Helene hat etwa 35 km Durchmesser, Polydeuces dagegen nur rund 3 km.",
+				"2010 wies Cassini eine hauchdünne Schicht aus Sauerstoff-Ionen um Dione nach."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung an der Oberfläche beträgt etwa 0,232 m/s², rund 2,4 % der irdischen.",
+				"Dione umrundet Saturn in 2,74 Tagen und rotiert gebunden, wendet dem Planeten also immer dieselbe Seite zu.",
+				"Die Resonanz mit Enceladus verformt auch Dione ein wenig und sorgt so für eine gewisse eigene Gezeitenheizung."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Dione ist ungefähr so weit von Saturn entfernt wie unser Mond von der Erde."
+			],
+			"standard": [
+				"Diones Eisklippen sind Hunderte Meter hoch – so hoch wie Wolkenkratzer – und so hell, dass sie aus der Ferne wie zarte Reifschleier aussahen."
+			],
+			"advanced": [
+				"Falls Diones vermuteter Ozean existiert, liegt er etwa 100 km tief – mehr als achtmal so tief wie das tiefste Bohrloch der Erde (gut 12 km)."
+			]
+		}
+	},
+	"rhea": {
+		"name": "Rhea",
+		"tagline": "Ein Hauch von Sauerstoff",
+		"description": {
+			"simple": "Rhea ist der zweitgrößte Mond des Saturn. Er ist eine gefrorene Kugel aus Eis mit etwas Gestein im Inneren und voller alter Krater. Um Rhea herum gibt es ein kleines bisschen Sauerstoff – das Gas, das wir atmen. Aber es ist so wenig, dass du es niemals atmen könntest.",
+			"standard": "Rhea hat einen Durchmesser von etwa 1 527 km und ist nach Titan der zweitgrößte Saturnmond. Er besteht zu etwa drei Vierteln aus Eis und zu einem Viertel aus Gestein, seine Oberfläche ist zwischen −174 und −220 °C kalt und von uralten Kratern übersät, darunter das rund 400 km breite Becken Tirawa. 2010 gaben Forschende bekannt, dass die NASA-Sonde Cassini um Rhea eine extrem dünne „Exosphäre“ aus Sauerstoff und Kohlendioxid nachgewiesen hatte. Laut NASA war es das erste Mal, dass eine Raumsonde Moleküle einer Sauerstoffatmosphäre bei einer anderen Welt als der Erde direkt eingefangen hat.",
+			"advanced": "Rhea (Dichte 1,24 g/cm³) ist eine kalte, stark verkraterte Mischung aus etwa drei Vierteln Eis und einem Viertel Gestein (nach Masse). Seine Exosphäre, die Cassinis Instrumente bei Vorbeiflügen 2005, 2007 und 2010 nachwiesen, enthält Sauerstoff und Kohlendioxid im Verhältnis von etwa 5 zu 2 – mit nur rund 100 000 bis 1 000 000 Molekülen pro cm³ nahe der Oberfläche. Der Sauerstoff entsteht durch Radiolyse: Geladene Teilchen, die in Saturns Magnetfeld gefangen sind, treffen auf die Eisoberfläche, zerlegen Wassermoleküle und setzen Sauerstoff frei. Woher das Kohlendioxid stammt, ist weniger klar – vielleicht aus Trockeneis, das seit der Entstehung des Mondes eingeschlossen ist, oder aus bestrahltem organischem Material an der Oberfläche."
+		},
+		"facts": {
+			"simple": [
+				"Rhea braucht für eine Runde um Saturn etwa viereinhalb Tage.",
+				"Auf Rhea kann es bis zu etwa −220 °C kalt werden.",
+				"Rhea wurde vor mehr als 350 Jahren entdeckt, im Jahr 1672."
+			],
+			"standard": [
+				"Giovanni Domenico Cassini entdeckte Rhea am 23. Dezember 1672.",
+				"Der Sauerstoff an Rheas Oberfläche ist etwa 5 Billionen Mal dünner als der Sauerstoff in der Luft an der Erdoberfläche.",
+				"Die Schwerebeschleunigung beträgt nur 0,264 m/s² – man wöge dort weniger als 3 % des Gewichts auf der Erde."
+			],
+			"advanced": [
+				"Hinweise auf einen schwachen Ring um Rhea, 2008 veröffentlicht, wurden widerlegt, als Cassini die vermutete Ringebene gezielt aus mehreren Blickwinkeln beobachtete.",
+				"Rhea umkreist Saturn in etwa 527 100 km Abstand in 4,52 Tagen und rotiert – wie die anderen großen inneren Saturnmonde – gebunden.",
+				"Schweredaten von Cassini deuten darauf hin, dass sich Gestein und Eis in Rhea nur teilweise getrennt haben könnten; der innere Aufbau ist aber weiter umstritten."
+			]
+		},
+		"comparisons": {
+			"simple": ["Etwa acht Rheas nebeneinander wären so breit wie die Erde."],
+			"standard": [
+				"Ein einziger Atemzug Luft auf der Erde enthält mehr Sauerstoffmoleküle als ein Würfel aus Rheas dünner Exosphäre mit mehr als einem Kilometer Kantenlänge."
+			],
+			"advanced": [
+				"Bei Rheas Schwerkraft würde ein Sprung, der auf der Erde 0,5 m hoch reicht, fast 19 m hoch tragen."
+			]
+		}
+	},
+	"titan": {
+		"name": "Titan",
+		"tagline": "Eine Welt mit Methanregen",
+		"description": {
+			"simple": "Titan ist der größte Mond des Saturn – er ist sogar größer als der Planet Merkur. Er ist der einzige Mond mit einer dichten Lufthülle. Auf Titan regnet es, und es gibt Flüsse, Seen und Meere. Aber sie bestehen nicht aus Wasser: Bei etwa −179 °C ist Wasser steinhart gefroren, deshalb sind Regen und Meere aus flüssigem Methan – einem Gas, das wir auf der Erde zum Kochen und Heizen verbrennen.",
+			"standard": "Titan hat einen Durchmesser von etwa 5 150 km – er ist der größte Saturnmond, der zweitgrößte Mond im Sonnensystem und größer als der Planet Merkur. Er ist der einzige Mond mit einer dichten Atmosphäre, die vor allem aus Stickstoff besteht; der Druck an seiner Oberfläche ist etwa 1,5-mal so hoch wie auf der Erde. Bei rund −179 °C übernimmt Methan die Rolle, die auf der Erde das Wasser spielt: Es bildet Wolken, fällt als Regen, gräbt Flüsse und füllt Seen und Meere wie Kraken Mare und Ligeia Mare. Im Januar 2005 landete die europäische Sonde Huygens auf Titan – bis heute die fernste Landung überhaupt –, und NASAs Drehflügler Dragonfly soll im Juli 2028 starten und 2034 ankommen.",
+			"advanced": "Titan (Durchmesser 5 150 km, Dichte 1,88 g/cm³) ist etwa 6 % breiter als Merkur, hat aber nur rund 40 % seiner Masse. Seine Stickstoffatmosphäre enthält nahe dem Boden etwa 5 % Methan; bei rund 1,45 bar und 94 K ist sie ungefähr viermal so dicht wie die Luft auf Meereshöhe der Erde. Sonnenlicht spaltet Methan in der oberen Atmosphäre und erzeugt so den orangefarbenen organischen Dunst und schwerere Kohlenwasserstoffe wie Ethan – das Methan muss also irgendwie nachgeliefert werden, möglicherweise aus dem Inneren. Lange galt Titan als Welt mit globalem Wasserozean, doch eine Neuauswertung von Cassini-Bahnverfolgungsdaten aus dem Jahr 2025 spricht eher für dickes, breiiges Hochdruckeis mit Taschen aus flüssigem Wasser – die Frage ist noch offen."
+		},
+		"facts": {
+			"simple": [
+				"Die Sonde Huygens ist 2005 auf Titan gelandet – noch nie ist eine Raumsonde weiter von der Erde entfernt gelandet.",
+				"Titan ist in orangefarbenen Dunst gehüllt, deshalb sehen normale Kameras seine Oberfläche aus dem All nicht.",
+				"Titan braucht etwa 16 Tage für eine Runde um Saturn."
+			],
+			"standard": [
+				"Christiaan Huygens entdeckte Titan am 25. März 1655 – er war der erste Saturnmond, den man fand.",
+				"Kraken Mare, Titans größtes Meer, ist ungefähr so groß wie das Kaspische Meer, der größte See der Erde.",
+				"Dragonfly ist eine autogroße Drohne mit acht Rotoren, die von Ort zu Ort fliegen und Titans Chemie untersuchen soll."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung beträgt 1,35 m/s² – etwa 14 % der irdischen und sogar weniger als auf unserem Mond (1,62 m/s²).",
+				"Huygens sendete während eines rund 2,5-stündigen Abstiegs und danach noch über eine Stunde lang vom Boden, wo die Sonde gerundete Kiesel aus Wassereis auf einer methanfeuchten Ebene vorfand.",
+				"Dass Titan eine Atmosphäre besitzt, bewies Gerard Kuiper 1944, als er in seinem Spektrum Methan nachwies."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Auf Titan ist die Luft so dicht und die Schwerkraft so schwach, dass ein Mensch mit an die Arme geschnallten Flügeln vielleicht fliegen könnte."
+			],
+			"standard": [
+				"Titan ist außer der Erde der einzige bekannte Ort mit Flüssen, Seen und Meeren an der Oberfläche – nur sind sie dort mit flüssigem Methan und Ethan bei etwa −179 °C gefüllt."
+			],
+			"advanced": [
+				"Über jedem Quadratmeter von Titans Oberfläche lastet etwa zehnmal so viel Gas wie über einem Quadratmeter Erde."
+			]
+		}
+	},
+	"hyperion": {
+		"name": "Hyperion",
+		"tagline": "Der taumelnde Schwamm",
+		"description": {
+			"simple": "Hyperion ist ein seltsamer Mond des Saturn. Er ist nicht rund, sondern eher wie eine Kartoffel geformt, und seine Oberfläche ist voller Löcher – wie ein Schwamm. Außerdem taumelt Hyperion so wild durcheinander, dass niemand genau sagen kann, wohin er als Nächstes zeigt. Für seine Größe ist er so leicht, dass er innen wahrscheinlich voller Hohlräume ist.",
+			"standard": "Hyperion misst etwa 360 × 266 × 205 km und ist damit einer der größten unregelmäßig geformten Monde im Sonnensystem. Nahaufnahmen der Raumsonde Cassini von 2005 zeigten eine Oberfläche voller tiefer, scharfkantiger Krater, die ihm ein schwammartiges Aussehen verleihen. Seine Dichte beträgt nur etwa 0,54 g/cm³ – rund die Hälfte von Wassereis –, deshalb vermuten Forschende, dass etwa 40 % seines Inneren leerer Raum sein könnten. Hyperion dreht sich nicht gleichmäßig: Die Anziehung von Saturn und dem nahen Titan lässt ihn chaotisch taumeln, sodass sich seine Ausrichtung nicht lange im Voraus vorhersagen lässt.",
+			"advanced": "Hyperion steht mit Titan in einer 4:3-Bahnresonanz (vier Hyperion-Umläufe auf drei von Titan), die seine Bahn recht exzentrisch hält (e ≈ 0,1). Weil der Mond so langgestreckt ist, schwanken Saturns Gezeitendrehmomente entlang dieser exzentrischen Bahn stark; Hyperion kann sich daher nicht in eine gebundene Rotation einpendeln, sondern Drehgeschwindigkeit und Drehachse ändern sich chaotisch, und winzige Unterschiede wachsen innerhalb weniger Umläufe exponentiell an. Wisdom, Peale und Mignard sagten dieses Verhalten 1984 voraus, spätere Beobachtungen stützten es, und seither ist Hyperion das Lehrbuchbeispiel für chaotische Rotation. Seine Porosität von rund 40 % könnte auch die seltsamen Krater erklären: Einschläge pressen das poröse Eis zusammen, statt Material hinauszuschleudern, und hinterlassen tiefe Gruben mit wenig Auswurf."
+		},
+		"facts": {
+			"simple": [
+				"Hyperion braucht etwa drei Wochen für eine Runde um Saturn.",
+				"In vielen Kratern von Hyperion liegt dunkles Zeug am Boden – wie Schmutz in den Löchern eines Schwamms.",
+				"Hyperion wurde 1848 fast gleichzeitig von Astronomen in Amerika und in England entdeckt."
+			],
+			"standard": [
+				"Hyperion wurde 1848 von William Cranch Bond und seinem Sohn George Phillips Bond entdeckt – und unabhängig davon von William Lassell.",
+				"Hyperion umrundet Saturn alle 21,3 Tage in einem mittleren Abstand von etwa 1,48 Millionen km, knapp außerhalb der Titanbahn.",
+				"Hyperion war der erste Mond, bei dem man chaotisches Taumeln entdeckte; später fand man es auch bei Plutos kleinen Monden Nix und Hydra."
+			],
+			"advanced": [
+				"Hyperions mittlerer Durchmesser beträgt etwa 270 km, doch seine längste Achse ist rund 1,8-mal so lang wie die kürzeste.",
+				"2005 flog Cassini durch einen Elektronenstrahl, der von Hyperions elektrisch aufgeladener Oberfläche (etwa −200 V) ausging.",
+				"Anders als Saturns andere große reguläre Monde rotiert Hyperion nicht gebunden."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Hyperion ist für seine Größe ungefähr so leicht wie ein Bimsstein – er würde im Wasser schwimmen."
+			],
+			"standard": [
+				"Hyperion taumelt wie ein Rugbyball, der über ein Spielfeld springt: Winzige Unterschiede lassen ihn anders kippen, sodass niemand lange vorhersagen kann, welche Seite gerade zu Saturn zeigt."
+			],
+			"advanced": [
+				"Mit rund 40 % leerem Volumen ist Hyperion etwa so porös wie ein Haufen lockerer Sand."
+			]
+		}
+	},
+	"iapetus": {
+		"name": "Iapetus",
+		"tagline": "Der Mond mit zwei Gesichtern",
+		"description": {
+			"simple": "Iapetus ist ein Mond des Saturn mit zwei ganz verschiedenen Seiten. Die eine Hälfte ist dunkel wie Kohle, die andere hell wie Schnee. Um seine Mitte zieht sich ein langer, hoher Gebirgskamm – dadurch sieht Iapetus ein bisschen aus wie eine Walnuss. Er ist weit von Saturn entfernt und braucht mehr als zwei Monate für eine Runde.",
+			"standard": "Iapetus hat einen Durchmesser von etwa 1 469 km und ist der drittgrößte Saturnmond. Seine vorauseilende Seite – die in Flugrichtung zeigt – ist dunkel wie Kohle, die nachfolgende Seite dagegen fast so hell wie Schnee. Als Giovanni Domenico Cassini Iapetus 1671 entdeckte, konnte er ihn nur auf einer Seite des Saturn sehen und schloss richtig, dass eine Hälfte viel dunkler sein muss als die andere. Die nach ihm benannte Raumsonde Cassini entdeckte später einen Kamm entlang des Äquators, rund 1 300 km lang und mit Gipfeln bis etwa 20 km Höhe, der dem Mond die Form einer Walnuss gibt.",
+			"advanced": "Die zweifarbige Oberfläche von Iapetus entsteht vermutlich durch einen sich selbst verstärkenden Prozess. Dunkler Staub, großenteils vom rückläufigen Mond Phoebe und seinem riesigen Ring, fegt auf die vorauseilende Hemisphäre; die dunklere Oberfläche absorbiert während der langen, 79 Tage dauernden Iapetus-Tage mehr Sonnenlicht und erwärmt sich etwas, sodass dort Wassereis sublimiert und sich auf der kälteren, helleren Rückseite und an den Polen wieder niederschlägt – die eine Seite wird immer dunkler, die andere immer heller. Die Albedo reicht von etwa 0,03–0,05 in der dunklen Region Cassini Regio bis etwa 0,5–0,6 auf der hellen Seite. Der bis zu etwa 20 km hohe und 1 300 km lange Äquatorkamm ist bis heute unerklärt: Diskutiert werden etwa ein eingefrorener Wulst aus einer Zeit schnellerer Rotation oder Material, das aus einem kollabierten Ring herabgefallen ist."
+		},
+		"facts": {
+			"simple": [
+				"Die höchsten Berge von Iapetus sind mehr als doppelt so hoch wie der Mount Everest.",
+				"Von Iapetus aus hättest du einen tollen Blick auf Saturns Ringe, weil seine Bahn um Saturn schräg geneigt ist.",
+				"Iapetus wurde vor mehr als 350 Jahren entdeckt, im Jahr 1671."
+			],
+			"standard": [
+				"Iapetus umkreist Saturn in etwa 3,56 Millionen km Abstand – mehr als neunmal so weit, wie der Mond von der Erde entfernt ist.",
+				"Weil Iapetus gebunden rotiert, dauert ein Tag dort so lange wie ein Umlauf: etwa 79 Tage.",
+				"Ein Großteil des dunklen Materials stammt vermutlich von Phoebe, einem kleinen äußeren Mond, dessen Staub einen riesigen, lichtschwachen Ring um Saturn bildet."
+			],
+			"advanced": [
+				"Die Dichte von etwa 1,09 g/cm³ spricht für einen Körper aus überwiegend Wassereis mit nur rund 20 % Gestein.",
+				"Iapetus ist deutlich abgeplattet – eine Form, die womöglich eingefroren ist, als er sich früh in seiner Geschichte viel schneller drehte, vielleicht einmal in 16 Stunden.",
+				"Seine Bahn ist um etwa 7,6° gegen seine Laplace-Ebene geneigt – weit stärker als die der anderen großen Saturnmonde."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre Iapetus ein Fußball, dann wäre sein riesiger Gebirgskamm nur eine etwa 3 mm hohe Erhebung rund um seine Mitte."
+			],
+			"standard": [
+				"Die dunkle Seite von Iapetus wirft nur etwa so viel Licht zurück wie frischer Asphalt, die helle mehr als zehnmal so viel – deshalb konnte Cassini den Mond auf der einen Seite des Saturn sehen, auf der anderen aber nicht."
+			],
+			"advanced": [
+				"Von Iapetus aus erschiene Saturn nur etwa 2° breit am Himmel – immerhin fast viermal so breit wie der Vollmond von der Erde aus."
+			]
+		}
+	},
+	"phoebe": {
+		"name": "Phoebe",
+		"tagline": "Saturns Geisterfahrer",
+		"description": {
+			"simple": "Phoebe ist ein kleiner, dunkler Mond des Saturn, etwa 200 km breit. Er kreist falsch herum um den Saturn – also in die andere Richtung als die großen Saturnmonde – und viel weiter draußen. Forscher glauben, dass Phoebe nicht beim Saturn entstanden ist, sondern von weit draußen im Sonnensystem kam und von Saturns Schwerkraft eingefangen wurde. Staub, der von Phoebe abgeschlagen wird, bildet einen riesigen, sehr schwachen Ring um den Saturn.",
+			"standard": "Phoebe misst etwa 213 km und umkreist den Saturn in einem mittleren Abstand von rund 12,9 Millionen km – mehr als dreimal so weit draußen wie Iapetus, der äußerste der großen Saturnmonde. Der Mond läuft rückwärts (retrograd) um den Planeten, ein starkes Indiz dafür, dass Saturn ihn eingefangen hat: Phoebe ist wahrscheinlich ein Besucher aus dem äußeren Sonnensystem, verwandt mit den eisigen Körpern des Kuipergürtels. Winzige Einschläge schlagen Staub von seiner dunklen Oberfläche, und dieser Staub bildet den Phoebe-Ring, den das Spitzer-Weltraumteleskop der NASA 2009 entdeckte. Ein Teil des Staubs driftet nach innen und landet auf einer Seite von Iapetus – er trägt dazu bei, dass diese Seite so dunkel ist.",
+			"advanced": "Phoebes Bahn – große Halbachse etwa 12,9 Millionen km, Exzentrizität 0,16, Neigung etwa 175° gegen die Laplace-Ebene – ist retrograd und liegt weit außerhalb der regulären Saturnmonde: das Kennzeichen eines eingefangenen Körpers, nicht eines, der in Saturns Scheibe entstanden ist. Die Dichte von etwa 1,64 g/cm³, höher als die der inneren Eismonde, und die dunkle Oberfläche (geometrische Albedo etwa 0,08) mit Wassereis, Kohlendioxid und vermutlich organischen Verbindungen sprechen für eine Herkunft aus dem Kuipergürtel oder aus der Gruppe der Zentauren. Mikrometeoriten-Einschläge speisen den Phoebe-Ring, eine riesige, extrem dünne Staubscheibe, die wie Phoebes Bahn um etwa 27° gegen Saturns Hauptringe geneigt ist. Der Strahlungsdruck lässt die Staubkörner langsam nach innen spiralen, wo Iapetus sie mit seiner vorauslaufenden Hemisphäre aufsammelt – ein wichtiger Grund für das auffällige zweifarbige Aussehen dieses Mondes."
+		},
+		"facts": {
+			"simple": [
+				"Phoebe braucht etwa anderthalb Jahre für eine Runde um den Saturn.",
+				"Phoebe war der erste Mond, der jemals auf Fotos entdeckt wurde.",
+				"Phoebe dreht sich in nur etwa 9 Stunden einmal um sich selbst – viel schneller, als er um den Saturn kreist."
+			],
+			"standard": [
+				"Die Raumsonde Cassini flog am 11. Juni 2004 in nur 2 068 km Abstand an Phoebe vorbei – etwa drei Wochen, bevor sie in eine Umlaufbahn um den Saturn einschwenkte.",
+				"William Henry Pickering entdeckte Phoebe 1899 auf Fotoplatten, die 1898 an einer Sternwarte bei Arequipa in Peru aufgenommen worden waren.",
+				"Phoebes größter Krater, Jason, ist etwa 100 km breit – fast halb so breit wie der ganze Mond."
+			],
+			"advanced": [
+				"Phoebe rotiert in 9,27 Stunden einmal um sich selbst und ist damit anders als die großen regulären Saturnmonde nicht gebunden rotierend.",
+				"Phoebes Masse von etwa 8,3 × 10¹⁸ kg wurde aus der Anziehung bestimmt, die der Mond beim Vorbeiflug 2004 auf Cassini ausübte.",
+				"Phoebe ist fast kugelrund, obwohl er nur etwa 213 km misst – manche Forscher sehen darin ein Zeichen, dass sein Inneres früh in seiner Geschichte warm und weich war."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Phoebe fährt um den Saturn wie ein Auto, das falsch herum durch einen Kreisverkehr fährt."
+			],
+			"standard": [
+				"Der Staubring, der von Phoebe stammt, ist so gewaltig, dass etwa eine Milliarde Erden hineinpassen würden – und doch so lichtschwach, dass man ihn erst 2009 mit einem Infrarotteleskop entdeckte."
+			],
+			"advanced": [
+				"Könnten unsere Augen den Phoebe-Ring sehen, würde er am Nachthimmel etwa die Breite von zwei Vollmonden einnehmen, je einen auf jeder Seite des Saturn."
+			]
+		}
+	},
+	"miranda": {
+		"name": "Miranda",
+		"tagline": "Der Frankenstein-Mond",
+		"description": {
+			"simple": "Miranda ist der kleinste der fünf großen Uranusmonde, etwa 470 km breit. Seine Oberfläche sieht aus, als hätte man sie aus verschiedenen Stücken zusammengenäht – deshalb wird er auch Frankenstein-Mond genannt. Er hat eine der höchsten Klippen, die wir überhaupt kennen. Nur eine einzige Raumsonde, Voyager 2, ist je an ihm vorbeigeflogen, im Jahr 1986.",
+			"standard": "Miranda ist mit etwa 470 km Durchmesser der innerste und kleinste der fünf großen Uranusmonde. Als Voyager 2 im Januar 1986 vorbeiflog, zeigte sich ein Durcheinander völlig verschiedener Landschaften: alte, verkraterte Ebenen direkt neben riesigen Gebieten voller Furchen und Rücken, den sogenannten Coronae. Außerdem besitzt Miranda die Steilwand Verona Rupes, deren Höhe auf 5 bis 20 km geschätzt wird – womöglich die höchste Klippe im Sonnensystem. Entdeckt wurde der Mond 1948 von Gerard Kuiper, der ihn nach der Tochter des Zauberers Prospero in Shakespeares „Der Sturm“ benannte.",
+			"advanced": "Mirandas drei Coronae – Arden, Elsinore und Inverness – sind ovale oder vieleckige Regionen von einigen hundert Kilometern Größe, umgeben von parallelen Rücken und Gräben, die ältere Kraterlandschaften durchschneiden. Frühe Vorstellungen, Miranda sei zertrümmert und wieder zusammengefügt worden, sind weitgehend Modellen gewichen, in denen Gezeitenheizung warmes Eis aufsteigen ließ – vermutlich während einer früheren Bahnresonanz mit Umbriel, die auch Mirandas ungewöhnlich große Bahnneigung von etwa 4,3° erklären könnte. Eine Studie von 2024 schlug sogar vor, dass Miranda noch vor wenigen hundert Millionen Jahren einen etwa 100 km tiefen Ozean unter der Oberfläche gehabt haben könnte. Die geringe Dichte von etwa 1,2 g/cm³ zeigt, dass Miranda größtenteils aus Wassereis besteht."
+		},
+		"facts": {
+			"simple": [
+				"Miranda braucht für eine Runde um Uranus weniger als anderthalb Tage.",
+				"Miranda ist nach einem Mädchen aus einem Theaterstück von William Shakespeare benannt.",
+				"Auf Miranda würdest du weniger als ein Hundertstel von dem wiegen, was du auf der Erde wiegst."
+			],
+			"standard": [
+				"Voyager 2 kam Miranda bis auf etwa 29 000 km nahe – näher als jedem anderen Uranusmond.",
+				"Miranda kreist etwa 129 900 km von Uranus entfernt und braucht rund 34 Stunden für einen Umlauf.",
+				"Weil Uranus auf der Seite liegt und seine großen Monde über seinem Äquator kreisen, ist auch Mirandas Bahn gekippt – zeitweise sieht sie von der Erde aus wie eine Zielscheibe um den Planeten."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung an Mirandas Oberfläche beträgt nur etwa 0,08 m/s², weniger als 1 % des Erdwerts.",
+				"Verona Rupes gilt als Bruchstufe, entstanden dort, wo Mirandas Eiskruste auseinandergezogen wurde.",
+				"Voyager 2 konnte nur Mirandas Südhalbkugel fotografieren, die 1986 der Sonne zugewandt war; die Nordhälfte hat noch nie jemand aus der Nähe gesehen."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Wäre Mirandas Oberfläche ein Puzzle, dann kämen die Teile aus mehreren verschiedenen Schachteln."
+			],
+			"standard": [
+				"Die Steilwand Verona Rupes könnte bis zu 20 km hoch sein – mehr als doppelt so hoch wie der Mount Everest –, und bei Mirandas schwacher Schwerkraft könnte ein fallen gelassener Stein etwa 12 Minuten lang fallen, bevor er unten aufschlägt."
+			],
+			"advanced": [
+				"Auf Erdgröße vergrößert, wäre eine 20 km hohe Klippe auf Miranda mehr als 500 km hoch – höher, als die Internationale Raumstation fliegt."
+			]
+		}
+	},
+	"ariel": {
+		"name": "Ariel",
+		"tagline": "Der junge, helle Uranusmond",
+		"description": {
+			"simple": "Ariel ist einer der fünf großen Uranusmonde, etwa 1 160 km breit. Er ist der hellste von ihnen und hat eine frisch aussehende, eisige Oberfläche. Lange, tiefe Täler, sogenannte Canyons, ziehen sich über ihn hinweg. Nur eine einzige Raumsonde, Voyager 2, ist je an ihm vorbeigeflogen.",
+			"standard": "Ariel misst etwa 1 160 km und umkreist Uranus alle 2,5 Tage in einem Abstand von rund 190 900 km. Er hat die hellste Oberfläche der großen Uranusmonde und vermutlich auch die jüngste: Er trägt weniger große Krater als seine Nachbarn, also muss etwas seine Oberfläche erneuert haben. Lange Canyons durchziehen ihn kreuz und quer; einer davon, Kachina Chasma, ist mehr als 600 km lang. William Lassell entdeckte Ariel 1851 in derselben Nacht wie Umbriel; der Name stammt vom Luftgeist Ariel aus Shakespeares „Der Sturm“ und von einer Sylphe in Alexander Popes Gedicht „Der Lockenraub“.",
+			"advanced": "Mit einer geometrischen Albedo von etwa 0,5 ist Ariel der am stärksten reflektierende der großen Uranusmonde, und die vergleichsweise wenigen großen Krater deuten auf die jüngste Oberfläche der fünf hin. Seine Canyons sind Grabenbrüche – Krustenblöcke, die zwischen Verwerfungen absanken, als sich die Kruste dehnte, vermutlich weil das Innere während einer früheren Bahnresonanz durch Gezeiten aufgeheizt wurde oder sich beim Gefrieren ausdehnte; manche Canyonböden scheinen von eisigem Material überflutet worden zu sein. 2024 fand das James-Webb-Weltraumteleskop auf Ariel überraschend dicke Ablagerungen aus Kohlendioxid-Eis, Kohlenmonoxid-Eis und Hinweise auf Karbonatminerale. Manche Forscher deuten das als Material aus einem möglichen Ozean unter der Oberfläche; allerdings erzeugen auch geladene Teilchen aus der Magnetosphäre des Uranus Kohlendioxid auf der Oberfläche, und vermutlich spielen beide Vorgänge eine Rolle."
+		},
+		"facts": {
+			"simple": [
+				"Ariel braucht für eine Runde um Uranus etwa zweieinhalb Tage.",
+				"Ariel ist nach einem Zaubergeist aus einem Theaterstück von William Shakespeare benannt, der fliegen und sogar einen Sturm heraufbeschwören konnte.",
+				"Ariel besteht ungefähr zur Hälfte aus Eis und zur Hälfte aus Gestein."
+			],
+			"standard": [
+				"Voyager 2 konnte beim Vorbeiflug 1986 nur etwa 35 % von Ariels Oberfläche fotografieren.",
+				"Weil Uranus auf der Seite liegt, haben Ariels Pole etwa 42 Jahre lang ununterbrochen Tag und danach etwa 42 Jahre lang Nacht.",
+				"Die Namen Ariel, Umbriel, Titania und Oberon schlug 1852 John Herschel vor, der Sohn des Uranus-Entdeckers William Herschel."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung auf Ariel beträgt etwa 0,25 m/s², rund ein Vierzigstel des Erdwerts.",
+				"Die Dichte von etwa 1,54 g/cm³ spricht für ungefähr gleiche Anteile von Wassereis und Gestein.",
+				"Ariels Bahn ist nahezu kreisförmig (Exzentrizität etwa 0,001) und liegt fast genau in der Äquatorebene des Uranus, die um etwa 98° gegen seine Umlaufbahn geneigt ist."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Ariels längster Canyon ist so lang, dass ein Auto auf der Autobahn mehr als sechs Stunden bräuchte, um von einem Ende zum anderen zu fahren."
+			],
+			"standard": [
+				"Ariel und Umbriel sind fast genau gleich groß, doch Ariel wirft etwa doppelt so viel Licht zurück und hat viel weniger große Krater – wie Zwillinge, von denen einer frisch gewaschen ist und der andere sich seit Milliarden Jahren nicht mehr gewaschen hat."
+			],
+			"advanced": [
+				"Wäre Ariel so groß wie die Erde, dann wäre Kachina Chasma etwa 6 800 km lang – ungefähr so lang wie der Nil."
+			]
+		}
+	},
+	"umbriel": {
+		"name": "Umbriel",
+		"tagline": "Dunkler Mond, heller Ring",
+		"description": {
+			"simple": "Umbriel ist einer der fünf großen Uranusmonde, etwa 1 170 km breit. Er ist der dunkelste von ihnen und mit alten Kratern übersät. Auf seiner dunklen Oberfläche gibt es einen rätselhaften hellen Ring. Umbriel ist nach einem düsteren Geist aus einem alten Gedicht benannt.",
+			"standard": "Umbriel ist mit etwa 1 170 km Durchmesser fast genau so groß wie Ariel, aber der dunkelste der großen Uranusmonde. Seine Oberfläche ist alt und dicht mit Kratern bedeckt, sie hat sich also vermutlich seit Milliarden Jahren kaum verändert. Nahe dem Äquator liegt der Krater Wunda, etwa 131 km breit, mit einem seltsamen hellen Ring auf seinem Boden – was das ist, wissen die Forscher bis heute nicht genau. Umbriel wurde 1851 von William Lassell entdeckt und nach einem düsteren Geist aus Alexander Popes Gedicht „Der Lockenraub“ benannt.",
+			"advanced": "Umbriels geometrische Albedo von etwa 0,26 ist nur etwa halb so groß wie die von Ariel, und seine stark verkraterte Oberfläche mit Kratern bis etwa 210 km Durchmesser zeigt kaum Spuren einer Erneuerung – sie gehört zu den ältesten unter den großen Uranusmonden. Warum der Mond so gleichmäßig dunkel ist, ist noch ungeklärt; eine Möglichkeit ist ein Überzug aus dunklem, kohlenstoffreichem Material, das durch Strahlung verändert wurde. Der helle Ring auf dem Boden von Wunda könnte eine Einschlagablagerung sein oder ein Fleck aus Kohlendioxid-Reif – Kohlendioxid-Eis wurde auf den nachlaufenden Hemisphären der großen Uranusmonde nachgewiesen. Voyager 2 fotografierte nur etwa 40 % von Umbriel und mit einer Auflösung von bestenfalls etwa 5 km, deshalb ist ein großer Teil des Mondes noch unkartiert."
+		},
+		"facts": {
+			"simple": [
+				"Umbriel braucht für eine Runde um Uranus etwa vier Tage.",
+				"Umbriels Name erinnert an „umbra“, das lateinische Wort für Schatten – ein guter Name für so einen dunklen Mond.",
+				"Umbriel wurde 1851 in derselben Nacht entdeckt wie Ariel."
+			],
+			"standard": [
+				"In Popes Gedicht wird Umbriel „der düstere, melancholische Geist“ genannt.",
+				"Voyager 2 fotografierte 1986 nur etwa 40 % von Umbriels Oberfläche.",
+				"Umbriel kreist etwa 266 000 km von Uranus entfernt und braucht rund 4,1 Tage für einen Umlauf."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung auf Umbriel beträgt etwa 0,25 m/s², fast genauso viel wie auf Ariel.",
+				"Die Dichte von etwa 1,5 g/cm³ deutet auf eine Mischung aus Wassereis und Gestein hin, mit dunklem, kohlenstoffreichem Material an der Oberfläche.",
+				"Canyons, die ungefähr von Nordost nach Südwest verlaufen, deuten darauf hin, dass Umbriel sehr früh in seiner Geschichte geologisch aktiv war."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Umbriel und Ariel sind fast gleich groß, aber neben Ariel sieht Umbriel aus wie ein rußiger Schneeball neben einem sauberen."
+			],
+			"standard": [
+				"Auf Umbriels dunklem Gesicht fällt der helle Ring im Krater Wunda auf wie ein weißer Tassenrand auf einem dunklen Tisch – und niemand weiß genau, woher er stammt."
+			],
+			"advanced": [
+				"Umbriel wirft nur etwa halb so viel Licht zurück wie Ariel, obwohl sich ihre Durchmesser nur um etwa 1 % unterscheiden – wie zwei gleiche Kugeln, die eine hellgrau, die andere dunkelgrau gestrichen."
+			]
+		}
+	},
+	"titania": {
+		"name": "Titania",
+		"tagline": "Die Königin der Uranusmonde",
+		"description": {
+			"simple": "Titania ist der größte Mond des Uranus, etwa 1 580 km breit – etwas weniger als halb so breit wie unser Mond. Er ist nach der Königin der Feen aus einem Theaterstück von William Shakespeare benannt. Seine eisige Oberfläche ist von riesigen Canyons zerrissen. William Herschel, der Astronom, der Uranus entdeckt hat, fand Titania im Jahr 1787.",
+			"standard": "Titania ist mit etwa 1 580 km Durchmesser der größte Mond des Uranus und der achtgrößte Mond im Sonnensystem. Seine Oberfläche wird von gewaltigen Bruchtälern durchschnitten; das längste, Messina Chasma, ist rund 1 500 km lang. Diese Canyons entstanden vermutlich, als sich Titanias Inneres ausdehnte und die Eiskruste aufriss – ähnlich wie eine Wasserflasche, die man im Gefrierfach vergessen hat. William Herschel entdeckte Titania am 11. Januar 1787 in derselben Nacht wie Oberon; sein Name stammt von der Feenkönigin aus Shakespeares „Ein Sommernachtstraum“.",
+			"advanced": "Titanias Dichte von etwa 1,65 g/cm³ spricht für ungefähr gleiche Anteile von Wassereis und Gestein, vermutlich getrennt in einen Gesteinskern und einen Eismantel; manche Modelle lassen an der Grenze zwischen beiden eine dünne Schicht flüssigen Wassers zu, die Ammoniak als Frostschutzmittel flüssig hält. Seine Canyons (Chasmata) sind Grabenbrüche, die durch eine weltweite Dehnung der Kruste entstanden, und da er weniger große Krater hat als Oberon, ist seine Oberfläche wahrscheinlich jünger. Als Titania 2001 vor einem Stern vorbeizog, verschwand dessen Licht schlagartig – eine Atmosphäre kann daher höchstens einen Bodendruck von etwa 10–20 Nanobar haben. Voyager 2 fotografierte nur etwa 40 % seiner Oberfläche, fast nur auf der Südhalbkugel, die 1986 der Sonne zugewandt war."
+		},
+		"facts": {
+			"simple": [
+				"Titania braucht für eine Runde um Uranus fast neun Tage.",
+				"Titania besteht etwa zur Hälfte aus Eis und zur Hälfte aus Gestein.",
+				"Titanias größter Krater, Gertrude, ist mehr als 300 km breit."
+			],
+			"standard": [
+				"Titania kreist etwa 436 300 km von Uranus entfernt – etwas weiter, als unser Mond von der Erde entfernt ist.",
+				"Die Namen auf Titania stammen von Shakespeare: Krater heißen nach Frauenfiguren wie Gertrude, Hamlets Mutter, Canyons nach Schauplätzen wie Messina.",
+				"Wie die anderen großen Uranusmonde zeigt Titania seinem Planeten immer dieselbe Seite."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung auf Titania beträgt etwa 0,36 m/s², rund 3,7 % des Erdwerts.",
+				"Seine Umlaufzeit beträgt 8,706 Tage, und seine Bahn ist fast perfekt kreisförmig (Exzentrizität etwa 0,001).",
+				"Wie die anderen großen Uranusmonde trägt Titania auf seiner nachlaufenden Hemisphäre mehr Kohlendioxid-Eis, das vermutlich zum Teil von geladenen Teilchen aus der Magnetosphäre des Uranus erzeugt wird."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Titanias längster Canyon ist so lang, dass er fast ein Drittel des Weges um den ganzen Mond herum reicht."
+			],
+			"standard": [
+				"Titanias großer Canyon Messina Chasma ist rund 1 500 km lang – mehr als dreimal so lang wie der Grand Canyon in den USA –, und das auf einem Mond, der nicht einmal halb so breit ist wie unserer."
+			],
+			"advanced": [
+				"Titania ist fast halb so breit wie unser Mond, hat aber, weil er etwa zur Hälfte aus Eis besteht, nur etwa ein Zwanzigstel seiner Masse."
+			]
+		}
+	},
+	"oberon": {
+		"name": "Oberon",
+		"tagline": "Der alte Feenkönig",
+		"description": {
+			"simple": "Oberon ist der äußerste der fünf großen Uranusmonde und der zweitgrößte, etwa 1 520 km breit. Er ist nach dem König der Feen aus einem Theaterstück von William Shakespeare benannt – und Titania, die Feenkönigin, ist seine Nachbarin. Oberons Oberfläche ist alt und voller Krater, manche davon mit dunklem Boden. William Herschel fand Oberon und Titania in derselben Nacht im Jahr 1787.",
+			"standard": "Oberon ist mit etwa 1 520 km Durchmesser der zweitgrößte Uranusmond und kreist von den fünf großen Monden am weitesten draußen, etwa 583 500 km vom Planeten entfernt, einmal alle 13,5 Tage. Seine Oberfläche ist alt und mit Einschlagkratern übersät – dort hat sich also seit Milliarden Jahren wenig verändert. Die Böden mehrerer großer Krater sind mit dunklem Material bedeckt, und Voyager 2 entdeckte am Rand des Mondes einen etwa 11 km hohen Berg. Oberon ist nach dem Feenkönig aus Shakespeares „Ein Sommernachtstraum“ benannt.",
+			"advanced": "Oberon ist der am stärksten verkraterte der großen Uranusmonde, mit Kratern bis etwa 206 km Durchmesser (Hamlet) – seine Oberfläche gehört damit zu den ältesten im Uranussystem. Dunkle Ablagerungen auf den Böden von Kratern wie Hamlet, Othello und Macbeth könnten Material sein, das nach den Einschlägen aus dem Inneren austrat, doch ihre Herkunft ist noch unklar. Auf einem Teil seiner Bahn verlässt Oberon die Magnetosphäre des Uranus, sodass seine Oberfläche abwechselnd dem eingefangenen Plasma des Planeten und dem Sonnenwind ausgesetzt ist. Voyager 2 sah Oberon nur aus etwa 470 600 km Entfernung und bildete rund 40 % seiner Oberfläche in geringer Auflösung ab."
+		},
+		"facts": {
+			"simple": [
+				"Oberon braucht für eine Runde um Uranus etwa zwei Wochen.",
+				"Oberon zeigt Uranus immer dieselbe Seite, so wie unser Mond der Erde.",
+				"Die Krater auf Oberon sind nach Figuren aus Shakespeares Theaterstücken benannt, zum Beispiel Hamlet und Macbeth."
+			],
+			"standard": [
+				"Hamlet, der größte Krater auf Oberon, ist etwa 206 km breit.",
+				"Herschel entdeckte Oberon und Titania 1787, nur sechs Jahre nachdem er Uranus selbst entdeckt hatte.",
+				"Oberon ist fast genau so groß wie der Saturnmond Rhea."
+			],
+			"advanced": [
+				"Die Schwerebeschleunigung auf Oberon beträgt etwa 0,35 m/s², rund 3,6 % des Erdwerts.",
+				"Die Dichte von etwa 1,66 g/cm³ spricht für ungefähr gleiche Anteile von Wassereis und Gestein.",
+				"Weil Uranus auf der Seite liegt, ist auch Oberons Bahn gekippt: Sie ist um etwa 98° gegen die Ebene geneigt, in der Uranus um die Sonne läuft."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Oberons höchster Berg ist etwa 11 km hoch – höher als der Mount Everest, der höchste Berg der Erde."
+			],
+			"standard": [
+				"Oberons zerschundenes Gesicht ist wie ein Geschichtsbuch, das nie jemand ausradiert hat: Seine Krater erzählen noch heute von Einschlägen vor Milliarden Jahren."
+			],
+			"advanced": [
+				"Oberon kreist etwa 1,5-mal so weit von Uranus entfernt wie unser Mond von der Erde, doch weil Uranus etwa 14,5-mal so viel Masse hat wie die Erde, dauert ein Umlauf nur 13,5 statt 27,3 Tage."
+			]
+		}
+	},
+	"triton": {
+		"name": "Triton",
+		"tagline": "Der Mond im Rückwärtsgang",
+		"description": {
+			"simple": "Triton ist der größte Mond des Neptun, und er kreist falschherum um ihn – rückwärts im Vergleich dazu, wie sich Neptun dreht. Das ist ein Hinweis darauf, dass Triton nicht dort entstanden ist: Wahrscheinlich hat ihn Neptuns Schwerkraft vor langer Zeit eingefangen. Triton ist einer der kältesten Orte, die je gemessen wurden, und er hat Geysire, die dunklen Staub ausstoßen. Ganz, ganz langsam kommt Triton dem Neptun immer näher.",
+			"standard": "Triton ist mit Abstand Neptuns größter Mond, 2 707 km groß und damit etwas größer als der Zwergplanet Pluto. Er umkreist Neptun rückwärts – entgegen der Drehung des Planeten – und ist der einzige große Mond im Sonnensystem, der das tut; deshalb nehmen Astronomen an, dass Neptun ihn vor langer Zeit aus dem Kuipergürtel eingefangen hat. Als Voyager 2 im Jahr 1989 vorbeiflog, sah die Sonde Geysire aus Stickstoffgas, die dunklen Staub etwa 8 km hoch trugen – auf einer Oberfläche mit rund −235 °C. Gezeitenkräfte ziehen Triton langsam nach innen, sodass er in Milliarden Jahren zu Ringen zerrissen werden oder in Neptun stürzen könnte.",
+			"advanced": "Tritons Bahn ist rückläufig und um etwa 157° gegen Neptuns Äquator geneigt – das lässt sich mit einer Entstehung in einer Scheibe um den Planeten nicht erklären; die gängigste Erklärung ist der Einfang eines Kuipergürtel-Objekts, vielleicht eines Partners aus einem Doppelsystem, dessen Begleiter davongeschleudert wurde. Nach dem Einfang dürfte Triton auf einer stark exzentrischen Bahn gelaufen sein, und die Abbremsung auf den heutigen nahezu perfekten Kreis (e ≈ 0,00002) könnte sein Inneres aufgeschmolzen und Neptuns ursprüngliche Monde zerstreut oder zerstört haben. Seine Oberfläche aus Stickstoff-, Methan- und Wassereis wirft den größten Teil des Sonnenlichts zurück (Albedo etwa 0,76), was ihn bei rund 38 K hält. Weil er entgegen Neptuns Drehung kreist, entzieht ihm der Gezeitenwulst, den er erzeugt, langsam Bahnenergie; er könnte Neptuns Roche-Grenze in einigen Milliarden Jahren erreichen, wobei die Schätzungen von etwa 3,6 bis 28 Milliarden Jahren reichen."
+		},
+		"facts": {
+			"simple": [
+				"Triton wurde 1846 entdeckt, nur 17 Tage nachdem Neptun selbst gefunden worden war.",
+				"Triton ist so eisig und hell, dass er den größten Teil des Sonnenlichts zurückwirft, das auf ihn fällt.",
+				"Nur eine einzige Raumsonde hat Triton je besucht: Voyager 2, im Jahr 1989."
+			],
+			"standard": [
+				"Auf Triton entfallen mehr als 99,5 % der gesamten Masse, die Neptun umkreist.",
+				"Teile von Tritons Oberfläche sind zu einem Muster gerunzelt, das „Cantaloupe-Gelände“ heißt, weil es aussieht wie die Schale einer Melone.",
+				"Triton braucht 5,9 Tage für einen Umlauf um Neptun und zeigt ihm immer dieselbe Seite – so wie unser Mond der Erde."
+			],
+			"advanced": [
+				"Triton hat eine sehr dünne Stickstoffatmosphäre mit einem Bodendruck von etwa 1,4 Pa, rund ein Siebzigtausendstel des irdischen.",
+				"Manche Modelle legen nahe, dass Wärme aus radioaktivem Zerfall und aus Gezeiten unter Tritons Eiskruste einen flüssigen Ozean erhalten könnte.",
+				"Die Schwerebeschleunigung an der Oberfläche beträgt 0,78 m/s², etwa 8 % der irdischen."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Auf Triton ist es etwa 150 Grad kälter als an dem kältesten Ort, der je auf der Erde gemessen wurde."
+			],
+			"standard": [
+				"Triton kreist falschherum um Neptun, wie ein Auto, das verkehrt herum durch einen Kreisverkehr fährt – ein Hinweis darauf, dass Neptun ihn aus dem Kuipergürtel eingefangen hat."
+			],
+			"advanced": [
+				"Triton ist etwa 14 % breiter als Pluto und hat eine ähnliche Dichte und ähnliche Eissorten aus Stickstoff, Methan und Wasser – eine plutoähnliche Welt, die Neptun sich einverleibt hat."
+			]
+		}
+	},
+	"nereid": {
+		"name": "Nereid",
+		"tagline": "Der Mond auf Achterbahnkurs",
+		"description": {
+			"simple": "Nereid ist ein kleiner, grauer Mond des Neptun. Seine Bahn um Neptun ist kein Kreis, sondern ein langes, gestrecktes Oval. Manchmal kommt er Neptun recht nahe, dann schwingt er wieder weit hinaus. Forschende vermuten, dass ihn vor langer Zeit etwas Großes auf diese seltsame Bahn geschleudert hat.",
+			"standard": "Nereid ist etwa 340 km groß und hat eine der am stärksten gestreckten Bahnen aller bekannten Monde. Während seines 360 Tage dauernden Umlaufs schwankt sein Abstand zu Neptun zwischen etwa 1,4 und 9,7 Millionen km – fast das Siebenfache. Gerard Kuiper entdeckte ihn 1949; er war der zweite bekannte Neptunmond und der letzte, der vor der Ankunft von Voyager 2 im Jahr 1989 gefunden wurde. Lange hielt man Nereid für ein eingefangenes Objekt, doch eine Studie von 2026 legt nahe, dass er einer von Neptuns ursprünglichen Monden sein könnte, der bei Tritons Ankunft auf seine wilde Bahn geschleudert wurde.",
+			"advanced": "Nereids Bahn hat eine Exzentrizität von etwa 0,75, eine der höchsten, die bei Monden bekannt sind; sein nächster Punkt liegt bei rund 1,37 Millionen km, sein fernster bei rund 9,65 Millionen km von Neptun. Die Bahn ist rechtläufig und nur mäßig geneigt – anders als bei typischen irregulären Monden, die als eingefangene Körper gelten. Zwei Herkunftsmodelle werden diskutiert: ein eingefangenes Kuipergürtel-Objekt oder ein regulärer Neptunmond, der beim Einfang Tritons nach außen gestreut wurde. 2026 zeigten Spektren des James-Webb-Weltraumteleskops kristallines Wassereis und Kohlendioxid auf einer Oberfläche, die nicht zu Kuipergürtel-Objekten passt, wohl aber zu den Uranusmonden – ein Argument für die zweite Idee; dann wäre Nereid womöglich der letzte unversehrte Überlebende von Neptuns ursprünglicher Mondfamilie."
+		},
+		"facts": {
+			"simple": [
+				"Nereid wurde 1949 von dem Astronomen Gerard Kuiper entdeckt.",
+				"Nereid ist der drittgrößte Mond des Neptun.",
+				"Noch nie hat jemand eine Nahaufnahme von Nereid gesehen."
+			],
+			"standard": [
+				"Voyager 2 konnte Nereid nur aus etwa 4,7 Millionen km Entfernung fotografieren, deshalb sind seine Form und Oberfläche noch weitgehend unbekannt.",
+				"Nereid dreht sich in etwa 11,6 Stunden einmal um sich selbst, wie Messungen mit dem Kepler-Weltraumteleskop ergaben.",
+				"Der kleine äußere Mond Halimede hat eine ähnlich graue Farbe und könnte ein Bruchstück sein, das bei einem Zusammenstoß von Nereid abgesprengt wurde."
+			],
+			"advanced": [
+				"Nereids mittlerer Durchmesser beträgt etwa 340 km, ähnlich wie beim Saturnmond Mimas.",
+				"Nereid ist mit Abstand der größte irreguläre Mond des Neptun und vereint etwa 98 % der Masse aller irregulären Neptunmonde (Triton nicht mitgezählt).",
+				"Nereids Helligkeit schwankt über Tage bis Jahre teils stark, und die Ursache ist noch nicht vollständig geklärt."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Nereid braucht für eine Runde um Neptun fast genauso lange wie die Erde für eine Runde um die Sonne."
+			],
+			"standard": [
+				"Nereid schwingt wie ein Komet auf Neptun zu und wieder hinaus – an seinem fernsten Punkt ist er etwa siebenmal so weit weg wie an seinem nächsten."
+			],
+			"advanced": [
+				"Selbst an seinem nächsten Punkt ist Nereid etwa 3,6-mal so weit von Neptun entfernt wie unser Mond von der Erde; an seinem fernsten etwa 25-mal so weit."
+			]
+		}
+	},
+	"proteus": {
+		"name": "Proteus",
+		"tagline": "Versteckt im Glanz Neptuns",
+		"description": {
+			"simple": "Proteus ist ein dunkler, klumpiger Mond des Neptun, etwa 420 km breit. Er ist fast groß genug, dass ihn seine eigene Schwerkraft zu einer Kugel zusammendrücken könnte – aber eben nur fast, deshalb sieht er aus wie eine verbeulte Kiste. Obwohl er ziemlich groß ist, hat ihn niemand gesehen, bis die Raumsonde Voyager 2 im Jahr 1989 am Neptun vorbeiflog. Er hatte sich im hellen Schein des Neptun versteckt.",
+			"standard": "Proteus ist mit etwa 420 km Durchmesser der zweitgrößte Mond des Neptun – und wurde trotzdem erst 1989 auf Bildern von Voyager 2 entdeckt. Von der Erde aus geht er im grellen Licht des Planeten unter, denn er kreist nur etwa 117 600 km vom Neptunmittelpunkt entfernt – weniger als fünf Neptunradien – und seine Oberfläche wirft nur etwa ein Zehntel des Sonnenlichts zurück. Proteus ist ungefähr so groß, wie ein solcher Körper werden kann, ohne von seiner eigenen Schwerkraft zu einer Kugel geformt zu werden; deshalb ist er ein unregelmäßiger, kastenförmiger Brocken geblieben. In nur 27 Stunden rast er einmal um den Neptun.",
+			"advanced": "Mit einem mittleren Durchmesser von etwa 420 km liegt Proteus nahe an der Größe, ab der die Eigengravitation die Festigkeit von Eis und Gestein überwindet und einen Körper in eine annähernd kugelige (hydrostatische) Form zwingt – und doch ist er unregelmäßig geblieben. Seine Oberfläche wird vom Einschlagbecken Pharos beherrscht, etwa 255 km breit und 10–15 km tief, entstanden bei einem Einschlag, der den Mond beinahe zertrümmert hätte. Forscher vermuten, dass Proteus nicht zusammen mit Neptun entstand, sondern sich aus Trümmern neu bildete, nachdem Neptun den Mond Triton eingefangen und dabei das ursprüngliche Mondsystem durcheinandergebracht hatte. Der winzige Mond Hippocamp, 2013 auf Hubble-Bildern gefunden, kreist nur etwa 12 000 km innerhalb der Proteus-Bahn und könnte ein Bruchstück sein, das beim Pharos-Einschlag abgesprengt wurde."
+		},
+		"facts": {
+			"simple": [
+				"Proteus braucht für eine Runde um den Neptun nur etwas mehr als einen Tag.",
+				"Von Proteus aus würde Neptun etwa 50-mal so breit aussehen wie für uns der Vollmond.",
+				"Proteus hat einen riesigen Krater, der mehr als halb so breit ist wie der ganze Mond."
+			],
+			"standard": [
+				"Voyager 2 entdeckte Proteus 1989, wenige Wochen bevor die Sonde am Neptun vorbeiflog.",
+				"Proteus ist nach einem Meeresgott der griechischen Sagen benannt, der seine Gestalt verändern konnte – passend für einen so seltsam geformten Mond.",
+				"Triton, der größte Neptunmond, ist mehr als sechsmal so breit wie Proteus."
+			],
+			"advanced": [
+				"Proteus umläuft Neptun langsamer (26,9 h), als der Planet rotiert (etwa 16,1 h), deshalb schieben ihn die Gezeiten langsam nach außen.",
+				"Die Masse von Proteus wurde nie genau gemessen, daher sind seine Dichte und seine Schwerebeschleunigung (vermutlich um 0,07 m/s²) noch unsicher.",
+				"Seine fast kreisförmige Bahn nahe der Äquatorebene Neptuns ist typisch für einen Mond, der in einer Scheibe um den Planeten entstanden ist – ganz anders als die Bahnen von Triton und Nereid."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Mit dem Auto auf der Autobahn bräuchtest du etwa vier Stunden, um Proteus zu durchqueren."
+			],
+			"standard": [
+				"Proteus ist größer als Nereid, den Astronomen schon 1949 von der Erde aus entdeckten – und blieb doch 40 Jahre länger verborgen, wie ein Stück Kohle neben einem Flutlichtscheinwerfer."
+			],
+			"advanced": [
+				"Der Saturnmond Mimas ist mit etwa 396 km Durchmesser rund, der etwas größere Proteus dagegen nicht – ab welcher Größe ein Mond rund wird, hängt davon ab, woraus er besteht und wie warm er einmal war."
+			]
+		}
+	}
 }

@@ -55,6 +55,8 @@ export const simSearchSchema = z.object({
 	markers: layerSwitch,
 	// orbit names (#20) are off by default, so only `true` is ever written
 	orbitNames: layerSwitch,
+	// every moon, not only the featured ones (#17): off by default, so only `true` is ever written
+	allMoons: layerSwitch,
 	// the scale preset (#21), a preset id of src/sim/scale.ts; absent is the
 	// default (Everything visible), unknown ids are ignored when applied
 	scale: z.string().optional().catch(undefined),
