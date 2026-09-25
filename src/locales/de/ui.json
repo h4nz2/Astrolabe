@@ -537,6 +537,57 @@
 			},
 			"otherHunts": "Andere Jagden"
 		},
+		"sound": {
+			"toggle": "Ton",
+			"hintOff": "Der Ton ist aus. Klicke oder drücke M, um ihn einzuschalten.",
+			"hintOn": "Der Ton ist an. Klicke oder drücke M, um ihn stummzuschalten.",
+			"settings": "Toneinstellungen",
+			"on": "Ton an",
+			"offNote": "Aus, bis du ihn einschaltest. Alles in der App funktioniert auch ohne Ton.",
+			"offNote@simple": "Der Ton bleibt aus, bis du ihn einschaltest. Du kannst auch ohne Ton alles benutzen.",
+			"volume": "Lautstärke",
+			"ambient": "Hintergrundklang",
+			"ambientHint": "Ändert sich damit, wo du bist: warm nahe der Sonne, dünn und kalt jenseits des Neptun.",
+			"ambientHint@simple": "Warm nahe der Sonne, kalt und dünn weit draußen.",
+			"cues": "Bewegungsklänge",
+			"cuesHint": "Ein Rauschen beim Fliegen, ein leiser Ton, wenn du ankommst oder etwas findest.",
+			"recordings": "Hör ins All",
+			"honest": "Im All ist es still: Schall kann sich im leeren Raum nicht ausbreiten. Diese Aufnahmen sind echte Messungen von Radio- und Plasmawellen, in Klang verwandelt.",
+			"honest@simple": "Im All gibt es keine Luft, darum gibt es dort keinen Schall. Raumsonden haben unsichtbare Wellen gemessen, und Forschende haben daraus Töne gemacht, die wir hören können.",
+			"honest@advanced": "Schall braucht ein Medium, und das fast perfekte Vakuum des Alls trägt keine hörbaren Druckwellen. Dies sind Antennenmessungen von Radio- und Plasmawellen (elektrische Felder), über einen Lautsprecher abgespielt, teils in der Frequenz nach unten verschoben.",
+			"listenLabel": "Anhören: {title}",
+			"stopLabel": "Stopp: {title}",
+			"credit": "{mission}, {year} · {credit}",
+			"shortcut": "Ton an oder aus (beim Öffnen der App immer aus)",
+			"recording": {
+				"sunRadioBursts": {
+					"title": "Radioblitze der Sonne",
+					"title@simple": "Radioblitze der Sonne",
+					"what": "Kein Schall: Radiowellen einer riesigen Sonneneruption vom 28. Oktober 2003, aufgefangen von der Sonde Cassini und so weit nach unten verschoben, dass wir sie hören. Das fallende Pfeifen ist ein Schwall Elektronen, der von der Sonne wegrast.",
+					"what@simple": "2003 gab es auf der Sonne eine riesige Explosion. Die Raumsonde Cassini hat ihre Radiowellen aufgefangen, und Forschende haben daraus Töne gemacht. Das fallende Pfeifen ist der Ausbruch, der von der Sonne wegsaust.",
+					"what@advanced": "Typ-III-Radiobursts der X17-Eruption vom 28. Oktober 2003, aufgezeichnet vom Radio and Plasma Wave Science-Instrument der Sonde Cassini in 8,7 AE Sonnenabstand. Elektronen aus der Eruption regen Plasmaschwingungen an, deren Frequenz fällt, je dünner das Plasma weiter draußen wird; die Aufnahme ist in den hörbaren Bereich verschoben."
+				},
+				"earthChorus": {
+					"title": "Der Morgenchor der Erde",
+					"title@simple": "Das Vogelzwitschern der Erde",
+					"what": "Kein Schall: Radiowellen in den Strahlungsgürteln um die Erde, mit einer Antenne gemessen vom Satelliten Injun 3. Sie schwingen zufällig in Frequenzen, die wir hören können, und zwitschern wie Vögel im Morgengrauen – daher der Name.",
+					"what@simple": "Rund um die Erde gibt es unsichtbare Wellen, die von winzigen, schnellen Teilchen kommen. Ein Satellit hat sie mit einer Antenne gemessen, und wir können sie als Töne abspielen. Sie zwitschern wie Vögel am Morgen!",
+					"what@advanced": "Chorus-Wellen (Whistler-Modus) in den Van-Allen-Gürteln: ansteigende Töne, erzeugt von Elektronen, die sich entlang des Erdmagnetfelds schrauben, aufgezeichnet von Injun 3. Die Wellen liegen im Hörbereich, also wird das elektrische Feldsignal der Antenne unverändert abgespielt: eine elektromagnetische Welle, keine Druckwelle."
+				},
+				"jupiterWhistlers": {
+					"title": "Blitze auf dem Jupiter",
+					"what": "Kein Schall: Radiowellen von Blitzen, 1979 von der Antenne der Sonde Voyager 1 aufgefangen und über einen Lautsprecher abgespielt. Sie pfeifen abwärts, weil sie auf ihrem Weg entlang des Magnetfelds des Jupiter auseinandergezogen wurden. Sie waren der erste Hinweis auf Gewitter auf dem Jupiter.",
+					"what@simple": "Als Voyager 1 am Jupiter vorbeiflog, hat ihre Antenne Radiowellen von Blitzen aufgefangen. Als Töne abgespielt, pfeifen sie. So haben wir zum ersten Mal erfahren, dass es auf dem Jupiter Gewitter gibt!",
+					"what@advanced": "Jupiter-Whistler, 1979 aufgezeichnet vom Plasmawellen-Instrument der Sonde Voyager 1: Blitzimpulse laufen entlang geschlossener Magnetfeldlinien auseinander, die hohen Frequenzen kommen zuerst an, daher der fallende Ton. Der erste (indirekte) Nachweis von Blitzen auf dem Jupiter."
+				},
+				"saturnRadio": {
+					"title": "Die Radiostimme des Saturn",
+					"what": "Kein Schall: Radiowellen aus den Polarlichtern des Saturn, 2003 von Cassini aufgezeichnet. Sie sind viel zu hoch zum Hören, darum wurden sie 44-mal tiefer gesetzt und beschleunigt: Diese 30 Sekunden sind etwa 11 Minuten am Saturn.",
+					"what@simple": "Der Saturn hat Polarlichter, und die senden Radiowellen aus. Die Sonde Cassini hat sie aufgefangen. Forschende haben sie tiefer und schneller gemacht, damit wir sie hören können. Sie klingen unheimlich!",
+					"what@advanced": "Saturnische Kilometerstrahlung, die Radioemission der Polarlichter, 2003 beim Anflug vom RPWS-Instrument der Sonde Cassini aufgezeichnet. Frequenzen durch 44 geteilt, Zeit 22-fach gerafft (30 s hier ≈ 11 min). Die steigenden und fallenden Töne zeichnen kleine Radioquellen nach, die entlang der Polarlicht-Feldlinien wandern."
+				}
+			}
+		},
 		"frame": {
 			"label": "Blickwinkel",
 			"label@simple": "Von wo du zuschaust",
