@@ -330,6 +330,68 @@
 			"centreOn": "Centre on {body}",
 			"centreOn@simple": "Back to {body}"
 		},
+		"spacecraft": {
+			"layer": "Spacecraft",
+			"menu": "Spacecraft",
+			"menuHint": "Real spacecraft: find one and fly to it",
+			"menuTitle": "Real spacecraft",
+			"menuIntro": "Machines people have sent out. Positions come from NASA/JPL tracking data.",
+			"menuIntro@simple": "Real machines people have sent into space. We know where they are because NASA tracks them.",
+			"allPaths": "Show every path",
+			"kind": "Spacecraft",
+			"panel": "Selected spacecraft",
+			"close": "Close",
+			"show": "Show",
+			"showHint": "Fly the view to {name}",
+			"launched": "Launched",
+			"launched@simple": "Left Earth",
+			"phase": {
+				"planned": "Not launched yet (launch on {date})",
+				"planned@simple": "Not in space yet. It starts on {date}.",
+				"active": "Mission active",
+				"active@simple": "Still working",
+				"silent": "Silent since {date}, still flying",
+				"silent@simple": "No messages since {date}, but it is still flying",
+				"destroyed": "Mission ended on {date}",
+				"destroyed@simple": "It stopped existing on {date}"
+			},
+			"noData": "Its position on this date is not in the data ({from} to {to}).",
+			"noData@simple": "We do not know where it is on this date.",
+			"predicted": "Predicted: this date is still in the future",
+			"predicted@simple": "Worked out in advance: this date has not happened yet",
+			"distanceSun": "Distance from the Sun",
+			"distanceEarth": "Distance from Earth",
+			"speed": "{centreId, select, sun {Speed around the Sun} other {Speed relative to {centre}}}",
+			"signal": "Signal time to Earth",
+			"signal@simple": "A radio message to Earth takes",
+			"signalNote": "Radio waves travel at the speed of light.",
+			"signalNote@simple": "Even at the speed of light!",
+			"milestones": "Milestones",
+			"planned": "planned",
+			"goTo": "Travel to {date}",
+			"event": {
+				"launch": "Launch",
+				"flyby": "{targetId, select, other {Flies past {target}}}",
+				"orbitInsertion": "{targetId, select, other {Enters orbit around {target}}}",
+				"probeLanding": "{targetId, select, other {Its probe lands on {target}}}",
+				"impact": "{targetId, select, other {Plunges into {target}}}",
+				"arrival": "{targetId, select, l2 {Arrives at the Sun–Earth L2 point} other {Arrives at {target}}}",
+				"heliopause": "Crosses the heliopause into interstellar space",
+				"heliopause@simple": "Leaves the Sun's bubble, out among the stars",
+				"closestToSun": "Closest ever to the Sun",
+				"paleBlueDot": "Photographs Earth as a “pale blue dot”",
+				"farthest": "Becomes the most distant human-made object",
+				"firstImages": "First images released",
+				"lastContact": "Last signal received",
+				"missionEnd": "Mission ends"
+			},
+			"distanceAt": "{distance} from the centre",
+			"target": {
+				"pluto": "Pluto",
+				"arrokoth": "Arrokoth",
+				"l2": "Sun–Earth L2"
+			}
+		},
 		"pick": {
 			"visit": "Click to fly there",
 			"visit@simple": "Click to go there",
@@ -357,6 +419,15 @@
 			"othersNote@simple": "Mostly small rocks. Scientists keep finding more of them.",
 			"readMore": "Read its story",
 			"readLess": "Show less"
+		},
+		"surface": {
+			"map": "Surface map: {source}.",
+			"unseen": "Part of {moon} has never been photographed, so that part of the map is filled in to look like the rest.",
+			"unseen@simple": "Nobody has ever seen all of {moon}. The missing part of the map is filled in.",
+			"painted": "No spacecraft has mapped {moon} up close, so this surface is painted to match what is known: its colour and how much sunlight it reflects.",
+			"painted@simple": "No spacecraft has taken close-up pictures of {moon}. This surface is painted to match its real colour.",
+			"haze": "The ground of {moon} is hidden under a thick orange haze. This is how {moon} looks to our eyes.",
+			"haze@simple": "Thick orange haze hides the ground of {moon}. This is how {moon} looks to our eyes."
 		},
 		"facts": {
 			"label": {

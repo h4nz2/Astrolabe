@@ -564,8 +564,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg",
-			"topo": "/assets/textures/earth/satellites/moon_topo_1k.jpg"
+			"base": "/assets/textures/earth/satellites/moon.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -595,7 +594,14 @@
 			"orbitalInclination": 21,
 			"axialTilt": 6.68
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#92918b"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "svs-moon"
+		}
 	},
 	{
 		"id": "phobos",
@@ -653,7 +659,14 @@
 			"orbitalPeriod": 0.31875,
 			"orbitalInclination": 1.093
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#4c443d"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-phobos"
+		}
 	},
 	{
 		"id": "deimos",
@@ -680,10 +693,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#c2b3a3"
+			"base": "/assets/textures/mars/satellites/deimos.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -702,7 +712,14 @@
 			"orbitalInclination": 0.93,
 			"rotationAssumed": true
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#574d44"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-deimos"
+		}
 	},
 	{
 		"id": "metis",
@@ -729,7 +746,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/metis.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -738,6 +755,13 @@
 			"orbitalPeriod": 0.29478,
 			"orbitalInclination": 0.06,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#5a4033"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -765,7 +789,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/adrastea.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -774,6 +798,13 @@
 			"orbitalPeriod": 0.29826,
 			"orbitalInclination": 0.03,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#593f32"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -801,7 +832,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/amalthea.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -816,6 +847,13 @@
 			"orbitalPeriod": 0.498,
 			"orbitalInclination": 0.374,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#5d4235"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -843,7 +881,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/thebe.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -852,6 +890,13 @@
 			"orbitalPeriod": 0.6745,
 			"orbitalInclination": 1.076,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#593f32"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -901,7 +946,14 @@
 			"orbitalPeriod": 1.769,
 			"orbitalInclination": 0.05
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#b59d70"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-io"
+		}
 	},
 	{
 		"id": "europa",
@@ -948,7 +1000,14 @@
 			"orbitalPeriod": 3.55,
 			"orbitalInclination": 0.47
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#b0a291"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-europa"
+		}
 	},
 	{
 		"id": "ganymede",
@@ -990,7 +1049,14 @@
 			"orbitalInclination": 0.204,
 			"rotationAssumed": true
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#8a867b"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-ganymede"
+		}
 	},
 	{
 		"id": "callisto",
@@ -1015,10 +1081,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#a8977f"
+			"base": "/assets/textures/jupiter/satellites/callisto.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1040,7 +1103,14 @@
 			"orbitalPeriod": 16.689,
 			"orbitalInclination": 0.205
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#6b645d"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-callisto"
+		}
 	},
 	{
 		"id": "themisto",
@@ -1066,7 +1136,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/themisto.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1074,6 +1144,13 @@
 			"diameter": 8,
 			"orbitalPeriod": 129.87,
 			"orbitalInclination": 47.48
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1100,7 +1177,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/leda.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1108,6 +1185,13 @@
 			"diameter": 16,
 			"orbitalPeriod": 240.82,
 			"orbitalInclination": 29.01
+		},
+		"appearance": {
+			"color": "#413f3e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1133,7 +1217,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/ersa.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1142,6 +1226,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2018 J 1",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#42403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1167,7 +1258,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/himalia.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1185,6 +1276,13 @@
 			"aphelion": 13082000,
 			"orbitalPeriod": 250.23,
 			"orbitalInclination": 29.59
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1210,7 +1308,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/pandia.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1219,6 +1317,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 4",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1245,7 +1350,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/lysithea.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1253,6 +1358,13 @@
 			"diameter": 36,
 			"orbitalPeriod": 259.89,
 			"orbitalInclination": 28.3
+		},
+		"appearance": {
+			"color": "#42403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1279,7 +1391,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/elara.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1287,6 +1399,13 @@
 			"diameter": 86,
 			"orbitalPeriod": 257.62,
 			"orbitalInclination": 30.66
+		},
+		"appearance": {
+			"color": "#403f3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1312,7 +1431,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/dia.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1328,6 +1447,13 @@
 			"diameter": 4,
 			"orbitalPeriod": 274,
 			"orbitalInclination": 28.2
+		},
+		"appearance": {
+			"color": "#413f3e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1353,7 +1479,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/carpo.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1369,6 +1495,13 @@
 			"diameter": 3,
 			"orbitalPeriod": 458.62,
 			"orbitalInclination": 55
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1394,7 +1527,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/euporie.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1410,6 +1543,13 @@
 			"diameter": 2,
 			"orbitalPeriod": "−538.78",
 			"orbitalInclination": 144.694
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1435,7 +1575,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2011j1.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1444,6 +1584,13 @@
 			"discoveryDate": "29/01/2012",
 			"alternativeName": "S/2011 J 1",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#483e37"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1469,7 +1616,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j18.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1482,6 +1629,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1507,7 +1661,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2010j2.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1516,6 +1670,13 @@
 			"discoveryDate": "08/09/2010",
 			"alternativeName": "S/2010 J 2",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3c3a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1542,7 +1703,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/thelxinoe.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1550,6 +1711,13 @@
 			"diameter": 2,
 			"orbitalPeriod": "−597.607",
 			"orbitalInclination": 153
+		},
+		"appearance": {
+			"color": "#403e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1576,7 +1744,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/euanthe.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1584,6 +1752,13 @@
 			"diameter": 3,
 			"orbitalPeriod": "−598.093",
 			"orbitalInclination": 142
+		},
+		"appearance": {
+			"color": "#42403d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1610,7 +1785,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/helike.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1618,6 +1793,13 @@
 			"diameter": 4,
 			"orbitalPeriod": "−601.402",
 			"orbitalInclination": 156
+		},
+		"appearance": {
+			"color": "#43403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1643,7 +1825,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j7.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1652,6 +1834,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 7",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1677,7 +1866,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j3.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1686,6 +1875,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 3",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1711,7 +1907,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2016j1.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1720,6 +1916,13 @@
 			"discoveryDate": "06/06/2017",
 			"alternativeName": "S/2016 J 1",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#43403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1745,7 +1948,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/orthosie.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1759,6 +1962,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#423f3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1785,7 +1995,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/praxidike.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1793,6 +2003,13 @@
 			"diameter": 7,
 			"orbitalPeriod": "−613.904",
 			"orbitalInclination": 143
+		},
+		"appearance": {
+			"color": "#43413e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1818,7 +2035,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j16.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1831,6 +2048,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1857,7 +2081,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/thyone.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1865,6 +2089,13 @@
 			"diameter": 4,
 			"orbitalPeriod": "-639.803",
 			"orbitalInclination": 147
+		},
+		"appearance": {
+			"color": "#423f3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1890,7 +2121,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j9.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1899,6 +2130,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 9",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#43403d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1925,7 +2163,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/ananke.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1933,6 +2171,13 @@
 			"diameter": 28,
 			"orbitalPeriod": "-640.38",
 			"orbitalInclination": 149.9
+		},
+		"appearance": {
+			"color": "#423f3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1958,7 +2203,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j12.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -1971,6 +2216,13 @@
 				"massExponent": 12
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3c3a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -1997,7 +2249,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/aitne.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2005,6 +2257,13 @@
 			"diameter": 3,
 			"orbitalPeriod": "-679.641",
 			"orbitalInclination": 164
+		},
+		"appearance": {
+			"color": "#463c35"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2030,7 +2289,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j6.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2039,6 +2298,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 6",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413f3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2064,7 +2330,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j9.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2077,6 +2343,13 @@
 				"massExponent": 12
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#493e37"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2103,7 +2376,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/chaldene.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2111,6 +2384,13 @@
 			"diameter": 3.8,
 			"orbitalPeriod": "-699.327",
 			"orbitalInclination": 169
+		},
+		"appearance": {
+			"color": "#493f38"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2136,7 +2416,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j19.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2149,6 +2429,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#463c35"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2174,7 +2461,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/philophrosyne.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2187,6 +2474,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2212,7 +2506,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j10.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2225,6 +2519,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#463c35"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2251,7 +2552,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j24.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2260,6 +2561,13 @@
 			"alternativeName": "S/2003 J 24",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#413f3e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2285,7 +2593,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j5.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2294,6 +2602,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 5",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#483e37"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2319,7 +2634,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j8.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2328,6 +2643,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 8",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#463c35"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2354,7 +2676,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/carme.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2362,6 +2684,13 @@
 			"diameter": 46,
 			"orbitalPeriod": "−763.95",
 			"orbitalInclination": 167.53
+		},
+		"appearance": {
+			"color": "#453b34"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2387,7 +2716,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j4.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2400,6 +2729,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#43403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2425,7 +2761,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j2.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2434,6 +2770,13 @@
 			"discoveryDate": "17/07/2018",
 			"alternativeName": "S/2017 J 2",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#483e37"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2460,7 +2803,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/pasithee.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2468,6 +2811,13 @@
 			"diameter": 2,
 			"orbitalPeriod": "−726.93",
 			"orbitalInclination": 164
+		},
+		"appearance": {
+			"color": "#493e37"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2493,7 +2843,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2010j1.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2502,6 +2852,13 @@
 			"discoveryDate": "07/09/2010",
 			"alternativeName": "S/2010 J 1",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#463c35"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2527,7 +2884,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2011j2.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2536,6 +2893,13 @@
 			"discoveryDate": "29/01/2012",
 			"alternativeName": "S/2011 J 2",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#403e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2561,7 +2925,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2017j1.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2570,6 +2934,13 @@
 			"discoveryDate": "06/06/2017",
 			"alternativeName": "S/2017 J 1",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#43403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2596,7 +2967,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/pasiphae.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2604,6 +2975,13 @@
 			"diameter": 60,
 			"orbitalPeriod": "−739.8",
 			"orbitalInclination": 143.04
+		},
+		"appearance": {
+			"color": "#3f3d3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2629,7 +3007,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/kallichore.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2642,6 +3020,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#473d36"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2667,7 +3052,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j23.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2681,6 +3066,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2707,7 +3099,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/sinope.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2715,6 +3107,13 @@
 			"diameter": 38,
 			"orbitalPeriod": "−724.1",
 			"orbitalInclination": 153.12
+		},
+		"appearance": {
+			"color": "#403e3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2741,7 +3140,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/megaclite.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2749,6 +3148,13 @@
 			"diameter": 5.4,
 			"orbitalPeriod": "-792.437",
 			"orbitalInclination": 150
+		},
+		"appearance": {
+			"color": "#42403d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2774,7 +3180,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/jupiter/satellites/s2003j2.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2787,6 +3193,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#423f3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2813,7 +3226,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2009s1.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2827,6 +3240,13 @@
 			},
 			"bodyType": "Moon",
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#918c82"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2853,7 +3273,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/pan.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2871,6 +3291,13 @@
 			"orbitalPeriod": 0.575,
 			"orbitalInclination": 0.001,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#8f8a80"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2897,7 +3324,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/daphnis.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2915,6 +3342,13 @@
 			"orbitalPeriod": 0.59408,
 			"orbitalInclination": 0.0036,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#979187"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2941,7 +3375,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/atlas.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2959,6 +3393,13 @@
 			"orbitalPeriod": 0.60169,
 			"orbitalInclination": 0.003,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#969086"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -2986,7 +3427,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/prometheus.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -2995,6 +3436,13 @@
 			"orbitalPeriod": 0.613,
 			"orbitalInclination": 0.008,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#979288"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3021,7 +3469,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/pandora.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3039,6 +3487,13 @@
 			"orbitalPeriod": 0.6285,
 			"orbitalInclination": 0.05,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#928d83"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3066,7 +3521,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/epimetheus.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3075,6 +3530,13 @@
 			"orbitalPeriod": 0.694,
 			"orbitalInclination": 0.351,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#b3afa5"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3101,7 +3563,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/janus.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3119,6 +3581,13 @@
 			"orbitalPeriod": 0.695,
 			"orbitalInclination": 0.165,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#b3afa5"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3146,7 +3615,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/aegaeon.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3155,6 +3624,13 @@
 			"orbitalPeriod": 0.80812,
 			"orbitalInclination": 0.001,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#979187"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3181,10 +3657,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#e4e4e8"
+			"base": "/assets/textures/saturn/satellites/mimas.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3209,7 +3682,14 @@
 			"orbitalPeriod": 0.942,
 			"orbitalInclination": 1.574
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#bbbab9"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "pia18437"
+		}
 	},
 	{
 		"id": "methone",
@@ -3236,7 +3716,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/methone.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3245,6 +3725,13 @@
 			"orbitalPeriod": 1.00957,
 			"orbitalInclination": 0.007,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#a4a19c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3272,7 +3759,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/anthe.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3281,6 +3768,13 @@
 			"orbitalPeriod": 1.0365,
 			"orbitalInclination": 0.1,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#9d9b96"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3308,7 +3802,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/pallene.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3317,6 +3811,13 @@
 			"orbitalPeriod": 1.15375,
 			"orbitalInclination": 0.181,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#95948f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3367,7 +3868,14 @@
 			"orbitalPeriod": 1.37,
 			"orbitalInclination": 0.019
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#dfdedd"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "pia18435"
+		}
 	},
 	{
 		"id": "telesto",
@@ -3394,7 +3902,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/telesto.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3403,6 +3911,13 @@
 			"orbitalPeriod": 1.887802,
 			"orbitalInclination": 1.19,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#c6c5c2"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3440,7 +3955,14 @@
 			"orbitalInclination": 1.12,
 			"rotationAssumed": true
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#dad9d6"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "pia18439"
+		}
 	},
 	{
 		"id": "calypso",
@@ -3466,7 +3988,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/calypso.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3484,6 +4006,13 @@
 			"orbitalPeriod": 1.887802,
 			"orbitalInclination": 1.56,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#c6c5c2"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3510,7 +4039,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/polydeuces.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3525,6 +4054,13 @@
 			"dimension": "3×2×2",
 			"bodyType": "Moon",
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#c2c1be"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3568,7 +4104,14 @@
 			"orbitalInclination": 0.02,
 			"rotationAssumed": true
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#bcbcb9"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "pia18434"
+		}
 	},
 	{
 		"id": "helene",
@@ -3595,7 +4138,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/helene.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3604,6 +4147,13 @@
 			"orbitalPeriod": 2.736915,
 			"orbitalInclination": 0.199,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#c5c4c1"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3647,7 +4197,14 @@
 			"orbitalInclination": 0.345,
 			"rotationAssumed": true
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#d7d7d2"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "pia18438"
+		}
 	},
 	{
 		"id": "titan",
@@ -3673,11 +4230,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#d9a04e",
-			"veiled": true
+			"base": "/assets/textures/saturn/satellites/titan.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3701,7 +4254,14 @@
 			"orbitalPeriod": 15.945,
 			"orbitalInclination": 0.34854
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#846231"
+		},
+		"surface": {
+			"kind": "haze",
+			"source": "astrolabe-painted"
+		}
 	},
 	{
 		"id": "hyperion",
@@ -3727,10 +4287,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#c8b08c"
+			"base": "/assets/textures/saturn/satellites/hyperion.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3739,7 +4296,14 @@
 			"orbitalPeriod": 21.276,
 			"orbitalInclination": 0.43
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#95826c"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-hyperion"
+		}
 	},
 	{
 		"id": "iapetus",
@@ -3789,7 +4353,14 @@
 			"orbitalPeriod": 79.32,
 			"orbitalInclination": 15.47
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#73726f"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "pia18436"
+		}
 	},
 	{
 		"id": "kiviuq",
@@ -3814,7 +4385,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/kiviuq.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3830,6 +4401,13 @@
 			"diameter": 16,
 			"orbitalPeriod": 448.16,
 			"orbitalInclination": 49.087
+		},
+		"appearance": {
+			"color": "#4d4038"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3855,7 +4433,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/ijiraq.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3871,6 +4449,13 @@
 			"diameter": 12,
 			"orbitalPeriod": 451.77,
 			"orbitalInclination": 50.212
+		},
+		"appearance": {
+			"color": "#4c4037"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3895,10 +4480,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#77706a"
+			"base": "/assets/textures/saturn/satellites/phoebe.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3911,7 +4493,14 @@
 			},
 			"bodyType": "Moon"
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#4a4744"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-phoebe"
+		}
 	},
 	{
 		"id": "paaliaq",
@@ -3936,7 +4525,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/paaliaq.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3951,6 +4540,13 @@
 			"bodyType": "Moon",
 			"perihelion": 6908035,
 			"aphelion": 23139965
+		},
+		"appearance": {
+			"color": "#4c3f37"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -3976,7 +4572,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/skathi.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -3989,6 +4585,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4014,7 +4617,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s37.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4023,6 +4626,13 @@
 			"alternativeName": "S/2004 S 37",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4048,7 +4658,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/albiorix.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4064,6 +4674,13 @@
 			"diameter": 32,
 			"orbitalPeriod": 774.58,
 			"orbitalInclination": 38.042
+		},
+		"appearance": {
+			"color": "#483d36"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4089,7 +4706,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2007s2.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4102,6 +4719,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3d3d3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4127,7 +4751,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/bebhionn.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4140,6 +4764,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#4e433b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4165,7 +4796,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/erriapus.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4178,6 +4809,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#4d423b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4203,7 +4841,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s31.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4211,6 +4849,13 @@
 			"discoveryDate": "2004",
 			"alternativeName": "S/2004 S 31",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#4b3f36"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4236,7 +4881,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s29.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4244,6 +4889,13 @@
 			"discoveryDate": "2004",
 			"alternativeName": "S/2004 S 29",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#4a3e36"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4269,7 +4921,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/siarnaq.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4285,6 +4937,13 @@
 			"diameter": 40,
 			"orbitalPeriod": 884.88,
 			"orbitalInclination": 45.798
+		},
+		"appearance": {
+			"color": "#4a3e36"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4310,7 +4969,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/skoll.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4323,6 +4982,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#41403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4348,7 +5014,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/tarvos.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4364,6 +5030,13 @@
 			"diameter": 15,
 			"orbitalPeriod": 944.23,
 			"orbitalInclination": 34.679
+		},
+		"appearance": {
+			"color": "#4c413a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4389,7 +5062,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/tarqeq.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4402,6 +5075,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#4e4138"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4427,7 +5107,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/greip.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4440,6 +5120,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4465,7 +5152,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/hyrrokkin.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4478,6 +5165,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3d3c3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4503,7 +5197,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s13.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4516,6 +5210,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#403f3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4541,7 +5242,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s17.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4554,6 +5255,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4579,7 +5287,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/mundilfari.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4592,6 +5300,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#403f3e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4617,7 +5332,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/jarnsaxa.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4630,6 +5345,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4655,7 +5377,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2006s1.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4668,6 +5390,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4693,7 +5422,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/narvi.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4706,6 +5435,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4731,7 +5467,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s20.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4740,6 +5476,13 @@
 			"alternativeName": "S/2004 S 20",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3e3d3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4765,7 +5508,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/bergelmir.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4778,6 +5521,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4803,7 +5553,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/suttungr.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4816,6 +5566,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4841,7 +5598,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s12.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4854,6 +5611,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#40403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4879,7 +5643,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s27.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4888,6 +5652,13 @@
 			"alternativeName": "S/2004 S 27",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#403f3e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4913,7 +5684,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s7.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4926,6 +5697,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#424140"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4951,7 +5729,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/hati.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -4964,6 +5742,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#41403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -4989,7 +5774,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/bestla.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5002,6 +5787,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5027,7 +5819,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s22.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5036,6 +5828,13 @@
 			"alternativeName": "S/2004 S 22",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#42413f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5061,7 +5860,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/farbauti.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5074,6 +5873,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3e3e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5099,7 +5905,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s30.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5108,6 +5914,13 @@
 			"alternativeName": "S/2004 S 30",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#424140"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5133,7 +5946,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/thrymr.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5146,6 +5959,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5171,7 +5991,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2007s3.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5184,6 +6004,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5209,7 +6036,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s25.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5218,6 +6045,13 @@
 			"alternativeName": "S/2004 S 25",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5243,7 +6077,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/aegir.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5256,6 +6090,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5281,7 +6122,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2006s3.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5294,6 +6135,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5319,7 +6167,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s23.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5328,6 +6176,13 @@
 			"alternativeName": "S/2004 S 23",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#42413f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5353,7 +6208,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s32.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5362,6 +6217,13 @@
 			"alternativeName": "S/2004 S 32",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5387,7 +6249,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s28.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5396,6 +6258,13 @@
 			"alternativeName": "S/2004 S 28",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3e3d3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5421,7 +6290,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s35.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5430,6 +6299,13 @@
 			"alternativeName": "S/2004 S 35",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3d3c3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5455,7 +6331,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/kari.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5468,6 +6344,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5493,7 +6376,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/fenrir.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5506,6 +6389,13 @@
 				"massExponent": 13
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5531,7 +6421,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/surtur.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5544,6 +6434,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5569,7 +6466,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s39.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5578,6 +6475,13 @@
 			"alternativeName": "S/2004 S 39",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5603,7 +6507,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s38.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5612,6 +6516,13 @@
 			"alternativeName": "S/2004 S 38",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#41403f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5637,7 +6548,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/ymir.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5650,6 +6561,13 @@
 				"massExponent": 15
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5675,7 +6593,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/loge.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5688,6 +6606,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5713,7 +6638,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s24.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5721,6 +6646,13 @@
 			"discoveryDate": "2004",
 			"alternativeName": "S/2004 S 24",
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#4a4038"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5746,7 +6678,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s36.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5755,6 +6687,13 @@
 			"alternativeName": "S/2004 S 36",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5780,7 +6719,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s33.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5789,6 +6728,13 @@
 			"alternativeName": "S/2004 S 33",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#42413f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5814,7 +6760,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s21.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5823,6 +6769,13 @@
 			"alternativeName": "S/2004 S 21",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#403f3e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5848,7 +6801,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s34.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5857,6 +6810,13 @@
 			"alternativeName": "S/2004 S 34",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3e3d3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5882,7 +6842,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/fornjot.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5895,6 +6855,13 @@
 				"massExponent": 14
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#3f3e3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5920,7 +6887,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/saturn/satellites/s2004s26.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5929,6 +6896,13 @@
 			"alternativeName": "S/2004 S 26",
 			"bodyType": "Moon",
 			"periodDerived": true
+		},
+		"appearance": {
+			"color": "#3e3d3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5956,7 +6930,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/cordelia.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -5965,6 +6939,13 @@
 			"orbitalPeriod": 0.335,
 			"orbitalInclination": 0.08479,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#494847"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -5992,7 +6973,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/ophelia.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6001,6 +6982,13 @@
 			"orbitalPeriod": 0.376,
 			"orbitalInclination": 0.1036,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#494847"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6027,7 +7015,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/bianca.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6044,6 +7032,13 @@
 			"orbitalPeriod": 0.434579,
 			"orbitalInclination": 0.193,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#464544"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6070,7 +7065,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/cressida.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6087,6 +7082,13 @@
 			"orbitalPeriod": 0.464,
 			"orbitalInclination": 0.006,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#494847"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6114,7 +7116,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/desdemona.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6123,6 +7125,13 @@
 			"orbitalPeriod": 0.47365,
 			"orbitalInclination": 0.11125,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4a4948"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6149,7 +7158,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/juliet.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6166,6 +7175,13 @@
 			"orbitalPeriod": 0.493,
 			"orbitalInclination": 0.06546,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#494847"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6192,7 +7208,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/portia.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6209,6 +7225,13 @@
 			"orbitalPeriod": 0.513,
 			"orbitalInclination": 0.059,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4a4948"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6235,7 +7258,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/rosalind.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6252,6 +7275,13 @@
 			"orbitalPeriod": 0.55846,
 			"orbitalInclination": 0.279,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#474645"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6278,7 +7308,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/cupid.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6295,6 +7325,13 @@
 			"orbitalPeriod": 0.618,
 			"orbitalInclination": 0.1,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#474645"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6321,7 +7358,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/belinda.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6338,6 +7375,13 @@
 			"orbitalPeriod": 0.623,
 			"orbitalInclination": 0.031,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#484746"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6364,7 +7408,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/perdita.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6380,6 +7424,13 @@
 			"diameter": 30,
 			"orbitalPeriod": 0.638,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4a4948"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6406,7 +7457,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/puck.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6423,6 +7474,13 @@
 			"orbitalPeriod": 0.762,
 			"orbitalInclination": 0.3192,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4a4847"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6449,7 +7507,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/mab.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6466,6 +7524,13 @@
 			"orbitalPeriod": 0.923,
 			"orbitalInclination": 0.1335,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#484746"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6492,10 +7557,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#d6d6d8"
+			"base": "/assets/textures/uranus/satellites/miranda.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6519,7 +7581,15 @@
 			"orbitalPeriod": 1.413,
 			"orbitalInclination": 4.232
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#767574"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "jpl-miranda",
+			"filled": true
+		}
 	},
 	{
 		"id": "ariel",
@@ -6545,10 +7615,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#e8e8ea"
+			"base": "/assets/textures/uranus/satellites/ariel.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6572,7 +7639,15 @@
 			"orbitalPeriod": 2.52,
 			"orbitalInclination": 0.26
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#959390"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "jpl-ariel",
+			"filled": true
+		}
 	},
 	{
 		"id": "umbriel",
@@ -6598,10 +7673,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#8a8a8e"
+			"base": "/assets/textures/uranus/satellites/umbriel.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6625,7 +7697,15 @@
 			"orbitalPeriod": 4.144,
 			"orbitalInclination": 0.205
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#6f6d6b"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "jpl-umbriel",
+			"filled": true
+		}
 	},
 	{
 		"id": "titania",
@@ -6651,10 +7731,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#cfc6bd"
+			"base": "/assets/textures/uranus/satellites/titania.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6678,7 +7755,15 @@
 			"orbitalPeriod": 8.706,
 			"orbitalInclination": 0.34
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#807a75"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "jpl-titania",
+			"filled": true
+		}
 	},
 	{
 		"id": "oberon",
@@ -6705,10 +7790,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#b8a99c"
+			"base": "/assets/textures/uranus/satellites/oberon.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6724,7 +7806,15 @@
 			"orbitalInclination": 0.058,
 			"rotationAssumed": true
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#7c7166"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "jpl-oberon",
+			"filled": true
+		}
 	},
 	{
 		"id": "francisco",
@@ -6749,7 +7839,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/francisco.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6765,6 +7855,13 @@
 			"diameter": 22,
 			"orbitalPeriod": "−266.56",
 			"orbitalInclination": 147.459
+		},
+		"appearance": {
+			"color": "#44403d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6790,7 +7887,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/caliban.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6806,6 +7903,13 @@
 			"diameter": 72,
 			"orbitalPeriod": "−579.5",
 			"orbitalInclination": 139.885
+		},
+		"appearance": {
+			"color": "#4c3d34"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6831,7 +7935,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/stephano.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6847,6 +7951,13 @@
 			"diameter": 32,
 			"orbitalPeriod": "−676.50",
 			"orbitalInclination": 141.873
+		},
+		"appearance": {
+			"color": "#413e3a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6872,7 +7983,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/trinculo.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6888,6 +7999,13 @@
 			"diameter": 18,
 			"orbitalPeriod": "-758.10",
 			"orbitalInclination": 166.252
+		},
+		"appearance": {
+			"color": "#413d3a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6913,7 +8031,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/sycorax.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6929,6 +8047,13 @@
 			"diameter": 165,
 			"orbitalPeriod": "-1283.4",
 			"orbitalInclination": 152.456
+		},
+		"appearance": {
+			"color": "#4c3e35"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6954,7 +8079,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/margaret.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -6970,6 +8095,13 @@
 			"diameter": 20,
 			"orbitalPeriod": 1694.8,
 			"orbitalInclination": 51.455
+		},
+		"appearance": {
+			"color": "#44403d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -6995,7 +8127,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/prospero.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7011,6 +8143,13 @@
 			"diameter": 50,
 			"orbitalPeriod": "-1992.8",
 			"orbitalInclination": 146.017
+		},
+		"appearance": {
+			"color": "#423f3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7036,7 +8175,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/setebos.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7049,6 +8188,13 @@
 				"massExponent": 16
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413d3a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7074,7 +8220,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/uranus/satellites/ferdinand.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7087,6 +8233,13 @@
 				"massExponent": 15
 			},
 			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#423e3b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7114,7 +8267,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/naiad.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7123,6 +8276,13 @@
 			"orbitalPeriod": 0.294,
 			"orbitalInclination": 4.75,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4d4b49"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7149,7 +8309,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/thalassa.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7168,6 +8328,13 @@
 			"orbitalPeriod": 0.311,
 			"orbitalInclination": 0.135,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4f4c4a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7194,7 +8361,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/despina.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7213,6 +8380,13 @@
 			"orbitalPeriod": 0.335,
 			"orbitalInclination": 0.216,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4e4b49"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7240,7 +8414,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/galatea.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7249,6 +8423,13 @@
 			"orbitalPeriod": 0.429,
 			"orbitalInclination": 0.052,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#494745"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7275,7 +8456,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/larissa.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7294,6 +8475,13 @@
 			"orbitalPeriod": 0.555,
 			"orbitalInclination": 0.251,
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#504d4b"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7320,7 +8508,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/hippocamp.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7334,6 +8522,13 @@
 			},
 			"bodyType": "Moon",
 			"rotationAssumed": true
+		},
+		"appearance": {
+			"color": "#4f4c4a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7361,10 +8556,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#7a7a7a"
+			"base": "/assets/textures/neptune/satellites/proteus.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7380,7 +8572,14 @@
 			"orbitalInclination": 0.524,
 			"rotationAssumed": true
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#4d4b4a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
 	},
 	{
 		"id": "triton",
@@ -7406,10 +8605,7 @@
 			"synchronous": true
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#f2dcd2"
+			"base": "/assets/textures/neptune/satellites/triton.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7433,7 +8629,15 @@
 			"orbitalPeriod": -5.877,
 			"orbitalInclination": 156.885
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#abae9d"
+		},
+		"surface": {
+			"kind": "map",
+			"source": "usgs-triton",
+			"filled": true
+		}
 	},
 	{
 		"id": "nereid",
@@ -7459,10 +8663,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
-		},
-		"appearance": {
-			"tint": "#b0b0b0"
+			"base": "/assets/textures/neptune/satellites/nereid.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7476,7 +8677,14 @@
 			"orbitalPeriod": 360.14,
 			"orbitalInclination": 7.09
 		},
-		"featured": true
+		"featured": true,
+		"appearance": {
+			"color": "#5a5957"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
 	},
 	{
 		"id": "halimede",
@@ -7502,7 +8710,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/halimede.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7510,6 +8718,13 @@
 			"diameter": 62,
 			"orbitalPeriod": "−1879.08",
 			"orbitalInclination": 112.898
+		},
+		"appearance": {
+			"color": "#423f3e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7535,7 +8750,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/sao.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7552,6 +8767,13 @@
 			"diameter": 44,
 			"orbitalPeriod": 2912.72,
 			"orbitalInclination": 53.483
+		},
+		"appearance": {
+			"color": "#43413f"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7578,7 +8800,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/laomedeia.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7586,6 +8808,13 @@
 			"diameter": 42,
 			"orbitalPeriod": 3171.33,
 			"orbitalInclination": 34.049
+		},
+		"appearance": {
+			"color": "#464442"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7612,7 +8841,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/psamathe.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7620,6 +8849,13 @@
 			"diameter": 40,
 			"orbitalPeriod": "-9074.30",
 			"orbitalInclination": 137.679
+		},
+		"appearance": {
+			"color": "#413f3d"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	},
 	{
@@ -7646,7 +8882,7 @@
 			"axialTiltDeg": 0
 		},
 		"textures": {
-			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+			"base": "/assets/textures/neptune/satellites/neso.jpg"
 		},
 		"rings": null,
 		"info": {
@@ -7654,6 +8890,13 @@
 			"diameter": 60,
 			"orbitalPeriod": "-9740.73",
 			"orbitalInclination": 131.265
+		},
+		"appearance": {
+			"color": "#42403e"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
 		}
 	}
 ]

@@ -330,6 +330,68 @@
 			"centreOn": "Vycentrovat na těleso {body}",
 			"centreOn@simple": "Zpátky k tělesu {body}"
 		},
+		"spacecraft": {
+			"layer": "Kosmické sondy",
+			"menu": "Kosmické sondy",
+			"menuHint": "Skutečné kosmické sondy: najdi si jednu a leť k ní",
+			"menuTitle": "Skutečné kosmické sondy",
+			"menuIntro": "Stroje, které lidé vyslali do vesmíru. Jejich polohy pocházejí z dat sledování NASA/JPL.",
+			"menuIntro@simple": "Skutečné stroje, které lidé poslali do vesmíru. Víme, kde jsou, protože je NASA sleduje.",
+			"allPaths": "Zobrazit všechny dráhy",
+			"kind": "Kosmická sonda",
+			"panel": "Vybraná kosmická sonda",
+			"close": "Zavřít",
+			"show": "Ukázat",
+			"showHint": "Přesunout pohled: {name}",
+			"launched": "Start",
+			"launched@simple": "Start ze Země",
+			"phase": {
+				"planned": "Před startem (start {date})",
+				"planned@simple": "Ještě není ve vesmíru. Startuje {date}.",
+				"active": "Mise probíhá",
+				"active@simple": "Pořád pracuje",
+				"silent": "Od {date} mlčí, ale letí dál",
+				"silent@simple": "Od {date} neposílá zprávy, ale pořád letí",
+				"destroyed": "Mise skončila {date}",
+				"destroyed@simple": "Od {date} už neexistuje"
+			},
+			"noData": "Poloha k tomuto datu v datech není (máme {from} až {to}).",
+			"noData@simple": "Nevíme, kde k tomuto datu je.",
+			"predicted": "Předpověď: toto datum je teprve v budoucnosti",
+			"predicted@simple": "Spočítáno dopředu: tohle datum ještě nenastalo",
+			"distanceSun": "Vzdálenost od Slunce",
+			"distanceEarth": "Vzdálenost od Země",
+			"speed": "{centreId, select, sun {Rychlost vůči Slunci} earth {Rychlost vůči Zemi} venus {Rychlost vůči Venuši} mars {Rychlost vůči Marsu} jupiter {Rychlost vůči Jupiteru} saturn {Rychlost vůči Saturnu} uranus {Rychlost vůči Uranu} neptune {Rychlost vůči Neptunu} other {Rychlost vůči tělesu {centre}}}",
+			"signal": "Signál k Zemi letí",
+			"signal@simple": "Rádiová zpráva k Zemi letí",
+			"signalNote": "Rádiové vlny se šíří rychlostí světla.",
+			"signalNote@simple": "A to rychlostí světla!",
+			"milestones": "Milníky",
+			"planned": "plánováno",
+			"goTo": "Cesta do data {date}",
+			"event": {
+				"launch": "Start",
+				"flyby": "{targetId, select, earth {Průlet kolem Země} venus {Průlet kolem Venuše} mars {Průlet kolem Marsu} jupiter {Průlet kolem Jupiteru} saturn {Průlet kolem Saturnu} uranus {Průlet kolem Uranu} neptune {Průlet kolem Neptunu} titan {Průlet kolem Titanu} triton {Průlet kolem Tritonu} io {Průlet kolem Io} europa {Průlet kolem Europy} ganymede {Průlet kolem Ganymedu} pluto {Průlet kolem Pluta} arrokoth {Průlet kolem Arrokothu} other {Průlet kolem tělesa {target}}}",
+				"orbitInsertion": "{targetId, select, jupiter {Navedení na oběžnou dráhu kolem Jupiteru} saturn {Navedení na oběžnou dráhu kolem Saturnu} other {Navedení na oběžnou dráhu kolem tělesa {target}}}",
+				"probeLanding": "{targetId, select, titan {Výsadkový modul přistává na Titanu} other {Výsadkový modul přistává na tělese {target}}}",
+				"impact": "{targetId, select, saturn {Zanořuje se do Saturnu} jupiter {Zanořuje se do Jupiteru} other {Zanořuje se do tělesa {target}}}",
+				"arrival": "{targetId, select, l2 {Dorazí do bodu L2 soustavy Slunce–Země} other {Dorazí k tělesu {target}}}",
+				"heliopause": "Překračuje heliopauzu do mezihvězdného prostoru",
+				"heliopause@simple": "Opouští bublinu Slunce a míří mezi hvězdy",
+				"closestToSun": "Dosud nejblíž ke Slunci",
+				"paleBlueDot": "Fotografuje Zemi jako „bledě modrou tečku“",
+				"farthest": "Stává se nejvzdálenějším předmětem, který lidé vyrobili",
+				"firstImages": "Zveřejnění prvních snímků",
+				"lastContact": "Přijat poslední signál",
+				"missionEnd": "Konec mise"
+			},
+			"distanceAt": "{distance} od středu",
+			"target": {
+				"pluto": "Pluto",
+				"arrokoth": "Arrokoth",
+				"l2": "L2 soustavy Slunce–Země"
+			}
+		},
 		"pick": {
 			"visit": "Klikni a leť tam",
 			"visit@simple": "Klikni a vydej se tam",
@@ -357,6 +419,15 @@
 			"othersNote@simple": "Většinou malé kameny. Vědci pořád nacházejí další.",
 			"readMore": "Přečíst příběh",
 			"readLess": "Zobrazit méně"
+		},
+		"surface": {
+			"map": "Mapa povrchu: {source}.",
+			"unseen": "Část měsíce {moon} nikdo nikdy nevyfotografoval, proto je tato část mapy doplněna tak, aby odpovídala zbytku.",
+			"unseen@simple": "Celý měsíc {moon} ještě nikdo neviděl. Chybějící část mapy je doplněná.",
+			"painted": "Žádná sonda měsíc {moon} zblízka nezmapovala, proto je tento povrch namalován podle toho, co víme: podle jeho barvy a toho, kolik slunečního světla odráží.",
+			"painted@simple": "Žádná sonda měsíc {moon} zblízka nevyfotila. Tento povrch je namalovaný v jeho skutečné barvě.",
+			"haze": "Povrch měsíce {moon} skrývá hustý oranžový opar. Takhle měsíc {moon} vidí naše oči.",
+			"haze@simple": "Hustý oranžový opar zakrývá povrch měsíce {moon}. Takhle ho vidí naše oči."
 		},
 		"facts": {
 			"label": {

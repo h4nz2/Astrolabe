@@ -2,13 +2,15 @@
  * One body: a group placed every frame from the SimFrame, oriented by the IAU
  * pole (local +Y; the pole frame of ./orientation.ts) and a mesh inside it spun
  * about that pole by `bodySpinAngle` (spin mode and tidal locking included). The texture loads
- * lazily behind a Suspense boundary with a plain coloured fallback material.
+ * lazily behind a Suspense boundary with a plain coloured fallback material; a moon's map is
+ * not even requested until the moon is drawn a few pixels wide (./surfaceLoad.ts, #37), and
+ * until then it is drawn in the map's mean colour.
  * The Sun is emissive (Bloom arrives in Phase 6); every other body is lit by
  * it through the sunlight model (../lighting, docs/ARCHITECTURE.md, "Lighting"),
  * whose uniforms this component rewrites every frame. A ringed planet's rings
  * (../rings/Rings.tsx) sit in the pole frame and share those uniforms.
  */
-import { Suspense, useMemo, useRef } from "react"
+import { Suspense, useMemo, useRef, useState } from "react"
 import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import {
@@ -38,6 +40,7 @@ import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame } from "../scene/simFrame"
 import { isDiscVisible } from "./moonOrbitFade"
 import { bodyOrientation, bodySpinAngle, createBodySpin } from "./orientation"
+import { wantsSurface } from "./surfaceLoad"
 
 export interface BodyMeshProps {
 	body: Body
@@ -127,7 +130,11 @@ function FallbackMaterial({ body, uniforms }: MaterialProps) {
 	return (
 		<SunlitMaterial
 			uniforms={uniforms}
-			color={body.appearance?.veiled ? body.appearance.tint : "#5b6472"}
+			color={
+				body.appearance?.veiled
+					? body.appearance.tint
+					: (body.appearance?.color ?? "#5b6472")
+			}
 		/>
 	)
 }
@@ -136,6 +143,9 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 	const frame = useSimFrame()
 	const groupRef = useRef<Group>(null)
 	const meshRef = useRef<Mesh>(null)
+	// a moon's map is fetched once it is near enough to show (#37); then it stays
+	const [surfaceWanted, setSurfaceWanted] = useState(body.kind !== "moon")
+	const surfaceWantedRef = useRef(surfaceWanted)
 	const orientation = useMemo(() => bodyOrientation(body), [body])
 	const spin = useMemo(
 		() => createBodySpin(body, index, frame),
@@ -163,14 +173,21 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 		frame.renderPosition(index, group.position)
 		// a moon drawn smaller than a pixel is skipped: its marker dot shows
 		// where it is, and 150 invisible spheres would cost the frame (#17)
-		group.visible =
-			body.kind !== "moon" ||
-			!(camera instanceof PerspectiveCamera) ||
-			isDiscVisible(
-				frame.renderRadius(index),
-				group.position.distanceTo(camera.position),
-				pixelsPerUnitAtDistanceOne(camera, size.height),
-			)
+		if (body.kind === "moon" && camera instanceof PerspectiveCamera) {
+			const radius = frame.renderRadius(index)
+			const distance = group.position.distanceTo(camera.position)
+			const pxPerUnit = pixelsPerUnitAtDistanceOne(camera, size.height)
+			group.visible = isDiscVisible(radius, distance, pxPerUnit)
+			if (
+				!surfaceWantedRef.current &&
+				wantsSurface(radius, distance, pxPerUnit)
+			) {
+				surfaceWantedRef.current = true
+				setSurfaceWanted(true)
+			}
+		} else {
+			group.visible = true
+		}
 		if (!group.visible) return
 		// the drawn radius under the active scale (docs/ARCHITECTURE.md, "Scale")
 		mesh.scale.setScalar(frame.renderRadius(index))
@@ -194,15 +211,19 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 				geometry={unitSphere(sphereSegments(body))}
 				scale={frame.renderRadius(index)}
 			>
-				<Suspense
-					fallback={<FallbackMaterial body={body} uniforms={uniforms} />}
-				>
-					{body.kind === "star" ? (
-						<StarMaterial body={body} />
-					) : (
-						<TexturedMaterial body={body} uniforms={uniforms} />
-					)}
-				</Suspense>
+				{surfaceWanted ? (
+					<Suspense
+						fallback={<FallbackMaterial body={body} uniforms={uniforms} />}
+					>
+						{body.kind === "star" ? (
+							<StarMaterial body={body} />
+						) : (
+							<TexturedMaterial body={body} uniforms={uniforms} />
+						)}
+					</Suspense>
+				) : (
+					<FallbackMaterial body={body} uniforms={uniforms} />
+				)}
 			</mesh>
 			{body.rings !== null && (
 				// in the pole frame: the rings follow the tilt, never the spin (#12, #13)

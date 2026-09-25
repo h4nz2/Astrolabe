@@ -330,6 +330,68 @@
 			"centreOn": "Recentrer : {body}",
 			"centreOn@simple": "Retour : {body}"
 		},
+		"spacecraft": {
+			"layer": "Sondes spatiales",
+			"menu": "Sondes spatiales",
+			"menuHint": "De vraies sondes spatiales : choisis-en une et vole jusqu’à elle",
+			"menuTitle": "Sondes spatiales réelles",
+			"menuIntro": "Des machines que l’humanité a envoyées dans l’espace. Leurs positions viennent des données de suivi de la NASA et du JPL.",
+			"menuIntro@simple": "De vraies machines envoyées dans l’espace. On sait où elles sont parce que la NASA les suit.",
+			"allPaths": "Afficher toutes les trajectoires",
+			"kind": "Sonde spatiale",
+			"panel": "Sonde spatiale sélectionnée",
+			"close": "Fermer",
+			"show": "Montrer",
+			"showHint": "Amener la vue jusqu’à {name}",
+			"launched": "Lancement",
+			"launched@simple": "Partie de la Terre",
+			"phase": {
+				"planned": "Pas encore lancée (lancement le {date})",
+				"planned@simple": "Pas encore dans l’espace. Elle part le {date}.",
+				"active": "Mission en cours",
+				"active@simple": "Fonctionne toujours",
+				"silent": "Silencieuse depuis le {date}, elle vole toujours",
+				"silent@simple": "Plus de messages depuis le {date}, mais elle vole encore",
+				"destroyed": "Mission terminée le {date}",
+				"destroyed@simple": "Elle n’existe plus depuis le {date}"
+			},
+			"noData": "Sa position à cette date n’est pas dans les données (du {from} au {to}).",
+			"noData@simple": "On ne sait pas où elle est à cette date.",
+			"predicted": "Prévision : cette date est encore dans le futur",
+			"predicted@simple": "Calculé à l’avance : cette date n’est pas encore arrivée",
+			"distanceSun": "Distance au Soleil",
+			"distanceEarth": "Distance à la Terre",
+			"speed": "Vitesse {centreId, select, sun {autour du Soleil} earth {par rapport à la Terre} other {par rapport à {centre}}}",
+			"signal": "Temps du signal jusqu’à la Terre",
+			"signal@simple": "Un message radio vers la Terre met",
+			"signalNote": "Les ondes radio voyagent à la vitesse de la lumière.",
+			"signalNote@simple": "Et pourtant, à la vitesse de la lumière !",
+			"milestones": "Étapes",
+			"planned": "prévu",
+			"goTo": "Voyager au {date}",
+			"event": {
+				"launch": "Lancement",
+				"flyby": "{targetId, select, earth {Survol de la Terre} uranus {Survol d’Uranus} io {Survol d’Io} europa {Survol d’Europe} arrokoth {Survol d’Arrokoth} other {Survol de {target}}}",
+				"orbitInsertion": "{targetId, select, earth {Mise en orbite autour de la Terre} other {Mise en orbite autour de {target}}}",
+				"probeLanding": "{targetId, select, other {Sa sonde se pose sur {target}}}",
+				"impact": "{targetId, select, other {Plonge dans {target}}}",
+				"arrival": "{targetId, select, l2 {Arrive au point L2 Soleil–Terre} other {Arrive à {target}}}",
+				"heliopause": "Franchit l’héliopause, vers l’espace interstellaire",
+				"heliopause@simple": "Quitte la bulle du Soleil, vers les étoiles",
+				"closestToSun": "Plus près du Soleil que jamais",
+				"paleBlueDot": "Photographie la Terre comme un « point bleu pâle »",
+				"farthest": "Devient l’objet fabriqué par l’humanité le plus lointain",
+				"firstImages": "Premières images publiées",
+				"lastContact": "Dernier signal reçu",
+				"missionEnd": "Fin de la mission"
+			},
+			"distanceAt": "{distance} du centre",
+			"target": {
+				"pluto": "Pluton",
+				"arrokoth": "Arrokoth",
+				"l2": "L2 Soleil–Terre"
+			}
+		},
 		"pick": {
 			"visit": "Clique pour t’y rendre",
 			"visit@simple": "Clique pour y aller",
@@ -357,6 +419,15 @@
 			"othersNote@simple": "Surtout de petits rochers. Les scientifiques en découvrent sans arrêt de nouveaux.",
 			"readMore": "Lire son histoire",
 			"readLess": "Afficher moins"
+		},
+		"surface": {
+			"map": "Carte de la surface : {source}.",
+			"unseen": "Une partie de {moon} n’a jamais été photographiée : cette partie de la carte est complétée pour ressembler au reste.",
+			"unseen@simple": "Personne n’a jamais vu {moon} en entier. La partie manquante de la carte est complétée.",
+			"painted": "Aucune sonde n’a cartographié {moon} de près : cette surface est peinte d’après ce que l’on sait, sa couleur et la quantité de lumière du Soleil qu’elle renvoie.",
+			"painted@simple": "Aucune sonde n’a photographié {moon} de près. Cette surface est peinte avec sa vraie couleur.",
+			"haze": "Le sol de {moon} est caché sous une épaisse brume orange. C’est ainsi que nos yeux voient {moon}.",
+			"haze@simple": "Une épaisse brume orange cache le sol de {moon}. C’est ainsi que nos yeux voient {moon}."
 		},
 		"facts": {
 			"label": {

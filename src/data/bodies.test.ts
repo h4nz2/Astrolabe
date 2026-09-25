@@ -13,7 +13,15 @@ import { normalizeName, slug } from "../../scripts/lib/names"
 import { spinAxis } from "../sim/rotation"
 import { separationDeg } from "../sim/testing/ephemeris"
 
-import { bodies, bodyById, getBody, moonsOf, planets, sun } from "./index"
+import {
+	bodies,
+	bodyById,
+	getBody,
+	imageCredits,
+	moonsOf,
+	planets,
+	sun,
+} from "./index"
 import { BodiesFile } from "./schema"
 
 const root = fileURLToPath(new URL("../../", import.meta.url))
@@ -307,17 +315,68 @@ describe("bodies.json", () => {
 		expect(getBody("io").orbit?.inclinationDeg).toBeLessThan(3)
 	})
 
-	it("gives placeholder moons the placeholder alone, the Moon its bump map", () => {
-		expect(getBody("moon").textures).toEqual({
-			base: PLACEHOLDER_TEXTURE,
-			topo: "/assets/textures/earth/satellites/moon_topo_1k.jpg",
-		})
-		expect(usesPlaceholderTexture(getBody("moon"))).toBe(false)
-		const placeholders = bodies.filter(usesPlaceholderTexture)
-		expect(placeholders.length).toBeGreaterThan(150)
-		for (const body of placeholders) {
-			expect(body.textures, body.id).toEqual({ base: PLACEHOLDER_TEXTURE })
+	it("gives every moon its own surface; none but the Moon wears the Moon's map (#37)", () => {
+		const moons = bodies.filter((body) => body.kind === "moon")
+		const bases = new Set<string>()
+		for (const moon of moons) {
+			expect(moon.textures, moon.id).toEqual({
+				base: `/assets/textures/${moon.parentId}/satellites/${moon.id}.jpg`,
+			})
+			expect(moon.textures.base).not.toBe(PLACEHOLDER_TEXTURE)
+			expect(usesPlaceholderTexture(moon), moon.id).toBe(false)
+			bases.add(moon.textures.base)
+			expect(moon.surface, moon.id).toBeDefined()
+			expect(moon.appearance?.color, moon.id).toMatch(/^#[0-9a-f]{6}$/)
+			// colours are in the maps: no moon multiplies its map with a tint any more
+			expect(moon.appearance?.tint, moon.id).toBeUndefined()
 		}
+		expect(bases.size).toBe(moons.length)
+	})
+
+	it("credits every moon's surface to a source with a recorded licence (#37)", () => {
+		const credited = new Map<string, string>()
+		for (const credit of imageCredits) {
+			expect(credit.licence, credit.id).toMatch(
+				/^(Public domain|MIT|No known restrictions)$/,
+			)
+			for (const id of credit.bodies) credited.set(id, credit.id)
+		}
+		for (const moon of bodies.filter((body) => body.kind === "moon")) {
+			expect(credited.get(moon.id), moon.id).toBe(moon.surface?.source)
+		}
+	})
+
+	it("maps the featured moons from spacecraft images wherever a free map exists (#37)", () => {
+		const kinds = Object.fromEntries(
+			bodies
+				.filter((body) => body.featured)
+				.map((body) => [body.id, body.surface?.kind]),
+		)
+		// no global map exists of these: Titan's ground is hidden by haze in visible light, and
+		// Proteus and Nereid were only glimpsed by Voyager 2
+		expect(kinds).toMatchObject({
+			titan: "haze",
+			proteus: "painted",
+			nereid: "painted",
+		})
+		const painted = Object.entries(kinds).filter(([, kind]) => kind !== "map")
+		expect(painted.map(([id]) => id).sort()).toEqual([
+			"nereid",
+			"proteus",
+			"titan",
+		])
+		// Voyager 2 saw only the southern halves of Uranus's moons and part of Triton
+		for (const id of [
+			"miranda",
+			"ariel",
+			"umbriel",
+			"titania",
+			"oberon",
+			"triton",
+		]) {
+			expect(getBody(id).surface?.filled, id).toBe(true)
+		}
+		expect(getBody("europa").surface?.filled).toBeUndefined()
 	})
 
 	it("carries real J2000 elements for the Moon and the Galilean moons", () => {

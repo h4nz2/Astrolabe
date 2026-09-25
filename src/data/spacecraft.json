@@ -1,0 +1,401 @@
+{
+	"source": {
+		"name": "NASA/JPL Horizons, spacecraft trajectories (reconstructed from tracking where flown, predicted beyond)",
+		"url": "https://ssd.jpl.nasa.gov/horizons/",
+		"frame": "geometric states, ecliptic and mean equinox of J2000, km and km/s; the app maps ecliptic (x, y, z) to scene (x, z, -y)",
+		"timeScale": "UT (UTC), days from J2000 = JD - 2451545",
+		"fetched": "2026-09-25",
+		"tolerance": "cubic Hermite interpolation within max(1 km, 0.001 x distance from the segment centre) of the Horizons states"
+	},
+	"asOf": "2026-09-25",
+	"craft": [
+		{
+			"id": "voyager1",
+			"name": "Voyager 1",
+			"horizonsId": "-31",
+			"launch": "1977-09-05T12:56Z",
+			"dataFrom": "1977-09-05T14:00Z",
+			"dataTo": "2099-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{
+					"date": "1979-03-05T12:07Z",
+					"kind": "flyby",
+					"target": "jupiter",
+					"distanceKm": 348400
+				},
+				{
+					"date": "1980-11-12T05:41Z",
+					"kind": "flyby",
+					"target": "titan"
+				},
+				{
+					"date": "1980-11-12T23:45Z",
+					"kind": "flyby",
+					"target": "saturn",
+					"distanceKm": 184000
+				},
+				{
+					"date": "1990-02-14T04:48Z",
+					"kind": "paleBlueDot"
+				},
+				{
+					"date": "1998-02-17T12:00Z",
+					"kind": "farthest"
+				},
+				{
+					"date": "2012-08-25T12:00Z",
+					"kind": "heliopause"
+				}
+			],
+			"orbits": []
+		},
+		{
+			"id": "voyager2",
+			"name": "Voyager 2",
+			"horizonsId": "-32",
+			"launch": "1977-08-20T14:29Z",
+			"dataFrom": "1977-08-20T15:32Z",
+			"dataTo": "2099-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{
+					"date": "1979-07-09T22:32Z",
+					"kind": "flyby",
+					"target": "jupiter",
+					"distanceKm": 721400
+				},
+				{
+					"date": "1981-08-26T03:20Z",
+					"kind": "flyby",
+					"target": "saturn",
+					"distanceKm": 160800
+				},
+				{
+					"date": "1986-01-24T17:56Z",
+					"kind": "flyby",
+					"target": "uranus",
+					"distanceKm": 107200
+				},
+				{
+					"date": "1989-08-25T03:56Z",
+					"kind": "flyby",
+					"target": "neptune",
+					"distanceKm": 29240
+				},
+				{
+					"date": "1989-08-25T09:10Z",
+					"kind": "flyby",
+					"target": "triton"
+				},
+				{
+					"date": "2018-11-05T12:00Z",
+					"kind": "heliopause"
+				}
+			],
+			"orbits": []
+		},
+		{
+			"id": "pioneer10",
+			"name": "Pioneer 10",
+			"horizonsId": "-23",
+			"launch": "1972-03-03T01:49Z",
+			"dataFrom": "1972-03-03T02:05Z",
+			"dataTo": "2049-12-31T00:00Z",
+			"end": {
+				"date": "2003-01-23T12:00Z",
+				"kind": "silent"
+			},
+			"events": [
+				{
+					"date": "1973-12-04T02:25Z",
+					"kind": "flyby",
+					"target": "jupiter",
+					"distanceKm": 203100
+				},
+				{
+					"date": "2003-01-23T12:00Z",
+					"kind": "lastContact"
+				}
+			],
+			"orbits": []
+		},
+		{
+			"id": "pioneer11",
+			"name": "Pioneer 11",
+			"horizonsId": "-24",
+			"launch": "1973-04-06T02:11Z",
+			"dataFrom": "1973-04-06T02:26Z",
+			"dataTo": "2049-12-31T00:00Z",
+			"end": {
+				"date": "1995-09-30T12:00Z",
+				"kind": "silent"
+			},
+			"events": [
+				{
+					"date": "1974-12-03T05:20Z",
+					"kind": "flyby",
+					"target": "jupiter",
+					"distanceKm": 113600
+				},
+				{
+					"date": "1979-09-01T16:29Z",
+					"kind": "flyby",
+					"target": "saturn",
+					"distanceKm": 80860
+				},
+				{
+					"date": "1995-09-30T12:00Z",
+					"kind": "missionEnd"
+				}
+			],
+			"orbits": []
+		},
+		{
+			"id": "newHorizons",
+			"name": "New Horizons",
+			"horizonsId": "-98",
+			"launch": "2006-01-19T19:00Z",
+			"dataFrom": "2006-01-19T19:51Z",
+			"dataTo": "2049-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{
+					"date": "2007-02-28T05:51Z",
+					"kind": "flyby",
+					"target": "jupiter",
+					"distanceKm": 2305000
+				},
+				{
+					"date": "2015-07-14T11:49Z",
+					"kind": "flyby",
+					"target": "pluto"
+				},
+				{
+					"date": "2019-01-01T05:33Z",
+					"kind": "flyby",
+					"target": "arrokoth"
+				}
+			],
+			"orbits": []
+		},
+		{
+			"id": "cassini",
+			"name": "Cassini",
+			"horizonsId": "-82",
+			"launch": "1997-10-15T08:43Z",
+			"dataFrom": "1997-10-15T09:27Z",
+			"dataTo": "2017-09-15T10:31Z",
+			"end": {
+				"date": "2017-09-15T10:31Z",
+				"kind": "destroyed"
+			},
+			"events": [
+				{
+					"date": "1998-04-26T13:45Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 6338
+				},
+				{
+					"date": "1999-06-24T20:30Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 6655
+				},
+				{
+					"date": "1999-08-18T03:28Z",
+					"kind": "flyby",
+					"target": "earth",
+					"distanceKm": 7563
+				},
+				{
+					"date": "2000-12-30T10:27Z",
+					"kind": "flyby",
+					"target": "jupiter",
+					"distanceKm": 9794000
+				},
+				{
+					"date": "2004-07-01T02:48Z",
+					"kind": "orbitInsertion",
+					"target": "saturn"
+				},
+				{
+					"date": "2005-01-14T12:00Z",
+					"kind": "probeLanding",
+					"target": "titan"
+				},
+				{
+					"date": "2017-09-15T10:31Z",
+					"kind": "impact",
+					"target": "saturn"
+				}
+			],
+			"orbits": [
+				{
+					"center": "saturn",
+					"from": "2004-07-01T02:48Z",
+					"trackDays": 30
+				}
+			]
+		},
+		{
+			"id": "parker",
+			"name": "Parker Solar Probe",
+			"horizonsId": "-96",
+			"launch": "2018-08-12T07:31Z",
+			"dataFrom": "2018-08-12T08:16Z",
+			"dataTo": "2029-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{
+					"date": "2018-10-03T08:44Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 8506
+				},
+				{
+					"date": "2019-12-26T18:15Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 9063
+				},
+				{
+					"date": "2020-07-11T03:23Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 6901
+				},
+				{
+					"date": "2021-02-20T20:06Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 8444
+				},
+				{
+					"date": "2021-10-16T09:30Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 9864
+				},
+				{
+					"date": "2023-08-21T12:03Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 10060
+				},
+				{
+					"date": "2024-11-06T18:43Z",
+					"kind": "flyby",
+					"target": "venus",
+					"distanceKm": 6446
+				},
+				{
+					"date": "2024-12-24T11:53Z",
+					"kind": "closestToSun"
+				}
+			],
+			"orbits": []
+		},
+		{
+			"id": "jwst",
+			"name": "James Webb Space Telescope",
+			"horizonsId": "-170",
+			"launch": "2021-12-25T12:20Z",
+			"dataFrom": "2021-12-25T13:01Z",
+			"dataTo": "2031-09-20T00:00Z",
+			"end": null,
+			"events": [
+				{
+					"date": "2022-01-24T19:05Z",
+					"kind": "arrival",
+					"target": "l2"
+				},
+				{
+					"date": "2022-07-12T14:30Z",
+					"kind": "firstImages"
+				}
+			],
+			"orbits": [
+				{
+					"center": "earth",
+					"from": "2021-12-25T13:01Z",
+					"trackDays": 30
+				}
+			]
+		},
+		{
+			"id": "juno",
+			"name": "Juno",
+			"horizonsId": "-61",
+			"launch": "2011-08-05T16:25Z",
+			"dataFrom": "2011-08-05T17:19Z",
+			"dataTo": "2028-09-30T00:00Z",
+			"end": null,
+			"events": [
+				{
+					"date": "2013-10-09T19:21Z",
+					"kind": "flyby",
+					"target": "earth",
+					"distanceKm": 6940
+				},
+				{
+					"date": "2016-07-05T03:53Z",
+					"kind": "orbitInsertion",
+					"target": "jupiter"
+				},
+				{
+					"date": "2021-06-07T17:35Z",
+					"kind": "flyby",
+					"target": "ganymede"
+				},
+				{
+					"date": "2022-09-29T09:36Z",
+					"kind": "flyby",
+					"target": "europa"
+				},
+				{
+					"date": "2023-12-30T08:35Z",
+					"kind": "flyby",
+					"target": "io"
+				}
+			],
+			"orbits": [
+				{
+					"center": "jupiter",
+					"from": "2016-07-05T03:53Z",
+					"trackDays": 40
+				}
+			]
+		},
+		{
+			"id": "europaClipper",
+			"name": "Europa Clipper",
+			"horizonsId": "-159",
+			"launch": "2024-10-14T16:06Z",
+			"dataFrom": "2024-10-14T16:15Z",
+			"dataTo": "2030-04-12T00:00Z",
+			"end": null,
+			"events": [
+				{
+					"date": "2025-03-01T17:56Z",
+					"kind": "flyby",
+					"target": "mars",
+					"distanceKm": 4275
+				},
+				{
+					"date": "2026-12-03T20:13Z",
+					"kind": "flyby",
+					"target": "earth",
+					"distanceKm": 9607
+				},
+				{
+					"date": "2030-04-11T12:00Z",
+					"kind": "orbitInsertion",
+					"target": "jupiter"
+				}
+			],
+			"orbits": []
+		}
+	]
+}
