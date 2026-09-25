@@ -236,13 +236,13 @@ const PulseStatus = ({ pulse }: { pulse: LightPulse }) => {
 							<span className={classes.arrivalTime}>
 								{formatDuration(arrival.seconds, i18n)}
 							</span>
-							<span className={classes.arrivalWait}>
-								{done
-									? ""
-									: t("solarSystem.light.pending", {
-											duration: formatDuration((arrival.jd - jd) * 86400, i18n),
-										})}
-							</span>
+							{!done && (
+								<span className={classes.arrivalWait}>
+									{t("solarSystem.light.pending", {
+										duration: formatDuration((arrival.jd - jd) * 86400, i18n),
+									})}
+								</span>
+							)}
 						</li>
 					)
 				})}

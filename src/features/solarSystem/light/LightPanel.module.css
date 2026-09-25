@@ -71,7 +71,8 @@
 	margin: 0;
 	padding: 0;
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto auto;
+	/* name | arrival time, and the countdown under the time (narrow enough for a phone at any reading level) */
+	grid-template-columns: minmax(0, 1fr) auto;
 	column-gap: 0.75rem;
 	row-gap: 0.125rem;
 	font-size: var(--mantine-font-size-sm);
@@ -106,9 +107,11 @@
 }
 
 .arrivalWait {
+	grid-column: 2;
+	margin-top: -0.125rem;
+	margin-bottom: 0.125rem;
 	font-size: var(--mantine-font-size-xs);
 	color: var(--mantine-color-gray-6);
-	align-self: center;
 }
 
 .delay {

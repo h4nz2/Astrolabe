@@ -176,6 +176,8 @@
 		align-self: end;
 		justify-self: start;
 		max-height: 100%;
+		/* the row is what the other panels leave: the open panel scrolls as a whole in it */
+		overflow-y: auto;
 		--light-panel-body-max: 30dvh;
 	}
 }
