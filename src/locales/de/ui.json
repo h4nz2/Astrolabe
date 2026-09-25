@@ -370,6 +370,8 @@
 			"unseen@simple": "Niemand hat {moon} je ganz gesehen. Der fehlende Teil der Karte ist ergänzt.",
 			"painted": "Keine Raumsonde hat {moon} aus der Nähe kartiert. Diese Oberfläche ist nach dem gemalt, was bekannt ist: der Farbe und wie viel Sonnenlicht sie zurückwirft.",
 			"painted@simple": "Keine Raumsonde hat {moon} aus der Nähe fotografiert. Diese Oberfläche ist in der echten Farbe gemalt.",
+			"paintedVisited": "{probe} ist {year} an {moon} vorbeigeflogen, aber ihre Bilder sind noch nicht in der App. Diese Oberfläche ist nach dem gemalt, was bekannt ist: der Farbe und wie viel Sonnenlicht sie zurückwirft.",
+			"paintedVisited@simple": "{probe} hat {year} Bilder von {moon} gemacht, aber sie sind noch nicht in der App. Diese Oberfläche ist in der echten Farbe gemalt.",
 			"haze": "Der Boden von {moon} liegt unter dichtem orangefarbenem Dunst verborgen. So sieht {moon} für unsere Augen aus.",
 			"haze@simple": "Dichter orangefarbener Dunst verdeckt den Boden von {moon}. So sieht {moon} für unsere Augen aus."
 		},

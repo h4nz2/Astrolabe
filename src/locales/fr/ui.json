@@ -370,6 +370,8 @@
 			"unseen@simple": "Personne n’a jamais vu {moon} en entier. La partie manquante de la carte est complétée.",
 			"painted": "Aucune sonde n’a cartographié {moon} de près : cette surface est peinte d’après ce que l’on sait, sa couleur et la quantité de lumière du Soleil qu’elle renvoie.",
 			"painted@simple": "Aucune sonde n’a photographié {moon} de près. Cette surface est peinte avec sa vraie couleur.",
+			"paintedVisited": "La sonde {probe} est passée près de {moon} en {year}, mais ses images ne sont pas encore dans l’application : cette surface est peinte d’après ce que l’on sait, sa couleur et la quantité de lumière du Soleil qu’elle renvoie.",
+			"paintedVisited@simple": "La sonde {probe} a photographié {moon} en {year}, mais ces photos ne sont pas encore dans l’application. Cette surface est peinte avec sa vraie couleur.",
 			"haze": "Le sol de {moon} est caché sous une épaisse brume orange. C’est ainsi que nos yeux voient {moon}.",
 			"haze@simple": "Une épaisse brume orange cache le sol de {moon}. C’est ainsi que nos yeux voient {moon}."
 		},
