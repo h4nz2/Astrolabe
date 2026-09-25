@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect, useRef, useState } from "react"
 import { Button, Kbd, Modal, Table, Text, VisuallyHidden } from "@mantine/core"
+import { Link } from "@tanstack/react-router"
 import { IconAdjustments } from "@tabler/icons-react"
 
 import { useI18n, type MessageKey } from "@/i18n"
@@ -120,6 +121,16 @@ function KeyHelp() {
 					</Table.Tbody>
 				))}
 			</Table>
+			<Text size="sm" mt="md">
+				<Link
+					to="/help"
+					search={{ topic: "controls" }}
+					style={{ color: "var(--mantine-color-orange-4)" }}
+					onClick={() => setHelpOpen(false)}
+				>
+					{t("help.shortcutsLink")}
+				</Link>
+			</Text>
 		</Modal>
 	)
 }

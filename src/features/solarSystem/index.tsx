@@ -1,5 +1,6 @@
 import { Suspense } from "react"
 
+import { HelpButton } from "@/features/help/HelpButton"
 import { LanguageMenu } from "@/i18n"
 import Loader from "@/primitives/Loader"
 import { isFrameAnchored } from "@/store/navigation"
@@ -11,6 +12,7 @@ import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
 import { HuntPanelSlot } from "./hunt/Hunt"
 import { PostcardButton, PostcardSlot } from "./postcard/Postcard"
+import LightLink from "./light/LightLink"
 import { LightSlot } from "./light/LightPanel"
 import { InlineLayers, TeacherBar } from "./present/TeacherBar"
 import PresentationLayer from "./present/PresentationLayer"
@@ -94,6 +96,7 @@ const SolarSystem = () => {
 					<div className={classes.panel}>
 						<TeacherBar layers={<SceneToggles />}>
 							<PostcardButton />
+							<HelpButton />
 							<LanguageMenu />
 						</TeacherBar>
 						<InlineLayers>
@@ -117,6 +120,7 @@ const SolarSystem = () => {
 				</div>
 			</div>
 			<BirthdayPanelSlot />
+			<LightLink />
 			<PostcardSlot />
 			<PresentationLayer />
 		</div>

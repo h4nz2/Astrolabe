@@ -1070,5 +1070,39 @@
 				"range@advanced": "Über ihre Bahnen reicht die Entfernung von etwa {minKm} bis {maxKm} ({min} bis {max} Lichtlaufzeit)."
 			}
 		}
+	},
+	"help": {
+		"button": "Hilfe",
+		"buttonHint": "Alle Funktionen und wie du sie nutzt",
+		"title": "Hilfe",
+		"heading": "Alles, was Astrolabe kann",
+		"heading@simple": "Was kann ich hier machen?",
+		"lead": "Alle Funktionen an einem Ort: was sie sind, warum es sich lohnt, sie auszuprobieren, und wie sie funktionieren. „Ausprobieren“ öffnet die App, und die Funktion ist schon vorbereitet.",
+		"lead@simple": "Hier findest du alles, was du machen kannst. Drück „Ausprobieren“ und leg los!",
+		"back": "Zurück",
+		"searchLabel": "Hilfe durchsuchen",
+		"searchPlaceholder": "Suchen, zum Beispiel „Finsternis“ oder „Mars“",
+		"clearSearch": "Suche löschen",
+		"results": "{count, plural, =0 {Nichts passt zu „{query}“. Versuch ein anderes Wort oder stöbere unten in den Gruppen.} one {# Funktion passt zu „{query}“.} other {# Funktionen passen zu „{query}“.}}",
+		"contents": "Auf dieser Seite",
+		"why": "Warum",
+		"how": "Wie",
+		"try": "Ausprobieren",
+		"tryLabel": "Ausprobieren: {title}",
+		"controls": {
+			"title": "Bedienung und Tastenkürzel",
+			"intro": "Maus, Touchscreen und Tastatur im 3D-Sonnensystem. Solange du in ein Feld schreibst, bewirken die Tasten nichts.",
+			"action": "Was du tun willst",
+			"mouse": "Maus",
+			"touch": "Touchscreen",
+			"keys": "Tastatur",
+			"none": "–"
+		},
+		"credits": {
+			"title": "Mitwirkende und Quellen",
+			"licence": "Lizenz: {licence}"
+		},
+		"readingLevel": "Du liest die Version „{level}“. Sprache und Lesestufe änderst du im Menü oben rechts.",
+		"shortcutsLink": "Alle Funktionen und wie du sie nutzt: die Hilfeseite öffnen"
 	}
 }

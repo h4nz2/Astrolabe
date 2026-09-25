@@ -1070,5 +1070,39 @@
 				"range@advanced": "A lo largo de sus órbitas, la distancia varía entre unos {minKm} y {maxKm} (de {min} a {max} de tiempo luz)."
 			}
 		}
+	},
+	"help": {
+		"button": "Ayuda",
+		"buttonHint": "Todas las funciones y cómo usarlas",
+		"title": "Ayuda",
+		"heading": "Todo lo que puede hacer Astrolabe",
+		"heading@simple": "¿Qué puedo hacer aquí?",
+		"lead": "Todas las funciones en un solo lugar: qué son, por qué vale la pena probarlas y cómo se usan. «Pruébalo» abre la aplicación con la función lista.",
+		"lead@simple": "Aquí está todo lo que puedes hacer. ¡Pulsa «Pruébalo» para ir a hacerlo!",
+		"back": "Volver",
+		"searchLabel": "Buscar en la ayuda",
+		"searchPlaceholder": "Busca, por ejemplo, «eclipse» o «Marte»",
+		"clearSearch": "Borrar la búsqueda",
+		"results": "{count, plural, =0 {Nada coincide con «{query}». Prueba con otra palabra o explora los grupos de abajo.} one {# función coincide con «{query}».} many {# de funciones coinciden con «{query}».} other {# funciones coinciden con «{query}».}}",
+		"contents": "En esta página",
+		"why": "Por qué",
+		"how": "Cómo",
+		"try": "Pruébalo",
+		"tryLabel": "Pruébalo: {title}",
+		"controls": {
+			"title": "Controles y atajos",
+			"intro": "Ratón, pantalla táctil y teclado en el sistema solar 3D. Las teclas no hacen nada mientras escribes en un cuadro de texto.",
+			"action": "Para hacer esto",
+			"mouse": "Ratón",
+			"touch": "Táctil",
+			"keys": "Teclado",
+			"none": "–"
+		},
+		"credits": {
+			"title": "Créditos y fuentes",
+			"licence": "Licencia: {licence}"
+		},
+		"readingLevel": "Nivel de lectura: {level}. Puedes cambiar el idioma y el nivel de lectura en el menú de arriba a la derecha.",
+		"shortcutsLink": "Todas las funciones y cómo usarlas: abre la página de ayuda"
 	}
 }

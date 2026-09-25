@@ -7,7 +7,7 @@ it, and if it must change, change it in the same change set.
 ## Stack
 
 - Vite + React 19 + TypeScript (strict), pnpm, Node 22 (`.nvmrc`).
-- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25) and `/compare` (#24). Search params are
+- TanStack Router, file routes in `src/routes`. URLs stay `/`, `/solar_dictionary`, `/solar_system`, plus `/solar_walk` (#25), `/compare` (#24) and `/help` (#43). Search params are
   zod-validated and invalid values fall back to defaults (`/solar_dictionary?entity=<0..8>&texture=<base|topo|specular|clouds>`).
 - 3D: `three`, `@react-three/fiber` 9, `@react-three/drei` 10, `@react-three/postprocessing` 3.
 - UI: Mantine 9 + CSS modules (no emotion, `createStyles` or `sx`), `@tabler/icons-react`. Animation: `gsap`. State: `zustand`.
@@ -35,7 +35,7 @@ src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), s
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts, presentation.ts, postcard.ts, simSearch.ts (URL schema), urlSync.ts
 src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, hunt/, labels/, lighting/, light/, postcard/, present/, rings/, ui/),
-                             solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24)
+                             solarWalk/ (the basketball solar system, #25), compare/ (side by side, #24), help/ (the help page, #43)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
 ```
@@ -910,6 +910,41 @@ Every light time comes from TRUE positions; only the drawn front goes through th
   Centauri, the galactic centre, Andromeda). Durations: `formatDuration` in `light/lightTravel.ts` (ICU units under
   `solarSystem.light.duration.*`, abbreviated at standard/advanced, spelled out at simple).
 
+## Help page (`features/help`, route `/help`; #43)
+
+Every user-facing feature, what it is, why it is worth using, how to use it and a "try it" link that opens the app with
+the feature ready; then the controls and shortcuts (mouse, touch, keyboard) and the credits with their licences.
+**Keeping it current is a rule** (`CLAUDE.md`): a change that adds, changes or removes a user-facing feature updates its
+entry, in every locale and reading level, in the same change.
+
+- **Content is data.** `src/data/help.json` holds the groups in page order (`lookingAround`, `time`, `sizeDistance`,
+  `light`, `comparing`, `teachers`, `games`: the way people think, not the code), the entries (`id`, `group`, `try`: an
+  app path with its search params, never `lang`/`reading`), the rows of the controls table and the credits (`name`,
+  `url`, `section` data/maps/software/app, `licence` id). The words live in `src/locales/<locale>/help.json`
+  (`entries.<id>.{title, what, why, how[]}`, `groups`, `controls.<id>.{action, mouse?, touch?, keys?}`,
+  `creditSections`, `credits`, `licences`), plain text, one value or one per reading level like `hunts.json`, read by
+  `content.ts` (`entryText`, `groupText`, ...; no body data, so the page's chunk stays light).
+- **Add an entry** (no code): an object in `help.json` `entries` (in page order within its group) and its
+  `title`/`what`/`why`/`how` in every locale's `help.json`, with a `simple` and a `standard` value for `what`, `why` and
+  `how` (the teachers' group may stay standard only); `how` steps quote the on-screen labels of that locale (the simple
+  label at the simple level). If the feature has no URL state, add a param that opens it (as `?birthday=true`,
+  `?light=flash`) rather than a link that needs extra clicks. Then `pnpm test` and the e2e suite.
+- **The contract:** `help.test.ts` validates both files, holds every locale to English's keys and reading levels,
+  requires the simple level outside the teachers' group, and checks every `try` link: a real page, every param
+  surviving that page's own zod schema unchanged, and meaning something (known body ids, scale preset, camera, hunt,
+  comparison bodies). `e2e/help.spec.ts` clicks every "try it" on the page and fails on any console or page error.
+- **Links** (`links.ts`): `parseTryLink` parses a `try` with the router's `defaultParseSearch` into a `<Link>`'s `to`
+  and `search`; the root route keeps the viewer's `lang` and `reading`. `/help?q=` is the search (every word, in the
+  reader's language, case and accents folded), `/help?topic=<entry | group | controls | credits>` scrolls there and
+  highlights it (for #44's last step; the shortcut list's link uses `topic=controls`).
+- **One click from every screen, in one place:** `HelpButton` beside the language menu, top right: in the solar
+  system's teacher bar, and `CornerBar` (help + language, fixed top right) on every page without the HUD (start page,
+  dictionary, walk, comparison, not found). A new page renders `<CornerBar />`.
+- `?light=flash|delay|beyond` on `/solar_system` (`light/LightLink.tsx`) opens the light panel on that tab, `flash`
+  with a flash already sent from the Sun: an instruction only, dropped from the URL like `birthday`.
+- Surface-map provenance is not recorded in the repository; the credits say so and point at #37, which records each
+  map's source and licence as it confirms them.
+
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 
 Two axes: the **locale** (language) and the **reading level** (`simple` 8–11, `standard` 12–15 and the default,
@@ -925,6 +960,7 @@ src/locales/config.json          { defaultLocale, readingLevels (menu order), de
 src/locales/<locale>/ui.json     UI strings: a tree of ICU MessageFormat messages
 src/locales/<locale>/bodies.json editorial body content, keyed by body id (src/data/bodies.json)
 src/locales/<locale>/hunts.json  the scavenger hunt's clues, hints and discoveries (#34, see Scavenger hunt)
+src/locales/<locale>/help.json   the help page's words (#43, see Help page)
 ```
 
 - Messages are ICU MessageFormat (plural, select, `{n, number}`, `{n, number, ::percent}`); never build sentences

@@ -9,10 +9,10 @@ import { Button, Center, Stack, Text, Title } from "@mantine/core"
 import {
 	I18N_SEARCH_KEYS,
 	i18nSearchSchema,
-	LanguageMenu,
 	useI18n,
 	type I18nSearch,
 } from "@/i18n"
+import { CornerBar } from "@/features/help/HelpButton"
 import Providers from "@/providers"
 
 function RootLayout() {
@@ -28,7 +28,7 @@ function NotFound() {
 	const { t } = useI18n()
 	return (
 		<Center h="100vh">
-			<LanguageMenu placement="corner" />
+			<CornerBar />
 			<Stack align="center" gap="md">
 				<Title order={1}>{t("notFound.title")}</Title>
 				<Text c="dimmed">{t("notFound.text")}</Text>

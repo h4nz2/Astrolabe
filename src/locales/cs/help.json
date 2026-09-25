@@ -1,0 +1,932 @@
+{
+	"groups": {
+		"lookingAround": {
+			"title": "Rozhlížení",
+			"intro": {
+				"standard": "Zorientuj se ve sluneční soustavě a zjisti, jaký je který svět.",
+				"simple": "Leť k planetám a měsícům a pořádně si je prohlédni."
+			}
+		},
+		"time": {
+			"title": "Čas",
+			"intro": {
+				"standard": "Zrychli čas, pusť ho pozpátku nebo skoč na libovolné datum.",
+				"simple": "Pusť čas rychle nebo pozpátku, nebo skoč na jiný den."
+			}
+		},
+		"sizeDistance": {
+			"title": "Velikost a vzdálenost",
+			"intro": {
+				"standard": "Jak velké světy doopravdy jsou a jak daleko jsou od sebe.",
+				"simple": "Jak velké je všechno a jak daleko?"
+			}
+		},
+		"light": {
+			"title": "Světlo",
+			"intro": {
+				"standard": "Sluneční světlo dělá den, noc i zatmění – a i světlo potřebuje čas, aby někam doletělo.",
+				"simple": "Slunce dělá den a noc. A i světlo potřebuje čas, než někam doletí."
+			}
+		},
+		"comparing": {
+			"title": "Porovnávání",
+			"intro": {
+				"standard": "Postav světy vedle sebe v jejich skutečných velikostech.",
+				"simple": "Dej dva světy vedle sebe a uvidíš, který je větší."
+			}
+		},
+		"teachers": {
+			"title": "Pro učitele",
+			"intro": "Ukaž sluneční soustavu třídě: projektor, klávesnice, odkazy a QR kódy."
+		},
+		"games": {
+			"title": "Hry",
+			"intro": {
+				"standard": "Pátrej po světech, zjisti svůj věk na Marsu a vyfoť si obrázek na památku.",
+				"simple": "Zahraj si pátrací hru, zjisti, kolik ti je na Marsu, a vyfoť si obrázek."
+			}
+		}
+	},
+	"entries": {
+		"flyToWorld": {
+			"title": {
+				"standard": "Let k libovolnému světu",
+				"simple": "Leť k planetě"
+			},
+			"what": {
+				"standard": "Klikni na planetu, na měsíc nebo na jejich název a kamera tam poletí: vzdálí se, přeletí prázdný prostor mezi nimi a zase se přiblíží.",
+				"simple": "Klikni na planetu a poletíš k ní."
+			},
+			"why": {
+				"standard": "Let ukazuje, jak daleko od sebe světy jsou, a okénko s údaji prozradí, jak dlouho by na stejnou cestu potřebovalo světlo, kosmická sonda a auto.",
+				"simple": "Cestou uvidíš, jak je to daleko a jak dlouho by tam jelo auto. Roky a roky!"
+			},
+			"how": {
+				"standard": [
+					"Najeď myší na planetu nebo na její název: objeví se kroužek s nápisem „Klikni a leť tam“.",
+					"Klikni nebo ťukni. Chceš-li být na místě hned, stiskni v okénku „Přeskočit“.",
+					"U malé tečky stačí kliknout kamkoli poblíž: zásah se počítá i kousek vedle."
+				],
+				"simple": [
+					"Najeď myší na planetu. Objeví se kroužek.",
+					"Klikni na ni. A teď sleduj cestu!",
+					"Nechceš čekat? Stiskni „Být tam hned“."
+				]
+			}
+		},
+		"findByName": {
+			"title": {
+				"standard": "Najdi svět podle názvu",
+				"simple": "Najdi svět podle jména"
+			},
+			"what": {
+				"standard": "Pole vlevo nahoře nabízí Slunce, všechny planety a měsíce s vlastním příběhem; stačí začít psát.",
+				"simple": "Napiš jméno planety nebo měsíce a poletíš tam."
+			},
+			"why": {
+				"standard": "Některé světy jsou na kliknutí příliš malé a třída se snáz zorientuje, když nahlas řekneš, kam letíte.",
+				"simple": "Některé měsíce jsou moc maličké, aby se na ně dalo kliknout. Pole se jmény je najde."
+			},
+			"how": {
+				"standard": [
+					"Klikni do pole vlevo nahoře a napiš název, třeba „Titan“.",
+					"Vyber ho ze seznamu: kamera tam poletí.",
+					"Klávesami ← a → navštívíš další svět ze stejné rodiny; tlačítko s domečkem nebo Esc tě vrátí k celé soustavě."
+				],
+				"simple": [
+					"Klikni do pole vlevo nahoře.",
+					"Napiš jméno, třeba Titan, a vyber ho.",
+					"Stiskni Esc a uvidíš zase celou sluneční soustavu."
+				]
+			}
+		},
+		"lookAround": {
+			"title": {
+				"standard": "Otáčení, přiblížení a posun pohledu",
+				"simple": "Rozhlédni se"
+			},
+			"what": {
+				"standard": "Tažením se otáčíš kolem světa, na který se díváš, přibližuješ a oddaluješ a posouváš pohled kamkoli, i do prázdného prostoru mezi planetami.",
+				"simple": "Otáčej pohledem, přibližuj a oddaluj a posuň se kamkoli, i do prázdného vesmíru."
+			},
+			"why": {
+				"standard": "Teprve pohled z boku, shora a z velké dálky ukáže, jaký tvar dráhy doopravdy mají a jak prázdný vesmír je.",
+				"simple": "Z velké dálky uvidíš, jak je vesmír prázdný."
+			},
+			"how": {
+				"standard": [
+					"Otáčení: táhni levým tlačítkem myši nebo jedním prstem.",
+					"Přiblížení: kolečko myši, sevření prstů na touchpadu nebo dva prsty.",
+					"Posun do strany: táhni pravým tlačítkem, se stisknutým Shiftem nebo dvěma prsty naráz. Když pustíš nad planetou, pohled se na ni vycentruje.",
+					"V prázdném prostoru ukazuje štítek, kde právě jsi; „Vycentrovat na těleso …“ nebo „Zpět na přehled“ tě vrátí zpátky."
+				],
+				"simple": [
+					"Táhni a pohled se otočí.",
+					"Přibližuj kolečkem myši nebo dvěma prsty.",
+					"Táhni pravým tlačítkem myši a pohled se posune jinam."
+				]
+			}
+		},
+		"worldCard": {
+			"title": {
+				"standard": "Karta světa",
+				"simple": "Zajímavosti o světě"
+			},
+			"what": {
+				"standard": "Když se díváš na nějaký svět, karta ukáže jeho název a údaje, které si dokážeš představit: jeho velikost v Zemích, jak dlouho k němu letí sluneční světlo, jak dlouho tam trvá rok a co by ti tam ukázala váha.",
+				"simple": "Karta ti poví o světě, na který se díváš: jak je velký, jak daleko je od Slunce a co by ti tam ukázala váha."
+			},
+			"why": {
+				"standard": "Přirovnání si zapamatuješ, velká čísla ne; přesné číslo je vždycky hned pod ním.",
+				"simple": "„Široký jako devět Zemí“ si představíš líp než obrovské číslo."
+			},
+			"how": {
+				"standard": [
+					"Leť k nějakému světu: objeví se jeho karta.",
+					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa.",
+					"Na telefonu ťukni na šipku na kartě a údaje se rozbalí."
+				],
+				"simple": [
+					"Leť k planetě.",
+					"Přečti si její kartu.",
+					"Na telefonu ťukni na malou šipku a uvidíš víc."
+				]
+			}
+		},
+		"moons": {
+			"title": "Měsíce",
+			"what": {
+				"standard": "Přirozené měsíce všech planet, od našeho Měsíce po drobné kameny kolem Saturnu; měsíce s vlastním příběhem jsou uvedené jako první.",
+				"simple": "Planety mají měsíce. Jupiter a Saturn jich mají spoustu!"
+			},
+			"why": {
+				"standard": "Soustava měsíců je malá sluneční soustava: sopky na Io, skrytý oceán Europy i hustá atmosféra Titanu, to všechno se odehrává kolem jedné planety.",
+				"simple": "Některé měsíce mají sopky a některé mají pod ledem oceán."
+			},
+			"how": {
+				"standard": [
+					"Leť k planetě: její karta vypíše nejznámější měsíce. Kliknutím na některý z nich k němu poletíš.",
+					"„Zobrazit celou soustavu měsíců“ poodstoupí, až se vejdou všechny dráhy.",
+					"„Zobrazit … menších měsíců“ nebo přepínač Všechny měsíce přidá spoustu malých měsíců; karta měsíce nabízí „Přečíst příběh“."
+				],
+				"simple": [
+					"Leť k Jupiteru.",
+					"Klikni na kartě na měsíc a poletíš k němu.",
+					"Stiskni „Ukázat všechny měsíce“."
+				]
+			}
+		},
+		"layers": {
+			"title": {
+				"standard": "Názvy, dráhy a značky",
+				"simple": "Názvy, dráhy a tečky"
+			},
+			"what": {
+				"standard": "Přepínače určují, co se kreslí: dráhy, názvy, měsíce, všechny měsíce, značky (tečky), názvy drah a „Vždy osvětlené“.",
+				"simple": "Přepínači zapneš a vypneš názvy, dráhy a tečky."
+			},
+			"why": {
+				"standard": "Na kvíz schovej názvy, nebo ve skutečném měřítku vypni značky a uvidíš, jak neviditelné planety doopravdy jsou.",
+				"simple": "Schovej názvy a zeptej se kamarádů, která planeta je která!"
+			},
+			"how": {
+				"standard": [
+					"Přepínače jsou v panelu vpravo nahoře; na malých obrazovkách a při prezentaci jsou schované pod „Vrstvy“.",
+					"Klávesou L skryješ nebo zobrazíš všechny názvy naráz.",
+					"Přepínač Všechny měsíce funguje, jen když jsou zapnuté Měsíce."
+				],
+				"simple": [
+					"Přepínače najdeš vpravo nahoře.",
+					"Kliknutím jeden vypneš, dalším kliknutím ho zase zapneš.",
+					"Stiskni L a všechny názvy zmizí."
+				]
+			}
+		},
+		"rings": {
+			"title": "Prstence",
+			"what": {
+				"standard": "Jupiter, Saturn, Uran a Neptun mají prstence, nakreslené ve skutečné velikosti, nakloněné stejně jako jejich planeta a se skutečnými stíny.",
+				"simple": "Čtyři planety mají prstence: Jupiter, Saturn, Uran a Neptun."
+			},
+			"why": {
+				"standard": "Saturnovy prstence se během let, jak planeta obíhá kolem Slunce, otevírají a zavírají, a Uranovy stojí na výšku, protože planeta leží na boku.",
+				"simple": "Saturnovy prstence jsou hodně tenké. Z boku skoro zmizí!"
+			},
+			"how": {
+				"standard": [
+					"Leť k Saturnu a táhni dolů, až se na prstence díváš přesně z boku.",
+					"Posuň se v čase o pár let a uvidíš, jak se naklánějí ke Slunci a zase od něj.",
+					"Navštiv Uran a Neptun a uvidíš tenké tmavé prstence."
+				],
+				"simple": [
+					"Leť k Saturnu.",
+					"Táhni a podívej se na prstence z boku.",
+					"Pak leť k Uranu. Jeho prstence stojí na výšku!"
+				]
+			}
+		},
+		"spin": {
+			"title": {
+				"standard": "Dny, sklon osy a rotace",
+				"simple": "Planety se točí"
+			},
+			"what": {
+				"standard": "Každý svět se otáčí kolem své skloněné osy skutečnou rychlostí: Venuše pozpátku, Uran vleže na boku a Měsíc k nám obrací stále stejnou stranu.",
+				"simple": "Každá planeta se točí. Jedna otočka je tam jeden den."
+			},
+			"why": {
+				"standard": "Rotace dělá den a noc, sklon osy roční období; nastavení rotace otáčení zpomalí, takže vidíš ubíhat dny, i když čas běží rychle.",
+				"simple": "Točení dělá den a noc. Venuše se dokonce točí obráceně!"
+			},
+			"how": {
+				"standard": [
+					"Leť k Zemi a zrychli čas.",
+					"Pod ovládáním času vyber u Rotace „Zpomalená“ nebo „Zpomalený záběr“ a sleduj dny, nebo „Zastavená“, aby se nic neotáčelo.",
+					"„Skutečná“ vrátí každému světu jeho skutečné natočení pro dané datum."
+				],
+				"simple": [
+					"Leť k Zemi.",
+					"Zrychli čas.",
+					"Pod tlačítky času vyber „Zpomalený záběr“ a sleduj, jak se Země točí."
+				]
+			}
+		},
+		"seenFromEarth": {
+			"title": {
+				"standard": "Pohled ze Země",
+				"simple": "Zastav Zemi"
+			},
+			"what": {
+				"standard": "Zastav Zemi na místě a sleduj, jak se všechno ostatní pohybuje kolem ní, stejně jako se pro nás pohybuje obloha: Mars dělá smyčky pozpátku a Měsíc prochází fázemi.",
+				"simple": "Nech Zemi stát a sleduj, jak se odtud pohybují ostatní planety."
+			},
+			"why": {
+				"standard": "Dva tisíce let lidé vysvětlovali tyto smyčky se Zemí ve středu; když vidíš oba pohledy vedle sebe, pochopíš, proč zvítězil ten se Sluncem ve středu.",
+				"simple": "Ze Země to vypadá, že Mars občas couvá. Teď uvidíš proč."
+			},
+			"how": {
+				"standard": [
+					"Klikni na „Slunce ve středu“ vedle pole s názvy a vyber „Pohled ze Země: planety“ nebo „Pohled ze Země: Měsíc“.",
+					"Sleduj štítek nahoře: říká, co vybraný svět právě dělá na naší obloze.",
+					"„… stojí na místě“ funguje pro každý svět; „Zpět ke Slunci ve středu“ tě vrátí zpátky."
+				],
+				"simple": [
+					"Klikni vlevo nahoře na „Slunce uprostřed“.",
+					"Vyber „Ze Země: planety“.",
+					"Sleduj, jak Mars udělá smyčku."
+				]
+			}
+		},
+		"dictionary": {
+			"title": {
+				"standard": "Obrazový slovník",
+				"simple": "Kniha o planetách"
+			},
+			"what": {
+				"standard": "Stránka pro Slunce a každou planetu s velkým otáčejícím se glóbem, mapami povrchu a vysvětlením nejdůležitějších čísel.",
+				"simple": "Stránka o Slunci a o každé planetě, s velkým točícím se obrázkem."
+			},
+			"why": {
+				"standard": "Je to klidné místo, kde si můžeš číst o jednom světě po druhém, sloupnout z něj mraky nebo si prohlédnout jeho hory a oceány.",
+				"simple": "Čti o jedné planetě po druhé a prohlédni si její hory a mraky."
+			},
+			"how": {
+				"standard": [
+					"Otevři ho z úvodní stránky, nebo tlačítkem „Víc ve slovníku“ na kartě světa.",
+					"Vyber svět v seznamu, pak Povrch, Terén, Oceány nebo Mraky, pokud je má."
+				],
+				"simple": [
+					"Vyber planetu v seznamu.",
+					"Zkus Terén a Mraky a obrázek se změní."
+				]
+			}
+		},
+		"language": {
+			"title": {
+				"standard": "Jazyk a náročnost textu",
+				"simple": "Tvůj jazyk"
+			},
+			"what": {
+				"standard": "Astrolabe mluví anglicky, německy, česky, španělsky a francouzsky, a to vždy na třech úrovních náročnosti: jednoduché, běžné a pokročilé.",
+				"simple": "Čti všechno ve svém jazyce a jednoduchými slovy."
+			},
+			"why": {
+				"standard": "Stejný pohled se dá vysvětlit devítiletému dítěti i středoškolákovi a sdílený odkaz si pamatuje obě volby.",
+				"simple": "Jednoduchá slova pro mladší čtenáře, víc podrobností pro starší."
+			},
+			"how": {
+				"standard": [
+					"Otevři nabídku jazyka vpravo nahoře (ukazuje CS, EN, …).",
+					"Vyber jazyk a náročnost textu; řídí se jimi každá stránka i každý odkaz."
+				],
+				"simple": [
+					"Klikni vpravo nahoře na tlačítko s CS.",
+					"Vyber svůj jazyk a náročnost „Jednoduchá“."
+				]
+			}
+		},
+		"timeControls": {
+			"title": {
+				"standard": "Spuštění, pauza, chod pozpátku a rychlost",
+				"simple": "Zrychli čas"
+			},
+			"what": {
+				"standard": "Tlačítka dole pouštějí čas dopředu nebo pozpátku, pozastavují ho a nastavují rychlost od reálného času po deset let za sekundu.",
+				"simple": "Tlačítky dole čas pustíš, zastavíš, zrychlíš nebo pustíš pozpátku."
+			},
+			"why": {
+				"standard": "V reálném čase se zdánlivě nic nehýbe; při měsíci za sekundu vnitřní planety závodí a vnější se plazí – Keplerův zákon na vlastní oči.",
+				"simple": "Zrychli čas a uvidíš, že planety blízko Slunce obíhají mnohem rychleji."
+			},
+			"how": {
+				"standard": [
+					"▶ čas spustí, ⏸ ho pozastaví, ◀ ho pustí pozpátku (pozastavit ho můžeš i mezerníkem).",
+					"Rychlost vyber v řadě vedle nich, nebo stiskni + a −.",
+					"„Teď“ tě vrátí do přítomnosti."
+				],
+				"simple": [
+					"Stiskni dole tlačítko Spustit.",
+					"Vyber vyšší rychlost, třeba 1 měsíc/s.",
+					"Mezerníkem čas zastavíš."
+				]
+			}
+		},
+		"timeTravel": {
+			"title": {
+				"standard": "Cesta na libovolné datum",
+				"simple": "Skoč na jiný den"
+			},
+			"what": {
+				"standard": "Klikni na datum a skoč na kterýkoli den od roku 1000 do roku 2999, nebo ke slavné události, třeba k prvnímu přistání na Měsíci nebo k největšímu přiblížení Marsu.",
+				"simple": "Vydej se do kteréhokoli dne, třeba do dne, kdy lidé přistáli na Měsíci."
+			},
+			"why": {
+				"standard": "Skutečné události se staly tam, kde planety skutečně byly; scéna ukáže oblohu k tomu datu a po příjezdu se čas zastaví.",
+				"simple": "Uvidíš, kde byly planety v nějaký výjimečný den."
+			},
+			"how": {
+				"standard": [
+					"Klikni dole na datum a čas.",
+					"Vyber událost ze seznamu, nebo „Vyber datum“ a klikni na rok, měsíc a den.",
+					"Planety tam doplují a čas se zastaví; stiskni Spustit a poběží dál."
+				],
+				"simple": [
+					"Klikni dole na datum.",
+					"Vyber „Mars nejblíž Zemi“ nebo si vyber den.",
+					"Sleduj, jak se tam planety přesunou."
+				]
+			}
+		},
+		"tooFast": {
+			"title": {
+				"standard": "Když čas běží příliš rychle",
+				"simple": "Moc rychlé na koukání"
+			},
+			"what": {
+				"standard": "Při velmi vysokých rychlostech upozornění ukáže, který svět se pohybuje příliš rychle, než aby se dal sledovat, a kolik oběhů udělá každou sekundu.",
+				"simple": "Když čas letí hodně rychle, poznámka ti řekne, která planeta je moc rychlá na to, aby šla vidět."
+			},
+			"why": {
+				"standard": "Jako kolo vozu ve filmu může planeta, která za jeden snímek urazí víc než šestinu své dráhy, vypadat, jako by stála nebo couvala; poznámka vysvětlí, co doopravdy vidíš.",
+				"simple": "Hodně rychlá planeta může vypadat, jako by stála nebo couvala. Ve skutečnosti to tak není!"
+			},
+			"how": {
+				"standard": [
+					"Vyber nejvyšší rychlost, 10 let/s.",
+					"Přečti si řádek pod rychlostmi; zmizí, když vybereš nižší rychlost nebo čas pozastavíš."
+				],
+				"simple": [
+					"Vyber nejvyšší rychlost.",
+					"Přečti si poznámku a pak vyber nižší rychlost."
+				]
+			}
+		},
+		"scale": {
+			"title": {
+				"standard": "Skutečné měřítko a předvolby měřítka",
+				"simple": "Skutečné velikosti"
+			},
+			"what": {
+				"standard": "Scéna normálně kreslí světy větší a blíž k sobě, aby byly vidět; jedno kliknutí ukáže skutečné velikosti a skutečné vzdálenosti.",
+				"simple": "Normálně jsou planety nakreslené moc velké. Jedním kliknutím uvidíš, jak jsou doopravdy malé."
+			},
+			"why": {
+				"standard": "Ve skutečném měřítku planety zmizí v prázdném prostoru: to je nejpřekvapivější lekce celé aplikace a vždycky je napsané, jak moc se obrázek liší od skutečnosti.",
+				"simple": "Ve skutečné velikosti planety nejsou ani vidět. Vesmír je hrozně, hrozně prázdný!"
+			},
+			"how": {
+				"standard": [
+					"V panelu Měřítko vpravo nahoře klikni na „Skutečné měřítko“, „Jako v učebnici“ nebo „Vše viditelné“ (nebo stiskni S).",
+					"Přepínače Velikosti a Vzdálenosti opraví vždy jen jedno zkreslení.",
+					"Ve skutečném měřítku ukazují tečky, kde planety jsou; vypni Značky a uvidíš, jak málo zbude."
+				],
+				"simple": [
+					"Najdi vpravo nahoře Měřítko.",
+					"Klikni na „Skutečné měřítko“.",
+					"Kam se planety poděly? Tečky ukazují, kde jsou."
+				]
+			}
+		},
+		"howFar": {
+			"title": {
+				"standard": "Jak je to daleko?",
+				"simple": "Jak daleko to je?"
+			},
+			"what": {
+				"standard": "Každý let mezi dvěma světy ukáže jejich skutečnou vzdálenost k datu na obrazovce a jak dlouho by tu cestu trvala světlu, nejrychlejší kosmické sondě a autu.",
+				"simple": "Když letíš k planetě, uvidíš, jak daleko je."
+			},
+			"why": {
+				"standard": "Auto by k Jupiteru jelo stovky let: čísla promění let na pár sekund ve skutečnou představu o vzdálenosti.",
+				"simple": "Auto by k Jupiteru jelo stovky let!"
+			},
+			"how": {
+				"standard": [
+					"Leť z jednoho světa k druhému.",
+					"Během cesty sleduj okénko nad ovládáním času; po příletu ho zavři.",
+					"Vzdálenost se mění s datem, protože se planety pohybují."
+				],
+				"simple": [
+					"Leť ze Země k jiné planetě.",
+					"Přečti si okénko nad tlačítky času."
+				]
+			}
+		},
+		"solarWalk": {
+			"title": {
+				"standard": "Sluneční soustava s basketbalovým míčem",
+				"simple": "Projdi sluneční soustavu"
+			},
+			"what": {
+				"standard": "Kdyby bylo Slunce velké jako basketbalový míč, Země by byla špendlíková hlavička 26 metrů daleko: stránka, která promění skutečné měřítko v procházku přes školní hřiště.",
+				"simple": "Zmenši Slunce na velikost míče a zjisti, jak daleko musíš dojít ke každé planetě."
+			},
+			"why": {
+				"standard": "Projít si vzdálenosti po svých je lekce o měřítku, na kterou třída nikdy nezapomene, a tabulka se vytiskne na jednu stránku.",
+				"simple": "Ve škole ji můžeš opravdu projít! Neptun je hodně, hodně daleko."
+			},
+			"how": {
+				"standard": [
+					"Otevři ji z úvodní stránky, nebo ve skutečném měřítku odkazem „Projdi si to“ v panelu Měřítko.",
+					"Vyber, co bude Slunce (pomeranč, fotbalový míč, basketbalový míč, gymnastický míč), a s čím vzdálenosti porovnat.",
+					"Přepni na „Tabulka“ a stiskni „Tisk“, ať ji můžeš vzít ven."
+				],
+				"simple": [
+					"Vyber míč, který bude Slunce.",
+					"Přečti si, jak daleko musíš dojít ke každé planetě.",
+					"Vytiskni tabulku a projdi to venku."
+				]
+			}
+		},
+		"dayNight": {
+			"title": {
+				"standard": "Sluneční světlo, den a noc",
+				"simple": "Den a noc"
+			},
+			"what": {
+				"standard": "Slunce je jediné světlo: každý svět má denní a noční stranu a na temné straně Země svítí města.",
+				"simple": "Slunce svítí na jednu stranu každé planety. Na druhé straně je noc."
+			},
+			"why": {
+				"standard": "Roční období, fáze i půlnoční slunce vyplývají ze samotného světla: podívej se v červnu na Arktidu.",
+				"simple": "Uvidíš, kde je teď na Zemi den a kde noc."
+			},
+			"how": {
+				"standard": [
+					"Leť k Zemi a natoč kameru k hranici mezi dnem a nocí.",
+					"Vydej se na 21. června a na 21. prosince a porovnej póly.",
+					"Přepínač Vždy osvětlené rozsvítí všechno z místa, odkud se díváš, takže se dají zkoumat povrchy."
+				],
+				"simple": [
+					"Leť k Zemi.",
+					"Otoč pohled na noční stranu se světly měst.",
+					"Zapni „Vždy osvětlené“ a uvidíš každou stranu."
+				]
+			}
+		},
+		"eclipses": {
+			"title": "Zatmění",
+			"what": {
+				"standard": "Stíny jsou skutečné: při zatmění Slunce přejde přes Zemi stín Měsíce a při zatmění Měsíce Měsíc potemní v zemském stínu, a to ve skutečných datech.",
+				"simple": "Někdy Měsíc zakryje Slunce, nebo vejde do stínu Země."
+			},
+			"why": {
+				"standard": "Zatmění nastane, jen když Slunce, Země a Měsíc stojí přesně v jedné přímce; pohled z boku ukáže, proč je tak vzácné.",
+				"simple": "Slunce, Země a Měsíc musí stát v dokonalé řadě. Proto je zatmění vzácné."
+			},
+			"how": {
+				"standard": [
+					"Otevři odkaz: Měsíc v zemském stínu 14. března 2025.",
+					"Vydej se na 8. dubna 2024, leť k Zemi a otoč se k její denní straně: najdeš tam malý tmavý stín Měsíce.",
+					"Nech Vždy osvětlené vypnuté, jinak stíny zmizí."
+				],
+				"simple": [
+					"Otevři odkaz a podívej se na tmavý Měsíc.",
+					"Táhni a uvidíš za ním Zemi a Slunce."
+				]
+			}
+		},
+		"lightFlash": {
+			"title": {
+				"standard": "Vyšli záblesk světla",
+				"simple": "Závod se světlem"
+			},
+			"what": {
+				"standard": "Vyšli záblesk ze Slunce nebo z kterékoli planety a sleduj, jak se šíří skutečnou rychlostí světla a odškrtává každý svět, ke kterému dorazí.",
+				"simple": "Vyšli ze Slunce záblesk světla a sleduj, jak letí k planetám."
+			},
+			"why": {
+				"standard": "Světlo je to nejrychlejší, co existuje, a přesto k Zemi letí 8 minut a k Neptunu přes 4 hodiny: tak velká je sluneční soustava v čase.",
+				"simple": "Světlo je strašně rychlé, ale ze Slunce k nám stejně letí 8 minut!"
+			},
+			"how": {
+				"standard": [
+					"Stiskni vlevo nahoře „Rychlost světla“ a pak „Vyslat záblesk“.",
+					"Vyber, odkud vyletí; seznam ukazuje, kdy dorazí ke kterému světu.",
+					"Čas se přepne na reálný; vyšší rychlost je povolená a panel přesto počítá skutečnou dobu letu."
+				],
+				"simple": [
+					"Stiskni „Jak rychlé je světlo?“.",
+					"Stiskni „Vyslat záblesk“.",
+					"Sleduj, jak se kruh zvětšuje a doletí až k planetám."
+				]
+			}
+		},
+		"signalDelay": {
+			"title": {
+				"standard": "Zpoždění signálu",
+				"simple": "Voláme Mars"
+			},
+			"what": {
+				"standard": "Jak dlouho teď letí zpráva ze Země ke kterémukoli světu, tam i zpátky, a jak se to mění, když se planety pohybují.",
+				"simple": "Zpráva na Mars letí celé minuty. Podívej se, jak dlouho to trvá ke každému světu."
+			},
+			"why": {
+				"standard": "Vozítko na Marsu nikdo neřídí joystickem: než tvůj povel uslyší, uplyne mnoho minut.",
+				"simple": "Proto nemůžeš řídit robota na Marsu jako autíčko na ovladač."
+			},
+			"how": {
+				"standard": [
+					"Otevři „Rychlost světla“ a vyber kartu „Zpoždění signálu“.",
+					"Vyber svět, nebo na něj klikni ve scéně."
+				],
+				"simple": [
+					"Otevři „Jak rychlé je světlo?“.",
+					"Klikni na „Zpoždění signálu“ a vyber Mars."
+				]
+			}
+		},
+		"fartherOut": {
+			"title": {
+				"standard": "Světlo z hvězd",
+				"simple": "Staré světlo hvězd"
+			},
+			"what": {
+				"standard": "Jak dlouho k nám letí světlo z nejbližší hvězdy, ze středu naší Galaxie a z galaxie v Andromedě.",
+				"simple": "Světlo ze vzdálených hvězd je hrozně, hrozně staré, když k nám dorazí."
+			},
+			"why": {
+				"standard": "Když se díváš na hvězdu, vidíš minulost: světlo z galaxie v Andromedě vyrazilo dávno předtím, než žili první moderní lidé.",
+				"simple": "Dívat se na hvězdy je jako dívat se do minulosti!"
+			},
+			"how": {
+				"standard": ["Otevři „Rychlost světla“ a vyber kartu „Ještě dál“."],
+				"simple": ["Otevři „Jak rychlé je světlo?“.", "Klikni na „Ještě dál“."]
+			}
+		},
+		"compare": {
+			"title": {
+				"standard": "Vedle sebe",
+				"simple": "Co je větší?"
+			},
+			"what": {
+				"standard": "Dva nebo víc světů vedle sebe ve skutečném poměru velikostí, s názornými přirovnáními: kolikrát se jeden vejde do druhého, co by ti ukázala váha, jak dlouhý je tam den a rok.",
+				"simple": "Postav dva světy vedle sebe v jejich skutečné velikosti."
+			},
+			"why": {
+				"standard": "Země vedle Slunce je tečka, kterou musíš hledat: velikosti dávají smysl teprve tehdy, když jsou na jednom obrázku.",
+				"simple": "Vedle Slunce je Země maličká tečka!"
+			},
+			"how": {
+				"standard": [
+					"Na kartě světa stiskni „Porovnat s…“.",
+					"Kterýkoli svět změníš výběrem, další přidáš přes „Přidat…“, nebo klikni na některý v řadě a porovnej místo toho s ním.",
+					"Tlačítko s fotoaparátem udělá z porovnání obrázek."
+				],
+				"simple": [
+					"Na kartě planety stiskni „Porovnat s…“.",
+					"Vyber jiný svět a porovnej je."
+				]
+			}
+		},
+		"compareIdeas": {
+			"title": {
+				"standard": "Nápady na porovnání",
+				"simple": "Hotová porovnání"
+			},
+			"what": {
+				"standard": "Připravená porovnání: Slunce a Země, Země a Měsíc, všech osm planet, Slunce a planety, největší měsíce.",
+				"simple": "Vyber si hotové porovnání, třeba všech osm planet v řadě."
+			},
+			"why": {
+				"standard": "Každé z nich jedním kliknutím rozproudí debatu ve třídě, třeba o tom, které měsíce jsou větší než planeta Merkur.",
+				"simple": "Víš, že některé měsíce jsou větší než planeta?"
+			},
+			"how": {
+				"standard": [
+					"Na stránce porovnání otevři „Nápady“.",
+					"Vyber jedno z nich; klikni na kterýkoli svět v řadě a povídejte si o něm."
+				],
+				"simple": ["Stiskni „Nápady“.", "Vyber „Všech osm planet“."]
+			}
+		},
+		"present": {
+			"title": "Režim pro projektor",
+			"what": "Větší písmo, názvy i tlačítka, čitelné i ze zadních lavic, a přepínače složené stranou.",
+			"why": "Obrazovka notebooku je na projektoru příliš malá na čtení; režim pro projektor to spraví jedinou klávesou.",
+			"how": [
+				"Vpravo nahoře otevři „Prezentovat“ a vyber „Velké písmo pro projektor“, nebo stiskni P.",
+				"Klávesou F zapneš celou obrazovku.",
+				"Všechno ostatní funguje dál: klávesy, odkazy i ovládání."
+			]
+		},
+		"contrast": {
+			"title": "Vysoký kontrast",
+			"what": "Sytější barvy a obrysy pro vybledlé projektory a světlé místnosti.",
+			"why": "Bledý projektor za denního světla schová šedý text i slabé čáry; vysoký kontrast udrží všechno čitelné.",
+			"how": [
+				"Otevři „Prezentovat“ a vyber „Vysoký kontrast“, nebo stiskni C.",
+				"Zapne se i sám, když si počítač řekne o vyšší kontrast."
+			]
+		},
+		"presenterKeys": {
+			"title": "Klávesnice a prezentér",
+			"what": "Každý krok hodiny má svou klávesu a tlačítka prezentéru přepínají z planety na planetu.",
+			"why": "Zůstaň vpředu u tabule: klávesy 1 až 8 tě přenesou k planetám, 0 ukáže celou soustavu, S změní měřítko, L schová názvy.",
+			"how": [
+				"Stiskni ? a uvidíš všechny zkratky.",
+				"Page Down a Page Up (tlačítka prezentéru) přejdou na další nebo předchozí svět, nebo posunou prohlídku o krok.",
+				"Všechny je najdeš v tabulce ovládání níže."
+			]
+		},
+		"hideControls": {
+			"title": "Skrýt ovládání",
+			"what": "Z obrazovky zmizí všechna tlačítka a panely a zůstane jen vesmír.",
+			"why": "Na prohlížení, na snímky obrazovky i na projektor: třída vidí sluneční soustavu, ne rozhraní.",
+			"how": [
+				"Stiskni H, nebo otevři „Prezentovat“ a vyber „Skrýt ovládání“.",
+				"Zpátky ho vrátíš dalším stiskem H, nebo pohni myší a klikni na „Zobrazit ovládání“. Klávesy fungují i se skrytým ovládáním."
+			]
+		},
+		"prepareLesson": {
+			"title": "Příprava hodiny",
+			"what": "Adresa stránky je celá hodina: obsahuje svět, kameru, datum, rychlost, měřítko, vrstvy, jazyk i to, jestli je čas pozastavený.",
+			"why": "Připrav si pohled před hodinou, ulož si ho do záložek a před žáky se otevře přesně stejně.",
+			"how": [
+				"Nastav pohled, pozastav čas, pokud se má otevřít v klidu, a ulož stránku do záložek nebo zkopíruj její adresu.",
+				"Ve třídě otevři odkaz; klávesou R (nebo Home) se kdykoli vrátíš přesně na tento začátek.",
+				"Klávesou Esc odejdeš k celé soustavě."
+			]
+		},
+		"share": {
+			"title": "Sdílení se třídou",
+			"what": "Odkaz přesně na to, co je na obrazovce, s tlačítkem pro kopírování a QR kódem tak velkým, že ho naskenují i v poslední lavici.",
+			"why": "Žáci si stejný pohled otevřou na svých tabletech a pokračují v objevování sami, bez opisování adresy.",
+			"how": [
+				"Vpravo nahoře otevři „Sdílet“.",
+				"Zkopíruj odkaz, nebo stiskni „Ukázat QR kód třídě“."
+			]
+		},
+		"ownHunt": {
+			"title": "Vytvoř si vlastní pátrací hru",
+			"what": "Vyber hádanky z celé zásoby otázek a udělej z nich pátrací hru pro svou hodinu.",
+			"why": "Hra sedí k tématu hodiny a odkaz ji spustí každému žákovi ve tvém jazyce.",
+			"how": [
+				"Otevři „Pátrací hra“ a vyber „Vytvoř si vlastní hru“.",
+				"Zaškrtni hádanky a pak stiskni „Začít“, nebo „Sdílet“ a získáš odkaz pro třídu."
+			]
+		},
+		"hunt": {
+			"title": "Pátrací hra",
+			"what": {
+				"standard": "Hádanky, které vyřešíš tak, že ve scéně najdeš správný svět a klikneš na něj; když nevíš kudy kam, pomůže nápověda, a když ho najdeš, dostaneš jeho příběh.",
+				"simple": "Přečti si hádanku, najdi správný svět a klikni na něj!"
+			},
+			"why": {
+				"standard": "Hledání tě přiměje objevovat: nepočítají se body ani čas a každý špatný tip je další navštívený svět.",
+				"simple": "Při hledání se toho spoustu naučíš. Neběží žádné hodiny a prohrát se nedá."
+			},
+			"how": {
+				"standard": [
+					"Stiskni „Pátrací hra“ a vyber hru: Lehká, Střední nebo Záludná.",
+					"Přečti si hádanku, najdi svět a klikni na něj.",
+					"Nevíš si rady? „Potřebuješ nápovědu?“, a po poslední nápovědě „Ukaž mi to“."
+				],
+				"simple": [
+					"Stiskni „Pátrací hra“.",
+					"Vyber lehkou hru.",
+					"Přečti si hádanku a klikni na správný svět."
+				]
+			}
+		},
+		"birthday": {
+			"title": {
+				"standard": "Tvoje narozeniny ve vesmíru",
+				"simple": "Kolik ti je na Marsu?"
+			},
+			"what": {
+				"standard": "Vyber datum svého narození a uvidíš svůj věk na každé planetě, kdy tam budeš mít příští narozeniny, kolik dní máš za sebou a jak daleko tě Země provezla kolem Slunce.",
+				"simple": "Zjisti, kolik ti je let na jiných planetách a kdy tam budeš mít další narozeniny."
+			},
+			"why": {
+				"standard": "Rok je jeden oběh kolem Slunce, takže na Marsu je ti zhruba polovina tvého věku a na Merkuru čtyřikrát víc.",
+				"simple": "Rok na Marsu trvá skoro dva pozemské roky, takže tam jsi mladší!"
+			},
+			"how": {
+				"standard": [
+					"Stiskni „Tvoje narozeniny“ a vyber rok, měsíc a den.",
+					"Planety se přesunou do dne tvého narození; ⏭ vedle planety tě přenese k tvým příštím narozeninám na ní.",
+					"Tvoje datum se nikam neukládá ani neposílá: zapomene se, jakmile stránku zavřeš, nebo hned po stisknutí „Zapomenout moje narozeniny“."
+				],
+				"simple": [
+					"Stiskni „Tvoje narozeniny“.",
+					"Vyber svůj rok, měsíc a den.",
+					"Přečti si, kolik ti je na každé planetě."
+				]
+			}
+		},
+		"postcard": {
+			"title": {
+				"standard": "Vyfoť obrázek",
+				"simple": "Vyfoť obrázek"
+			},
+			"what": {
+				"standard": "Promění to, co je na obrazovce, v pohlednici s datem, popiskem, poctivou poznámkou o měřítku a QR kódem, který otevře tento pohled.",
+				"simple": "Udělej obrázek toho, co vidíš, a ulož si ho nebo ho pošli."
+			},
+			"why": {
+				"standard": "Něco na památku, k vytištění nebo k poslání domů, a QR kód otevře ten samý pohled znovu.",
+				"simple": "Nech si svůj nejoblíbenější pohled do vesmíru, nebo ho ukaž doma."
+			},
+			"how": {
+				"standard": [
+					"Stiskni vpravo nahoře tlačítko s fotoaparátem.",
+					"Napiš popisek, případně vypni „Jména v obrázku“ nebo QR kód.",
+					"Obrázek ulož, zkopíruj nebo sdílej. Vzniká ve tvém zařízení, nic se nenahrává."
+				],
+				"simple": [
+					"Stiskni vpravo nahoře tlačítko s fotoaparátem.",
+					"Napiš něco ke svému obrázku.",
+					"Stiskni „Uložit obrázek“."
+				]
+			}
+		}
+	},
+	"controls": {
+		"turn": {
+			"action": "Otáčení kolem světa, na který se díváš",
+			"mouse": "Táhni levým tlačítkem",
+			"touch": "Táhni jedním prstem"
+		},
+		"zoom": {
+			"action": "Přiblížení a oddálení",
+			"mouse": "Kolečko myši, sevření prstů na touchpadu nebo tažení prostředním tlačítkem",
+			"touch": "Sevři nebo roztáhni dva prsty"
+		},
+		"move": {
+			"action": "Posun pohledu do strany",
+			"mouse": "Táhni pravým tlačítkem, nebo se stisknutým Shiftem",
+			"touch": "Táhni dvěma prsty naráz"
+		},
+		"fly": {
+			"action": "Let ke světu",
+			"mouse": "Klikni na něj nebo na jeho název",
+			"touch": "Ťukni na něj nebo na jeho název"
+		},
+		"back": {
+			"action": "Zpět na celou sluneční soustavu",
+			"mouse": "Klikni do prázdného prostoru nebo na tlačítko s domečkem",
+			"touch": "Ťukni do prázdného prostoru nebo na tlačítko s domečkem",
+			"keys": "Esc"
+		},
+		"name": {
+			"action": "Zobrazit název světa",
+			"mouse": "Najeď na něj myší"
+		},
+		"siblings": {
+			"action": "Další nebo předchozí svět ze stejné rodiny",
+			"keys": "← / →"
+		},
+		"planets": {
+			"action": "Planety od Merkuru (1) po Neptun (8), celá soustava (0)",
+			"keys": "1 – 8, 0"
+		},
+		"pause": {
+			"action": "Pozastavit nebo spustit",
+			"mouse": "Tlačítka Pozastavit a Spustit",
+			"touch": "Tlačítka Pozastavit a Spustit",
+			"keys": "Mezerník"
+		},
+		"speed": {
+			"action": "Rychleji nebo pomaleji",
+			"mouse": "Tlačítka rychlosti",
+			"touch": "Tlačítka rychlosti",
+			"keys": "+ / −"
+		},
+		"step": {
+			"action": "Další nebo předchozí (tlačítka prezentéru)",
+			"keys": "Page Down / Page Up"
+		},
+		"start": {
+			"action": "Zpět na pohled, se kterým se odkaz otevřel",
+			"keys": "R nebo Home"
+		},
+		"scale": {
+			"action": "Další měřítko: Vše viditelné, Jako v učebnici, Skutečné měřítko",
+			"mouse": "Panel Měřítko",
+			"touch": "Panel Měřítko",
+			"keys": "S"
+		},
+		"names": {
+			"action": "Zapnout nebo vypnout názvy",
+			"mouse": "Přepínač Názvy",
+			"touch": "Přepínač Názvy",
+			"keys": "L"
+		},
+		"hide": {
+			"action": "Skrýt nebo zobrazit ovládání",
+			"mouse": "Prezentovat → Skrýt ovládání",
+			"touch": "Prezentovat → Skrýt ovládání",
+			"keys": "H"
+		},
+		"fullscreen": {
+			"action": "Zapnout nebo vypnout celou obrazovku",
+			"mouse": "Prezentovat → Celá obrazovka",
+			"touch": "Prezentovat → Celá obrazovka",
+			"keys": "F"
+		},
+		"projector": {
+			"action": "Velké písmo pro projektor",
+			"mouse": "Prezentovat → Velké písmo pro projektor",
+			"touch": "Prezentovat → Velké písmo pro projektor",
+			"keys": "P"
+		},
+		"contrast": {
+			"action": "Zapnout nebo vypnout vysoký kontrast",
+			"mouse": "Prezentovat → Vysoký kontrast",
+			"touch": "Prezentovat → Vysoký kontrast",
+			"keys": "C"
+		},
+		"shortcuts": {
+			"action": "Seznam klávesových zkratek",
+			"mouse": "Prezentovat → Klávesové zkratky",
+			"touch": "Prezentovat → Klávesové zkratky",
+			"keys": "?"
+		}
+	},
+	"creditSections": {
+		"data": {
+			"title": "Údaje",
+			"intro": "Odkud pocházejí čísla: velikosti, dráhy, rotace a kalendářní data."
+		},
+		"maps": {
+			"title": "Mapy povrchu",
+			"intro": "Obrázky obtočené kolem glóbů."
+		},
+		"software": {
+			"title": "Software",
+			"intro": "Stavební kameny s otevřeným kódem, ze kterých je aplikace postavená."
+		},
+		"app": {
+			"title": "Tato aplikace",
+			"intro": "Astrolabe je open source: kdokoli ji smí používat, zkoumat, vylepšovat a sdílet."
+		}
+	},
+	"credits": {
+		"solarSystemApi": "Výchozí seznam Slunce, planet a měsíců: velikosti, hmotnosti, dráhy a údaje o objevu.",
+		"jpl": "Přesné dráhy planet, Měsíce, Galileových měsíců a Phoebe (střední dráhové elementy), podle kterých byl seznam opraven.",
+		"iau": "Kam míří pól každého světa a jak rychle se který svět otáčí, aby v poledne stálo Slunce nad Greenwichem.",
+		"meeus": "Jak se dráha Měsíce pomalu stáčí, aby zatmění připadla na svá skutečná data.",
+		"rings": "Prstence Jupiteru, Uranu a Neptunu, nakreslené pro tuto aplikaci podle zveřejněných poloměrů a neprůhlednosti prstenců.",
+		"surfaceMaps": "Mapy přišly s první verzí projektu (2022). Odkud která pochází a pod jakou licencí je, se právě dohledává a zapisuje v úkolu #37; každý potvrzený zdroj tu bude uveden.",
+		"three": "Kreslí 3D scénu v prohlížeči.",
+		"react": "Skládá stránky a panely.",
+		"fiber": "Propojuje three.js s Reactem.",
+		"mantine": "Tlačítka, nabídky, kalendáře a dialogová okna.",
+		"tabler": "Ikony.",
+		"tanstack": "Stránky a odkazy, které uchovávají každý pohled.",
+		"gsap": "Animace na úvodní stránce a ve slovníku.",
+		"smallLibraries": "Stav aplikace, kontrola dat, práce s kalendářním datem, QR kódy a překlady s tvary podle čísla.",
+		"astrolabe": "Vytvořili přispěvatelé projektu Astrolabe. Kdokoli může přidat novou funkci, prohlídku nebo překlad."
+	},
+	"licences": {
+		"openData": "zveřejněno jako otevřená data (bez uvedené licence)",
+		"publicDomain": "volné dílo (NASA)",
+		"facts": "zveřejněné vědecké hodnoty",
+		"tracing": "ověřuje se",
+		"mit": "licence MIT",
+		"mitZlib": "licence MIT a zlib",
+		"mitBsd": "licence MIT a BSD",
+		"gsap": "standardní licence GSAP (zdarma)"
+	}
+}
