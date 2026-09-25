@@ -20,7 +20,13 @@ import { PostcardButton, PostcardSlot } from "../solarSystem/postcard/Postcard"
 import FactsPanel from "./FactsPanel"
 import { takeComparisonPostcard } from "./picture"
 import Pickers from "./Pickers"
-import { completeBodies, formatBodies, parseBodies, promote } from "./selection"
+import {
+	completeBodies,
+	formatBodies,
+	parseBodies,
+	presetFor,
+	promote,
+} from "./selection"
 import Stage from "./Stage"
 
 import classes from "./Compare.module.css"
@@ -101,6 +107,7 @@ const Compare = () => {
 				more={ids.length > 2}
 				jd={jd}
 				live={live}
+				idea={presetFor(ids)}
 			/>
 			<footer className={classes.footer}>{t("app.name")}</footer>
 			<PostcardSlot />
