@@ -33,8 +33,8 @@ src/i18n/                    languages and reading levels (see i18n); body conte
 src/locales/                 translation resources: config.json, <locale>/ui.json, <locale>/bodies.json
 src/data/                    bodies.json, schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
-src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, simSearch.ts (URL schema), urlSync.ts
-src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, light/, rings/, ui/),
+src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, postcard.ts, simSearch.ts (URL schema), urlSync.ts
+src/features/                hero/, solarDictionary/, solarSystem/ (index.tsx, scene/, bodies/, camera/, frame/, labels/, lighting/, light/, postcard/, rings/, ui/),
                              solarWalk/ (the basketball solar system, #25)
 src/GSAPAnimation/ hooks/ primitives/ utils/   shared bits
 public/assets/textures/      pruned; unreferenced tiered variants are kept for later phases
@@ -613,7 +613,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   ArrowLeft/Right cycle siblings.
 - Page (`index.tsx`): `<UrlSync />`, then `scene/Scene.tsx` (Canvas + `SimFrameContext.Provider`, `ScaleSync`,
   `ScaleTransition`, `ReferenceFrameSync`, `SimClock`, `SpinClock`, `HoverCursor`, `Bodies`, `OrbitLines`, `Trails`, `Markers`, `Labels`, `BodyPicking`, `CameraRig`,
-  `HighlightTracker`, later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
+  `HighlightTracker`, `SceneCapture` (#33), later `Effects`; then the `LabelLayer` beside the Canvas), `ui/BodyHighlight`, and the HUD.
 
 ## Picking: click a body to focus on it (`scene/picking.ts`, `scene/BodyPicking.tsx`; #16)
 
@@ -736,7 +736,41 @@ weight on the Sun, the planets and the seven large moons.
   `/solar_system?birthday=true`.
 - Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
   carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
-  picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
+  picture" is the postcard of the view (#33, see Postcard) with the ages and distance from `card.ts` (`cardText`)
+  as its extra facts, and today's date, never the birth date.
+
+## Postcard (`features/solarSystem/postcard`, `src/store/postcard.ts`; #33)
+
+"Take a picture" (the camera button beside the language menu): the view as it is on screen, with no HUD, stamped and
+handed to the visitor. Everything happens on the device: no upload, no server, no storage.
+
+- **Capture** (`capture.ts`, `SceneCapture.tsx` in the Canvas): no `preserveDrawingBuffer` and nothing per frame.
+  At the click `snapshotScene` renders the scene once more, synchronously, and copies the drawing buffer before
+  the browser clears it; that render uses a pixel ratio raised until the long side is at least
+  `CAPTURE_LONG_SIDE` (1920 px, at most `CAPTURE_MAX_SIDE` 4096; `captureRatio`) and put back at once (the next
+  animation frame redraws, nothing flickers). Labels are DOM: `readLabels` reads the label layer
+  (`[data-label-layer]`) as painted (text, box, computed font, colour, opacity) and `draw.ts` paints them back with a
+  halo. Only the canvas and the names are taken; HUD panels, hover rings and badges never are.
+- **Snapshot** (`takePostcard(extra?)` in `take.ts`, call it from the click): the shot, the simulation JD, the subject
+  (`postcardSubject`: the selection, else the focused body), the drawn scale preset, `hideDate`
+  (`hidesTimeInUrl`: a birth date is entered) and `postcardLink` (the page URL with `t` pinned to the moment on
+  screen, or without `t` while hidden) go into `usePostcardStore`; `PostcardSlot` then opens the lazy dialog.
+- **Text** (`postcard.ts`, pure): title (body name, else "Our solar system"), the UTC date (none while hidden),
+  the caption (the body's tagline; the visitor may edit it), the preset's scale statement
+  (`solarSystem.postcard.scaleNote.*`: a copy passed around never pretends to be to scale), the app's name and the
+  file name `astrolabe-<subject>-<YYYY-MM-DD>.png`. Strings: `solarSystem.postcard.*`.
+- **Drawing** (`draw.ts`, Canvas 2D): the picture in a dark mount with a hairline, the stamp below (accent line,
+  title, date, caption, extra rows in 4 columns beside a landscape picture or 2 below a portrait one, note, scale
+  statement, app name) and a QR code of the link (`qr.ts`, `uqr`, error correction M, loaded with the dialog).
+  All sizes derive from `postcardUnit` (a 34th of the picture's short side).
+- **Dialog** (`PostcardDialog.tsx`, a Mantine modal; full screen on phones): preview, caption, switches for the
+  names and the QR code, then Save picture (download), Copy picture (`ClipboardItem`, where supported), Share (the Web
+  Share API with a file, where `canShare` allows: phones) and Copy link. Escape closes the dialog only: the
+  overview button's Escape ignores keys inside a modal dialog (`isInModalDialog` in `ui/keyboard.ts`).
+- **For other features:** `takePostcard(extra)` with a `PostcardExtra` (`title`, `caption`, `date` (null: none),
+  `rows` of `{ id, label, value, color? }`, `note`, `fileName`) stamps a feature's own facts under the view; the
+  birthday panel is the worked example. A page without the 3D scene (e.g. a DOM comparison) can render its own
+  `SceneShot` (`image` canvas, `ratio`, `labels`) and call `usePostcardStore.getState().show(...)` directly.
 
 ## Light travel (`src/sim/light.ts`, `src/store/light.ts`, `features/solarSystem/light/`; #27)
 
