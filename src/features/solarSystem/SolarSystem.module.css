@@ -345,3 +345,11 @@
 		display: none;
 	}
 }
+
+/* presentation mode (#29): the right column reaches the bottom, so the tour card sits in the middle, like subtitles */
+@media (min-width: 1000px) {
+	:global(html[data-presenting]) .tour {
+		grid-column: 2;
+		justify-self: center;
+	}
+}
