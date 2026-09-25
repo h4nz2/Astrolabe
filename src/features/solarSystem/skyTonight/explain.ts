@@ -34,7 +34,8 @@ const TOP_DOWN = { azimuthDeg: 0, elevationDeg: MAX_ELEVATION_DEG }
 
 /**
  * The camera for `id` at `jd`: the Moon's orbit around Earth, or a region
- * around Earth wide enough for the Sun and the planet, from straight above.
+ * around Earth wide enough for the Sun and the planet, from straight above,
+ * with room to spare: the HUD panels at the sides cover the edges.
  */
 export function whyRequest(id: string, jd: number): ViewRequest {
 	if (id === "moon") {
@@ -45,7 +46,7 @@ export function whyRequest(id: string, jd: number): ViewRequest {
 		distanceKm("earth", "sun", jd),
 		distanceKm("earth", id, jd),
 	)
-	return { shot: TOP_DOWN, fit: { km: 1.15 * km, around: "sun" } }
+	return { shot: TOP_DOWN, fit: { km: 1.5 * km, around: "sun" } }
 }
 
 /** Holds Earth still at `ms` (epoch ms), seen from above, with `id` selected. */

@@ -37,11 +37,11 @@ describe("Show me in space", () => {
 		const saturn = whyRequest("saturn", jd)
 		expect(saturn.fit?.around).toBe("sun")
 		// Saturn at opposition is about 8.4 AU from Earth
-		expect((saturn.fit?.km ?? 0) / AU_KM).toBeGreaterThan(9)
-		expect((saturn.fit?.km ?? 0) / AU_KM).toBeLessThan(10.5)
+		expect((saturn.fit?.km ?? 0) / AU_KM).toBeGreaterThan(8.4 * 1.4)
+		expect((saturn.fit?.km ?? 0) / AU_KM).toBeLessThan(8.4 * 1.6)
 		const venus = whyRequest("venus", jd)
 		// Venus is closer than the Sun: the frame fits the Sun
-		expect((venus.fit?.km ?? 0) / AU_KM).toBeCloseTo(1.15, 1)
+		expect((venus.fit?.km ?? 0) / AU_KM).toBeCloseTo(1.5, 1)
 		const moon = whyRequest("moon", jd)
 		expect(moon.fit?.around).toBe("earth")
 		expect(moon.fit?.km).toBeLessThan(1e6)

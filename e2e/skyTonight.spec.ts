@@ -178,6 +178,8 @@ test("'Why can I see it?' holds Earth still at that moment, seen from above", as
 		"Tonight Earth is between the Sun and Saturn",
 	)
 	await saturn.getByRole("button", { name: "Show me in space" }).click()
+	// the panel steps aside for the 3D view
+	await expect(sky).toHaveCount(0)
 
 	await expect(page).toHaveURL(/frame=earth/, { timeout: 20_000 })
 	await expect(page).toHaveURL(/sel=saturn/)
@@ -193,6 +195,10 @@ test("'Why can I see it?' holds Earth still at that moment, seen from above", as
 	await expect(
 		page.getByRole("button", { name: "Back to Sun-centred" }),
 	).toBeVisible()
+
+	// and comes back with the place kept
+	await page.getByRole("button", { name: "Tonight's sky" }).click()
+	await expect(sky.getByTestId("sky-place")).toHaveText("Zurich, Switzerland")
 })
 
 test("opens from the start page and gives way to the birthday panel", async ({
