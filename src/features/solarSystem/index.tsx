@@ -10,6 +10,10 @@ import { useSimUrlSync } from "@/store/urlSync"
 import { BirthdayPanelSlot } from "./birthday/Birthday"
 import FrameBadge from "./frame/FrameBadge"
 import FrameMenu from "./frame/FrameMenu"
+import IntroController from "./intro/IntroController"
+import IntroMenu from "./intro/IntroMenu"
+import IntroOverlay from "./intro/IntroOverlay"
+import IntroPulse from "./intro/IntroPulse"
 import { LightSlot } from "./light/LightPanel"
 import Scene from "./scene/Scene"
 import BodyHighlight from "./ui/BodyHighlight"
@@ -67,10 +71,12 @@ const SolarSystem = () => {
 	return (
 		<div className={classes.page}>
 			<UrlSync />
+			<IntroController />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
 			<BodyHighlight />
+			<IntroPulse />
 			<CentreMarker />
 			<div className={classes.hud}>
 				<div className={classes.pickerStack}>
@@ -78,6 +84,7 @@ const SolarSystem = () => {
 						<OverviewButton />
 						<FocusPicker />
 						<FrameMenu />
+						<IntroMenu />
 					</div>
 					<FrameBadgePanel />
 					<LightSlot
@@ -98,6 +105,7 @@ const SolarSystem = () => {
 						<ScalePanel />
 					</div>
 				</div>
+				<IntroOverlay className={classes.intro} />
 				<div className={`${classes.panel} ${classes.info}`}>
 					<BodyInfo />
 				</div>

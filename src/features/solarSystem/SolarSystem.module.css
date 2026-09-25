@@ -145,6 +145,25 @@
 	}
 }
 
+/* the opening's captions and hints (#30): the open middle row, right above the bottom panels */
+.intro {
+	grid-row: 2;
+	grid-column: 1 / -1;
+	align-self: end;
+	justify-self: center;
+}
+
+/* while the opening plays, the HUD steps back (still usable: hover or focus brings a panel back) */
+:global(html[data-intro="playing"]) .panel {
+	opacity: 0.3;
+	transition: opacity 400ms ease;
+}
+
+:global(html[data-intro="playing"]) .panel:hover,
+:global(html[data-intro="playing"]) .panel:focus-within {
+	opacity: 1;
+}
+
 /* wide screens: the body info sits beside the time controls on one bottom row */
 @media (min-width: 1000px) {
 	.hud {
@@ -177,6 +196,11 @@
 	.centre,
 	.info,
 	.time {
+		justify-self: stretch;
+	}
+
+	.intro {
+		grid-row: 4;
 		justify-self: stretch;
 	}
 
