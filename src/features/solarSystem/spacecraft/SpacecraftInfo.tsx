@@ -21,6 +21,7 @@ import {
 	spacecraftById,
 	type Spacecraft,
 } from "@/data/spacecraft"
+import { Hint } from "@/primitives/hint"
 import { useI18n, type I18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
 import { useSpacecraftText } from "@/i18n/spacecraft"
@@ -240,18 +241,19 @@ const CraftPanel = ({ craft }: { craft: Spacecraft }) => {
 			{known && facts.predicted && (
 				<p className={classes.note}>{t("solarSystem.spacecraft.predicted")}</p>
 			)}
-			<Button
-				size="compact-sm"
-				variant="light"
-				color="cyan"
-				mt={6}
-				leftSection={<IconFocus2 size={14} />}
-				disabled={!known}
-				title={t("solarSystem.spacecraft.showHint", { name: text.name })}
-				onClick={() => showCraft(craft.id, scale)}
-			>
-				{t("solarSystem.spacecraft.show")}
-			</Button>
+			<Hint text={t("solarSystem.spacecraft.showHint", { name: text.name })}>
+				<Button
+					size="compact-sm"
+					variant="light"
+					color="cyan"
+					mt={6}
+					leftSection={<IconFocus2 size={14} />}
+					disabled={!known}
+					onClick={() => showCraft(craft.id, scale)}
+				>
+					{t("solarSystem.spacecraft.show")}
+				</Button>
+			</Hint>
 			<ScrollArea.Autosize
 				mah="min(9rem, 20dvh)"
 				type="auto"

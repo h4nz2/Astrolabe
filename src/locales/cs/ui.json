@@ -432,6 +432,15 @@
 				"pluto": "Pluto",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 soustavy Slunce–Země"
+			},
+			"hint": {
+				"layer": "Ukazuje skutečné kosmické sondy, které lidé vyslali, tam, kde jsou k zobrazenému datu.",
+				"layer@simple": "Ukazuje sondy, které lidé poslali do vesmíru.",
+				"allPaths": "Kreslí celou cestu každé sondy, nejen té vybrané.",
+				"allPaths@simple": "Ukazuje cestu každé sondy."
+			},
+			"reason": {
+				"allPaths": "Nejdřív zapni Kosmické sondy."
 			}
 		},
 		"pick": {

@@ -432,6 +432,15 @@
 				"pluto": "Pluto",
 				"arrokoth": "Arrokoth",
 				"l2": "Sun–Earth L2"
+			},
+			"hint": {
+				"layer": "Shows the real spacecraft people have sent out, where they are on the date shown.",
+				"layer@simple": "Shows the space probes people have sent into space.",
+				"allPaths": "Draws the whole journey of every spacecraft, not only the one you picked.",
+				"allPaths@simple": "Shows the path of every space probe."
+			},
+			"reason": {
+				"allPaths": "Turn on Spacecraft first."
 			}
 		},
 		"pick": {

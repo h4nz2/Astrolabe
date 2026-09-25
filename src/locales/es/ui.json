@@ -432,6 +432,15 @@
 				"pluto": "Plutón",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 Sol-Tierra"
+			},
+			"hint": {
+				"layer": "Muestra las naves espaciales reales que ha enviado la humanidad, donde están en la fecha que se ve.",
+				"layer@simple": "Muestra las sondas que la gente ha enviado al espacio.",
+				"allPaths": "Dibuja el viaje completo de cada nave, no solo el de la que elegiste.",
+				"allPaths@simple": "Muestra el camino de cada nave."
+			},
+			"reason": {
+				"allPaths": "Activa primero Naves espaciales."
 			}
 		},
 		"pick": {

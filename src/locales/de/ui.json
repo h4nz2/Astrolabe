@@ -432,6 +432,15 @@
 				"pluto": "Pluto",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 von Sonne und Erde"
+			},
+			"hint": {
+				"layer": "Zeigt die echten Raumsonden, die Menschen ausgesandt haben, dort, wo sie am angezeigten Datum sind.",
+				"layer@simple": "Zeigt die Raumsonden, die Menschen ins All geschickt haben.",
+				"allPaths": "Zeichnet die ganze Reise jeder Raumsonde, nicht nur die der ausgewählten.",
+				"allPaths@simple": "Zeigt den Weg jeder Raumsonde."
+			},
+			"reason": {
+				"allPaths": "Schalte zuerst Raumsonden ein."
 			}
 		},
 		"pick": {

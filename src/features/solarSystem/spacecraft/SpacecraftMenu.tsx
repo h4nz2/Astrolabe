@@ -12,13 +12,13 @@ import {
 	Stack,
 	Switch,
 	Text,
-	Tooltip,
 	UnstyledButton,
 } from "@mantine/core"
 import { IconSatellite } from "@tabler/icons-react"
 
 import { spacecraft } from "@/data/spacecraft"
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { getSpacecraftText } from "@/i18n/spacecraft"
 import { craftPhase } from "@/sim/spacecraft"
 import { useScaleStore } from "@/store/scale"
@@ -56,18 +56,18 @@ const SpacecraftMenu = () => {
 					})
 
 	return (
-		<Popover
-			opened={opened}
-			onChange={setOpened}
-			position="bottom-end"
-			width={340}
-			shadow="md"
-			radius="md"
-			trapFocus
-			returnFocus
-		>
-			<Popover.Target>
-				<Tooltip label={t("solarSystem.spacecraft.menuHint")} disabled={opened}>
+		<Hint text={opened ? undefined : t("solarSystem.spacecraft.menuHint")}>
+			<Popover
+				opened={opened}
+				onChange={setOpened}
+				position="bottom-end"
+				width={340}
+				shadow="md"
+				radius="md"
+				trapFocus
+				returnFocus
+			>
+				<Popover.Target>
 					<ActionIcon
 						variant={show ? "light" : "subtle"}
 						color={show ? "cyan" : "gray"}
@@ -79,72 +79,85 @@ const SpacecraftMenu = () => {
 					>
 						<IconSatellite size={18} />
 					</ActionIcon>
-				</Tooltip>
-			</Popover.Target>
-			<Popover.Dropdown
-				className={classes.dropdown}
-				aria-label={t("solarSystem.spacecraft.menuTitle")}
-			>
-				<Stack gap="xs">
-					<Text fw={700} size="sm">
-						{t("solarSystem.spacecraft.menuTitle")}
-					</Text>
-					<Text size="xs" c="dimmed" lh={1.35}>
-						{t("solarSystem.spacecraft.menuIntro")}
-					</Text>
-					<Group gap="md">
-						<Switch
-							size="xs"
-							color="cyan"
-							label={t("solarSystem.spacecraft.layer")}
-							checked={show}
-							onChange={(event) =>
-								setShowSpacecraft(event.currentTarget.checked)
-							}
-						/>
-						<Switch
-							size="xs"
-							color="cyan"
-							label={t("solarSystem.spacecraft.allPaths")}
-							checked={allPaths}
-							disabled={!show}
-							onChange={(event) => setShowAllPaths(event.currentTarget.checked)}
-						/>
-					</Group>
-					<ScrollArea.Autosize
-						mah="min(22rem, 50dvh)"
-						type="auto"
-						offsetScrollbars
-					>
-						<Stack gap={2}>
-							{spacecraft.map((craft) => {
-								const text = getSpacecraftText(craft.id, i18n)
-								const phase = craftPhase(craft, jd)
-								const status = phaseText(craft, phase)
-								return (
-									<UnstyledButton
-										key={craft.id}
-										className={classes.craft}
-										data-craft={craft.id}
-										data-phase={phase}
-										data-selected={craft.id === selected || undefined}
-										onClick={() => {
-											setShowSpacecraft(true)
-											showCraft(craft.id, scale)
-											setOpened(false)
-										}}
-									>
-										<span className={classes.craftName}>{text.name}</span>
-										<span className={classes.craftTagline}>{text.tagline}</span>
-										<span className={classes.craftStatus}>{status}</span>
-									</UnstyledButton>
-								)
-							})}
-						</Stack>
-					</ScrollArea.Autosize>
-				</Stack>
-			</Popover.Dropdown>
-		</Popover>
+				</Popover.Target>
+				<Popover.Dropdown
+					className={classes.dropdown}
+					aria-label={t("solarSystem.spacecraft.menuTitle")}
+				>
+					<Stack gap="xs">
+						<Text fw={700} size="sm">
+							{t("solarSystem.spacecraft.menuTitle")}
+						</Text>
+						<Text size="xs" c="dimmed" lh={1.35}>
+							{t("solarSystem.spacecraft.menuIntro")}
+						</Text>
+						<Group gap="md">
+							<Hint text={t("solarSystem.spacecraft.hint.layer")}>
+								<Switch
+									size="xs"
+									color="cyan"
+									label={t("solarSystem.spacecraft.layer")}
+									checked={show}
+									onChange={(event) =>
+										setShowSpacecraft(event.currentTarget.checked)
+									}
+								/>
+							</Hint>
+							<Hint
+								text={t("solarSystem.spacecraft.hint.allPaths")}
+								reason={
+									show ? undefined : t("solarSystem.spacecraft.reason.allPaths")
+								}
+							>
+								<Switch
+									size="xs"
+									color="cyan"
+									label={t("solarSystem.spacecraft.allPaths")}
+									checked={allPaths}
+									disabled={!show}
+									onChange={(event) =>
+										setShowAllPaths(event.currentTarget.checked)
+									}
+								/>
+							</Hint>
+						</Group>
+						<ScrollArea.Autosize
+							mah="min(22rem, 50dvh)"
+							type="auto"
+							offsetScrollbars
+						>
+							<Stack gap={2}>
+								{spacecraft.map((craft) => {
+									const text = getSpacecraftText(craft.id, i18n)
+									const phase = craftPhase(craft, jd)
+									const status = phaseText(craft, phase)
+									return (
+										<UnstyledButton
+											key={craft.id}
+											className={classes.craft}
+											data-craft={craft.id}
+											data-phase={phase}
+											data-selected={craft.id === selected || undefined}
+											onClick={() => {
+												setShowSpacecraft(true)
+												showCraft(craft.id, scale)
+												setOpened(false)
+											}}
+										>
+											<span className={classes.craftName}>{text.name}</span>
+											<span className={classes.craftTagline}>
+												{text.tagline}
+											</span>
+											<span className={classes.craftStatus}>{status}</span>
+										</UnstyledButton>
+									)
+								})}
+							</Stack>
+						</ScrollArea.Autosize>
+					</Stack>
+				</Popover.Dropdown>
+			</Popover>
+		</Hint>
 	)
 }
 

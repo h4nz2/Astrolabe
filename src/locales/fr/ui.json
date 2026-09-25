@@ -432,6 +432,15 @@
 				"pluto": "Pluton",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 Soleil–Terre"
+			},
+			"hint": {
+				"layer": "Montre les vraies sondes spatiales envoyées par l’humanité, là où elles sont à la date affichée.",
+				"layer@simple": "Montre les sondes que les gens ont envoyées dans l’espace.",
+				"allPaths": "Trace le voyage complet de chaque sonde, pas seulement celle que tu as choisie.",
+				"allPaths@simple": "Montre le chemin de chaque sonde."
+			},
+			"reason": {
+				"allPaths": "Active d’abord Sondes spatiales."
 			}
 		},
 		"pick": {
