@@ -164,11 +164,11 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 			{!collapsed && (
 				<>
 					<p className={classes.facts}>
-						<time dateTime={event.utc}>
+						<span data-utc={event.utc}>
 							{t("solarSystem.events.when", {
 								when: dateTimeUTC(new Date(event.utc)),
 							})}
-						</time>
+						</span>
 						<br />
 						{t("solarSystem.events.where", { where: text.where })}
 					</p>

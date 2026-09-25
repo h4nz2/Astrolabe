@@ -20,7 +20,8 @@ const ready = async (page: Page, url: string) => {
 }
 
 const card = (page: Page) => page.locator("[data-event-card]")
-const clock = (page: Page) => page.locator("time[datetime]").first()
+const clock = (page: Page) =>
+	page.getByRole("button", { name: "Travel to a date" }).locator("time")
 const camera = (page: Page) =>
 	page.evaluate(() => {
 		const handle = window.__astrolabe!
@@ -67,7 +68,7 @@ test("one action stages the 2024 eclipse; from Earth the Moon covers the Sun; le
 	expect(now.fovDeg).toBe(45)
 
 	// the view from Earth: standing in the Moon's shadow, a telescope's lens
-	await card(page).getByText("From Earth").click()
+	await card(page).getByText("From Earth", { exact: true }).click()
 	await expect(card(page)).toHaveAttribute("data-view", "earth")
 	await cameraAtRest(page)
 	now = await camera(page)
