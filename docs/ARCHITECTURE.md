@@ -327,7 +327,11 @@ Driven by data alone: a body with `rings` gets them (Jupiter, Saturn, Uranus, Ne
     ring a few km wide (Uranus's) stays a faint line at any zoom instead of averaging away.
 - Optics (`src/sim/rings.ts`, ported to GLSL in `lighting/ringPars.ts`; keep in step): opacity is face-on; crossed at
   cosine `mu` to the pole it is `1 - (1 - opacity)^(1/mu)` (`slantOpacity`, mu >= 0.02). So a ring seen nearly edge-on
-  is a dense bright line, and exactly edge-on it vanishes as the real ones do (no thickness is faked).
+  is a dense bright line. Exactly edge-on the sheet covers no pixel: a rim at the outer radius (`RING_EDGE`, an open
+  cylinder extruded `RING_EDGE_PX` = 1.5 px along the pole in the vertex shader, needs `uViewportHeight`) draws the
+  line with the whole system's mean opacity and fades out once |cos| > `RING_EDGE_FADE` (0.03).
+- Depth: the rings write no depth and sit `RING_DEPTH_BIAS` behind their plane in the log depth buffer, so the orbit
+  lines of ring moons (coplanar) draw over them instead of dashing through.
 - Lighting (`lighting/ringShader.ts`, `ringMaterial.ts`): the ring material spreads the PLANET's sunlight uniforms (the
   same objects) and adds its strips; transparent, `depthWrite` off, double-sided. A ring point is `p` = the local point x
   `radiusKm / drawnRadius` in scene axes; it gets `sunVisibility(p)` (the planet's moons) x the planet as a caster at
