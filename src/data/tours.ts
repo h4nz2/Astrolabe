@@ -59,7 +59,7 @@ const TourCamera = z
 		 */
 		from: z.literal("earth").optional(),
 		/** The lens: the height of the view in degrees (a telescope's is below 1); default: the normal view. */
-		fov: z.number().min(0.001).max(150).optional(),
+		fov: z.number().min(0.001).max(160).optional(),
 	})
 	.strict()
 

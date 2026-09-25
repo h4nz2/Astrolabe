@@ -201,7 +201,7 @@
 		"utc": "1610-01-07T18:00:00Z",
 		"check": { "kind": "visible", "body": "jupiter", "minElongationDeg": 90 },
 		"space": { "body": "jupiter" },
-		"earth": { "body": "jupiter", "fovDeg": 0.4 }
+		"earth": { "body": "jupiter", "fovDeg": 0.25 }
 	},
 	{
 		"id": "uranusFound",
@@ -237,7 +237,7 @@
 	{
 		"id": "voyagerLaunch",
 		"group": "history",
-		"utc": "1977-08-20T14:29:00Z",
+		"utc": "1977-08-20T15:40:00Z",
 		"check": { "kind": "moment" },
 		"space": { "fitAu": 32, "craft": "voyager2" }
 	},

@@ -106,7 +106,7 @@ export interface EyePoint {
 
 /** The narrowest and widest lens a request may ask for, degrees. */
 export const LENS_MIN_DEG = 0.001
-export const LENS_MAX_DEG = 150
+export const LENS_MAX_DEG = 160
 
 /** A region the camera frames on arrival, see `ViewRequest.fit`. */
 export interface FitRegion {

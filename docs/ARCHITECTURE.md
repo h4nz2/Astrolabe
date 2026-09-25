@@ -38,6 +38,7 @@ src/locales/                 translation resources: config.json, <locale>/ui.jso
 src/data/                    bodies.json, credits.json (image sources + licences, #37), schema.ts (zod), index.ts (lookups), solarDictionary.ts (dictionary + hero adapter),
                              tours.ts + tours/*.json (guided tours, #28)
 src/sim/                     pure simulation, no React or three objects (import from "@/sim"); testing/ is test-only
+src/data/skyEvents.json      the sky events (#41): real instants and the check that each happens in the simulation
 src/store/                   sim.ts, navigation.ts, flight.ts, scale.ts, lighting.ts, spin.ts, trails.ts, light.ts, hunt.ts,
                              presentation.ts, postcard.ts, sound.ts, birthday.ts, skyTonight.ts, tour.ts, simSearch.ts (URL schema),
                              urlSync.ts
@@ -290,7 +291,11 @@ Actions: `select`, `setFocus` (click: select + focus; a flight from another body
 (the way out), `skip`, `finishMove` (skip the move, stay in the sequence), `anchorFrame(id, request?)` / `releaseFrame()` (#31), and sequences (`playSequence`, `goToStep`,
 `nextStep`, `resumeSequence`, `stopSequence`). A request carries a partial `shot`, `durationMs`, a `profile` and a
 `fit` region (`{ km, around }`: frame a sphere of `km` TRUE km around the centre, drawn as a distance from body
-`around` is; overrides the shot's distance). Invalid views and unknown bodies are ignored.
+`around` is; overrides the shot's distance), an `eye` (#41: `{ anchorId, offsetKm }`, TRUE km from a body, drawn
+like a point view: the camera stands there and looks at the view's centre, and the director keeps it there every frame
+while the bodies move, until the user takes the camera; overrides the shot) and a `lensDeg` (#41: the vertical field of
+view on arrival, animated in log space with the move; any request without one returns to the normal 45 deg; a `fit`
+uses the arriving lens). `finishMove`/`skip` keep both. Invalid views and unknown bodies are ignored.
 Camera-rig callbacks, not for features: `settle`, `userInput`, `publishShot`, `settleAt`, `setPanning`, `tickSequence`.
 
 Director (`camera/director.ts`, unit-tested frame by frame):
@@ -1206,8 +1211,57 @@ index)` with no holds (stops wait for the presenter; `finishMove()` when jumping
   never auto-finishes), and the presenter keys in the capture phase while a tour exists: ArrowRight / PageDown
   next, ArrowLeft / PageUp back (so arrows step the tour instead of cycling bodies). The hero page links to the
   Grand Tour.
+- **Sky events (#41) extend the format:** `time: { "event": id }` (the instant the simulation shows the event best),
+  `camera.from: "earth"` (stand on the Earth looking at the body in view; at an event's time, where it is seen best)
+  with `camera.fov` (the lens in degrees), and `returnOnExit` (leaving goes back to the scene before the tour; the
+  baseline then carries `scene`). See Sky events.
 - **For #29 (presentation mode):** call the player functions (`nextStop`, `previousStop`, `resumeTour`,
   `exitTour`, `startTour`) rather than `nextStep()`; `[data-tour-card]` marks the card for hiding the chrome.
+
+## Sky events (`src/data/skyEvents.*`, `src/sim/skyEvents.ts`, `features/solarSystem/events/`; #41)
+
+Eclipses, transits, planet gatherings, close approaches of Mars, moons' shadows, ring-plane crossings and the named
+moments of #14 (one list, not two), each staged in one action with a viewpoint from which it reads at a glance.
+
+- **The list is data** (`src/data/skyEvents.json`, zod `SkyEventSchema`): `id`, `group` (`EVENT_GROUPS`: solar and lunar
+  eclipses, transits, gatherings, close approaches, shadows and rings, history), `utc` (the REAL instant: greatest
+  eclipse, mid-transit, closest approach, ...) and a `check` saying what must be seen (`EventCheck`); discoveries and
+  missions name what to show (`space.body`/`fitAu`/`craft`, `earth.body`/`fovDeg`). Words: `src/locales/<l>/events.json`
+  (`title`, `where`, `look` at every reading level; `events/text.ts`), UI strings `solarSystem.events.*`.
+  `ui/moments.ts` keeps #14's `MOMENTS` API (their ids are events now) for tours' `{ "moment": id }`.
+- **It really happens in the scene** (`src/sim/skyEvents.ts`, pure, TRUE km): `measureEvent(geometry, check, jd)`
+  measures a check (the Moon's shadow axis on the Earth, total or annular by apparent sizes, via `sunVisibleFraction`;
+  the Moon's depth in the umbra; a planet's separation from the Sun seen from the Earth; separations; the span of
+  ecliptic longitudes; distance; a moon's shadow on its planet; the Earth's elevation above a ring plane;
+  elongation). `bestInstant` finds, within `SEARCH_WINDOW_DAYS` of the real instant, where the SIMULATION shows the
+  event best (a coarse scan, then a golden section); the event is shown there (`events/instant.ts` `eventJD`, cached)
+  while the card gives the real time and says how far apart the two are ("shown 1.5 hours early": the Moon lacks
+  evection). `src/data/skyEvents.test.ts` is the contract: every event agrees with astronomy-engine (its real instant,
+  kind, separation or distance) and happens in the app's simulation within `TOLERANCE_HOURS` (eclipses 3.5 h,
+  transits 6 h, conjunctions 1 day, close approaches 12 h, Io's shadow 1 h, ring crossings 3 days), at a true minimum
+  inside the window. An event the model cannot reproduce (the total eclipse of 2015, the partial lunar eclipse of
+  January 2028) is not listed. The list reaches into the future in every group (tested).
+- **Staged as a tour** (`events/staging.ts` `eventTour`): an event is a #28 tour (id `event-<id>`, `returnOnExit`)
+  whose stops are its views. `space` sets `time: { event }`, `speed: paused`, `scale: trueScale` (shadows, sizes and
+  gaps are real only there) and the layers, and frames the view from space by the check (straight down onto the point
+  of greatest eclipse; side-on to the Sun-Earth-Moon line; top-down over the Sun for transits, gatherings and Mars; the
+  planet from near the Sun's direction for a moon's shadow; the rings from 25 deg above their plane). `earth` is
+  `camera: { from: "earth", fov }`: the plan (`tours/plan.ts`) turns it into an `eye` on the Earth's surface
+  (`earthObserverKm`: at an event's instant the path of totality, the point under the Moon or under the Sun; else the
+  point facing the body) and a `lensDeg` (2 deg for a solar eclipse, 0.9 for a transit, 0.02 for every Mars approach
+  so their sizes compare, the arc of a gathering). Played by #28's player, so presenter keys step the views, the scene
+  can be explored and resumed, and `?tour=event-solar2024&stop=2` is its link (`TourSync`, `urlSync`).
+- **Leaving is one action**: `returnOnExit` (new in the tour format) makes `exitTour` restore the `TourBaseline.scene`
+  captured at the start (view, camera, frame, selection, the time or "now", speed, pause, scale, layers); one event
+  after another keeps the first one's baseline.
+- **Drawn for it**: `events/Corona.tsx`, the Sun's corona, fades in only while the drawn Moon covers the drawn Sun seen
+  from the camera (`coveredShare` >= 97 %), so a total eclipse from the Earth is a black Moon in a pearly ring;
+  `REFRACTED_GLOW` (`lighting/bodyLighting.ts`, uniform `uUmbraGlow`) lights a body in its parent's umbra with the
+  sunlight the parent's air bends into it: the Moon turns red in a total lunar eclipse (only the Earth has an entry).
+- **UI**: `events/EventList.tsx` in "Travel in time" (the Sky events tab, grouped, "Coming up" badges);
+  `events/EventCard.tsx` in the tour card's place (`[data-tour-card]`; #28's `TourCard` steps aside for event tours):
+  the group, title, real date and where it could be seen, what to look for, From space / From Earth, the view's hint,
+  the true-scale and model-time notes, "Back to the event" after looking around, copy link, Leave.
 
 ## Sky tonight (`features/solarSystem/skyTonight`, `src/store/skyTonight.ts`; #36)
 

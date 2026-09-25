@@ -3,6 +3,7 @@ import type { z } from "zod"
 
 import { bodyById } from "@/data"
 import { spacecraftById } from "@/data/spacecraft"
+import { eventOfTourId } from "@/data/skyEvents"
 import { tourById } from "@/data/tours"
 import { DEFAULT_LOCALE, LOCALES, READING_LEVELS, createI18n } from "@/i18n"
 import { isScalePresetId } from "@/sim"
@@ -237,7 +238,11 @@ function linkProblems(path: string): string[] {
 				problems.push("at does not parse, or has no focus")
 			}
 		}
-		if (search.tour !== undefined && !tourById.has(String(search.tour))) {
+		if (
+			search.tour !== undefined &&
+			!tourById.has(String(search.tour)) &&
+			eventOfTourId(String(search.tour)) === null
+		) {
 			problems.push(`tour: no tour "${String(search.tour)}"`)
 		}
 		if (

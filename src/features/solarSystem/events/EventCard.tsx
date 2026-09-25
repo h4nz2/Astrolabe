@@ -14,7 +14,12 @@ import {
 	SegmentedControl,
 	Tooltip,
 } from "@mantine/core"
-import { IconLink, IconSunMoon } from "@tabler/icons-react"
+import {
+	IconChevronDown,
+	IconChevronUp,
+	IconLink,
+	IconSunMoon,
+} from "@tabler/icons-react"
 
 import { eventTourId, type SkyEvent } from "@/data/skyEvents"
 import { useI18n, type I18n } from "@/i18n"
@@ -104,6 +109,8 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 	const tour = useTourStore((state) => state.tour)
 	const index = useTourStore((state) => state.index)
 	const steps = useTourStore((state) => state.steps)
+	const collapsed = useTourStore((state) => state.collapsed)
+	const setCollapsed = useTourStore((state) => state.setCollapsed)
 	const sequence = useSimStore((state) => state.sequence)
 	if (event === null || tour === null) return null
 
@@ -121,7 +128,7 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 			data-event-card={event.id}
 			data-view={view}
 			data-status={status}
-			data-collapsed="false"
+			data-collapsed={collapsed}
 		>
 			<header className={classes.header}>
 				<IconSunMoon className={classes.icon} size={20} aria-hidden />
@@ -131,23 +138,44 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 					</div>
 					<h2 className={classes.title}>{text.title}</h2>
 				</div>
+				<ActionIcon
+					variant="subtle"
+					color="gray"
+					onClick={() => setCollapsed(!collapsed)}
+					aria-label={
+						collapsed
+							? t("solarSystem.tours.expand")
+							: t("solarSystem.tours.collapse")
+					}
+					aria-expanded={!collapsed}
+				>
+					{collapsed ? (
+						<IconChevronUp size={18} aria-hidden />
+					) : (
+						<IconChevronDown size={18} aria-hidden />
+					)}
+				</ActionIcon>
 				<CloseButton
 					onClick={leaveEvent}
 					aria-label={t("solarSystem.events.leaveLabel")}
 				/>
 			</header>
-			<p className={classes.facts}>
-				<time dateTime={event.utc}>
-					{t("solarSystem.events.when", {
-						when: dateTimeUTC(new Date(event.utc)),
-					})}
-				</time>
-				<br />
-				{t("solarSystem.events.where", { where: text.where })}
-			</p>
-			<p className={classes.look} aria-live="polite">
-				{text.look}
-			</p>
+			{!collapsed && (
+				<>
+					<p className={classes.facts}>
+						<time dateTime={event.utc}>
+							{t("solarSystem.events.when", {
+								when: dateTimeUTC(new Date(event.utc)),
+							})}
+						</time>
+						<br />
+						{t("solarSystem.events.where", { where: text.where })}
+					</p>
+					<p className={classes.look} aria-live="polite">
+						{text.look}
+					</p>
+				</>
+			)}
 			{views.length > 1 && (
 				<SegmentedControl<EventView>
 					fullWidth
@@ -163,17 +191,21 @@ const EventCard = ({ className = "" }: { className?: string }) => {
 					}))}
 				/>
 			)}
-			<p className={classes.hint} data-testid="event-hint">
-				{t(`solarSystem.events.hint.${view}.${event.group}`)}
-			</p>
-			<div className={classes.notes}>
-				<span>{t("solarSystem.events.scaleNote")}</span>
-				{offset !== null && (
-					<span data-testid="event-offset">
-						{t("solarSystem.events.shown", offset)}
-					</span>
-				)}
-			</div>
+			{!collapsed && (
+				<>
+					<p className={classes.hint} data-testid="event-hint">
+						{t(`solarSystem.events.hint.${view}.${event.group}`)}
+					</p>
+					<div className={classes.notes}>
+						<span>{t("solarSystem.events.scaleNote")}</span>
+						{offset !== null && (
+							<span data-testid="event-offset">
+								{t("solarSystem.events.shown", offset)}
+							</span>
+						)}
+					</div>
+				</>
+			)}
 			{status !== "playing" && (
 				<div className={classes.away} role="status">
 					<span>{t("solarSystem.events.away")}</span>

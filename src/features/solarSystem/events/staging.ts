@@ -65,6 +65,15 @@ function lift(v: Vec, deg: number): Vec {
 	return [v[0] * k, Math.sin(elevation) * length, v[2] * k]
 }
 
+/**
+ * How far to the right on screen a direction `v` points for a camera that
+ * stands along `c` from the centre and looks back at it (up = the ecliptic pole).
+ */
+function screenRight(c: Vec, v: ArrayLike<number>): number {
+	// right = forward x up, with forward = -c and up = +Y
+	return c[2] * v[0] - c[0] * v[2]
+}
+
 /** Top-down over the Sun, framing `au` astronomical units. */
 const topDown = (au: number): Pick<TourStop, "view" | "camera" | "fit"> => ({
 	view: "overview",
@@ -97,12 +106,14 @@ function spaceStop(event: SkyEvent, jd: number): Omit<TourStop, "id"> {
 				geometry.position(SUN, jd),
 				geometry.position(EARTH, jd),
 			)
-			const side = lift(turn(toSun, 90), 20)
-			const moonKm = Math.hypot(...geometry.fromEarth("moon", jd))
+			// the side that puts the Moon right of the Earth, clear of the body card
+			const moon = geometry.fromEarth("moon", jd)
+			const sides = [90, -90].map((deg) => lift(turn(toSun, deg), 20))
+			const side = sides.find((c) => screenRight(c, moon) > 0) ?? sides[0]
 			return {
 				view: EARTH,
 				camera: angles(side),
-				fit: { km: moonKm * 1.15, around: EARTH },
+				fit: { km: Math.hypot(...moon) * 2.2, around: EARTH },
 				select: "moon",
 			}
 		}
@@ -137,14 +148,29 @@ function spaceStop(event: SkyEvent, jd: number): Omit<TourStop, "id"> {
 			}
 		}
 		case "ringPlaneCrossing": {
-			// the rings from the sunlit side, a little above their plane
+			// the rings from the sunlit side, 25 degrees above their plane
 			const toSun = sub(
 				geometry.position(SUN, jd),
 				geometry.position(check.body, jd),
 			)
+			// tilted toward the planet's pole, so the ring plane opens up
+			const pole = geometry.pole(check.body)
+			const along = toSun[0] * pole[0] + toSun[1] * pole[1] + toSun[2] * pole[2]
+			const length = Math.hypot(...toSun)
+			const up: Vec = [
+				pole[0] * length - (along / length) * toSun[0],
+				pole[1] * length - (along / length) * toSun[1],
+				pole[2] * length - (along / length) * toSun[2],
+			]
+			const k = Math.tan((25 * Math.PI) / 180) * (length / Math.hypot(...up))
+			const from: Vec = [
+				toSun[0] + up[0] * k,
+				toSun[1] + up[1] * k,
+				toSun[2] + up[2] * k,
+			]
 			return {
 				view: check.body,
-				camera: { ...angles(lift(turn(toSun, 35), 18)), distance: 1.3 },
+				camera: { ...angles(from), distance: 1.3 },
 				select: check.body,
 			}
 		}
@@ -173,6 +199,18 @@ const TELESCOPE_DEG = {
 	ringPlaneCrossing: 0.035,
 } as const
 
+/**
+ * The lens (the view's height, degrees) that shows an arc of `spanDeg` along
+ * the ecliptic within the middle quarter of a landscape screen, between the HUD's
+ * side panels: a wide lens squeezes the edges, so even a parade of planets
+ * across 120 degrees of sky fits.
+ */
+export function gatheringLens(spanDeg: number, aspect = 1.6): number {
+	const half = (Math.min(spanDeg / 2 + 5, 80) * Math.PI) / 180
+	const lens = (2 * Math.atan(Math.tan(half) / (0.25 * aspect)) * 180) / Math.PI
+	return Math.max(5, Math.min(160, lens))
+}
+
 /** The view from Earth, or null when there is none worth showing. */
 function earthStop(event: SkyEvent, jd: number): Omit<TourStop, "id"> | null {
 	const check = event.check
@@ -181,6 +219,8 @@ function earthStop(event: SkyEvent, jd: number): Omit<TourStop, "id"> | null {
 		camera: { from: "earth", fov },
 		select: body,
 		move: "glide",
+		// orbit lines only streak across a telescope's view
+		layers: { orbits: false },
 	})
 	switch (check.kind) {
 		case "solarEclipse":
@@ -225,7 +265,7 @@ function earthStop(event: SkyEvent, jd: number): Omit<TourStop, "id"> | null {
 				}
 			})
 			return {
-				...telescope(centre, Math.min(120, span * 0.8 + 6)),
+				...telescope(centre, gatheringLens(span)),
 				select: null,
 			}
 		}

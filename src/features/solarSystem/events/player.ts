@@ -29,6 +29,14 @@ export function startEvent(
 	const { view: current } = useSimStore.getState()
 	const tour = eventTour(event, current.kind !== "overview" && !jump)
 	startTour(tour, { startAt: viewIndex(tour, view) ?? 0, jump })
+	// on a phone the card starts folded, so the event itself is in view
+	if (
+		typeof window !== "undefined" &&
+		typeof window.matchMedia === "function" &&
+		window.matchMedia("(max-width: 599px)").matches
+	) {
+		useTourStore.getState().setCollapsed(true)
+	}
 	const craft = event.space?.craft
 	if (craft !== undefined) useSpacecraftStore.getState().selectCraft(craft)
 }

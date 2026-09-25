@@ -471,13 +471,39 @@
 			"how": {
 				"standard": [
 					"Clique sur la date et l’heure en bas.",
-					"Choisis un moment dans la liste, ou « Choisir une date », puis clique sur l’année, le mois et le jour.",
+					"Choisis « Choisir une date », puis clique sur l’année, le mois et le jour (les moments célèbres sont dans « Phénomènes du ciel »).",
 					"Les planètes glissent jusque-là et le temps s’arrête ; appuie sur Lecture pour repartir."
 				],
 				"simple": [
 					"Clique sur la date en bas.",
 					"Choisis « Mars au plus près » ou choisis un jour.",
 					"Regarde les planètes se déplacer jusque-là."
+				]
+			}
+		},
+		"skyEvents": {
+			"title": {
+				"standard": "Phénomènes du ciel : éclipses, transits et alignements",
+				"simple": "Éclipses et autres phénomènes du ciel"
+			},
+			"what": {
+				"standard": "Une liste d’éclipses, de transits de Vénus et de Mercure, de planètes réunies dans le ciel, de rapprochements de Mars, d’ombres de lunes et des anneaux de Saturne par la tranche, passés et à venir. En choisir un règle tout : la date, l’échelle réelle et une vue depuis l’espace, avec un passage à la vue depuis la Terre au télescope.",
+				"simple": "Choisis une éclipse ou un autre spectacle du ciel, et l’application t’y emmène : le bon jour, le bon endroit d’où regarder."
+			},
+			"why": {
+				"standard": "Chaque phénomène est une leçon de géométrie en une image : pourquoi la Lune couvre exactement le Soleil, pourquoi il n’y a pas d’éclipse chaque mois, ce que veut vraiment dire « les planètes s’alignent ». Passer de la vue depuis l’espace à la vue depuis la Terre, c’est la leçon.",
+				"simple": "Tu vois pourquoi il y a une éclipse : depuis l’espace, et depuis la Terre, d’où les gens l’ont regardée."
+			},
+			"how": {
+				"standard": [
+					"Clique sur la date en bas et choisis « Phénomènes du ciel ».",
+					"Choisis un phénomène, par exemple « Éclipse totale de Soleil » (8 avril 2024).",
+					"Sur la carte, passe de « Depuis l’espace » à « Depuis la Terre » ; appuie sur « Quitter » pour revenir là où tu étais."
+				],
+				"simple": [
+					"Clique sur la date en bas, puis sur « Phénomènes du ciel ».",
+					"Choisis une éclipse.",
+					"Appuie sur « Depuis la Terre » et la Lune couvre le Soleil."
 				]
 			}
 		},
