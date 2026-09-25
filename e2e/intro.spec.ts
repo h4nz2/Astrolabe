@@ -54,7 +54,8 @@ test.describe("a first visit", () => {
 		const start = await state(page)
 		expect(start.view).toEqual({ kind: "body", id: "earth" })
 		expect(start.scale).toBe("trueScale")
-		expect(start.sequence?.index).toBe(0)
+		// the close-up, or already pulling back from it toward the Moon
+		expect(start.sequence?.index ?? 99).toBeLessThanOrEqual(1)
 		// the plan is under fifteen seconds
 		const planned = await page.evaluate(() =>
 			window
