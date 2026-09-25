@@ -367,7 +367,8 @@ off by default, as `orbitNames=true` while on. Defaults (overview, home shot `0_
 are left out; a link without a switch turns it on. `simSearch.ts` drops invalid or blank values (never coerces them to
 0). `useSimUrlSync()` runs once, in `<UrlSync />` rendered before `<Scene />`: it seeds the store before the Canvas
 mounts (no `t` means the wall clock at mount), then writes back with `replace: true`, `t` at most once per second and
-only while paused or at |warp| <= 60.
+only while paused or at |warp| <= 60, and never while a birth date is entered (#26, see Birthday).
+`?birthday=true` opens the birthday panel.
 
 ## Rendering and runtime contract (`src/features/solarSystem`)
 
@@ -535,6 +536,26 @@ Everything goes through the clock actions of #9; nothing here touches the clock 
   focused family's moons while shown) laps more than a sixth of an orbit per drawn frame (`TOO_FAST_LAPS_PER_FRAME`,
   frame rate measured by `useFrameRate()` from the ticks), a line under the presets names it and its laps per second.
   Nothing is capped or hidden in the scene; positions stay true.
+
+## Birthday (`features/solarSystem/birthday`, `src/store/birthday.ts`; #26)
+
+"Your birthday in space": a birth date picked in a calendar (never typed) gives the age on every planet, the next
+birthday there as a date (and a trip to it), local days lived, the distance Earth carried you around the Sun, and the
+weight on the Sun, the planets and the seven large moons.
+
+- Maths (`birthday.ts`, pure): a year is the sidereal `orbit.periodDays`; a birthday on a planet is
+  `birthJD + n * year`, the instant it is back where it was at the birth. On Earth ages count calendar birthdays (29 Feb falls on
+  28 Feb). A birth date is a calendar day that stands for its noon UTC (`arrivalJD`, the instant the planets fly to).
+  Solar day: `1 / solar = 24 / rotation.periodHours - 1 / year` (sign = retrograde). Gravity: the curated
+  `info.gravity` (the dictionary's number), else `G M / R^2`; weight = kg x g / g(Earth). Distance: Earth's orbit
+  length (Ramanujan) x orbits since birth.
+- UI: `Birthday.tsx` has the HUD button (in the time controls) and the panel slot; `BirthdayPanel.tsx` (lazy, with
+  `@mantine/dates`) is a non-modal panel docked at the right (a sheet on phones) so the scene stays visible. Picking
+  a date `travelAndStop`s there; each planet's next birthday is a button that does the same. The hero page links to
+  `/solar_system?birthday=true`.
+- Privacy: `useBirthdayStore` is memory only (no storage, nothing sent). While a birth date is entered the URL
+  carries no `t` (`hidesTimeInUrl`, read by `urlSync.ts`), because the clock then shows the birth date. "Save as
+  picture" (`card.ts`) draws a PNG with Canvas 2D on the device: ages and distance, never the birth date.
 
 ## i18n: languages and reading levels (`src/i18n`, `src/locales`)
 

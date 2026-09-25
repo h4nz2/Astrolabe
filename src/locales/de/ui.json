@@ -39,7 +39,8 @@
 		"credits": "Mit Liebe gemacht von odi und hrj",
 		"tagline": "Zu den Sternen!",
 		"dictionary": "Lexikon",
-		"solarSystem": "Sonnensystem"
+		"solarSystem": "Sonnensystem",
+		"birthday": "Geburtstag im Weltall"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -363,6 +364,73 @@
 			"weightSimilar": "Du würdest etwa so viel wiegen wie auf der Erde",
 			"weightLess": "Du würdest nur {percent} % deines Gewichts auf der Erde wiegen",
 			"weightLess@simple": "30 kg auf der Erde wären hier nur {kg} kg"
+		},
+		"birthday": {
+			"open": "Dein Geburtstag",
+			"openHint": "Wie alt bist du auf anderen Planeten?",
+			"title": "Dein Geburtstag im Weltall",
+			"close": "Schließen",
+			"intro": "Wähle den Tag, an dem du geboren bist. Du siehst, wie alt du auf jedem Planeten bist, wo die Planeten an diesem Tag standen und wie weit du schon gereist bist.",
+			"intro@simple": "Wann bist du geboren? Wähle den Tag und finde heraus, wie alt du auf den anderen Planeten bist!",
+			"intro@advanced": "Wähle ein Geburtsdatum. Alter, Tage und Gewichte werden aus Umlaufzeit, Rotation und Oberflächenschwerkraft jeder Welt berechnet.",
+			"calendarHint": "Erst das Jahr, dann den Monat, dann den Tag.",
+			"privacy": "Nichts wird gespeichert oder irgendwohin gesendet. Dein Geburtstag bleibt auf diesem Bildschirm und ist vergessen, sobald du die Seite schließt.",
+			"privacy@simple": "Dein Geburtstag wird nicht gespeichert und nirgendwohin geschickt. Wenn du die Seite schließt, ist er weg.",
+			"privacyLink": "Solange ein Geburtstag eingegeben ist, enthalten Links auf diese Seite kein Datum.",
+			"born": "Geboren am {date}",
+			"change": "Datum ändern",
+			"forget": "Meinen Geburtstag vergessen",
+			"showBirthSky": "Zeig die Planeten an meinem Geburtstag",
+			"showBirthSky@simple": "Zeig den Himmel an meinem Geburtstag",
+			"tabs": {
+				"label": "Vergleichen",
+				"years": "Jahre",
+				"days": "Tage",
+				"weight": "Gewicht"
+			},
+			"distance": "Seit deiner Geburt hat dich die Erde {distance} Kilometer um die Sonne getragen, mit etwa {speed, number} km pro Sekunde. Das sind {trips, plural, one {# Reise} other {# Reisen}} zum Mond und zurück.",
+			"distance@simple": "Seit deiner Geburt bist du {distance} Kilometer um die Sonne gereist – ohne je den Boden zu verlassen! So weit ist es {trips, plural, one {# Mal} other {# Mal}} zum Mond und zurück.",
+			"distance@advanced": "Seit deiner Geburt hat dich die Bahnbewegung der Erde {distance} km um die Sonne getragen, mit im Mittel {speed, number} km/s: {trips, plural, one {# Hin- und Rückflug} other {# Hin- und Rückflüge}} zum Mond.",
+			"years": {
+				"intro": "Ein Jahr ist eine Runde um die Sonne. Dein Geburtstag auf einem anderen Planeten ist, wenn er wieder dort steht, wo er an deinem Geburtstag war.",
+				"intro@simple": "Ein Jahr ist eine Runde um die Sonne. Weit entfernte Planeten brauchen viel länger, darum bist du dort jünger!",
+				"intro@advanced": "Ein Jahr ist die siderische Umlaufzeit: Dein Geburtstag auf einem Planeten ist, wenn er den Punkt seiner Bahn wieder erreicht, an dem er bei deiner Geburt stand.",
+				"age": "{age, plural, =0 {noch nicht 1 Jahr alt} one {# Jahr alt} other {# Jahre alt}}",
+				"exact": "{orbits} Umläufe",
+				"next": "Nächster Geburtstag: {date}",
+				"first": "Erster Geburtstag: {date}",
+				"earthAgeThen": "{age, plural, one {Auf der Erde bist du dann #.} other {Auf der Erde bist du dann #.}}",
+				"go": "{planetId, select, venus {Reise zu deinem nächsten Geburtstag auf der {planet}} earth {Reise zu deinem nächsten Geburtstag auf der {planet}} other {Reise zu deinem nächsten Geburtstag auf dem {planet}}}",
+				"today": "{planetId, select, earth {Alles Gute zum Geburtstag!} venus {Alles Gute zum Geburtstag auf der {planet}!} other {Alles Gute zum Geburtstag auf dem {planet}!}}"
+			},
+			"days": {
+				"intro": "Ein Tag dauert von einem Sonnenaufgang bis zum nächsten. Auf dem Merkur ist ein Tag länger als ein Jahr – dort hattest du mehr Geburtstage als Sonnenaufgänge!",
+				"intro@simple": "Ein Tag dauert von einem Sonnenaufgang bis zum nächsten. Auf manchen Planeten geht die Sonne nach ein paar Stunden wieder auf, auf anderen erst nach Monaten!",
+				"intro@advanced": "Ein Sonnentag (Sonnenaufgang bis Sonnenaufgang) folgt aus siderischer Rotation und Umlauf: 1/Sonnentag = 1/Rotation − 1/Jahr. Die Venus dreht sich rückwärts, darum geht ihre Sonne alle 117 Erdtage auf.",
+				"lived": "{count, plural, one {# Tag erlebt} other {# Tage erlebt}}",
+				"length": "Ein Tag dort: {length}"
+			},
+			"weight": {
+				"intro": "Wähle ein Gewicht auf der Erde und sieh, was eine Waage auf anderen Welten anzeigen würde.",
+				"intro@simple": "Wie schwer wärst du auf anderen Welten? Schieb den Regler!",
+				"slider": "Gewicht auf der Erde",
+				"onEarth": "{kg} kg auf der Erde",
+				"kg": "{kg} kg",
+				"noSurface": "Kein Boden zum Stehen",
+				"noSurfaceNote": "* Kein Boden zum Stehen: Das ist die Anziehung an der Wolkenobergrenze (bei der Sonne an ihrer leuchtenden Oberfläche).",
+				"note": "Du bleibst überall gleich – nur die Anziehung der Welt ändert sich.",
+				"note@simple": "Du wirst nicht größer oder kleiner – die Welt zieht nur stärker oder sanfter an dir!",
+				"note@advanced": "Deine Masse bleibt überall gleich; nur die Schwerkraft ändert sich und damit, was eine Waage anzeigt."
+			},
+			"share": "Als Bild speichern",
+			"shareHint": "Erstellt ein Bild deiner Alter auf diesem Gerät. Nichts wird hochgeladen.",
+			"card": {
+				"title": "Wie alt bin ich auf den anderen Planeten?",
+				"date": "Am {date}",
+				"distance": "Ich bin {distance} km um die Sonne gereist.",
+				"footer": "Astrolabe – unser Sonnensystem",
+				"fileName": "mein-alter-auf-den-planeten"
+			}
 		}
 	}
 }
