@@ -301,6 +301,32 @@
 				]
 			}
 		},
+		"sound": {
+			"title": {
+				"standard": "Zvuk a zvuky vesmíru",
+				"simple": "Poslechni si vesmír"
+			},
+			"what": {
+				"standard": "Zvuk, jen když chceš: zvuk v pozadí, který se mění podle toho, kde jsi, tiché tóny při letu a příletu a skutečné nahrávky kosmických sond u Slunce, Země, Jupiteru a Saturnu.",
+				"simple": "Zapni zvuk a uslyšíš bzučení, svist při letu a skutečné nahrávky z vesmírných sond."
+			},
+			"why": {
+				"standard": "Vesmír sám je tichý; nahrávky jsou rádiové a plazmové vlny změřené anténami a převedené na zvuk – překvapení, které stojí za poslech. Všechno funguje i bez zvuku.",
+				"simple": "Ve vesmíru není vzduch, a tak je tam ticho. Sondy ale změřily neviditelné vlny a ty si můžeš poslechnout!"
+			},
+			"how": {
+				"standard": [
+					"Po otevření aplikace je zvuk vždy vypnutý. Zapneš ho tlačítkem s reproduktorem vpravo nahoře nebo klávesou M.",
+					"Šipka vedle něj otevře hlasitost, „Zvuk v pozadí“, „Zvuky pohybu“ a „Poslechni si vesmír“.",
+					"Leť ke Slunci, k Zemi, k Jupiteru nebo k Saturnu a na kartičce pusť jeho nahrávku; text vysvětlí, co slyšíš."
+				],
+				"simple": [
+					"Stiskni tlačítko s reproduktorem vpravo nahoře.",
+					"Leť k Jupiteru.",
+					"Na kartičce stiskni přehrát a poslouchej."
+				]
+			}
+		},
 		"language": {
 			"title": {
 				"standard": "Jazyk a náročnost textu",
@@ -877,6 +903,12 @@
 			"touch": "Prezentovat → Vysoký kontrast",
 			"keys": "C"
 		},
+		"sound": {
+			"action": "Zapnout nebo vypnout zvuk (po otevření aplikace je vždy vypnutý)",
+			"mouse": "Tlačítko s reproduktorem",
+			"touch": "Tlačítko s reproduktorem",
+			"keys": "M"
+		},
 		"shortcuts": {
 			"action": "Seznam klávesových zkratek",
 			"mouse": "Prezentovat → Klávesové zkratky",
@@ -892,6 +924,10 @@
 		"maps": {
 			"title": "Mapy povrchu",
 			"intro": "Obrázky obtočené kolem glóbů."
+		},
+		"sounds": {
+			"title": "Zvuky",
+			"intro": "Nahrávky, které si můžeš poslechnout. Vlastní tóny aplikace vznikají v prohlížeči."
 		},
 		"software": {
 			"title": "Software",
@@ -909,6 +945,7 @@
 		"meeus": "Jak se dráha Měsíce pomalu stáčí, aby zatmění připadla na svá skutečná data.",
 		"rings": "Prstence Jupiteru, Uranu a Neptunu, nakreslené pro tuto aplikaci podle zveřejněných poloměrů a neprůhlednosti prstenců.",
 		"surfaceMaps": "Mapy přišly s první verzí projektu (2022). Odkud která pochází a pod jakou licencí je, se právě dohledává a zapisuje v úkolu #37; každý potvrzený zdroj tu bude uveden.",
+		"spaceAudio": "Čtyři skutečné nahrávky rádiových a plazmových vln, které změřily sondy Cassini, Voyager 1 a Injun 3, převedené na zvuk.",
 		"three": "Kreslí 3D scénu v prohlížeči.",
 		"react": "Skládá stránky a panely.",
 		"fiber": "Propojuje three.js s Reactem.",
@@ -927,6 +964,7 @@
 		"mit": "licence MIT",
 		"mitZlib": "licence MIT a zlib",
 		"mitBsd": "licence MIT a BSD",
-		"gsap": "standardní licence GSAP (zdarma)"
+		"gsap": "standardní licence GSAP (zdarma)",
+		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)"
 	}
 }

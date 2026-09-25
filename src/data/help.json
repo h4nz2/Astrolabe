@@ -15,7 +15,11 @@
 			"group": "lookingAround",
 			"try": "/solar_system?focus=earth"
 		},
-		{ "id": "findByName", "group": "lookingAround", "try": "/solar_system" },
+		{
+			"id": "findByName",
+			"group": "lookingAround",
+			"try": "/solar_system"
+		},
 		{
 			"id": "lookAround",
 			"group": "lookingAround",
@@ -57,6 +61,11 @@
 			"try": "/solar_dictionary?entity=4"
 		},
 		{
+			"id": "sound",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=jupiter"
+		},
+		{
 			"id": "language",
 			"group": "lookingAround",
 			"try": "/solar_system?focus=mars"
@@ -86,7 +95,11 @@
 			"group": "sizeDistance",
 			"try": "/solar_system?focus=earth&scale=trueScale"
 		},
-		{ "id": "solarWalk", "group": "sizeDistance", "try": "/solar_walk" },
+		{
+			"id": "solarWalk",
+			"group": "sizeDistance",
+			"try": "/solar_walk"
+		},
 		{
 			"id": "dayNight",
 			"group": "light",
@@ -157,7 +170,11 @@
 			"group": "teachers",
 			"try": "/solar_system?hunt=walkedOn.volcanoMoon.geysers"
 		},
-		{ "id": "hunt", "group": "games", "try": "/solar_system?hunt=true" },
+		{
+			"id": "hunt",
+			"group": "games",
+			"try": "/solar_system?hunt=true"
+		},
 		{
 			"id": "birthday",
 			"group": "games",
@@ -188,6 +205,7 @@
 		"fullscreen",
 		"projector",
 		"contrast",
+		"sound",
 		"shortcuts"
 	],
 	"credits": [
@@ -231,6 +249,13 @@
 			"name": "Surface maps of the Sun, planets and moons",
 			"url": "https://github.com/h4nz2/Astrolabe/issues/37",
 			"licence": "tracing"
+		},
+		{
+			"id": "spaceAudio",
+			"section": "sounds",
+			"name": "NASA / University of Iowa, Radio and Plasma Wave Group (space-audio.org)",
+			"url": "https://space-audio.org/",
+			"licence": "ccBy"
 		},
 		{
 			"id": "three",

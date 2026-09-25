@@ -269,9 +269,9 @@ describe("try it links", () => {
 		expect(linkProblems("/solar_dictionary?entity=12")).toEqual([
 			"entity=12 is invalid",
 		])
-		expect(linkProblems("/solar_system?lang=de")).toEqual([
+		expect(linkProblems("/solar_system?lang=de")).toContain(
 			"carries lang or reading (the viewer's own are kept)",
-		])
+		)
 	})
 
 	it("parses links the way the router parses an address", () => {

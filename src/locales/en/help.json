@@ -301,6 +301,32 @@
 				]
 			}
 		},
+		"sound": {
+			"title": {
+				"standard": "Sound and the sounds of space",
+				"simple": "Listen to space"
+			},
+			"what": {
+				"standard": "Optional sound: a background hum that changes with where you are, soft tones when you fly and arrive, and real recordings made by spacecraft at the Sun, Earth, Jupiter and Saturn.",
+				"simple": "Turn on sound to hear a hum, a whoosh when you fly, and real recordings from space probes."
+			},
+			"why": {
+				"standard": "Space itself is silent; the recordings are radio and plasma waves measured by antennas and turned into sound, which is a surprise worth hearing. Everything also works with sound off.",
+				"simple": "Space has no air, so it is silent. But space probes measured invisible waves, and we can listen to them!"
+			},
+			"how": {
+				"standard": [
+					"Sound is always off when the app opens. Press the speaker button at the top right, or M, to turn it on.",
+					"The arrow next to it opens the volume, the background hum, the motion sounds and “Listen to space”.",
+					"Fly to the Sun, Earth, Jupiter or Saturn and play its recording from the card; the text says what you hear."
+				],
+				"simple": [
+					"Press the speaker button at the top right.",
+					"Fly to Jupiter.",
+					"Press play on its card and listen."
+				]
+			}
+		},
 		"language": {
 			"title": {
 				"standard": "Language and reading level",
@@ -877,6 +903,12 @@
 			"touch": "Present → High contrast",
 			"keys": "C"
 		},
+		"sound": {
+			"action": "Sound on or off (always off when the app opens)",
+			"mouse": "The speaker button",
+			"touch": "The speaker button",
+			"keys": "M"
+		},
 		"shortcuts": {
 			"action": "List of keyboard shortcuts",
 			"mouse": "Present → Keyboard shortcuts",
@@ -892,6 +924,10 @@
 		"maps": {
 			"title": "Surface maps",
 			"intro": "The pictures wrapped around the globes."
+		},
+		"sounds": {
+			"title": "Sounds",
+			"intro": "The recordings you can listen to. The app’s own tones are made in the browser."
 		},
 		"software": {
 			"title": "Software",
@@ -909,6 +945,7 @@
 		"meeus": "How the Moon’s orbit slowly turns, so eclipses land on their real dates.",
 		"rings": "The rings of Jupiter, Uranus and Neptune, drawn for this app from published ring radii and opacities.",
 		"surfaceMaps": "The maps came with the first version of the project (2022). Where each one comes from, and its licence, is being traced and recorded in issue #37; every confirmed source will be credited here.",
+		"spaceAudio": "Four real recordings of radio and plasma waves, measured by Cassini, Voyager 1 and Injun 3 and turned into sound.",
 		"three": "Draws the 3D scene in the browser.",
 		"react": "Builds the pages and panels.",
 		"fiber": "Connects three.js to React.",
@@ -927,6 +964,7 @@
 		"mit": "MIT licence",
 		"mitZlib": "MIT and zlib licences",
 		"mitBsd": "MIT and BSD licences",
-		"gsap": "GSAP standard licence (no charge)"
+		"gsap": "GSAP standard licence (no charge)",
+		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)"
 	}
 }

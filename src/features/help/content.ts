@@ -68,7 +68,13 @@ export type HelpGroupId = (typeof HELP_GROUP_IDS)[number]
 /** The groups whose simple level may fall back to the standard text (#43: the teacher section). */
 export const STANDARD_ONLY_GROUPS: readonly HelpGroupId[] = ["teachers"]
 
-export const CREDIT_SECTIONS = ["data", "maps", "software", "app"] as const
+export const CREDIT_SECTIONS = [
+	"data",
+	"maps",
+	"sounds",
+	"software",
+	"app",
+] as const
 export type CreditSection = (typeof CREDIT_SECTIONS)[number]
 
 const id = z.string().regex(/^[a-z][a-zA-Z0-9]*$/)

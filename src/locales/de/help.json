@@ -301,6 +301,32 @@
 				]
 			}
 		},
+		"sound": {
+			"title": {
+				"standard": "Ton und die Klänge des Alls",
+				"simple": "Hör ins All"
+			},
+			"what": {
+				"standard": "Ton, wenn du willst: ein Hintergrundklang, der sich mit deinem Ort ändert, leise Töne beim Fliegen und Ankommen und echte Aufnahmen von Raumsonden bei der Sonne, der Erde, Jupiter und Saturn.",
+				"simple": "Schalte den Ton ein: Du hörst ein Summen, ein Rauschen beim Fliegen und echte Aufnahmen von Raumsonden."
+			},
+			"why": {
+				"standard": "Im All selbst ist es still; die Aufnahmen sind Radio- und Plasmawellen, die Antennen gemessen haben und die in Klang verwandelt wurden – eine Überraschung, die man hören muss. Alles funktioniert auch ohne Ton.",
+				"simple": "Im All gibt es keine Luft, darum ist es dort still. Aber Raumsonden haben unsichtbare Wellen gemessen, und die kannst du anhören!"
+			},
+			"how": {
+				"standard": [
+					"Beim Öffnen der App ist der Ton immer aus. Drück oben rechts auf den Lautsprecher oder auf M, um ihn einzuschalten.",
+					"Der Pfeil daneben öffnet die Lautstärke, den „Hintergrundklang“, die „Bewegungsklänge“ und „Hör ins All“.",
+					"Flieg zur Sonne, zur Erde, zu Jupiter oder Saturn und spiel im Steckbrief die Aufnahme ab; der Text erklärt, was du hörst."
+				],
+				"simple": [
+					"Drück oben rechts auf den Lautsprecher.",
+					"Flieg zu Jupiter.",
+					"Drück im Steckbrief auf Abspielen und hör zu."
+				]
+			}
+		},
 		"language": {
 			"title": {
 				"standard": "Sprache und Lesestufe",
@@ -882,6 +908,12 @@
 			"touch": "Präsentieren → Hoher Kontrast",
 			"keys": "C"
 		},
+		"sound": {
+			"action": "Ton an oder aus (beim Öffnen der App immer aus)",
+			"mouse": "Der Lautsprecher-Knopf",
+			"touch": "Der Lautsprecher-Knopf",
+			"keys": "M"
+		},
 		"shortcuts": {
 			"action": "Liste der Tastenkürzel",
 			"mouse": "Präsentieren → Tastenkürzel",
@@ -897,6 +929,10 @@
 		"maps": {
 			"title": "Oberflächenkarten",
 			"intro": "Die Bilder, die um die Globen gelegt sind."
+		},
+		"sounds": {
+			"title": "Klänge",
+			"intro": "Die Aufnahmen, die du anhören kannst. Die eigenen Töne der App entstehen im Browser."
 		},
 		"software": {
 			"title": "Software",
@@ -914,6 +950,7 @@
 		"meeus": "Wie sich die Mondbahn langsam dreht, damit Finsternisse auf ihre echten Daten fallen.",
 		"rings": "Die Ringe von Jupiter, Uranus und Neptun, für diese App aus veröffentlichten Radien und Lichtdurchlässigkeiten der Ringe gezeichnet.",
 		"surfaceMaps": "Die Karten stammen aus der ersten Version des Projekts (2022). Woher jede einzelne kommt und unter welcher Lizenz sie steht, wird in Issue #37 nachverfolgt und festgehalten; jede bestätigte Quelle wird hier genannt.",
+		"spaceAudio": "Vier echte Aufnahmen von Radio- und Plasmawellen, gemessen von Cassini, Voyager 1 und Injun 3 und in Klang verwandelt.",
 		"three": "Zeichnet die 3D-Szene im Browser.",
 		"react": "Baut die Seiten und Bedienfelder.",
 		"fiber": "Verbindet three.js mit React.",
@@ -932,6 +969,7 @@
 		"mit": "MIT-Lizenz",
 		"mitZlib": "MIT- und zlib-Lizenz",
 		"mitBsd": "MIT- und BSD-Lizenz",
-		"gsap": "GSAP-Standardlizenz (kostenlos)"
+		"gsap": "GSAP-Standardlizenz (kostenlos)",
+		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)"
 	}
 }

@@ -301,6 +301,32 @@
 				]
 			}
 		},
+		"sound": {
+			"title": {
+				"standard": "El sonido y los sonidos del espacio",
+				"simple": "Escucha el espacio"
+			},
+			"what": {
+				"standard": "Sonido solo si quieres: un sonido de fondo que cambia según dónde estés, tonos suaves al volar y al llegar, y grabaciones reales de sondas espaciales en el Sol, la Tierra, Júpiter y Saturno.",
+				"simple": "Activa el sonido y oirás un zumbido, un silbido al volar y grabaciones reales de sondas espaciales."
+			},
+			"why": {
+				"standard": "El espacio es silencioso; las grabaciones son ondas de radio y de plasma medidas con antenas y convertidas en sonido, una sorpresa que merece la pena escuchar. Todo funciona también sin sonido.",
+				"simple": "En el espacio no hay aire, así que no hay sonido. ¡Pero las sondas midieron ondas invisibles y puedes escucharlas!"
+			},
+			"how": {
+				"standard": [
+					"Al abrir la aplicación el sonido siempre está apagado. Pulsa el botón del altavoz arriba a la derecha, o M, para activarlo.",
+					"La flecha de al lado abre el volumen, el «Sonido de fondo», los «Sonidos de movimiento» y «Escucha el espacio».",
+					"Vuela al Sol, a la Tierra, a Júpiter o a Saturno y reproduce su grabación desde la tarjeta; el texto explica lo que oyes."
+				],
+				"simple": [
+					"Pulsa el botón del altavoz arriba a la derecha.",
+					"Vuela a Júpiter.",
+					"Pulsa reproducir en su tarjeta y escucha."
+				]
+			}
+		},
 		"language": {
 			"title": {
 				"standard": "Idioma y nivel de lectura",
@@ -882,6 +908,12 @@
 			"touch": "Presentar → Alto contraste",
 			"keys": "C"
 		},
+		"sound": {
+			"action": "Activar o desactivar el sonido (siempre apagado al abrir la aplicación)",
+			"mouse": "El botón del altavoz",
+			"touch": "El botón del altavoz",
+			"keys": "M"
+		},
 		"shortcuts": {
 			"action": "Lista de atajos de teclado",
 			"mouse": "Presentar → Atajos de teclado",
@@ -897,6 +929,10 @@
 		"maps": {
 			"title": "Mapas de superficie",
 			"intro": "Las imágenes que envuelven los globos."
+		},
+		"sounds": {
+			"title": "Sonidos",
+			"intro": "Las grabaciones que puedes escuchar. Los tonos propios de la aplicación se crean en el navegador."
 		},
 		"software": {
 			"title": "Software",
@@ -914,6 +950,7 @@
 		"meeus": "Cómo gira lentamente la órbita de la Luna, para que los eclipses caigan en sus fechas reales.",
 		"rings": "Los anillos de Júpiter, Urano y Neptuno, dibujados para esta aplicación a partir de radios y opacidades de anillos publicados.",
 		"surfaceMaps": "Los mapas llegaron con la primera versión del proyecto (2022). El origen de cada uno, y su licencia, se está investigando y registrando en la incidencia #37; cada fuente confirmada se citará aquí.",
+		"spaceAudio": "Cuatro grabaciones reales de ondas de radio y de plasma, medidas por Cassini, Voyager 1 e Injun 3 y convertidas en sonido.",
 		"three": "Dibuja la escena 3D en el navegador.",
 		"react": "Construye las páginas y los paneles.",
 		"fiber": "Conecta three.js con React.",
@@ -932,6 +969,7 @@
 		"mit": "licencia MIT",
 		"mitZlib": "licencias MIT y zlib",
 		"mitBsd": "licencias MIT y BSD",
-		"gsap": "licencia estándar de GSAP (gratuita)"
+		"gsap": "licencia estándar de GSAP (gratuita)",
+		"ccBy": "CC BY 4.0 (Saturno: CC BY 3.0)"
 	}
 }
