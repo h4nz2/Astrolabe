@@ -99,7 +99,7 @@
 	}
 }
 
-/* the light panel (#27) under the picker: a button, or the open panel */
+/* the light panel (#27): a button, or the open panel; under the picker, on phones above the body card */
 .light {
 	padding: 0.25rem;
 	min-height: 0;
@@ -146,7 +146,7 @@
 			"picker"
 			"toggles"
 			"centre"
-			"."
+			"light"
 			"info"
 			"time";
 		gap: 0.5rem;
@@ -172,6 +172,10 @@
 	}
 
 	.light {
+		grid-area: light;
+		align-self: end;
+		justify-self: start;
+		max-height: 100%;
 		--light-panel-body-max: 30dvh;
 	}
 }

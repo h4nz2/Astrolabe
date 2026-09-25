@@ -24,6 +24,7 @@ import {
 	Text,
 	UnstyledButton,
 } from "@mantine/core"
+import { useMediaQuery } from "@mantine/hooks"
 import { IconBolt, IconCheck } from "@tabler/icons-react"
 
 import { useI18n, type I18n } from "@/i18n"
@@ -485,6 +486,33 @@ const LightPanel = () => {
 				{tab === "beyond" && <BeyondTab />}
 			</ScrollArea.Autosize>
 		</section>
+	)
+}
+
+/** The HUD's phone breakpoint (SolarSystem.module.css). */
+const PHONE_QUERY = "(max-width: 599px)"
+
+/**
+ * Where the light panel is docked: under the focus picker on wider screens,
+ * above the body card on phones, where the top of the screen is already full
+ * of panels and the planets sit right below them. Renders only in the slot
+ * for the current screen, wrapped in `className` (a HUD panel).
+ */
+export const LightSlot = ({
+	phone,
+	className,
+}: {
+	phone: boolean
+	className: string
+}) => {
+	const isPhone = useMediaQuery(PHONE_QUERY, false, {
+		getInitialValueInEffect: false,
+	})
+	if (isPhone !== phone) return null
+	return (
+		<div className={className}>
+			<LightPanel />
+		</div>
 	)
 }
 
