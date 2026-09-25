@@ -12,6 +12,8 @@ export const MISSING_VALUE = "—"
 
 /** Units the CLDR data in `Intl` knows by name, so they need no translation. */
 export type IntlUnit =
+	| "millimeter"
+	| "centimeter"
 	| "kilometer"
 	| "meter"
 	| "second"

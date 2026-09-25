@@ -39,7 +39,8 @@
 		"credits": "Mit Liebe gemacht von odi und hrj",
 		"tagline": "Zu den Sternen!",
 		"dictionary": "Lexikon",
-		"solarSystem": "Sonnensystem"
+		"solarSystem": "Sonnensystem",
+		"solarWalk": "Sonnensystem zu Fuß"
 	},
 	"units": {
 		"approx": "≈ {value}",
@@ -182,7 +183,9 @@
 			"markersOn": "Die Punkte markieren nur, wo die Planeten sind: Die Planeten selbst sind zu klein, um sie zu sehen.",
 			"markersOn@simple": "Die Punkte zeigen, wo die Planeten sind. Die Planeten sind zu klein, um sie zu sehen!",
 			"markersOff": "Die Markierungen sind aus: Schalte sie ein, um die Planeten zu finden.",
-			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!"
+			"markersOff@simple": "Schalte die Markierungen ein, um die Planeten zu finden!",
+			"walk": "Zu klein, um es sich vorzustellen? Lauf es ab: das Sonnensystem mit der Sonne als Basketball.",
+			"walk@simple": "Zu klein zum Sehen? Lauf das Sonnensystem auf dem Sportplatz ab!"
 		},
 		"time": {
 			"play": "Abspielen",
@@ -319,5 +322,108 @@
 			"centreOn": "{body} in die Mitte",
 			"centreOn@simple": "Zurück zu {body}"
 		}
+	},
+	"solarWalk": {
+		"back": "3D-Modell",
+		"title": "Wenn die Sonne {object} wäre …",
+		"lead": "… wäre die Erde {earth}, {earthDistance} entfernt. Jede Größe und jeder Abstand auf dieser Seite ist echt, nur alles gleich stark verkleinert, bis es auf einen Sportplatz passt. Nimm einen Ball mit nach draußen und lauf es ab.",
+		"lead@simple": "… wäre die Erde so klein wie {earth} und {earthDistance} weit weg! Nimm einen Ball mit nach draußen und lauf das Sonnensystem ab.",
+		"lead@advanced": "… hätte die Erde {earthSize} Durchmesser und wäre {earthDistance} entfernt. Das ist ein maßstabsgetreues Modell im Maßstab 1 : {ratio}: Jede Größe und jeder Abstand ist um denselben Faktor verkleinert. Nimm einen Ball mit nach draußen und lauf es ab.",
+		"sunLabel": "Die Sonne ist",
+		"sunObject": {
+			"orange": "eine Orange",
+			"football": "ein Fußball",
+			"basketball": "ein Basketball",
+			"exerciseBall": "ein Gymnastikball"
+		},
+		"sunObjectName": {
+			"orange": "Orange",
+			"football": "Fußball",
+			"basketball": "Basketball",
+			"exerciseBall": "Gymnastikball"
+		},
+		"landmarkLabel": "Vergleichen mit",
+		"landmarkOption": {
+			"none": "Nur Meter",
+			"pitch": "Fußballfeld ({length})",
+			"track": "Laufbahn ({length} pro Runde)"
+		},
+		"viewLabel": "Anzeigen als",
+		"view": {
+			"walk": "Weg",
+			"table": "Tabelle"
+		},
+		"print": "Drucken",
+		"open3d": "In 3D im echten Maßstab ansehen",
+		"open3dBody": "{name} in 3D im echten Maßstab ansehen",
+		"summary": "Der ganze Weg bis zum Neptun: {distance}, zu Fuß etwa {time}.",
+		"summary@simple": "Der Weg bis zum Neptun ist {distance} lang. Dafür brauchst du etwa {time}.",
+		"summary@advanced": "Von der Sonne bis zum Neptun: {distance}, bei 4 km/h Gehtempo etwa {time}.",
+		"start": "Start",
+		"sunStop": "{object}, {size} Durchmesser. Leg sie an den Start: ans Schultor oder in eine Ecke des Sportplatzes.",
+		"sunStop@simple": "Die Sonne ist {object}. Leg sie an den Start, zum Beispiel ans Schultor.",
+		"sunStop@advanced": "{object}, {size} Durchmesser (in Wirklichkeit {trueSize}). Leg sie an den Start: ans Schultor oder in eine Ecke des Sportplatzes.",
+		"leg": "Geh {distance} weiter",
+		"size": "{size} Durchmesser – etwa so groß wie {thing}",
+		"size@simple": "Etwa so groß wie {thing}",
+		"size@advanced": "{size} Durchmesser (in Wirklichkeit {trueSize}) – etwa so groß wie {thing}",
+		"distance": "{distance} von der Sonne",
+		"distance@advanced": "{distance} von der Sonne (in Wirklichkeit {trueDistance})",
+		"moon": "{name}: {size}, etwa so groß wie {thing}, {distance} vom Planeten",
+		"moon@simple": "{name}: so groß wie {thing}, {distance} vom Planeten",
+		"moon@advanced": "{name}: {size} (in Wirklichkeit {trueSize}), {distance} vom Planeten (in Wirklichkeit {trueDistance})",
+		"landmarkCount": {
+			"pitch": "{count, plural, one {# Fußballfeld} other {# Fußballfelder}}",
+			"track": "{count, plural, one {# Runde auf der Laufbahn} other {# Runden auf der Laufbahn}}"
+		},
+		"landmarkMarker": {
+			"pitch": "Ende eines Fußballfelds: {length} von der Sonne",
+			"track": "Eine Runde auf der Laufbahn: {length} von der Sonne"
+		},
+		"starTitle": "Der nächste Stern",
+		"star": "Und jetzt weiter. In diesem Maßstab ist der nächste Stern nach der Sonne, Proxima Centauri, {distance} entfernt – mit dem Flugzeug etwa {flight}. Dein ganzer Weg bis zum Neptun passt {times}-mal hinein.",
+		"star@simple": "Und der nächste Stern? In diesem Maßstab ist er {distance} weit weg! Sogar ein Flugzeug bräuchte etwa {flight} bis dorthin.",
+		"star@advanced": "Proxima Centauri, 4,25 Lichtjahre entfernt, läge {distance} vom Start: {times}-mal der Weg bis zum Neptun, etwa {flight} Flug bei 900 km/h. Der kleine Rote Zwerg hätte {size} Durchmesser, etwa so groß wie {thing}.",
+		"starLesson": "Das Sonnensystem, das du gerade abgelaufen bist, ist eine winzige Insel in einem Ozean aus leerem Raum.",
+		"starLesson@simple": "Der Weltraum ist wirklich, wirklich leer!",
+		"starLesson@advanced": "Zwischen den Sternen ist fast nichts: Der nächste Nachbar der Sonne ist Tausende Sonnensystem-Wege entfernt.",
+		"lineUp": "Im Weltraum stehen die Planeten nie so in einer Reihe. Jeder kreist auf seiner eigenen Bahn um die Sonne, darum sind sie rundherum verteilt. Der Weg zeigt, wie weit jeder im Mittel von der Sonne entfernt ist.",
+		"lineUp@simple": "In Wirklichkeit stehen die Planeten nie so in einer Reihe. Jeder fliegt auf seiner eigenen Bahn um die Sonne.",
+		"lineUp@advanced": "Die Planeten stehen nie in einer Linie: Der Weg setzt jeden in seinen mittleren Abstand zur Sonne (die große Halbachse seiner Bahn). Größen sind mittlere Durchmesser, aus denselben Daten wie das 3D-Modell. Proxima Centauri: 4,2465 Lichtjahre (Gaia DR3).",
+		"tableCaption": "Wenn die Sonne {object} wäre: das Sonnensystem im Maßstab 1 : {ratio}",
+		"column": {
+			"stop": "Nr.",
+			"body": "Himmelskörper",
+			"size": "Größe",
+			"thing": "Etwa so groß wie",
+			"distance": "Abstand zur Sonne",
+			"leg": "Ab letzter Station",
+			"done": "Erledigt"
+		},
+		"landmarkColumn": {
+			"pitch": "Fußballfelder",
+			"track": "Runden"
+		},
+		"moonDistance": "{distance} vom Planeten",
+		"printNote": "Die Kreise sind in ihrer Größe im Modell gedruckt.",
+		"thing": {
+			"fineSand": "ein feines Sandkorn",
+			"salt": "ein Salzkorn",
+			"sugar": "ein Zuckerkorn",
+			"poppySeed": "ein Mohnkorn",
+			"pinhead": "ein Stecknadelkopf",
+			"peppercorn": "ein Pfefferkorn",
+			"pea": "eine Erbse",
+			"marble": "eine Murmel",
+			"cherry": "eine Kirsche",
+			"walnut": "eine Walnuss",
+			"tableTennisBall": "ein Tischtennisball",
+			"tennisBall": "ein Tennisball",
+			"orange": "eine Orange",
+			"grapefruit": "eine Grapefruit",
+			"melon": "eine kleine Melone",
+			"football": "ein Fußball"
+		},
+		"starName": "Proxima Centauri"
 	}
 }

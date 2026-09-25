@@ -39,6 +39,7 @@ const LeftSection: FC<LeftSectionProps> = () => {
 				<Flex direction="column" py="xl" gap="xs" maw={300}>
 					<Button to="/solar_dictionary" label={t("hero.dictionary")} />
 					<Button to="/solar_system" label={t("hero.solarSystem")} />
+					<Button to="/solar_walk" label={t("hero.solarWalk")} />
 				</Flex>
 			</Box>
 		</Container>
