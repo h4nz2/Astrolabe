@@ -565,6 +565,29 @@ describe("buildBodies", () => {
 		})
 	})
 
+	it("passes a moon's curated tint and veil through as its appearance (#17)", () => {
+		const tinted = structuredClone(fixture) as typeof fixture
+		const raw = JSON.stringify(tinted).replace(
+			'"name":"Rhea"',
+			'"name":"Rhea","tint":"#D9A04E","veiled":true',
+		)
+		const built = buildBodies(JSON.parse(raw), options)
+		expect(built.bodies.find((body) => body.id === "rhea")?.appearance).toEqual(
+			{ tint: "#d9a04e", veiled: true },
+		)
+		expect(BodiesFile.safeParse(built.bodies).success).toBe(true)
+		// nothing curated: no appearance key at all
+		expect(result.bodies.some((body) => "appearance" in body)).toBe(false)
+		const bad = buildBodies(
+			JSON.parse(raw.replace('"#D9A04E"', '"orange"')),
+			options,
+		)
+		expect(bad.bodies.find((body) => body.id === "rhea")?.appearance).toEqual({
+			veiled: true,
+		})
+		expect(bad.warnings.some((w) => /tint "orange"/.test(w))).toBe(true)
+	})
+
 	describe("featured moons (#17)", () => {
 		it("flags the listed moons and nothing else", () => {
 			const built = buildBodies(fixture, {

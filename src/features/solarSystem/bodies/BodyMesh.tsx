@@ -74,19 +74,42 @@ function StarMaterial({ body }: { body: Body }) {
 	return <meshBasicMaterial map={map} toneMapped={false} />
 }
 
-function TexturedMaterial({ body, uniforms }: MaterialProps) {
+function MappedMaterial({ body, uniforms }: MaterialProps) {
 	const { base, night } = body.textures
 	const urls =
 		night === undefined ? [assetUrl(base)] : [assetUrl(base), assetUrl(night)]
 	const [map, nightMap] = useTexture(urls, markSRGBAll)
-	return <SunlitMaterial uniforms={uniforms} map={map} nightMap={nightMap} />
+	return (
+		<SunlitMaterial
+			uniforms={uniforms}
+			color={body.appearance?.tint}
+			map={map}
+			nightMap={nightMap}
+		/>
+	)
+}
+
+/**
+ * The colour map (times the curated tint, #17); a veiled body (Titan: its
+ * surface is hidden by haze in visible light) is its tint alone.
+ */
+function TexturedMaterial({ body, uniforms }: MaterialProps) {
+	if (body.appearance?.veiled) {
+		return <SunlitMaterial uniforms={uniforms} color={body.appearance.tint} />
+	}
+	return <MappedMaterial body={body} uniforms={uniforms} />
 }
 
 function FallbackMaterial({ body, uniforms }: MaterialProps) {
 	if (body.kind === "star") {
 		return <meshBasicMaterial color="#ffb347" toneMapped={false} />
 	}
-	return <SunlitMaterial uniforms={uniforms} color="#5b6472" />
+	return (
+		<SunlitMaterial
+			uniforms={uniforms}
+			color={body.appearance?.veiled ? body.appearance.tint : "#5b6472"}
+		/>
+	)
 }
 
 function BodyMesh({ body, index }: BodyMeshProps) {

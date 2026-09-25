@@ -9,6 +9,7 @@ import { z } from "zod"
 
 import { Rings as RingsSchema } from "../../src/data/schema"
 import type {
+	Appearance,
 	Body,
 	BodyKind,
 	BodyTextures,
@@ -254,6 +255,26 @@ export const usesPlaceholderTexture = (
 	body.textures.base === PLACEHOLDER_TEXTURE &&
 	(body.parentId === null || !ownsPlaceholderTexture(body.parentId))
 
+/**
+ * Curated presentation hints of a moon (#17, `Appearance` in the schema): `tint` ("#rrggbb")
+ * and `veiled` from its source records. A malformed tint is dropped with a warning; nothing
+ * curated gives nothing (the key is left out).
+ */
+const appearanceOf = (
+	sources: readonly Raw[],
+	label: string,
+	ctx: Context,
+): Pick<Body, "appearance"> => {
+	const appearance: Appearance = {}
+	const tint = first(sources, (raw) => str(raw.tint))
+	if (tint !== null) {
+		if (/^#[0-9a-f]{6}$/i.test(tint)) appearance.tint = tint.toLowerCase()
+		else ctx.warnings.push(`${label}: tint "${tint}" is not #rrggbb, dropped`)
+	}
+	if (sources.some((raw) => raw.veiled === true)) appearance.veiled = true
+	return Object.keys(appearance).length === 0 ? {} : { appearance }
+}
+
 const resolveTextures = (
 	source: Raw | null,
 	kind: BodyKind,
@@ -295,6 +316,7 @@ const resolveTextures = (
 	for (const key of TEXTURE_KEYS) {
 		if (key !== "base" && found[key] !== undefined) textures[key] = found[key]
 	}
+
 	return textures
 }
 
@@ -311,6 +333,7 @@ const assemble = (
 	orbit: fields.orbit,
 	rotation: fields.rotation,
 	textures: fields.textures,
+	...(fields.appearance === undefined ? {} : { appearance: fields.appearance }),
 	rings: fields.rings,
 	info: fields.info,
 })
@@ -768,6 +791,7 @@ const buildMoon = (
 		orbit,
 		rotation: spin.rotation,
 		textures,
+		...appearanceOf(sources, label, ctx),
 		rings: null,
 		info,
 	})

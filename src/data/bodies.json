@@ -682,6 +682,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#c2b3a3"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.003,
@@ -1013,6 +1016,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#a8977f"
 		},
 		"rings": null,
 		"info": {
@@ -3177,6 +3183,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#e4e4e8"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.064,
@@ -3666,6 +3675,10 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#d9a04e",
+			"veiled": true
+		},
 		"rings": null,
 		"info": {
 			"gravity": 1.352,
@@ -3715,6 +3728,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#c8b08c"
 		},
 		"rings": null,
 		"info": {
@@ -3880,6 +3896,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#77706a"
 		},
 		"rings": null,
 		"info": {
@@ -6475,6 +6494,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#d6d6d8"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.079,
@@ -6524,6 +6546,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#e8e8ea"
 		},
 		"rings": null,
 		"info": {
@@ -6575,6 +6600,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#8a8a8e"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.2,
@@ -6624,6 +6652,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#cfc6bd"
 		},
 		"rings": null,
 		"info": {
@@ -6675,6 +6706,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#b8a99c"
 		},
 		"rings": null,
 		"info": {
@@ -7329,6 +7363,9 @@
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
 		},
+		"appearance": {
+			"tint": "#7a7a7a"
+		},
 		"rings": null,
 		"info": {
 			"gravity": 0.07,
@@ -7370,6 +7407,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#f2dcd2"
 		},
 		"rings": null,
 		"info": {
@@ -7420,6 +7460,9 @@
 		},
 		"textures": {
 			"base": "/assets/textures/earth/satellites/moon_1k.jpg"
+		},
+		"appearance": {
+			"tint": "#b0b0b0"
 		},
 		"rings": null,
 		"info": {

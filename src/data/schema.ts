@@ -49,6 +49,20 @@ export const BodyTextures = z.object({
 	night: z.string().min(1).optional(),
 })
 
+/**
+ * Curated presentation hints beside the textures (#17), so a moon on the shared placeholder
+ * map still looks like itself: `tint`, an sRGB "#rrggbb" the colour map is multiplied with
+ * (Triton pinkish, Callisto brown), and `veiled`, an opaque haze hides the surface in visible
+ * light, so only the tint is drawn (Titan).
+ */
+export const Appearance = z.object({
+	tint: z
+		.string()
+		.regex(/^#[0-9a-f]{6}$/)
+		.optional(),
+	veiled: z.literal(true).optional(),
+})
+
 export const Rings = z
 	.object({
 		innerRadiusKm: z.number().positive(),
@@ -107,6 +121,7 @@ export const Body = z
 		orbit: Orbit.nullable(),
 		rotation: Rotation,
 		textures: BodyTextures,
+		appearance: Appearance.optional(),
 		rings: Rings.nullable(),
 		/** dictionary fields passed through from the source */
 		info: z.record(z.string(), z.unknown()),
@@ -180,6 +195,7 @@ export const BodiesFile = z.array(Body).superRefine((bodies, ctx) => {
 export type BodyKind = z.infer<typeof BodyKind>
 export type Orbit = z.infer<typeof Orbit>
 export type BodyTextures = z.infer<typeof BodyTextures>
+export type Appearance = z.infer<typeof Appearance>
 export type Rotation = z.infer<typeof Rotation>
 export type Rings = z.infer<typeof Rings>
 export type Body = z.infer<typeof Body>
