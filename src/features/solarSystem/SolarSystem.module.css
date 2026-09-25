@@ -62,10 +62,41 @@
 	min-width: 0;
 }
 
+/* the picker and, below it while a body is held still, the frame's badge (#31) */
+.pickerStack {
+	grid-area: picker;
+	justify-self: start;
+	align-self: start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.5rem;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.pickerStack > .panel {
+	max-width: 100%;
+}
+
+/* the layer switches and, below them, the scale panel (#21) */
 .toggles {
 	grid-area: toggles;
 	justify-self: end;
 	align-self: start;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.5rem;
+	width: 25rem;
+	min-width: 0;
+	max-width: 100%;
+}
+
+@media (max-width: 599px) {
+	.toggles {
+		width: auto;
+	}
 }
 
 /* the light panel (#27): a button, or the open panel, on the left below the picker */
@@ -89,6 +120,8 @@
 	grid-area: info;
 	justify-self: start;
 	align-self: end;
+	min-width: 0;
+	max-width: 100%;
 }
 
 .time {
@@ -109,16 +142,17 @@
 	}
 }
 
-/* phones: the panels stack and the body info is dropped */
+/* phones: the panels stack; the body card sits above the time controls (its facts fold away) */
 @media (max-width: 599px) {
 	.hud {
 		grid-template-columns: minmax(0, 1fr);
-		grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+		grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
 		grid-template-areas:
 			"picker"
 			"toggles"
 			"centre"
 			"light"
+			"info"
 			"time";
 		gap: 0.5rem;
 		padding: 0.5rem;
@@ -127,12 +161,19 @@
 	.picker,
 	.toggles,
 	.centre,
+	.info,
 	.time {
 		justify-self: stretch;
 	}
 
+	.pickerStack {
+		justify-self: stretch;
+		align-items: stretch;
+	}
+
 	.info {
-		display: none;
+		max-height: 45dvh;
+		overflow-y: auto;
 	}
 
 	.light {

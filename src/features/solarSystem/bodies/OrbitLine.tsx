@@ -27,7 +27,12 @@
  */
 import { useMemo, useRef } from "react"
 import { extend, useFrame } from "@react-three/fiber"
-import { Line, Vector3, type BufferAttribute } from "three"
+import {
+	Line,
+	Vector3,
+	type BufferAttribute,
+	type LineBasicMaterial,
+} from "three"
 
 import type { Body } from "@/data"
 import {
@@ -46,6 +51,7 @@ import {
 	type Vec3,
 } from "@/sim"
 
+import { anchoredWeight } from "../frame/frameBlend"
 import { useSimFrame, type SimFrame } from "../scene/simFrame"
 
 // R3F's createInstance strips the `three` prefix when it mounts <threeLine>,
@@ -363,6 +369,10 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 	const frame = useSimFrame()
 	const lineRef = useRef<Line>(null)
 	const attributeRef = useRef<BufferAttribute>(null)
+	const materialRef = useRef<LineBasicMaterial>(null)
+	// an orbit around the Sun is a path in the Sun-centred frame only; an
+	// anchored frame (#31) fades it out and draws trails instead
+	const aroundRoot = frame.bodies[parentIndex].parentId === null
 	const orbit = body.orbit
 	const buffers = useMemo(
 		() => (orbit === null ? null : createOrbitBuffers(orbit, frame.jd)),
@@ -393,6 +403,12 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		else attribute.addUpdateRange(anchorVertex(buffers.slot) * 3, 3)
 		attribute.needsUpdate = true
 		line.position.copy(shift)
+		const material = materialRef.current
+		if (aroundRoot && material !== null) {
+			const fade = 1 - anchoredWeight(frame.frameBlend, parentIndex)
+			material.opacity = ORBIT_OPACITY * fade
+			line.visible = fade > 0.001
+		}
 	})
 
 	if (buffers === null) return null
@@ -407,6 +423,7 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 				/>
 			</bufferGeometry>
 			<lineBasicMaterial
+				ref={materialRef}
 				color={body.kind === "moon" ? ORBIT_COLORS.moon : ORBIT_COLORS.planet}
 				transparent
 				opacity={ORBIT_OPACITY}

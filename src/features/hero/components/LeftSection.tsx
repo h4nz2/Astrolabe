@@ -39,6 +39,7 @@ const LeftSection: FC<LeftSectionProps> = () => {
 				<Flex direction="column" py="xl" gap="xs" maw={300}>
 					<Button to="/solar_dictionary" label={t("hero.dictionary")} />
 					<Button to="/solar_system" label={t("hero.solarSystem")} />
+					<BirthdayButton label={t("hero.birthday")} />
 				</Flex>
 			</Box>
 		</Container>
@@ -57,6 +58,29 @@ const Button: FC<ButtonProps> = ({ to, label }) => {
 			variant="gradient"
 			gradient={{ from: "yellow", to: "red" }}
 			size="xl"
+			className={classes.button}
+		>
+			{label}
+		</MantineButton>
+	)
+}
+
+/** Straight to "Your birthday in space" (#26): the solar model with the birthday panel open. */
+const BirthdayButton: FC<{ label: string }> = ({ label }) => {
+	return (
+		<MantineButton
+			renderRoot={(props) => (
+				<Link
+					{...props}
+					to="/solar_system"
+					search={{ birthday: true }}
+					preload="viewport"
+				/>
+			)}
+			variant="outline"
+			color="orange"
+			size="xl"
+			px="md"
 			className={classes.button}
 		>
 			{label}

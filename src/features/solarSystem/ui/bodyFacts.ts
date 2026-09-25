@@ -1,0 +1,250 @@
+/**
+ * A body's headline facts for the focused view (#16), comparative by default:
+ * "139,820 km in diameter" means nothing to a twelve-year-old, "11 Earths
+ * wide" means everything. Each fact is a comparison with something the class
+ * knows (Earth, our Moon, the speed of light, their own weight) with the exact
+ * number beside it. Computed from the body model, so every body gets them,
+ * translated through the i18n layer (`solarSystem.facts.*`).
+ */
+import { bodyById, type Body } from "@/data"
+import type { I18n } from "@/i18n"
+import { bodyName } from "@/i18n/bodies"
+import { kmToAu } from "@/sim"
+
+export type FactKey = "size" | "distance" | "year" | "orbit" | "spin" | "weight"
+
+export interface HeadlineFact {
+	key: FactKey
+	/** "Size", "How big" */
+	label: string
+	/** The comparison, the headline: "11 Earths wide". */
+	comparison: string
+	/** The exact number: "139,820 km across". */
+	value: string | null
+}
+
+/** km/s */
+const SPEED_OF_LIGHT_KM_S = 299_792.458
+/** m³ kg⁻¹ s⁻² */
+const GRAVITATIONAL_CONSTANT = 6.674_3e-11
+/** The weight the simple reading level compares with, kg. */
+const REFERENCE_WEIGHT_KG = 30
+/** Ratios within this band of 1 read as "about the same". */
+const SIMILAR_LOW = 0.87
+const SIMILAR_HIGH = 1.15
+
+const earth = bodyById.get("earth")
+const moon = bodyById.get("moon")
+
+/** One decimal below 10 ("1.9 Earths"), whole numbers above ("11 Earths"). */
+export const roughly = (value: number): number =>
+	value >= 10 ? Math.round(value) : Math.round(value * 10) / 10
+
+/**
+ * Surface gravity, m/s²: the curated value where the source has one (it
+ * allows for the giants' flattening and spin), else from the mass and mean
+ * radius; null without either.
+ */
+export const surfaceGravity = (
+	body: Pick<Body, "massKg" | "radiusKm"> & { info?: Body["info"] },
+): number | null => {
+	const curated = body.info?.gravity
+	if (typeof curated === "number" && curated > 0) return curated
+	return body.massKg === null || !(body.radiusKm > 0)
+		? null
+		: (GRAVITATIONAL_CONSTANT * body.massKg) / (body.radiusKm * 1000) ** 2
+}
+
+/** Our Moon for moons and for Earth itself, Earth for everything else. */
+const sizeReference = (body: Body): Body | undefined =>
+	body.id === "earth" || (body.kind === "moon" && body.id !== "moon")
+		? moon
+		: earth
+
+function sizeFact(body: Body, i18n: I18n): HeadlineFact | null {
+	const reference = sizeReference(body)
+	if (reference === undefined) return null
+	const ratio = body.radiusKm / reference.radiusKm
+	const ref = reference.id
+	const comparison =
+		ratio >= SIMILAR_HIGH
+			? i18n.t("solarSystem.facts.sizeWider", { count: roughly(ratio), ref })
+			: ratio > SIMILAR_LOW
+				? i18n.t("solarSystem.facts.sizeSimilar", { ref })
+				: i18n.t("solarSystem.facts.sizeNarrower", {
+						count: roughly(1 / ratio),
+						ref,
+					})
+	const diameter = i18n.quantity(2 * body.radiusKm, "kilometer")
+	return {
+		key: "size",
+		label: i18n.t("solarSystem.facts.label.size"),
+		comparison,
+		value: i18n.t("solarSystem.facts.across", {
+			value: body.radiusEstimated
+				? i18n.t("units.approx", { value: diameter })
+				: diameter,
+		}),
+	}
+}
+
+/** "8.3 minutes", "4.2 hours": how long light takes for `km`. */
+const lightTime = (km: number, i18n: I18n): string => {
+	const minutes = km / SPEED_OF_LIGHT_KM_S / 60
+	return minutes < 90
+		? i18n.quantity(roughly(minutes), "minute", "long")
+		: i18n.quantity(roughly(minutes / 60), "hour", "long")
+}
+
+function distanceFact(body: Body, i18n: I18n): HeadlineFact | null {
+	const parent =
+		body.parentId === null ? undefined : bodyById.get(body.parentId)
+	if (body.orbit === null || parent === undefined) return null
+	const km = body.orbit.semiMajorAxisKm
+	const label = i18n.t("solarSystem.facts.label.distance")
+	if (parent.parentId === null) {
+		// a planet: how long sunlight takes to get there
+		return {
+			key: "distance",
+			label,
+			comparison: i18n.t("solarSystem.facts.sunlight", {
+				time: lightTime(km, i18n),
+			}),
+			value: `${i18n.t("units.au", { value: i18n.significant(kmToAu(km), 3) })} · ${i18n.t(
+				"units.millionKm",
+				{ value: i18n.significant(km / 1e6, 3) },
+			)}`,
+		}
+	}
+	// a moon: how many of its planet would fit into the gap
+	const names = {
+		parentId: parent.id,
+		parent: bodyName(parent.id, i18n.chain),
+	}
+	return {
+		key: "distance",
+		label,
+		comparison: i18n.t("solarSystem.facts.gap", {
+			...names,
+			count: roughly(km / (2 * parent.radiusKm)),
+		}),
+		value: i18n.t("solarSystem.facts.fromParent", {
+			...names,
+			distance: i18n.quantity(km, "kilometer"),
+		}),
+	}
+}
+
+const duration = (days: number, i18n: I18n): string =>
+	days < 1
+		? i18n.quantity(days * 24, "hour", "long")
+		: i18n.quantity(days, "day", "long")
+
+function yearFact(body: Body, i18n: I18n): HeadlineFact | null {
+	const parent =
+		body.parentId === null ? undefined : bodyById.get(body.parentId)
+	if (body.orbit === null || parent === undefined) return null
+	const days = body.orbit.periodDays
+	if (parent.parentId !== null) {
+		// a moon: once round its planet
+		return {
+			key: "orbit",
+			label: i18n.t("solarSystem.facts.label.orbit"),
+			comparison: i18n.t("solarSystem.facts.lap", {
+				parentId: parent.id,
+				parent: bodyName(parent.id, i18n.chain),
+				period: duration(days, i18n),
+			}),
+			value: null,
+		}
+	}
+	const earthYear = earth?.orbit?.periodDays ?? 365.256
+	const years = days / earthYear
+	const comparison =
+		body.id === "earth"
+			? i18n.t("solarSystem.facts.yearEarth")
+			: years >= 1.5
+				? i18n.t("solarSystem.facts.yearLonger", { count: roughly(years) })
+				: i18n.t("solarSystem.facts.yearShorter", {
+						count: roughly(1 / years),
+					})
+	return {
+		key: "year",
+		label: i18n.t("solarSystem.facts.label.year"),
+		comparison,
+		value: i18n.quantity(days, "day", "long"),
+	}
+}
+
+/** Periods from this long on read better in days (Venus: 243 days, not 5,832 hours). */
+const ROTATION_DAYS_FROM_HOURS = 72
+
+/** The rotation period with its direction, and for a tidally locked moon a note saying so (#13). */
+function spinFact(body: Body, i18n: I18n): HeadlineFact {
+	const { periodHours, synchronous } = body.rotation
+	const label = i18n.t("solarSystem.info.rotation")
+	if (periodHours === null) {
+		return {
+			key: "spin",
+			label,
+			comparison: i18n.t("solarSystem.info.rotationUnknown"),
+			value: null,
+		}
+	}
+	const hours = Math.abs(periodHours)
+	const period =
+		hours >= ROTATION_DAYS_FROM_HOURS
+			? i18n.quantity(hours / 24, "day", "long")
+			: i18n.quantity(hours, "hour", "long")
+	return {
+		key: "spin",
+		label,
+		comparison:
+			periodHours < 0
+				? i18n.t("solarSystem.info.retrograde", { period })
+				: period,
+		value:
+			synchronous === true && body.parentId !== null
+				? i18n.t("solarSystem.info.synchronous", {
+						parentId: body.parentId,
+						parent: bodyName(body.parentId, i18n.chain),
+					})
+				: null,
+	}
+}
+
+function weightFact(body: Body, i18n: I18n): HeadlineFact | null {
+	const gravity = surfaceGravity(body)
+	const earthGravity = earth === undefined ? null : surfaceGravity(earth)
+	if (gravity === null || earthGravity === null || body.id === "earth") {
+		return null
+	}
+	const ratio = gravity / earthGravity
+	const kg = i18n.significant(REFERENCE_WEIGHT_KG * ratio, 2)
+	const comparison =
+		ratio >= 1.05
+			? i18n.t("solarSystem.facts.weightMore", { count: roughly(ratio), kg })
+			: ratio > 0.95
+				? i18n.t("solarSystem.facts.weightSimilar", { kg })
+				: i18n.t("solarSystem.facts.weightLess", {
+						percent: i18n.significant(ratio * 100, 2),
+						kg,
+					})
+	return {
+		key: "weight",
+		label: i18n.t("solarSystem.facts.label.weight"),
+		comparison,
+		value: i18n.t("units.gravity", { value: i18n.significant(gravity, 3) }),
+	}
+}
+
+/** Size, distance, year (or orbit), spin and weight, the ones that apply to `body`. */
+export function headlineFacts(body: Body, i18n: I18n): HeadlineFact[] {
+	return [
+		sizeFact(body, i18n),
+		distanceFact(body, i18n),
+		yearFact(body, i18n),
+		spinFact(body, i18n),
+		weightFact(body, i18n),
+	].filter((fact): fact is HeadlineFact => fact !== null)
+}

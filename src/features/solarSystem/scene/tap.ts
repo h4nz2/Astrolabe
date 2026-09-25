@@ -9,10 +9,13 @@
 /** Longest travel between press and release that is still a tap, px. */
 export const TAP_MAX_TRAVEL_PX = { mouse: 4, pen: 8, touch: 12 } as const
 
-type PointerKind = keyof typeof TAP_MAX_TRAVEL_PX
+export type PointerKind = keyof typeof TAP_MAX_TRAVEL_PX
 
 const isPointerKind = (value: unknown): value is PointerKind =>
 	value === "mouse" || value === "pen" || value === "touch"
+
+/** The kind of pointer that moved or pressed last (hover has no press). */
+let lastKind: PointerKind = "mouse"
 
 /** The current (or last) press: where it started and how far it has wandered. */
 const press = {
@@ -29,7 +32,10 @@ if (typeof window !== "undefined") {
 		"pointerdown",
 		(event) => {
 			press.id = event.pointerId
-			if (isPointerKind(event.pointerType)) press.kind = event.pointerType
+			if (isPointerKind(event.pointerType)) {
+				press.kind = event.pointerType
+				lastKind = event.pointerType
+			}
 			press.x = event.clientX
 			press.y = event.clientY
 			press.travel = 0
@@ -39,6 +45,7 @@ if (typeof window !== "undefined") {
 	window.addEventListener(
 		"pointermove",
 		(event) => {
+			if (isPointerKind(event.pointerType)) lastKind = event.pointerType
 			if (event.pointerId !== press.id) return
 			press.travel = Math.max(
 				press.travel,
@@ -54,6 +61,9 @@ export const pointerKindOf = (event: Event): PointerKind => {
 	const type = (event as Partial<PointerEvent>).pointerType
 	return isPointerKind(type) ? type : press.kind
 }
+
+/** The pointer in use right now: sizes the hit targets while hovering and tapping. */
+export const currentPointerKind = (): PointerKind => lastKind
 
 export const isTap = (travelPx: number, kind: PointerKind): boolean =>
 	travelPx <= TAP_MAX_TRAVEL_PX[kind]
