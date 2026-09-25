@@ -56,13 +56,16 @@
 		"kind": {
 			"star": "Étoile",
 			"planet": "Planète",
+			"dwarfPlanet": "Planète naine",
 			"moon": "Lune",
-			"moonOf": "Lune {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} other {de {parent}}}"
+			"asteroid": "Astéroïde",
+			"comet": "Comète",
+			"moonOf": "Lune {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} eris {d’{parent}} other {de {parent}}}"
 		},
 		"fallback": {
-			"moonDescription": "{name} est une lune {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} other {de {parent}}}. Elle mesure environ {diameter} de diamètre et fait le tour de sa planète en {period}.",
-			"moonDescription@simple": "{name} est l’une des lunes qui tournent autour {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} other {de {parent}}}. Elle mesure environ {diameter} de large.",
-			"moonDescription@advanced": "{name} orbite autour {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} other {de {parent}}} à une distance moyenne de {distance}, avec une période de {period}. Son diamètre moyen est d’environ {diameter}."
+			"moonDescription": "{name} est une lune {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} eris {d’{parent}} other {de {parent}}}. Elle mesure environ {diameter} de diamètre et fait le tour de {parentId, select, pluto {sa planète naine} eris {sa planète naine} haumea {sa planète naine} makemake {sa planète naine} other {sa planète}} en {period}.",
+			"moonDescription@simple": "{name} est l’une des lunes qui tournent autour {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} eris {d’{parent}} other {de {parent}}}. Elle mesure environ {diameter} de large.",
+			"moonDescription@advanced": "{name} orbite autour {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} eris {d’{parent}} other {de {parent}}} à une distance moyenne de {distance}, avec une période de {period}. Son diamètre moyen est d’environ {diameter}."
 		}
 	},
 	"dictionary": {
@@ -129,7 +132,10 @@
 		"picker": {
 			"label": "Astre au centre",
 			"placeholder": "Choisir un astre…",
-			"nothingFound": "Aucun astre de ce nom"
+			"nothingFound": "Aucun astre de ce nom",
+			"dwarfPlanets": "Planètes naines",
+			"asteroids": "Astéroïdes",
+			"comets": "Comètes"
 		},
 		"layers": {
 			"label": "Calques de la scène",
@@ -140,6 +146,7 @@
 			"allMoonsHint": "Affiche aussi les nombreuses petites lunes, pas seulement celles qui ont une histoire",
 			"markers": "Repères",
 			"orbitNames": "Noms des orbites",
+			"smallBodies": "Petits corps",
 			"alwaysLit": "Toujours éclairé"
 		},
 		"scale": {
@@ -374,9 +381,11 @@
 			"across": "{value} de diamètre",
 			"sunlight": "La lumière du Soleil met {time} pour arriver ici",
 			"sunlight@simple": "La lumière du Soleil a besoin de {time} pour arriver ici",
+			"sunlightRange": "La lumière du Soleil met entre {near} et {far} pour arriver ici, selon la position de l’astre sur sa longue orbite",
+			"sunlightRange@simple": "La lumière du Soleil met {near} pour arriver ici quand l’astre est au plus près du Soleil, et {far} quand il est au plus loin",
 			"gap": "{parentId, select, sun {Le Soleil} earth {La Terre} moon {La Lune} other {{parent}}} tiendrait {count, plural, one {# fois} many {# de fois} other {# fois}} dans cet espace",
-			"fromParent": "À {distance} {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} other {de {parent}}}",
-			"lap": "Fait le tour {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} other {de {parent}}} en {period}",
+			"fromParent": "À {distance} {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} eris {d’{parent}} other {de {parent}}}",
+			"lap": "Fait le tour {parentId, select, sun {du Soleil} earth {de la Terre} moon {de la Lune} uranus {d’{parent}} io {d’{parent}} europa {d’{parent}} enceladus {d’{parent}} hyperion {d’{parent}} ariel {d’{parent}} umbriel {d’{parent}} oberon {d’{parent}} eris {d’{parent}} other {de {parent}}} en {period}",
 			"yearEarth": "Un tour autour du Soleil : c’est ça, une année",
 			"yearLonger": "{count, plural, one {Un tour du Soleil dure # année terrestre} many {Un tour du Soleil dure # d’années terrestres} other {Un tour du Soleil dure # années terrestres}}",
 			"yearShorter": "{count, plural, one {Fait # fois le tour du Soleil en une année terrestre} many {Fait # de fois le tour du Soleil en une année terrestre} other {Fait # fois le tour du Soleil en une année terrestre}}",
@@ -797,6 +806,32 @@
 				"join2@simple": "{a} et {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} et {c}"
+			}
+		},
+		"smallBodies": {
+			"beltName": "{belt, select, asteroidbelt {Ceinture d’astéroïdes} kuiperbelt {Ceinture de Kuiper} other {{belt}}}",
+			"perDot": "{belt, select, asteroidbelt {Chaque point représente environ {count, number} astéroïdes de plus de {size}.} other {Chaque point représente environ {count, number} corps glacés de plus de {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Chaque point représente environ {count, number} vrais rochers de l’espace de plus de {size}.} other {Chaque point représente environ {count, number} vrais petits mondes glacés de plus de {size}.}}",
+			"perDot@advanced": "{belt, select, asteroidbelt {On estime à {total} le nombre d’astéroïdes de plus de {size} : chaque point en représente environ {count, number}.} other {On estime à {total} le nombre de corps de plus de {size} : chaque point en représente environ {count, number}.}}",
+			"spacing": "Deux voisins sont séparés d’environ {distance} – {moons, number} fois la distance de la Terre à la Lune. Les sondes spatiales traversent la ceinture en ligne droite, sans avoir à contourner quoi que ce soit.",
+			"spacing@simple": "Mais ils sont très loin les uns des autres : {moons, number} fois la distance de la Terre à la Lune. Les sondes spatiales passent au travers sans rien heurter.",
+			"spacing@advanced": "Écart typique entre deux voisins : environ {distance}, soit {moons, number} fois la distance Terre–Lune. Les sondes traversent la ceinture sur des trajectoires ordinaires ; aucune n’a jamais eu besoin d’éviter un astéroïde en chemin.",
+			"dotSize": "Les points sont dessinés bien plus gros que les vrais corps : à leur taille réelle, on ne verrait rien du tout. Dans les films, c’est un champ de rochers encombré – dans l’espace, c’est presque vide.",
+			"dotSize@simple": "Les points sont dessinés beaucoup trop gros. Dans les films, c’est plein de rochers qui se cognent les uns contre les autres – dans le vrai espace, c’est presque vide.",
+			"legendKuiper": "Au-delà de Neptune : la ceinture de Kuiper, la bordure glacée du domaine des planètes.",
+			"legendKuiper@simple": "Loin au-delà de Neptune se trouve la ceinture de Kuiper, pleine de petits mondes glacés.",
+			"comet": {
+				"label": "Comète",
+				"where": "À {distance} du Soleil, {direction, select, in {elle tombe vers lui} other {elle s’en éloigne}}.",
+				"where@simple": "Elle est à {distance} du Soleil et {direction, select, in {elle s’en rapproche} other {elle s’en éloigne}}.",
+				"tail": "Sa queue mesure environ {length} et pointe à l’opposé du Soleil{direction, select, out { – en ce moment, c’est donc la queue qui passe devant} other {}}.",
+				"tail@simple": "Sa queue mesure environ {length}. Elle pointe toujours à l’opposé du Soleil{direction, select, out { – même maintenant, alors que la comète s’en va la queue en avant} other {}} !",
+				"noTail": "Pas de queue pour l’instant : elle ne se forme qu’à moins d’environ {onset} du Soleil, là où la lumière solaire transforme la glace de la comète en gaz.",
+				"noTail@simple": "Pas de queue pour l’instant. La queue n’apparaît que lorsque la comète s’approche du Soleil et que sa glace commence à se changer en gaz.",
+				"next": "Prochain passage au plus près du Soleil : {date}.",
+				"last": "Dernier passage au plus près du Soleil : {date}. Elle reviendra dans environ {years, number} ans.",
+				"watch": "Voir son passage près du Soleil",
+				"watch@simple": "Regarde-la passer tout près du Soleil"
 			}
 		}
 	},

@@ -56,11 +56,14 @@
 		"kind": {
 			"star": "Estrella",
 			"planet": "Planeta",
+			"dwarfPlanet": "Planeta enano",
 			"moon": "Luna",
+			"asteroid": "Asteroide",
+			"comet": "Cometa",
 			"moonOf": "{parentId, select, earth {Luna de la Tierra} other {Luna de {parent}}}"
 		},
 		"fallback": {
-			"moonDescription": "{name} es una luna de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de diámetro y da una vuelta completa a su planeta cada {period}.",
+			"moonDescription": "{name} es una luna de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de diámetro y da una vuelta completa a {parentId, select, pluto {su planeta enano} eris {su planeta enano} haumea {su planeta enano} makemake {su planeta enano} other {su planeta}} cada {period}.",
 			"moonDescription@simple": "{name} es una de las lunas que giran alrededor de {parentId, select, earth {la Tierra} other {{parent}}}. Mide unos {diameter} de ancho.",
 			"moonDescription@advanced": "{name} orbita alrededor de {parentId, select, earth {la Tierra} other {{parent}}} a una distancia media de {distance}, con un periodo de {period}. Su diámetro medio es de unos {diameter}."
 		}
@@ -129,7 +132,10 @@
 		"picker": {
 			"label": "Cuerpo celeste enfocado",
 			"placeholder": "Buscar un cuerpo celeste…",
-			"nothingFound": "No hay ningún cuerpo con ese nombre"
+			"nothingFound": "No hay ningún cuerpo con ese nombre",
+			"dwarfPlanets": "Planetas enanos",
+			"asteroids": "Asteroides",
+			"comets": "Cometas"
 		},
 		"layers": {
 			"label": "Capas de la escena",
@@ -140,6 +146,7 @@
 			"allMoonsHint": "Mostrar también las muchas lunas pequeñas, no solo las que tienen una historia",
 			"markers": "Marcadores",
 			"orbitNames": "Nombres de órbitas",
+			"smallBodies": "Cuerpos menores",
 			"alwaysLit": "Siempre iluminado"
 		},
 		"scale": {
@@ -374,6 +381,8 @@
 			"across": "{value} de diámetro",
 			"sunlight": "La luz del Sol tarda {time} en llegar aquí",
 			"sunlight@simple": "La luz del Sol necesita {time} para llegar hasta aquí",
+			"sunlightRange": "La luz del Sol tarda entre {near} y {far} en llegar aquí, según en qué punto de su larga órbita se encuentre",
+			"sunlightRange@simple": "La luz del Sol necesita {near} para llegar hasta aquí cuando está más cerca y {far} cuando está más lejos",
 			"gap": "{parentId, select, sun {El Sol} earth {La Tierra} other {{parent}}} cabría {count, plural, one {# vez} many {# de veces} other {# veces}} en ese hueco",
 			"fromParent": "A {distance} {parentId, select, sun {del Sol} earth {de la Tierra} other {de {parent}}}",
 			"lap": "Da una vuelta {parentId, select, sun {al Sol} earth {a la Tierra} other {a {parent}}} en {period}",
@@ -797,6 +806,32 @@
 				"join2@simple": "{a} y {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} y {c}"
+			}
+		},
+		"smallBodies": {
+			"beltName": "{belt, select, asteroidbelt {Cinturón de asteroides} kuiperbelt {Cinturón de Kuiper} other {{belt}}}",
+			"perDot": "{belt, select, asteroidbelt {Cada punto representa unos {count, number} asteroides de más de {size}.} other {Cada punto representa unos {count, number} cuerpos helados de más de {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Cada punto representa unas {count, number} rocas espaciales de verdad de más de {size}.} other {Cada punto representa unos {count, number} mundos helados de verdad de más de {size}.}}",
+			"perDot@advanced": "{belt, select, asteroidbelt {Un punto por cada {count, number}, aproximadamente, de los {total} asteroides de más de {size} que se estima que existen.} other {Un punto por cada {count, number}, aproximadamente, de los {total} cuerpos de más de {size} que se estima que existen.}}",
+			"spacing": "Los vecinos están a unos {distance} unos de otros – {moons, number} veces la distancia de la Tierra a la Luna. Las naves espaciales lo atraviesan en línea recta sin tener que esquivar nada.",
+			"spacing@simple": "Pero están muy lejos unos de otros: {moons, number} veces más que de la Tierra a la Luna. Las sondas espaciales lo atraviesan sin chocar con nada.",
+			"spacing@advanced": "Separación típica entre vecinos: unos {distance}, {moons, number} veces la distancia Tierra–Luna. Las sondas cruzan el cinturón en trayectorias normales; ninguna ha tenido nunca que esquivar un asteroide por el camino.",
+			"dotSize": "Los puntos están dibujados mucho más grandes que los cuerpos reales: a su tamaño real no verías nada. En las películas es un campo abarrotado de rocas – en el espacio está casi vacío.",
+			"dotSize@simple": "Los puntos están dibujados demasiado grandes. En las películas está lleno de rocas que chocan entre sí – en el espacio de verdad está casi vacío.",
+			"legendKuiper": "Más allá de Neptuno: el cinturón de Kuiper, el borde helado del reino de los planetas.",
+			"legendKuiper@simple": "Mucho más allá de Neptuno está el cinturón de Kuiper, lleno de pequeños mundos helados.",
+			"comet": {
+				"label": "Cometa",
+				"where": "A {distance} del Sol, {direction, select, in {cayendo hacia él} other {alejándose de él}}.",
+				"where@simple": "Está a {distance} del Sol y {direction, select, in {se está acercando} other {se está alejando}}.",
+				"tail": "Su cola mide unos {length} y apunta en sentido contrario al Sol{direction, select, out { – por eso ahora la cola va por delante} other {}}.",
+				"tail@simple": "Su cola mide unos {length}. ¡Siempre apunta en sentido contrario al Sol{direction, select, out { – incluso ahora, que el cometa se aleja con la cola por delante} other {}}!",
+				"noTail": "Ahora mismo no tiene cola: solo se forma a menos de unos {onset} del Sol, donde la luz solar convierte el hielo del cometa en gas.",
+				"noTail@simple": "Ahora mismo no tiene cola. La cola solo crece cuando el cometa se acerca al Sol y su hielo empieza a convertirse en gas.",
+				"next": "Próximo paso más cerca del Sol: {date}.",
+				"last": "Último paso más cerca del Sol: {date}. Volverá dentro de unos {years, number} años.",
+				"watch": "Ver cómo pasa junto al Sol",
+				"watch@simple": "Mira cómo pasa volando junto al Sol"
 			}
 		}
 	},
