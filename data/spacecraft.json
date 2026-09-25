@@ -1,0 +1,209 @@
+{
+	"$comment": "Curated spacecraft catalogue (#35), the input of `pnpm build:spacecraft` (scripts/build-spacecraft.ts), which adds the trajectories from JPL Horizons and writes src/data/spacecraft.json. Times are UTC. `horizonsId` is the Horizons target id; `dataFrom`/`dataTo` stay inside the range Horizons covers. `end` is null while the mission is operating. `centres` force the positions to be kept relative to a planet for a time range (JWST lives around Sun-Earth L2, at the edge of Earth's Hill sphere). `orbits` are the phases spent around a planet (in orbit, or at Sun-Earth L2 for JWST): the app draws them as a track around where the planet is now instead of along the cruise path. Events with a date after `asOf` are plans, not history.",
+	"asOf": "2026-09-25",
+	"craft": [
+		{
+			"id": "voyager1",
+			"horizonsId": "-31",
+			"name": "Voyager 1",
+			"launch": "1977-09-05T12:56Z",
+			"dataFrom": "1977-09-05T14:00Z",
+			"dataTo": "2099-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{ "date": "1979-03-05T12:05Z", "kind": "flyby", "target": "jupiter" },
+				{ "date": "1980-11-12T05:41Z", "kind": "flyby", "target": "titan" },
+				{ "date": "1980-11-12T23:46Z", "kind": "flyby", "target": "saturn" },
+				{ "date": "1990-02-14T04:48Z", "kind": "paleBlueDot" },
+				{ "date": "1998-02-17T12:00Z", "kind": "farthest" },
+				{ "date": "2012-08-25T12:00Z", "kind": "heliopause" }
+			],
+			"centres": [],
+			"orbits": []
+		},
+		{
+			"id": "voyager2",
+			"horizonsId": "-32",
+			"name": "Voyager 2",
+			"launch": "1977-08-20T14:29Z",
+			"dataFrom": "1977-08-20T15:32Z",
+			"dataTo": "2099-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{ "date": "1979-07-09T22:29Z", "kind": "flyby", "target": "jupiter" },
+				{ "date": "1981-08-26T03:24Z", "kind": "flyby", "target": "saturn" },
+				{ "date": "1986-01-24T17:59Z", "kind": "flyby", "target": "uranus" },
+				{ "date": "1989-08-25T03:56Z", "kind": "flyby", "target": "neptune" },
+				{ "date": "1989-08-25T09:10Z", "kind": "flyby", "target": "triton" },
+				{ "date": "2018-11-05T12:00Z", "kind": "heliopause" }
+			],
+			"centres": [],
+			"orbits": []
+		},
+		{
+			"id": "pioneer10",
+			"horizonsId": "-23",
+			"name": "Pioneer 10",
+			"launch": "1972-03-03T01:49Z",
+			"dataFrom": "1972-03-03T02:05Z",
+			"dataTo": "2049-12-31T00:00Z",
+			"end": { "date": "2003-01-23T12:00Z", "kind": "silent" },
+			"events": [
+				{ "date": "1973-12-04T02:26Z", "kind": "flyby", "target": "jupiter" },
+				{ "date": "2003-01-23T12:00Z", "kind": "lastContact" }
+			],
+			"centres": [],
+			"orbits": []
+		},
+		{
+			"id": "pioneer11",
+			"horizonsId": "-24",
+			"name": "Pioneer 11",
+			"launch": "1973-04-06T02:11Z",
+			"dataFrom": "1973-04-06T02:26Z",
+			"dataTo": "2049-12-31T00:00Z",
+			"end": { "date": "1995-09-30T12:00Z", "kind": "silent" },
+			"events": [
+				{ "date": "1974-12-03T05:22Z", "kind": "flyby", "target": "jupiter" },
+				{ "date": "1979-09-01T16:31Z", "kind": "flyby", "target": "saturn" },
+				{ "date": "1995-09-30T12:00Z", "kind": "missionEnd" }
+			],
+			"centres": [],
+			"orbits": []
+		},
+		{
+			"id": "newHorizons",
+			"horizonsId": "-98",
+			"name": "New Horizons",
+			"launch": "2006-01-19T19:00Z",
+			"dataFrom": "2006-01-19T19:51Z",
+			"dataTo": "2049-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{ "date": "2007-02-28T05:43Z", "kind": "flyby", "target": "jupiter" },
+				{ "date": "2015-07-14T11:49Z", "kind": "flyby", "target": "pluto" },
+				{ "date": "2019-01-01T05:33Z", "kind": "flyby", "target": "arrokoth" }
+			],
+			"centres": [],
+			"orbits": []
+		},
+		{
+			"id": "cassini",
+			"horizonsId": "-82",
+			"name": "Cassini",
+			"launch": "1997-10-15T08:43Z",
+			"dataFrom": "1997-10-15T09:27Z",
+			"dataTo": "2017-09-15T10:31Z",
+			"end": { "date": "2017-09-15T10:31Z", "kind": "destroyed" },
+			"events": [
+				{ "date": "1998-04-26T13:45Z", "kind": "flyby", "target": "venus" },
+				{ "date": "1999-06-24T20:30Z", "kind": "flyby", "target": "venus" },
+				{ "date": "1999-08-18T03:28Z", "kind": "flyby", "target": "earth" },
+				{ "date": "2000-12-30T10:05Z", "kind": "flyby", "target": "jupiter" },
+				{
+					"date": "2004-07-01T02:48Z",
+					"kind": "orbitInsertion",
+					"target": "saturn"
+				},
+				{
+					"date": "2005-01-14T12:00Z",
+					"kind": "probeLanding",
+					"target": "titan"
+				},
+				{ "date": "2017-09-15T10:31Z", "kind": "impact", "target": "saturn" }
+			],
+			"centres": [],
+			"orbits": [
+				{ "center": "saturn", "from": "2004-07-01T02:48Z", "trackDays": 30 }
+			]
+		},
+		{
+			"id": "parker",
+			"horizonsId": "-96",
+			"name": "Parker Solar Probe",
+			"launch": "2018-08-12T07:31Z",
+			"dataFrom": "2018-08-12T08:16Z",
+			"dataTo": "2029-12-31T00:00Z",
+			"end": null,
+			"events": [
+				{ "date": "2018-10-03T08:44Z", "kind": "flyby", "target": "venus" },
+				{ "date": "2019-12-26T18:14Z", "kind": "flyby", "target": "venus" },
+				{ "date": "2020-07-11T03:22Z", "kind": "flyby", "target": "venus" },
+				{ "date": "2021-02-20T20:05Z", "kind": "flyby", "target": "venus" },
+				{ "date": "2021-10-16T09:37Z", "kind": "flyby", "target": "venus" },
+				{ "date": "2023-08-21T12:03Z", "kind": "flyby", "target": "venus" },
+				{ "date": "2024-11-06T06:26Z", "kind": "flyby", "target": "venus" },
+				{ "date": "2024-12-24T11:53Z", "kind": "closestToSun" }
+			],
+			"centres": [],
+			"orbits": []
+		},
+		{
+			"id": "jwst",
+			"horizonsId": "-170",
+			"name": "James Webb Space Telescope",
+			"launch": "2021-12-25T12:20Z",
+			"dataFrom": "2021-12-25T13:01Z",
+			"dataTo": "2031-09-20T00:00Z",
+			"end": null,
+			"events": [
+				{ "date": "2022-01-24T19:05Z", "kind": "arrival", "target": "l2" },
+				{ "date": "2022-07-12T14:30Z", "kind": "firstImages" }
+			],
+			"centres": [
+				{
+					"center": "earth",
+					"from": "2021-12-25T13:01Z",
+					"to": "2031-09-20T00:00Z"
+				}
+			],
+			"orbits": [
+				{ "center": "earth", "from": "2021-12-25T13:01Z", "trackDays": 30 }
+			]
+		},
+		{
+			"id": "juno",
+			"horizonsId": "-61",
+			"name": "Juno",
+			"launch": "2011-08-05T16:25Z",
+			"dataFrom": "2011-08-05T17:19Z",
+			"dataTo": "2028-09-30T00:00Z",
+			"end": null,
+			"events": [
+				{ "date": "2013-10-09T19:21Z", "kind": "flyby", "target": "earth" },
+				{
+					"date": "2016-07-05T03:53Z",
+					"kind": "orbitInsertion",
+					"target": "jupiter"
+				},
+				{ "date": "2021-06-07T17:35Z", "kind": "flyby", "target": "ganymede" },
+				{ "date": "2022-09-29T09:36Z", "kind": "flyby", "target": "europa" },
+				{ "date": "2023-12-30T08:35Z", "kind": "flyby", "target": "io" }
+			],
+			"centres": [],
+			"orbits": [
+				{ "center": "jupiter", "from": "2016-07-05T03:53Z", "trackDays": 40 }
+			]
+		},
+		{
+			"id": "europaClipper",
+			"horizonsId": "-159",
+			"name": "Europa Clipper",
+			"launch": "2024-10-14T16:06Z",
+			"dataFrom": "2024-10-14T16:15Z",
+			"dataTo": "2030-04-12T00:00Z",
+			"end": null,
+			"events": [
+				{ "date": "2025-03-01T17:57Z", "kind": "flyby", "target": "mars" },
+				{ "date": "2026-12-03T12:00Z", "kind": "flyby", "target": "earth" },
+				{
+					"date": "2030-04-11T12:00Z",
+					"kind": "orbitInsertion",
+					"target": "jupiter"
+				}
+			],
+			"centres": [],
+			"orbits": []
+		}
+	]
+}

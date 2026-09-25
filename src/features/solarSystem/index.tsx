@@ -28,6 +28,8 @@ import {
 } from "./skyTonight/SkyTonight"
 import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
+import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
+import SpacecraftMenu from "./spacecraft/SpacecraftMenu"
 import BodyHighlight from "./ui/BodyHighlight"
 import BodyInfo from "./ui/BodyInfo"
 import { freeCentreId } from "./ui/centre"
@@ -111,6 +113,7 @@ const SolarSystem = () => {
 				<div className={classes.toggles}>
 					<div className={classes.panel}>
 						<TeacherBar layers={<SceneToggles />}>
+							<SpacecraftMenu />
 							<PostcardButton />
 							<SoundControl />
 							<HelpButton />
@@ -128,7 +131,7 @@ const SolarSystem = () => {
 				</div>
 				<IntroOverlay className={classes.intro} />
 				<div className={`${classes.panel} ${classes.info}`}>
-					<BodyInfo />
+					<SpacecraftInfo fallback={<BodyInfo />} />
 				</div>
 				<div className={`${classes.time} ${classes.bottom}`}>
 					<FlightReadout className={classes.panel} />

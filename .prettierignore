@@ -6,4 +6,6 @@ public
 playwright-report
 test-results
 .claude
+src/data/spacecraftTrajectories.json
+src/data/spacecraftCheck.json
 src/data/credits.json

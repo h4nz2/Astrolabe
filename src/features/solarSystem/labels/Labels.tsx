@@ -32,7 +32,12 @@ import {
 } from "./board"
 import { fadeLabels, pickLabel, staticLabelRanks } from "./layout"
 import { createOrbitAnchorCache } from "./orbitAnchor"
-import { fillLabelLayout, slotBody } from "./project"
+import {
+	fillLabelLayout,
+	labelSlotCount,
+	slotBody,
+	type LabelExtension,
+} from "./project"
 
 import hudClasses from "../SolarSystem.module.css"
 
@@ -40,13 +45,19 @@ export interface LabelsProps {
 	board: LabelBoard
 	/** What a tap on a label does; default: what a tap on the body does (./activate.ts). */
 	onActivate?: LabelActivateHandler
+	/** Labels of things that are not bodies (spacecraft, #35) in the same layout; they pick themselves. */
+	extension?: LabelExtension
 }
 
 const pointer = new Vector3()
 /** How often the HUD panels' rectangles are re-read, s. */
 const KEEP_OUT_INTERVAL_S = 0.25
 
-function Labels({ board, onActivate = focusBodyFromLabel }: LabelsProps) {
+function Labels({
+	board,
+	onActivate = focusBodyFromLabel,
+	extension,
+}: LabelsProps) {
 	const frame = useSimFrame()
 	const groupRef = useRef<Group>(null)
 	const hidden = useRef(false)
@@ -83,6 +94,7 @@ function Labels({ board, onActivate = focusBodyFromLabel }: LabelsProps) {
 			state,
 			ranks,
 			orbitCache,
+			extension,
 		)
 		fadeLabels(layout, delta)
 		writeLabels(board)
@@ -102,7 +114,8 @@ function Labels({ board, onActivate = focusBodyFromLabel }: LabelsProps) {
 				((pointer.x + 1) / 2) * layout.viewportWidth,
 				((1 - pointer.y) / 2) * layout.viewportHeight,
 			)
-			if (slot < 0) return
+			// an extension's labels (after the bodies' and orbits') are not bodies
+			if (slot < 0 || slot >= labelSlotCount(frame.bodies.length)) return
 			// in front of everything: the label is drawn over the scene
 			intersects.push({
 				distance: 0,
