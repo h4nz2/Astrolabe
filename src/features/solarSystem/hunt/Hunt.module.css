@@ -7,7 +7,7 @@
  */
 .panel {
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	top: 0;
 	right: 0;
 	width: 100%;
@@ -80,7 +80,16 @@
 	color: var(--mantine-color-gray-0);
 }
 
+.progress {
+	white-space: nowrap;
+}
+
+.share {
+	flex: none;
+}
+
 .dots {
+	min-width: 0;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.3rem;

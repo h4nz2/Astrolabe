@@ -145,6 +145,7 @@ test("a shared link names the hunt in the teacher's language", async ({
 test("the finish, and progress that survives a reload", async ({ page }) => {
 	await page.setViewportSize({ width: 1280, height: 800 })
 	await ready(page, "/solar_system?hunt=walkedOn.redPlanet&lang=en")
+	await expect(page.getByTestId("hunt-clue")).toBeVisible()
 	// any way of selecting counts, the picker too
 	await page.evaluate(() =>
 		window.__astrolabe!.store.getState().setFocus("moon"),

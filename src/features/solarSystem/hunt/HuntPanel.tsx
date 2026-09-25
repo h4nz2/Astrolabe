@@ -72,6 +72,7 @@ const ShareButton = ({ huntKey }: { huntKey: string }) => {
 					variant="subtle"
 					color="gray"
 					size="compact-sm"
+					className={classes.share}
 					leftSection={<IconShare size={14} />}
 				>
 					{t("solarSystem.hunt.share.button")}
@@ -524,8 +525,13 @@ const HuntPanel = () => {
 				</Group>
 				{hunt !== null && step < total && (
 					<Group gap="xs" justify="space-between" wrap="nowrap" mt={4}>
-						<Group gap="xs" wrap="nowrap">
-							<Text size="sm" fw={600} data-testid="hunt-progress">
+						<Group gap="xs" wrap="nowrap" miw={0}>
+							<Text
+								size="sm"
+								fw={600}
+								className={classes.progress}
+								data-testid="hunt-progress"
+							>
 								{t("solarSystem.hunt.progress", {
 									step: step + 1,
 									total,
