@@ -135,11 +135,14 @@ test("every control is two actions away, behind named entry points", async ({
 		"postcard",
 	])
 		await expect(page.locator(`[data-tool=${id}]`)).toBeVisible()
-	await page.keyboard.press("Escape")
+	// (Escape would also take the view back to the overview: the button closes the menu)
+	await page.getByTestId("tools-menu").click()
+	await expect(tools.first()).toBeHidden()
 
 	await page.getByTestId("tour-menu").click()
 	await expect(page.getByRole("menuitem")).toHaveCount(4)
-	await page.keyboard.press("Escape")
+	await page.getByTestId("tour-menu").click()
+	await expect(page.getByRole("menuitem")).toHaveCount(0)
 
 	// the body card starts small and unfolds on demand
 	await expandCard(page)

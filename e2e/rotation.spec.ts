@@ -7,7 +7,7 @@ import { mkdirSync } from "node:fs"
 import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
-import { closeTime, openLayers, openTime } from "./support/hud"
+import { closeTime, expandCard, openLayers, openTime } from "./support/hud"
 
 const screenshotDir = path.join("test-results", "rotation")
 
@@ -132,9 +132,11 @@ test("the facts panel shows retrograde spin and tidal locking", async ({
 	await page.goto("/solar_system?focus=venus")
 	await page.waitForLoadState("networkidle")
 	const info = page.getByRole("region", { name: "Focused body" })
+	await expandCard(page)
 	await expect(info).toContainText("243 days, retrograde")
 
 	await page.goto("/solar_system?focus=moon")
 	await page.waitForLoadState("networkidle")
+	await expandCard(page)
 	await expect(info).toContainText("always the same face toward Earth")
 })

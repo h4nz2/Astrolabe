@@ -117,6 +117,7 @@ test.describe("with a Swiss German browser", () => {
 		await page.goto("/solar_system?focus=jupiter")
 		await expect(page).toHaveURL(/[?&]lang=de(&|$)/)
 		await expect(page.locator("html")).toHaveAttribute("lang", "de")
+		await expandCard(page)
 		const swissGroup = await page.evaluate(() =>
 			new Intl.NumberFormat("de-CH").format(1000).charAt(1),
 		)
