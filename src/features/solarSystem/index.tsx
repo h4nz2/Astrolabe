@@ -92,9 +92,10 @@ const SolarSystem = () => {
 		<div className={classes.page}>
 			<UrlSync />
 			<IntroController />
-			<QuickLookController />
 			<SoundDirector />
 			<TourSync />
+			{/* after TourSync, which ends a tour left over from before on arrival */}
+			<QuickLookController />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
