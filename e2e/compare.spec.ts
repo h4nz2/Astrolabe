@@ -172,4 +172,10 @@ test("fits a phone: the drawing and the facts, no sideways page scroll", async (
 	await expect(
 		page.getByTestId("compare-facts").locator("[data-fact=size]"),
 	).toBeVisible()
+	// taller than the phone: the page scrolls down to its end
+	const end = page.locator("[data-testid=compare-page] > *").last()
+	await expect(end).not.toBeInViewport()
+	await page.mouse.move(200, 400)
+	for (let i = 0; i < 50; i++) await page.mouse.wheel(0, 2000)
+	await expect(end).toBeInViewport()
 })
