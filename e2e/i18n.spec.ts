@@ -4,6 +4,7 @@
  * it, and the page metadata tells the browser which language it is reading.
  */
 import { expect, test } from "@playwright/test"
+import { expandCard, openLayers, openTime } from "./support/hud"
 
 test("the URL always states the language and reading level, and links keep them", async ({
 	page,
@@ -29,9 +30,12 @@ test("the solar system renders completely in German", async ({ page }) => {
 	await page.goto("/solar_system?focus=jupiter&lang=de")
 	const focus = page.getByRole("combobox", { name: "Himmelskörper im Fokus" })
 	await expect(focus).toHaveValue("Jupiter")
+	await openLayers(page)
 	await expect(page.getByRole("switch", { name: "Umlaufbahnen" })).toBeVisible()
 	await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
+	await openTime(page)
 	await expect(page.getByRole("radio", { name: "1 Tag/s" })).toHaveCount(1)
+	await expandCard(page)
 	await expect(page.getByText("Das Sonnenlicht braucht")).toBeVisible()
 	await expect(page.getByText("Der Riese des Sonnensystems")).toBeVisible()
 	// German date order and number format
@@ -113,6 +117,7 @@ test.describe("with a Swiss German browser", () => {
 		await page.goto("/solar_system?focus=jupiter")
 		await expect(page).toHaveURL(/[?&]lang=de(&|$)/)
 		await expect(page.locator("html")).toHaveAttribute("lang", "de")
+		await expandCard(page)
 		const swissGroup = await page.evaluate(() =>
 			new Intl.NumberFormat("de-CH").format(1000).charAt(1),
 		)

@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
+import { expandCard, openLayers } from "./support/hud"
 
 // Moons (#17) in the real browser: the featured moons by default, the long
 // tail on request, a planet's moon system in its card, focusing a moon and
@@ -17,6 +18,8 @@ const ready = async (page: Page, url: string) => {
 	await page.evaluate(() =>
 		window.__astrolabe!.store.getState().setPaused(true),
 	)
+	// the card starts small (#42): its moons are in the unfolded part
+	if (url.includes("focus=")) await expandCard(page)
 }
 
 const card = (page: Page) => page.getByTestId("body-card")
@@ -69,6 +72,7 @@ test("the smaller moons are revealed deliberately, and a link keeps them", async
 	await toggle.click()
 	await expect(toggle).toHaveText("Hide the smaller moons")
 	await expect(page).toHaveURL(/allMoons=true/)
+	await openLayers(page)
 	await expect(page.getByRole("switch", { name: "All moons" })).toBeChecked()
 
 	// the switch turns them off again, and the URL follows
@@ -78,6 +82,7 @@ test("the smaller moons are revealed deliberately, and a link keeps them", async
 
 	// a link opens with all moons, and the switch needs the moons layer
 	await ready(page, "/solar_system?focus=saturn&allMoons=true&lang=en")
+	await openLayers(page)
 	await expect(page.getByRole("switch", { name: "All moons" })).toBeChecked()
 	await page
 		.getByRole("switch", { name: "Moons", exact: true })

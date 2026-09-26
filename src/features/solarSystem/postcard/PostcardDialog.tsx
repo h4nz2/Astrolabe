@@ -18,6 +18,7 @@ import {
 } from "@tabler/icons-react"
 
 import { useI18n, type MessageKey } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { usePostcardStore, type PostcardSnapshot } from "@/store/postcard"
 
 import { canvasToPng, drawPostcard } from "./draw"
@@ -184,20 +185,34 @@ const PostcardView = ({
 					onChange={(event) => setCaption(event.currentTarget.value)}
 				/>
 				<Group gap="lg">
-					<Switch
-						color="orange"
-						label={t("solarSystem.postcard.names")}
-						checked={names}
-						disabled={!hasNames}
-						onChange={(event) => setNames(event.currentTarget.checked)}
-					/>
-					<Switch
-						color="orange"
-						label={t("solarSystem.postcard.link")}
-						checked={withLink && qr !== null}
-						disabled={qr === null}
-						onChange={(event) => setWithLink(event.currentTarget.checked)}
-					/>
+					<Hint
+						text={t("solarSystem.postcard.hint.names")}
+						reason={
+							hasNames ? undefined : t("solarSystem.postcard.reason.names")
+						}
+					>
+						<Switch
+							color="orange"
+							label={t("solarSystem.postcard.names")}
+							checked={names}
+							disabled={!hasNames}
+							onChange={(event) => setNames(event.currentTarget.checked)}
+						/>
+					</Hint>
+					<Hint
+						text={t("solarSystem.postcard.hint.link")}
+						reason={
+							qr === null ? t("solarSystem.postcard.reason.link") : undefined
+						}
+					>
+						<Switch
+							color="orange"
+							label={t("solarSystem.postcard.link")}
+							checked={withLink && qr !== null}
+							disabled={qr === null}
+							onChange={(event) => setWithLink(event.currentTarget.checked)}
+						/>
+					</Hint>
 				</Group>
 				<Group gap="xs">
 					<Button

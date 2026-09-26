@@ -59,12 +59,15 @@
 			"star": "Hvězda",
 			"planet": "Planeta",
 			"moon": "Měsíc",
-			"moonOf": "{parentId, select, sun {Měsíc Slunce} mercury {Měsíc Merkuru} venus {Měsíc Venuše} earth {Měsíc Země} mars {Měsíc Marsu} jupiter {Měsíc Jupiteru} saturn {Měsíc Saturnu} uranus {Měsíc Uranu} neptune {Měsíc Neptunu} moon {Měsíc Měsíce} other {Měsíc planety {parent}}}"
+			"moonOf": "{parentId, select, sun {Měsíc Slunce} mercury {Měsíc Merkuru} venus {Měsíc Venuše} earth {Měsíc Země} mars {Měsíc Marsu} jupiter {Měsíc Jupiteru} saturn {Měsíc Saturnu} uranus {Měsíc Uranu} neptune {Měsíc Neptunu} moon {Měsíc Měsíce} pluto {Měsíc Pluta} eris {Měsíc Eridy} haumea {Měsíc Haumey} makemake {Měsíc Makemaka} other {Měsíc planety {parent}}}",
+			"dwarfPlanet": "Trpasličí planeta",
+			"asteroid": "Planetka",
+			"comet": "Kometa"
 		},
 		"fallback": {
-			"moonDescription": "{name} je měsíc {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {planety {parent}}}. Má průměr asi {diameter} a svou planetu oběhne jednou za {period}.",
-			"moonDescription@simple": "{name} je jeden z měsíců, které obíhají kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {planety {parent}}}. Má průměr asi {diameter}.",
-			"moonDescription@advanced": "{name} obíhá kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {planety {parent}}} ve střední vzdálenosti {distance} s oběžnou dobou {period}. Střední průměr je asi {diameter}."
+			"moonDescription": "{name} je měsíc {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}}. Má průměr asi {diameter} a svou {parentId, select, pluto {trpasličí planetu} eris {trpasličí planetu} haumea {trpasličí planetu} makemake {trpasličí planetu} other {planetu}} oběhne jednou za {period}.",
+			"moonDescription@simple": "{name} je jeden z měsíců, které obíhají kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}}. Má průměr asi {diameter}.",
+			"moonDescription@advanced": "{name} obíhá kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}} ve střední vzdálenosti {distance} s oběžnou dobou {period}. Střední průměr je asi {diameter}."
 		}
 	},
 	"dictionary": {
@@ -131,7 +134,10 @@
 		"picker": {
 			"label": "Vybrané těleso",
 			"placeholder": "Najít těleso…",
-			"nothingFound": "Takové těleso tu není"
+			"nothingFound": "Takové těleso tu není",
+			"dwarfPlanets": "Trpasličí planety",
+			"asteroids": "Planetky",
+			"comets": "Komety"
 		},
 		"layers": {
 			"label": "Vrstvy scény",
@@ -139,10 +145,40 @@
 			"labels": "Názvy",
 			"moons": "Měsíce",
 			"allMoons": "Všechny měsíce",
-			"allMoonsHint": "Zobrazit i spoustu malých měsíců, nejen ty s vlastním příběhem",
 			"markers": "Značky",
 			"orbitNames": "Názvy drah",
-			"alwaysLit": "Vždy osvětlené"
+			"alwaysLit": "Vždy osvětlené",
+			"hint": {
+				"orbits": "Kreslí dráhu, po které každá planeta a měsíc obíhá kolem Slunce nebo své planety. Vypni je a uvidíš jen samotná tělesa.",
+				"orbits@simple": "Ukazuje cestu, po které každá planeta obíhá kolem Slunce.",
+				"orbits@advanced": "Kreslí všechny oběžné dráhy, takže můžeš porovnat jejich velikost, tvar a sklon. Vypni je a uvidíš jen samotná tělesa.",
+				"labels": "Píše název vedle každého tělesa. Vypni je a nech třídu hádat, která planeta je která.",
+				"labels@simple": "Ukazuje jména planet. Vypni je a hrajte hru na hádání!",
+				"labels@advanced": "Pojmenuje každé těleso, pro které je na obrazovce místo. Vypni je pro kvíz nebo čistý obrázek.",
+				"moons": "Ukazuje měsíce planet, nejdřív ty s vlastním příběhem. Vypni je a uvidíš jen Slunce a planety.",
+				"moons@simple": "Ukazuje měsíce, které obíhají kolem planet.",
+				"moons@advanced": "Ukazuje přirozené satelity, nejznámější nejdřív. Vypni je a scéna se zúží na Slunce a planety.",
+				"allMoons": "Ukazuje i spoustu malých měsíců, nejen ty s příběhem: většina z nich jsou kameny velké pár kilometrů.",
+				"allMoons@simple": "Ukazuje i všechny malé měsíčky. Je jich opravdu hodně!",
+				"allMoons@advanced": "Přidá dlouhý zástup malých měsíců, většinou zachycených kamenů o velikosti pár kilometrů s prozatímním označením.",
+				"markers": "Dá na každou planetu barevnou tečku, aby šla najít, i když je příliš malá, aby byla vidět.",
+				"markers@simple": "Dá na každou planetu barevnou tečku, aby šla najít, i když je malinká.",
+				"markers@advanced": "Označí každé těleso tečkou pevné velikosti na obrazovce: ve skutečném měřítku jsou samotné planety menší než pixel.",
+				"orbitNames": "Napíše jméno každé planety k její dráze, takže poznáš, která dráha patří komu.",
+				"orbitNames@simple": "Napíše jméno planety k její cestě.",
+				"orbitNames@advanced": "Popíše každou dráhu jménem jejího tělesa: hodí se, když jsou tělesa sama příliš daleko na popisek.",
+				"smallBodies": "Ukáže Pluto a další trpasličí planety, planetky, komety a oba pásy. Ve výchozím stavu je vypnutý, aby planety zůstaly přehledné.",
+				"smallBodies@simple": "Ukáže Pluto, komety a pás planetek.",
+				"smallBodies@advanced": "Přidá trpasličí planety, pojmenované planetky, komety s ohony a pás planetek i Kuiperův pás jako oblaka teček (každá tečka zastupuje mnoho skutečných těles).",
+				"alwaysLit": "Osvětlí každé těleso z místa, odkud se díváš, takže noční strana není černá. Dobré pro prohlížení povrchů; skryje ale den a noc.",
+				"alwaysLit@simple": "Osvětlí každou planetu z tvé strany, takže nic není tmavé. Pak ale neuvidíš den a noc!",
+				"alwaysLit@advanced": "Osvětluje každé těleso z místa pozorovatele místo ze Slunce: žádné noční strany, fáze ani stíny zatmění. Dobré pro detaily povrchu, špatné pro geometrii slunečního světla."
+			},
+			"reason": {
+				"allMoons": "Nejdřív zapni Měsíce.",
+				"orbitNames": "{missing, select, orbits {Nejdřív zapni Dráhy.} labels {Nejdřív zapni Názvy.} other {Nejdřív zapni Dráhy a Názvy.}}"
+			},
+			"smallBodies": "Malá tělesa"
 		},
 		"scale": {
 			"label": "Měřítko",
@@ -179,21 +215,35 @@
 			"sizeBigger": "Velikost {subjectId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {subject}}} je tu {factor, number}× zvětšená.",
 			"sizeBigger@simple": "{subject} tu vypadá {factor, number}krát větší, než ve skutečnosti je!",
 			"sizeBigger@advanced": "{subject}: poloměr zvětšen {factor, number}×.",
-			"distanceTrue": "{subject} je tu ve skutečné vzdálenosti {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}}.",
-			"distanceTrue@simple": "{subject} je tu {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}} stejně daleko jako ve skutečnosti.",
-			"distanceTrue@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}} v měřítku.",
-			"distanceCloser": "{subject} je tu {factor, number}× blíž {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} other {k planetě {parent}}} než ve skutečnosti.",
-			"distanceCloser@simple": "{subject} je tady {factor, number}krát blíž {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} other {k planetě {parent}}}, než je ve skutečnosti!",
-			"distanceCloser@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}} zmenšena na 1/{factor, number} skutečné hodnoty.",
-			"distanceFarther": "{subject} je tu {factor, number}× dál {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}} než ve skutečnosti.",
-			"distanceFarther@simple": "{subject} je tady {factor, number}krát dál {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}}, než je ve skutečnosti!",
-			"distanceFarther@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}} zvětšena na {factor, number}násobek skutečné hodnoty.",
+			"distanceTrue": "{subject} je tu ve skutečné vzdálenosti {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}.",
+			"distanceTrue@simple": "{subject} je tu {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} stejně daleko jako ve skutečnosti.",
+			"distanceTrue@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} v měřítku.",
+			"distanceCloser": "{subject} je tu {factor, number}× blíž {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} pluto {k Plutu} eris {k Eridě} haumea {k Haumeji} makemake {k Makemakovi} other {k planetě {parent}}} než ve skutečnosti.",
+			"distanceCloser@simple": "{subject} je tady {factor, number}krát blíž {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} pluto {k Plutu} eris {k Eridě} haumea {k Haumeji} makemake {k Makemakovi} other {k planetě {parent}}}, než je ve skutečnosti!",
+			"distanceCloser@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} zmenšena na 1/{factor, number} skutečné hodnoty.",
+			"distanceFarther": "{subject} je tu {factor, number}× dál {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} než ve skutečnosti.",
+			"distanceFarther@simple": "{subject} je tady {factor, number}krát dál {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}, než je ve skutečnosti!",
+			"distanceFarther@advanced": "{subject}: vzdálenost {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}} zvětšena na {factor, number}násobek skutečné hodnoty.",
 			"markersOn": "Tečky jen ukazují, kde planety jsou: samotné planety jsou příliš malé, aby byly vidět.",
 			"markersOn@simple": "Tečky ukazují, kde jsou planety. Samotné planety jsou moc malé, aby byly vidět!",
 			"markersOff": "Značky jsou vypnuté: zapni je a planety najdeš.",
 			"markersOff@simple": "Zapni Značky a najdeš planety!",
 			"walk": "Příliš malé na představu? Projdi si to: sluneční soustava se Sluncem velkým jako basketbalový míč.",
-			"walk@simple": "Není nic vidět? Projdi si sluneční soustavu na školním hřišti!"
+			"walk@simple": "Není nic vidět? Projdi si sluneční soustavu na školním hřišti!",
+			"hint": {
+				"sizesTrue": "Kreslí každé těleso v jeho skutečné velikosti. Z dálky jsou pak planety příliš malé, aby byly vidět.",
+				"sizesTrue@simple": "Planety tak velké, jak doopravdy jsou. Z dálky jsou moc malé, aby byly vidět!",
+				"sizesTrue@advanced": "Poloměry v měřítku: v přehledu se každá planeta zmenší pod jeden pixel a najdou ji jen značky.",
+				"sizesEnlarged": "Kreslí planety a měsíce mnohem větší, než jsou, aby byly vidět i z dálky. Není to v měřítku.",
+				"sizesEnlarged@simple": "Planety jsou mnohem větší, aby byly vidět. Doopravdy to tak není!",
+				"sizesEnlarged@advanced": "Zveličí poloměry, aby kotouče zůstaly vidět i z dálky; věta pod tím říká, o kolik.",
+				"distancesTrue": "Nechá každé těleso v jeho skutečné vzdálenosti: planety jsou daleko od sebe a mezi nimi je obrovský prázdný prostor.",
+				"distancesTrue@simple": "Planety tak daleko od sebe, jak doopravdy jsou. Mezi nimi je spousta prázdného místa!",
+				"distancesTrue@advanced": "Vzdálenosti v měřítku: Neptun obíhá třicetkrát dál od Slunce než Země.",
+				"distancesSqueezed": "Přisune planety blíž k sobě, aby se celá sluneční soustava vešla na obrazovku. Není to v měřítku.",
+				"distancesSqueezed@simple": "Přisune planety k sobě, aby se všechny vešly na obrazovku. Doopravdy to tak není!",
+				"distancesSqueezed@advanced": "Stlačí vzdálenosti, aby se celá soustava vešla na obrazovku; věta pod tím říká, o kolik."
+			}
 		},
 		"time": {
 			"play": "Spustit",
@@ -211,17 +261,20 @@
 				"day": "{count, plural, one {# den/s} few {# dny/s} many {# dne/s} other {# dní/s}}",
 				"week": "{count, plural, one {# týden/s} few {# týdny/s} many {# týdne/s} other {# týdnů/s}}",
 				"month": "{count, plural, one {# měsíc/s} few {# měsíce/s} many {# měsíce/s} other {# měsíců/s}}",
-				"year": "{count, plural, one {# rok/s} few {# roky/s} many {# roku/s} other {# let/s}}"
+				"year": "{count, plural, one {# rok/s} few {# roky/s} many {# roku/s} other {# let/s}}",
+				"hint": "Kolik času v modelu uplyne za každou skutečnou sekundu. Vyšší rychlosti ukážou, jak planety obíhají kolem Slunce; + a − mezi nimi přepínají.",
+				"hint@simple": "Jak rychle běží čas. Vyber vyšší rychlost a sleduj, jak planety obíhají kolem Slunce!",
+				"hint@advanced": "Zrychlení času: simulovaný čas za skutečnou sekundu, v řadě stupňů, z nichž každý rychlost násobí (+ a − mezi nimi přepínají)."
 			},
 			"reverse": "Pozpátku",
 			"reverseHint": "Pustit čas pozpátku",
 			"controls": "Spustit, pozastavit nebo pustit pozpátku",
-			"tooFast": "{body} oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} other {kolem planety {parent}}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}} za sekundu – na obrazovku příliš rychle, takže se může zdát, že skáče nebo dokonce couvá.",
-			"tooFast@simple": "{body} oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} other {kolem planety {parent}}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}} za každou sekundu! To je moc rychle, aby to šlo pořádně vidět.",
+			"tooFast": "{body} oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}} za sekundu – na obrazovku příliš rychle, takže se může zdát, že skáče nebo dokonce couvá.",
+			"tooFast@simple": "{body} oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}} za každou sekundu! To je moc rychle, aby to šlo pořádně vidět.",
 			"travel": {
 				"open": "Cesta na jiné datum",
 				"title": "Cesta časem",
-				"moments": "Události",
+				"moments": "Úkazy na obloze",
 				"pickDate": "Vyber datum",
 				"arrival": "Po příjezdu se čas zastaví. Stiskni Spustit a poběží dál.",
 				"range": "Libovolný den od roku {first} do roku {last}. Dorazíš v poledne (UTC).",
@@ -235,52 +288,6 @@
 					"previousDecade": "Předchozí desetiletí",
 					"monthLevel": "Vybrat jiný měsíc",
 					"yearLevel": "Vybrat jiný rok"
-				}
-			},
-			"moments": {
-				"galileoMoons": {
-					"name": "Galileo vidí Jupiterovy měsíce",
-					"description": "Vůbec první měsíce objevené u jiné planety."
-				},
-				"uranusFound": {
-					"name": "Objev Uranu",
-					"description": "William Herschel nachází první planetu, kterou starověcí hvězdáři neznali."
-				},
-				"neptuneFound": {
-					"name": "Objev Neptunu",
-					"description": "Našli ho přesně tam, kde ho předpověděla matematika."
-				},
-				"sputnik": {
-					"name": "Start Sputniku 1",
-					"description": "První umělá družice zahajuje kosmický věk."
-				},
-				"moonLanding": {
-					"name": "První přistání na Měsíci",
-					"description": "Apollo 11 přistává na Měsíci."
-				},
-				"voyagerLaunch": {
-					"name": "Voyager 2 vyráží",
-					"description": "Jupiter, Saturn, Uran a Neptun se seřadí pro „Velkou cestu“ (Grand Tour), jak se to stává jen zhruba jednou za 175 let."
-				},
-				"voyagerNeptune": {
-					"name": "Voyager 2 u Neptunu",
-					"description": "Dvanáct let po startu: jediná návštěva, jakou kdy Neptun zažil."
-				},
-				"marsClosest": {
-					"name": "Mars nejblíž Zemi",
-					"description": "Mars se k Zemi přiblíží víc než za posledních skoro 60 000 let. Země je přitom mezi Sluncem a Marsem."
-				},
-				"venusTransit": {
-					"name": "Přechod Venuše",
-					"description": "Venuše prochází přesně mezi Sluncem a Zemí."
-				},
-				"greatConjunction": {
-					"name": "Velká konjunkce",
-					"description": "Při pohledu ze Země se Jupiter a Saturn na obloze skoro dotknou."
-				},
-				"nextVenusTransit": {
-					"name": "Příští přechod Venuše",
-					"description": "Příště, kdy Venuše přejde před Sluncem. Uvidí ho někdo z této třídy?"
 				}
 			}
 		},
@@ -310,15 +317,15 @@
 			"radius": "Poloměr",
 			"orbitalPeriod": "Oběžná doba",
 			"orbitalPeriod@simple": "Jeden oběh trvá",
-			"distance": "{parentId, select, sun {Vzdálenost od Slunce} mercury {Vzdálenost od Merkuru} venus {Vzdálenost od Venuše} earth {Vzdálenost od Země} mars {Vzdálenost od Marsu} jupiter {Vzdálenost od Jupiteru} saturn {Vzdálenost od Saturnu} uranus {Vzdálenost od Uranu} neptune {Vzdálenost od Neptunu} moon {Vzdálenost od Měsíce} other {Vzdálenost od planety {parent}}}",
+			"distance": "{parentId, select, sun {Vzdálenost od Slunce} mercury {Vzdálenost od Merkuru} venus {Vzdálenost od Venuše} earth {Vzdálenost od Země} mars {Vzdálenost od Marsu} jupiter {Vzdálenost od Jupiteru} saturn {Vzdálenost od Saturnu} uranus {Vzdálenost od Uranu} neptune {Vzdálenost od Neptunu} moon {Vzdálenost od Měsíce} pluto {Vzdálenost od Pluta} eris {Vzdálenost od Eridy} haumea {Vzdálenost od Haumey} makemake {Vzdálenost od Makemaka} other {Vzdálenost od planety {parent}}}",
 			"rotation": "Doba rotace",
 			"rotation@simple": "Jedna otočka trvá",
 			"rotationUnknown": "neznámá",
 			"retrograde": "{period}, retrográdní",
 			"retrograde@simple": "{period}, točí se pozpátku",
-			"synchronous": "stále obrací tutéž stranu {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} other {k planetě {parent}}}",
-			"synchronous@simple": "ukazuje {parentId, select, sun {Slunci} mercury {Merkuru} venus {Venuši} earth {Zemi} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíci} other {planetě {parent}}} pořád stejnou stranu",
-			"synchronous@advanced": "vázaná rotace vůči {parentId, select, sun {Slunci} mercury {Merkuru} venus {Venuši} earth {Zemi} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíci} other {planetě {parent}}}"
+			"synchronous": "stále obrací tutéž stranu {parentId, select, sun {ke Slunci} mercury {k Merkuru} venus {k Venuši} earth {k Zemi} mars {k Marsu} jupiter {k Jupiteru} saturn {k Saturnu} uranus {k Uranu} neptune {k Neptunu} moon {k Měsíci} pluto {k Plutu} eris {k Eridě} haumea {k Haumeji} makemake {k Makemakovi} other {k planetě {parent}}}",
+			"synchronous@simple": "ukazuje {parentId, select, sun {Slunci} mercury {Merkuru} venus {Venuši} earth {Zemi} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíci} pluto {Plutu} eris {Eridě} haumea {Haumeji} makemake {Makemakovi} other {planetě {parent}}} pořád stejnou stranu",
+			"synchronous@advanced": "vázaná rotace vůči {parentId, select, sun {Slunci} mercury {Merkuru} venus {Venuši} earth {Zemi} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíci} pluto {Plutu} eris {Eridě} haumea {Haumeji} makemake {Makemakovi} other {planetě {parent}}}"
 		},
 		"centre": {
 			"label": "Střed pohledu",
@@ -390,6 +397,15 @@
 				"pluto": "Pluto",
 				"arrokoth": "Arrokoth",
 				"l2": "L2 soustavy Slunce–Země"
+			},
+			"hint": {
+				"layer": "Ukazuje skutečné kosmické sondy, které lidé vyslali, tam, kde jsou k zobrazenému datu.",
+				"layer@simple": "Ukazuje sondy, které lidé poslali do vesmíru.",
+				"allPaths": "Kreslí celou cestu každé sondy, nejen té vybrané.",
+				"allPaths@simple": "Ukazuje cestu každé sondy."
+			},
+			"reason": {
+				"allPaths": "Nejdřív zapni Kosmické sondy."
 			}
 		},
 		"pick": {
@@ -427,7 +443,9 @@
 			"painted": "Žádná sonda měsíc {moon} zblízka nezmapovala, proto je tento povrch namalován podle toho, co víme: podle jeho barvy a toho, kolik slunečního světla odráží.",
 			"painted@simple": "Žádná sonda měsíc {moon} zblízka nevyfotila. Tento povrch je namalovaný v jeho skutečné barvě.",
 			"haze": "Povrch měsíce {moon} skrývá hustý oranžový opar. Takhle měsíc {moon} vidí naše oči.",
-			"haze@simple": "Hustý oranžový opar zakrývá povrch měsíce {moon}. Takhle ho vidí naše oči."
+			"haze@simple": "Hustý oranžový opar zakrývá povrch měsíce {moon}. Takhle ho vidí naše oči.",
+			"paintedVisited": "Sonda {probe} kolem měsíce {moon} proletěla v roce {year}, ale její snímky zatím v aplikaci nejsou, proto je tento povrch namalován podle toho, co víme: podle jeho barvy a toho, kolik slunečního světla odráží.",
+			"paintedVisited@simple": "Sonda {probe} měsíc {moon} v roce {year} vyfotila, ale ty fotky zatím v aplikaci nejsou. Tento povrch je namalovaný v jeho skutečné barvě."
 		},
 		"facts": {
 			"label": {
@@ -447,9 +465,9 @@
 			"across": "průměr {value}",
 			"sunlight": "Sluneční světlo sem dorazí za {time}",
 			"sunlight@simple": "Světlo ze Slunce sem doletí za {time}",
-			"gap": "{parentId, select, sun {Slunce by se do této mezery vešlo} earth {Země by se do této mezery vešla} venus {Venuše by se do této mezery vešla} mercury {Merkur by se do této mezery vešel} mars {Mars by se do této mezery vešel} jupiter {Jupiter by se do této mezery vešel} saturn {Saturn by se do této mezery vešel} uranus {Uran by se do této mezery vešel} neptune {Neptun by se do této mezery vešel} moon {Měsíc by se do této mezery vešel} other {{parent} by se do této mezery vešel}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}}",
-			"fromParent": "{distance} {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} other {od planety {parent}}}",
-			"lap": "Jednou oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} other {kolem planety {parent}}} za {period}",
+			"gap": "{parentId, select, sun {Slunce by se do této mezery vešlo} earth {Země by se do této mezery vešla} venus {Venuše by se do této mezery vešla} mercury {Merkur by se do této mezery vešel} mars {Mars by se do této mezery vešel} jupiter {Jupiter by se do této mezery vešel} saturn {Saturn by se do této mezery vešel} uranus {Uran by se do této mezery vešel} neptune {Neptun by se do této mezery vešel} moon {Měsíc by se do této mezery vešel} pluto {Pluto by se do této mezery vešlo} eris {Eris by se do této mezery vešla} haumea {Haumea by se do této mezery vešla} makemake {Makemake by se do této mezery vešel} other {{parent} by se do této mezery vešel}} {count, plural, one {#krát} few {#krát} many {#krát} other {#krát}}",
+			"fromParent": "{distance} {parentId, select, sun {od Slunce} mercury {od Merkuru} venus {od Venuše} earth {od Země} mars {od Marsu} jupiter {od Jupiteru} saturn {od Saturnu} uranus {od Uranu} neptune {od Neptunu} moon {od Měsíce} pluto {od Pluta} eris {od Eridy} haumea {od Haumey} makemake {od Makemaka} other {od planety {parent}}}",
+			"lap": "Jednou oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} za {period}",
 			"yearEarth": "Jeden oběh kolem Slunce: to je právě jeden rok",
 			"yearLonger": "{count, plural, one {Jeden oběh kolem Slunce trvá # pozemský rok} few {Jeden oběh kolem Slunce trvá # pozemské roky} many {Jeden oběh kolem Slunce trvá # pozemského roku} other {Jeden oběh kolem Slunce trvá # pozemských let}}",
 			"yearShorter": "{count, plural, one {Za jeden pozemský rok oběhne Slunce jednou} few {Za jeden pozemský rok oběhne Slunce #krát} many {Za jeden pozemský rok oběhne Slunce #krát} other {Za jeden pozemský rok oběhne Slunce #krát}}",
@@ -457,7 +475,9 @@
 			"weightMore@simple": "Z 30 kg na Zemi by tu bylo {kg} kg",
 			"weightSimilar": "Váha by tu ukázala zhruba totéž co na Zemi",
 			"weightLess": "Váha by tu ukázala {percent} % toho, co na Zemi",
-			"weightLess@simple": "Z 30 kg na Zemi by tu bylo jen {kg} kg"
+			"weightLess@simple": "Z 30 kg na Zemi by tu bylo jen {kg} kg",
+			"sunlightRange": "Sluneční světlo sem letí {near} až {far} – podle toho, kde se právě na své dlouhé dráze nachází",
+			"sunlightRange@simple": "Světlo ze Slunce sem doletí za {near}, když je nejblíž, a za {far}, když je nejdál"
 		},
 		"flight": {
 			"label": "Let",
@@ -660,7 +680,9 @@
 					"what@simple": "Saturn má polární záře a ty vysílají rádiové vlny. Sonda Cassini je zachytila. Vědci je udělali hlubší a rychlejší, abychom je slyšeli. Znějí strašidelně!",
 					"what@advanced": "Saturnovo kilometrové záření, rádiová emise polárních září, zaznamenané přístrojem RPWS sondy Cassini při přiblížení v roce 2003. Frekvence vyděleny 44, čas zrychlen 22krát (30 s zde ≈ 11 min). Stoupající a klesající tóny sledují malé rádiové zdroje, které se pohybují podél siločar polárních září."
 				}
-			}
+			},
+			"settingsHint": "Hlasitost, zvuk v pozadí, zvuky pohybu a skutečné nahrávky z vesmíru.",
+			"settingsHint@simple": "Nastav hlasitost a poslechni si skutečné zvuky z vesmíru."
 		},
 		"frame": {
 			"label": "Úhel pohledu",
@@ -749,7 +771,10 @@
 				"title": "Pohled shora nad Sluncem",
 				"title@simple": "Pohled z velké výšky",
 				"label": "{observer} a {body} na svých drahách kolem Slunce, se spojnicí pohledu od tělesa {observer} k tělesu {body}"
-			}
+			},
+			"hint": "Vyber, co na obrázku stojí na místě: Slunce, nebo planeta uprostřed – a uvidíš, jak se všechno pohybuje při pohledu odtamtud.",
+			"hint@simple": "Vyber, co stojí na místě: Slunce, nebo planeta.",
+			"hint@advanced": "Vztažná soustava: se Sluncem uprostřed, nebo ukotvená k tělesu, takže každý jiný pohyb je vidět vůči němu."
 		},
 		"present": {
 			"button": "Prezentovat",
@@ -777,7 +802,9 @@
 				"copyFailed": "Kopírování se nepovedlo: označ odkaz a zkopíruj ho ručně",
 				"qr": "Naskenuj a otevři tento pohled v telefonu nebo tabletu",
 				"qrLabel": "QR kód s odkazem na tento pohled",
-				"qrShow": "Ukázat QR kód třídě"
+				"qrShow": "Ukázat QR kód třídě",
+				"hint": "Odkaz a QR kód, které otevřou přesně tento pohled – na přípravu hodiny nebo jako domácí úkol.",
+				"hint@simple": "Získej odkaz, který někomu ukáže přesně to, co vidíš ty."
 			},
 			"chrome": {
 				"show": "Zobrazit ovládání",
@@ -833,7 +860,20 @@
 				"contrastOn": "Vysoký kontrast zapnut",
 				"contrastOff": "Vysoký kontrast vypnut",
 				"step": "Krok {n} z {total}"
-			}
+			},
+			"hint": {
+				"projector": "Navíc sbalí přepínače vrstev do nabídky a skryje podrobnosti jako ovládání rotace, aby třída viděla sluneční soustavu, a ne ovládání.",
+				"projector@simple": "Zvětší písmo a tlačítka pro velké plátno.",
+				"projector@advanced": "Zvětší celé rozhraní pro projekci a schová přepínače, které třída nepotřebuje vidět.",
+				"highContrast": "Bílé písmo na černé s výraznými obrysy, aby jména a tlačítka zůstala čitelná, i když projektor barvy vybledí.",
+				"highContrast@simple": "Černá a bílá, aby se to na bledém plátně lépe četlo.",
+				"highContrast@advanced": "Bílá na černé s výraznými obrysy a silným rámečkem fokusu: každá dvojice barev splňuje nejpřísnější úroveň kontrastu (WCAG AAA)."
+			},
+			"reason": {
+				"highContrast": "Tvoje zařízení už žádá vyšší kontrast, takže zůstává zapnutý."
+			},
+			"layersHint": "Co scéna ukazuje: dráhy, názvy, měsíce, značky a osvětlení.",
+			"layersHint@simple": "Vyber, co na obrázku uvidíš."
 		},
 		"light": {
 			"open": "Rychlost světla",
@@ -927,7 +967,9 @@
 				"join2@simple": "{a} a {b}",
 				"join3": "{a} {b} {c}",
 				"join3@simple": "{a}, {b} a {c}"
-			}
+			},
+			"stopHint": "Odstraní záblesk světla ze scény. Nový můžeš vyslat kdykoli.",
+			"stopHint@simple": "Zhasne světlo. Nový záblesk můžeš vyslat kdykoli."
 		},
 		"postcard": {
 			"take": "Vyfotit",
@@ -971,8 +1013,20 @@
 				"everythingVisible": "Není v měřítku: tělesa jsou nakreslena větší a blíž k sobě, než ve skutečnosti jsou.",
 				"everythingVisible@simple": "Není to jako ve skutečnosti: planety jsou mnohem menší a mnohem dál od sebe.",
 				"everythingVisible@advanced": "Není v měřítku: velikosti přehnané, vzdálenosti zhuštěné."
+			},
+			"hint": {
+				"names": "Nechá na obrázku jména těles. Vypni je pro čistý obrázek nebo kvíz.",
+				"names@simple": "Ukáže jména na obrázku.",
+				"link": "Přidá na obrázek QR kód, který otevře přesně tento pohled na telefonu nebo tabletu.",
+				"link@simple": "Dá na obrázek kód. Naskenuj ho telefonem a otevře se tento pohled."
+			},
+			"reason": {
+				"names": "Při focení nebyla vidět žádná jména: zapni Názvy a vyfoť to znovu.",
+				"link": "Odkaz na tento pohled je na QR kód příliš dlouhý."
 			}
 		},
+		"overviewHint": "Zpět na celou sluneční soustavu, odkudkoli (Esc).",
+		"overviewHint@simple": "Vrať se a podívej se na celou sluneční soustavu (Esc).",
 		"sky": {
 			"open": "Obloha dnes v noci",
 			"openHint": "Které planety dnes v noci uvidíš, kdy a kde?",
@@ -1165,7 +1219,9 @@
 			"menu": "Nápověda",
 			"replay": "Přehrát úvod znovu",
 			"replay@simple": "Pustit začátek ještě jednou",
-			"hints": "Ukázat, jak se pohybovat"
+			"hints": "Ukázat, jak se pohybovat",
+			"menuHint": "Otevři stránku nápovědy, přehraj si znovu krátký úvod, nebo si ještě jednou ukaž, jak se pohybovat po sluneční soustavě.",
+			"menuHint@simple": "Otevři nápovědu, podívej se znovu na začátek, nebo se nauč, jak se pohybovat."
 		},
 		"tours": {
 			"menu": "Prohlídky s průvodcem",
@@ -1188,7 +1244,116 @@
 			"away": "Rozhlížíš se na vlastní pěst. Prohlídka na tebe čeká na zastávce {n}.",
 			"away@simple": "Rozhlížíš se sám. Prohlídka na tebe počká.",
 			"resume": "Zpátky k prohlídce",
-			"goTo": "Zastávka {n}: {title}"
+			"goTo": "Zastávka {n}: {title}",
+			"menuHint": "Připravené cesty sluneční soustavou, na každé zastávce s krátkým příběhem: dobrý začátek hodiny.",
+			"menuHint@simple": "Krátké výlety sluneční soustavou, které ti na každé zastávce vyprávějí příběh."
+		},
+		"smallBodies": {
+			"beltName": "{belt, select, asteroidbelt {Pás planetek} kuiperbelt {Kuiperův pás} other {{belt}}}",
+			"perDot": "{belt, select, asteroidbelt {Každá tečka představuje zhruba {count, number} planetek větších než {size}.} other {Každá tečka představuje zhruba {count, number} ledových těles větších než {size}.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Každá tečka znamená asi {count, number} opravdových vesmírných kamenů větších než {size}.} other {Každá tečka znamená asi {count, number} opravdových malých ledových světů větších než {size}.}}",
+			"perDot@advanced": "{belt, select, asteroidbelt {Jedna tečka na zhruba {count, number} z odhadovaných {total} planetek větších než {size}.} other {Jedna tečka na zhruba {count, number} z odhadovaných {total} těles větších než {size}.}}",
+			"spacing": "Sousedé jsou od sebe asi {distance} – to je {moons, number}krát dál, než je Měsíc od Země. Kosmické sondy tudy prolétají rovně a nemusejí se ničemu vyhýbat.",
+			"spacing@simple": "Jsou ale od sebe hodně daleko: {moons, number}krát dál, než je to ze Země na Měsíc. Vesmírné sondy mezi nimi proletí a do ničeho nenarazí.",
+			"spacing@advanced": "Typická vzdálenost mezi sousedy: asi {distance}, tedy {moons, number}× vzdálenost Země–Měsíc. Sondy pás křižují po běžných drahách; žádná se zatím nemusela vyhýbat planetce.",
+			"dotSize": "Tečky jsou nakreslené mnohem větší než skutečná tělesa: ve skutečné velikosti by nebylo vidět vůbec nic. Ve filmech je to hustý roj skal – ve vesmíru je to skoro prázdno.",
+			"dotSize@simple": "Tečky jsou nakreslené moc velké. Ve filmech je tu plno kamenů, které do sebe narážejí – ve skutečném vesmíru je tu skoro prázdno.",
+			"legendKuiper": "Za Neptunem: Kuiperův pás, ledový okraj říše planet.",
+			"legendKuiper@simple": "Daleko za Neptunem leží Kuiperův pás, plný malých ledových světů.",
+			"comet": {
+				"label": "Kometa",
+				"where": "{distance} od Slunce, {direction, select, in {padá k němu} other {vzdaluje se od něj}}.",
+				"where@simple": "Je {distance} od Slunce a {direction, select, in {přibližuje se k němu} other {vzdaluje se od něj}}.",
+				"tail": "Její ohon je dlouhý asi {length} a míří od Slunce{direction, select, out { – teď proto letí ohon napřed} other {}}.",
+				"tail@simple": "Její ohon je dlouhý asi {length}. Vždycky míří od Slunce{direction, select, out { – i teď, když kometa odlétá ohonem napřed} other {}}!",
+				"noTail": "Teď nemá žádný ohon: ten vzniká, až když se kometa přiblíží ke Slunci na méně než asi {onset}. Tam sluneční světlo mění její led v plyn.",
+				"noTail@simple": "Teď nemá žádný ohon. Ten jí naroste, až se přiblíží ke Slunci a její led se začne měnit v plyn.",
+				"next": "Příště nejblíž Slunci: {date}.",
+				"last": "Naposledy nejblíž Slunci: {date}. Vrátí se asi za {years, plural, one {# rok} few {# roky} many {# roku} other {# let}}.",
+				"watch": "Sledovat průlet kolem Slunce",
+				"watch@simple": "Podívat se, jak proletí kolem Slunce"
+			}
+		},
+		"events": {
+			"listLabel": "Zatmění, přechody a další úkazy na obloze",
+			"upcoming": "Brzy",
+			"groups": {
+				"solarEclipse": "Zatmění Slunce",
+				"lunarEclipse": "Zatmění Měsíce",
+				"transit": "Přechody přes Slunce",
+				"gathering": "Planety pohromadě",
+				"closeApproach": "Mars se blíží",
+				"shadowsRings": "Stíny a prstence",
+				"history": "Okamžiky historie"
+			},
+			"card": "Úkaz na obloze: {title}",
+			"when": "Kdy: {when}",
+			"where": "Kde: {where}",
+			"shown": "{direction, select, early {Scéna ho ukazuje o {amount} dřív} late {Scéna ho ukazuje o {amount} později} other {Scéna ho ukazuje ve skutečném čase}}: dráhy v aplikaci jsou blízko těm skutečným, ale ne přesně.",
+			"shown@simple": "{direction, select, early {Aplikace ho ukazuje o {amount} dřív.} late {Aplikace ho ukazuje o {amount} později.} other {Aplikace ho ukazuje ve skutečném čase.}} Její planety jsou skoro, ale ne úplně tam, kde ty skutečné.",
+			"views": {
+				"label": "Úhel pohledu",
+				"space": "Z vesmíru",
+				"earth": "Ze Země"
+			},
+			"hint": {
+				"space": {
+					"solarEclipse": "Stín Měsíce na denní straně Země.",
+					"solarEclipse@simple": "Tmavá skvrna je stín Měsíce.",
+					"lunarEclipse": "Slunce, Země a Měsíc v jedné přímce: Měsíc je ve stínu Země.",
+					"lunarEclipse@simple": "Země je mezi Sluncem a Měsícem.",
+					"transit": "Při pohledu shora: Slunce, planeta a Země v jedné přímce.",
+					"transit@simple": "Shora: planeta je mezi Sluncem a námi.",
+					"gathering": "Při pohledu shora: kde planety opravdu jsou.",
+					"gathering@simple": "Shora: planety jsou daleko od sebe.",
+					"closeApproach": "Při pohledu shora: Země předbíhá Mars po vnitřní dráze.",
+					"closeApproach@simple": "Shora: Země předbíhá Mars.",
+					"shadowsRings": "Zblízka, z vesmíru.",
+					"history": "Scéna toho dne."
+				},
+				"earth": {
+					"solarEclipse": "Ve stínu Měsíce, dalekohledem: Měsíc zakrývá Slunce.",
+					"solarEclipse@simple": "Ze Země: Měsíc zakrývá Slunce.",
+					"lunarEclipse": "Pohled ze Země na Měsíc, triedrem.",
+					"lunarEclipse@simple": "Ze Země: červený Měsíc.",
+					"transit": "Dalekohledem se slunečním filtrem: tečka planety na Slunci.",
+					"transit@simple": "Ze Země: malá černá tečka na Slunci.",
+					"gathering": "Ze Země: planety na jedné straně naší oblohy.",
+					"gathering@simple": "Ze Země: planety vedle sebe.",
+					"closeApproach": "Mars dalekohledem, vždy se stejným zvětšením: porovnej úkazy.",
+					"closeApproach@simple": "Mars dalekohledem. Jak velký se zdá?",
+					"shadowsRings": "Dalekohledem ze Země.",
+					"history": "Dalekohledem ze Země."
+				}
+			},
+			"scaleNote": "Ve skutečném měřítku: každá velikost i vzdálenost je skutečná. Po odchodu se měřítko vrátí.",
+			"scaleNote@simple": "Všechno je ve skutečné velikosti a vzdálenosti.",
+			"leave": "Odejít",
+			"leaveLabel": "Opustit úkaz: zpět k pohledu, času a měřítku, které jsi měl",
+			"away": "Právě se rozhlížíš sám.",
+			"resume": "Zpět k úkazu",
+			"share": "Zkopírovat odkaz na tento úkaz",
+			"copied": "Odkaz zkopírován"
+		},
+		"hud": {
+			"tools": "Nástroje",
+			"toolsHint": "Rychlost světla, dnešní noční obloha, skutečné sondy, tvoje narozeniny, hledačka, porovnání světů a fotka: všechno se otevře tady.",
+			"toolsHint@simple": "Další věci na vyzkoušení: světlo, dnešní obloha, sondy, tvoje narozeniny, hledání pokladu, porovnání světů a fotka.",
+			"entries": "Prohlídky, vrstvy, měřítko a nástroje",
+			"close": "Zavřít {panel}",
+			"compare": "Vedle sebe",
+			"compareHint": "Svět, na který se díváš, vedle jiného, ve skutečných velikostech",
+			"compareHint@simple": "Postav dva světy vedle sebe, stejně zmenšené, a uvidíš, který je větší",
+			"customScale": "Vlastní",
+			"scaleButton": "Měřítko: {preset}",
+			"scaleHint": "Jak velké a jak daleko od sebe jsou světy nakreslené a jak daleko je to od pravdy. Skutečné měřítko je na jedno kliknutí.",
+			"scaleHint@simple": "Ukaž planety ve skutečné velikosti, nebo dost velké, aby byly vidět. Panel ti řekne, o kolik větší jsou nakreslené.",
+			"hideHint": "Na obrazovce zůstane jen sluneční soustava: na dívání, na fotku nebo na projektor. Klávesa H nebo „Zobrazit ovládání“ je vrátí.",
+			"hideHint@simple": "Schovej všechna tlačítka, ať vidíš jen vesmír. Klávesa H nebo „Zobrazit ovládání“ je vrátí.",
+			"time": "Čas",
+			"timeButton": "Čas a rychlost: {speed}",
+			"timeHint": "Jak rychle běží čas, návrat do teď a jak rychle se planety otáčejí. + a − mění rychlost z klávesnice.",
+			"timeHint@simple": "Zrychli nebo zpomal čas, nebo skoč zpátky do teď."
 		}
 	},
 	"solarWalk": {
@@ -1326,7 +1491,8 @@
 			"iceGiants@simple": "Dva modří obři",
 			"potatoMoons": "Bramborové měsíce",
 			"weighMost": "Kde by ti váha ukázala nejvíc?",
-			"bigForItsPlanet": "Náš Měsíc je nezvykle velký"
+			"bigForItsPlanet": "Náš Měsíc je nezvykle velký",
+			"plutoMoon": "Pluto je menší než náš Měsíc"
 		},
 		"teasers": {
 			"sunEarth": "Celý náš svět je vedle své hvězdy jen tečka: napříč Sluncem se vejde 109 Zemí.",
@@ -1370,7 +1536,10 @@
 			"moonsBeatPlanet@simple": "Dva měsíce jsou větší než planeta! Merkur je ale z těžšího materiálu, a tak je těžší.",
 			"weighMost": "Na Měsíci by ti váha ukázala šestinu toho, co doma, na horní hranici Jupiterových mraků dva a půlkrát víc.",
 			"weighMost@advanced": "Tíhové zrychlení na povrchu: Měsíc 0,17 g, Mars 0,38 g, Země 1 g, Jupiter 2,5 g na horní hranici mraků.",
-			"weighMost@simple": "Na Měsíci by ti váha ukázala jen málo. Na Jupiteru by ukázala víc než dvakrát tolik co doma."
+			"weighMost@simple": "Na Měsíci by ti váha ukázala jen málo. Na Jupiteru by ukázala víc než dvakrát tolik co doma.",
+			"plutoMoon": "Pluto je jen dvoutřetinový oproti našemu Měsíci a Měsíc je více než pětkrát těžší.",
+			"plutoMoon@simple": "Pluto je menší než náš Měsíc! A náš Měsíc je taky mnohem těžší.",
+			"plutoMoon@advanced": "Pluto má 68 % průměru Měsíce a jen 18 % jeho hmotnosti – i proto je trpasličí planetou."
 		},
 		"ideaGroups": {
 			"sizes": "Velikosti",
@@ -1450,9 +1619,9 @@
 				"similar": "Rok {aId, select, sun {na Slunci} mercury {na Merkuru} venus {na Venuši} earth {na Zemi} mars {na Marsu} jupiter {na Jupiteru} saturn {na Saturnu} uranus {na Uranu} neptune {na Neptunu} moon {na Měsíci} other {na měsíci {a}}} je skoro stejně dlouhý jako rok {bId, select, sun {na Slunci} mercury {na Merkuru} venus {na Venuši} earth {na Zemi} mars {na Marsu} jupiter {na Jupiteru} saturn {na Saturnu} uranus {na Uranu} neptune {na Neptunu} moon {na Měsíci} other {na měsíci {b}}}."
 			},
 			"orbit": {
-				"times": "Než {slow} jednou oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} other {kolem planety {parent}}}, {fast} to stihne {n}krát.",
-				"times@advanced": "Oběžná doba {slowId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {slow}}} kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {planety {parent}}} je {n}krát delší než oběžná doba {fastId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {fast}}}.",
-				"similar": "{a} a {b} oběhnou {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} other {kolem planety {parent}}} zhruba za stejnou dobu."
+				"times": "Než {slow} jednou oběhne {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}}, {fast} to stihne {n}krát.",
+				"times@advanced": "Oběžná doba {slowId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {slow}}} kolem {parentId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} pluto {Pluta} eris {Eridy} haumea {Haumey} makemake {Makemaka} other {planety {parent}}} je {n}krát delší než oběžná doba {fastId, select, sun {Slunce} mercury {Merkuru} venus {Venuše} earth {Země} mars {Marsu} jupiter {Jupiteru} saturn {Saturnu} uranus {Uranu} neptune {Neptunu} moon {Měsíce} other {měsíce {fast}}}.",
+				"similar": "{a} a {b} oběhnou {parentId, select, sun {kolem Slunce} mercury {kolem Merkuru} venus {kolem Venuše} earth {kolem Země} mars {kolem Marsu} jupiter {kolem Jupiteru} saturn {kolem Saturnu} uranus {kolem Uranu} neptune {kolem Neptunu} moon {kolem Měsíce} pluto {kolem Pluta} eris {kolem Eridy} haumea {kolem Haumey} makemake {kolem Makemaka} other {kolem planety {parent}}} zhruba za stejnou dobu."
 			},
 			"day": {
 				"times": "Den {longId, select, sun {na Slunci} mercury {na Merkuru} venus {na Venuši} earth {na Zemi} mars {na Marsu} jupiter {na Jupiteru} saturn {na Saturnu} uranus {na Uranu} neptune {na Neptunu} moon {na Měsíci} other {na měsíci {long}}} trvá {n}krát déle než den {shortId, select, sun {na Slunci} mercury {na Merkuru} venus {na Venuši} earth {na Zemi} mars {na Marsu} jupiter {na Jupiteru} saturn {na Saturnu} uranus {na Uranu} neptune {na Neptunu} moon {na Měsíci} other {na měsíci {short}}}.",

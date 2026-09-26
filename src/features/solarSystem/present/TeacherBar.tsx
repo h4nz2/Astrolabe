@@ -1,85 +1,57 @@
 import type { ReactNode } from "react"
-import { Button, Group, Popover } from "@mantine/core"
-import { useMediaQuery } from "@mantine/hooks"
-import { IconStack2 } from "@tabler/icons-react"
+import { ActionIcon, Group } from "@mantine/core"
+import { IconEyeOff } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { usePresentationStore } from "@/store/presentation"
 
+import { setChromeHidden } from "./commands"
 import { PresentMenu, ShareMenu } from "./PresentMenu"
 
-import classes from "./Presentation.module.css"
-
 /**
- * Below the wide layout (phones and 600-999 px) the HUD crowds the scene,
- * so the layer switches fold into a menu there too.
+ * "Hide the controls" for everyone (#42), not only while presenting: for
+ * looking, for a picture (#33) or for a projector. The same action as the H
+ * key; `PresentationLayer`'s "Show the controls" (or H again) brings them back.
  */
-const NARROW_QUERY = "(max-width: 999px)"
-
-/** The layer switches sit in a menu while presenting and below 1000 px, inline otherwise. */
-function useFoldedLayers(): boolean {
-	const presenting = usePresentationStore((state) => state.presenting)
-	const narrow = useMediaQuery(NARROW_QUERY) ?? false
-	return presenting || narrow
-}
-
-/**
- * The layer switches while presenting (#29): folded behind one button, so the
- * projector shows the solar system rather than a column of switches.
- */
-function LayersMenu({ children }: { children: ReactNode }) {
+export function HideButton() {
 	const { t } = useI18n()
+	const label = t("solarSystem.present.hideControls")
 	return (
-		<Popover
-			position="bottom-end"
-			width={280}
-			shadow="md"
-			trapFocus
-			returnFocus
-		>
-			<Popover.Target>
-				<Button
-					variant="subtle"
-					color="gray"
-					size="compact-sm"
-					style={{ flexShrink: 0 }}
-					leftSection={<IconStack2 size={16} aria-hidden />}
-					aria-haspopup="dialog"
-				>
-					{t("solarSystem.present.layers")}
-				</Button>
-			</Popover.Target>
-			<Popover.Dropdown>{children}</Popover.Dropdown>
-		</Popover>
+		<Hint text={t("solarSystem.hud.hideHint")}>
+			<ActionIcon
+				variant="subtle"
+				color="gray"
+				size="lg"
+				aria-label={label}
+				aria-keyshortcuts="H"
+				data-testid="hide-controls"
+				onClick={() => {
+					setChromeHidden(true)
+					usePresentationStore
+						.getState()
+						.announce(t("solarSystem.present.announce.chromeHidden"))
+				}}
+			>
+				<IconEyeOff size={18} aria-hidden />
+			</ActionIcon>
+		</Hint>
 	)
 }
 
 /**
- * The top-right panel's header (#29): the teacher's menu, sharing and
- * whatever else is passed (the language menu); while presenting and on
- * narrow screens, the layer switches too, folded into a menu (`layers`).
+ * The top-right corner of the solar system (#29, #42): Present (the teacher's
+ * menu, easy to find on purpose), Share, hide the controls, then whatever is
+ * passed (sound, help and the language menu, which sit in the same corner on
+ * every page).
  */
-export function TeacherBar({
-	children,
-	layers,
-}: {
-	children?: ReactNode
-	layers?: ReactNode
-}) {
-	const folded = useFoldedLayers()
+export function TeacherBar({ children }: { children?: ReactNode }) {
 	return (
-		<Group gap={4} justify="flex-end" wrap="wrap">
-			{folded && layers !== undefined && <LayersMenu>{layers}</LayersMenu>}
+		<Group gap={4} justify="flex-end" wrap="nowrap">
 			<PresentMenu />
 			<ShareMenu />
+			<HideButton />
 			{children}
 		</Group>
 	)
-}
-
-/** The layer switches in the panel itself, unless presenting or on a narrow screen (then they are in the bar's menu). */
-export function InlineLayers({ children }: { children: ReactNode }) {
-	const folded = useFoldedLayers()
-	if (folded) return null
-	return <div className={classes.layers}>{children}</div>
 }

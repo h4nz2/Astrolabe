@@ -166,8 +166,9 @@
 		max-height: 22dvh;
 	}
 
-	/* the picker row is narrow on a phone: the button keeps its icon */
-	.menuText {
-		display: none;
+	/* in the phones' entry row (#42) the four entry points share the width */
+	.menuButton {
+		flex: 1 1 0;
+		min-width: 0;
 	}
 }

@@ -20,6 +20,7 @@ import {
 
 import { useI18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { Hint } from "@/primitives/hint"
 import { usePresentationStore } from "@/store/presentation"
 
 import { runCommand, setChromeHidden, toggleFullscreen } from "./commands"
@@ -101,104 +102,124 @@ export function PresentMenu() {
 	}
 
 	return (
-		<Popover
-			opened={opened}
-			onChange={setOpened}
-			position="bottom-end"
-			width={340}
-			shadow="md"
-			trapFocus
-			returnFocus
-		>
-			<Popover.Target>
-				<Button
-					variant={presenting ? "filled" : "subtle"}
-					color={presenting ? "orange" : "gray"}
-					size="compact-sm"
-					style={{ flexShrink: 0 }}
-					leftSection={<IconPresentation size={16} aria-hidden />}
-					aria-haspopup="dialog"
-					aria-expanded={opened}
-					title={t("solarSystem.present.buttonHint")}
-					onClick={() => setOpened((open) => !open)}
-				>
-					{t("solarSystem.present.button")}
-				</Button>
-			</Popover.Target>
-			<Popover.Dropdown>
-				<Stack gap="sm">
-					<Text fw={600}>{t("solarSystem.present.title")}</Text>
-					<Switch
+		<Hint text={t("solarSystem.present.buttonHint")}>
+			<Popover
+				opened={opened}
+				onChange={setOpened}
+				position="bottom-end"
+				width={340}
+				shadow="md"
+				trapFocus
+				returnFocus
+			>
+				<Popover.Target>
+					<Button
+						// easy to find on purpose (#42): the one tinted button in the corner
+						variant={presenting ? "filled" : "light"}
 						color="orange"
-						label={t("solarSystem.present.projector")}
-						description={t("solarSystem.present.projectorHint")}
-						checked={presenting}
-						aria-keyshortcuts="P"
-						onChange={(event) => setPresenting(event.currentTarget.checked)}
-					/>
-					<Switch
-						color="orange"
-						label={t("solarSystem.present.highContrast")}
-						description={t("solarSystem.present.highContrastHint")}
-						checked={highContrast || moreContrast}
-						disabled={moreContrast}
-						aria-keyshortcuts="C"
-						onChange={(event) => setHighContrast(event.currentTarget.checked)}
-					/>
-					<Stack gap={2}>
-						<Action
-							icon={<IconEyeOff size={18} aria-hidden />}
-							shortcut="H"
-							onClick={() => {
-								setOpened(false)
-								setChromeHidden(true)
-								usePresentationStore
-									.getState()
-									.announce(t("solarSystem.present.announce.chromeHidden"))
-							}}
-						>
-							{t("solarSystem.present.hideControls")}
-						</Action>
-						<Action
-							icon={
-								fullscreen ? (
-									<IconMinimize size={18} aria-hidden />
-								) : (
-									<IconMaximize size={18} aria-hidden />
-								)
+						size="compact-sm"
+						style={{ flexShrink: 0 }}
+						leftSection={<IconPresentation size={16} aria-hidden />}
+						data-testid="present-menu"
+						aria-label={t("solarSystem.present.button")}
+						aria-haspopup="dialog"
+						aria-expanded={opened}
+						onClick={() => setOpened((open) => !open)}
+						classNames={{ section: classes.cornerSection }}
+					>
+						<span className={classes.cornerLabel}>
+							{t("solarSystem.present.button")}
+						</span>
+					</Button>
+				</Popover.Target>
+				<Popover.Dropdown>
+					<Stack gap="sm">
+						<Text fw={600}>{t("solarSystem.present.title")}</Text>
+						<Hint text={t("solarSystem.present.hint.projector")}>
+							<Switch
+								color="orange"
+								label={t("solarSystem.present.projector")}
+								description={t("solarSystem.present.projectorHint")}
+								checked={presenting}
+								aria-keyshortcuts="P"
+								onChange={(event) => setPresenting(event.currentTarget.checked)}
+							/>
+						</Hint>
+						<Hint
+							text={t("solarSystem.present.hint.highContrast")}
+							reason={
+								moreContrast
+									? t("solarSystem.present.reason.highContrast")
+									: undefined
 							}
-							shortcut="F"
-							onClick={toggleFullscreen}
-							disabled={!fullscreenAvailable()}
 						>
-							{fullscreen
-								? t("solarSystem.present.exitFullscreen")
-								: t("solarSystem.present.fullscreen")}
-						</Action>
-						<Action
-							icon={<IconArrowBackUp size={18} aria-hidden />}
-							shortcut="R"
-							onClick={restart}
-						>
-							{t("solarSystem.present.restart")}
-						</Action>
-						<Action
-							icon={<IconKeyboard size={18} aria-hidden />}
-							shortcut="?"
-							onClick={() => {
-								setOpened(false)
-								setHelpOpen(true)
-							}}
-						>
-							{t("solarSystem.present.shortcuts")}
-						</Action>
+							<Switch
+								color="orange"
+								label={t("solarSystem.present.highContrast")}
+								description={t("solarSystem.present.highContrastHint")}
+								checked={highContrast || moreContrast}
+								disabled={moreContrast}
+								aria-keyshortcuts="C"
+								onChange={(event) =>
+									setHighContrast(event.currentTarget.checked)
+								}
+							/>
+						</Hint>
+						<Stack gap={2}>
+							<Action
+								icon={<IconEyeOff size={18} aria-hidden />}
+								shortcut="H"
+								onClick={() => {
+									setOpened(false)
+									setChromeHidden(true)
+									usePresentationStore
+										.getState()
+										.announce(t("solarSystem.present.announce.chromeHidden"))
+								}}
+							>
+								{t("solarSystem.present.hideControls")}
+							</Action>
+							<Action
+								icon={
+									fullscreen ? (
+										<IconMinimize size={18} aria-hidden />
+									) : (
+										<IconMaximize size={18} aria-hidden />
+									)
+								}
+								shortcut="F"
+								onClick={toggleFullscreen}
+								disabled={!fullscreenAvailable()}
+							>
+								{fullscreen
+									? t("solarSystem.present.exitFullscreen")
+									: t("solarSystem.present.fullscreen")}
+							</Action>
+							<Action
+								icon={<IconArrowBackUp size={18} aria-hidden />}
+								shortcut="R"
+								onClick={restart}
+							>
+								{t("solarSystem.present.restart")}
+							</Action>
+							<Action
+								icon={<IconKeyboard size={18} aria-hidden />}
+								shortcut="?"
+								onClick={() => {
+									setOpened(false)
+									setHelpOpen(true)
+								}}
+							>
+								{t("solarSystem.present.shortcuts")}
+							</Action>
+						</Stack>
+						<Text size="xs" c="dimmed">
+							{t("solarSystem.present.restartHint")}
+						</Text>
 					</Stack>
-					<Text size="xs" c="dimmed">
-						{t("solarSystem.present.restartHint")}
-					</Text>
-				</Stack>
-			</Popover.Dropdown>
-		</Popover>
+				</Popover.Dropdown>
+			</Popover>
+		</Hint>
 	)
 }
 
@@ -206,33 +227,40 @@ export function PresentMenu() {
 export function ShareMenu() {
 	const { t } = useI18n()
 	return (
-		<Popover
-			position="bottom-end"
-			width={340}
-			shadow="md"
-			trapFocus
-			returnFocus
-		>
-			<Popover.Target>
-				<Button
-					variant="subtle"
-					color="gray"
-					size="compact-sm"
-					style={{ flexShrink: 0 }}
-					leftSection={<IconShare size={16} aria-hidden />}
-					aria-haspopup="dialog"
-				>
-					{t("solarSystem.present.share.button")}
-				</Button>
-			</Popover.Target>
-			<Popover.Dropdown>
-				<Text fw={600} mb="xs">
-					{t("solarSystem.present.share.title")}
-				</Text>
-				<Suspense fallback={<Loader size="sm" />}>
-					<SharePanel />
-				</Suspense>
-			</Popover.Dropdown>
-		</Popover>
+		<Hint text={t("solarSystem.present.share.hint")}>
+			<Popover
+				position="bottom-end"
+				width={340}
+				shadow="md"
+				trapFocus
+				returnFocus
+			>
+				<Popover.Target>
+					<Button
+						variant="subtle"
+						color="gray"
+						size="compact-sm"
+						style={{ flexShrink: 0 }}
+						leftSection={<IconShare size={16} aria-hidden />}
+						aria-label={t("solarSystem.present.share.button")}
+						aria-haspopup="dialog"
+						data-testid="share-menu"
+						classNames={{ section: classes.shareSection }}
+					>
+						<span className={classes.shareLabel}>
+							{t("solarSystem.present.share.button")}
+						</span>
+					</Button>
+				</Popover.Target>
+				<Popover.Dropdown>
+					<Text fw={600} mb="xs">
+						{t("solarSystem.present.share.title")}
+					</Text>
+					<Suspense fallback={<Loader size="sm" />}>
+						<SharePanel />
+					</Suspense>
+				</Popover.Dropdown>
+			</Popover>
+		</Hint>
 	)
 }

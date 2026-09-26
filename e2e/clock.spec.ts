@@ -7,6 +7,7 @@
 import { expect, test, type Locator, type Page } from "@playwright/test"
 
 import { nextFrames } from "./support/scene"
+import { openTime } from "./support/hud"
 
 const J2000 = 2451545
 const DAY_MS = 86_400_000
@@ -151,6 +152,7 @@ test("Now travels to the present through the dates in between", async ({
 	).toBeVisible()
 	const start = await shownTime(clock)
 
+	await openTime(page)
 	await page.getByRole("button", { name: "Now" }).click()
 	// sample every date shown on the way (a loaded headless run may stall
 	// frames, which holds the glide, so poll instead of timing it)

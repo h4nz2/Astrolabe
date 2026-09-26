@@ -1,18 +1,25 @@
+import { useState } from "react"
 import {
 	ActionIcon,
 	Button,
+	Group,
+	Popover,
 	SegmentedControl,
 	Select,
-	Tooltip,
+	Stack,
+	Text,
 } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import {
+	IconChevronUp,
+	IconGauge,
 	IconPlayerPause,
 	IconPlayerPlay,
 	IconPlayerPlayFilled,
 } from "@tabler/icons-react"
 
 import { isoMinuteUTC, useI18n } from "@/i18n"
+import { Hint, hintKey } from "@/primitives/hint"
 import { jdToDate } from "@/sim"
 import { WARP_PRESETS, useSimStore } from "@/store/sim"
 
@@ -23,8 +30,7 @@ import {
 	isEditableTarget,
 	useWindowKeydown,
 } from "./keyboard"
-import { BirthdayButton } from "../birthday/Birthday"
-import { HuntButton } from "../hunt/Hunt"
+import SpinControl, { SpinNotice } from "./SpinControl"
 import TimeTravel from "./TimeTravel"
 import TooFastHint from "./TooFastHint"
 import {
@@ -104,9 +110,16 @@ const Transport = () => {
 	const reversing = !paused && direction === -1
 	const playing = !paused && direction === 1
 	return (
-		<ActionIcon.Group aria-label={t("solarSystem.time.controls")}>
-			<Tooltip label={t("solarSystem.time.reverseHint")} openDelay={400}>
+		<Hint
+			options={{
+				reverse: t("solarSystem.time.reverseHint"),
+				pause: t("solarSystem.time.pauseHint"),
+				play: t("solarSystem.time.playHint"),
+			}}
+		>
+			<ActionIcon.Group aria-label={t("solarSystem.time.controls")}>
 				<ActionIcon
+					{...hintKey("reverse")}
 					variant={reversing ? "filled" : "default"}
 					color="orange"
 					size="lg"
@@ -120,9 +133,8 @@ const Transport = () => {
 						<IconPlayerPlay size={18} className={classes.flipped} />
 					)}
 				</ActionIcon>
-			</Tooltip>
-			<Tooltip label={t("solarSystem.time.pauseHint")} openDelay={400}>
 				<ActionIcon
+					{...hintKey("pause")}
 					variant={paused ? "filled" : "default"}
 					color="orange"
 					size="lg"
@@ -132,9 +144,8 @@ const Transport = () => {
 				>
 					<IconPlayerPause size={18} />
 				</ActionIcon>
-			</Tooltip>
-			<Tooltip label={t("solarSystem.time.playHint")} openDelay={400}>
 				<ActionIcon
+					{...hintKey("play")}
 					variant={playing ? "filled" : "default"}
 					color="orange"
 					size="lg"
@@ -148,8 +159,8 @@ const Transport = () => {
 						<IconPlayerPlay size={18} />
 					)}
 				</ActionIcon>
-			</Tooltip>
-		</ActionIcon.Group>
+			</ActionIcon.Group>
+		</Hint>
 	)
 }
 
@@ -177,45 +188,129 @@ const SpeedPresets = () => {
 	}))
 	const choose = (value: number) => setTimeWarp(withDirection(value, direction))
 
-	return compact ? (
-		<Select
-			size="xs"
-			radius="md"
-			aria-label={t("solarSystem.time.warp.label")}
-			value={String(speed)}
-			onChange={(value) => {
-				if (value !== null) choose(Number(value))
-			}}
-			data={items.map((item) => ({
-				label: item.label,
-				value: String(item.value),
-			}))}
-			allowDeselect={false}
-			comboboxProps={{ shadow: "md" }}
-			className={classes.speedSelect}
-		/>
-	) : (
-		<SegmentedControl<number>
-			size="xs"
-			radius="md"
-			color="orange"
-			aria-label={t("solarSystem.time.warp.label")}
-			value={speed}
-			onChange={choose}
-			data={items}
-		/>
+	return (
+		<Hint text={t("solarSystem.time.warp.hint")}>
+			{compact ? (
+				<Select
+					size="xs"
+					radius="md"
+					aria-label={t("solarSystem.time.warp.label")}
+					value={String(speed)}
+					onChange={(value) => {
+						if (value !== null) choose(Number(value))
+					}}
+					data={items.map((item) => ({
+						label: item.label,
+						value: String(item.value),
+					}))}
+					allowDeselect={false}
+					// inside the time popover (#42): its list must not count as a click outside it
+					comboboxProps={{ shadow: "md", withinPortal: false }}
+					className={classes.speedSelect}
+				/>
+			) : (
+				<SegmentedControl<number>
+					size="xs"
+					radius="md"
+					color="orange"
+					aria-label={t("solarSystem.time.warp.label")}
+					value={speed}
+					onChange={choose}
+					data={items}
+				/>
+			)}
+		</Hint>
 	)
 }
 
 /**
- * The time controls (issue #14): reverse / pause / play, the date (a button
- * that opens the time travel panel), "Now", the speed presets and the
- * too-fast-to-follow hint.
+ * The speed on the time bar (#42): what one real second is worth right now,
+ * and the way into the rest of time: Now, the speed presets and the spin.
+ * `+` and `-` still step the speed without opening anything.
+ */
+const TimeMenu = () => {
+	const i18n = useI18n()
+	const { t } = i18n
+	const [opened, setOpened] = useState(false)
+	const speed = useSimStore((state) => Math.abs(state.timeWarp))
+	const setNow = useSimStore((state) => state.setNow)
+	const label = warpLabel(speed, i18n)
+	return (
+		<Popover
+			opened={opened}
+			onChange={setOpened}
+			position="top"
+			width="min(36rem, calc(100vw - 1rem))"
+			shadow="md"
+			radius="md"
+			trapFocus
+			returnFocus
+		>
+			<Popover.Target>
+				<span className={classes.dim} data-dim>
+					<Hint text={opened ? undefined : t("solarSystem.hud.timeHint")}>
+						<Button
+							variant={opened ? "light" : "subtle"}
+							color={opened ? "orange" : "gray"}
+							size="compact-sm"
+							leftSection={<IconGauge size={16} aria-hidden />}
+							rightSection={<IconChevronUp size={14} aria-hidden />}
+							aria-label={t("solarSystem.hud.timeButton", { speed: label })}
+							aria-haspopup="dialog"
+							aria-expanded={opened}
+							data-testid="time-menu"
+							onClick={() => setOpened((open) => !open)}
+						>
+							<span className={classes.speed}>{label}</span>
+						</Button>
+					</Hint>
+				</span>
+			</Popover.Target>
+			<Popover.Dropdown
+				aria-label={t("solarSystem.hud.time")}
+				data-testid="time-panel"
+			>
+				<Stack gap="sm" align="center">
+					<Group justify="space-between" w="100%" wrap="nowrap">
+						<Text fw={700} size="sm">
+							{t("solarSystem.hud.time")}
+						</Text>
+						<Hint text={t("solarSystem.time.nowHint")}>
+							<Button
+								variant="light"
+								color="orange"
+								size="compact-sm"
+								onClick={setNow}
+							>
+								{t("solarSystem.time.now")}
+							</Button>
+						</Hint>
+					</Group>
+					<div className={classes.speedRow}>
+						<span className={classes.speedLabel} aria-hidden>
+							<IconGauge size={16} />
+							{t("solarSystem.time.warp.label")}
+						</span>
+						<div className={classes.warp}>
+							<SpeedPresets />
+						</div>
+					</div>
+					<SpinControl notice={false} />
+				</Stack>
+			</Popover.Dropdown>
+		</Popover>
+	)
+}
+
+/**
+ * The time bar (issues #14, #42): whether time runs and which way
+ * (reverse / pause / play), the date (a button that opens the time travel
+ * panel) and the speed (a button that opens the rest of time). The
+ * too-fast-to-follow and not-to-the-clock notes appear under it only while
+ * they apply.
  */
 const TimeControls = () => {
-	const setNow = useSimStore((state) => state.setNow)
 	useWindowKeydown(handleKeyDown)
-	const { t } = useI18n()
 
 	return (
 		<div className={classes.root}>
@@ -224,23 +319,10 @@ const TimeControls = () => {
 				<TimeTravel>
 					<SimDateTime />
 				</TimeTravel>
-				<Tooltip label={t("solarSystem.time.nowHint")} openDelay={400}>
-					<Button
-						variant="subtle"
-						color="orange"
-						size="compact-sm"
-						onClick={setNow}
-					>
-						{t("solarSystem.time.now")}
-					</Button>
-				</Tooltip>
-				<BirthdayButton />
-				<HuntButton />
-			</div>
-			<div className={classes.warp}>
-				<SpeedPresets />
+				<TimeMenu />
 			</div>
 			<TooFastHint />
+			<SpinNotice />
 		</div>
 	)
 }

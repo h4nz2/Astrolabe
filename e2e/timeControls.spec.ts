@@ -4,6 +4,7 @@
  * moment or a picked day (stopping on arrival), and the too-fast hint.
  */
 import { expect, test, type Locator, type Page } from "@playwright/test"
+import { setSpeed } from "./support/hud"
 
 const J2000 = 2451545
 
@@ -44,7 +45,7 @@ test("reverse, pause and play: one pressed, direction kept across speeds", async
 		.toBeLessThan(before - DAY_MS)
 
 	// a preset changes the speed and keeps running backwards; so does "+"
-	await page.getByText("1 week/s", { exact: true }).click()
+	await setSpeed(page, "1 week/s")
 	await expect(page).toHaveURL(/[?&]warp=-604800(&|$)/)
 	// hotkeys are the scene's once the preset gives the focus back
 	await page.evaluate(() => (document.activeElement as HTMLElement).blur())
@@ -120,7 +121,7 @@ test("warns when a body laps too fast to follow", async ({ page }) => {
 	await expect(hint).toContainText(/Mercury circles the Sun \d+ times a second/)
 	await button(page, "Pause").click()
 	await expect(hint).toBeHidden()
-	await page.getByText("1x", { exact: true }).click()
+	await setSpeed(page, "1x")
 	await button(page, "Play").click()
 	await expect(hint).toBeHidden()
 })

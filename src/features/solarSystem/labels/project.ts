@@ -74,7 +74,7 @@ export const slotBody = (slot: number, bodyCount: number): number =>
 	slot % bodyCount
 
 /**
- * Whether a body's name counts against the moon budget: any moon, except the
+ * Whether a body's name counts against the moon budget: any moon or asteroid (#23), except the
  * one the user points at, selected or focused, and one big enough on screen to
  * be a world rather than a dot.
  */
@@ -83,7 +83,7 @@ export const isBudgeted = (
 	state: Pick<LabelState, "focusId" | "selectedId" | "hoverId">,
 	radiusPx: number,
 ): boolean =>
-	body.kind === "moon" &&
+	(body.kind === "moon" || body.kind === "asteroid") &&
 	body.id !== state.focusId &&
 	body.id !== state.selectedId &&
 	body.id !== state.hoverId &&

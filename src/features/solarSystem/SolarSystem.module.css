@@ -9,22 +9,28 @@
 }
 
 /*
- * HUD layer. The layer itself never catches pointer events, so the canvas keeps
- * receiving drags and wheel zooms; only the panels do (`.panel`).
+ * The quiet HUD (#42; docs/ARCHITECTURE.md, "HUD layout"). The layer itself
+ * never catches pointer events, so the canvas keeps receiving drags and
+ * wheel zooms; only the panels do (`.panel`).
  *
- * Default (600..999px): pickers top left/right, body info above the centred time controls.
+ *   what you look at, the way out    [free-view badge]      the teacher's corner
+ *   the body card (starts small)                                       the dock
+ *   (flight readout above) the time bar          Tours · Layers · Scale · Tools
+ *
+ * The dock holds one panel at a time (Layers, Scale, a tool) and the tour's
+ * card; the entry points below it open them. Phones stack the same pieces:
+ * the scene keeps the middle, panels come up from the bottom.
  */
 .hud {
 	position: absolute;
 	inset: 0;
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-	grid-template-rows: auto minmax(0, 1fr) auto auto;
+	grid-template-rows: auto minmax(0, 1fr) auto;
 	grid-template-areas:
-		"picker centre toggles"
-		". . ."
-		"info info info"
-		"time time time";
+		"picker centre corner"
+		"info . dock"
+		"bottom bottom bottom";
 	gap: 0.75rem;
 	padding: 0.75rem;
 	pointer-events: none;
@@ -39,30 +45,25 @@
 	border-radius: var(--mantine-radius-md);
 	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 	padding: 0.5rem 0.75rem;
+	transition: opacity 250ms ease;
 }
 
+/* what you look at and the way out: overview, the focus picker, the point of view (#31) */
 .picker {
-	grid-area: picker;
-	justify-self: start;
-	align-self: start;
 	padding: 0.25rem;
-	/* the way-out button, then the focus picker */
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
 	min-width: 0;
 }
 
-/* the free centre (#15): what the view orbits and the way back */
-.centre {
-	grid-area: centre;
-	justify-self: center;
-	align-self: start;
-	max-width: 100%;
+.frame {
+	display: flex;
 	min-width: 0;
+	transition: opacity 250ms ease;
 }
 
-/* the picker and, below it while a body is held still, the frame's badge (#31) */
+/* the picker and, below it, the frame's badge (#31) and the light's running clock (#27) */
 .pickerStack {
 	grid-area: picker;
 	justify-self: start;
@@ -79,76 +80,198 @@
 	max-width: 100%;
 }
 
-/* the layer switches and, below them, the scale panel (#21) */
-.toggles {
-	grid-area: toggles;
+/* the free centre (#15): what the view orbits and the way back */
+.centre {
+	grid-area: centre;
+	justify-self: center;
+	align-self: start;
+	max-width: 100%;
+	min-width: 0;
+}
+
+/* the teacher's corner (#29, #42): Present, Share, hide, sound, help, language */
+.corner {
+	grid-area: corner;
 	justify-self: end;
 	align-self: start;
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	gap: 0.5rem;
-	width: 25rem;
+	padding: 0.25rem;
 	min-width: 0;
 	max-width: 100%;
 }
 
-@media (max-width: 599px) {
-	.toggles {
-		width: auto;
-	}
-}
-
-/* the scavenger hunt (#34) opens over this column (hunt/Hunt.module.css) */
-@media (min-width: 600px) {
-	.toggles {
-		position: relative;
-	}
-}
-
-/* the light panel (#27): a button, or the open panel; under the picker, on phones above the body card */
+/* the light's running clock and its stop button (#27, #38), while a flash is out */
 .light {
 	padding: 0.25rem;
-	min-height: 0;
-	/* what the open panel's scrolling body may take, after its header, tabs and the HUD around it */
-	--light-panel-body-max: calc(100dvh - 27rem);
 }
 
-.light:has([data-light-panel]) {
-	padding: 0.5rem 0.75rem;
-}
-
+/* the body card: under the name, small until unfolded; a tall card scrolls in place */
 .info {
 	grid-area: info;
 	justify-self: start;
-	align-self: end;
+	align-self: start;
 	min-width: 0;
 	max-width: 100%;
+	max-height: 100%;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+/* the dock: one panel at a time, and the tour's card, right above the entry points */
+.dock {
+	grid-area: dock;
+	justify-self: end;
+	align-self: end;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-end;
+	gap: 0.5rem;
+	min-width: 0;
+	max-width: 100%;
+	min-height: 0;
+	max-height: 100%;
+	/* what the light panel's scrolling body may take (light/LightPanel.module.css) */
+	--light-panel-body-max: calc(100dvh - 22rem);
+}
+
+.dock > * {
+	flex: 0 1 auto;
+	min-height: 0;
+	max-width: 100%;
+}
+
+/* the bottom row: the time bar in the middle (the flight readout above it), the entry points at the right */
+.bottom {
+	grid-area: bottom;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: end;
+	gap: 0.75rem;
+	min-width: 0;
 }
 
 .time {
-	grid-area: time;
-	justify-self: center;
-	align-self: end;
-	max-width: 100%;
-}
-
-/* the time controls, with the flight readout (#18) stacked above them while one shows */
-.bottom {
+	grid-column: 2;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 0.5rem;
 	min-width: 0;
-}
-
-.bottom > * {
 	max-width: 100%;
 }
 
-@media (max-width: 599px) {
+.time > * {
+	max-width: 100%;
+}
+
+.bottom > nav {
+	grid-column: 3;
+	justify-self: end;
+}
+
+/* narrower screens: the time bar at the left, the entry points after it (on a row of their own when needed) */
+@media (max-width: 1199px) {
 	.bottom {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.time {
+		align-items: flex-start;
+	}
+
+	.bottom > nav {
+		flex: none;
+		margin-inline-start: auto;
+	}
+}
+
+/* phones: one column; the scene keeps the middle, the panels come up from the bottom */
+@media (max-width: 599px) {
+	.hud {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto auto auto minmax(0, 1fr) auto auto auto;
+		grid-template-areas:
+			"picker"
+			"corner"
+			"centre"
+			"."
+			"dock"
+			"info"
+			"bottom";
+		gap: 0.5rem;
+		padding: 0.5rem;
+	}
+
+	.pickerStack {
+		justify-self: stretch;
 		align-items: stretch;
+	}
+
+	.centre,
+	.info,
+	.dock {
+		justify-self: stretch;
+	}
+
+	.dock {
+		align-items: stretch;
+		max-height: 55dvh;
+		--light-panel-body-max: 30dvh;
+	}
+
+	.info {
+		max-height: 45dvh;
+	}
+
+	/* one panel at a time: a panel or a tour in the dock takes the card's place */
+	.hud:has(.dock > *) .info {
+		display: none;
+	}
+
+	.time {
+		align-items: stretch;
+		width: 100%;
+	}
+
+	.bottom {
+		gap: 0.5rem;
+	}
+
+	.bottom > nav {
+		width: 100%;
+	}
+}
+
+/*
+ * The camera moves (#42; `data-camera="moving"`, set by dock/Dock.tsx from
+ * camera/motion.ts): the secondary controls step back, never away. They stay
+ * on screen and usable, and pointing at one or focusing one brings it back.
+ * The name, the way out and the time bar (`data-steady`) never dim; within
+ * them only the parts marked `data-dim` do (the point of view, the speed).
+ * The flight's readout (#18, beside the time bar) and the tour's words (#28)
+ * are what the move is about: they stay too.
+ */
+:global(html[data-camera="moving"])
+	:not(.time)
+	> .panel:not([data-steady]):not(.tour):not(:hover):not(:focus-within),
+:global(html[data-camera="moving"])
+	.dock
+	> :not(.tour):not(:hover):not(:focus-within),
+:global(html[data-camera="moving"])
+	.panel:not(:hover):not(:focus-within)
+	[data-dim],
+:global(html[data-camera="moving"])
+	.info:not(:hover):not(:focus-within)
+	[data-card-details] {
+	opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.panel,
+	.frame {
+		transition: none;
 	}
 }
 
@@ -182,98 +305,29 @@
 	display: none;
 }
 
-/* with the right column reaching into the middle row (#29), the hints keep to the centre column */
+/* the hints keep to the centre column, clear of the dock */
 @media (min-width: 1000px) {
 	.intro {
 		grid-column: 2;
 	}
 }
 
-/* wide screens: the caption takes the body card's corner, clear of the body in the centre */
+/* wide screens: the caption takes the body card's side, clear of the body in the centre */
 @media (min-width: 1200px) {
-	/* spanning the flexible row, it never makes the HUD taller than the screen: a tall caption grows upwards */
 	:global(html[data-intro="playing"]) .intro {
-		grid-row: 2 / 4;
 		grid-column: 1;
 	}
 }
 
-/*
- * Short screens (#29): a tall body card scrolls in its own box instead of
- * pushing the time controls (and #18's flight readout) off the bottom.
- */
-@media (min-width: 600px) and (max-width: 999px) {
-	.info {
-		max-height: 35dvh;
-		overflow-y: auto;
-	}
-}
-
-/*
- * wide screens: the body info sits beside the time controls on one bottom
- * row; the right column reaches down into the free middle row (#29), so a
- * tall scale panel never pushes the bottom row off screen
- */
-@media (min-width: 1000px) {
-	.hud {
-		grid-template-rows: auto minmax(0, 1fr) auto;
-		grid-template-areas:
-			"picker centre toggles"
-			". . toggles"
-			"info time .";
-	}
-
-	/*
-	 * A tall card (a planet's facts and moons, #17) may grow up the left side
-	 * past the top row (the toggles are on the right), keeping the picker clear,
-	 * and scrolls rather than running off the bottom of a 720 px projector.
-	 */
-	.info {
-		grid-row: 1 / -1;
-		max-height: calc(100% - 3.75rem);
-		overflow-y: auto;
-	}
-
-	/* a column taller than the room it has (a crowded scale panel) scrolls in place (#29) */
-	.toggles {
-		max-height: 100%;
-		overflow-y: auto;
-		overscroll-behavior: contain;
-	}
-}
-
-/* phones: the panels stack; the body card sits above the time controls (its facts fold away) */
 @media (max-width: 599px) {
-	.hud {
-		grid-template-columns: minmax(0, 1fr);
-		grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
-		grid-template-areas:
-			"picker"
-			"toggles"
-			"centre"
-			"light"
-			"info"
-			"time";
-		gap: 0.5rem;
-		padding: 0.5rem;
-	}
-
-	.picker,
-	.toggles,
-	.centre,
-	.info,
-	.time {
-		justify-self: stretch;
-	}
-
 	.intro {
 		grid-row: 4;
 	}
 
 	/* the opening gets the whole screen but the picker row; everything else is back at the hand-over */
-	:global(html[data-intro="playing"]) .toggles,
-	:global(html[data-intro="playing"]) .light,
-	:global(html[data-intro="playing"]) .time {
+	:global(html[data-intro="playing"]) .corner,
+	:global(html[data-intro="playing"]) .dock,
+	:global(html[data-intro="playing"]) .bottom {
 		display: none;
 	}
 
@@ -283,27 +337,7 @@
 	}
 
 	:global(html[data-intro="hints"]) .intro {
-		grid-row: 5;
-	}
-
-	.pickerStack {
-		justify-self: stretch;
-		align-items: stretch;
-	}
-
-	.info {
-		max-height: 45dvh;
-		overflow-y: auto;
-	}
-
-	.light {
-		grid-area: light;
-		align-self: end;
-		justify-self: start;
-		max-height: 100%;
-		/* the row is what the other panels leave: the open panel scrolls as a whole in it */
-		overflow-y: auto;
-		--light-panel-body-max: 30dvh;
+		grid-row: 6;
 	}
 }
 
@@ -316,46 +350,9 @@
 	display: none;
 }
 
-/*
- * Projector: calmer, more opaque panels, so text reads over any part of the
- * scene, and a narrower right column (the layer switches fold into a menu).
- */
+/* Projector: calmer, more opaque panels, so text reads over any part of the scene. */
 :global(html[data-presenting]) .panel {
 	background: rgba(12, 13, 17, 0.88);
-}
-
-:global(html[data-presenting]) .toggles {
-	width: 22rem;
-}
-
-/* the body card may be tall at projector size: it scrolls rather than pushing the time controls off screen */
-@media (min-width: 1000px) {
-	:global(html[data-presenting]) .info {
-		grid-row: info;
-		max-height: 55dvh;
-	}
-}
-
-/*
- * Wide projections: the time controls get the whole bottom row, so the
- * picker, the card and the right column keep their width (with the time
- * controls in the middle column, the side columns shrink to a sliver).
- */
-@media (min-width: 1000px) {
-	:global(html[data-presenting]) .hud {
-		grid-template-rows: auto minmax(0, 1fr) auto auto;
-		grid-template-areas:
-			"picker centre toggles"
-			". . toggles"
-			"info . toggles"
-			"time time time";
-	}
-}
-
-@media (max-width: 599px) {
-	:global(html[data-presenting]) .toggles {
-		width: auto;
-	}
 }
 
 /* high contrast: solid black panels with a white edge, nothing see-through */
@@ -367,39 +364,10 @@
 	box-shadow: none;
 }
 
-/*
- * The guided tour's card (#28): bottom right on wide screens (the empty cell
- * beside the time controls); below 1000 px in the body card's row, which it
- * takes over while unfolded (the narration is the lesson then).
- */
+/* The guided tour's card (#28): in the dock, above the entry points. */
 .tour {
-	grid-column: 3;
-	grid-row: 3;
-	justify-self: end;
-	align-self: end;
 	min-width: 0;
 	max-width: 100%;
-}
-
-@media (max-width: 999px) {
-	.tour {
-		grid-column: 1 / -1;
-	}
-
-	.hud:has([data-tour-card][data-collapsed="false"]) .info {
-		display: none;
-	}
-}
-
-@media (max-width: 599px) {
-	.tour {
-		grid-area: info;
-		justify-self: stretch;
-	}
-
-	.hud:has([data-tour-card]) .info {
-		display: none;
-	}
 }
 
 /* a held frame's badge (#31) fills the left column: while a tour narrates, the body card makes way */
@@ -408,28 +376,4 @@
 	)
 	.info {
 	display: none;
-}
-
-/*
- * Wide screens with a tour: the time controls get the whole bottom row (as in
- * #29's projector layout), so the side columns keep room for the body card
- * and the narration instead of shrinking to a sliver beside the time controls.
- */
-@media (min-width: 1000px) {
-	.hud:has([data-tour-card]) {
-		grid-template-rows: auto minmax(0, 1fr) auto auto;
-		grid-template-areas:
-			"picker centre toggles"
-			". . ."
-			"info . ."
-			"time time time";
-	}
-}
-
-/* presentation mode (#29): the right column reaches the bottom, so the tour card sits in the middle, like subtitles */
-@media (min-width: 1000px) {
-	:global(html[data-presenting]) .tour {
-		grid-column: 2;
-		justify-self: center;
-	}
 }

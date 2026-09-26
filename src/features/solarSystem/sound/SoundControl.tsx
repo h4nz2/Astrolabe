@@ -17,6 +17,7 @@ import {
 import { IconChevronDown, IconVolume, IconVolumeOff } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { useSoundStore } from "@/store/sound"
 
 import { canPlaySound, unlockAudio } from "./engine"
@@ -116,46 +117,48 @@ function SoundControl() {
 
 	return (
 		<Group gap={0} wrap="nowrap" className={classes.control}>
-			<ActionIcon
-				variant={enabled ? "light" : "subtle"}
-				color={enabled ? "orange" : "gray"}
-				size="md"
-				aria-label={t("solarSystem.sound.toggle")}
-				aria-pressed={enabled}
-				aria-keyshortcuts="M"
-				title={hint}
-				onClick={toggleSound}
-				data-testid="sound-toggle"
-			>
-				{enabled ? (
-					<IconVolume size={18} aria-hidden />
-				) : (
-					<IconVolumeOff size={18} aria-hidden />
-				)}
-			</ActionIcon>
-			<Popover
-				width={300}
-				position="bottom-end"
-				withArrow
-				shadow="md"
-				trapFocus={false}
-				transitionProps={{ duration: 0 }}
-			>
-				<Popover.Target>
-					<ActionIcon
-						variant="subtle"
-						color="gray"
-						size="sm"
-						aria-label={t("solarSystem.sound.settings")}
-						title={t("solarSystem.sound.settings")}
-					>
-						<IconChevronDown size={14} aria-hidden />
-					</ActionIcon>
-				</Popover.Target>
-				<Popover.Dropdown>
-					<Settings />
-				</Popover.Dropdown>
-			</Popover>
+			<Hint text={hint}>
+				<ActionIcon
+					variant={enabled ? "light" : "subtle"}
+					color={enabled ? "orange" : "gray"}
+					size="md"
+					aria-label={t("solarSystem.sound.toggle")}
+					aria-pressed={enabled}
+					aria-keyshortcuts="M"
+					onClick={toggleSound}
+					data-testid="sound-toggle"
+				>
+					{enabled ? (
+						<IconVolume size={18} aria-hidden />
+					) : (
+						<IconVolumeOff size={18} aria-hidden />
+					)}
+				</ActionIcon>
+			</Hint>
+			<Hint text={t("solarSystem.sound.settingsHint")}>
+				<Popover
+					width={300}
+					position="bottom-end"
+					withArrow
+					shadow="md"
+					trapFocus={false}
+					transitionProps={{ duration: 0 }}
+				>
+					<Popover.Target>
+						<ActionIcon
+							variant="subtle"
+							color="gray"
+							size="sm"
+							aria-label={t("solarSystem.sound.settings")}
+						>
+							<IconChevronDown size={14} aria-hidden />
+						</ActionIcon>
+					</Popover.Target>
+					<Popover.Dropdown>
+						<Settings />
+					</Popover.Dropdown>
+				</Popover>
+			</Hint>
 		</Group>
 	)
 }

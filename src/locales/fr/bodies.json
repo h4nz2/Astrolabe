@@ -1208,5 +1208,743 @@
 				"Mimas, la lune de Saturne, qui mesure environ 396 km, est ronde, alors que Protée, un peu plus grande, ne l’est pas – la taille à partir de laquelle une lune devient ronde dépend de sa composition et de la chaleur qu’elle a connue autrefois."
 			]
 		}
+	},
+	"ceres": {
+		"name": "Cérès",
+		"tagline": "La planète naine de la ceinture d’astéroïdes",
+		"description": {
+			"simple": "Cérès est le plus gros objet de la ceinture d’astéroïdes, l’anneau de rochers qui tourne entre Mars et Jupiter. Elle est ronde comme une balle, mais beaucoup plus petite que notre Lune. Quand on l’a découverte, en 1801, on a cru que c’était une nouvelle planète. Une sonde appelée Dawn a tourné autour de Cérès et y a trouvé des taches d’un blanc éclatant – faites de sel !",
+			"standard": "Cérès est le plus gros corps de la ceinture d’astéroïdes, entre Mars et Jupiter, et la seule planète naine de cette région. Giuseppe Piazzi l’a découverte le 1er janvier 1801, et pendant environ un demi-siècle, on l’a comptée parmi les planètes – jusqu’à ce que l’on trouve tant d’autres rochers dans la même région que les astronomes ont commencé à les appeler astéroïdes. Cérès mesure environ 940 km de diamètre et se compose de roche mêlée de glace. La sonde Dawn de la NASA a tourné autour d’elle de 2015 à 2018 et a découvert des taches brillantes dans le cratère Occator : du sel, laissé par de l’eau salée remontée des profondeurs, puis évaporée.",
+			"advanced": "Cérès (diamètre moyen d’environ 940 km) concentre à peu près un tiers de la masse de la ceinture d’astéroïdes ; c’est le seul objet de la ceinture assez massif pour avoir pris, sous l’effet de sa propre gravité, une forme presque ronde. Selon la définition de l’UAI de 2006, c’est donc une planète naine : elle est ronde et tourne autour du Soleil, mais elle n’a pas fait le vide sur son orbite, encombrée d’innombrables autres corps. Sa faible masse volumique, environ 2,2 g/cm³, indique un mélange de roche et de glace d’eau, et Dawn a trouvé des indices de saumure loin sous la croûte. Les taches brillantes (faculae) du cratère Occator, large de 92 km, sont surtout faites de carbonate de sodium, et Ahuna Mons, une montagne isolée d’environ 4 km de haut, serait un volcan de glace. Cérès fait le tour du Soleil en 4,6 ans, à une distance moyenne de 2,77 ua."
+		},
+		"facts": {
+			"simple": [
+				"Cérès porte le nom de la déesse romaine des moissons – c’est de là que vient le mot « céréale ».",
+				"Une journée sur Cérès ne dure qu’environ 9 heures.",
+				"La ceinture d’astéroïdes n’est pas encombrée comme dans les films : les astéroïdes sont si éloignés les uns des autres que les sondes la traversent sans avoir à éviter quoi que ce soit."
+			],
+			"standard": [
+				"Cérès a été le tout premier astéroïde découvert, le jour de l’An 1801.",
+				"Sur Cérès, la gravité n’est que d’environ 3 % de celle de la Terre : tu pourrais sauter plus de 30 fois plus haut que chez toi.",
+				"Dawn est tombée à court de carburant en 2018, mais la sonde, devenue muette, tourne toujours autour de Cérès."
+			],
+			"advanced": [
+				"Tous les astéroïdes réunis n’ont qu’environ 3 % de la masse de la Lune, et Cérès en représente à elle seule près d’un tiers.",
+				"Deux astéroïdes voisins sont en moyenne séparés d’environ un million de km – plus du double de la distance entre la Terre et la Lune.",
+				"Le cérium, un élément chimique découvert en 1803, doit son nom à Cérès."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Cérès serait une bille."
+			],
+			"standard": [
+				"Cérès est environ quatre fois moins large que notre Lune : la traverser à 100 km/h prendrait moins de 10 heures."
+			],
+			"advanced": [
+				"La lumière du Soleil met environ 23 minutes pour atteindre Cérès – presque trois fois plus que pour atteindre la Terre."
+			]
+		}
+	},
+	"pluto": {
+		"name": "Pluton",
+		"tagline": "La planète naine qui a un cœur",
+		"description": {
+			"simple": "Pluton est un petit monde glacé, loin au-delà de Neptune. Pendant 76 ans, on l’a appelée la neuvième planète. En 2006, les astronomes ont décidé que Pluton était une planète naine, parce qu’elle partage son chemin autour du Soleil avec beaucoup d’autres objets glacés. Pluton elle-même n’a pas changé – seul le nom qu’on lui donne a changé. À sa surface, il y a une grande plaine claire en forme de cœur.",
+			"standard": "Pluton a été découverte en 1930 par Clyde Tombaugh et a été appelée la neuvième planète pendant 76 ans. Puis, en 2005, des astronomes ont trouvé Éris, un monde glacé à peu près aussi grand que Pluton, et il a fallu trancher : était-ce une dixième planète ? En 2006, l’Union astronomique internationale (UAI) a adopté la première définition officielle d’une planète : elle doit tourner autour du Soleil, être assez massive pour être ronde et avoir fait le vide autour de son orbite. Pluton remplit les deux premières conditions, mais elle partage sa région, la ceinture de Kuiper, avec des milliers d’autres corps glacés – elle est donc devenue une planète naine. Pluton n’a pas changé ; ce sont nos connaissances qui ont changé, et c’est ainsi que fonctionne la science.",
+			"advanced": "Lorsque la sonde New Horizons de la NASA l’a survolée le 14 juillet 2015, Pluton s’est révélée étonnamment active. La moitié ouest de Tombaugh Regio, la grande région claire en forme de cœur, est occupée par Sputnik Planitia, un bassin d’environ 1 000 km de large rempli de glace d’azote en lente convection et dépourvu de cratères visibles : sa surface doit donc avoir moins d’environ 10 millions d’années. Des montagnes de glace d’eau hautes de plusieurs kilomètres et une mince atmosphère d’azote aux couches de brume bleutée complètent le tableau. L’orbite de Pluton est excentrique (0,25) et inclinée de 17° ; de 1979 à 1999, Pluton était plus proche du Soleil que Neptune, mais une résonance orbitale 3:2 – Pluton fait deux fois le tour du Soleil pendant que Neptune en fait trois – empêche les deux astres d’entrer un jour en collision."
+		},
+		"facts": {
+			"simple": [
+				"Pluton doit son nom à Venetia Burney, une petite Anglaise de 11 ans.",
+				"La sonde New Horizons a voyagé pendant neuf ans et demi pour atteindre Pluton.",
+				"Une année sur Pluton dure presque 250 années terrestres."
+			],
+			"standard": [
+				"New Horizons a survolé Pluton le 14 juillet 2015 et a envoyé les premières images prises de près.",
+				"Pluton a cinq lunes connues : Charon, Nix, Hydre, Kerbéros et Styx.",
+				"Une année sur Pluton dure environ 249 années terrestres : elle n’a donc pas encore bouclé un tour complet depuis sa découverte en 1930."
+			],
+			"advanced": [
+				"L’UAI a adopté sa définition de la planète par un vote, le 24 août 2006, lors de son assemblée générale à Prague.",
+				"Pluton tourne sur elle-même à l’envers par rapport à la plupart des planètes ; un jour y dure 6,4 jours terrestres, exactement le temps que met Charon à en faire le tour.",
+				"La masse de Pluton ne représente qu’environ 18 % de celle de la Lune et 0,2 % de celle de la Terre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Pluton serait une balle de ping-pong."
+			],
+			"standard": [
+				"Pluton ne fait qu’environ les deux tiers de la largeur de notre Lune – sept lunes du système solaire sont plus grandes que Pluton."
+			],
+			"advanced": [
+				"La lumière du Soleil met environ cinq heures et demie pour atteindre Pluton ; un avion de ligne volant sans escale à 900 km/h mettrait environ 750 ans."
+			]
+		}
+	},
+	"haumea": {
+		"name": "Hauméa",
+		"tagline": "L’œuf qui tourne à toute vitesse",
+		"description": {
+			"simple": "Hauméa est une planète naine située loin au-delà de Neptune. Elle tourne si vite sur elle-même – un tour en moins de quatre heures – qu’elle s’est étirée en forme d’œuf, ou de ballon de rugby. Hauméa a deux petites lunes et même un anneau très fin.",
+			"standard": "Hauméa se trouve dans la ceinture de Kuiper, la zone des corps glacés au-delà de Neptune. Une journée y dure moins de quatre heures, ce qui en fait l’un des grands corps du système solaire qui tournent le plus vite. Cette rotation rapide l’a étirée en une forme d’œuf allongé, environ deux fois plus longue qu’épaisse. En 2017, des astronomes ont observé Hauméa passer devant une étoile lointaine et ont découvert un anneau fin autour d’elle – le premier anneau trouvé autour d’une planète naine. Ses deux lunes, Hiʻiaka et Namaka, portent comme elle des noms de déesses hawaïennes.",
+			"advanced": "Sa période de rotation de 3,9 heures étire Hauméa en un ellipsoïde allongé environ deux fois plus long qu’épais – la forme dans laquelle sa gravité et sa rotation s’équilibrent. Sa surface est couverte de glace d’eau cristalline, tandis que sa masse volumique indique un intérieur surtout rocheux sous une fine coquille de glace. Hauméa, ses lunes et une famille de corps glacés aux orbites semblables seraient les fragments d’une ancienne collision géante, qui pourrait aussi expliquer sa rotation rapide. Elle fait le tour du Soleil en 283 ans, à une distance moyenne de 43 ua, sur une orbite inclinée de 28°."
+		},
+		"facts": {
+			"simple": [
+				"Une journée sur Hauméa est plus courte qu’une matinée d’école : moins de 4 heures.",
+				"Hauméa porte le nom d’une déesse hawaïenne de la naissance et de la fertilité.",
+				"Hauméa a un anneau, comme Saturne – mais beaucoup plus fin et plus pâle."
+			],
+			"standard": [
+				"L’anneau de Hauméa a été découvert en 2017, quand la planète naine est passée devant une étoile et a caché sa lumière pendant un court instant.",
+				"Une année sur Hauméa dure environ 283 années terrestres.",
+				"Sa surface brillante est surtout faite de glace d’eau."
+			],
+			"advanced": [
+				"Avec une période de rotation de 3,9 heures, Hauméa tourne plus vite que toute autre planète naine connue.",
+				"Son anneau tourne à environ 2 300 km du centre de Hauméa et fait un tour pendant que Hauméa en fait trois.",
+				"L’UAI a reconnu Hauméa comme planète naine en 2008."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Hauméa aurait à peu près la taille et la forme d’un œuf de caille."
+			],
+			"standard": [
+				"Hauméa tourne sur elle-même environ six fois plus vite que la Terre."
+			],
+			"advanced": [
+				"À la distance moyenne de Hauméa, la lumière arrive presque 6 heures après avoir quitté le Soleil, et elle y est environ 1 850 fois plus faible que sur Terre."
+			]
+		}
+	},
+	"makemake": {
+		"name": "Makémaké",
+		"tagline": "La planète naine découverte à Pâques",
+		"description": {
+			"simple": "Makémaké est un petit monde glacé et rougeâtre, loin au-delà de Neptune. On l’a découverte en 2005, juste après Pâques : ses découvreurs lui ont donc donné le nom d’un dieu du peuple de l’île de Pâques. Makémaké est l’un des objets les plus brillants de la ceinture de Kuiper, la zone des mondes glacés au-delà de Neptune. Elle a une toute petite lune sombre.",
+			"standard": "Makémaké est une planète naine de la ceinture de Kuiper, d’environ 1 400 km de diamètre – un peu plus de la moitié de la largeur de Pluton. Ses découvreurs l’ont repérée le 31 mars 2005, quelques jours après Pâques, et l’ont ensuite nommée d’après Makemake, le dieu créateur du peuple rapanui de l’île de Pâques. Après Pluton, c’est l’objet connu le plus brillant de la ceinture de Kuiper, visible dans un grand télescope d’amateur. Sa surface brun-rouge est couverte de méthane gelé. En 2016, des images de Hubble ont révélé une petite lune très sombre.",
+			"advanced": "Makémaké fait le tour du Soleil en 308 ans, à une distance moyenne de 45,6 ua, sur une orbite inclinée de 29°. Son spectre est dominé par la glace de méthane, accompagnée d’éthane et d’autres composés que la lumière du Soleil a produits à partir du méthane et qui donnent à la surface sa couleur rougeâtre. Quand Makémaké est passée devant une étoile peu brillante en 2011, l’étoile a disparu puis réapparu brusquement : Makémaké n’a donc tout au plus qu’une atmosphère extrêmement ténue – contrairement à Pluton. Sa lune, surnommée MK2, est environ 1 300 fois moins lumineuse que Makémaké et bien plus sombre ; elle a été trouvée sur des images de Hubble prises en 2015."
+		},
+		"facts": {
+			"simple": [
+				"Une année sur Makémaké dure environ 308 années terrestres.",
+				"Ses découvreurs l’avaient d’abord surnommée « Lapin de Pâques ».",
+				"Makémaké est couverte de méthane gelé – le principal gaz du gaz naturel avec lequel beaucoup de gens font la cuisine."
+			],
+			"standard": [
+				"Makémaké a été officiellement reconnue comme planète naine en 2008.",
+				"Sa température de surface est d’environ −240 °C.",
+				"Sa seule lune connue était cachée dans l’éclat de Makémaké jusqu’à ce que Hubble la révèle en 2016."
+			],
+			"advanced": [
+				"En chronométrant la disparition de l’étoile en 2011 depuis plusieurs observatoires, on a obtenu la taille de Makémaké : environ 1 430 × 1 500 km.",
+				"Sa température moyenne de surface est d’environ 32 K (−241 °C).",
+				"Quand l’orbite de sa lune sera connue avec précision, elle révélera la masse de Makémaké – de la même façon que Charon et Dysnomie ont révélé les masses de Pluton et d’Éris."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Makémaké serait à peu près aussi grosse qu’une cerise."
+			],
+			"standard": [
+				"Makémaké fait environ 60 % de la largeur de Pluton et 40 % de celle de notre Lune."
+			],
+			"advanced": [
+				"Vu depuis Makémaké, le Soleil ne serait qu’un point de lumière éclatant – mais encore environ 200 fois plus brillant que la pleine Lune vue depuis la Terre."
+			]
+		}
+	},
+	"eris": {
+		"name": "Éris",
+		"tagline": "La planète naine qui a lancé le débat",
+		"description": {
+			"simple": "Éris est une planète naine presque exactement aussi grande que Pluton, mais beaucoup plus lointaine. Quand on l’a découverte en 2005, certains l’ont appelée la dixième planète. Au lieu de cela, les astronomes ont fixé une règle claire pour décider de ce qui compte comme une planète – et Éris et Pluton sont toutes deux devenues des planètes naines. Éris porte le nom de la déesse grecque de la discorde, ce qui lui va bien, car elle a déclenché une grande dispute !",
+			"standard": "Éris est à peu près aussi large que Pluton, mais environ un quart plus lourde, et c’est l’un des objets connus les plus lointains qui tournent autour du Soleil. Sa découverte en 2005 a obligé les astronomes à décider si c’était la dixième planète – ou si Pluton était vraiment une planète. La réponse a été la définition de l’UAI de 2006, qui a fait des deux astres des planètes naines. Fort à propos, Éris porte le nom de la déesse grecque de la discorde et des querelles. Son orbite est si allongée et si inclinée (44°) qu’il lui faut environ 560 ans pour faire le tour du Soleil. Aujourd’hui, Éris est environ 96 fois plus loin du Soleil que la Terre, près du point le plus éloigné de son orbite.",
+			"advanced": "Éris appartient au disque des objets épars, une population de corps glacés au-delà de la ceinture de Kuiper dont les orbites excentriques et fortement inclinées ont probablement été repoussées vers l’extérieur par la gravité de Neptune. Son orbite (demi-grand axe de 68 ua, excentricité 0,44, inclinaison 44°) la mène entre environ 38 et 98 ua du Soleil. Quand Éris est passée devant une étoile en 2010, on a mesuré son diamètre : environ 2 330 km, juste en dessous des 2 377 km de Pluton, tandis que l’orbite de sa lune Dysnomie donne une masse supérieure d’environ 27 % à celle de Pluton – Éris est donc plus dense et plus rocheuse. Sa surface renvoie environ 96 % de la lumière qu’elle reçoit, l’une des valeurs les plus élevées du système solaire, probablement grâce à un givre de méthane frais."
+		},
+		"facts": {
+			"simple": [
+				"Une année sur Éris dure environ 560 années terrestres.",
+				"Éris a une lune, qui s’appelle Dysnomie.",
+				"Éris est l’un des objets les plus brillants du système solaire : comme de la neige fraîche, elle renvoie presque toute la lumière du Soleil qu’elle reçoit."
+			],
+			"standard": [
+				"Avant de recevoir son nom officiel, Éris était surnommée « Xena », d’après l’héroïne d’une série télévisée.",
+				"Éris est actuellement plus de deux fois plus loin du Soleil que Pluton.",
+				"Éris n’a reçu son nom officiel qu’en septembre 2006, une fois le débat sur les planètes tranché."
+			],
+			"advanced": [
+				"Dysnomie tourne autour d’Éris à environ 37 300 km, en 15,8 jours ; c’est son orbite qui permet aux astronomes de peser Éris.",
+				"Éris semble tourner sur elle-même en 15,8 jours, au même rythme que l’orbite de Dysnomie.",
+				"Éris a été découverte le 5 janvier 2005 sur des images prises en octobre 2003."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Éris serait une balle de ping-pong – à peine plus petite que Pluton."
+			],
+			"standard": [
+				"La lumière met aujourd’hui environ 13 heures pour atteindre Éris ; un avion de ligne à 900 km/h mettrait environ 1 800 ans."
+			],
+			"advanced": [
+				"À la distance actuelle d’Éris, le Soleil brille plus de 9 000 fois plus faiblement que sur Terre."
+			]
+		}
+	},
+	"charon": {
+		"name": "Charon",
+		"tagline": "La grande compagne de Pluton",
+		"description": {
+			"simple": "Charon est la plus grande lune de Pluton. Elle est à peu près deux fois moins large que Pluton – si grande que Pluton et Charon tournent l’une autour de l’autre comme deux danseurs qui se tiennent par la main. Elles se montrent toujours la même face. Si tu étais sur Pluton, tu verrais Charon suspendue dans le ciel sans jamais bouger – ou, de l’autre côté de Pluton, tu ne la verrais jamais.",
+			"standard": "Charon est la plus grande lune de Pluton, avec environ 1 200 km de diamètre – plus de la moitié de la largeur de Pluton. Comme Charon est très lourde par rapport à Pluton, le point autour duquel tournent les deux astres se trouve dans l’espace vide qui les sépare, et non à l’intérieur de Pluton. Toutes deux sont en rotation synchrone : elles se montrent toujours la même face, et un jour sur Pluton dure exactement autant qu’un tour de Charon, soit 6,4 jours. New Horizons a révélé une calotte rougeâtre au pôle Nord de Charon et des canyons bien plus longs et plus profonds que le Grand Canyon.",
+			"advanced": "Avec environ 12 % de la masse de Pluton, Charon est, par rapport à son astre parent, la plus grosse lune de toutes les planètes et planètes naines ; le barycentre du couple se trouve à plus de 900 km au-dessus de la surface de Pluton, si bien que certains astronomes parlent de Pluton et Charon comme d’une planète naine double. Son orbite a permis la première mesure précise de la masse de Pluton. Sa calotte polaire rougeâtre, Mordor Macula, se formerait lorsque du méthane qui s’échappe de l’atmosphère de Pluton gèle sur le pôle de Charon plongé dans le froid de l’hiver, puis est transformé en composés rougeâtres par la lumière ultraviolette. Sa surface de glace d’eau est fendue par une ceinture de canyons, signe qu’un ancien océan souterrain a gelé et s’est dilaté."
+		},
+		"facts": {
+			"simple": [
+				"Charon porte le nom du passeur qui, dans les mythes grecs, faisait traverser un fleuve aux âmes des morts pour les mener aux Enfers.",
+				"Charon fait le tour de Pluton en un peu moins d’une semaine.",
+				"Les scientifiques ont surnommé « Mordor » la calotte polaire rouge sombre de Charon, d’après le pays sombre du Seigneur des anneaux."
+			],
+			"standard": [
+				"Charon n’est qu’à environ 19 600 km de Pluton – à peu près un vingtième de la distance entre la Terre et la Lune.",
+				"À cause de la rotation synchrone, Charon n’est visible que depuis une moitié de Pluton.",
+				"Les canyons les plus profonds de Charon atteignent environ 9 km – cinq fois la profondeur du Grand Canyon."
+			],
+			"advanced": [
+				"Diamètre moyen : 1 212 km ; masse : environ 1,6 × 10²¹ kg, soit environ 12 % de celle de Pluton.",
+				"L’orbite de Charon est presque parfaitement circulaire (excentricité 0,0002).",
+				"James Christy a découvert Charon en 1978, sous la forme d’une petite bosse sur des photographies de Pluton."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Pluton serait une balle de ping-pong et Charon une noisette placée à 34 cm."
+			],
+			"standard": [
+				"Charon tourne à seulement 19 600 km environ de Pluton – un avion de ligne parcourrait cette distance en moins d’une journée."
+			],
+			"advanced": [
+				"La Lune a environ 1,2 % de la masse de la Terre ; Charon a environ 12 % de celle de Pluton – dix fois plus, en proportion."
+			]
+		}
+	},
+	"vesta": {
+		"name": "Vesta",
+		"tagline": "L’astéroïde le plus brillant",
+		"description": {
+			"simple": "Vesta est le deuxième plus gros objet de la ceinture d’astéroïdes. C’est l’astéroïde le plus brillant de tous – lors de nuits très noires, on peut même parfois le voir sans télescope. Il y a très longtemps, un choc énorme a creusé un trou géant dans Vesta, et certains morceaux sont tombés sur la Terre sous forme de météorites. On peut donc tenir un morceau de Vesta dans sa main !",
+			"standard": "Vesta est le deuxième plus gros corps de la ceinture d’astéroïdes, avec environ 525 km de diamètre. Contrairement à la plupart des astéroïdes, il est formé de couches, comme une petite planète rocheuse : un noyau de fer, un manteau rocheux et une croûte de lave ancienne. La sonde Dawn de la NASA a tourné autour de Vesta de 2011 à 2012 et a cartographié Rheasilvia, un cratère d’environ 500 km de large – presque aussi large que Vesta lui-même – dont le pic central est plus de deux fois plus haut que le mont Everest. L’impact qui l’a creusé a projeté des roches qui tombent encore aujourd’hui sur la Terre : environ une météorite sur vingt vient de Vesta.",
+			"advanced": "Vesta est une protoplanète rescapée : au début de son histoire, cet astre a fondu et s’est différencié en un noyau de fer, un manteau et une croûte basaltique – le même processus qui a façonné la Terre. Son hémisphère sud est dominé par deux bassins d’impact qui se chevauchent, Rheasilvia (environ 500 km) et Veneneia, plus ancien. L’impact de Rheasilvia, il y a environ un milliard d’années, a arraché environ 1 % du volume de Vesta et a créé une famille de petits astéroïdes, les vestoïdes. Certains de ces fragments atteignent la Terre sous forme de météorites HED (howardites, eucrites, diogénites), qui nous permettent d’étudier la croûte de Vesta en laboratoire. Comme sa forme n’est pas tout à fait ronde, Vesta est rangé parmi les astéroïdes et non parmi les planètes naines."
+		},
+		"facts": {
+			"simple": [
+				"Vesta porte le nom de la déesse romaine du foyer et du feu de la maison.",
+				"Une journée sur Vesta dure un peu plus de 5 heures.",
+				"La sonde Dawn a d’abord visité Vesta, puis elle a continué son voyage jusqu’à Cérès."
+			],
+			"standard": [
+				"Vesta a été découvert en 1807 par Heinrich Olbers.",
+				"Une année sur Vesta dure environ 3,6 années terrestres.",
+				"Dawn a été la première sonde à se mettre en orbite autour de deux mondes différents au-delà de la Terre : Vesta et Cérès."
+			],
+			"advanced": [
+				"Vesta contient à peu près un dixième de la masse de toute la ceinture d’astéroïdes.",
+				"À son plus brillant, Vesta atteint environ la magnitude 5, ce qui en fait le seul astéroïde de la ceinture principale parfois visible à l’œil nu.",
+				"Sa période de rotation est de 5,34 heures et son axe est incliné de 29°."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Vesta serait un petit pois."
+			],
+			"standard": [
+				"Vesta mesure environ 525 km de large – à 100 km/h, tu pourrais le traverser en voiture en un peu plus de 5 heures."
+			],
+			"advanced": [
+				"Le pic central de Rheasilvia est environ deux fois et demie plus haut que le mont Everest – sur un astre 24 fois moins large que la Terre."
+			]
+		}
+	},
+	"pallas": {
+		"name": "Pallas",
+		"tagline": "Le géant penché de la ceinture d’astéroïdes",
+		"description": {
+			"simple": "Pallas est l’un des plus gros astéroïdes, presque aussi grand que Vesta. Il tourne autour du Soleil sur un chemin très penché : il passe donc une grande partie de son temps au-dessus ou au-dessous des autres astéroïdes. Dans les films, la ceinture d’astéroïdes est pleine de rochers qui roulent les uns contre les autres – mais la vraie est presque vide. Les sondes la traversent tout droit sans avoir à esquiver quoi que ce soit.",
+			"standard": "Pallas a été le deuxième astéroïde découvert, par Heinrich Olbers en 1802. Il mesure environ 510 km de diamètre, presque autant que Vesta, mais son orbite est inclinée d’environ 35° par rapport à celle des planètes – si fortement qu’il est difficile à atteindre, et aucune sonde ne l’a encore visité. Pallas rappelle à quel point la ceinture d’astéroïdes est vide : deux astéroïdes voisins sont en moyenne séparés d’environ un million de km, plus du double de la distance entre la Terre et la Lune. Des sondes comme Pioneer 10, Galileo, Cassini et New Horizons ont traversé la ceinture sans avoir à éviter quoi que ce soit.",
+			"advanced": "Pallas a un diamètre moyen d’environ 510 km et contient à peu près 8 % de la masse de la ceinture d’astéroïdes. Son orbite est exceptionnellement inclinée (34,9°) et excentrique (0,23) : il croise donc les autres astéroïdes à de grandes vitesses relatives, et les collisions y sont particulièrement violentes – ce qui pourrait expliquer sa surface criblée de cratères, en « balle de golf », visible sur des images prises en 2020 par le Very Large Telescope. La ceinture entière ne contient qu’environ 3 % de la masse de la Lune, et Cérès, Vesta, Pallas et Hygie en représentent ensemble plus de la moitié. Pallas orbite à une distance moyenne de 2,77 ua, presque exactement comme Cérès."
+		},
+		"facts": {
+			"simple": [
+				"Pallas porte le nom de Pallas Athéna, la déesse grecque de la sagesse.",
+				"Une année sur Pallas dure plus de quatre ans et demi sur Terre.",
+				"Tous les astéroïdes de la ceinture réunis pèsent beaucoup moins que notre Lune."
+			],
+			"standard": [
+				"Comme Cérès, Pallas a été compté parmi les planètes pendant des décennies après sa découverte.",
+				"Son orbite est bien plus inclinée que celles des autres gros astéroïdes.",
+				"Le palladium, un métal utilisé dans les pots catalytiques des voitures, doit son nom à Pallas."
+			],
+			"advanced": [
+				"Pallas est un astéroïde rare de type B : riche en carbone et de couleur légèrement bleutée.",
+				"Sa période de rotation est d’environ 7,8 heures.",
+				"Le palladium, découvert en 1802, a été nommé d’après l’astéroïde trouvé la même année."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Pallas serait un petit pois – tout comme Vesta."
+			],
+			"standard": [
+				"Tous les astéroïdes réunis n’ont qu’environ un trentième de la masse de la Lune."
+			],
+			"advanced": [
+				"Voler d’un astéroïde jusqu’à son plus proche voisin – en moyenne environ un million de km – prendrait plus de six semaines à un avion de ligne."
+			]
+		}
+	},
+	"juno": {
+		"name": "Junon",
+		"tagline": "Le troisième astéroïde découvert",
+		"description": {
+			"simple": "Junon est un gros astéroïde de la ceinture d’astéroïdes, d’environ 250 km de large. C’est le troisième astéroïde jamais découvert, en 1804. Il est fait de pierre mêlée de métal et a un peu la forme d’une pomme de terre. Junon porte le nom de la reine des dieux romains.",
+			"standard": "Junon a été le troisième astéroïde découvert, par Karl Harding en 1804. Il mesure environ 250 km de diamètre et fait partie des plus gros astéroïdes pierreux, faits de roches silicatées mêlées de métal. Son orbite est assez allongée : Junon s’approche jusqu’à environ 2 ua du Soleil et s’en éloigne jusqu’à environ 3,4 ua. Ne le confonds pas avec la sonde Juno de la NASA – celle-là a été envoyée vers Jupiter, pas vers cet astéroïde.",
+			"advanced": "Junon est un astéroïde de type S : sa surface est faite de silicates pierreux mêlés de fer-nickel, et il renvoie plus de lumière que les astéroïdes sombres, riches en carbone. Avec une excentricité de 0,26, sa distance au Soleil varie entre environ 297 et 502 millions de km, et il fait le tour du Soleil en 4,4 ans. Il tourne sur lui-même en environ 7,2 heures, et sa luminosité change pendant sa rotation à cause de sa forme irrégulière. Avec Cérès, Pallas et Vesta, il a été compté parmi les planètes pendant plusieurs décennies après sa découverte."
+		},
+		"facts": {
+			"simple": [
+				"Une année sur Junon dure presque quatre ans et demi sur Terre.",
+				"Junon fait un tour sur lui-même en environ 7 heures.",
+				"Junon est trop pâle pour être vu à l’œil nu – il faut des jumelles ou un télescope."
+			],
+			"standard": [
+				"Junon porte le nom de la reine des dieux romains, l’épouse de Jupiter.",
+				"Junon tourne sur lui-même en environ 7,2 heures.",
+				"Junon met environ 4,4 ans à faire le tour du Soleil."
+			],
+			"advanced": [
+				"Sa forme, d’environ 290 × 240 × 190 km, est loin d’être ronde : Junon n’est donc pas une planète naine.",
+				"La masse de Junon est d’environ 2,8 × 10¹⁹ kg, soit à peu près 1 % de la masse totale de la ceinture d’astéroïdes.",
+				"Son périhélie se situe à environ 1,99 ua et son aphélie à environ 3,35 ua."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Junon serait un grain de poivre."
+			],
+			"standard": [
+				"Junon mesure environ 250 km de large : à 100 km/h, tu pourrais le traverser en voiture en deux heures et demie."
+			],
+			"advanced": [
+				"La Terre est environ 50 fois plus large que Junon, mais environ 200 000 fois plus lourde."
+			]
+		}
+	},
+	"hygiea": {
+		"name": "Hygie",
+		"tagline": "Une planète naine, peut-être",
+		"description": {
+			"simple": "Hygie est le quatrième plus gros objet de la ceinture d’astéroïdes. Il est très sombre et presque rond comme une balle. Certains astronomes pensent qu’il pourrait un jour être compté parmi les planètes naines. Il porte le nom de la déesse grecque de la santé – c’est de là que vient le mot « hygiène ».",
+			"standard": "Hygie est le quatrième plus gros astéroïde, avec environ 410 km de diamètre ; il tourne dans la partie extérieure de la ceinture, à une distance moyenne de 3,15 ua. Il a été découvert en 1849 par Annibale de Gasparis, à Naples. Sa surface est sombre et riche en carbone, comme celle de nombreux astéroïdes de la ceinture extérieure. En 2019, des images très nettes du Very Large Telescope, au Chili, ont montré qu’Hygie est presque parfaitement rond : il pourrait donc être classé parmi les planètes naines – mais l’UAI n’a pas changé son statut.",
+			"advanced": "Hygie est un astéroïde de type C, un corps sombre et carboné, et le plus grand membre d’une famille d’astéroïdes née d’un impact géant. Les observations de 2019 au Very Large Telescope n’y ont trouvé, à la surprise générale, aucun grand bassin d’impact ; selon les modèles, la collision aurait entièrement pulvérisé Hygie, puis les fragments se seraient rassemblés en une sphère. Sa forme ronde semble satisfaire au critère de rondeur de l’UAI pour les planètes naines, mais sa classification n’a pas été modifiée. Cérès, Vesta, Pallas et Hygie contiennent à eux quatre plus de la moitié de la masse de la ceinture d’astéroïdes."
+		},
+		"facts": {
+			"simple": [
+				"Une année sur Hygie dure environ cinq ans et demi sur Terre.",
+				"Une journée sur Hygie dure presque 14 heures.",
+				"Hygie est trop pâle pour être vu sans télescope."
+			],
+			"standard": [
+				"Hygie met environ 5,6 ans à faire le tour du Soleil.",
+				"C’est le dixième astéroïde jamais découvert.",
+				"Une journée sur Hygie dure environ 13,8 heures."
+			],
+			"advanced": [
+				"Masse : environ 1,05 × 10²⁰ kg – à peu près 4 % de toute la ceinture d’astéroïdes.",
+				"Distance moyenne au Soleil : 3,15 ua ; excentricité orbitale : 0,11.",
+				"La famille d’Hygie compte des milliers de petits astéroïdes aux orbites semblables, fragments du même impact."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Hygie serait un petit pois d’environ 7 mm de large."
+			],
+			"standard": [
+				"La lumière du Soleil met environ 26 minutes pour atteindre Hygie – trois fois plus que pour atteindre la Terre."
+			],
+			"advanced": [
+				"Il faudrait environ 700 Hygie pour égaler la masse de notre Lune."
+			]
+		}
+	},
+	"eros": {
+		"name": "Éros",
+		"tagline": "Le premier astéroïde où une sonde s’est posée",
+		"description": {
+			"simple": "Éros est un astéroïde allongé en forme de cacahuète, long d’environ 34 km. Il vient plus près de la Terre que les astéroïdes de la ceinture principale. En l’an 2000, une sonde appelée NEAR Shoemaker s’est mise en orbite autour d’Éros, et un an plus tard, elle s’y est posée en douceur – alors qu’elle n’avait pas du tout été construite pour atterrir !",
+			"standard": "Éros, découvert en 1898, a été le tout premier géocroiseur connu : son orbite l’amène plus près du Soleil que Mars, même s’il ne croise jamais le chemin de la Terre. Il mesure environ 34 km de long. Le 14 février 2000 – jour de la Saint-Valentin, ce qui tombe bien pour un astéroïde qui porte le nom du dieu grec de l’amour –, la sonde NEAR Shoemaker de la NASA est devenue la première sonde en orbite autour d’un astéroïde. Après un an de cartographie, elle s’est posée le 12 février 2001 : le premier atterrissage sur un astéroïde.",
+			"advanced": "Éros est un astéroïde de type S dont l’orbite a un demi-grand axe de 1,46 ua et une excentricité de 0,22 ; il fait le tour du Soleil en 1,76 an, et son périhélie à 1,13 ua en fait un géocroiseur qui croise l’orbite de Mars. Ses passages rapprochés vers 1900 et en 1931 ont servi à mesurer sa parallaxe, et donc l’échelle du système solaire, c’est-à-dire la longueur de l’unité astronomique. NEAR Shoemaker a mesuré une masse volumique globale d’environ 2,7 g/cm³, proche de celle de la croûte terrestre, ce qui suggère un corps solide mais très fracturé plutôt qu’un amas de débris peu compact, couvert de blocs rocheux et de mares de poussière fine."
+		},
+		"facts": {
+			"simple": [
+				"Éros porte le nom du dieu grec de l’amour – et la sonde est arrivée le jour de la Saint-Valentin !",
+				"Éros fait un tour sur lui-même en un peu plus de 5 heures.",
+				"Sur Éros, la gravité est si faible que tu pourrais lancer un caillou directement dans l’espace."
+			],
+			"standard": [
+				"NEAR Shoemaker a pris environ 160 000 photos d’Éros.",
+				"Une année sur Éros dure environ 1,76 année terrestre.",
+				"Éros est l’un des plus grands géocroiseurs connus."
+			],
+			"advanced": [
+				"La mission NEAR a été rebaptisée en l’honneur du géologue planétaire Eugene Shoemaker.",
+				"Éros a été découvert le 13 août 1898 par Gustav Witt, à Berlin.",
+				"Après s’être posée, NEAR Shoemaker a continué pendant environ deux semaines à mesurer la composition de la surface avec son spectromètre à rayons gamma."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Éros serait aussi petit qu’un grain de sable."
+			],
+			"standard": [
+				"Éros mesure environ 34 km de long – une voiture à 100 km/h le parcourrait d’un bout à l’autre en une vingtaine de minutes."
+			],
+			"advanced": [
+				"À la surface d’Éros, la gravité est des milliers de fois plus faible que sur Terre."
+			]
+		}
+	},
+	"bennu": {
+		"name": "Bennu",
+		"tagline": "Le tas de gravats dont on a ramené des morceaux",
+		"description": {
+			"simple": "Bennu est un petit astéroïde, large d’environ 500 m seulement – si tu pouvais faire le tour de son milieu à pied, il ne te faudrait qu’une vingtaine de minutes. Ce n’est pas un seul gros rocher, mais un tas de rochers et de graviers qui tiennent ensemble grâce à sa toute petite gravité. En 2020, la sonde OSIRIS-REx a touché Bennu pendant quelques secondes et a attrapé de la poussière et des cailloux. En 2023, une capsule les a ramenés sans encombre sur Terre, où des scientifiques les étudient.",
+			"standard": "Bennu est un géocroiseur d’environ 500 m de diamètre, découvert en 1999. La sonde OSIRIS-REx de la NASA est arrivée en 2018 et a découvert un tas de gravats : un amas peu compact de blocs rocheux et de graviers, retenus par une faible gravité. Quand elle a touché la surface le 20 octobre 2020 pour prélever un échantillon, sa tête de prélèvement s’y est enfoncée comme dans une piscine à balles. La capsule contenant environ 120 g de matériau a atterri dans le désert de l’Utah le 24 septembre 2023. L’échantillon est riche en carbone et en minéraux contenant de l’eau, et il renferme des acides aminés, des briques de la vie.",
+			"advanced": "Bennu est un astéroïde carboné de type B dont la masse volumique globale, d’environ 1,2 g/cm³ seulement, implique qu’une grande partie de son volume est faite de vide entre les fragments. Son orbite (demi-grand axe de 1,13 ua, excentricité 0,20) croise celle de la Terre, ce qui en fait l’un des astéroïdes potentiellement dangereux les plus surveillés : d’après le suivi précis d’OSIRIS-REx, la probabilité d’un impact le 24 septembre 2182 est d’environ 1 sur 2 700. L’échantillon rapporté contient des minéraux formés dans de l’eau liquide et des sels laissés par l’évaporation de saumures, preuve que le corps parent de Bennu contenait autrefois de l’eau."
+		},
+		"facts": {
+			"simple": [
+				"Bennu doit son nom à un garçon de 9 ans qui a gagné un concours en 2013.",
+				"Bennu fait un tour sur lui-même en un peu plus de 4 heures.",
+				"Les morceaux de Bennu rapportés sur Terre pèsent environ 120 g – un peu plus qu’une tablette de chocolat."
+			],
+			"standard": [
+				"Bennu fait le tour du Soleil en 1,2 an environ.",
+				"De petits cailloux sont régulièrement éjectés de la surface de Bennu vers l’espace.",
+				"Après avoir largué son échantillon, la sonde a poursuivi sa route sous le nom d’OSIRIS-APEX pour visiter l’astéroïde Apophis en 2029."
+			],
+			"advanced": [
+				"La rotation de Bennu (environ 4,3 heures) s’accélère d’environ une seconde par siècle, sous la poussée de la lumière solaire réémise sous forme de chaleur (l’effet YORP).",
+				"Sa surface ne renvoie qu’environ 4 % de la lumière du Soleil qu’elle reçoit, et elle est couverte de plus de gros blocs rocheux que prévu.",
+				"L’échantillon contient 14 des 20 acides aminés que la vie sur Terre utilise pour fabriquer ses protéines."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Il faudrait environ cinq terrains de foot mis bout à bout pour traverser Bennu."
+			],
+			"standard": [
+				"Si la Terre était un ballon de foot, Bennu serait un grain de poussière environ dix fois plus fin qu’un cheveu."
+			],
+			"advanced": [
+				"La vitesse de libération de Bennu n’est que d’environ 20 cm/s – bien moins que la vitesse d’un marcheur : un seul pas imprudent pourrait t’envoyer dans l’espace."
+			]
+		}
+	},
+	"arrokoth": {
+		"name": "Arrokoth",
+		"tagline": "Le monde le plus lointain jamais exploré",
+		"description": {
+			"simple": "Arrokoth est un petit monde rougeâtre fait de glace et de roche, loin dans la ceinture de Kuiper, au-delà de Neptune. On dirait deux crêpes plates collées ensemble – ou un bonhomme de neige couché. Le 1er janvier 2019, la sonde New Horizons est passée tout près. Aucune sonde n’a jamais visité quelque chose de plus lointain.",
+			"standard": "Arrokoth est un petit corps glacé de la ceinture de Kuiper, long d’environ 36 km. Le 1er janvier 2019, la sonde New Horizons de la NASA l’a survolé – trois ans et demi après sa visite de Pluton –, ce qui en fait l’objet le plus lointain jamais exploré de près, à environ 6,6 milliards de km de la Terre. Il s’est révélé formé de deux lobes aplatis, doucement collés l’un à l’autre, ce qui montre comment les petits mondes se sont formés : dans un nuage de poussière et de glace, des morceaux se sont lentement agglomérés. Arrokoth n’a presque pas changé en 4,5 milliards d’années : c’est comme une capsule temporelle venue de la naissance du système solaire.",
+			"advanced": "Arrokoth (486958, anciennement 2014 MU69) a été découvert en 2014 avec le télescope spatial Hubble, lors de la recherche d’une cible que New Horizons pourrait atteindre après Pluton. Il se trouve dans la ceinture de Kuiper classique froide, sur une orbite presque circulaire (excentricité 0,04) et peu inclinée, à 44 ua, et met environ 292 ans à en faire le tour. C’est un binaire de contact : ses deux lobes tournaient autrefois l’un autour de l’autre, puis ils ont fusionné en douceur, à quelques km/h tout au plus – un indice que les planétésimaux se sont formés par l’effondrement tranquille de nuages de cailloux plutôt que par des collisions violentes. Sa couleur rouge foncé vient de composés organiques produits par le rayonnement, et de la glace de méthanol a été détectée à sa surface."
+		},
+		"facts": {
+			"simple": [
+				"Arrokoth signifie « ciel » dans la langue du peuple powhatan.",
+				"Les signaux radio envoyés par New Horizons depuis Arrokoth mettaient environ 6 heures pour atteindre la Terre.",
+				"Arrokoth est très rouge – encore plus rouge que Pluton."
+			],
+			"standard": [
+				"Arrokoth a été découvert en 2014 avec le télescope spatial Hubble, alors que des scientifiques cherchaient une cible pour New Horizons.",
+				"Une année sur Arrokoth dure environ 292 années terrestres.",
+				"New Horizons est passée à environ 3 500 km d’Arrokoth."
+			],
+			"advanced": [
+				"Avant le choix de son nom officiel en 2019, 2014 MU69 était surnommé « Ultima Thulé ».",
+				"New Horizons est passée environ trois fois et demie plus près d’Arrokoth que de Pluton.",
+				"La distance de son orbite au Soleil varie à peine : entre environ 42,5 et 45,6 ua."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, Arrokoth serait un grain de sable situé à plus de 100 km."
+			],
+			"standard": [
+				"Arrokoth mesure environ 36 km de long – un peu moins qu’un marathon."
+			],
+			"advanced": [
+				"New Horizons est passée à environ 14 km/s : elle aurait parcouru toute la longueur d’Arrokoth en moins de 3 secondes."
+			]
+		}
+	},
+	"halley": {
+		"name": "Halley",
+		"tagline": "La comète de Halley, de retour tous les 75 à 76 ans",
+		"description": {
+			"simple": "La comète de Halley est la plus célèbre de toutes les comètes. C’est un bloc de glace sale d’environ 15 km de long. Tous les 75 ou 76 ans, elle s’approche du Soleil : la glace se transforme en gaz et en poussière, et la comète se pare d’une longue queue lumineuse. La queue pointe toujours à l’opposé du Soleil. Halley est venue pour la dernière fois en 1986 et reviendra en 2061 – peut-être que tu la verras !",
+			"standard": "La comète de Halley revient dans le système solaire intérieur tous les 75 à 76 ans. Son noyau est un bloc sombre de glace et de poussière d’environ 15 × 8 km. À l’approche du Soleil, la lumière solaire transforme la glace en gaz, qui entraîne de la poussière et forme un nuage lumineux, la chevelure, ainsi que deux queues repoussées à l’opposé du Soleil : une queue de gaz droite et bleutée, et une queue de poussière courbe et blanchâtre. Ainsi, quand la comète s’éloigne à nouveau du Soleil, ses queues passent devant elle. Edmond Halley a compris que les comètes observées en 1531, 1607 et 1682 n’en faisaient qu’une et a prédit son retour pour 1758 ; elle est bien revenue, mais Halley n’a pas vécu assez longtemps pour la voir. Son dernier passage au périhélie a eu lieu le 9 février 1986, et le prochain aura lieu le 28 juillet 2061.",
+			"advanced": "La comète 1P/Halley suit une orbite rétrograde (inclinaison 162°) : elle tourne autour du Soleil dans le sens opposé à celui des planètes. Son orbite très excentrique (0,97) la mène d’environ 0,6 ua, à l’intérieur de l’orbite de Vénus, jusqu’à environ 35 ua, au-delà de Neptune. En mars 1986, la sonde Giotto de l’ESA est passée à environ 600 km du noyau et a pris les premières images rapprochées d’un noyau de comète : une surface plus sombre que le charbon, d’où jaillissaient des jets de gaz et de poussière depuis quelques zones actives du côté éclairé. Les observations de la comète de Halley remontent au moins à 240 av. J.-C., en Chine."
+		},
+		"facts": {
+			"simple": [
+				"La poussière de la comète de Halley produit chaque année deux pluies d’étoiles filantes, en mai et en octobre.",
+				"L’écrivain Mark Twain est né une année de passage de Halley, en 1835, et il est mort au passage suivant, en 1910.",
+				"La comète de Halley apparaît sur la tapisserie de Bayeux, une broderie vieille de plus de 900 ans."
+			],
+			"standard": [
+				"En 1986, une flotte de sondes européennes, soviétiques et japonaises a survolé la comète.",
+				"Elle a atteint le point le plus lointain de son orbite, au-delà de Neptune, en décembre 2023, et elle est maintenant sur le chemin du retour.",
+				"La comète de Halley porte le nom de l’astronome Edmond Halley, et non de la personne qui l’a vue en premier."
+			],
+			"advanced": [
+				"Le noyau a une masse d’environ 2,2 × 10¹⁴ kg.",
+				"La période varie de quelques années d’un passage à l’autre, car la gravité des planètes tire sur la comète.",
+				"Sa poussière provoque la pluie de météores des Êta Aquarides en mai et celle des Orionides en octobre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Le noyau de Halley ne mesure qu’environ 15 km de long, mais sa queue peut s’étendre sur des millions de kilomètres – bien des fois la distance de la Terre à la Lune."
+			],
+			"standard": [
+				"Un enfant qui verra la comète de Halley en 2061 à l’âge de 10 ans aura environ 85 ans à son passage suivant."
+			],
+			"advanced": [
+				"Halley file à environ 55 km/s près du Soleil, mais se traîne à moins de 1 km/s à l’autre bout de son orbite – la deuxième loi de Kepler en action."
+			]
+		}
+	},
+	"encke": {
+		"name": "Encke",
+		"tagline": "La comète à l’année la plus courte",
+		"description": {
+			"simple": "La comète d’Encke est une petite comète qui revient très souvent près du Soleil – environ tous les 3 ans et 4 mois. Son noyau ne mesure qu’environ 5 km de large, et on ne peut généralement pas la voir sans jumelles ni télescope. La poussière qu’elle a laissée le long de son chemin nous donne des étoiles filantes en automne.",
+			"standard": "La comète d’Encke (2P/Encke) a la période orbitale la plus courte de toutes les comètes brillantes : elle revient tous les 3,3 ans. Pierre Méchain l’a vue le premier en 1786, mais elle porte le nom de Johann Franz Encke, qui a calculé son orbite en 1819 et a montré qu’elle revient régulièrement. C’était seulement la deuxième comète connue à revenir ainsi, après celle de Halley – c’est pourquoi son nom de catalogue commence par « 2P ». Son orbite l’amène plus près du Soleil que la distance moyenne de Mercure, puis jusqu’à environ 4 ua, encore à l’intérieur de l’orbite de Jupiter. La poussière d’Encke produit les pluies de météores des Taurides, chaque année en octobre et en novembre.",
+			"advanced": "L’orbite d’Encke (demi-grand axe de 2,22 ua, excentricité 0,85) s’étend de 0,34 ua, plus près du Soleil que la distance moyenne de Mercure, jusqu’à 4,1 ua. Encke a remarqué que la comète revenait à chaque fois quelques heures plus tôt que ne le prévoyait la seule gravité – l’un des premiers signes de forces non gravitationnelles, dont on sait aujourd’hui qu’elles proviennent de jets de gaz agissant comme de petits moteurs-fusées sur le noyau en rotation. Contrairement à la plupart des comètes à courte période, Encke ne s’approche jamais de Jupiter, dont la gravité remodèle d’habitude de telles orbites ; la façon dont elle a atteint son orbite actuelle fait encore débat. Observée lors de dizaines de passages, c’est l’une des comètes les mieux étudiées."
+		},
+		"facts": {
+			"simple": [
+				"Encke nous offre les étoiles filantes des Taurides en octobre et en novembre.",
+				"Encke passe plus près du Soleil que la planète Mercure ne l’est en moyenne.",
+				"Encke revient près du Soleil environ trois fois tous les dix ans."
+			],
+			"standard": [
+				"Le noyau d’Encke mesure environ 5 km de diamètre.",
+				"En 2007, les sondes STEREO de la NASA ont vu une éruption du Soleil arracher la queue d’Encke – elle a ensuite repoussé.",
+				"Encke ne s’éloigne jamais jusqu’à l’orbite de Jupiter."
+			],
+			"advanced": [
+				"Période : 3,31 ans ; périhélie : 0,34 ua ; aphélie : 4,1 ua.",
+				"Sa traînée de poussière s’est étalée le long de toute l’orbite, si bien que la Terre la traverse chaque année.",
+				"Le nom 2P d’Encke signifie « deuxième comète périodique » ; la comète de Halley est 1P."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, le noyau d’Encke serait à peu près aussi fin qu’un cheveu."
+			],
+			"standard": [
+				"Encke revient environ 23 fois pendant que la comète de Halley ne revient qu’une seule fois."
+			],
+			"advanced": [
+				"Au plus près du Soleil, Encke reçoit presque 9 fois plus de lumière solaire que la Terre."
+			]
+		}
+	},
+	"67p": {
+		"name": "67P",
+		"tagline": "La comète « canard en plastique » visitée par Rosetta",
+		"description": {
+			"simple": "La comète 67P ressemble à un canard de bain géant fait de glace et de poussière, long d’environ 4 km. La sonde Rosetta a tourné autour d’elle pendant deux ans et l’a vue se réveiller en s’approchant du Soleil : des jets de gaz et de poussière en jaillissaient. Rosetta a même largué sur la comète un petit atterrisseur appelé Philae – le tout premier atterrissage sur une comète.",
+			"standard": "La comète 67P/Tchourioumov-Guérassimenko a été découverte en 1969 par Klim Tchourioumov et Svetlana Guérassimenko. Elle est formée de deux lobes reliés par un cou étroit, ce qui lui donne sa célèbre forme de « canard en plastique », longue d’environ 4 km. La sonde Rosetta de l’ESA l’a atteinte en août 2014 et a tourné autour d’elle pendant plus de deux ans, observant la glace se transformer en gaz à mesure que la comète s’approchait du Soleil. Le 12 novembre 2014, l’atterrisseur Philae s’est posé – le premier atterrissage sur une comète –, mais il a rebondi et s’est immobilisé à l’ombre d’une falaise. Rosetta a terminé sa mission le 30 septembre 2016 en s’écrasant lentement, de façon contrôlée, sur la comète.",
+			"advanced": "67P est une comète de la famille de Jupiter, d’une période de 6,4 ans, qui voyage entre 1,24 ua et environ 5,7 ua du Soleil. Rosetta a mesuré une masse volumique d’environ 0,53 g/cm³ seulement : le noyau est constitué d’environ 70 % de vide. Ses instruments ont détecté l’acide aminé glycine et du phosphore, ainsi qu’un rapport entre eau lourde et eau ordinaire très différent de celui des océans terrestres, ce qui suggère que les comètes comme 67P n’ont pas apporté l’essentiel de l’eau de la Terre. Les harpons de Philae ne se sont pas déclenchés : l’atterrisseur a donc rebondi deux fois avant de s’immobiliser à l’ombre, où sa batterie s’est épuisée après environ deux jours et demi de mesures scientifiques."
+		},
+		"facts": {
+			"simple": [
+				"Sur 67P, la gravité est si faible qu’un bon saut suffirait à t’envoyer dans l’espace.",
+				"L’atterrisseur Philae a rebondi deux fois avant de s’immobiliser.",
+				"Rosetta a mis dix ans pour atteindre 67P, puis l’a explorée pendant plus de deux ans."
+			],
+			"standard": [
+				"67P fait le tour du Soleil en 6,4 ans.",
+				"La comète est si poreuse qu’elle flotterait sur l’eau – si l’on trouvait une baignoire assez grande.",
+				"Rosetta doit son nom à la pierre de Rosette, qui a permis de déchiffrer les hiéroglyphes égyptiens."
+			],
+			"advanced": [
+				"Masse : environ 1 × 10¹³ kg – à peu près 10 milliards de tonnes.",
+				"Le noyau tourne sur lui-même en environ 12,4 heures.",
+				"67P est passée au périhélie le 13 août 2015, à 1,24 ua, sous l’œil de Rosetta."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"67P mesure environ 4 km de long – tu pourrais aller à pied d’un bout à l’autre en moins d’une heure, si tu ne t’envolais pas avant."
+			],
+			"standard": [
+				"Si la Terre était un ballon de foot, 67P serait à peu près aussi épaisse qu’un cheveu."
+			],
+			"advanced": [
+				"La masse volumique moyenne de 67P, environ 0,5 g/cm³, est proche de celle du bois de pin sec."
+			]
+		}
+	},
+	"halebopp": {
+		"name": "Hale-Bopp",
+		"tagline": "La grande comète de 1997",
+		"description": {
+			"simple": "Hale-Bopp a été l’une des comètes les plus brillantes des cent dernières années. En 1997, des gens du monde entier pouvaient la voir dans le ciel nocturne sans télescope – même depuis des villes très éclairées. Elle est restée visible pendant environ un an et demi. Son noyau est énorme pour une comète : environ 60 km de large. Elle ne reviendra pas avant environ 2 400 ans.",
+			"standard": "La comète Hale-Bopp (C/1995 O1) a été découverte le 23 juillet 1995, la même nuit mais chacun de son côté, par Alan Hale au Nouveau-Mexique et Thomas Bopp en Arizona. Elle se trouvait alors encore au-delà de l’orbite de Jupiter – une distance inhabituelle pour repérer une comète –, car son noyau est exceptionnellement gros : environ 60 km de diamètre. Elle est passée au plus près du Soleil le 1er avril 1997 et a probablement été vue par plus de monde que toute autre comète avant elle. Ses deux queues, une queue de gaz bleutée et une large queue de poussière blanchâtre, pointaient dans des directions légèrement différentes, mais toutes deux à l’opposé du Soleil.",
+			"advanced": "Hale-Bopp est une comète à longue période sur une orbite presque perpendiculaire (inclinaison 89°) et extrêmement allongée (excentricité 0,995). Son passage précédent remonte à environ 4 200 ans ; en approchant, elle est passée près de Jupiter en 1996, dont la gravité a raccourci sa période à environ 2 400 ans. Son noyau, estimé entre 40 et 80 km de diamètre, est l’un des plus gros connus pour une comète. En plus des habituelles queues de gaz et de poussière, les observateurs ont découvert une troisième queue, faible, faite d’atomes de sodium. Son orbite s’étend aujourd’hui jusqu’à environ 350 ua du Soleil."
+		},
+		"facts": {
+			"simple": [
+				"Hale-Bopp a été découverte la même nuit par deux personnes, à deux endroits différents.",
+				"Son noyau est environ quatre fois plus long que celui de Halley.",
+				"La dernière fois que Hale-Bopp est passée, il y a environ 4 200 ans, les pyramides d’Égypte étaient déjà construites."
+			],
+			"standard": [
+				"Hale-Bopp est restée visible à l’œil nu pendant environ 18 mois, deux fois plus longtemps que la précédente détentrice du record, la grande comète de 1811.",
+				"Son orbite est inclinée presque à angle droit (89°) par rapport aux orbites des planètes.",
+				"Ses queues s’étendaient sur des dizaines de millions de kilomètres."
+			],
+			"advanced": [
+				"Hale-Bopp a été découverte à environ 7 ua du Soleil, plus loin que Jupiter.",
+				"Sa queue de sodium était droite et étroite, repoussée vers l’extérieur par la pression de la lumière solaire.",
+				"Hale-Bopp est passée au périhélie le 1er avril 1997, à environ 0,9 ua du Soleil."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Terre était un ballon de foot, le noyau de Hale-Bopp aurait à peu près la taille d’une graine de pavot."
+			],
+			"standard": [
+				"Hale-Bopp ne revient qu’environ tous les 2 400 ans – à peu près 30 fois plus longtemps que la comète de Halley."
+			],
+			"advanced": [
+				"À l’autre bout de son orbite, à environ 350 ua, la lumière du Soleil met environ deux jours pour atteindre Hale-Bopp."
+			]
+		}
+	},
+	"neowise": {
+		"name": "NEOWISE",
+		"tagline": "La grande comète de 2020",
+		"description": {
+			"simple": "La comète NEOWISE était une comète brillante que l’on pouvait voir à l’œil nu en juillet 2020. Elle a été découverte en mars 2020 par un télescope spatial appelé NEOWISE, qui lui a donné son nom. Sur les photos, on voit bien ses deux queues : une queue de poussière courbe et blanchâtre, et une fine queue de gaz bleutée. Elle ne reviendra pas avant environ 6 800 ans.",
+			"standard": "La comète NEOWISE (C/2020 F3) a été découverte le 27 mars 2020 par le télescope spatial NEOWISE de la NASA, qui traquait les astéroïdes et les comètes en lumière infrarouge. Elle est passée au plus près du Soleil le 3 juillet 2020, à l’intérieur de l’orbite de Mercure, et a survécu à la chaleur. En juillet, elle est devenue la comète la plus brillante vue depuis l’hémisphère Nord depuis Hale-Bopp en 1997, facile à repérer à l’œil nu, bas dans le ciel du matin, puis du soir. Les photos montraient nettement ses deux queues : une queue de poussière courbe, d’un blanc jaunâtre, et une queue de gaz droite, d’un bleu pâle, toutes deux à l’opposé du Soleil. Elle ne reviendra pas avant environ 6 800 ans.",
+			"advanced": "C/2020 F3 est une comète à longue période sur une orbite rétrograde fortement inclinée (129°). Au périhélie, elle n’était qu’à 0,29 ua du Soleil, et elle est passée au plus près de la Terre le 23 juillet 2020, à environ 103 millions de km (0,69 ua). Pendant ce passage, l’attraction des planètes a étiré son orbite : sa période s’est allongée de plus de 2 000 ans pour atteindre environ 6 800 ans, et son aphélie se trouve désormais à plus de 700 ua du Soleil. Son noyau mesure environ 5 km de diamètre. Les spectres ont montré l’éclat du sodium, et l’observatoire SOHO ainsi que la sonde Parker Solar Probe l’ont photographiée près du périhélie."
+		},
+		"facts": {
+			"simple": [
+				"Pour les habitants de la moitié nord de la Terre, NEOWISE a été la comète la plus brillante depuis plus de 20 ans.",
+				"Des astronautes de la Station spatiale internationale l’ont photographiée depuis l’espace.",
+				"Son prochain passage est si loin dans le futur que personne de vivant aujourd’hui ne la reverra."
+			],
+			"standard": [
+				"Le noyau de NEOWISE mesure environ 5 km de diamètre.",
+				"Elle est passée plus près du Soleil que Mercure ne l’est jamais.",
+				"Le télescope NEOWISE qui l’a découverte a terminé sa mission en 2024."
+			],
+			"advanced": [
+				"Au périhélie, la comète filait à près de 78 km/s par rapport au Soleil.",
+				"Les télescopes infrarouges voient la lueur thermique du noyau sombre et de la poussière d’une comète, ce qui en fait de bons chasseurs de comètes.",
+				"Son orbite est rétrograde : elle tourne autour du Soleil dans le sens opposé à celui des planètes."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"NEOWISE reviendra dans environ 6 800 ans – plus longtemps que tout le temps écoulé depuis que les humains ont appris à écrire."
+			],
+			"standard": [
+				"NEOWISE met environ 90 fois plus de temps que la comète de Halley à faire le tour du Soleil."
+			],
+			"advanced": [
+				"À l’autre bout de son orbite, à plus de 700 ua, la lumière du Soleil met environ 4 jours pour atteindre NEOWISE."
+			]
+		}
+	},
+	"nix": {
+		"name": "Nix",
+		"tagline": "La lune de Pluton qui porte le nom de la nuit",
+		"description": {
+			"simple": "Nix est l’une des petites lunes de Pluton : elle ne mesure qu’environ 50 km de long et a la forme d’une pomme de terre. Au lieu de montrer toujours la même face à Pluton, elle fait des culbutes en tournant autour. Elle porte le nom de la déesse grecque de la nuit.",
+			"standard": "Nix est une petite lune allongée d’environ 50 × 33 × 31 km, découverte avec le télescope spatial Hubble en 2005, en même temps qu’Hydre. Elle fait le tour de Pluton et de Charon en 24,9 jours. Comme les autres petites lunes de Pluton, elle ne garde pas une face tournée vers Pluton, mais culbute de façon chaotique, car elle est attirée par deux gros corps à la fois. Elle porte le nom de Nyx, la déesse grecque de la nuit ; l’orthographe avec un i évite la confusion avec un astéroïde appelé Nyx.",
+			"advanced": "Nix tourne autour du barycentre Pluton–Charon à environ 48 700 km, avec une période de 24,9 jours, proche de quatre fois la période orbitale de Charon. Sa rotation chaotique, en culbute, est due à l’attraction sans cesse changeante du couple Pluton–Charon. New Horizons a trouvé une zone rougeâtre autour d’un grand cratère, sur une surface par ailleurs claire, faite de glace d’eau. Les initiales de Nix et d’Hydre, N et H, ont été choisies en hommage à New Horizons."
+		}
+	},
+	"hydra": {
+		"name": "Hydre",
+		"tagline": "La lune la plus lointaine de Pluton",
+		"description": {
+			"simple": "Hydre est la lune la plus éloignée de Pluton. Elle est petite, environ 51 km de long, et elle fait des culbutes en tournant autour de Pluton. Elle porte le nom d’un monstre à plusieurs têtes des mythes grecs.",
+			"standard": "Hydre est la plus éloignée des lunes connues de Pluton ; elle mesure environ 51 × 36 × 31 km. Elle a été découverte avec le télescope spatial Hubble en 2005, en même temps que Nix, et fait le tour de Pluton et de Charon en 38,2 jours. New Horizons a montré que sa surface est claire et faite surtout de glace d’eau. Elle porte le nom du serpent à plusieurs têtes qu’Héraclès a combattu dans la mythologie grecque.",
+			"advanced": "Hydre tourne autour du barycentre Pluton–Charon à environ 64 700 km, avec une période de 38,2 jours – presque exactement six fois la période orbitale de Charon. Comme les autres petites lunes, elle tourne sur elle-même de façon chaotique au lieu d’être en rotation synchrone. Sa surface claire est dominée par une glace d’eau relativement propre. Comme pour Nix, son nom a été choisi pour que les initiales N et H rendent hommage à la mission New Horizons."
+		}
+	},
+	"kerberos": {
+		"name": "Kerbéros",
+		"tagline": "La lune de Pluton à deux lobes",
+		"description": {
+			"simple": "Kerbéros est une toute petite lune de Pluton, longue d’environ 19 km seulement. On dirait deux petites boules collées ensemble. Elle porte le nom du chien à trois têtes qui garde les Enfers dans les mythes grecs.",
+			"standard": "Kerbéros est l’une des plus petites lunes de Pluton, d’environ 19 × 10 × 9 km, découverte avec le télescope spatial Hubble en 2011. Elle fait le tour de Pluton et de Charon en 32,2 jours. New Horizons a montré qu’elle est formée de deux lobes, un grand et un petit, et que sa surface est plus claire que ne le pensaient les scientifiques. Elle porte le nom du chien à trois têtes qui garde l’entrée des Enfers dans la mythologie grecque.",
+			"advanced": "Kerbéros tourne autour du barycentre Pluton–Charon à environ 57 800 km, avec une période de 32,2 jours – proche de cinq fois la période orbitale de Charon –, entre les orbites de Nix et d’Hydre. Les images de New Horizons ont révélé une forme à deux lobes, peut-être deux corps qui ont fusionné, et une surface claire de glace d’eau. Comme les autres petites lunes de Pluton, elle s’est probablement formée à partir des débris laissés par l’impact géant qui aurait donné naissance à Charon."
+		}
+	},
+	"styx": {
+		"name": "Styx",
+		"tagline": "La plus petite lune connue de Pluton",
+		"description": {
+			"simple": "Styx est la plus petite lune connue de Pluton : elle ne mesure qu’environ 16 km de long. On l’a trouvée en 2012, pendant que des scientifiques vérifiaient que le chemin de la sonde New Horizons était sans danger. Elle porte le nom d’un fleuve des Enfers dans les mythes grecs.",
+			"standard": "Styx, d’environ 16 × 9 × 8 km, est la plus petite lune connue de Pluton. Elle a été découverte en 2012 avec le télescope spatial Hubble, lors d’une recherche de lunes et de poussières qui auraient pu mettre New Horizons en danger. Elle fait le tour de Pluton et de Charon en 20,2 jours, à l’intérieur de l’orbite de Nix. Elle porte le nom du fleuve qui, dans la mythologie grecque, sépare le monde des vivants des Enfers.",
+			"advanced": "Styx tourne autour du barycentre Pluton–Charon à environ 42 700 km, avec une période de 20,2 jours, proche de trois fois la période orbitale de Charon : c’est la plus proche des quatre petites lunes de Pluton. Elle a été trouvée sur des images de Hubble prises en 2012 par une équipe dirigée par Mark Showalter. New Horizons ne l’a vue que de très loin : on sait donc peu de chose de sa surface."
+		}
+	},
+	"dysnomia": {
+		"name": "Dysnomie",
+		"tagline": "La lune qui a permis de peser Éris",
+		"description": {
+			"simple": "Dysnomie est la seule lune connue de la planète naine Éris. Elle est beaucoup plus sombre qu’Éris, qui est aussi brillante que de la neige fraîche. En observant comment Dysnomie tourne autour d’Éris, les astronomes ont pu calculer combien pèse Éris.",
+			"standard": "Dysnomie est la seule lune connue d’Éris, découverte en septembre 2005 avec le télescope Keck, à Hawaï. Elle fait le tour d’Éris en 15,8 jours, à environ 37 300 km. Grâce à son orbite, les astronomes ont calculé qu’Éris est environ un quart plus lourde que Pluton. Dans la mythologie grecque, Dysnomie est la fille d’Éris et l’esprit de l’anarchie – un nom qui fait aussi un clin d’œil à l’actrice Lucy Lawless (« sans loi » en anglais), qui jouait Xena, le premier surnom d’Éris.",
+			"advanced": "Dysnomie suit une orbite presque circulaire à environ 37 300 km d’Éris, avec une période de 15,8 jours ; en appliquant la troisième loi de Kepler à cette orbite, on obtient la masse d’Éris, environ 1,66 × 10²² kg, soit 27 % de plus que celle de Pluton. Dysnomie est très sombre : elle ne renvoie que quelques pour cent de la lumière qu’elle reçoit, contre environ 96 % pour Éris. Elle mesure probablement plusieurs centaines de km de diamètre, ce qui en ferait la deuxième plus grande lune connue d’une planète naine, après Charon. Éris semble tourner sur elle-même au rythme de l’orbite de Dysnomie, signe que les marées ont synchronisé le couple."
+		}
+	},
+	"namaka": {
+		"name": "Namaka",
+		"tagline": "La lune intérieure de Hauméa",
+		"description": {
+			"simple": "Namaka est la plus petite des deux lunes de la planète naine Hauméa. Elle fait le tour de Hauméa en un peu plus de deux semaines et demie. Elle porte le nom d’une déesse hawaïenne de la mer, l’une des filles de Hauméa.",
+			"standard": "Namaka est la plus petite et la plus proche des deux lunes de Hauméa ; elle mesure peut-être 170 km de diamètre. Elle a été découverte en juin 2005 avec le télescope Keck, à Hawaï, et fait le tour de Hauméa en 18,3 jours, à environ 25 700 km. Comme Hauméa et son autre lune, c’est probablement un morceau projeté lors d’une ancienne collision. Elle porte le nom de Nāmaka, une déesse hawaïenne de la mer, fille de Hauméa.",
+			"advanced": "Namaka tourne autour de Hauméa à environ 25 700 km, avec une période de 18,3 jours, sur une orbite nettement excentrique (environ 0,25) et inclinée par rapport à celle de la lune extérieure, Hiʻiaka. Son orbite est perturbée par Hiʻiaka et par la forme très allongée de Hauméa. Namaka et Hiʻiaka seraient des fragments de la collision géante qui a aussi produit la famille de corps glacés de Hauméa, et peut-être sa rotation rapide."
+		}
+	},
+	"hiiaka": {
+		"name": "Hiʻiaka",
+		"tagline": "La lune extérieure de Hauméa",
+		"description": {
+			"simple": "Hiʻiaka est la plus grande des deux lunes de la planète naine Hauméa. Elle est couverte de glace et fait le tour de Hauméa en sept semaines environ. Elle porte le nom d’une déesse hawaïenne de la danse hula, l’une des filles de Hauméa.",
+			"standard": "Hiʻiaka est la plus grande et la plus éloignée des deux lunes de Hauméa ; elle mesure environ 320 km de diamètre. Elle a été découverte en janvier 2005 avec le télescope Keck, à Hawaï, avant même que Hauméa ait reçu son nom, et fait le tour de Hauméa en 49 jours, à environ 49 900 km. Comme celle de Hauméa, sa surface est couverte de glace d’eau. Elle porte le nom de Hiʻiaka, déesse hawaïenne protectrice de l’île d’Hawaï et des danseurs de hula, et fille de Hauméa.",
+			"advanced": "Hiʻiaka tourne autour de Hauméa à environ 49 900 km, avec une période de 49 jours, sur une orbite presque circulaire. Son spectre montre de la glace d’eau cristalline, très semblable à celle de la surface de Hauméa, ce qui conforte l’idée que les deux lunes sont des fragments de la croûte glacée de Hauméa arrachés lors d’une ancienne collision. C’est le suivi de l’orbite de Hiʻiaka qui a permis pour la première fois de mesurer la masse de Hauméa."
+		}
+	},
+	"s20151364721": {
+		"name": "S/2015 (136472) 1",
+		"tagline": "La petite lune sombre de Makémaké",
+		"description": {
+			"simple": "Cette toute petite lune sombre tourne autour de la planète naine Makémaké. Elle était si difficile à voir à côté de la brillante Makémaké qu’on ne l’a trouvée qu’en 2016, sur des images du télescope spatial Hubble. Les scientifiques l’ont surnommée MK2.",
+			"standard": "S/2015 (136472) 1, surnommée MK2, est la seule lune connue de Makémaké. Elle a été repérée sur des images de Hubble prises en avril 2015, et sa découverte a été annoncée en 2016. Elle est environ 1 300 fois moins lumineuse que Makémaké et très sombre ; elle mesure probablement moins de 200 km de diamètre. Son nom n’est encore qu’une désignation provisoire : S pour satellite, 2015 pour l’année où elle a été photographiée, 136472 pour le numéro de catalogue de Makémaké et 1 pour la première lune trouvée.",
+			"advanced": "MK2 a été découverte sur des images de Hubble d’avril 2015, à environ 21 000 km de Makémaké. Son orbite est encore mal connue ; si nous la voyons presque par la tranche, la lune passe une grande partie de son temps noyée dans l’éclat de Makémaké, ce qui pourrait expliquer pourquoi les recherches précédentes ne l’avaient pas repérée. Sa surface sombre contraste avec la glace de méthane brillante de Makémaké, peut-être parce que sa faible gravité ne peut pas retenir des glaces aussi volatiles. Une orbite bien mesurée donnerait la masse et la masse volumique de Makémaké."
+		}
 	}
 }

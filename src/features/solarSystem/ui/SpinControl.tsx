@@ -1,8 +1,9 @@
-import { SegmentedControl, Select, Tooltip } from "@mantine/core"
+import { SegmentedControl, Select } from "@mantine/core"
 import { useMediaQuery } from "@mantine/hooks"
 import { IconRotate360 } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
+import { Hint } from "@/primitives/hint"
 import { MIN_SECONDS_PER_EARTH_TURN, SPIN_MODES, isSpinMode } from "@/sim"
 import { useSpinStore } from "@/store/spin"
 
@@ -17,7 +18,24 @@ const COMPACT_QUERY = "(max-width: 599px)"
  * true spin for the clock. Any other mode says, next to the control, that day and
  * night on the planets no longer match the date.
  */
-const SpinControl = () => {
+export interface SpinControlProps {
+	/** Say under the control when spin is not to the clock (false where the time bar says it instead, #42). */
+	notice?: boolean
+}
+
+/** "Not true to the clock": shown while any mode but Realistic is chosen. */
+export const SpinNotice = () => {
+	const mode = useSpinStore((state) => state.mode)
+	const { t } = useI18n()
+	if (mode === "realistic") return null
+	return (
+		<p className={classes.notice} role="status">
+			{t("solarSystem.spin.notice")}
+		</p>
+	)
+}
+
+const SpinControl = ({ notice = true }: SpinControlProps) => {
 	const mode = useSpinStore((state) => state.mode)
 	const setMode = useSpinStore((state) => state.setMode)
 	const compact = useMediaQuery(COMPACT_QUERY, false, {
@@ -29,22 +47,28 @@ const SpinControl = () => {
 		value,
 		label: t(`solarSystem.spin.mode.${value}`),
 	}))
-	const hint = t(`solarSystem.spin.hint.${mode}`, {
-		seconds: MIN_SECONDS_PER_EARTH_TURN[mode],
-	})
+	// what each mode does, on the mode itself (#39)
+	const hints = Object.fromEntries(
+		SPIN_MODES.map((value) => [
+			value,
+			t(`solarSystem.spin.hint.${value}`, {
+				seconds: MIN_SECONDS_PER_EARTH_TURN[value],
+			}),
+		]),
+	)
 	const onChange = (value: string | null) => {
 		if (isSpinMode(value)) setMode(value)
 	}
 
 	return (
 		<div className={classes.root}>
-			<Tooltip label={hint} openDelay={400} multiline w={260}>
-				<div className={classes.row}>
-					<span className={classes.label} aria-hidden>
-						<IconRotate360 size={16} />
-						{t("solarSystem.spin.label")}
-					</span>
-					{compact ? (
+			<div className={classes.row}>
+				<span className={classes.label} aria-hidden>
+					<IconRotate360 size={16} />
+					{t("solarSystem.spin.label")}
+				</span>
+				{compact ? (
+					<Hint text={hints[mode]}>
 						<Select
 							size="xs"
 							radius="md"
@@ -53,9 +77,12 @@ const SpinControl = () => {
 							onChange={onChange}
 							data={items}
 							allowDeselect={false}
-							comboboxProps={{ shadow: "md" }}
+							// inside the time popover (#42): its list must not count as a click outside it
+							comboboxProps={{ shadow: "md", withinPortal: false }}
 						/>
-					) : (
+					</Hint>
+				) : (
+					<Hint options={hints}>
 						<SegmentedControl
 							size="xs"
 							radius="md"
@@ -65,14 +92,10 @@ const SpinControl = () => {
 							onChange={onChange}
 							data={items}
 						/>
-					)}
-				</div>
-			</Tooltip>
-			{mode !== "realistic" && (
-				<p className={classes.notice} role="status">
-					{t("solarSystem.spin.notice")}
-				</p>
-			)}
+					</Hint>
+				)}
+			</div>
+			{notice && <SpinNotice />}
 		</div>
 	)
 }

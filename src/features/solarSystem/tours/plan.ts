@@ -33,6 +33,9 @@ import {
 	type TourLayerKey,
 } from "@/store/tour"
 
+import { skyEventById } from "@/data/skyEvents"
+
+import { eventJDById, observerKm } from "../events/instant"
 import { MOMENTS, momentJD } from "../ui/moments"
 import { arrivalJD } from "../ui/timeTravel"
 
@@ -171,10 +174,35 @@ export function stopStep(tour: Tour, index: number, jd: number): SequenceStep {
 		const km = stop.fit.au !== undefined ? stop.fit.au * AU_KM : stop.fit.km
 		if (km !== undefined) request.fit = { km, around }
 	}
+	if (camera.fov !== undefined) request.lensDeg = camera.fov
+	if (camera.from === "earth" && view.kind === "body") {
+		// stand on the Earth (#41): at a sky event, where it is seen best
+		const event = stopEvent(tour, index)
+		request.eye = {
+			anchorId: "earth",
+			offsetKm: observerKm(
+				view.id,
+				event === undefined ? jd : (eventJDById(event.id) ?? jd),
+				event,
+			),
+		}
+	}
 	const move = stopMove(tour, index)
 	if (move === "fly") request.profile = FLIGHT_PROFILE
 	if (move === "jump") request.durationMs = 0
 	return { ...request, view }
+}
+
+/** The sky event (#41) whose time is in force at stop `index`, if any. */
+function stopEvent(tour: Tour, index: number) {
+	for (let i = Math.min(index, tour.stops.length - 1); i >= 0; i--) {
+		const time = tour.stops[i].time
+		if (time === undefined) continue
+		return typeof time === "object" && "event" in time
+			? skyEventById.get(time.event)
+			: undefined
+	}
+	return undefined
 }
 
 /** The camera steps of every stop, seen at `jd`. */
@@ -184,6 +212,7 @@ export const tourSteps = (tour: Tour, jd: number): SequenceStep[] =>
 /** The Julian Date a stop's `time` travels to; null for an unknown moment. */
 export function timeJD(time: TourTime, now: Date = new Date()): number | null {
 	if (time === "now") return dateToJD(now)
+	if ("event" in time) return eventJDById(time.event)
 	if ("moment" in time) {
 		const moment = MOMENTS.find((m) => m.id === time.moment)
 		return moment === undefined ? null : momentJD(moment)

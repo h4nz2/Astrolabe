@@ -34,7 +34,13 @@ describe("data index", () => {
 	})
 
 	it("lists children in orbital order and moons per planet", () => {
-		expect(childrenOf("sun")).toEqual(planets)
+		// the planets, then the small bodies (#23), each group in orbital order
+		expect(childrenOf("sun").slice(0, planets.length)).toEqual(planets)
+		expect(
+			childrenOf("sun")
+				.slice(planets.length)
+				.map((body) => body.kind),
+		).not.toContain("planet")
 		expect(moonsOf("earth").map((moon) => moon.id)).toEqual(["moon"])
 		expect(moonsOf("mars").map((moon) => moon.id)).toEqual(["phobos", "deimos"])
 		expect(moonsOf("mercury")).toEqual([])
@@ -53,7 +59,8 @@ describe("data index", () => {
 
 	it("hands out fresh arrays from childrenOf so callers cannot corrupt the index", () => {
 		const first = childrenOf("sun")
+		const length = first.length
 		first.pop()
-		expect(childrenOf("sun")).toHaveLength(8)
+		expect(childrenOf("sun")).toHaveLength(length)
 	})
 })

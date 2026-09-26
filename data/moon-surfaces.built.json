@@ -104,6 +104,11 @@
 		"width": 512,
 		"bytes": 8300
 	},
+	"charon": {
+		"color": "#837e7a",
+		"width": 1024,
+		"bytes": 29203
+	},
 	"cordelia": {
 		"color": "#494847",
 		"width": 512,
@@ -148,6 +153,11 @@
 		"color": "#bcbcb9",
 		"width": 1024,
 		"bytes": 107433
+	},
+	"dysnomia": {
+		"color": "#413e3c",
+		"width": 1024,
+		"bytes": 18374
 	},
 	"elara": {
 		"color": "#403f3d",
@@ -249,6 +259,11 @@
 		"width": 512,
 		"bytes": 8245
 	},
+	"hiiaka": {
+		"color": "#a7a7a6",
+		"width": 1024,
+		"bytes": 32775
+	},
 	"himalia": {
 		"color": "#3e3d3c",
 		"width": 512,
@@ -258,6 +273,11 @@
 		"color": "#4f4c4a",
 		"width": 512,
 		"bytes": 9380
+	},
+	"hydra": {
+		"color": "#b5b5b3",
+		"width": 1024,
+		"bytes": 33310
 	},
 	"hyperion": {
 		"color": "#95826c",
@@ -308,6 +328,11 @@
 		"color": "#3e3d3c",
 		"width": 512,
 		"bytes": 7895
+	},
+	"kerberos": {
+		"color": "#979796",
+		"width": 1024,
+		"bytes": 31688
 	},
 	"kiviuq": {
 		"color": "#4d4038",
@@ -389,6 +414,11 @@
 		"width": 512,
 		"bytes": 8967
 	},
+	"namaka": {
+		"color": "#a7a7a6",
+		"width": 1024,
+		"bytes": 33887
+	},
 	"narvi": {
 		"color": "#3f3e3d",
 		"width": 512,
@@ -403,6 +433,11 @@
 		"color": "#42403e",
 		"width": 512,
 		"bytes": 8530
+	},
+	"nix": {
+		"color": "#9a9793",
+		"width": 1024,
+		"bytes": 32513
 	},
 	"oberon": {
 		"color": "#7c7166",
@@ -739,6 +774,11 @@
 		"width": 512,
 		"bytes": 7950
 	},
+	"s20151364721": {
+		"color": "#3d3b38",
+		"width": 1024,
+		"bytes": 16881
+	},
 	"s2016j1": {
 		"color": "#43403e",
 		"width": 512,
@@ -818,6 +858,11 @@
 		"color": "#413e3a",
 		"width": 512,
 		"bytes": 8109
+	},
+	"styx": {
+		"color": "#a2a2a0",
+		"width": 1024,
+		"bytes": 33247
 	},
 	"surtur": {
 		"color": "#3f3e3d",

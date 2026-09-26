@@ -16,7 +16,7 @@ test("an idea is picked from the grouped menu and leads with its point", async (
 	for (const group of ["Sizes", "Moons", "Surprises"]) {
 		await expect(menu.getByText(group, { exact: true })).toBeVisible()
 	}
-	await expect(page.getByRole("menuitem")).toHaveCount(14)
+	await expect(page.getByRole("menuitem")).toHaveCount(15)
 	const twin = page.getByRole("menuitem", { name: /Earth’s twin/ })
 	await expect(twin).toContainText("hot enough to melt lead")
 	await twin.click()

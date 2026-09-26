@@ -24,11 +24,11 @@ import {
 	Text,
 	UnstyledButton,
 } from "@mantine/core"
-import { useMediaQuery } from "@mantine/hooks"
 import { IconBolt, IconBoltOff, IconCheck, IconX } from "@tabler/icons-react"
 
 import { useI18n, type I18n } from "@/i18n"
 import { useBodyName } from "@/i18n/bodies"
+import { Hint } from "@/primitives/hint"
 import { kmToAu } from "@/sim"
 import {
 	SPEED_OF_LIGHT_KM_S,
@@ -432,35 +432,37 @@ const OpenButton = () => {
 	const jd = useThrottledSimTime()
 	const seconds = pulse === null ? null : secondsSince(pulse.emitJD, jd)
 	const open = (
-		<UnstyledButton
-			className={classes.open}
-			onClick={() => setOpen(true)}
-			title={i18n.t("solarSystem.light.openHint")}
-			aria-expanded={false}
-		>
-			<IconBolt size={16} className={classes.icon} />
-			<span>{i18n.t("solarSystem.light.open")}</span>
-			{onScreen && seconds !== null && (
-				<span className={classes.openClock}>
-					{formatDuration(seconds, i18n, true)}
-				</span>
-			)}
-		</UnstyledButton>
+		<Hint text={i18n.t("solarSystem.light.openHint")}>
+			<UnstyledButton
+				className={classes.open}
+				onClick={() => setOpen(true)}
+				aria-expanded={false}
+			>
+				<IconBolt size={16} className={classes.icon} />
+				<span>{i18n.t("solarSystem.light.open")}</span>
+				{onScreen && seconds !== null && (
+					<span className={classes.openClock}>
+						{formatDuration(seconds, i18n, true)}
+					</span>
+				)}
+			</UnstyledButton>
+		</Hint>
 	)
 	if (!onScreen) return open
 	const stop = i18n.t("solarSystem.light.stop")
 	return (
 		<Group gap={4} wrap="nowrap">
 			{open}
-			<UnstyledButton
-				className={classes.stopChip}
-				onClick={clear}
-				aria-label={stop}
-				title={stop}
-				data-light-stop="hud"
-			>
-				<IconX size={14} stroke={2.5} />
-			</UnstyledButton>
+			<Hint text={i18n.t("solarSystem.light.stopHint")}>
+				<UnstyledButton
+					className={classes.stopChip}
+					onClick={clear}
+					aria-label={stop}
+					data-light-stop="hud"
+				>
+					<IconX size={14} stroke={2.5} />
+				</UnstyledButton>
+			</Hint>
 		</Group>
 	)
 }
@@ -541,28 +543,25 @@ const LightPanel = () => {
 	)
 }
 
-/** The HUD's phone breakpoint (SolarSystem.module.css). */
-const PHONE_QUERY = "(max-width: 599px)"
-
 /**
- * Where the light panel is docked: under the focus picker on wider screens,
- * above the body card on phones, where the top of the screen is already full
- * of panels and the planets sit right below them. Renders only in the slot
- * for the current screen, wrapped in `className` (a HUD panel).
+ * The light's two places in the quiet HUD (#42): `panel`, the open panel in
+ * the dock (Tools → Speed of light opens it); `chip`, the running clock with
+ * its stop button (#38) under the focus picker while a flash is on screen and
+ * the panel is closed. Each renders wrapped in `className` (a HUD panel).
  */
 export const LightSlot = ({
-	phone,
+	mode,
 	className,
 }: {
-	phone: boolean
+	mode: "panel" | "chip"
 	className: string
 }) => {
-	const isPhone = useMediaQuery(PHONE_QUERY, false, {
-		getInitialValueInEffect: false,
-	})
-	if (isPhone !== phone) return null
+	const open = useLightStore((state) => state.open)
+	const onScreen = useFlashOnScreen()
+	const shown = mode === "panel" ? open : !open && onScreen
+	if (!shown) return null
 	return (
-		<div className={className}>
+		<div className={className} data-light-slot={mode}>
 			<LightPanel />
 		</div>
 	)

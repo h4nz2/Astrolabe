@@ -4,6 +4,7 @@ import path from "node:path"
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
+import { openTool } from "./support/hud"
 
 // The scavenger hunt (#34), in the real browser: pick a hunt, answer a clue by
 // clicking the world in the scene (kind words on a miss, no penalty),
@@ -87,7 +88,7 @@ test("pick a hunt, miss kindly, then answer by clicking the world", async ({
 	await panel(page).getByRole("button", { name: "Close" }).click()
 	await expect(panel(page)).toHaveCount(0)
 	await expect.poll(() => search(page).has("hunt")).toBe(false)
-	await page.getByRole("button", { name: "Scavenger hunt" }).click()
+	await openTool(page, "hunt")
 	await expect(page.getByTestId("hunt-progress")).toHaveText("Clue 2 of 6")
 })
 

@@ -4,6 +4,7 @@ import path from "node:path"
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest, nextFrames } from "./support/scene"
+import { openLayers } from "./support/hud"
 
 // The scale engine (#8): the app opens in the "Everything visible" preset, not
 // at true scale. At true scale the default view (the overview of the planetary
@@ -112,6 +113,7 @@ test("the Markers switch hides the planets' dots, so small bodies shrink to thei
 	await page.waitForLoadState("networkidle")
 	await cameraAtRest(page)
 	// without the orbit lines the planets' dots are all that is lit round the Sun
+	await openLayers(page)
 	const orbits = page.getByRole("switch", { name: "Orbits" })
 	await orbits.click({ force: true })
 	await expect(orbits).not.toBeChecked()
@@ -149,6 +151,7 @@ test("a focused planet is framed from its drawn size and its moons stay in place
 	await page.screenshot({ path: path.join(screenshotDir, "jupiter.png") })
 
 	// every orbit line re-derives from the scaled values on a layer toggle
+	await openLayers(page)
 	const moons = page.getByRole("switch", { name: "Moons", exact: true })
 	await moons.click({ force: true })
 	await expect(moons).not.toBeChecked()

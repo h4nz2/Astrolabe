@@ -20,7 +20,9 @@ import {
 	IconRoute,
 } from "@tabler/icons-react"
 
+import { eventOfTourId } from "@/data/skyEvents"
 import type { Tour, TourLink } from "@/data/tours"
+import { Hint } from "@/primitives/hint"
 import { useI18n } from "@/i18n"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
@@ -116,7 +118,10 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 	const sequence = useSimStore((state) => state.sequence)
 	const status = tourStatus(sequence, { tour, steps })
 
-	if (tour === null || status === null) return null
+	// a sky event (#41) plays as a tour but has its own card (events/EventCard)
+	if (tour === null || status === null || eventOfTourId(tour.id) !== null) {
+		return null
+	}
 	const stop = tour.stops[index]
 	const tourText = words.tour(tour)
 	const stopText = words.stop(tour, stop)
@@ -266,7 +271,7 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 					<div className={classes.controls}>
 						{back}
 						<div className={classes.tools}>
-							<Tooltip label={t("solarSystem.tours.autoplayHint")} withinPortal>
+							<Hint text={t("solarSystem.tours.autoplayHint")}>
 								<ActionIcon
 									variant={auto ? "filled" : "subtle"}
 									color={auto ? "orange" : "gray"}
@@ -282,7 +287,7 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 										<IconPlayerPlay size={18} aria-hidden />
 									)}
 								</ActionIcon>
-							</Tooltip>
+							</Hint>
 							<ShareButton tour={tour} index={index} />
 						</div>
 						{next}

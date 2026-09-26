@@ -437,6 +437,87 @@
 				"hue": "#a2a09d"
 			},
 			"basis": "Voyager 2 saw Nereid only as a few pixels: neutral grey, albedo about 0.16. The pattern is a generic cratered surface."
+		},
+		"charon": {
+			"planet": "pluto",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.38,
+				"hue": "#a8a29c"
+			},
+			"basis": "New Horizons (2015): neutral grey water ice, albedo about 0.4, with a reddish-brown north polar cap (Mordor Macula) and a long canyon belt. Painted as a generic cratered grey surface until the New Horizons map is processed (#23)."
+		},
+		"styx": {
+			"planet": "pluto",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.65,
+				"hue": "#cfcfcd"
+			},
+			"basis": "Too small for New Horizons to map; its brightness implies clean water ice like its siblings. Generic cratered surface (#23)."
+		},
+		"nix": {
+			"planet": "pluto",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.56,
+				"hue": "#cac6c1"
+			},
+			"basis": "New Horizons (2015): bright, water-ice covered, with one reddish crater. Generic cratered surface (#23)."
+		},
+		"kerberos": {
+			"planet": "pluto",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.56,
+				"hue": "#c9c9c7"
+			},
+			"basis": "New Horizons (2015): a bright double-lobed body, water ice. Generic cratered surface (#23)."
+		},
+		"hydra": {
+			"planet": "pluto",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.83,
+				"hue": "#dededc"
+			},
+			"basis": "New Horizons (2015): the brightest of Pluto's small moons, almost pure water ice. Generic cratered surface (#23)."
+		},
+		"dysnomia": {
+			"planet": "eris",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.05,
+				"hue": "#6b6763"
+			},
+			"basis": "Eris's moon is very dark, albedo about 0.05 (ALMA, Brown & Butler 2018/2023), unlike its bright planet. Generic cratered surface (#23)."
+		},
+		"namaka": {
+			"planet": "haumea",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.7,
+				"hue": "#d2d2d0"
+			},
+			"basis": "Haumea's moons show crystalline water ice in their spectra (Barkume et al. 2006); albedo assumed high like Haumea's. Generic cratered surface (#23)."
+		},
+		"hiiaka": {
+			"planet": "haumea",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.7,
+				"hue": "#d6d6d4"
+			},
+			"basis": "Hiʻiaka's spectrum is dominated by crystalline water ice (Barkume et al. 2006); albedo assumed high. Generic cratered surface (#23)."
+		},
+		"s20151364721": {
+			"planet": "makemake",
+			"recipe": {
+				"pattern": "cratered",
+				"albedo": 0.04,
+				"hue": "#5c5955"
+			},
+			"basis": "Makemake's moon is as dark as charcoal, albedo about 0.04 (Parker et al. 2016), against a bright planet. Generic cratered surface (#23)."
 		}
 	},
 	"families": {

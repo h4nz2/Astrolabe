@@ -152,6 +152,33 @@
 				]
 			}
 		},
+		"quietScreen": {
+			"title": {
+				"standard": "Wo die Bedienelemente sind",
+				"simple": "Wo sind die Knöpfe?"
+			},
+			"what": {
+				"standard": "Der Bildschirm gehört dem Weltraum. Nur was du ansiehst, der Weg zurück und die Zeit bleiben darauf; alles andere wartet hinter vier Knöpfen unten rechts: Touren, Ebenen, Maßstab und Werkzeuge. Während du drehst, zoomst oder fliegst, treten die Bedienelemente ein wenig zurück.",
+				"simple": "Die meisten Knöpfe halten sich zurück, damit du den Weltraum siehst. Vier Knöpfe unten rechts öffnen den Rest."
+			},
+			"why": {
+				"standard": "Die Planeten sind der Unterricht, nicht die Knöpfe: Die Klasse sieht das Sonnensystem, und jedes Bedienelement ist trotzdem höchstens zwei Klicks entfernt.",
+				"simple": "Du siehst mehr vom Weltraum, und jeder Knopf ist trotzdem ganz nah."
+			},
+			"how": {
+				"standard": [
+					"Oben links: der Haus-Knopf (zurück zum ganzen System), der Name der Welt im Blick und ihr Steckbrief; der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf.",
+					"Unten: Abspielen, Pause und das Datum; der Knopf mit dem Tempo (zum Beispiel 1x) öffnet „Jetzt“, die Tempi und die Drehung.",
+					"Unten rechts: Touren, Ebenen (was gezeichnet wird), Maßstab (wie groß und wie weit) und Werkzeuge (Lichtgeschwindigkeit, der Himmel heute Nacht, Raumsonden, dein Geburtstag, die Schnitzeljagd, Nebeneinander und ein Foto). Es ist immer nur ein Feld offen; × schließt es.",
+					"Oben rechts: Präsentieren, Teilen, das durchgestrichene Auge, das alles ausblendet (H holt es zurück), Ton, Hilfe und die Sprache."
+				],
+				"simple": [
+					"Der Haus-Knopf oben links bringt dich zurück zu allen Planeten.",
+					"Drück unten rechts auf Ebenen, Maßstab oder Werkzeuge, dann findest du mehr.",
+					"Drück oben rechts auf das durchgestrichene Auge, dann verschwinden alle Knöpfe. Mit H kommen sie zurück."
+				]
+			}
+		},
 		"worldCard": {
 			"title": {
 				"standard": "Der Steckbrief einer Welt",
@@ -167,14 +194,14 @@
 			},
 			"how": {
 				"standard": [
-					"Fliege zu einer Welt: Ihr Steckbrief erscheint.",
-					"„Mehr dazu im Lexikon“ öffnet ihre Seite, „Vergleichen mit …“ stellt sie neben eine andere Welt.",
-					"Auf dem Handy tippst du auf den Pfeil im Steckbrief, um die Fakten aufzuklappen."
+					"Fliege zu einer Welt: Ihr Steckbrief erscheint mit Namen und einem Satz.",
+					"Der Pfeil im Steckbrief klappt Fakten, Monde und Geschichten auf; so bleibt er auch für die nächste Welt.",
+					"„Mehr dazu im Lexikon“ öffnet ihre Seite, „Vergleichen mit …“ stellt sie neben eine andere Welt."
 				],
 				"simple": [
 					"Flieg zu einem Planeten.",
 					"Lies seinen Steckbrief.",
-					"Auf dem Handy tippst du auf den kleinen Pfeil, dann siehst du mehr."
+					"Tipp auf den kleinen Pfeil, dann siehst du mehr."
 				]
 			}
 		},
@@ -190,14 +217,14 @@
 			},
 			"how": {
 				"standard": [
-					"Fliege zu einem Planeten: Sein Steckbrief listet seine bekanntesten Monde auf. Klicke einen an, um hinzufliegen.",
+					"Fliege zu einem Planeten und klapp seinen Steckbrief mit dem Pfeil auf: Er listet seine bekanntesten Monde auf. Klicke einen an, um hinzufliegen.",
 					"„Das ganze Mondsystem ansehen“ zoomt zurück, bis jede Umlaufbahn ins Bild passt.",
-					"„… kleinere Monde zeigen“ oder der Schalter „Alle Monde“ fügt die vielen kleinen hinzu; im Steckbrief eines Mondes steht „Die ganze Geschichte lesen“.",
+					"„… kleinere Monde zeigen“ oder der Schalter „Alle Monde“ (unter „Ebenen“) fügt die vielen kleinen hinzu; im Steckbrief eines Mondes steht „Die ganze Geschichte lesen“.",
 					"Der Steckbrief eines Mondes sagt, woher seine Oberfläche stammt: eine Karte einer Raumsonde, ergänzt, wo noch nie jemand hingesehen hat, oder gemalt nach dem, was man weiß."
 				],
 				"simple": [
 					"Flieg zum Jupiter.",
-					"Klick im Steckbrief auf einen Mond, dann fliegst du zu ihm.",
+					"Klapp den Steckbrief mit dem kleinen Pfeil auf und klick auf einen Mond, dann fliegst du zu ihm.",
 					"Drück „Alle seine Monde ansehen“."
 				]
 			}
@@ -217,14 +244,42 @@
 			},
 			"how": {
 				"standard": [
-					"Die Schalter sind im Feld oben rechts; auf kleinen Bildschirmen und beim Präsentieren findest du sie unter „Ebenen“.",
+					"Drücke unten rechts auf „Ebenen“: Die Schalter öffnen sich darüber.",
 					"Drücke L, um alle Namen auf einmal aus- oder einzublenden.",
-					"„Alle Monde“ funktioniert nur, solange „Monde“ eingeschaltet ist."
+					"„Alle Monde“ funktioniert nur, solange „Monde“ eingeschaltet ist.",
+					"Lass den Zeiger auf einem Schalter ruhen oder halte ihn gedrückt, um zu lesen, was er tut; ein ausgegrauter Schalter sagt, was du zuerst einschalten musst."
 				],
 				"simple": [
-					"Such die Schalter oben rechts.",
-					"Klick einen an, um ihn auszuschalten, und noch einmal, um ihn wieder einzuschalten.",
-					"Drück L, dann sind alle Namen versteckt."
+					"Drück unten rechts auf „Ebenen“.",
+					"Klick einen Schalter an, um ihn auszuschalten, und noch einmal, um ihn wieder einzuschalten.",
+					"Drück L, dann sind alle Namen versteckt.",
+					"Halte die Maus über einen Schalter, um zu erfahren, was er macht."
+				]
+			}
+		},
+		"hints": {
+			"title": {
+				"standard": "Was macht dieser Schalter?",
+				"simple": "Was macht dieser Knopf?"
+			},
+			"what": {
+				"standard": "Jeder Schalter, jede Auswahl und jeder Knopf im Sonnensystem erklärt sich in einem Satz: was er tut und wozu er gut ist. Ein ausgegrauter Schalter sagt, was du zuerst einschalten musst.",
+				"simple": "Jeder Schalter und jeder Knopf kann dir sagen, was er macht."
+			},
+			"why": {
+				"standard": "So planst du eine Stunde, ohne jeden Schalter ausprobieren zu müssen: was Markierungen sind oder warum „Immer beleuchtet“ Tag und Nacht versteckt.",
+				"simple": "Du musst nie raten, was ein Schalter macht."
+			},
+			"how": {
+				"standard": [
+					"Maus: Lass den Zeiger eine halbe Sekunde auf einem Schalter oder seinem Namen ruhen.",
+					"Tastatur: Geh mit Tab hin; Bildschirmleser lesen denselben Satz vor.",
+					"Touch: Halte den Schalter oder seinen Namen gedrückt. Ein kurzes Tippen schaltet ihn weiterhin einfach um.",
+					"Esc schließt den Hinweis."
+				],
+				"simple": [
+					"Halte die Maus still über einen Schalter.",
+					"Auf einem Tablet: Drück mit dem Finger länger auf den Schalter."
 				]
 			}
 		},
@@ -251,6 +306,56 @@
 				]
 			}
 		},
+		"dwarfPlanets": {
+			"title": {
+				"standard": "Pluto und die Zwergplaneten",
+				"simple": "Pluto"
+			},
+			"what": {
+				"standard": "Pluto, Ceres, Eris, Haumea und Makemake sind echte Welten in der App, mit ihren Monden von Charon bis Dysnomia.",
+				"simple": "Pluto und vier andere kleine runde Welten, mit ihren Monden."
+			},
+			"why": {
+				"standard": "Plutos Karte erzählt, warum er 2006 kein Planet mehr war: Wir haben dazugelernt, Pluto hat sich nicht verändert. So funktioniert Wissenschaft.",
+				"simple": "Du erfährst, warum Pluto kein Planet mehr ist."
+			},
+			"how": {
+				"standard": [
+					"Tippe oben links „Pluto“ ins Feld und wähle ihn aus: Er wird gezeigt, auch wenn „Kleinkörper“ aus ist.",
+					"Klapp die Karte mit dem Pfeil auf: Charon steht darin; „Das ganze Mondsystem ansehen“ zeigt alle fünf Monde.",
+					"← / → springen zum nächsten Zwergplaneten."
+				],
+				"simple": [
+					"Tippe oben links „Pluto“ ins Feld.",
+					"Wähle Pluto, und du fliegst hin."
+				]
+			}
+		},
+		"comets": {
+			"title": {
+				"standard": "Ein Komet zieht an der Sonne vorbei",
+				"simple": "Kometen"
+			},
+			"what": {
+				"standard": "Fünf Kometen auf ihren echten, langgestreckten Bahnen bekommen nahe der Sonne einen leuchtenden Kopf und zwei Schweife und verlieren sie wieder, wenn sie davonziehen.",
+				"simple": "Kometen bekommen einen langen Schweif, wenn sie der Sonne nahe kommen."
+			},
+			"why": {
+				"standard": "Der Schweif zeigt immer von der Sonne weg, also fliegt ein Komet auf dem Rückweg mit dem Schweif voran – zum Ansehen, nicht nur zum Erzählen.",
+				"simple": "Der Schweif zeigt immer von der Sonne weg, auch wenn der Komet davonfliegt!"
+			},
+			"how": {
+				"standard": [
+					"Wähle oben links Halley oder Encke (Gruppe Kometen).",
+					"Klapp die Karte mit dem Pfeil auf und drücke „Zusehen, wie er an der Sonne vorbeizieht“: Die App springt zum nächsten Besuch und spielt ihn in etwa anderthalb Minuten ab.",
+					"Achte darauf, wohin der Schweif auf dem Hinweg und auf dem Rückweg zeigt."
+				],
+				"simple": [
+					"Wähle oben links Halley.",
+					"Klapp die Karte mit dem kleinen Pfeil auf und drücke „Zusehen, wie er an der Sonne vorbeifliegt“."
+				]
+			}
+		},
 		"spin": {
 			"title": {
 				"standard": "Tage, Achsneigung und Drehung",
@@ -267,13 +372,13 @@
 			"how": {
 				"standard": [
 					"Fliege zur Erde und lass die Zeit schneller laufen.",
-					"Wähle unter den Zeitknöpfen bei „Drehung“ „Gebremst“ oder „Zeitlupe“, um die Tage zu verfolgen, oder „Angehalten“, damit alles stillsteht.",
+					"Drücke in der Zeitleiste den Tempo-Knopf und wähle bei „Drehung“ „Gebremst“ oder „Zeitlupe“, um die Tage zu verfolgen, oder „Angehalten“, damit alles stillsteht.",
 					"„Echt“ dreht jede Welt wieder so, wie sie an diesem Datum wirklich steht."
 				],
 				"simple": [
 					"Flieg zur Erde.",
 					"Lass die Zeit schneller laufen.",
-					"Wähl unter den Zeitknöpfen „Zeitlupe“ und schau zu, wie sich die Erde dreht."
+					"Drück unten den Tempo-Knopf, wähl „Zeitlupe“ und schau zu, wie sich die Erde dreht."
 				]
 			}
 		},
@@ -318,12 +423,12 @@
 			},
 			"how": {
 				"standard": [
-					"Drück unter dem Namensfeld auf „Himmel heute Nacht“ und wähl deinen Ort (die App fragt nie von sich aus nach deinem Standort).",
+					"Öffne unten rechts „Werkzeuge“, wähle „Himmel heute Nacht“ und dann deinen Ort (die App fragt nie von sich aus nach deinem Standort).",
 					"Lies die Liste: was du sehen kannst, wann, wo und womit.",
 					"Drück neben einem Planeten auf „Warum kann ich das sehen?“, um den Grund im All zu sehen."
 				],
 				"simple": [
-					"Drück auf „Himmel heute Nacht“.",
+					"Drück auf „Werkzeuge“ und dann auf „Himmel heute Nacht“.",
 					"Wähl deinen Ort. Frag einen Erwachsenen, bevor du den Standort des Geräts benutzt.",
 					"Lies, wohin du schauen musst, und dann ab nach draußen!"
 				]
@@ -344,13 +449,13 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne „Raumsonden“ (den Satelliten-Knopf oben rechts) und wähle eine Sonde: Die Ansicht fliegt zu ihr.",
+					"Öffne unten rechts „Werkzeuge“, wähle „Echte Raumsonden“ und dann eine Sonde: Die Ansicht fliegt zu ihr.",
 					"Ihr Steckbrief zeigt Start, Abstand, Signallaufzeit und „Meilensteine“; ein Meilenstein bringt die Zeit zu diesem Moment.",
 					"„Alle Bahnen zeigen“ zeichnet alle Wege auf einmal; der Schalter „Raumsonden“ blendet sie aus."
 				],
 				"simple": [
-					"Drück oben rechts auf den Satelliten-Knopf.",
-					"Wähl Voyager 1.",
+					"Drück unten rechts auf „Werkzeuge“.",
+					"Wähl „Echte Raumsonden“ und dann Voyager 1.",
 					"Lies, wie weit sie weg ist."
 				]
 			}
@@ -445,12 +550,12 @@
 			"how": {
 				"standard": [
 					"Drücke ▶ zum Abspielen, ⏸ zum Anhalten, ◀ für rückwärts (die Leertaste hält auch an).",
-					"Wähle ein Tempo in der Reihe daneben, oder drücke + und −.",
-					"„Jetzt“ bringt dich zurück in die Gegenwart."
+					"Der Knopf neben dem Datum zeigt das Tempo (zum Beispiel 1x): Drück ihn und wähle ein anderes, oder drücke + und −.",
+					"„Jetzt“, an derselben Stelle, bringt dich zurück in die Gegenwart."
 				],
 				"simple": [
 					"Drück unten auf den Abspielknopf.",
-					"Wähl ein schnelleres Tempo, zum Beispiel „1 Monat/s“.",
+					"Drück den Tempo-Knopf neben dem Datum und wähl „1 Monat/s“.",
 					"Drück die Leertaste, dann hält die Zeit an."
 				]
 			}
@@ -471,13 +576,39 @@
 			"how": {
 				"standard": [
 					"Klicke unten auf Datum und Uhrzeit.",
-					"Wähle einen Moment aus der Liste, oder „Datum wählen“ und klicke Jahr, Monat und Tag an.",
+					"Wähle „Datum wählen“ und klicke Jahr, Monat und Tag an (berühmte Momente stehen unter „Himmelsereignisse“).",
 					"Die Planeten gleiten dorthin und die Zeit hält an; drücke Abspielen, damit sie weiterläuft."
 				],
 				"simple": [
 					"Klick unten auf das Datum.",
 					"Wähl „Mars so nah wie nie“ oder such dir einen Tag aus.",
 					"Schau zu, wie die Planeten dorthin wandern."
+				]
+			}
+		},
+		"skyEvents": {
+			"title": {
+				"standard": "Himmelsereignisse: Finsternisse, Transite und Konstellationen",
+				"simple": "Finsternisse und andere Himmelsereignisse"
+			},
+			"what": {
+				"standard": "Eine Liste von Finsternissen, Venus- und Merkurtransiten, Planeten, die sich am Himmel treffen, nahen Begegnungen mit Mars, Schatten von Monden und Saturns Ringen von der Kante, vergangen und kommend. Die Auswahl stellt alles ein: das Datum, den echten Maßstab und einen Blick aus dem All, mit einem Wechsel zur Sicht von der Erde durchs Teleskop.",
+				"simple": "Wähl eine Finsternis oder ein anderes Himmelsschauspiel, und die App bringt dich hin: an den richtigen Tag und an den richtigen Ort zum Schauen."
+			},
+			"why": {
+				"standard": "Jedes Ereignis ist eine Geometriestunde in einem Bild: warum der Mond die Sonne genau bedeckt, warum nicht jeden Monat eine Finsternis ist, was „die Planeten stehen in einer Reihe“ wirklich heißt. Der Wechsel zwischen der Sicht aus dem All und der Sicht von der Erde ist die Lektion.",
+				"simple": "Du siehst, warum es eine Finsternis gibt: aus dem All und von der Erde, wo die Leute zugeschaut haben."
+			},
+			"how": {
+				"standard": [
+					"Klicke unten auf das Datum und wähle „Himmelsereignisse“.",
+					"Wähle ein Ereignis, zum Beispiel „Totale Sonnenfinsternis“ (8. April 2024).",
+					"Wechsle auf der Karte zwischen „Aus dem All“ und „Von der Erde“; mit „Verlassen“ geht es zurück dorthin, wo du warst."
+				],
+				"simple": [
+					"Klick unten auf das Datum, dann auf „Himmelsereignisse“.",
+					"Wähl eine Finsternis.",
+					"Drück „Von der Erde“, und der Mond bedeckt die Sonne."
 				]
 			}
 		},
@@ -496,11 +627,11 @@
 			},
 			"how": {
 				"standard": [
-					"Wähle das höchste Tempo, „10 Jahre/s“.",
-					"Lies die Zeile unter den Tempo-Knöpfen; wähle ein langsameres Tempo oder halte an, dann verschwindet sie."
+					"Drücke den Tempo-Knopf neben dem Datum und wähle das höchste Tempo, „10 Jahre/s“.",
+					"Lies die Zeile unter der Zeitleiste; wähle ein langsameres Tempo oder halte an, dann verschwindet sie."
 				],
 				"simple": [
-					"Wähl das schnellste Tempo.",
+					"Drück den Tempo-Knopf und wähl das schnellste Tempo.",
 					"Lies den Hinweis und wähl dann ein langsameres Tempo."
 				]
 			}
@@ -520,12 +651,12 @@
 			},
 			"how": {
 				"standard": [
-					"Klicke im Feld „Maßstab“ oben rechts auf „Echter Maßstab“, „Schulbuch“ oder „Alles sichtbar“ (oder drücke S).",
+					"Drücke unten rechts auf „Maßstab“ (der Knopf nennt den Maßstab im Bild) und klicke auf „Echter Maßstab“, „Schulbuch“ oder „Alles sichtbar“, oder drücke S.",
 					"Die Schalter „Größen“ und „Abstände“ ändern immer nur eine Schummelei auf einmal.",
-					"Im echten Maßstab zeigen die Punkte, wo die Planeten sind; schalte „Markierungen“ aus, um zu sehen, wie wenig übrig bleibt."
+					"Im echten Maßstab zeigen die Punkte, wo die Planeten sind; schalte „Markierungen“ (unter „Ebenen“) aus, um zu sehen, wie wenig übrig bleibt."
 				],
 				"simple": [
-					"Such oben rechts das Feld „Maßstab“.",
+					"Drück unten rechts auf „Maßstab“.",
 					"Klick auf „Echter Maßstab“.",
 					"Wo sind die Planeten hin? Die Punkte zeigen, wo sie sind."
 				]
@@ -553,6 +684,31 @@
 				"simple": [
 					"Flieg von der Erde zu einem anderen Planeten.",
 					"Lies das Kästchen über den Zeitknöpfen."
+				]
+			}
+		},
+		"asteroidBelt": {
+			"title": {
+				"standard": "Der Asteroidengürtel ist fast leer",
+				"simple": "Der Asteroidengürtel"
+			},
+			"what": {
+				"standard": "Der Schalter „Kleinkörper“ zeigt den Asteroidengürtel und den Kuipergürtel als Punktwolken, dazu die Zwergplaneten, sieben benannte Asteroiden und fünf Kometen.",
+				"simple": "Ein Schalter zeigt den Asteroidengürtel, den eisigen Kuipergürtel, die Zwergplaneten und Kometen."
+			},
+			"why": {
+				"standard": "Filme zeigen ein dichtes Feld aus Felsen. Die Karte sagt die Wahrheit: Jeder Punkt steht für etwa 380 Asteroiden, und Nachbarn sind rund eine Million km voneinander entfernt – Raumsonden fliegen einfach hindurch.",
+				"simple": "Im Film ist es voller Felsen. Im echten Weltall sind die Felsen sehr, sehr weit voneinander weg."
+			},
+			"how": {
+				"standard": [
+					"Drücke unten rechts auf „Ebenen“ und schalte „Kleinkörper“ ein.",
+					"Lies den Hinweis in der Karte oben links.",
+					"Wähle im Maßstab „Echter Maßstab“ und fliege zu Vesta oder Ceres: Der Gürtel bleibt ein lockeres Gestreu."
+				],
+				"simple": [
+					"Drück auf „Ebenen“ und schalte „Kleinkörper“ ein.",
+					"Lies, was die Karte über die Punkte sagt."
 				]
 			}
 		},
@@ -599,12 +755,12 @@
 				"standard": [
 					"Fliege zur Erde und dreh die Kamera zur Grenze zwischen Tag und Nacht.",
 					"Reise zum 21. Juni und zum 21. Dezember und vergleiche die Pole.",
-					"Der Schalter „Immer beleuchtet“ beleuchtet alles aus deiner Blickrichtung, damit du die Oberflächen untersuchen kannst."
+					"Der Schalter „Immer beleuchtet“ (unter „Ebenen“) beleuchtet alles aus deiner Blickrichtung, damit du die Oberflächen untersuchen kannst."
 				],
 				"simple": [
 					"Flieg zur Erde.",
 					"Dreh die Ansicht, bis du die Nachtseite mit den Lichtern der Städte siehst.",
-					"Schalt „Immer beleuchtet“ ein, dann siehst du jede Seite."
+					"Schalt unter „Ebenen“ „Immer beleuchtet“ ein, dann siehst du jede Seite."
 				]
 			}
 		},
@@ -645,13 +801,13 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke oben links auf „Lichtgeschwindigkeit“, dann auf „Lichtblitz senden“.",
+					"Öffne unten rechts „Werkzeuge“, wähle „Lichtgeschwindigkeit“ und dann „Lichtblitz senden“.",
 					"Wähle, wo er startet; die Liste zeigt, wann er jede Welt erreicht.",
 					"Die Zeit springt auf Echtzeit; ein schnelleres Tempo ist erlaubt, und das Feld zählt trotzdem die echte Reisezeit.",
-					"Zum Anhalten drück „Lichtblitz stoppen“, das × an seiner Beschriftung oder neben der Uhr auf dem Knopf, oder X. Hat er Neptun hinter sich, verblasst er von selbst."
+					"Zum Anhalten drück „Lichtblitz stoppen“, das × an seiner Beschriftung oder das × neben seiner Uhr unter dem Namensfeld, oder X. Hat er Neptun hinter sich, verblasst er von selbst."
 				],
 				"simple": [
-					"Such den Knopf „Wie schnell ist Licht?“ und drück drauf.",
+					"Drück auf „Werkzeuge“ und dann auf „Wie schnell ist Licht?“.",
 					"Drück „Lichtblitz senden“.",
 					"Schau zu, wie der Kreis wächst und die Planeten erreicht.",
 					"Drück „Licht ausschalten“, um ihn anzuhalten."
@@ -673,11 +829,11 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne „Lichtgeschwindigkeit“ und wähle den Reiter „Funkverzögerung“.",
+					"Öffne „Werkzeuge“ → „Lichtgeschwindigkeit“ und wähle den Reiter „Funkverzögerung“.",
 					"Wähle eine Welt, oder klicke eine in der Szene an."
 				],
 				"simple": [
-					"Drück auf den Knopf „Wie schnell ist Licht?“ und dann auf „Funkverzögerung“.",
+					"Drück auf „Werkzeuge“, dann auf „Wie schnell ist Licht?“ und dann auf „Funkverzögerung“.",
 					"Wähl den Mars aus."
 				]
 			}
@@ -697,10 +853,10 @@
 			},
 			"how": {
 				"standard": [
-					"Öffne „Lichtgeschwindigkeit“ und wähle den Reiter „Noch weiter“."
+					"Öffne „Werkzeuge“ → „Lichtgeschwindigkeit“ und wähle den Reiter „Noch weiter“."
 				],
 				"simple": [
-					"Such den Knopf „Wie schnell ist Licht?“ und drück drauf.",
+					"Drück auf „Werkzeuge“ und dann auf „Wie schnell ist Licht?“.",
 					"Klick auf „Noch weiter“."
 				]
 			}
@@ -720,7 +876,7 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke im Steckbrief einer Welt auf „Vergleichen mit …“.",
+					"Drücke im Steckbrief einer Welt auf „Vergleichen mit …“, oder öffne „Werkzeuge“ → „Nebeneinander“.",
 					"Ändere eine der beiden Welten mit den Auswahlfeldern, füge mit „Hinzufügen …“ weitere hinzu, oder klicke eine in der Reihe an, um stattdessen mit ihr zu vergleichen.",
 					"Der Kamera-Knopf macht ein Bild vom Vergleich."
 				],
@@ -766,12 +922,12 @@
 			},
 			"how": {
 				"standard": [
-					"Drück neben dem Namensfeld auf „Touren“ und wähle eine Tour.",
+					"Drück unten rechts auf „Touren“ und wähle eine Tour.",
 					"Mit „Weiter“ und „Zurück“ auf der Karte, den Pfeiltasten oder einem Presenter (Bild ↓ / Bild ↑) gehst du weiter.",
 					"Sieh dich jederzeit um; „Zurück zur Tour“ stellt die Station wieder her. „Automatisch weiter“ geht von selbst weiter, und der Link-Knopf kopiert einen Link zur aktuellen Station. Lehrkräfte können eigene Touren als Daten schreiben (src/data/tours/README.md)."
 				],
 				"simple": [
-					"Drück oben links auf „Touren“ und wähl eine aus.",
+					"Drück unten rechts auf „Touren“ und wähl eine aus.",
 					"Lies die Karte und drück dann „Weiter“ oder eine Pfeiltaste.",
 					"Sieh dich um, wann du willst, und drück dann „Zurück zur Tour“."
 				]
@@ -779,7 +935,7 @@
 		},
 		"present": {
 			"title": "Beamer-Modus",
-			"what": "Größere Schrift, Namen und Knöpfe, lesbar bis in die letzte Reihe, und die Schalter sind weggeklappt.",
+			"what": "Größere Schrift, Namen und Knöpfe, lesbar bis in die letzte Reihe.",
 			"why": "Ein Laptop-Bildschirm ist am Beamer zu klein zum Lesen; der Beamer-Modus behebt das mit einer Taste.",
 			"how": [
 				"Öffne oben rechts „Präsentieren“ und wähle „Große Schrift für den Beamer“, oder drücke P.",
@@ -811,7 +967,7 @@
 			"what": "Nimm alle Knöpfe und Felder vom Bildschirm, sodass nur der Weltraum bleibt.",
 			"why": "Zum Anschauen, für Bildschirmfotos und für den Beamer: Die Klasse sieht das Sonnensystem, nicht die Bedienoberfläche.",
 			"how": [
-				"Drücke H, oder öffne „Präsentieren“ und wähle „Bedienelemente ausblenden“.",
+				"Drücke H oder das durchgestrichene Auge oben rechts (es steht auch im Menü „Präsentieren“). Das geht mit und ohne Präsentieren.",
 				"Drücke noch einmal H, oder bewege die Maus und klicke auf „Bedienelemente zeigen“, um sie zurückzuholen. Die Tasten funktionieren auch, solange sie ausgeblendet sind."
 			]
 		},
@@ -839,7 +995,7 @@
 			"what": "Wähle Rätsel aus der ganzen Fragensammlung und mach daraus eine Jagd für deine Stunde.",
 			"why": "Die Jagd passt zum Thema des Tages, und ein Link startet sie für alle Schülerinnen und Schüler in deiner Sprache.",
 			"how": [
-				"Öffne „Schnitzeljagd“ und wähle „Eigene Jagd zusammenstellen“.",
+				"Öffne „Werkzeuge“ → „Schnitzeljagd“ und wähle „Eigene Jagd zusammenstellen“.",
 				"Hake die Rätsel an, dann „Starten“, oder „Teilen“, um den Link für die Klasse zu bekommen."
 			]
 		},
@@ -855,12 +1011,12 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke „Schnitzeljagd“ und wähle eine Jagd: „Leicht“, „Mittel“ oder „Knifflig“.",
+					"Öffne unten rechts „Werkzeuge“, wähle „Schnitzeljagd“ und dann eine Jagd: „Leicht“, „Mittel“ oder „Knifflig“.",
 					"Lies das Rätsel, finde die Welt und klicke sie an.",
 					"Du steckst fest? „Brauchst du einen Tipp?“, und nach dem letzten Tipp „Zeig es mir“."
 				],
 				"simple": [
-					"Drück „Schnitzeljagd“.",
+					"Drück auf „Werkzeuge“ und dann auf „Schnitzeljagd“.",
 					"Wähl eine leichte Jagd.",
 					"Lies das Rätsel und klick die richtige Welt an."
 				]
@@ -881,12 +1037,12 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke „Dein Geburtstag“ und wähle Jahr, Monat und Tag.",
+					"Öffne unten rechts „Werkzeuge“, wähle „Dein Geburtstag“ und dann Jahr, Monat und Tag.",
 					"Die Planeten fliegen an ihre Plätze am Tag deiner Geburt; ⏭ neben einem Planeten reist zu deinem nächsten Geburtstag dort.",
 					"Dein Datum wird nirgends gespeichert oder verschickt: Es ist vergessen, sobald du die Seite schließt, oder sofort mit „Meinen Geburtstag vergessen“."
 				],
 				"simple": [
-					"Drück „Dein Geburtstag“.",
+					"Drück auf „Werkzeuge“ und dann auf „Dein Geburtstag“.",
 					"Wähl dein Jahr, deinen Monat und deinen Tag.",
 					"Lies, wie alt du auf jedem Planeten bist."
 				]
@@ -907,12 +1063,12 @@
 			},
 			"how": {
 				"standard": [
-					"Drücke oben rechts auf den Kamera-Knopf.",
+					"Öffne unten rechts „Werkzeuge“ und wähle „Foto machen“.",
 					"Schreibe eine Bildunterschrift und schalte bei Bedarf „Namen im Bild“ oder den QR-Code aus.",
 					"Speichere, kopiere oder teile das Bild. Es entsteht auf deinem Gerät; nichts wird hochgeladen."
 				],
 				"simple": [
-					"Drück oben rechts auf den Kamera-Knopf.",
+					"Drück unten rechts auf „Werkzeuge“ und dann auf „Foto machen“.",
 					"Schreib etwas zu deinem Bild.",
 					"Drück „Bild speichern“."
 				]
@@ -950,6 +1106,12 @@
 			"action": "Den Namen einer Welt sehen",
 			"mouse": "Mit der Maus darauf zeigen"
 		},
+		"hint": {
+			"action": "Sehen, was ein Schalter oder Knopf macht",
+			"mouse": "Zeiger darauf ruhen lassen",
+			"touch": "Gedrückt halten",
+			"keys": "Mit Tab hingehen"
+		},
 		"siblings": {
 			"action": "Nächste oder vorherige Welt derselben Familie",
 			"keys": "← / →"
@@ -966,8 +1128,8 @@
 		},
 		"speed": {
 			"action": "Schneller oder langsamer",
-			"mouse": "Die Tempo-Knöpfe",
-			"touch": "Die Tempo-Knöpfe",
+			"mouse": "Der Tempo-Knopf neben dem Datum",
+			"touch": "Der Tempo-Knopf neben dem Datum",
 			"keys": "+ / −"
 		},
 		"step": {
@@ -980,8 +1142,8 @@
 		},
 		"scale": {
 			"action": "Nächster Maßstab: Alles sichtbar, Schulbuch, Echter Maßstab",
-			"mouse": "Das Feld „Maßstab“",
-			"touch": "Das Feld „Maßstab“",
+			"mouse": "„Maßstab“ unten rechts",
+			"touch": "„Maßstab“ unten rechts",
 			"keys": "S"
 		},
 		"stopLight": {
@@ -992,14 +1154,14 @@
 		},
 		"names": {
 			"action": "Namen ein oder aus",
-			"mouse": "Der Schalter „Beschriftungen“",
-			"touch": "Der Schalter „Beschriftungen“",
+			"mouse": "Ebenen → Beschriftungen",
+			"touch": "Ebenen → Beschriftungen",
 			"keys": "L"
 		},
 		"hide": {
 			"action": "Bedienelemente aus- oder einblenden",
-			"mouse": "Präsentieren → Bedienelemente ausblenden",
-			"touch": "Präsentieren → Bedienelemente ausblenden",
+			"mouse": "Das durchgestrichene Auge oben rechts",
+			"touch": "Das durchgestrichene Auge oben rechts",
 			"keys": "H"
 		},
 		"fullscreen": {

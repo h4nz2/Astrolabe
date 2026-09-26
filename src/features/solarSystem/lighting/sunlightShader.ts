@@ -112,6 +112,7 @@ uniform float uAlwaysLit;
 uniform float uSunIntensity;
 uniform float uNightLevel;
 uniform vec3 uRimColor;
+uniform vec3 uUmbraGlow;
 #ifdef USE_BODY_MAP
 uniform sampler2D uMap;
 #endif
@@ -155,6 +156,8 @@ void main() {
 		// how far into the night this point is (0 by day, 1 past a short twilight band)
 		float night = 1.0 - smoothstep(-0.08, 0.12, ndl * shade);
 		color = albedo * (uSunIntensity * day + uNightLevel);
+		// sunlight the parent's air bends into its shadow (#41): the red Moon of a lunar eclipse
+		color += albedo * uUmbraGlow * max(ndl, 0.0) * (1.0 - smoothstep(0.0, 0.3, shade));
 		#ifdef USE_NIGHT_MAP
 		color += texture2D(uNightMap, vUv).rgb * uNightLightsIntensity * night;
 		#endif

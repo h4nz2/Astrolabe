@@ -8900,5 +8900,1187 @@
 			"kind": "painted",
 			"source": "astrolabe-painted"
 		}
+	},
+	{
+		"id": "ceres",
+		"name": "Ceres",
+		"kind": "dwarfPlanet",
+		"parentId": "sun",
+		"radiusKm": 469.7,
+		"massKg": 938350000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 413720780,
+			"eccentricity": 0.0796923,
+			"inclinationDeg": 10.588028,
+			"longAscNodeDeg": 80.248627,
+			"argPeriapsisDeg": 73.294215,
+			"meanAnomalyDeg": 274.419346,
+			"periodDays": 1679.8531,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 9.074169997,
+			"axialTiltDeg": 3,
+			"poleRaDeg": 291.418,
+			"poleDecDeg": 66.764,
+			"primeMeridianDeg": 170.65
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.28,
+			"density": 2.161,
+			"avgTemp": 168,
+			"discoveredBy": "Giuseppe Piazzi",
+			"discoveryDate": "01/01/1801",
+			"alternativeName": "1 Ceres",
+			"mass": {
+				"massValue": 9.3835,
+				"massExponent": 20
+			},
+			"vol": {
+				"volValue": 4.21,
+				"volExponent": 9
+			},
+			"escape": 510,
+			"flattening": 0.9619,
+			"equaRadius": 487,
+			"polarRadius": 455,
+			"bodyType": "Dwarf Planet",
+			"perihelion": 380750421,
+			"aphelion": 446691138,
+			"axialTilt": 3
+		}
+	},
+	{
+		"id": "pluto",
+		"name": "Pluto",
+		"kind": "dwarfPlanet",
+		"parentId": "sun",
+		"radiusKm": 1188.3,
+		"massKg": 1.303e22,
+		"orbit": {
+			"semiMajorAxisKm": 5922374660,
+			"eccentricity": 0.25183788,
+			"inclinationDeg": 17.147711,
+			"longAscNodeDeg": 110.292384,
+			"argPeriapsisDeg": 113.709002,
+			"meanAnomalyDeg": 38.683663,
+			"periodDays": 90981.7165,
+			"epochJD": 2457588.5
+		},
+		"rotation": {
+			"periodHours": -153.293351979,
+			"axialTiltDeg": 57.5,
+			"poleRaDeg": 312.993,
+			"poleDecDeg": 6.163,
+			"primeMeridianDeg": 237.305
+		},
+		"textures": {
+			"base": "/assets/textures/pluto/pluto.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.62,
+			"density": 1.89,
+			"avgTemp": 44,
+			"discoveredBy": "Clyde W. Tombaugh",
+			"discoveryDate": "18/02/1930",
+			"alternativeName": "134340 Pluto",
+			"mass": {
+				"massValue": 1.303,
+				"massExponent": 22
+			},
+			"vol": {
+				"volValue": 7.15,
+				"volExponent": 9
+			},
+			"escape": 1210,
+			"equaRadius": 1188.3,
+			"polarRadius": 1195,
+			"bodyType": "Dwarf Planet",
+			"perihelion": 4430896394,
+			"aphelion": 7413852926,
+			"axialTilt": 122.5
+		}
+	},
+	{
+		"id": "haumea",
+		"name": "Haumea",
+		"kind": "dwarfPlanet",
+		"parentId": "sun",
+		"radiusKm": 780,
+		"massKg": 4.006e21,
+		"orbit": {
+			"semiMajorAxisKm": 6441727731,
+			"eccentricity": 0.19444301,
+			"inclinationDeg": 28.208474,
+			"longAscNodeDeg": 121.786056,
+			"argPeriapsisDeg": 240.690547,
+			"meanAnomalyDeg": 223.210412,
+			"periodDays": 103208.1173,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 3.9154,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.401,
+			"density": 2.6,
+			"avgTemp": 50,
+			"discoveredBy": "Michael E. Brown, José Luis Ortiz Moreno",
+			"discoveryDate": "28/12/2004",
+			"alternativeName": "136108 Haumea",
+			"mass": {
+				"massValue": 4.006,
+				"massExponent": 21
+			},
+			"vol": {
+				"volValue": 2.4,
+				"volExponent": 9
+			},
+			"dimension": "1960 × 1518 × 996",
+			"escape": 809,
+			"flattening": 0.6102,
+			"polarRadius": 498,
+			"bodyType": "Dwarf Planet",
+			"perihelion": 5189178770,
+			"aphelion": 7694276692
+		}
+	},
+	{
+		"id": "makemake",
+		"name": "Makemake",
+		"kind": "dwarfPlanet",
+		"parentId": "sun",
+		"radiusKm": 715,
+		"massKg": 3.1e21,
+		"orbit": {
+			"semiMajorAxisKm": 6817314568,
+			"eccentricity": 0.158889,
+			"inclinationDeg": 29.027856,
+			"longAscNodeDeg": 79.294834,
+			"argPeriapsisDeg": 297.092273,
+			"meanAnomalyDeg": 169.937996,
+			"periodDays": 112364.8069,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 22.8266,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.5,
+			"density": 1.4,
+			"avgTemp": 32,
+			"discoveredBy": "Michael E. Brown, Chadwick Trujillo, David L. Rabinowitz",
+			"discoveryDate": "31/03/2005",
+			"alternativeName": "136472 Makemake",
+			"mass": {
+				"massValue": 3.1,
+				"massExponent": 21
+			},
+			"vol": {
+				"volValue": 1.7,
+				"volExponent": 9
+			},
+			"escape": 800,
+			"flattening": 0.05,
+			"equaRadius": 745,
+			"polarRadius": 715,
+			"bodyType": "Dwarf Planet",
+			"perihelion": 5734118305,
+			"aphelion": 7900510832
+		}
+	},
+	{
+		"id": "eris",
+		"name": "Eris",
+		"kind": "dwarfPlanet",
+		"parentId": "sun",
+		"radiusKm": 1163,
+		"massKg": 1.6466e22,
+		"orbit": {
+			"semiMajorAxisKm": 10162773801,
+			"eccentricity": 0.43823853,
+			"inclinationDeg": 43.925828,
+			"longAscNodeDeg": 36.00477,
+			"argPeriapsisDeg": 150.794924,
+			"meanAnomalyDeg": 211.774434,
+			"periodDays": 204516.6629,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 378.86,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.82,
+			"density": 2.52,
+			"avgTemp": 42,
+			"discoveredBy": "Michael E. Brown, Chadwick Trujillo, David L. Rabinowitz",
+			"discoveryDate": "05/01/2005",
+			"alternativeName": "136199 Eris",
+			"mass": {
+				"massValue": 1.6466,
+				"massExponent": 22
+			},
+			"vol": {
+				"volValue": 6.59,
+				"volExponent": 9
+			},
+			"escape": 1380,
+			"bodyType": "Dwarf Planet",
+			"perihelion": 5709054701,
+			"aphelion": 14616492901
+		}
+	},
+	{
+		"id": "bennu",
+		"name": "Bennu",
+		"kind": "asteroid",
+		"parentId": "sun",
+		"radiusKm": 0.242,
+		"massKg": 73272000000,
+		"orbit": {
+			"semiMajorAxisKm": 168505699,
+			"eccentricity": 0.20374508,
+			"inclinationDeg": 6.034944,
+			"longAscNodeDeg": 2.060866,
+			"argPeriapsisDeg": 66.223061,
+			"meanAnomalyDeg": 101.703952,
+			"periodDays": 436.6487,
+			"epochJD": 2455562.5
+		},
+		"rotation": {
+			"periodHours": 4.296061,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "LINEAR",
+			"discoveryDate": "11/09/1999",
+			"alternativeName": "101955 Bennu",
+			"mass": {
+				"massValue": 7.3272,
+				"massExponent": 10
+			},
+			"bodyType": "Asteroid",
+			"perihelion": 134173493,
+			"aphelion": 202837906
+		}
+	},
+	{
+		"id": "eros",
+		"name": "Eros",
+		"kind": "asteroid",
+		"parentId": "sun",
+		"radiusKm": 8.42,
+		"massKg": 6686800000000000,
+		"orbit": {
+			"semiMajorAxisKm": 218150155,
+			"eccentricity": 0.22287796,
+			"inclinationDeg": 10.828544,
+			"longAscNodeDeg": 304.267971,
+			"argPeriapsisDeg": 178.918132,
+			"meanAnomalyDeg": 62.511455,
+			"periodDays": 643.1964,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 5.27,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Gustav Witt",
+			"discoveryDate": "13/08/1898",
+			"alternativeName": "433 Eros",
+			"mass": {
+				"massValue": 6.6868,
+				"massExponent": 15
+			},
+			"dimension": "33x13x13",
+			"bodyType": "Asteroid",
+			"perihelion": 169529293,
+			"aphelion": 266771017
+		}
+	},
+	{
+		"id": "vesta",
+		"name": "Vesta",
+		"kind": "asteroid",
+		"parentId": "sun",
+		"radiusKm": 261.385,
+		"massKg": 259030000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 353255320,
+			"eccentricity": 0.09020374,
+			"inclinationDeg": 7.143926,
+			"longAscNodeDeg": 103.701293,
+			"argPeriapsisDeg": 151.468648,
+			"meanAnomalyDeg": 81.190156,
+			"periodDays": 1325.389,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 5.342128248,
+			"axialTiltDeg": 29,
+			"poleRaDeg": 309.031,
+			"poleDecDeg": 42.235,
+			"primeMeridianDeg": 285.39
+		},
+		"textures": {
+			"base": "/assets/textures/vesta_1.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "H. W. Olbers",
+			"discoveryDate": "29/03/1807",
+			"alternativeName": "4 Vesta",
+			"mass": {
+				"massValue": 2.5903,
+				"massExponent": 20
+			},
+			"dimension": "560x544x454",
+			"bodyType": "Asteroid",
+			"perihelion": 321390368,
+			"aphelion": 385120273,
+			"axialTilt": 29
+		}
+	},
+	{
+		"id": "juno",
+		"name": "Juno",
+		"kind": "asteroid",
+		"parentId": "sun",
+		"radiusKm": 123.298,
+		"massKg": 28200000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 399574346,
+			"eccentricity": 0.25569998,
+			"inclinationDeg": 12.986592,
+			"longAscNodeDeg": 169.811595,
+			"argPeriapsisDeg": 247.895074,
+			"meanAnomalyDeg": 262.732294,
+			"periodDays": 1594.4346,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 7.21,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Karl L. Harding",
+			"discoveryDate": "01/09/1804",
+			"alternativeName": "3 Juno",
+			"mass": {
+				"massValue": 2.82,
+				"massExponent": 19
+			},
+			"dimension": "290x240x190",
+			"bodyType": "Asteroid",
+			"perihelion": 297403192,
+			"aphelion": 501745500
+		}
+	},
+	{
+		"id": "pallas",
+		"name": "Pallas",
+		"kind": "asteroid",
+		"parentId": "sun",
+		"radiusKm": 256.5,
+		"massKg": 204220000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 414320131,
+			"eccentricity": 0.2307001,
+			"inclinationDeg": 34.932793,
+			"longAscNodeDeg": 172.886619,
+			"argPeriapsisDeg": 310.969916,
+			"meanAnomalyDeg": 254.249652,
+			"periodDays": 1683.5048,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 7.8132214,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Heinrich Olbers",
+			"discoveryDate": "28/03/1802",
+			"alternativeName": "2 Pallas",
+			"mass": {
+				"massValue": 2.0422,
+				"massExponent": 20
+			},
+			"dimension": "582x556x500",
+			"bodyType": "Asteroid",
+			"perihelion": 318736435,
+			"aphelion": 509903826
+		}
+	},
+	{
+		"id": "hygiea",
+		"name": "Hygiea",
+		"kind": "asteroid",
+		"parentId": "sun",
+		"radiusKm": 203.56,
+		"massKg": 104880000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 471379006,
+			"eccentricity": 0.10670927,
+			"inclinationDeg": 3.82953,
+			"longAscNodeDeg": 283.119893,
+			"argPeriapsisDeg": 312.424239,
+			"meanAnomalyDeg": 252.034424,
+			"periodDays": 2042.9873,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 13.828,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Annibale de Gasparis",
+			"discoveryDate": "12/04/1849",
+			"alternativeName": "10 Hygiea",
+			"mass": {
+				"massValue": 1.0488,
+				"massExponent": 20
+			},
+			"bodyType": "Asteroid",
+			"perihelion": 421078495,
+			"aphelion": 521679518
+		}
+	},
+	{
+		"id": "arrokoth",
+		"name": "Arrokoth",
+		"kind": "asteroid",
+		"parentId": "sun",
+		"radiusKm": 9,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 6590171921,
+			"eccentricity": 0.03555718,
+			"inclinationDeg": 2.450614,
+			"longAscNodeDeg": 159.037727,
+			"argPeriapsisDeg": 188.850746,
+			"meanAnomalyDeg": 310.983931,
+			"periodDays": 106796.1079,
+			"epochJD": 2461200.5
+		},
+		"rotation": {
+			"periodHours": 15.918,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Télescope spatial Hubble",
+			"discoveryDate": "26/06/2014",
+			"alternativeName": "486958 Arrokoth (2014 MU69)",
+			"dimension": "38x18x10",
+			"bodyType": "Asteroid",
+			"perihelion": 6355844016,
+			"aphelion": 6824499827
+		}
+	},
+	{
+		"id": "encke",
+		"name": "Encke",
+		"kind": "comet",
+		"parentId": "sun",
+		"radiusKm": 2.4,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 331993956,
+			"eccentricity": 0.8470279,
+			"inclinationDeg": 11.34227,
+			"longAscNodeDeg": 334.045469,
+			"argPeriapsisDeg": 187.263043,
+			"meanAnomalyDeg": 307.080292,
+			"periodDays": 1207.5513,
+			"epochJD": 2460062.5
+		},
+		"rotation": {
+			"periodHours": 11.083,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid_dark.jpg"
+		},
+		"rings": null,
+		"tail": {
+			"lengthKmAt1Au": 2000000
+		},
+		"info": {
+			"discoveredBy": "Pierre Méchain",
+			"discoveryDate": "17/01/1786",
+			"alternativeName": "2P/Encke",
+			"bodyType": "Comet",
+			"perihelion": 50785812,
+			"aphelion": 613202101
+		}
+	},
+	{
+		"id": "67p",
+		"name": "67P",
+		"kind": "comet",
+		"parentId": "sun",
+		"radiusKm": 1.7,
+		"massKg": 9921600000000,
+		"orbit": {
+			"semiMajorAxisKm": 517945152,
+			"eccentricity": 0.64090813,
+			"inclinationDeg": 7.040295,
+			"longAscNodeDeg": 50.135574,
+			"argPeriapsisDeg": 12.79825,
+			"meanAnomalyDeg": 8.859927,
+			"periodDays": 2353.0761,
+			"epochJD": 2457305.5
+		},
+		"rotation": {
+			"periodHours": 12.4,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid_dark.jpg"
+		},
+		"rings": null,
+		"tail": {
+			"lengthKmAt1Au": 1000000
+		},
+		"info": {
+			"discoveredBy": "Klim Churyumov, Svetlana Gerasimenko",
+			"discoveryDate": "20/09/1969",
+			"alternativeName": "67P/Churyumov–Gerasimenko",
+			"mass": {
+				"massValue": 9.9216,
+				"massExponent": 12
+			},
+			"bodyType": "Comet",
+			"perihelion": 185989893,
+			"aphelion": 849900411
+		}
+	},
+	{
+		"id": "halley",
+		"name": "Halley",
+		"kind": "comet",
+		"parentId": "sun",
+		"radiusKm": 5.5,
+		"massKg": 220000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 2682085628,
+			"eccentricity": 0.967936,
+			"inclinationDeg": 162.19053,
+			"longAscNodeDeg": 59.098947,
+			"argPeriapsisDeg": 112.241431,
+			"meanAnomalyDeg": 0,
+			"periodDays": 27564.03,
+			"epochJD": 2446469.973616
+		},
+		"rotation": {
+			"periodHours": 52.8,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid_dark.jpg"
+		},
+		"rings": null,
+		"tail": {
+			"lengthKmAt1Au": 18000000
+		},
+		"info": {
+			"density": 1,
+			"alternativeName": "1P/Halley",
+			"mass": {
+				"massValue": 2.2,
+				"massExponent": 14
+			},
+			"dimension": "15x8",
+			"bodyType": "Comet",
+			"perihelion": 85998405,
+			"aphelion": 5278172851
+		}
+	},
+	{
+		"id": "halebopp",
+		"name": "Hale-Bopp",
+		"kind": "comet",
+		"parentId": "sun",
+		"radiusKm": 30,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 26543656424,
+			"eccentricity": 0.994981,
+			"inclinationDeg": 89.287594,
+			"longAscNodeDeg": 282.733421,
+			"argPeriapsisDeg": 130.414667,
+			"meanAnomalyDeg": 3.878386,
+			"periodDays": 863279.5035,
+			"epochJD": 2459837.5
+		},
+		"rotation": {
+			"periodHours": 11.4,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid_dark.jpg"
+		},
+		"rings": null,
+		"tail": {
+			"lengthKmAt1Au": 70000000
+		},
+		"info": {
+			"discoveredBy": "Alan Hale, Thomas Bopp",
+			"discoveryDate": "23/07/1995",
+			"alternativeName": "C/1995 O1",
+			"bodyType": "Comet",
+			"perihelion": 133222538,
+			"aphelion": 52954090310
+		}
+	},
+	{
+		"id": "neowise",
+		"name": "NEOWISE",
+		"kind": "comet",
+		"parentId": "sun",
+		"radiusKm": 2.5,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 53626043014,
+			"eccentricity": 0.99917803,
+			"inclinationDeg": 128.937503,
+			"longAscNodeDeg": 61.010428,
+			"argPeriapsisDeg": 37.278658,
+			"meanAnomalyDeg": 0.000337,
+			"periodDays": 2478985.218,
+			"epochJD": 2459036.5
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/asteroid_dark.jpg"
+		},
+		"rings": null,
+		"tail": {
+			"lengthKmAt1Au": 15000000
+		},
+		"info": {
+			"discoveredBy": "Wide-Field Infrared Survey Explorer",
+			"discoveryDate": "27/03/2020",
+			"alternativeName": "C/2020 F3",
+			"bodyType": "Comet",
+			"perihelion": 44079200,
+			"aphelion": 107208006829
+		}
+	},
+	{
+		"id": "charon",
+		"name": "Charon",
+		"kind": "moon",
+		"parentId": "pluto",
+		"radiusKm": 606,
+		"massKg": 1.58e21,
+		"orbit": {
+			"semiMajorAxisKm": 19591,
+			"eccentricity": 0.0002,
+			"inclinationDeg": 112.8878,
+			"longAscNodeDeg": 227.393,
+			"argPeriapsisDeg": 172.5593,
+			"meanAnomalyDeg": 131.8395,
+			"periodDays": 6.387,
+			"epochJD": 2461041.5
+		},
+		"rotation": {
+			"periodHours": 153.2935,
+			"axialTiltDeg": 0,
+			"synchronous": true
+		},
+		"textures": {
+			"base": "/assets/textures/pluto/satellites/charon.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.288,
+			"density": 1,
+			"discoveredBy": "James W. Christy",
+			"discoveryDate": "13/04/1978",
+			"alternativeName": "S/1978 P1",
+			"mass": {
+				"massValue": 1.58,
+				"massExponent": 21
+			},
+			"vol": {
+				"volValue": 9.32,
+				"volExponent": 8
+			},
+			"surfaceTemps": {
+				"min": -220,
+				"max": -220,
+				"mean": -220
+			},
+			"bodyType": "Moon",
+			"diameter": 1212,
+			"perihelion": 19587,
+			"aphelion": 19595,
+			"orbitalPeriod": 6.387,
+			"orbitalInclination": 0.001
+		},
+		"featured": true,
+		"appearance": {
+			"color": "#837e7a"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "styx",
+		"name": "Styx",
+		"kind": "moon",
+		"parentId": "pluto",
+		"radiusKm": 20,
+		"massKg": 7500000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 42656,
+			"eccentricity": 0.005,
+			"inclinationDeg": 112.8949,
+			"longAscNodeDeg": 227.3369,
+			"argPeriapsisDeg": 247.8827,
+			"meanAnomalyDeg": 341.8664,
+			"periodDays": 20.16,
+			"epochJD": 2461041.5
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/pluto/satellites/styx.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Télescope spatial Hubble - Pluto Companion Search Team - Mark Showalter",
+			"discoveryDate": "11/07/2012",
+			"alternativeName": "S/2012 (134340) 1",
+			"mass": {
+				"massValue": 7.5,
+				"massExponent": 15
+			},
+			"dimension": "16 x 9 x 8",
+			"bodyType": "Moon",
+			"diameter": 7,
+			"orbitalPeriod": 20.161,
+			"orbitalInclination": 0.81
+		},
+		"appearance": {
+			"color": "#a2a2a0"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "nix",
+		"name": "Nix",
+		"kind": "moon",
+		"parentId": "pluto",
+		"radiusKm": 44,
+		"massKg": 45000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 48694,
+			"eccentricity": 0.002,
+			"inclinationDeg": 112.8834,
+			"longAscNodeDeg": 227.3703,
+			"argPeriapsisDeg": 136.8826,
+			"meanAnomalyDeg": 15.718,
+			"periodDays": 24.854,
+			"epochJD": 2461041.5
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/pluto/satellites/nix.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.001,
+			"density": 1,
+			"discoveredBy": "Hubble Space Telescope Pluto Companion Search Team",
+			"discoveryDate": "15/05/2005",
+			"alternativeName": "S/2005 P2",
+			"mass": {
+				"massValue": 4.5,
+				"massExponent": 16
+			},
+			"dimension": "49.8 x 33.2 x 31.1",
+			"surfaceTemps": {
+				"min": -240,
+				"max": -218,
+				"mean": -231
+			},
+			"bodyType": "Moon",
+			"diameter": 54,
+			"orbitalPeriod": 24.85,
+			"orbitalInclination": 0.133
+		},
+		"appearance": {
+			"color": "#9a9793"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "kerberos",
+		"name": "Kerberos",
+		"kind": "moon",
+		"parentId": "pluto",
+		"radiusKm": 25,
+		"massKg": 16400000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 57783,
+			"eccentricity": 0.003,
+			"inclinationDeg": 113.2899,
+			"longAscNodeDeg": 227.5304,
+			"argPeriapsisDeg": 8.957,
+			"meanAnomalyDeg": 4.8797,
+			"periodDays": 32.167,
+			"epochJD": 2461041.5
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/pluto/satellites/kerberos.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Télescope spatial Hubble - Pluto Companion Search Team",
+			"discoveryDate": "20/07/2011",
+			"alternativeName": "S/2011 (134340) 1",
+			"mass": {
+				"massValue": 1.64,
+				"massExponent": 16
+			},
+			"dimension": "19 x 10 x 9",
+			"bodyType": "Moon",
+			"diameter": 12,
+			"orbitalPeriod": 32.168,
+			"orbitalInclination": 0.389
+		},
+		"appearance": {
+			"color": "#979796"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "hydra",
+		"name": "Hydra",
+		"kind": "moon",
+		"parentId": "pluto",
+		"radiusKm": 36,
+		"massKg": 48000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 64738,
+			"eccentricity": 0.005,
+			"inclinationDeg": 112.6101,
+			"longAscNodeDeg": 227.386,
+			"argPeriapsisDeg": 171.8951,
+			"meanAnomalyDeg": 298.0906,
+			"periodDays": 38.2,
+			"epochJD": 2461041.5
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/pluto/satellites/hydra.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.001,
+			"density": 1,
+			"discoveredBy": "Hubble Space Telescope Pluto Companion Search Team",
+			"discoveryDate": "15/05/2005",
+			"alternativeName": "S/2005 P1",
+			"mass": {
+				"massValue": 4.8,
+				"massExponent": 16
+			},
+			"dimension": "50.9 x 36.1 x 30.9",
+			"surfaceTemps": {
+				"min": -240,
+				"max": -218,
+				"mean": -231
+			},
+			"bodyType": "Moon",
+			"diameter": 41,
+			"orbitalPeriod": 38.2,
+			"orbitalInclination": 0.242
+		},
+		"appearance": {
+			"color": "#b5b5b3"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "namaka",
+		"name": "Namaka",
+		"kind": "moon",
+		"parentId": "haumea",
+		"radiusKm": 85,
+		"massKg": 1790000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 25657,
+			"eccentricity": 0.249,
+			"inclinationDeg": 113,
+			"longAscNodeDeg": 315.724,
+			"argPeriapsisDeg": 226.598,
+			"meanAnomalyDeg": 84.478,
+			"periodDays": 18.27,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/haumea/satellites/namaka.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.001,
+			"density": 1,
+			"discoveredBy": "Michael E. Brown",
+			"discoveryDate": "30/06/2005",
+			"alternativeName": "S/2005 (2003 EL61) 2",
+			"mass": {
+				"massValue": 1.79,
+				"massExponent": 18
+			},
+			"surfaceTemps": {
+				"min": 29,
+				"max": 32,
+				"mean": 35
+			},
+			"bodyType": "Moon",
+			"diameter": 170,
+			"orbitalPeriod": 18.278,
+			"orbitalInclination": 113.013
+		},
+		"appearance": {
+			"color": "#a7a7a6"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "hiiaka",
+		"name": "Hiʻiaka",
+		"kind": "moon",
+		"parentId": "haumea",
+		"radiusKm": 160,
+		"massKg": 17800000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 49880,
+			"eccentricity": 0.0513,
+			"inclinationDeg": 126.35,
+			"longAscNodeDeg": 29.552,
+			"argPeriapsisDeg": 172.45,
+			"meanAnomalyDeg": 192.417,
+			"periodDays": 49.12,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/haumea/satellites/hiiaka.jpg"
+		},
+		"rings": null,
+		"info": {
+			"gravity": 0.001,
+			"density": 1,
+			"discoveredBy": "Michael E. Brown",
+			"discoveryDate": "26/01/2005",
+			"alternativeName": "S/2005 (2003 EL61) 2",
+			"mass": {
+				"massValue": 1.78,
+				"massExponent": 19
+			},
+			"surfaceTemps": {
+				"min": 29,
+				"max": 32,
+				"mean": 35
+			},
+			"bodyType": "Moon",
+			"diameter": 310,
+			"orbitalPeriod": 49.462,
+			"orbitalInclination": 126.356
+		},
+		"appearance": {
+			"color": "#a7a7a6"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "s20151364721",
+		"name": "S/2015 (136472) 1",
+		"kind": "moon",
+		"parentId": "makemake",
+		"radiusKm": 75,
+		"massKg": null,
+		"orbit": {
+			"semiMajorAxisKm": 21000,
+			"eccentricity": 0,
+			"inclinationDeg": 0,
+			"longAscNodeDeg": 300.15,
+			"argPeriapsisDeg": 38.003,
+			"meanAnomalyDeg": 80.619,
+			"periodDays": 12.4,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": null,
+			"axialTiltDeg": 0
+		},
+		"textures": {
+			"base": "/assets/textures/makemake/satellites/s20151364721.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Alex H. Parker, Marc W. Buie, M. Grundy, Keith S. Noll",
+			"discoveryDate": "26/04/2016",
+			"alternativeName": "S/2015 (136472) 1",
+			"bodyType": "Moon",
+			"perihelion": 21100,
+			"aphelion": 300000
+		},
+		"appearance": {
+			"color": "#3d3b38"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
+	},
+	{
+		"id": "dysnomia",
+		"name": "Dysnomia",
+		"kind": "moon",
+		"parentId": "eris",
+		"radiusKm": 307.5,
+		"massKg": 145000000000000000000,
+		"orbit": {
+			"semiMajorAxisKm": 37273,
+			"eccentricity": 0.0062,
+			"inclinationDeg": 45.49,
+			"longAscNodeDeg": 108.643,
+			"argPeriapsisDeg": 323.365,
+			"meanAnomalyDeg": 280.22,
+			"periodDays": 15.785,
+			"epochJD": 2451545,
+			"phaseSynthetic": true
+		},
+		"rotation": {
+			"periodHours": 378.86,
+			"axialTiltDeg": 0,
+			"synchronous": true
+		},
+		"textures": {
+			"base": "/assets/textures/eris/satellites/dysnomia.jpg"
+		},
+		"rings": null,
+		"info": {
+			"density": 1,
+			"discoveredBy": "Michael E. Brown",
+			"discoveryDate": "??/09/2005",
+			"alternativeName": "S/2005 (2003 UB313) 1",
+			"mass": {
+				"massValue": 145,
+				"massExponent": 18
+			},
+			"bodyType": "Moon"
+		},
+		"appearance": {
+			"color": "#413e3c"
+		},
+		"surface": {
+			"kind": "painted",
+			"source": "astrolabe-painted"
+		}
 	}
 ]

@@ -1,10 +1,7 @@
 import { Suspense, lazy, useEffect, useLayoutEffect } from "react"
-import { ActionIcon, Button, Center, Loader, Tooltip } from "@mantine/core"
-import { useMediaQuery } from "@mantine/hooks"
+import { Center, Loader } from "@mantine/core"
 import { useSearch } from "@tanstack/react-router"
-import { IconMoonStars } from "@tabler/icons-react"
 
-import { useI18n } from "@/i18n"
 import { useBirthdayStore } from "@/store/birthday"
 import { useHuntStore } from "@/store/hunt"
 import { useSkyTonightStore } from "@/store/skyTonight"
@@ -15,7 +12,7 @@ import classes from "./SkyTonight.module.css"
 const SkyTonightPanel = lazy(() => import("./SkyTonightPanel"))
 
 /** Opens the sky panel; the birthday (#26) and hunt (#34) panels sit in the same place, so they close. */
-const openSky = (): void => {
+export const openSky = (): void => {
 	useBirthdayStore.getState().setOpen(false)
 	if (useHuntStore.getState().open) useHuntStore.getState().setOpen(false)
 	useSkyTonightStore.getState().setOpen(true)
@@ -27,78 +24,6 @@ const closeSkyWhenOpened = (
 	previous: { open: boolean },
 ): void => {
 	if (state.open && !previous.open) useSkyTonightStore.getState().setOpen(false)
-}
-
-/** The HUD button that opens "What is in the sky tonight". */
-export const SkyTonightButton = () => {
-	const { t } = useI18n()
-	const open = useSkyTonightStore((state) => state.open)
-	return (
-		<Tooltip label={t("solarSystem.sky.openHint")} openDelay={400}>
-			<Button
-				variant={open ? "filled" : "light"}
-				color="orange"
-				size="compact-sm"
-				leftSection={<IconMoonStars size={16} />}
-				aria-expanded={open}
-				aria-controls={open ? "sky-tonight-panel" : undefined}
-				onClick={() =>
-					open ? useSkyTonightStore.getState().setOpen(false) : openSky()
-				}
-			>
-				{t("solarSystem.sky.open")}
-			</Button>
-		</Tooltip>
-	)
-}
-
-/** The HUD's phone breakpoint (SolarSystem.module.css). */
-const PHONE_QUERY = "(max-width: 599px)"
-
-const useIsPhone = () =>
-	useMediaQuery(PHONE_QUERY, false, { getInitialValueInEffect: false })
-
-/**
- * The button's place in the HUD from 600 px up: a small panel under the focus
- * picker (and the light launcher, #27), not in the time controls, which were
- * already as wide as a 1280 px screen allows beside the body card.
- */
-export const SkyTonightLauncher = ({ className }: { className: string }) => {
-	const phone = useIsPhone()
-	if (phone) return null
-	return (
-		<div className={`${className} ${classes.launcher}`}>
-			<SkyTonightButton />
-		</div>
-	)
-}
-
-/**
- * On phones the launcher is an icon in the focus picker's row: a row of its
- * own would push the panels at the top of a phone over the planets.
- */
-export const SkyTonightPickerIcon = () => {
-	const { t } = useI18n()
-	const phone = useIsPhone()
-	const open = useSkyTonightStore((state) => state.open)
-	if (!phone) return null
-	return (
-		<Tooltip label={t("solarSystem.sky.openHint")} openDelay={400}>
-			<ActionIcon
-				variant={open ? "filled" : "light"}
-				color="orange"
-				size="lg"
-				aria-label={t("solarSystem.sky.open")}
-				aria-expanded={open}
-				aria-controls={open ? "sky-tonight-panel" : undefined}
-				onClick={() =>
-					open ? useSkyTonightStore.getState().setOpen(false) : openSky()
-				}
-			>
-				<IconMoonStars size={18} />
-			</ActionIcon>
-		</Tooltip>
-	)
 }
 
 /**
