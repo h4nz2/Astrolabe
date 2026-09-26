@@ -19,8 +19,12 @@ const ready = async (page: Page, url: string) => {
 
 const camera = (page: Page) => page.evaluate(() => window.__astrolabe!.camera())
 
-/** Starts a slow flight (so the headless page can watch it) the way a click does, plus a duration. */
-const flySlowly = (page: Page, id: string, durationMs = 20_000) =>
+/**
+ * Starts a slow flight (so the headless page can watch it) the way a click
+ * does, plus a duration: long enough that a loaded machine still catches it
+ * mid-air, and every one of them is ended early by the test.
+ */
+const flySlowly = (page: Page, id: string, durationMs = 40_000) =>
 	page.evaluate(
 		({ id, durationMs }) => {
 			const store = window.__astrolabe!.store.getState()
@@ -34,8 +38,43 @@ const waitForProgress = (page: Page, at: number) =>
 	page.waitForFunction(
 		(at) => (window.__astrolabe!.camera().progress ?? 0) >= at,
 		at,
-		{ timeout: 60_000, polling: 100 },
+		{ timeout: 60_000, polling: "raf" },
 	)
+
+interface FlightLog {
+	/** The farthest the camera got from its pivot, scene units. */
+	farthest: number
+	/** The readout's Skip button labels seen while the flight was under way. */
+	skips: string[]
+}
+
+/**
+ * Watches every frame from now on: how far the camera pulls back, and what the
+ * readout offers while the flight is under way. A flight at its own speed
+ * lasts 2.5-5 s of real time, which a loaded machine can spend before a single
+ * check has run, so what only shows mid-flight is recorded as it happens.
+ */
+const recordFlight = (page: Page) =>
+	page.evaluate(() => {
+		const log: FlightLog = { farthest: 0, skips: [] }
+		;(window as unknown as { flightLog: FlightLog }).flightLog = log
+		const watch = () => {
+			const camera = window.__astrolabe?.camera()
+			if (camera !== undefined) {
+				log.farthest = Math.max(log.farthest, camera.distance)
+			}
+			const skip = document.querySelector(
+				"[data-testid=flight-readout][data-arrived=false] header button",
+			)
+			const label = skip?.textContent?.trim()
+			if (label && !log.skips.includes(label)) log.skips.push(label)
+			requestAnimationFrame(watch)
+		}
+		requestAnimationFrame(watch)
+	})
+
+const flightLog = (page: Page) =>
+	page.evaluate(() => (window as unknown as { flightLog: FlightLog }).flightLog)
 
 test("a second selection flies there, with the distance and the travel times", async ({
 	page,
@@ -46,6 +85,7 @@ test("a second selection flies there, with the distance and the travel times", a
 
 	// the picker, like any selection from a focused body, starts the flight
 	await page.getByRole("combobox", { name: "Focus body" }).click()
+	await recordFlight(page)
 	await page.getByRole("option", { name: /^Jupiter/ }).click()
 	await expect(readout).toBeVisible()
 	await expect(readout.getByText("Earth → Jupiter")).toBeVisible()
@@ -57,15 +97,12 @@ test("a second selection flies there, with the distance and the travel times", a
 		/^New Horizons, the fastest launch ever\s*[\d.]+ years?$/,
 		/^A car at 100 km\/h\s*[\d,]+ years$/,
 	])
-	await expect(readout.getByRole("button", { name: "Skip" })).toBeVisible()
 
-	// the camera pulls far back on the way
-	await page.waitForFunction(
-		(start) => window.__astrolabe!.camera().distance > 100 * start,
-		start,
-		{ timeout: 60_000, polling: 100 },
-	)
 	await cameraAtRest(page)
+	const log = await flightLog(page)
+	// on the way it offered Skip, and the camera pulled far back
+	expect(log.skips).toEqual(["Skip"])
+	expect(log.farthest).toBeGreaterThan(100 * start)
 	const landed = await camera(page)
 	expect(landed.mode).toBe("focused")
 	expect(landed.distance).toBeLessThan(10 * start)
@@ -118,6 +155,7 @@ test("true scale, in German at the simple reading level", async ({ page }) => {
 		page,
 		"/solar_system?focus=earth&scale=trueScale&lang=de&reading=simple",
 	)
+	await recordFlight(page)
 	await flySlowly(page, "moon", 8000)
 	const readout = page.getByRole("region", { name: "Reise" })
 	await expect(readout.getByText("Reise: Erde → Mond")).toBeVisible()
@@ -125,9 +163,8 @@ test("true scale, in German at the simple reading level", async ({ page }) => {
 	await expect(readout.getByRole("listitem").first()).toHaveText(
 		/^Licht, das Schnellste, was es gibt\s*1,\d Sekunden$/,
 	)
-	await expect(
-		readout.getByRole("button", { name: "Sofort hin" }),
-	).toBeVisible()
 	await cameraAtRest(page)
 	expect((await camera(page)).mode).toBe("focused")
+	// while under way it offered to skip, in German
+	expect((await flightLog(page)).skips).toEqual(["Sofort hin"])
 })

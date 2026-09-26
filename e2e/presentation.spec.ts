@@ -309,19 +309,29 @@ test("second screen: the projector layout fits laptop and projector sizes, and f
 	// a screen with another pixel ratio: the canvas re-renders at it
 	await page.setViewportSize({ width: 1024, height: 768 })
 	const cdp = await page.context().newCDPSession(page)
-	await cdp.send("Emulation.setDeviceMetricsOverride", {
-		width: 1024,
-		height: 768,
-		deviceScaleFactor: 2,
-		mobile: false,
-	})
+	const sharper = () =>
+		cdp.send("Emulation.setDeviceMetricsOverride", {
+			width: 1024,
+			height: 768,
+			deviceScaleFactor: 2,
+			mobile: false,
+		})
+	await sharper()
 	await expect
-		.poll(() =>
-			page.evaluate(() => {
+		.poll(async () => {
+			const { ratio, canvas } = await page.evaluate(() => {
 				const canvas = document.querySelector("canvas")!
-				return canvas.width / canvas.clientWidth
-			}),
-		)
+				return {
+					ratio: window.devicePixelRatio,
+					canvas: canvas.width / canvas.clientWidth,
+				}
+			})
+			// Playwright's own session emulates the context's ratio (1) too and may
+			// re-assert it after this one: then the screen changes again, and the
+			// canvas must follow that change as well
+			if (ratio !== 2) await sharper()
+			return canvas
+		})
 		.toBeCloseTo(2, 1)
 })
 

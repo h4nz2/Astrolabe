@@ -3,6 +3,8 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { cameraAtRest } from "./support/scene"
+
 // The selection and camera navigation model (#10), in the real browser. The
 // model is driven through the UI and through the store exposed on
 // `window.__astrolabe` (the acceptance criterion: select -> focus -> overview
@@ -22,24 +24,11 @@ const ready = async (page: Page, url = "/solar_system") => {
 	await settled(page)
 }
 
-/** Waits until no transition runs and the controls have stopped damping. */
-const settled = async (page: Page) => {
-	await page.waitForFunction(
-		() => {
-			const handle = window.__astrolabe
-			if (handle === undefined) return false
-			const camera = handle.camera()
-			return (
-				camera.transitionId === null &&
-				handle.store.getState().transition === null
-			)
-		},
-		null,
-		{ timeout: 60_000 },
-	)
-	// camera-controls' own damping (0.4 s) after the director lets go
-	await page.waitForTimeout(800)
-}
+/**
+ * Waits until no transition runs, no pan waits to be committed and the
+ * controls have stopped damping (counted in drawn frames, not milliseconds).
+ */
+const settled = (page: Page) => cameraAtRest(page)
 
 const camera = (page: Page) => page.evaluate(() => window.__astrolabe!.camera())
 const state = (page: Page) =>
@@ -224,7 +213,8 @@ test("a click selects, a drag that ends on a body does not", async ({
 	await page.mouse.down()
 	await page.mouse.move(centre.x, centre.y, { steps: 8 })
 	await page.mouse.up()
-	await page.waitForTimeout(300)
+	// the drag's orbit has glided out: any click it produced has long been handled
+	await settled(page)
 	expect((await state(page)).selectedId).toBeNull()
 	expect((await camera(page)).mode).toBe("overview")
 

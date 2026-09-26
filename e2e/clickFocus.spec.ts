@@ -3,6 +3,7 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 import { expandCard } from "./support/hud"
+import { cameraAtRest } from "./support/scene"
 
 // Click a body to focus on it (#16), in the real browser: hover feedback,
 // generous targets for tiny bodies (true scale, touch), the focused view's
@@ -23,22 +24,11 @@ const ready = async (page: Page, url = "/solar_system") => {
 	await settled(page)
 }
 
-/** Waits until no transition runs and the controls have stopped damping. */
-const settled = async (page: Page) => {
-	await page.waitForFunction(
-		() => {
-			const handle = window.__astrolabe
-			return (
-				handle !== undefined &&
-				handle.camera().transitionId === null &&
-				handle.store.getState().transition === null
-			)
-		},
-		null,
-		{ timeout: 60_000 },
-	)
-	await page.waitForTimeout(800)
-}
+/**
+ * Waits until no transition runs, no pan waits to be committed and the
+ * controls have stopped damping (counted in drawn frames, not milliseconds).
+ */
+const settled = (page: Page) => cameraAtRest(page)
 
 const state = (page: Page) =>
 	page.evaluate(() => {
@@ -162,9 +152,10 @@ test("at true scale a sub-pixel planet is hit anywhere within its target", async
 	await page.evaluate(() =>
 		window.__astrolabe!.scale.getState().setPreset("trueScale"),
 	)
-	await settled(page)
 	// the camera follows the new scale on its next drawn frame, which a loaded machine may
-	// not have drawn yet: wait until Jupiter is back on screen
+	// not have drawn yet (until then screenOf still answers for the old scale): wait until
+	// the camera has moved with it and come to rest, and Jupiter is back on screen
+	await settled(page)
 	await expect
 		.poll(() => page.evaluate(() => window.__astrolabe!.screenOf("jupiter")))
 		.not.toBeNull()
@@ -193,7 +184,8 @@ test("a click on empty space is the way out, a near miss is not", async ({
 
 	// just beside the disc: a near miss keeps the view
 	await page.mouse.click(mars.x + mars.discPx + 12, mars.y)
-	await page.waitForTimeout(300)
+	// a way out would have started a flight by now: let any flight land first
+	await settled(page)
 	expect((await state(page)).view).toEqual({ kind: "body", id: "mars" })
 
 	const spot = await emptySpot(page, ["mars", "phobos", "deimos"])

@@ -100,13 +100,20 @@ test("a planet shows a day side and a night side that is dark but never lost, an
 	)
 	await cameraAtRest(page)
 
-	const honest = await discPixels(page, "earth-honest")
-	const total = honest.day + honest.night + honest.space
-	// a terminator: plenty of both
-	expect(honest.day).toBeGreaterThan(0.2 * total)
-	expect(honest.night).toBeGreaterThan(0.2 * total)
-	// the night side is not the colour of space
-	expect(honest.space).toBeLessThan(0.02 * total)
+	// Each picture is judged again until it is right or time runs out: a texture
+	// still on its way to the GPU, or a switch the scene has not drawn yet, is a
+	// frame or two that a loaded machine may take seconds to draw.
+	let honest: DiscPixels = { day: 0, night: 0, space: 0 }
+	let total = 0
+	await expect(async () => {
+		honest = await discPixels(page, "earth-honest")
+		total = honest.day + honest.night + honest.space
+		// a terminator: plenty of both
+		expect(honest.day).toBeGreaterThan(0.2 * total)
+		expect(honest.night).toBeGreaterThan(0.2 * total)
+		// the night side is not the colour of space
+		expect(honest.space).toBeLessThan(0.02 * total)
+	}).toPass({ timeout: 60_000 })
 
 	await openLayers(page)
 	const alwaysLit = page.getByRole("switch", { name: "Always lit" })
@@ -114,14 +121,18 @@ test("a planet shows a day side and a night side that is dark but never lost, an
 	await alwaysLit.click({ force: true })
 	await expect(alwaysLit).toBeChecked()
 	await nextFrames(page)
-	const lit = await discPixels(page, "earth-always-lit")
-	expect(lit.day).toBeGreaterThan(0.9 * total)
-	expect(lit.night).toBeLessThan(0.3 * honest.night)
+	await expect(async () => {
+		const lit = await discPixels(page, "earth-always-lit")
+		expect(lit.day).toBeGreaterThan(0.9 * total)
+		expect(lit.night).toBeLessThan(0.3 * honest.night)
+	}).toPass({ timeout: 60_000 })
 
 	await alwaysLit.click({ force: true })
 	await expect(alwaysLit).not.toBeChecked()
 	await nextFrames(page)
-	const back = await discPixels(page, "earth-honest-again")
-	expect(back.night).toBeGreaterThan(0.2 * total)
+	await expect(async () => {
+		const back = await discPixels(page, "earth-honest-again")
+		expect(back.night).toBeGreaterThan(0.2 * total)
+	}).toPass({ timeout: 60_000 })
 	expect(errors).toEqual([])
 })
