@@ -5,8 +5,11 @@
  * mode (#29) and the browser's zoom scale it.
  */
 .page {
-	min-height: 100vh;
-	min-height: 100dvh;
+	/* the page scrolls itself: the body never does (index.html), the scene
+	   underneath the other pages must not move */
+	height: 100vh;
+	height: 100dvh;
+	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;

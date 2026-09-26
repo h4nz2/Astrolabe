@@ -136,6 +136,16 @@ test("entries are grouped, explained, searchable and scroll into view by topic",
 	await expect(flash).toHaveAttribute("data-highlight", "true")
 })
 
+test("the page scrolls with the mouse wheel", async ({ page }) => {
+	await page.goto("/help?lang=en&reading=standard")
+	await expect(helpHeading(page)).toBeVisible()
+	const lastCredit = page.locator("[data-credit]").last()
+	await expect(lastCredit).not.toBeInViewport()
+	await page.mouse.move(400, 400)
+	for (let i = 0; i < 100; i++) await page.mouse.wheel(0, 2000)
+	await expect(lastCredit).toBeInViewport()
+})
+
 test("every language and the simple reading level", async ({ page }) => {
 	await page.goto("/help?lang=de&reading=simple")
 	await expect(
