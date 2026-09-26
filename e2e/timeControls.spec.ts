@@ -4,7 +4,7 @@
  * moment or a picked day (stopping on arrival), and the too-fast hint.
  */
 import { expect, test, type Locator, type Page } from "@playwright/test"
-import { setSpeed } from "./support/hud"
+import { closeTime, setSpeed } from "./support/hud"
 
 const J2000 = 2451545
 
@@ -52,6 +52,10 @@ test("reverse, pause and play: one pressed, direction kept across speeds", async
 	await page.keyboard.press("+")
 	await expect(page).toHaveURL(/[?&]warp=-2629800(&|$)/)
 	await expect(page.getByRole("radio", { name: "1 month/s" })).toBeChecked()
+	// Closed before the Pause click: a closing popover hands the focus back to
+	// its button 10 ms later if nothing else has it, which on a loaded machine
+	// can land after the blur below and swallow the Space.
+	await closeTime(page)
 
 	// pause keeps the direction for later; play runs forwards again
 	await button(page, "Pause").click()
