@@ -1354,6 +1354,73 @@
 			"timeButton": "Zeit und Geschwindigkeit: {speed}",
 			"timeHint": "Wie schnell die Zeit läuft, zurück zu jetzt, und wie schnell sich die Planeten drehen. + und − ändern die Geschwindigkeit über die Tastatur.",
 			"timeHint@simple": "Lass die Zeit schneller oder langsamer laufen, oder spring zurück zu jetzt."
+		},
+		"quickLook": {
+			"ask": {
+				"title": "Willst du kurz sehen, was du hier alles machen kannst?",
+				"text": "Etwa eine Minute: fünf Dinge, die sich lohnen, direkt hier gezeigt, und ein Tipp für Lehrkräfte.",
+				"text@simple": "Das dauert etwa eine Minute. Wir zeigen dir die besten Sachen zum Ausprobieren.",
+				"yes": "Ja, zeig es mir",
+				"no": "Nein, ich schaue selbst"
+			},
+			"title": "Ein kurzer Blick",
+			"count": "{n} von {total}",
+			"back": "Zurück",
+			"next": "Weiter",
+			"finish": "Fertig",
+			"skip": "Kurzen Blick überspringen",
+			"skipAll": "Den Rest überspringen",
+			"autoplay": "Geht von selbst weiter",
+			"pauseHint": "Nicht mehr von selbst weitergehen: jeden Schritt in deinem Tempo",
+			"playHint": "Wieder von selbst weitergehen, alle paar Sekunden ein Schritt",
+			"help": "Hilfeseite öffnen",
+			"goTo": "Schritt {n}: {title}",
+			"replay": "Den kurzen Blick noch einmal",
+			"steps": {
+				"label": "Schritte des kurzen Blicks",
+				"fly": {
+					"title": "Klick einen Planeten an, um hinzufliegen",
+					"title@simple": "Klick einen Planeten an",
+					"text": "Jeder Planet und jeder Mond: anklicken oder oben links seinen Namen eintippen. Unterwegs zählt die Anzeige unten die echte Entfernung und sagt, wie lange Licht, die schnellste Rakete und ein Auto bräuchten.",
+					"text@simple": "Klick einen Planeten an, und du fliegst hin. Das Feld unten sagt dir, wie weit er wirklich weg ist und wie lange eine Rakete bräuchte."
+				},
+				"trueScale": {
+					"title": "Echter Maßstab",
+					"title@simple": "Die echte Größe",
+					"text": "Jetzt sind alle Größen und Abstände echt, und die Planeten verschwinden im leeren Raum: Die Punkte zeigen nur, wo sie sind. „Maßstab“ unten rechts wechselt zwischen der Wahrheit und Bildern, auf denen man etwas sieht.",
+					"text@simple": "So groß ist alles wirklich. Die Planeten sind so klein, dass du sie nicht siehst! Die Punkte zeigen, wo sie sind. Mit „Maßstab“ unten rechts schaltest du um."
+				},
+				"time": {
+					"title": "Reise durch die Zeit",
+					"title@simple": "Reise durch die Zeit",
+					"text": "Jede Sekunde vergeht ein Monat, so siehst du die Planeten um die Sonne laufen. Die Zeitleiste unten hält an, läuft rückwärts und wird schneller; ein Klick aufs Datum springt zu jedem Tag oder zu einer Finsternis.",
+					"text@simple": "Jetzt vergeht jede Sekunde ein ganzer Monat. Schau, wie die Planeten um die Sonne laufen! Die Knöpfe unten machen die Zeit schneller, langsamer oder lassen sie rückwärts laufen."
+				},
+				"compare": {
+					"title": "Welten vergleichen",
+					"title@simple": "Welten vergleichen",
+					"text": "Die Sonne und die Erde in ihren wahren Größen: Etwa 109 Erden passen quer über die Sonne. „Vergleichen mit …“ im Steckbrief jeder Welt stellt sie neben eine andere.",
+					"text@simple": "Hier sind die Sonne und die Erde in echter Größe. 109 Erden passen quer über die Sonne! Drück im Steckbrief auf „Vergleichen mit …“ und probier es aus."
+				},
+				"light": {
+					"title": "Dem Licht zusehen",
+					"title@simple": "Wie schnell ist Licht?",
+					"text": "Gerade hat ein Lichtblitz die Sonne verlassen, mit echter Lichtgeschwindigkeit. Er braucht etwa 8 Minuten bis zur Erde und 4 Stunden bis zum Neptun. „Werkzeuge“ → „Lichtgeschwindigkeit“ schickt jederzeit einen los.",
+					"text@simple": "Gerade ist ein Lichtblitz von der Sonne losgeflogen. Sogar Licht braucht 8 Minuten bis zur Erde! Du findest ihn wieder unter „Werkzeuge“."
+				},
+				"teachers": {
+					"title": "Für Lehrkräfte: Präsentieren",
+					"title@simple": "Für Lehrkräfte",
+					"text": "„Präsentieren“ oben rechts macht die Schrift groß für den Beamer, bietet hohen Kontrast und Tasten für einen Presenter und blendet mit H die Bedienelemente aus. „Teilen“ gibt der Klasse einen Link oder QR-Code zu genau dieser Ansicht.",
+					"text@simple": "Lehrkräfte: Drück oben rechts auf „Präsentieren“, um das Sonnensystem einer Klasse auf einem großen Bildschirm zu zeigen."
+				},
+				"more": {
+					"title": "Es gibt noch mehr",
+					"title@simple": "Es gibt noch mehr",
+					"text": "Jede Funktion, wie man sie benutzt, mit einem Link zum Ausprobieren, steht auf der Hilfeseite: der Knopf „Hilfe“ oben rechts. Viel Spaß beim Entdecken!",
+					"text@simple": "Es gibt noch viel mehr zu entdecken. Der Knopf „Hilfe“ oben rechts erklärt dir alles. Viel Spaß!"
+				}
+			}
 		}
 	},
 	"solarWalk": {
@@ -1650,7 +1717,7 @@
 	"help": {
 		"button": "Hilfe",
 		"buttonHint": "Alle Funktionen und wie du sie nutzt",
-		"more": "Mehr Hilfe: das Intro, wie man sich bewegt",
+		"more": "Mehr Hilfe: das Intro, der kurze Blick, wie man sich bewegt",
 		"title": "Hilfe",
 		"heading": "Alles, was Astrolabe kann",
 		"heading@simple": "Was kann ich hier machen?",

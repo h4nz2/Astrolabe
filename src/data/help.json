@@ -16,6 +16,11 @@
 			"try": "/solar_system?intro=play"
 		},
 		{
+			"id": "quickLook",
+			"group": "lookingAround",
+			"try": "/solar_system?look=play"
+		},
+		{
 			"id": "flyToWorld",
 			"group": "lookingAround",
 			"try": "/solar_system?focus=earth"

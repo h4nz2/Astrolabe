@@ -1354,6 +1354,73 @@
 			"timeButton": "Tiempo y velocidad: {speed}",
 			"timeHint": "Lo rápido que pasa el tiempo, volver a ahora y lo rápido que giran los planetas. + y − cambian la velocidad desde el teclado.",
 			"timeHint@simple": "Haz que el tiempo vaya más rápido o más lento, o vuelve a ahora."
+		},
+		"quickLook": {
+			"ask": {
+				"title": "¿Quieres ver rápidamente lo que puedes hacer aquí?",
+				"text": "Más o menos un minuto: cinco cosas que vale la pena probar, mostradas aquí mismo, y un consejo para docentes.",
+				"text@simple": "Dura más o menos un minuto. Te enseñamos lo mejor para probar.",
+				"yes": "Sí, enséñamelo",
+				"no": "No, prefiero explorar"
+			},
+			"title": "Un vistazo rápido",
+			"count": "{n} de {total}",
+			"back": "Atrás",
+			"next": "Siguiente",
+			"finish": "Terminar",
+			"skip": "Saltar el vistazo rápido",
+			"skipAll": "Saltar el resto",
+			"autoplay": "Avanza solo",
+			"pauseHint": "Dejar de avanzar solo: cada paso a tu ritmo",
+			"playHint": "Volver a avanzar solo, un paso cada pocos segundos",
+			"help": "Abrir la página de ayuda",
+			"goTo": "Paso {n}: {title}",
+			"replay": "Ver otra vez el vistazo rápido",
+			"steps": {
+				"label": "Pasos del vistazo rápido",
+				"fly": {
+					"title": "Haz clic en un planeta para volar allí",
+					"title@simple": "Haz clic en un planeta",
+					"text": "Cualquier planeta o luna: haz clic en él o escribe su nombre en la casilla de arriba a la izquierda. Por el camino, el marcador de abajo cuenta la distancia real y cuánto tardarían la luz, el cohete más rápido y un coche.",
+					"text@simple": "Haz clic en un planeta y vuelas hasta él. El cuadro de abajo te dice lo lejos que está de verdad y cuánto tardaría un cohete."
+				},
+				"trueScale": {
+					"title": "Escala real",
+					"title@simple": "El tamaño real",
+					"text": "Ahora cada tamaño y cada distancia son reales, y los planetas desaparecen en el espacio vacío: los puntos solo muestran dónde están. Escala, abajo a la derecha, cambia entre la realidad y dibujos en los que se ve algo.",
+					"text@simple": "Este es el tamaño real de todo. ¡Los planetas son tan pequeños que no los ves! Los puntos muestran dónde están. Pulsa Escala abajo a la derecha para cambiar."
+				},
+				"time": {
+					"title": "Viaja en el tiempo",
+					"title@simple": "Viaja en el tiempo",
+					"text": "Cada segundo pasa un mes, así que ves a los planetas girar alrededor del Sol. La barra del tiempo de abajo pausa, va hacia atrás y acelera; haz clic en la fecha para saltar a cualquier día o a un eclipse.",
+					"text@simple": "Ahora pasa un mes entero cada segundo. ¡Mira cómo giran los planetas alrededor del Sol! Los botones de abajo hacen que el tiempo vaya más rápido, más lento o hacia atrás."
+				},
+				"compare": {
+					"title": "Compara mundos",
+					"title@simple": "Compara mundos",
+					"text": "El Sol y la Tierra a sus tamaños reales: unas 109 Tierras cabrían a lo ancho del Sol. «Comparar con…» en la ficha de cualquier mundo lo pone junto a otro.",
+					"text@simple": "Aquí están el Sol y la Tierra a su tamaño real. ¡109 Tierras cabrían a lo ancho del Sol! Pulsa «Comparar con…» en una ficha para probarlo."
+				},
+				"light": {
+					"title": "Mira cómo avanza la luz",
+					"title@simple": "¿A qué velocidad va la luz?",
+					"text": "Un destello de luz acaba de salir del Sol, a la velocidad real de la luz. Tarda unos 8 minutos en llegar a la Tierra y 4 horas en llegar a Neptuno. Herramientas → Velocidad de la luz envía uno cuando quieras.",
+					"text@simple": "Un destello de luz acaba de salir del Sol. ¡Hasta la luz tarda 8 minutos en llegar a la Tierra! Lo vuelves a encontrar en Herramientas."
+				},
+				"teachers": {
+					"title": "Para docentes: Presentar",
+					"title@simple": "Para docentes",
+					"text": "Presentar, arriba a la derecha, agranda el texto para un proyector, añade alto contraste y teclas para un mando de presentaciones, y oculta los controles con H. Compartir da a la clase un enlace o un código QR a esta misma vista.",
+					"text@simple": "Docentes: pulsad Presentar arriba a la derecha para mostrar el sistema solar a la clase en una pantalla grande."
+				},
+				"more": {
+					"title": "Hay más",
+					"title@simple": "Hay más",
+					"text": "Cada función, cómo se usa y un enlace para probarla están en la página de ayuda: el botón Ayuda de arriba a la derecha. ¡Que disfrutes explorando!",
+					"text@simple": "Hay muchas más cosas por descubrir. El botón Ayuda de arriba a la derecha te lo cuenta todo. ¡Diviértete!"
+				}
+			}
 		}
 	},
 	"solarWalk": {
@@ -1650,7 +1717,7 @@
 	"help": {
 		"button": "Ayuda",
 		"buttonHint": "Todas las funciones y cómo usarlas",
-		"more": "Más ayuda: la introducción, cómo moverse",
+		"more": "Más ayuda: la introducción, el vistazo rápido, cómo moverse",
 		"title": "Ayuda",
 		"heading": "Todo lo que puede hacer Astrolabe",
 		"heading@simple": "¿Qué puedo hacer aquí?",

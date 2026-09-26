@@ -1354,6 +1354,73 @@
 			"timeButton": "Čas a rychlost: {speed}",
 			"timeHint": "Jak rychle běží čas, návrat do teď a jak rychle se planety otáčejí. + a − mění rychlost z klávesnice.",
 			"timeHint@simple": "Zrychli nebo zpomal čas, nebo skoč zpátky do teď."
+		},
+		"quickLook": {
+			"ask": {
+				"title": "Chceš se rychle podívat, co tu všechno jde?",
+				"text": "Asi minuta: pět věcí, které stojí za to, ukázaných přímo tady, a tip pro učitele.",
+				"text@simple": "Trvá to asi minutu. Ukážeme ti to nejlepší na vyzkoušení.",
+				"yes": "Ano, ukaž mi to",
+				"no": "Ne, prozkoumám to sám"
+			},
+			"title": "Rychlý pohled",
+			"count": "{n} z {total}",
+			"back": "Zpět",
+			"next": "Dál",
+			"finish": "Hotovo",
+			"skip": "Přeskočit rychlý pohled",
+			"skipAll": "Přeskočit zbytek",
+			"autoplay": "Pokračuje samo",
+			"pauseHint": "Už nepokračovat samo: každý krok svým tempem",
+			"playHint": "Zase pokračovat samo, krok každých pár sekund",
+			"help": "Otevřít nápovědu",
+			"goTo": "Krok {n}: {title}",
+			"replay": "Znovu rychlý pohled",
+			"steps": {
+				"label": "Kroky rychlého pohledu",
+				"fly": {
+					"title": "Klikni na planetu a leť k ní",
+					"title@simple": "Klikni na planetu",
+					"text": "Kterákoli planeta nebo měsíc: klikni na ni, nebo napiš její jméno do pole vlevo nahoře. Cestou ukazatel dole počítá skutečnou vzdálenost a jak dlouho by letělo světlo, nejrychlejší raketa a auto.",
+					"text@simple": "Klikni na planetu a poletíš k ní. Pole dole ti řekne, jak daleko opravdu je a jak dlouho by letěla raketa."
+				},
+				"trueScale": {
+					"title": "Skutečné měřítko",
+					"title@simple": "Skutečná velikost",
+					"text": "Teď jsou všechny velikosti a vzdálenosti skutečné a planety mizí v prázdném prostoru: tečky jen ukazují, kde jsou. Měřítko vpravo dole přepíná mezi pravdou a obrázky, na kterých je něco vidět.",
+					"text@simple": "Takhle velké je všechno doopravdy. Planety jsou tak malé, že je nevidíš! Tečky ukazují, kde jsou. Měřítkem vpravo dole to přepneš."
+				},
+				"time": {
+					"title": "Cestuj časem",
+					"title@simple": "Cestuj časem",
+					"text": "Každou sekundu uběhne měsíc, takže vidíš, jak planety obíhají Slunce. Časová lišta dole čas pozastaví, pustí pozpátku a zrychlí; kliknutím na datum skočíš na kterýkoli den nebo k zatmění.",
+					"text@simple": "Teď uběhne každou sekundu celý měsíc. Podívej, jak planety obíhají Slunce! Tlačítka dole čas zrychlí, zpomalí nebo pustí pozpátku."
+				},
+				"compare": {
+					"title": "Porovnej světy",
+					"title@simple": "Porovnej světy",
+					"text": "Slunce a Země ve skutečných velikostech: přes Slunce by se vešlo asi 109 Zemí. „Porovnat s…“ na kartě každého světa ho postaví vedle jiného.",
+					"text@simple": "Tady jsou Slunce a Země ve skutečné velikosti. Přes Slunce by se vešlo 109 Zemí! Stiskni na kartě „Porovnat s…“ a zkus to."
+				},
+				"light": {
+					"title": "Sleduj, jak se plazí světlo",
+					"title@simple": "Jak rychlé je světlo?",
+					"text": "Právě opustil Slunce záblesk světla, skutečnou rychlostí světla. K Zemi letí asi 8 minut a k Neptunu 4 hodiny. Nástroje → Rychlost světla ho kdykoli vyšlou znovu.",
+					"text@simple": "Právě odletěl ze Slunce záblesk světla. I světlo letí k Zemi 8 minut! Najdeš ho zase v Nástrojích."
+				},
+				"teachers": {
+					"title": "Pro učitele: Prezentovat",
+					"title@simple": "Pro učitele",
+					"text": "Prezentovat vpravo nahoře zvětší písmo pro projektor, přidá vysoký kontrast a klávesy pro prezentační ovladač a klávesou H skryje ovládání. Sdílet dá třídě odkaz nebo QR kód přesně na tento pohled.",
+					"text@simple": "Učitelé: stiskněte vpravo nahoře Prezentovat a ukažte sluneční soustavu třídě na velké obrazovce."
+				},
+				"more": {
+					"title": "Je toho víc",
+					"title@simple": "Je toho víc",
+					"text": "Každá funkce, jak se používá a odkaz na vyzkoušení, je na stránce nápovědy: tlačítko Nápověda vpravo nahoře. Hodně zábavy při objevování!",
+					"text@simple": "Je tu ještě spousta dalších věcí. Tlačítko Nápověda vpravo nahoře ti poví o všem. Hodně zábavy!"
+				}
+			}
 		}
 	},
 	"solarWalk": {
@@ -1650,7 +1717,7 @@
 	"help": {
 		"button": "Nápověda",
 		"buttonHint": "Všechny funkce a jak je používat",
-		"more": "Další nápověda: úvod, jak se pohybovat",
+		"more": "Další nápověda: úvod, rychlý pohled, jak se pohybovat",
 		"title": "Nápověda",
 		"heading": "Všechno, co Astrolabe umí",
 		"heading@simple": "Co tu můžu dělat?",

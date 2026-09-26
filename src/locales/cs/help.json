@@ -64,12 +64,39 @@
 			"how": {
 				"standard": [
 					"Přehraje se jednou, při první návštěvě; „Přeskočit úvod“, tažení nebo Esc ho kdykoli ukončí.",
+					"Po prvním úvodu se aplikace jednou zeptá, jestli se chceš rychle podívat, co tu jde (viz „Rychlý pohled“).",
 					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ a vyber „Přehrát úvod znovu“.",
 					"„Ukázat, jak se pohybovat“ ve stejné nabídce vrátí nápovědu k tažení, přibližování a klikání."
 				],
 				"simple": [
 					"Přehraje se, když přijdeš poprvé.",
 					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“ a pak „Přehrát úvod znovu“."
+				]
+			}
+		},
+		"quickLook": {
+			"title": {
+				"standard": "Rychlý pohled",
+				"simple": "Rychlá prohlídka"
+			},
+			"what": {
+				"standard": "Minuta s nejlepšími funkcemi, ukázanými přímo ve scéně: let k planetě, skutečné měřítko, cestování časem, porovnání světů a plazící se světlo, pak krok pro učitele o prezentaci a cesta na tuto stránku.",
+				"simple": "Minuta s tím nejlepším, co aplikace umí."
+			},
+			"why": {
+				"standard": "Většina lidí na to sama nikdy nepřijde. Minuta ukáže, co aplikace umí, a každý krok ukáže na tlačítko, které to dělá.",
+				"simple": "Hned uvidíš ty nejlepší věci a kde jsou jejich tlačítka."
+			},
+			"how": {
+				"standard": [
+					"Při první návštěvě po úvodu odpověz „Ano, ukaž mi to“. Otázka přijde v tomto prohlížeči jen jednou, nikdy přes sdílený odkaz a nikdy při prezentaci.",
+					"Pokračuje sám; „Zpět“, „Dál“ a šipky jím krokují a „Přeskočit zbytek“ nebo × ho kdykoli ukončí, zpátky do klidného pohledu.",
+					"Chceš ho vidět znovu? Otevři šipku vedle „Nápověda“ a vyber „Znovu rychlý pohled“."
+				],
+				"simple": [
+					"Po úvodu stiskni „Ano, ukaž mi to“.",
+					"Dívej se, nebo stiskni „Dál“.",
+					"Chceš ho vidět znovu? Stiskni šipku vedle „Nápověda“."
 				]
 			}
 		},

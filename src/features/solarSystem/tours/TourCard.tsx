@@ -36,6 +36,7 @@ import {
 	setTourAuto,
 	tourStatus,
 } from "./player"
+import { isQuickLook } from "../quickLook/quickLook"
 import { useTourWords } from "./text"
 
 import classes from "./Tours.module.css"
@@ -118,8 +119,13 @@ const TourCard = ({ className = "" }: { className?: string }) => {
 	const sequence = useSimStore((state) => state.sequence)
 	const status = tourStatus(sequence, { tour, steps })
 
-	// a sky event (#41) plays as a tour but has its own card (events/EventCard)
-	if (tour === null || status === null || eventOfTourId(tour.id) !== null) {
+	// a sky event (#41) and the quick look (#44) play as tours but have their own cards
+	if (
+		tour === null ||
+		status === null ||
+		eventOfTourId(tour.id) !== null ||
+		isQuickLook(tour.id)
+	) {
 		return null
 	}
 	const stop = tour.stops[index]

@@ -81,6 +81,9 @@ export const simSearchSchema = z.object({
 	// `?intro=play` plays the opening (#30) again on arrival (the help page's
 	// link, #43); only an instruction, never written back
 	intro: z.literal("play").optional().catch(undefined),
+	// `?look=play` plays the quick look (#44) on arrival (the help page's link);
+	// only an instruction, never written back
+	look: z.literal("play").optional().catch(undefined),
 	// `?craft=<spacecraft id>` selects that spacecraft (#35) and flies to it on
 	// arrival (the help page's link, #43); only an instruction, never written back
 	craft: z.string().optional().catch(undefined),
