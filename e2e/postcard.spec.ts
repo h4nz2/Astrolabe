@@ -36,11 +36,25 @@ async function ready(page: Page, url: string): Promise<void> {
 const dialog = (page: Page) =>
 	page.getByRole("dialog", { name: "Your postcard from space" })
 
-/** Width, height and a few pixel statistics of the postcard preview. */
+/**
+ * Width, height and a few pixel statistics of the postcard preview. The
+ * preview is repainted whenever an option changes (a new PNG, and the old
+ * one's URL revoked), so a decode can fail because the picture it was
+ * decoding has just been replaced: then the new one is read instead.
+ */
 const pictureStats = (page: Page) =>
 	page.getByTestId("postcard-image").evaluate(async (element) => {
 		const image = element as HTMLImageElement
-		await image.decode()
+		for (;;) {
+			const src = image.src
+			try {
+				await image.decode()
+				if (image.src === src) break
+			} catch (error) {
+				// a real decoding failure of the picture still shown is a failure
+				if (image.src === src) throw error
+			}
+		}
 		const canvas = document.createElement("canvas")
 		canvas.width = image.naturalWidth
 		canvas.height = image.naturalHeight

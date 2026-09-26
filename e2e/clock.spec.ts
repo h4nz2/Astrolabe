@@ -47,44 +47,36 @@ test("the clock runs at the chosen speed, whatever the frame rate", async ({
 	await open(page, `t=${J2000}&warp=86400`)
 	await page.waitForFunction(() => window.__astrolabe !== undefined)
 	// Every time the HUD date changes, note it with the real time counted up to
-	// the frame that computed it (the store's lastTickMs). The HUD shows the
-	// clock at 10 Hz and a loaded run draws a frame a second or less, so reading
-	// the HUD at an arbitrary instant would see a date up to a frame old.
+	// the frame that computed it. Real time is counted at the store's own ticks
+	// (`lastTickMs`, the instant each frame sampled the clock), capped per frame
+	// like the clock; the date the HUD shows is matched to the tick that computed
+	// it (the HUD refreshes at 10 Hz, so it may show a date some frames old, and
+	// a loaded run draws a frame a second or less).
 	await page.evaluate(() => {
 		const probe = window as unknown as { samples: ClockSample[] }
 		probe.samples = []
-		// every frame's start and the real time counted up to it
-		const frames: { at: number; countedMs: number }[] = []
+		const minuteOf = (jd: number) =>
+			Math.floor(Math.round((jd - 2440587.5) * 86_400_000) / 60_000) * 60_000
+		// every tick's date (to the minute the HUD shows) and the real time counted up to it
+		const ticks = new Map<number, number>()
 		let countedMs = 0
-		let last = performance.now()
-		frames.push({ at: last, countedMs })
-		const frame = () => {
-			const now = performance.now()
-			countedMs += Math.min(Math.max(now - last, 0), 250)
-			last = now
-			frames.push({ at: now, countedMs })
-			requestAnimationFrame(frame)
-		}
-		requestAnimationFrame(frame)
-		// the count at any instant: its frame's, plus the time since (capped the same way)
-		const countedAt = (at: number): number | null => {
-			for (let i = frames.length - 1; i >= 0; i--) {
-				if (frames[i].at <= at) {
-					return frames[i].countedMs + Math.min(at - frames[i].at, 250)
-				}
+		let lastTick: number | null = null
+		window.__astrolabe!.store.subscribe(({ lastTickMs, simTimeJD }) => {
+			if (lastTickMs === null || lastTickMs === lastTick) return
+			if (lastTick !== null) {
+				countedMs += Math.min(Math.max(lastTickMs - lastTick, 0), 250)
 			}
-			return null
-		}
+			lastTick = lastTickMs
+			const minute = minuteOf(simTimeJD)
+			if (!ticks.has(minute)) ticks.set(minute, countedMs)
+		})
 		const time = document.querySelector("time")!
 		new MutationObserver(() => {
-			const { lastTickMs } = window.__astrolabe!.store.getState()
+			const shown = Date.parse(time.getAttribute("datetime") ?? "")
 			// a date computed before the count began cannot be paired with it
-			const countedMs = lastTickMs === null ? null : countedAt(lastTickMs)
-			if (countedMs === null) return
-			probe.samples.push({
-				shown: Date.parse(time.getAttribute("datetime") ?? ""),
-				countedMs,
-			})
+			const counted = ticks.get(shown)
+			if (counted === undefined) return
+			probe.samples.push({ shown, countedMs: counted })
 		}).observe(time, { attributes: true, attributeFilter: ["datetime"] })
 	})
 	// wait for four seconds of counted real time, however long that takes

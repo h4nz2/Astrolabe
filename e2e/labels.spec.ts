@@ -3,6 +3,7 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 import { openLayers } from "./support/hud"
+import { cameraAtRest, labelsAtRest } from "./support/scene"
 
 // Body labels (#20) in the real browser: who is named where, the density
 // rules, the switch, the i18n names, and that a label is a click target that
@@ -23,22 +24,12 @@ const ready = async (page: Page, url: string) => {
 	await page.evaluate(() =>
 		window.__astrolabe!.store.getState().setPaused(true),
 	)
-	await page.waitForTimeout(600) // labels fade in over 0.2 s
+	// labels fade in over 0.2 s of frame time: wait until they have, and hold still
+	await labelsAtRest(page)
 }
 
-const settled = (page: Page) =>
-	page.waitForFunction(
-		() => {
-			const handle = window.__astrolabe
-			return (
-				handle !== undefined &&
-				handle.camera().transitionId === null &&
-				handle.store.getState().transition === null
-			)
-		},
-		null,
-		{ timeout: 60_000 },
-	)
+/** No transition, no pan pending, and the controls have stopped damping. */
+const settled = (page: Page) => cameraAtRest(page)
 
 /** The ids of the bodies whose labels are shown. */
 const shownLabels = (page: Page) =>

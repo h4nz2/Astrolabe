@@ -3,6 +3,8 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { cameraAtRest } from "./support/scene"
+
 // Re-centring the view and moving around freely (#15): panning away from a
 // body into empty space with the mouse, a trackpad click and touch, the
 // centre marker and badge, the way back, and the free centre in a link.
@@ -28,24 +30,11 @@ const ready = async (page: Page, url: string) => {
 	await settled(page)
 }
 
-/** No transition, no pan in progress, and the controls have stopped damping. */
-const settled = async (page: Page) => {
-	await page.waitForFunction(
-		() => {
-			const handle = window.__astrolabe
-			if (handle === undefined) return false
-			const state = handle.store.getState()
-			return (
-				handle.camera().transitionId === null &&
-				state.transition === null &&
-				!state.panning
-			)
-		},
-		null,
-		{ timeout: 60_000 },
-	)
-	await page.waitForTimeout(800)
-}
+/**
+ * No transition, no pan in progress, and the controls have stopped damping
+ * (counted in drawn frames, not milliseconds).
+ */
+const settled = (page: Page) => cameraAtRest(page)
 
 const view = (page: Page) =>
 	page.evaluate(() => window.__astrolabe!.store.getState().view)

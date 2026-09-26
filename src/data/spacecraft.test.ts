@@ -180,9 +180,12 @@ describe("trajectory accuracy", () => {
 		}
 	})
 
-	it("has a position at every instant of the data range, with no gap", () => {
-		for (const craft of catalogue.craft) {
-			const trajectory = trajectoryOf(craft.id)
+	// one test per craft: each samples 4001 instants, each a whole frame of bodies,
+	// which together took longer than a test's time limit on a loaded machine
+	it.each(catalogue.craft.map((craft) => craft.id))(
+		"%s has a position at every instant of the data range, with no gap",
+		(id) => {
+			const trajectory = trajectoryOf(id)
 			const state = createCraftState()
 			const steps = 4000
 			for (let k = 0; k <= steps; k++) {
@@ -190,11 +193,11 @@ describe("trajectory accuracy", () => {
 					trajectory.fromJD +
 					((trajectory.toJD - trajectory.fromJD) * k) / steps
 				craftStateAt(trajectory, jd, frameAt(jd, trueScale), state)
-				expect(state.available, `${craft.id} @${jd}`).toBe(true)
+				expect(state.available, `${id} @${jd}`).toBe(true)
 				expect(state.trueKm.every(Number.isFinite)).toBe(true)
 			}
-		}
-	})
+		},
+	)
 
 	it("has no position outside the data range", () => {
 		const trajectory = trajectoryOf("voyager1")

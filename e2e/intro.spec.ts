@@ -221,7 +221,17 @@ test.describe("a first visit", () => {
 			null,
 			{ timeout: 60_000, polling: "raf" },
 		)
-		const before = (await state(page)).view
+		// the stop the opening was heading to when the drag took over: noted by the
+		// store itself, since a loaded machine may move on to the next stop between
+		// any reading taken here and the drag
+		await page.evaluate(() => {
+			const probe = window as unknown as { heading?: unknown }
+			window.__astrolabe!.store.subscribe((now, previous) => {
+				if (now.sequence !== null || previous.sequence !== null) {
+					probe.heading = now.view
+				}
+			})
+		})
 		const box = (await page.locator("canvas").first().boundingBox())!
 		const x = box.x + box.width * 0.3
 		const y = box.y + box.height * 0.4
@@ -234,6 +244,9 @@ test.describe("a first visit", () => {
 		const after = await state(page)
 		expect(after.sequence).toBeNull()
 		expect(after.scale).toBe("everythingVisible")
+		const before = (await page.evaluate(
+			() => (window as unknown as { heading?: unknown }).heading,
+		)) as typeof after.view
 		// the stop it was heading to is still where the camera arrives: nothing flew away
 		if (before.kind === "body") expect(after.view).toEqual(before)
 		else expect(after.view.kind).not.toBe("body")
