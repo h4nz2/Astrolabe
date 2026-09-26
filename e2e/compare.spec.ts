@@ -1,5 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 
+import { menuAtRest } from "./support/scene"
+
 // Side by side (#24): bodies at true relative size with plain-language
 // comparisons, reached in one click from the focused body's card, chosen with
 // pickers and ready-made ideas (never typed), in every language and reading
@@ -120,6 +122,7 @@ test("bodies are picked, swapped, added from ideas and promoted by a click", asy
 
 	// a ready-made idea for the lesson
 	await page.getByTestId("compare-presets").click()
+	await menuAtRest(page)
 	await page.getByRole("menuitem", { name: "All eight planets" }).click()
 	await expect(slots(page)).toHaveCount(8)
 	await expect(heading).toHaveText("Earth and Jupiter")

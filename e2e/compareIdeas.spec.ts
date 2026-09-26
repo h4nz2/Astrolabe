@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test"
 
+import { menuAtRest } from "./support/scene"
+
 // More comparison ideas (#40): a grouped menu of ready-made comparisons, each
 // with a teaser that states its surprise. Picking one puts it in the link,
 // names it above the facts and leads with the comparison that makes its point.
@@ -12,6 +14,7 @@ test("an idea is picked from the grouped menu and leads with its point", async (
 	await expect(page.getByTestId("compare-idea")).toHaveCount(0)
 
 	await page.getByTestId("compare-presets").click()
+	await menuAtRest(page)
 	const menu = page.getByRole("menu")
 	for (const group of ["Sizes", "Moons", "Surprises"]) {
 		await expect(menu.getByText(group, { exact: true })).toBeVisible()
@@ -37,6 +40,7 @@ test("an idea is picked from the grouped menu and leads with its point", async (
 
 	// another idea leads with a different fact
 	await page.getByTestId("compare-presets").click()
+	await menuAtRest(page)
 	await page
 		.getByRole("menuitem", { name: /Where would you weigh the most/ })
 		.click()

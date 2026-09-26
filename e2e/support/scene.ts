@@ -105,3 +105,40 @@ export const labelsAtRest = (page: Page, frames = 3): Promise<unknown> =>
 		{ frames, key: Math.random() },
 		{ polling: "raf" },
 	)
+
+/**
+ * Waits until the open menu (Mantine's dropdown) has finished its entrance:
+ * fully opaque and in the same place for `frames` consecutive frames. On a
+ * scrolling page this matters: Playwright retries a click on an element that
+ * is still moving with ever more forceful scrolling (aligning it to the top
+ * of the viewport), which scrolls the menu's button out of view, and a menu
+ * whose button is out of view hides itself.
+ */
+export const menuAtRest = (page: Page, frames = 3): Promise<unknown> =>
+	page.waitForFunction(
+		({ frames, key }) => {
+			const probe = window as unknown as {
+				menuKey?: number
+				menuBox?: string
+				menuFor?: number
+			}
+			if (probe.menuKey !== key) {
+				probe.menuKey = key
+				probe.menuBox = undefined
+				probe.menuFor = 0
+			}
+			const menu = document.querySelector<HTMLElement>("[role=menu]")
+			if (menu === null) return false
+			const rect = menu.getBoundingClientRect()
+			const box = [rect.x, rect.y, rect.width, rect.height].join()
+			const entering =
+				getComputedStyle(menu).opacity !== "1" ||
+				getComputedStyle(menu).visibility !== "visible"
+			const changed = entering || box !== probe.menuBox
+			probe.menuBox = box
+			probe.menuFor = changed ? 0 : (probe.menuFor ?? 0) + 1
+			return probe.menuFor >= frames
+		},
+		{ frames, key: Math.random() },
+		{ polling: "raf" },
+	)
