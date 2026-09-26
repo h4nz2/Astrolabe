@@ -5314,6 +5314,7 @@
 					"distanceFromParent": 1481010,
 					"orbitalPeriod": 21.276,
 					"orbitalInclination": 0.43,
+					"eccentricity": 0.105,
 					"diameter": 270,
 					"mass": "5620 * 10^15",
 					"gravity": null,

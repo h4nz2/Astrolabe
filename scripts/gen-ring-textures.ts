@@ -59,6 +59,8 @@ const ringSystemSchema = z
 			alpha: z.string().startsWith("/assets/"),
 			color: z.string().startsWith("/assets/"),
 		}),
+		// read by the build (src/data/schema.ts, Rings), not here
+		castsShadow: z.boolean().optional(),
 		/** where the radii, opacities and colours come from */
 		sources: z.array(z.string().min(1)).optional(),
 		bands: z.array(bandSchema).min(1),
