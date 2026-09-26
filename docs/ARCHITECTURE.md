@@ -850,7 +850,7 @@ export const useSimFrame = (): SimFrame // throws outside the provider
   `TimeControls` (the time bar; `SpinControl`, the speed presets and Now in its popover), `CentreBadge` and
   `CentreMarker` (#15), `FlightReadout` (#18, above the time bar), `TeacherBar` (#29, the top-right corner: Present,
   Share, hide, then `SoundControl` (#32), Help (#43) and `LanguageMenu`), `EntryBar` (Tours, Layers → `SceneToggles`,
-  Scale → `ScalePanel` (#21), Tools). Escape, the overview button, the card's close button and a click on empty space call `reset()`. The clock shows the locale's date format inside
+  Scale → `ScalePanel` (#21), Tools). Escape, the overview button and a click on empty space call `reset()`; the card's close button only clears the selection and hides the focused body's card (`useHudStore.cardClosedFor`) until another body is focused or selected, the camera staying put. The clock shows the locale's date format inside
   `<time dateTime="2026-09-24T10:35Z">`; warp labels come from the value (`ui/warp.ts` `warpParts`).
   Keys (ignored in fields and with modifiers): Space pause, `+`/`-` next faster/slower preset (direction kept),
   ArrowLeft/Right cycle siblings, M sound on/mute (#32); the presenter's keys (PageUp/Down, digits, letters) are #29's (see Presentation).

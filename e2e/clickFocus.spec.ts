@@ -7,9 +7,9 @@ import { cameraAtRest } from "./support/scene"
 
 // Click a body to focus on it (#16), in the real browser: hover feedback,
 // generous targets for tiny bodies (true scale, touch), the focused view's
-// card with comparative facts, and the three ways out (Escape and the home
-// button are covered in navigation.spec.ts; here the click on empty space and
-// the card's own close button).
+// card with comparative facts, the ways out (Escape and the home button are
+// covered in navigation.spec.ts; here the click on empty space) and the card's
+// own close button, which leaves the camera where it is.
 
 const screenshotDir = path.join("test-results", "click-focus")
 
@@ -196,14 +196,24 @@ test("a click on empty space is the way out, a near miss is not", async ({
 	await expect(page.getByTestId("click-hint")).toBeVisible()
 })
 
-test("the card's close button returns to the overview", async ({ page }) => {
+test("the card's close button closes the card and keeps the camera", async ({
+	page,
+}) => {
 	await ready(page, "/solar_system?focus=jupiter")
 	const card = page.getByTestId("body-card")
 	await expandCard(page)
 	await expect(card).toContainText("11 Earths wide")
 	await card.getByRole("button", { name: "Close" }).click()
-	await expect.poll(async () => (await state(page)).view.kind).toBe("overview")
+	await expect(card).toBeHidden()
+	await expect(page.getByTestId("click-hint")).toBeHidden()
+	await settled(page)
+	expect((await state(page)).view).toEqual({ kind: "body", id: "jupiter" })
 	expect((await state(page)).selectedId).toBeNull()
+
+	// clicking the planet again brings the card back
+	const jupiter = await screenOf(page, "jupiter")
+	await page.mouse.click(jupiter.x, jupiter.y)
+	await expect(card.getByRole("heading", { name: "Jupiter" })).toBeVisible()
 })
 
 test.describe("on a phone", () => {

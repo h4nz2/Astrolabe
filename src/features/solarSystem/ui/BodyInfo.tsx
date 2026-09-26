@@ -2,12 +2,13 @@
  * The focused view's card (#16): the selected body (else the body the view is
  * on), its name and tagline, an authored comparison, the headline facts
  * (comparative first: "11 Earths wide", with the exact number beside it), a
- * link into its dictionary entry, and a way back to the overview. With
+ * link into its dictionary entry, and a close button that leaves the camera
+ * where it is (the way back to the overview is the home button). With
  * nothing to show (the overview, a free view) it tells a first-time visitor
  * that the planets can be clicked. The card starts small, name and one
  * sentence (#42), and its facts unfold on demand, so it never buries the scene.
  */
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { ActionIcon, Anchor, Button, CloseButton } from "@mantine/core"
 import {
 	IconChevronDown,
@@ -91,7 +92,6 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 		() => (body === undefined ? [] : headlineFacts(body, i18n)),
 		[body, i18n],
 	)
-	const reset = useSimStore((state) => state.reset)
 	// starts small (#42): name and one sentence; the viewer's choice holds from body to body
 	const open = useHudStore((state) => state.cardExpanded)
 	const setExpanded = useHudStore((state) => state.setCardExpanded)
@@ -99,6 +99,15 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 	const entry = dictionaryEntry(body.id)
 	const story = text.comparisons[0]
 	const close = t("solarSystem.card.close")
+	// the camera stays: the selection goes and the focused body's card stays closed
+	const onClose = () => {
+		const sim = useSimStore.getState()
+		sim.select(null)
+		const { view } = useSimStore.getState()
+		useHudStore
+			.getState()
+			.setCardClosedFor(view.kind === "body" ? view.id : null)
+	}
 	const toggle = t(
 		open ? "solarSystem.card.hideFacts" : "solarSystem.card.showFacts",
 	)
@@ -132,9 +141,9 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 				<CloseButton
 					size="lg"
 					aria-label={close}
-					aria-keyshortcuts="Escape"
 					title={close}
-					onClick={reset}
+					data-testid="card-close"
+					onClick={onClose}
 				/>
 			</header>
 			{open && (
@@ -178,9 +187,22 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 	)
 }
 
-/** The card of the selected or focused body, else the click hint. */
+/**
+ * The card of the selected or focused body, else the click hint; nothing while
+ * the viewer has closed the focused body's card and selected nothing since.
+ */
 const BodyInfo = () => {
 	const bodyId = useSimStore(cardBodyId)
+	const selectedId = useSimStore((state) => state.selectedId)
+	const closedFor = useHudStore((state) => state.cardClosedFor)
+	const closed =
+		closedFor !== null && closedFor === bodyId && selectedId === null
+	// another body, or this one clicked again, brings the card back
+	useEffect(() => {
+		if (closedFor !== null && !closed)
+			useHudStore.getState().setCardClosedFor(null)
+	}, [closedFor, closed])
+	if (closed) return null
 	return bodyId === null ? (
 		<>
 			<ClickHint />

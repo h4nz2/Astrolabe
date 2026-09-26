@@ -105,6 +105,11 @@
 }
 
 /* the body card: under the name, small until unfolded; a tall card scrolls in place */
+/* a closed body card leaves nothing to frame */
+.info:empty {
+	display: none;
+}
+
 .info {
 	grid-area: info;
 	justify-self: start;

@@ -8,6 +8,8 @@
  *   every docked panel, of either kind, to one at a time.
  * - `cardExpanded`: the body card shows its full facts. It starts small (name
  *   and one sentence) and keeps the viewer's choice while the page is open.
+ * - `cardClosedFor`: the body whose card the viewer closed; the camera stays
+ *   put and the card stays away until another body is focused or selected.
  * - `cameraMoving`: the camera is being dragged, zoomed or flown right now;
  *   the secondary controls dim meanwhile (`camera/motion.ts` writes it).
  *
@@ -21,21 +23,27 @@ export type HudPanel = "layers" | "scale" | "spacecraft"
 export interface HudState {
 	panel: HudPanel | null
 	cardExpanded: boolean
+	cardClosedFor: string | null
 	cameraMoving: boolean
 	setPanel: (panel: HudPanel | null) => void
 	/** Opens `panel`, or closes it when it is the one open. */
 	togglePanel: (panel: HudPanel) => void
 	setCardExpanded: (expanded: boolean) => void
+	setCardClosedFor: (id: string | null) => void
 	setCameraMoving: (moving: boolean) => void
 }
 
 export const useHudStore = create<HudState>()((set, get) => ({
 	panel: null,
 	cardExpanded: false,
+	cardClosedFor: null,
 	cameraMoving: false,
 	setPanel: (panel) => set({ panel }),
 	togglePanel: (panel) => set({ panel: get().panel === panel ? null : panel }),
 	setCardExpanded: (cardExpanded) => set({ cardExpanded }),
+	setCardClosedFor: (cardClosedFor) => {
+		if (get().cardClosedFor !== cardClosedFor) set({ cardClosedFor })
+	},
 	setCameraMoving: (cameraMoving) => {
 		if (get().cameraMoving !== cameraMoving) set({ cameraMoving })
 	},
