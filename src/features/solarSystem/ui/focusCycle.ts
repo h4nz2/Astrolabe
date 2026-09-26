@@ -1,11 +1,11 @@
-import { bodyById, childrenOf, planets, sun } from "@/data"
+import { SMALL_BODY_KINDS, bodyById, childrenOf, planets, sun } from "@/data"
 
 /**
  * The bodies the Left/Right arrows cycle through from `id`, in orbital order:
  * the drawn moons of the same planet for a moon (the featured ones, all of
  * them with `allMoons`, and `id` itself; #17), otherwise the Sun and the
- * planets (so the arrows are never dead keys on the Sun). Empty for an
- * unknown id.
+ * planets (so the arrows are never dead keys on the Sun); for a dwarf planet,
+ * an asteroid or a comet (#23) the others of its kind. Empty for an unknown id.
  */
 export function focusRing(id: string, allMoons = false): string[] {
 	const body = bodyById.get(id)
@@ -13,6 +13,11 @@ export function focusRing(id: string, allMoons = false): string[] {
 	if (body.kind === "moon" && body.parentId !== null) {
 		return childrenOf(body.parentId)
 			.filter((sibling) => allMoons || sibling.featured || sibling.id === id)
+			.map((sibling) => sibling.id)
+	}
+	if (SMALL_BODY_KINDS.includes(body.kind) && body.parentId !== null) {
+		return childrenOf(body.parentId)
+			.filter((sibling) => sibling.kind === body.kind)
 			.map((sibling) => sibling.id)
 	}
 	return [sun.id, ...planets.map((planet) => planet.id)]

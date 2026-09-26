@@ -61,7 +61,8 @@ describe("the curated moons (#17)", () => {
 	it("leaves the long tail for the viewer to ask for", () => {
 		const all = bodies.filter((body) => body.kind === "moon")
 		const featured = all.filter((moon) => moon.featured)
-		expect(featured).toHaveLength(24)
+		// the 24 moons of the planets, plus Charon (#23)
+		expect(featured).toHaveLength(25)
 		expect(all.length - featured.length).toBeGreaterThan(150)
 		expect(moonSystemOf("jupiter").others).toHaveLength(
 			moonsOf("jupiter").length - 4,

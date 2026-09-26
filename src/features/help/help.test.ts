@@ -314,7 +314,7 @@ describe("try it links", () => {
 		expect(linkProblems("/solar_system?hunt=noSuchClue")).toEqual([
 			'hunt "noSuchClue" does not resolve',
 		])
-		expect(linkProblems("/compare?bodies=earth,pluto")).toEqual([
+		expect(linkProblems("/compare?bodies=earth,vulcan")).toEqual([
 			"bodies lists an unknown or repeated body",
 		])
 		expect(linkProblems("/planetarium")).toEqual(["not a page of the app"])

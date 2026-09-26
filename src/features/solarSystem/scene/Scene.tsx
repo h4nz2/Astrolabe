@@ -30,6 +30,8 @@ import SceneCapture from "../postcard/SceneCapture"
 import DprSync from "../present/DprSync"
 import SoundProbe from "../sound/SoundProbe"
 import { labelSlotCount } from "../labels/project"
+import Belts from "../smallBodies/Belts"
+import CometTails from "../smallBodies/CometTails"
 import { createCraftFrame } from "../spacecraft/craftFrame"
 import { createCraftLabels } from "../spacecraft/craftLabels"
 import SpacecraftLabelLayer from "../spacecraft/SpacecraftLabelLayer"
@@ -97,6 +99,8 @@ function Scene() {
 					<OrbitLines />
 					<Trails />
 					<Markers />
+					<Belts />
+					<CometTails />
 					<LightFront />
 					<SpacecraftScene
 						frame={frame}

@@ -17,7 +17,7 @@
  */
 import { create } from "zustand"
 
-import type { Body } from "@/data"
+import { bodyById, isSmallBody, type Body } from "@/data"
 import {
 	MS_PER_DAY,
 	createTimeline,
@@ -65,6 +65,11 @@ export interface SimState extends NavigationSlice {
 	showMarkers: boolean
 	/** Names written along the orbit lines (labels/, #20); off by default. */
 	showOrbitLabels: boolean
+	/**
+	 * The "Small bodies" layer (#23): dwarf planets, asteroids, comets and the belts; off by
+	 * default so the planets' overview stays legible. The focused small body's system shows anyway.
+	 */
+	showSmallBodies: boolean
 
 	/**
 	 * Speed in simulated seconds per real second; negative reverses. Nothing
@@ -92,6 +97,7 @@ export interface SimState extends NavigationSlice {
 	setShowAllMoons: (show: boolean) => void
 	setShowMarkers: (show: boolean) => void
 	setShowOrbitLabels: (show: boolean) => void
+	setShowSmallBodies: (show: boolean) => void
 	/** Travels (glides) to the wall clock, arriving on the present. */
 	setNow: () => void
 }
@@ -100,22 +106,45 @@ export interface SimState extends NavigationSlice {
 export type MoonVisibility = Pick<
 	SimState,
 	"showMoons" | "showAllMoons" | "focusId"
->
+> &
+	Partial<Pick<SimState, "showSmallBodies">>
+
+/** The body a moon orbits, else the body itself: the system a body belongs to. */
+const systemOf = (
+	body: Pick<Body, "id" | "kind"> & Partial<Pick<Body, "parentId">>,
+): string =>
+	body.kind === "moon" && typeof body.parentId === "string"
+		? body.parentId
+		: body.id
 
 /**
  * Whether a body is rendered at all (meshes, orbit line, marker, picking,
  * labels, shadows): the Sun and planets always; moons while `showMoons` is on,
  * the featured ones only unless `showAllMoons` asks for the long tail (#17,
  * docs/ARCHITECTURE.md, "Moons"); and always the focus, so hiding moons never
- * leaves the camera staring at nothing.
+ * leaves the camera staring at nothing. Small bodies (#23: dwarf planets,
+ * asteroids, comets and their moons) only while `showSmallBodies` is on, except
+ * the focus's own system: picking Pluto shows Pluto and Charon.
  */
 export const isBodyShown = (
-	body: Pick<Body, "id" | "kind" | "featured">,
+	body: Pick<Body, "id" | "kind" | "featured"> &
+		Partial<Pick<Body, "parentId">>,
 	state: MoonVisibility,
-): boolean =>
-	body.kind !== "moon" ||
-	body.id === state.focusId ||
-	(state.showMoons && (body.featured === true || state.showAllMoons))
+): boolean => {
+	if (
+		body.kind === "moon" &&
+		body.id !== state.focusId &&
+		!(state.showMoons && (body.featured === true || state.showAllMoons))
+	) {
+		return false
+	}
+	if (state.showSmallBodies === true) return true
+	if (!isSmallBody({ kind: body.kind, parentId: body.parentId ?? null })) {
+		return true
+	}
+	const focus = bodyById.get(state.focusId)
+	return focus !== undefined && systemOf(focus) === systemOf(body)
+}
 
 /**
  * The speed presets (simulated seconds per real second), slowest first: real
@@ -149,6 +178,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	showAllMoons: false,
 	showMarkers: true,
 	showOrbitLabels: false,
+	showSmallBodies: false,
 
 	setTimeWarp: (warp) => {
 		if (!Number.isFinite(warp)) return
@@ -196,6 +226,7 @@ export const useSimStore = create<SimState>()((set, get) => ({
 	setShowAllMoons: (show) => set({ showAllMoons: show }),
 	setShowMarkers: (show) => set({ showMarkers: show }),
 	setShowOrbitLabels: (show) => set({ showOrbitLabels: show }),
+	setShowSmallBodies: (show) => set({ showSmallBodies: show }),
 	setNow: () => {
 		const { clock, travelTo } = get()
 		const now = dateToJD(new Date())

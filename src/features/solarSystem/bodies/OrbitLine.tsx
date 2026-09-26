@@ -38,7 +38,7 @@ import {
 	type LineBasicMaterial,
 } from "three"
 
-import type { Body } from "@/data"
+import type { Body, BodyKind } from "@/data"
 import {
 	childDistanceCurve,
 	displayDistanceKm,
@@ -48,7 +48,9 @@ import {
 	positionAtEccentricAnomaly,
 	solveEccentricAnomaly,
 	toUnits,
+	trueAnomaly,
 	TWO_PI,
+	wrapAngle,
 	type DistanceCurve,
 	type MutableOrbitElements,
 	type OrbitElements,
@@ -82,26 +84,59 @@ export const ORBIT_REBUILD_FRACTION = 1e-4
 /** Resample a precessing ellipse once its node and periapsis together have turned this far (degrees). */
 export const ORBIT_RESAMPLE_DEG = 0.05
 
-export const ORBIT_COLORS = {
+export const ORBIT_COLORS: Record<BodyKind, string> = {
+	star: "#8a8f98",
 	planet: "#8a8f98",
 	moon: "#4b5563",
-} as const
+	// #23: dimmer than the planets', so the planets' orbits stay the ones that read first
+	dwarfPlanet: "#6b7280",
+	asteroid: "#6e6556",
+	comet: "#56809a",
+}
 export const ORBIT_OPACITY = 0.6
 
 const ANOMALY_STEP = TWO_PI / ORBIT_SEGMENTS
+
+/**
+ * From this eccentricity on (#23: Halley, Hale-Bopp, NEOWISE) an orbit is sampled at
+ * uniform TRUE anomalies instead: uniform eccentric anomalies leave only a handful of
+ * samples for the hairpin turn round the Sun, which then reads as a corner.
+ */
+export const TRUE_ANOMALY_SAMPLING_E = 0.9
+
+/** Eccentric anomaly (radians, [0, 2pi)) at true anomaly `nu`. */
+export const eccentricFromTrueAnomaly = (nu: number, e: number): number =>
+	wrapAngle(
+		2 *
+			Math.atan2(
+				Math.sqrt(1 - e) * Math.sin(nu / 2),
+				Math.sqrt(1 + e) * Math.cos(nu / 2),
+			),
+	)
+
+/** The eccentric anomaly of sample `k` (0..256) of an orbit of eccentricity `e`. */
+const sampleAnomaly = (k: number, e: number): number => {
+	const s = (TWO_PI * k) / ORBIT_SEGMENTS
+	return e >= TRUE_ANOMALY_SAMPLING_E ? eccentricFromTrueAnomaly(s, e) : s
+}
 
 const scratch: Vec3 = { x: 0, y: 0, z: 0 }
 
 /**
  * Parent-centric ellipse samples in km (scene axes), 3 doubles per point, at
- * eccentric anomalies 2 pi k / 256 for k = 0..256; the last point repeats the first.
+ * eccentric anomalies 2 pi k / 256 for k = 0..256 (true anomalies for an orbit of
+ * `TRUE_ANOMALY_SAMPLING_E` or more); the last point repeats the first.
  */
 export function sampleOrbit(
 	orbit: OrbitElements,
 	out: Float64Array = new Float64Array(ORBIT_SAMPLES * 3),
 ): Float64Array {
 	for (let k = 0; k < ORBIT_SEGMENTS; k++) {
-		positionAtEccentricAnomaly(orbit, (TWO_PI * k) / ORBIT_SEGMENTS, scratch)
+		positionAtEccentricAnomaly(
+			orbit,
+			sampleAnomaly(k, orbit.eccentricity),
+			scratch,
+		)
 		const o = k * 3
 		out[o] = scratch.x
 		out[o + 1] = scratch.y
@@ -120,12 +155,24 @@ export const eccentricAnomalyAt = (orbit: OrbitElements, jd: number): number =>
 
 /**
  * The sample interval holding eccentric anomaly E: the anchor vertex is
- * inserted after sample `slot` (0..255), i.e. at vertex `slot + 1`.
+ * inserted after sample `slot` (0..255), i.e. at vertex `slot + 1`. Orbits
+ * sampled by true anomaly (`eccentricity` >= `TRUE_ANOMALY_SAMPLING_E`) are
+ * searched by it.
  */
-export const anchorSlot = (eccentricAnomaly: number): number =>
+export const anchorSlot = (
+	eccentricAnomaly: number,
+	eccentricity = 0,
+): number =>
 	Math.min(
 		ORBIT_SEGMENTS - 1,
-		Math.max(0, Math.floor(eccentricAnomaly / ANOMALY_STEP)),
+		Math.max(
+			0,
+			Math.floor(
+				(eccentricity >= TRUE_ANOMALY_SAMPLING_E
+					? trueAnomaly(eccentricAnomaly, eccentricity)
+					: eccentricAnomaly) / ANOMALY_STEP,
+			),
+		),
 	)
 
 /** Vertex index of the anchor for the given slot. */
@@ -303,7 +350,10 @@ export function updateOrbitBuffers(
 	const ox = originKm[0]
 	const oy = originKm[1]
 	const oz = originKm[2]
-	const slot = anchorSlot(eccentricAnomalyAt(orbit, frame.jd))
+	const slot = anchorSlot(
+		eccentricAnomalyAt(orbit, frame.jd),
+		orbit.eccentricity,
+	)
 
 	const { originAtRebuild, parentAtRebuild, positions } = buffers
 	const dox = ox - originAtRebuild[0]
@@ -457,7 +507,7 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 			</bufferGeometry>
 			<lineBasicMaterial
 				ref={materialRef}
-				color={body.kind === "moon" ? ORBIT_COLORS.moon : ORBIT_COLORS.planet}
+				color={ORBIT_COLORS[body.kind]}
 				transparent
 				opacity={ORBIT_OPACITY}
 			/>

@@ -175,7 +175,8 @@ const MoonStory = ({ moon }: { moon: Body }) => {
 
 /** The moon section of the card for `body`: a planet's moons or a moon's story; nothing for the Sun. */
 const MoonSystem = ({ body }: { body: Body }) => {
-	if (body.kind === "planet") return <PlanetMoons planet={body} />
+	if (body.kind === "planet" || body.kind === "dwarfPlanet")
+		return <PlanetMoons planet={body} />
 	if (body.kind === "moon") return <MoonStory key={body.id} moon={body} />
 	return null
 }

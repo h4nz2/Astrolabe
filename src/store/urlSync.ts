@@ -84,12 +84,20 @@ export const LAYER_PARAMS = [
 ] as const
 
 type LayerField =
-	(typeof LAYER_PARAMS)[number][1] | "showOrbitLabels" | "showAllMoons"
+	| (typeof LAYER_PARAMS)[number][1]
+	| "showOrbitLabels"
+	| "showSmallBodies"
+	| "showAllMoons"
 type Layers = Pick<SimState, LayerField>
 
-// the orbit names and the long tail of moons (both off by default) may be left out
-type Mirrored = Omit<Layers, "showOrbitLabels" | "showAllMoons"> &
-	Partial<Pick<Layers, "showOrbitLabels" | "showAllMoons">> &
+// the orbit names, the long tail of moons and the small bodies (all off by default) may be left out
+type Mirrored = Omit<
+	Layers,
+	"showOrbitLabels" | "showSmallBodies" | "showAllMoons"
+> &
+	Partial<
+		Pick<Layers, "showOrbitLabels" | "showSmallBodies" | "showAllMoons">
+	> &
 	Pick<
 		SimState,
 		"view" | "selectedId" | "shot" | "timeWarp" | "paused" | "simTimeJD"
@@ -152,6 +160,7 @@ export function searchFromState(
 		search[param] = state[field] ? undefined : false
 	}
 	search.orbitNames = state.showOrbitLabels ? true : undefined
+	search.smallBodies = state.showSmallBodies ? true : undefined
 	search.allMoons = state.showAllMoons ? true : undefined
 	search.scale =
 		state.scalePreset != null && state.scalePreset !== DEFAULT_SCALE_PRESET
@@ -172,6 +181,7 @@ export const sameSearch = (a: SimSearch, b: SimSearch): boolean =>
 	a.t === b.t &&
 	a.warp === b.warp &&
 	a.orbitNames === b.orbitNames &&
+	a.smallBodies === b.smallBodies &&
 	a.allMoons === b.allMoons &&
 	a.scale === b.scale &&
 	a.tour === b.tour &&
@@ -235,13 +245,14 @@ export function frameFromSearch(search: SimSearch): string | null {
 
 /**
  * The layer switches a search sets: a switch the link leaves out is on, except
- * the orbit names and all moons (#17), which are off unless the link turns them on.
+ * the orbit names, all moons (#17) and the small bodies (#23), which are off unless the link turns them on.
  */
 export const layersFromSearch = (search: SimSearch): Layers => ({
 	...(Object.fromEntries(
 		LAYER_PARAMS.map(([param, field]) => [field, search[param] ?? true]),
-	) as Omit<Layers, "showOrbitLabels" | "showAllMoons">),
+	) as Omit<Layers, "showOrbitLabels" | "showSmallBodies" | "showAllMoons">),
 	showOrbitLabels: search.orbitNames === true,
+	showSmallBodies: search.smallBodies === true,
 	showAllMoons: search.allMoons === true,
 })
 
@@ -352,6 +363,7 @@ export function useSimUrlSync(): void {
 				state.paused !== previous.paused ||
 				LAYER_PARAMS.some(([, field]) => state[field] !== previous[field]) ||
 				state.showOrbitLabels !== previous.showOrbitLabels ||
+				state.showSmallBodies !== previous.showSmallBodies ||
 				state.showAllMoons !== previous.showAllMoons
 			) {
 				write()

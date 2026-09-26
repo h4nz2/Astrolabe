@@ -100,7 +100,8 @@ describe.each(LOCALES)("bodies.json of %s", (locale) => {
 
 	it("covers every featured moon (#17)", () => {
 		expect(AUTHORED).toEqual(expect.arrayContaining(["titan", "phoebe"]))
-		expect(AUTHORED).toHaveLength(1 + 8 + 24)
+		// the Sun, the planets, 24 moons of the planets and Charon (#23)
+		expect(AUTHORED).toHaveLength(1 + 8 + 24 + 1)
 	})
 
 	it("names the major moons", () => {

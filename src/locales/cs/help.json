@@ -279,6 +279,56 @@
 				]
 			}
 		},
+		"dwarfPlanets": {
+			"title": {
+				"standard": "Pluto a trpasličí planety",
+				"simple": "Pluto"
+			},
+			"what": {
+				"standard": "Pluto, Ceres, Eris, Haumea a Makemake jsou v aplikaci skutečné světy i se svými měsíci, od Charonu po Dysnomii.",
+				"simple": "Pluto a čtyři další malé kulaté světy i s měsíci."
+			},
+			"why": {
+				"standard": "Karta Pluta vypráví, proč v roce 2006 přestal být planetou: my jsme se dozvěděli víc, Pluto se nezměnil. Tak funguje věda.",
+				"simple": "Zjistíš, proč Pluto už není planeta."
+			},
+			"how": {
+				"standard": [
+					"Napiš vlevo nahoře do pole „Pluto“ a vyber ho: ukáže se, i když jsou malá tělesa vypnutá.",
+					"Charon je v kartě; „Zobrazit celou soustavu měsíců“ ukáže všech pět měsíců.",
+					"← / → přeskočí na další trpasličí planetu."
+				],
+				"simple": [
+					"Napiš vlevo nahoře do pole „Pluto“.",
+					"Vyber Pluto a poletíš k němu."
+				]
+			}
+		},
+		"comets": {
+			"title": {
+				"standard": "Kometa míjí Slunce",
+				"simple": "Komety"
+			},
+			"what": {
+				"standard": "Pět komet na svých skutečných protáhlých drahách dostane u Slunce zářící hlavu a dva ohony a zase je ztratí, když odlétají.",
+				"simple": "Komety dostanou dlouhý ohon, když se přiblíží ke Slunci."
+			},
+			"why": {
+				"standard": "Ohon vždy míří od Slunce, takže kometa, která odlétá, letí ohonem napřed – dá se to vidět, ne jen slyšet.",
+				"simple": "Ohon vždy míří od Slunce, i když kometa odlétá!"
+			},
+			"how": {
+				"standard": [
+					"Vlevo nahoře vyber Halley nebo Encke (skupina Komety).",
+					"V kartě stiskni tlačítko pro sledování průletu kolem Slunce: aplikace skočí k jejímu příštímu návratu a přehraje ho asi za minutu a půl.",
+					"Sleduj, kam ohon míří cestou tam a cestou zpět."
+				],
+				"simple": [
+					"Vlevo nahoře vyber Halley.",
+					"Stiskni tlačítko pro sledování průletu kolem Slunce."
+				]
+			}
+		},
 		"spin": {
 			"title": {
 				"standard": "Dny, sklon osy a rotace",
@@ -607,6 +657,31 @@
 				"simple": [
 					"Leť ze Země k jiné planetě.",
 					"Přečti si okénko nad tlačítky času."
+				]
+			}
+		},
+		"asteroidBelt": {
+			"title": {
+				"standard": "Pás planetek je skoro prázdný",
+				"simple": "Pás planetek"
+			},
+			"what": {
+				"standard": "Přepínač malých těles ukáže pás planetek a Kuiperův pás jako oblaka teček, k tomu trpasličí planety, sedm pojmenovaných planetek a pět komet.",
+				"simple": "Přepínač ukáže pás planetek, ledový Kuiperův pás, trpasličí planety a komety."
+			},
+			"why": {
+				"standard": "Filmy ukazují husté pole kamenů. Karta říká pravdu: každá tečka představuje asi 380 planetek a sousedé jsou od sebe asi milion km, takže sondy prolétají rovnou skrz.",
+				"simple": "Ve filmu je tam plno kamenů. Ve skutečném vesmíru jsou od sebe hodně, hodně daleko."
+			},
+			"how": {
+				"standard": [
+					"Mezi vrstvami zapni „Malá tělesa“.",
+					"Přečti si poznámku v kartě vlevo dole.",
+					"V panelu měřítka zvol skutečné měřítko a leť k Vestě nebo Ceres: pás zůstane řídkým posypem."
+				],
+				"simple": [
+					"Zapni „Malá tělesa“.",
+					"Přečti si, co karta říká o tečkách."
 				]
 			}
 		},

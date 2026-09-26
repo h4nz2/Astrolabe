@@ -85,6 +85,31 @@ export const IAU_ORIENTATIONS: Readonly<
 		primeMeridianDeg: 249.996008,
 		rotationRateDegPerDay: 541.1397757,
 	},
+	// #23: the two largest main-belt bodies and Pluto (WGCCRE 2015)
+	ceres: {
+		poleRaDeg: 291.418,
+		poleDecDeg: 66.764,
+		primeMeridianDeg: 170.65,
+		rotationRateDegPerDay: 952.1532,
+	},
+	vesta: {
+		poleRaDeg: 309.031,
+		poleDecDeg: 42.235,
+		primeMeridianDeg: 285.39,
+		rotationRateDegPerDay: 1617.3329428,
+	},
+	// The report gives Pluto's POSITIVE pole (right-hand rule: 132.993, -6.163, W = 302.695 +
+	// 56.3625225 d), which lies south of the ecliptic. bodies.json keeps the pole on the north
+	// side and a negative rate, like Venus and Uranus: the opposite pole, W0' = 180 - W0 (the
+	// same meridian measured the other way round). The texture was turned to match
+	// (public/assets/textures/pluto/pluto.jpg: the New Horizons map rotated by 180 degrees
+	// and re-centred on longitude 0), so Sputnik Planitia faces away from Charon.
+	pluto: {
+		poleRaDeg: 312.993,
+		poleDecDeg: 6.163,
+		primeMeridianDeg: 237.305,
+		rotationRateDegPerDay: -56.3625225,
+	},
 	// full series at J2000 (constant terms alone: 269.9949, 66.5392, 38.3213)
 	moon: {
 		poleRaDeg: 266.8577,

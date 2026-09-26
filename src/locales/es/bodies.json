@@ -1208,5 +1208,741 @@
 				"Mimas, la luna de Saturno, de unos 396 km de diámetro, es redonda, mientras que Proteo, un poco más grande, no lo es: el tamaño al que una luna se vuelve redonda depende de su composición y de lo caliente que estuvo en el pasado."
 			]
 		}
+	},
+	"ceres": {
+		"name": "Ceres",
+		"tagline": "El planeta enano del cinturón de asteroides",
+		"description": {
+			"simple": "Ceres es el objeto más grande del cinturón de asteroides, el anillo de rocas espaciales que hay entre Marte y Júpiter. Es redondo como una pelota, pero mucho más pequeño que nuestra Luna. Cuando lo encontraron, en 1801, la gente pensó que era un planeta nuevo. Una nave espacial llamada Dawn dio vueltas alrededor de Ceres y descubrió unas manchas de un blanco brillante… ¡hechas de sal!",
+			"standard": "Ceres es el cuerpo más grande del cinturón de asteroides, entre Marte y Júpiter, y el único planeta enano que hay en él. Giuseppe Piazzi lo descubrió el 1 de enero de 1801, y durante cerca de medio siglo se contó como un planeta, hasta que aparecieron tantas otras rocas en la misma región que los astrónomos empezaron a llamarlas asteroides. Ceres mide unos 940 km de diámetro y está hecho de roca mezclada con hielo. La sonda Dawn de la NASA lo orbitó de 2015 a 2018 y encontró manchas brillantes en el cráter Occator: sal que quedó allí cuando agua salada subió desde el subsuelo y se evaporó.",
+			"advanced": "Ceres (diámetro medio de unos 940 km) reúne aproximadamente un tercio de la masa del cinturón de asteroides y es el único objeto de esa región con masa suficiente para que su propia gravedad le haya dado una forma casi redonda. Según la definición de la UAI de 2006, eso lo convierte en un planeta enano: es redondo y orbita el Sol, pero no ha limpiado su órbita de los innumerables cuerpos que hay a su alrededor. Su baja densidad, de unos 2,2 g/cm³, apunta a roca mezclada con hielo de agua, y la Dawn encontró indicios de salmuera a gran profundidad bajo la corteza. Las brillantes fáculas del cráter Occator, de 92 km, son sobre todo carbonato de sodio, y Ahuna Mons, una montaña solitaria de unos 4 km de altura, se considera un volcán de hielo. Ceres da una vuelta al Sol cada 4,6 años a una distancia media de 2,77 UA."
+		},
+		"facts": {
+			"simple": [
+				"Ceres lleva el nombre de la diosa romana de la agricultura: de ahí viene la palabra «cereal».",
+				"Un día en Ceres dura solo unas 9 horas.",
+				"El cinturón de asteroides no está abarrotado como en las películas: los asteroides están tan lejos unos de otros que las naves espaciales lo atraviesan sin tener que esquivar nada."
+			],
+			"standard": [
+				"Ceres fue el primer asteroide descubierto, el día de Año Nuevo de 1801.",
+				"La gravedad en Ceres es solo un 3 % de la terrestre, así que podrías saltar más de 30 veces más alto que en casa.",
+				"La Dawn se quedó sin combustible en 2018, pero la nave, ya en silencio, sigue dando vueltas alrededor de Ceres."
+			],
+			"advanced": [
+				"Todos los asteroides juntos tienen solo un 3 % de la masa de la Luna, y Ceres por sí solo supone aproximadamente un tercio de esa cifra.",
+				"Los asteroides vecinos están, de media, a aproximadamente un millón de km unos de otros: más del doble de la distancia entre la Tierra y la Luna.",
+				"El elemento cerio, descubierto en 1803, lleva el nombre de Ceres."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Ceres sería una canica."
+			],
+			"standard": [
+				"Ceres mide solo una cuarta parte del ancho de nuestra Luna: cruzarlo en coche a 100 km/h llevaría menos de 10 horas."
+			],
+			"advanced": [
+				"La luz del Sol tarda unos 23 minutos en llegar a Ceres, casi tres veces más de lo que tarda en llegar a la Tierra."
+			]
+		}
+	},
+	"pluto": {
+		"name": "Plutón",
+		"tagline": "El planeta enano con corazón",
+		"description": {
+			"simple": "Plutón es un mundo pequeño y helado que está mucho más allá de Neptuno. Durante 76 años lo llamaron el noveno planeta. En 2006, los astrónomos decidieron que Plutón es un planeta enano, porque comparte su camino alrededor del Sol con muchos otros objetos helados. Plutón no cambió: solo cambió el nombre que le damos. En su superficie hay una gran llanura brillante con forma de corazón.",
+			"standard": "Clyde Tombaugh descubrió Plutón en 1930, y durante 76 años se le llamó el noveno planeta. Pero en 2005 los astrónomos encontraron Eris, un mundo helado más o menos del tamaño de Plutón, y tuvieron que decidir: ¿era un décimo planeta? En 2006, la Unión Astronómica Internacional (UAI) acordó la primera definición oficial de planeta: debe orbitar el Sol, tener masa suficiente para ser redondo y haber limpiado la vecindad de su órbita. Plutón cumple las dos primeras condiciones, pero comparte su región, el cinturón de Kuiper, con miles de otros cuerpos helados, así que pasó a ser un planeta enano. Plutón no cambió; cambió lo que sabemos, y así es como funciona la ciencia.",
+			"advanced": "Cuando la sonda New Horizons de la NASA pasó junto a él el 14 de julio de 2015, Plutón resultó ser sorprendentemente activo. La mitad occidental de Tombaugh Regio, la brillante región con forma de corazón, es Sputnik Planitia, una cuenca de unos 1000 km de ancho llena de hielo de nitrógeno que se remueve lentamente y sin cráteres visibles, así que su superficie debe de tener menos de unos 10 millones de años. Montañas de hielo de agua de varios kilómetros de altura y una fina atmósfera de nitrógeno con capas de neblina azul completan el cuadro. La órbita de Plutón es excéntrica (0,25) y está inclinada 17°; de 1979 a 1999 Plutón estuvo más cerca del Sol que Neptuno, pero una resonancia orbital 3:2 —Plutón da dos vueltas al Sol por cada tres de Neptuno— impide que los dos lleguen a chocar."
+		},
+		"facts": {
+			"simple": [
+				"El nombre de Plutón lo propuso Venetia Burney, una niña inglesa de 11 años.",
+				"La sonda New Horizons viajó durante nueve años y medio para llegar a Plutón.",
+				"Un año en Plutón dura casi 250 años terrestres."
+			],
+			"standard": [
+				"La New Horizons pasó junto a Plutón el 14 de julio de 2015 y envió las primeras imágenes de cerca.",
+				"Plutón tiene cinco lunas conocidas: Caronte, Nix, Hidra, Cerbero y Estigia.",
+				"Un año en Plutón dura unos 249 años terrestres, así que aún no ha completado ni una órbita desde que se descubrió en 1930."
+			],
+			"advanced": [
+				"La UAI aprobó su definición de planeta por votación el 24 de agosto de 2006, en su Asamblea General de Praga.",
+				"Plutón gira al revés que la mayoría de los planetas; un día dura 6,4 días terrestres, exactamente lo mismo que tarda Caronte en orbitarlo.",
+				"La masa de Plutón es solo un 18 % de la de la Luna y un 0,2 % de la de la Tierra."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Plutón sería una pelota de ping-pong."
+			],
+			"standard": [
+				"Plutón mide solo unos dos tercios del ancho de nuestra Luna: en el sistema solar hay siete lunas más grandes que Plutón."
+			],
+			"advanced": [
+				"La luz del Sol necesita unas cinco horas y media para llegar a Plutón; un avión de pasajeros que volara sin escalas a 900 km/h necesitaría unos 750 años."
+			]
+		}
+	},
+	"haumea": {
+		"name": "Haumea",
+		"tagline": "El huevo giratorio",
+		"description": {
+			"simple": "Haumea es un planeta enano que está muy lejos, más allá de Neptuno. Gira tan deprisa —una vuelta en menos de cuatro horas— que se ha estirado hasta tener forma de huevo o de balón de rugby. Haumea tiene dos lunas pequeñas y hasta un anillo fino.",
+			"standard": "Haumea está en el cinturón de Kuiper, la zona de cuerpos helados que hay más allá de Neptuno. Allí un día dura menos de cuatro horas, lo que lo convierte en uno de los cuerpos grandes que más rápido giran del sistema solar. Ese giro tan rápido lo ha estirado hasta darle una forma alargada, de huevo, unas dos veces más largo que grueso. En 2017, los astrónomos vieron pasar Haumea por delante de una estrella lejana y descubrieron a su alrededor un anillo fino: el primero encontrado alrededor de un planeta enano. Sus dos lunas, Hiʻiaka y Namaka, llevan, como Haumea, nombres de diosas hawaianas.",
+			"advanced": "El periodo de rotación de Haumea, de 3,9 horas, lo estira hasta formar un elipsoide alargado aproximadamente el doble de largo que de grueso: la forma en la que su gravedad y su giro se equilibran. Su superficie está cubierta de hielo de agua cristalino, mientras que su densidad apunta a un interior sobre todo rocoso bajo una fina capa de hielo. Se cree que Haumea, sus lunas y una familia de cuerpos helados con órbitas parecidas son fragmentos de una antigua colisión gigante, que también podría explicar su rápido giro. Da una vuelta al Sol cada 283 años a una distancia media de 43 UA, en una órbita inclinada 28°."
+		},
+		"facts": {
+			"simple": [
+				"Un día en Haumea es más corto que una mañana de colegio: menos de 4 horas.",
+				"Haumea lleva el nombre de una diosa hawaiana del nacimiento y la fertilidad.",
+				"Haumea tiene un anillo, igual que Saturno, solo que mucho más fino y tenue."
+			],
+			"standard": [
+				"El anillo de Haumea se descubrió en 2017, cuando el planeta enano pasó por delante de una estrella y tapó su luz durante un momento.",
+				"Un año en Haumea dura unos 283 años terrestres.",
+				"Su brillante superficie es sobre todo hielo de agua."
+			],
+			"advanced": [
+				"Con un periodo de rotación de 3,9 horas, Haumea gira más rápido que cualquier otro planeta enano conocido.",
+				"Su anillo está a unos 2300 km del centro de Haumea y da una vuelta por cada tres giros de Haumea.",
+				"La UAI reconoció a Haumea como planeta enano en 2008."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Haumea tendría más o menos el tamaño y la forma de un huevo de codorniz."
+			],
+			"standard": ["Haumea gira unas seis veces más rápido que la Tierra."],
+			"advanced": [
+				"A la distancia media de Haumea, la luz del Sol llega casi 6 horas después de salir del Sol y es unas 1850 veces más débil que en la Tierra."
+			]
+		}
+	},
+	"makemake": {
+		"name": "Makemake",
+		"tagline": "El planeta enano encontrado en Pascua",
+		"description": {
+			"simple": "Makemake es un mundo pequeño, rojizo y helado, mucho más allá de Neptuno. Lo encontraron en 2005, justo después de Pascua, así que sus descubridores le pusieron el nombre de un dios del pueblo de la isla de Pascua. Makemake es uno de los objetos más brillantes del cinturón de Kuiper, la zona de mundos helados que hay más allá de Neptuno. Tiene una luna diminuta y oscura.",
+			"standard": "Makemake es un planeta enano del cinturón de Kuiper de unos 1400 km de diámetro, algo más de la mitad del ancho de Plutón. Sus descubridores lo detectaron el 31 de marzo de 2005, pocos días después de Pascua, y más tarde le dieron el nombre de Makemake, el dios creador del pueblo rapanui de la isla de Pascua. Después de Plutón, es el objeto conocido más brillante del cinturón de Kuiper, visible con un telescopio de aficionado grande. Su superficie marrón rojiza está cubierta de metano congelado. En 2016, imágenes del Hubble revelaron una luna pequeña y muy oscura.",
+			"advanced": "Makemake da una vuelta al Sol cada 308 años a una distancia media de 45,6 UA, en una órbita inclinada 29°. En su espectro domina el hielo de metano, junto con etano y otros compuestos que la luz solar ha producido a partir de él y que dan a la superficie su color rojizo. Cuando Makemake pasó por delante de una estrella débil en 2011, la estrella desapareció y reapareció de golpe, lo que demuestra que Makemake tiene como mucho una atmósfera extremadamente tenue, a diferencia de Plutón. Su luna, apodada MK2, es unas 1300 veces más débil que Makemake y mucho más oscura; se encontró en imágenes del Hubble tomadas en 2015."
+		},
+		"facts": {
+			"simple": [
+				"Un año en Makemake dura unos 308 años terrestres.",
+				"Al principio, sus descubridores lo apodaron «Easterbunny», que en inglés significa «conejo de Pascua».",
+				"Makemake está cubierto de metano congelado, el gas principal del gas natural con el que mucha gente cocina."
+			],
+			"standard": [
+				"Makemake fue reconocido oficialmente como planeta enano en 2008.",
+				"La temperatura de su superficie ronda los −240 °C.",
+				"Su única luna conocida estuvo oculta en el resplandor de Makemake hasta que el Hubble la reveló en 2016."
+			],
+			"advanced": [
+				"Cronometrar la desaparición de la estrella en 2011 desde varios observatorios permitió conocer el tamaño de Makemake: unos 1430 × 1500 km.",
+				"Su temperatura superficial media es de unos 32 K (−241 °C).",
+				"Cuando se conozca con precisión la órbita de su luna, esta revelará la masa de Makemake, igual que Caronte y Disnomia revelaron las masas de Plutón y Eris."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Makemake sería más o menos del tamaño de una cereza."
+			],
+			"standard": [
+				"Makemake mide aproximadamente el 60 % del ancho de Plutón y el 40 % del de nuestra Luna."
+			],
+			"advanced": [
+				"Visto desde Makemake, el Sol sería solo un punto de luz deslumbrante, pero aun así unas 200 veces más brillante que la luna llena vista desde la Tierra."
+			]
+		}
+	},
+	"eris": {
+		"name": "Eris",
+		"tagline": "El planeta enano que desató un debate",
+		"description": {
+			"simple": "Eris es un planeta enano casi exactamente igual de grande que Plutón, pero mucho más lejano. Cuando lo encontraron en 2005, algunos lo llamaron el décimo planeta. En lugar de eso, los astrónomos crearon una regla clara sobre qué cuenta como planeta, y tanto Eris como Plutón pasaron a ser planetas enanos. Eris lleva el nombre de la diosa griega de las peleas, y le va que ni pintado, ¡porque provocó una buena discusión!",
+			"standard": "Eris mide más o menos lo mismo que Plutón, pero pesa aproximadamente una cuarta parte más, y es uno de los objetos conocidos más lejanos que orbitan el Sol. Su descubrimiento en 2005 obligó a los astrónomos a decidir si era el décimo planeta, o si Plutón era realmente un planeta. La respuesta fue la definición de la UAI de 2006, que convirtió a ambos en planetas enanos. Muy apropiadamente, Eris lleva el nombre de la diosa griega de la discordia y la disputa. Su órbita es tan alargada e inclinada (44°) que tarda unos 560 años en dar una vuelta al Sol. Hoy Eris está unas 96 veces más lejos del Sol que la Tierra, cerca del punto más lejano de su órbita.",
+			"advanced": "Eris pertenece al disco disperso, una población de cuerpos helados más allá del cinturón de Kuiper cuyas órbitas excéntricas y muy inclinadas se deben probablemente a que la gravedad de Neptuno los lanzó hacia fuera. Su órbita (semieje mayor de 68 UA, excentricidad 0,44, inclinación 44°) lo lleva a entre unas 38 y 98 UA del Sol. Cuando Eris pasó por delante de una estrella en 2010, se midió su diámetro: unos 2330 km, justo por debajo de los 2377 km de Plutón, mientras que la órbita de su luna Disnomia indica una masa un 27 % mayor que la de Plutón; por tanto, Eris es más denso y más rocoso. Su superficie refleja cerca del 96 % de la luz que recibe, uno de los valores más altos del sistema solar, probablemente gracias a una escarcha de metano reciente."
+		},
+		"facts": {
+			"simple": [
+				"Un año en Eris dura unos 560 años terrestres.",
+				"Eris tiene una luna, llamada Disnomia.",
+				"Eris es una de las cosas más brillantes del sistema solar: como la nieve recién caída, refleja casi toda la luz del Sol que le llega."
+			],
+			"standard": [
+				"Antes de recibir su nombre oficial, Eris tenía el apodo de «Xena», por la heroína de una serie de televisión.",
+				"Ahora mismo, Eris está más del doble de lejos del Sol que Plutón.",
+				"Eris recibió su nombre oficial en septiembre de 2006, cuando ya se había zanjado el debate sobre los planetas."
+			],
+			"advanced": [
+				"Disnomia gira alrededor de Eris a unos 37 300 km cada 15,8 días; su órbita es lo que permite a los astrónomos pesar Eris.",
+				"Eris parece dar una vuelta sobre sí mismo cada 15,8 días, al ritmo de la órbita de Disnomia.",
+				"Eris se descubrió el 5 de enero de 2005 en imágenes tomadas en octubre de 2003."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Eris sería una pelota de ping-pong, solo un poquito más pequeña que Plutón."
+			],
+			"standard": [
+				"Hoy la luz necesita unas 13 horas para llegar a Eris; un avión de pasajeros a 900 km/h necesitaría unos 1800 años."
+			],
+			"advanced": [
+				"A la distancia actual de Eris, el Sol brilla más de 9000 veces menos que en la Tierra."
+			]
+		}
+	},
+	"charon": {
+		"name": "Caronte",
+		"tagline": "El gran compañero de Plutón",
+		"description": {
+			"simple": "Caronte es la luna más grande de Plutón. Mide aproximadamente la mitad del ancho de Plutón, tanto que Plutón y Caronte giran uno alrededor del otro como dos bailarines agarrados de las manos. Siempre se muestran la misma cara. Si estuvieras en Plutón, verías a Caronte colgado en el cielo sin moverse nunca… o, en el otro lado de Plutón, no lo verías jamás.",
+			"standard": "Caronte es la luna más grande de Plutón, de unos 1200 km de diámetro: más de la mitad del ancho de Plutón. Como Caronte es tan pesado en comparación con Plutón, el punto alrededor del cual giran los dos está en el espacio vacío entre ellos, no dentro de Plutón. Ambos tienen acoplamiento de marea: siempre se muestran la misma cara, y un día en Plutón dura exactamente lo mismo que una órbita de Caronte, 6,4 días. La New Horizons reveló un casquete rojizo en el polo norte de Caronte y cañones mucho más largos y profundos que el Gran Cañón.",
+			"advanced": "Con cerca del 12 % de la masa de Plutón, Caronte es, en relación con el cuerpo al que orbita, la luna más grande de todos los planetas y planetas enanos; el baricentro de la pareja está a más de 900 km sobre la superficie de Plutón, por lo que algunos astrónomos consideran a Plutón y Caronte un planeta enano doble. Su órbita permitió la primera medición precisa de la masa de Plutón. Se cree que su casquete polar rojizo, Mordor Macula, se forma cuando el metano que escapa de la atmósfera de Plutón se congela sobre el frío polo de invierno de Caronte y la luz ultravioleta lo transforma en compuestos rojizos. Su superficie de hielo de agua está partida por un cinturón de cañones, lo que sugiere que un antiguo océano subterráneo se congeló y se expandió."
+		},
+		"facts": {
+			"simple": [
+				"Caronte lleva el nombre del barquero que, en los mitos griegos, llevaba las almas al otro lado de un río, hasta el inframundo.",
+				"Caronte da una vuelta a Plutón en algo menos de una semana.",
+				"Los científicos apodaron «Mordor» al casquete polar rojo oscuro de Caronte, por la tierra oscura de El Señor de los Anillos."
+			],
+			"standard": [
+				"Caronte está a solo unos 19 600 km de Plutón: más o menos la vigésima parte de la distancia entre la Tierra y la Luna.",
+				"Por el acoplamiento de marea, Caronte solo se ve desde una mitad de Plutón.",
+				"Los cañones más profundos de Caronte tienen unos 9 km de profundidad: cinco veces más que el Gran Cañón."
+			],
+			"advanced": [
+				"Diámetro medio: 1212 km; masa: unos 1,6 × 10²¹ kg, cerca del 12 % de la de Plutón.",
+				"La órbita de Caronte es casi perfectamente circular (excentricidad 0,0002).",
+				"James Christy descubrió Caronte en 1978 como un pequeño bulto en fotografías de Plutón."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Plutón sería una pelota de ping-pong y Caronte una avellana a 34 cm de distancia."
+			],
+			"standard": [
+				"Caronte orbita a solo unos 19 600 km de Plutón: un avión de pasajeros podría recorrer esa distancia en menos de un día."
+			],
+			"advanced": [
+				"La Luna tiene cerca del 1,2 % de la masa de la Tierra; Caronte, cerca del 12 % de la de Plutón: en proporción, diez veces más."
+			]
+		}
+	},
+	"vesta": {
+		"name": "Vesta",
+		"tagline": "El asteroide más brillante",
+		"description": {
+			"simple": "Vesta es el segundo objeto más grande del cinturón de asteroides. Es el asteroide más brillante de todos: en noches muy oscuras, a veces se puede ver incluso sin telescopio. Hace mucho tiempo, un choque enorme le abrió un agujero gigante, y algunos de los pedazos han caído en la Tierra como meteoritos. ¡Así que hay gente que puede tener en la mano un trozo de Vesta!",
+			"standard": "Vesta es el segundo cuerpo más grande del cinturón de asteroides, de unos 525 km de diámetro. A diferencia de la mayoría de los asteroides, tiene capas como un pequeño planeta rocoso: un núcleo de hierro, un manto rocoso y una corteza de lava antigua. La sonda Dawn de la NASA orbitó Vesta de 2011 a 2012 y cartografió Rheasilvia, un cráter de unos 500 km de ancho —casi tanto como el propio Vesta— con una montaña central de más del doble de altura que el monte Everest. El impacto que lo formó lanzó rocas que todavía caen a la Tierra: aproximadamente uno de cada veinte meteoritos procede de Vesta.",
+			"advanced": "Vesta es un protoplaneta superviviente: al principio de su historia se fundió y se separó en un núcleo de hierro, un manto y una corteza basáltica, el mismo proceso que dio forma a la Tierra. Su hemisferio sur está dominado por dos cuencas de impacto superpuestas, Rheasilvia (unos 500 km) y la más antigua Veneneia. El impacto de Rheasilvia, hace unos mil millones de años, arrancó cerca del 1 % del volumen de Vesta y creó una familia de pequeños asteroides, los vestoides. Algunos de esos fragmentos llegan a la Tierra como meteoritos HED (howarditas, eucritas y diogenitas), que nos permiten estudiar la corteza de Vesta en el laboratorio. Como su forma no es del todo redonda, Vesta se clasifica como asteroide y no como planeta enano."
+		},
+		"facts": {
+			"simple": [
+				"Vesta lleva el nombre de la diosa romana del hogar y de su fuego.",
+				"Un día en Vesta dura algo más de 5 horas.",
+				"La nave Dawn visitó primero Vesta y después siguió su viaje hasta Ceres."
+			],
+			"standard": [
+				"Heinrich Olbers descubrió Vesta en 1807.",
+				"Un año en Vesta dura unos 3,6 años terrestres.",
+				"La Dawn fue la primera nave espacial en orbitar dos mundos distintos más allá de la Tierra: Vesta y Ceres."
+			],
+			"advanced": [
+				"Vesta reúne aproximadamente una décima parte de la masa de todo el cinturón de asteroides.",
+				"En su momento de mayor brillo, Vesta alcanza aproximadamente la magnitud 5, lo que lo convierte en el único asteroide del cinturón principal que a veces se ve a simple vista.",
+				"Su periodo de rotación es de 5,34 horas y su eje está inclinado 29°."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Vesta sería un guisante."
+			],
+			"standard": [
+				"Vesta mide unos 525 km de ancho: a 100 km/h podrías cruzarlo en coche en algo más de 5 horas."
+			],
+			"advanced": [
+				"El pico central de Rheasilvia es unas dos veces y media más alto que el monte Everest, en un cuerpo 24 veces más estrecho que la Tierra."
+			]
+		}
+	},
+	"pallas": {
+		"name": "Palas",
+		"tagline": "El gigante inclinado del cinturón de asteroides",
+		"description": {
+			"simple": "Palas es uno de los asteroides más grandes, casi tan grande como Vesta. Da vueltas al Sol por un camino muy inclinado, así que pasa gran parte del tiempo por encima o por debajo de los demás asteroides. En las películas, el cinturón de asteroides está lleno de rocas que dan tumbos muy juntas, pero el de verdad está casi vacío. Las naves espaciales lo atraviesan en línea recta sin tener que esquivar nada.",
+			"standard": "Palas fue el segundo asteroide descubierto: lo encontró Heinrich Olbers en 1802. Mide unos 510 km de diámetro, casi tanto como Vesta, pero su órbita está inclinada unos 35° respecto a la de los planetas, tanto que es difícil llegar hasta él, y ninguna nave lo ha visitado todavía. Palas es un buen recordatorio de lo vacío que está en realidad el cinturón de asteroides: los asteroides vecinos están, de media, a aproximadamente un millón de km unos de otros, más del doble de la distancia de la Tierra a la Luna. Naves como la Pioneer 10, la Galileo, la Cassini y la New Horizons han cruzado el cinturón sin tener que esquivar nada.",
+			"advanced": "Palas tiene un diámetro medio de unos 510 km y reúne aproximadamente el 8 % de la masa del cinturón de asteroides. Su órbita es inusualmente inclinada (34,9°) y excéntrica (0,23), así que se cruza con otros asteroides a grandes velocidades relativas y las colisiones son especialmente violentas, lo que podría explicar la superficie llena de cráteres, como una «pelota de golf», que se vio en imágenes del Very Large Telescope de 2020. Todo el cinturón contiene solo un 3 % de la masa de la Luna, y Ceres, Vesta, Palas e Higía juntos suponen más de la mitad. Palas orbita a una distancia media de 2,77 UA, casi exactamente la misma que Ceres."
+		},
+		"facts": {
+			"simple": [
+				"Palas lleva el nombre de Palas Atenea, la diosa griega de la sabiduría.",
+				"Un año en Palas dura más de cuatro años y medio terrestres.",
+				"Todos los asteroides del cinturón juntos pesan mucho menos que nuestra Luna."
+			],
+			"standard": [
+				"Como Ceres, Palas se contó como planeta durante décadas después de su descubrimiento.",
+				"Su órbita está mucho más inclinada que las de los otros grandes asteroides.",
+				"El metal paladio, que se usa en los catalizadores de los coches, lleva el nombre de Palas."
+			],
+			"advanced": [
+				"Palas es un raro asteroide de tipo B: rico en carbono y de color ligeramente azulado.",
+				"Su periodo de rotación es de unas 7,8 horas.",
+				"El paladio, descubierto en 1802, recibió su nombre por el asteroide encontrado ese mismo año."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Palas sería un guisante, igual que Vesta."
+			],
+			"standard": [
+				"Todos los asteroides juntos tienen solo una trigésima parte de la masa de la Luna."
+			],
+			"advanced": [
+				"Volar de un asteroide a su vecino más cercano —de media, aproximadamente un millón de km— le llevaría a un avión de pasajeros más de seis semanas."
+			]
+		}
+	},
+	"juno": {
+		"name": "Juno",
+		"tagline": "El tercer asteroide descubierto",
+		"description": {
+			"simple": "Juno es un gran asteroide del cinturón de asteroides, de unos 250 km de ancho. Fue el tercer asteroide que se descubrió, en 1804. Está hecho de piedra mezclada con metal y tiene una forma parecida a una patata. Juno lleva el nombre de la reina de los dioses romanos.",
+			"standard": "Juno fue el tercer asteroide descubierto: lo encontró Karl Harding en 1804. Mide unos 250 km de diámetro y es uno de los asteroides rocosos más grandes, hecho de roca de silicatos mezclada con metal. Su órbita es bastante alargada: Juno se acerca al Sol hasta unas 2 UA y se aleja hasta unas 3,4 UA. No lo confundas con la sonda Juno de la NASA: esa se envió a Júpiter, no a este asteroide.",
+			"advanced": "Juno es un asteroide de tipo S: su superficie está formada por silicatos rocosos mezclados con níquel y hierro, y refleja más luz que los asteroides oscuros ricos en carbono. Con una excentricidad de 0,26, su distancia al Sol varía entre unos 297 y 502 millones de km, y da una vuelta cada 4,4 años. Gira sobre sí mismo en unas 7,2 horas, y su brillo cambia al girar debido a su forma irregular. Junto con Ceres, Palas y Vesta, se contó como planeta durante varias décadas después de su descubrimiento."
+		},
+		"facts": {
+			"simple": [
+				"Un año en Juno dura casi cuatro años y medio terrestres.",
+				"Juno da una vuelta sobre sí mismo en unas 7 horas.",
+				"Juno brilla demasiado poco para verlo solo con los ojos: necesitas prismáticos o un telescopio."
+			],
+			"standard": [
+				"Juno lleva el nombre de la reina romana de los dioses, la esposa de Júpiter.",
+				"Juno gira una vez sobre sí mismo en unas 7,2 horas.",
+				"Juno tarda unos 4,4 años en dar una vuelta al Sol."
+			],
+			"advanced": [
+				"Su forma, de unos 290 × 240 × 190 km, está lejos de ser redonda, así que Juno no es un planeta enano.",
+				"La masa de Juno es de unos 2,8 × 10¹⁹ kg, aproximadamente el 1 % del total del cinturón de asteroides.",
+				"Su perihelio está a unas 1,99 UA y su afelio a unas 3,35 UA."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Juno sería un grano de pimienta."
+			],
+			"standard": [
+				"Juno mide unos 250 km de ancho: a 100 km/h podrías cruzarlo en coche en dos horas y media."
+			],
+			"advanced": [
+				"La Tierra es unas 50 veces más ancha que Juno, pero unas 200 000 veces más pesada."
+			]
+		}
+	},
+	"hygiea": {
+		"name": "Higía",
+		"tagline": "Un posible planeta enano",
+		"description": {
+			"simple": "Higía es el cuarto objeto más grande del cinturón de asteroides. Es muy oscuro y casi redondo, como una pelota. Algunos astrónomos creen que algún día podría considerarse un planeta enano. Lleva el nombre de la diosa griega de la salud: de ahí viene la palabra «higiene».",
+			"standard": "Higía es el cuarto asteroide más grande, de unos 410 km de diámetro, y orbita en la parte exterior del cinturón, a una distancia media de 3,15 UA. Lo descubrió Annibale de Gasparis en Nápoles en 1849. Su superficie es oscura y rica en carbono, como la de muchos asteroides del cinturón exterior. En 2019, imágenes nítidas del Very Large Telescope, en Chile, mostraron que Higía es casi perfectamente redondo, así que podría considerarse un planeta enano, pero la UAI no ha cambiado su clasificación.",
+			"advanced": "Higía es un asteroide de tipo C, un cuerpo carbonáceo oscuro, y el mayor miembro de una familia de asteroides nacida de un impacto gigante. Las observaciones de 2019 con el Very Large Telescope no encontraron, para sorpresa de los astrónomos, ninguna gran cuenca de impacto en él; los modelos sugieren que la colisión destrozó Higía por completo y que después los fragmentos se volvieron a reunir formando una esfera. Su forma redonda parece cumplir el criterio de redondez de la UAI para los planetas enanos, pero su clasificación no ha cambiado. Ceres, Vesta, Palas e Higía juntos reúnen más de la mitad de la masa del cinturón de asteroides."
+		},
+		"facts": {
+			"simple": [
+				"Un año en Higía dura unos cinco años y medio terrestres.",
+				"Un día en Higía dura casi 14 horas.",
+				"Higía brilla demasiado poco para verlo sin telescopio."
+			],
+			"standard": [
+				"Higía tarda unos 5,6 años en dar una vuelta al Sol.",
+				"Fue el décimo asteroide descubierto.",
+				"Un día en Higía dura unas 13,8 horas."
+			],
+			"advanced": [
+				"Masa: unos 1,05 × 10²⁰ kg, aproximadamente el 4 % de todo el cinturón de asteroides.",
+				"Distancia media al Sol: 3,15 UA; excentricidad orbital: 0,11.",
+				"La familia de Higía incluye miles de pequeños asteroides con órbitas parecidas, fragmentos del mismo impacto."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Higía sería un guisante pequeño de unos 7 mm de ancho."
+			],
+			"standard": [
+				"La luz del Sol tarda unos 26 minutos en llegar a Higía: tres veces más de lo que tarda en llegar a la Tierra."
+			],
+			"advanced": [
+				"Harían falta unos 700 Higías para igualar la masa de nuestra Luna."
+			]
+		}
+	},
+	"eros": {
+		"name": "Eros",
+		"tagline": "El primer asteroide en el que se posó una nave",
+		"description": {
+			"simple": "Eros es un asteroide alargado con forma de cacahuete, de unos 34 km de largo. Se acerca a la Tierra más que los asteroides del cinturón principal. En el año 2000, una nave espacial llamada NEAR Shoemaker se puso en órbita alrededor de Eros, y un año después se posó suavemente sobre él… ¡aunque no se había construido para aterrizar!",
+			"standard": "Eros, descubierto en 1898, fue el primer asteroide cercano a la Tierra que se encontró: su órbita lo acerca al Sol más que Marte, aunque nunca cruza la trayectoria de la Tierra. Mide unos 34 km de largo. El 14 de febrero de 2000 —el día de San Valentín, muy apropiado para un asteroide con el nombre del dios griego del amor—, la NEAR Shoemaker de la NASA se convirtió en la primera nave en orbitar un asteroide. Tras un año cartografiándolo, se posó en él el 12 de febrero de 2001: el primer aterrizaje en un asteroide.",
+			"advanced": "Eros es un asteroide de tipo S con una órbita de semieje mayor de 1,46 UA y excentricidad de 0,22; tarda 1,76 años en dar la vuelta al Sol, y su perihelio a 1,13 UA lo convierte en un asteroide cercano a la Tierra que cruza la órbita de Marte. Sus acercamientos hacia 1900 y en 1931 se aprovecharon para medir su paralaje y, con ello, la escala del sistema solar: la longitud de la unidad astronómica. La NEAR Shoemaker midió una densidad global de unos 2,7 g/cm³, parecida a la de la corteza terrestre, lo que sugiere un cuerpo sólido pero muy fracturado, más que un montón suelto de escombros, cubierto de rocas y de charcas de polvo fino."
+		},
+		"facts": {
+			"simple": [
+				"Eros lleva el nombre del dios griego del amor… ¡y la nave llegó el día de San Valentín!",
+				"Eros da una vuelta sobre sí mismo en algo más de 5 horas.",
+				"En Eros la gravedad es tan débil que podrías lanzar una piedra directamente al espacio."
+			],
+			"standard": [
+				"La NEAR Shoemaker tomó unas 160 000 fotos de Eros.",
+				"Un año en Eros dura unos 1,76 años terrestres.",
+				"Eros es uno de los asteroides cercanos a la Tierra más grandes que se conocen."
+			],
+			"advanced": [
+				"La misión NEAR se rebautizó en honor del geólogo planetario Eugene Shoemaker.",
+				"Gustav Witt descubrió Eros el 13 de agosto de 1898 en Berlín.",
+				"Después de posarse, la NEAR Shoemaker siguió midiendo la composición de la superficie con su espectrómetro de rayos gamma durante unas dos semanas."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Eros sería tan pequeño como un grano de arena."
+			],
+			"standard": [
+				"Eros mide unos 34 km de largo: un coche a 100 km/h lo recorrería de punta a punta en unos 20 minutos."
+			],
+			"advanced": [
+				"La gravedad en la superficie de Eros es miles de veces más débil que en la Tierra."
+			]
+		}
+	},
+	"bennu": {
+		"name": "Bennu",
+		"tagline": "El montón de escombros que trajimos a casa",
+		"description": {
+			"simple": "Bennu es un asteroide pequeño, de solo unos 500 m de ancho: si pudieras rodearlo caminando por el medio, tardarías solo unos 20 minutos. No es una roca maciza, sino un montón suelto de rocas y grava que se mantiene unido gracias a su pequeñísima gravedad. En 2020, la nave OSIRIS-REx tocó Bennu durante unos segundos y recogió un poco de polvo y piedrecitas. En 2023, una cápsula los trajo sanos y salvos a la Tierra, donde los científicos los están estudiando.",
+			"standard": "Bennu es un asteroide cercano a la Tierra de unos 500 m de diámetro, descubierto en 1999. La sonda OSIRIS-REx de la NASA llegó en 2018 y descubrió un montón de escombros: una pila suelta de rocas y grava que se mantiene unida por una gravedad débil. Cuando tocó la superficie el 20 de octubre de 2020 para recoger una muestra, su cabezal de muestreo se hundió como en una piscina de bolas. La cápsula, con unos 120 g de material, aterrizó en el desierto de Utah el 24 de septiembre de 2023. La muestra es rica en carbono y en minerales que contienen agua, e incluye aminoácidos, componentes básicos de la vida.",
+			"advanced": "Bennu es un asteroide de tipo B rico en carbono cuya densidad global, de solo unos 1,2 g/cm³, implica que buena parte de su volumen es espacio vacío entre los fragmentos. Su órbita (semieje mayor de 1,13 UA, excentricidad 0,20) cruza la de la Tierra, lo que lo convierte en uno de los asteroides potencialmente peligrosos más vigilados: según el seguimiento preciso de la OSIRIS-REx, la probabilidad de un impacto el 24 de septiembre de 2182 es de aproximadamente 1 entre 2700. La muestra traída a la Tierra contiene minerales que se formaron en agua líquida y sales que dejó la salmuera al evaporarse, prueba de que el cuerpo del que procede Bennu tuvo agua en el pasado."
+		},
+		"facts": {
+			"simple": [
+				"El nombre de Bennu lo propuso un niño de 9 años que ganó un concurso en 2013.",
+				"Bennu da una vuelta sobre sí mismo en algo más de 4 horas.",
+				"Los trocitos de Bennu que se trajeron a la Tierra pesan unos 120 g: algo más que una tableta de chocolate."
+			],
+			"standard": [
+				"Bennu da una vuelta al Sol aproximadamente cada 1,2 años.",
+				"De la superficie de Bennu salen disparadas al espacio pequeñas piedras con regularidad.",
+				"Después de entregar su muestra, la nave siguió viaje con el nombre de OSIRIS-APEX para visitar el asteroide Apofis en 2029."
+			],
+			"advanced": [
+				"La rotación de Bennu (unas 4,3 horas) se acelera aproximadamente un segundo por siglo, impulsada por la luz solar que reemite en forma de calor (el efecto YORP).",
+				"Su superficie refleja solo un 4 % de la luz solar que recibe y está cubierta de más rocas grandes de lo esperado.",
+				"La muestra contiene 14 de los 20 aminoácidos que la vida en la Tierra usa para construir proteínas."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Unos cinco campos de fútbol puestos uno detrás de otro cruzarían Bennu de lado a lado."
+			],
+			"standard": [
+				"Si la Tierra fuera un balón de fútbol, Bennu sería una mota de polvo de una décima parte del grosor de un pelo."
+			],
+			"advanced": [
+				"La velocidad de escape de Bennu es de solo unos 20 cm/s, mucho menos que el paso de una persona caminando, así que un paso descuidado podría lanzarte al espacio."
+			]
+		}
+	},
+	"arrokoth": {
+		"name": "Arrokoth",
+		"tagline": "El mundo más lejano jamás explorado",
+		"description": {
+			"simple": "Arrokoth es un mundo pequeño y rojizo de hielo y roca, muy lejos, en el cinturón de Kuiper, más allá de Neptuno. Parece dos tortitas planas pegadas, o un muñeco de nieve tumbado. El día de Año Nuevo de 2019, la sonda New Horizons pasó volando a su lado. Ninguna nave espacial ha visitado nunca nada más lejano.",
+			"standard": "Arrokoth es un pequeño cuerpo helado del cinturón de Kuiper, de unos 36 km de largo. El 1 de enero de 2019, la New Horizons de la NASA pasó junto a él —tres años y medio después de visitar Plutón—, lo que lo convirtió en el objeto más lejano explorado de cerca, a unos 6600 millones de km de la Tierra. Resultó estar formado por dos lóbulos aplanados unidos suavemente, lo que muestra cómo se formaron los mundos pequeños: trozos de una nube de polvo y hielo que se fueron agrupando poco a poco. Arrokoth apenas ha cambiado en 4500 millones de años, así que es como una cápsula del tiempo del nacimiento del sistema solar.",
+			"advanced": "Arrokoth (486958, antes 2014 MU69) se encontró en 2014 con el telescopio espacial Hubble, durante la búsqueda de un objetivo al que la New Horizons pudiera llegar después de Plutón. Orbita en el cinturón de Kuiper clásico frío, en una órbita casi circular (excentricidad 0,04) y poco inclinada a 44 UA, y tarda unos 292 años en cada vuelta. Es un binario de contacto: sus dos lóbulos se orbitaron mutuamente y luego se fusionaron con suavidad, a no más de unos pocos km/h, lo que indica que los planetesimales se formaron por el colapso suave de nubes de guijarros y no por colisiones violentas. Su intenso color rojo se debe a compuestos orgánicos producidos por la radiación, y en su superficie se ha detectado hielo de metanol."
+		},
+		"facts": {
+			"simple": [
+				"Arrokoth significa «cielo» en la lengua del pueblo powhatan.",
+				"Las señales de radio de la New Horizons desde Arrokoth tardaban unas 6 horas en llegar a la Tierra.",
+				"Arrokoth es muy rojo, incluso más rojo que Plutón."
+			],
+			"standard": [
+				"Arrokoth se descubrió en 2014 con el telescopio espacial Hubble, cuando los científicos buscaban un objetivo para la New Horizons.",
+				"Un año en Arrokoth dura unos 292 años terrestres.",
+				"La New Horizons pasó a unos 3500 km de Arrokoth."
+			],
+			"advanced": [
+				"Antes de que se eligiera su nombre oficial en 2019, 2014 MU69 tenía el apodo de «Ultima Thule».",
+				"La New Horizons pasó unas tres veces y media más cerca de Arrokoth que de Plutón.",
+				"Su distancia al Sol apenas cambia a lo largo de su órbita: entre unas 42,5 y 45,6 UA."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, Arrokoth sería un grano de arena a más de 100 km de distancia."
+			],
+			"standard": [
+				"Arrokoth mide unos 36 km de largo: algo menos que un maratón."
+			],
+			"advanced": [
+				"La New Horizons pasó a unos 14 km/s: habría recorrido todo el largo de Arrokoth en menos de 3 segundos."
+			]
+		}
+	},
+	"halley": {
+		"name": "Halley",
+		"tagline": "El cometa Halley, que vuelve cada 75 o 76 años",
+		"description": {
+			"simple": "El cometa Halley es el cometa más famoso de todos. Es un pedazo de hielo sucio de unos 15 km de largo. Cada 75 o 76 años se acerca al Sol: el hielo se convierte en gas y polvo, y al cometa le crece una cola larga y brillante. La cola siempre apunta en sentido contrario al Sol. El Halley nos visitó por última vez en 1986 y volverá en 2061. ¡Quizá tú lo veas!",
+			"standard": "El cometa Halley vuelve al sistema solar interior cada 75 o 76 años. Su núcleo es un pedazo oscuro de hielo y polvo de unos 15 × 8 km. Al acercarse al Sol, la luz solar convierte el hielo en gas, que arrastra polvo consigo y forma una nube brillante, la coma, y dos colas que el Sol empuja en sentido contrario a él: una cola de gas recta y azulada y una cola de polvo curvada y blanquecina. Por eso, cuando el cometa vuelve a alejarse del Sol, sus colas van por delante. Edmond Halley se dio cuenta de que los cometas vistos en 1531, 1607 y 1682 eran uno solo y predijo su regreso para 1758; el cometa volvió, pero Halley no vivió para verlo. Su último perihelio fue el 9 de febrero de 1986, y el próximo será el 28 de julio de 2061.",
+			"advanced": "El cometa 1P/Halley sigue una órbita retrógrada (inclinación de 162°): recorre su camino alrededor del Sol en sentido contrario al de los planetas. Su órbita, muy excéntrica (0,97), lo lleva desde unas 0,6 UA, dentro de la órbita de Venus, hasta unas 35 UA, más allá de Neptuno. En marzo de 1986, la sonda Giotto de la ESA pasó a unos 600 km del núcleo y tomó las primeras imágenes de cerca del núcleo de un cometa: una superficie más oscura que el carbón, con chorros de gas y polvo que brotaban de unas pocas zonas activas del lado iluminado. Los registros del cometa Halley se remontan al menos al año 240 a. C., en China."
+		},
+		"facts": {
+			"simple": [
+				"El polvo del cometa Halley produce cada año dos lluvias de estrellas fugaces, en mayo y en octubre.",
+				"El escritor Mark Twain nació en un año del Halley, 1835, y murió en el siguiente, 1910.",
+				"El cometa Halley aparece en el tapiz de Bayeux, un bordado de más de 900 años de antigüedad."
+			],
+			"standard": [
+				"En 1986, una flota de naves de Europa, la Unión Soviética y Japón pasó junto al cometa.",
+				"En diciembre de 2023 llegó al extremo más lejano de su órbita, más allá de Neptuno, y ahora está de vuelta.",
+				"El cometa Halley lleva el nombre del astrónomo Edmond Halley, no el de la primera persona que lo vio."
+			],
+			"advanced": [
+				"El núcleo tiene una masa de unos 2,2 × 10¹⁴ kg.",
+				"El periodo varía unos pocos años de un regreso a otro, porque la gravedad de los planetas tira del cometa.",
+				"Su polvo causa la lluvia de meteoros de las Eta Acuáridas en mayo y la de las Oriónidas en octubre."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"El núcleo del Halley mide solo unos 15 km de largo, pero su cola puede extenderse millones de kilómetros: muchas veces la distancia de la Tierra a la Luna."
+			],
+			"standard": [
+				"Un niño que vea el cometa Halley en 2061 a los 10 años tendrá unos 85 cuando vuelva la siguiente vez."
+			],
+			"advanced": [
+				"El Halley corre a unos 55 km/s cerca del Sol, pero avanza a menos de 1 km/s en el extremo lejano de su órbita: la segunda ley de Kepler en acción."
+			]
+		}
+	},
+	"encke": {
+		"name": "Encke",
+		"tagline": "El cometa del año más corto",
+		"description": {
+			"simple": "El cometa Encke es un cometa pequeño que vuelve al Sol muy a menudo: aproximadamente cada 3 años y 4 meses. Su núcleo mide solo unos 5 km de ancho, y normalmente brilla demasiado poco para verlo sin prismáticos o telescopio. El polvo que ha ido dejando a lo largo de su camino nos regala estrellas fugaces en otoño.",
+			"standard": "El cometa Encke (2P/Encke) tiene el periodo orbital más corto de todos los cometas brillantes: vuelve cada 3,3 años. Pierre Méchain lo vio por primera vez en 1786, pero lleva el nombre de Johann Franz Encke, que calculó su órbita en 1819 y demostró que vuelve una y otra vez. Fue solo el segundo cometa, después del Halley, del que se supo que regresaba; por eso su nombre de catálogo empieza por «2P». Su órbita lo acerca al Sol más que la distancia media de Mercurio y lo lleva hasta unas 4 UA, todavía dentro de la órbita de Júpiter. El polvo del Encke causa cada octubre y noviembre las lluvias de meteoros de las Táuridas.",
+			"advanced": "La órbita del Encke (semieje mayor de 2,22 UA, excentricidad 0,85) va desde 0,34 UA, más cerca del Sol que la distancia media de Mercurio, hasta 4,1 UA. Encke observó que el cometa volvía cada vez unas horas antes de lo que predecía la gravedad por sí sola: una de las primeras señales de fuerzas no gravitatorias, que hoy sabemos que proceden de chorros de gas que actúan como pequeños motores cohete sobre el núcleo en rotación. A diferencia de la mayoría de los cometas de periodo corto, el Encke nunca se acerca a Júpiter, cuya gravedad suele remodelar esas órbitas; cómo llegó a su órbita actual sigue siendo objeto de debate. Observado en decenas de regresos, es uno de los cometas mejor estudiados."
+		},
+		"facts": {
+			"simple": [
+				"El Encke nos regala las estrellas fugaces Táuridas en octubre y noviembre.",
+				"El Encke se acerca al Sol más de lo que está de media el planeta Mercurio.",
+				"El Encke vuelve al Sol unas tres veces cada diez años."
+			],
+			"standard": [
+				"El núcleo del Encke mide unos 5 km de diámetro.",
+				"En 2007, las naves STEREO de la NASA vieron cómo una erupción del Sol arrancaba la cola del Encke; más tarde le volvió a crecer.",
+				"El Encke nunca llega tan lejos como la órbita de Júpiter."
+			],
+			"advanced": [
+				"Periodo: 3,31 años; perihelio: 0,34 UA; afelio: 4,1 UA.",
+				"Su rastro de polvo se ha repartido a lo largo de toda la órbita, así que la Tierra lo cruza cada año.",
+				"La designación 2P del Encke significa «el segundo cometa periódico»; el cometa Halley es el 1P."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, el núcleo del Encke sería más o menos tan fino como un pelo."
+			],
+			"standard": [
+				"El Encke vuelve unas 23 veces por cada regreso del cometa Halley."
+			],
+			"advanced": [
+				"En su punto más cercano al Sol, el Encke recibe casi 9 veces más luz solar que la Tierra."
+			]
+		}
+	},
+	"67p": {
+		"name": "67P",
+		"tagline": "El cometa con forma de patito de goma que visitó la Rosetta",
+		"description": {
+			"simple": "El cometa 67P parece un patito de goma gigante hecho de hielo y polvo, de unos 4 km de largo. La nave Rosetta estuvo dos años dando vueltas a su alrededor y vio cómo se despertaba al acercarse al Sol: de él salían chorros de gas y polvo. La Rosetta incluso dejó caer sobre el cometa un pequeño módulo de aterrizaje llamado Philae: ¡el primer aterrizaje en un cometa de la historia!",
+			"standard": "El cometa 67P/Churiumov-Guerasimenko lo descubrieron en 1969 Klim Churiumov y Svetlana Guerasimenko. Está formado por dos lóbulos unidos por un cuello estrecho, lo que le da su famosa forma de «patito de goma», de unos 4 km de largo. La sonda Rosetta de la ESA llegó hasta él en agosto de 2014 y lo orbitó durante más de dos años, observando cómo el hielo se convertía en gas a medida que el cometa se acercaba al Sol. El 12 de noviembre de 2014 se posó el módulo de aterrizaje Philae —el primer aterrizaje en un cometa—, pero rebotó y acabó quieto a la sombra de un acantilado. La Rosetta terminó su misión el 30 de septiembre de 2016 con un choque lento y controlado contra el cometa.",
+			"advanced": "El 67P es un cometa de la familia de Júpiter con un periodo de 6,4 años, que viaja entre 1,24 UA y unas 5,7 UA del Sol. La Rosetta midió una densidad de solo unos 0,53 g/cm³: aproximadamente el 70 % del núcleo es espacio vacío. Sus instrumentos encontraron el aminoácido glicina y fósforo, así como una proporción entre agua pesada y agua normal muy distinta de la de los océanos de la Tierra, lo que sugiere que cometas como el 67P no aportaron la mayor parte del agua de la Tierra. Los arpones de Philae no se dispararon, así que rebotó dos veces antes de quedar en reposo a la sombra, donde su batería se agotó tras unos dos días y medio de ciencia."
+		},
+		"facts": {
+			"simple": [
+				"La gravedad en el 67P es tan débil que un buen salto te lanzaría volando al espacio.",
+				"El módulo Philae rebotó dos veces antes de quedarse quieto.",
+				"La Rosetta tardó diez años en llegar al 67P y luego lo exploró durante más de dos años."
+			],
+			"standard": [
+				"El 67P da una vuelta al Sol cada 6,4 años.",
+				"El cometa es tan poroso que flotaría en el agua… si encontraras una bañera lo bastante grande.",
+				"La Rosetta lleva el nombre de la piedra de Rosetta, que ayudó a descifrar los jeroglíficos egipcios."
+			],
+			"advanced": [
+				"Masa: unos 1 × 10¹³ kg, es decir, unos 10 000 millones de toneladas.",
+				"El núcleo gira sobre sí mismo en unas 12,4 horas.",
+				"El 67P pasó por su perihelio el 13 de agosto de 2015, a 1,24 UA, con la Rosetta observándolo."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"El 67P mide unos 4 km de largo: podrías ir andando de un extremo a otro en menos de una hora… si no salieras flotando."
+			],
+			"standard": [
+				"Si la Tierra fuera un balón de fútbol, el 67P sería más o menos tan grueso como un pelo humano."
+			],
+			"advanced": [
+				"La densidad media del 67P, de unos 0,5 g/cm³, es parecida a la de la madera de pino seca."
+			]
+		}
+	},
+	"halebopp": {
+		"name": "Hale-Bopp",
+		"tagline": "El gran cometa de 1997",
+		"description": {
+			"simple": "El Hale-Bopp fue uno de los cometas más brillantes de los últimos cien años. En 1997, gente de todo el mundo pudo verlo en el cielo nocturno sin telescopio, incluso desde ciudades muy iluminadas. Estuvo visible durante un año y medio, más o menos. Su núcleo es enorme para ser un cometa: mide unos 60 km de ancho. No volverá hasta dentro de unos 2400 años.",
+			"standard": "El cometa Hale-Bopp (C/1995 O1) lo descubrieron el 23 de julio de 1995, la misma noche y cada uno por su cuenta, Alan Hale en Nuevo México y Thomas Bopp en Arizona. En ese momento todavía estaba más allá de la órbita de Júpiter, una distancia inusualmente grande para ver un cometa, porque su núcleo es excepcionalmente grande: de unos 60 km de diámetro. Pasó por su punto más cercano al Sol el 1 de abril de 1997 y probablemente lo vio más gente que cualquier otro cometa anterior. Sus dos colas, una cola de gas azulada y una ancha cola de polvo blanquecina, apuntaban en direcciones ligeramente distintas, pero ambas en sentido contrario al Sol.",
+			"advanced": "El Hale-Bopp es un cometa de periodo largo con una órbita casi perpendicular (inclinación de 89°) y extremadamente alargada (excentricidad 0,995). Su visita anterior fue hace unos 4200 años; en su viaje de llegada pasó cerca de Júpiter en 1996, y la gravedad del planeta acortó su periodo a unos 2400 años. Su núcleo, que se estima entre 40 y 80 km de diámetro, es uno de los mayores conocidos para un cometa. Además de las habituales colas de gas y de polvo, los observadores descubrieron una tercera cola, débil, formada por átomos de sodio. Su órbita llega ahora hasta unas 350 UA del Sol."
+		},
+		"facts": {
+			"simple": [
+				"Dos personas descubrieron el Hale-Bopp la misma noche en dos lugares distintos.",
+				"Su núcleo es unas cuatro veces más largo que el del Halley.",
+				"La última vez que pasó el Hale-Bopp, hace unos 4200 años, las pirámides de Egipto ya estaban construidas."
+			],
+			"standard": [
+				"El Hale-Bopp fue visible a simple vista durante unos 18 meses, el doble que el anterior récord, el Gran Cometa de 1811.",
+				"Su órbita está inclinada casi en ángulo recto (89°) respecto a las órbitas de los planetas.",
+				"Sus colas se extendían decenas de millones de kilómetros."
+			],
+			"advanced": [
+				"El Hale-Bopp se descubrió a unas 7 UA del Sol, más lejos que Júpiter.",
+				"Su cola de sodio era recta y estrecha, empujada hacia fuera por la presión de la luz solar.",
+				"El Hale-Bopp pasó por su perihelio el 1 de abril de 1997, a unas 0,9 UA del Sol."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Si la Tierra fuera un balón de fútbol, el núcleo del Hale-Bopp sería más o menos del tamaño de una semilla de amapola."
+			],
+			"standard": [
+				"El Hale-Bopp solo vuelve más o menos cada 2400 años: unas 30 veces lo que tarda el cometa Halley."
+			],
+			"advanced": [
+				"En el extremo más lejano de su órbita, a unas 350 UA, la luz del Sol necesita unos dos días para llegar al Hale-Bopp."
+			]
+		}
+	},
+	"neowise": {
+		"name": "NEOWISE",
+		"tagline": "El gran cometa de 2020",
+		"description": {
+			"simple": "El cometa NEOWISE fue un cometa brillante que la gente pudo ver con sus propios ojos en julio de 2020. Lo descubrió en marzo de 2020 un telescopio espacial llamado NEOWISE, que le dio su nombre. En las fotos se ven claramente sus dos colas: una cola de polvo curvada y blanquecina y una cola de gas fina y azulada. No volverá hasta dentro de unos 6800 años.",
+			"standard": "El cometa NEOWISE (C/2020 F3) lo descubrió el 27 de marzo de 2020 el telescopio espacial NEOWISE de la NASA, que buscaba asteroides y cometas en luz infrarroja. Pasó por su punto más cercano al Sol el 3 de julio de 2020, dentro de la órbita de Mercurio, y sobrevivió al calor. En julio se convirtió en el cometa más brillante visto desde el hemisferio norte desde el Hale-Bopp en 1997, fácil de ver a simple vista, bajo en el cielo de la madrugada y, más tarde, en el del anochecer. Las fotos mostraban con claridad sus dos colas: una cola de polvo curvada, de un blanco amarillento, y una cola de gas recta, de un azul tenue, ambas en sentido contrario al Sol. No volverá hasta dentro de unos 6800 años.",
+			"advanced": "C/2020 F3 es un cometa de periodo largo con una órbita retrógrada muy inclinada (129°). En el perihelio estuvo a solo 0,29 UA del Sol, y su máximo acercamiento a la Tierra fue el 23 de julio de 2020, a unos 103 millones de km (0,69 UA). Los tirones gravitatorios de los planetas durante este paso estiraron su órbita: su periodo creció en más de 2000 años, hasta unos 6800, y su afelio está ahora a más de 700 UA del Sol. Su núcleo mide unos 5 km de diámetro. Los espectros mostraron sodio brillante, y el observatorio SOHO y la Parker Solar Probe lo fotografiaron cerca del perihelio."
+		},
+		"facts": {
+			"simple": [
+				"Para la gente de la mitad norte del mundo, el NEOWISE fue el cometa más brillante en más de 20 años.",
+				"Los astronautas de la Estación Espacial Internacional lo fotografiaron desde el espacio.",
+				"Su próxima visita está tan lejos en el futuro que nadie que viva hoy volverá a verlo."
+			],
+			"standard": [
+				"El núcleo del NEOWISE mide unos 5 km de diámetro.",
+				"Pasó más cerca del Sol de lo que llega nunca Mercurio.",
+				"El telescopio NEOWISE que lo descubrió terminó su misión en 2024."
+			],
+			"advanced": [
+				"En el perihelio, el cometa se movía a casi 78 km/s respecto al Sol.",
+				"Los telescopios infrarrojos ven el brillo térmico del núcleo oscuro y del polvo de un cometa, lo que los convierte en buenos cazadores de cometas.",
+				"Su órbita es retrógrada: recorre su camino alrededor del Sol en sentido contrario al de los planetas."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"El NEOWISE volverá dentro de unos 6800 años: más que todo el tiempo que ha pasado desde que las personas aprendieron a escribir."
+			],
+			"standard": [
+				"El NEOWISE tarda unas 90 veces más que el cometa Halley en dar una vuelta al Sol."
+			],
+			"advanced": [
+				"En el extremo más lejano de su órbita, a más de 700 UA, la luz del Sol necesita unos 4 días para llegar al NEOWISE."
+			]
+		}
+	},
+	"nix": {
+		"name": "Nix",
+		"tagline": "La luna de la noche de Plutón",
+		"description": {
+			"simple": "Nix es una de las lunas pequeñas de Plutón: mide solo unos 50 km de largo y tiene forma de patata. En lugar de mostrar siempre la misma cara a Plutón, da tumbos mientras gira a su alrededor. Lleva el nombre de la diosa griega de la noche.",
+			"standard": "Nix es una luna pequeña y alargada, de unos 50 × 33 × 31 km, descubierta con el telescopio espacial Hubble en 2005 junto con Hidra. Da una vuelta a Plutón y Caronte cada 24,9 días. Como las demás lunas pequeñas de Plutón, no mantiene siempre una cara hacia Plutón, sino que da tumbos de forma caótica, porque la atraen dos cuerpos grandes a la vez. Lleva el nombre de Nyx, la diosa griega de la noche; se escribe con i para no confundirla con un asteroide llamado Nyx.",
+			"advanced": "Nix orbita el baricentro de Plutón y Caronte a unos 48 700 km con un periodo de 24,9 días, cerca de cuatro veces el periodo orbital de Caronte. Su rotación caótica, dando tumbos, se debe a la atracción gravitatoria siempre cambiante de la pareja Plutón-Caronte. La New Horizons encontró una zona rojiza alrededor de un gran cráter en su superficie, por lo demás brillante y de hielo de agua. Las iniciales de Nix e Hidra, N y H, se eligieron en honor a la New Horizons."
+		}
+	},
+	"hydra": {
+		"name": "Hidra",
+		"tagline": "La luna más exterior de Plutón",
+		"description": {
+			"simple": "Hidra es la luna más alejada de Plutón. Es pequeña, de unos 51 km de largo, y da tumbos mientras gira a su alrededor. Lleva el nombre de un monstruo de muchas cabezas de los mitos griegos.",
+			"standard": "Hidra es la más exterior de las lunas conocidas de Plutón y mide unos 51 × 36 × 31 km. Se descubrió con el telescopio espacial Hubble en 2005, junto con Nix, y da una vuelta a Plutón y Caronte cada 38,2 días. La New Horizons mostró que su superficie es brillante y está formada sobre todo por hielo de agua. Lleva el nombre de la serpiente de muchas cabezas contra la que luchó Heracles en la mitología griega.",
+			"advanced": "Hidra orbita el baricentro de Plutón y Caronte a unos 64 700 km, con un periodo de 38,2 días: casi exactamente seis veces el periodo orbital de Caronte. Como las otras lunas pequeñas, gira de forma caótica en lugar de tener acoplamiento de marea. En su brillante superficie domina el hielo de agua relativamente limpio. Junto con Nix, recibió su nombre para que las iniciales N y H rindieran homenaje a la misión New Horizons."
+		}
+	},
+	"kerberos": {
+		"name": "Cerbero",
+		"tagline": "La luna de dos lóbulos de Plutón",
+		"description": {
+			"simple": "Cerbero es una luna diminuta de Plutón, de solo unos 19 km de largo. Parece dos pequeños bultos pegados. Lleva el nombre del perro de tres cabezas que vigila el inframundo en los mitos griegos.",
+			"standard": "Cerbero es una de las lunas más pequeñas de Plutón, de unos 19 × 10 × 9 km, descubierta con el telescopio espacial Hubble en 2011. Da una vuelta a Plutón y Caronte cada 32,2 días. La New Horizons mostró que está formada por dos lóbulos, uno más grande y otro más pequeño, y que su superficie es más brillante de lo que esperaban los científicos. Lleva el nombre del perro de tres cabezas que guardaba la entrada del inframundo en la mitología griega.",
+			"advanced": "Cerbero orbita el baricentro de Plutón y Caronte a unos 57 800 km, con un periodo de 32,2 días —cerca de cinco veces el periodo orbital de Caronte—, entre las órbitas de Nix e Hidra. Las imágenes de la New Horizons revelaron una forma de dos lóbulos, quizá dos cuerpos que se fusionaron, y una superficie brillante de hielo de agua. Como las demás lunas pequeñas de Plutón, probablemente se formó a partir de los restos del impacto gigante que, según se cree, dio origen a Caronte."
+		}
+	},
+	"styx": {
+		"name": "Estigia",
+		"tagline": "La luna conocida más pequeña de Plutón",
+		"description": {
+			"simple": "Estigia es la luna conocida más pequeña de Plutón: mide solo unos 16 km de largo. La encontraron en 2012, mientras los científicos comprobaban si el camino de la sonda New Horizons era seguro. Lleva el nombre de un río del inframundo de los mitos griegos.",
+			"standard": "Estigia, de unos 16 × 9 × 8 km, es la luna conocida más pequeña de Plutón. Se descubrió en 2012 con el telescopio espacial Hubble, durante una búsqueda de lunas y polvo que pudieran poner en peligro a la New Horizons. Da una vuelta a Plutón y Caronte cada 20,2 días, por dentro de la órbita de Nix. Lleva el nombre del río que, en la mitología griega, separa el mundo de los vivos del inframundo.",
+			"advanced": "Estigia orbita el baricentro de Plutón y Caronte a unos 42 700 km con un periodo de 20,2 días, cerca de tres veces el periodo orbital de Caronte, lo que la convierte en la más interior de las cuatro lunas pequeñas de Plutón. Se encontró en imágenes del Hubble tomadas en 2012 por un equipo dirigido por Mark Showalter. La New Horizons solo la vio desde muy lejos, así que se sabe poco de su superficie."
+		}
+	},
+	"dysnomia": {
+		"name": "Disnomia",
+		"tagline": "La luna que sirvió para pesar a Eris",
+		"description": {
+			"simple": "Disnomia es la única luna conocida del planeta enano Eris. Es mucho más oscura que Eris, que brilla como la nieve recién caída. Observando cómo Disnomia gira alrededor de Eris, los astrónomos pudieron calcular cuánto pesa Eris.",
+			"standard": "Disnomia es la única luna conocida de Eris, descubierta en septiembre de 2005 con el telescopio Keck, en Hawái. Da una vuelta a Eris cada 15,8 días a unos 37 300 km. A partir de su órbita, los astrónomos calcularon que Eris pesa aproximadamente una cuarta parte más que Plutón. En la mitología griega, Disnomia es hija de Eris y el espíritu de la ilegalidad, un nombre que además es un guiño a la actriz Lucy Lawless («sin ley», en inglés), que interpretaba a Xena, el primer apodo de Eris.",
+			"advanced": "Disnomia sigue una órbita casi circular a unos 37 300 km de Eris con un periodo de 15,8 días; aplicar la tercera ley de Kepler a esta órbita da la masa de Eris, unos 1,66 × 10²² kg, un 27 % más que la de Plutón. Disnomia es muy oscura: refleja solo un pequeño porcentaje de la luz que recibe, frente a cerca del 96 % de Eris. Probablemente mide varios cientos de km de diámetro, lo que la convertiría en la segunda luna más grande conocida de un planeta enano, después de Caronte. Eris parece girar al ritmo de la órbita de Disnomia, señal de que las mareas han acoplado a la pareja."
+		}
+	},
+	"namaka": {
+		"name": "Namaka",
+		"tagline": "La luna interior de Haumea",
+		"description": {
+			"simple": "Namaka es la más pequeña de las dos lunas del planeta enano Haumea. Da una vuelta a Haumea en algo más de dos semanas y media. Lleva el nombre de una diosa hawaiana del mar, una de las hijas de Haumea.",
+			"standard": "Namaka es la más pequeña y la más interior de las dos lunas de Haumea, quizá de unos 170 km de diámetro. Se descubrió en junio de 2005 con el telescopio Keck, en Hawái, y da una vuelta a Haumea cada 18,3 días a unos 25 700 km. Como Haumea y su otra luna, probablemente es un trozo arrancado en una antigua colisión. Lleva el nombre de Nāmaka, una diosa hawaiana del mar e hija de Haumea.",
+			"advanced": "Namaka orbita Haumea a unos 25 700 km con un periodo de 18,3 días, en una órbita claramente excéntrica (unos 0,25) e inclinada respecto a la órbita de la luna exterior, Hiʻiaka. Su órbita la perturban Hiʻiaka y la forma muy alargada de Haumea. Se cree que Namaka e Hiʻiaka son fragmentos de la colisión gigante que también produjo la familia de cuerpos helados de Haumea y, posiblemente, su rápido giro."
+		}
+	},
+	"hiiaka": {
+		"name": "Hiʻiaka",
+		"tagline": "La luna exterior de Haumea",
+		"description": {
+			"simple": "Hiʻiaka es la más grande de las dos lunas del planeta enano Haumea. Está cubierta de hielo y da una vuelta a Haumea en unas siete semanas. Lleva el nombre de una diosa hawaiana del baile hula, una de las hijas de Haumea.",
+			"standard": "Hiʻiaka es la más grande y la más exterior de las dos lunas de Haumea, de unos 320 km de diámetro. Se descubrió en enero de 2005 con el telescopio Keck, en Hawái, antes incluso de que Haumea tuviera nombre, y da una vuelta a Haumea cada 49 días a unos 49 900 km. Como la de Haumea, su superficie está cubierta de hielo de agua. Lleva el nombre de Hiʻiaka, la diosa hawaiana protectora de la isla de Hawaiʻi y de los bailarines de hula, una de las hijas de Haumea.",
+			"advanced": "Hiʻiaka orbita Haumea a unos 49 900 km con un periodo de 49 días, en una órbita casi circular. Su espectro muestra hielo de agua cristalino, muy parecido al de la propia superficie de Haumea, lo que apoya la idea de que ambas lunas son fragmentos de la corteza helada de Haumea arrancados en una antigua colisión. Fue siguiendo la órbita de Hiʻiaka como los astrónomos pudieron medir por primera vez la masa de Haumea."
+		}
+	},
+	"s20151364721": {
+		"name": "S/2015 (136472) 1",
+		"tagline": "La pequeña luna oscura de Makemake",
+		"description": {
+			"simple": "Esta luna diminuta y oscura gira alrededor del planeta enano Makemake. Era tan difícil de ver junto al brillante Makemake que no se encontró hasta 2016, en imágenes del telescopio espacial Hubble. Los científicos la apodaron MK2.",
+			"standard": "S/2015 (136472) 1, apodada MK2, es la única luna conocida de Makemake. Se detectó en imágenes del Hubble tomadas en abril de 2015 y se anunció en 2016. Es unas 1300 veces más débil que Makemake y muy oscura; probablemente mide menos de 200 km de diámetro. Su nombre es todavía una designación provisional: S de satélite, 2015 por el año en que se fotografió, 136472 por el número de catálogo de Makemake y 1 por ser la primera luna encontrada.",
+			"advanced": "MK2 se descubrió en imágenes del Hubble de abril de 2015, a unos 21 000 km de Makemake. Su órbita aún no se conoce bien; si la vemos casi de canto, la luna pasaría gran parte del tiempo perdida en el resplandor de Makemake, lo que podría explicar por qué las búsquedas anteriores no la detectaron. Su superficie oscura contrasta con el brillante hielo de metano de Makemake, quizá porque su débil gravedad no puede retener hielos tan volátiles. Una órbita bien medida daría la masa y la densidad de Makemake."
+		}
 	}
 }
