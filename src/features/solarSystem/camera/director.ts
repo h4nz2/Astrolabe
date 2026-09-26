@@ -40,6 +40,7 @@ import {
 	HOME_SHOT,
 	OVERVIEW,
 	isFrameAnchored,
+	type EyePoint,
 	type FitRegion,
 	type Transition,
 	type View,
@@ -52,6 +53,7 @@ import { isBodyShown, type SimState } from "@/store/sim"
 import { isMoonDotShown } from "../scene/Markers"
 import type { SimFrame } from "../scene/simFrame"
 import {
+	CAMERA_FOV_DEG,
 	CAMERA_MAX_DISTANCE,
 	defaultDistance,
 	fitDistance,
@@ -135,6 +137,10 @@ export interface CameraSnapshot {
 	distance: number
 	azimuthDeg: number
 	elevationDeg: number
+	/** The lens: vertical field of view, degrees (#41). */
+	fovDeg: number
+	/** The camera stands at a requested eye point and follows it (#41). */
+	eyeHeld: boolean
 	finite: boolean
 }
 
@@ -148,6 +154,8 @@ const scratchTargetEnd = new Vector3()
 const scratchPosition = new Vector3()
 const scratchSpherical = new Spherical()
 const scratchPivot = new Float64Array(3)
+const scratchEye = new Float64Array(3)
+const scratchEyePivot = new Float64Array(3)
 
 /** camera-controls' ACTION.NONE: no gesture in progress. */
 const ACTION_NONE = 0
@@ -189,6 +197,16 @@ export class CameraDirector {
 	private heldIndex = 0
 	/** A pivot the user moved (pan) that the store has not been told about yet. */
 	private pendingPan: Anchored | null = null
+
+	/**
+	 * Where the camera stands while a view asked for an eye (#41): kept there
+	 * as the bodies move, until the user takes the camera.
+	 */
+	private eye: Anchored | null = null
+	private eyeHeld = false
+	/** The lens at the start of the running move and on its arrival, degrees. */
+	private fromFov = CAMERA_FOV_DEG
+	private toFov = CAMERA_FOV_DEG
 
 	private readonly fromKm = new Float64Array(3)
 	private readonly toKm = new Float64Array(3)
@@ -282,6 +300,8 @@ export class CameraDirector {
 			distance: pose.radius,
 			azimuthDeg: radToDeg(pose.theta),
 			elevationDeg: 90 - radToDeg(pose.phi),
+			fovDeg: this.camera.fov,
+			eyeHeld: this.eye !== null && this.eyeHeld,
 			finite,
 		}
 	}
@@ -302,6 +322,9 @@ export class CameraDirector {
 			return
 		}
 		const fit = pending?.fit ?? null
+		this.takeEye(pending?.eye ?? null)
+		this.setFov(pending?.lensDeg ?? CAMERA_FOV_DEG)
+		this.toFov = this.fromFov = this.camera.fov
 		shotToPose(
 			{
 				...HOME_SHOT,
@@ -314,6 +337,7 @@ export class CameraDirector {
 		)
 		this.pivotOf(view, this.toKm)
 		this.setOrigin(this.toKm)
+		if (this.eye !== null) this.eyePose(view, this.pose)
 		this.applyPose(this.pose)
 		this.heldIndex = index
 		this.forceJump = false
@@ -365,10 +389,13 @@ export class CameraDirector {
 			this.defaultDistance(view),
 			this.toPose,
 		)
+		this.fromFov = this.camera.fov
+		this.toFov = transition.lensDeg ?? CAMERA_FOV_DEG
+		this.takeEye(transition.eye)
 
 		this.toFactor =
 			transition.fit !== null
-				? this.fitFactor(transition.fit, view)
+				? this.fitFactor(transition.fit, view, this.toFov)
 				: (transition.shot?.distance ?? 1)
 		this.profile = transitProfile(transition.profile)
 		this.runningId = transition.id
@@ -447,7 +474,9 @@ export class CameraDirector {
 
 		if (t >= 1) {
 			this.setOrigin(this.toKm)
+			this.setFov(this.toFov)
 			if (!transition.handedOver) {
+				if (this.eye !== null) this.eyePose(view, this.toPose)
 				this.applyPose(this.toPose)
 			} else {
 				// the user drove the distance; make sure it is not inside the destination
@@ -475,6 +504,16 @@ export class CameraDirector {
 		this.setOrigin(blended)
 		this.heldIndex = w < 0.5 ? this.from.index : toIndex
 
+		if (this.fromFov !== this.toFov) {
+			// the lens changes along with the direction, in log space (a zoom)
+			this.setFov(
+				Math.exp(
+					Math.log(this.fromFov) +
+						(Math.log(this.toFov) - Math.log(this.fromFov)) *
+							clamp01(sample.direction),
+				),
+			)
+		}
 		if (!transition.handedOver) {
 			const pose = this.pose
 			pose.radius = sample.distance
@@ -534,6 +573,15 @@ export class CameraDirector {
 			this.shiftTarget(target)
 		}
 		this.setOrigin(pivot)
+		if (this.eye !== null && this.eyeHeld && this.pendingPan === null) {
+			// standing at the eye (#41): stay there and keep looking at the centre
+			this.follow(view)
+			this.eyePose(view, this.pose)
+			this.applyPose(this.pose)
+			this.controls.minDistance = minDollyDistance(0)
+			this.controls.maxDistance = CAMERA_MAX_DISTANCE
+			return
+		}
 		this.followScale(view)
 		this.controls.minDistance =
 			this.pendingPan === null
@@ -568,6 +616,8 @@ export class CameraDirector {
 	// --- events --------------------------------------------------------------
 
 	private userInput(): void {
+		// the user takes the camera: it no longer stands at the eye (#41)
+		this.eyeHeld = false
 		const { transition, sequence, userInput } = this.store.getState()
 		if (
 			(transition !== null && !transition.handedOver) ||
@@ -813,7 +863,11 @@ export class CameraDirector {
 	 * `fit`: a sphere of `fit.km` true km, drawn as a distance from body
 	 * `fit.around` is drawn under the active scale.
 	 */
-	private fitFactor(fit: FitRegion, view: View): number {
+	private fitFactor(
+		fit: FitRegion,
+		view: View,
+		fovDeg: number = this.camera.fov,
+	): number {
 		const i = this.frame.index.get(fit.around)
 		const fallback = 1
 		if (i === undefined) return fallback
@@ -825,9 +879,48 @@ export class CameraDirector {
 			childDistanceCurve(this.frame.scale, body.parentId === null),
 		)
 		const factor =
-			fitDistance(toUnits(drawnKm), this.camera.fov, this.camera.aspect) /
+			fitDistance(toUnits(drawnKm), fovDeg, this.camera.aspect) /
 			this.defaultDistance(view)
 		return Number.isFinite(factor) && factor > 0 ? factor : fallback
+	}
+
+	/** Takes the eye of a request (#41), or none. */
+	private takeEye(eye: EyePoint | null): void {
+		const index = eye === null ? undefined : this.frame.index.get(eye.anchorId)
+		if (eye === null || index === undefined) {
+			this.eye = null
+			this.eyeHeld = false
+			return
+		}
+		this.eye = { index, offsetKm: Float64Array.from(eye.offsetKm) }
+		this.eyeHeld = true
+	}
+
+	/**
+	 * The pose (relative to the pivot of `view`) that puts the camera at the
+	 * eye and looks at the pivot: the eye drawn like a point near its anchor.
+	 */
+	private eyePose(view: View, out: SphericalPose): SphericalPose {
+		const eye = this.eye
+		if (eye === null) return out
+		const at = pointDisplayKm(this.frame, eye.index, eye.offsetKm, scratchEye)
+		const pivot = this.pivotOf(view, scratchEyePivot)
+		const spherical = scratchSpherical.setFromCartesianCoords(
+			(at[0] - pivot[0]) / KM_PER_UNIT,
+			(at[1] - pivot[1]) / KM_PER_UNIT,
+			(at[2] - pivot[2]) / KM_PER_UNIT,
+		)
+		if (!(spherical.radius > 0)) return out
+		out.radius = spherical.radius
+		out.theta = spherical.theta
+		out.phi = spherical.phi
+		return out
+	}
+
+	private setFov(fovDeg: number): void {
+		if (this.camera.fov === fovDeg) return
+		this.camera.fov = fovDeg
+		this.camera.updateProjectionMatrix()
 	}
 
 	private defaultDistance(view: View): number {
@@ -847,6 +940,7 @@ export class CameraDirector {
 		const dy = to[1] - this.fromKm[1]
 		const dz = to[2] - this.fromKm[2]
 		this.toPose.radius = this.toFactor * this.defaultDistance(this.runningView)
+		if (this.eye !== null) this.eyePose(this.runningView, this.toPose)
 		this.input.fromDistance = this.fromPose.radius
 		this.input.toDistance = this.toPose.radius
 		this.input.separation = Math.hypot(dx, dy, dz) / KM_PER_UNIT

@@ -274,7 +274,7 @@
 			"travel": {
 				"open": "Cesta na jiné datum",
 				"title": "Cesta časem",
-				"moments": "Události",
+				"moments": "Úkazy na obloze",
 				"pickDate": "Vyber datum",
 				"arrival": "Po příjezdu se čas zastaví. Stiskni Spustit a poběží dál.",
 				"range": "Libovolný den od roku {first} do roku {last}. Dorazíš v poledne (UTC).",
@@ -288,52 +288,6 @@
 					"previousDecade": "Předchozí desetiletí",
 					"monthLevel": "Vybrat jiný měsíc",
 					"yearLevel": "Vybrat jiný rok"
-				}
-			},
-			"moments": {
-				"galileoMoons": {
-					"name": "Galileo vidí Jupiterovy měsíce",
-					"description": "Vůbec první měsíce objevené u jiné planety."
-				},
-				"uranusFound": {
-					"name": "Objev Uranu",
-					"description": "William Herschel nachází první planetu, kterou starověcí hvězdáři neznali."
-				},
-				"neptuneFound": {
-					"name": "Objev Neptunu",
-					"description": "Našli ho přesně tam, kde ho předpověděla matematika."
-				},
-				"sputnik": {
-					"name": "Start Sputniku 1",
-					"description": "První umělá družice zahajuje kosmický věk."
-				},
-				"moonLanding": {
-					"name": "První přistání na Měsíci",
-					"description": "Apollo 11 přistává na Měsíci."
-				},
-				"voyagerLaunch": {
-					"name": "Voyager 2 vyráží",
-					"description": "Jupiter, Saturn, Uran a Neptun se seřadí pro „Velkou cestu“ (Grand Tour), jak se to stává jen zhruba jednou za 175 let."
-				},
-				"voyagerNeptune": {
-					"name": "Voyager 2 u Neptunu",
-					"description": "Dvanáct let po startu: jediná návštěva, jakou kdy Neptun zažil."
-				},
-				"marsClosest": {
-					"name": "Mars nejblíž Zemi",
-					"description": "Mars se k Zemi přiblíží víc než za posledních skoro 60 000 let. Země je přitom mezi Sluncem a Marsem."
-				},
-				"venusTransit": {
-					"name": "Přechod Venuše",
-					"description": "Venuše prochází přesně mezi Sluncem a Zemí."
-				},
-				"greatConjunction": {
-					"name": "Velká konjunkce",
-					"description": "Při pohledu ze Země se Jupiter a Saturn na obloze skoro dotknou."
-				},
-				"nextVenusTransit": {
-					"name": "Příští přechod Venuše",
-					"description": "Příště, kdy Venuše přejde před Sluncem. Uvidí ho někdo z této třídy?"
 				}
 			}
 		},
@@ -1319,6 +1273,67 @@
 				"watch": "Sledovat průlet kolem Slunce",
 				"watch@simple": "Podívat se, jak proletí kolem Slunce"
 			}
+		},
+		"events": {
+			"listLabel": "Zatmění, přechody a další úkazy na obloze",
+			"upcoming": "Brzy",
+			"groups": {
+				"solarEclipse": "Zatmění Slunce",
+				"lunarEclipse": "Zatmění Měsíce",
+				"transit": "Přechody přes Slunce",
+				"gathering": "Planety pohromadě",
+				"closeApproach": "Mars se blíží",
+				"shadowsRings": "Stíny a prstence",
+				"history": "Okamžiky historie"
+			},
+			"card": "Úkaz na obloze: {title}",
+			"when": "Kdy: {when}",
+			"where": "Kde: {where}",
+			"shown": "{direction, select, early {Scéna ho ukazuje o {amount} dřív} late {Scéna ho ukazuje o {amount} později} other {Scéna ho ukazuje ve skutečném čase}}: dráhy v aplikaci jsou blízko těm skutečným, ale ne přesně.",
+			"shown@simple": "{direction, select, early {Aplikace ho ukazuje o {amount} dřív.} late {Aplikace ho ukazuje o {amount} později.} other {Aplikace ho ukazuje ve skutečném čase.}} Její planety jsou skoro, ale ne úplně tam, kde ty skutečné.",
+			"views": {
+				"label": "Úhel pohledu",
+				"space": "Z vesmíru",
+				"earth": "Ze Země"
+			},
+			"hint": {
+				"space": {
+					"solarEclipse": "Stín Měsíce na denní straně Země.",
+					"solarEclipse@simple": "Tmavá skvrna je stín Měsíce.",
+					"lunarEclipse": "Slunce, Země a Měsíc v jedné přímce: Měsíc je ve stínu Země.",
+					"lunarEclipse@simple": "Země je mezi Sluncem a Měsícem.",
+					"transit": "Při pohledu shora: Slunce, planeta a Země v jedné přímce.",
+					"transit@simple": "Shora: planeta je mezi Sluncem a námi.",
+					"gathering": "Při pohledu shora: kde planety opravdu jsou.",
+					"gathering@simple": "Shora: planety jsou daleko od sebe.",
+					"closeApproach": "Při pohledu shora: Země předbíhá Mars po vnitřní dráze.",
+					"closeApproach@simple": "Shora: Země předbíhá Mars.",
+					"shadowsRings": "Zblízka, z vesmíru.",
+					"history": "Scéna toho dne."
+				},
+				"earth": {
+					"solarEclipse": "Ve stínu Měsíce, dalekohledem: Měsíc zakrývá Slunce.",
+					"solarEclipse@simple": "Ze Země: Měsíc zakrývá Slunce.",
+					"lunarEclipse": "Pohled ze Země na Měsíc, triedrem.",
+					"lunarEclipse@simple": "Ze Země: červený Měsíc.",
+					"transit": "Dalekohledem se slunečním filtrem: tečka planety na Slunci.",
+					"transit@simple": "Ze Země: malá černá tečka na Slunci.",
+					"gathering": "Ze Země: planety na jedné straně naší oblohy.",
+					"gathering@simple": "Ze Země: planety vedle sebe.",
+					"closeApproach": "Mars dalekohledem, vždy se stejným zvětšením: porovnej úkazy.",
+					"closeApproach@simple": "Mars dalekohledem. Jak velký se zdá?",
+					"shadowsRings": "Dalekohledem ze Země.",
+					"history": "Dalekohledem ze Země."
+				}
+			},
+			"scaleNote": "Ve skutečném měřítku: každá velikost i vzdálenost je skutečná. Po odchodu se měřítko vrátí.",
+			"scaleNote@simple": "Všechno je ve skutečné velikosti a vzdálenosti.",
+			"leave": "Odejít",
+			"leaveLabel": "Opustit úkaz: zpět k pohledu, času a měřítku, které jsi měl",
+			"away": "Právě se rozhlížíš sám.",
+			"resume": "Zpět k úkazu",
+			"share": "Zkopírovat odkaz na tento úkaz",
+			"copied": "Odkaz zkopírován"
 		}
 	},
 	"solarWalk": {

@@ -549,13 +549,39 @@
 			"how": {
 				"standard": [
 					"Klicke unten auf Datum und Uhrzeit.",
-					"Wähle einen Moment aus der Liste, oder „Datum wählen“ und klicke Jahr, Monat und Tag an.",
+					"Wähle „Datum wählen“ und klicke Jahr, Monat und Tag an (berühmte Momente stehen unter „Himmelsereignisse“).",
 					"Die Planeten gleiten dorthin und die Zeit hält an; drücke Abspielen, damit sie weiterläuft."
 				],
 				"simple": [
 					"Klick unten auf das Datum.",
 					"Wähl „Mars so nah wie nie“ oder such dir einen Tag aus.",
 					"Schau zu, wie die Planeten dorthin wandern."
+				]
+			}
+		},
+		"skyEvents": {
+			"title": {
+				"standard": "Himmelsereignisse: Finsternisse, Transite und Konstellationen",
+				"simple": "Finsternisse und andere Himmelsereignisse"
+			},
+			"what": {
+				"standard": "Eine Liste von Finsternissen, Venus- und Merkurtransiten, Planeten, die sich am Himmel treffen, nahen Begegnungen mit Mars, Schatten von Monden und Saturns Ringen von der Kante, vergangen und kommend. Die Auswahl stellt alles ein: das Datum, den echten Maßstab und einen Blick aus dem All, mit einem Wechsel zur Sicht von der Erde durchs Teleskop.",
+				"simple": "Wähl eine Finsternis oder ein anderes Himmelsschauspiel, und die App bringt dich hin: an den richtigen Tag und an den richtigen Ort zum Schauen."
+			},
+			"why": {
+				"standard": "Jedes Ereignis ist eine Geometriestunde in einem Bild: warum der Mond die Sonne genau bedeckt, warum nicht jeden Monat eine Finsternis ist, was „die Planeten stehen in einer Reihe“ wirklich heißt. Der Wechsel zwischen der Sicht aus dem All und der Sicht von der Erde ist die Lektion.",
+				"simple": "Du siehst, warum es eine Finsternis gibt: aus dem All und von der Erde, wo die Leute zugeschaut haben."
+			},
+			"how": {
+				"standard": [
+					"Klicke unten auf das Datum und wähle „Himmelsereignisse“.",
+					"Wähle ein Ereignis, zum Beispiel „Totale Sonnenfinsternis“ (8. April 2024).",
+					"Wechsle auf der Karte zwischen „Aus dem All“ und „Von der Erde“; mit „Verlassen“ geht es zurück dorthin, wo du warst."
+				],
+				"simple": [
+					"Klick unten auf das Datum, dann auf „Himmelsereignisse“.",
+					"Wähl eine Finsternis.",
+					"Drück „Von der Erde“, und der Mond bedeckt die Sonne."
 				]
 			}
 		},

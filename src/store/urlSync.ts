@@ -20,6 +20,7 @@ import { useEffect, useLayoutEffect, useRef } from "react"
 import { useNavigate, useSearch } from "@tanstack/react-router"
 
 import { bodyById } from "@/data"
+import { eventOfTourId } from "@/data/skyEvents"
 import { tourById } from "@/data/tours"
 import {
 	DEFAULT_SCALE_PRESET,
@@ -54,8 +55,9 @@ import { useScaleStore } from "./scale"
 import { useSimStore, type SimState } from "./sim"
 import type { SimSearch } from "./simSearch"
 
-/** Only the tours of the menu (src/data/tours) go into a link. */
-const isTourListed = (id: string): boolean => tourById.has(id)
+/** Only the tours of the menu (src/data/tours) and sky events (#41) go into a link. */
+const isTourListed = (id: string): boolean =>
+	tourById.has(id) || eventOfTourId(id) !== null
 
 /** Minimum spacing between two writes of `t` into the URL. */
 export const TIME_SYNC_INTERVAL_MS = 1000
