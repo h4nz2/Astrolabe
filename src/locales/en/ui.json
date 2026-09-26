@@ -437,6 +437,12 @@
 			"readLess": "Show less"
 		},
 		"surface": {
+			"sun": "Surface map: {source}, in ultraviolet light. To our eyes the Sun is dazzling white: never look straight at it.",
+			"sun@simple": "This picture of the Sun was taken in ultraviolet light, which our eyes cannot see. Never look straight at the Sun!",
+			"bands": "No photo shows all of {body}, so this map is painted after spacecraft photos.",
+			"bands@simple": "This map of {body} is painted to look like the photos taken by spacecraft.",
+			"clouds": "Thick clouds hide the ground of {body}; the dictionary’s Terrain view shows it as radar sees it.",
+			"clouds@simple": "Thick clouds cover all of {body}. The dictionary shows the ground under them.",
 			"map": "Surface map: {source}.",
 			"unseen": "Part of {moon} has never been photographed, so that part of the map is filled in to look like the rest.",
 			"unseen@simple": "Nobody has ever seen all of {moon}. The missing part of the map is filled in.",

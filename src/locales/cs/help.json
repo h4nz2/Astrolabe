@@ -223,7 +223,8 @@
 				"standard": [
 					"Leť k nějakému světu: objeví se jeho karta se jménem a jednou větou.",
 					"Šipka na kartě rozbalí údaje, měsíce a příběhy; karta pak zůstane rozbalená i u dalšího světa.",
-					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa."
+					"„Víc ve slovníku“ otevře jeho stránku, „Porovnat s…“ ho postaví vedle jiného světa.",
+					"Poslední řádek rozbalené karty říká, odkud je obrázek světa: mapa ze sondy, nebo malba podle snímků ze sond tam, kde úplná mapa neexistuje."
 				],
 				"simple": [
 					"Leť k planetě.",
@@ -1245,16 +1246,14 @@
 		}
 	},
 	"creditNames": {
-		"rings": "Modely prstenců této aplikace",
-		"surfaceMaps": "Mapy Slunce a planet a Saturnovy prstence"
+		"rings": "Modely prstenců této aplikace"
 	},
 	"credits": {
 		"solarSystemApi": "Výchozí seznam Slunce, planet a měsíců: velikosti, hmotnosti, dráhy a údaje o objevu.",
 		"jpl": "Přesné dráhy planet, Měsíce, Galileových měsíců a Phoebe (střední dráhové elementy), podle kterých byl seznam opraven.",
 		"iau": "Kam míří pól každého světa a jak rychle se který svět otáčí, aby v poledne stálo Slunce nad Greenwichem.",
 		"meeus": "Jak se dráha Měsíce pomalu stáčí, aby zatmění připadla na svá skutečná data.",
-		"rings": "Prstence Jupiteru, Uranu a Neptunu, nakreslené pro tuto aplikaci podle zveřejněných poloměrů a neprůhlednosti prstenců.",
-		"surfaceMaps": "Pocházejí z první verze projektu (2022) a jejich původ nebyl nikdy zaznamenán, takže zdroj je neznámý. Mapy měsíců níže jsou uvedeny jednotlivě (issue #37).",
+		"rings": "Prstence Jupiteru, Saturnu, Uranu a Neptunu, nakreslené pro tuto aplikaci podle zveřejněných poloměrů, neprůhlednosti a barev prstenců.",
 		"spaceAudio": "Čtyři skutečné nahrávky rádiových a plazmových vln, které změřily sondy Cassini, Voyager 1 a Injun 3, převedené na zvuk.",
 		"three": "Kreslí 3D scénu v prohlížeči.",
 		"react": "Skládá stránky a panely.",
@@ -1275,7 +1274,6 @@
 		"mitBsd": "licence MIT a BSD",
 		"gsap": "standardní licence GSAP (zdarma)",
 		"ccBy": "CC BY 4.0 (Saturn: CC BY 3.0)",
-		"unknown": "zdroj neznámý",
 		"publicDomainPlain": "volné dílo",
 		"noKnownRestrictions": "žádná známá omezení (před komerčním použitím ověř)"
 	}

@@ -300,11 +300,6 @@
 			"licence": "facts"
 		},
 		{
-			"id": "surfaceMaps",
-			"section": "maps",
-			"licence": "unknown"
-		},
-		{
 			"id": "spaceAudio",
 			"section": "sounds",
 			"name": "NASA / University of Iowa, Radio and Plasma Wave Group (space-audio.org)",

@@ -437,6 +437,12 @@
 			"readLess": "Zobrazit méně"
 		},
 		"surface": {
+			"sun": "Mapa povrchu: {source}, v ultrafialovém světle. Našim očím se Slunce jeví oslnivě bílé: nikdy se do něj přímo nedívej.",
+			"sun@simple": "Tenhle obrázek Slunce je vyfocený v ultrafialovém světle, které naše oči nevidí. Nikdy se nedívej přímo do Slunce!",
+			"bands": "Žádná fotka neukazuje celou planetu {body}, proto je tahle mapa namalovaná podle snímků ze sond.",
+			"bands@simple": "Tahle mapa planety {body} je namalovaná tak, aby vypadala jako fotky ze sond.",
+			"clouds": "Povrch planety {body} skrývají husté mraky; pohled Terén ve slovníku ho ukazuje tak, jak ho vidí radar.",
+			"clouds@simple": "Husté mraky zakrývají celou planetu {body}. Ve slovníku uvidíš povrch pod nimi.",
 			"map": "Mapa povrchu: {source}.",
 			"unseen": "Část měsíce {moon} nikdo nikdy nevyfotografoval, proto je tato část mapy doplněna tak, aby odpovídala zbytku.",
 			"unseen@simple": "Celý měsíc {moon} ještě nikdo neviděl. Chybějící část mapy je doplněná.",

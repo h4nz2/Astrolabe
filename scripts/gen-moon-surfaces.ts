@@ -1,7 +1,9 @@
 /**
- * pnpm gen:surfaces [--only io,europa]: data/moon-surfaces.json -> one equirectangular
+ * pnpm gen:surfaces [--only io,europa,saturn]: data/moon-surfaces.json -> one equirectangular
  * JPEG per moon under public/assets/textures/<planet>/satellites/<id>.jpg, plus
- * data/moon-surfaces.built.json (each map's mean colour and size, read by `pnpm build:data`).
+ * data/moon-surfaces.built.json (each map's mean colour and size, read by `pnpm build:data`);
+ * then the Sun's and the planets' textures from data/planet-textures.json
+ * (scripts/gen-planet-textures.ts; `--only` takes their file names, e.g. earth_night).
  *
  * Real maps are downloaded once into .cache/surfaces/ (gitignored; some sources are 200 MB),
  * shrunk, turned so the prime meridian is at the centre, completed where the spacecraft never
@@ -24,6 +26,7 @@ import { pipeline } from "node:stream/promises"
 import { fileURLToPath } from "node:url"
 import sharp from "sharp"
 
+import { generatePlanetTextures } from "./gen-planet-textures"
 import { fnv1a32 } from "./lib/hash"
 import { toJsonFile } from "./lib/json"
 import {
@@ -299,6 +302,12 @@ const main = async (): Promise<void> => {
 	log(
 		`${Object.keys(sorted).length} surfaces, ${Math.round(total / 1024)} KB in total`,
 	)
+	await generatePlanetTextures(only, {
+		root,
+		cache: paths.cache,
+		download,
+		log,
+	})
 }
 
 main().catch((error: unknown) => {

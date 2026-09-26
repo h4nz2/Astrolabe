@@ -101,8 +101,11 @@ describe("the help page's words (src/locales/<locale>/help.json)", () => {
 				]),
 			].sort(),
 		)
+		// the image sources of src/data/credits.json are listed under "maps"
 		expect(Object.keys(english.creditSections).sort()).toEqual(
-			[...new Set(HELP_CREDITS.map((credit) => credit.section))].sort(),
+			[
+				...new Set([...HELP_CREDITS.map((credit) => credit.section), "maps"]),
+			].sort(),
 		)
 	})
 
@@ -275,7 +278,7 @@ describe("credits", () => {
 		expect(unnamed).toEqual([])
 	})
 
-	it("lists every moon map under the surface maps, with its licence", () => {
+	it("lists every image source under the surface maps, with its licence", () => {
 		const rows = creditRows("maps", createI18n({ locale: "de" }))
 		expect(rows.length).toBe(
 			HELP_CREDITS.filter((credit) => credit.section === "maps").length +
@@ -284,9 +287,12 @@ describe("credits", () => {
 		expect(rows.find((row) => row.id === "image-svs-moon")?.licence).toBe(
 			"gemeinfrei",
 		)
-		expect(rows.find((row) => row.id === "surfaceMaps")?.licence).toBe(
-			"Quelle unbekannt",
-		)
+		// the Sun's and the planets' maps too: nothing is of unknown origin any more
+		expect(
+			rows.find((row) => row.id === "image-nasa-blue-marble")?.licence,
+		).toBe("gemeinfrei")
+		expect(rows.find((row) => row.id === "image-sdo-aia304")).toBeDefined()
+		expect(rows.every((row) => row.licence !== "Quelle unbekannt")).toBe(true)
 	})
 })
 
