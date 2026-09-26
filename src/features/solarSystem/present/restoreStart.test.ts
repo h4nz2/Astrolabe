@@ -4,7 +4,9 @@ import { J2000_JD } from "@/sim"
 import { useScaleStore } from "@/store/scale"
 import { useSimStore } from "@/store/sim"
 import { simSearchSchema } from "@/store/simSearch"
+import { useTourStore } from "@/store/tour"
 
+import { nextStop, startTour, tourStatus } from "../tours/player"
 import { restoreStart } from "./restoreStart"
 
 const sim = () => useSimStore.getState()
@@ -12,6 +14,7 @@ const sim = () => useSimStore.getState()
 afterEach(() => {
 	useSimStore.setState(useSimStore.getInitialState(), true)
 	useScaleStore.setState(useScaleStore.getInitialState(), true)
+	useTourStore.setState(useTourStore.getInitialState(), true)
 })
 
 /** Wanders away from any start: another body, a held frame, speed, layers, scale. */
@@ -94,5 +97,27 @@ describe("restoreStart", () => {
 		sim().playSequence([{ view: { kind: "body", id: "mars" } }])
 		restoreStart({}, true)
 		expect(sim().sequence).toBeNull()
+	})
+
+	it("ends a guided tour opened since, rather than leaving it half-open (#28)", () => {
+		startTour("grandTour", { startAt: 2, jump: true })
+		expect(tourStatus(sim().sequence, useTourStore.getState())).toBe("playing")
+		restoreStart({ focus: "saturn" }, true)
+		expect(useTourStore.getState().tour).toBeNull()
+		expect(tourStatus(sim().sequence, useTourStore.getState())).toBeNull()
+		expect(sim().view).toEqual({ kind: "body", id: "saturn" })
+	})
+
+	it("opens a lesson link's own tour on its stop again (#28)", () => {
+		const link = simSearchSchema.parse({ tour: "earthMoves", stop: "2" })
+		startTour("earthMoves", { startAt: 1, jump: true })
+		nextStop()
+		nextStop()
+		expect(useTourStore.getState().index).toBe(3)
+		restoreStart(link, true)
+		const tour = useTourStore.getState()
+		expect(tour.tour?.id).toBe("earthMoves")
+		expect(tour.index).toBe(1)
+		expect(tourStatus(sim().sequence, tour)).toBe("playing")
 	})
 })

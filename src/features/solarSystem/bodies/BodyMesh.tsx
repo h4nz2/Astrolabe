@@ -40,6 +40,7 @@ import { pixelsPerUnitAtDistanceOne } from "../scene/picking"
 import { useSimFrame } from "../scene/simFrame"
 import { isDiscVisible } from "./moonOrbitFade"
 import { bodyOrientation, bodySpinAngle, createBodySpin } from "./orientation"
+import { setShown } from "./shown"
 import { wantsSurface } from "./surfaceLoad"
 
 export interface BodyMeshProps {
@@ -88,11 +89,14 @@ function MappedMaterial({ body, uniforms }: MaterialProps) {
 	const urls =
 		night === undefined ? [assetUrl(base)] : [assetUrl(base), assetUrl(night)]
 	const [map, nightMap] = useTexture(urls, markSRGBAll)
-	// a ringed planet carries its rings' shadow band (#12)
+	// a ringed planet carries its rings' shadow band (#12), unless its rings
+	// are drawn far more opaque than they are (Jupiter's, Neptune's)
 	const ringTextures = useRingTextures(body.rings)
 	const ringShadow = useMemo(
 		() =>
-			ringTextures === null || body.rings === null
+			ringTextures === null ||
+			body.rings === null ||
+			body.rings.castsShadow === false
 				? undefined
 				: {
 						color: ringTextures.color,
@@ -177,7 +181,7 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 			const radius = frame.renderRadius(index)
 			const distance = group.position.distanceTo(camera.position)
 			const pxPerUnit = pixelsPerUnitAtDistanceOne(camera, size.height)
-			group.visible = isDiscVisible(radius, distance, pxPerUnit)
+			setShown(group, isDiscVisible(radius, distance, pxPerUnit))
 			if (
 				!surfaceWantedRef.current &&
 				wantsSurface(radius, distance, pxPerUnit)
@@ -186,7 +190,7 @@ function BodyMesh({ body, index }: BodyMeshProps) {
 				setSurfaceWanted(true)
 			}
 		} else {
-			group.visible = true
+			setShown(group, true)
 		}
 		if (!group.visible) return
 		// the drawn radius under the active scale (docs/ARCHITECTURE.md, "Scale")
