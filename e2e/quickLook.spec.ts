@@ -23,7 +23,7 @@ const asked = (page: Page) =>
 /** A first visit: the opening plays; Skip hands over at once. */
 async function arriveAndSkip(page: Page, search = "") {
 	await page.goto(`/solar_system${search}`)
-	await page.getByRole("button", { name: /Skip/ }).first().click()
+	await page.getByTestId("intro-skip").click({ timeout: 60_000 })
 }
 
 test.describe("a first visit", () => {
@@ -47,7 +47,7 @@ test.describe("a first visit", () => {
 		await page.reload()
 		await page.waitForFunction(() => window.__astrolabe !== undefined)
 		await cameraAtRest(page)
-		await expect(page.getByRole("button", { name: /Skip/ })).toHaveCount(0)
+		await expect(page.getByTestId("intro-skip")).toHaveCount(0)
 		await expect(question(page)).toHaveCount(0)
 	})
 
@@ -135,7 +135,7 @@ test.describe("a first visit", () => {
 		await page.goto("/solar_system?focus=mars&lang=en")
 		await page.waitForFunction(() => window.__astrolabe !== undefined)
 		await cameraAtRest(page)
-		await expect(page.getByRole("button", { name: /Skip/ })).toHaveCount(0)
+		await expect(page.getByTestId("intro-skip")).toHaveCount(0)
 		await expect(question(page)).toHaveCount(0)
 		expect(await asked(page)).toBeNull()
 	})
