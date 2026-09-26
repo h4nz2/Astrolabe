@@ -33,6 +33,11 @@ export const MapProcess = z
 		/** colours as published, only resized and turned */
 		keep: z.literal(true).optional(),
 		/**
+		 * with `keep`: every channel raised to this power (under 1 lifts the darks, so a deep
+		 * ocean stays readable on a projector; the moons' brightness is compressed the same way)
+		 */
+		gamma: z.number().positive().max(1).optional(),
+		/**
 		 * with `keep`: red, green and blue gains, a white balance for a published colour that is
 		 * off (the NASA Ames Mars colours are too blue for Mars's butterscotch)
 		 */

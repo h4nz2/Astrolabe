@@ -224,9 +224,12 @@ const processMap = async (
 		}
 	}
 	if (map.keep) {
-		const gains = map.balance
-		if (gains === undefined || "gray" in raster) return raster
-		const data = raster.rgb.data.map((v, i) => softClip(v * gains[i % 3]))
+		const gamma = map.gamma ?? 1
+		const gains = map.balance ?? [1, 1, 1]
+		if ("gray" in raster) return raster
+		const data = raster.rgb.data.map((v, i) =>
+			softClip(Math.max(0, v) ** gamma * gains[i % 3]),
+		)
 		return { rgb: { ...raster.rgb, data } }
 	}
 	const gray = "gray" in raster ? raster.gray : toGray(raster.rgb)

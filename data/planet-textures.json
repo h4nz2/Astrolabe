@@ -48,7 +48,8 @@
 			"url": "https://visibleearth.nasa.gov/images/73751/july-blue-marble-next-generation-w-topography-and-bathymetry",
 			"file": "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73751/world.topo.bathy.200407.3x5400x2700.jpg",
 			"licence": "Public domain",
-			"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy"
+			"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+			"note": "Darks lifted (gamma 0.42, a touch more blue) so the deep oceans stay blue, not black, on a projector."
 		},
 		"nasa-black-marble": {
 			"title": "Earth at Night (Black Marble 2016)",
@@ -198,7 +199,9 @@
 			"width": 4096,
 			"map": {
 				"centreLonEast": 0,
-				"keep": true
+				"keep": true,
+				"gamma": 0.42,
+				"balance": [1, 1, 1.05]
 			}
 		},
 		"/assets/textures/earth/earth_night.jpg": {

@@ -64,6 +64,7 @@
 		"url": "https://visibleearth.nasa.gov/images/73751/july-blue-marble-next-generation-w-topography-and-bathymetry",
 		"licence": "Public domain",
 		"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+		"note": "Darks lifted (gamma 0.42, a touch more blue) so the deep oceans stay blue, not black, on a projector.",
 		"bodies": [
 			"earth"
 		]
