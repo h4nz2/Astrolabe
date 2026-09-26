@@ -26,6 +26,11 @@ import { useHudStore } from "@/store/hud"
 import { useSimStore, type SimState } from "@/store/sim"
 
 import BodyRecording from "../sound/BodyRecording"
+import {
+	SmallBodiesLegend,
+	SmallBodyNotes,
+} from "../smallBodies/SmallBodyNotes"
+
 import { headlineFacts } from "./bodyFacts"
 import { dictionaryEntry } from "./dictionaryEntry"
 import MoonSystem from "./MoonSystem"
@@ -147,6 +152,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							</div>
 						))}
 					</dl>
+					<SmallBodyNotes body={body} />
 					{entry !== null && (
 						<Anchor
 							className={classes.more}
@@ -172,7 +178,10 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 const BodyInfo = () => {
 	const bodyId = useSimStore(cardBodyId)
 	return bodyId === null ? (
-		<ClickHint />
+		<>
+			<ClickHint />
+			<SmallBodiesLegend />
+		</>
 	) : (
 		<BodyCard key={bodyId} bodyId={bodyId} />
 	)

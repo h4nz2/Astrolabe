@@ -306,6 +306,56 @@
 				]
 			}
 		},
+		"dwarfPlanets": {
+			"title": {
+				"standard": "Plutón y los planetas enanos",
+				"simple": "Plutón"
+			},
+			"what": {
+				"standard": "Plutón, Ceres, Eris, Haumea y Makemake son mundos reales en la aplicación, con sus lunas, de Caronte a Disnomia.",
+				"simple": "Plutón y otros cuatro mundos pequeños y redondos, con sus lunas."
+			},
+			"why": {
+				"standard": "La tarjeta de Plutón cuenta por qué dejó de ser un planeta en 2006: nosotros aprendimos más, Plutón no cambió. Así funciona la ciencia.",
+				"simple": "Descubrirás por qué Plutón ya no es un planeta."
+			},
+			"how": {
+				"standard": [
+					"Escribe «Plutón» en la casilla de arriba a la izquierda y elígelo: se muestra aunque «Cuerpos menores» esté apagado.",
+					"Abre la tarjeta con su flecha: Caronte aparece en ella; «Ver todo el sistema de lunas» muestra las cinco.",
+					"← / → pasan al siguiente planeta enano."
+				],
+				"simple": [
+					"Escribe «Plutón» en la casilla de arriba a la izquierda.",
+					"Elige Plutón y volarás hasta allí."
+				]
+			}
+		},
+		"comets": {
+			"title": {
+				"standard": "Un cometa pasa junto al Sol",
+				"simple": "Los cometas"
+			},
+			"what": {
+				"standard": "Cinco cometas en sus órbitas reales y alargadas desarrollan una cabeza brillante y dos colas al acercarse al Sol, y las pierden al alejarse.",
+				"simple": "Los cometas tienen una cola larga cuando se acercan al Sol."
+			},
+			"why": {
+				"standard": "La cola apunta siempre en sentido contrario al Sol, así que un cometa que se aleja va con la cola por delante: algo para ver, no solo para contar.",
+				"simple": "¡La cola apunta siempre lejos del Sol, incluso cuando el cometa se va!"
+			},
+			"how": {
+				"standard": [
+					"Elige Halley o Encke en la casilla de arriba a la izquierda (grupo Cometas).",
+					"Abre su tarjeta con la flecha y pulsa el botón para verlo pasar junto al Sol: la aplicación va a su próxima visita y la muestra en un minuto y medio.",
+					"Fíjate hacia dónde apunta la cola a la ida y a la vuelta."
+				],
+				"simple": [
+					"Elige Halley en la casilla de arriba a la izquierda.",
+					"Abre su tarjeta con la flechita y pulsa el botón para verlo pasar junto al Sol."
+				]
+			}
+		},
 		"spin": {
 			"title": {
 				"standard": "Días, inclinación y rotación",
@@ -608,6 +658,31 @@
 				"simple": [
 					"Vuela de la Tierra a otro planeta.",
 					"Lee el recuadro que hay encima de los botones de tiempo."
+				]
+			}
+		},
+		"asteroidBelt": {
+			"title": {
+				"standard": "El cinturón de asteroides está casi vacío",
+				"simple": "El cinturón de asteroides"
+			},
+			"what": {
+				"standard": "El interruptor «Cuerpos menores» muestra el cinturón de asteroides y el cinturón de Kuiper como nubes de puntos, además de los planetas enanos, siete asteroides con nombre y cinco cometas.",
+				"simple": "Un interruptor muestra el cinturón de asteroides, el helado cinturón de Kuiper, los planetas enanos y los cometas."
+			},
+			"why": {
+				"standard": "Las películas muestran un campo lleno de rocas. La tarjeta cuenta la verdad: cada punto representa unos 380 asteroides y los vecinos están a un millón de km, así que las sondas lo cruzan en línea recta.",
+				"simple": "En las películas está lleno de rocas. En el espacio real, las rocas están muy, muy lejos unas de otras."
+			},
+			"how": {
+				"standard": [
+					"Pulsa Capas abajo a la derecha y activa «Cuerpos menores».",
+					"Lee la nota de la tarjeta de arriba a la izquierda.",
+					"Elige «Escala real» en el panel de escala y vuela a Vesta o a Ceres: el cinturón sigue siendo unos puntos dispersos."
+				],
+				"simple": [
+					"Pulsa Capas y activa «Cuerpos menores».",
+					"Lee lo que dice la tarjeta sobre los puntos."
 				]
 			}
 		},

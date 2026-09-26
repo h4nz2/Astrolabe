@@ -13,11 +13,17 @@ function Bodies() {
 	const showMoons = useSimStore((state) => state.showMoons)
 	const showAllMoons = useSimStore((state) => state.showAllMoons)
 	const focusId = useSimStore((state) => state.focusId)
+	const showSmallBodies = useSimStore((state) => state.showSmallBodies)
 
 	return (
 		<>
 			{frame.bodies.map((body, index) =>
-				isBodyShown(body, { showMoons, showAllMoons, focusId }) ? (
+				isBodyShown(body, {
+					showMoons,
+					showAllMoons,
+					focusId,
+					showSmallBodies,
+				}) ? (
 					<BodyMesh key={body.id} body={body} index={index} />
 				) : null,
 			)}

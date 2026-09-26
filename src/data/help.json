@@ -61,6 +61,16 @@
 			"try": "/solar_system?focus=saturn&t=2457897.5&cam=160_40_1"
 		},
 		{
+			"id": "dwarfPlanets",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=pluto"
+		},
+		{
+			"id": "comets",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=halley&t=2446500&smallBodies=true"
+		},
+		{
 			"id": "spin",
 			"group": "lookingAround",
 			"try": "/solar_system?focus=earth&warp=3600"
@@ -114,6 +124,11 @@
 			"id": "howFar",
 			"group": "sizeDistance",
 			"try": "/solar_system?focus=earth&scale=trueScale"
+		},
+		{
+			"id": "asteroidBelt",
+			"group": "sizeDistance",
+			"try": "/solar_system?smallBodies=true&scale=trueScale"
 		},
 		{
 			"id": "solarWalk",

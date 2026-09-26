@@ -163,6 +163,11 @@ test("at true scale a sub-pixel planet is hit anywhere within its target", async
 		window.__astrolabe!.scale.getState().setPreset("trueScale"),
 	)
 	await settled(page)
+	// the camera follows the new scale on its next drawn frame, which a loaded machine may
+	// not have drawn yet: wait until Jupiter is back on screen
+	await expect
+		.poll(() => page.evaluate(() => window.__astrolabe!.screenOf("jupiter")))
+		.not.toBeNull()
 	// 9 px beside a planet far less than a pixel wide
 	const aim = await beside(page, "jupiter", 9)
 	expect(aim.body.discPx).toBeLessThan(1)

@@ -1198,5 +1198,735 @@
 				"Saturnův měsíc Mimas s průměrem asi 396 km je kulatý, kdežto o něco větší Proteus ne – velikost, při níž se měsíc stane kulatým, závisí na tom, z čeho je, a na tom, jak teplý kdysi byl."
 			]
 		}
+	},
+	"ceres": {
+		"name": "Ceres",
+		"tagline": "Trpasličí planeta z pásu planetek",
+		"description": {
+			"simple": "Ceres je největší těleso v pásu planetek – v prstenci vesmírných kamenů mezi Marsem a Jupiterem. Je kulatá jako míč, ale mnohem menší než náš Měsíc. Když ji v roce 1801 objevili, lidé si mysleli, že je to nová planeta. Sonda Dawn kolem Ceres obíhala a našla na ní jasně bílé skvrny – ze soli!",
+			"standard": "Ceres je největší těleso v pásu planetek mezi Marsem a Jupiterem a jediná trpasličí planeta, která v něm je. Objevil ji Giuseppe Piazzi 1. ledna 1801 a asi půl století se počítala mezi planety – dokud se ve stejné oblasti neobjevilo tolik dalších kamenných těles, že je astronomové začali místo toho nazývat asteroidy neboli planetkami. Ceres má průměr asi 940 km a skládá se z horniny smíchané s ledem. Sonda Dawn od NASA kolem ní obíhala v letech 2015 až 2018 a v kráteru Occator našla jasné skvrny: sůl, která zůstala, když slaná voda prosákla zespodu na povrch a odpařila se.",
+			"advanced": "Ceres (střední průměr asi 940 km) obsahuje zhruba třetinu hmotnosti pásu planetek a je tam jediným tělesem dost hmotným na to, aby ho vlastní gravitace stáhla do téměř kulatého tvaru. Podle definice IAU z roku 2006 je proto trpasličí planetou: je kulatá a obíhá kolem Slunce, ale nevyčistila svou dráhu od nespočtu dalších těles v okolí. Její nízká hustota asi 2,2 g/cm³ ukazuje na horninu smíchanou s vodním ledem a Dawn našla známky solanky hluboko pod kůrou. Jasné skvrny (faculae) v 92km kráteru Occator tvoří převážně uhličitan sodný a Ahuna Mons, osamocená hora vysoká asi 4 km, je nejspíš ledová sopka. Ceres oběhne Slunce jednou za 4,6 roku ve střední vzdálenosti 2,77 AU."
+		},
+		"facts": {
+			"simple": [
+				"Ceres dostala jméno po římské bohyni zemědělství – odtud pochází i slovo „cereálie“.",
+				"Den na Ceres trvá jen asi 9 hodin.",
+				"Pás planetek není tak přeplněný jako ve filmech: planetky jsou od sebe tak daleko, že jím sondy proletí, aniž by se musely čemukoli vyhýbat."
+			],
+			"standard": [
+				"Ceres byla vůbec první objevená planetka – našli ji na Nový rok 1801.",
+				"Přitažlivost na Ceres je jen asi 3 % pozemské, takže bys tam vyskočil víc než 30krát výš než doma.",
+				"Sondě Dawn v roce 2018 došlo palivo, ale mlčící sonda dál krouží kolem Ceres."
+			],
+			"advanced": [
+				"Všechny planetky dohromady mají jen asi 3 % hmotnosti Měsíce a samotná Ceres z toho tvoří zhruba třetinu.",
+				"Sousední planetky jsou od sebe v průměru asi milion km – víc než dvojnásobek vzdálenosti Země–Měsíc.",
+				"Po Ceres je pojmenovaný prvek cer (cerium), objevený v roce 1803."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byla by Ceres skleněná kulička."
+			],
+			"standard": [
+				"Ceres má jen asi čtvrtinový průměr oproti našemu Měsíci: rychlostí 100 km/h bys ji přejel za méně než 10 hodin."
+			],
+			"advanced": [
+				"Sluneční světlo letí k Ceres asi 23 minut – skoro třikrát déle než k Zemi."
+			]
+		}
+	},
+	"pluto": {
+		"name": "Pluto",
+		"tagline": "Trpasličí planeta se srdcem",
+		"description": {
+			"simple": "Pluto je malý ledový svět daleko za Neptunem. Celých 76 let se mu říkalo devátá planeta. V roce 2006 astronomové rozhodli, že Pluto je trpasličí planeta, protože se o svou cestu kolem Slunce dělí se spoustou dalších ledových těles. Pluto samo se nijak nezměnilo – změnilo se jen to, jak mu říkáme. Na jeho povrchu je velká světlá planina ve tvaru srdce.",
+			"standard": "Pluto objevil v roce 1930 Clyde Tombaugh a 76 let se mu říkalo devátá planeta. Pak ale astronomové v roce 2005 našli Eris, ledový svět zhruba stejně velký jako Pluto, a museli se rozhodnout: je to desátá planeta? V roce 2006 se Mezinárodní astronomická unie (IAU) shodla na vůbec první oficiální definici planety: musí obíhat kolem Slunce, musí být dost hmotná na to, aby byla kulatá, a musí mít vyčištěné okolí své dráhy. Pluto splňuje první dvě podmínky, ale svou oblast, Kuiperův pás, sdílí s tisíci dalších ledových těles – a tak se stalo trpasličí planetou. Pluto se nezměnilo, změnilo se naše poznání. Tak věda funguje.",
+			"advanced": "Když kolem něj 14. července 2015 proletěla sonda New Horizons od NASA, ukázalo se, že Pluto je překvapivě aktivní. Západní polovinu jasné oblasti Tombaugh Regio ve tvaru srdce tvoří Sputnik Planitia, pánev široká asi 1 000 km, vyplněná pomalu se převalujícím dusíkovým ledem a bez viditelných kráterů, takže její povrch musí být mladší než asi 10 milionů let. Obrázek doplňují několik kilometrů vysoké hory z vodního ledu a řídká dusíková atmosféra s vrstvami modrého oparu. Dráha Pluta je výstředná (0,25) a skloněná o 17°; v letech 1979 až 1999 bylo Pluto blíž ke Slunci než Neptun, ale dráhová rezonance 3 : 2 – Pluto oběhne Slunce dvakrát, zatímco Neptun třikrát – zajišťuje, že se ta dvě tělesa nikdy nesrazí."
+		},
+		"facts": {
+			"simple": [
+				"Jméno Pluto vymyslela Venetia Burneyová, jedenáctiletá dívka z Anglie.",
+				"Sonda New Horizons letěla k Plutu devět a půl roku.",
+				"Jeden rok na Plutu trvá skoro 250 pozemských let."
+			],
+			"standard": [
+				"New Horizons proletěla kolem Pluta 14. července 2015 a poslala první snímky zblízka.",
+				"Pluto má pět známých měsíců: Charon, Nix, Hydru, Kerberos a Styx.",
+				"Rok na Plutu trvá asi 249 pozemských let, takže od svého objevu v roce 1930 ještě ani jednou neoběhlo Slunce."
+			],
+			"advanced": [
+				"IAU přijala definici planety hlasováním 24. srpna 2006 na svém valném shromáždění v Praze.",
+				"Pluto rotuje pozpátku oproti většině planet; jeden den na něm trvá 6,4 pozemského dne, přesně tak dlouho, jak dlouho Charonu trvá jeden oběh.",
+				"Hmotnost Pluta je jen asi 18 % hmotnosti Měsíce a 0,2 % hmotnosti Země."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, bylo by Pluto pingpongový míček."
+			],
+			"standard": [
+				"Pluto má jen asi dvě třetiny průměru našeho Měsíce – ve sluneční soustavě je sedm měsíců větších než Pluto."
+			],
+			"advanced": [
+				"Sluneční světlo letí k Plutu asi pět a půl hodiny; dopravní letadlo letící bez přestávky rychlostí 900 km/h by potřebovalo asi 750 let."
+			]
+		}
+	},
+	"haumea": {
+		"name": "Haumea",
+		"tagline": "Roztočené vejce",
+		"description": {
+			"simple": "Haumea je trpasličí planeta daleko za Neptunem. Točí se tak rychle, že se protáhla do tvaru vajíčka nebo ragbyového míče: jedna otočka jí trvá necelé čtyři hodiny. Haumea má dva malé měsíce a dokonce i tenký prstenec.",
+			"standard": "Haumea patří do Kuiperova pásu, oblasti ledových těles za Neptunem. Den na ní trvá necelé čtyři hodiny, a tak je jedním z nejrychleji rotujících velkých těles sluneční soustavy. Rychlá rotace ji vytáhla do protáhlého tvaru podobného vejci, který je asi dvakrát delší, než je silný. V roce 2017 astronomové pozorovali, jak Haumea přechází před vzdálenou hvězdou, a objevili kolem ní tenký prstenec – první prstenec nalezený u trpasličí planety. Její dva měsíce, Hiʻiaka a Namaka, jsou stejně jako Haumea pojmenované po havajských bohyních.",
+			"advanced": "Rotační perioda Haumey, 3,9 hodiny, ji protahuje do podlouhlého elipsoidu zhruba dvakrát delšího, než je silný – do tvaru, v němž se její gravitace a rotace navzájem vyrovnávají. Povrch pokrývá krystalický vodní led, zatímco hustota ukazuje na převážně kamenné nitro pod tenkou ledovou slupkou. Haumea, její měsíce a rodina ledových těles na podobných drahách jsou nejspíš úlomky dávné obří srážky, která může vysvětlovat i její rychlou rotaci. Slunce oběhne jednou za 283 let ve střední vzdálenosti 43 AU po dráze skloněné o 28°."
+		},
+		"facts": {
+			"simple": [
+				"Den na Haumeji je kratší než dopoledne ve škole: trvá necelé 4 hodiny.",
+				"Haumea je pojmenovaná po havajské bohyni zrození a plodnosti.",
+				"Haumea má prstenec, stejně jako Saturn – jen mnohem tenčí a slabší."
+			],
+			"standard": [
+				"Prstenec Haumey objevili v roce 2017, když trpasličí planeta přešla před hvězdou a na chvíli zakryla její světlo.",
+				"Rok na Haumeji trvá asi 283 pozemských let.",
+				"Její jasný povrch tvoří převážně vodní led."
+			],
+			"advanced": [
+				"S rotační periodou 3,9 hodiny se Haumea otáčí rychleji než kterákoli jiná známá trpasličí planeta.",
+				"Její prstenec obíhá asi 2 300 km od středu Haumey a jednou ho oběhne za dobu, za kterou se Haumea otočí třikrát.",
+				"IAU uznala Haumeu za trpasličí planetu v roce 2008."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, měla by Haumea zhruba velikost a tvar křepelčího vajíčka."
+			],
+			"standard": ["Haumea se otáčí asi šestkrát rychleji než Země."],
+			"advanced": [
+				"V průměrné vzdálenosti Haumey dorazí sluneční světlo skoro 6 hodin poté, co opustí Slunce, a je asi 1 850krát slabší než na Zemi."
+			]
+		}
+	},
+	"makemake": {
+		"name": "Makemake",
+		"tagline": "Trpasličí planeta nalezená o Velikonocích",
+		"description": {
+			"simple": "Makemake je malý, načervenalý ledový svět daleko za Neptunem. Objevili ho v roce 2005, krátce po Velikonocích, a tak ho jeho objevitelé pojmenovali po bohovi obyvatel Velikonočního ostrova. Makemake patří k nejjasnějším objektům Kuiperova pásu, oblasti ledových světů za Neptunem. Má jeden malinký tmavý měsíc.",
+			"standard": "Makemake je trpasličí planeta v Kuiperově pásu s průměrem asi 1 400 km – o něco víc než polovina průměru Pluta. Objevitelé ho spatřili 31. března 2005, pár dní po Velikonocích, a později ho pojmenovali po Makemakovi, bohu stvořiteli národa Rapa Nui z Velikonočního ostrova. Po Plutu je to nejjasnější známý objekt Kuiperova pásu, viditelný velkým amatérským dalekohledem. Jeho červenohnědý povrch pokrývá zmrzlý metan. V roce 2016 odhalily snímky z Hubbleova vesmírného dalekohledu malý, velmi tmavý měsíc.",
+			"advanced": "Makemake oběhne Slunce jednou za 308 let ve střední vzdálenosti 45,6 AU po dráze skloněné o 29°. V jeho spektru převládá metanový led spolu s etanem a dalšími látkami, které z něj vytvořilo sluneční světlo a které povrchu dávají načervenalou barvu. Když Makemake v roce 2011 přešel před slabou hvězdou, hvězda zmizela a znovu se objevila naprosto náhle, což ukázalo, že Makemake má nanejvýš nesmírně řídkou atmosféru – na rozdíl od Pluta. Jeho měsíc, přezdívaný MK2, je asi 1 300krát slabší než Makemake a mnohem tmavší; byl nalezen na snímcích z Hubbleova dalekohledu pořízených v roce 2015."
+		},
+		"facts": {
+			"simple": [
+				"Jeden oběh Makemaka kolem Slunce trvá asi 308 pozemských let.",
+				"Objevitelé mu nejdřív přezdívali „Velikonoční zajíček“.",
+				"Makemake je pokrytý zmrzlým metanem – to je hlavní složka zemního plynu, na kterém se v mnoha domácnostech vaří."
+			],
+			"standard": [
+				"Makemake byl oficiálně uznán za trpasličí planetu v roce 2008.",
+				"Teplota na jeho povrchu je asi −240 °C.",
+				"Jeho jediný známý měsíc se skrýval v záři Makemaka, dokud ho v roce 2016 neodhalil Hubbleův dalekohled."
+			],
+			"advanced": [
+				"Z přesných časů, kdy hvězda v roce 2011 zmizela za Makemakem, změřených z několika observatoří, vyšla jeho velikost: asi 1 430 × 1 500 km.",
+				"Jeho střední povrchová teplota je asi 32 K (−241 °C).",
+				"Až bude dráha jeho měsíce přesně známá, prozradí hmotnost Makemaka – stejně jako Charon a Dysnomia prozradily hmotnosti Pluta a Eridy."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Makemake asi tak velký jako třešeň."
+			],
+			"standard": [
+				"Makemake má asi 60 % průměru Pluta a 40 % průměru našeho Měsíce."
+			],
+			"advanced": [
+				"Z Makemaka by Slunce vypadalo jen jako oslnivý bod světla – ale pořád asi 200krát jasnější než Měsíc v úplňku viděný ze Země."
+			]
+		}
+	},
+	"eris": {
+		"name": "Eris",
+		"tagline": "Trpasličí planeta, která rozpoutala spor",
+		"description": {
+			"simple": "Eris je trpasličí planeta skoro přesně stejně velká jako Pluto, ale mnohem dál. Když ji v roce 2005 objevili, někteří jí říkali desátá planeta. Astronomové místo toho stanovili jasné pravidlo, co se počítá jako planeta – a Eris i Pluto se staly trpasličími planetami. Eris je pojmenovaná po řecké bohyni sváru. To sedí, protože sama rozpoutala pořádný spor!",
+			"standard": "Eris má zhruba stejný průměr jako Pluto, ale je asi o čtvrtinu těžší a patří k nejvzdálenějším známým objektům, které obíhají kolem Slunce. Její objev v roce 2005 donutil astronomy rozhodnout, jestli je to desátá planeta – nebo jestli je vůbec Pluto opravdu planetou. Odpovědí byla definice IAU z roku 2006, podle níž se obě tělesa stala trpasličími planetami. Příhodně nese Eris jméno řecké bohyně sváru a rozbrojů. Její dráha je tak protáhlá a skloněná (44°), že jí jeden oběh kolem Slunce trvá asi 560 let. Dnes je Eris asi 96krát dál od Slunce než Země, blízko nejvzdálenějšího bodu své dráhy.",
+			"advanced": "Eris patří do rozptýleného disku, populace ledových těles za Kuiperovým pásem, jejichž výstředné a strmě skloněné dráhy nejspíš vymrštila ven Neptunova gravitace. Její dráha (velká poloosa 68 AU, výstřednost 0,44, sklon 44°) ji vede mezi asi 38 a 98 AU od Slunce. Když Eris v roce 2010 přešla před hvězdou, byl její průměr změřen na asi 2 330 km, jen o málo méně než 2 377 km u Pluta, zatímco dráha jejího měsíce Dysnomie dává hmotnost asi o 27 % větší než u Pluta – Eris je tedy hustší a kamenitější. Její povrch odráží asi 96 % dopadajícího světla, což je jedna z nejvyšších hodnot ve sluneční soustavě, nejspíš díky čerstvé metanové jinovatce."
+		},
+		"facts": {
+			"simple": [
+				"Rok na Eridě trvá asi 560 pozemských let.",
+				"Eris má jeden měsíc, jmenuje se Dysnomia.",
+				"Eris patří k nejlesklejším tělesům sluneční soustavy: jako čerstvý sníh odráží skoro všechno sluneční světlo, které na ni dopadne."
+			],
+			"standard": [
+				"Než dostala oficiální jméno, přezdívalo se Eridě „Xena“, podle hrdinky jednoho televizního seriálu.",
+				"Eris je teď víc než dvakrát dál od Slunce než Pluto.",
+				"Eris dostala oficiální jméno v září 2006, až když byl spor o planety rozhodnutý."
+			],
+			"advanced": [
+				"Dysnomia obíhá Eris ve vzdálenosti asi 37 300 km jednou za 15,8 dne; právě její dráha astronomům umožňuje Eris zvážit.",
+				"Zdá se, že Eris se otočí jednou za 15,8 dne, v souladu s oběhem Dysnomie.",
+				"Eris byla objevena 5. ledna 2005 na snímcích pořízených v říjnu 2003."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byla by Eris pingpongový míček – jen maličko menší než Pluto."
+			],
+			"standard": [
+				"Světlo dnes k Eridě letí asi 13 hodin; dopravní letadlo by rychlostí 900 km/h potřebovalo asi 1 800 let."
+			],
+			"advanced": [
+				"V dnešní vzdálenosti Eridy svítí Slunce víc než 9 000krát slaběji než na Zemi."
+			]
+		}
+	},
+	"charon": {
+		"name": "Charon",
+		"tagline": "Obří partner Pluta",
+		"description": {
+			"simple": "Charon je největší měsíc Pluta. Jeho průměr je asi poloviční oproti Plutu – je tak velký, že se Pluto a Charon točí jeden kolem druhého jako dva tanečníci, kteří se drží za ruce. Navzájem si ukazují pořád stejnou stranu. Kdybys stál na Plutu, visel by Charon na obloze a vůbec by se nehýbal – nebo bys ho na druhé straně Pluta neviděl nikdy.",
+			"standard": "Charon je největší měsíc Pluta s průměrem asi 1 200 km – víc než polovina průměru Pluta. Protože je Charon ve srovnání s Plutem tak těžký, leží bod, kolem kterého oba obíhají, v prázdném prostoru mezi nimi, a ne uvnitř Pluta. Oba mají vázanou rotaci: stále k sobě obracejí stejnou tvář a jeden den na Plutu trvá přesně tak dlouho jako jeden oběh Charonu, 6,4 dne. New Horizons odhalila na Charonově severním pólu načervenalou čepičku a kaňony mnohem delší a hlubší než Grand Canyon.",
+			"advanced": "S asi 12 % hmotnosti Pluta je Charon ze všech měsíců planet a trpasličích planet největší v poměru ke svému mateřskému tělesu; těžiště dvojice leží víc než 900 km nad povrchem Pluta, a proto někteří astronomové označují Pluto a Charon za dvojitou trpasličí planetu. Jeho dráha umožnila první přesné změření hmotnosti Pluta. Načervenalá polární čepička Mordor Macula nejspíš vzniká tak, že metan unikající z atmosféry Pluta namrzá na Charonův studený zimní pól a ultrafialové světlo ho mění na načervenalé sloučeniny. Jeho povrch z vodního ledu protíná pás kaňonů, což naznačuje, že dávný podpovrchový oceán zamrzl a zvětšil svůj objem."
+		},
+		"facts": {
+			"simple": [
+				"Charon je pojmenovaný po převozníkovi, který v řeckých bájích převážel duše přes řeku do podsvětí.",
+				"Charon oběhne Pluto jednou za necelý týden.",
+				"Vědci přezdívají tmavě červené polární čepičce Charonu „Mordor“, podle temné země z Pána prstenů."
+			],
+			"standard": [
+				"Charon je od Pluta jen asi 19 600 km – zhruba dvacetina vzdálenosti mezi Zemí a Měsícem.",
+				"Kvůli vázané rotaci je Charon vidět jen z jedné poloviny Pluta.",
+				"Nejhlubší kaňony na Charonu jsou hluboké asi 9 km – pětkrát víc než Grand Canyon."
+			],
+			"advanced": [
+				"Střední průměr 1 212 km; hmotnost asi 1,6 × 10²¹ kg, asi 12 % hmotnosti Pluta.",
+				"Charonova dráha je téměř dokonale kruhová (výstřednost 0,0002).",
+				"James Christy objevil Charon v roce 1978 jako malý hrbolek na fotografiích Pluta."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, bylo by Pluto pingpongový míček a Charon lískový oříšek 34 cm od něj."
+			],
+			"standard": [
+				"Charon obíhá jen asi 19 600 km od Pluta – dopravní letadlo by tu vzdálenost uletělo za méně než den."
+			],
+			"advanced": [
+				"Měsíc má asi 1,2 % hmotnosti Země; Charon má asi 12 % hmotnosti Pluta – poměrně desetkrát víc."
+			]
+		}
+	},
+	"vesta": {
+		"name": "Vesta",
+		"tagline": "Nejjasnější planetka",
+		"description": {
+			"simple": "Vesta je druhé největší těleso v pásu planetek. Je ze všech planetek nejjasnější – za hodně tmavých nocí ji někdy uvidíš i bez dalekohledu. Kdysi dávno do Vesty vyrazila obrovská srážka gigantickou díru a některé úlomky dopadly na Zemi jako meteority. Lidé tak můžou držet kousek Vesty v ruce!",
+			"standard": "Vesta je druhé největší těleso v pásu planetek, s průměrem asi 525 km. Na rozdíl od většiny planetek má vrstvy jako malá kamenná planeta: železné jádro, kamenný plášť a kůru ze staré lávy. Sonda Dawn od NASA kolem Vesty obíhala v letech 2011 až 2012 a zmapovala Rheasilvii, kráter široký asi 500 km – skoro jako celá Vesta – s centrální horou víc než dvakrát vyšší než Mount Everest. Dopad, který ho vytvořil, vyrazil horniny, které na Zemi padají dodnes: zhruba každý dvacátý meteorit pochází z Vesty.",
+			"advanced": "Vesta je přeživší protoplaneta: na počátku své historie se roztavila a rozvrstvila na železné jádro, plášť a čedičovou kůru – stejným procesem, jaký utvářel Zemi. Její jižní polokouli ovládají dvě překrývající se impaktní pánve, Rheasilvia (asi 500 km) a starší Veneneia. Dopad, který před zhruba miliardou let vytvořil Rheasilvii, vyrazil kolem 1 % objemu Vesty a dal vzniknout rodině malých planetek, vestoidům. Některé z těchto úlomků dopadají na Zemi jako meteority typu HED (howardity, eukrity a diogenity), díky nimž můžeme kůru Vesty zkoumat v laboratoři. Protože její tvar není úplně kulatý, řadí se Vesta mezi planetky, a ne mezi trpasličí planety."
+		},
+		"facts": {
+			"simple": [
+				"Vesta je pojmenovaná po římské bohyni domova a domácího krbu.",
+				"Den na Vestě trvá jen o málo víc než 5 hodin.",
+				"Sonda Dawn navštívila nejdřív Vestu a pak letěla dál k Ceres."
+			],
+			"standard": [
+				"Vestu objevil v roce 1807 Heinrich Olbers.",
+				"Jeden rok na Vestě trvá asi 3,6 pozemského roku.",
+				"Dawn byla první sonda, která obíhala kolem dvou různých světů mimo Zemi: Vesty a Ceres."
+			],
+			"advanced": [
+				"Vesta obsahuje zhruba desetinu hmotnosti celého pásu planetek.",
+				"V době největší jasnosti dosahuje Vesta asi 5. magnitudy, a je tak jedinou planetkou hlavního pásu, kterou lze někdy vidět pouhým okem.",
+				"Její rotační perioda je 5,34 hodiny a její osa je skloněná o 29°."
+			]
+		},
+		"comparisons": {
+			"simple": ["Kdyby byla Země fotbalový míč, byla by Vesta hrášek."],
+			"standard": [
+				"Vesta má průměr asi 525 km – rychlostí 100 km/h bys ji přejel za něco přes 5 hodin."
+			],
+			"advanced": [
+				"Centrální vrchol Rheasilvie je asi dvaapůlkrát vyšší než Mount Everest – a to na tělese s 24krát menším průměrem, než má Země."
+			]
+		}
+	},
+	"pallas": {
+		"name": "Pallas",
+		"tagline": "Nakloněný obr pásu planetek",
+		"description": {
+			"simple": "Pallas je jedna z největších planetek, skoro tak velká jako Vesta. Obíhá kolem Slunce po hodně nakloněné dráze, takže většinu času tráví nad ostatními planetkami nebo pod nimi. Ve filmech je pás planetek plný kamenů, které se valí těsně vedle sebe – ale ten skutečný je skoro prázdný. Sondy jím proletí rovně a nemusejí se ničemu vyhýbat.",
+			"standard": "Pallas byla druhá objevená planetka; našel ji Heinrich Olbers v roce 1802. Má průměr asi 510 km, je tedy skoro tak velká jako Vesta, ale její dráha je oproti drahám planet skloněná asi o 35° – tak strmě, že je těžké se k ní dostat, a zatím ji nenavštívila žádná sonda. Pallas dobře připomíná, jak prázdný pás planetek ve skutečnosti je: sousední planetky jsou od sebe v průměru asi milion km, víc než dvojnásobek vzdálenosti Země–Měsíc. Sondy jako Pioneer 10, Galileo, Cassini a New Horizons pás přeletěly, aniž by se musely čemukoli vyhýbat.",
+			"advanced": "Pallas má střední průměr asi 510 km a obsahuje zhruba 8 % hmotnosti pásu planetek. Její dráha je neobvykle skloněná (34,9°) a výstředná (0,23), takže se s ostatními planetkami setkává při vysokých vzájemných rychlostech a srážky jsou obzvlášť prudké – to může vysvětlovat hustě krátery posetý povrch připomínající „golfový míček“, který v roce 2020 ukázaly snímky z dalekohledu VLT (Very Large Telescope). Celý pás obsahuje jen asi 3 % hmotnosti Měsíce a Ceres, Vesta, Pallas a Hygiea z toho dohromady tvoří víc než polovinu. Pallas obíhá ve střední vzdálenosti 2,77 AU, téměř přesně stejné jako Ceres."
+		},
+		"facts": {
+			"simple": [
+				"Pallas je pojmenovaná po Pallas Athéně, řecké bohyni moudrosti.",
+				"Jeden rok na Pallas trvá víc než čtyři a půl pozemského roku.",
+				"Všechny planetky v pásu dohromady váží mnohem méně než náš Měsíc."
+			],
+			"standard": [
+				"Stejně jako Ceres se i Pallas po svém objevu celá desetiletí počítala mezi planety.",
+				"Její dráha je skloněná mnohem strměji než dráhy ostatních velkých planetek.",
+				"Po Pallas je pojmenovaný kov palladium, který se používá v katalyzátorech aut."
+			],
+			"advanced": [
+				"Pallas je vzácná planetka typu B: bohatá na uhlík a lehce namodralá.",
+				"Její rotační perioda je asi 7,8 hodiny.",
+				"Palladium, objevené v roce 1802, dostalo jméno po planetce nalezené téhož roku."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byla by Pallas hrášek – stejně jako Vesta."
+			],
+			"standard": [
+				"Všechny planetky dohromady mají jen asi třicetinu hmotnosti Měsíce."
+			],
+			"advanced": [
+				"Let od jedné planetky k její nejbližší sousedce – v průměru asi milion km – by dopravnímu letadlu trval víc než šest týdnů."
+			]
+		}
+	},
+	"juno": {
+		"name": "Juno",
+		"tagline": "Třetí objevená planetka",
+		"description": {
+			"simple": "Juno je velká planetka v pásu planetek, široká asi 250 km. Byla to teprve třetí objevená planetka, našli ji v roce 1804. Je z kamene smíchaného s kovem a má trochu tvar brambory. Juno je pojmenovaná po královně římských bohů.",
+			"standard": "Juno byla třetí objevená planetka; našel ji Karl Harding v roce 1804. Má průměr asi 250 km a patří k větším kamenným planetkám – skládá se z křemičitanových hornin smíchaných s kovem. Její dráha je dost protáhlá: Juno se přibližuje ke Slunci až na asi 2 AU a vzdaluje se do asi 3,4 AU. Nepleť si ji se sondou Juno od NASA – ta letěla k Jupiteru, ne k této planetce.",
+			"advanced": "Juno je planetka typu S: její povrch tvoří kamenné křemičitany smíchané s niklem a železem a odráží víc světla než tmavé planetky bohaté na uhlík. Při výstřednosti 0,26 se její vzdálenost od Slunce mění zhruba mezi 297 a 502 miliony km a jeden oběh jí trvá 4,4 roku. Otočí se asi za 7,2 hodiny a kvůli nepravidelnému tvaru se její jasnost během otáčení mění. Spolu s Ceres, Pallas a Vestou se po svém objevu několik desetiletí počítala mezi planety."
+		},
+		"facts": {
+			"simple": [
+				"Rok na Juno trvá skoro čtyři a půl pozemského roku.",
+				"Juno se otočí jednou dokola asi za 7 hodin.",
+				"Juno je moc slabá na to, abys ji viděl pouhýma očima – potřebuješ triedr nebo dalekohled."
+			],
+			"standard": [
+				"Juno je pojmenovaná po římské královně bohů, manželce Jupitera.",
+				"Juno se otočí jednou za asi 7,2 hodiny.",
+				"Jeden oběh kolem Slunce trvá Juno asi 4,4 roku."
+			],
+			"advanced": [
+				"Její tvar, asi 290 × 240 × 190 km, má ke kouli daleko, a proto Juno není trpasličí planeta.",
+				"Hmotnost Juno je asi 2,8 × 10¹⁹ kg, zhruba 1 % celkové hmotnosti pásu planetek.",
+				"Její přísluní leží ve vzdálenosti asi 1,99 AU a odsluní asi 3,35 AU."
+			]
+		},
+		"comparisons": {
+			"simple": ["Kdyby byla Země fotbalový míč, byla by Juno zrnko pepře."],
+			"standard": [
+				"Juno má průměr asi 250 km: rychlostí 100 km/h bys ji přejel za dvě a půl hodiny."
+			],
+			"advanced": [
+				"Země má asi 50krát větší průměr než Juno, ale je asi 200 000krát těžší."
+			]
+		}
+	},
+	"hygiea": {
+		"name": "Hygiea",
+		"tagline": "Možná trpasličí planeta",
+		"description": {
+			"simple": "Hygiea je čtvrté největší těleso v pásu planetek. Je velmi tmavá a skoro kulatá jako míč. Někteří astronomové si myslí, že by se jednou mohla počítat mezi trpasličí planety. Je pojmenovaná po řecké bohyni zdraví – odtud pochází slovo „hygiena“.",
+			"standard": "Hygiea je čtvrtá největší planetka, má průměr asi 410 km a obíhá ve vnější části pásu ve střední vzdálenosti 3,15 AU. Objevil ji v roce 1849 Annibale de Gasparis v Neapoli. Její povrch je tmavý a bohatý na uhlík jako u mnoha planetek vnějšího pásu. V roce 2019 ukázaly ostré snímky z dalekohledu VLT v Chile, že Hygiea je téměř dokonale kulatá, takže by mohla splňovat podmínky pro trpasličí planetu – IAU ale její zařazení nezměnila.",
+			"advanced": "Hygiea je planetka typu C, tmavé uhlíkaté těleso, a největší člen rodiny planetek, která vznikla při obří srážce. Pozorování dalekohledem VLT v roce 2019 na ní překvapivě nenašla žádnou velkou impaktní pánev; modely naznačují, že srážka Hygieu úplně roztříštila a úlomky se pak znovu shlukly do koule. Zdá se, že její kulatý tvar splňuje kritérium kulatosti, které IAU pro trpasličí planety stanovila, její zařazení se však nezměnilo. Ceres, Vesta, Pallas a Hygiea dohromady obsahují víc než polovinu hmotnosti pásu planetek."
+		},
+		"facts": {
+			"simple": [
+				"Jeden rok na Hygiei trvá asi pět a půl pozemského roku.",
+				"Den na Hygiei trvá skoro 14 hodin.",
+				"Hygiea je moc slabá na to, aby šla vidět bez dalekohledu."
+			],
+			"standard": [
+				"Jeden oběh kolem Slunce trvá Hygiei asi 5,6 roku.",
+				"Byla to desátá objevená planetka.",
+				"Den na Hygiei trvá asi 13,8 hodiny."
+			],
+			"advanced": [
+				"Hmotnost asi 1,05 × 10²⁰ kg – zhruba 4 % celého pásu planetek.",
+				"Střední vzdálenost od Slunce 3,15 AU; výstřednost dráhy 0,11.",
+				"K rodině Hygiei patří tisíce malých planetek na podobných drahách, úlomků téže srážky."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byla by Hygiea malý hrášek široký asi 7 mm."
+			],
+			"standard": [
+				"Sluneční světlo letí k Hygiei asi 26 minut – třikrát déle než k Zemi."
+			],
+			"advanced": [
+				"Aby se vyrovnaly hmotnosti našeho Měsíce, bylo by potřeba asi 700 Hygieí."
+			]
+		}
+	},
+	"eros": {
+		"name": "Eros",
+		"tagline": "První planetka, na které přistála sonda",
+		"description": {
+			"simple": "Eros je planetka ve tvaru burského oříšku, dlouhá asi 34 km. Dostává se blíž k Zemi než planetky v hlavním pásu. V roce 2000 začala kolem Erosu obíhat sonda NEAR Shoemaker a o rok později na něm jemně přistála – přestože k přistávání vůbec nebyla postavená!",
+			"standard": "Eros, objevený v roce 1898, byl vůbec první nalezenou blízkozemní planetkou: jeho dráha ho přivádí blíž ke Slunci než Mars, i když dráhu Země nikdy nekříží. Je dlouhý asi 34 km. Dne 14. února 2000 – na Valentýna, což se k planetce pojmenované po řeckém bohu lásky hodí – se NEAR Shoemaker od NASA stala první sondou, která obíhala kolem planetky. Po roce mapování 12. února 2001 dosedla na povrch; bylo to první přistání na planetce.",
+			"advanced": "Eros je planetka typu S na dráze s velkou poloosou 1,46 AU a výstředností 0,22; jeden oběh kolem Slunce mu trvá 1,76 roku a přísluní ve vzdálenosti 1,13 AU z něj dělá blízkozemní planetku, která kříží dráhu Marsu. Těsná přiblížení Erosu kolem roku 1900 a v roce 1931 posloužila k měření jeho paralaxy, a tím i měřítka sluneční soustavy, tedy délky astronomické jednotky. NEAR Shoemaker zjistila celkovou hustotu asi 2,7 g/cm³, podobnou zemské kůře, což ukazuje spíš na pevné, ale silně rozpukané těleso než na volnou hromadu sutě; jeho povrch pokrývají balvany a „jezírka“ jemného prachu."
+		},
+		"facts": {
+			"simple": [
+				"Eros je pojmenovaný po řeckém bohu lásky – a sonda k němu dorazila právě na Valentýna!",
+				"Eros se otočí jednou dokola za něco přes 5 hodin.",
+				"Na Erosu je přitažlivost tak slabá, že bys kámen dokázal hodit rovnou do vesmíru."
+			],
+			"standard": [
+				"NEAR Shoemaker pořídila asi 160 000 snímků Erosu.",
+				"Jeden rok na Erosu trvá asi 1,76 pozemského roku.",
+				"Eros patří k největším známým blízkozemním planetkám."
+			],
+			"advanced": [
+				"Mise NEAR byla přejmenována na počest planetárního geologa Eugena Shoemakera.",
+				"Eros objevil 13. srpna 1898 Gustav Witt v Berlíně.",
+				"Po přistání NEAR Shoemaker ještě asi dva týdny měřila složení povrchu svým spektrometrem záření gama."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Eros malý jako zrnko písku."
+			],
+			"standard": [
+				"Eros je dlouhý asi 34 km – auto by ho rychlostí 100 km/h projelo po celé délce asi za 20 minut."
+			],
+			"advanced": [
+				"Přitažlivost na povrchu Erosu je několik tisíckrát slabší než na Zemi."
+			]
+		}
+	},
+	"bennu": {
+		"name": "Bennu",
+		"tagline": "Hromada sutě, z níž máme kousky doma",
+		"description": {
+			"simple": "Bennu je malá planetka, široká jen asi 500 m – kdybys ji mohl obejít kolem dokola, trvalo by ti to jen asi 20 minut. Není to jeden pevný kámen, ale volná hromada kamenů a štěrku, kterou drží pohromadě její malinká gravitace. V roce 2020 se sonda OSIRIS-REx na pár sekund dotkla Bennu a nabrala trochu prachu a kamínků. V roce 2023 je pouzdro bezpečně dopravilo na Zemi, kde je teď vědci zkoumají.",
+			"standard": "Bennu je blízkozemní planetka o průměru asi 500 m, objevená v roce 1999. Sonda OSIRIS-REx od NASA k ní dorazila v roce 2018 a zjistila, že je to hromada sutě: volná kupa balvanů a štěrku, kterou drží pohromadě slabá gravitace. Když se sonda 20. října 2020 dotkla povrchu, aby odebrala vzorek, zabořila se její odběrová hlavice jako do bazénu s míčky. Pouzdro s asi 120 g materiálu přistálo 24. září 2023 v poušti v Utahu. Vzorek je bohatý na uhlík a minerály obsahující vodu a obsahuje aminokyseliny, stavební kameny života.",
+			"advanced": "Bennu je uhlíkatá planetka typu B, jejíž celková hustota jen asi 1,2 g/cm³ znamená, že velkou část jejího objemu tvoří prázdný prostor mezi úlomky. Její dráha (velká poloosa 1,13 AU, výstřednost 0,20) kříží dráhu Země, a proto patří k nejbedlivěji sledovaným potenciálně nebezpečným planetkám: podle přesného sledování sondou OSIRIS-REx je pravděpodobnost dopadu 24. září 2182 asi 1 : 2 700. Dopravený vzorek obsahuje minerály, které vznikly v kapalné vodě, a soli, které zůstaly po odpařené solance – důkaz, že mateřské těleso Bennu kdysi obsahovalo vodu."
+		},
+		"facts": {
+			"simple": [
+				"Jméno Bennu vymyslel devítiletý chlapec, který v roce 2013 vyhrál soutěž o jméno.",
+				"Bennu se otočí jednou dokola za něco přes 4 hodiny.",
+				"Kousky Bennu, které se dostaly na Zemi, váží asi 120 g – o něco víc než tabulka čokolády."
+			],
+			"standard": [
+				"Bennu oběhne Slunce zhruba jednou za 1,2 roku.",
+				"Z povrchu Bennu pravidelně odlétají do vesmíru malé kamínky.",
+				"Když sonda vzorek předala, letěla dál jako OSIRIS-APEX, aby v roce 2029 navštívila planetku Apophis."
+			],
+			"advanced": [
+				"Rotace Bennu (asi 4,3 hodiny) se každé století zrychlí asi o sekundu – pohání ji sluneční světlo znovu vyzářené jako teplo (jev YORP).",
+				"Její povrch odráží jen asi 4 % dopadajícího slunečního světla a pokrývá ho víc velkých balvanů, než se čekalo.",
+				"Vzorek obsahuje 14 z 20 aminokyselin, ze kterých život na Zemi staví bílkoviny."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Přes Bennu by se natáhlo asi pět fotbalových hřišť položených za sebou."
+			],
+			"standard": [
+				"Kdyby byla Země fotbalový míč, byla by Bennu smítko prachu asi desetkrát tenčí než vlas."
+			],
+			"advanced": [
+				"Úniková rychlost z Bennu je jen asi 20 cm/s – mnohem méně než rychlost chůze, takže jeden neopatrný krok by tě mohl vystřelit do vesmíru."
+			]
+		}
+	},
+	"arrokoth": {
+		"name": "Arrokoth",
+		"tagline": "Nejvzdálenější prozkoumaný svět",
+		"description": {
+			"simple": "Arrokoth je malý načervenalý svět z ledu a kamene, daleko v Kuiperově pásu za Neptunem. Vypadá jako dvě placky slepené dohromady – nebo jako sněhulák, který si lehl. Na Nový rok 2019 kolem něj proletěla sonda New Horizons. Nic vzdálenějšího zatím žádná sonda nenavštívila.",
+			"standard": "Arrokoth je malé ledové těleso v Kuiperově pásu, dlouhé asi 36 km. Dne 1. ledna 2019 kolem něj proletěla sonda New Horizons od NASA – tři a půl roku poté, co navštívila Pluto – a Arrokoth se tak stal nejvzdálenějším objektem, jaký byl kdy prozkoumán zblízka, asi 6,6 miliardy km od Země. Ukázalo se, že ho tvoří dva zploštělé laloky jemně slepené dohromady. To prozrazuje, jak malé světy vznikaly: kousky v oblaku prachu a ledu se pomalu shlukovaly. Arrokoth se za 4,5 miliardy let skoro nezměnil, takže je jako časová schránka z doby zrodu sluneční soustavy.",
+			"advanced": "Arrokoth (486958, dříve 2014 MU69) byl nalezen v roce 2014 Hubbleovým vesmírným dalekohledem při hledání cíle, ke kterému by New Horizons mohla po Plutu doletět. Obíhá ve studeném klasickém Kuiperově pásu po téměř kruhové (výstřednost 0,04) a málo skloněné dráze ve vzdálenosti 44 AU a jeden oběh mu trvá asi 292 let. Je to kontaktní dvojplanetka: jeho dva laloky kdysi obíhaly jeden kolem druhého a pak se jemně spojily, rychlostí nanejvýš několika km/h – doklad toho, že planetesimály vznikaly pozvolným zhroucením oblaků oblázků, a ne prudkými srážkami. Jeho sytě červenou barvu způsobují organické sloučeniny vzniklé působením záření a na jeho povrchu byl zjištěn metanolový led."
+		},
+		"facts": {
+			"simple": [
+				"V jazyce indiánského národa Powhatanů znamená Arrokoth „nebe“.",
+				"Rádiové signály od New Horizons u Arrokothu letěly k Zemi asi 6 hodin.",
+				"Arrokoth je hodně červený – ještě červenější než Pluto."
+			],
+			"standard": [
+				"Arrokoth objevili v roce 2014 Hubbleovým vesmírným dalekohledem, když vědci hledali cíl pro New Horizons.",
+				"Rok na Arrokothu trvá asi 292 pozemských let.",
+				"New Horizons proletěla asi 3 500 km od Arrokothu."
+			],
+			"advanced": [
+				"Než bylo v roce 2019 vybráno oficiální jméno, přezdívalo se tělesu 2014 MU69 „Ultima Thule“.",
+				"New Horizons proletěla kolem Arrokothu asi třiapůlkrát blíž než kolem Pluta.",
+				"Jeho vzdálenost od Slunce se během oběhu skoro nemění: pohybuje se mezi asi 42,5 a 45,6 AU."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, byl by Arrokoth zrnko písku víc než 100 km daleko."
+			],
+			"standard": ["Arrokoth je dlouhý asi 36 km – o kousek méně než maraton."],
+			"advanced": [
+				"New Horizons letěla rychlostí asi 14 km/s: celou délku Arrokothu by překonala za necelé 3 sekundy."
+			]
+		}
+	},
+	"halley": {
+		"name": "Halley",
+		"tagline": "Halleyova kometa, která se vrací každých 75 až 76 let",
+		"description": {
+			"simple": "Halleyova kometa je ze všech komet nejslavnější. Je to hrouda špinavého ledu dlouhá asi 15 km. Každých 75 nebo 76 let se přiblíží ke Slunci: led se mění v plyn a prach a kometě naroste dlouhý zářící ohon. Ohon vždycky míří od Slunce. Naposledy nás Halleyova kometa navštívila v roce 1986 a znovu přiletí v roce 2061 – třeba ji uvidíš!",
+			"standard": "Halleyova kometa se do vnitřní části sluneční soustavy vrací každých 75 až 76 let. Její jádro je tmavá hrouda ledu a prachu o rozměrech asi 15 × 8 km. Když se blíží ke Slunci, sluneční světlo mění led v plyn, který s sebou strhává prach. Vzniká tak zářící oblak, koma, a dva ohony, které jsou odtlačovány směrem od Slunce: rovný namodralý plynný ohon a zahnutý bělavý prachový ohon. Když se kometa od Slunce zase vzdaluje, letí proto její ohony před ní. Edmond Halley si uvědomil, že komety pozorované v letech 1531, 1607 a 1682 byly jedna a táž, a předpověděl její návrat v roce 1758; kometa se opravdu vrátila, ale Halley se toho už nedožil. Naposledy prošla přísluním 9. února 1986 a příště jím projde 28. července 2061.",
+			"advanced": "Kometa 1P/Halley se pohybuje po retrográdní dráze (sklon 162°): obíhá kolem Slunce opačným směrem než planety. Její velmi výstředná dráha (0,97) ji vede od asi 0,6 AU, uvnitř dráhy Venuše, až do asi 35 AU, za Neptun. V březnu 1986 proletěla sonda Giotto od ESA asi 600 km od jádra a pořídila první snímky kometárního jádra zblízka: povrch tmavší než uhlí, z něhož na osvětlené straně z několika aktivních oblastí tryskaly proudy plynu a prachu. Záznamy o Halleyově kometě sahají v Číně nejméně do roku 240 př. n. l."
+		},
+		"facts": {
+			"simple": [
+				"Prach z Halleyovy komety nám každý rok přináší dva roje padajících hvězd, v květnu a v říjnu.",
+				"Spisovatel Mark Twain se narodil v roce, kdy přiletěla Halleyova kometa, v roce 1835, a zemřel při jejím dalším návratu v roce 1910.",
+				"Halleyova kometa je vyšitá na tapisérii z Bayeux, výšivce staré přes 900 let."
+			],
+			"standard": [
+				"V roce 1986 kolem komety proletěla celá flotila sond z Evropy, Sovětského svazu a Japonska.",
+				"Nejvzdálenějšího bodu své dráhy, za Neptunem, dosáhla v prosinci 2023 a teď je na cestě zpátky.",
+				"Halleyova kometa je pojmenovaná po astronomovi Edmondu Halleym, ne po tom, kdo ji jako první spatřil."
+			],
+			"advanced": [
+				"Jádro má hmotnost asi 2,2 × 10¹⁴ kg.",
+				"Oběžná doba se od jednoho návratu k dalšímu liší o několik let, protože kometu přitahuje gravitace planet.",
+				"Její prach způsobuje meteorický roj éta Akvaridy v květnu a Orionidy v říjnu."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Jádro Halleyovy komety je dlouhé jen asi 15 km, ale její ohon se může táhnout miliony kilometrů – mnohokrát dál, než je ze Země na Měsíc."
+			],
+			"standard": [
+				"Dítě, které v roce 2061 uvidí Halleyovu kometu v deseti letech, bude mít při jejím dalším návratu asi 85 let."
+			],
+			"advanced": [
+				"U Slunce se Halleyova kometa řítí rychlostí asi 55 km/s, ale na vzdáleném konci své dráhy se plouží rychlostí pod 1 km/s – druhý Keplerův zákon v praxi."
+			]
+		}
+	},
+	"encke": {
+		"name": "Encke",
+		"tagline": "Kometa s nejkratším rokem",
+		"description": {
+			"simple": "Enckeova kometa je malá kometa, která se ke Slunci vrací velmi často – asi každé 3 roky a 4 měsíce. Její jádro má průměr jen asi 5 km a obvykle je moc slabá na to, aby šla vidět bez triedru nebo dalekohledu. Prach, který za sebou nechala na své dráze, nám na podzim přináší padající hvězdy.",
+			"standard": "Enckeova kometa (2P/Encke) má ze všech jasných komet nejkratší oběžnou dobu: vrací se každých 3,3 roku. Jako první ji v roce 1786 spatřil Pierre Méchain, ale jméno nese podle Johanna Franze Enckeho, který v roce 1819 vypočítal její dráhu a ukázal, že se pravidelně vrací. Byla teprve druhou kometou, po Halleyově, o které se to vědělo – proto její katalogové označení začíná „2P“. Její dráha ji vede blíž ke Slunci, než je střední vzdálenost Merkuru, a ven až do asi 4 AU, stále uvnitř dráhy Jupiteru. Prach z Enckeovy komety způsobuje každý rok v říjnu a listopadu meteorické roje Tauridy.",
+			"advanced": "Dráha Enckeovy komety (velká poloosa 2,22 AU, výstřednost 0,85) sahá od 0,34 AU, blíž ke Slunci, než je střední vzdálenost Merkuru, do 4,1 AU. Encke si všiml, že se kometa pokaždé vrací o několik hodin dřív, než předpovídala samotná gravitace – to byla jedna z prvních známek negravitačních sil, o kterých dnes víme, že je vyvolávají výtrysky plynu působící na rotující jádro jako malé raketové motory. Na rozdíl od většiny krátkoperiodických komet se Enckeova kometa nikdy nepřiblíží k Jupiteru, jehož gravitace takové dráhy obvykle přetváří; jak se dostala na svou dnešní dráhu, je stále předmětem diskusí. Byla pozorována při desítkách návratů a patří k nejlépe prozkoumaným kometám."
+		},
+		"facts": {
+			"simple": [
+				"Enckeova kometa nám v říjnu a listopadu přináší padající hvězdy z roje Taurid.",
+				"Enckeova kometa se dostane blíž ke Slunci, než je v průměru planeta Merkur.",
+				"Enckeova kometa se ke Slunci vrací asi třikrát za deset let."
+			],
+			"standard": [
+				"Jádro Enckeovy komety má průměr asi 5 km.",
+				"V roce 2007 sondy STEREO od NASA pozorovaly, jak výron hmoty ze Slunce utrhl Enckeově kometě ohon – později jí zase narostl.",
+				"Enckeova kometa se nikdy nevzdálí až k dráze Jupiteru."
+			],
+			"advanced": [
+				"Oběžná doba 3,31 roku; přísluní 0,34 AU; odsluní 4,1 AU.",
+				"Její prachová stopa se rozprostřela podél celé dráhy, takže ji Země každý rok protíná.",
+				"Označení 2P znamená „druhá periodická kometa“; Halleyova kometa je 1P."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, bylo by jádro Enckeovy komety asi tak tenké jako vlas."
+			],
+			"standard": [
+				"Enckeova kometa se vrátí asi 23krát za dobu, za kterou se Halleyova kometa vrátí jednou."
+			],
+			"advanced": [
+				"V přísluní dostává Enckeova kometa skoro 9krát víc slunečního světla než Země."
+			]
+		}
+	},
+	"67p": {
+		"name": "67P",
+		"tagline": "Kometa ve tvaru gumové kachničky, kterou navštívila Rosetta",
+		"description": {
+			"simple": "Kometa 67P vypadá jako obří gumová kachnička z ledu a prachu, dlouhá asi 4 km. Sonda Rosetta kolem ní dva roky létala a sledovala, jak se kometa při přibližování ke Slunci probouzí: tryskaly z ní proudy plynu a prachu. Rosetta dokonce na kometu vysadila malý přistávací modul Philae – bylo to vůbec první přistání na kometě.",
+			"standard": "Kometu 67P/Čurjumov–Gerasimenko objevili v roce 1969 Klim Čurjumov a Světlana Gerasimenková. Tvoří ji dva laloky spojené úzkým krkem, což jí dává slavný tvar „gumové kachničky“ dlouhé asi 4 km. Sonda Rosetta od ESA k ní dorazila v srpnu 2014 a víc než dva roky ji obíhala a sledovala, jak se led při přibližování komety ke Slunci mění v plyn. Dne 12. listopadu 2014 na ní dosedl přistávací modul Philae – vůbec první přistání na kometě. Odrazil se však a zůstal ležet ve stínu útesu. Rosetta ukončila misi 30. září 2016 pomalým, řízeným dopadem na kometu.",
+			"advanced": "67P je kometa Jupiterovy rodiny s oběžnou dobou 6,4 roku, která se pohybuje mezi 1,24 AU a asi 5,7 AU od Slunce. Rosetta naměřila hustotu jen asi 0,53 g/cm³: zhruba 70 % jádra tvoří prázdný prostor. Její přístroje našly aminokyselinu glycin a fosfor a také poměr těžké a obyčejné vody velmi odlišný od poměru v pozemských oceánech, což naznačuje, že komety jako 67P většinu vody na Zemi nepřinesly. Harpuny modulu Philae nevystřelily, takže se dvakrát odrazil, než se zastavil ve stínu, kde se mu po asi dvou a půl dnech vědecké práce vybila baterie."
+		},
+		"facts": {
+			"simple": [
+				"Přitažlivost na 67P je tak slabá, že jedním pořádným skokem bys odletěl do vesmíru.",
+				"Přistávací modul Philae se dvakrát odrazil, než zůstal ležet.",
+				"Rosetta letěla k 67P deset let a pak ji víc než dva roky zkoumala."
+			],
+			"standard": [
+				"67P oběhne Slunce jednou za 6,4 roku.",
+				"Kometa je tak pórovitá, že by plavala na vodě – kdyby se našla dost velká vana.",
+				"Rosetta dostala jméno po Rosettské desce, která pomohla rozluštit egyptské hieroglyfy."
+			],
+			"advanced": [
+				"Hmotnost asi 1 × 10¹³ kg – asi 10 miliard tun.",
+				"Jádro se otočí asi za 12,4 hodiny.",
+				"67P prošla přísluním 13. srpna 2015 ve vzdálenosti 1,24 AU a Rosetta ji přitom sledovala."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"67P je dlouhá asi 4 km – z jednoho konce na druhý bys došel za méně než hodinu, kdybys přitom neuletěl."
+			],
+			"standard": [
+				"Kdyby byla Země fotbalový míč, byla by 67P asi tak tlustá jako lidský vlas."
+			],
+			"advanced": [
+				"Průměrná hustota 67P, asi 0,5 g/cm³, je podobná hustotě suchého borového dřeva."
+			]
+		}
+	},
+	"halebopp": {
+		"name": "Hale-Bopp",
+		"tagline": "Velká kometa roku 1997",
+		"description": {
+			"simple": "Hale-Bopp byla jedna z nejjasnějších komet posledních sto let. V roce 1997 ji lidé po celém světě viděli na noční obloze bez dalekohledu – dokonce i z jasně osvětlených měst. Byla vidět asi rok a půl. Její jádro je na kometu obrovské, široké asi 60 km. Znovu se vrátí až zhruba za 2 400 let.",
+			"standard": "Kometu Hale-Bopp (C/1995 O1) objevili 23. července 1995 nezávisle na sobě ve stejnou noc Alan Hale v Novém Mexiku a Thomas Bopp v Arizoně. Tehdy byla ještě za dráhou Jupiteru – tak daleko bývají komety vidět jen výjimečně, ale tahle má neobvykle velké jádro, zhruba 60 km v průměru. Nejblíž Slunci prošla 1. dubna 1997 a nejspíš ji vidělo víc lidí než kteroukoli kometu předtím. Její dva ohony, namodralý plynný a široký bělavý prachový, mířily trochu jiným směrem, ale oba od Slunce.",
+			"advanced": "Hale-Bopp je dlouhoperiodická kometa na téměř kolmé (sklon 89°) a extrémně protáhlé dráze (výstřednost 0,995). Předtím nás navštívila asi před 4 200 lety; na cestě dovnitř prošla v roce 1996 blízko Jupiteru, jehož gravitace jí zkrátila oběžnou dobu na asi 2 400 let. Její jádro, odhadované na 40 až 80 km v průměru, patří k největším známým kometárním jádrům. Kromě obvyklého plynného a prachového ohonu objevili pozorovatelé i třetí, slabý ohon z atomů sodíku. Její dráha teď sahá do vzdálenosti asi 350 AU od Slunce."
+		},
+		"facts": {
+			"simple": [
+				"Hale-Bopp objevili ve stejnou noc dva lidé na dvou různých místech.",
+				"Její jádro je asi čtyřikrát delší než jádro Halleyovy komety.",
+				"Když Hale-Bopp přiletěla naposledy, asi před 4 200 lety, egyptské pyramidy už stály."
+			],
+			"standard": [
+				"Hale-Bopp byla vidět pouhým okem asi 18 měsíců, dvakrát déle než předchozí rekordmanka, Velká kometa z roku 1811.",
+				"Její dráha je vůči drahám planet skloněná skoro v pravém úhlu (89°).",
+				"Její ohony se táhly v délce desítek milionů kilometrů."
+			],
+			"advanced": [
+				"Hale-Bopp byla objevena asi 7 AU od Slunce, dál než Jupiter.",
+				"Její sodíkový ohon byl rovný a úzký, tlačený ven tlakem slunečního světla.",
+				"Hale-Bopp prošla přísluním 1. dubna 1997 ve vzdálenosti asi 0,9 AU od Slunce."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Kdyby byla Země fotbalový míč, bylo by jádro komety Hale-Bopp asi tak velké jako makové zrnko."
+			],
+			"standard": [
+				"Hale-Bopp se vrací jen zhruba jednou za 2 400 let – asi 30krát déle, než to trvá Halleyově kometě."
+			],
+			"advanced": [
+				"Na vzdáleném konci dráhy, asi 350 AU od Slunce, letí sluneční světlo ke kometě Hale-Bopp asi dva dny."
+			]
+		}
+	},
+	"neowise": {
+		"name": "NEOWISE",
+		"tagline": "Velká kometa roku 2020",
+		"description": {
+			"simple": "Kometa NEOWISE byla jasná kometa, kterou lidé v červenci 2020 viděli na vlastní oči. V březnu 2020 ji objevil vesmírný dalekohled NEOWISE, po kterém dostala jméno. Na fotkách jsou dobře vidět její dva ohony: zahnutý bělavý prachový ohon a tenký namodralý plynný ohon. Znovu se vrátí až zhruba za 6 800 let.",
+			"standard": "Kometu NEOWISE (C/2020 F3) objevil 27. března 2020 vesmírný dalekohled NEOWISE od NASA, který v infračerveném světle pátral po planetkách a kometách. Nejblíž Slunci prošla 3. července 2020, uvnitř dráhy Merkuru, a zahřátí přežila. V červenci se stala nejjasnější kometou viditelnou ze severní polokoule od komety Hale-Bopp v roce 1997 a dala se snadno najít pouhým okem nízko na ranní a později na večerní obloze. Fotografie jasně ukazovaly její dva ohony: zahnutý žlutobílý prachový ohon a rovný, slabý modrý plynný ohon, oba mířící od Slunce. Znovu se vrátí až zhruba za 6 800 let.",
+			"advanced": "C/2020 F3 je dlouhoperiodická kometa na strmě skloněné (129°) retrográdní dráze. V přísluní byla jen 0,29 AU od Slunce a nejvíc se k Zemi přiblížila 23. července 2020 na asi 103 milionů km (0,69 AU). Gravitační působení planet během tohoto průletu její dráhu protáhlo: oběžná doba se prodloužila o víc než 2 000 let na asi 6 800 let a odsluní teď leží víc než 700 AU od Slunce. Její jádro má průměr asi 5 km. Spektra ukázala zářící sodík a observatoř SOHO i sonda Parker Solar Probe ji vyfotografovaly poblíž přísluní."
+		},
+		"facts": {
+			"simple": [
+				"Pro lidi na severní polovině světa byla NEOWISE nejjasnější kometou za víc než 20 let.",
+				"Astronauti na Mezinárodní vesmírné stanici ji vyfotili z vesmíru.",
+				"Příště přiletí tak daleko v budoucnosti, že ji už nikdo z dnes žijících lidí znovu neuvidí."
+			],
+			"standard": [
+				"Jádro komety NEOWISE má průměr asi 5 km.",
+				"Dostala se blíž ke Slunci, než se kdy dostane Merkur.",
+				"Dalekohled NEOWISE, který ji objevil, ukončil svou misi v roce 2024."
+			],
+			"advanced": [
+				"V přísluní se kometa pohybovala vůči Slunci rychlostí skoro 78 km/s.",
+				"Infračervené dalekohledy vidí tepelnou záři tmavého kometárního jádra a prachu, a proto jsou dobrými lovci komet.",
+				"Její dráha je retrográdní: obíhá kolem Slunce opačným směrem než planety."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"NEOWISE se příště vrátí asi za 6 800 let – to je déle, než lidé vůbec umějí psát."
+			],
+			"standard": [
+				"Jeden oběh kolem Slunce trvá kometě NEOWISE asi 90krát déle než Halleyově kometě."
+			],
+			"advanced": [
+				"Na vzdáleném konci dráhy, víc než 700 AU od Slunce, letí sluneční světlo ke kometě NEOWISE asi 4 dny."
+			]
+		}
+	},
+	"nix": {
+		"name": "Nix",
+		"tagline": "Plutův měsíc noci",
+		"description": {
+			"simple": "Nix je jeden z malých měsíců Pluta, dlouhý jen asi 50 km a ve tvaru brambory. Neukazuje Plutu pořád stejnou stranu, ale při oběhu se převaluje. Je pojmenovaný po řecké bohyni noci.",
+			"standard": "Nix je malý protáhlý měsíc o rozměrech asi 50 × 33 × 31 km, objevený Hubbleovým vesmírným dalekohledem v roce 2005 spolu s Hydrou. Pluto a Charon oběhne jednou za 24,9 dne. Stejně jako ostatní malé měsíce Pluta není k Plutu natočený stále stejnou stranou, ale chaoticky se převaluje, protože ho přitahují dvě velká tělesa najednou. Je pojmenovaný po Nyx, řecké bohyni noci; psaní s „i“ zabraňuje záměně s planetkou Nyx.",
+			"advanced": "Nix obíhá kolem těžiště soustavy Pluto–Charon ve vzdálenosti asi 48 700 km s oběžnou dobou 24,9 dne, blízkou čtyřnásobku oběžné doby Charonu. Jeho chaotickou, převalující se rotaci způsobuje neustále se měnící gravitační působení dvojice Pluto–Charon. New Horizons na jeho jinak jasném povrchu z vodního ledu našla načervenalou oblast kolem velkého kráteru. Počáteční písmena jmen Nix a Hydra, N a H, byla zvolena na počest mise New Horizons."
+		}
+	},
+	"hydra": {
+		"name": "Hydra",
+		"tagline": "Nejvzdálenější měsíc Pluta",
+		"description": {
+			"simple": "Hydra je měsíc, který je od Pluta nejdál. Je malá, dlouhá asi 51 km, a při oběhu se převaluje. Je pojmenovaná po mnohohlavé nestvůře z řeckých bájí.",
+			"standard": "Hydra je nejvzdálenější ze známých měsíců Pluta, o rozměrech asi 51 × 36 × 31 km. Objevili ji Hubbleovým vesmírným dalekohledem v roce 2005 spolu s Nixem a Pluto a Charon oběhne jednou za 38,2 dne. New Horizons ukázala, že její povrch je jasný a tvoří ho převážně vodní led. Je pojmenovaná po mnohohlavé sani, se kterou v řecké mytologii bojoval Héraklés.",
+			"advanced": "Hydra obíhá kolem těžiště soustavy Pluto–Charon ve vzdálenosti asi 64 700 km s oběžnou dobou 38,2 dne – téměř přesně šestinásobkem oběžné doby Charonu. Stejně jako ostatní malé měsíce rotuje chaoticky, místo aby měla vázanou rotaci. Na jejím jasném povrchu převládá poměrně čistý vodní led. Spolu s Nixem byla pojmenována tak, aby počáteční písmena N a H vzdala poctu misi New Horizons."
+		}
+	},
+	"kerberos": {
+		"name": "Kerberos",
+		"tagline": "Plutův dvojlaločný měsíc",
+		"description": {
+			"simple": "Kerberos je malinký měsíc Pluta, dlouhý jen asi 19 km. Vypadá jako dvě malé hroudy slepené dohromady. Je pojmenovaný po tříhlavém psovi, který v řeckých bájích hlídá podsvětí.",
+			"standard": "Kerberos je jeden z nejmenších měsíců Pluta, o rozměrech asi 19 × 10 × 9 km, objevený Hubbleovým vesmírným dalekohledem v roce 2011. Pluto a Charon oběhne jednou za 32,2 dne. New Horizons ukázala, že se skládá ze dvou laloků, většího a menšího, a že jeho povrch je jasnější, než vědci čekali. Je pojmenovaný po tříhlavém psovi, který v řecké mytologii střeží vchod do podsvětí.",
+			"advanced": "Kerberos obíhá kolem těžiště soustavy Pluto–Charon ve vzdálenosti asi 57 800 km s oběžnou dobou 32,2 dne – blízkou pětinásobku oběžné doby Charonu, mezi drahami Nixu a Hydry. Snímky z New Horizons odhalily dvojlaločný tvar, možná dvě tělesa, která splynula, a jasný povrch z vodního ledu. Stejně jako ostatní malé měsíce Pluta nejspíš vznikl z trosek, které zbyly po obří srážce, jež podle všeho dala vzniknout Charonu."
+		}
+	},
+	"styx": {
+		"name": "Styx",
+		"tagline": "Nejmenší známý měsíc Pluta",
+		"description": {
+			"simple": "Styx je nejmenší známý měsíc Pluta, dlouhý jen asi 16 km. Našli ho v roce 2012, když vědci kontrolovali, jestli je dráha sondy New Horizons bezpečná. Je pojmenovaný po řece podsvětí z řeckých bájí.",
+			"standard": "Styx, o rozměrech asi 16 × 9 × 8 km, je nejmenší známý měsíc Pluta. Objevili ho v roce 2012 Hubbleovým vesmírným dalekohledem při pátrání po měsících a prachu, které by mohly ohrozit New Horizons. Pluto a Charon oběhne jednou za 20,2 dne, uvnitř dráhy Nixu. Je pojmenovaný po řece, která v řecké mytologii odděluje svět živých od podsvětí.",
+			"advanced": "Styx obíhá kolem těžiště soustavy Pluto–Charon ve vzdálenosti asi 42 700 km s oběžnou dobou 20,2 dne, blízkou trojnásobku oběžné doby Charonu, a je tak nejvnitřnějším ze čtyř malých měsíců Pluta. Našel ho tým vedený Markem Showalterem na snímcích z Hubbleova dalekohledu pořízených v roce 2012. New Horizons ho viděla jen z velké dálky, takže o jeho povrchu toho víme málo."
+		}
+	},
+	"dysnomia": {
+		"name": "Dysnomia",
+		"tagline": "Měsíc, který zvážil Eris",
+		"description": {
+			"simple": "Dysnomia je jediný známý měsíc trpasličí planety Eris. Je mnohem tmavší než Eris, která je jasná jako čerstvý sníh. Astronomové sledovali, jak Dysnomia obíhá kolem Eridy, a díky tomu dokázali spočítat, kolik Eris váží.",
+			"standard": "Dysnomia je jediný známý měsíc Eridy, objevený v září 2005 dalekohledem Keck na Havaji. Obíhá kolem Eridy jednou za 15,8 dne ve vzdálenosti asi 37 300 km. Z její dráhy astronomové spočítali, že Eris je asi o čtvrtinu těžší než Pluto. V řecké mytologii je Dysnomia dcerou Eridy a duchem bezzákonnosti – a její jméno zároveň vtipně odkazuje na herečku Lucy Lawless (anglicky „bez zákona“), která hrála Xenu: tak se Eridě zpočátku přezdívalo.",
+			"advanced": "Dysnomia obíhá po téměř kruhové dráze asi 37 300 km od Eridy s oběžnou dobou 15,8 dne; použitím třetího Keplerova zákona na tuto dráhu dostaneme hmotnost Eridy, asi 1,66 × 10²² kg, o 27 % víc než u Pluta. Dysnomia je velmi tmavá a odráží jen několik procent dopadajícího světla, zatímco Eris asi 96 %. Její průměr je nejspíš několik set km, což by z ní dělalo druhý největší známý měsíc trpasličí planety po Charonu. Zdá se, že Eris rotuje v souladu s oběhem Dysnomie, což je známka, že slapy obě tělesa svázaly."
+		}
+	},
+	"namaka": {
+		"name": "Namaka",
+		"tagline": "Vnitřní měsíc Haumey",
+		"description": {
+			"simple": "Namaka je menší ze dvou měsíců trpasličí planety Haumea. Oběhne Haumeu za něco víc než dva a půl týdne. Je pojmenovaná po havajské bohyni moře, jedné z dcer Haumey.",
+			"standard": "Namaka je menší a bližší ze dvou měsíců Haumey, s průměrem možná 170 km. Byla objevena v červnu 2005 dalekohledem Keck na Havaji a obíhá Haumeu jednou za 18,3 dne ve vzdálenosti asi 25 700 km. Stejně jako Haumea a její druhý měsíc je nejspíš úlomkem odmrštěným při dávné srážce. Je pojmenovaná po Nāmace, havajské bohyni moře a dceři Haumey.",
+			"advanced": "Namaka obíhá Haumeu ve vzdálenosti asi 25 700 km s oběžnou dobou 18,3 dne po znatelně výstředné dráze (asi 0,25), která je skloněná vůči dráze vnějšího měsíce Hiʻiaky. Její dráhu narušuje Hiʻiaka a silně protáhlý tvar Haumey. Namaka a Hiʻiaka jsou nejspíš úlomky obří srážky, která dala vzniknout i rodině ledových těles Haumey a možná i její rychlé rotaci."
+		}
+	},
+	"hiiaka": {
+		"name": "Hiʻiaka",
+		"tagline": "Vnější měsíc Haumey",
+		"description": {
+			"simple": "Hiʻiaka je větší ze dvou měsíců trpasličí planety Haumea. Pokrývá ji led a Haumeu oběhne asi za sedm týdnů. Je pojmenovaná po havajské bohyni tance hula, jedné z dcer Haumey.",
+			"standard": "Hiʻiaka je větší a vzdálenější ze dvou měsíců Haumey, s průměrem asi 320 km. Byla objevena v lednu 2005 dalekohledem Keck na Havaji, ještě než Haumea dostala jméno, a obíhá Haumeu jednou za 49 dní ve vzdálenosti asi 49 900 km. Stejně jako povrch Haumey pokrývá i její povrch vodní led. Je pojmenovaná po Hiʻiace, havajské bohyni ochránkyni ostrova Hawaiʻi a tanečníků huly, jedné z dcer Haumey.",
+			"advanced": "Hiʻiaka obíhá Haumeu ve vzdálenosti asi 49 900 km s oběžnou dobou 49 dní po téměř kruhové dráze. Její spektrum ukazuje krystalický vodní led, podobně jako povrch samotné Haumey, což podporuje představu, že oba měsíce jsou úlomky ledové kůry Haumey odmrštěné při dávné srážce. Právě sledování dráhy Hiʻiaky astronomům poprvé umožnilo změřit hmotnost Haumey."
+		}
+	},
+	"s20151364721": {
+		"name": "S/2015 (136472) 1",
+		"tagline": "Malý tmavý měsíc Makemaka",
+		"description": {
+			"simple": "Tento malinký tmavý měsíc obíhá kolem trpasličí planety Makemake. Vedle jasného Makemaka byl tak špatně vidět, že ho našli až v roce 2016 na snímcích z Hubbleova vesmírného dalekohledu. Vědci mu přezdívají MK2.",
+			"standard": "S/2015 (136472) 1, přezdívaný MK2, je jediný známý měsíc Makemaka. Byl zachycen na snímcích z Hubbleova dalekohledu pořízených v dubnu 2015 a jeho objev byl oznámen v roce 2016. Je asi 1 300krát slabší než Makemake a velmi tmavý, s průměrem nejspíš pod 200 km. Jeho jméno je zatím jen předběžné označení: S znamená satelit, 2015 rok, kdy byl vyfotografován, 136472 katalogové číslo Makemaka a 1 první nalezený měsíc.",
+			"advanced": "MK2 byl objeven na snímcích z Hubbleova dalekohledu z dubna 2015, asi 21 000 km od Makemaka. Jeho dráha zatím není dobře známá; pokud ji vidíme téměř z boku, trávil by měsíc většinu času ztracený v záři Makemaka, což by mohlo vysvětlit, proč ho dřívější pátrání přehlédla. Jeho tmavý povrch kontrastuje s jasným metanovým ledem Makemaka, možná proto, že jeho slabá gravitace neudrží tak těkavé ledy. Dobře změřená dráha by prozradila hmotnost a hustotu Makemaka."
+		}
 	}
 }

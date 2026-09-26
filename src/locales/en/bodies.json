@@ -1202,5 +1202,733 @@
 				"Saturn’s moon Mimas, about 396 km across, is round, while the slightly larger Proteus is not – the size at which a moon becomes round depends on what it is made of and how warm it once was."
 			]
 		}
+	},
+	"ceres": {
+		"name": "Ceres",
+		"tagline": "The dwarf planet of the asteroid belt",
+		"description": {
+			"simple": "Ceres is the biggest object in the asteroid belt, the ring of space rocks between Mars and Jupiter. It is round like a ball, but much smaller than our Moon. When it was found in 1801, people thought it was a new planet. A spacecraft called Dawn flew around Ceres and found bright white spots – made of salt!",
+			"standard": "Ceres is the largest body in the asteroid belt between Mars and Jupiter and the only dwarf planet there. Giuseppe Piazzi discovered it on 1 January 1801, and for about half a century it was counted as a planet – until so many more rocks turned up in the same region that astronomers began calling them asteroids instead. Ceres is about 940 km across and made of rock mixed with ice. NASA’s Dawn spacecraft orbited it from 2015 to 2018 and found bright spots in Occator crater: salt left behind when salty water seeped up from below and evaporated.",
+			"advanced": "Ceres (mean diameter about 940 km) holds roughly a third of the asteroid belt’s mass and is the only object there massive enough to have pulled itself into a nearly round shape. Under the 2006 IAU definition that makes it a dwarf planet: it is round and orbits the Sun, but it has not cleared its orbit of the countless other bodies around it. Its low density of about 2.2 g/cm³ points to rock mixed with water ice, and Dawn found evidence of brine deep below the crust. The bright faculae in the 92-km Occator crater are mostly sodium carbonate, and Ahuna Mons, a lone mountain about 4 km high, is thought to be an ice volcano. Ceres orbits the Sun every 4.6 years at an average distance of 2.77 AU."
+		},
+		"facts": {
+			"simple": [
+				"Ceres is named after the Roman goddess of farming – that is where the word “cereal” comes from.",
+				"A day on Ceres lasts only about 9 hours.",
+				"The asteroid belt is not crowded like in films: the asteroids are so far apart that spacecraft fly through it without having to steer around anything."
+			],
+			"standard": [
+				"Ceres was the first asteroid ever discovered, on New Year’s Day 1801.",
+				"Gravity on Ceres is only about 3 % of Earth’s, so you could jump more than 30 times as high as at home.",
+				"Dawn ran out of fuel in 2018, but the silent spacecraft is still circling Ceres."
+			],
+			"advanced": [
+				"All the asteroids together have only about 3 % of the Moon’s mass, and Ceres alone accounts for roughly a third of that.",
+				"Neighbouring asteroids are on average about a million km apart – more than twice the distance between Earth and the Moon.",
+				"The element cerium, discovered in 1803, is named after Ceres."
+			]
+		},
+		"comparisons": {
+			"simple": ["If Earth were a football, Ceres would be a marble."],
+			"standard": [
+				"Ceres is only about a quarter as wide as our Moon: driving across it at 100 km/h would take less than 10 hours."
+			],
+			"advanced": [
+				"Sunlight takes about 23 minutes to reach Ceres – almost three times as long as it takes to reach Earth."
+			]
+		}
+	},
+	"pluto": {
+		"name": "Pluto",
+		"tagline": "The dwarf planet with a heart",
+		"description": {
+			"simple": "Pluto is a small, icy world far beyond Neptune. For 76 years it was called the ninth planet. In 2006 astronomers decided that Pluto is a dwarf planet, because it shares its path around the Sun with many other icy objects. Pluto itself did not change – only the name for it did. On its surface there is a big, bright plain shaped like a heart.",
+			"standard": "Pluto was discovered in 1930 by Clyde Tombaugh and was called the ninth planet for 76 years. Then, in 2005, astronomers found Eris, an icy world about as big as Pluto, and had to decide: was it a tenth planet? In 2006 the International Astronomical Union (IAU) agreed on the first official definition of a planet: it must orbit the Sun, be massive enough to be round, and have cleared the neighbourhood around its orbit. Pluto does the first two, but it shares its region, the Kuiper Belt, with thousands of other icy bodies – so it became a dwarf planet. Pluto did not change; our knowledge did, and that is how science works.",
+			"advanced": "When NASA’s New Horizons flew past on 14 July 2015, Pluto turned out to be surprisingly active. The western half of the bright, heart-shaped Tombaugh Regio is Sputnik Planitia, a basin about 1,000 km wide filled with slowly churning nitrogen ice and no visible craters, so its surface must be younger than about 10 million years. Mountains of water ice several kilometres high and a thin nitrogen atmosphere with layers of blue haze complete the picture. Pluto’s orbit is eccentric (0.25) and tilted by 17°; from 1979 to 1999 Pluto was closer to the Sun than Neptune, but a 3:2 orbital resonance – Pluto circles the Sun twice for every three orbits of Neptune – keeps the two from ever colliding."
+		},
+		"facts": {
+			"simple": [
+				"Pluto got its name from Venetia Burney, an 11-year-old girl from England.",
+				"The New Horizons spacecraft travelled for nine and a half years to reach Pluto.",
+				"One year on Pluto lasts almost 250 Earth years."
+			],
+			"standard": [
+				"New Horizons flew past Pluto on 14 July 2015 and sent back the first close-up pictures.",
+				"Pluto has five known moons: Charon, Nix, Hydra, Kerberos and Styx.",
+				"A year on Pluto lasts about 249 Earth years, so it has not yet completed one orbit since its discovery in 1930."
+			],
+			"advanced": [
+				"The IAU adopted its definition of a planet by vote on 24 August 2006, at its General Assembly in Prague.",
+				"Pluto rotates backwards compared with most planets; one day lasts 6.4 Earth days, exactly as long as Charon takes to orbit it.",
+				"Pluto’s mass is only about 18 % of the Moon’s and 0.2 % of Earth’s."
+			]
+		},
+		"comparisons": {
+			"simple": ["If Earth were a football, Pluto would be a ping-pong ball."],
+			"standard": [
+				"Pluto is only about two thirds as wide as our Moon – seven moons in the solar system are bigger than Pluto."
+			],
+			"advanced": [
+				"Sunlight needs about five and a half hours to reach Pluto; a passenger jet flying nonstop at 900 km/h would need about 750 years."
+			]
+		}
+	},
+	"haumea": {
+		"name": "Haumea",
+		"tagline": "The spinning egg",
+		"description": {
+			"simple": "Haumea is a dwarf planet far out beyond Neptune. It spins so fast – once in less than four hours – that it has been stretched into the shape of an egg or a rugby ball. Haumea has two small moons and even a thin ring.",
+			"standard": "Haumea lives in the Kuiper Belt, the zone of icy bodies beyond Neptune. A day there lasts less than four hours, which makes it one of the fastest-spinning large bodies in the solar system. The rapid spin has pulled it into a stretched, egg-like shape about twice as long as it is thick. In 2017 astronomers watched Haumea pass in front of a distant star and discovered a thin ring around it – the first ring found around a dwarf planet. Its two moons, Hiʻiaka and Namaka, are named like Haumea after Hawaiian goddesses.",
+			"advanced": "Haumea’s rotation period of 3.9 hours stretches it into an elongated ellipsoid roughly twice as long as it is thick – the shape in which its gravity and its spin balance each other. Its surface is covered in crystalline water ice, while its density points to a mostly rocky interior under a thin icy shell. Haumea, its moons and a family of icy bodies on similar orbits are thought to be fragments of an ancient giant collision, which may also explain its fast spin. It orbits the Sun every 283 years at an average distance of 43 AU, on an orbit inclined by 28°."
+		},
+		"facts": {
+			"simple": [
+				"A day on Haumea is shorter than a school morning: less than 4 hours.",
+				"Haumea is named after a Hawaiian goddess of birth and fertility.",
+				"Haumea has a ring, just like Saturn – only much thinner and fainter."
+			],
+			"standard": [
+				"Haumea’s ring was discovered in 2017 when the dwarf planet passed in front of a star and briefly blocked its light.",
+				"A year on Haumea lasts about 283 Earth years.",
+				"Its bright surface is mostly water ice."
+			],
+			"advanced": [
+				"With a rotation period of 3.9 hours, Haumea spins faster than any other known dwarf planet.",
+				"Its ring circles about 2,300 km from Haumea’s centre and goes around once for every three turns of Haumea.",
+				"The IAU recognised Haumea as a dwarf planet in 2008."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Haumea would be about the size and shape of a quail’s egg."
+			],
+			"standard": ["Haumea spins about six times faster than Earth."],
+			"advanced": [
+				"At Haumea’s average distance, sunlight arrives almost 6 hours after leaving the Sun and is about 1,850 times weaker than on Earth."
+			]
+		}
+	},
+	"makemake": {
+		"name": "Makemake",
+		"tagline": "The dwarf planet found at Easter",
+		"description": {
+			"simple": "Makemake is a small, reddish, icy world far beyond Neptune. It was found in 2005, just after Easter, so its discoverers named it after a god of the people of Easter Island. Makemake is one of the brightest objects in the Kuiper Belt, the zone of icy worlds beyond Neptune. It has one tiny, dark moon.",
+			"standard": "Makemake is a dwarf planet in the Kuiper Belt, about 1,400 km across – a bit more than half as wide as Pluto. Its discoverers spotted it on 31 March 2005, a few days after Easter, and later named it after Makemake, the creator god of the Rapa Nui people of Easter Island. After Pluto, it is the brightest known object in the Kuiper Belt, visible in a large amateur telescope. Its reddish-brown surface is covered with frozen methane. In 2016, Hubble images revealed a small, very dark moon.",
+			"advanced": "Makemake orbits the Sun every 308 years at an average distance of 45.6 AU, on an orbit inclined by 29°. Its spectrum is dominated by methane ice, with ethane and other compounds that sunlight has produced from it, which give the surface its reddish colour. When Makemake passed in front of a faint star in 2011, the star vanished and reappeared abruptly, showing that Makemake has at most an extremely thin atmosphere – unlike Pluto. Its moon, nicknamed MK2, is about 1,300 times fainter than Makemake and far darker; it was found in Hubble images taken in 2015."
+		},
+		"facts": {
+			"simple": [
+				"A year on Makemake lasts about 308 Earth years.",
+				"Its discoverers first nicknamed it “Easterbunny”.",
+				"Makemake is covered in frozen methane – the main gas in the natural gas many people cook with."
+			],
+			"standard": [
+				"Makemake was officially recognised as a dwarf planet in 2008.",
+				"Its surface temperature is about −240 °C.",
+				"Its only known moon was hidden in Makemake’s glare until Hubble revealed it in 2016."
+			],
+			"advanced": [
+				"Timing the star’s disappearance in 2011 from several observatories gave Makemake’s size: about 1,430 × 1,500 km.",
+				"Its mean surface temperature is about 32 K (−241 °C).",
+				"Once its moon’s orbit is known precisely, it will reveal Makemake’s mass – the same way Charon and Dysnomia revealed the masses of Pluto and Eris."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Makemake would be about as big as a cherry."
+			],
+			"standard": [
+				"Makemake is about 60 % as wide as Pluto and 40 % as wide as our Moon."
+			],
+			"advanced": [
+				"Seen from Makemake, the Sun would be only a brilliant point of light – but still about 200 times brighter than the full Moon seen from Earth."
+			]
+		}
+	},
+	"eris": {
+		"name": "Eris",
+		"tagline": "The dwarf planet that sparked a debate",
+		"description": {
+			"simple": "Eris is a dwarf planet almost exactly as big as Pluto, but much farther away. When it was found in 2005, some people called it the tenth planet. Instead, astronomers made a clear rule for what counts as a planet – and both Eris and Pluto became dwarf planets. Eris is named after the Greek goddess of quarrels, which fits, because it started a big one!",
+			"standard": "Eris is about as wide as Pluto but about a quarter heavier, and it is one of the most distant known objects that orbit the Sun. Its discovery in 2005 forced astronomers to decide whether it was the tenth planet – or whether Pluto was really a planet at all. The answer was the 2006 IAU definition, which made both of them dwarf planets. Fittingly, Eris is named after the Greek goddess of strife and discord. Its orbit is so stretched and tilted (44°) that it takes about 560 years to go once around the Sun. Today Eris is about 96 times as far from the Sun as Earth, close to the farthest point of its orbit.",
+			"advanced": "Eris belongs to the scattered disc, a population of icy bodies beyond the Kuiper Belt whose eccentric, steeply inclined orbits were probably flung outwards by Neptune’s gravity. Its orbit (semi-major axis 68 AU, eccentricity 0.44, inclination 44°) carries it between about 38 and 98 AU from the Sun. When Eris passed in front of a star in 2010, its diameter was measured at about 2,330 km, just below Pluto’s 2,377 km, while the orbit of its moon Dysnomia gives a mass about 27 % greater than Pluto’s – so Eris is denser and rockier. Its surface reflects about 96 % of the light that hits it, one of the highest values in the solar system, probably thanks to fresh methane frost."
+		},
+		"facts": {
+			"simple": [
+				"A year on Eris lasts about 560 Earth years.",
+				"Eris has one moon, called Dysnomia.",
+				"Eris is one of the shiniest things in the solar system: like fresh snow, it reflects almost all the sunlight that hits it."
+			],
+			"standard": [
+				"Before it got its official name, Eris was nicknamed “Xena”, after the heroine of a TV series.",
+				"Eris is currently more than twice as far from the Sun as Pluto.",
+				"Eris was officially named in September 2006, only after the debate about planets had been settled."
+			],
+			"advanced": [
+				"Dysnomia circles Eris at about 37,300 km every 15.8 days; its orbit is what lets astronomers weigh Eris.",
+				"Eris seems to turn once every 15.8 days, in step with Dysnomia’s orbit.",
+				"Eris was discovered on 5 January 2005 in images taken in October 2003."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Eris would be a ping-pong ball – just a tiny bit smaller than Pluto."
+			],
+			"standard": [
+				"Light needs about 13 hours to reach Eris today; a passenger jet at 900 km/h would need about 1,800 years."
+			],
+			"advanced": [
+				"At Eris’s current distance, the Sun shines more than 9,000 times fainter than it does on Earth."
+			]
+		}
+	},
+	"charon": {
+		"name": "Charon",
+		"tagline": "Pluto’s giant partner",
+		"description": {
+			"simple": "Charon is Pluto’s biggest moon. It is about half as wide as Pluto – so big that Pluto and Charon swing around each other like two dancers holding hands. They always show each other the same side. If you stood on Pluto, Charon would hang in the sky without ever moving – or, on the other side of Pluto, you would never see it at all.",
+			"standard": "Charon is Pluto’s largest moon, about 1,200 km across – more than half as wide as Pluto. Because Charon is so heavy compared with Pluto, the point that both of them circle lies in the empty space between them, not inside Pluto. Both are tidally locked: they always turn the same face towards each other, and one day on Pluto lasts exactly as long as one orbit of Charon, 6.4 days. New Horizons revealed a reddish cap at Charon’s north pole and canyons far longer and deeper than the Grand Canyon.",
+			"advanced": "With about 12 % of Pluto’s mass, Charon is the largest moon relative to its parent of any planet or dwarf planet; the barycentre of the pair lies more than 900 km above Pluto’s surface, so some astronomers call Pluto and Charon a double dwarf planet. Its orbit allowed the first accurate measurement of Pluto’s mass. Its reddish polar cap, Mordor Macula, is thought to form when methane escaping from Pluto’s atmosphere freezes onto Charon’s cold winter pole and is turned into reddish compounds by ultraviolet light. Its water-ice surface is split by a belt of canyons, suggesting that an ancient subsurface ocean froze and expanded."
+		},
+		"facts": {
+			"simple": [
+				"Charon is named after the ferryman who, in Greek myths, carried souls across a river to the underworld.",
+				"Charon goes once around Pluto in a little less than a week.",
+				"Scientists nicknamed Charon’s dark red polar cap “Mordor”, after the dark land in The Lord of the Rings."
+			],
+			"standard": [
+				"Charon is only about 19,600 km from Pluto – about a twentieth of the distance between Earth and the Moon.",
+				"Because of tidal locking, Charon can only be seen from one half of Pluto.",
+				"Charon’s deepest canyons are about 9 km deep – five times as deep as the Grand Canyon."
+			],
+			"advanced": [
+				"Mean diameter 1,212 km; mass about 1.6 × 10²¹ kg, about 12 % of Pluto’s.",
+				"Charon’s orbit is almost perfectly circular (eccentricity 0.0002).",
+				"James Christy discovered Charon in 1978 as a small bump on photographs of Pluto."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Pluto would be a ping-pong ball and Charon a hazelnut 34 cm away."
+			],
+			"standard": [
+				"Charon orbits only about 19,600 km from Pluto – a passenger jet could fly that distance in less than a day."
+			],
+			"advanced": [
+				"The Moon has about 1.2 % of Earth’s mass; Charon has about 12 % of Pluto’s – ten times as much, relatively."
+			]
+		}
+	},
+	"vesta": {
+		"name": "Vesta",
+		"tagline": "The brightest asteroid",
+		"description": {
+			"simple": "Vesta is the second-biggest object in the asteroid belt. It is the brightest asteroid of all – on very dark nights you can sometimes even see it without a telescope. Long ago a huge crash knocked a giant hole into Vesta, and some of the pieces have landed on Earth as meteorites. So people can hold a piece of Vesta in their hands!",
+			"standard": "Vesta is the second-largest body in the asteroid belt, about 525 km across. Unlike most asteroids, it has layers like a small rocky planet: an iron core, a rocky mantle and a crust of old lava. NASA’s Dawn spacecraft orbited Vesta from 2011 to 2012 and mapped Rheasilvia, a crater about 500 km wide – almost as wide as Vesta itself – with a central mountain more than twice as high as Mount Everest. The impact that made it blasted out rock that still falls to Earth: roughly one meteorite in twenty comes from Vesta.",
+			"advanced": "Vesta is a surviving protoplanet: early in its history it melted and separated into an iron core, a mantle and a basaltic crust – the same process that shaped Earth. Its southern hemisphere is dominated by two overlapping impact basins, Rheasilvia (about 500 km) and the older Veneneia. The Rheasilvia impact, about a billion years ago, blasted out around 1 % of Vesta’s volume and created a family of small asteroids, the vestoids. Some of those fragments reach Earth as howardite–eucrite–diogenite (HED) meteorites, which let us study Vesta’s crust in the laboratory. Because its shape is not quite round, Vesta is classed as an asteroid rather than a dwarf planet."
+		},
+		"facts": {
+			"simple": [
+				"Vesta is named after the Roman goddess of the home and the hearth fire.",
+				"A day on Vesta lasts just over 5 hours.",
+				"The Dawn spacecraft visited Vesta first and then flew on to Ceres."
+			],
+			"standard": [
+				"Vesta was discovered in 1807 by Heinrich Olbers.",
+				"One year on Vesta lasts about 3.6 Earth years.",
+				"Dawn was the first spacecraft to orbit two different worlds beyond Earth: Vesta and Ceres."
+			],
+			"advanced": [
+				"Vesta holds roughly a tenth of the mass of the whole asteroid belt.",
+				"At its brightest Vesta reaches about magnitude 5, making it the only main-belt asteroid sometimes visible to the naked eye.",
+				"Its rotation period is 5.34 hours and its axis is tilted by 29°."
+			]
+		},
+		"comparisons": {
+			"simple": ["If Earth were a football, Vesta would be a pea."],
+			"standard": [
+				"Vesta is about 525 km wide – you could drive across it at 100 km/h in a little over 5 hours."
+			],
+			"advanced": [
+				"Rheasilvia’s central peak is about two and a half times as tall as Mount Everest – on a body 24 times narrower than Earth."
+			]
+		}
+	},
+	"pallas": {
+		"name": "Pallas",
+		"tagline": "The tilted giant of the asteroid belt",
+		"description": {
+			"simple": "Pallas is one of the biggest asteroids, almost as big as Vesta. It goes around the Sun on a very tilted path, so it spends much of its time above or below the other asteroids. In films, the asteroid belt is full of rocks tumbling close together – but the real one is almost empty. Spacecraft fly straight through it without having to dodge anything.",
+			"standard": "Pallas was the second asteroid ever found, discovered by Heinrich Olbers in 1802. It is about 510 km across, almost as big as Vesta, but its orbit is tilted by about 35° compared with the planets’ – so steeply that it is hard to reach, and no spacecraft has visited it yet. Pallas is a good reminder of how empty the asteroid belt really is: neighbouring asteroids are on average about a million km apart, more than twice the distance from Earth to the Moon. Spacecraft such as Pioneer 10, Galileo, Cassini and New Horizons have crossed the belt without having to steer around anything.",
+			"advanced": "Pallas has a mean diameter of about 510 km and holds roughly 8 % of the asteroid belt’s mass. Its orbit is unusually inclined (34.9°) and eccentric (0.23), so it meets other asteroids at high relative speeds and collisions are especially violent – which may explain the heavily cratered, “golf ball” surface seen in 2020 images from the Very Large Telescope. The whole belt contains only about 3 % of the Moon’s mass, and Ceres, Vesta, Pallas and Hygiea together account for more than half of it. Pallas orbits at an average distance of 2.77 AU, almost exactly the same as Ceres."
+		},
+		"facts": {
+			"simple": [
+				"Pallas is named after Pallas Athena, the Greek goddess of wisdom.",
+				"One year on Pallas lasts more than four and a half Earth years.",
+				"All the asteroids in the belt together weigh much less than our Moon."
+			],
+			"standard": [
+				"Like Ceres, Pallas was counted as a planet for decades after its discovery.",
+				"Its orbit is tilted far more steeply than those of the other big asteroids.",
+				"The metal palladium, used in the catalytic converters of cars, is named after Pallas."
+			],
+			"advanced": [
+				"Pallas is a rare B-type asteroid: rich in carbon and slightly bluish in colour.",
+				"Its rotation period is about 7.8 hours.",
+				"Palladium, discovered in 1802, was named after the asteroid found that same year."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Pallas would be a pea – just like Vesta."
+			],
+			"standard": [
+				"All the asteroids together have only about a thirtieth of the Moon’s mass."
+			],
+			"advanced": [
+				"Flying from one asteroid to its nearest neighbour – on average about a million km – would take a passenger jet more than six weeks."
+			]
+		}
+	},
+	"juno": {
+		"name": "Juno",
+		"tagline": "The third asteroid ever found",
+		"description": {
+			"simple": "Juno is a big asteroid in the asteroid belt, about 250 km wide. It was the third asteroid ever found, in 1804. It is made of stone mixed with metal and is shaped a bit like a potato. Juno is named after the queen of the Roman gods.",
+			"standard": "Juno was the third asteroid to be discovered, found by Karl Harding in 1804. It is about 250 km across and one of the larger stony asteroids, made of silicate rock mixed with metal. Its orbit is quite stretched: Juno comes as close to the Sun as about 2 AU and swings out to about 3.4 AU. Don’t mix it up with NASA’s Juno spacecraft – that one was sent to Jupiter, not to this asteroid.",
+			"advanced": "Juno is an S-type asteroid: its surface is made of stony silicates mixed with nickel-iron, and it reflects more light than the dark, carbon-rich asteroids. With an eccentricity of 0.26, its distance from the Sun varies between about 297 and 502 million km, and it orbits once every 4.4 years. It rotates in about 7.2 hours, and its brightness changes as it turns because of its irregular shape. Together with Ceres, Pallas and Vesta, it was counted as a planet for several decades after its discovery."
+		},
+		"facts": {
+			"simple": [
+				"A year on Juno lasts almost four and a half Earth years.",
+				"Juno spins around once in about 7 hours.",
+				"Juno is too faint to see with your eyes alone – you need binoculars or a telescope."
+			],
+			"standard": [
+				"Juno is named after the Roman queen of the gods, the wife of Jupiter.",
+				"Juno rotates once in about 7.2 hours.",
+				"Juno takes about 4.4 years to go once around the Sun."
+			],
+			"advanced": [
+				"Its shape, about 290 × 240 × 190 km, is far from round, so Juno is not a dwarf planet.",
+				"Juno’s mass is about 2.8 × 10¹⁹ kg, roughly 1 % of the asteroid belt’s total.",
+				"Its perihelion lies at about 1.99 AU and its aphelion at about 3.35 AU."
+			]
+		},
+		"comparisons": {
+			"simple": ["If Earth were a football, Juno would be a peppercorn."],
+			"standard": [
+				"Juno is about 250 km wide: at 100 km/h you could drive across it in two and a half hours."
+			],
+			"advanced": [
+				"Earth is about 50 times as wide as Juno, but about 200,000 times as heavy."
+			]
+		}
+	},
+	"hygiea": {
+		"name": "Hygiea",
+		"tagline": "A possible dwarf planet",
+		"description": {
+			"simple": "Hygiea is the fourth-biggest object in the asteroid belt. It is very dark and nearly round like a ball. Some astronomers think it might one day count as a dwarf planet. It is named after the Greek goddess of health – that is where the word “hygiene” comes from.",
+			"standard": "Hygiea is the fourth-largest asteroid, about 410 km across, and orbits in the outer part of the belt at an average distance of 3.15 AU. It was discovered in 1849 by Annibale de Gasparis in Naples. Its surface is dark and rich in carbon, like that of many asteroids in the outer belt. In 2019, sharp images from the Very Large Telescope in Chile showed that Hygiea is almost perfectly round, so it could qualify as a dwarf planet – but the IAU has not changed its status.",
+			"advanced": "Hygiea is a C-type asteroid, a dark carbonaceous body, and the largest member of a family of asteroids produced by a giant impact. The 2019 observations with the Very Large Telescope surprisingly found no large impact basin on it; models suggest that the collision shattered Hygiea completely and that the fragments then gathered again into a sphere. Its round shape appears to meet the IAU’s roundness criterion for a dwarf planet, but its classification has not been changed. Ceres, Vesta, Pallas and Hygiea together hold more than half of the asteroid belt’s mass."
+		},
+		"facts": {
+			"simple": [
+				"One year on Hygiea lasts about five and a half Earth years.",
+				"A day on Hygiea lasts almost 14 hours.",
+				"Hygiea is too faint to see without a telescope."
+			],
+			"standard": [
+				"Hygiea takes about 5.6 years to go once around the Sun.",
+				"It was the tenth asteroid ever discovered.",
+				"A day on Hygiea lasts about 13.8 hours."
+			],
+			"advanced": [
+				"Mass about 1.05 × 10²⁰ kg – roughly 4 % of the whole asteroid belt.",
+				"Average distance from the Sun 3.15 AU; orbital eccentricity 0.11.",
+				"The Hygiea family includes thousands of small asteroids on similar orbits, fragments of the same impact."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Hygiea would be a small pea about 7 mm wide."
+			],
+			"standard": [
+				"Sunlight takes about 26 minutes to reach Hygiea – three times as long as it takes to reach Earth."
+			],
+			"advanced": [
+				"It would take about 700 Hygieas to match the mass of our Moon."
+			]
+		}
+	},
+	"eros": {
+		"name": "Eros",
+		"tagline": "The first asteroid a spacecraft landed on",
+		"description": {
+			"simple": "Eros is a long, peanut-shaped asteroid, about 34 km long. It comes closer to Earth than the asteroids in the main belt. In the year 2000 a spacecraft called NEAR Shoemaker went into orbit around Eros, and a year later it gently landed on it – even though it was never built for landing!",
+			"standard": "Eros, discovered in 1898, was the first near-Earth asteroid ever found: its orbit brings it closer to the Sun than Mars, although it never crosses Earth’s path. It is about 34 km long. On 14 February 2000 – Valentine’s Day, fitting for an asteroid named after the Greek god of love – NASA’s NEAR Shoemaker became the first spacecraft to orbit an asteroid. After a year of mapping, it touched down on 12 February 2001, the first landing on an asteroid.",
+			"advanced": "Eros is an S-type asteroid on an orbit with a semi-major axis of 1.46 AU and an eccentricity of 0.22; it takes 1.76 years to go around the Sun, and its perihelion at 1.13 AU makes it a Mars-crossing near-Earth asteroid. Close approaches of Eros around 1900 and in 1931 were used to measure its parallax and thus the scale of the solar system, the length of the astronomical unit. NEAR Shoemaker found a bulk density of about 2.7 g/cm³, similar to Earth’s crust, which suggests a solid but heavily fractured body rather than a loose rubble pile, covered in boulders and ponds of fine dust."
+		},
+		"facts": {
+			"simple": [
+				"Eros is named after the Greek god of love – and the spacecraft arrived on Valentine’s Day!",
+				"Eros spins around once in just over 5 hours.",
+				"On Eros, gravity is so weak that you could throw a stone right off into space."
+			],
+			"standard": [
+				"NEAR Shoemaker took about 160,000 pictures of Eros.",
+				"One year on Eros lasts about 1.76 Earth years.",
+				"Eros is one of the largest known near-Earth asteroids."
+			],
+			"advanced": [
+				"The NEAR mission was renamed in honour of the planetary geologist Eugene Shoemaker.",
+				"Eros was discovered on 13 August 1898 by Gustav Witt in Berlin.",
+				"After landing, NEAR Shoemaker kept measuring the surface’s composition with its gamma-ray spectrometer for about two weeks."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Eros would be as small as a grain of sand."
+			],
+			"standard": [
+				"Eros is about 34 km long – a car at 100 km/h would drive its length in about 20 minutes."
+			],
+			"advanced": [
+				"Gravity on the surface of Eros is thousands of times weaker than on Earth."
+			]
+		}
+	},
+	"bennu": {
+		"name": "Bennu",
+		"tagline": "The rubble pile we brought home",
+		"description": {
+			"simple": "Bennu is a small asteroid, only about 500 m wide – if you could walk around its middle, it would take you only about 20 minutes. It is not one solid rock but a loose pile of rocks and gravel held together by its tiny gravity. In 2020 the spacecraft OSIRIS-REx touched Bennu for a few seconds and grabbed some dust and pebbles. In 2023 a capsule brought them safely back to Earth, where scientists are studying them.",
+			"standard": "Bennu is a near-Earth asteroid about 500 m across, discovered in 1999. NASA’s OSIRIS-REx spacecraft arrived in 2018 and found a rubble pile: a loose heap of boulders and gravel held together by weak gravity. When it touched the surface on 20 October 2020 to collect a sample, its sampling head sank in as if into a ball pit. The capsule with about 120 g of material landed in the Utah desert on 24 September 2023. The sample is rich in carbon and water-bearing minerals and contains amino acids, building blocks of life.",
+			"advanced": "Bennu is a carbon-rich B-type asteroid whose bulk density of only about 1.2 g/cm³ implies that a large part of its volume is empty space between the fragments. Its orbit (semi-major axis 1.13 AU, eccentricity 0.20) crosses Earth’s, which makes it one of the most closely watched potentially hazardous asteroids: based on the precise tracking by OSIRIS-REx, the chance of an impact on 24 September 2182 is about 1 in 2,700. The returned sample contains minerals that formed in liquid water and salts left behind by evaporating brine, evidence that Bennu’s parent body once held water."
+		},
+		"facts": {
+			"simple": [
+				"Bennu got its name from a 9-year-old boy who won a naming contest in 2013.",
+				"Bennu spins around once in just over 4 hours.",
+				"The pieces of Bennu brought back to Earth weigh about 120 g – a bit more than a bar of chocolate."
+			],
+			"standard": [
+				"Bennu goes once around the Sun about every 1.2 years.",
+				"Small pebbles regularly shoot off Bennu’s surface into space.",
+				"After dropping off its sample, the spacecraft flew on as OSIRIS-APEX to visit the asteroid Apophis in 2029."
+			],
+			"advanced": [
+				"Bennu’s rotation (about 4.3 hours) gets faster by about a second per century, pushed by sunlight re-radiated as heat (the YORP effect).",
+				"Its surface reflects only about 4 % of the sunlight that hits it and is covered with more large boulders than expected.",
+				"The sample contains 14 of the 20 amino acids that life on Earth uses to build proteins."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"About five football pitches laid end to end would stretch across Bennu."
+			],
+			"standard": [
+				"If Earth were a football, Bennu would be a speck of dust about a tenth as wide as a hair."
+			],
+			"advanced": [
+				"Bennu’s escape velocity is only about 20 cm/s – far slower than walking pace, so one careless step could launch you into space."
+			]
+		}
+	},
+	"arrokoth": {
+		"name": "Arrokoth",
+		"tagline": "The most distant world ever explored",
+		"description": {
+			"simple": "Arrokoth is a small, reddish world made of ice and rock, far out in the Kuiper Belt beyond Neptune. It looks like two flat pancakes stuck together – or a snowman lying down. On New Year’s Day 2019 the New Horizons spacecraft flew past it. No spacecraft has ever visited anything farther away.",
+			"standard": "Arrokoth is a small icy body in the Kuiper Belt, about 36 km long. On 1 January 2019 NASA’s New Horizons flew past it – three and a half years after visiting Pluto – making it the most distant object ever explored up close, about 6.6 billion km from Earth. It turned out to be two flattened lobes gently stuck together, which shows how small worlds formed: pieces in a cloud of dust and ice slowly clumped together. Arrokoth has hardly changed in 4.5 billion years, so it is like a time capsule from the birth of the solar system.",
+			"advanced": "Arrokoth (486958, formerly 2014 MU69) was found in 2014 with the Hubble Space Telescope during a search for a target that New Horizons could reach after Pluto. It orbits in the cold classical Kuiper Belt on a nearly circular (eccentricity 0.04), low-inclination orbit at 44 AU, taking about 292 years per orbit. It is a contact binary: its two lobes once orbited each other and then merged gently, at no more than a few km/h – evidence that planetesimals formed by the gentle collapse of clouds of pebbles rather than by violent collisions. Its deep red colour comes from organic compounds made by radiation, and methanol ice was detected on its surface."
+		},
+		"facts": {
+			"simple": [
+				"Arrokoth means “sky” in the language of the Powhatan people.",
+				"Radio signals from New Horizons at Arrokoth needed about 6 hours to reach Earth.",
+				"Arrokoth is very red – even redder than Pluto."
+			],
+			"standard": [
+				"Arrokoth was discovered in 2014 with the Hubble Space Telescope while scientists searched for a target for New Horizons.",
+				"A year on Arrokoth lasts about 292 Earth years.",
+				"New Horizons passed about 3,500 km from Arrokoth."
+			],
+			"advanced": [
+				"Before its official name was chosen in 2019, 2014 MU69 was nicknamed “Ultima Thule”.",
+				"New Horizons flew about three and a half times closer to Arrokoth than to Pluto.",
+				"Its orbit barely changes in distance from the Sun: between about 42.5 and 45.6 AU."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Arrokoth would be a grain of sand more than 100 km away."
+			],
+			"standard": [
+				"Arrokoth is about 36 km long – a bit shorter than a marathon."
+			],
+			"advanced": [
+				"New Horizons flew past at about 14 km/s: it would have crossed Arrokoth’s whole length in under 3 seconds."
+			]
+		}
+	},
+	"halley": {
+		"name": "Halley",
+		"tagline": "Halley’s Comet, back every 75 to 76 years",
+		"description": {
+			"simple": "Halley’s Comet is the most famous comet of all. It is a lump of dirty ice about 15 km long. Every 75 or 76 years it comes close to the Sun: the ice turns into gas and dust, and the comet grows a long, glowing tail. The tail always points away from the Sun. Halley last visited in 1986 and will be back in 2061 – maybe you will see it!",
+			"standard": "Halley’s Comet returns to the inner solar system every 75 to 76 years. Its nucleus is a dark lump of ice and dust about 15 × 8 km. As it nears the Sun, sunlight turns the ice into gas, which drags dust along and forms a glowing cloud, the coma, and two tails that are pushed away from the Sun: a straight, bluish gas tail and a curved, whitish dust tail. So when the comet moves away from the Sun again, its tails go ahead of it. Edmond Halley realised that the comets seen in 1531, 1607 and 1682 were one and the same and predicted its return in 1758; it came back, but Halley did not live to see it. Its last perihelion was on 9 February 1986, and the next will be on 28 July 2061.",
+			"advanced": "Comet 1P/Halley moves on a retrograde orbit (inclination 162°): it travels around the Sun in the opposite direction to the planets. Its very eccentric orbit (0.97) takes it from about 0.6 AU, inside the orbit of Venus, out to about 35 AU, beyond Neptune. In March 1986 ESA’s Giotto probe passed about 600 km from the nucleus and took the first close-up images of a comet’s nucleus: a surface darker than coal, with jets of gas and dust bursting from a few active areas on the sunlit side. Records of Halley’s Comet go back to at least 240 BC in China."
+		},
+		"facts": {
+			"simple": [
+				"Dust from Halley’s Comet makes two showers of shooting stars every year, in May and in October.",
+				"The writer Mark Twain was born in a Halley year, 1835, and died in the next one, 1910.",
+				"Halley’s Comet appears on the Bayeux Tapestry, an embroidery more than 900 years old."
+			],
+			"standard": [
+				"In 1986 a fleet of spacecraft from Europe, the Soviet Union and Japan flew past the comet.",
+				"It reached the far end of its orbit, beyond Neptune, in December 2023 and is now on its way back.",
+				"Halley’s Comet is named after the astronomer Edmond Halley, not after the person who first saw it."
+			],
+			"advanced": [
+				"The nucleus has a mass of about 2.2 × 10¹⁴ kg.",
+				"The period varies by a few years from one return to the next, because the planets’ gravity tugs on the comet.",
+				"Its dust causes the Eta Aquariid meteor shower in May and the Orionids in October."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"Halley’s nucleus is only about 15 km long, but its tail can stretch for millions of kilometres – many times the distance from Earth to the Moon."
+			],
+			"standard": [
+				"A child who sees Halley’s Comet in 2061 at the age of 10 will be about 85 when it comes back after that."
+			],
+			"advanced": [
+				"Halley races along at about 55 km/s near the Sun but crawls at under 1 km/s at the far end of its orbit – Kepler’s second law in action."
+			]
+		}
+	},
+	"encke": {
+		"name": "Encke",
+		"tagline": "The comet with the shortest year",
+		"description": {
+			"simple": "Comet Encke is a small comet that comes back to the Sun very often – about every 3 years and 4 months. Its nucleus is only about 5 km wide, and it is usually too faint to see without binoculars or a telescope. Dust it has left behind along its path gives us shooting stars in autumn.",
+			"standard": "Comet Encke (2P/Encke) has the shortest orbital period of any bright comet: it returns every 3.3 years. Pierre Méchain first saw it in 1786, but it is named after Johann Franz Encke, who calculated its orbit in 1819 and showed that it keeps coming back. It was only the second comet, after Halley’s, known to do so – which is why its catalogue name begins with “2P”. Its orbit takes it closer to the Sun than Mercury’s average distance and out to about 4 AU, still inside Jupiter’s orbit. Dust from Encke causes the Taurid meteor showers each October and November.",
+			"advanced": "Encke’s orbit (semi-major axis 2.22 AU, eccentricity 0.85) spans from 0.34 AU, closer to the Sun than Mercury’s average distance, to 4.1 AU. Encke noticed that the comet returned a few hours earlier each time than gravity alone predicted – one of the first signs of non-gravitational forces, which we now know come from jets of gas acting like small rocket engines on the rotating nucleus. Unlike most short-period comets, Encke never comes close to Jupiter, whose gravity usually reshapes such orbits; how it reached its present orbit is still debated. Seen at dozens of returns, it is one of the best-studied comets."
+		},
+		"facts": {
+			"simple": [
+				"Encke gives us the Taurid shooting stars in October and November.",
+				"Encke comes closer to the Sun than the planet Mercury is on average.",
+				"Encke comes back to the Sun about three times every ten years."
+			],
+			"standard": [
+				"Encke’s nucleus is about 5 km across.",
+				"In 2007 NASA’s STEREO spacecraft watched a blast from the Sun tear off Encke’s tail – it later grew back.",
+				"Encke never travels out as far as Jupiter’s orbit."
+			],
+			"advanced": [
+				"Period 3.31 years; perihelion 0.34 AU; aphelion 4.1 AU.",
+				"Its dust trail has spread out along the whole orbit, so Earth crosses it every year.",
+				"Encke’s name 2P means “the second periodic comet”; Halley’s Comet is 1P."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Encke’s nucleus would be about as thin as a hair."
+			],
+			"standard": [
+				"Encke returns about 23 times for every single return of Halley’s Comet."
+			],
+			"advanced": [
+				"At its closest to the Sun, Encke receives almost 9 times as much sunlight as Earth does."
+			]
+		}
+	},
+	"67p": {
+		"name": "67P",
+		"tagline": "The rubber-duck comet visited by Rosetta",
+		"description": {
+			"simple": "Comet 67P looks like a giant rubber duck made of ice and dust, about 4 km long. The spacecraft Rosetta flew around it for two years and watched it wake up as it came closer to the Sun: jets of gas and dust burst out of it. Rosetta even dropped a small lander called Philae onto the comet – the first landing on a comet ever.",
+			"standard": "Comet 67P/Churyumov–Gerasimenko was discovered in 1969 by Klim Churyumov and Svetlana Gerasimenko. It is made of two lobes joined by a narrow neck, which gives it its famous “rubber duck” shape, about 4 km long. ESA’s Rosetta spacecraft reached it in August 2014 and orbited it for more than two years, watching the ice turn to gas as the comet neared the Sun. On 12 November 2014 the lander Philae touched down – the first landing on a comet – but it bounced and came to rest in the shadow of a cliff. Rosetta ended its mission on 30 September 2016 with a slow, controlled crash onto the comet.",
+			"advanced": "67P is a Jupiter-family comet with a period of 6.4 years, travelling between 1.24 AU and about 5.7 AU from the Sun. Rosetta measured a density of only about 0.53 g/cm³: roughly 70 % of the nucleus is empty space. Its instruments found the amino acid glycine and phosphorus, as well as a ratio of heavy to ordinary water very different from that of Earth’s oceans, suggesting that comets like 67P did not supply most of Earth’s water. Philae’s harpoons failed to fire, so it bounced twice before coming to rest in shadow, where its battery ran out after about two and a half days of science."
+		},
+		"facts": {
+			"simple": [
+				"Gravity on 67P is so weak that one good jump would send you flying off into space.",
+				"The lander Philae bounced twice before it came to rest.",
+				"Rosetta needed ten years to reach 67P and then explored it for more than two years."
+			],
+			"standard": [
+				"67P goes around the Sun every 6.4 years.",
+				"The comet is so porous that it would float on water – if you could find a big enough bathtub.",
+				"Rosetta was named after the Rosetta Stone, which helped to decipher Egyptian hieroglyphs."
+			],
+			"advanced": [
+				"Mass about 1 × 10¹³ kg – about 10 billion tonnes.",
+				"The nucleus rotates in about 12.4 hours.",
+				"67P passed perihelion on 13 August 2015 at 1.24 AU, with Rosetta watching."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"67P is about 4 km long – you could walk from one end to the other in less than an hour, if you did not float away."
+			],
+			"standard": [
+				"If Earth were a football, 67P would be about as thick as a human hair."
+			],
+			"advanced": [
+				"67P’s average density, about 0.5 g/cm³, is similar to that of dry pinewood."
+			]
+		}
+	},
+	"halebopp": {
+		"name": "Hale-Bopp",
+		"tagline": "The great comet of 1997",
+		"description": {
+			"simple": "Hale-Bopp was one of the brightest comets of the last hundred years. In 1997 people all over the world could see it in the night sky without a telescope – even from brightly lit cities. It stayed visible for about a year and a half. Its nucleus is huge for a comet, about 60 km wide. It will not come back for about 2,400 years.",
+			"standard": "Comet Hale-Bopp (C/1995 O1) was discovered on 23 July 1995, independently on the same night, by Alan Hale in New Mexico and Thomas Bopp in Arizona. At that time it was still beyond Jupiter’s orbit, unusually far for a comet to be seen, because its nucleus is exceptionally large – roughly 60 km across. It passed closest to the Sun on 1 April 1997 and was probably seen by more people than any comet before. Its two tails, a bluish gas tail and a broad whitish dust tail, pointed in slightly different directions, but both away from the Sun.",
+			"advanced": "Hale-Bopp is a long-period comet on a nearly perpendicular (inclination 89°), extremely elongated orbit (eccentricity 0.995). Its previous visit was about 4,200 years ago; on its way in, it passed close to Jupiter in 1996, whose gravity shortened its period to about 2,400 years. Its nucleus, estimated at 40 to 80 km across, is one of the largest known for a comet. Besides the usual gas and dust tails, observers discovered a third, faint tail made of sodium atoms. Its orbit now reaches out to about 350 AU from the Sun."
+		},
+		"facts": {
+			"simple": [
+				"Hale-Bopp was discovered on the same night by two people in two different places.",
+				"Its nucleus is about four times as long as Halley’s.",
+				"The last time Hale-Bopp came by, about 4,200 years ago, the Egyptian pyramids were already standing."
+			],
+			"standard": [
+				"Hale-Bopp stayed visible to the naked eye for about 18 months, twice as long as the previous record holder, the Great Comet of 1811.",
+				"Its orbit is tilted almost at a right angle (89°) to the orbits of the planets.",
+				"Its tails stretched for tens of millions of kilometres."
+			],
+			"advanced": [
+				"Hale-Bopp was discovered at about 7 AU from the Sun, farther out than Jupiter.",
+				"Its sodium tail was straight and narrow, pushed outward by the pressure of sunlight.",
+				"Hale-Bopp passed perihelion on 1 April 1997 at about 0.9 AU from the Sun."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"If Earth were a football, Hale-Bopp’s nucleus would be about the size of a poppy seed."
+			],
+			"standard": [
+				"Hale-Bopp comes back only every 2,400 years or so – about 30 times as long as Halley’s Comet takes."
+			],
+			"advanced": [
+				"At the far end of its orbit, about 350 AU out, sunlight needs about two days to reach Hale-Bopp."
+			]
+		}
+	},
+	"neowise": {
+		"name": "NEOWISE",
+		"tagline": "The great comet of 2020",
+		"description": {
+			"simple": "Comet NEOWISE was a bright comet that people could see with their own eyes in July 2020. It was discovered in March 2020 by a space telescope called NEOWISE, which gave the comet its name. In photos you can clearly see its two tails: a curved, whitish dust tail and a thin, bluish gas tail. It will not return for about 6,800 years.",
+			"standard": "Comet NEOWISE (C/2020 F3) was discovered on 27 March 2020 by NASA’s NEOWISE space telescope, which hunted for asteroids and comets in infrared light. It passed closest to the Sun on 3 July 2020, inside Mercury’s orbit, and survived the heating. In July it became the brightest comet seen from the northern hemisphere since Hale-Bopp in 1997, easy to spot with the naked eye low in the morning and later the evening sky. Photos showed its two tails clearly: a curved, yellowish-white dust tail and a straight, faint blue gas tail, both pointing away from the Sun. It will not return for about 6,800 years.",
+			"advanced": "C/2020 F3 is a long-period comet on a steeply inclined (129°), retrograde orbit. At perihelion it was only 0.29 AU from the Sun, and it made its closest approach to Earth on 23 July 2020 at about 103 million km (0.69 AU). Gravitational tugs from the planets during this passage stretched its orbit: its period grew by more than 2,000 years to about 6,800 years, with its aphelion now more than 700 AU from the Sun. Its nucleus is about 5 km across. Spectra showed glowing sodium, and the SOHO observatory and Parker Solar Probe imaged it near perihelion."
+		},
+		"facts": {
+			"simple": [
+				"NEOWISE was the brightest comet in more than 20 years for people in the northern half of the world.",
+				"Astronauts on the International Space Station photographed it from space.",
+				"Its next visit is so far in the future that nobody alive today will see it again."
+			],
+			"standard": [
+				"NEOWISE’s nucleus is about 5 km across.",
+				"It passed closer to the Sun than Mercury ever does.",
+				"The NEOWISE telescope that found it ended its mission in 2024."
+			],
+			"advanced": [
+				"At perihelion the comet moved at almost 78 km/s relative to the Sun.",
+				"Infrared telescopes see the heat glow of a comet’s dark nucleus and dust, which makes them good comet hunters.",
+				"Its orbit is retrograde: it travels around the Sun in the opposite direction to the planets."
+			]
+		},
+		"comparisons": {
+			"simple": [
+				"NEOWISE will next come back in about 6,800 years – longer than the whole time since people first learned to write."
+			],
+			"standard": [
+				"NEOWISE takes about 90 times as long as Halley’s Comet to go once around the Sun."
+			],
+			"advanced": [
+				"At the far end of its orbit, more than 700 AU out, sunlight needs about 4 days to reach NEOWISE."
+			]
+		}
+	},
+	"nix": {
+		"name": "Nix",
+		"tagline": "Pluto’s moon of the night",
+		"description": {
+			"simple": "Nix is one of Pluto’s small moons, only about 50 km long and shaped like a potato. Instead of always showing the same side to Pluto, it tumbles as it goes around. It is named after the Greek goddess of the night.",
+			"standard": "Nix is a small, elongated moon about 50 × 33 × 31 km, discovered with the Hubble Space Telescope in 2005 together with Hydra. It orbits Pluto and Charon every 24.9 days. Like Pluto’s other small moons, it does not keep one face towards Pluto but tumbles chaotically, because it is pulled by two big bodies at once. It is named after Nyx, the Greek goddess of the night; the spelling with an i avoids confusion with an asteroid called Nyx.",
+			"advanced": "Nix orbits the Pluto–Charon barycentre at about 48,700 km with a period of 24.9 days, close to four times Charon’s orbital period. Its chaotic, tumbling rotation is caused by the constantly changing gravitational pull of the Pluto–Charon pair. New Horizons found a reddish area around a large crater on its otherwise bright surface of water ice. The initials of Nix and Hydra, N and H, were chosen to honour New Horizons."
+		}
+	},
+	"hydra": {
+		"name": "Hydra",
+		"tagline": "Pluto’s outermost moon",
+		"description": {
+			"simple": "Hydra is the moon farthest from Pluto. It is small, about 51 km long, and tumbles as it goes around. It is named after a monster with many heads from Greek myths.",
+			"standard": "Hydra is the outermost of Pluto’s known moons, about 51 × 36 × 31 km. It was discovered with the Hubble Space Telescope in 2005, together with Nix, and circles Pluto and Charon every 38.2 days. New Horizons showed that its surface is bright and mostly water ice. It is named after the many-headed serpent that Heracles fought in Greek mythology.",
+			"advanced": "Hydra orbits the Pluto–Charon barycentre at about 64,700 km, with a period of 38.2 days – almost exactly six times Charon’s orbital period. Like the other small moons, it rotates chaotically rather than being tidally locked. Its bright surface is dominated by relatively clean water ice. Together with Nix, it was named so that the initials N and H would honour the New Horizons mission."
+		}
+	},
+	"kerberos": {
+		"name": "Kerberos",
+		"tagline": "Pluto’s double-lobed moon",
+		"description": {
+			"simple": "Kerberos is a tiny moon of Pluto, only about 19 km long. It looks like two small lumps stuck together. It is named after the three-headed dog that guards the underworld in Greek myths.",
+			"standard": "Kerberos is one of Pluto’s smallest moons, about 19 × 10 × 9 km, discovered with the Hubble Space Telescope in 2011. It orbits Pluto and Charon every 32.2 days. New Horizons showed that it is made of two lobes, a larger and a smaller one, and that its surface is brighter than scientists had expected. It is named after the three-headed dog guarding the entrance to the underworld in Greek mythology.",
+			"advanced": "Kerberos orbits the Pluto–Charon barycentre at about 57,800 km, with a period of 32.2 days – close to five times Charon’s orbital period, between the orbits of Nix and Hydra. New Horizons images revealed a double-lobed shape, perhaps two bodies that merged, and a bright, water-ice surface. Like Pluto’s other small moons, it probably formed from debris left over by the giant impact that is thought to have created Charon."
+		}
+	},
+	"styx": {
+		"name": "Styx",
+		"tagline": "Pluto’s smallest known moon",
+		"description": {
+			"simple": "Styx is the smallest known moon of Pluto, only about 16 km long. It was found in 2012 while scientists were checking whether the path of the New Horizons spacecraft was safe. It is named after a river of the underworld in Greek myths.",
+			"standard": "Styx, about 16 × 9 × 8 km, is the smallest known moon of Pluto. It was discovered in 2012 with the Hubble Space Telescope, during a search for moons and dust that might endanger New Horizons. It orbits Pluto and Charon every 20.2 days, inside the orbit of Nix. It is named after the river that, in Greek mythology, separates the world of the living from the underworld.",
+			"advanced": "Styx orbits the Pluto–Charon barycentre at about 42,700 km with a period of 20.2 days, close to three times Charon’s orbital period, making it the innermost of Pluto’s four small moons. It was found in Hubble images taken in 2012 by a team led by Mark Showalter. New Horizons saw it only from a great distance, so little is known about its surface."
+		}
+	},
+	"dysnomia": {
+		"name": "Dysnomia",
+		"tagline": "The moon that weighed Eris",
+		"description": {
+			"simple": "Dysnomia is the only known moon of the dwarf planet Eris. It is much darker than Eris, which is as bright as fresh snow. By watching how Dysnomia goes around Eris, astronomers could work out how heavy Eris is.",
+			"standard": "Dysnomia is Eris’s only known moon, discovered in September 2005 with the Keck telescope in Hawaii. It circles Eris every 15.8 days at about 37,300 km. From its orbit, astronomers calculated that Eris is about a quarter heavier than Pluto. In Greek mythology, Dysnomia is the daughter of Eris and the spirit of lawlessness – a name that also nods to the actress Lucy Lawless, who played Xena, Eris’s early nickname.",
+			"advanced": "Dysnomia follows a nearly circular orbit about 37,300 km from Eris with a period of 15.8 days; applying Kepler’s third law to this orbit gives Eris’s mass, about 1.66 × 10²² kg, 27 % more than Pluto’s. Dysnomia is very dark, reflecting only a few per cent of the light that hits it, compared with about 96 % for Eris. It is probably several hundred km across, which would make it the second-largest known moon of a dwarf planet after Charon. Eris appears to rotate in step with Dysnomia’s orbit, a sign that tides have locked the pair."
+		}
+	},
+	"namaka": {
+		"name": "Namaka",
+		"tagline": "Haumea’s inner moon",
+		"description": {
+			"simple": "Namaka is the smaller of the two moons of the dwarf planet Haumea. It goes around Haumea in a little more than two and a half weeks. It is named after a Hawaiian goddess of the sea, one of Haumea’s daughters.",
+			"standard": "Namaka is the smaller and inner of Haumea’s two moons, perhaps 170 km across. It was discovered in June 2005 with the Keck telescope in Hawaii and circles Haumea every 18.3 days at about 25,700 km. Like Haumea and its other moon, it is probably a piece thrown off in an ancient collision. It is named after Nāmaka, a Hawaiian sea goddess and daughter of Haumea.",
+			"advanced": "Namaka orbits Haumea at about 25,700 km with a period of 18.3 days, on a noticeably eccentric orbit (about 0.25) that is tilted relative to the orbit of the outer moon Hiʻiaka. Its orbit is disturbed by Hiʻiaka and by Haumea’s strongly elongated shape. Namaka and Hiʻiaka are thought to be fragments of the giant collision that also produced Haumea’s family of icy bodies and possibly its fast spin."
+		}
+	},
+	"hiiaka": {
+		"name": "Hiʻiaka",
+		"tagline": "Haumea’s outer moon",
+		"description": {
+			"simple": "Hiʻiaka is the bigger of the two moons of the dwarf planet Haumea. It is covered in ice and goes around Haumea in about seven weeks. It is named after a Hawaiian goddess of hula dancing, one of Haumea’s daughters.",
+			"standard": "Hiʻiaka is the larger and outer of Haumea’s two moons, about 320 km across. It was discovered in January 2005 with the Keck telescope in Hawaii, even before Haumea had its name, and orbits Haumea every 49 days at about 49,900 km. Like Haumea, its surface is covered in water ice. It is named after Hiʻiaka, the Hawaiian patron goddess of the island of Hawaiʻi and of hula dancers, a daughter of Haumea.",
+			"advanced": "Hiʻiaka orbits Haumea at about 49,900 km with a period of 49 days, on a nearly circular orbit. Its spectrum shows crystalline water ice, much like Haumea’s own surface, which supports the idea that both moons are fragments of Haumea’s icy crust thrown off in an ancient collision. Tracking Hiʻiaka’s orbit is what first allowed astronomers to measure Haumea’s mass."
+		}
+	},
+	"s20151364721": {
+		"name": "S/2015 (136472) 1",
+		"tagline": "Makemake’s dark little moon",
+		"description": {
+			"simple": "This tiny, dark moon circles the dwarf planet Makemake. It was so hard to see next to bright Makemake that it was found only in 2016, in pictures from the Hubble Space Telescope. Scientists nicknamed it MK2.",
+			"standard": "S/2015 (136472) 1, nicknamed MK2, is the only known moon of Makemake. It was spotted in Hubble images taken in April 2015 and announced in 2016. It is about 1,300 times fainter than Makemake and very dark, probably less than 200 km across. Its name is still a provisional designation: S for satellite, 2015 for the year it was photographed, 136472 for Makemake’s catalogue number and 1 for the first moon found.",
+			"advanced": "MK2 was discovered in Hubble images from April 2015, about 21,000 km from Makemake. Its orbit is not yet well known; if we see it almost edge-on, the moon would spend much of its time lost in Makemake’s glare, which could explain why earlier searches missed it. Its dark surface contrasts with Makemake’s bright methane ice, perhaps because its weak gravity cannot hold on to such volatile ices. A well-measured orbit would give Makemake’s mass and density."
+		}
 	}
 }

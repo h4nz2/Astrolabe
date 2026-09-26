@@ -101,7 +101,7 @@ test("every control is two actions away, behind named entry points", async ({
 	await ready(page, "/solar_system?focus=earth&lang=en")
 
 	const layers = await openLayers(page)
-	await expect(layers.getByRole("switch")).toHaveCount(7)
+	await expect(layers.getByRole("switch")).toHaveCount(8)
 	await expect(layers.getByRole("switch", { name: "Always lit" })).toBeVisible()
 
 	const scale = await openScale(page)
