@@ -7,6 +7,8 @@
  */
 import { expect, test, type Page } from "@playwright/test"
 
+import { openTool } from "./support/hud"
+
 // the calendar and the glides run while swiftshader renders the scene at a few fps
 test.describe.configure({ timeout: 60_000 })
 
@@ -103,7 +105,7 @@ test("travels to the next birthday on Mars and saves a picture", async ({
 }) => {
 	await page.goto("/solar_system")
 	await page.waitForLoadState("networkidle")
-	await page.getByRole("button", { name: "Your birthday" }).click()
+	await openTool(page, "birthday")
 	await expect(panel(page)).toBeVisible({ timeout: 15_000 })
 	await pickBirthday(page)
 	const clock = page.locator("time")
@@ -147,7 +149,7 @@ test("travels to the next birthday on Mars and saves a picture", async ({
 	// closing keeps the birthday in memory for this visit
 	await panel(page).getByRole("button", { name: "Close" }).click()
 	await expect(panel(page)).toBeHidden()
-	await page.getByRole("button", { name: "Your birthday" }).click()
+	await openTool(page, "birthday")
 	await expect(page.getByTestId("birthday-born")).toBeVisible()
 })
 

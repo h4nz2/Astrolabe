@@ -200,7 +200,7 @@ describe("data/planet-textures.json", () => {
 			expect(bytes, path).toBeLessThan(900_000)
 			total += bytes
 		}
-		expect(total).toBeLessThan(5_000_000)
+		expect(total).toBeLessThan(6_000_000)
 	})
 
 	it("paints only what has no open map, and says so on the card", () => {

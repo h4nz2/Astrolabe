@@ -158,6 +158,7 @@ export interface ComparePreset {
 		| "potatoMoons"
 		| "weighMost"
 		| "bigForItsPlanet"
+		| "plutoMoon"
 	group: ComparePresetGroup
 	/** The first two are the pair the facts talk about. */
 	bodies: readonly string[]
@@ -252,6 +253,12 @@ export const COMPARE_PRESETS: readonly ComparePreset[] = [
 		group: "surprises",
 		bodies: ["earth", "jupiter", "mars", "moon"],
 		lead: "weight",
+	}, // #23: the dwarf planet is smaller than our Moon
+	{
+		id: "plutoMoon",
+		group: "surprises",
+		bodies: ["pluto", "moon"],
+		lead: "size",
 	},
 ]
 

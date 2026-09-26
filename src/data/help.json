@@ -31,6 +31,11 @@
 			"try": "/solar_system?focus=mars&at=6_0_-2"
 		},
 		{
+			"id": "quietScreen",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=saturn"
+		},
+		{
 			"id": "worldCard",
 			"group": "lookingAround",
 			"try": "/solar_system?focus=saturn"
@@ -54,6 +59,16 @@
 			"id": "rings",
 			"group": "lookingAround",
 			"try": "/solar_system?focus=saturn&t=2457897.5&cam=160_40_1"
+		},
+		{
+			"id": "dwarfPlanets",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=pluto"
+		},
+		{
+			"id": "comets",
+			"group": "lookingAround",
+			"try": "/solar_system?focus=halley&t=2446500&smallBodies=true"
 		},
 		{
 			"id": "spin",
@@ -91,6 +106,11 @@
 			"try": "/solar_system?t=2452878.91&paused=true"
 		},
 		{
+			"id": "skyEvents",
+			"group": "time",
+			"try": "/solar_system?tour=event-solar2024&stop=1"
+		},
+		{
 			"id": "tooFast",
 			"group": "time",
 			"try": "/solar_system?warp=315576000"
@@ -109,6 +129,11 @@
 			"id": "howFar",
 			"group": "sizeDistance",
 			"try": "/solar_system?focus=earth&scale=trueScale"
+		},
+		{
+			"id": "asteroidBelt",
+			"group": "sizeDistance",
+			"try": "/solar_system?smallBodies=true&scale=trueScale"
 		},
 		{
 			"id": "solarWalk",

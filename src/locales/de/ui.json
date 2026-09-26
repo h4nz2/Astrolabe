@@ -59,12 +59,15 @@
 			"star": "Stern",
 			"planet": "Planet",
 			"moon": "Mond",
-			"moonOf": "{parentId, select, earth {Mond der Erde} other {Mond des {parent}}}"
+			"moonOf": "{parentId, select, earth {Mond der Erde} eris {Mond der Eris} haumea {Mond der Haumea} other {Mond des {parent}}}",
+			"dwarfPlanet": "Zwergplanet",
+			"asteroid": "Asteroid",
+			"comet": "Komet"
 		},
 		"fallback": {
-			"moonDescription": "{name} ist ein Mond {parentId, select, earth {der Erde} other {des {parent}}}. Er hat einen Durchmesser von etwa {diameter} und umrundet seinen Planeten einmal in {period}.",
-			"moonDescription@simple": "{name} ist einer der Monde, die {parentId, select, earth {die Erde} other {den {parent}}} umkreisen. Er ist etwa {diameter} breit.",
-			"moonDescription@advanced": "{name} umläuft {parentId, select, earth {die Erde} other {den {parent}}} in einem mittleren Abstand von {distance} mit einer Umlaufzeit von {period}. Sein mittlerer Durchmesser beträgt etwa {diameter}."
+			"moonDescription": "{name} ist ein Mond {parentId, select, earth {der Erde} eris {der Eris} haumea {der Haumea} other {des {parent}}}. Er hat einen Durchmesser von etwa {diameter} und umrundet {parentId, select, pluto {seinen Zwergplaneten} eris {seinen Zwergplaneten} haumea {seinen Zwergplaneten} makemake {seinen Zwergplaneten} other {seinen Planeten}} einmal in {period}.",
+			"moonDescription@simple": "{name} ist einer der Monde, die {parentId, select, earth {die Erde} eris {die Eris} haumea {die Haumea} other {den {parent}}} umkreisen. Er ist etwa {diameter} breit.",
+			"moonDescription@advanced": "{name} umläuft {parentId, select, earth {die Erde} eris {die Eris} haumea {die Haumea} other {den {parent}}} in einem mittleren Abstand von {distance} mit einer Umlaufzeit von {period}. Sein mittlerer Durchmesser beträgt etwa {diameter}."
 		}
 	},
 	"dictionary": {
@@ -131,7 +134,10 @@
 		"picker": {
 			"label": "Himmelskörper im Fokus",
 			"placeholder": "Himmelskörper suchen…",
-			"nothingFound": "Nichts gefunden"
+			"nothingFound": "Nichts gefunden",
+			"dwarfPlanets": "Zwergplaneten",
+			"asteroids": "Asteroiden",
+			"comets": "Kometen"
 		},
 		"layers": {
 			"label": "Szenenebenen",
@@ -161,6 +167,9 @@
 				"orbitNames": "Schreibt den Namen jedes Planeten an seine Bahnlinie, damit du erkennst, welche Bahn zu wem gehört.",
 				"orbitNames@simple": "Schreibt den Namen des Planeten an seinen Weg.",
 				"orbitNames@advanced": "Beschriftet jede Bahnlinie mit ihrem Himmelskörper: nützlich, wenn die Körper selbst zu weit weg für einen Namen sind.",
+				"smallBodies": "Zeigt Pluto und die anderen Zwergplaneten, Asteroiden, Kometen und die beiden Gürtel. Standardmäßig aus, damit die Planeten gut lesbar bleiben.",
+				"smallBodies@simple": "Zeigt Pluto, Kometen und den Asteroidengürtel.",
+				"smallBodies@advanced": "Fügt die Zwergplaneten, benannte Asteroiden, Kometen mit ihren Schweifen sowie Asteroiden- und Kuipergürtel als Punktwolken hinzu (jeder Punkt steht für viele echte Körper).",
 				"alwaysLit": "Beleuchtet jeden Himmelskörper von deinem Blickpunkt aus, sodass die Nachtseite nicht schwarz ist. Gut, um Oberflächen zu sehen; versteckt aber Tag und Nacht.",
 				"alwaysLit@simple": "Beleuchtet jeden Planeten von deiner Seite, sodass nichts dunkel ist. Dann siehst du aber Tag und Nacht nicht mehr!",
 				"alwaysLit@advanced": "Beleuchtet jeden Körper vom Blickpunkt statt von der Sonne: keine Nachtseiten, Phasen oder Finsternisschatten. Gut für Oberflächendetails, falsch für die Geometrie des Sonnenlichts."
@@ -168,7 +177,8 @@
 			"reason": {
 				"allMoons": "Schalte zuerst Monde ein.",
 				"orbitNames": "{missing, select, orbits {Schalte zuerst Umlaufbahnen ein.} labels {Schalte zuerst Beschriftungen ein.} other {Schalte zuerst Umlaufbahnen und Beschriftungen ein.}}"
-			}
+			},
+			"smallBodies": "Kleinkörper"
 		},
 		"scale": {
 			"label": "Maßstab",
@@ -264,7 +274,7 @@
 			"travel": {
 				"open": "Zu einem Datum reisen",
 				"title": "Zeitreise",
-				"moments": "Momente",
+				"moments": "Himmelsereignisse",
 				"pickDate": "Datum wählen",
 				"arrival": "Bei der Ankunft hält die Zeit an. Mit Abspielen geht es weiter.",
 				"range": "Jeder Tag vom Jahr {first} bis {last}. Ankunft ist um 12 Uhr (UTC).",
@@ -278,52 +288,6 @@
 					"previousDecade": "Vorheriges Jahrzehnt",
 					"monthLevel": "Anderen Monat wählen",
 					"yearLevel": "Anderes Jahr wählen"
-				}
-			},
-			"moments": {
-				"galileoMoons": {
-					"name": "Galilei sieht die Jupitermonde",
-					"description": "Die ersten Monde, die je bei einem anderen Planeten entdeckt wurden."
-				},
-				"uranusFound": {
-					"name": "Uranus wird entdeckt",
-					"description": "Wilhelm Herschel findet den ersten Planeten, den man in der Antike nicht kannte."
-				},
-				"neptuneFound": {
-					"name": "Neptun wird entdeckt",
-					"description": "Gefunden genau dort, wo ihn die Mathematik vorhergesagt hatte."
-				},
-				"sputnik": {
-					"name": "Sputnik 1 startet",
-					"description": "Der erste künstliche Satellit beginnt das Raumfahrtzeitalter."
-				},
-				"moonLanding": {
-					"name": "Erste Mondlandung",
-					"description": "Apollo 11 setzt auf dem Mond auf."
-				},
-				"voyagerLaunch": {
-					"name": "Voyager 2 bricht auf",
-					"description": "Jupiter, Saturn, Uranus und Neptun stehen günstig für eine große Rundreise – das gibt es nur etwa alle 175 Jahre."
-				},
-				"voyagerNeptune": {
-					"name": "Voyager 2 erreicht Neptun",
-					"description": "Zwölf Jahre nach dem Start: der einzige Besuch, den Neptun je hatte."
-				},
-				"marsClosest": {
-					"name": "Mars so nah wie nie",
-					"description": "Mars kommt der Erde näher als seit fast 60.000 Jahren. Die Erde steht zwischen Sonne und Mars."
-				},
-				"venusTransit": {
-					"name": "Venustransit",
-					"description": "Venus zieht genau zwischen Sonne und Erde vorbei."
-				},
-				"greatConjunction": {
-					"name": "Die große Konjunktion",
-					"description": "Von der Erde aus berühren sich Jupiter und Saturn am Himmel fast."
-				},
-				"nextVenusTransit": {
-					"name": "Der nächste Venustransit",
-					"description": "Das nächste Mal, dass Venus vor der Sonne vorbeizieht. Wird es jemand in diesem Raum erleben?"
 				}
 			}
 		},
@@ -485,7 +449,9 @@
 			"painted": "Keine Raumsonde hat {moon} aus der Nähe kartiert. Diese Oberfläche ist nach dem gemalt, was bekannt ist: der Farbe und wie viel Sonnenlicht sie zurückwirft.",
 			"painted@simple": "Keine Raumsonde hat {moon} aus der Nähe fotografiert. Diese Oberfläche ist in der echten Farbe gemalt.",
 			"haze": "Der Boden von {moon} liegt unter dichtem orangefarbenem Dunst verborgen. So sieht {moon} für unsere Augen aus.",
-			"haze@simple": "Dichter orangefarbener Dunst verdeckt den Boden von {moon}. So sieht {moon} für unsere Augen aus."
+			"haze@simple": "Dichter orangefarbener Dunst verdeckt den Boden von {moon}. So sieht {moon} für unsere Augen aus.",
+			"paintedVisited": "{probe} ist {year} an {moon} vorbeigeflogen, aber ihre Bilder sind noch nicht in der App. Diese Oberfläche ist nach dem gemalt, was bekannt ist: der Farbe und wie viel Sonnenlicht sie zurückwirft.",
+			"paintedVisited@simple": "{probe} hat {year} Bilder von {moon} gemacht, aber sie sind noch nicht in der App. Diese Oberfläche ist in der echten Farbe gemalt."
 		},
 		"facts": {
 			"label": {
@@ -515,7 +481,9 @@
 			"weightMore@simple": "30 kg auf der Erde wären hier {kg} kg",
 			"weightSimilar": "Du würdest etwa so viel wiegen wie auf der Erde",
 			"weightLess": "Du würdest nur {percent} % deines Gewichts auf der Erde wiegen",
-			"weightLess@simple": "30 kg auf der Erde wären hier nur {kg} kg"
+			"weightLess@simple": "30 kg auf der Erde wären hier nur {kg} kg",
+			"sunlightRange": "Das Sonnenlicht braucht zwischen {near} und {far} bis hierher, je nachdem, wo er gerade auf seiner langen Bahn ist",
+			"sunlightRange@simple": "Licht von der Sonne braucht {near}, wenn er ihr am nächsten ist, und {far}, wenn er am weitesten weg ist"
 		},
 		"flight": {
 			"label": "Reise",
@@ -1285,6 +1253,113 @@
 			"goTo": "Station {n}: {title}",
 			"menuHint": "Fertige Reisen durch das Sonnensystem, jede Station mit einer kurzen Geschichte: gut für den Einstieg in eine Stunde.",
 			"menuHint@simple": "Kurze Reisen durch das Sonnensystem, die dir an jeder Station eine Geschichte erzählen."
+		},
+		"smallBodies": {
+			"beltName": "{belt, select, asteroidbelt {Asteroidengürtel} kuiperbelt {Kuipergürtel} other {{belt}}}",
+			"perDot": "{belt, select, asteroidbelt {Jeder Punkt steht für etwa {count, number} Asteroiden, die größer als {size} sind.} other {Jeder Punkt steht für etwa {count, number} Eiskörper, die größer als {size} sind.}}",
+			"perDot@simple": "{belt, select, asteroidbelt {Jeder Punkt steht für etwa {count, number} echte Felsbrocken, größer als {size}.} other {Jeder Punkt steht für etwa {count, number} echte kleine Eiswelten, größer als {size}.}}",
+			"perDot@advanced": "{belt, select, asteroidbelt {Ein Punkt für rund {count, number} der geschätzt {total} Asteroiden über {size}.} other {Ein Punkt für rund {count, number} der geschätzt {total} Körper über {size}.}}",
+			"spacing": "Nachbarn sind etwa {distance} voneinander entfernt – {moons, number}-mal so weit wie der Mond von der Erde. Raumsonden fliegen einfach hindurch, ohne irgendetwas ausweichen zu müssen.",
+			"spacing@simple": "Aber sie sind sehr weit voneinander weg: {moons, number}-mal so weit wie von der Erde zum Mond. Raumsonden fliegen mitten hindurch, ohne irgendwo anzustoßen.",
+			"spacing@advanced": "Typischer Abstand zwischen Nachbarn: etwa {distance}, das {moons, number}-Fache der Entfernung Erde–Mond. Sonden durchqueren den Gürtel auf gewöhnlichen Bahnen; keine musste dabei je einem Asteroiden ausweichen.",
+			"dotSize": "Die Punkte sind viel größer gezeichnet als die echten Körper: in wahrer Größe würdest du gar nichts sehen. Im Film ist das ein dichtes Feld aus Felsen – im All ist es fast leer.",
+			"dotSize@simple": "Die Punkte sind viel zu groß gezeichnet. Im Film ist es voller Felsen, die zusammenstoßen – im echten Weltall ist es fast leer.",
+			"legendKuiper": "Jenseits von Neptun: der Kuipergürtel, der eisige Rand des Reichs der Planeten.",
+			"legendKuiper@simple": "Weit hinter Neptun liegt der Kuipergürtel, voller kleiner Eiswelten.",
+			"comet": {
+				"label": "Komet",
+				"where": "{distance} von der Sonne entfernt, {direction, select, in {auf dem Weg zu ihr} other {auf dem Weg von ihr weg}}.",
+				"where@simple": "Er ist {distance} von der Sonne entfernt und {direction, select, in {kommt ihr näher} other {fliegt von ihr weg}}.",
+				"tail": "Sein Schweif ist etwa {length} lang und zeigt von der Sonne weg{direction, select, out { – deshalb fliegt er jetzt voraus} other {}}.",
+				"tail@simple": "Sein Schweif ist etwa {length} lang. Er zeigt immer von der Sonne weg{direction, select, out { – sogar jetzt, wo der Komet mit dem Schweif voran davonfliegt} other {}}!",
+				"noTail": "Gerade kein Schweif: Er wächst erst innerhalb von etwa {onset} um die Sonne, wo das Sonnenlicht das Eis des Kometen in Gas verwandelt.",
+				"noTail@simple": "Gerade kein Schweif. Der Schweif wächst erst, wenn der Komet der Sonne nahe kommt und sein Eis zu Gas wird.",
+				"next": "Das nächste Mal der Sonne am nächsten: {date}.",
+				"last": "Zuletzt der Sonne am nächsten: {date}. Er kommt erst in etwa {years, number} Jahren wieder.",
+				"watch": "Zusehen, wie er an der Sonne vorbeizieht",
+				"watch@simple": "Zusehen, wie er an der Sonne vorbeifliegt"
+			}
+		},
+		"events": {
+			"listLabel": "Finsternisse, Transite und andere Himmelsereignisse",
+			"upcoming": "Demnächst",
+			"groups": {
+				"solarEclipse": "Sonnenfinsternisse",
+				"lunarEclipse": "Mondfinsternisse",
+				"transit": "Durchgänge vor der Sonne",
+				"gathering": "Planeten beisammen",
+				"closeApproach": "Mars kommt nah",
+				"shadowsRings": "Schatten und Ringe",
+				"history": "Momente der Geschichte"
+			},
+			"card": "Himmelsereignis: {title}",
+			"when": "Wann: {when}",
+			"where": "Wo: {where}",
+			"shown": "{direction, select, early {Die Szene zeigt es {amount} zu früh} late {Die Szene zeigt es {amount} zu spät} other {Die Szene zeigt es zur echten Zeit}}: Die Bahnen der App liegen nah an den echten, aber nicht genau darauf.",
+			"shown@simple": "{direction, select, early {Die App zeigt es {amount} zu früh.} late {Die App zeigt es {amount} zu spät.} other {Die App zeigt es zur echten Zeit.}} Ihre Planeten stehen fast, aber nicht ganz dort, wo die echten sind.",
+			"views": {
+				"label": "Blickwinkel",
+				"space": "Aus dem All",
+				"earth": "Von der Erde"
+			},
+			"hint": {
+				"space": {
+					"solarEclipse": "Der Schatten des Mondes auf der Tagseite der Erde.",
+					"solarEclipse@simple": "Der dunkle Fleck ist der Schatten des Mondes.",
+					"lunarEclipse": "Sonne, Erde und Mond auf einer Linie: Der Mond ist im Schatten der Erde.",
+					"lunarEclipse@simple": "Die Erde steht zwischen Sonne und Mond.",
+					"transit": "Von oben gesehen: Sonne, Planet und Erde auf einer Linie.",
+					"transit@simple": "Von oben: Der Planet steht zwischen der Sonne und uns.",
+					"gathering": "Von oben gesehen: wo die Planeten wirklich stehen.",
+					"gathering@simple": "Von oben: Die Planeten sind weit voneinander entfernt.",
+					"closeApproach": "Von oben gesehen: Die Erde überholt Mars auf der Innenbahn.",
+					"closeApproach@simple": "Von oben: Die Erde überholt Mars.",
+					"shadowsRings": "Aus der Nähe, aus dem All.",
+					"history": "Die Szene an diesem Tag."
+				},
+				"earth": {
+					"solarEclipse": "Im Mondschatten stehend, durchs Teleskop: Der Mond bedeckt die Sonne.",
+					"solarEclipse@simple": "Von der Erde: Der Mond bedeckt die Sonne.",
+					"lunarEclipse": "Von der Erde aus zum Mond geschaut, durchs Fernglas.",
+					"lunarEclipse@simple": "Von der Erde: der rote Mond.",
+					"transit": "Durchs Teleskop mit Sonnenfilter: der Punkt des Planeten auf der Sonne.",
+					"transit@simple": "Von der Erde: ein kleiner schwarzer Punkt auf der Sonne.",
+					"gathering": "Von der Erde: die Planeten auf einer Seite unseres Himmels.",
+					"gathering@simple": "Von der Erde: die Planeten nebeneinander.",
+					"closeApproach": "Mars durchs Teleskop, immer mit derselben Vergrößerung: Vergleiche die Ereignisse.",
+					"closeApproach@simple": "Mars durchs Teleskop. Wie groß sieht er aus?",
+					"shadowsRings": "Durch ein Teleskop auf der Erde.",
+					"history": "Durch ein Teleskop auf der Erde."
+				}
+			},
+			"scaleNote": "Gezeigt im echten Maßstab: Jede Größe und jeder Abstand stimmt. Beim Verlassen wird zurückgeschaltet.",
+			"scaleNote@simple": "Alles ist in echter Größe und mit echtem Abstand gezeigt.",
+			"leave": "Verlassen",
+			"leaveLabel": "Ereignis verlassen: zurück zu Ansicht, Zeit und Maßstab von vorher",
+			"away": "Du schaust dich gerade selbst um.",
+			"resume": "Zurück zum Ereignis",
+			"share": "Link zu diesem Ereignis kopieren",
+			"copied": "Link kopiert"
+		},
+		"hud": {
+			"tools": "Werkzeuge",
+			"toolsHint": "Lichtgeschwindigkeit, der Himmel heute Nacht, echte Raumsonden, dein Geburtstag, die Schnitzeljagd, Welten vergleichen und ein Bild machen: Alles öffnet sich hier.",
+			"toolsHint@simple": "Noch mehr zum Ausprobieren: Licht, der Himmel heute Nacht, Raumsonden, dein Geburtstag, eine Schatzsuche, Welten vergleichen und ein Foto machen.",
+			"entries": "Touren, Ebenen, Maßstab und Werkzeuge",
+			"close": "{panel} schließen",
+			"compare": "Nebeneinander",
+			"compareHint": "Die Welt, die du gerade ansiehst, neben einer anderen, in ihren wahren Größen",
+			"compareHint@simple": "Stell zwei Welten nebeneinander, gleich stark verkleinert, und sieh, welche größer ist",
+			"customScale": "Eigener",
+			"scaleButton": "Maßstab: {preset}",
+			"scaleHint": "Wie groß und wie weit auseinander die Welten gezeichnet sind, und wie weit das von der Wahrheit entfernt ist. Der wahre Maßstab ist einen Klick entfernt.",
+			"scaleHint@simple": "Zeig die Planeten in echter Größe oder groß genug zum Sehen. Das Feld sagt dir, wie viel größer sie gezeichnet sind.",
+			"hideHint": "Nur das Sonnensystem bleibt auf dem Bildschirm: zum Schauen, für ein Bild oder für den Beamer. H oder „Bedienelemente zeigen“ holt sie zurück.",
+			"hideHint@simple": "Versteck alle Knöpfe, damit du nur den Weltraum siehst. H oder „Bedienelemente zeigen“ holt sie zurück.",
+			"time": "Zeit",
+			"timeButton": "Zeit und Geschwindigkeit: {speed}",
+			"timeHint": "Wie schnell die Zeit läuft, zurück zu jetzt, und wie schnell sich die Planeten drehen. + und − ändern die Geschwindigkeit über die Tastatur.",
+			"timeHint@simple": "Lass die Zeit schneller oder langsamer laufen, oder spring zurück zu jetzt."
 		}
 	},
 	"solarWalk": {
@@ -1422,7 +1497,8 @@
 			"iceGiants@simple": "Die zwei blauen Riesen",
 			"potatoMoons": "Kartoffelmonde",
 			"weighMost": "Wo wärst du am schwersten?",
-			"bigForItsPlanet": "Unser Mond ist ungewöhnlich groß"
+			"bigForItsPlanet": "Unser Mond ist ungewöhnlich groß",
+			"plutoMoon": "Pluto ist kleiner als unser Mond"
 		},
 		"teasers": {
 			"sunEarth": "Unsere ganze Welt ist ein Punkt neben ihrem Stern: 109 Erden passen quer über die Sonne.",
@@ -1466,7 +1542,10 @@
 			"moonsBeatPlanet@simple": "Zwei Monde sind größer als ein Planet! Aber Merkur besteht aus schwererem Material, darum ist er schwerer.",
 			"weighMost": "Auf dem Mond würdest du ein Sechstel so viel wiegen wie zu Hause, an Jupiters Wolkenobergrenze zweieinhalbmal so viel.",
 			"weighMost@advanced": "Schwerebeschleunigung an der Oberfläche: Mond 0,17 g, Mars 0,38 g, Erde 1 g, Jupiter 2,5 g an der Wolkenobergrenze.",
-			"weighMost@simple": "Auf dem Mond wärst du ganz leicht. Auf Jupiter wärst du mehr als doppelt so schwer wie zu Hause."
+			"weighMost@simple": "Auf dem Mond wärst du ganz leicht. Auf Jupiter wärst du mehr als doppelt so schwer wie zu Hause.",
+			"plutoMoon": "Pluto ist nur zwei Drittel so breit wie unser Mond, und der Mond ist mehr als fünfmal so schwer.",
+			"plutoMoon@simple": "Pluto ist kleiner als unser Mond! Und unser Mond ist auch viel schwerer.",
+			"plutoMoon@advanced": "Pluto hat 68 % des Monddurchmessers und nur 18 % seiner Masse – ein Grund, warum er ein Zwergplanet ist."
 		},
 		"ideaGroups": {
 			"sizes": "Größen",

@@ -88,7 +88,24 @@
 	}
 }
 
-/* the top-right panel: the teacher's buttons, then the layer switches */
-.layers {
-	margin-top: 0.4rem;
+/* below 1100 px Share shows its icon alone (its name stays its label), like Help (#43) */
+@media (max-width: 1099px) {
+	.shareLabel {
+		display: none;
+	}
+
+	.shareSection {
+		margin: 0;
+	}
+}
+
+/* phones: Present too */
+@media (max-width: 599px) {
+	.cornerLabel {
+		display: none;
+	}
+
+	.cornerSection {
+		margin: 0;
+	}
 }

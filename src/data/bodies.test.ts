@@ -18,6 +18,7 @@ import {
 	bodyById,
 	getBody,
 	imageCredits,
+	isSmallBody,
 	moonsOf,
 	planets,
 	sun,
@@ -242,7 +243,8 @@ describe("bodies.json", () => {
 		const retrograde = bodies
 			.filter((body) => (body.rotation.periodHours ?? 0) < 0)
 			.map((body) => body.id)
-		expect(retrograde).toEqual(["venus", "uranus"])
+		// Pluto (#23): the IAU's positive pole lies south of the ecliptic
+		expect(retrograde).toEqual(["venus", "uranus", "pluto"])
 		for (const body of bodies) {
 			expect(body.rotation.axialTiltDeg, body.id).toBeGreaterThanOrEqual(0)
 			expect(body.rotation.axialTiltDeg, body.id).toBeLessThanOrEqual(90)
@@ -252,7 +254,7 @@ describe("bodies.json", () => {
 		expect(getBody("moon").rotation.axialTiltDeg).toBe(6.68)
 	})
 
-	it("carries IAU poles for the Sun, the planets and the Moon, consistent with the source obliquities", () => {
+	it("carries IAU poles for the Sun, the planets, the Moon, Ceres, Vesta and Pluto, consistent with the source obliquities", () => {
 		const withPole = bodies
 			.filter((body) => body.rotation.poleRaDeg !== undefined)
 			.map((body) => body.id)
@@ -267,6 +269,9 @@ describe("bodies.json", () => {
 			"uranus",
 			"neptune",
 			"moon",
+			"ceres",
+			"pluto",
+			"vesta",
 		])
 		const eclipticPole = { x: 0, y: 1, z: 0 } // scene frame
 		for (const id of withPole) {
@@ -362,7 +367,9 @@ describe("bodies.json", () => {
 			nereid: "painted",
 		})
 		const painted = Object.entries(kinds).filter(([, kind]) => kind !== "map")
+		// Charon (#23) is painted until New Horizons' map is processed (a follow-up)
 		expect(painted.map(([id]) => id).sort()).toEqual([
+			"charon",
 			"nereid",
 			"proteus",
 			"titan",
@@ -441,7 +448,10 @@ describe("bodies.json", () => {
 			expect(orbit!.semiMajorAxisKm, body.id).toBeGreaterThan(0)
 			expect(orbit!.eccentricity, body.id).toBeGreaterThanOrEqual(0)
 			expect(orbit!.eccentricity, body.id).toBeLessThan(1)
-			expect(orbit!.epochJD).toBe(2451545)
+			// the small bodies (#23) carry the epoch of their JPL elements
+			if (body.orbit?.epochJD !== 2451545) {
+				expect(isSmallBody(body), body.id).toBe(true)
+			}
 			for (const key of [
 				"longAscNodeDeg",
 				"argPeriapsisDeg",

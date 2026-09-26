@@ -1,0 +1,136 @@
+[
+	{
+		"id": "asteroidbelt",
+		"name": "Asteroid belt",
+		"parentId": "sun",
+		"dots": 4000,
+		"color": "#b8aa90",
+		"members": {
+			"count": 1500000,
+			"minDiameterKm": 1
+		},
+		"meanSeparationKm": 1000000,
+		"extentKm": [
+			344100000,
+			493700000
+		],
+		"zones": [
+			{
+				"share": 0.36,
+				"semiMajorAxisKm": [
+					314155528,
+					372498698
+				],
+				"eccentricity": [
+					0,
+					0.2
+				],
+				"inclinationSigmaDeg": 6
+			},
+			{
+				"share": 0.34,
+				"semiMajorAxisKm": [
+					376986634,
+					420370017
+				],
+				"eccentricity": [
+					0,
+					0.22
+				],
+				"inclinationSigmaDeg": 7
+			},
+			{
+				"share": 0.13,
+				"semiMajorAxisKm": [
+					424857953,
+					439817740
+				],
+				"eccentricity": [
+					0,
+					0.22
+				],
+				"inclinationSigmaDeg": 7
+			},
+			{
+				"share": 0.17,
+				"semiMajorAxisKm": [
+					444305676,
+					487689058
+				],
+				"eccentricity": [
+					0,
+					0.22
+				],
+				"inclinationSigmaDeg": 8
+			}
+		]
+	},
+	{
+		"id": "kuiperbelt",
+		"name": "Kuiper belt",
+		"parentId": "sun",
+		"dots": 6000,
+		"color": "#8fa6c2",
+		"members": {
+			"count": 100000,
+			"minDiameterKm": 100
+		},
+		"meanSeparationKm": 60000000,
+		"extentKm": [
+			4638000000,
+			7480000000
+		],
+		"zones": [
+			{
+				"share": 0.2,
+				"semiMajorAxisKm": [
+					5864236531,
+					5939035467
+				],
+				"eccentricity": [
+					0.05,
+					0.3
+				],
+				"inclinationSigmaDeg": 10,
+				"perihelionMinKm": 4338338250
+			},
+			{
+				"share": 0.35,
+				"semiMajorAxisKm": [
+					6357909505,
+					7031099923
+				],
+				"eccentricity": [
+					0,
+					0.08
+				],
+				"inclinationSigmaDeg": 2
+			},
+			{
+				"share": 0.3,
+				"semiMajorAxisKm": [
+					5983914828,
+					7180697794
+				],
+				"eccentricity": [
+					0,
+					0.2
+				],
+				"inclinationSigmaDeg": 12
+			},
+			{
+				"share": 0.15,
+				"semiMajorAxisKm": [
+					7479893535,
+					14959787070
+				],
+				"eccentricity": [
+					0.3,
+					0.6
+				],
+				"inclinationSigmaDeg": 12,
+				"perihelionMinKm": 4936729733
+			}
+		]
+	}
+]

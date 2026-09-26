@@ -1,0 +1,299 @@
+{
+	"solar1999": {
+		"title": "Úplné zatmění Slunce nad Evropou",
+		"where": "Od Cornwallu přes Francii, Německo, Rakousko, Maďarsko a Rumunsko až po Turecko, Írán a Indii",
+		"look": {
+			"simple": "Stín Měsíce je malá tmavá skvrna na Evropě. Všude uvnitř té skvrny se na dvě minuty setmělo.",
+			"standard": "Poslední úplné zatmění tisíciletí a nejsledovanější: stín Měsíce přešel přes střed Evropy. Najdi malou tmavou skvrnu plného stínu a široký šedý polostín kolem ní.",
+			"advanced": "Plný stín, široký asi 110 km, přešel Evropu od Cornwallu k Černému moři; maximum zatmění nad Rumunskem trvalo 2 min 23 s. Polostín kolem sahá tisíce kilometrů: pro většinu Evropy částečné zatmění."
+		}
+	},
+	"solar2017": {
+		"title": "Velké americké zatmění",
+		"where": "Napříč Spojenými státy, od Oregonu po Jižní Karolínu",
+		"look": {
+			"simple": "Stín Měsíce přejde Ameriku od jednoho oceánu k druhému. Najdeš tu tmavou skvrnu?",
+			"standard": "Stín Měsíce přešel celé Spojené státy od pobřeží k pobřeží asi za hodinu a půl. Najdi tmavou skvrnu plného stínu; ze Země Měsíc přesně zakryje Slunce.",
+			"advanced": "Plný stín, široký až 115 km, se hnal přes USA rychlostí 2 400 až 4 000 km/h; úplná fáze trvala až 2 min 40 s. První úplné zatmění od pobřeží k pobřeží v USA od roku 1918."
+		}
+	},
+	"solar2024": {
+		"title": "Úplné zatmění Slunce",
+		"where": "Mexiko, Spojené státy a Kanada",
+		"look": {
+			"simple": "Měsíc je přesně mezi Sluncem a Zemí. Jeho stín dělá malou tmavou skvrnu na Severní Americe.",
+			"standard": "Slunce, Měsíc a Země stojí v jedné přímce, a tak stín Měsíce padá na Severní Ameriku. Z vesmíru je to malá tmavá skvrna uvnitř širokého šedého stínu; přepni na pohled ze Země a Měsíc přesně zakryje Slunce.",
+			"advanced": "Měsíc byl blízko přízemí, jeho zdánlivý průměr byl asi o 6 % větší než Slunce: úplná fáze trvala až 4 min 28 s v pásu širokém asi 200 km od Mazatlánu po Newfoundland."
+		}
+	},
+	"solar2026": {
+		"title": "Úplné zatmění Slunce nad Španělskem",
+		"where": "Grónsko, Island a severní Španělsko, večer",
+		"look": {
+			"simple": "Stín Měsíce přejde přes Grónsko, Island a Španělsko. Ve Španělsku bylo Slunce už nízko na večerní obloze.",
+			"standard": "První úplné zatmění na evropské pevnině od roku 1999: stín přešel Grónsko a Island a těsně před západem Slunce Španělsko. Najdi tmavou skvrnu blízko okraje osvětlené strany Země.",
+			"advanced": "Maximum zatmění západně od Islandu, úplná fáze 2 min 18 s; ve Španělsku stálo Slunce jen pár stupňů nad obzorem, takže plný stín dopadal na zem šikmo a protáhl se."
+		}
+	},
+	"annular2027": {
+		"title": "Prstencové zatmění Slunce: ohnivý prsten",
+		"where": "Chile, Argentina a Uruguay, pak západní Afrika",
+		"look": {
+			"simple": "Tentokrát je Měsíc trochu moc malý, aby zakryl celé Slunce. Kolem něj zůstane jasný prsten Slunce.",
+			"standard": "Měsíc je blízko nejvzdálenějšího místa své dráhy, a proto vypadá o něco menší než Slunce. Jeho tmavý střed nikdy nedosáhne na zem: ze Země zůstane kolem Měsíce tenký prsten Slunce.",
+			"advanced": "Blízko odzemí je zdánlivý průměr Měsíce asi o 7 % menší než Slunce, takže kužel plného stínu končí před Zemí. V pásu protistínu je zatmění prstencové, až 7 min 51 s."
+		}
+	},
+	"solar2027": {
+		"title": "Zatmění století",
+		"where": "Jižní Španělsko, severní Afrika, Egypt a Saúdská Arábie",
+		"look": {
+			"simple": "Příští velké úplné zatmění! U Luxoru v Egyptě se den na víc než šest minut změní v noc.",
+			"standard": "Měsíc je blízko Země a Země daleko od Slunce, takže Měsíc vypadá obzvlášť velký: úplná fáze u Luxoru trvá přes šest minut, nejdéle na pevnině až do roku 2114.",
+			"advanced": "Měsíc blízko přízemí, Země blízko odsluní: zdánlivý průměr Měsíce převyšuje Slunce o 8 %. Plný stín, široký až 258 km, dává u Luxoru 6 min 23 s úplné fáze."
+		}
+	},
+	"lunar2018": {
+		"title": "Nejdelší úplné zatmění Měsíce tohoto století",
+		"where": "Evropa, Afrika, Asie a Austrálie",
+		"look": {
+			"simple": "Měsíc je ve stínu Země. Nezčerná, ale zbarví se do tmavě červena.",
+			"standard": "Měsíc prošel přímo středem zemského stínu, takže úplná fáze trvala 1 hodinu 43 minut. Září červeně: je to sluneční světlo ohnuté zemským vzduchem, prstenec všech východů a západů Slunce na Zemi.",
+			"advanced": "Měsíc byl blízko odzemí, pohyboval se pomalu a prošel blízko středu plného stínu: 103 minut úplné fáze, nejdéle v 21. století. Vedle něj zářil Mars, té noci v opozici."
+		}
+	},
+	"lunar2025mar": {
+		"title": "Úplné zatmění Měsíce: krvavý Měsíc",
+		"where": "Severní a Jižní Amerika",
+		"look": {
+			"simple": "Úplněk, a Země je přesně mezi Sluncem a Měsícem. Měsíc zčervená.",
+			"standard": "Zatmění Měsíce nastává jen za úplňku, když Země stojí mezi Sluncem a Měsícem. Podívej se z vesmíru na tři tělesa v přímce, pak ze Země na červený Měsíc.",
+			"advanced": "Úplná fáze trvala asi 65 minut. Červená barva je sluneční světlo, které zemská atmosféra lomí do plného stínu; modrá se cestou rozptýlí."
+		}
+	},
+	"lunar2025sep": {
+		"title": "Úplné zatmění Měsíce",
+		"where": "Asie a Austrálie; Evropa a Afrika při východu Měsíce",
+		"look": {
+			"simple": "Měsíc vklouzne do stínu Země a zčervená.",
+			"standard": "Celý Měsíc je ve stínu Země přes hodinu. Z vesmíru uvidíš Slunce, Zemi a Měsíc v přímce, ze Země tmavě červený Měsíc.",
+			"advanced": "Úplná fáze trvala asi 82 minut. Do červena barví Měsíc jen plný stín Země; polostín kolem ho jen trochu ztlumí."
+		}
+	},
+	"lunar2026aug": {
+		"title": "Částečné zatmění Měsíce",
+		"where": "Amerika, Evropa a Afrika",
+		"look": {
+			"simple": "Měsíc zajde skoro celý do stínu Země, ale tenký proužek zůstane světlý.",
+			"standard": "Měsíc projde kousek vedle středu zemského stínu: skoro celý ztmavne, ale světlý okraj zůstane venku.",
+			"advanced": "Hluboké částečné zatmění: do plného stínu vstoupilo asi 93 % průměru Měsíce. Proč ne při každém úplňku? Dráha Měsíce je skloněná asi o 5° k dráze Země, takže Měsíc obvykle projde nad stínem nebo pod ním."
+		}
+	},
+	"lunar2028dec": {
+		"title": "Krvavý Měsíc na Silvestra",
+		"where": "Evropa, Afrika, Asie a Austrálie",
+		"look": {
+			"simple": "Poslední večer roku 2028 Měsíc ve stínu Země zčervená.",
+			"standard": "Příští úplné zatmění Měsíce: úplněk vstoupí na Silvestra do stínu Země a přes hodinu září červeně.",
+			"advanced": "Úplná fáze trvá asi 71 minut. Zatmění přicházejí v obdobích zhruba půl roku od sebe, když přímka, kde se dráha Měsíce protíná s dráhou Země, míří ke Slunci."
+		}
+	},
+	"venusTransit": {
+		"title": "Přechod Venuše",
+		"where": "Tichý oceán, Asie a Austrálie; Severní Amerika večer",
+		"look": {
+			"simple": "Venuše přechází před Sluncem. Ze Země je to malá černá tečka na Slunci.",
+			"standard": "Venuše prochází přesně mezi Sluncem a Zemí. Shora uvidíš všechny tři v přímce; ze Země přechází Venuše jako malý černý kotouček přes Slunce víc než šest hodin.",
+			"advanced": "Přechody Venuše přicházejí v párech osm let od sebe, pak přes sto let žádný (2004 a 2012, pak 2117 a 2125). V 18. století daly první změření vzdálenosti Země od Slunce."
+		}
+	},
+	"mercury2019": {
+		"title": "Přechod Merkuru",
+		"where": "Amerika; Evropa a Afrika odpoledne",
+		"look": {
+			"simple": "Malinký Merkur přechází před Sluncem. Najdeš tu tečku?",
+			"standard": "Merkur přechází Slunce skoro přes jeho střed. Je tak malý, že ze Země potřebuješ dalekohled se slunečním filtrem, abys jeho černou tečku viděl.",
+			"advanced": "Kotouček Merkuru o průměru 10 úhlových vteřin přešel Slunce (1 940 úhlových vteřin) za 5 h 29 min. Přechody Merkuru nastávají asi třináctkrát za století, vždy v květnu nebo listopadu."
+		}
+	},
+	"mercury2032": {
+		"title": "Příští přechod Merkuru",
+		"where": "Evropa, Afrika a Asie",
+		"look": {
+			"simple": "Příště, kdy Merkur přejde před Sluncem.",
+			"standard": "Příští přechod Merkuru. Jen když Merkur míjí přímku, kde se jeho dráha protíná s dráhou Země, v květnu nebo listopadu, může přejít přes Slunce.",
+			"advanced": "Dráha Merkuru je skloněná o 7° k dráze Země, takže při většině dolních konjunkcí projde nad Sluncem nebo pod ním. V listopadu musí být blízko výstupného uzlu."
+		}
+	},
+	"nextVenusTransit": {
+		"title": "Příští přechod Venuše",
+		"where": "Východní Asie a Austrálie; západ Severní Ameriky večer",
+		"look": {
+			"simple": "Příště, kdy Venuše přejde před Sluncem. Uvidí ho někdo z této třídy?",
+			"standard": "Víc než sto let po tom posledním přejde Venuše znovu přes Slunce. Aplikace tuhle vzdálenou budoucnost ukazuje jen přibližně: její dráhy platí pro dnešek, a tak její Venuše přijde asi o pět hodin později.",
+			"advanced": "Dráhové elementy aplikace platí pro rok 2000; za století se malý posun dráhy Venuše nasčítá na pár hodin. Skutečný přechod trvá asi 5 h 40 min."
+		}
+	},
+	"greatConjunction": {
+		"title": "Velká konjunkce",
+		"where": "Všude, nízko na jihozápadě po západu Slunce",
+		"look": {
+			"simple": "Jupiter a Saturn se skoro dotýkají. Ve vesmíru jsou ale od sebe hodně daleko!",
+			"standard": "Při pohledu ze Země jsou Jupiter a Saturn od sebe jen pětinu šířky Měsíce, nejblíž od roku 1623. Shora uvidíš proč: Země, Jupiter a Saturn stojí skoro v přímce, ale Saturn je skoro dvakrát dál než Jupiter.",
+			"advanced": "Vzdálenost 6 úhlových minut. Jupiter předbíhá Saturn každých 19,9 roku; těsná je konjunkce jen blízko přímky, kde se jejich dráhy protínají. Ve vesmíru byly od sebe asi 730 milionů km."
+		}
+	},
+	"venusJupiter2023": {
+		"title": "Setkání Venuše a Jupiteru",
+		"where": "Všude, na západě po západu Slunce",
+		"look": {
+			"simple": "Dvě nejjasnější planety vypadají, jako by stály hned vedle sebe.",
+			"standard": "Dvě nejjasnější planety jsou na večerní obloze od sebe jen na šířku úplňku. Shora: Venuše je nám blízko, Jupiter čtyřikrát dál.",
+			"advanced": "Vzdálenost asi půl stupně. Konjunkce je směr pohledu, ne setkání: v tu chvíli byla Venuše 1,4 AU od Země a Jupiter 5,8 AU."
+		}
+	},
+	"parade2025": {
+		"title": "Přehlídka planet",
+		"where": "Všude, po západu Slunce",
+		"look": {
+			"simple": "Všechny ostatní planety jsou naráz na stejné straně naší oblohy. Shora ale vůbec nestojí v řadě!",
+			"standard": "Všech sedm ostatních planet bylo naráz na večerní obloze, rozprostřených podél jedné strany oblohy od Slunce. Ve vesmíru nikdy nestojí v řadě: přepínej mezi pohledem shora a pohledem ze Země a uvidíš rozdíl.",
+			"advanced": "„V řadě“ tu znamená do asi 120° od sebe podél ekliptiky, jak je vidět ze Země. Merkur a Saturn byly nízko v soumraku, Uran a Neptun potřebují dalekohled."
+		}
+	},
+	"venusMars2027": {
+		"title": "Setkání Venuše a Marsu",
+		"where": "Všude, na západě po západu Slunce",
+		"look": {
+			"simple": "Jasná Venuše a červený Mars se skoro dotýkají.",
+			"standard": "Venuše a Mars jsou na večerní obloze blíž u sebe, než je šířka Měsíce. Ve vesmíru jsou od sebe daleko: Mars je jedenapůlkrát dál než Venuše.",
+			"advanced": "Vzdálenost asi 0,3°. Těsné dvojice planet jsou časté; rozhoduje, kde na obloze stojí vůči Slunci, protože na tom závisí, jestli je vůbec někdo uvidí."
+		}
+	},
+	"gathering2040": {
+		"title": "Pět planet a Měsíc pohromadě",
+		"where": "Všude, na západě po západu Slunce",
+		"look": {
+			"simple": "Pět planet a Měsíc se tísní na malém kousku oblohy.",
+			"standard": "Merkur, Venuše, Mars, Jupiter a Saturn se sejdou do asi deseti stupňů, vedle úzký srpek Měsíce. Shora jsou planety na svých drahách daleko od sebe.",
+			"advanced": "Pět planet viditelných pouhým okem do asi 9,5° ekliptikální délky: tak těsně se sejdou jen několikrát za století."
+		}
+	},
+	"marsClosest": {
+		"title": "Mars nejblíž za 60 000 let",
+		"where": "Všude, celou noc",
+		"look": {
+			"simple": "Mars se přiblíží hodně blízko k Zemi. V dalekohledu vypadá větší než kdy za velmi dlouho.",
+			"standard": "Země předbíhá Mars po vnitřní dráze, přesně tam, kde je Mars nejblíž Slunci: jen 55,76 milionu km od sebe, nejblíž za skoro 60 000 let.",
+			"advanced": "Perihelová opozice: Země prošla mezi Sluncem a Marsem těsně po jeho průchodu přísluním. Kotouček Marsu měřil 25 úhlových vteřin; při afelové opozici sotva 14."
+		}
+	},
+	"mars2027": {
+		"title": "Mars blízko Země, ale tentokrát daleko",
+		"where": "Všude, celou noc",
+		"look": {
+			"simple": "Země zase předbíhá Mars, ale tentokrát je Mars daleko. Porovnej s rokem 2003!",
+			"standard": "Každých 26 měsíců Země předběhne Mars. Tentokrát je Mars blízko nejvzdálenějšího místa své dráhy, zůstane 101 milionů km daleko a vypadá malý: porovnej pohled ze Země s rokem 2003.",
+			"advanced": "Afelová opozice: kotouček Marsu jen 14 úhlových vteřin. Dráha Marsu je výstředná (0,093), a tak nejbližší přiblížení kolísají od 55 do 101 milionů km."
+		}
+	},
+	"mars2035": {
+		"title": "Příští velké přiblížení Marsu",
+		"where": "Všude, celou noc",
+		"look": {
+			"simple": "Mars přijde skoro tak blízko jako v roce 2003. Celou noc jasně červeně září.",
+			"standard": "Příště, kdy Země předběhne Mars blízko jeho přísluní: 56,9 milionu km, skoro tak blízko jako v roce 2003.",
+			"advanced": "Perihelové opozice se opakují po 15 nebo 17 letech; tahle je nejlepší mezi roky 2003 a 2050."
+		}
+	},
+	"ioShadow2027": {
+		"title": "Stín Io na Jupiteru",
+		"where": "Všude, kde je Jupiter v noci nad obzorem, malým dalekohledem",
+		"look": {
+			"simple": "Jupiterův měsíc Io je mezi Jupiterem a Sluncem. Jeho stín je černá tečka na Jupiteru.",
+			"standard": "Zatmění Slunce na jiné planetě: stín Io je malá černá tečka na Jupiterových oblacích. Děje se to každých 42 hodin, při každém oběhu Io.",
+			"advanced": "Plný stín Io, na horní hranici Jupiterových oblaků široký asi 3 600 km, přejde kotouček asi za 2 h 15 min. Jupiterovy měsíce obíhají skoro v rovině jeho rovníku a jeho osa je skloněná jen o 3°, takže jejich stíny planetu zasáhnou při každém oběhu."
+		}
+	},
+	"saturnEdgeOn2025": {
+		"title": "Saturnovy prstence z boku",
+		"where": "Bohužel nikde: Saturn byl moc blízko Slunce",
+		"look": {
+			"simple": "Vidíme Saturnovy prstence přesně z boku a skoro zmizí. Jsou velmi, velmi tenké!",
+			"standard": "Země prochází rovinou Saturnových prstenců: z boku se prstence široké 270 000 km smrsknou na tenkou čárku. Podívej se shora na prstence, pak ze Země.",
+			"advanced": "Hlavní prstence Saturnu jsou většinou silné jen asi 10 metrů. Země prochází jejich rovinou dvakrát za saturnský rok, který trvá 29,5 roku; v březnu 2025 byl Saturn jen asi 10° od Slunce."
+		}
+	},
+	"saturnEdgeOn2038": {
+		"title": "Saturnovy prstence znovu z boku",
+		"where": "Nízko v ranním soumraku",
+		"look": {
+			"simple": "Saturnovy prstence se k nám zase otočí hranou a skoro zmizí.",
+			"standard": "Půl saturnského roku po roce 2025 prochází Země znovu rovinou prstenců. Mezitím se prstence široce otevřou a zase zavřou.",
+			"advanced": "Tenhle průchod zahajuje sérii tří (říjen 2038, duben a červenec 2039), protože Země na své dráze několikrát přejde tam a zpět přes pomalu se natáčející rovinu prstenců."
+		}
+	},
+	"galileoMoons": {
+		"title": "Galileo vidí Jupiterovy měsíce",
+		"where": "Padova, Itálie, malým dalekohledem",
+		"look": {
+			"simple": "Galileo namíří dalekohled na Jupiter a vidí vedle něj malé hvězdičky. Jsou to měsíce!",
+			"standard": "Vůbec první měsíce objevené u jiné planety. Galileův dalekohled zvětšoval jen asi dvacetkrát; podívej se ze Země úzkým zorným polem jako on. Pro tak staré datum nestojí měsíce v aplikaci přesně na svých místech.",
+			"advanced": "Jupiter byl blízko opozice. Galileo viděl 7. ledna 1610 tři „hvězdy“ a o pár dní později čtvrtou; že se pohybovaly s Jupiterem, ukázalo, že ne všechno obíhá kolem Země."
+		}
+	},
+	"uranusFound": {
+		"title": "Objev Uranu",
+		"where": "Bath, Anglie",
+		"look": {
+			"simple": "William Herschel najde dalekohledem novou planetu. Nikdo nevěděl, že tam je!",
+			"standard": "První planeta, kterou starověcí hvězdáři neznali. V dalekohledu Herschel viděl drobný kotouček, ne bod jako u hvězdy.",
+			"advanced": "Uran je sotva vidět pouhým okem a už dřív byl zapsán v katalozích jako hvězda; prozradil ho kotouček 3,6 úhlové vteřiny a pomalý pohyb."
+		}
+	},
+	"neptuneFound": {
+		"title": "Objev Neptunu",
+		"where": "Berlín, Německo",
+		"look": {
+			"simple": "Neptun našli počítáním, dřív než ho kdo uviděl!",
+			"standard": "Uran se nepohyboval přesně podle předpovědi. Le Verrier spočítal, odkud ho musí přitahovat neviditelná planeta, a Galle tam Neptun našel hned první noc.",
+			"advanced": "Neptun se našel méně než asi 1° od místa, které předpověděl Le Verrier; jeho kotouček má jen 2,3 úhlové vteřiny."
+		}
+	},
+	"sputnik": {
+		"title": "Start Sputniku 1",
+		"where": "Bajkonur, Kazachstán",
+		"look": {
+			"simple": "První družice obíhá kolem Země. Začíná kosmický věk!",
+			"standard": "První umělá družice zahajuje kosmický věk. Obletěla Zemi každých 96 minut, je ale moc blízko a moc malá, aby šla v tomhle měřítku nakreslit.",
+			"advanced": "Sputnik 1 obíhal tři měsíce ve výšce asi 215 až 940 km. Umělé družice nejsou měsíce, a tak je aplikace nekreslí."
+		}
+	},
+	"moonLanding": {
+		"title": "První přistání na Měsíci",
+		"where": "Moře klidu, na Měsíci",
+		"look": {
+			"simple": "Apollo 11 přistává na Měsíci. Ze Země je Měsíc srpek na večerní obloze.",
+			"standard": "Apollo 11 přistává na Měsíci. Přistávalo se krátce po východu Slunce v místě přistání, aby půda nebyla moc horká. Ze Země byl Měsíc dorůstající srpek.",
+			"advanced": "Nad místem přistání v Moři klidu stálo Slunce asi 10° vysoko; dlouhé stíny dělaly terén dobře čitelný. Měsíc byl asi 6 dní starý."
+		}
+	},
+	"voyagerLaunch": {
+		"title": "Voyager 2 vyráží",
+		"where": "Mys Canaveral, USA",
+		"look": {
+			"simple": "Jupiter, Saturn, Uran a Neptun stojí tak, že je jedna sonda může navštívit všechny.",
+			"standard": "Jupiter, Saturn, Uran a Neptun se seřadí pro „Velkou cestu“, jak se to stává jen zhruba jednou za 175 let. Dráha sondy Voyager 2, tyrkysová, se u každé planety zalomí.",
+			"advanced": "Každý průlet gravitačním manévrem stočil dráhu k další planetě; bez nich by cesta k Neptunu trvala asi 30 let místo 12."
+		}
+	},
+	"voyagerNeptune": {
+		"title": "Voyager 2 u Neptunu",
+		"where": "4,5 miliardy km od Země",
+		"look": {
+			"simple": "Po dvanácti letech proletí Voyager 2 kolem Neptunu. Od té doby tam nikdo nebyl.",
+			"standard": "Dvanáct let po startu: jediná návštěva, jakou kdy Neptun zažil. Tyrkysový kosočtverec je Voyager 2, jen 29 240 km od středu Neptunu.",
+			"advanced": "Největší přiblížení 4 950 km nad oblaky; signál letěl na Zemi 4 hodiny 6 minut. Pak Voyager 2 proletěl kolem Tritonu a dál ven ze Sluneční soustavy."
+		}
+	}
+}

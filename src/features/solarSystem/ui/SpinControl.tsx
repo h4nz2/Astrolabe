@@ -18,7 +18,24 @@ const COMPACT_QUERY = "(max-width: 599px)"
  * true spin for the clock. Any other mode says, next to the control, that day and
  * night on the planets no longer match the date.
  */
-const SpinControl = () => {
+export interface SpinControlProps {
+	/** Say under the control when spin is not to the clock (false where the time bar says it instead, #42). */
+	notice?: boolean
+}
+
+/** "Not true to the clock": shown while any mode but Realistic is chosen. */
+export const SpinNotice = () => {
+	const mode = useSpinStore((state) => state.mode)
+	const { t } = useI18n()
+	if (mode === "realistic") return null
+	return (
+		<p className={classes.notice} role="status">
+			{t("solarSystem.spin.notice")}
+		</p>
+	)
+}
+
+const SpinControl = ({ notice = true }: SpinControlProps) => {
 	const mode = useSpinStore((state) => state.mode)
 	const setMode = useSpinStore((state) => state.setMode)
 	const compact = useMediaQuery(COMPACT_QUERY, false, {
@@ -60,7 +77,8 @@ const SpinControl = () => {
 							onChange={onChange}
 							data={items}
 							allowDeselect={false}
-							comboboxProps={{ shadow: "md" }}
+							// inside the time popover (#42): its list must not count as a click outside it
+							comboboxProps={{ shadow: "md", withinPortal: false }}
 						/>
 					</Hint>
 				) : (
@@ -77,11 +95,7 @@ const SpinControl = () => {
 					</Hint>
 				)}
 			</div>
-			{mode !== "realistic" && (
-				<p className={classes.notice} role="status">
-					{t("solarSystem.spin.notice")}
-				</p>
-			)}
+			{notice && <SpinNotice />}
 		</div>
 	)
 }

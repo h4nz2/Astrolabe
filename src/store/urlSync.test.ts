@@ -219,6 +219,7 @@ describe("urlSync helpers", () => {
 			showMoons: true,
 			showMarkers: true,
 			showOrbitLabels: false,
+			showSmallBodies: false,
 			showAllMoons: false,
 		}
 		const { orbits, labels, moons, markers } = searchFromState(state(), {})

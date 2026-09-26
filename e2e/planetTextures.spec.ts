@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test"
 
+import { expandCard } from "./support/hud"
 import { cameraAtRest } from "./support/scene"
 
 // The Sun's and the planets' textures in the real browser: every texture the
@@ -28,6 +29,8 @@ const focus = async (page: Page, url: string) => {
 		timeout: 60_000,
 	})
 	await cameraAtRest(page)
+	// the note is the last line of the card's details (#42: the card opens on demand)
+	await expandCard(page)
 }
 
 const note = (page: Page) => page.getByTestId("world-surface-note")

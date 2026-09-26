@@ -17,7 +17,7 @@ import { create } from "zustand"
 import type { Tour } from "@/data/tours"
 import type { ScalePresetId } from "@/sim"
 
-import type { SequenceStep } from "./navigation"
+import type { CameraShot, SequenceStep, View } from "./navigation"
 
 /** The layer switches a tour may set: store field per tour-file key. */
 export const TOUR_LAYER_FIELDS = {
@@ -40,6 +40,22 @@ export interface TourBaseline {
 	readonly warp: number
 	readonly paused: boolean
 	readonly layers: Readonly<Record<TourLayerKey, boolean>>
+	/**
+	 * Where the viewer was when a tour that returns on exit began (a sky
+	 * event, #41): leaving it goes back there.
+	 */
+	readonly scene?: TourScene
+}
+
+/** The view and time a tour with `returnOnExit` goes back to. */
+export interface TourScene {
+	readonly view: View
+	readonly shot: CameraShot | null
+	readonly frameId: string
+	readonly selectedId: string | null
+	readonly jd: number
+	/** The clock was showing the present at 1x: leaving goes back to now, not to that instant. */
+	readonly atNow: boolean
 }
 
 export interface TourState {

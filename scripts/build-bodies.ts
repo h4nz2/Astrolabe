@@ -12,7 +12,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 
-import { BodiesFile, CreditsFile } from "../src/data/schema"
+import { BeltsFile, BodiesFile, CreditsFile } from "../src/data/schema"
 
 import { BuildError, buildBodies } from "./lib/build"
 import type { BuildStats } from "./lib/build"
@@ -28,6 +28,7 @@ const paths = {
 	planetTextures: join(root, "data", "planet-textures.json"),
 	publicDir: join(root, "public"),
 	out: join(root, "src", "data", "bodies.json"),
+	beltsOut: join(root, "src", "data", "belts.json"),
 	credits: join(root, "src", "data", "credits.json"),
 }
 
@@ -44,7 +45,7 @@ const readJson = (file: string): unknown =>
 const printStats = (stats: BuildStats): void => {
 	const { perKind } = stats
 	out(
-		`bodies.json: ${stats.total} bodies (${perKind.star} star, ${perKind.planet} planets, ${perKind.moon} moons)`,
+		`bodies.json: ${stats.total} bodies (${perKind.star} star, ${perKind.planet} planets, ${perKind.dwarfPlanet} dwarf planets, ${perKind.moon} moons, ${perKind.asteroid} asteroids, ${perKind.comet} comets; ${stats.smallBodiesSkipped} small bodies without real elements left out)`,
 	)
 	const perPlanet = Object.entries(stats.moonsPerPlanet)
 		.map(([id, count]) => `${id} ${count}`)
@@ -81,6 +82,14 @@ const main = (): number => {
 		return 1
 	}
 
+	const belts = BeltsFile.safeParse(result.belts)
+	if (!belts.success) {
+		err("belts.json failed schema validation:")
+		for (const issue of belts.error.issues) {
+			err(`  ${issue.path.map(String).join(".")}: ${issue.message}`)
+		}
+		return 1
+	}
 	const credits = CreditsFile.safeParse(result.credits)
 	if (!credits.success) {
 		err("credits.json failed schema validation:")
@@ -92,6 +101,8 @@ const main = (): number => {
 
 	writeFileSync(paths.out, toJsonFile(result.bodies))
 	out(`wrote ${paths.out}`)
+	writeFileSync(paths.beltsOut, toJsonFile(result.belts))
+	out(`wrote ${paths.beltsOut} (${result.belts.length} belts)`)
 	writeFileSync(paths.credits, toJsonFile(result.credits))
 	out(`wrote ${paths.credits} (${result.credits.length} image sources)`)
 	printStats(result.stats)

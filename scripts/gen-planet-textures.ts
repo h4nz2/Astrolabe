@@ -179,6 +179,19 @@ const readSource = async (
 	return { raster: await readImage(file, width) }
 }
 
+/** The raster turned by 180 degrees: the last pixel first, each pixel's channels in order. */
+const turn = <T extends Gray | Rgb>(raster: T, channels: 1 | 3): T => {
+	const { data } = raster
+	const out = new Float32Array(data.length)
+	const pixels = data.length / channels
+	for (let i = 0; i < pixels; i++) {
+		for (let c = 0; c < channels; c++) {
+			out[i * channels + c] = data[(pixels - 1 - i) * channels + c]
+		}
+	}
+	return { ...raster, data: out }
+}
+
 const toGray = (rgb: Rgb): Gray => {
 	const data = new Float32Array(rgb.width * rgb.height)
 	for (let i = 0; i < data.length; i++) {
@@ -199,6 +212,13 @@ const processMap = async (
 	const read = await readSource(entry, source, sourceId, ctx)
 	let raster = read.raster
 	let noData = read.blank
+	if (map.turn) {
+		raster =
+			"gray" in raster
+				? { gray: turn(raster.gray, 1) }
+				: { rgb: turn(raster.rgb, 3) }
+		if (noData !== undefined) noData = noData.slice().reverse()
+	}
 	if (map.seam) {
 		const columns = Math.round(entry.width / 48)
 		raster =

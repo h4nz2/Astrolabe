@@ -9,6 +9,7 @@ import path from "node:path"
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest, nextFrames } from "./support/scene"
+import { openLayers } from "./support/hud"
 
 const screenshotDir = path.join("test-results", "lighting")
 
@@ -107,6 +108,7 @@ test("a planet shows a day side and a night side that is dark but never lost, an
 	// the night side is not the colour of space
 	expect(honest.space).toBeLessThan(0.02 * total)
 
+	await openLayers(page)
 	const alwaysLit = page.getByRole("switch", { name: "Always lit" })
 	await expect(alwaysLit).not.toBeChecked()
 	await alwaysLit.click({ force: true })

@@ -53,7 +53,8 @@ export function bodiesInView(
 			body.parentId !== null &&
 			(body.kind === "planet" ||
 				body.id === focusId ||
-				(body.parentId === family &&
+				(body.kind === "moon" &&
+					body.parentId === family &&
 					isBodyShown(body, { showMoons, showAllMoons, focusId }))),
 	)
 }

@@ -7,6 +7,7 @@ import { readFileSync } from "node:fs"
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
+import { openTool } from "./support/hud"
 
 // software WebGL renders the scene (and the picture) slowly
 test.describe.configure({ timeout: 120_000 })
@@ -73,7 +74,7 @@ test("one click takes the view, stamps it and saves it on the device", async ({
 	await ready(page, JUPITER)
 	const viewport = page.viewportSize()!
 
-	await page.getByRole("button", { name: "Take a picture" }).click()
+	await openTool(page, "postcard")
 	await expect(dialog(page)).toBeVisible()
 	await expect(page.getByTestId("postcard-image")).toBeVisible({
 		timeout: 20_000,
@@ -124,7 +125,7 @@ test("copies the picture and the link to the clipboard", async ({
 }) => {
 	await context.grantPermissions(["clipboard-read", "clipboard-write"])
 	await ready(page, JUPITER)
-	await page.getByRole("button", { name: "Take a picture" }).click()
+	await openTool(page, "postcard")
 	await expect(page.getByTestId("postcard-image")).toBeVisible({
 		timeout: 20_000,
 	})
@@ -149,7 +150,7 @@ test("copies the picture and the link to the clipboard", async ({
 
 test("Escape closes the postcard and keeps the view", async ({ page }) => {
 	await ready(page, JUPITER)
-	await page.getByRole("button", { name: "Take a picture" }).click()
+	await openTool(page, "postcard")
 	await expect(dialog(page)).toBeVisible()
 	await page.keyboard.press("Escape")
 	await expect(dialog(page)).toBeHidden()
@@ -161,7 +162,7 @@ test("Escape closes the postcard and keeps the view", async ({ page }) => {
 
 test("speaks German", async ({ page }) => {
 	await ready(page, `${JUPITER}&lang=de`)
-	await page.getByRole("button", { name: "Foto machen" }).click()
+	await openTool(page, "postcard")
 	const german = page.getByRole("dialog", {
 		name: "Deine Postkarte aus dem All",
 	})

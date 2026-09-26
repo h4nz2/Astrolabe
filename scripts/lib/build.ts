@@ -7,9 +7,11 @@
  */
 import { z } from "zod"
 
-import { Rings as RingsSchema } from "../../src/data/schema"
+import { Rings as RingsSchema, SMALL_BODY_KINDS } from "../../src/data/schema"
 import type {
 	Appearance,
+	Belt,
+	BeltZone,
 	Body,
 	BodyKind,
 	BodyTextures,
@@ -21,6 +23,7 @@ import type {
 import type { Vec3 } from "../../src/sim/kepler"
 import { eclipticDirection } from "../../src/sim/rotation"
 import { HOURS_PER_DAY } from "../../src/sim/time"
+import { AU_KM } from "../../src/sim/units"
 
 import { rotateElementsToEcliptic } from "./frames"
 import { spreadPhases } from "./hash"
@@ -49,6 +52,17 @@ export const J2000 = 2451545.0
 
 /** Shared texture for moons that have none of their own (the Moon's map, #37). */
 export const PLACEHOLDER_TEXTURE = "/assets/textures/earth/satellites/moon.jpg"
+
+/**
+ * Stand-in surfaces for small bodies without a map of their own (#23): a neutral rock texture,
+ * and a darker one for comet nuclei (among the darkest surfaces in the solar system).
+ */
+export const SMALL_BODY_TEXTURES: Readonly<Partial<Record<BodyKind, string>>> =
+	{
+		dwarfPlanet: "/assets/textures/asteroid.jpg",
+		asteroid: "/assets/textures/asteroid.jpg",
+		comet: "/assets/textures/asteroid_dark.jpg",
+	}
 
 /** Added to Earth when the file exists. */
 export const EARTH_NIGHT_TEXTURE = "/assets/textures/earth/earth_night.jpg"
@@ -149,12 +163,15 @@ export interface BuildStats {
 	periodDerived: number
 	placeholderTextures: number
 	rings: number
+	/** small bodies in the source without real orbital elements, left out (#23) */
+	smallBodiesSkipped: number
 	/** moons flagged `featured` (data/featured-moons.json) */
 	featured: number
 }
 
 export interface BuildResult {
 	bodies: Body[]
+	belts: Belt[]
 	stats: BuildStats
 	/** non-fatal findings, for stderr */
 	warnings: string[]
@@ -175,6 +192,7 @@ interface Context {
 	warnings: string[]
 	usedIds: Set<string>
 	equatorRotated: number
+	smallBodiesSkipped: number
 }
 
 interface MoonRecord {
@@ -321,7 +339,7 @@ const resolveTextures = (
 		if (path === undefined) continue
 		if (ctx.options.fileExists(path)) {
 			found[key] = path
-		} else if (kind === "moon") {
+		} else if (kind === "moon" || SMALL_BODY_KINDS.includes(kind)) {
 			ctx.warnings.push(
 				`${label}: texture ${key} "${path}" is missing under public/, dropped`,
 			)
@@ -333,6 +351,10 @@ const resolveTextures = (
 	}
 
 	if (found.base === undefined) {
+		const stand = SMALL_BODY_TEXTURES[kind]
+		if (stand !== undefined && ctx.options.fileExists(stand)) {
+			return { base: stand }
+		}
 		if (kind !== "moon") {
 			throw new BuildError(`${label}: no base texture`)
 		}
@@ -347,7 +369,10 @@ const resolveTextures = (
 }
 
 const assemble = (
-	fields: Omit<Body, "radiusEstimated"> & { radiusEstimated: boolean },
+	fields: Omit<Body, "radiusEstimated" | "tail"> & {
+		radiusEstimated: boolean
+		tail?: Body["tail"]
+	},
 ): Body => ({
 	id: fields.id,
 	name: fields.name,
@@ -361,6 +386,7 @@ const assemble = (
 	textures: fields.textures,
 	...(fields.appearance === undefined ? {} : { appearance: fields.appearance }),
 	rings: fields.rings,
+	...(fields.tail === undefined ? {} : { tail: fields.tail }),
 	info: fields.info,
 })
 
@@ -541,15 +567,43 @@ const buildSun = (raw: Raw, ctx: Context): Body => {
 	})
 }
 
-const buildPlanet = (raw: Raw, sunId: string, ctx: Context): Body => {
+/** The epoch of a record's elements: a curated `epochJD` (small bodies, #23), else J2000. */
+const epochOf = (sources: readonly Raw[]): number =>
+	first(sources, (raw) => positive(num(raw.epochJD))) ?? J2000
+
+/**
+ * A small body (#23) is emitted only with real orbital elements: a semi-major axis, a period
+ * and a phase (node, periapsis and anomaly not all 0). Most of the source's asteroids and two
+ * of its comets (Shoemaker-Levy 9, destroyed in 1994; Hyakutake) have none and are left out:
+ * a body drawn in a made-up place teaches the wrong sky.
+ */
+export const hasRealElements = (raw: Raw): boolean =>
+	positive(num(raw.semimajorAxis)) !== null &&
+	positiveAbs(num(raw.sideralOrbit)) !== null &&
+	[raw.longAscNode, raw.argPeriapsis, raw.mainAnomaly].some(
+		(value) => nonZero(num(value)) !== null,
+	)
+
+/** A comet's tail from its curated length at 1 AU (`tailLengthKmAt1Au`). */
+const tailOf = (raw: Raw): Body["tail"] => {
+	const lengthKmAt1Au = positive(num(raw.tailLengthKmAt1Au))
+	return lengthKmAt1Au === null ? undefined : { lengthKmAt1Au }
+}
+
+const buildPlanet = (
+	raw: Raw,
+	sunId: string,
+	ctx: Context,
+	kind: BodyKind = "planet",
+): Body => {
 	const name = str(raw.englishName) ?? str(raw.name)
-	if (name === null) throw new BuildError("a planet has no name")
+	if (name === null) throw new BuildError(`a ${kind} has no name`)
 	const semiMajorAxisKm =
 		positive(num(raw.semimajorAxis)) ?? positive(num(raw.distanceFromParent))
 	const periodDays =
 		positiveAbs(num(raw.sideralOrbit)) ?? positiveAbs(num(raw.orbitalPeriod))
 	if (semiMajorAxisKm === null || periodDays === null) {
-		throw new BuildError(`${name}: planet without semi-major axis or period`)
+		throw new BuildError(`${name}: ${kind} without semi-major axis or period`)
 	}
 	const id = uniqueId(slug(name), sunId, ctx)
 	const orbit: Orbit = {
@@ -560,7 +614,7 @@ const buildPlanet = (raw: Raw, sunId: string, ctx: Context): Body => {
 		argPeriapsisDeg: num(raw.argPeriapsis) ?? 0,
 		meanAnomalyDeg: num(raw.mainAnomaly) ?? 0,
 		periodDays,
-		epochJD: J2000,
+		epochJD: epochOf([raw]),
 	}
 	const extraTextures: Partial<Record<TextureKey, string>> =
 		id === "earth" && ctx.options.fileExists(EARTH_NIGHT_TEXTURE)
@@ -572,7 +626,7 @@ const buildPlanet = (raw: Raw, sunId: string, ctx: Context): Body => {
 	return assemble({
 		id,
 		name,
-		kind: "planet",
+		kind,
 		parentId: sunId,
 		...radius,
 		massKg,
@@ -580,12 +634,13 @@ const buildPlanet = (raw: Raw, sunId: string, ctx: Context): Body => {
 		rotation: rotationOf([raw], id),
 		textures: resolveTextures(
 			rec(raw.textures),
-			"planet",
+			kind,
 			name,
 			ctx,
 			extraTextures,
 		),
 		rings: ringsOf(raw, id, ctx),
+		tail: tailOf(raw),
 		info: infoOf([raw]),
 	})
 }
@@ -771,7 +826,7 @@ const buildMoon = (
 		argPeriapsisDeg,
 		meanAnomalyDeg,
 		periodDays,
-		epochJD: J2000,
+		epochJD: epochOf(sources),
 		...(phaseSynthetic ? { phaseSynthetic: true } : {}),
 		...precessionOf(sources),
 	}
@@ -838,12 +893,15 @@ const precessionOf = (sources: readonly Raw[]): Pick<Orbit, "precession"> => {
 	return { precession: { nodeDegPerDay, argPeriapsisDegPerDay } }
 }
 
-const statsOf = (
-	bodies: Body[],
-	planets: Body[],
-	equatorRotated: number,
-): BuildStats => {
-	const perKind: Record<BodyKind, number> = { star: 0, planet: 0, moon: 0 }
+const statsOf = (bodies: Body[], planets: Body[], ctx: Context): BuildStats => {
+	const perKind: Record<BodyKind, number> = {
+		star: 0,
+		planet: 0,
+		dwarfPlanet: 0,
+		moon: 0,
+		asteroid: 0,
+		comet: 0,
+	}
 	const moonsPerPlanet: Record<string, number> = {}
 	for (const planet of planets) moonsPerPlanet[planet.id] = 0
 	let radiusEstimated = 0
@@ -870,10 +928,11 @@ const statsOf = (
 		moonsPerPlanet,
 		radiusEstimated,
 		phaseSynthetic,
-		equatorRotated,
+		equatorRotated: ctx.equatorRotated,
 		periodDerived,
 		placeholderTextures,
 		rings,
+		smallBodiesSkipped: ctx.smallBodiesSkipped,
 		featured,
 	}
 }
@@ -1043,6 +1102,7 @@ export const buildBodies = (
 		warnings: [],
 		usedIds: new Set(),
 		equatorRotated: 0,
+		smallBodiesSkipped: 0,
 	}
 
 	const sun = buildSun(suns[0], ctx)
@@ -1051,7 +1111,7 @@ export const buildBodies = (
 		.sort((a, b) => byOrbitThenId(a.body, b.body))
 
 	const bodies: Body[] = [sun, ...planetEntries.map((entry) => entry.body)]
-	for (const { raw, body } of planetEntries) {
+	const pushMoons = (raw: Raw, body: Body): void => {
 		const planet = planetInfoOf(body, sun.massKg)
 		const moons = collectMoonGroups(raw, planet, ctx)
 			.map((group) => buildMoon(group, planet, ctx))
@@ -1059,6 +1119,22 @@ export const buildBodies = (
 			.sort(byOrbitThenId)
 		bodies.push(...moons)
 	}
+	for (const { raw, body } of planetEntries) pushMoons(raw, body)
+
+	// the small bodies (#23) come after the planets' moons, so existing indices stay put:
+	// dwarf planets, asteroids and comets by semi-major axis, then the dwarf planets' moons
+	const smallEntries = SMALL_BODY_SOURCES.flatMap(([key, kind]) =>
+		records(db[key])
+			.filter((raw) => {
+				if (hasRealElements(raw)) return true
+				ctx.smallBodiesSkipped++
+				return false
+			})
+			.map((raw) => ({ raw, body: buildPlanet(raw, sun.id, ctx, kind) }))
+			.sort((a, b) => byOrbitThenId(a.body, b.body)),
+	)
+	bodies.push(...smallEntries.map((entry) => entry.body))
+	for (const { raw, body } of smallEntries) pushMoons(raw, body)
 
 	markFeatured(bodies, options.featuredMoons)
 	const credits = withPlanetTextures(
@@ -1069,12 +1145,108 @@ export const buildBodies = (
 
 	return {
 		bodies,
+		belts: buildBelts(db, sun.id),
 		stats: statsOf(
 			bodies,
-			planetEntries.map((entry) => entry.body),
-			ctx.equatorRotated,
+			[...planetEntries, ...smallEntries]
+				.map((entry) => entry.body)
+				.filter((body) => body.kind !== "asteroid" && body.kind !== "comet"),
+			ctx,
 		),
 		warnings: ctx.warnings,
 		credits,
 	}
 }
+
+/** Source arrays of the small bodies and the kind each one holds. */
+const SMALL_BODY_SOURCES: readonly (readonly [string, BodyKind])[] = [
+	["dwarfPlanets", "dwarfPlanet"],
+	["asteroids", "asteroid"],
+	["comets", "comet"],
+]
+
+/** Source keys of the belts (#23), in output order. */
+export const BELT_SOURCES: readonly string[] = ["asteroidBelt", "kuiperBelt"]
+
+const beltZoneOf = (raw: Raw, label: string): BeltZone => {
+	const a = Array.isArray(raw.semiMajorAxisAu) ? raw.semiMajorAxisAu : []
+	const e = Array.isArray(raw.eccentricity) ? raw.eccentricity : []
+	const share = positive(num(raw.share))
+	const sigma = num(raw.inclinationSigmaDeg)
+	const aMin = positive(num(a[0]))
+	const aMax = positive(num(a[1]))
+	const eMin = num(e[0])
+	const eMax = num(e[1])
+	if (
+		share === null ||
+		sigma === null ||
+		aMin === null ||
+		aMax === null ||
+		eMin === null ||
+		eMax === null ||
+		aMax < aMin ||
+		eMax < eMin
+	) {
+		throw new BuildError(`${label}: incomplete belt zone`)
+	}
+	const perihelionMin = positive(num(raw.perihelionMinAu))
+	return {
+		share,
+		semiMajorAxisKm: [Math.round(aMin * AU_KM), Math.round(aMax * AU_KM)],
+		eccentricity: [eMin, eMax],
+		inclinationSigmaDeg: sigma,
+		...(perihelionMin === null
+			? {}
+			: { perihelionMinKm: Math.round(perihelionMin * AU_KM) }),
+	}
+}
+
+/**
+ * The belts (#23) from the curated `asteroidBelt` and `kuiperBelt` records: how many dots,
+ * the real population they stand for and the zones the dots are spread over (AU in the
+ * source, km in the output). A belt without zones is left out.
+ */
+export const buildBelts = (db: Raw, sunId: string): Belt[] =>
+	BELT_SOURCES.flatMap((key): Belt[] => {
+		const raw = rec(db[key])
+		if (raw === null || !Array.isArray(raw.zones)) return []
+		const name = str(raw.name) ?? key
+		const members = rec(raw.members)
+		const dots = positive(num(raw.dots))
+		const count = positive(num(members?.count))
+		const minDiameterKm = positive(num(members?.minDiameterKm))
+		const meanSeparationKm = positive(num(raw.meanSeparationKm))
+		const color = str(raw.color)
+		const extent = rec(raw.distanceFromParent)
+		const extentMin = positive(num(extent?.min))
+		const extentMax = positive(num(extent?.max))
+		if (
+			extentMin === null ||
+			extentMax === null ||
+			dots === null ||
+			count === null ||
+			minDiameterKm === null ||
+			meanSeparationKm === null ||
+			color === null
+		) {
+			throw new BuildError(`${name}: incomplete belt`)
+		}
+		const zones = records(raw.zones).map((zone) => beltZoneOf(zone, name))
+		const total = zones.reduce((sum, zone) => sum + zone.share, 0)
+		if (Math.abs(total - 1) > 1e-6) {
+			throw new BuildError(`${name}: zone shares sum to ${total}, not 1`)
+		}
+		return [
+			{
+				id: slug(name),
+				name,
+				parentId: sunId,
+				dots: Math.round(dots),
+				color,
+				members: { count, minDiameterKm },
+				meanSeparationKm,
+				extentKm: [extentMin, extentMax],
+				zones,
+			},
+		]
+	})

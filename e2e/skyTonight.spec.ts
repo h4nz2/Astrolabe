@@ -10,6 +10,7 @@
  * browser to Zurich's time zone, so the sky is known.
  */
 import { expect, test, type Page } from "@playwright/test"
+import { openTool } from "./support/hud"
 
 // every test drives the software-rendered scene and opens a lazy panel: slow under a full parallel run
 test.describe.configure({ timeout: 120_000 })
@@ -56,7 +57,7 @@ test("asks first, then lists tonight's sky over Zurich with local times", async 
 }) => {
 	await setup(page)
 	await page.goto("/solar_system?lang=en")
-	await page.getByRole("button", { name: "Tonight's sky" }).click()
+	await openTool(page, "sky")
 	const sky = panel(page)
 	await expect(sky).toBeVisible({ timeout: 15_000 })
 
@@ -105,7 +106,7 @@ test("a German child picks a country and a city from lists", async ({
 }) => {
 	await setup(page)
 	await page.goto("/solar_system?lang=de&reading=simple")
-	await page.getByRole("button", { name: "Himmel heute Nacht" }).click()
+	await openTool(page, "sky")
 	const sky = panel(page, "Der Himmel heute Nacht")
 	await expect(sky).toContainText("Wo bist du?", { timeout: 15_000 })
 
@@ -198,7 +199,7 @@ test("'Why can I see it?' holds Earth still at that moment, seen from above", as
 	).toBeVisible()
 
 	// and comes back with the place kept
-	await page.getByRole("button", { name: "Tonight's sky" }).click()
+	await openTool(page, "sky")
 	await expect(sky.getByTestId("sky-place")).toHaveText("Zurich, Switzerland")
 })
 
@@ -210,7 +211,7 @@ test("opens from the start page and gives way to the birthday panel", async ({
 	await page.getByRole("link", { name: "What is in the sky tonight?" }).click()
 	await expect(page).toHaveURL(/\/solar_system/)
 	await expect(panel(page)).toBeVisible({ timeout: 15_000 })
-	await page.getByRole("button", { name: "Your birthday" }).click()
+	await openTool(page, "birthday")
 	await expect(panel(page)).toHaveCount(0)
 	await expect(
 		page.getByRole("region", { name: "Your birthday in space" }),

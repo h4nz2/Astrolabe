@@ -5,7 +5,6 @@ import {
 	Group,
 	Loader,
 	Popover,
-	ScrollArea,
 	SegmentedControl,
 	Stack,
 	Text,
@@ -15,10 +14,9 @@ import { IconCalendarEvent } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
 
-import { MOMENTS, momentJD } from "./moments"
-import { formatDayUTC, travelAndStop } from "./timeTravel"
-
 import classes from "./TimeTravel.module.css"
+
+import EventList from "../events/EventList"
 
 // the calendar (@mantine/dates) loads only when someone picks a date
 const DayPicker = lazy(() => import("./DayPicker"))
@@ -30,49 +28,11 @@ export interface TimeTravelProps {
 	children: ReactNode
 }
 
-/** The named moments, earliest first; a click travels there and closes the panel. */
-const MomentList = ({ onTravel }: { onTravel: () => void }) => {
-	const { t, formatLocale } = useI18n()
-	return (
-		<ScrollArea.Autosize mah="min(22rem, 45dvh)" type="auto" offsetScrollbars>
-			<Stack gap={2} className={classes.moments}>
-				{MOMENTS.map((moment) => (
-					<UnstyledButton
-						key={moment.id}
-						className={classes.moment}
-						data-moment={moment.id}
-						onClick={() => {
-							travelAndStop(momentJD(moment))
-							onTravel()
-						}}
-					>
-						<Group
-							gap="xs"
-							justify="space-between"
-							wrap="nowrap"
-							align="baseline"
-						>
-							<Text size="sm" fw={600} className={classes.momentName}>
-								{t(`solarSystem.time.moments.${moment.id}.name`)}
-							</Text>
-							<Text size="xs" c="dimmed" className={classes.momentDate}>
-								{formatDayUTC(new Date(moment.iso), formatLocale)}
-							</Text>
-						</Group>
-						<Text size="xs" c="gray.5" lh={1.35}>
-							{t(`solarSystem.time.moments.${moment.id}.description`)}
-						</Text>
-					</UnstyledButton>
-				))}
-			</Stack>
-		</ScrollArea.Autosize>
-	)
-}
-
 /**
  * Jump to a date (issue #14): the HUD date is the button. It opens a panel
- * with named moments and a calendar; either one glides the clock there and
- * stops it on arrival (`travelAndStop`).
+ * with the sky events (#41: the named moments are among them; an event sets
+ * the whole scene, viewpoint included) and a calendar, which glides the clock
+ * there and stops it on arrival (`travelAndStop`).
  */
 const TimeTravel = ({ children }: TimeTravelProps) => {
 	const { t } = useI18n()
@@ -131,7 +91,7 @@ const TimeTravel = ({ children }: TimeTravelProps) => {
 						]}
 					/>
 					{tab === "moments" ? (
-						<MomentList onTravel={close} />
+						<EventList onChoose={close} />
 					) : (
 						<Suspense
 							fallback={

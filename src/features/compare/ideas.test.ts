@@ -195,3 +195,13 @@ describe("the teasers' claims hold for the data", () => {
 		)
 	})
 })
+
+describe("the small-body idea (#23)", () => {
+	it("Pluto is two thirds as wide as our Moon and under a fifth of its mass", () => {
+		expect(radius("pluto") / radius("moon")).toBeCloseTo(0.68, 2)
+		expect(mass("pluto") / mass("moon")).toBeGreaterThan(0.17)
+		expect(mass("pluto") / mass("moon")).toBeLessThan(0.19)
+		expect(mass("moon") / mass("pluto")).toBeGreaterThan(5)
+		expect(preset("plutoMoon").group).toBe("surprises")
+	})
+})

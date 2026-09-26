@@ -35,5 +35,8 @@
 		"triton": "Orbits the wrong way: a captured world with nitrogen geysers",
 		"nereid": "One of the most stretched orbits of any moon",
 		"proteus": "As big as a lump can get before gravity pulls it round"
+	},
+	"pluto": {
+		"charon": "So big that Pluto and Charon circle a point between them, each always showing the other the same face (#23)"
 	}
 }

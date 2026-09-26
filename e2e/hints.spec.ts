@@ -7,6 +7,8 @@
  */
 import { expect, test, type Locator, type Page } from "@playwright/test"
 
+import { openLayers, openScale, openTime } from "./support/hud"
+
 test.describe.configure({ timeout: 120_000 })
 
 const open = async (page: Page, search = "lang=en") => {
@@ -16,6 +18,8 @@ const open = async (page: Page, search = "lang=en") => {
 		timeout: 30_000,
 	})
 	await expect(page.locator("time")).toBeVisible()
+	// the switches wait behind Layers (#42)
+	await openLayers(page)
 }
 
 const hint = (page: Page) => page.getByRole("tooltip")
@@ -104,6 +108,7 @@ test("keyboard focus shows the hint, and every hint is the control's description
 	] as const)
 		await expect(toggle(page, name)).toHaveAccessibleDescription(text)
 
+	await openScale(page)
 	await expect(
 		page.getByRole("radio", { name: "True scale" }),
 	).toHaveAccessibleDescription(/^Real sizes, real distances/)
@@ -139,6 +144,7 @@ test("a disabled switch says what to turn on first", async ({ page }) => {
 
 test("each option of a choice has its own hint", async ({ page }) => {
 	await open(page)
+	await openScale(page)
 	const presets = page.getByRole("radiogroup", { name: "Scale preset" })
 	await presets.getByText("True scale", { exact: true }).hover()
 	await expect(hint(page)).toHaveText(/^Real sizes, real distances/)
@@ -149,6 +155,7 @@ test("each option of a choice has its own hint", async ({ page }) => {
 	await presets.getByText("Textbook", { exact: true }).hover()
 	await expect(hint(page)).toHaveText(/^Like a textbook picture/)
 
+	await openTime(page)
 	await page.getByText("Stopped", { exact: true }).hover()
 	await expect(hint(page)).toHaveText(/^No planet spins/)
 
@@ -174,6 +181,7 @@ test("hints follow the language and the reading level, and grow on a projector",
 	)
 
 	await open(page, "lang=en&present=true")
+	await openTime(page)
 	await page.getByRole("button", { name: "Now", exact: true }).hover()
 	await expect(hint(page)).toHaveText("Jump to the current time")
 	const projected = await hint(page).evaluate((el) =>

@@ -24,7 +24,6 @@ import {
 	Text,
 	UnstyledButton,
 } from "@mantine/core"
-import { useMediaQuery } from "@mantine/hooks"
 import { IconBolt, IconBoltOff, IconCheck, IconX } from "@tabler/icons-react"
 
 import { useI18n, type I18n } from "@/i18n"
@@ -544,28 +543,25 @@ const LightPanel = () => {
 	)
 }
 
-/** The HUD's phone breakpoint (SolarSystem.module.css). */
-const PHONE_QUERY = "(max-width: 599px)"
-
 /**
- * Where the light panel is docked: under the focus picker on wider screens,
- * above the body card on phones, where the top of the screen is already full
- * of panels and the planets sit right below them. Renders only in the slot
- * for the current screen, wrapped in `className` (a HUD panel).
+ * The light's two places in the quiet HUD (#42): `panel`, the open panel in
+ * the dock (Tools → Speed of light opens it); `chip`, the running clock with
+ * its stop button (#38) under the focus picker while a flash is on screen and
+ * the panel is closed. Each renders wrapped in `className` (a HUD panel).
  */
 export const LightSlot = ({
-	phone,
+	mode,
 	className,
 }: {
-	phone: boolean
+	mode: "panel" | "chip"
 	className: string
 }) => {
-	const isPhone = useMediaQuery(PHONE_QUERY, false, {
-		getInitialValueInEffect: false,
-	})
-	if (isPhone !== phone) return null
+	const open = useLightStore((state) => state.open)
+	const onScreen = useFlashOnScreen()
+	const shown = mode === "panel" ? open : !open && onScreen
+	if (!shown) return null
 	return (
-		<div className={className}>
+		<div className={className} data-light-slot={mode}>
 			<LightPanel />
 		</div>
 	)

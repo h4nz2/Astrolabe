@@ -152,6 +152,33 @@
 				]
 			}
 		},
+		"quietScreen": {
+			"title": {
+				"standard": "Où sont les commandes",
+				"simple": "Où sont les boutons ?"
+			},
+			"what": {
+				"standard": "L’écran appartient à l’espace. Il n’y reste que ce que tu regardes, le chemin du retour et le temps ; tout le reste attend derrière quatre boutons en bas à droite : Visites, Calques, Échelle et Outils. Pendant que tu tournes, zoomes ou voles, les commandes s’effacent un peu.",
+				"simple": "La plupart des boutons se font discrets pour que tu voies l’espace. Quatre boutons en bas à droite ouvrent le reste."
+			},
+			"why": {
+				"standard": "La leçon, ce sont les planètes, pas les boutons : la classe voit le système solaire, et chaque commande reste à deux clics au plus.",
+				"simple": "Tu vois plus d’espace, et chaque bouton reste tout près."
+			},
+			"how": {
+				"standard": [
+					"En haut à gauche : le bouton maison (retour à tout le système), le nom du monde que tu regardes et sa fiche ; la flèche de la fiche ouvre ses infos, ses lunes et ses histoires.",
+					"En bas : lecture, pause et la date ; le bouton avec la vitesse (par exemple 1x) ouvre « Maintenant », les vitesses et la rotation.",
+					"En bas à droite : Visites, Calques (ce qui est dessiné), Échelle (quelle taille et quelle distance) et Outils (la vitesse de la lumière, le ciel de ce soir, les sondes, ton anniversaire, la chasse au trésor, côte à côte et prendre une photo). Un seul panneau s’ouvre à la fois ; le × le ferme.",
+					"En haut à droite : Présenter, Partager, l’œil barré qui cache tout (H le fait revenir), le son, Aide et la langue."
+				],
+				"simple": [
+					"Le bouton maison en haut à gauche te ramène à toutes les planètes.",
+					"Appuie sur Calques, Échelle ou Outils en bas à droite pour en trouver plus.",
+					"Appuie sur l’œil barré en haut à droite pour cacher tous les boutons. Appuie sur H pour les faire revenir."
+				]
+			}
+		},
 		"worldCard": {
 			"title": {
 				"standard": "La fiche du monde",
@@ -167,15 +194,15 @@
 			},
 			"how": {
 				"standard": [
-					"Vole vers un monde : sa fiche apparaît.",
+					"Vole vers un monde : sa fiche apparaît avec son nom et une phrase.",
+					"La flèche de la fiche ouvre ses infos, ses lunes et ses histoires ; elle reste ouverte pour le monde suivant.",
 					"« En savoir plus dans le dictionnaire » ouvre sa page, « Comparer avec… » le place à côté d’un autre monde.",
-					"Sur un téléphone, touche la flèche de la fiche pour afficher les infos.",
-					"La dernière ligne de la fiche dit d’où vient l’image du monde : une carte faite par une sonde ou, là où il n’existe pas de carte complète, une peinture d’après des photos de sondes."
+					"La dernière ligne de la fiche ouverte dit d’où vient l’image du monde : une carte faite par une sonde ou, là où il n’existe pas de carte complète, une peinture d’après des photos de sondes."
 				],
 				"simple": [
 					"Vole vers une planète.",
 					"Lis sa fiche.",
-					"Sur un téléphone, touche la petite flèche pour en voir plus."
+					"Touche la petite flèche pour en voir plus."
 				]
 			}
 		},
@@ -191,14 +218,14 @@
 			},
 			"how": {
 				"standard": [
-					"Vole vers une planète : sa fiche liste ses lunes les plus connues. Clique sur l’une d’elles pour t’y rendre.",
+					"Vole vers une planète et ouvre sa fiche avec la flèche : elle liste ses lunes les plus connues. Clique sur l’une d’elles pour y voler.",
 					"« Voir tout le système de lunes » recule jusqu’à ce que toutes les orbites tiennent à l’écran.",
-					"« Afficher … petites lunes » ou l’interrupteur Toutes les lunes ajoute les nombreuses petites lunes ; la fiche d’une lune propose « Lire son histoire ».",
+					"« Afficher … petites lunes » ou l’interrupteur Toutes les lunes (dans Calques) ajoute les nombreuses petites lunes ; la fiche d’une lune propose « Lire son histoire ».",
 					"La fiche d’une lune dit d’où vient sa surface : une carte prise par une sonde, complétée là où personne n’a jamais regardé, ou peinte d’après ce qu’on sait."
 				],
 				"simple": [
 					"Vole vers Jupiter.",
-					"Clique sur une lune dans la fiche pour y aller.",
+					"Ouvre sa fiche avec la petite flèche et clique sur une lune pour y voler.",
 					"Appuie sur « Voir toutes ses lunes »."
 				]
 			}
@@ -218,13 +245,13 @@
 			},
 			"how": {
 				"standard": [
-					"Les interrupteurs sont dans le panneau en haut à droite ; sur les petits écrans et pendant une présentation, ils sont sous « Calques ».",
+					"Appuie sur Calques en bas à droite : les interrupteurs s’ouvrent au-dessus.",
 					"Appuie sur L pour masquer ou afficher tous les noms d’un coup.",
 					"L’interrupteur Toutes les lunes ne marche que si Lunes est activé.",
 					"Laisse le pointeur sur un interrupteur, ou garde le doigt appuyé, pour lire ce qu’il fait ; un interrupteur grisé dit quoi activer d’abord."
 				],
 				"simple": [
-					"Trouve les interrupteurs en haut à droite.",
+					"Appuie sur Calques en bas à droite.",
 					"Clique sur un interrupteur pour l’éteindre, et encore une fois pour le rallumer.",
 					"Appuie sur L pour cacher tous les noms.",
 					"Laisse la souris sur un interrupteur pour savoir ce qu’il fait."
@@ -280,6 +307,56 @@
 				]
 			}
 		},
+		"dwarfPlanets": {
+			"title": {
+				"standard": "Pluton et les planètes naines",
+				"simple": "Pluton"
+			},
+			"what": {
+				"standard": "Pluton, Cérès, Éris, Hauméa et Makémaké sont de vrais mondes dans l’application, avec leurs lunes, de Charon à Dysnomie.",
+				"simple": "Pluton et quatre autres petits mondes ronds, avec leurs lunes."
+			},
+			"why": {
+				"standard": "La carte de Pluton raconte pourquoi elle n’est plus une planète depuis 2006 : nous avons appris davantage, Pluton n’a pas changé. C’est ainsi que fonctionne la science.",
+				"simple": "Tu découvres pourquoi Pluton n’est plus une planète."
+			},
+			"how": {
+				"standard": [
+					"Tape « Pluton » dans le champ en haut à gauche et choisis-la : elle s’affiche même si « Petits corps » est désactivé.",
+					"Ouvre la carte avec sa flèche : Charon y figure ; « Voir tout le système de lunes » montre les cinq lunes.",
+					"← / → passent à la planète naine suivante."
+				],
+				"simple": [
+					"Tape « Pluton » dans le champ en haut à gauche.",
+					"Choisis Pluton et tu voles jusqu’à elle."
+				]
+			}
+		},
+		"comets": {
+			"title": {
+				"standard": "Une comète passe près du Soleil",
+				"simple": "Les comètes"
+			},
+			"what": {
+				"standard": "Cinq comètes sur leurs vraies orbites très allongées se parent d’une tête lumineuse et de deux queues près du Soleil, et les perdent en s’éloignant.",
+				"simple": "Les comètes ont une longue queue quand elles s’approchent du Soleil."
+			},
+			"why": {
+				"standard": "La queue pointe toujours à l’opposé du Soleil : une comète qui s’éloigne vole donc queue en avant. Il faut le voir pour le croire.",
+				"simple": "La queue pointe toujours à l’opposé du Soleil, même quand la comète s’en va !"
+			},
+			"how": {
+				"standard": [
+					"Choisis Halley ou Encke dans le champ en haut à gauche (groupe Comètes).",
+					"Ouvre sa carte avec la flèche et appuie sur le bouton pour la regarder passer près du Soleil : l’application va à son prochain passage et le joue en une minute et demie environ.",
+					"Regarde où pointe la queue à l’aller et au retour."
+				],
+				"simple": [
+					"Choisis Halley dans le champ en haut à gauche.",
+					"Ouvre sa carte avec la petite flèche et appuie sur le bouton pour la regarder passer près du Soleil."
+				]
+			}
+		},
 		"spin": {
 			"title": {
 				"standard": "Jours, inclinaison et rotation",
@@ -296,13 +373,13 @@
 			"how": {
 				"standard": [
 					"Vole vers la Terre et fais aller le temps plus vite.",
-					"Sous les commandes du temps, choisis Rotation : Ralentie ou Au ralenti pour voir passer les jours, Arrêtée pour la figer.",
+					"Appuie sur le bouton de la vitesse dans la barre du temps et, sous Rotation, choisis Ralentie ou Au ralenti pour voir passer les jours, Arrêtée pour la figer.",
 					"Réaliste remet chaque monde dans sa vraie position pour la date."
 				],
 				"simple": [
 					"Vole vers la Terre.",
 					"Fais aller le temps plus vite.",
-					"Choisis Au ralenti sous les boutons du temps pour voir la Terre tourner."
+					"Appuie sur le bouton de la vitesse en bas et choisis Au ralenti pour voir la Terre tourner."
 				]
 			}
 		},
@@ -347,12 +424,12 @@
 			},
 			"how": {
 				"standard": [
-					"Appuie sur « Le ciel cette nuit » sous la case du nom et choisis ta ville (l’application ne demande jamais ta position d’elle-même).",
+					"Ouvre Outils en bas à droite, choisis « Le ciel cette nuit » puis ta ville (l’application ne demande jamais ta position d’elle-même).",
 					"Lis la liste : ce que tu peux voir, quand, où et avec quoi.",
 					"Appuie sur « Pourquoi est-ce visible ? » à côté d’une planète pour voir la raison dans l’espace."
 				],
 				"simple": [
-					"Appuie sur « Le ciel cette nuit ».",
+					"Appuie sur Outils, puis sur « Le ciel cette nuit ».",
 					"Choisis ta ville. Demande à un adulte avant d’utiliser la position de l’appareil.",
 					"Lis où regarder, puis sors !"
 				]
@@ -373,13 +450,13 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre « Sondes spatiales » (le bouton satellite en haut à droite) et choisis une sonde : la vue vole jusqu’à elle.",
+					"Ouvre Outils en bas à droite, choisis « Sondes spatiales réelles » puis une sonde : la vue vole jusqu’à elle.",
 					"Sa fiche montre le lancement, la distance, le temps du signal et les « Étapes » ; une étape amène le temps à ce moment.",
 					"« Afficher toutes les trajectoires » dessine toutes les routes à la fois ; l’interrupteur « Sondes spatiales » les cache."
 				],
 				"simple": [
-					"Appuie sur le bouton satellite en haut à droite.",
-					"Choisis Voyager 1.",
+					"Appuie sur Outils en bas à droite.",
+					"Choisis « Sondes spatiales réelles », puis Voyager 1.",
 					"Lis à quelle distance elle est."
 				]
 			}
@@ -474,12 +551,12 @@
 			"how": {
 				"standard": [
 					"Appuie sur ▶ pour lancer, sur ⏸ pour mettre en pause, sur ◀ pour reculer (Espace met aussi en pause).",
-					"Choisis une vitesse dans la rangée juste à côté, ou appuie sur + et −.",
-					"« Maintenant » te ramène au présent."
+					"Le bouton à côté de la date montre la vitesse (par exemple 1x) : appuie dessus et choisis-en une autre, ou appuie sur + et −.",
+					"« Maintenant », au même endroit, te ramène au présent."
 				],
 				"simple": [
 					"Appuie sur le bouton de lecture en bas.",
-					"Choisis une vitesse plus rapide, comme 1 mois/s.",
+					"Appuie sur le bouton de la vitesse à côté de la date et choisis 1 mois/s.",
 					"Appuie sur Espace pour arrêter."
 				]
 			}
@@ -500,13 +577,39 @@
 			"how": {
 				"standard": [
 					"Clique sur la date et l’heure en bas.",
-					"Choisis un moment dans la liste, ou « Choisir une date », puis clique sur l’année, le mois et le jour.",
+					"Choisis « Choisir une date », puis clique sur l’année, le mois et le jour (les moments célèbres sont dans « Phénomènes du ciel »).",
 					"Les planètes glissent jusque-là et le temps s’arrête ; appuie sur Lecture pour repartir."
 				],
 				"simple": [
 					"Clique sur la date en bas.",
 					"Choisis « Mars au plus près » ou choisis un jour.",
 					"Regarde les planètes se déplacer jusque-là."
+				]
+			}
+		},
+		"skyEvents": {
+			"title": {
+				"standard": "Phénomènes du ciel : éclipses, transits et alignements",
+				"simple": "Éclipses et autres phénomènes du ciel"
+			},
+			"what": {
+				"standard": "Une liste d’éclipses, de transits de Vénus et de Mercure, de planètes réunies dans le ciel, de rapprochements de Mars, d’ombres de lunes et des anneaux de Saturne par la tranche, passés et à venir. En choisir un règle tout : la date, l’échelle réelle et une vue depuis l’espace, avec un passage à la vue depuis la Terre au télescope.",
+				"simple": "Choisis une éclipse ou un autre spectacle du ciel, et l’application t’y emmène : le bon jour, le bon endroit d’où regarder."
+			},
+			"why": {
+				"standard": "Chaque phénomène est une leçon de géométrie en une image : pourquoi la Lune couvre exactement le Soleil, pourquoi il n’y a pas d’éclipse chaque mois, ce que veut vraiment dire « les planètes s’alignent ». Passer de la vue depuis l’espace à la vue depuis la Terre, c’est la leçon.",
+				"simple": "Tu vois pourquoi il y a une éclipse : depuis l’espace, et depuis la Terre, d’où les gens l’ont regardée."
+			},
+			"how": {
+				"standard": [
+					"Clique sur la date en bas et choisis « Phénomènes du ciel ».",
+					"Choisis un phénomène, par exemple « Éclipse totale de Soleil » (8 avril 2024).",
+					"Sur la carte, passe de « Depuis l’espace » à « Depuis la Terre » ; appuie sur « Quitter » pour revenir là où tu étais."
+				],
+				"simple": [
+					"Clique sur la date en bas, puis sur « Phénomènes du ciel ».",
+					"Choisis une éclipse.",
+					"Appuie sur « Depuis la Terre » et la Lune couvre le Soleil."
 				]
 			}
 		},
@@ -525,12 +628,12 @@
 			},
 			"how": {
 				"standard": [
-					"Choisis la vitesse la plus rapide, 10 ans/s.",
-					"Lis la ligne sous les vitesses ; choisis une vitesse plus lente ou mets en pause, et elle disparaît."
+					"Appuie sur le bouton de la vitesse à côté de la date et choisis la plus rapide, 10 ans/s.",
+					"Lis la ligne sous la barre du temps ; choisis une vitesse plus lente ou mets en pause et elle disparaît."
 				],
 				"simple": [
-					"Choisis la vitesse la plus rapide.",
-					"Lis le message, puis choisis une vitesse plus lente."
+					"Appuie sur le bouton de la vitesse et choisis la plus rapide.",
+					"Lis la note, puis choisis une vitesse plus lente."
 				]
 			}
 		},
@@ -549,12 +652,12 @@
 			},
 			"how": {
 				"standard": [
-					"Dans le panneau Échelle en haut à droite, clique sur Échelle réelle, Manuel scolaire ou Tout visible (ou appuie sur S).",
+					"Appuie sur Échelle en bas à droite (le bouton dit quelle échelle tu vois) et clique sur Échelle réelle, Manuel scolaire ou Tout visible, ou appuie sur S.",
 					"Les interrupteurs Tailles et Distances changent un seul mensonge à la fois.",
-					"À l’échelle réelle, les points montrent où sont les planètes ; désactive Repères pour voir le peu qu’il en reste."
+					"À l’échelle réelle, les points montrent où sont les planètes ; désactive Repères (dans Calques) pour voir le peu qu’il en reste."
 				],
 				"simple": [
-					"Trouve Échelle en haut à droite.",
+					"Appuie sur Échelle en bas à droite.",
 					"Clique sur Échelle réelle.",
 					"Où sont passées les planètes ? Les points montrent où elles sont."
 				]
@@ -582,6 +685,31 @@
 				"simple": [
 					"Vole de la Terre vers une autre planète.",
 					"Lis la case au-dessus des boutons du temps."
+				]
+			}
+		},
+		"asteroidBelt": {
+			"title": {
+				"standard": "La ceinture d’astéroïdes est presque vide",
+				"simple": "La ceinture d’astéroïdes"
+			},
+			"what": {
+				"standard": "L’interrupteur « Petits corps » montre la ceinture d’astéroïdes et la ceinture de Kuiper sous forme de nuages de points, ainsi que les planètes naines, sept astéroïdes nommés et cinq comètes.",
+				"simple": "Un interrupteur montre la ceinture d’astéroïdes, la ceinture de Kuiper glacée, les planètes naines et les comètes."
+			},
+			"why": {
+				"standard": "Les films montrent un champ de rochers serrés. La carte dit la vérité : chaque point représente environ 380 astéroïdes, et les voisins sont à environ un million de km les uns des autres, si bien que les sondes la traversent en ligne droite.",
+				"simple": "Dans les films, c’est plein de rochers. Dans le vrai espace, ils sont très, très loin les uns des autres."
+			},
+			"how": {
+				"standard": [
+					"Appuie sur Calques en bas à droite et active « Petits corps ».",
+					"Lis la note dans la carte en haut à gauche.",
+					"Choisis « Vraie échelle » dans le panneau d’échelle, puis vole vers Vesta ou Cérès : la ceinture reste une poussière clairsemée."
+				],
+				"simple": [
+					"Appuie sur Calques et active « Petits corps ».",
+					"Lis ce que la carte dit des points."
 				]
 			}
 		},
@@ -627,13 +755,13 @@
 			"how": {
 				"standard": [
 					"Vole vers la Terre et tourne la caméra vers la ligne entre le jour et la nuit.",
-					"Voyage au 21 juin puis au 21 décembre pour comparer les pôles.",
-					"L’interrupteur Toujours éclairé éclaire tout depuis ton point de vue, pour étudier les surfaces."
+					"Voyage au 21 juin et au 21 décembre pour comparer les pôles.",
+					"L’interrupteur Toujours éclairé (dans Calques) éclaire tout depuis l’endroit d’où tu regardes, pour étudier les surfaces."
 				],
 				"simple": [
 					"Vole vers la Terre.",
-					"Tourne la vue pour voir la face de nuit et les lumières des villes.",
-					"Active Toujours éclairé pour voir tous les côtés."
+					"Tourne la vue pour voir le côté nuit et les lumières des villes.",
+					"Active Toujours éclairé dans Calques pour voir tous les côtés."
 				]
 			}
 		},
@@ -674,13 +802,13 @@
 			},
 			"how": {
 				"standard": [
-					"Appuie sur « Vitesse de la lumière » en haut à gauche, puis sur « Envoyer un éclair ».",
+					"Ouvre Outils en bas à droite, choisis « Vitesse de la lumière », puis « Envoyer un éclair ».",
 					"Choisis d’où il part ; la liste indique quand il atteint chaque monde.",
 					"Le temps passe en temps réel ; tu peux choisir une vitesse plus rapide, et le panneau compte toujours le vrai temps de trajet.",
-					"Pour l’arrêter, appuie sur « Arrêter l’éclair », sur le × de son étiquette ou à côté de l’horloge sur le bouton, ou sur X. Une fois Neptune dépassée, il s’efface tout seul."
+					"Pour l’arrêter, appuie sur « Arrêter l’éclair », sur le × de son étiquette ou sur le × à côté de son horloge sous la case du nom, ou sur X. Une fois Neptune dépassée, il s’efface tout seul."
 				],
 				"simple": [
-					"Appuie sur « À quelle vitesse va la lumière ? »",
+					"Appuie sur Outils, puis sur « À quelle vitesse va la lumière ? »",
 					"Appuie sur « Envoyer un éclair ».",
 					"Regarde le cercle grandir et atteindre les planètes.",
 					"Appuie sur « Éteindre la lumière » pour l’arrêter."
@@ -702,12 +830,12 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre « Vitesse de la lumière » et choisis l’onglet « Délai du signal ».",
+					"Ouvre Outils → « Vitesse de la lumière » et choisis l’onglet « Délai du signal ».",
 					"Choisis un monde, ou clique sur l’un d’eux dans la scène."
 				],
 				"simple": [
-					"Ouvre « À quelle vitesse va la lumière ? »",
-					"Clique sur « Délai du signal » et choisis Mars."
+					"Appuie sur Outils, puis sur « À quelle vitesse va la lumière ? » et sur « Délai du signal ».",
+					"Choisis Mars."
 				]
 			}
 		},
@@ -726,10 +854,10 @@
 			},
 			"how": {
 				"standard": [
-					"Ouvre « Vitesse de la lumière » et choisis l’onglet « Plus loin »."
+					"Ouvre Outils → « Vitesse de la lumière » et choisis l’onglet « Plus loin »."
 				],
 				"simple": [
-					"Ouvre « À quelle vitesse va la lumière ? »",
+					"Appuie sur Outils, puis sur « À quelle vitesse va la lumière ? »",
 					"Clique sur « Plus loin »."
 				]
 			}
@@ -749,7 +877,7 @@
 			},
 			"how": {
 				"standard": [
-					"Sur la fiche d’un monde, appuie sur « Comparer avec… ».",
+					"Sur la fiche d’un monde, appuie sur « Comparer avec… », ou ouvre Outils → « Côte à côte ».",
 					"Change l’un ou l’autre monde avec les sélecteurs, ajoutes-en d’autres avec « Ajouter… », ou clique sur un monde de la rangée pour le comparer à la place.",
 					"Le bouton appareil photo fait une image de la comparaison."
 				],
@@ -795,12 +923,12 @@
 			},
 			"how": {
 				"standard": [
-					"Appuie sur « Visites » à côté de la case du nom et choisis une visite.",
+					"Appuie sur « Visites » en bas à droite et choisis une visite.",
 					"Avance avec « Suivant » et « Retour » sur la carte, les flèches ou une télécommande de présentation (Page suiv. / Page préc.).",
 					"Regarde autour de toi quand tu veux ; « Retour à la visite » rétablit l’étape. « Lecture automatique » avance toute seule, et le bouton lien copie un lien vers l’étape en cours. Les enseignants peuvent écrire leurs propres visites sous forme de données (src/data/tours/README.md)."
 				],
 				"simple": [
-					"Appuie sur « Visites » en haut à gauche et choisis-en une.",
+					"Appuie sur « Visites » en bas à droite et choisis-en une.",
 					"Lis la carte, puis appuie sur « Suivant » ou sur une flèche.",
 					"Regarde autour de toi quand tu veux, puis appuie sur « Retour à la visite »."
 				]
@@ -808,7 +936,7 @@
 		},
 		"present": {
 			"title": "Mode vidéoprojecteur",
-			"what": "Texte, noms et boutons plus grands, lisibles depuis le fond de la salle, avec les interrupteurs repliés.",
+			"what": "Du texte, des noms et des boutons plus grands, lisibles depuis le fond de la salle.",
 			"why": "Un écran d’ordinateur portable projeté au mur est trop petit pour être lu ; le mode vidéoprojecteur règle ça d’une seule touche.",
 			"how": [
 				"Ouvre Présenter en haut à droite et choisis « Grand texte pour vidéoprojecteur », ou appuie sur P.",
@@ -840,8 +968,8 @@
 			"what": "Retire tous les boutons et tous les panneaux de l’écran, pour qu’il ne reste que l’espace.",
 			"why": "Pour observer, pour les captures d’écran et pour le vidéoprojecteur : la classe voit le système solaire, pas l’interface.",
 			"how": [
-				"Appuie sur H, ou ouvre Présenter et choisis « Masquer les commandes ».",
-				"Appuie de nouveau sur H, ou bouge la souris et clique sur « Afficher les commandes », pour les faire revenir. Les touches fonctionnent toujours pendant que les commandes sont masquées."
+				"Appuie sur H ou sur l’œil barré en haut à droite (il est aussi dans le menu Présenter). Cela marche en présentation comme en dehors.",
+				"Appuie à nouveau sur H, ou bouge la souris et clique sur « Afficher les commandes », pour les faire revenir. Les touches continuent de marcher pendant qu’elles sont cachées."
 			]
 		},
 		"prepareLesson": {
@@ -868,7 +996,7 @@
 			"what": "Choisis des énigmes dans toute la banque de questions et fais-en une chasse pour ton cours.",
 			"why": "La chasse colle au sujet du jour, et un lien la lance pour chaque élève dans ta langue.",
 			"how": [
-				"Ouvre Chasse au trésor et choisis « Crée ta propre chasse ».",
+				"Ouvre Outils → « Chasse au trésor » et choisis « Crée ta propre chasse ».",
 				"Coche les énigmes, puis Commencer, ou Partager pour obtenir le lien pour la classe."
 			]
 		},
@@ -884,12 +1012,12 @@
 			},
 			"how": {
 				"standard": [
-					"Appuie sur « Chasse au trésor » et choisis une chasse : Facile, Moyen ou Corsé.",
+					"Ouvre Outils en bas à droite, choisis « Chasse au trésor » puis une chasse : Facile, Moyen ou Corsé.",
 					"Lis l’énigme, trouve le monde et clique dessus.",
 					"Tu bloques ? « Besoin d’un indice ? », et après le dernier indice, « Montre-moi »."
 				],
 				"simple": [
-					"Appuie sur « Chasse au trésor ».",
+					"Appuie sur Outils, puis sur « Chasse au trésor ».",
 					"Choisis une chasse facile.",
 					"Lis l’énigme et clique sur le bon monde."
 				]
@@ -910,12 +1038,12 @@
 			},
 			"how": {
 				"standard": [
-					"Appuie sur « Ton anniversaire » et choisis l’année, le mois et le jour.",
+					"Ouvre Outils en bas à droite, choisis « Ton anniversaire » puis l’année, le mois et le jour.",
 					"Les planètes se déplacent jusqu’au jour de ta naissance ; ⏭ à côté d’une planète te fait voyager jusqu’à ton prochain anniversaire là-bas.",
 					"Ta date n’est jamais enregistrée ni envoyée : elle est oubliée quand tu fermes la page, ou tout de suite avec « Oublier mon anniversaire »."
 				],
 				"simple": [
-					"Appuie sur « Ton anniversaire ».",
+					"Appuie sur Outils, puis sur « Ton anniversaire ».",
 					"Choisis ton année, ton mois et ton jour.",
 					"Lis quel âge tu as sur chaque planète."
 				]
@@ -936,12 +1064,12 @@
 			},
 			"how": {
 				"standard": [
-					"Appuie sur le bouton appareil photo en haut à droite.",
+					"Ouvre Outils en bas à droite et choisis « Prendre une photo ».",
 					"Écris une légende, désactive les noms ou le QR code.",
 					"Enregistre, copie ou partage l’image. Elle est créée sur ton appareil ; rien n’est envoyé en ligne."
 				],
 				"simple": [
-					"Appuie sur le bouton appareil photo en haut à droite.",
+					"Appuie sur Outils en bas à droite, puis sur « Prendre une photo ».",
 					"Écris quelque chose sur ton image.",
 					"Appuie sur « Enregistrer l’image »."
 				]
@@ -1001,8 +1129,8 @@
 		},
 		"speed": {
 			"action": "Plus vite ou plus lentement",
-			"mouse": "Les boutons de vitesse",
-			"touch": "Les boutons de vitesse",
+			"mouse": "Le bouton de la vitesse à côté de la date",
+			"touch": "Le bouton de la vitesse à côté de la date",
 			"keys": "+ / −"
 		},
 		"step": {
@@ -1015,8 +1143,8 @@
 		},
 		"scale": {
 			"action": "Échelle suivante : Tout visible, Manuel scolaire, Échelle réelle",
-			"mouse": "Le panneau Échelle",
-			"touch": "Le panneau Échelle",
+			"mouse": "Échelle, en bas à droite",
+			"touch": "Échelle, en bas à droite",
 			"keys": "S"
 		},
 		"stopLight": {
@@ -1027,14 +1155,14 @@
 		},
 		"names": {
 			"action": "Afficher ou masquer les noms",
-			"mouse": "L’interrupteur Noms",
-			"touch": "L’interrupteur Noms",
+			"mouse": "Calques → Noms",
+			"touch": "Calques → Noms",
 			"keys": "L"
 		},
 		"hide": {
 			"action": "Masquer ou afficher les commandes",
-			"mouse": "Présenter → Masquer les commandes",
-			"touch": "Présenter → Masquer les commandes",
+			"mouse": "L’œil barré, en haut à droite",
+			"touch": "L’œil barré, en haut à droite",
 			"keys": "H"
 		},
 		"fullscreen": {

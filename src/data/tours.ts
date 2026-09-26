@@ -51,6 +51,15 @@ const TourCamera = z
 		distance: z.number().positive().finite().optional(),
 		/** Stand so the body is fully lit, half lit or a crescent (sets the azimuth from the date). */
 		light: z.enum(TOUR_LIGHTS).optional(),
+		/**
+		 * Stand on the Earth and look at the body in view (#41): from the point
+		 * of the surface facing it, or, at a sky event's time, from where the
+		 * event is seen best (the path of totality). Direction and distance
+		 * then come from there.
+		 */
+		from: z.literal("earth").optional(),
+		/** The lens: the height of the view in degrees (a telescope's is below 1); default: the normal view. */
+		fov: z.number().min(0.001).max(160).optional(),
 	})
 	.strict()
 
@@ -71,6 +80,8 @@ const TourFit = z
 const TourTime = z.union([
 	z.literal("now"),
 	z.object({ moment: z.string() }).strict(),
+	/** A sky event (#41, src/data/skyEvents.json): the instant the simulation shows it best. */
+	z.object({ event: z.string() }).strict(),
 	z
 		.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "YYYY-MM-DD") })
 		.strict(),
@@ -133,6 +144,11 @@ export const TourStop = z
 
 export const TourFile = z
 	.object({
+		/**
+		 * Leaving the tour (its close button, Finish) takes the viewer back to
+		 * the view, time, scale and layers they had before it began (a sky event, #41).
+		 */
+		returnOnExit: z.boolean().optional(),
 		/** The file name without `.json`; also the key of the tour's narration. */
 		id,
 		/** Position in the tour menu, lowest first. */

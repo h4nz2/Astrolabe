@@ -152,6 +152,34 @@
 		]
 	},
 	{
+		"id": "usgs-vesta",
+		"kind": "map",
+		"title": "Vesta Dawn FC global mosaic (DLR)",
+		"credit": "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA (Dawn Framing Camera); mosaic by DLR, distributed by USGS Astrogeology",
+		"short": "Dawn · NASA/JPL/DLR",
+		"url": "https://astrogeology.usgs.gov/search/map/vesta_dawn_fc_hamo_global_mosaic_60m",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+		"note": "A grey mosaic, coloured by us.",
+		"bodies": [
+			"vesta"
+		]
+	},
+	{
+		"id": "usgs-pluto",
+		"kind": "map",
+		"title": "Pluto New Horizons LORRI/MVIC global mosaic (300 m)",
+		"credit": "NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute (New Horizons); mosaic by USGS Astrogeology and the New Horizons team",
+		"short": "New Horizons · NASA/JHUAPL/SwRI",
+		"url": "https://astrogeology.usgs.gov/search/map/pluto_new_horizons_lorri_mvic_global_mosaic_300m",
+		"licence": "Public domain",
+		"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+		"note": "A grey mosaic, coloured by us from Sputnik Planitia's pale cream to Cthulhu's dark red-brown. New Horizons saw only the northern half well; the rest is filled in to match. Turned by 180 degrees for the app's north-side pole (see scripts/lib/iau.ts).",
+		"bodies": [
+			"pluto"
+		]
+	},
+	{
 		"id": "astrolabe-painted-bands",
 		"kind": "painted",
 		"title": "Painted cloud bands",
@@ -471,6 +499,21 @@
 		"licenceUrl": "https://github.com/h4nz2/Astrolabe/blob/main/LICENSE",
 		"note": "Not a photograph: no spacecraft has mapped these moons, so their colour, brightness and the kind of surface are painted from what is known.",
 		"bodies": [
+			"ceres",
+			"haumea",
+			"makemake",
+			"eris",
+			"bennu",
+			"eros",
+			"juno",
+			"pallas",
+			"hygiea",
+			"arrokoth",
+			"encke",
+			"67p",
+			"halley",
+			"halebopp",
+			"neowise",
 			"metis",
 			"adrastea",
 			"amalthea",
@@ -632,7 +675,16 @@
 			"sao",
 			"laomedeia",
 			"psamathe",
-			"neso"
+			"neso",
+			"charon",
+			"styx",
+			"nix",
+			"kerberos",
+			"hydra",
+			"namaka",
+			"hiiaka",
+			"s20151364721",
+			"dysnomia"
 		]
 	}
 ]

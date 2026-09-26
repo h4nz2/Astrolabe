@@ -11,6 +11,15 @@ import { useBodyName } from "@/i18n/bodies"
 
 import classes from "./MoonSystem.module.css"
 
+/**
+ * Moon systems a spacecraft has photographed although the app paints their moons (#23):
+ * New Horizons flew through Pluto's system in 2015, but its maps are not processed yet, so
+ * "no spacecraft has mapped it" would be untrue there. Keyed by the moons' planet.
+ */
+export const VISITED_PAINTED_SYSTEMS: Readonly<
+	Partial<Record<string, { probe: string; year: number }>>
+> = { pluto: { probe: "New Horizons", year: 2015 } }
+
 const SurfaceNote = ({ moon }: { moon: Body }) => {
 	const { t } = useI18n()
 	const name = useBodyName()
@@ -27,7 +36,18 @@ const SurfaceNote = ({ moon }: { moon: Body }) => {
 	} else if (surface.kind === "haze") {
 		text = t("solarSystem.surface.haze", { moon: moonName })
 	} else {
-		text = t("solarSystem.surface.painted", { moon: moonName })
+		const visited =
+			moon.parentId === null
+				? undefined
+				: VISITED_PAINTED_SYSTEMS[moon.parentId]
+		text =
+			visited === undefined
+				? t("solarSystem.surface.painted", { moon: moonName })
+				: t("solarSystem.surface.paintedVisited", {
+						moon: moonName,
+						probe: visited.probe,
+						year: String(visited.year),
+					})
 	}
 	return (
 		<p

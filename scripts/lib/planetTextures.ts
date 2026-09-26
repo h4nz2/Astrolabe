@@ -30,6 +30,11 @@ export const MapProcess = z
 		format: z.enum(["image", "tiff", "fits", "isis"]).default("image"),
 		/** east longitude at the horizontal centre of the source image (0 or 180) */
 		centreLonEast: z.union([z.literal(0), z.literal(180)]),
+		/**
+		 * turn the map by 180 degrees first (north and south swapped, longitudes reversed): for a body
+		 * whose app pole is the source's south pole (Pluto, #23)
+		 */
+		turn: z.literal(true).optional(),
 		/** colours as published, only resized and turned */
 		keep: z.literal(true).optional(),
 		/**
