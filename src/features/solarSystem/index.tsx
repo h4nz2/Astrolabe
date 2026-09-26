@@ -25,6 +25,11 @@ import SoundDirector from "./sound/SoundDirector"
 import CraftLink from "./spacecraft/CraftLink"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
 import EventCard from "./events/EventCard"
+import {
+	QuickLookAsk,
+	QuickLookCard,
+	QuickLookController,
+} from "./quickLook/QuickLook"
 import TourCard from "./tours/TourCard"
 import TourSync from "./tours/TourSync"
 import BodyHighlight from "./ui/BodyHighlight"
@@ -89,6 +94,8 @@ const SolarSystem = () => {
 			<IntroController />
 			<SoundDirector />
 			<TourSync />
+			{/* after TourSync, which ends a tour left over from before on arrival */}
+			<QuickLookController />
 			<Suspense fallback={<Loader />}>
 				<Scene />
 			</Suspense>
@@ -135,6 +142,8 @@ const SolarSystem = () => {
 					<DockPanels />
 					<TourCard className={`${classes.panel} ${classes.tour}`} />
 					<EventCard className={`${classes.panel} ${classes.tour}`} />
+					<QuickLookAsk className={`${classes.panel} ${classes.tour}`} />
+					<QuickLookCard className={`${classes.panel} ${classes.tour}`} />
 				</div>
 				<div className={classes.bottom}>
 					<div className={classes.time}>

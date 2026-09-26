@@ -58,6 +58,8 @@ const CompareButton = ({ bodyId }: { bodyId: string }) => {
 			color="orange"
 			size="compact-sm"
 			leftSection={<IconScale size={16} />}
+			// the quick look (#44) points at it
+			data-spot="compare"
 			onClick={() =>
 				void navigate({
 					to: "/compare",

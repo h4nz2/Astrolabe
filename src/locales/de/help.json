@@ -64,12 +64,39 @@
 			"how": {
 				"standard": [
 					"Es läuft einmal, beim ersten Besuch; „Intro überspringen“, Ziehen oder Esc beenden es jederzeit.",
+					"Nach dem ersten Intro fragt die App einmal, ob du kurz sehen willst, was du hier machen kannst (siehe „Ein kurzer Blick“).",
 					"Um es noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ und wähle „Intro noch einmal abspielen“.",
 					"„Zeigen, wie man sich bewegt“ im selben Menü holt die Hinweise zum Ziehen, Zoomen und Klicken zurück."
 				],
 				"simple": [
 					"Es läuft, wenn du zum ersten Mal kommst.",
 					"Willst du es noch mal sehen? Drück auf den Pfeil neben „Hilfe“ und dann auf „Intro noch einmal abspielen“."
+				]
+			}
+		},
+		"quickLook": {
+			"title": {
+				"standard": "Ein kurzer Blick",
+				"simple": "Ein kurzer Rundgang"
+			},
+			"what": {
+				"standard": "Eine Minute mit den besten Funktionen, direkt in der Szene gezeigt: zu einem Planeten fliegen, der echte Maßstab, Reisen durch die Zeit, Welten vergleichen und dem Licht zusehen, dann ein Schritt für Lehrkräfte zum Präsentieren und der Weg zu dieser Seite.",
+				"simple": "Eine Minute durch die besten Sachen, die die App kann."
+			},
+			"why": {
+				"standard": "Die meisten finden das nie von selbst. Eine Minute zeigt, was die App kann, und jeder Schritt zeigt auf den Knopf, mit dem es geht.",
+				"simple": "Du siehst sofort die tollsten Sachen und wo die Knöpfe dafür sind."
+			},
+			"how": {
+				"standard": [
+					"Beim ersten Besuch, nach dem Intro, antworte „Ja, zeig es mir“. Die Frage kommt in diesem Browser nur einmal, nie über einen geteilten Link und nie beim Präsentieren.",
+					"Er geht von selbst weiter; „Zurück“, „Weiter“ und die Pfeiltasten gehen Schritt für Schritt, und „Den Rest überspringen“ oder × beenden ihn jederzeit, zurück zu einer ruhigen Ansicht.",
+					"Um ihn noch einmal zu sehen, öffne den Pfeil neben „Hilfe“ und wähle „Den kurzen Blick noch einmal“."
+				],
+				"simple": [
+					"Drück nach dem Intro auf „Ja, zeig es mir“.",
+					"Schau zu, oder drück „Weiter“.",
+					"Willst du ihn noch mal sehen? Drück auf den Pfeil neben „Hilfe“."
 				]
 			}
 		},

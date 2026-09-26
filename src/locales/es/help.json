@@ -64,12 +64,39 @@
 			"how": {
 				"standard": [
 					"Se reproduce una vez, en la primera visita; «Saltar la intro», arrastrar o Esc la terminan en cualquier momento.",
+					"Después de la primera introducción, la aplicación pregunta una vez si quieres ver rápidamente lo que puedes hacer (mira «Un vistazo rápido»).",
 					"Para verla otra vez, abre la flecha junto a «Ayuda» y elige «Ver la introducción otra vez».",
 					"«Mostrar cómo moverse», en el mismo menú, vuelve a mostrar las pistas para arrastrar, acercar y hacer clic."
 				],
 				"simple": [
 					"Se ve la primera vez que entras.",
 					"Para verla otra vez, pulsa la flecha junto a «Ayuda» y luego «Ver la introducción otra vez»."
+				]
+			}
+		},
+		"quickLook": {
+			"title": {
+				"standard": "Un vistazo rápido",
+				"simple": "Un paseo rápido"
+			},
+			"what": {
+				"standard": "Un minuto con las mejores funciones, mostradas en la escena: volar a un planeta, la escala real, viajar en el tiempo, comparar mundos y ver avanzar la luz, y después un paso para docentes sobre el modo presentación y el camino a esta página.",
+				"simple": "Un minuto con lo mejor que sabe hacer la aplicación."
+			},
+			"why": {
+				"standard": "Casi nadie lo encuentra por su cuenta. Un minuto muestra lo que hace la aplicación, y cada paso señala el botón que lo hace.",
+				"simple": "Ves enseguida lo más chulo y dónde están sus botones."
+			},
+			"how": {
+				"standard": [
+					"En tu primera visita, después de la introducción, responde «Sí, enséñamelo». Solo se pregunta una vez en este navegador, nunca en un enlace compartido ni al presentar.",
+					"Avanza solo; «Atrás», «Siguiente» y las flechas lo recorren paso a paso, y «Saltar el resto» o × lo terminan cuando quieras, de vuelta a una vista tranquila.",
+					"Para verlo otra vez, abre la flecha junto a «Ayuda» y elige «Ver otra vez el vistazo rápido»."
+				],
+				"simple": [
+					"Después de la introducción, pulsa «Sí, enséñamelo».",
+					"Mira, o pulsa «Siguiente».",
+					"Para verlo otra vez, pulsa la flecha junto a «Ayuda»."
 				]
 			}
 		},
