@@ -385,6 +385,7 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		() => (orbit === null ? null : createOrbitBuffers(orbit, frame.jd)),
 		[orbit, frame],
 	)
+	const drawnAxis = useRef({ scaleVersion: -1, units: 0 })
 
 	useFrame(({ camera, size }) => {
 		const line = lineRef.current
@@ -402,18 +403,25 @@ function OrbitLine({ body, index, parentIndex }: OrbitLineProps) {
 		// line is neither updated nor drawn (it catches up when it reappears)
 		let moonFade = 1
 		if (body.kind === "moon" && camera instanceof PerspectiveCamera) {
-			const parent = frame.bodies[parentIndex]
+			// the drawn semi-major axis only changes with the scale (#17: once
+			// per scale change, not per frame for every one of 183 moons)
+			const drawn = drawnAxis.current
+			if (drawn.scaleVersion !== frame.scaleVersion) {
+				const parent = frame.bodies[parentIndex]
+				drawn.units = toUnits(
+					displayDistanceKm(
+						orbit.semiMajorAxisKm,
+						parent.radiusKm,
+						frame.displayRadiiKm[parentIndex],
+						childDistanceCurve(frame.scale, parent.parentId === null),
+					),
+				)
+				drawn.scaleVersion = frame.scaleVersion
+			}
 			frame.renderPosition(parentIndex, parentScratch)
 			moonFade = moonOrbitFade(
 				orbitScreenRadiusPx(
-					toUnits(
-						displayDistanceKm(
-							orbit.semiMajorAxisKm,
-							parent.radiusKm,
-							frame.displayRadiiKm[parentIndex],
-							childDistanceCurve(frame.scale, parent.parentId === null),
-						),
-					),
+					drawn.units,
 					parentScratch.distanceTo(camera.position),
 					pixelsPerUnitAtDistanceOne(camera, size.height),
 				),
