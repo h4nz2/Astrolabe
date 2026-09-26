@@ -22,9 +22,27 @@ const NOW = new Date("2026-09-25T12:00:00Z")
  * Sets the date the panel reads (the clock runs on from there, so the page
  * animates) and replaces the browser's geolocation with
  * a fake that counts its calls and answers as told (`window.__geo`).
+ *
+ * Only `Date` is shifted. Playwright's `page.clock` would also replace
+ * `requestAnimationFrame` with timers, so the WebGL scene draws on a timer
+ * instead of with the display, as often as the machine lets it: under a full
+ * parallel run the page then took 10-25 s per action and timed out.
  */
 async function setup(page: Page, answer: "grant" | "deny" = "grant") {
-	await page.clock.setSystemTime(NOW)
+	await page.addInitScript((nowMs) => {
+		const RealDate = Date
+		const offset = nowMs - RealDate.now()
+		class ShiftedDate extends RealDate {
+			constructor(...args: unknown[]) {
+				if (args.length === 0) super(RealDate.now() + offset)
+				else super(...(args as [string | number | Date]))
+			}
+			static now() {
+				return RealDate.now() + offset
+			}
+		}
+		window.Date = ShiftedDate as DateConstructor
+	}, NOW.getTime())
 	await page.addInitScript((answer) => {
 		const geo = { calls: 0 }
 		Object.assign(window, { __geo: geo })
