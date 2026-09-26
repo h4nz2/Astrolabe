@@ -196,7 +196,8 @@
 				"standard": [
 					"Vuela a un mundo: aparece su ficha con su nombre y una frase.",
 					"La flecha de la ficha abre sus datos, lunas e historias; se queda abierta para el siguiente mundo.",
-					"«Leer más en el diccionario» abre su página; «Comparar con…» lo pone junto a otro mundo."
+					"«Leer más en el diccionario» abre su página; «Comparar con…» lo pone junto a otro mundo.",
+					"La última línea de la ficha abierta dice de dónde viene la imagen del mundo: un mapa de una nave espacial o, donde no hay un mapa completo, una pintura hecha a partir de fotos de naves."
 				],
 				"simple": [
 					"Vuela a un planeta.",
@@ -1218,16 +1219,14 @@
 		}
 	},
 	"creditNames": {
-		"rings": "Modelos de anillos de esta aplicación",
-		"surfaceMaps": "Mapas del Sol y de los planetas, y los anillos de Saturno"
+		"rings": "Modelos de anillos de esta aplicación"
 	},
 	"credits": {
 		"solarSystemApi": "La lista de partida del Sol, los planetas y las lunas: tamaños, masas, órbitas y datos de su descubrimiento.",
 		"jpl": "Órbitas precisas de los planetas, la Luna, las lunas galileanas y Febe (elementos orbitales medios), usadas para corregir la lista.",
 		"iau": "Hacia dónde apunta cada polo y a qué velocidad gira cada mundo, para que el Sol esté en lo más alto sobre Greenwich a mediodía.",
 		"meeus": "Cómo gira lentamente la órbita de la Luna, para que los eclipses caigan en sus fechas reales.",
-		"rings": "Los anillos de Júpiter, Urano y Neptuno, dibujados para esta aplicación a partir de radios y opacidades de anillos publicados.",
-		"surfaceMaps": "Llegaron con la primera versión del proyecto (2022) y nunca se anotó de dónde venían, así que su fuente es desconocida. Los mapas de las lunas, abajo, se citan uno por uno (incidencia #37).",
+		"rings": "Los anillos de Júpiter, Saturno, Urano y Neptuno, dibujados para esta aplicación a partir de radios, opacidades y colores de anillos publicados.",
 		"spaceAudio": "Cuatro grabaciones reales de ondas de radio y de plasma, medidas por Cassini, Voyager 1 e Injun 3 y convertidas en sonido.",
 		"three": "Dibuja la escena 3D en el navegador.",
 		"react": "Construye las páginas y los paneles.",
@@ -1248,7 +1247,6 @@
 		"mitBsd": "licencias MIT y BSD",
 		"gsap": "licencia estándar de GSAP (gratuita)",
 		"ccBy": "CC BY 4.0 (Saturno: CC BY 3.0)",
-		"unknown": "fuente desconocida",
 		"publicDomainPlain": "dominio público",
 		"noKnownRestrictions": "sin restricciones conocidas (compruébalo antes de un uso comercial)"
 	}

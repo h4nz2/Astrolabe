@@ -73,7 +73,9 @@ Set `VITE_BASE=/sub/path/` when the site is served from a sub path.
 
 The code in this project is licensed under the MIT [license](LICENSE).
 
-The moon surface maps come from NASA, USGS and other open sources; each one's source, credit and licence is
-recorded in `data/moon-surfaces.json` (and listed in `src/data/credits.json`).
+The surface maps of the Sun, the planets and the moons come from NASA, USGS and other open sources, or are
+painted for this project where no open map exists; each one's source, credit and licence is recorded in
+`data/planet-textures.json` and `data/moon-surfaces.json` (and listed in `src/data/credits.json` and on the
+app's help page). Saturn's ring profile and its sources are in `data/rings/saturn.json`.
 
 The space recordings in `public/assets/sounds/` are © The University of Iowa, from NASA missions, used under Creative Commons Attribution licences; see [`public/assets/sounds/CREDITS.md`](public/assets/sounds/CREDITS.md).

@@ -93,7 +93,9 @@ export const Appearance = z.object({
  * spacecraft map, `painted` a surface painted from what is known (colour, brightness, the kind
  * of terrain) because no spacecraft has mapped the moon, `haze` Titan's haze as seen in visible
  * light. `filled`: part of a real map was never photographed and is filled in to match.
- * `source` is the id of its entry in src/data/credits.json.
+ * `source` is the id of its entry in src/data/credits.json. The Sun and the planets carry one
+ * too (data/planet-textures.json): `painted` for cloud bands painted after spacecraft photos,
+ * `haze` for Venus, whose clouds hide the ground.
  */
 export const Surface = z.object({
 	kind: z.enum(["map", "painted", "haze"]),
@@ -103,7 +105,7 @@ export const Surface = z.object({
 
 /**
  * One image source with its credit and licence (src/data/credits.json, built from
- * data/moon-surfaces.json). The help page (#43) lists these; `bodies` are the ids that show it.
+ * data/planet-textures.json and data/moon-surfaces.json). The help page (#43) lists these; `bodies` are the ids that show it.
  */
 export const ImageCredit = z.object({
 	id: z.string().min(1),
@@ -186,7 +188,7 @@ export const Body = z
 		rotation: Rotation,
 		textures: BodyTextures,
 		appearance: Appearance.optional(),
-		/** a moon's surface map and its source (#37); absent for the Sun and the planets */
+		/** where the body's surface picture comes from (#37 for moons, data/planet-textures.json) */
 		surface: Surface.optional(),
 		rings: Rings.nullable(),
 		tail: Tail.optional(),

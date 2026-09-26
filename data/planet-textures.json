@@ -1,0 +1,471 @@
+{
+	"$comment": "Every texture of the Sun and the planets, and every other image under public/assets/textures/ that is neither a moon's surface (data/moon-surfaces.json) nor a ring strip (data/rings/). `sources` give the credit and licence (src/data/credits.json is built from them for the help page), `textures` map a public path to how `pnpm gen:surfaces` makes it: a real `map` (read, turned so the prime meridian is at the centre, then kept as published, coloured along `hue`/`darkHue` at the brightness of `albedo` or `level`, or made a mask with `below`), or `painted` from a recipe, with a `basis` saying what the painting rests on. `veiled` marks a world whose ground is hidden in visible light. `pnpm build:data` stops if a Sun or planet texture is missing here. See docs/ARCHITECTURE.md, \"Planet textures\".",
+	"sources": {
+		"sdo-aia304": {
+			"title": "SDO/AIA 304 Å synoptic map, Carrington rotation 2285 (June 2024)",
+			"credit": "NASA/SDO and the AIA science team",
+			"short": "SDO · NASA",
+			"url": "https://sdo.gsfc.nasa.gov/data/synoptic/",
+			"file": "https://sdo.gsfc.nasa.gov/assets/img/synoptic/AIA0304/CR2285.fits",
+			"licence": "Public domain",
+			"licenceUrl": "https://sdo.gsfc.nasa.gov/data/rules.php",
+			"note": "The Sun in extreme ultraviolet light (30.4 nm), a month near the 2024 solar maximum: the bright patches are active regions. Coloured orange, as SDO shows this light; to the eye the Sun is an almost featureless white disc."
+		},
+		"usgs-mercury": {
+			"title": "Mercury MESSENGER MDIS global basemap (BDR)",
+			"credit": "NASA/Johns Hopkins University Applied Physics Laboratory/Carnegie Institution of Washington (MESSENGER MDIS); mosaic distributed by USGS Astrogeology",
+			"short": "MESSENGER · NASA/JHUAPL/CIW",
+			"url": "https://astrogeology.usgs.gov/search/map/mercury_messenger_mdis_basemap_bdr_mosaic_global_166m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Mercury/Messenger/Mercury_MESSENGER_MDIS_Basemap_BDR_Mosaic_Global_256ppd.tif.ovr",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "A grey mosaic, coloured by us in Mercury's faintly brownish grey, about as bright as the Moon's map (Mercury reflects slightly more light than the Moon)."
+		},
+		"usgs-mercury-relief": {
+			"title": "Mercury MESSENGER global DEM, colour shaded relief (2 km)",
+			"credit": "NASA/JHUAPL/CIW (MESSENGER); elevation model and relief by USGS Astrogeology",
+			"short": "MESSENGER · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/mercury_messenger_mdis_dem_global_color_shaded_relief_2km",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Mercury_Messenger_USGS_ClrShade_Global_2km.cub",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "Colours show height (blue low, red and white high), not what the eye sees."
+		},
+		"usgs-venus-relief": {
+			"title": "Venus Magellan global C3-MDIR colorized topographic mosaic (6.6 km)",
+			"credit": "NASA/JPL (Magellan radar); mosaic by USGS Astrogeology",
+			"short": "Magellan · NASA/JPL/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/venus_magellan_global_c3_mdir_colorized_topographic_mosaic_6600m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/mosaic/Venus_Magellan_C3-MDIR_ClrTopo_Global_Mosaic_6600m.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "The ground under the clouds as radar sees it, coloured by height. It is the Terrain view of Venus in the dictionary."
+		},
+		"nasa-blue-marble": {
+			"title": "Blue Marble Next Generation, July 2004, with topography and bathymetry",
+			"credit": "NASA Earth Observatory (Reto Stöckli), MODIS",
+			"short": "Blue Marble · NASA",
+			"url": "https://visibleearth.nasa.gov/images/73751/july-blue-marble-next-generation-w-topography-and-bathymetry",
+			"file": "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73751/world.topo.bathy.200407.3x5400x2700.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+			"note": "Darks lifted (gamma 0.42, a touch more blue) so the deep oceans stay blue, not black, on a projector."
+		},
+		"nasa-black-marble": {
+			"title": "Earth at Night (Black Marble 2016)",
+			"credit": "NASA Earth Observatory (Joshua Stevens), Suomi NPP VIIRS data from Miguel Román, NASA GSFC",
+			"short": "Black Marble · NASA",
+			"url": "https://visibleearth.nasa.gov/images/144898/earth-at-night-black-marble-2016-color-maps",
+			"file": "https://eoimages.gsfc.nasa.gov/images/imagerecords/144000/144898/BlackMarble_2016_3km.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy"
+		},
+		"nasa-clouds": {
+			"title": "Blue Marble clouds",
+			"credit": "NASA Goddard Space Flight Center (Reto Stöckli, Robert Simmon), MODIS",
+			"short": "Blue Marble · NASA",
+			"url": "https://visibleearth.nasa.gov/images/57747/blue-marble-clouds",
+			"file": "https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57747/cloud_combined_2048.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy"
+		},
+		"nasa-topography": {
+			"title": "Topography (GEBCO 2008 land elevation)",
+			"credit": "NASA Earth Observatory (Reto Stöckli), from GEBCO and SRTM elevation data",
+			"short": "Visible Earth · NASA",
+			"url": "https://visibleearth.nasa.gov/images/73934/topography",
+			"file": "https://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73934/gebco_08_rev_elev_21600x10800.png",
+			"licence": "Public domain",
+			"licenceUrl": "https://earthobservatory.nasa.gov/image-use-policy",
+			"note": "Also gives Earth's Oceans view: everything at sea level or below."
+		},
+		"usgs-mars": {
+			"title": "Mars Viking MDIM 2.1 colour mosaic, recoloured by NASA Ames",
+			"credit": "NASA/JPL (Viking Orbiters); MDIM 2.1 mosaic by USGS Astrogeology; colour by NASA Ames Research Center",
+			"short": "Viking · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/mars_viking_colorized_global_mosaic_232m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Mars/MDIM21_AMESColor/MDIM21_AMES_recolor_dd360_jpeg_cog.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "Published colours white-balanced a little warmer (they are too blue for Mars's butterscotch)."
+		},
+		"usgs-mars-relief": {
+			"title": "Mars MGS MOLA global colour shaded relief",
+			"credit": "NASA/JPL/GSFC (Mars Global Surveyor, MOLA); relief by USGS Astrogeology",
+			"short": "MOLA · NASA/USGS",
+			"url": "https://astrogeology.usgs.gov/search/map/mars_mgs_mola_global_color_shaded_relief_463m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Mars/MOLA/pct_colorhillshade_mola128_mola64_merge_90Nto90S_Simp_dd180_cog.tif",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "Colours show height (blue low, red and white high), not what the eye sees."
+		},
+		"pia07782": {
+			"title": "Cassini's best maps of Jupiter: cylindrical map (PIA07782)",
+			"credit": "NASA/JPL/Space Science Institute",
+			"short": "Cassini · NASA/JPL/SSI",
+			"url": "https://science.nasa.gov/photojournal/cassinis-best-maps-of-jupiter-cylindrical-map",
+			"file": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia07/pia07782/PIA07782.jpg",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "Jupiter in December 2000. Its bands and storms drift and change, so today's Jupiter looks a little different."
+		},
+		"usgs-vesta": {
+			"title": "Vesta Dawn FC global mosaic (DLR)",
+			"credit": "NASA/JPL-Caltech/UCLA/MPS/DLR/IDA (Dawn Framing Camera); mosaic by DLR, distributed by USGS Astrogeology",
+			"short": "Dawn · NASA/JPL/DLR",
+			"url": "https://astrogeology.usgs.gov/search/map/vesta_dawn_fc_hamo_global_mosaic_60m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/asteroid_belt/Vesta/Vesta_global.iau.clon180.DLR.tif.ovr",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+			"note": "A grey mosaic, coloured by us."
+		},
+		"usgs-pluto": {
+			"title": "Pluto New Horizons LORRI/MVIC global mosaic (300 m)",
+			"credit": "NASA/Johns Hopkins University Applied Physics Laboratory/Southwest Research Institute (New Horizons); mosaic by USGS Astrogeology and the New Horizons team",
+			"short": "New Horizons · NASA/JHUAPL/SwRI",
+			"url": "https://astrogeology.usgs.gov/search/map/pluto_new_horizons_lorri_mvic_global_mosaic_300m",
+			"file": "https://asc-pds-services.s3.us-west-2.amazonaws.com/wms_basemaps/Pluto/Pluto/Pluto_NewHorizons_Global_Mosaic_300m_Jul2017_8bit.tif.ovr",
+			"licence": "Public domain",
+			"licenceUrl": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+			"note": "A grey mosaic, coloured by us from Sputnik Planitia's pale cream to Cthulhu's dark red-brown. New Horizons saw only the northern half well; the rest is filled in to match. Turned by 180 degrees for the app's north-side pole (see scripts/lib/iau.ts)."
+		},
+		"astrolabe-painted-bands": {
+			"title": "Painted cloud bands",
+			"credit": "Astrolabe contributors (scripts/lib/paint.ts), after Cassini, Voyager 2 and Hubble photographs",
+			"short": "Painted by Astrolabe",
+			"url": "https://github.com/h4nz2/Astrolabe/blob/main/data/planet-textures.json",
+			"licence": "MIT",
+			"licenceUrl": "https://github.com/h4nz2/Astrolabe/blob/main/LICENSE",
+			"note": "Not a photograph: there is no openly licensed global map of these planets, so their bands, colours and storms are painted after spacecraft photographs (each texture's basis is in data/planet-textures.json)."
+		}
+	},
+	"textures": {
+		"/assets/textures/sun/sun.jpg": {
+			"source": "sdo-aia304",
+			"width": 2048,
+			"map": {
+				"format": "fits",
+				"centreLonEast": 180,
+				"seam": true,
+				"maxLat": 70,
+				"power": 0.55,
+				"level": 0.72,
+				"hue": "#ffb445",
+				"darkHue": "#d63c08"
+			}
+		},
+		"/assets/textures/mercury/mercury.jpg": {
+			"source": "usgs-mercury",
+			"width": 2048,
+			"map": {
+				"format": "tiff",
+				"centreLonEast": 0,
+				"hue": "#b3aa9c",
+				"darkHue": "#8a7f71",
+				"level": 0.58
+			}
+		},
+		"/assets/textures/mercury/mercury_topo.jpg": {
+			"source": "usgs-mercury-relief",
+			"width": 2048,
+			"map": {
+				"format": "isis",
+				"centreLonEast": 180,
+				"keep": true
+			}
+		},
+		"/assets/textures/venus/venus.jpg": {
+			"source": "astrolabe-painted-bands",
+			"width": 1024,
+			"veiled": true,
+			"painted": {
+				"bands": {
+					"bands": [
+						[90, "#d9c89c"],
+						[70, "#e1d2a8"],
+						[45, "#e8dbb3"],
+						[20, "#ecdfb8"],
+						[0, "#eee2bb"],
+						[-20, "#ecdfb8"],
+						[-45, "#e7d9b0"],
+						[-70, "#dfcfa4"],
+						[-90, "#d7c597"]
+					],
+					"turbulence": 0.25
+				}
+			},
+			"basis": "Venus in visible light (Mariner 10, MESSENGER and Galileo flyby colour images): a pale yellowish-white cloud deck, faintly darker towards the poles, reflecting about 70 % of sunlight. The cloud patterns seen in ultraviolet photographs are left out, because the eye does not see them."
+		},
+		"/assets/textures/venus/venus_topo.jpg": {
+			"source": "usgs-venus-relief",
+			"width": 2048,
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
+		},
+		"/assets/textures/earth/earth.jpg": {
+			"source": "nasa-blue-marble",
+			"width": 4096,
+			"map": {
+				"centreLonEast": 0,
+				"keep": true,
+				"gamma": 0.42,
+				"balance": [1, 1, 1.05]
+			}
+		},
+		"/assets/textures/earth/earth_night.jpg": {
+			"source": "nasa-black-marble",
+			"width": 4096,
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
+		},
+		"/assets/textures/earth/earth_clouds.jpg": {
+			"source": "nasa-clouds",
+			"width": 2048,
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
+		},
+		"/assets/textures/earth/earth_topo.jpg": {
+			"source": "nasa-topography",
+			"width": 2048,
+			"map": {
+				"centreLonEast": 0,
+				"keep": true
+			}
+		},
+		"/assets/textures/earth/earth_ocean.jpg": {
+			"source": "nasa-topography",
+			"width": 2048,
+			"map": {
+				"centreLonEast": 0,
+				"below": 0.002
+			}
+		},
+		"/assets/textures/mars/mars.jpg": {
+			"source": "usgs-mars",
+			"width": 2048,
+			"map": {
+				"format": "tiff",
+				"centreLonEast": 180,
+				"keep": true,
+				"balance": [1.18, 1.0, 0.72]
+			}
+		},
+		"/assets/textures/mars/mars_topo.jpg": {
+			"source": "usgs-mars-relief",
+			"width": 2048,
+			"map": {
+				"format": "tiff",
+				"centreLonEast": 180,
+				"keep": true
+			}
+		},
+		"/assets/textures/jupiter/jupiter.jpg": {
+			"source": "pia07782",
+			"width": 2048,
+			"map": {
+				"centreLonEast": 180,
+				"keep": true
+			}
+		},
+		"/assets/textures/saturn/saturn.jpg": {
+			"source": "astrolabe-painted-bands",
+			"width": 2048,
+			"painted": {
+				"bands": {
+					"bands": [
+						[90, "#9f9c8b"],
+						[80, "#a9a28a"],
+						[77, "#948f7d"],
+						[74, "#aea489"],
+						[66, "#b9ab8b"],
+						[58, "#c4b28e"],
+						[50, "#ccb993"],
+						[44, "#c0a782"],
+						[38, "#d5c19b"],
+						[31, "#c9aa7f"],
+						[26, "#d8c29a"],
+						[20, "#e0cba2"],
+						[12, "#e8d6ae"],
+						[0, "#ecdcb5"],
+						[-10, "#e8d5ab"],
+						[-16, "#dfc79c"],
+						[-21, "#cead80"],
+						[-27, "#dac39b"],
+						[-34, "#ccb08a"],
+						[-42, "#d4bf99"],
+						[-52, "#c8b690"],
+						[-62, "#bfb091"],
+						[-74, "#b3a992"],
+						[-90, "#a8a291"]
+					],
+					"turbulence": 0.35
+				}
+			},
+			"basis": "Cassini natural-colour images (2004–2017): a butterscotch equatorial zone, tan belts and paler zones at the latitudes Cassini measured, greyer polar regions and the dark edge of the north polar hexagon at about 77° N."
+		},
+		"/assets/textures/uranus/uranus.jpg": {
+			"source": "astrolabe-painted-bands",
+			"width": 1024,
+			"painted": {
+				"bands": {
+					"bands": [
+						[90, "#cde8e7"],
+						[60, "#c3e3e4"],
+						[40, "#b9dde0"],
+						[20, "#b2d9dd"],
+						[0, "#afd7dc"],
+						[-20, "#b2d9dd"],
+						[-40, "#b7dcdf"],
+						[-60, "#bfe1e3"],
+						[-90, "#c8e6e6"]
+					],
+					"turbulence": 0.08
+				}
+			},
+			"basis": "Voyager 2 (1986) and Hubble images in true colour (Irwin et al. 2024): a pale greenish-cyan ball, almost featureless, a little brighter towards the poles."
+		},
+		"/assets/textures/neptune/neptune.jpg": {
+			"source": "astrolabe-painted-bands",
+			"width": 2048,
+			"painted": {
+				"bands": {
+					"bands": [
+						[90, "#9dbadb"],
+						[60, "#8fb0d8"],
+						[45, "#97b7dc"],
+						[32, "#86a8d2"],
+						[15, "#8cadd5"],
+						[0, "#92b2d8"],
+						[-14, "#89aad3"],
+						[-22, "#7897c4"],
+						[-30, "#84a5d0"],
+						[-45, "#90b0d8"],
+						[-55, "#7e9ecb"],
+						[-68, "#94b3d9"],
+						[-90, "#a0bcdc"]
+					],
+					"turbulence": 0.3,
+					"spots": [
+						{
+							"lat": -22,
+							"lon": 0,
+							"width": 17,
+							"height": 6.5,
+							"colour": "#566f99",
+							"opacity": 0.85
+						},
+						{
+							"lat": -25.5,
+							"lon": 4,
+							"width": 8,
+							"height": 1.3,
+							"colour": "#eff4fa",
+							"opacity": 0.85
+						},
+						{
+							"lat": -42,
+							"lon": 110,
+							"width": 6,
+							"height": 2.2,
+							"colour": "#e1eaf3",
+							"opacity": 0.75
+						},
+						{
+							"lat": -55,
+							"lon": -75,
+							"width": 6,
+							"height": 3,
+							"colour": "#6f8cb6",
+							"opacity": 0.75
+						},
+						{
+							"lat": -55,
+							"lon": -75,
+							"width": 2,
+							"height": 1,
+							"colour": "#e8eef6",
+							"opacity": 0.8
+						},
+						{
+							"lat": 27,
+							"lon": -120,
+							"width": 26,
+							"height": 1.2,
+							"colour": "#e6eef7",
+							"opacity": 0.6
+						},
+						{
+							"lat": 31,
+							"lon": 60,
+							"width": 20,
+							"height": 1,
+							"colour": "#e6eef7",
+							"opacity": 0.5
+						}
+					]
+				}
+			},
+			"basis": "Voyager 2 images of 1989, in true colour (Irwin et al. 2024: a paler blue than the famous enhanced pictures): a dark southern belt with the Great Dark Spot and its bright companion clouds at 22° S, the fast bright \"Scooter\" at 42° S, the small dark spot D2 with its bright core at 55° S, and high white cloud streaks in the north. The Great Dark Spot has since faded; Hubble has seen new dark spots come and go."
+		},
+		"/assets/textures/asteroid.jpg": {
+			"source": "astrolabe-painted",
+			"width": 512,
+			"for": "#23: stand-in surface for small bodies without a map of their own",
+			"painted": {
+				"recipe": {
+					"pattern": "cratered",
+					"albedo": 0.15,
+					"hue": "#9a948c",
+					"darkHue": "#6f675e"
+				}
+			},
+			"basis": "A generic rocky asteroid: grey, cratered, reflecting about 15 % of sunlight (typical of stony S-type and many C-type asteroids lies between 5 and 25 %)."
+		},
+		"/assets/textures/asteroid_dark.jpg": {
+			"source": "astrolabe-painted",
+			"width": 512,
+			"for": "#23: stand-in surface for comet nuclei",
+			"painted": {
+				"recipe": {
+					"pattern": "cratered",
+					"albedo": 0.04,
+					"hue": "#77716a",
+					"darkHue": "#4a443e"
+				}
+			},
+			"basis": "A comet nucleus: among the darkest surfaces in the solar system, reflecting about 4 % of sunlight (Halley, Borrelly, 67P)."
+		},
+		"/assets/textures/vesta_1.jpg": {
+			"source": "usgs-vesta",
+			"width": 1024,
+			"for": "#23: Vesta",
+			"map": {
+				"format": "tiff",
+				"centreLonEast": 180,
+				"albedo": 0.42,
+				"hue": "#bab3a6",
+				"darkHue": "#8c8374"
+			}
+		},
+		"/assets/textures/pluto/pluto.jpg": {
+			"source": "usgs-pluto",
+			"width": 2048,
+			"for": "#23: Pluto",
+			"map": {
+				"format": "tiff",
+				"turn": true,
+				"centreLonEast": 180,
+				"fill": true,
+				"albedo": 0.52,
+				"hue": "#eadbc4",
+				"darkHue": "#6e3f2b"
+			}
+		}
+	}
+}

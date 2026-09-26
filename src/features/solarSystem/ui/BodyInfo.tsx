@@ -34,6 +34,7 @@ import {
 import { headlineFacts } from "./bodyFacts"
 import { dictionaryEntry } from "./dictionaryEntry"
 import MoonSystem from "./MoonSystem"
+import WorldSurfaceNote from "./WorldSurfaceNote"
 
 import classes from "./BodyInfo.module.css"
 
@@ -168,6 +169,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							{t("solarSystem.card.dictionary")} →
 						</Anchor>
 					)}
+					<WorldSurfaceNote body={body} />
 				</div>
 			)}
 		</section>
