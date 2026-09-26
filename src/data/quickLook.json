@@ -33,6 +33,7 @@
 		{
 			"id": "compare",
 			"view": "earth",
+			"time": "now",
 			"speed": "realTime",
 			"camera": { "light": "full" },
 			"spot": "compare",
