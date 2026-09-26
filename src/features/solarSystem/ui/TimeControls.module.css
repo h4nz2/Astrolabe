@@ -22,6 +22,51 @@
 	white-space: nowrap;
 }
 
+@media (max-width: 599px) {
+	.date {
+		font-size: var(--mantine-font-size-xs);
+	}
+
+	.row {
+		gap: 0.25rem;
+	}
+
+	/* the speed button keeps its number and loses its icon, so the bar stays one row */
+	.dim :global(.mantine-Button-section[data-position="left"]) {
+		display: none;
+	}
+}
+
+/* the speed presets in the time popover (#42), named like the spin below them */
+.speedRow {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	max-width: 100%;
+}
+
+.speedLabel {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	font-size: var(--mantine-font-size-xs);
+	color: var(--mantine-color-gray-4);
+	white-space: nowrap;
+}
+
+/* the speed button (#42): what a real second is worth, never squeezed */
+.speed {
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+/* the part of the time bar that steps back while the camera moves (#42) */
+.dim {
+	display: inline-flex;
+}
+
 /* the reverse button shows the play triangle pointing left */
 .flipped {
 	transform: scaleX(-1);

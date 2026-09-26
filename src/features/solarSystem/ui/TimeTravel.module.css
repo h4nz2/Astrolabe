@@ -25,6 +25,17 @@
 	color: var(--mantine-color-orange-5);
 }
 
+/* phones (#42): the time bar keeps to one row */
+@media (max-width: 599px) {
+	.trigger {
+		padding: 0.25rem 0.375rem;
+	}
+
+	.trigger > .icon {
+		display: none;
+	}
+}
+
 .dropdown {
 	/* never wider than a phone screen */
 	max-width: calc(100vw - 1rem);

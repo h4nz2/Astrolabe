@@ -9,3 +9,7 @@ This is an open source project, which is not bound by any external requirements,
 The in-app help page (issue #43) lists every user-facing feature with what it is, why it is worth using, how to use it and a "try it" link. Adding, changing or removing a user-facing feature includes updating its help entry, in every locale and reading level, in the same change. A feature is not done until its help entry is.
 
 How: add the entry (its group and a "try it" link) to `src/data/help.json` and its words to `src/locales/<locale>/help.json` in every locale, with a simple and a standard version; no code is needed. `pnpm test` (`src/features/help/help.test.ts`) and `e2e/help.spec.ts` check that every entry is complete and every link opens. See `docs/ARCHITECTURE.md`, "Help page".
+
+## Keep the interface quiet
+
+The solar system's screen belongs to space (issue #42). Only what you are looking at, the way out and the time stay on screen; everything else lives behind the existing entry points: Tours, Layers, Scale and Tools at the bottom right, the time bar's speed button, the Present menu and a body's card. A new feature puts its controls behind one of those, never as a new permanent panel over the scene. A tool with a panel registers in the Tools menu and opens in the dock, one panel at a time. See `docs/ARCHITECTURE.md`, "HUD layout".

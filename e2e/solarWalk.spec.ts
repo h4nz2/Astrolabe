@@ -2,6 +2,7 @@ import { mkdirSync } from "node:fs"
 import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
+import { openScale } from "./support/hud"
 
 // The basketball solar system (#25): choose what the Sun is, walk the planets,
 // see the shock at the end, take it out of the app on paper, and go back to
@@ -206,6 +207,8 @@ test("German, simple reading level", async ({ page }) => {
 test("true scale in 3D and the walk lead to each other", async ({ page }) => {
 	test.slow()
 	await page.goto("/solar_system?scale=trueScale")
+	// the walk's link is in the Scale panel (#42)
+	await openScale(page)
 	const link = page.getByRole("link", { name: /Walk it/ })
 	await expect(link).toBeVisible()
 	await link.click()

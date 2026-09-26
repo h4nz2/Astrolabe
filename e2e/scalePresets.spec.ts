@@ -3,6 +3,8 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { openScale } from "./support/hud"
+
 // True scale and the scale presets (#21): one click to true scale, an animated
 // switch, the honesty statement, the two separate lies, and the URL.
 
@@ -45,6 +47,7 @@ test("true scale is one click away, animates there and states that nothing is ex
 	const errors = collectErrors(page)
 	await page.goto("/solar_system?t=2461308")
 	await page.waitForLoadState("networkidle")
+	await openScale(page)
 	const canvas = page.locator("canvas").first()
 	const panel = scalePanel(page)
 	await expect(canvas).toHaveAttribute("data-scale-preset", "everythingVisible")
@@ -87,6 +90,7 @@ test("true scale is one click away, animates there and states that nothing is ex
 	// a reload (or a shared link) opens straight in true scale, without animating
 	await page.reload()
 	await page.waitForLoadState("networkidle")
+	await openScale(page)
 	await expect(canvas).toHaveAttribute("data-scale-preset", "trueScale")
 	await expect(
 		panel.getByRole("radio", { name: "True scale", exact: true }),
@@ -111,6 +115,7 @@ test("sizes and distances are separate lies, each switchable on its own", async 
 	const errors = collectErrors(page)
 	await page.goto("/solar_system?t=2461308&focus=jupiter")
 	await page.waitForLoadState("networkidle")
+	await openScale(page)
 	const canvas = page.locator("canvas").first()
 	const panel = scalePanel(page)
 	const preset = (name: string) =>
@@ -151,6 +156,7 @@ test("the statement reads at every level, in German too", async ({ page }) => {
 		"/solar_system?t=2461308&lang=de&reading=simple&scale=textbook",
 	)
 	await page.waitForLoadState("networkidle")
+	await openScale(page)
 	const panel = page.getByRole("region", { name: "Maßstab", exact: true })
 	await expect(panel).toContainText(
 		"Die Erde ist hier so groß wie in Wirklichkeit.",

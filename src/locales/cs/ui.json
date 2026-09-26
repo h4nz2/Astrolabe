@@ -1334,6 +1334,26 @@
 			"resume": "Zpět k úkazu",
 			"share": "Zkopírovat odkaz na tento úkaz",
 			"copied": "Odkaz zkopírován"
+		},
+		"hud": {
+			"tools": "Nástroje",
+			"toolsHint": "Rychlost světla, dnešní noční obloha, skutečné sondy, tvoje narozeniny, hledačka, porovnání světů a fotka: všechno se otevře tady.",
+			"toolsHint@simple": "Další věci na vyzkoušení: světlo, dnešní obloha, sondy, tvoje narozeniny, hledání pokladu, porovnání světů a fotka.",
+			"entries": "Prohlídky, vrstvy, měřítko a nástroje",
+			"close": "Zavřít {panel}",
+			"compare": "Vedle sebe",
+			"compareHint": "Svět, na který se díváš, vedle jiného, ve skutečných velikostech",
+			"compareHint@simple": "Postav dva světy vedle sebe, stejně zmenšené, a uvidíš, který je větší",
+			"customScale": "Vlastní",
+			"scaleButton": "Měřítko: {preset}",
+			"scaleHint": "Jak velké a jak daleko od sebe jsou světy nakreslené a jak daleko je to od pravdy. Skutečné měřítko je na jedno kliknutí.",
+			"scaleHint@simple": "Ukaž planety ve skutečné velikosti, nebo dost velké, aby byly vidět. Panel ti řekne, o kolik větší jsou nakreslené.",
+			"hideHint": "Na obrazovce zůstane jen sluneční soustava: na dívání, na fotku nebo na projektor. Klávesa H nebo „Zobrazit ovládání“ je vrátí.",
+			"hideHint@simple": "Schovej všechna tlačítka, ať vidíš jen vesmír. Klávesa H nebo „Zobrazit ovládání“ je vrátí.",
+			"time": "Čas",
+			"timeButton": "Čas a rychlost: {speed}",
+			"timeHint": "Jak rychle běží čas, návrat do teď a jak rychle se planety otáčejí. + a − mění rychlost z klávesnice.",
+			"timeHint@simple": "Zrychli nebo zpomal čas, nebo skoč zpátky do teď."
 		}
 	},
 	"solarWalk": {

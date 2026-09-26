@@ -5,6 +5,7 @@
  * itself (running time backwards brings it back).
  */
 import { expect, test, type Page } from "@playwright/test"
+import { openTool } from "./support/hud"
 
 // every test clicks through the panel while swiftshader renders the scene at a few fps
 test.describe.configure({ timeout: 60_000 })
@@ -21,7 +22,7 @@ const panelStop = (page: Page) => page.locator("[data-light-stop=panel]")
 
 /** Opens the panel, sends a flash from the Sun and closes the panel again. */
 async function sendFlash(page: Page): Promise<void> {
-	await page.getByRole("button", { name: "Speed of light" }).click()
+	await openTool(page, "light")
 	const panel = page.locator("[data-light-panel]")
 	await panel.getByRole("button", { name: "Send a flash" }).click()
 	await expect(frontLabel(page)).toHaveCSS("visibility", "visible")
@@ -44,10 +45,9 @@ test("the closed light button shows the running flash and stops it in one click"
 	await expect(hudStop(page)).toHaveAccessibleName("Stop the flash")
 	await hudStop(page).click()
 	await expectFlashGone(page)
-	// the light button itself stays, ready for the next flash
-	await expect(
-		page.getByRole("button", { name: "Speed of light", exact: true }),
-	).toBeVisible()
+	// the clock goes with the flash (#42); the next flash starts from Tools
+	await expect(page.locator("[data-light-slot=chip]")).toHaveCount(0)
+	await expect(page.getByTestId("tools-menu")).toBeVisible()
 })
 
 test("the flash in the scene carries its own stop button", async ({ page }) => {
@@ -72,7 +72,7 @@ test("in the panel, a stop button on every tab; X stops it from the keyboard", a
 	page,
 }) => {
 	await open(page)
-	await page.getByRole("button", { name: "Speed of light" }).click()
+	await openTool(page, "light")
 	const panel = page.locator("[data-light-panel]")
 	await expect(panelStop(page)).toHaveCount(0)
 	await panel.getByRole("button", { name: "Send a flash" }).click()
@@ -117,7 +117,7 @@ test("a flash beyond the planets lingers, fades out, and comes back with time re
 	await setHoursAfter(8)
 	await expect(frontLabel(page)).toHaveCSS("visibility", "hidden")
 	await expect(hudStop(page)).toHaveCount(0)
-	await page.getByRole("button", { name: "Speed of light" }).click()
+	await openTool(page, "light")
 	await expect(
 		page.locator("[data-light-panel] [data-light-status=faded]"),
 	).toBeVisible()

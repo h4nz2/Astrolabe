@@ -1334,6 +1334,26 @@
 			"resume": "Retour au phénomène",
 			"share": "Copier un lien vers ce phénomène",
 			"copied": "Lien copié"
+		},
+		"hud": {
+			"tools": "Outils",
+			"toolsHint": "La vitesse de la lumière, le ciel de ce soir, de vraies sondes, ton anniversaire, la chasse au trésor, comparer des mondes et prendre une photo : tout s’ouvre ici.",
+			"toolsHint@simple": "D’autres choses à essayer : la lumière, le ciel de ce soir, les sondes, ton anniversaire, une chasse au trésor, comparer des mondes et prendre une photo.",
+			"entries": "Visites, calques, échelle et outils",
+			"close": "Fermer : {panel}",
+			"compare": "Côte à côte",
+			"compareHint": "Le monde que tu regardes à côté d’un autre, à leurs vraies tailles",
+			"compareHint@simple": "Mets deux mondes l’un à côté de l’autre, rétrécis pareil, pour voir lequel est le plus grand",
+			"customScale": "Personnalisée",
+			"scaleButton": "Échelle : {preset}",
+			"scaleHint": "La taille des mondes et leurs distances telles qu’elles sont dessinées, et l’écart avec la réalité. L’échelle réelle est à un clic.",
+			"scaleHint@simple": "Montre les planètes à leur vraie taille, ou assez grandes pour les voir. Le panneau te dit combien elles sont dessinées plus grandes.",
+			"hideHint": "Seul le système solaire reste à l’écran : pour regarder, pour une photo ou pour un projecteur. La touche H ou « Afficher les commandes » les fait revenir.",
+			"hideHint@simple": "Cache tous les boutons pour ne voir que l’espace. La touche H ou « Afficher les commandes » les fait revenir.",
+			"time": "Temps",
+			"timeButton": "Temps et vitesse : {speed}",
+			"timeHint": "La vitesse du temps, le retour à maintenant et la vitesse de rotation des planètes. + et − changent la vitesse au clavier.",
+			"timeHint@simple": "Fais passer le temps plus vite ou plus lentement, ou reviens à maintenant."
 		}
 	},
 	"solarWalk": {

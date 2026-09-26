@@ -1,10 +1,7 @@
 import { Suspense, lazy, useEffect, useLayoutEffect, useRef } from "react"
-import { Button, Center, Loader } from "@mantine/core"
+import { Center, Loader } from "@mantine/core"
 import { useNavigate, useSearch } from "@tanstack/react-router"
-import { IconMapSearch } from "@tabler/icons-react"
 
-import { useI18n } from "@/i18n"
-import { Hint } from "@/primitives/hint"
 import { useHuntStore } from "@/store/hunt"
 
 import { resolveHunt } from "./hunts"
@@ -14,28 +11,6 @@ import classes from "./Hunt.module.css"
 
 // the panel and the clues' words load when the hunt is first opened
 const HuntPanel = lazy(() => import("./HuntPanel"))
-
-/** The HUD button that opens the scavenger hunt (in the time controls, beside the birthday). */
-export const HuntButton = () => {
-	const { t } = useI18n()
-	const open = useHuntStore((state) => state.open)
-	const setOpen = useHuntStore((state) => state.setOpen)
-	return (
-		<Hint text={t("solarSystem.hunt.openHint")}>
-			<Button
-				variant={open ? "filled" : "light"}
-				color="orange"
-				size="compact-sm"
-				leftSection={<IconMapSearch size={16} />}
-				aria-expanded={open}
-				aria-controls={open ? "hunt-panel" : undefined}
-				onClick={() => setOpen(!open)}
-			>
-				{t("solarSystem.hunt.open")}
-			</Button>
-		</Hint>
-	)
-}
 
 /**
  * The hunt panel's place on the page, and its link: `?hunt=true` opens the

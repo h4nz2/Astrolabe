@@ -4,12 +4,11 @@
  * (comparative first: "11 Earths wide", with the exact number beside it), a
  * link into its dictionary entry, and a way back to the overview. With
  * nothing to show (the overview, a free view) it tells a first-time visitor
- * that the planets can be clicked. On phones the facts fold away behind a
- * toggle so the card never buries the scene.
+ * that the planets can be clicked. The card starts small, name and one
+ * sentence (#42), and its facts unfold on demand, so it never buries the scene.
  */
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import { ActionIcon, Anchor, Button, CloseButton } from "@mantine/core"
-import { useMediaQuery } from "@mantine/hooks"
 import {
 	IconChevronDown,
 	IconChevronUp,
@@ -23,6 +22,7 @@ import { compareSearchFor } from "@/features/compare/links"
 import { bodyById } from "@/data"
 import { useI18n } from "@/i18n"
 import { useBodyText } from "@/i18n/bodies"
+import { useHudStore } from "@/store/hud"
 import { useSimStore, type SimState } from "@/store/sim"
 
 import BodyRecording from "../sound/BodyRecording"
@@ -42,9 +42,6 @@ export const cardBodyId = (
 	state: Pick<SimState, "selectedId" | "view">,
 ): string | null =>
 	state.selectedId ?? (state.view.kind === "body" ? state.view.id : null)
-
-/** Matches the phone layout of SolarSystem.module.css. */
-const PHONE_QUERY = "(max-width: 599px)"
 
 /**
  * "Compare with…" (#24): the body beside its first partner at true relative
@@ -92,9 +89,9 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 		[body, i18n],
 	)
 	const reset = useSimStore((state) => state.reset)
-	const phone = useMediaQuery(PHONE_QUERY) ?? false
-	const [expanded, setExpanded] = useState<boolean | null>(null)
-	const open = expanded ?? !phone
+	// starts small (#42): name and one sentence; the viewer's choice holds from body to body
+	const open = useHudStore((state) => state.cardExpanded)
+	const setExpanded = useHudStore((state) => state.setCardExpanded)
 	if (body === undefined) return null
 	const entry = dictionaryEntry(body.id)
 	const story = text.comparisons[0]
@@ -124,9 +121,10 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 					aria-label={toggle}
 					aria-expanded={open}
 					title={toggle}
+					data-testid="card-toggle"
 					onClick={() => setExpanded(!open)}
 				>
-					{open ? <IconChevronDown size={18} /> : <IconChevronUp size={18} />}
+					{open ? <IconChevronUp size={18} /> : <IconChevronDown size={18} />}
 				</ActionIcon>
 				<CloseButton
 					size="lg"
@@ -137,7 +135,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 				/>
 			</header>
 			{open && (
-				<>
+				<div className={classes.details} data-card-details>
 					{story !== undefined && <p className={classes.story}>{story}</p>}
 					<BodyRecording bodyId={body.id} />
 					<MoonSystem body={body} />
@@ -170,7 +168,7 @@ const BodyCard = ({ bodyId }: { bodyId: string }) => {
 							{t("solarSystem.card.dictionary")} →
 						</Anchor>
 					)}
-				</>
+				</div>
 			)}
 		</section>
 	)

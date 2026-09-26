@@ -9,6 +9,7 @@ import path from "node:path"
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest, nextFrames } from "./support/scene"
+import { openLayers } from "./support/hud"
 
 const screenshotDir = path.join("test-results", "rings")
 
@@ -142,6 +143,7 @@ test("rings stay drawn in Always lit and survive an edge-on view", async ({
 		await page.evaluate(() => window.__astrolabe?.store.getState().view),
 	).toEqual({ kind: "body", id: "saturn" })
 
+	await openLayers(page)
 	const alwaysLit = page.getByRole("switch", { name: "Always lit" })
 	await alwaysLit.click({ force: true })
 	await expect(alwaysLit).toBeChecked()

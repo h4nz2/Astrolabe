@@ -10,6 +10,7 @@ import path from "node:path"
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
+import { expandCard, openLayers } from "./support/hud"
 
 const screenshotDir = path.join("test-results", "smallBodies")
 
@@ -78,6 +79,7 @@ test("the small bodies stay out of the overview until their layer is on", async 
 	).toHaveCount(0)
 	await expect(page.getByTestId("small-bodies-legend")).toHaveCount(0)
 
+	await openLayers(page)
 	const layer = page.getByRole("switch", { name: "Small bodies" })
 	await expect(layer).not.toBeChecked()
 	await layer.click({ force: true })
@@ -111,6 +113,8 @@ test("Pluto is findable and focusable by name, with Charon beside it", async ({
 	expect(s.showSmallBodies).toBe(false)
 	const card = page.getByTestId("body-card")
 	await expect(card).toHaveAttribute("data-card-body", "pluto")
+	// the card starts small (#42): the belt note and the moons are in its unfolded part
+	await expandCard(page)
 	await expect(card.getByRole("heading", { name: "Pluto" })).toBeVisible()
 	// Pluto lives in the Kuiper belt: the card says what that belt is
 	await expect(card.getByTestId("belt-note")).toContainText("Kuiper belt")
@@ -129,6 +133,7 @@ test("a comet's tail grows near the Sun, points away from it, and is gone far ou
 		`focus=halley&t=${HALLEY_PERIHELION + 30}&warp=1&cam=0_70_150&labels=false&orbits=false`,
 	)
 	const card = page.getByTestId("body-card")
+	await expandCard(page)
 	await expect(card.getByTestId("comet-tail")).toContainText(
 		"so now the tail goes first",
 	)
@@ -139,6 +144,7 @@ test("a comet's tail grows near the Sun, points away from it, and is gone far ou
 		page,
 		`focus=halley&t=2461308.5&cam=0_70_150&labels=false&orbits=false`,
 	)
+	await expandCard(page)
 	await expect(card.getByTestId("comet-tail")).toContainText(
 		"No tail right now",
 	)
@@ -150,6 +156,7 @@ test("a comet's tail grows near the Sun, points away from it, and is gone far ou
 test("one click watches a comet pass the Sun", async ({ page }) => {
 	test.slow()
 	await ready(page, "focus=halley&t=2461308.5")
+	await expandCard(page)
 	await page
 		.getByTestId("body-card")
 		.getByRole("button", { name: "Watch it pass the Sun" })
@@ -168,6 +175,7 @@ test("one click watches a comet pass the Sun", async ({ page }) => {
 
 test("the small-body texts come in German too", async ({ page }) => {
 	await ready(page, "smallBodies=true&lang=de&reading=simple")
+	await openLayers(page)
 	await expect(page.getByRole("switch", { name: "Kleinkörper" })).toBeChecked()
 	await expect(page.getByTestId("small-bodies-legend")).toContainText(
 		"Jeder Punkt steht für etwa 380 echte Felsbrocken",

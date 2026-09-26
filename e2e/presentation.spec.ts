@@ -7,6 +7,7 @@
 import { expect, test, type Page } from "@playwright/test"
 
 import { cameraAtRest } from "./support/scene"
+import { expandCard } from "./support/hud"
 
 // software WebGL is slow and the lesson waits for the camera several times
 test.describe.configure({ timeout: 180_000 })
@@ -264,7 +265,13 @@ const controlsInView = async (page: Page) => {
 		page.getByRole("button", { name: "Share", exact: true }),
 		page.getByRole("button", { name: "Play", exact: true }),
 		page.getByRole("button", { name: "Travel to a date" }),
-		page.getByRole("radio", { name: "True scale", exact: true }),
+		page.getByTestId("time-menu"),
+		page.getByTestId("hide-controls"),
+		// the entry points (#42)
+		page.getByTestId("tour-menu"),
+		page.locator("[data-entry=layers]"),
+		page.locator("[data-entry=scale]"),
+		page.getByTestId("tools-menu"),
 	]) {
 		const box = await locator.boundingBox()
 		expect(box, String(locator)).not.toBeNull()
@@ -328,6 +335,8 @@ test("short screens: a tall body card never pushes the time controls off screen"
 		await page.setViewportSize({ width: 800, height: 600 })
 		await open(page, search)
 		await expect(page.getByRole("heading", { name: "Saturn" })).toBeVisible()
+		// the card starts small (#42); unfolded, it is tall
+		await expandCard(page)
 		for (const locator of [
 			page.getByRole("button", { name: "Abspielen", exact: true }),
 			page.getByRole("heading", { name: "Saturn" }),
@@ -338,7 +347,7 @@ test("short screens: a tall body card never pushes the time controls off screen"
 			expect(box!.y + box!.height).toBeLessThanOrEqual(600.5)
 		}
 	}
-	// below 1000 px the layer switches sit behind one button
+	// the layer switches sit behind one button (#42: on every screen)
 	await expect(
 		page.getByRole("switch", { name: "Beschriftungen" }),
 	).toHaveCount(0)

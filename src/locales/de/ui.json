@@ -1334,6 +1334,26 @@
 			"resume": "Zurück zum Ereignis",
 			"share": "Link zu diesem Ereignis kopieren",
 			"copied": "Link kopiert"
+		},
+		"hud": {
+			"tools": "Werkzeuge",
+			"toolsHint": "Lichtgeschwindigkeit, der Himmel heute Nacht, echte Raumsonden, dein Geburtstag, die Schnitzeljagd, Welten vergleichen und ein Bild machen: Alles öffnet sich hier.",
+			"toolsHint@simple": "Noch mehr zum Ausprobieren: Licht, der Himmel heute Nacht, Raumsonden, dein Geburtstag, eine Schatzsuche, Welten vergleichen und ein Foto machen.",
+			"entries": "Touren, Ebenen, Maßstab und Werkzeuge",
+			"close": "{panel} schließen",
+			"compare": "Nebeneinander",
+			"compareHint": "Die Welt, die du gerade ansiehst, neben einer anderen, in ihren wahren Größen",
+			"compareHint@simple": "Stell zwei Welten nebeneinander, gleich stark verkleinert, und sieh, welche größer ist",
+			"customScale": "Eigener",
+			"scaleButton": "Maßstab: {preset}",
+			"scaleHint": "Wie groß und wie weit auseinander die Welten gezeichnet sind, und wie weit das von der Wahrheit entfernt ist. Der wahre Maßstab ist einen Klick entfernt.",
+			"scaleHint@simple": "Zeig die Planeten in echter Größe oder groß genug zum Sehen. Das Feld sagt dir, wie viel größer sie gezeichnet sind.",
+			"hideHint": "Nur das Sonnensystem bleibt auf dem Bildschirm: zum Schauen, für ein Bild oder für den Beamer. H oder „Bedienelemente zeigen“ holt sie zurück.",
+			"hideHint@simple": "Versteck alle Knöpfe, damit du nur den Weltraum siehst. H oder „Bedienelemente zeigen“ holt sie zurück.",
+			"time": "Zeit",
+			"timeButton": "Zeit und Geschwindigkeit: {speed}",
+			"timeHint": "Wie schnell die Zeit läuft, zurück zu jetzt, und wie schnell sich die Planeten drehen. + und − ändern die Geschwindigkeit über die Tastatur.",
+			"timeHint@simple": "Lass die Zeit schneller oder langsamer laufen, oder spring zurück zu jetzt."
 		}
 	},
 	"solarWalk": {

@@ -3,6 +3,8 @@ import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
 
+import { openLayers } from "./support/hud"
+
 // Every route renders a three.js <Canvas>; the per-route check asserts a piece of real UI
 // so a crashed feature (or the router's error component) cannot pass as "rendered".
 const routes: Record<string, (page: Page) => Promise<void>> = {
@@ -24,6 +26,9 @@ const routes: Record<string, (page: Page) => Promise<void>> = {
 		await expect(focus).toBeVisible()
 		await expect(focus).toHaveValue("Sun")
 		await expect(page.getByRole("button", { name: "Pause" })).toBeVisible()
+		// the quiet HUD (#42): the layer switches wait behind Layers
+		await expect(page.getByRole("switch")).toHaveCount(0)
+		await openLayers(page)
 		await expect(page.getByRole("switch")).toHaveCount(8)
 		// the clock is formatted for the locale; <time dateTime> carries the instant
 		const clock = page.locator("time")
@@ -86,7 +91,8 @@ test("a solar system deep link seeds the simulation and the HUD writes back to t
 	await page.goto("/solar_system?focus=io&warp=60")
 	const focus = page.getByRole("combobox", { name: "Focus body" })
 	await expect(focus).toHaveValue("Io")
-	await expect(page.getByRole("radio", { name: "1 min/s" })).toBeChecked()
+	// the time bar names the speed (#42)
+	await expect(page.getByTestId("time-menu")).toHaveAccessibleName(/1 min\/s/)
 
 	// the arrows cycle the focus among siblings (Io -> Europa) and the URL follows
 	await page.keyboard.press("ArrowRight")
@@ -106,6 +112,7 @@ test("the layer switches travel with a shared link", async ({ page }) => {
 	await page.goto(
 		"/solar_system?focus=earth&orbits=false&labels=false&moons=false&markers=false",
 	)
+	await openLayers(page)
 	for (const name of ["Orbits", "Labels", "Moons", "Markers"]) {
 		await expect(
 			page.getByRole("switch", { name, exact: true }),
@@ -145,6 +152,7 @@ test("hiding the moons with the orbits on keeps the scene alive and the focused 
 	await page.goto("/solar_system?focus=io")
 	const focus = page.getByRole("combobox", { name: "Focus body" })
 	await expect(focus).toHaveValue("Io")
+	await openLayers(page)
 	await expect(page.getByRole("switch", { name: "Orbits" })).toBeChecked()
 	const moons = page.getByRole("switch", { name: "Moons", exact: true })
 	await expect(moons).toBeChecked()
@@ -174,7 +182,7 @@ test("a link without a usable t starts at the wall clock, not at JD 0", async ({
 	await expect(clock).toBeVisible()
 	const shown = new Date((await clock.getAttribute("datetime")) ?? "")
 	expect(Math.abs(shown.getTime() - Date.now())).toBeLessThan(2 * 60_000)
-	await expect(page.getByRole("radio", { name: "1x" })).toBeChecked()
+	await expect(page.getByTestId("time-menu")).toHaveAccessibleName(/1x/)
 	await expect(page).not.toHaveURL(/[?&]t=0(&|$)/)
 })
 

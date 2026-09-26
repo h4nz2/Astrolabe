@@ -7,6 +7,7 @@ import { mkdirSync } from "node:fs"
 import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
+import { closeTime, expandCard, openLayers, openTime } from "./support/hud"
 
 const screenshotDir = path.join("test-results", "rotation")
 
@@ -70,6 +71,8 @@ test("the spin control has named modes, Realistic first, and says when spin is n
 }) => {
 	await page.goto("/solar_system?focus=earth")
 	await page.waitForLoadState("networkidle")
+	// the spin waits behind the time bar's speed button (#42)
+	await openTime(page)
 	const group = spinGroup(page)
 	await expect(group).toBeVisible()
 	await expect(group.getByRole("radio")).toHaveCount(4)
@@ -99,6 +102,7 @@ test("Earth turns under the clock in the realistic mode and holds still when spi
 		"Earth",
 	)
 	// the whole face lit, so every part of the texture shows its motion
+	await openLayers(page)
 	await page.getByRole("switch", { name: "Always lit" }).click({ force: true })
 	await page.waitForTimeout(2000)
 
@@ -107,8 +111,10 @@ test("Earth turns under the clock in the realistic mode and holds still when spi
 	const turning2 = await shot(page, "earth-realistic-2")
 	const turning = await discDifference(page, turning1, turning2)
 
+	await openTime(page)
 	await spinGroup(page).getByText("Stopped").click()
 	await expect(canvas(page)).toHaveAttribute("data-spin-mode", "stopped")
+	await closeTime(page)
 	await page.waitForTimeout(1000)
 	const still1 = await shot(page, "earth-stopped-1")
 	await page.waitForTimeout(1500)
@@ -126,9 +132,11 @@ test("the facts panel shows retrograde spin and tidal locking", async ({
 	await page.goto("/solar_system?focus=venus")
 	await page.waitForLoadState("networkidle")
 	const info = page.getByRole("region", { name: "Focused body" })
+	await expandCard(page)
 	await expect(info).toContainText("243 days, retrograde")
 
 	await page.goto("/solar_system?focus=moon")
 	await page.waitForLoadState("networkidle")
+	await expandCard(page)
 	await expect(info).toContainText("always the same face toward Earth")
 })

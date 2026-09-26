@@ -2,6 +2,7 @@ import { mkdirSync } from "node:fs"
 import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
+import { expandCard } from "./support/hud"
 
 // Click a body to focus on it (#16), in the real browser: hover feedback,
 // generous targets for tiny bodies (true scale, touch), the focused view's
@@ -140,6 +141,9 @@ test("hovering a planet rings and names it; a click flies there and opens its ca
 	const card = page.getByTestId("body-card")
 	await expect(card).toHaveAttribute("data-card-body", "saturn")
 	await expect(card.getByRole("heading", { name: "Saturn" })).toBeVisible()
+	// the card starts small (#42): name and one sentence, the facts on demand
+	await expect(card.locator("[data-fact]")).toHaveCount(0)
+	await expandCard(page)
 	await expect(card).toContainText(/\d Earths wide/)
 	await expect(card).toContainText("Sunlight takes")
 	await expect(
@@ -203,6 +207,7 @@ test("a click on empty space is the way out, a near miss is not", async ({
 test("the card's close button returns to the overview", async ({ page }) => {
 	await ready(page, "/solar_system?focus=jupiter")
 	const card = page.getByTestId("body-card")
+	await expandCard(page)
 	await expect(card).toContainText("11 Earths wide")
 	await card.getByRole("button", { name: "Close" }).click()
 	await expect.poll(async () => (await state(page)).view.kind).toBe("overview")

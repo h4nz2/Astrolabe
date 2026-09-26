@@ -10,6 +10,17 @@
 	white-space: nowrap;
 }
 
+/* narrow screens (#42): the icon alone beside the picker; the name stays the button's label */
+@media (max-width: 899px) {
+	.menuText {
+		display: none;
+	}
+
+	.menuButton :global(.mantine-Button-section) {
+		margin: 0;
+	}
+}
+
 /* The badge of an anchored frame: what is held still and the way back. */
 .badge {
 	display: flex;

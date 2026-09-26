@@ -2,6 +2,7 @@ import { mkdirSync } from "node:fs"
 import path from "node:path"
 
 import { expect, test, type Page } from "@playwright/test"
+import { openLayers } from "./support/hud"
 
 // Body labels (#20) in the real browser: who is named where, the density
 // rules, the switch, the i18n names, and that a label is a click target that
@@ -125,6 +126,7 @@ test("one switch hides every label, and a link carries it", async ({
 	page,
 }) => {
 	await ready(page, "/solar_system")
+	await openLayers(page)
 	await page.getByRole("switch", { name: "Labels" }).click({ force: true })
 	await expect(page).toHaveURL(/[?&]labels=false/)
 	await expect(page.locator("[data-visible=true]")).toHaveCount(0)
@@ -132,6 +134,7 @@ test("one switch hides every label, and a link carries it", async ({
 
 	await ready(page, "/solar_system?labels=false")
 	await expect(page.locator("[data-visible=true]")).toHaveCount(0)
+	await openLayers(page)
 	await page.getByRole("switch", { name: "Labels" }).click({ force: true })
 	await expect(page.locator('[data-body="saturn"]')).toHaveAttribute(
 		"data-visible",
@@ -199,6 +202,7 @@ test("orbit names are optional and written on the orbits", async ({ page }) => {
 	expect(await orbitNames.count()).toBeGreaterThanOrEqual(3)
 	await expectNoOverlap(page)
 	await shot(page, "orbit-names")
+	await openLayers(page)
 	await page.getByRole("switch", { name: "Orbit names" }).click({ force: true })
 	await expect(page).not.toHaveURL(/orbitNames/)
 	await expect(page.locator("[data-orbit]")).toHaveCount(0)

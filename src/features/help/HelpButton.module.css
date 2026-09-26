@@ -20,6 +20,17 @@
 	}
 }
 
+/* the solar system's corner (#42) below 1100 px: the icon alone, so the picker keeps its room */
+@media (max-width: 1099px) {
+	:global([data-hud-corner]) .label {
+		display: none;
+	}
+
+	:global([data-hud-corner]) .section {
+		margin: 0;
+	}
+}
+
 /* phones: the icon alone (its name stays its label), like the comparison's back arrow */
 @media (max-width: 599px) {
 	.label {
