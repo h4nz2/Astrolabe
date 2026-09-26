@@ -576,13 +576,39 @@
 			"how": {
 				"standard": [
 					"Haz clic en la fecha y la hora, abajo.",
-					"Elige un momento de la lista, o «Elige una fecha» y haz clic en el año, el mes y el día.",
+					"Elige «Elige una fecha» y haz clic en el año, el mes y el día (los momentos famosos están en «Fenómenos del cielo»).",
 					"Los planetas se deslizan hasta allí y el tiempo se detiene; pulsa reproducir para continuar."
 				],
 				"simple": [
 					"Haz clic en la fecha, abajo.",
 					"Elige «Marte, más cerca que nunca» o elige un día.",
 					"Mira cómo los planetas se mueven hasta allí."
+				]
+			}
+		},
+		"skyEvents": {
+			"title": {
+				"standard": "Fenómenos del cielo: eclipses, tránsitos y alineaciones",
+				"simple": "Eclipses y otros fenómenos del cielo"
+			},
+			"what": {
+				"standard": "Una lista de eclipses, tránsitos de Venus y Mercurio, planetas que se juntan en el cielo, acercamientos de Marte, sombras de lunas y los anillos de Saturno de canto, pasados y próximos. Elegir uno lo prepara todo: la fecha, la escala real y una vista desde el espacio, con un cambio a la vista desde la Tierra con telescopio.",
+				"simple": "Elige un eclipse u otro espectáculo del cielo y la app te lleva allí: el día justo y el sitio justo desde donde mirar."
+			},
+			"why": {
+				"standard": "Cada fenómeno es una clase de geometría en una imagen: por qué la Luna tapa el Sol exactamente, por qué no hay un eclipse cada mes, qué significa de verdad que «los planetas se alinean». Cambiar entre la vista desde el espacio y desde la Tierra es la lección.",
+				"simple": "Ves por qué hay un eclipse: desde el espacio y desde la Tierra, donde la gente lo miró."
+			},
+			"how": {
+				"standard": [
+					"Haz clic en la fecha, abajo, y elige «Fenómenos del cielo».",
+					"Elige un fenómeno, por ejemplo «Eclipse total de Sol» (8 de abril de 2024).",
+					"En la tarjeta, cambia entre «Desde el espacio» y «Desde la Tierra»; pulsa «Salir» para volver a donde estabas."
+				],
+				"simple": [
+					"Haz clic en la fecha, abajo, y luego en «Fenómenos del cielo».",
+					"Elige un eclipse.",
+					"Pulsa «Desde la Tierra» y la Luna tapa el Sol."
 				]
 			}
 		},

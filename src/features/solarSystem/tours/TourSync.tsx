@@ -10,10 +10,13 @@
 import { useEffect, useLayoutEffect, useRef } from "react"
 import { useSearch } from "@tanstack/react-router"
 
+import { eventOfTourId } from "@/data/skyEvents"
 import { tourById } from "@/data/tours"
 import { useSimStore } from "@/store/sim"
 import { useTourStore } from "@/store/tour"
 
+import { startEvent } from "../events/player"
+import { EVENT_VIEWS } from "../events/staging"
 import { hasModifier, isEditableTarget } from "../ui/keyboard"
 import { autoHoldMs } from "./plan"
 import {
@@ -104,7 +107,14 @@ const TourSync = () => {
 
 	useLayoutEffect(() => {
 		const { tour, stop, autoplay } = opening.current
-		if (tour !== undefined && tourById.has(tour)) {
+		const event = tour === undefined ? null : eventOfTourId(tour)
+		if (event !== null) {
+			// a sky event's link (#41): its view counted from 1
+			startEvent(event.id, {
+				view: EVENT_VIEWS[(stop ?? 1) - 1] ?? "space",
+				jump: true,
+			})
+		} else if (tour !== undefined && tourById.has(tour)) {
 			startTour(tour, {
 				startAt: (stop ?? 1) - 1,
 				auto: autoplay === true,

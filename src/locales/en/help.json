@@ -576,13 +576,39 @@
 			"how": {
 				"standard": [
 					"Click the date and time at the bottom.",
-					"Choose a moment from the list, or “Pick a date” and click the year, the month and the day.",
+					"Choose “Pick a date” and click the year, the month and the day (famous moments are under “Sky events”).",
 					"The planets glide there and time stops; press play to run on."
 				],
 				"simple": [
 					"Click the date at the bottom.",
 					"Pick “Mars at its closest” or pick a day.",
 					"Watch the planets move there."
+				]
+			}
+		},
+		"skyEvents": {
+			"title": {
+				"standard": "Sky events: eclipses, transits and alignments",
+				"simple": "Eclipses and other sky events"
+			},
+			"what": {
+				"standard": "A list of eclipses, transits of Venus and Mercury, planets gathering in the sky, close approaches of Mars, moons' shadows and Saturn's rings edge-on, past and coming up. Choosing one sets everything: the date, true scale and a view from space, with a switch to the view from Earth through a telescope.",
+				"simple": "Pick an eclipse or another sky show, and the app takes you there: the right day, the right place to look from."
+			},
+			"why": {
+				"standard": "Each event is a geometry lesson in one picture: why the Moon covers the Sun exactly, why eclipses do not happen every month, what \"the planets align\" really means. Switching between the view from space and the view from Earth is the lesson.",
+				"simple": "You see why an eclipse happens: from space, and from the Earth where people watched it."
+			},
+			"how": {
+				"standard": [
+					"Click the date at the bottom and choose “Sky events”.",
+					"Pick an event, for example “Total solar eclipse” (8 April 2024).",
+					"Switch between “From space” and “From Earth” on the card; press “Leave” to go back to where you were."
+				],
+				"simple": [
+					"Click the date at the bottom, then “Sky events”.",
+					"Pick an eclipse.",
+					"Press “From Earth” to see the Moon cover the Sun."
 				]
 			}
 		},

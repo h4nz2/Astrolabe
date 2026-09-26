@@ -274,7 +274,7 @@
 			"travel": {
 				"open": "Zu einem Datum reisen",
 				"title": "Zeitreise",
-				"moments": "Momente",
+				"moments": "Himmelsereignisse",
 				"pickDate": "Datum wählen",
 				"arrival": "Bei der Ankunft hält die Zeit an. Mit Abspielen geht es weiter.",
 				"range": "Jeder Tag vom Jahr {first} bis {last}. Ankunft ist um 12 Uhr (UTC).",
@@ -288,52 +288,6 @@
 					"previousDecade": "Vorheriges Jahrzehnt",
 					"monthLevel": "Anderen Monat wählen",
 					"yearLevel": "Anderes Jahr wählen"
-				}
-			},
-			"moments": {
-				"galileoMoons": {
-					"name": "Galilei sieht die Jupitermonde",
-					"description": "Die ersten Monde, die je bei einem anderen Planeten entdeckt wurden."
-				},
-				"uranusFound": {
-					"name": "Uranus wird entdeckt",
-					"description": "Wilhelm Herschel findet den ersten Planeten, den man in der Antike nicht kannte."
-				},
-				"neptuneFound": {
-					"name": "Neptun wird entdeckt",
-					"description": "Gefunden genau dort, wo ihn die Mathematik vorhergesagt hatte."
-				},
-				"sputnik": {
-					"name": "Sputnik 1 startet",
-					"description": "Der erste künstliche Satellit beginnt das Raumfahrtzeitalter."
-				},
-				"moonLanding": {
-					"name": "Erste Mondlandung",
-					"description": "Apollo 11 setzt auf dem Mond auf."
-				},
-				"voyagerLaunch": {
-					"name": "Voyager 2 bricht auf",
-					"description": "Jupiter, Saturn, Uranus und Neptun stehen günstig für eine große Rundreise – das gibt es nur etwa alle 175 Jahre."
-				},
-				"voyagerNeptune": {
-					"name": "Voyager 2 erreicht Neptun",
-					"description": "Zwölf Jahre nach dem Start: der einzige Besuch, den Neptun je hatte."
-				},
-				"marsClosest": {
-					"name": "Mars so nah wie nie",
-					"description": "Mars kommt der Erde näher als seit fast 60.000 Jahren. Die Erde steht zwischen Sonne und Mars."
-				},
-				"venusTransit": {
-					"name": "Venustransit",
-					"description": "Venus zieht genau zwischen Sonne und Erde vorbei."
-				},
-				"greatConjunction": {
-					"name": "Die große Konjunktion",
-					"description": "Von der Erde aus berühren sich Jupiter und Saturn am Himmel fast."
-				},
-				"nextVenusTransit": {
-					"name": "Der nächste Venustransit",
-					"description": "Das nächste Mal, dass Venus vor der Sonne vorbeizieht. Wird es jemand in diesem Raum erleben?"
 				}
 			}
 		},
@@ -1319,6 +1273,67 @@
 				"watch": "Zusehen, wie er an der Sonne vorbeizieht",
 				"watch@simple": "Zusehen, wie er an der Sonne vorbeifliegt"
 			}
+		},
+		"events": {
+			"listLabel": "Finsternisse, Transite und andere Himmelsereignisse",
+			"upcoming": "Demnächst",
+			"groups": {
+				"solarEclipse": "Sonnenfinsternisse",
+				"lunarEclipse": "Mondfinsternisse",
+				"transit": "Durchgänge vor der Sonne",
+				"gathering": "Planeten beisammen",
+				"closeApproach": "Mars kommt nah",
+				"shadowsRings": "Schatten und Ringe",
+				"history": "Momente der Geschichte"
+			},
+			"card": "Himmelsereignis: {title}",
+			"when": "Wann: {when}",
+			"where": "Wo: {where}",
+			"shown": "{direction, select, early {Die Szene zeigt es {amount} zu früh} late {Die Szene zeigt es {amount} zu spät} other {Die Szene zeigt es zur echten Zeit}}: Die Bahnen der App liegen nah an den echten, aber nicht genau darauf.",
+			"shown@simple": "{direction, select, early {Die App zeigt es {amount} zu früh.} late {Die App zeigt es {amount} zu spät.} other {Die App zeigt es zur echten Zeit.}} Ihre Planeten stehen fast, aber nicht ganz dort, wo die echten sind.",
+			"views": {
+				"label": "Blickwinkel",
+				"space": "Aus dem All",
+				"earth": "Von der Erde"
+			},
+			"hint": {
+				"space": {
+					"solarEclipse": "Der Schatten des Mondes auf der Tagseite der Erde.",
+					"solarEclipse@simple": "Der dunkle Fleck ist der Schatten des Mondes.",
+					"lunarEclipse": "Sonne, Erde und Mond auf einer Linie: Der Mond ist im Schatten der Erde.",
+					"lunarEclipse@simple": "Die Erde steht zwischen Sonne und Mond.",
+					"transit": "Von oben gesehen: Sonne, Planet und Erde auf einer Linie.",
+					"transit@simple": "Von oben: Der Planet steht zwischen der Sonne und uns.",
+					"gathering": "Von oben gesehen: wo die Planeten wirklich stehen.",
+					"gathering@simple": "Von oben: Die Planeten sind weit voneinander entfernt.",
+					"closeApproach": "Von oben gesehen: Die Erde überholt Mars auf der Innenbahn.",
+					"closeApproach@simple": "Von oben: Die Erde überholt Mars.",
+					"shadowsRings": "Aus der Nähe, aus dem All.",
+					"history": "Die Szene an diesem Tag."
+				},
+				"earth": {
+					"solarEclipse": "Im Mondschatten stehend, durchs Teleskop: Der Mond bedeckt die Sonne.",
+					"solarEclipse@simple": "Von der Erde: Der Mond bedeckt die Sonne.",
+					"lunarEclipse": "Von der Erde aus zum Mond geschaut, durchs Fernglas.",
+					"lunarEclipse@simple": "Von der Erde: der rote Mond.",
+					"transit": "Durchs Teleskop mit Sonnenfilter: der Punkt des Planeten auf der Sonne.",
+					"transit@simple": "Von der Erde: ein kleiner schwarzer Punkt auf der Sonne.",
+					"gathering": "Von der Erde: die Planeten auf einer Seite unseres Himmels.",
+					"gathering@simple": "Von der Erde: die Planeten nebeneinander.",
+					"closeApproach": "Mars durchs Teleskop, immer mit derselben Vergrößerung: Vergleiche die Ereignisse.",
+					"closeApproach@simple": "Mars durchs Teleskop. Wie groß sieht er aus?",
+					"shadowsRings": "Durch ein Teleskop auf der Erde.",
+					"history": "Durch ein Teleskop auf der Erde."
+				}
+			},
+			"scaleNote": "Gezeigt im echten Maßstab: Jede Größe und jeder Abstand stimmt. Beim Verlassen wird zurückgeschaltet.",
+			"scaleNote@simple": "Alles ist in echter Größe und mit echtem Abstand gezeigt.",
+			"leave": "Verlassen",
+			"leaveLabel": "Ereignis verlassen: zurück zu Ansicht, Zeit und Maßstab von vorher",
+			"away": "Du schaust dich gerade selbst um.",
+			"resume": "Zurück zum Ereignis",
+			"share": "Link zu diesem Ereignis kopieren",
+			"copied": "Link kopiert"
 		},
 		"hud": {
 			"tools": "Werkzeuge",

@@ -81,7 +81,32 @@ export interface ViewRequest {
 	 * planets; a planet: a distance in its moon system).
 	 */
 	fit?: FitRegion
+	/**
+	 * Stand the camera at this point and look at the view's centre from there
+	 * (#41: the view from Earth). The director keeps the eye there while the
+	 * bodies move, until the user takes the camera; overrides the shot.
+	 */
+	eye?: EyePoint
+	/**
+	 * Vertical field of view on arrival, degrees (#41: a telescope's narrow
+	 * field); omitted: the normal lens. Any request without one goes back to it.
+	 */
+	lensDeg?: number
 }
+
+/**
+ * Where a camera stands (#41): TRUE km from body `anchorId`, scene axes,
+ * drawn through the scale engine like a point view (at true scale exactly
+ * there), e.g. an observer on the Earth's surface.
+ */
+export interface EyePoint {
+	readonly anchorId: string
+	readonly offsetKm: Vec3Km
+}
+
+/** The narrowest and widest lens a request may ask for, degrees. */
+export const LENS_MIN_DEG = 0.001
+export const LENS_MAX_DEG = 160
 
 /** A region the camera frames on arrival, see `ViewRequest.fit`. */
 export interface FitRegion {
@@ -100,6 +125,10 @@ export interface Transition {
 	readonly profile: string | null
 	/** The region to frame on arrival (overrides the shot's distance), if any. */
 	readonly fit: FitRegion | null
+	/** Where the camera stands on arrival, if anywhere (#41). */
+	readonly eye: EyePoint | null
+	/** The lens on arrival, degrees; null: the normal one. */
+	readonly lensDeg: number | null
 	/**
 	 * The user grabbed the camera mid-transition: the rig stops scripting the
 	 * distance and direction (the user owns them from the current pose) while
@@ -317,6 +346,19 @@ export const sameView = (a: View, b: View): boolean => {
 	)
 }
 
+const sanitizeEye = (eye: EyePoint | undefined): EyePoint | null =>
+	eye !== undefined &&
+	bodyById.has(eye.anchorId) &&
+	eye.offsetKm.length === 3 &&
+	eye.offsetKm.every(Number.isFinite)
+		? { anchorId: eye.anchorId, offsetKm: [...eye.offsetKm] }
+		: null
+
+const sanitizeLens = (lensDeg: number | undefined): number | null =>
+	lensDeg !== undefined && Number.isFinite(lensDeg)
+		? Math.max(LENS_MIN_DEG, Math.min(LENS_MAX_DEG, lensDeg))
+		: null
+
 /** Keeps only the usable fields of a requested shot (finite angles, a positive finite distance). */
 export function sanitizeShot(
 	shot: Partial<CameraShot> | null | undefined,
@@ -433,6 +475,14 @@ export function parseOffset(
 	]
 }
 
+/** The request a transition was made from (to finish it at once). */
+const movedRequest = (transition: Transition): ViewRequest => ({
+	shot: transition.shot ?? undefined,
+	fit: transition.fit ?? undefined,
+	eye: transition.eye ?? undefined,
+	lensDeg: transition.lensDeg ?? undefined,
+})
+
 // Transition ids only need to be unique; a module counter survives store resets in tests.
 let transitionCounter = 0
 
@@ -473,6 +523,8 @@ export function createNavigationSlice(
 						: null,
 				profile: request?.profile ?? null,
 				fit: sanitizeFit(request?.fit),
+				eye: sanitizeEye(request?.eye),
+				lensDeg: sanitizeLens(request?.lensDeg),
 				handedOver: false,
 			},
 		})
@@ -577,19 +629,14 @@ export function createNavigationSlice(
 				return
 			}
 			if (transition === null) return
-			start(transition.view, {
-				shot: transition.shot ?? undefined,
-				fit: transition.fit ?? undefined,
-				durationMs: 0,
-			})
+			start(transition.view, { ...movedRequest(transition), durationMs: 0 })
 		},
 
 		finishMove: () => {
 			const { transition, sequence } = get()
 			if (transition === null) return
 			const id = start(transition.view, {
-				shot: transition.shot ?? undefined,
-				fit: transition.fit ?? undefined,
+				...movedRequest(transition),
 				durationMs: 0,
 			})
 			if (sequence?.transitionId === transition.id) {

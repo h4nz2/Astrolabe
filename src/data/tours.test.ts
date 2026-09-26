@@ -14,6 +14,7 @@ import { LOCALES, READING_LEVELS } from "@/i18n"
 import { levelsOf } from "@/i18n/bodies"
 import { isScalePresetId } from "@/sim"
 import { MOMENT_IDS } from "@/features/solarSystem/ui/moments"
+import { skyEventById } from "@/data/skyEvents"
 import { ToursTextFile, tourContent } from "@/features/solarSystem/tours/text"
 
 import { bodyById } from "./index"
@@ -62,6 +63,9 @@ describe("tour files (src/data/tours)", () => {
 				}
 				if (typeof stop.time === "object" && "moment" in stop.time) {
 					expect(MOMENT_IDS, `${where} moment`).toContain(stop.time.moment)
+				}
+				if (typeof stop.time === "object" && "event" in stop.time) {
+					expect(skyEventById.has(stop.time.event), `${where} event`).toBe(true)
 				}
 				if (typeof stop.time === "object" && "date" in stop.time) {
 					const date = new Date(`${stop.time.date}T12:00:00Z`)

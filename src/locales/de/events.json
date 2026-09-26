@@ -1,0 +1,299 @@
+{
+	"solar1999": {
+		"title": "Totale Sonnenfinsternis über Europa",
+		"where": "Von Cornwall über Frankreich, Deutschland, Österreich, Ungarn und Rumänien bis in die Türkei, den Iran und nach Indien",
+		"look": {
+			"simple": "Der Schatten des Mondes ist ein kleiner dunkler Fleck auf Europa. Überall in diesem Fleck wurde der Tag zwei Minuten lang dunkel.",
+			"standard": "Die letzte totale Finsternis des Jahrtausends und die meistbeobachtete: Der Mondschatten zog mitten durch Europa. Achte auf den kleinen dunklen Fleck des Kernschattens und den breiten grauen Halbschatten darum.",
+			"advanced": "Der etwa 110 km breite Kernschatten zog von Cornwall bis zum Schwarzen Meer; die größte Finsternis lag über Rumänien mit 2 min 23 s Totalität. Der Halbschatten darum reicht Tausende Kilometer weit: für fast ganz Europa eine partielle Finsternis."
+		}
+	},
+	"solar2017": {
+		"title": "Die große amerikanische Finsternis",
+		"where": "Quer durch die USA, von Oregon bis South Carolina",
+		"look": {
+			"simple": "Der Mondschatten wandert von einem Ozean zum anderen quer durch Amerika. Findest du den dunklen Fleck?",
+			"standard": "Der Mondschatten überquerte die ganzen Vereinigten Staaten von Küste zu Küste in etwa anderthalb Stunden. Achte auf den dunklen Fleck des Kernschattens; von der Erde aus bedeckt der Mond die Sonne genau.",
+			"advanced": "Der bis zu 115 km breite Kernschatten raste mit 2.400 bis 4.000 km/h über die USA; die Totalität dauerte bis zu 2 min 40 s. Die erste totale Finsternis von Küste zu Küste in den USA seit 1918."
+		}
+	},
+	"solar2024": {
+		"title": "Totale Sonnenfinsternis",
+		"where": "Mexiko, die USA und Kanada",
+		"look": {
+			"simple": "Der Mond steht genau zwischen Sonne und Erde. Sein Schatten macht einen kleinen dunklen Fleck auf Nordamerika.",
+			"standard": "Sonne, Mond und Erde stehen auf einer Linie, darum fällt der Mondschatten auf Nordamerika. Aus dem All ist er ein kleiner dunkler Fleck in einem breiten grauen Schatten; wechsle zur Sicht von der Erde, und der Mond bedeckt die Sonne genau.",
+			"advanced": "Der Mond stand nahe dem Perigäum, sein scheinbarer Durchmesser war etwa 6 % größer als der der Sonne: bis zu 4 min 28 s Totalität entlang eines rund 200 km breiten Streifens von Mazatlán bis Neufundland."
+		}
+	},
+	"solar2026": {
+		"title": "Totale Sonnenfinsternis über Spanien",
+		"where": "Grönland, Island und Nordspanien, am Abend",
+		"look": {
+			"simple": "Der Mondschatten zieht über Grönland, Island und Spanien. In Spanien stand die Sonne schon tief am Abendhimmel.",
+			"standard": "Die erste totale Finsternis auf dem europäischen Festland seit 1999: Der Schatten zog über Grönland und Island, dann kurz vor Sonnenuntergang über Spanien. Achte auf den dunklen Fleck nahe dem Rand der beleuchteten Erdseite.",
+			"advanced": "Größte Finsternis westlich von Island mit 2 min 18 s Totalität; in Spanien stand die Sonne nur wenige Grad über dem Horizont, der Kernschatten traf den Boden streifend und wurde lang gezogen."
+		}
+	},
+	"annular2027": {
+		"title": "Ringförmige Sonnenfinsternis: ein Feuerring",
+		"where": "Chile, Argentinien und Uruguay, dann Westafrika",
+		"look": {
+			"simple": "Diesmal ist der Mond ein bisschen zu klein, um die ganze Sonne zu bedecken. Ein heller Ring aus Sonne bleibt um ihn herum.",
+			"standard": "Der Mond ist fast am fernsten Punkt seiner Bahn und wirkt darum etwas kleiner als die Sonne. Sein dunkles Zentrum erreicht den Boden nie: Von der Erde aus bleibt ein dünner Sonnenring um den Mond.",
+			"advanced": "Nahe dem Apogäum ist der scheinbare Monddurchmesser etwa 7 % kleiner als der der Sonne, der Kernschattenkegel endet vor der Erde. Im Streifen des Gegenschattens ist die Finsternis ringförmig, bis zu 7 min 51 s lang."
+		}
+	},
+	"solar2027": {
+		"title": "Die Finsternis des Jahrhunderts",
+		"where": "Südspanien, Nordafrika, Ägypten und Saudi-Arabien",
+		"look": {
+			"simple": "Die nächste große totale Finsternis! Bei Luxor in Ägypten wird der Tag mehr als sechs Minuten lang zur Nacht.",
+			"standard": "Der Mond ist der Erde nah und die Erde weit von der Sonne, darum wirkt der Mond besonders groß: Bei Luxor dauert die Totalität über sechs Minuten, so lang wie an Land erst wieder 2114.",
+			"advanced": "Mond nahe dem Perigäum, Erde nahe dem Aphel: Der scheinbare Monddurchmesser übertrifft den der Sonne um 8 %. Der bis zu 258 km breite Kernschatten bringt bei Luxor 6 min 23 s Totalität."
+		}
+	},
+	"lunar2018": {
+		"title": "Die längste totale Mondfinsternis des Jahrhunderts",
+		"where": "Europa, Afrika, Asien und Australien",
+		"look": {
+			"simple": "Der Mond ist im Schatten der Erde. Er wird nicht schwarz, sondern dunkelrot.",
+			"standard": "Der Mond zog mitten durch den Erdschatten, darum dauerte die Totalität 1 Stunde 43 Minuten. Er leuchtet rot: Sonnenlicht, das die Lufthülle der Erde in den Schatten lenkt, ein Ring aus allen Sonnenauf- und -untergängen der Erde.",
+			"advanced": "Der Mond stand nahe dem Apogäum, bewegte sich langsam und durchquerte den Kernschatten nahe der Mitte: 103 Minuten Totalität, die längste des 21. Jahrhunderts. Mars stand in derselben Nacht in Opposition und leuchtete daneben."
+		}
+	},
+	"lunar2025mar": {
+		"title": "Totale Mondfinsternis: ein Blutmond",
+		"where": "Nord- und Südamerika",
+		"look": {
+			"simple": "Vollmond, und die Erde steht genau zwischen Sonne und Mond. Der Mond wird rot.",
+			"standard": "Eine Mondfinsternis gibt es nur bei Vollmond, wenn die Erde zwischen Sonne und Mond steht. Schau aus dem All auf die drei in einer Linie, dann von der Erde auf den roten Mond.",
+			"advanced": "Die Totalität dauerte etwa 65 Minuten. Die rote Farbe ist Sonnenlicht, das die Erdatmosphäre in den Kernschatten bricht; das Blaue wird unterwegs herausgestreut."
+		}
+	},
+	"lunar2025sep": {
+		"title": "Totale Mondfinsternis",
+		"where": "Asien und Australien; Europa und Afrika beim Mondaufgang",
+		"look": {
+			"simple": "Der Mond gleitet in den Erdschatten und wird rot.",
+			"standard": "Der ganze Mond ist weit über eine Stunde lang im Erdschatten. Aus dem All siehst du Sonne, Erde und Mond auf einer Linie, von der Erde einen dunkelroten Mond.",
+			"advanced": "Die Totalität dauerte etwa 82 Minuten. Nur der Kernschatten der Erde färbt den Mond rot; der Halbschatten darum dunkelt ihn bloß ein wenig ab."
+		}
+	},
+	"lunar2026aug": {
+		"title": "Partielle Mondfinsternis",
+		"where": "Amerika, Europa und Afrika",
+		"look": {
+			"simple": "Der Mond geht fast ganz in den Erdschatten, aber ein schmaler Streifen bleibt hell.",
+			"standard": "Der Mond zieht knapp neben der Mitte des Erdschattens vorbei: Fast alles wird dunkel, aber ein heller Rand bleibt draußen.",
+			"advanced": "Eine tiefe partielle Finsternis: Etwa 93 % des Monddurchmessers tauchten in den Kernschatten. Warum nicht bei jedem Vollmond? Die Mondbahn ist etwa 5° gegen die Erdbahn geneigt, meist zieht der Mond über oder unter dem Schatten vorbei."
+		}
+	},
+	"lunar2028dec": {
+		"title": "Ein Blutmond an Silvester",
+		"where": "Europa, Afrika, Asien und Australien",
+		"look": {
+			"simple": "Am letzten Abend von 2028 wird der Mond im Erdschatten rot.",
+			"standard": "Die nächste totale Mondfinsternis: Der Vollmond wandert an Silvester in den Erdschatten und leuchtet mehr als eine Stunde lang rot.",
+			"advanced": "Die Totalität dauert etwa 71 Minuten. Finsternisse kommen in Jahreszeiten im Abstand von etwa sechs Monaten, wenn die Schnittlinie von Mond- und Erdbahn zur Sonne zeigt."
+		}
+	},
+	"venusTransit": {
+		"title": "Venustransit",
+		"where": "Pazifik, Asien und Australien; Nordamerika am Abend",
+		"look": {
+			"simple": "Venus zieht vor der Sonne vorbei. Von der Erde aus ist sie ein kleiner schwarzer Punkt auf der Sonne.",
+			"standard": "Venus zieht genau zwischen Sonne und Erde durch. Von oben siehst du die drei auf einer Linie; von der Erde aus wandert Venus als kleine schwarze Scheibe mehr als sechs Stunden lang über die Sonne.",
+			"advanced": "Venustransite kommen paarweise im Abstand von acht Jahren, dann über ein Jahrhundert lang nicht (2004 und 2012, dann 2117 und 2125). Im 18. Jahrhundert lieferten sie die erste Messung der Entfernung der Erde von der Sonne."
+		}
+	},
+	"mercury2019": {
+		"title": "Merkurtransit",
+		"where": "Amerika; Europa und Afrika am Nachmittag",
+		"look": {
+			"simple": "Der winzige Merkur zieht vor der Sonne vorbei. Findest du den kleinen Punkt?",
+			"standard": "Merkur überquert die Sonne fast durch ihre Mitte. Er ist so klein, dass man von der Erde aus ein Teleskop mit Sonnenfilter braucht, um seinen schwarzen Punkt zu sehen.",
+			"advanced": "Merkurs 10 Bogensekunden große Scheibe querte die Sonne (1.940 Bogensekunden) in 5 h 29 min. Merkurtransite gibt es etwa 13-mal pro Jahrhundert, immer im Mai oder November."
+		}
+	},
+	"mercury2032": {
+		"title": "Der nächste Merkurtransit",
+		"where": "Europa, Afrika und Asien",
+		"look": {
+			"simple": "Das nächste Mal, dass Merkur vor der Sonne vorbeizieht.",
+			"standard": "Der nächste Merkurtransit. Nur wenn Merkur die Schnittlinie seiner Bahn mit der Erdbahn kreuzt, im Mai oder November, kann er über die Sonne ziehen.",
+			"advanced": "Merkurs Bahn ist 7° gegen die Erdbahn geneigt, darum zieht er bei den meisten unteren Konjunktionen über oder unter der Sonne vorbei. Im November muss er nahe seinem aufsteigenden Knoten stehen."
+		}
+	},
+	"nextVenusTransit": {
+		"title": "Der nächste Venustransit",
+		"where": "Ostasien und Australien; das westliche Nordamerika am Abend",
+		"look": {
+			"simple": "Das nächste Mal, dass Venus vor der Sonne vorbeizieht. Wird es jemand in diesem Raum erleben?",
+			"standard": "Mehr als ein Jahrhundert nach dem letzten zieht Venus wieder über die Sonne. Die App zeigt diese ferne Zukunft nur ungefähr: Ihre Bahnen gelten für heute, darum kommt ihre Venus etwa fünf Stunden zu spät.",
+			"advanced": "Die Bahnelemente der App gelten fürs Jahr 2000; über ein Jahrhundert summiert sich die kleine Drift der Venusbahn zu einigen Stunden. Der echte Transit dauert etwa 5 h 40 min."
+		}
+	},
+	"greatConjunction": {
+		"title": "Die große Konjunktion",
+		"where": "Überall, tief im Südwesten nach Sonnenuntergang",
+		"look": {
+			"simple": "Jupiter und Saturn scheinen sich fast zu berühren. Im All sind sie sehr weit voneinander entfernt!",
+			"standard": "Von der Erde aus stehen Jupiter und Saturn nur ein Fünftel der Mondbreite auseinander, so nah wie seit 1623 nicht. Von oben siehst du warum: Erde, Jupiter und Saturn stehen fast auf einer Linie, aber Saturn ist fast doppelt so weit weg wie Jupiter.",
+			"advanced": "Abstand 6 Bogenminuten. Jupiter überholt Saturn alle 19,9 Jahre; eng wird die Konjunktion nur nahe der Schnittlinie ihrer Bahnen. Im All lagen sie rund 730 Millionen km auseinander."
+		}
+	},
+	"venusJupiter2023": {
+		"title": "Venus trifft Jupiter",
+		"where": "Überall, im Westen nach Sonnenuntergang",
+		"look": {
+			"simple": "Die zwei hellsten Planeten scheinen direkt nebeneinander zu stehen.",
+			"standard": "Die zwei hellsten Planeten stehen am Abendhimmel nur eine Vollmondbreite auseinander. Von oben: Venus ist uns nah, Jupiter viermal so weit weg.",
+			"advanced": "Abstand etwa ein halbes Grad. Eine Konjunktion ist eine Sichtlinie, kein Treffen: In diesem Moment war Venus 1,4 AE von der Erde entfernt und Jupiter 5,8 AE."
+		}
+	},
+	"parade2025": {
+		"title": "Eine Parade der Planeten",
+		"where": "Überall, nach Sonnenuntergang",
+		"look": {
+			"simple": "Alle anderen Planeten stehen gleichzeitig auf derselben Seite unseres Himmels. Von oben stehen sie überhaupt nicht in einer Reihe!",
+			"standard": "Alle sieben anderen Planeten standen gleichzeitig am Abendhimmel, verteilt über eine Seite des Himmels neben der Sonne. Im All stehen sie nie in einer Reihe: Wechsle zwischen der Sicht von oben und der Sicht von der Erde und sieh den Unterschied.",
+			"advanced": "„In einer Reihe“ heißt hier: innerhalb von etwa 120° entlang der Ekliptik, von der Erde aus gesehen. Merkur und Saturn standen tief in der Dämmerung, Uranus und Neptun brauchen ein Fernglas oder Teleskop."
+		}
+	},
+	"venusMars2027": {
+		"title": "Venus trifft Mars",
+		"where": "Überall, im Westen nach Sonnenuntergang",
+		"look": {
+			"simple": "Die helle Venus und der rote Mars scheinen sich fast zu berühren.",
+			"standard": "Venus und Mars stehen am Abendhimmel näher beieinander als die Breite des Mondes. Im All sind sie weit voneinander entfernt: Mars ist anderthalbmal so weit weg wie Venus.",
+			"advanced": "Abstand etwa 0,3°. Enge Planetenpaare sind häufig; entscheidend ist, wo sie am Himmel relativ zur Sonne stehen, denn davon hängt ab, ob man sie überhaupt sieht."
+		}
+	},
+	"gathering2040": {
+		"title": "Fünf Planeten und der Mond beisammen",
+		"where": "Überall, im Westen nach Sonnenuntergang",
+		"look": {
+			"simple": "Fünf Planeten und der Mond drängen sich auf einem kleinen Stück Himmel.",
+			"standard": "Merkur, Venus, Mars, Jupiter und Saturn stehen innerhalb von etwa zehn Grad beisammen, daneben eine schmale Mondsichel. Von oben sind die Planeten auf ihren Bahnen weit verteilt.",
+			"advanced": "Die fünf freiäugigen Planeten innerhalb von etwa 9,5° ekliptikaler Länge: So eng stehen sie nur wenige Male pro Jahrhundert."
+		}
+	},
+	"marsClosest": {
+		"title": "Mars so nah wie seit 60.000 Jahren nicht",
+		"where": "Überall, die ganze Nacht",
+		"look": {
+			"simple": "Mars kommt der Erde ganz nah. Im Teleskop sieht er so groß aus wie sehr lange nicht.",
+			"standard": "Die Erde überholt Mars auf der Innenbahn, genau dort, wo Mars der Sonne am nächsten kommt: nur 55,76 Millionen km Abstand, so nah wie seit fast 60.000 Jahren nicht.",
+			"advanced": "Eine Perihel-Opposition: Die Erde zog kurz nach dem Perihel des Mars zwischen Sonne und Mars durch. Die Marsscheibe erreichte 25 Bogensekunden; bei einer Aphel-Opposition sind es kaum 14."
+		}
+	},
+	"mars2027": {
+		"title": "Mars nah an der Erde, aber diesmal fern",
+		"where": "Überall, die ganze Nacht",
+		"look": {
+			"simple": "Die Erde überholt Mars wieder, aber diesmal ist Mars weit weg. Vergleiche mit 2003!",
+			"standard": "Alle 26 Monate überholt die Erde den Mars. Diesmal ist Mars nahe dem fernsten Punkt seiner Bahn, bleibt 101 Millionen km entfernt und wirkt klein: Vergleiche die Sicht von der Erde mit 2003.",
+			"advanced": "Eine Aphel-Opposition: Die Marsscheibe misst nur 14 Bogensekunden. Die Marsbahn ist exzentrisch (0,093), darum reichen die nächsten Annäherungen von 55 bis 101 Millionen km."
+		}
+	},
+	"mars2035": {
+		"title": "Die nächste große Annäherung des Mars",
+		"where": "Überall, die ganze Nacht",
+		"look": {
+			"simple": "Mars kommt fast so nah wie 2003. Er leuchtet die ganze Nacht hell und rot.",
+			"standard": "Das nächste Mal, dass die Erde den Mars nahe seinem sonnennächsten Punkt überholt: 56,9 Millionen km, fast so nah wie 2003.",
+			"advanced": "Perihel-Oppositionen wiederholen sich alle 15 oder 17 Jahre; dies ist die beste zwischen 2003 und 2050."
+		}
+	},
+	"ioShadow2027": {
+		"title": "Ios Schatten auf Jupiter",
+		"where": "Überall, wo Jupiter nachts am Himmel steht, mit einem kleinen Teleskop",
+		"look": {
+			"simple": "Jupiters Mond Io steht zwischen Jupiter und der Sonne. Sein Schatten ist ein schwarzer Punkt auf Jupiter.",
+			"standard": "Eine Sonnenfinsternis auf einem anderen Planeten: Ios Schatten ist ein kleiner schwarzer Punkt auf Jupiters Wolken. Das passiert alle 42 Stunden, bei jedem Umlauf von Io.",
+			"advanced": "Ios Kernschatten, auf Jupiters Wolkenobergrenze etwa 3.600 km breit, überquert die Scheibe in etwa 2 h 15 min. Jupiters Monde kreisen fast in seiner Äquatorebene, und seine Achse ist nur 3° geneigt, darum treffen ihre Schatten den Planeten bei jedem Umlauf."
+		}
+	},
+	"saturnEdgeOn2025": {
+		"title": "Saturns Ringe von der Kante",
+		"where": "Leider nirgends: Saturn stand zu nah an der Sonne",
+		"look": {
+			"simple": "Wir sehen Saturns Ringe genau von der Seite, und sie verschwinden fast. Sie sind sehr, sehr dünn!",
+			"standard": "Die Erde zieht durch die Ebene der Saturnringe: Von der Kante gesehen schrumpfen 270.000 km breite Ringe zu einem dünnen Strich. Schau von oberhalb der Ringe, dann von der Erde.",
+			"advanced": "Saturns Hauptringe sind meist nur etwa 10 Meter dick. Die Erde kreuzt ihre Ebene zweimal pro Saturnjahr von 29,5 Jahren; im März 2025 stand Saturn nur etwa 10° neben der Sonne."
+		}
+	},
+	"saturnEdgeOn2038": {
+		"title": "Saturns Ringe wieder von der Kante",
+		"where": "Tief in der Morgendämmerung",
+		"look": {
+			"simple": "Saturns Ringe drehen uns wieder ihre Kante zu und verschwinden fast.",
+			"standard": "Ein halbes Saturnjahr nach 2025 zieht die Erde wieder durch die Ringebene. Dazwischen öffnen sich die Ringe weit und schließen sich wieder.",
+			"advanced": "Dieser Durchgang eröffnet eine Serie von dreien (Oktober 2038, April und Juli 2039), weil die Erde auf ihrer Bahn mehrmals über die langsam drehende Ringebene hin und her wechselt."
+		}
+	},
+	"galileoMoons": {
+		"title": "Galilei sieht die Jupitermonde",
+		"where": "Padua, Italien, durch ein kleines Fernrohr",
+		"look": {
+			"simple": "Galilei richtet sein Fernrohr auf Jupiter und sieht kleine Sterne daneben. Es sind Monde!",
+			"standard": "Die ersten Monde, die je bei einem anderen Planeten entdeckt wurden. Galileis Fernrohr vergrößerte nur etwa 20-fach; schau von der Erde durch ein enges Sichtfeld wie seines. Für ein so altes Datum stehen die Monde in der App nicht genau am richtigen Platz.",
+			"advanced": "Jupiter stand nahe der Opposition. Galilei sah am 7. Januar 1610 drei „Sterne“ und Tage später einen vierten; dass sie mit Jupiter mitwanderten, zeigte: Nicht alles kreist um die Erde."
+		}
+	},
+	"uranusFound": {
+		"title": "Uranus wird entdeckt",
+		"where": "Bath, England",
+		"look": {
+			"simple": "Wilhelm Herschel findet mit seinem Teleskop einen neuen Planeten. Niemand wusste, dass er da ist!",
+			"standard": "Der erste Planet, den man in der Antike nicht kannte. Im Teleskop sah Herschel ein winziges Scheibchen, keinen Punkt wie bei einem Stern.",
+			"advanced": "Uranus ist gerade noch mit bloßem Auge sichtbar und war schon früher als Stern katalogisiert worden; sein Scheibchen von 3,6 Bogensekunden und seine langsame Bewegung verrieten ihn."
+		}
+	},
+	"neptuneFound": {
+		"title": "Neptun wird entdeckt",
+		"where": "Berlin, Deutschland",
+		"look": {
+			"simple": "Neptun wurde durch Rechnen gefunden, bevor ihn jemand sah!",
+			"standard": "Uranus bewegte sich nicht ganz wie vorhergesagt. Le Verrier berechnete, wo ein unsichtbarer Planet an ihm ziehen muss, und Galle fand Neptun dort gleich in der ersten Nacht.",
+			"advanced": "Neptun wurde weniger als etwa 1° von Le Verriers vorhergesagtem Ort gefunden; sein Scheibchen misst nur 2,3 Bogensekunden."
+		}
+	},
+	"sputnik": {
+		"title": "Sputnik 1 startet",
+		"where": "Baikonur, Kasachstan",
+		"look": {
+			"simple": "Der erste Satellit kreist um die Erde. Das Raumfahrtzeitalter beginnt!",
+			"standard": "Der erste künstliche Satellit beginnt das Raumfahrtzeitalter. Er umrundete die Erde alle 96 Minuten, viel zu nah und zu klein, um ihn in diesem Maßstab zu zeichnen.",
+			"advanced": "Sputnik 1 kreiste drei Monate lang in etwa 215 bis 940 km Höhe. Künstliche Satelliten sind keine Monde, darum zeichnet die App sie nicht."
+		}
+	},
+	"moonLanding": {
+		"title": "Erste Mondlandung",
+		"where": "Das Meer der Ruhe, auf dem Mond",
+		"look": {
+			"simple": "Apollo 11 landet auf dem Mond. Von der Erde aus ist der Mond eine Sichel am Abendhimmel.",
+			"standard": "Apollo 11 setzt auf dem Mond auf. Die Landung war kurz nach Sonnenaufgang am Landeplatz, damit der Boden nicht zu heiß war. Von der Erde aus war der Mond eine zunehmende Sichel.",
+			"advanced": "Am Landeplatz im Meer der Ruhe stand die Sonne etwa 10° hoch; die langen Schatten machten das Gelände gut lesbar. Der Mond war etwa 6 Tage alt."
+		}
+	},
+	"voyagerLaunch": {
+		"title": "Voyager 2 bricht auf",
+		"where": "Cape Canaveral, USA",
+		"look": {
+			"simple": "Jupiter, Saturn, Uranus und Neptun stehen so, dass eine einzige Sonde sie alle besuchen kann.",
+			"standard": "Jupiter, Saturn, Uranus und Neptun stehen günstig für eine große Rundreise – das gibt es nur etwa alle 175 Jahre. Die Bahn von Voyager 2, in Türkis, knickt an jedem Planeten ab.",
+			"advanced": "Jeder Vorbeiflug lenkte die Bahn per Schwerkraftumlenkung zum nächsten Planeten; ohne sie hätte die Reise zum Neptun etwa 30 statt 12 Jahre gedauert."
+		}
+	},
+	"voyagerNeptune": {
+		"title": "Voyager 2 erreicht Neptun",
+		"where": "4,5 Milliarden km von der Erde",
+		"look": {
+			"simple": "Nach zwölf Jahren fliegt Voyager 2 an Neptun vorbei. Seitdem war niemand mehr dort.",
+			"standard": "Zwölf Jahre nach dem Start: der einzige Besuch, den Neptun je hatte. Die türkise Raute ist Voyager 2, nur 29.240 km vom Mittelpunkt Neptuns entfernt.",
+			"advanced": "Größte Annäherung 4.950 km über den Wolken; das Signal brauchte 4 Stunden 6 Minuten zur Erde. Danach flog Voyager 2 an Triton vorbei und hinaus aus dem Sonnensystem."
+		}
+	}
+}

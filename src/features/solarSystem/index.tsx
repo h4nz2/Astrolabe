@@ -24,6 +24,7 @@ import SoundControl from "./sound/SoundControl"
 import SoundDirector from "./sound/SoundDirector"
 import CraftLink from "./spacecraft/CraftLink"
 import SpacecraftInfo from "./spacecraft/SpacecraftInfo"
+import EventCard from "./events/EventCard"
 import TourCard from "./tours/TourCard"
 import TourSync from "./tours/TourSync"
 import BodyHighlight from "./ui/BodyHighlight"
@@ -133,6 +134,7 @@ const SolarSystem = () => {
 				<div className={classes.dock} data-testid="dock">
 					<DockPanels />
 					<TourCard className={`${classes.panel} ${classes.tour}`} />
+					<EventCard className={`${classes.panel} ${classes.tour}`} />
 				</div>
 				<div className={classes.bottom}>
 					<div className={classes.time}>

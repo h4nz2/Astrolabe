@@ -576,13 +576,39 @@
 			"how": {
 				"standard": [
 					"Klikni dole na datum a čas.",
-					"Vyber událost ze seznamu, nebo „Vyber datum“ a klikni na rok, měsíc a den.",
+					"Vyber „Vyber datum“ a klikni na rok, měsíc a den (slavné události najdeš v „Úkazy na obloze“).",
 					"Planety tam doplují a čas se zastaví; stiskni Spustit a poběží dál."
 				],
 				"simple": [
 					"Klikni dole na datum.",
 					"Vyber „Mars nejblíž Zemi“ nebo si vyber den.",
 					"Sleduj, jak se tam planety přesunou."
+				]
+			}
+		},
+		"skyEvents": {
+			"title": {
+				"standard": "Úkazy na obloze: zatmění, přechody a seskupení",
+				"simple": "Zatmění a další úkazy na obloze"
+			},
+			"what": {
+				"standard": "Seznam zatmění, přechodů Venuše a Merkuru, setkání planet na obloze, přiblížení Marsu, stínů měsíců a Saturnových prstenců z boku, minulých i budoucích. Výběr nastaví všechno: datum, skutečné měřítko a pohled z vesmíru, s přepnutím na pohled ze Země dalekohledem.",
+				"simple": "Vyber zatmění nebo jiný úkaz na obloze a aplikace tě tam vezme: ve správný den, na správné místo."
+			},
+			"why": {
+				"standard": "Každý úkaz je hodina geometrie v jednom obrázku: proč Měsíc zakryje Slunce přesně, proč není zatmění každý měsíc, co doopravdy znamená „planety jsou v řadě“. Přepínání mezi pohledem z vesmíru a ze Země je ta lekce.",
+				"simple": "Uvidíš, proč zatmění nastává: z vesmíru i ze Země, odkud se lidé dívali."
+			},
+			"how": {
+				"standard": [
+					"Klikni dole na datum a vyber „Úkazy na obloze“.",
+					"Vyber úkaz, třeba „Úplné zatmění Slunce“ (8. dubna 2024).",
+					"Na kartičce přepínej mezi „Z vesmíru“ a „Ze Země“; tlačítkem „Odejít“ se vrátíš, kde jsi byl."
+				],
+				"simple": [
+					"Klikni dole na datum a pak na „Úkazy na obloze“.",
+					"Vyber zatmění.",
+					"Stiskni „Ze Země“ a Měsíc zakryje Slunce."
 				]
 			}
 		},

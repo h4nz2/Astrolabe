@@ -1,8 +1,9 @@
 import { beforeEach, describe, expect, it } from "vitest"
 
-import { createI18n } from "@/i18n"
 import { J2000_JD, dateToJD } from "@/sim"
 import { useSimStore } from "@/store/sim"
+
+import { skyEventById } from "@/data/skyEvents"
 
 import { MOMENTS, MOMENT_IDS, momentJD } from "./moments"
 import {
@@ -64,14 +65,8 @@ describe("moments", () => {
 		expect(MOMENTS.map((moment) => moment.id)).toEqual([...MOMENT_IDS])
 		expect(dayOf(jds[0])).not.toBe(FIRST_DAY)
 		expect(dayOf(jds.at(-1)!)).not.toBe(LAST_DAY)
-		for (const locale of ["en", "de"] as const) {
-			const { t } = createI18n({ locale })
-			for (const { id } of MOMENTS) {
-				expect(t(`solarSystem.time.moments.${id}.name`)).not.toContain(
-					"solarSystem",
-				)
-			}
-		}
+		// every moment is a sky event (#41), which carries its words
+		for (const { id } of MOMENTS) expect(skyEventById.has(id), id).toBe(true)
 		expect(momentJD(MOMENTS[4])).toBe(
 			dateToJD(new Date("1969-07-20T20:17:00Z")),
 		)

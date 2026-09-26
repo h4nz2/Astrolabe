@@ -274,7 +274,7 @@
 			"travel": {
 				"open": "Viajar a una fecha",
 				"title": "Viaje en el tiempo",
-				"moments": "Momentos",
+				"moments": "Fenómenos del cielo",
 				"pickDate": "Elige una fecha",
 				"arrival": "El tiempo se detiene al llegar. Pulsa reproducir para continuar.",
 				"range": "Cualquier día desde el año {first} hasta el {last}. Llegas a mediodía (UTC).",
@@ -288,52 +288,6 @@
 					"previousDecade": "Década anterior",
 					"monthLevel": "Elegir otro mes",
 					"yearLevel": "Elegir otro año"
-				}
-			},
-			"moments": {
-				"galileoMoons": {
-					"name": "Galileo ve las lunas de Júpiter",
-					"description": "Las primeras lunas descubiertas alrededor de otro planeta."
-				},
-				"uranusFound": {
-					"name": "Se descubre Urano",
-					"description": "William Herschel encuentra el primer planeta que los antiguos no conocían."
-				},
-				"neptuneFound": {
-					"name": "Se descubre Neptuno",
-					"description": "Encontrado justo donde las matemáticas predijeron que estaría."
-				},
-				"sputnik": {
-					"name": "Lanzamiento del Sputnik 1",
-					"description": "El primer satélite artificial inaugura la era espacial."
-				},
-				"moonLanding": {
-					"name": "Primer alunizaje",
-					"description": "El Apolo 11 se posa en la Luna."
-				},
-				"voyagerLaunch": {
-					"name": "Despega la Voyager 2",
-					"description": "Júpiter, Saturno, Urano y Neptuno se alinean para un Gran Tour, algo que solo ocurre más o menos cada 175 años."
-				},
-				"voyagerNeptune": {
-					"name": "La Voyager 2 llega a Neptuno",
-					"description": "Doce años después del lanzamiento: la única visita que ha recibido Neptuno."
-				},
-				"marsClosest": {
-					"name": "Marte, más cerca que nunca",
-					"description": "Marte se acerca a la Tierra más que en casi 60 000 años. La Tierra queda entre el Sol y Marte."
-				},
-				"venusTransit": {
-					"name": "Tránsito de Venus",
-					"description": "Venus pasa justo entre el Sol y la Tierra."
-				},
-				"greatConjunction": {
-					"name": "La gran conjunción",
-					"description": "Vistos desde la Tierra, Júpiter y Saturno casi se tocan en el cielo."
-				},
-				"nextVenusTransit": {
-					"name": "El próximo tránsito de Venus",
-					"description": "La próxima vez que Venus pase por delante del Sol. ¿Lo verá alguien de esta sala?"
 				}
 			}
 		},
@@ -1319,6 +1273,67 @@
 				"watch": "Ver cómo pasa junto al Sol",
 				"watch@simple": "Mira cómo pasa volando junto al Sol"
 			}
+		},
+		"events": {
+			"listLabel": "Eclipses, tránsitos y otros fenómenos del cielo",
+			"upcoming": "Próximamente",
+			"groups": {
+				"solarEclipse": "Eclipses de Sol",
+				"lunarEclipse": "Eclipses de Luna",
+				"transit": "Tránsitos por el Sol",
+				"gathering": "Planetas juntos",
+				"closeApproach": "Marte se acerca",
+				"shadowsRings": "Sombras y anillos",
+				"history": "Momentos de la historia"
+			},
+			"card": "Fenómeno del cielo: {title}",
+			"when": "Cuándo: {when}",
+			"where": "Dónde: {where}",
+			"shown": "{direction, select, early {La escena lo muestra {amount} antes} late {La escena lo muestra {amount} después} other {La escena lo muestra a la hora real}}: las órbitas de la app se acercan mucho a las reales, pero no son exactas.",
+			"shown@simple": "{direction, select, early {La app lo muestra {amount} antes.} late {La app lo muestra {amount} después.} other {La app lo muestra a la hora real.}} Sus planetas están casi, pero no del todo, donde están los de verdad.",
+			"views": {
+				"label": "Punto de vista",
+				"space": "Desde el espacio",
+				"earth": "Desde la Tierra"
+			},
+			"hint": {
+				"space": {
+					"solarEclipse": "La sombra de la Luna sobre la cara de día de la Tierra.",
+					"solarEclipse@simple": "La mancha oscura es la sombra de la Luna.",
+					"lunarEclipse": "El Sol, la Tierra y la Luna en línea: la Luna está en la sombra de la Tierra.",
+					"lunarEclipse@simple": "La Tierra está entre el Sol y la Luna.",
+					"transit": "Visto desde arriba: el Sol, el planeta y la Tierra en línea.",
+					"transit@simple": "Desde arriba: el planeta está entre el Sol y nosotros.",
+					"gathering": "Visto desde arriba: dónde están de verdad los planetas.",
+					"gathering@simple": "Desde arriba: los planetas están muy separados.",
+					"closeApproach": "Visto desde arriba: la Tierra adelanta a Marte por el carril interior.",
+					"closeApproach@simple": "Desde arriba: la Tierra adelanta a Marte.",
+					"shadowsRings": "De cerca, desde el espacio.",
+					"history": "La escena de aquel día."
+				},
+				"earth": {
+					"solarEclipse": "Dentro de la sombra de la Luna, con un telescopio: la Luna tapa el Sol.",
+					"solarEclipse@simple": "Desde la Tierra: la Luna tapa el Sol.",
+					"lunarEclipse": "Mirando la Luna desde la Tierra, con prismáticos.",
+					"lunarEclipse@simple": "Desde la Tierra: la Luna roja.",
+					"transit": "Con un telescopio con filtro solar: el punto del planeta sobre el Sol.",
+					"transit@simple": "Desde la Tierra: un puntito negro sobre el Sol.",
+					"gathering": "Desde la Tierra: los planetas a un lado de nuestro cielo.",
+					"gathering@simple": "Desde la Tierra: los planetas uno junto a otro.",
+					"closeApproach": "Marte con un telescopio, siempre con el mismo aumento: compara los fenómenos.",
+					"closeApproach@simple": "Marte con un telescopio. ¿Qué tamaño tiene?",
+					"shadowsRings": "Con un telescopio en la Tierra.",
+					"history": "Con un telescopio en la Tierra."
+				}
+			},
+			"scaleNote": "A escala real: cada tamaño y cada distancia son reales. Al salir se vuelve a la escala de antes.",
+			"scaleNote@simple": "Todo se ve con su tamaño y su distancia de verdad.",
+			"leave": "Salir",
+			"leaveLabel": "Salir del fenómeno: volver a la vista, la hora y la escala que tenías",
+			"away": "Estás mirando por tu cuenta.",
+			"resume": "Volver al fenómeno",
+			"share": "Copiar un enlace a este fenómeno",
+			"copied": "Enlace copiado"
 		},
 		"hud": {
 			"tools": "Herramientas",

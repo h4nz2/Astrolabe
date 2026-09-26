@@ -1,0 +1,299 @@
+{
+	"solar1999": {
+		"title": "Eclipse total de Sol sobre Europa",
+		"where": "De Cornualles a Francia, Alemania, Austria, Hungría y Rumanía, hasta Turquía, Irán y la India",
+		"look": {
+			"simple": "La sombra de la Luna es una mancha oscura pequeña sobre Europa. En toda esa mancha se hizo de noche durante dos minutos.",
+			"standard": "El último eclipse total del milenio y el más visto: la sombra de la Luna cruzó el centro de Europa. Busca la mancha oscura de la umbra y la ancha penumbra gris a su alrededor.",
+			"advanced": "La umbra, de unos 110 km de ancho, cruzó Europa de Cornualles al mar Negro; el máximo, sobre Rumanía, dio 2 min 23 s de totalidad. La penumbra alrededor abarca miles de kilómetros: un eclipse parcial para casi toda Europa."
+		}
+	},
+	"solar2017": {
+		"title": "El gran eclipse americano",
+		"where": "A través de Estados Unidos, de Oregón a Carolina del Sur",
+		"look": {
+			"simple": "La sombra de la Luna cruza América de un océano al otro. ¿Encuentras la mancha oscura?",
+			"standard": "La sombra de la Luna cruzó todo Estados Unidos de costa a costa en una hora y media. Busca la mancha oscura de la umbra; desde la Tierra, la Luna tapa el Sol exactamente.",
+			"advanced": "La umbra, de hasta 115 km de ancho, cruzó EE. UU. a entre 2400 y 4000 km/h; la totalidad duró hasta 2 min 40 s. El primer eclipse total de costa a costa en EE. UU. desde 1918."
+		}
+	},
+	"solar2024": {
+		"title": "Eclipse total de Sol",
+		"where": "México, Estados Unidos y Canadá",
+		"look": {
+			"simple": "La Luna está justo entre el Sol y la Tierra. Su sombra hace una mancha oscura pequeña sobre América del Norte.",
+			"standard": "El Sol, la Luna y la Tierra están en línea, así que la sombra de la Luna cae sobre América del Norte. Desde el espacio es una mancha oscura dentro de una ancha sombra gris; cambia a la vista desde la Tierra y la Luna tapa el Sol exactamente.",
+			"advanced": "La Luna estaba cerca del perigeo y su diámetro aparente superaba al del Sol en un 6 %: la totalidad duró hasta 4 min 28 s en una franja de unos 200 km de ancho, de Mazatlán a Terranova."
+		}
+	},
+	"solar2026": {
+		"title": "Eclipse total de Sol sobre España",
+		"where": "Groenlandia, Islandia y el norte de España, al atardecer",
+		"look": {
+			"simple": "La sombra de la Luna cruza Groenlandia, Islandia y España. En España el Sol ya estaba bajo en el cielo de la tarde.",
+			"standard": "El primer eclipse total en la Europa continental desde 1999: la sombra cruzó Groenlandia e Islandia y, poco antes de la puesta de Sol, España. Busca la mancha oscura cerca del borde de la cara iluminada de la Tierra.",
+			"advanced": "Máximo al oeste de Islandia con 2 min 18 s de totalidad; en España el Sol estaba a pocos grados sobre el horizonte, así que la umbra tocó el suelo de forma rasante y se alargó."
+		}
+	},
+	"annular2027": {
+		"title": "Eclipse anular de Sol: un anillo de fuego",
+		"where": "Chile, Argentina y Uruguay, y luego África occidental",
+		"look": {
+			"simple": "Esta vez la Luna es un poco pequeña para tapar todo el Sol. Queda un anillo brillante de Sol a su alrededor.",
+			"standard": "La Luna está cerca del punto más lejano de su órbita, así que se ve un poco más pequeña que el Sol. Su centro oscuro nunca llega al suelo: desde la Tierra queda un fino anillo de Sol alrededor de la Luna.",
+			"advanced": "Cerca del apogeo, el diámetro aparente de la Luna es un 7 % menor que el del Sol y el cono de la umbra termina antes de llegar a la Tierra. En la franja de la antumbra el eclipse es anular, hasta 7 min 51 s."
+		}
+	},
+	"solar2027": {
+		"title": "El eclipse del siglo",
+		"where": "Sur de España, norte de África, Egipto y Arabia Saudí",
+		"look": {
+			"simple": "¡El próximo gran eclipse total! Cerca de Luxor, en Egipto, el día se vuelve noche durante más de seis minutos.",
+			"standard": "La Luna está cerca de la Tierra y la Tierra lejos del Sol, así que la Luna se ve especialmente grande: la totalidad dura más de seis minutos cerca de Luxor, la más larga en tierra hasta 2114.",
+			"advanced": "Luna cerca del perigeo, Tierra cerca del afelio: el diámetro aparente de la Luna supera al del Sol en un 8 %. La umbra, de hasta 258 km de ancho, da 6 min 23 s de totalidad cerca de Luxor."
+		}
+	},
+	"lunar2018": {
+		"title": "El eclipse total de Luna más largo del siglo",
+		"where": "Europa, África, Asia y Australia",
+		"look": {
+			"simple": "La Luna está en la sombra de la Tierra. No se pone negra: se vuelve rojo oscuro.",
+			"standard": "La Luna pasó justo por el centro de la sombra de la Tierra, así que la totalidad duró 1 hora y 43 minutos. Brilla roja: es luz del Sol desviada por el aire de la Tierra, un anillo de todos los amaneceres y atardeceres del planeta.",
+			"advanced": "La Luna estaba cerca del apogeo, se movía despacio y cruzó cerca del centro de la umbra: 103 minutos de totalidad, la más larga del siglo XXI. Marte, en oposición esa misma noche, brillaba a su lado."
+		}
+	},
+	"lunar2025mar": {
+		"title": "Eclipse total de Luna: una luna de sangre",
+		"where": "América",
+		"look": {
+			"simple": "Luna llena, y la Tierra está justo entre el Sol y la Luna. La Luna se pone roja.",
+			"standard": "Un eclipse de Luna solo ocurre en luna llena, cuando la Tierra está entre el Sol y la Luna. Mira desde el espacio los tres en línea y luego, desde la Tierra, la Luna roja.",
+			"advanced": "La totalidad duró unos 65 minutos. El color rojo es luz solar que la atmósfera terrestre refracta hacia la umbra; el azul se dispersa por el camino."
+		}
+	},
+	"lunar2025sep": {
+		"title": "Eclipse total de Luna",
+		"where": "Asia y Australia; Europa y África al salir la Luna",
+		"look": {
+			"simple": "La Luna se desliza dentro de la sombra de la Tierra y se pone roja.",
+			"standard": "Toda la Luna está en la sombra de la Tierra durante más de una hora. Desde el espacio ves el Sol, la Tierra y la Luna en línea; desde la Tierra, una Luna rojo oscuro.",
+			"advanced": "La totalidad duró unos 82 minutos. Solo la umbra de la Tierra enrojece la Luna; la penumbra a su alrededor apenas la oscurece un poco."
+		}
+	},
+	"lunar2026aug": {
+		"title": "Eclipse parcial de Luna",
+		"where": "América, Europa y África",
+		"look": {
+			"simple": "La Luna entra casi entera en la sombra de la Tierra, pero una franja fina sigue brillante.",
+			"standard": "La Luna pasa un poco al lado del centro de la sombra de la Tierra: casi toda se oscurece, pero un borde brillante queda fuera.",
+			"advanced": "Un eclipse parcial profundo: cerca del 93 % del diámetro de la Luna entró en la umbra. ¿Por qué no en cada luna llena? La órbita de la Luna está inclinada unos 5° respecto a la de la Tierra, así que suele pasar por encima o por debajo de la sombra."
+		}
+	},
+	"lunar2028dec": {
+		"title": "Una luna de sangre en Nochevieja",
+		"where": "Europa, África, Asia y Australia",
+		"look": {
+			"simple": "La última noche de 2028, la Luna se pone roja en la sombra de la Tierra.",
+			"standard": "El próximo eclipse total de Luna: la luna llena entra en la sombra de la Tierra en Nochevieja y brilla roja durante más de una hora.",
+			"advanced": "La totalidad dura unos 71 minutos. Los eclipses llegan en temporadas separadas unos seis meses, cuando la línea donde la órbita de la Luna cruza la de la Tierra apunta al Sol."
+		}
+	},
+	"venusTransit": {
+		"title": "Tránsito de Venus",
+		"where": "El Pacífico, Asia y Australia; América del Norte por la tarde",
+		"look": {
+			"simple": "Venus pasa por delante del Sol. Desde la Tierra es un puntito negro sobre el Sol.",
+			"standard": "Venus pasa justo entre el Sol y la Tierra. Desde arriba ves los tres en línea; desde la Tierra, Venus es un pequeño disco negro que cruza el Sol durante más de seis horas.",
+			"advanced": "Los tránsitos de Venus llegan en parejas separadas ocho años y luego no hay otro en más de un siglo (2004 y 2012, luego 2117 y 2125). En el siglo XVIII dieron la primera medida de la distancia de la Tierra al Sol."
+		}
+	},
+	"mercury2019": {
+		"title": "Tránsito de Mercurio",
+		"where": "América; Europa y África por la tarde",
+		"look": {
+			"simple": "El diminuto Mercurio pasa por delante del Sol. ¿Encuentras el puntito?",
+			"standard": "Mercurio cruza el Sol casi por su centro. Es tan pequeño que desde la Tierra hace falta un telescopio con filtro solar para ver su punto negro.",
+			"advanced": "El disco de Mercurio, de 10 segundos de arco, cruzó el Sol (1940 segundos de arco) en 5 h 29 min. Hay unos 13 tránsitos de Mercurio por siglo, siempre en mayo o noviembre."
+		}
+	},
+	"mercury2032": {
+		"title": "El próximo tránsito de Mercurio",
+		"where": "Europa, África y Asia",
+		"look": {
+			"simple": "La próxima vez que Mercurio pase por delante del Sol.",
+			"standard": "El próximo tránsito de Mercurio. Solo cuando Mercurio pasa por la línea donde su órbita cruza la de la Tierra, en mayo o noviembre, puede cruzar el Sol.",
+			"advanced": "La órbita de Mercurio está inclinada 7° respecto a la de la Tierra, así que en la mayoría de las conjunciones inferiores pasa por encima o por debajo del Sol. En noviembre tiene que estar cerca de su nodo ascendente."
+		}
+	},
+	"nextVenusTransit": {
+		"title": "El próximo tránsito de Venus",
+		"where": "Asia oriental y Australia; el oeste de América del Norte por la tarde",
+		"look": {
+			"simple": "La próxima vez que Venus pase por delante del Sol. ¿Lo verá alguien de esta sala?",
+			"standard": "Más de un siglo después del último, Venus vuelve a cruzar el Sol. La app muestra este futuro lejano solo de forma aproximada: sus órbitas son las de hoy, así que su Venus llega unas cinco horas tarde.",
+			"advanced": "Los elementos orbitales de la app son los del año 2000; en un siglo, la pequeña deriva de la órbita de Venus suma unas horas. El tránsito real dura unas 5 h 40 min."
+		}
+	},
+	"greatConjunction": {
+		"title": "La gran conjunción",
+		"where": "En todo el mundo, bajo hacia el suroeste tras la puesta de Sol",
+		"look": {
+			"simple": "Júpiter y Saturno parecen casi tocarse. ¡En el espacio están muy lejos uno del otro!",
+			"standard": "Vistos desde la Tierra, Júpiter y Saturno están separados solo una quinta parte del ancho de la Luna, lo más cerca desde 1623. Desde arriba ves por qué: la Tierra, Júpiter y Saturno están casi en línea, pero Saturno está casi el doble de lejos que Júpiter.",
+			"advanced": "Separación de 6 minutos de arco. Júpiter adelanta a Saturno cada 19,9 años; la conjunción es cerrada solo cerca de la línea donde se cruzan sus órbitas. En el espacio estaban a unos 730 millones de km."
+		}
+	},
+	"venusJupiter2023": {
+		"title": "Venus se encuentra con Júpiter",
+		"where": "En todo el mundo, al oeste tras la puesta de Sol",
+		"look": {
+			"simple": "Los dos planetas más brillantes parecen estar uno al lado del otro.",
+			"standard": "Los dos planetas más brillantes aparecen separados solo el ancho de la luna llena en el cielo de la tarde. Desde arriba: Venus está cerca de nosotros y Júpiter, cuatro veces más lejos.",
+			"advanced": "Separación de medio grado. Una conjunción es una línea de visión, no un encuentro: en ese momento Venus estaba a 1,4 UA de la Tierra y Júpiter a 5,8 UA."
+		}
+	},
+	"parade2025": {
+		"title": "Un desfile de planetas",
+		"where": "En todo el mundo, tras la puesta de Sol",
+		"look": {
+			"simple": "Todos los demás planetas están a la vez en el mismo lado de nuestro cielo. ¡Desde arriba no están en fila para nada!",
+			"standard": "Los otros siete planetas estaban a la vez en el cielo de la tarde, repartidos por un lado del cielo a partir del Sol. En el espacio nunca están en fila: cambia entre la vista desde arriba y la vista desde la Tierra para ver la diferencia.",
+			"advanced": "«Alineados» significa aquí dentro de unos 120° a lo largo de la eclíptica, vistos desde la Tierra. Mercurio y Saturno estaban bajos en el crepúsculo, y Urano y Neptuno necesitan prismáticos o telescopio."
+		}
+	},
+	"venusMars2027": {
+		"title": "Venus se encuentra con Marte",
+		"where": "En todo el mundo, al oeste tras la puesta de Sol",
+		"look": {
+			"simple": "La brillante Venus y el rojo Marte parecen casi tocarse.",
+			"standard": "Venus y Marte aparecen más juntos que el ancho de la Luna en el cielo de la tarde. En el espacio están lejos: Marte está una vez y media más lejos que Venus.",
+			"advanced": "Separación de unos 0,3°. Las parejas cercanas de planetas son frecuentes; lo que importa es dónde están en el cielo respecto al Sol, porque de eso depende que alguien las pueda ver."
+		}
+	},
+	"gathering2040": {
+		"title": "Cinco planetas y la Luna juntos",
+		"where": "En todo el mundo, al oeste tras la puesta de Sol",
+		"look": {
+			"simple": "Cinco planetas y la Luna se juntan en un trocito de cielo.",
+			"standard": "Mercurio, Venus, Marte, Júpiter y Saturno se reúnen en unos diez grados, con una fina Luna creciente cerca. Desde arriba, los planetas están muy repartidos por sus órbitas.",
+			"advanced": "Los cinco planetas visibles a simple vista dentro de unos 9,5° de longitud eclíptica: una agrupación tan cerrada solo ocurre unas pocas veces por siglo."
+		}
+	},
+	"marsClosest": {
+		"title": "Marte, más cerca que en 60 000 años",
+		"where": "En todo el mundo, toda la noche",
+		"look": {
+			"simple": "Marte se acerca mucho a la Tierra. En el telescopio se ve más grande que en muchísimo tiempo.",
+			"standard": "La Tierra adelanta a Marte por el carril interior, justo donde Marte está más cerca del Sol: solo 55,76 millones de km, lo más cerca en casi 60 000 años.",
+			"advanced": "Una oposición perihélica: la Tierra pasó entre el Sol y Marte justo después del perihelio de Marte. Su disco alcanzó 25 segundos de arco; en una oposición afélica apenas llega a 14."
+		}
+	},
+	"mars2027": {
+		"title": "Marte cerca de la Tierra, pero lejos esta vez",
+		"where": "En todo el mundo, toda la noche",
+		"look": {
+			"simple": "La Tierra adelanta otra vez a Marte, pero esta vez Marte está lejos. ¡Compáralo con 2003!",
+			"standard": "Cada 26 meses la Tierra adelanta a Marte. Esta vez Marte está cerca del extremo lejano de su órbita, se queda a 101 millones de km y se ve pequeño: compara la vista desde la Tierra con la de 2003.",
+			"advanced": "Una oposición afélica: el disco de Marte mide solo 14 segundos de arco. La órbita de Marte es excéntrica (0,093), así que los acercamientos van de 55 a 101 millones de km."
+		}
+	},
+	"mars2035": {
+		"title": "El próximo gran acercamiento de Marte",
+		"where": "En todo el mundo, toda la noche",
+		"look": {
+			"simple": "Marte se acerca casi tanto como en 2003. Brilla rojo toda la noche.",
+			"standard": "La próxima vez que la Tierra adelanta a Marte cerca de su punto más cercano al Sol: 56,9 millones de km, casi tanto como en 2003.",
+			"advanced": "Las oposiciones perihélicas se repiten cada 15 o 17 años; esta es la mejor entre 2003 y 2050."
+		}
+	},
+	"ioShadow2027": {
+		"title": "La sombra de Ío sobre Júpiter",
+		"where": "Donde Júpiter esté en el cielo de noche, con un telescopio pequeño",
+		"look": {
+			"simple": "Ío, una luna de Júpiter, está entre Júpiter y el Sol. Su sombra es un punto negro sobre Júpiter.",
+			"standard": "Un eclipse de Sol en otro planeta: la sombra de Ío es un puntito negro sobre las nubes de Júpiter. Ocurre cada 42 horas, en cada vuelta de Ío.",
+			"advanced": "La umbra de Ío, de unos 3600 km en la cima de las nubes de Júpiter, cruza el disco en unas 2 h 15 min. Las lunas de Júpiter giran casi en su ecuador y su eje solo está inclinado 3°, así que sus sombras caen sobre el planeta en cada órbita."
+		}
+	},
+	"saturnEdgeOn2025": {
+		"title": "Los anillos de Saturno de canto",
+		"where": "En ningún sitio, por desgracia: Saturno estaba demasiado cerca del Sol",
+		"look": {
+			"simple": "Vemos los anillos de Saturno justo de lado y casi desaparecen. ¡Son muy, muy finos!",
+			"standard": "La Tierra cruza el plano de los anillos de Saturno: vistos de canto, unos anillos de 270 000 km de ancho se quedan en una línea fina. Mira desde encima de los anillos y luego desde la Tierra.",
+			"advanced": "Los anillos principales de Saturno tienen casi siempre solo unos 10 metros de grosor. La Tierra cruza su plano dos veces por cada año de Saturno, de 29,5 años; en marzo de 2025 Saturno estaba a solo unos 10° del Sol."
+		}
+	},
+	"saturnEdgeOn2038": {
+		"title": "Los anillos de Saturno de canto otra vez",
+		"where": "Bajo en el crepúsculo de la mañana",
+		"look": {
+			"simple": "Los anillos de Saturno vuelven a ponerse de canto y casi desaparecen.",
+			"standard": "Medio año de Saturno después de 2025, la Tierra vuelve a cruzar el plano de los anillos. Entretanto, los anillos se abren mucho y se vuelven a cerrar.",
+			"advanced": "Este cruce abre una serie de tres (octubre de 2038, abril y julio de 2039), porque la órbita de la Tierra la lleva de un lado a otro del plano de los anillos, que gira despacio."
+		}
+	},
+	"galileoMoons": {
+		"title": "Galileo ve las lunas de Júpiter",
+		"where": "Padua, Italia, con un telescopio pequeño",
+		"look": {
+			"simple": "Galileo apunta su telescopio a Júpiter y ve estrellitas a su lado. ¡Son lunas!",
+			"standard": "Las primeras lunas descubiertas alrededor de otro planeta. El telescopio de Galileo solo aumentaba unas 20 veces; mira desde la Tierra con un campo estrecho como el suyo. Para una fecha tan antigua, las lunas de la app no están en su sitio exacto.",
+			"advanced": "Júpiter estaba cerca de la oposición. Galileo vio tres «estrellas» el 7 de enero de 1610 y una cuarta días después; que se movieran con Júpiter demostró que no todo gira alrededor de la Tierra."
+		}
+	},
+	"uranusFound": {
+		"title": "Se descubre Urano",
+		"where": "Bath, Inglaterra",
+		"look": {
+			"simple": "William Herschel encuentra un planeta nuevo con su telescopio. ¡Nadie sabía que estaba ahí!",
+			"standard": "El primer planeta que los antiguos no conocían. Con su telescopio, Herschel vio un disco diminuto, no un punto como una estrella.",
+			"advanced": "Urano apenas se ve a simple vista y ya se había catalogado antes como estrella; su disco de 3,6 segundos de arco y su lento movimiento lo delataron."
+		}
+	},
+	"neptuneFound": {
+		"title": "Se descubre Neptuno",
+		"where": "Berlín, Alemania",
+		"look": {
+			"simple": "¡Neptuno se encontró haciendo cuentas, antes de que nadie lo viera!",
+			"standard": "Urano no se movía exactamente como se había predicho. Le Verrier calculó desde dónde debía tirar de él un planeta invisible, y Galle encontró allí a Neptuno la primera noche.",
+			"advanced": "Neptuno apareció a menos de 1° de la posición predicha por Le Verrier; su disco mide solo 2,3 segundos de arco."
+		}
+	},
+	"sputnik": {
+		"title": "Lanzamiento del Sputnik 1",
+		"where": "Baikonur, Kazajistán",
+		"look": {
+			"simple": "El primer satélite da vueltas a la Tierra. ¡Empieza la era espacial!",
+			"standard": "El primer satélite artificial inaugura la era espacial. Daba una vuelta a la Tierra cada 96 minutos, demasiado cerca y demasiado pequeño para dibujarlo a esta escala.",
+			"advanced": "El Sputnik 1 orbitó durante tres meses a entre unos 215 y 940 km de altura. Los satélites artificiales no son lunas, así que la app no los dibuja."
+		}
+	},
+	"moonLanding": {
+		"title": "Primer alunizaje",
+		"where": "El mar de la Tranquilidad, en la Luna",
+		"look": {
+			"simple": "El Apolo 11 se posa en la Luna. Desde la Tierra, la Luna es una luna creciente en el cielo de la tarde.",
+			"standard": "El Apolo 11 se posa en la Luna. Alunizaron poco después del amanecer en su zona, para que el suelo no estuviera demasiado caliente. Desde la Tierra, la Luna era creciente.",
+			"advanced": "En el lugar del alunizaje, en el mar de la Tranquilidad, el Sol estaba a unos 10° de altura; las sombras largas hacían fácil leer el terreno. La Luna tenía unos 6 días."
+		}
+	},
+	"voyagerLaunch": {
+		"title": "Despega la Voyager 2",
+		"where": "Cabo Cañaveral, EE. UU.",
+		"look": {
+			"simple": "Júpiter, Saturno, Urano y Neptuno están colocados de forma que una sola nave puede visitarlos todos.",
+			"standard": "Júpiter, Saturno, Urano y Neptuno se alinean para un Gran Tour, algo que solo ocurre más o menos cada 175 años. La trayectoria de la Voyager 2, en turquesa, se dobla en cada planeta.",
+			"advanced": "Cada sobrevuelo usó la gravedad del planeta para desviar la trayectoria hacia el siguiente; sin ello, llegar a Neptuno habría llevado unos 30 años en lugar de 12."
+		}
+	},
+	"voyagerNeptune": {
+		"title": "La Voyager 2 llega a Neptuno",
+		"where": "A 4500 millones de km de la Tierra",
+		"look": {
+			"simple": "Después de doce años, la Voyager 2 pasa junto a Neptuno. Nadie ha vuelto desde entonces.",
+			"standard": "Doce años después del lanzamiento: la única visita que ha recibido Neptuno. El rombo turquesa es la Voyager 2, a solo 29 240 km del centro de Neptuno.",
+			"advanced": "Máximo acercamiento a 4950 km sobre las nubes; la señal tardó 4 horas y 6 minutos en llegar a la Tierra. Después, la Voyager 2 pasó junto a Tritón y salió del sistema solar."
+		}
+	}
+}

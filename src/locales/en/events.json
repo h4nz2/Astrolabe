@@ -1,0 +1,299 @@
+{
+	"solar1999": {
+		"title": "Total solar eclipse over Europe",
+		"where": "From Cornwall across France, Germany, Austria, Hungary and Romania to Turkey, Iran and India",
+		"look": {
+			"simple": "The Moon's shadow is a small dark spot on Europe. Everywhere inside that spot, the day went dark for two minutes.",
+			"standard": "The last total eclipse of the millennium, and the most watched one: the Moon's shadow crossed the middle of Europe. Look for the small dark spot of the umbra and the wide grey penumbra around it.",
+			"advanced": "The umbra, about 110 km wide, crossed Europe from Cornwall to the Black Sea; greatest eclipse over Romania with 2 min 23 s of totality. Around it the penumbra covers thousands of kilometres: a partial eclipse for most of Europe."
+		}
+	},
+	"solar2017": {
+		"title": "The Great American Eclipse",
+		"where": "Across the United States, from Oregon to South Carolina",
+		"look": {
+			"simple": "The Moon's shadow crosses America from one ocean to the other. Can you find the dark spot?",
+			"standard": "The Moon's shadow crossed the whole United States from coast to coast in about an hour and a half. Look for the dark spot of the umbra; from Earth, the Moon covers the Sun exactly.",
+			"advanced": "The umbra, up to 115 km wide, raced across the USA at 2,400 to 4,000 km/h; totality lasted up to 2 min 40 s. The first coast-to-coast total eclipse in the USA since 1918."
+		}
+	},
+	"solar2024": {
+		"title": "Total solar eclipse",
+		"where": "Mexico, the United States and Canada",
+		"look": {
+			"simple": "The Moon is exactly between the Sun and the Earth. Its shadow makes a small dark spot on North America.",
+			"standard": "Sun, Moon and Earth stand in one line, so the Moon's shadow falls on North America. From space it is a small dark spot inside a wide grey shadow; switch to the view from Earth and the Moon covers the Sun exactly.",
+			"advanced": "The Moon was near perigee, so its apparent diameter exceeded the Sun's by about 6 %: totality lasted up to 4 min 28 s along a path about 200 km wide from Mazatlán to Newfoundland."
+		}
+	},
+	"solar2026": {
+		"title": "Total solar eclipse over Spain",
+		"where": "Greenland, Iceland and northern Spain, in the evening",
+		"look": {
+			"simple": "The Moon's shadow crosses Greenland, Iceland and Spain. In Spain the Sun was low in the evening sky.",
+			"standard": "The first total eclipse in mainland Europe since 1999: the shadow crossed Greenland and Iceland, then Spain just before sunset. Look for the dark spot near the edge of the lit side of the Earth.",
+			"advanced": "Greatest eclipse off western Iceland with 2 min 18 s of totality; in Spain the Sun stood only a few degrees above the horizon, so the umbra hit the ground at a grazing angle and stretched out."
+		}
+	},
+	"annular2027": {
+		"title": "Annular solar eclipse: a ring of fire",
+		"where": "Chile, Argentina and Uruguay, then West Africa",
+		"look": {
+			"simple": "This time the Moon is a little too small to cover the whole Sun. A bright ring of Sun is left around it.",
+			"standard": "The Moon is near the far end of its orbit, so it looks slightly smaller than the Sun. Its dark centre never reaches the ground: from Earth a thin ring of Sun stays around the Moon.",
+			"advanced": "Near apogee the Moon's apparent diameter is about 7 % smaller than the Sun's, so the umbra's cone ends before reaching the Earth. Inside the antumbra's path the eclipse is annular, for up to 7 min 51 s."
+		}
+	},
+	"solar2027": {
+		"title": "The eclipse of the century",
+		"where": "Southern Spain, North Africa, Egypt and Saudi Arabia",
+		"look": {
+			"simple": "The next big total eclipse! Near Luxor in Egypt, the day turns into night for more than six minutes.",
+			"standard": "The Moon is close to the Earth and the Earth is far from the Sun, so the Moon looks extra big: totality lasts over six minutes near Luxor, the longest on land until 2114.",
+			"advanced": "Moon near perigee, Earth near aphelion: the Moon's apparent diameter exceeds the Sun's by 8 %. The umbra, up to 258 km wide, gives 6 min 23 s of totality at greatest eclipse near Luxor."
+		}
+	},
+	"lunar2018": {
+		"title": "The longest total lunar eclipse of the century",
+		"where": "Europe, Africa, Asia and Australia",
+		"look": {
+			"simple": "The Moon is in the Earth's shadow. It does not go black: it turns dark red.",
+			"standard": "The Moon passed right through the middle of the Earth's shadow, so totality lasted 1 hour 43 minutes. The Moon glows red: sunlight bent through the Earth's air, a ring of all the sunrises and sunsets on Earth.",
+			"advanced": "The Moon was near apogee, moving slowly, and crossed close to the centre of the umbra: 103 minutes of totality, the longest of the 21st century. Mars, at opposition the same night, shone beside it."
+		}
+	},
+	"lunar2025mar": {
+		"title": "Total lunar eclipse: a blood moon",
+		"where": "The Americas",
+		"look": {
+			"simple": "Full Moon, and the Earth is right between the Sun and the Moon. The Moon turns red.",
+			"standard": "A lunar eclipse only happens at full Moon, when the Earth stands between the Sun and the Moon. Look from space at the three in a line, then from Earth at the red Moon.",
+			"advanced": "Totality lasted about 65 minutes. The red colour is sunlight refracted into the umbra by the Earth's atmosphere, with the blue scattered out on the way."
+		}
+	},
+	"lunar2025sep": {
+		"title": "Total lunar eclipse",
+		"where": "Asia and Australia; Europe and Africa at moonrise",
+		"look": {
+			"simple": "The Moon slides into the Earth's shadow and turns red.",
+			"standard": "The whole Moon is inside the Earth's shadow for well over an hour. From space you see the line of Sun, Earth and Moon; from Earth, a dark red Moon.",
+			"advanced": "Totality lasted about 82 minutes. Only the Earth's umbra reddens the Moon; the penumbra around it merely dims it a little."
+		}
+	},
+	"lunar2026aug": {
+		"title": "Partial lunar eclipse",
+		"where": "The Americas, Europe and Africa",
+		"look": {
+			"simple": "The Moon goes almost all the way into the Earth's shadow, but a thin slice stays bright.",
+			"standard": "The Moon passes just off the centre of the Earth's shadow: almost all of it goes dark, but a bright edge stays outside.",
+			"advanced": "A deep partial eclipse: about 93 % of the Moon's diameter entered the umbra. Why not every full Moon? The Moon's orbit is tilted about 5° to the Earth's, so it usually passes above or below the shadow."
+		}
+	},
+	"lunar2028dec": {
+		"title": "A blood moon on New Year's Eve",
+		"where": "Europe, Africa, Asia and Australia",
+		"look": {
+			"simple": "On the last evening of 2028, the Moon turns red in the Earth's shadow.",
+			"standard": "The next total lunar eclipse: the full Moon moves into the Earth's shadow on New Year's Eve and glows red for more than an hour.",
+			"advanced": "Totality lasts about 71 minutes. Eclipses come in seasons about six months apart, when the line where the Moon's orbit crosses the Earth's points at the Sun."
+		}
+	},
+	"venusTransit": {
+		"title": "Transit of Venus",
+		"where": "The Pacific, Asia and Australia; North America in the evening",
+		"look": {
+			"simple": "Venus passes in front of the Sun. From Earth it is a small black dot on the Sun.",
+			"standard": "Venus passes exactly between the Sun and the Earth. From above you see the three in a line; from Earth, Venus is a small black disc crossing the Sun for more than six hours.",
+			"advanced": "Transits of Venus come in pairs eight years apart, then not for over a century (2004 and 2012, then 2117 and 2125). In the 18th century they gave the first measurement of the Earth's distance from the Sun."
+		}
+	},
+	"mercury2019": {
+		"title": "Transit of Mercury",
+		"where": "The Americas; Europe and Africa in the afternoon",
+		"look": {
+			"simple": "Tiny Mercury passes in front of the Sun. Can you find the little dot?",
+			"standard": "Mercury crosses the Sun almost through its centre. It is so small that from Earth you need a telescope with a solar filter to see its black dot.",
+			"advanced": "Mercury's disc, 10 arcseconds across, crossed the Sun (1,940 arcseconds) in 5 h 29 min. Mercury transits happen about 13 times a century, always in May or November."
+		}
+	},
+	"mercury2032": {
+		"title": "The next transit of Mercury",
+		"where": "Europe, Africa and Asia",
+		"look": {
+			"simple": "The next time Mercury passes in front of the Sun.",
+			"standard": "The next transit of Mercury. Only when Mercury passes its orbit's crossing line with the Earth's orbit, in May or November, can it cross the Sun.",
+			"advanced": "Mercury's orbit is tilted 7° to the Earth's, so at most inferior conjunctions it passes above or below the Sun. In November it must be near its ascending node."
+		}
+	},
+	"nextVenusTransit": {
+		"title": "The next transit of Venus",
+		"where": "East Asia and Australia; western North America in the evening",
+		"look": {
+			"simple": "The next time Venus crosses in front of the Sun. Will anyone in this room see it?",
+			"standard": "More than a century after the last one, Venus crosses the Sun again. The app shows this far future only roughly: its orbits are for today, so its Venus arrives about five hours late.",
+			"advanced": "The app's orbital elements are fixed at the year 2000; over a century the small drift of Venus's orbit adds up to a few hours. The real transit lasts about 5 h 40 min."
+		}
+	},
+	"greatConjunction": {
+		"title": "The Great Conjunction",
+		"where": "Everywhere, low in the south-west after sunset",
+		"look": {
+			"simple": "Jupiter and Saturn look like they almost touch. In space they are very far apart!",
+			"standard": "Seen from Earth, Jupiter and Saturn are only a fifth of the Moon's width apart, the closest since 1623. From above you see why: Earth, Jupiter and Saturn stand almost in a line, but Saturn is nearly twice as far away as Jupiter.",
+			"advanced": "Separation 6 arcminutes. Jupiter overtakes Saturn every 19.9 years; the conjunction is close only when it happens near the line where their orbits cross. In space they were about 730 million km apart."
+		}
+	},
+	"venusJupiter2023": {
+		"title": "Venus meets Jupiter",
+		"where": "Everywhere, in the west after sunset",
+		"look": {
+			"simple": "The two brightest planets look like they stand side by side.",
+			"standard": "The two brightest planets appear only the width of the full Moon apart in the evening sky. From above: Venus is close to us, Jupiter four times farther away.",
+			"advanced": "Separation about half a degree. A conjunction is a line of sight, not a meeting: at this moment Venus was 1.4 AU from Earth and Jupiter 5.8 AU."
+		}
+	},
+	"parade2025": {
+		"title": "A parade of planets",
+		"where": "Everywhere, after sunset",
+		"look": {
+			"simple": "All the other planets are on the same side of our sky at once. From above, they are not in a line at all!",
+			"standard": "All seven other planets were in the evening sky at once, spread along one side of the sky from the Sun. They never stand in a line in space: switch between the view from above and the view from Earth to see the difference.",
+			"advanced": "\"Aligned\" means within about 120° of each other along the ecliptic as seen from Earth. Mercury and Saturn were low in the twilight, and Uranus and Neptune need binoculars or a telescope."
+		}
+	},
+	"venusMars2027": {
+		"title": "Venus meets Mars",
+		"where": "Everywhere, in the west after sunset",
+		"look": {
+			"simple": "Bright Venus and red Mars look like they almost touch.",
+			"standard": "Venus and Mars appear closer together than the width of the Moon in the evening sky. In space they are far apart: Mars is half as far again as Venus.",
+			"advanced": "Separation about 0.3°. Close pairings of planets are common; what matters is where they lie on the sky relative to the Sun, which decides whether anyone can see them."
+		}
+	},
+	"gathering2040": {
+		"title": "Five planets and the Moon together",
+		"where": "Everywhere, in the west after sunset",
+		"look": {
+			"simple": "Five planets and the Moon crowd together in a small patch of sky.",
+			"standard": "Mercury, Venus, Mars, Jupiter and Saturn gather within about ten degrees of each other, with a thin crescent Moon nearby. From above, the planets are spread far apart on their orbits.",
+			"advanced": "The five naked-eye planets within about 9.5° of ecliptic longitude: a grouping this tight happens only a few times a century."
+		}
+	},
+	"marsClosest": {
+		"title": "Mars at its closest in 60,000 years",
+		"where": "Everywhere, all night",
+		"look": {
+			"simple": "Mars comes very close to the Earth. Through a telescope it looks bigger than it has for a very long time.",
+			"standard": "The Earth overtakes Mars on the inside track, right where Mars's orbit comes closest to the Sun: only 55.76 million km apart, the closest in almost 60,000 years.",
+			"advanced": "A perihelic opposition: Earth passed between the Sun and Mars just after Mars's perihelion. Mars's disc reached 25 arcseconds; at an aphelic opposition it is barely 14."
+		}
+	},
+	"mars2027": {
+		"title": "Mars close to Earth, but a far one",
+		"where": "Everywhere, all night",
+		"look": {
+			"simple": "The Earth passes Mars again, but this time Mars is far away. Compare it with 2003!",
+			"standard": "Every 26 months the Earth overtakes Mars. This time Mars is near the far end of its orbit, so it stays 101 million km away and looks small: compare the view from Earth with 2003.",
+			"advanced": "An aphelic opposition: Mars's disc only 14 arcseconds. Mars's orbit is eccentric (0.093), so closest approaches range from 55 to 101 million km."
+		}
+	},
+	"mars2035": {
+		"title": "The next great approach of Mars",
+		"where": "Everywhere, all night",
+		"look": {
+			"simple": "Mars comes almost as close as in 2003. It shines bright red all night.",
+			"standard": "The next time the Earth passes Mars near Mars's closest point to the Sun: 56.9 million km, almost as close as in 2003.",
+			"advanced": "Perihelic oppositions repeat every 15 or 17 years; this is the best one between 2003 and 2050."
+		}
+	},
+	"ioShadow2027": {
+		"title": "Io's shadow on Jupiter",
+		"where": "Wherever Jupiter is up at night, through a small telescope",
+		"look": {
+			"simple": "Jupiter's moon Io is between Jupiter and the Sun. Its shadow is a black dot on Jupiter.",
+			"standard": "A solar eclipse on another planet: Io's shadow is a small black dot on Jupiter's clouds. It happens every 42 hours, each time Io goes round.",
+			"advanced": "Io's umbra, about 3,600 km across at Jupiter's cloud tops, crosses the disc in about 2 h 15 min. Jupiter's moons orbit almost in its equator, and its tilt is only 3°, so their shadows hit the planet on every orbit."
+		}
+	},
+	"saturnEdgeOn2025": {
+		"title": "Saturn's rings edge-on",
+		"where": "Nowhere, sadly: Saturn was too close to the Sun to be seen",
+		"look": {
+			"simple": "We see Saturn's rings exactly from the side, and they almost vanish. They are very, very thin!",
+			"standard": "The Earth passes through the plane of Saturn's rings: seen edge-on, rings 270,000 km wide shrink to a thin line. Look from above the rings, then from Earth.",
+			"advanced": "Saturn's main rings are mostly only about 10 metres thick. Earth crosses their plane twice every Saturn year of 29.5 years; in March 2025 Saturn was only about 10° from the Sun."
+		}
+	},
+	"saturnEdgeOn2038": {
+		"title": "Saturn's rings edge-on again",
+		"where": "Low in the morning twilight",
+		"look": {
+			"simple": "Saturn's rings turn their edge to us again and nearly disappear.",
+			"standard": "Half a Saturn year after 2025, the Earth passes through the ring plane again. In between, the rings open wide and close again.",
+			"advanced": "This crossing opens a series of three (October 2038, April and July 2039), because Earth's own orbit carries it back and forth across the slowly turning ring plane."
+		}
+	},
+	"galileoMoons": {
+		"title": "Galileo sees Jupiter's moons",
+		"where": "Padua, Italy, through a small telescope",
+		"look": {
+			"simple": "Galileo points his telescope at Jupiter and sees little stars next to it. They are moons!",
+			"standard": "The first moons ever found around another planet. Galileo's telescope magnified only about 20 times; look from Earth through a narrow view like his. The app's moons are not placed exactly for such an old date.",
+			"advanced": "Jupiter was near opposition. Galileo saw three 'stars' on 7 January 1610 and a fourth days later; that they moved with Jupiter showed that not everything circles the Earth."
+		}
+	},
+	"uranusFound": {
+		"title": "Uranus is discovered",
+		"where": "Bath, England",
+		"look": {
+			"simple": "William Herschel finds a new planet with his telescope. Nobody knew it was there!",
+			"standard": "The first planet unknown to the ancients. Through his telescope Herschel saw a tiny disc, not a point like a star.",
+			"advanced": "Uranus is just visible to the naked eye and had been catalogued as a star before; its disc of 3.6 arcseconds, and its slow motion, gave it away."
+		}
+	},
+	"neptuneFound": {
+		"title": "Neptune is discovered",
+		"where": "Berlin, Germany",
+		"look": {
+			"simple": "Neptune was found by doing sums, before anyone saw it!",
+			"standard": "Uranus was not moving quite as predicted. Le Verrier calculated where an unseen planet must be pulling it from, and Galle found Neptune there on the first night.",
+			"advanced": "Neptune was found within about 1° of Le Verrier's predicted position; its disc is only 2.3 arcseconds across."
+		}
+	},
+	"sputnik": {
+		"title": "Sputnik 1 launches",
+		"where": "Baikonur, Kazakhstan",
+		"look": {
+			"simple": "The first satellite goes round the Earth. The space age begins!",
+			"standard": "The first artificial satellite starts the space age. It circled the Earth every 96 minutes, far too close and small to draw at this scale.",
+			"advanced": "Sputnik 1 orbited between about 215 and 940 km altitude for three months. Artificial satellites are not moons, so the app does not draw them."
+		}
+	},
+	"moonLanding": {
+		"title": "First Moon landing",
+		"where": "The Sea of Tranquility, on the Moon",
+		"look": {
+			"simple": "Apollo 11 lands on the Moon. From Earth, the Moon is a crescent in the evening sky.",
+			"standard": "Apollo 11 touches down on the Moon. They landed just after sunrise at their spot, so the ground was not too hot. From Earth the Moon was a waxing crescent.",
+			"advanced": "The landing site in the Sea of Tranquility had the Sun about 10° high, long shadows making the terrain easy to read. The Moon was about 6 days old."
+		}
+	},
+	"voyagerLaunch": {
+		"title": "Voyager 2 sets off",
+		"where": "Cape Canaveral, USA",
+		"look": {
+			"simple": "Jupiter, Saturn, Uranus and Neptune are lined up so one spacecraft can visit them all.",
+			"standard": "Jupiter, Saturn, Uranus and Neptune line up for a Grand Tour, as they do only every 175 years or so. Voyager 2's path, in cyan, bends at each planet.",
+			"advanced": "Each flyby's gravity assist bent the trajectory toward the next planet; without it, reaching Neptune would have taken about 30 years instead of 12."
+		}
+	},
+	"voyagerNeptune": {
+		"title": "Voyager 2 reaches Neptune",
+		"where": "4.5 billion km from Earth",
+		"look": {
+			"simple": "After twelve years, Voyager 2 flies past Neptune. No one has visited it since.",
+			"standard": "Twelve years after launch: the only visit Neptune has ever had. The cyan diamond is Voyager 2, passing just 29,240 km from Neptune's centre.",
+			"advanced": "Closest approach 4,950 km above the cloud tops; the signal took 4 hours 6 minutes to reach Earth. Voyager 2 then flew on past Triton and out of the solar system."
+		}
+	}
+}

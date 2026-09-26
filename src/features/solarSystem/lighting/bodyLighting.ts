@@ -27,6 +27,17 @@ export const SUN_INTENSITY = 1.6
 export const NIGHT_LEVEL = 0.045
 /** Colour of the faint rim that outlines a body's night side against space (linear RGB). */
 export const NIGHT_RIM_COLOR = new Color(0.09, 0.11, 0.16)
+/**
+ * Sunlight a planet's air bends into its own shadow (#41), by the planet's id:
+ * the red of the Moon in a total lunar eclipse, the light of every sunrise
+ * and sunset on the Earth at once (linear RGB, as a share of full sunlight).
+ * A body gets it while in its parent's shadow; only the Earth has an entry.
+ */
+export const REFRACTED_GLOW: Readonly<Record<string, Color>> = {
+	earth: new Color(0.3, 0.055, 0.018),
+}
+const NO_GLOW = new Color(0, 0, 0)
+
 /** Brightness of a night texture (city lights) on the night side. */
 export const NIGHT_LIGHTS_INTENSITY = 1.2
 
@@ -41,11 +52,13 @@ export interface SunlightUniforms {
 	uSunIntensity: { value: number }
 	uNightLevel: { value: number }
 	uRimColor: { value: Color }
+	/** Refracted light inside the parent's shadow (REFRACTED_GLOW); black for most bodies. */
+	uUmbraGlow: { value: Color }
 }
 
 /** Fresh uniforms for one body; the Sun's direction is filled in by the first `updateSunlight`. */
 export function createSunlightUniforms(
-	body: Pick<Body, "radiusKm">,
+	body: Pick<Body, "radiusKm"> & Partial<Pick<Body, "parentId">>,
 	sunRadiusKm: number,
 ): SunlightUniforms {
 	return {
@@ -58,6 +71,10 @@ export function createSunlightUniforms(
 		uSunIntensity: { value: SUN_INTENSITY },
 		uNightLevel: { value: NIGHT_LEVEL },
 		uRimColor: { value: NIGHT_RIM_COLOR },
+		uUmbraGlow: {
+			value:
+				(body.parentId != null && REFRACTED_GLOW[body.parentId]) || NO_GLOW,
+		},
 	}
 }
 
