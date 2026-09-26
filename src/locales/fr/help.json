@@ -64,12 +64,39 @@
 			"how": {
 				"standard": [
 					"Elle passe une fois, à la première visite ; « Passer l’intro », un glissement ou Échap l’arrêtent à tout moment.",
+					"Après la première introduction, l’application demande une fois si tu veux un petit aperçu de ce que tu peux faire (voir « Un petit aperçu »).",
 					"Pour la revoir, ouvre la flèche à côté de « Aide » et choisis « Revoir l’introduction ».",
 					"« Montrer comment se déplacer », dans le même menu, fait revenir les conseils pour glisser, zoomer et cliquer."
 				],
 				"simple": [
 					"Elle passe la première fois que tu viens.",
 					"Pour la revoir, appuie sur la flèche à côté de « Aide », puis sur « Revoir l’introduction »."
+				]
+			}
+		},
+		"quickLook": {
+			"title": {
+				"standard": "Un petit aperçu",
+				"simple": "Un petit tour"
+			},
+			"what": {
+				"standard": "Une minute avec les meilleures fonctions, montrées dans la scène : voler vers une planète, l’échelle réelle, voyager dans le temps, comparer des mondes et regarder la lumière avancer, puis une étape pour les enseignants sur le mode présentation et le chemin vers cette page.",
+				"simple": "Une minute avec ce que l’application fait de mieux."
+			},
+			"why": {
+				"standard": "La plupart des gens ne les trouvent jamais seuls. Une minute montre ce que fait l’application, et chaque étape désigne le bouton qui le fait.",
+				"simple": "Tu vois tout de suite les choses les plus chouettes, et où sont leurs boutons."
+			},
+			"how": {
+				"standard": [
+					"À ta première visite, après l’introduction, réponds « Oui, montre-moi ». La question n’est posée qu’une fois dans ce navigateur, jamais sur un lien partagé ni pendant une présentation.",
+					"Il avance tout seul ; « Retour », « Suivant » et les flèches le parcourent pas à pas, et « Passer la suite » ou × l’arrêtent à tout moment, pour revenir à une vue calme.",
+					"Pour le revoir, ouvre la flèche à côté de « Aide » et choisis « Revoir le petit aperçu »."
+				],
+				"simple": [
+					"Après l’introduction, appuie sur « Oui, montre-moi ».",
+					"Regarde, ou appuie sur « Suivant ».",
+					"Pour le revoir, appuie sur la flèche à côté de « Aide »."
 				]
 			}
 		},

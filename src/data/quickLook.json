@@ -1,0 +1,67 @@
+{
+	"$comment": "Issue #44: the quick look, a short guided tour of what the app can do, offered once after the opening (#30). Each step is a tour stop (src/data/tours.ts, #28) plus what the tour format cannot say: `spot`, the one control that does it (it glows while the step shows); `flash`, a flash of light sent from that body when the step begins (#27); `compare`, worlds drawn side by side in the card (#24). The words are in src/locales/<locale>/ui.json under solarSystem.quickLook.steps.<id>. See docs/ARCHITECTURE.md, 'The quick look'.",
+	"steps": [
+		{
+			"id": "fly",
+			"view": "saturn",
+			"move": "fly",
+			"time": "now",
+			"speed": "realTime",
+			"scale": "everythingVisible",
+			"spot": "picker",
+			"autoSeconds": 9
+		},
+		{
+			"id": "trueScale",
+			"view": "overview",
+			"scale": "trueScale",
+			"camera": { "elevation": 50 },
+			"select": null,
+			"spot": "scale",
+			"autoSeconds": 8
+		},
+		{
+			"id": "time",
+			"view": "overview",
+			"scale": "everythingVisible",
+			"speed": "month",
+			"camera": { "elevation": 60 },
+			"select": null,
+			"spot": "time",
+			"autoSeconds": 8
+		},
+		{
+			"id": "compare",
+			"view": "earth",
+			"time": "now",
+			"speed": "realTime",
+			"camera": { "light": "full" },
+			"spot": "compare",
+			"compare": ["sun", "earth"],
+			"autoSeconds": 9
+		},
+		{
+			"id": "light",
+			"view": "overview",
+			"fit": { "au": 3.2 },
+			"camera": { "elevation": 70 },
+			"select": null,
+			"spot": "tools",
+			"flash": "sun",
+			"autoSeconds": 11
+		},
+		{
+			"id": "teachers",
+			"view": "overview",
+			"select": null,
+			"spot": "present",
+			"autoSeconds": 12
+		},
+		{
+			"id": "more",
+			"view": "overview",
+			"select": null,
+			"spot": "help"
+		}
+	]
+}

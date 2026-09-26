@@ -11,11 +11,13 @@ import {
 	IconChevronDown,
 	IconHandClick,
 	IconPlayerPlay,
+	IconSparkles,
 } from "@tabler/icons-react"
 
 import { useI18n } from "@/i18n"
 import { Hint } from "@/primitives/hint"
 
+import { startQuickLook } from "../quickLook/quickLook"
 import { showHints, startIntro } from "./intro"
 
 const IntroMenu = () => {
@@ -48,6 +50,13 @@ const IntroMenu = () => {
 						onClick={startIntro}
 					>
 						{t("solarSystem.intro.replay")}
+					</Menu.Item>
+					<Menu.Item
+						leftSection={<IconSparkles size={16} aria-hidden />}
+						onClick={startQuickLook}
+						data-testid="quick-look-replay"
+					>
+						{t("solarSystem.quickLook.replay")}
 					</Menu.Item>
 					<Menu.Item
 						leftSection={<IconHandClick size={16} aria-hidden />}

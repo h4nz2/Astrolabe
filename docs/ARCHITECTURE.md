@@ -418,6 +418,34 @@ Director (`camera/director.ts`, unit-tested frame by frame):
   Earth pulses (`IntroPulse.tsx`, placed every frame by `IntroPulseTracker.tsx` in the Canvas with #16's
   `placeRing`) until a body is selected or focused, at most 45 s. Captions and hints sit in the HUD grid's open middle
   row, right above the bottom panels (`.intro` in `SolarSystem.module.css`). Strings: `solarSystem.intro.*`.
+- **After the hand-over** comes the quick look's question (#44, below).
+
+### The quick look: onboarding (`features/solarSystem/quickLook`, `src/data/quickLook.json`; #44)
+
+A first-time visitor is asked once, after the opening hands over, whether they want a quick look at what the app
+can do: five features shown working in the scene (fly to a planet, true scale, time travel, comparing worlds, light
+crawling), a step for teachers on presentation mode (it shows where Present is and what it does, never turns it on),
+and the help page. About a minute, moving on by itself.
+
+- **Asked once** (`quickLook.ts`): `watchQuickLook` sees the opening go from `playing` to `handover` and calls `ask()`,
+  which stores `astrolabe.quickLookAsked` in local storage when the question appears (ignored = no; it goes away
+  after 30 s). Blocked storage: a module flag asks at most once per visit. Never while presenting or while another
+  tour runs; never over a shared link, because the opening itself never plays over one (`hasExplicitView`).
+- **Played on the tour player (#28)**: `script.ts` validates `src/data/quickLook.json` (tour stops plus `spot`,
+  `flash`, `compare`) and builds a `Tour` (`quickLook`, `returnOnExit`, never listed, never in a link). The watcher
+  adds each step's extras: `useQuickLookStore.spot` (mirrored to `data-quick-look-spot` on `<html>`; the glow in
+  `QuickLook.module.css` rings the real control: the picker, Scale, the time bar, the card's Compare, Tools,
+  Present, Help — a soft ring, not an arrow, per #30), and `flash` sends #27's flash.
+- **UI** (`QuickLook.tsx`): `QuickLookController` (watcher, glow, `?look=play`), `QuickLookAsk` and `QuickLookCard`
+  in the HUD's dock (#42). The card: "n of N", the step's words (`solarSystem.quickLook.steps.<id>` at every reading
+  level), the comparison drawing (`features/compare/Stage`, lazy) where the step has one, dots, Back, autoplay,
+  Next / Finish, "Skip the rest" and ×; the last step links to `/help`. `TourCard` stays out of its way. The tour
+  player's keys (arrows, PageUp/Down) step it.
+- **Always a calm way out**: Skip, Finish, × and Escape leave through `exitTour` (`returnOnExit`: back to where the
+  viewer was, which after the opening is the overview, now, 1x, Everything visible) and clear the flash and the glow;
+  a world clicked mid-way ends it there but puts speed, scale and layers back (`leaveToExplore`).
+- **Replay**: the Help chevron's "Take the quick look again", and `?look=play` (the help page's try-it link; an
+  instruction, never written back).
 
 ### Re-centring and free movement (`camera/recentre.ts`, `camera/input.ts`; #15)
 
