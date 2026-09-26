@@ -437,6 +437,12 @@
 			"readLess": "Weniger zeigen"
 		},
 		"surface": {
+			"sun": "Oberflächenkarte: {source}, im ultravioletten Licht. Für unsere Augen ist die Sonne blendend weiß: Schau nie direkt hinein.",
+			"sun@simple": "Dieses Bild der Sonne ist in ultraviolettem Licht aufgenommen, das unsere Augen nicht sehen. Schau nie direkt in die Sonne!",
+			"bands": "Kein Foto zeigt {body} ganz, deshalb ist diese Karte nach Fotos von Raumsonden gemalt.",
+			"bands@simple": "Diese Karte von {body} ist so gemalt, dass sie wie die Fotos der Raumsonden aussieht.",
+			"clouds": "Dichte Wolken verbergen den Boden von {body}; die Ansicht „Gelände“ im Lexikon zeigt ihn, wie das Radar ihn sieht.",
+			"clouds@simple": "Dichte Wolken bedecken {body} ganz. Im Lexikon siehst du den Boden darunter.",
 			"map": "Oberflächenkarte: {source}.",
 			"unseen": "Ein Teil von {moon} wurde nie fotografiert; dieser Teil der Karte ist passend zum Rest ergänzt.",
 			"unseen@simple": "Niemand hat {moon} je ganz gesehen. Der fehlende Teil der Karte ist ergänzt.",

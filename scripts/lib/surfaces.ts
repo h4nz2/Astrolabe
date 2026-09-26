@@ -207,7 +207,7 @@ export const resolveSurfaces = (
  * the bodies (in data order) that show it. Sources nobody uses are left out.
  */
 export const creditsOf = (
-	catalogue: SurfaceCatalogue,
+	catalogue: Pick<SurfaceCatalogue, "sources">,
 	usage: ReadonlyArray<{ bodyId: string; sourceId: string }>,
 ): ImageCredit[] => {
 	const bodiesBySource = new Map<string, string[]>()
@@ -222,7 +222,8 @@ export const creditsOf = (
 		if (bodies === undefined) continue
 		credits.push({
 			id,
-			kind: id === PAINTED_SOURCE ? "painted" : "map",
+			// the moons' painted source, and the planets' ("astrolabe-painted-bands")
+			kind: id.startsWith(PAINTED_SOURCE) ? "painted" : "map",
 			title: source.title,
 			credit: source.credit,
 			short: source.short,

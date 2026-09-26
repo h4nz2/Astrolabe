@@ -636,3 +636,213 @@ export const correlation = (a: Float32Array, b: Float32Array): number => {
 	}
 	return sab / Math.sqrt(saa * sbb)
 }
+
+// ---------------------------------------------------------------------------------------------
+// painted cloud bands (the Sun's and planets' textures)
+
+/** An oval painted over the bands: a storm, a dark spot, a bright cloud (degrees). */
+export interface Spot {
+	lat: number
+	lon: number
+	/** half-width in longitude and half-height in latitude, degrees */
+	width: number
+	height: number
+	colour: string
+	/** how much of the spot's colour covers the bands at its centre, 0..1 */
+	opacity: number
+}
+
+/** A giant planet's cloud tops painted from a latitude profile. */
+export interface BandedRecipe {
+	/** colour stops [planetographic latitude in degrees, "#rrggbb"], from north to south */
+	bands: [number, string][]
+	/** how much the bands wave and mottle: 0 calm (Uranus) .. 1 stormy (Saturn's belts) */
+	turbulence: number
+	spots?: Spot[]
+}
+
+/** The profile as a function of latitude (degrees): linear between stops, flat beyond the ends. */
+export const bandProfile = (
+	bands: [number, string][],
+): ((lat: number) => [number, number, number]) => {
+	const stops = bands.map(([at, hex]) => ({ at, rgb: hexToRgb(hex) }))
+	return (lat) => {
+		if (lat >= stops[0].at) return stops[0].rgb
+		for (let i = 1; i < stops.length; i++) {
+			const a = stops[i - 1]
+			const b = stops[i]
+			if (lat >= b.at) {
+				const t = a.at === b.at ? 0 : (a.at - lat) / (a.at - b.at)
+				return [0, 1, 2].map((c) => a.rgb[c] + t * (b.rgb[c] - a.rgb[c])) as [
+					number,
+					number,
+					number,
+				]
+			}
+		}
+		return stops[stops.length - 1].rgb
+	}
+}
+
+/**
+ * Cloud bands from a latitude profile: each pixel takes the profile's colour at a latitude
+ * nudged by zonal turbulence (stretched along the bands, the way jet streams draw them), with
+ * a fine mottling on top, then the spots. `seed` fixes the turbulence.
+ */
+export const paintBands = (
+	recipe: BandedRecipe,
+	seed: number,
+	width: number,
+): Rgb => {
+	const height = width / 2
+	const out = new Float32Array(width * height * 3)
+	const { turbulence } = recipe
+	const colourAt = bandProfile(recipe.bands)
+	const spots = (recipe.spots ?? []).map((spot) => ({
+		...spot,
+		rgb: hexToRgb(spot.colour),
+	}))
+	for (let y = 0; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+			const [lon, lat] = pixelLonLat(x, y, width, height)
+			const px = Math.cos(lat) * Math.cos(lon)
+			const py = Math.sin(lat)
+			const pz = Math.cos(lat) * Math.sin(lon)
+			// zonal: slow along longitude, quick across latitude
+			const wave = fbm(px * 1.6, py * 14, pz * 1.6, seed, 5) - 0.5
+			const eddy = fbm(px * 5, py * 30, pz * 5, seed + 17, 4) - 0.5
+			const latDeg =
+				(lat * 180) / Math.PI + turbulence * (6 * wave + 2.5 * eddy)
+			const [r, g, b] = colourAt(latDeg)
+			const mottle =
+				1 +
+				turbulence * 0.08 * (fbm(px * 9, py * 40, pz * 9, seed + 31, 3) - 0.5)
+			let rgb = [r * mottle, g * mottle, b * mottle]
+			const lonDeg = (lon * 180) / Math.PI
+			for (const spot of spots) {
+				const dLon = ((((lonDeg - spot.lon) % 360) + 540) % 360) - 180
+				const d = Math.hypot(
+					dLon / spot.width,
+					((lat * 180) / Math.PI - spot.lat) / spot.height,
+				)
+				if (d >= 1) continue
+				const k = spot.opacity * (1 - smoothstep(0.45, 1, d))
+				rgb = rgb.map((v, c) => v + k * (spot.rgb[c] - v))
+			}
+			// the stops are authored colours: kept as they are, only clamped
+			const i = 3 * (y * width + x)
+			for (let c = 0; c < 3; c++) out[i + c] = Math.min(1, Math.max(0, rgb[c]))
+		}
+	}
+	return { width, height, data: out }
+}
+
+/**
+ * A grey map's values raised to `power` (under 1 compresses a huge range, like the Sun's
+ * bright active regions against its quiet surface), then made relative (mean 1).
+ */
+export const stretch = (gray: Gray, power: number, mask?: Uint8Array): Gray =>
+	relative(
+		{
+			...gray,
+			data: gray.data.map((v) => Math.max(0, v) ** power),
+		},
+		mask,
+	)
+
+/**
+ * A grey raster resampled to `width` x `height` (each output pixel averages 3 x 3 bilinear
+ * samples over its footprint, enough for the gentle shrinking the sources need). Wraps in x.
+ */
+export const resample = (gray: Gray, width: number, height: number): Gray => {
+	const src = gray
+	const sample = (fx: number, fy: number): number => {
+		const x = fx - 0.5
+		const y = Math.min(src.height - 1, Math.max(0, fy - 0.5))
+		const x0 = Math.floor(x)
+		const y0 = Math.floor(y)
+		const tx = x - x0
+		const ty = y - y0
+		const y1 = Math.min(src.height - 1, y0 + 1)
+		const at = (xx: number, yy: number) =>
+			src.data[yy * src.width + (((xx % src.width) + src.width) % src.width)]
+		return (
+			(1 - ty) * ((1 - tx) * at(x0, y0) + tx * at(x0 + 1, y0)) +
+			ty * ((1 - tx) * at(x0, y1) + tx * at(x0 + 1, y1))
+		)
+	}
+	const sx = src.width / width
+	const sy = src.height / height
+	const data = new Float32Array(width * height)
+	for (let y = 0; y < height; y++) {
+		for (let x = 0; x < width; x++) {
+			let sum = 0
+			for (let j = 0; j < 3; j++) {
+				for (let i = 0; i < 3; i++) {
+					sum += sample((x + (i + 0.5) / 3) * sx, (y + (j + 0.5) / 3) * sy)
+				}
+			}
+			data[y * width + x] = sum / 9
+		}
+	}
+	return { width, height, data }
+}
+
+/**
+ * Blends a map's left and right edges into each other over `columns` columns, so a map made
+ * over time (the Sun's synoptic maps, built over a 27-day rotation) closes without a seam.
+ */
+export const closeSeam = <T extends Gray | Rgb>(
+	raster: T,
+	channels: 1 | 3,
+	columns: number,
+): T => {
+	const { width, height } = raster
+	const data = Float32Array.from(raster.data)
+	for (let y = 0; y < height; y++) {
+		for (let k = 0; k < columns; k++) {
+			const t = 0.5 * (1 - k / columns)
+			const a = (y * width + k) * channels
+			const b = (y * width + width - 1 - k) * channels
+			for (let c = 0; c < channels; c++) {
+				const left = data[a + c]
+				const right = data[b + c]
+				data[a + c] = left + t * (right - left)
+				data[b + c] = right + t * (left - right)
+			}
+		}
+	}
+	return { ...raster, data }
+}
+
+/**
+ * Replaces the rows beyond `maxLat` (degrees, both poles) by their mirror image across that
+ * latitude, fading towards the ring's mean brightness at the pole: a source that never saw the
+ * poles (the Sun's synoptic maps, taken from the ecliptic) closes without a smear or a hole.
+ */
+export const mirrorPoles = (gray: Gray, maxLat: number): Gray => {
+	const { width, height } = gray
+	const data = Float32Array.from(gray.data)
+	const rowOf = (lat: number) =>
+		Math.min(
+			height - 1,
+			Math.max(0, Math.round(((90 - lat) / 180) * height - 0.5)),
+		)
+	for (const sign of [1, -1]) {
+		const edge = rowOf(sign * maxLat)
+		let mean = 0
+		for (let x = 0; x < width; x++) mean += gray.data[edge * width + x]
+		mean /= width
+		for (let y = 0; y < height; y++) {
+			const lat = 90 - ((y + 0.5) / height) * 180
+			if (sign * lat <= maxLat) continue
+			const depth = (sign * lat - maxLat) / (90 - maxLat)
+			const from = rowOf(sign * (2 * maxLat - sign * lat))
+			for (let x = 0; x < width; x++) {
+				const v = gray.data[from * width + x]
+				data[y * width + x] = v + 0.6 * depth * (mean - v)
+			}
+		}
+	}
+	return { width, height, data }
+}

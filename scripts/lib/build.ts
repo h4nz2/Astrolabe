@@ -32,6 +32,7 @@ import { slug } from "./names"
 import { normalizeName } from "./names"
 import { parseMass, parseNumber } from "./numbers"
 import { creditsOf, resolveSurfaces, surfacePath } from "./surfaces"
+import { applyPlanetTextures } from "./planetTextures"
 import { densityKgPerM3, laplaceRadiusKm, periodDaysFromKepler } from "./orbit"
 import {
 	first,
@@ -49,9 +50,8 @@ import type { Raw } from "./source"
 /** J2000 epoch as a Julian Date; every element in the source refers to it. */
 export const J2000 = 2451545.0
 
-/** Shared texture for moons that have none of their own. */
-export const PLACEHOLDER_TEXTURE =
-	"/assets/textures/earth/satellites/moon_1k.jpg"
+/** Shared texture for moons that have none of their own (the Moon's map, #37). */
+export const PLACEHOLDER_TEXTURE = "/assets/textures/earth/satellites/moon.jpg"
 
 /**
  * Stand-in surfaces for small bodies without a map of their own (#23): a neutral rock texture,
@@ -65,18 +65,20 @@ export const SMALL_BODY_TEXTURES: Readonly<Partial<Record<BodyKind, string>>> =
 	}
 
 /** Added to Earth when the file exists. */
-export const EARTH_NIGHT_TEXTURE = "/assets/textures/earth_night_4k.jpg"
+export const EARTH_NIGHT_TEXTURE = "/assets/textures/earth/earth_night.jpg"
 
 /** Radius for moons with neither a mean radius nor a diameter. */
 export const DEFAULT_MOON_RADIUS_KM = 5
 
 /**
  * Planets whose rings come from data/rings/<id>.json: Uranus and Neptune are missing from the
- * source, and its Jupiter ring (an opaque copy of a Saturn-like texture) is replaced by the
- * real, faint structure (halo, main ring, Amalthea gossamer ring).
+ * source, its Jupiter ring (an opaque copy of a Saturn-like texture) is replaced by the real,
+ * faint structure (halo, main ring, Amalthea gossamer ring), and Saturn's strips (of unknown
+ * origin) by its measured ring profile.
  */
 export const EXTERNAL_RING_PLANETS: readonly string[] = [
 	"jupiter",
+	"saturn",
 	"uranus",
 	"neptune",
 ]
@@ -143,6 +145,11 @@ export interface BuildOptions {
 	surfaces?: unknown
 	/** parsed data/moon-surfaces.built.json: moon id -> { color } of its generated map */
 	builtSurfaces?: unknown
+	/**
+	 * parsed data/planet-textures.json: the source of every Sun and planet texture. Absent: the
+	 * textures are not credited (unit fixtures).
+	 */
+	planetTextures?: unknown
 }
 
 export interface BuildStats {
@@ -974,6 +981,28 @@ export const markFeatured = (bodies: Body[], source: unknown): void => {
 	}
 }
 
+/**
+ * Credits the Sun's and the planets' textures (data/planet-textures.json) in front of the
+ * moons' `moonCredits`, and gives them their `surface`, in place.
+ */
+const withPlanetTextures = (
+	bodies: Body[],
+	options: Pick<BuildOptions, "planetTextures" | "surfaces">,
+	moonCredits: ImageCredit[],
+): ImageCredit[] => {
+	if (options.planetTextures === undefined) return moonCredits
+	try {
+		return applyPlanetTextures(
+			bodies,
+			options.planetTextures,
+			options.surfaces,
+			moonCredits,
+		)
+	} catch (error) {
+		throw new BuildError(error instanceof Error ? error.message : String(error))
+	}
+}
+
 /** data/moon-surfaces.built.json: moon id -> the generated map's mean colour. */
 const BuiltSurfaces = z.record(
 	z.string(),
@@ -1109,7 +1138,11 @@ export const buildBodies = (
 	for (const { raw, body } of smallEntries) pushMoons(raw, body)
 
 	markFeatured(bodies, options.featuredMoons)
-	const credits = applySurfaces(bodies, options)
+	const credits = withPlanetTextures(
+		bodies,
+		options,
+		applySurfaces(bodies, options),
+	)
 
 	return {
 		bodies,
